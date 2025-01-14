@@ -386,7 +386,8 @@
         "assembly": "GRCh38",
         "collections": [
             "IGVF_catalog_beta_v0.3",
-            "IGVF_catalog_beta_v0.4"
+            "IGVF_catalog_beta_v0.4",
+            "IGVF_catalog_beta_v0.5"
         ],
         "controlled_access": false,
         "external": true

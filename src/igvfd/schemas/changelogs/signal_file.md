@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Add `checkfiles_version`.
 * Extend `content_type` enum list to include `sequence attributes`.
 * Extend `content_type` enum list to include `TF binding scores`.

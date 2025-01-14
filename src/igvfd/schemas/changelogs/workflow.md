@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Extend `status` enum list to include `preview`.
 * Add `uniform_pipeline`.
 * Extend `collections` enum list to include `VarChAMP`.

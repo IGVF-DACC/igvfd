@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Rename calculated property `input_file_set_for` to `input_for`.
 * Add calculated property `externally_hosted`.
 * Add `external_input_data`.
