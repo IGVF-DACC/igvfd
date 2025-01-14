@@ -74,7 +74,7 @@
                     "signal generation",
                     "signal normalization",
                     "spatial feature detection",
-                    "UMI collapsing",
+                    "UMI deduplication",
                     "UMI quantification",
                     "variant annotation"
                 ],
@@ -96,7 +96,7 @@
                     "signal generation": "The process of generating a continuous signal representation of aligned sequencing data.",
                     "signal normalization": "Adjusting the generated signal to remove systematic biases.",
                     "spatial feature detection": "The identification of spatially resolved features in genomic data, often used in spatial transcriptomics.",
-                    "UMI collapsing": "",
+                    "UMI deduplication": "The process of removing UMI duplicates.",
                     "variant annotation": "The process of providing additional information about genomic variants."
                 }
             },
