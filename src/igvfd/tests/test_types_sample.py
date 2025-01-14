@@ -79,7 +79,7 @@ def test_multiplexed_sample_props(
     donors_set = set()
     donors_set.update(tissue.get('donors', []))
     donors_set.update(in_vitro_cell_line.get('donors', []))
-    multiplexed_donors_set = set([entry for entry in res.json.get('donors', [])])
+    multiplexed_donors_set = set([entry['@id'] for entry in res.json.get('donors', [])])
     assert donors_set == multiplexed_donors_set
 
     biomarkers_set = set()
