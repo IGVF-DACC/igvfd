@@ -155,7 +155,9 @@
     "fuzzy_searchable_fields": [
         "description",
         "submitted_by.title",
-        "summary"
+        "summary",
+        "donors.ethnicities",
+        "donors.strain"
     ],
     "exact_searchable_fields": [
         "@type",

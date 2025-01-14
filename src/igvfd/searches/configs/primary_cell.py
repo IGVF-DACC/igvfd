@@ -31,6 +31,12 @@ def primary_cell():
             'virtual': {
                 'title': 'Virtual'
             },
+            'donors.ethnicities': {
+                'title': 'Ethnicity',
+            },
+            'donors.strain': {
+                'title': 'Strain'
+            },
             'file_sets.file_set_type': {
                 'title': 'File Set Type'
             },
@@ -124,6 +130,8 @@ def primary_cell():
                     'biosample_qualifiers',
                     'embryonic',
                     'virtual',
+                    'donors.ethnicities',
+                    'donors.strain',
                 ]
             },
             {

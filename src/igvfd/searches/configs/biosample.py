@@ -43,6 +43,12 @@ def biosample():
             'virtual': {
                 'title': 'Virtual'
             },
+            'donors.ethnicities': {
+                'title': 'Ethnicity',
+            },
+            'donors.strain': {
+                'title': 'Strain'
+            },
             'file_sets.file_set_type': {
                 'title': 'File Set Type'
             },
@@ -140,6 +146,8 @@ def biosample():
                     'preservation_method',
                     'embryonic',
                     'virtual',
+                    'donors.ethnicities',
+                    'donors.strain',
                 ]
             },
             {

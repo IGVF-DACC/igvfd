@@ -162,7 +162,9 @@
         "description",
         "submitted_by.title",
         "summary",
-        "taxa"
+        "taxa",
+        "donors.ethnicities",
+        "donors.strain"
     ],
     "exact_searchable_fields": [
         "@type",
