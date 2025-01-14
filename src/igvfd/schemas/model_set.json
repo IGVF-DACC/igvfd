@@ -13,21 +13,6 @@
         "prediction_objects",
         "software_version"
     ],
-    "not": {
-        "comment": "Model file sets should not specify any donors or samples.",
-        "anyOf": [
-            {
-                "required": [
-                    "samples"
-                ]
-            },
-            {
-                "required": [
-                    "donors"
-                ]
-            }
-        ]
-    },
     "identifyingProperties": [
         "uuid",
         "accession",
@@ -160,12 +145,6 @@
                 "igvf_utils": "igvf:bedtoolsv109 or bedtools-v.1.0.9"
             }
         },
-        "samples": {
-            "comment": "Do not submit. Model sets should not specify any samples."
-        },
-        "donors": {
-            "comment": "Do not submit. Model sets should not specify any donors."
-        },
         "assessed_genes": {
             "title": "Assessed Genes",
             "description": "A list of genes assessed in this model set.",
@@ -206,6 +185,9 @@
         "lab.title",
         "model_name",
         "prediction_objects",
+        "samples.summary",
+        "samples.sample_terms.term_name",
+        "samples.targeted_sample_term.term_name",
         "submitted_by.title",
         "summary"
     ],
@@ -217,7 +199,11 @@
         "files.aliases",
         "input_file_sets.accession",
         "input_file_sets.aliases",
-        "publications.publication_identifiers"
+        "publications.publication_identifiers",
+        "samples.accession",
+        "samples.aliases",
+        "donors.accession",
+        "donors.aliases"
     ],
     "changelog": "/profiles/changelogs/model_set.md"
 }
