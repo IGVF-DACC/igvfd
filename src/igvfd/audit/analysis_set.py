@@ -125,7 +125,7 @@ def audit_analysis_set_multiple_workflows(value, system):
     '''
     [
         {
-            "audit_description": "Analysis set contains more than one workflows.",
+            "audit_description": "Analysis sets are not expected to link to more than one workflow.",
             "audit_category": "unexpected workflows",
             "audit_level": "WARNING"
         }
@@ -153,7 +153,7 @@ def audit_analysis_set_multiple_workflows(value, system):
                     file_workflow_report.append(excess_workflows_report)
         details = (
             f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} has multiple '
-            f'`workflows` with `{", ".join(file_workflow_report)}`.'
+            f'`workflows` with {", ".join(file_workflow_report)}.'
         )
         yield AuditFailure(audit_message_multiple_workflows.get('audit_category', ''),
                            f'{details} {audit_message_multiple_workflows.get("audit_description", "")}',

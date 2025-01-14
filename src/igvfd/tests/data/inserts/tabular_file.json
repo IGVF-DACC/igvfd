@@ -41,7 +41,8 @@
         "upload_status": "invalidated",
         "validation_error_detail": "Explanation of why this file did not pass validation.",
         "file_set": "igvf:analysis_set_with_input",
-        "controlled_access": false
+        "controlled_access": false,
+        "anaylsis_step_version": "dc73c5ff-32f2-41f2-95a7-b7f57b234f0d"
     },
     {
         "uuid": "72bdab4a-9488-b627-ebcc-3d1c59e3b954",
@@ -99,7 +100,8 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "igvf:analysis_set_with_input",
-        "controlled_access": false
+        "controlled_access": false,
+        "anaylsis_step_version": "b270a867-037e-474e-9bb8-4d42cac0dc96"
     },
     {
         "uuid": "3e161051-2f4c-8610-b245-e11bf2cfa12a",
