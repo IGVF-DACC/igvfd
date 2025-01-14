@@ -481,7 +481,7 @@ def audit_MPRA_read_names(value, system):
             sequence_files = [file for file in value['files'] if file.startswith('/sequence-files/')]
             for file in sequence_files:
                 file_object = system.get('request').embed(file)
-                read_names = file_object.get('read_names')
+                read_names = file_object.get('read_names', '')
                 if read_names:
                     if read_names not in ['Barcode forward', 'UMI', 'Barcode reverse']:
                         unexpected_read_names.append(file)
