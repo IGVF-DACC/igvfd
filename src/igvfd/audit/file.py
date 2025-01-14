@@ -115,3 +115,43 @@ def audit_external_reference_files(value, system):
                 f'but does not have identifier(s) from an external resource listed in `dbxrefs`.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+@audit_checker('MatrixFile', frame='object')
+@audit_checker('ModelFile', frame='object')
+@audit_checker('TabularFile', frame='object')
+def audit_file_no_file_format_specifications(value, system):
+    '''
+    [
+        {
+            "audit_description": "Tabular files are expected to link to a file format specifications document describing the headers of the file.",
+            "audit_category": "missing file format specifications",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Matrix files are expected to link to a file format specifications document describing the axes and layers of the file.",
+            "audit_category": "missing file format specifications",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Model files in tsv format are expected to link to a file format specifications document describing the content of the file.",
+            "audit_category": "missing file format specifications",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    if object_type == 'Tabular file':
+        audit_message = get_audit_message(audit_file_no_file_format_specifications, index=0)
+    elif object_type == 'Matrix file':
+        audit_message = get_audit_message(audit_file_no_file_format_specifications, index=1)
+    elif object_type == 'Model file':
+        if value.get('file_format') != 'tsv':
+            return
+        audit_message = get_audit_message(audit_file_no_file_format_specifications, index=2)
+    if not (value.get('file_format_specifications')):
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has no `file_format_specifications`.'
+        )
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
