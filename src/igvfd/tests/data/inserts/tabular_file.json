@@ -101,7 +101,7 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "igvf:analysis_set_with_input",
         "controlled_access": false,
-        "anaylsis_step_version": "b270a867-037e-474e-9bb8-4d42cac0dc96"
+        "analysis_step_version": "b270a867-037e-474e-9bb8-4d42cac0dc96"
     },
     {
         "uuid": "3e161051-2f4c-8610-b245-e11bf2cfa12a",
