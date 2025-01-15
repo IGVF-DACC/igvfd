@@ -93,7 +93,7 @@ class Sample(Item):
         Path('institutional_certificates', include=['@id', 'certificate_identifier', 'status']),
         Path('construct_library_sets.associated_phenotypes', include=[
              '@id', 'accession', 'file_set_type', 'term_name', 'associated_phenotypes', 'status']),
-        Path('donors', include=['@id', 'accession', 'strain', 'ethnicities']),
+        Path('donors', include=['@id', 'accession', 'status', 'strain', 'ethnicities']),
     ]
 
     audit_inherit = [
