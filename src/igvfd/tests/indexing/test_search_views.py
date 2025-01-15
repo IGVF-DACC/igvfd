@@ -361,11 +361,15 @@ def test_search_views_search_config_registry(workbook, testapp):
     r = testapp.get(
         '/search-config-registry/'
     )
-    assert len(r.json) > 40
-    assert 'User' in r.json
-    assert 'Award' in r.json
-    assert 'facets' in r.json['Award']
-    assert 'columns' in r.json['Award']
+    assert 'configs' in r.json
+    assert 'defaults' in r.json
+    assert 'aliases' in r.json
+    configs = r.json['configs']
+    assert len(configs) > 40
+    assert 'User' in configs
+    assert 'Award' in configs
+    assert 'facets' in configs['Award']
+    assert 'columns' in configs['Award']
 
 
 def test_search_views_multireport_view_values(workbook, testapp):
