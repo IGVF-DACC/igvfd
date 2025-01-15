@@ -219,7 +219,8 @@
         "controlled_access": false,
         "externally_hosted": false,
         "read_names": [
-            "Read 1"
+            "Read 1",
+            "Barcode forward"
         ]
     }
 ]

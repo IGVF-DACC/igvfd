@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 14
 
+* Extend `read_names` enum list to include `Barcode forward`.
+* Extend `read_names` enum list to include `UMI`.
+* Extend `read_names` enum list to include `Barcode reverse`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Add `checkfiles_version`.
 * Extend `sequencing_kit` enum list to include `AVITI 2x75 Sequencing Kit Cloudbreak High Output`.
