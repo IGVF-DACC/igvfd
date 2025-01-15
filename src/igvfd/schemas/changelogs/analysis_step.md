@@ -2,6 +2,11 @@
 
 ### Minor changes since schema version 5
 
+* Extend `analysis_step_types` enum list to include `read trimming`.
+* Extend `analysis_step_types` enum list to include `fastq concatenation`.
+* Extend `analysis_step_types` enum list to include `fragment generation`.
+* Extend `analysis_step_types` enum list to include `UMI deduplication`.
+* Extend `analysis_step_types` enum list to include `matrix generation`.
 * Extend `output_content_types` enum list to include `DNA footprint scores`.
 * Extend `input_content_types` enum list to include `DNA footprint scores`.
 * Extend `output_content_types` enum list to include `sequence attributes`.
