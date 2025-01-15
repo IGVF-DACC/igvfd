@@ -1089,3 +1089,14 @@ def test_audit_missing_read_names(
         error['category'] == 'inconsistent read names'
         for error in res.json['audit'].get('ERROR', [])
     )
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'read_names': ['Barcode forward', 'Barcode reverse']
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent read names'
+        for error in res.json['audit'].get('ERROR', [])
+    )
