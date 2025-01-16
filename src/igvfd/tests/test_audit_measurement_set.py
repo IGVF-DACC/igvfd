@@ -486,7 +486,8 @@ def test_audit_inconsistent_seqspec(
     sequence_file,
     sequence_file_sequencing_run_2,
     configuration_file_seqspec,
-    configuration_file_seqspec_2
+    configuration_file_seqspec_2,
+    assay_term_scrna
 ):
     # sequence files from the same sequencing run should link to the same seqspec
     testapp.patch_json(
@@ -545,11 +546,22 @@ def test_audit_inconsistent_seqspec(
         error['category'] != 'inconsistent sequence specifications'
         for error in res.json['audit'].get('ERROR', [])
     )
-    # sequence files from different sequencing runs should not link to the same seqspec
+    # sequence files from single cell assays with different sequencing runs should not link to the same seqspec
     testapp.patch_json(
         sequence_file_sequencing_run_2['@id'],
         {
             'sequencing_run': 2
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent sequence specifications'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_scrna['@id']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
