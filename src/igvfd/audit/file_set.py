@@ -191,7 +191,7 @@ def audit_inconsistent_seqspec(value, system):
                 detail = (
                     f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
                     f'{", ".join([audit_link(path_to_text(non_matching_files), non_matching_files) for non_matching_files in non_matching_files])} '
-                    f'which belong to the same sequencing set but do not have the same `seqspecs`.'
+                    f'which belong to the same sequencing set, but do not have the same `seqspecs`.'
                 )
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
@@ -214,7 +214,7 @@ def audit_inconsistent_seqspec(value, system):
                 detail = (
                     f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
                     f'{", ".join([audit_link(path_to_text(file), file) for _, file in sequence_files])} '
-                    f'which share the same `seqspecs` {", ".join(seqspec_paths)} '
+                    f'which share the same `seqspecs` {", ".join(seqspec_paths)}, '
                     f'but belong to different sequencing sets.'
                 )
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
