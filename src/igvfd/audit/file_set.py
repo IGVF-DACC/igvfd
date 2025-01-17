@@ -155,7 +155,7 @@ def audit_inconsistent_seqspec(value, system):
     '''
     [
         {
-            "audit_description": "Sequence files in a file set from the same sequencing set, are expected to link to the same seqspec file, which should be unique to that set sequencing set. A sequencing set is defined by the combination of flowcell ID, lane, and index for non-single cell data, or flowcell ID, lane, index, and sequencing run for single cell data.",
+            "audit_description": "Sequence files in a file set from the same sequencing set are expected to link to the same seqspec file, which should be unique to that sequencing set. A sequencing set is defined by the combination of flowcell ID, lane, and index for non-single cell data, or flowcell ID, lane, index, and sequencing run for single cell data.",
             "audit_category": "inconsistent sequence specifications",
             "audit_level": "ERROR"
         }
