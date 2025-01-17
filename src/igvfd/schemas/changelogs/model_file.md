@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 1
 
+* Extend `content_type` enum list to include `neural network architecture`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Add `checkfiles_version`.
 * Extend `file_format` enum list to include `pt`.
