@@ -78,3 +78,57 @@ def subfacet_types():
             }
         }
     }
+
+
+@search_config(
+    name='date-histogram-release-timestamp'
+)
+def date_histogram_release_timestamp():
+    return {
+        'facets': {
+            'release_timestamp': {
+                'title': 'Release timestamp',
+                'type': 'date_histogram',
+                'calendar_interval': 'month',
+                'format': 'yyyy-MM-dd',
+            }
+        }
+    }
+
+
+@search_config(
+    name='range-file-size'
+)
+def range_file_size():
+    return {
+        'facets': {
+            'file_size': {
+                'title': 'File size',
+                'type': 'range',
+                'ranges': [
+                    {'key': 'small', 'to': 30000000},
+                    {'key': 'medium', 'from': 30000000, 'to': 50000000},
+                    {'key': 'large', 'from': 50000000},
+                ]
+            }
+        }
+    }
+
+
+@search_config(
+    name='range-starting-amount'
+)
+def range_starting_amount():
+    return {
+        'facets': {
+            'starting_amount': {
+                'title': 'Starting amount',
+                'type': 'range',
+                'ranges': [
+                    {'to': 5},
+                    {'from': 5, 'to': 7},
+                    {'from': 7},
+                ]
+            }
+        }
+    }
