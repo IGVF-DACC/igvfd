@@ -382,6 +382,10 @@ class Biosample(Sample):
                     summary_terms = f'{term_name} pooled reprogrammed cell specimen'
                     if 'cell' in term_name:
                         summary_terms = term_name.replace('cell', 'pooled reprogrammed cell specimen')
+                elif 'differentiated cell specimen' in classifications and 'gastruloid' in classifications:
+                    summary_terms = f'{term_name} differentiated gastruloid'
+                    if 'cell' in term_name:
+                        summary_terms = term_name.replace('cell', 'differentiated gastruloid')
         elif biosample_type == 'tissue':
             if 'tissue' not in term_name:
                 summary_terms = f'{term_name} tissue'

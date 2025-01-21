@@ -244,5 +244,44 @@
         "biomarkers": [
             "igvf:marker_gene"
         ]
+    },
+    {
+        "uuid": "78dbb0a0-a154-4b67-b9c0-a7e5de64f4ab",
+        "classifications": [
+            "differentiated cell specimen",
+            "gastruloid"
+        ],
+        "lab": "danwei-huangfu",
+        "accession": "IGVFSM0008HUET",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "danwei-huangfu:gastruloid_differentiated"
+        ],
+        "donors": [
+            "igvf:alias_human_donor1"
+        ],
+        "cell_fate_change_treatments": [
+            "/treatments/bd2cb34e-c72c-11ec-9d64-0242ac120002/"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "time_post_change": 24,
+        "time_post_change_units": "minute",
+        "sample_terms": [
+            "/sample-terms/92c5f1a9-7503-460b-99b3-f5b84c82b067/"
+        ],
+        "targeted_sample_term": "/sample-terms/eed026e7-4afc-4396-94e7-870f8934b2f2/",
+        "sources": [
+            "/labs/danwei-huangfu/"
+        ],
+        "virtual": false,
+        "construct_library_sets": [
+            "igvf:basic_construct_library_set_1"
+        ],
+        "moi": 1,
+        "nucleic_acid_delivery": "transfection",
+        "modifications": [
+            "b4a370ee-18a7-2857-bc2b-b157d05f4458"
+        ]
     }
 ]

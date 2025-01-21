@@ -2,7 +2,7 @@
     "title": "In Vitro System",
     "$id": "/profiles/in_vitro_system.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A biosample that is cultured, such as immortalized cell lines, organoids, or samples that have been differentiated or reprogrammed.",
+    "description": "A biosample that is cultured, such as immortalized cell lines, organoids, gastruloids or samples that have been differentiated or reprogrammed.",
     "type": "object",
     "required": [
         "award",
@@ -72,7 +72,7 @@
             }
         },
         "classifications": {
-            "comment": "If an in vitro system has classification organoid, differentiated cell specimen, or reprogrammed cell specimen then targeted_sample_term, cell_fate_change_treatments, time_post_change, and time_post_change_units are required.",
+            "comment": "If an in vitro system has classification organoid, gastruloid, differentiated cell specimen, or reprogrammed cell specimen then targeted_sample_term, cell_fate_change_treatments, time_post_change, and time_post_change_units are required.",
             "allOf": [
                 {
                     "if": {
@@ -82,7 +82,8 @@
                                     "enum": [
                                         "differentiated cell specimen",
                                         "organoid",
-                                        "reprogrammed cell specimen"
+                                        "reprogrammed cell specimen",
+                                        "gastruloid"
                                     ]
                                 }
                             }
@@ -341,6 +342,39 @@
                                                 "cell line",
                                                 "organoid",
                                                 "gastruloid",
+                                                "embryoid",
+                                                "reprogrammed cell specimen"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "classifications": {
+                                    "allOf": [
+                                        {
+                                            "contains": {
+                                                "enum": [
+                                                    "differentiated cell specimen"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "contains": {
+                                                "enum": [
+                                                    "gastruloid"
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "not": {
+                                        "contains": {
+                                            "enum": [
+                                                "cell line",
+                                                "organoid",
+                                                "pooled cell specimen",
                                                 "embryoid",
                                                 "reprogrammed cell specimen"
                                             ]
