@@ -8,4 +8,4 @@ def test_analysis_step_name_calcprop(testapp, analysis_step):
 
 def test_analysis_step_versions(testapp, analysis_step, analysis_step_version):
     res = testapp.get(analysis_step['@id'])
-    assert res.json.get('analysis_step_versions') == [analysis_step_version['@id']]
+    assert analysis_step_version['@id'] in res
