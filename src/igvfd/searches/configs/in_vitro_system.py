@@ -37,6 +37,12 @@ def in_vitro_system():
             'virtual': {
                 'title': 'Virtual'
             },
+            'donors.ethnicities': {
+                'title': 'Ethnicity',
+            },
+            'donors.strain': {
+                'title': 'Strain'
+            },
             'file_sets.file_set_type': {
                 'title': 'File Set Type'
             },
@@ -132,6 +138,8 @@ def in_vitro_system():
                     'growth_medium',
                     'embryonic',
                     'virtual',
+                    'donors.ethnicities',
+                    'donors.strain',
                 ]
             },
             {

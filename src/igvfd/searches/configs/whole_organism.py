@@ -28,6 +28,12 @@ def whole_organism():
             'virtual': {
                 'title': 'Virtual'
             },
+            'donors.ethnicities': {
+                'title': 'Ethnicity',
+            },
+            'donors.strain': {
+                'title': 'Strain'
+            },
             'file_sets.file_set_type': {
                 'title': 'File Set Type'
             },
@@ -120,6 +126,8 @@ def whole_organism():
                     'disease_terms.term_name',
                     'embryonic',
                     'virtual',
+                    'donors.ethnicities',
+                    'donors.strain',
                 ]
             },
             {
