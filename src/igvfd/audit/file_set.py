@@ -21,6 +21,38 @@ def load_chrom_sizes_file(file_path):
     return chromosome_sizes
 
 
+def single_cell_check(system, value, object_type):
+    single_cell_assay_terms = ['/assay-terms/OBI_0002762/',  # single-nucleus ATAC-seq
+                               '/assay-terms/OBI_0003109/',  # single-nucleus RNA sequencing assay
+                               '/assay-terms/OBI_0002631/',  # single-cell RNA sequencing assay
+                               '/assay-terms/OBI_0002764/',  # single-cell ATAC-seq
+                               '/assay-terms/OBI_0003660/'  # in vitro CRISPR screen using single-cell RNA-seq
+                               ]
+    if object_type == 'Measurement set':
+        assay_term = value.get('assay_term')
+        return assay_term in single_cell_assay_terms
+    elif object_type == 'Auxiliary set':
+        assay_terms = []
+        measurement_sets = value.get('measurement_sets')
+        for measurement_set in measurement_sets:
+            measurement_set_obj = system.get('request').embed(measurement_set, '@@object?skip_calculated=true')
+            assay_term = measurement_set_obj.get('assay_term')
+            assay_terms.append(assay_term)
+        return any(assay in single_cell_assay_terms for assay in assay_terms)
+    elif object_type == 'Construct library set':
+        assay_terms = []
+        samples = value.get('applied_to_samples')
+        for sample in samples:
+            sample_obj = system.get('request').embed(sample)
+            file_sets = sample_obj.get('file_sets')
+            for file_set in file_sets:
+                if file_set.startswith('/measurement-sets/'):
+                    measurement_set_obj = system.get('request').embed(measurement_set, '@@object?skip_calculated=true')
+                    assay_term = measurement_set_obj.get('assay_term')
+                    assay_terms.append(assay_term)
+        return any(assay in single_cell_assay_terms for assay in assay_terms)
+
+
 @audit_checker('FileSet', frame='object')
 def audit_no_files(value, system):
     '''
@@ -123,7 +155,7 @@ def audit_inconsistent_seqspec(value, system):
     '''
     [
         {
-            "audit_description": "Sequence files in a file set from the same sequencing run, flowcell_id, lane, and index are expected to link to the same seqspec file, which should be unique to that set of sequence files.",
+            "audit_description": "Sequence files in a file set from the same sequencing set are expected to link to the same seqspec file, which should be unique to that sequencing set. A sequencing set is defined by the combination of flowcell ID, lane, and index for non-single cell data, or flowcell ID, lane, index, and sequencing run for single cell data.",
             "audit_category": "inconsistent sequence specifications",
             "audit_level": "ERROR"
         }
@@ -141,7 +173,10 @@ def audit_inconsistent_seqspec(value, system):
                 flowcell_id = sequence_file_object.get('flowcell_id', '')
                 lane = str(sequence_file_object.get('lane', ''))
                 index = sequence_file_object.get('index', '')
-                key_list = [sequencing_run, flowcell_id, lane, index]
+                if single_cell_check(system, value, object_type):
+                    key_list = [sequencing_run, flowcell_id, lane, index]
+                else:
+                    key_list = [flowcell_id, lane, index]
                 key_list = [item for item in key_list if item != '']
                 key = ':'.join(key_list)
 
@@ -180,7 +215,7 @@ def audit_inconsistent_seqspec(value, system):
                 detail = (
                     f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
                     f'{", ".join([audit_link(path_to_text(file), file) for _, file in sequence_files])} '
-                    f'which share the same `seqspecs` {", ".join(seqspec_paths)} '
+                    f'which share the same `seqspecs` {", ".join(seqspec_paths)}, '
                     f'but belong to different sequencing sets.'
                 )
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

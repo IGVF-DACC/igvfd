@@ -47,6 +47,15 @@ def assay_term_rna(testapp):
 
 
 @pytest.fixture
+def assay_term_scrna(testapp):
+    item = {
+        'term_id': 'OBI:0002631',
+        'term_name': 'single-cell RNA sequencing assay'
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def assay_term_v1(assay_term_starr):
     item = assay_term_starr.copy()
     item.update({
