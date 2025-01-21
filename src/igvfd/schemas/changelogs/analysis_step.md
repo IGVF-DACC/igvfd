@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 5
 
+* Extend `output_content_types` enum list to include `neural network architecture`.
+* Extend `input_content_types` enum list to include `neural network architecture`.
 * Extend `analysis_step_types` enum list to include `read trimming`.
 * Extend `analysis_step_types` enum list to include `fastq concatenation`.
 * Extend `analysis_step_types` enum list to include `fragment generation`.
