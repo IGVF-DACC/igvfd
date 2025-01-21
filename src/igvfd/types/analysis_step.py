@@ -32,7 +32,7 @@ class AnalysisStep(Item):
         Path('workflow', include=['@id', 'accession', 'status']),
         Path('submitted_by', include=['@id', 'title']),
         Path('analysis_step_versions.software_versions', include=[
-             '@id', 'analsyis_step_versions', 'software_versions', 'name'])
+             '@id', 'analysis_step_versions', 'software_versions', 'name'])
     ]
 
     rev = {
