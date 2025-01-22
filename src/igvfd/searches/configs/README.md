@@ -145,11 +145,9 @@ Output:
 ```python
 {
     'Sample classifications': {
-    'doc_count': 27,
-    'samples-classifications': {
-        'doc_count_error_upper_bound': 0,
-        'sum_other_doc_count': 0,
-        'buckets': [
+        'field': 'samples.classifications',
+        'title': 'Sample classifications',
+        'terms': [
 	    {
                 'key': 'primary cell',
                 'doc_count': 14,
@@ -216,7 +214,11 @@ Output:
                     ]
                 }
             }
-        ]
+        ],
+        'total': 27,
+        'type': 'hierarchical',
+        'appended': False,
+        'open_on_load': False
     }
 }
 ```
