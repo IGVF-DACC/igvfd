@@ -1,6 +1,6 @@
 {
-    "hash": "be7cc8b094d1c396437da9442b3c9e3c",
-    "index_name": "signal_file_be7cc8b0",
+    "hash": "5dd2753de839fa1552f4fb5a197b184f",
+    "index_name": "signal_file_5dd2753d",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -524,6 +524,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

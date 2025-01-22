@@ -1,6 +1,6 @@
 {
-    "hash": "344add806d4f9d47a428224a1be524ef",
-    "index_name": "model_file_344add80",
+    "hash": "1c3e6000f06b249b3fd9e61071e7b55e",
+    "index_name": "model_file_1c3e6000",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -448,6 +448,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

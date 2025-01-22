@@ -573,7 +573,7 @@ PHASE1_PIPELINES = {
         remove_keys('derived_from', 'file_format_specifications'),
     ],
     'measurement_set': [
-        remove_keys('auxiliary_sets', 'control_file_sets'),
+        remove_keys('auxiliary_sets', 'control_file_sets', 'onlist_files', 'onlist_method'),
     ],
     'auxiliary_set': [
         remove_keys('measurement_sets', 'barcode_map'),
@@ -640,7 +640,7 @@ PHASE2_PIPELINES = {
         skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),
     ],
     'measurement_set': [
-        skip_rows_missing_all_keys('auxiliary_sets', 'control_file_sets'),
+        skip_rows_missing_all_keys('auxiliary_sets', 'control_file_sets', 'onlist_files', 'onlist_method'),
     ],
     'auxiliary_set': [
         skip_rows_missing_all_keys('measurement_sets'),

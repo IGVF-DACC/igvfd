@@ -8,6 +8,10 @@ from .formatter import (
     get_audit_message
 )
 
+from .file_set import (
+    single_cell_check
+)
+
 
 @audit_checker('MeasurementSet', frame='object')
 def audit_related_multiome_datasets(value, system):
@@ -477,3 +481,108 @@ def audit_missing_auxiliary_set(value, system):
                     f'has no {expected_auxiliary_set_type} `auxiliary_sets`.'
                 )
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_onlist(value, system):
+    '''
+    [
+        {
+            "audit_description": "Measurement sets to be processed via the single cell uniform pipeline are expected to have onlist files and onlist methods indicated.",
+            "audit_category": "missing barcode onlist",
+            "audit_level": "WARNING"
+        },
+        {
+            "audit_description": "Measurement sets not intended for the single cell uniform pipeline are expected not to have onlist files or onlist methods.",
+            "audit_category": "unexpected barcode onlist",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    audit_message_missing_all_onlist_info = get_audit_message(audit_onlist, index=0)
+    audit_message_unwanted_onlist_info = get_audit_message(audit_onlist, index=1)
+    onlist_files = value.get('onlist_files')
+    onlist_method = value.get('onlist_method')
+    assay_term = value.get('assay_term')
+    assay_term_obj = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+    assay_term_name = assay_term_obj.get('term_name', '')
+    single_cell_assay_status = single_cell_check(system, value, 'Measurement set')
+    # Check if single cell assays MeaSets are missing both onlist files and methods
+    if (single_cell_assay_status) and (not onlist_method) and (not onlist_files):
+        detail = (
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has an `assay_term` of {assay_term_name} but no `onlist_files` nor `onlist_methods`.'
+        )
+        yield AuditFailure(audit_message_missing_all_onlist_info.get('audit_category', ''),
+                           f'{detail} {audit_message_missing_all_onlist_info.get("audit_description", "")}',
+                           level=audit_message_missing_all_onlist_info.get('audit_level', '')
+                           )
+    # Check if non-single cell MeaSets have onlist methods and files
+    if (not single_cell_assay_status) and (onlist_method) and (onlist_files):
+        detail = (
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has an `assay_term` of {assay_term_name} but has `onlist_files` and `onlist_method`.'
+        )
+        yield AuditFailure(audit_message_unwanted_onlist_info.get('audit_category', ''),
+                           f'{detail} {audit_message_unwanted_onlist_info.get("audit_description", "")}',
+                           level=audit_message_unwanted_onlist_info.get('audit_level', '')
+                           )
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_inconsistent_onlist_info(value, system):
+    '''
+    [
+        {
+            "audit_description": "Measurement sets with 2 or more barcode onlist files are expected to have an onlist method of either product or multi.",
+            "audit_category": "inconsistent barcode onlist",
+            "audit_level": "WARNING"
+        },
+        {
+            "audit_description": "Measurement sets with only 1 barcode onlist files are expected to have an onlist method of no combination.",
+            "audit_category": "inconsistent barcode onlist",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    audit_message_missing_method_mismatch_combo = get_audit_message(audit_inconsistent_onlist_info, index=0)
+    audit_message_missing_method_mismatch_nocombo = get_audit_message(audit_inconsistent_onlist_info, index=1)
+    onlist_files = value.get('onlist_files')
+    onlist_method = value.get('onlist_method')
+    # Only check if both files and method properties are present
+    if onlist_files and onlist_method:
+        # Check if multiple onlist files are submitted but the method is no combination
+        if (len(onlist_files) > 1) and (onlist_method == 'no combination'):
+            yield AuditFailure(audit_message_missing_method_mismatch_combo.get('audit_category', ''), audit_message_missing_method_mismatch_combo.get('audit_description', ''), level=audit_message_missing_method_mismatch_combo.get('audit_level', ''))
+        # Check if one onlist file is submitted but the method indicates combination
+        if (len(onlist_files) == 1) and (onlist_method != 'no combination'):
+            yield AuditFailure(audit_message_missing_method_mismatch_nocombo.get('audit_category', ''), audit_message_missing_method_mismatch_nocombo.get('audit_description', ''), level=audit_message_missing_method_mismatch_nocombo.get('audit_level', ''))
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_unexpected_onlist_content(value, system):
+    '''
+    [
+        {
+            "audit_description": "Onlist files are expected to be tabular files with barcode onlist as the content type.",
+            "audit_category": "unexpected onlist files",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    audit_message_unexpected_onlist_content = get_audit_message(audit_unexpected_onlist_content, index=0)
+    onlist_files = value.get('onlist_files')
+    # If onlist files exist, check if the content type is NOT barcode onlist.
+    if onlist_files:
+        for onlist_file in onlist_files:
+            if onlist_file.startswith('/tabular-files/'):
+                file_obj = system.get('request').embed(onlist_file, '@@object?skip_calculated=true')
+                if file_obj.get('content_type', '') != 'barcode onlist':
+                    details = (
+                        f'The `onlist_files` {audit_link(path_to_text(onlist_file), onlist_file)} '
+                        f'is expected to have barcode onlist as the `content_type`.'
+                    )
+                    yield AuditFailure(audit_message_unexpected_onlist_content.get('audit_category', ''),
+                                       f'{details} {audit_message_unexpected_onlist_content.get("audit_description", "")}',
+                                       level=audit_message_unexpected_onlist_content.get('audit_level', '')
+                                       )

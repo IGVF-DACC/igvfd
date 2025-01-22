@@ -1,6 +1,6 @@
 {
-    "hash": "620f8e42d6898f9b4195f70640f9e54e",
-    "index_name": "model_set_620f8e42",
+    "hash": "b7a6fa3330f317340c694f193e0722a6",
+    "index_name": "model_set_b7a6fa33",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -549,6 +549,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"
@@ -1268,6 +1274,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

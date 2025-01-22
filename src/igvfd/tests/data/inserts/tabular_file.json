@@ -433,5 +433,41 @@
         "assembly": "GRCh38",
         "file_set": "leif-ludwig:analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "b71dd20b-6f07-47b5-ba37-463a5b386e64",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:barcode_onlist_1"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-11-01T21:29:45Z",
+        "md5sum": "8d18e23d31f7f40f11117d1e10aa3b33",
+        "file_format": "tsv",
+        "content_type": "barcode onlist",
+        "submitted_file_name": "/Users/igvf/igvf_files/barcode_onlist_1.tsv.gz",
+        "file_size": 145360918,
+        "upload_status": "validated",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "cfed9981-a18d-47bd-be54-c9ace085a1ab",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:barcode_onlist_2"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-11-01T21:29:45Z",
+        "md5sum": "f1882eeaa52ed820a58444d6a46ee9c2",
+        "file_format": "tsv",
+        "content_type": "barcode onlist",
+        "submitted_file_name": "/Users/igvf/igvf_files/barcode_onlist_2.tsv.gz",
+        "file_size": 145360919,
+        "upload_status": "validated",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "controlled_access": false
     }
 ]

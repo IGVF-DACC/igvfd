@@ -1,6 +1,6 @@
 {
-    "hash": "a41572120ed43671ba15aeb47525b6aa",
-    "index_name": "construct_library_set_a4157212",
+    "hash": "2783963cf4bef158bdfa6de15fa5e098",
+    "index_name": "construct_library_set_2783963c",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1287,6 +1287,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

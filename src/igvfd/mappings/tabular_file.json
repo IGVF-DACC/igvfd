@@ -1,6 +1,6 @@
 {
-    "hash": "f9e4dfe554cca32aae82a8b344b602d6",
-    "index_name": "tabular_file_f9e4dfe5",
+    "hash": "f4c6674b46a112a0afc43a52335f7335",
+    "index_name": "tabular_file_f4c6674b",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -534,6 +534,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

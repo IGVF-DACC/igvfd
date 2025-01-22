@@ -1,6 +1,6 @@
 {
-    "hash": "4a4ec1cbf6e54b36a6eb5687ecc7d1d6",
-    "index_name": "primary_cell_4a4ec1cb",
+    "hash": "f802f0767727871b22fe8900a83a5ca2",
+    "index_name": "primary_cell_f802f076",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1101,6 +1101,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

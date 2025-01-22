@@ -1,6 +1,6 @@
 {
-    "hash": "86d3720df2f9d02d130d801bdd752bc4",
-    "index_name": "tissue_86d3720d",
+    "hash": "edd256277f82d7cdf06493ff385cf5ec",
+    "index_name": "tissue_edd25627",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1101,6 +1101,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

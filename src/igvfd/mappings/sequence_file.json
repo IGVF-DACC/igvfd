@@ -1,6 +1,6 @@
 {
-    "hash": "9854c16335c7e1910a5b86be2fb7705d",
-    "index_name": "sequence_file_9854c163",
+    "hash": "84bbf95fd21dd946278b7d822b410767",
+    "index_name": "sequence_file_84bbf95f",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -451,6 +451,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "965021696aadb0ddfa98ca29f87b2a20",
-    "index_name": "alignment_file_96502169",
+    "hash": "7120405d22ee440da157fe66ecbbda42",
+    "index_name": "alignment_file_7120405d",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -447,6 +447,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

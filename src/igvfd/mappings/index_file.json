@@ -1,6 +1,6 @@
 {
-    "hash": "796c47e2ebc0c497e1d71106678bf477",
-    "index_name": "index_file_796c47e2",
+    "hash": "d3f3edf621e1a7db8ce5ef3b83020afe",
+    "index_name": "index_file_d3f3edf6",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -444,6 +444,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"
