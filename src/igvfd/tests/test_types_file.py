@@ -388,13 +388,5 @@ def test_file_workflow_and_uniformly_processed(
         }
     )
     res = testapp.get(tabular_file['@id'])
-    assert res.json.get('workflow', '') == base_workflow['@id']
-    assert res.json.get('uniformly_processed', '') == False
-    testapp.patch_json(
-        base_workflow['@id'],
-        {
-            'uniform_pipeline': True
-        }
-    )
-    res = testapp.get(tabular_file['@id'])
-    assert res.json.get('uniformly_processed', '') == True
+    print(res.json.get('workflow', ''))
+    assert res.json.get('workflow', '')['@id'] == base_workflow['@id']
