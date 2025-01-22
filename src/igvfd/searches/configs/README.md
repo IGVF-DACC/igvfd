@@ -1,6 +1,6 @@
-## Facet type examples
+# Facet type examples
 
-### Terms
+## Terms
 
 Shows count of values in a field.
 
@@ -46,7 +46,7 @@ Output:
 }
 ```
 
-### Exists
+## Exists
 
 Shows count of documents where field exists or not.
 
@@ -84,7 +84,7 @@ Output:
 }
 ```
 
-### Stats
+## Stats
 
 Shows summary statistics for numerical field.
 
@@ -119,7 +119,7 @@ Output:
 }
 ```
 
-### Hierarchical
+## Hierarchical
 
 Shows nested terms facets. Can have as many subfacets as you want.
 
@@ -221,7 +221,7 @@ Output:
 }
 ```
 
-### Date histogram
+## Date histogram
 
 Shows count by date field. Can customize calendar interval (i.e. day/month/year) and date format (i.e. yyyy-MM-dd).
 
@@ -286,7 +286,7 @@ Output:
 }
 ```
 
-### Range
+## Range
 
 Shows count by custom ranges on numercial fields.
 
