@@ -144,82 +144,80 @@ Input:
 Output:
 ```python
 {
-    'Sample classifications': {
-        'field': 'samples.classifications',
-        'title': 'Sample classifications',
-        'terms': [
-	    {
-                'key': 'primary cell',
-                'doc_count': 14,
-                'subfacet': {
-                    'field': 'samples.sample_terms.term_name',
-                    'title': 'Sample term name',
-                    'terms': [
-                        {'key': 'motor neuron', 'doc_count': 14}
-                    ]
-                }
-            },
-            {
-                'key': 'multiplexed sample',
-                'doc_count': 6,
-                'subfacet': {
-		    'field': 'samples.sample_terms.term_name',
-                    'title': 'Sample term name',
-                    'terms': [
-                        {'key': 'motor neuron', 'doc_count': 6}
-                    ]
-                }
-            },
-            {
-                'key': 'cell line',
-                'doc_count': 3,
-                'subfacet': {
-                    'field': 'samples.sample_terms.term_name',
-                    'title': 'Sample term name',
-                    'terms': [
-                        {'key': 'motor neuron', 'doc_count': 3}
-                    ]
-                }
-            },
-            {
-                'key': 'whole organism',
-                'doc_count': 2,
-                'subfacet': {
-                    'field': 'samples.sample_terms.term_name',
-                    'title': 'Sample term name',
-                    'terms': [
-                        {'key': 'whole organism', 'doc_count': 2}
-                    ]
-                }
-            },
-            {
-                'key': 'technical sample',
-                'doc_count': 1,
-                'subfacet': {
-                    'field': 'samples.sample_terms.term_name',
-                    'title': 'Sample term name',
-                    'terms': [
-                        {'key': 'technical sample', 'doc_count': 1}
-                    ]
-                }
-            },
-            {
-                'key': 'tissue',
-                'doc_count': 1,
-                'subfacet': {
-                    'field': 'samples.sample_terms.term_name',
-                    'title': 'Sample term name',
-                    'terms': [
-                        {'key': 'lung', 'doc_count': 1}
-                    ]
-                }
+    'field': 'samples.classifications',
+    'title': 'Sample classifications',
+    'terms': [
+        {
+            'key': 'primary cell',
+            'doc_count': 14,
+            'subfacet': {
+                'field': 'samples.sample_terms.term_name',
+                'title': 'Sample term name',
+                'terms': [
+                    {'key': 'motor neuron', 'doc_count': 14}
+                ]
             }
-        ],
-        'total': 27,
-        'type': 'hierarchical',
-        'appended': False,
-        'open_on_load': False
-    }
+        },
+        {
+            'key': 'multiplexed sample',
+            'doc_count': 6,
+            'subfacet': {
+                'field': 'samples.sample_terms.term_name',
+                'title': 'Sample term name',
+                'terms': [
+                    {'key': 'motor neuron', 'doc_count': 6}
+                ]
+            }
+        },
+        {
+            'key': 'cell line',
+            'doc_count': 3,
+            'subfacet': {
+                'field': 'samples.sample_terms.term_name',
+                'title': 'Sample term name',
+                'terms': [
+                    {'key': 'motor neuron', 'doc_count': 3}
+                ]
+            }
+        },
+        {
+            'key': 'whole organism',
+            'doc_count': 2,
+            'subfacet': {
+                'field': 'samples.sample_terms.term_name',
+                'title': 'Sample term name',
+                'terms': [
+                    {'key': 'whole organism', 'doc_count': 2}
+                ]
+            }
+        },
+        {
+            'key': 'technical sample',
+            'doc_count': 1,
+            'subfacet': {
+                'field': 'samples.sample_terms.term_name',
+                'title': 'Sample term name',
+                'terms': [
+                    {'key': 'technical sample', 'doc_count': 1}
+                ]
+            }
+        },
+        {
+            'key': 'tissue',
+            'doc_count': 1,
+            'subfacet': {
+                'field': 'samples.sample_terms.term_name',
+                'title': 'Sample term name',
+                'terms': [
+                    {'key': 'lung', 'doc_count': 1}
+                ]
+            }
+        }
+    ],
+    'total': 27,
+    'type': 'hierarchical',
+    'appended': False,
+    'open_on_load': False
 }
 ```
 
