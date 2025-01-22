@@ -388,5 +388,4 @@ def test_file_workflow_and_uniformly_processed(
         }
     )
     res = testapp.get(tabular_file['@id'])
-    print(res.json.get('workflow', ''))
     assert res.json.get('workflow', '')['@id'] == base_workflow['@id']
