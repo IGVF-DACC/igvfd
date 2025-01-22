@@ -330,7 +330,7 @@ Note that you can also put named keys in the range specification:
 {
     'facets': {
         'file_size': {
-            title': 'File size',
+            'title': 'File size',
             'type': 'range',
             'ranges': [
                 {'key': 'small', 'to': 30000000},
