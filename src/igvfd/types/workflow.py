@@ -32,7 +32,7 @@ class Workflow(Item):
         Path('standards_page', include=['@id', 'title', 'status']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
         Path('analysis_steps.analysis_step_versions.software_versions.software',
-             include=['@id', 'name', 'analysis_step_types', 'output_content_types', 'analysis_step_versions', 'software_versions', 'software', 'status'])
+             include=['@id', 'name', 'analysis_step_types', 'output_content_types', 'input_content_types', 'analysis_step_versions', 'software_versions', 'software', 'status'])
     ]
 
     set_status_up = [
