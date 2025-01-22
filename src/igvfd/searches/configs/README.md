@@ -55,7 +55,7 @@ Input:
 {
     'facets': {
         'nih_institutional_certification': {
-	    'title':  Has NIH institutional certification',
+	    'title':  'Has NIH institutional certification',
 	    'type': 'exists'
 	}
     }
