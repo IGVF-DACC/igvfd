@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Add `workflow`.
 * Extend `content_type` enum list to include `reporter experiment barcode`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Add `checkfiles_version`.

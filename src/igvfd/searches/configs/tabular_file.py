@@ -61,6 +61,12 @@ def tabular_file():
             'file_set.samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
+            'workflow.name': {
+                'title': 'Workflow'
+            },
+            'workflow.uniform_pipeline': {
+                'title': 'Uniformly Processed'
+            },
             'integrated_in.file_set_type': {
                 'title': 'Library Type'
             },
@@ -106,6 +112,8 @@ def tabular_file():
                     'file_format',
                     'file_format_type',
                     'cell_type_annotation.term_name',
+                    'workflow.name',
+                    'workflow.uniform_pipeline',
                 ],
             },
             {

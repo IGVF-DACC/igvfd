@@ -1,6 +1,6 @@
 {
-    "hash": "b7a6fa3330f317340c694f193e0722a6",
-    "index_name": "model_set_b7a6fa33",
+    "hash": "6d7976dc100fd76114cdaed038f77b0c",
+    "index_name": "model_set_6d7976dc",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1110,6 +1110,9 @@
                                 "type": "keyword"
                             },
                             "validation_error_detail": {
+                                "type": "keyword"
+                            },
+                            "workflow": {
                                 "type": "keyword"
                             }
                         },

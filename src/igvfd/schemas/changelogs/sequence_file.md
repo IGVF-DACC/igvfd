@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Add `workflow`.
 * Extend `read_names` enum list to include `Barcode forward`.
 * Extend `read_names` enum list to include `UMI`.
 * Extend `read_names` enum list to include `Barcode reverse`.

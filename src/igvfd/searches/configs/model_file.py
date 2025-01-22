@@ -40,6 +40,12 @@ def model_file():
             'file_set.samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
+            'workflow.name': {
+                'title': 'Workflow'
+            },
+            'workflow.uniform_pipeline': {
+                'title': 'Uniformly Processed'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -77,6 +83,8 @@ def model_file():
                 'facet_fields': [
                     'content_type',
                     'file_format',
+                    'workflow.name',
+                    'workflow.uniform_pipeline',
                 ],
             },
             {
