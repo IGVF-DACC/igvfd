@@ -232,8 +232,8 @@ Input:
         'release_timestamp': {
             'title': 'Release timestamp',
             'type': 'date_histogram',
-            'calendar_interval': 'month',
-            'format': 'yyyy-MM-dd',
+            'calendar_interval': 'week',
+            'format': 'dd-MM-yyyy',
         }
     }
 }
