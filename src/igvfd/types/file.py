@@ -64,7 +64,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'idat': '.idat',
     'jpg': '.jpg',
     'json': '.json',
-    'mtx': '.mtx',
+    'mtx': '.mtx.gz',
     'npz': 'npz',
     'obo': '.obo.gz',
     'owl': '.owl.gz',
