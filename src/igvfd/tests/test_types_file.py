@@ -380,7 +380,6 @@ def test_file_workflow_and_uniformly_processed(
     analysis_step_version,
     base_workflow
 ):
-    # These two calculated properties are tested together since the latter depends on the former
     testapp.patch_json(
         tabular_file['@id'],
         {
