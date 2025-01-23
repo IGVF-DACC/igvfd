@@ -374,7 +374,7 @@ def test_file_assay_titles(
     assert set(res.json.get('assay_titles', [])) == {'10x multiome with MULTI-seq'}
 
 
-def test_file_workflow_and_uniformly_processed(
+def test_file_workflow(
     testapp,
     tabular_file,
     analysis_step_version,
