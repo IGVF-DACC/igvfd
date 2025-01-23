@@ -73,7 +73,7 @@ def index_file():
         },
         'facet_groups': [
             {
-                'title': 'File Detail',
+                'title': 'File Details',
                 'facet_fields': [
                     'file_format',
                     'content_type',
