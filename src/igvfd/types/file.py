@@ -247,7 +247,7 @@ class File(Item):
         condition='analysis_step_version',
         schema={
             'title': 'Workflow',
-            'description': 'The workflow used to produced this file.',
+            'description': 'The workflow used to produce this file.',
             'type': 'string',
             'linkTo': 'Workflow',
             'notSubmittable': True,
