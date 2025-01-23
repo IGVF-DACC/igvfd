@@ -115,6 +115,7 @@ def report(context, request):
             BasicReportWithFacetsResponseField(
                 default_item_types=DEFAULT_ITEM_TYPES,
                 reserved_keys=RESERVED_KEYS,
+                search_config_registry_client=request.registry['SEARCH_CONFIG_REPORT_CLIENT'],
             ),
             AllResponseField(),
             FacetGroupsResponseField(),
@@ -148,6 +149,7 @@ def multireport(context, request):
             MultipleTypesReportWithFacetsResponseField(
                 default_item_types=DEFAULT_ITEM_TYPES,
                 reserved_keys=RESERVED_KEYS,
+                search_config_registry_client=request.registry['SEARCH_CONFIG_REPORT_CLIENT'],
             ),
             AllResponseField(),
             FacetGroupsResponseField(),
@@ -286,7 +288,11 @@ def top_hits(context, request):
 @view_config(route_name='search-config-registry', request_method='GET', permission='search')
 def search_config_registry(context, request):
     registry = request.registry[SEARCH_CONFIG]
-    return dict(sorted(registry.as_dict().items()))
+    return {
+        'configs': dict(sorted(registry.as_dict().items())),
+        'defaults': registry.defaults_to_json(),
+        'aliases': registry.aliases_to_json(),
+    }
 
 
 @view_config(route_name='search-quick', request_method='GET', permission='search')

@@ -107,8 +107,8 @@ def report_download(context, request):
     request.GET['limit'] = 'all'
     type_str = types[0]
     schema = request.registry[TYPES][type_str].schema
-    search_config = request.registry[SEARCH_CONFIG].as_dict()[type_str]
-    columns = list_visible_columns_for_schemas(request, schema, search_config)
+    search_configs = request.registry['SEARCH_CONFIG_REPORT_CLIENT'].get(type_str)
+    columns = list_visible_columns_for_schemas(request, schema, search_configs)
     snake_type = _convert_camel_to_snake(type_str).replace("'", '')
     results = search_generator(request)
 
@@ -143,13 +143,17 @@ def report_download(context, request):
     return request.response
 
 
-def list_visible_columns_for_schemas(request, schema, search_config):
+def list_visible_columns_for_schemas(request, schema, search_configs):
     """
     Returns mapping of default columns for a set of schemas.
     """
     columns = OrderedDict({'@id': {'title': 'ID'}})
-    if 'columns' in search_config:
-        columns.update(search_config['columns'])
+    collected_columns = OrderedDict()
+    for config in search_configs:
+        if 'columns' in config:
+            collected_columns.update(config['columns'])
+    if collected_columns:
+        columns.update(collected_columns)
     else:
         # default columns if not explicitly specified
         columns.update(OrderedDict(
@@ -265,10 +269,13 @@ def get_result_columns(request, facets, report_response_columns):
     else:
         for type_str in types_in_search_result:
             schema = request.registry[TYPES][type_str].schema
-            search_config = request.registry[SEARCH_CONFIG].as_dict()[type_str]
-
-            if 'columns' in search_config:
-                columns.update(search_config['columns'])
+            search_configs = request.registry['SEARCH_CONFIG_REPORT_CLIENT'].get(type_str)
+            collected_columns = OrderedDict()
+            for config in search_configs:
+                if 'columns' in config:
+                    collected_columns.update(config['columns'])
+            if collected_columns:
+                columns.update(collected_columns)
             else:
                 # default columns if not explicitly specified
                 columns.update(OrderedDict(

@@ -6,6 +6,11 @@ from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 
 from snosearch.interfaces import COLUMNS
 
+from snosearch.configs import SearchConfigRegistryClient
+from snosearch.configs import SearchConfigRegistryClientProps
+
+from .defaults import REPORT_VIEW_DEFAULTS
+
 
 def register_subtype_columns_in_abstract_search_configs(config):
     item_registry = config.registry[TYPES]
@@ -33,4 +38,19 @@ def includeme(config):
         callable=register_subtype_columns_in_abstract_search_configs,
         args=(config,),
         order=PHASE3_CONFIG,
+    )
+    config.registry['SEARCH_CONFIG_DEFAULT_CLIENT'] = SearchConfigRegistryClient(
+        props=SearchConfigRegistryClientProps(
+            registry=config.registry[SEARCH_CONFIG]
+        )
+    )
+    config.registry['SEARCH_CONFIG_REPORT_CLIENT'] = SearchConfigRegistryClient(
+        props=SearchConfigRegistryClientProps(
+            registry=config.registry[SEARCH_CONFIG],
+            group='report',
+        )
+    )
+    config.registry[SEARCH_CONFIG].add_defaults(
+        REPORT_VIEW_DEFAULTS,
+        group='report',
     )

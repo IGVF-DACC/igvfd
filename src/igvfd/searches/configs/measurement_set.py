@@ -208,3 +208,21 @@ def measurement_set():
             }
         }
     }
+
+
+@search_config(
+    name='MeasurementSetReportView'
+)
+def measurement_set_report_view():
+    # Copy normal measurement_set config.
+    config = measurement_set()
+    # Override columns.
+    config['columns'] = {
+        'accession': {
+            'title': 'Accession'
+        },
+        'summary': {
+            'title': 'Summary'
+        },
+    }
+    return config
