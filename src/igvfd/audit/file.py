@@ -188,7 +188,7 @@ def audit_multiple_seqspec_per_seqfile(value, system):
                 f'has multiple released sequence specification files.'
             )
             yield AuditFailure(audit_msg_multi_released_seqspec.get('audit_category', ''), f'{detail} {audit_msg_multi_released_seqspec.get("audit_description", "")}', level=audit_msg_multi_released_seqspec.get('audit_level', ''))
-        elif all_seqspec_file_status.count('in progress') > 1:
+        if all_seqspec_file_status.count('in progress') > 1:
             detail = (
                 f'Sequence File {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has multiple in progress sequence specification files.'
