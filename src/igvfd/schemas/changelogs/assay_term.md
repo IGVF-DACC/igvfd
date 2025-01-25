@@ -4,6 +4,7 @@
 
 * Extend `preferred_assay_titles` enum list to include `CRISPR MACS screen`.
 * Extend `preferred_assay_titles` enum list to include `scMito-seq`.
+* Extend `preferred_assay_titles` enum list to include `WGS`.
 * Extend `preferred_assay_titles` enum list to include `electroporated MPRA`.
 * Extend `preferred_assay_titles` enum list to include `varACCESS`.
 

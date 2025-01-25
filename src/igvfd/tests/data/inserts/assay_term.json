@@ -140,5 +140,18 @@
         "release_timestamp": "2024-07-06T12:34:56Z",
         "status": "released",
         "uuid": "61241e42-a702-46ee-9a2b-15e5adf53ab7"
+    },
+    {
+        "term_id": "OBI:0002117",
+        "term_name": "whole genome sequencing assay",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "152d9fe9-fc25-a035-aaeb-9f3b089c3bac",
+        "aliases": [
+            "igvf:whole_genome_sequencing_assay"
+        ],
+        "preferred_assay_titles": [
+            "WGS"
+        ]
     }
 ]
