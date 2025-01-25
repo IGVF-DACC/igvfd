@@ -1214,7 +1214,7 @@ class ConstructLibrarySet(FileSet):
             target_phrase = ' genome-wide'
         if scope == 'targeton':
             gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
-            gene_name = (gene_object.get('symbol'))
+            gene_name = gene_object.get('symbol', '')
             target_phrase = f' {targeton} of {gene_name}'
 
         if associated_phenotypes:
