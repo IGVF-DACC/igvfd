@@ -1,6 +1,6 @@
 {
-    "hash": "84276d875daf19bad5118604ed8c5027",
-    "index_name": "model_set_84276d87",
+    "hash": "7a05713f795b34c86cbbaa0c5fc88ec0",
+    "index_name": "model_set_7a05713f",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1021,6 +1021,9 @@
                                 "type": "text"
                             },
                             "principal_dimension": {
+                                "type": "keyword"
+                            },
+                            "quality_metrics": {
                                 "type": "keyword"
                             },
                             "read_count": {

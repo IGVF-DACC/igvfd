@@ -1,6 +1,6 @@
 {
-    "hash": "c3ba053cb69a2c6bdbbd3d15793df858",
-    "index_name": "image_file_c3ba053c",
+    "hash": "915beafd7fc5c2538ca72a3afa5b9641",
+    "index_name": "image_file_915beafd",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -1701,6 +1701,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "quality_metrics": {
+                        "type": "keyword"
                     },
                     "release_timestamp": {
                         "type": "date"

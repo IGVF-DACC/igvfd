@@ -64,7 +64,12 @@ ORDER = [
     'tabular_file',
     'index_file',
     'genome_browser_annotation_file',
-    'image_file'
+    'image_file',
+    'mpra_quality_metric',
+    'perturb_seq_quality_metric',
+    'single_cell_atac_seq_quality_metric',
+    'single_cell_rna_seq_quality_metric',
+    'starr_seq_quality_metric'
 ]
 
 IS_ATTACHMENT = [

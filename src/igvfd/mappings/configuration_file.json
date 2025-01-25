@@ -1,6 +1,6 @@
 {
-    "hash": "0b8e2de14d675b622bbdc1efced0f2fd",
-    "index_name": "configuration_file_0b8e2de1",
+    "hash": "f1b8dba1f4d2ccefd5f9208f4b848321",
+    "index_name": "configuration_file_f1b8dba1",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1701,6 +1701,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "quality_metrics": {
+                        "type": "keyword"
                     },
                     "release_timestamp": {
                         "type": "date"

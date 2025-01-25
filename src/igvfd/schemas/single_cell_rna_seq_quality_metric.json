@@ -1,0 +1,264 @@
+{
+    "title": "Single Cell RNA-seq Quality Metric",
+    "$id": "/profiles/single_cell_rna_seq_quality_metric.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Schema for submission of a scRNA-seq uniform pipeline quality metric.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "quality_metric_of",
+        "analysis_step_version"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "quality_metric.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/attachment"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "quality_metric.json#/dependentSchemas"
+        ]
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "n_records": {
+            "title": "Number Of Records",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "n_reads": {
+            "title": "Number Of Reads",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "n_barcodes": {
+            "title": "Number Of Barcodes",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "frac_reads_in_genes_library": {
+            "title": "Fraction Of Reads In Genes Library",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "total_umis": {
+            "title": "Total UMIs",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "n_barcode_umis": {
+            "title": "Number Of Barcode UMIs",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "median_reads_per_barcode": {
+            "title": "Median Reads Per Barcode",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "mean_reads_per_barcode": {
+            "title": "Mean Reads Per Barcode",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "median_genes_per_barcode": {
+            "title": "Median Genes Per Barcode",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "median_umis_per_barcode": {
+            "title": "Median UMIs Per Barcode",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "mean_umis_per_barcode": {
+            "title": "Mean UMIs Per Barcode",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "pct_duplicates": {
+            "title": "Percent Duplicates",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "n_genes": {
+            "title": "Number Of Genes",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "frac_dup": {
+            "title": "Duplicate Fraction",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "frac_mito": {
+            "title": "Mitochondrial Fraction",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "frac_mito_genes": {
+            "title": "Mitochondrial Genes Fraction",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "frac_reads_in_genes_barcode": {
+            "title": "Fraction Of Reads In Genes Barcode",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "joint_barcodes_passing": {
+            "title": "Joint Barcodes Passing",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "gt_records": {
+            "title": "GtRecords",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "numBarcodesOnOnlist": {
+            "title": "Number Of Barcodes On Onlist",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "percentageBarcodesOnOnlist": {
+            "title": "Percentage Of Barcodes On Onlist",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "numReadsOnOnlist": {
+            "title": "Number Of Reads On Onlist",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "percentageReadsOnOnlist": {
+            "title": "Percentage Of Reads On Onlist",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "description",
+        "summary"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "quality_metric_of"
+    ],
+    "changelog": "/profiles/changelogs/single_cell_rna_seq_quality_metric.md"
+}

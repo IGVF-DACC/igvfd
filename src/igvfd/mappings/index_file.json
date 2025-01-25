@@ -1,6 +1,6 @@
 {
-    "hash": "a367cb0ab8a2f61232f6f3d2bb4f2d44",
-    "index_name": "index_file_a367cb0a",
+    "hash": "74d793cd4e83c0e740c8fd1af57b93ac",
+    "index_name": "index_file_74d793cd",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -1715,6 +1715,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "quality_metrics": {
+                        "type": "keyword"
                     },
                     "redacted": {
                         "store": true,

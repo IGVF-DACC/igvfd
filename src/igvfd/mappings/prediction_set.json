@@ -1,6 +1,6 @@
 {
-    "hash": "8b6eb13a5332ec3484ffe02c8390751a",
-    "index_name": "prediction_set_8b6eb13a",
+    "hash": "a39e13437d0bb69a1e6501e57e2f042a",
+    "index_name": "prediction_set_a39e1343",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1016,6 +1016,9 @@
                             "principal_dimension": {
                                 "type": "keyword"
                             },
+                            "quality_metrics": {
+                                "type": "keyword"
+                            },
                             "read_count": {
                                 "store": true,
                                 "type": "long"
@@ -1298,6 +1301,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "quality_metrics": {
+                                "type": "keyword"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -1473,6 +1479,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "quality_metrics": {
+                                "type": "keyword"
                             },
                             "release_timestamp": {
                                 "type": "date"

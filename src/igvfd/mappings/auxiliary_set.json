@@ -1,6 +1,6 @@
 {
-    "hash": "8e02dba1bd5e1a562f93b6274d4655d6",
-    "index_name": "auxiliary_set_8e02dba1",
+    "hash": "7c1ffe6188380b0f96155573211b3998",
+    "index_name": "auxiliary_set_7c1ffe61",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -924,6 +924,9 @@
                                 "type": "text"
                             },
                             "principal_dimension": {
+                                "type": "keyword"
+                            },
+                            "quality_metrics": {
                                 "type": "keyword"
                             },
                             "read_count": {
