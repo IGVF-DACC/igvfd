@@ -139,7 +139,6 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     res = testapp.get(construct_library_set_control_transduction['@id'])
     assert res.json.get('summary') == 'control transduction expression vector library'
     res = testapp.get(construct_library_set_editing_template_library['@id'])
-    print(res.json.get('summary'))
     assert res.json.get('summary') == 'editing template library targeting histone modifications in targeton1 of MYC'
 
 
