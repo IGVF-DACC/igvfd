@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Update calculation of `summary`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Extend `selection_criteria` enum list to include `random selections`.
 * Extend `selection_criteria` enum list to include `controls`.
