@@ -357,39 +357,6 @@
                                         {
                                             "contains": {
                                                 "enum": [
-                                                    "differentiated cell specimen"
-                                                ]
-                                            }
-                                        },
-                                        {
-                                            "contains": {
-                                                "enum": [
-                                                    "gastruloid"
-                                                ]
-                                            }
-                                        }
-                                    ],
-                                    "not": {
-                                        "contains": {
-                                            "enum": [
-                                                "cell line",
-                                                "organoid",
-                                                "pooled cell specimen",
-                                                "embryoid",
-                                                "reprogrammed cell specimen"
-                                            ]
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        {
-                            "properties": {
-                                "classifications": {
-                                    "allOf": [
-                                        {
-                                            "contains": {
-                                                "enum": [
                                                     "reprogrammed cell specimen"
                                                 ]
                                             }
