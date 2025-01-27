@@ -157,3 +157,33 @@ def prediction_set():
             },
         }
     }
+
+
+@search_config(
+    name='PredictionSetReportView'
+)
+def prediction_set_report_view():
+    # Copy normal prediction_set config.
+    config = prediction_set()
+    # Override columns.
+    config['columns'] = {
+        'summary': {
+            'title': 'Summary'
+        },
+        'samples.summary': {
+            'title': 'Sample Summary'
+        },
+        'scope': {
+            'title': 'Scope'
+        },
+        'files.content_type': {
+            'title': 'File Content Type'
+        },
+        'files.file_format': {
+            'title': 'File Format'
+        },
+        'files.assembly': {
+            'title': 'File Assembly'
+        },
+    }
+    return config

@@ -218,11 +218,23 @@ def measurement_set_report_view():
     config = measurement_set()
     # Override columns.
     config['columns'] = {
-        'accession': {
-            'title': 'Accession'
-        },
         'summary': {
             'title': 'Summary'
+        },
+        'samples.summary': {
+            'title': 'Sample Summary'
+        },
+        'preferred_assay_title': {
+            'title': 'Preferred Assay Title'
+        },
+        'assay_term.term_name': {
+            'title': 'Assay'
+        },
+        'files.content_type': {
+            'title': 'File Content Type'
+        },
+        'files.file_format': {
+            'title': 'File Format'
         },
     }
     return config
