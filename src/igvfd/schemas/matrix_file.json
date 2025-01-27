@@ -97,6 +97,7 @@
                 "contact matrix",
                 "filtered feature barcode matrix",
                 "raw feature barcode matrix",
+                "sample barcode count matrix",
                 "sparse gene count matrix",
                 "sparse peak count matrix",
                 "sparse transcript count matrix",

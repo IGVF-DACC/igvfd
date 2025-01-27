@@ -215,7 +215,8 @@
         ],
         "output_content_types": [
             "fragments",
-            "sparse gene count matrix"
+            "sparse gene count matrix",
+            "sample barcode count matrix"
         ],
         "workflow": "96fa0630-a88e-4946-bebd-23f417d0da7a"
     }
