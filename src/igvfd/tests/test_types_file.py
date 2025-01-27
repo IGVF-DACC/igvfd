@@ -394,6 +394,16 @@ def test_upload_credentials_forbidden_when_upload_status_is_validated(testapp, r
         reference_file['@id'],
         {
             'status': 'in progress',
+            'upload_status': 'pending',
+            'file_size': 123,
+        },
+        status=200
+    )
+    testapp.post_json(reference_file['@id'] + '@@upload', {}, status=200)
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'status': 'in progress',
             'upload_status': 'validated',
             'file_size': 123,
         },
@@ -402,6 +412,16 @@ def test_upload_credentials_forbidden_when_upload_status_is_validated(testapp, r
 
 
 def test_upload_credentials_forbidden_when_status_is_not_in_progress_or_preview(testapp, reference_file):
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'status': 'in progress',
+            'upload_status': 'invalidated',
+            'file_size': 123,
+        },
+        status=200
+    )
+    testapp.post_json(reference_file['@id'] + '@@upload', {}, status=200)
     testapp.patch_json(
         reference_file['@id'],
         {
