@@ -76,6 +76,7 @@
                     "signal generation",
                     "signal normalization",
                     "spatial feature detection",
+                    "transcriptome index generation",
                     "UMI deduplication",
                     "UMI quantification",
                     "variant annotation"
@@ -100,6 +101,7 @@
                     "signal generation": "The process of generating a continuous signal representation of aligned sequencing data.",
                     "signal normalization": "Adjusting the generated signal to remove systematic biases.",
                     "spatial feature detection": "The identification of spatially resolved features in genomic data, often used in spatial transcriptomics.",
+                    "transcriptome index generation": "The process of generating transcriptome index file.",
                     "UMI deduplication": "The process of removing Unique Molecular Identifiers (UMI) duplicates.",
                     "UMI quantification": "The process of detection and measurement of Unique Molecular Identifiers (UMI).",
                     "variant annotation": "The process of providing additional information about genomic variants."
