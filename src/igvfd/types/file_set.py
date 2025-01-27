@@ -1151,7 +1151,7 @@ class ConstructLibrarySet(FileSet):
         }
     )
     def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, large_scale_gene_list=None, guide_type=None,
-                small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, orf_list=None, associated_phenotypes=None, control_type=None):
+                small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, orf_list=None, associated_phenotypes=None, control_type=None, targeton=None):
         library_type = file_set_type
         target_phrase = ''
         pheno_terms = []
@@ -1212,6 +1212,10 @@ class ConstructLibrarySet(FileSet):
                 target_phrase = f' tile {tile_id} of {gene_name} (AA {start}-{end})'
         if scope == 'genome-wide':
             target_phrase = ' genome-wide'
+        if scope == 'targeton':
+            gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
+            gene_name = gene_object.get('symbol', '')
+            target_phrase = f' {targeton} of {gene_name}'
 
         if associated_phenotypes:
             for pheno in associated_phenotypes:

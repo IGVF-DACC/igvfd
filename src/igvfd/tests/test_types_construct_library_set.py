@@ -15,7 +15,7 @@ def test_samples_link(testapp, tissue, base_expression_construct_library_set):
 
 def test_summary(testapp, construct_library_set_genome_wide, base_expression_construct_library_set,
                  construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction,
-                 gene_zscan10_mm, gene_myc_hs, construct_library_set_y2h, construct_library_set_orf, orf_foxp, orf_zscan10, construct_library_set_control_transduction):
+                 gene_zscan10_mm, gene_myc_hs, construct_library_set_y2h, construct_library_set_orf, orf_foxp, orf_zscan10, construct_library_set_control_transduction, construct_library_set_editing_template_library):
     res = testapp.get(construct_library_set_genome_wide['@id'])
     assert res.json.get('summary') == 'guide (sgRNA) library targeting TF binding sites genome-wide'
     testapp.patch_json(
@@ -138,6 +138,8 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     assert res.json.get('summary') == 'non-targeting guide (sgRNA) library'
     res = testapp.get(construct_library_set_control_transduction['@id'])
     assert res.json.get('summary') == 'control transduction expression vector library'
+    res = testapp.get(construct_library_set_editing_template_library['@id'])
+    assert res.json.get('summary') == 'editing template library targeting histone modifications in targeton1 of MYC'
 
 
 def test_integrated_content_files_dependency(testapp, app, submitter, lab, award, tabular_file, signal_file):
