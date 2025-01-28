@@ -11,7 +11,7 @@ def prediction_set():
                 'title': 'File Set Type',
             },
             'scope': {
-                'title': 'Scope',
+                'title': 'Prediction Scope',
             },
             'files.assembly': {
                 'title': 'Assembly',
@@ -174,7 +174,7 @@ def prediction_set_report_view():
             'title': 'Sample Summary'
         },
         'scope': {
-            'title': 'Scope'
+            'title': 'Prediction Scope'
         },
         'files.content_type': {
             'title': 'File Content Type'

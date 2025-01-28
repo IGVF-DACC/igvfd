@@ -11,7 +11,7 @@ def analysis_set():
                 'title': 'Analysis Set Type',
             },
             'assay_titles': {
-                'title': 'Assay Title'
+                'title': 'Assay'
             },
             'workflows.uniform_pipeline': {
                 'title': 'Uniformly Processed'
