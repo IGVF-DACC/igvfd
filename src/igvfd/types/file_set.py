@@ -839,9 +839,9 @@ class MeasurementSet(FileSet):
 
         if targeted_genes:
             if request.embed(assay_term)['term_id'] == 'OBI:0003661':
-                target_phrase = f' sorted on the expression of '
+                target_phrase = f' sorted on the expression of'
             else:
-                target_phrase = f' targeting '
+                target_phrase = f' targeting'
             if len(targeted_genes) > 5:
                 target_phrase = f'{target_phrase} {len(targeted_genes)} genes'
             elif targeted_genes and len(targeted_genes) <= 5:
