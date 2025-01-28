@@ -1068,6 +1068,10 @@ def post_upload(context, request):
         raise HTTPForbidden(
             'Unable to issue new credentials when uploading_status is validated'
         )
+    if properties.get('status') not in ['in progress', 'preview']:
+        raise HTTPForbidden(
+            'Unable to issue new credentials when status is not in progress or preview'
+        )
     external = context.propsheets.get(
         'external',
         {}

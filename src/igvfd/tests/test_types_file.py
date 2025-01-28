@@ -388,3 +388,75 @@ def test_file_workflow(
     )
     res = testapp.get(tabular_file['@id'])
     assert res.json.get('workflow', '')['@id'] == base_workflow['@id']
+
+
+def test_upload_credentials_forbidden_when_upload_status_is_validated(testapp, reference_file):
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'status': 'in progress',
+            'upload_status': 'pending',
+            'file_size': 123,
+        },
+        status=200
+    )
+    testapp.post_json(reference_file['@id'] + '@@upload', {}, status=200)
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'status': 'in progress',
+            'upload_status': 'validated',
+            'file_size': 123,
+        },
+        status=200)
+    testapp.post_json(reference_file['@id'] + '@@upload', {}, status=403)
+
+
+def test_upload_credentials_forbidden_when_status_is_not_in_progress_or_preview(testapp, reference_file):
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'status': 'in progress',
+            'upload_status': 'invalidated',
+            'file_size': 123,
+        },
+        status=200
+    )
+    testapp.post_json(reference_file['@id'] + '@@upload', {}, status=200)
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'status': 'released',
+            'upload_status': 'invalidated',
+            'file_size': 123,
+            'release_timestamp': '2024-03-06T12:34:56Z',
+        },
+        status=200
+    )
+    testapp.post_json(reference_file['@id'] + '@@upload', {}, status=403)
+
+
+def test_upload_credentials_allowed_when_status_is_in_progress(testapp, reference_file):
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'status': 'in progress',
+            'upload_status': 'pending',
+            'file_size': 123,
+        },
+        status=200
+    )
+    testapp.post_json(reference_file['@id'] + '@@upload', {}, status=200)
+
+
+def test_upload_credentials_allowed_when_status_is_preview(testapp, reference_file):
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'status': 'preview',
+            'upload_status': 'pending',
+            'file_size': 123,
+        },
+        status=200
+    )
+    testapp.post_json(reference_file['@id'] + '@@upload', {}, status=200)
