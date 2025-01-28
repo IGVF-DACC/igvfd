@@ -439,3 +439,33 @@ def test_search_views_missing_matrix(workbook, testapp):
     )
     assert r.json['total'] > 10
     assert 'matrix' in r.json
+
+
+def test_search_views_tissue_homo_sapiens(workbook, testapp):
+    r = testapp.get(
+        '/tissue-homo-sapiens',
+        status=400,
+    )
+    r = testapp.get(
+        '/tissue-homo-sapiens/?type=Tissue',
+        status=200,
+    )
+    assert 'matrix' in r.json
+    assert r.json['matrix']['x']['doc_count'] > 5
+    assert r.json['matrix']['y']['doc_count'] > 5
+    assert r.json['matrix']['y']['sample_terms.term_name']['buckets'][0]['sex']['buckets'] is not None
+
+
+def test_search_views_tissue_mus_musculus(workbook, testapp):
+    r = testapp.get(
+        '/tissue-mus-musculus',
+        status=400,
+    )
+    r = testapp.get(
+        '/tissue-mus-musculus/?type=Tissue',
+        status=200,
+    )
+    assert 'matrix' in r.json
+    assert r.json['matrix']['x']['doc_count'] > 5
+    assert r.json['matrix']['y']['doc_count'] > 5
+    assert r.json['matrix']['y']['sample_terms.term_name']['buckets'][0]['sex']['buckets'] is not None
