@@ -11,7 +11,7 @@ def analysis_set():
                 'title': 'Analysis Set Type',
             },
             'assay_titles': {
-                'title': 'Assay Title'
+                'title': 'Assay'
             },
             'workflows.uniform_pipeline': {
                 'title': 'Uniformly Processed'
@@ -178,3 +178,36 @@ def analysis_set():
             }
         },
     }
+
+
+@search_config(
+    name='AnalysisSetReportView'
+)
+def analysis_set_report_view():
+    # Copy normal analysis_set config.
+    config = analysis_set()
+    # Override columns.
+    config['columns'] = {
+        'summary': {
+            'title': 'Summary'
+        },
+        'samples.summary': {
+            'title': 'Sample Summary'
+        },
+        'assay_titles': {
+            'title': 'Assay'
+        },
+        'file_set_type': {
+            'title': 'File Set Type'
+        },
+        'files.content_type': {
+            'title': 'File Content Type'
+        },
+        'files.file_format': {
+            'title': 'File Format'
+        },
+        'files.assembly': {
+            'title': 'File Assembly'
+        },
+    }
+    return config

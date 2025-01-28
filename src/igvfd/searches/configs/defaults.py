@@ -1,3 +1,5 @@
 REPORT_VIEW_DEFAULTS = {
-    #    'MeasurementSet': ['MeasurementSetReportView'],
+    'MeasurementSet': ['MeasurementSetReportView'],
+    'AnalysisSet': ['AnalysisSetReportView'],
+    'PredictionSet': ['PredictionSetReportView'],
 }
