@@ -163,12 +163,12 @@ def audit_multiple_seqspec_per_seqfile(value, system):
     [
         {
             "audit_description": "A sequence file is expected to have only one released sequence specification file.",
-            "audit_category": "multiple seqspecs per sequence file",
+            "audit_category": "unexpected seqspecs",
             "audit_level": "ERROR"
         },
         {
             "audit_description": "A sequence file is expected to have only one in progress sequence specification file.",
-            "audit_category": "multiple seqspecs per sequence file",
+            "audit_category": "unexpected seqspecs",
             "audit_level": "INTERNAL_ACTION"
         }
     ]

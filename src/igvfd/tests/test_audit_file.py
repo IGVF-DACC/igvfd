@@ -156,7 +156,7 @@ def test_audit_multiple_seqspec_per_seqfile(testapp, sequence_file, configuratio
     )
     res = testapp.get(sequence_file['@id'] + '@@audit')
     assert all(
-        audit['category'] != 'multiple seqspecs per sequence file'
+        audit['category'] != 'unexpected seqspecs'
         for audit in res.json['audit'].get('INTERNAL_ACTION', {})
     )
     # Patch 2 seqspec files to the basic seq_file and new status as in progress (internal_action)
@@ -169,7 +169,7 @@ def test_audit_multiple_seqspec_per_seqfile(testapp, sequence_file, configuratio
     )
     res = testapp.get(sequence_file['@id'] + '@@audit')
     assert any(
-        audit['category'] == 'multiple seqspecs per sequence file'
+        audit['category'] == 'unexpected seqspecs'
         for audit in res.json['audit'].get('INTERNAL_ACTION', {})
     )
     # Patch 1 seqspec files to the basic seq_file and new status as released (no audit)
@@ -186,7 +186,7 @@ def test_audit_multiple_seqspec_per_seqfile(testapp, sequence_file, configuratio
     )
     res = testapp.get(sequence_file['@id'] + '@@audit')
     assert all(
-        audit['category'] != 'multiple seqspecs per sequence file'
+        audit['category'] != 'unexpected seqspecs'
         for audit in res.json['audit'].get('ERROR', {})
     )
     # Patch 2 seqspec files to the basic seq_file and new status as released (Error)
@@ -203,6 +203,6 @@ def test_audit_multiple_seqspec_per_seqfile(testapp, sequence_file, configuratio
     )
     res = testapp.get(sequence_file['@id'] + '@@audit')
     assert any(
-        audit['category'] == 'multiple seqspecs per sequence file'
+        audit['category'] == 'unexpected seqspecs'
         for audit in res.json['audit'].get('ERROR', {})
     )
