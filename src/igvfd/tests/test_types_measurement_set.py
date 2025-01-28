@@ -144,7 +144,6 @@ def test_summary_targeted_genes(testapp, measurement_set, assay_term_chip, assay
         }
     )
     res = testapp.get(measurement_set['@id'])
-    print(res.json.get('summary'))
     assert res.json.get('summary') == 'Histone ChIP-seq targeting MYC'
     testapp.patch_json(
         measurement_set['@id'],
@@ -153,7 +152,6 @@ def test_summary_targeted_genes(testapp, measurement_set, assay_term_chip, assay
         }
     )
     res = testapp.get(measurement_set['@id'])
-    print(res.json.get('summary'))
     assert res.json.get('summary') == 'Histone ChIP-seq targeting CRLF2, MYC, Zcan10'
     testapp.patch_json(
         measurement_set['@id'],
@@ -163,7 +161,6 @@ def test_summary_targeted_genes(testapp, measurement_set, assay_term_chip, assay
         }
     )
     res = testapp.get(measurement_set['@id'])
-    print(res.json.get('summary'))
     assert res.json.get('summary') == 'CRISPR FACS screen sorted on the expression of CRLF2, MYC, Zcan10'
     testapp.patch_json(
         measurement_set['@id'],
@@ -172,7 +169,6 @@ def test_summary_targeted_genes(testapp, measurement_set, assay_term_chip, assay
         }
     )
     res = testapp.get(measurement_set['@id'])
-    print(res.json.get('summary'))
     assert res.json.get('summary') == 'CRISPR FACS screen sorted on the expression of 6 genes'
 
 
