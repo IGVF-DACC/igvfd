@@ -941,7 +941,7 @@ class ModelSet(FileSet):
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + [
-        'software_version'
+        'software_versions'
     ]
     set_status_down = FileSet.set_status_down + []
 
@@ -990,7 +990,8 @@ class ModelSet(FileSet):
                         analysis_step_version_object = request.embed(
                             analysis_step_version, '@@object?skip_calculated=true')
                         software_versions = analysis_step_version_object.get('software_versions')
-        return software_versions
+        if software_versions:
+            return software_versions
 
 
 @collection(
