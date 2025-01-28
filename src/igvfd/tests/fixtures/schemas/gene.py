@@ -51,6 +51,51 @@ def gene_CRLF2_par_y(testapp):
 
 
 @pytest.fixture
+def gene_CD1E(testapp):
+    item = {
+        'dbxrefs': [
+            'HGNC:1638'
+        ],
+        'geneid': 'ENSG00000158488',
+        'version_number': '3',
+        'transcriptome_annotation': 'GENCODE 42',
+        'symbol': 'CD1E',
+        'taxa': 'Homo sapiens'
+    }
+    return testapp.post_json('/gene', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def gene_TAB3_AS1(testapp):
+    item = {
+        'dbxrefs': [
+            'ENTREZ:727682'
+        ],
+        'geneid': 'ENSG00000231542',
+        'version_number': '1',
+        'transcriptome_annotation': 'GENCODE 43',
+        'symbol': 'TAB3-AS1',
+        'taxa': 'Homo sapiens'
+    }
+    return testapp.post_json('/gene', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def gene_MAGOH2P(testapp):
+    item = {
+        'dbxrefs': [
+            'HGNC:30148'
+        ],
+        'geneid': 'ENSG00000264176',
+        'version_number': '1',
+        'transcriptome_annotation': 'GENCODE 43',
+        'symbol': 'MAGOH2P',
+        'taxa': 'Homo sapiens'
+    }
+    return testapp.post_json('/gene', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def gene_v1(gene_zscan10_mm):
     item = gene_zscan10_mm.copy()
     item.update({
@@ -68,21 +113,6 @@ def gene_v2(gene_zscan10_mm):
         'aliases': []
     })
     return item
-
-
-@pytest.fixture
-def gene_CD1E(testapp):
-    item = {
-        'dbxrefs': [
-            'HGNC:1638'
-        ],
-        'geneid': 'ENSG00000158488',
-        'version_number': '3',
-        'transcriptome_annotation': 'GENCODE 42',
-        'symbol': 'CD1E',
-        'taxa': 'Homo sapiens'
-    }
-    return testapp.post_json('/gene', item, status=201).json['@graph'][0]
 
 
 @pytest.fixture

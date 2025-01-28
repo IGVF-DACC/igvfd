@@ -134,6 +134,48 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
         'summary') == 'control transduction scCRISPR activation screen integrating a guide (sgRNA) library targeting TF binding sites genome-wide associated with Alzheimer\'s disease and Myocardial infarction'
 
 
+def test_summary_targeted_genes(testapp, measurement_set, assay_term_chip, assay_term_CRISPR_sorted, gene_myc_hs, gene_zscan10_mm, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_chip['@id'],
+            'targeted_genes': [gene_myc_hs['@id']],
+            'preferred_assay_title': 'Histone ChIP-seq'
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    print(res.json.get('summary'))
+    assert res.json.get('summary') == 'Histone ChIP-seq targeting MYC'
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'targeted_genes': [gene_myc_hs['@id'], gene_zscan10_mm['@id'], gene_CRLF2_par_y['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    print(res.json.get('summary'))
+    assert res.json.get('summary') == 'Histone ChIP-seq targeting CRLF2, MYC, Zcan10'
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_CRISPR_sorted['@id'],
+            'preferred_assay_title': 'CRISPR FACS screen'
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    print(res.json.get('summary'))
+    assert res.json.get('summary') == 'CRISPR FACS screen sorted on the expression of CRLF2, MYC, Zcan10'
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'targeted_genes': [gene_myc_hs['@id'], gene_zscan10_mm['@id'], gene_CRLF2_par_y['@id'], gene_CD1E['@id'], gene_TAB3_AS1['@id'], gene_MAGOH2P['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    print(res.json.get('summary'))
+    assert res.json.get('summary') == 'CRISPR FACS screen sorted on the expression of 6 genes'
+
+
 def test_calculated_donors(testapp, measurement_set, primary_cell, human_donor, in_vitro_cell_line, rodent_donor):
     testapp.patch_json(
         measurement_set['@id'],
