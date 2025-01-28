@@ -975,9 +975,17 @@ class ModelSet(FileSet):
         schema={
             'title': 'Software Versions',
             'description': 'The software versions used to produce this predictive model.',
-            'type': 'string',
-            'linkTo': 'SoftwareVersion',
-            'notSubmittable': True,
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Software Version',
+                'description': 'A software version used to produce this predictive model.',
+                'type': 'string',
+                'linkTo': 'SoftwareVersion',
+            },
+            'notSubmittable': True
+
         }
     )
     def software_versions(self, request, files=None):
@@ -993,7 +1001,7 @@ class ModelSet(FileSet):
                         software_versions = software_versions + \
                             analysis_step_version_object.get('software_versions', [])
         if software_versions:
-            return software_versions
+            return list(set(software_versions))
 
 
 @collection(
