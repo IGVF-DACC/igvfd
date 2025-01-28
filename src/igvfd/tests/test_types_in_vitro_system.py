@@ -116,6 +116,7 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
+            'classifications': ['gastruloid'],
             'time_post_change': 5,
             'time_post_change_units': 'minute',
             'cell_fate_change_treatments': [treatment_protein['@id']],
@@ -123,6 +124,5 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
-    print(res.json)
     assert res.json.get(
         'summary') == 'virtual embryoid body induced to gastrula for 5 minutes (cellular sub pool: PKR-456), mixed sex, Homo sapiens and Mus musculus strain1 (sorting details: some detail about sorting) characterized by high level of CD243, negative detection of CD243, depleted of penicillin for 3 minutes, treated with 10 ng/mL G-CSF, modified with CRISPRi Sp-dCas9, transfected with a reporter library'

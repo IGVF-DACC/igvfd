@@ -177,7 +177,6 @@ def test_in_vitro_system_upgrade_22_23(upgrader, in_vitro_system_v22):
 def test_in_vitro_system_upgrade_23_24(upgrader, in_vitro_system_v23):
     value = upgrader.upgrade('in_vitro_system', in_vitro_system_v23, current_version='23', target_version='24')
     assert value['schema_version'] == '24'
-    print(value)
     assert value['time_post_change'] == 8
     assert value['time_post_change_units'] == 'day'
     assert value['targeted_sample_term'] == '/sample-terms/UBERON_0004734/'
