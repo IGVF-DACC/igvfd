@@ -1,6 +1,6 @@
 {
-    "hash": "89ef91693c2990c91c2588f32cd0cb78",
-    "index_name": "multiplexed_sample_89ef9169",
+    "hash": "50a789fadc2f02dbb3a075202276fc37",
+    "index_name": "multiplexed_sample_50a789fa",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1166,6 +1166,9 @@
                                 "type": "object"
                             },
                             "software_version": {
+                                "type": "keyword"
+                            },
+                            "software_versions": {
                                 "type": "keyword"
                             },
                             "sources": {

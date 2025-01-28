@@ -1300,6 +1300,9 @@
                             "software_version": {
                                 "type": "keyword"
                             },
+                            "software_versions": {
+                                "type": "keyword"
+                            },
                             "sources": {
                                 "type": "keyword"
                             },
