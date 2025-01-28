@@ -31,4 +31,5 @@ def test_software_versions(testapp, model_file, model_set_no_input, analysis_ste
         }
     )
     res = testapp.get(model_set_no_input['@id'])
-    assert res.json.get('software_versions') == [software_version['@id']]
+    assert set([software_version_object['@id']
+               for software_version_object in res.json.get('software_versions')]) == {software_version['@id']}
