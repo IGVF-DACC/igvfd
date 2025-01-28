@@ -198,3 +198,22 @@ def test_product_id_dependency(award, source, lab, rodent_donor, sample_term_K56
             'sample_terms': [sample_term_K562['@id']]
         })
     assert res.status_code == 201
+
+
+def test_gastruloid_dependency(in_vitro_cell_line, treatment_chemical, sample_term_endothelial_cell, testapp):
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'classifications': ['gastruloid'],
+            'time_post_change': 3
+        },
+        expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'classifications': ['gastruloid'], 'cell_fate_change_treatments': [treatment_chemical['@id']]}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'classifications': ['gastruloid'], 'time_post_change': 3, 'time_post_change_units': 'day', 'cell_fate_change_treatments': [treatment_chemical['@id']], 'targeted_sample_term': sample_term_endothelial_cell['@id']})
+    assert res.status_code == 200

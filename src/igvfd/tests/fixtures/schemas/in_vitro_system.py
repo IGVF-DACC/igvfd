@@ -304,3 +304,15 @@ def in_vitro_system_v22(in_vitro_cell_line):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v23(
+    in_vitro_cell_line
+):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '23',
+        'classifications': ['gastruloid']
+    })
+    return item

@@ -496,3 +496,20 @@ def multiplexed_sample_9_10(value, system):
     notes = value.get('notes', '')
     notes += f'This object\'s multiplexing_methods has been set to barcode based by an upgrade. Please make sure it is correct before removing the notes.'
     value['notes'] = notes.strip()
+
+
+@upgrade_step('in_vitro_system', '23', '24')
+def in_vitro_system_23_24(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2284
+    if value['classifications'] == ['gastruloid'] and 'time_post_change' not in value:
+        value['time_post_change'] = 8
+        value['time_post_change_units'] = 'day'
+        value['targeted_sample_term'] = '/sample-terms/UBERON_0004734/'
+        value['cell_fate_change_protocols'] = ['j-michael-cherry:dummy_document']
+        notes = value.get('notes', '')
+        notes += (
+            f'cell_fate_change_protocols, time_post_change, time_post_change_units and targeted_sample_term '
+            f'has been arbitrarily set based on an upgrade due to additional gastruloid dependencies.'
+            f' Please make sure it is correct before removing the notes.'
+        )
+        value['notes'] = notes.strip()

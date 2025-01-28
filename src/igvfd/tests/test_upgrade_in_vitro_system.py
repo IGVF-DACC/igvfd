@@ -172,3 +172,15 @@ def test_in_vitro_system_upgrade_22_23(upgrader, in_vitro_system_v22):
     value = upgrader.upgrade('in_vitro_system', in_vitro_system_v22, current_version='22', target_version='23')
     assert value['schema_version'] == '23'
     assert 'publication_identifiers' not in value
+
+
+def test_in_vitro_system_upgrade_23_24(upgrader, in_vitro_system_v23):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v23, current_version='23', target_version='24')
+    assert value['schema_version'] == '24'
+    print(value)
+    assert value['time_post_change'] == 8
+    assert value['time_post_change_units'] == 'day'
+    assert value['targeted_sample_term'] == '/sample-terms/UBERON_0004734/'
+    assert value['cell_fate_change_protocols'] == ['j-michael-cherry:dummy_document']
+    assert 'notes' in value and value['notes'].endswith(
+        'cell_fate_change_protocols, time_post_change, time_post_change_units and targeted_sample_term has been arbitrarily set based on an upgrade due to additional gastruloid dependencies. Please make sure it is correct before removing the notes.')
