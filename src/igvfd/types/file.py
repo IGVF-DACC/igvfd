@@ -131,7 +131,7 @@ class File(Item):
         Path('integrated_in.associated_phenotypes', include=[
              '@id', 'summary', 'status', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list']),
         Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol', 'status']),
-        Path('workflow', include=['@id', 'uniformly_processed', 'name']),
+        Path('workflow', include=['@id', 'uniform_pipeline', 'name']),
     ]
     rev = {
         'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),
