@@ -845,7 +845,7 @@ class MeasurementSet(FileSet):
                 target_phrase = f' targeting'
             if len(targeted_genes) > 5:
                 target_phrase = f'{target_phrase} {len(targeted_genes)} genes'
-            elif targeted_genes and len(targeted_genes) <= 5:
+            elif len(targeted_genes) <= 5:
                 genes = []
                 for targeted_gene in targeted_genes:
                     gene_object = request.embed(targeted_gene, '@@object?skip_calculated=true')
