@@ -1,6 +1,6 @@
 {
-    "hash": "e4d43d5bcdbe690d9ea8d3ef6e6cd722",
-    "index_name": "auxiliary_set_e4d43d5b",
+    "hash": "5ee2b32058cf08cf13c140497bc92a65",
+    "index_name": "auxiliary_set_5ee2b320",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -532,9 +532,6 @@
                                     }
                                 },
                                 "type": "object"
-                            },
-                            "software_version": {
-                                "type": "keyword"
                             },
                             "software_versions": {
                                 "type": "keyword"

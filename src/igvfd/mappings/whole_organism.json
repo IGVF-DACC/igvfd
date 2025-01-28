@@ -1172,9 +1172,6 @@
                                 },
                                 "type": "object"
                             },
-                            "software_version": {
-                                "type": "keyword"
-                            },
                             "software_versions": {
                                 "type": "keyword"
                             },

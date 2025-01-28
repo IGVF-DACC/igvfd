@@ -1,6 +1,6 @@
 {
-    "hash": "73edaac9c2c3066d1dcfd263173378dd",
-    "index_name": "configuration_file_73edaac9",
+    "hash": "0b8e2de14d675b622bbdc1efced0f2fd",
+    "index_name": "configuration_file_0b8e2de1",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1196,9 +1196,6 @@
                                     }
                                 },
                                 "type": "object"
-                            },
-                            "software_version": {
-                                "type": "keyword"
                             },
                             "software_versions": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "05f8b77cea317a25015b8ae2e7dabfa4",
-    "index_name": "reference_file_05f8b77c",
+    "hash": "e2e3006aac614b1ae53ed3567c66c81c",
+    "index_name": "reference_file_e2e3006a",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -1213,9 +1213,6 @@
                                     }
                                 },
                                 "type": "object"
-                            },
-                            "software_version": {
-                                "type": "keyword"
                             },
                             "software_versions": {
                                 "type": "keyword"

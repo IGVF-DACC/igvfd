@@ -1,6 +1,6 @@
 {
-    "hash": "33c816fed2bd032d01854f551d9b794f",
-    "index_name": "model_file_33c816fe",
+    "hash": "64fdbf91a1fa05e55f45494cb86dbcaf",
+    "index_name": "model_file_64fdbf91",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -1210,9 +1210,6 @@
                                     }
                                 },
                                 "type": "object"
-                            },
-                            "software_version": {
-                                "type": "keyword"
                             },
                             "software_versions": {
                                 "type": "keyword"

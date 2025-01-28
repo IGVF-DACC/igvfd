@@ -1,6 +1,6 @@
 {
-    "hash": "abea4860e1c6340777e03abf9fcc0722",
-    "index_name": "tabular_file_abea4860",
+    "hash": "670d08d94a080041b603771b05822aa1",
+    "index_name": "tabular_file_670d08d9",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1296,9 +1296,6 @@
                                     }
                                 },
                                 "type": "object"
-                            },
-                            "software_version": {
-                                "type": "keyword"
                             },
                             "software_versions": {
                                 "type": "keyword"

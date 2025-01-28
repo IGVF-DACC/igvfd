@@ -1,6 +1,6 @@
 {
-    "hash": "26b7a8970e680a8276e885be47c88318",
-    "index_name": "prediction_set_26b7a897",
+    "hash": "42bdca0232ae3cc74c6012ec151c3ef1",
+    "index_name": "prediction_set_42bdca02",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -622,9 +622,6 @@
                                     }
                                 },
                                 "type": "object"
-                            },
-                            "software_version": {
-                                "type": "keyword"
                             },
                             "software_versions": {
                                 "type": "keyword"
