@@ -168,7 +168,7 @@
         ],
         "principal_dimension": "cell",
         "secondary_dimensions": [
-            "peak"
+            "barcode"
         ],
         "analysis_step_version": "igvf-dacc:analysis_step_version_02"
     }
