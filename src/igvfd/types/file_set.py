@@ -838,6 +838,7 @@ class MeasurementSet(FileSet):
             assay = preferred_assay_title
 
         if targeted_genes:
+            # Special case for CRISR screens using flow cytometry
             if request.embed(assay_term)['term_id'] == 'OBI:0003661':
                 target_phrase = f' sorted on the expression of'
             else:
