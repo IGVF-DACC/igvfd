@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 24
+
+* Require `targeted_sample_term`, `time_post_change`, `time_post_change_units` and one of `cell_fate_change_treatments` or `cell_fate_change_protocols`  if `classification` is `gastruloid`.
+
 ### Minor changes since schema version 23
 
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
