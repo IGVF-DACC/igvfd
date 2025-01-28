@@ -990,7 +990,8 @@ class ModelSet(FileSet):
                     if analysis_step_version:
                         analysis_step_version_object = request.embed(
                             analysis_step_version, '@@object?skip_calculated=true')
-                        software_versions = software_versions + analysis_step_version_object.get('software_versions')
+                        software_versions = software_versions + \
+                            analysis_step_version_object.get('software_versions', [])
         if software_versions:
             return software_versions
 
