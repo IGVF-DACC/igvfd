@@ -1,5 +1,10 @@
 ## Changelog for *`model_set.json`*
 
+### Schema version 5
+
+* Add `software_versions`.
+* Remove `software_version`.
+
 ### Minor changes since schema version 4
 
 * Allow submission of `donors`.

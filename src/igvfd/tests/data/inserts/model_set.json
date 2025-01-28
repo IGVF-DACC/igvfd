@@ -19,8 +19,7 @@
         ],
         "accession": "IGVFDS4321MODL",
         "status": "released",
-        "release_timestamp": "2024-03-06T12:34:56Z",
-        "software_version": "/software-versions/igvf:bowtie2 v2.4.4/"
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "accession": "IGVFDS4845MXHR",
@@ -39,7 +38,6 @@
             "a13fb026-d42f-481c-9420-5fe3f17ede30"
         ],
         "uuid": "2fe7d091-6a28-4909-8abc-7efca5d92ad7",
-        "software_version": "/software-versions/bowtie2-v2.4.4/",
         "publications": [
             "PMID:22955616"
         ]

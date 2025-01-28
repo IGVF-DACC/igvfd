@@ -472,3 +472,14 @@ def auxiliary_set_11_12(value, system):
         value['file_set_type'] = 'gRNA sequencing'
         notes += f' This auxiliary set previously used variant sequencing as its file_set_type, but this enum is now removed. So it has been defaulted to gRNA sequencing.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('model_set', '4', '5')
+def model_set_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2239
+    notes = value.get('notes', '')
+    software_version = value.get('software_version', '')
+    if software_version:
+        notes += f' This model set previously specified {software_version}, but this property has been removed and replaced by software_versions calculated through analysis_step_version on the model file.'
+        value['notes'] = notes
+        del value['software_version']
