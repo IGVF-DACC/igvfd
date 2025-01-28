@@ -89,7 +89,9 @@ class FileSet(Item):
         Path('samples.disease_terms', include=['@id', 'term_name', 'status']),
         Path('samples.targeted_sample_term', include=['@id', 'term_name', 'status']),
         Path('samples.modifications', include=['@id', 'modality', 'status']),
-        Path('samples.treatments', include=['@id', 'treatment_term_name', 'status']),
+        Path('samples.treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
+        Path('samples.construct_library_sets.integrated_content_files', include=[
+             '@id', 'accession', 'file_set_type', 'summary', 'status', 'content_type', 'integrated_content_files']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
     ]
 
@@ -747,12 +749,9 @@ class MeasurementSet(FileSet):
         Path('control_file_sets', include=['@id', 'accession', 'aliases', 'status']),
         Path('related_multiome_datasets', include=['@id', 'accession', 'status']),
         Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
-        Path('samples.treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('samples.cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
-        Path('samples.disease_terms', include=['@id', 'term_name', 'status']),
-        Path('samples.modifications', include=['@id', 'modality', 'status']),
         Path('samples.construct_library_sets.small_scale_gene_list', include=[
-             '@id', 'file_set_type', 'accession', 'small_scale_gene_list', 'summary', 'geneid', 'symbol', 'name', 'status']),
+             '@id', 'small_scale_gene_list', 'summary', 'geneid', 'symbol', 'name', 'status']),
         Path('files.sequencing_platform', include=['@id', 'term_name', 'status']),
         Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status'])
@@ -1180,21 +1179,48 @@ class ConstructLibrarySet(FileSet):
     set_status_up = FileSet.set_status_up + []
     set_status_down = FileSet.set_status_down + []
 
-    @calculated_property(schema={
-        'title': 'Applied to Samples',
-        'description': 'The samples that link to this construct library set.',
-        'type': 'array',
-        'minItems': 1,
-        'uniqueItems': True,
-        'items': {
-            'title': 'Applied to Sample',
-            'type': ['string', 'object'],
-            'linkFrom': 'Sample.construct_library_sets',
-        },
-        'notSubmittable': True
-    })
+    @calculated_property(define=True,
+                         schema={
+                             'title': 'Applied to Samples',
+                             'description': 'The samples that link to this construct library set.',
+                             'type': 'array',
+                             'minItems': 1,
+                             'uniqueItems': True,
+                             'items': {
+                                 'title': 'Applied to Sample',
+                                 'type': ['string', 'object'],
+                                 'linkFrom': 'Sample.construct_library_sets',
+                             },
+                             'notSubmittable': True
+                         })
     def applied_to_samples(self, request, applied_to_samples):
         return paths_filtered_by_status(request, applied_to_samples)
+
+    @calculated_property(
+        condition='applied_to_samples',
+        schema={
+            'title': 'File Sets',
+            'description': 'The file sets with samples that integrate this construct library set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'File Set',
+                'type': ['string', 'object'],
+                'linkTo': 'FileSet',
+            },
+            'notSubmittable': True
+        })
+    def file_sets(self, request, applied_to_samples=None):
+        file_sets = []
+        for sample in applied_to_samples:
+            sample_object = request.embed(sample,
+                                          '@@object_with_select_calculated_properties?'
+                                          'field=file_sets'
+                                          )
+            file_sets = file_sets + sample_object.get('file_sets', [])
+        if file_sets:
+            return file_sets
 
     @calculated_property(
         schema={
