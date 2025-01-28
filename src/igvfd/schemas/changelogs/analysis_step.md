@@ -4,6 +4,8 @@
 
 * Extend `output_content_types` enum list to include `sample barcode count matrix`.
 * Extend `input_content_types` enum list to include `sample barcode count matrix`.
+* Extend `analysis_step_types` enum list to include `computational model training`.
+* Extend `analysis_step_types` enum list to include `computational model prediction`.
 * Extend `output_content_types` enum list to include `neural network architecture`.
 * Extend `input_content_types` enum list to include `neural network architecture`.
 * Extend `analysis_step_types` enum list to include `read trimming`.
