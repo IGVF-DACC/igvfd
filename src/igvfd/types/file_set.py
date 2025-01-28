@@ -1166,6 +1166,7 @@ class ConstructLibrarySet(FileSet):
         Path('orf_list', include=['@id', 'orf_id', 'genes', 'aliases', 'status']),
         Path('orf_list.genes', include=['@id', 'symbol', 'status']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
+        Path('file_sets', include=['@id', '@type', 'accession', 'summary', 'status']),
     ]
     audit_inherit = [
         'award',
