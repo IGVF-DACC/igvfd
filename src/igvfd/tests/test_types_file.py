@@ -389,6 +389,7 @@ def test_file_workflow(
     res = testapp.get(tabular_file['@id'])
     assert res.json.get('workflow', '')['@id'] == base_workflow['@id']
 
+
 def test_upload_credentials_forbidden_when_upload_status_is_validated(testapp, reference_file):
     testapp.patch_json(
         reference_file['@id'],
