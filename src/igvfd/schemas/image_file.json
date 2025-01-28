@@ -91,7 +91,8 @@
         "file_set.summary",
         "submitted_by.title",
         "submitted_file_name",
-        "summary"
+        "summary",
+        "workflow.name"
     ],
     "exact_searchable_fields": [
         "@type",

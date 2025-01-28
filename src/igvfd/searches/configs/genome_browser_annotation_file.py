@@ -52,6 +52,12 @@ def genome_browser_annotation_file():
             'file_set.samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
+            'workflow.name': {
+                'title': 'Workflow'
+            },
+            'workflow.uniform_pipeline': {
+                'title': 'Uniformly Processed'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -93,6 +99,8 @@ def genome_browser_annotation_file():
                     'assembly',
                     'transcriptome_annotation',
                     'cell_type_annotation.term_name',
+                    'workflow.name',
+                    'workflow.uniform_pipeline',
                 ],
             },
             {

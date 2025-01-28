@@ -37,6 +37,12 @@ def index_file():
             'file_set.samples.disease_terms.term_name': {
                 'title': 'Sample Phenotype'
             },
+            'workflow.name': {
+                'title': 'Workflow'
+            },
+            'workflow.uniform_pipeline': {
+                'title': 'Uniformly Processed'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -67,12 +73,14 @@ def index_file():
         },
         'facet_groups': [
             {
-                'title': 'Format',
+                'title': 'File Details',
                 'facet_fields': [
                     'file_format',
                     'content_type',
                     'filtered',
                     'redacted',
+                    'workflow.name',
+                    'workflow.uniform_pipeline',
                 ],
             },
             {

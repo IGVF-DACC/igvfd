@@ -49,6 +49,12 @@ def sequence_file():
             'file_set.samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
+            'workflow.name': {
+                'title': 'Workflow'
+            },
+            'workflow.uniform_pipeline': {
+                'title': 'Uniformly Processed'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -92,6 +98,8 @@ def sequence_file():
                     'illumina_read_type',
                     'sequencing_platform.term_name',
                     'sequencing_kit',
+                    'workflow.name',
+                    'workflow.uniform_pipeline',
                 ],
             },
             {

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Add `workflow`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Add `checkfiles_version`.
 * Extend `secondary_dimensions` enum list to include `UMI count`.

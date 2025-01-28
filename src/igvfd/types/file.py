@@ -131,6 +131,7 @@ class File(Item):
         Path('integrated_in.associated_phenotypes', include=[
              '@id', 'summary', 'status', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list']),
         Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol', 'status']),
+        Path('workflow', include=['@id', 'uniform_pipeline', 'name']),
     ]
     rev = {
         'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),
@@ -241,6 +242,26 @@ class File(Item):
                 if measurement_set_object_pat:
                     assay_titles.add(measurement_set_object_pat)
         return list(assay_titles)
+
+    @calculated_property(
+        condition='analysis_step_version',
+        schema={
+            'title': 'Workflow',
+            'description': 'The workflow used to produce this file.',
+            'type': 'string',
+            'linkTo': 'Workflow',
+            'notSubmittable': True,
+        }
+    )
+    def workflow(self, request, analysis_step_version):
+        if analysis_step_version:
+            analysis_step_version_object = request.embed(analysis_step_version, '@@object')
+            analysis_step = analysis_step_version_object.get('analysis_step', '')
+            if analysis_step:
+                analysis_step_object = request.embed(analysis_step, '@@object')
+                workflow = analysis_step_object.get('workflow', '')
+                if workflow:
+                    return workflow
 
     @calculated_property(
         condition=show_href,

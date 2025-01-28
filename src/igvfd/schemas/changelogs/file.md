@@ -1,5 +1,6 @@
 ## Changelog for *`file.json`*
 
+* Add `workflow`. (01/29/25)
 * Add `checkfiles_version`. (01/15/2025)
 * Extend `status` enum list to include `preview`. (11/22/2024)
 * Add `derived_manually`. (10/14/2024)

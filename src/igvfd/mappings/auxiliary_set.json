@@ -1,6 +1,6 @@
 {
-    "hash": "21ed5b5f0487d8a6e6a22aa7a7c07586",
-    "index_name": "auxiliary_set_21ed5b5f",
+    "hash": "a21becc48d62d943902f551925b2f64d",
+    "index_name": "auxiliary_set_a21becc4",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1013,6 +1013,9 @@
                                 "type": "keyword"
                             },
                             "validation_error_detail": {
+                                "type": "keyword"
+                            },
+                            "workflow": {
                                 "type": "keyword"
                             }
                         },

@@ -58,6 +58,12 @@ def signal_file():
             'file_set.samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
+            'workflow.name': {
+                'title': 'Workflow'
+            },
+            'workflow.uniform_pipeline': {
+                'title': 'Uniformly Processed'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -100,7 +106,9 @@ def signal_file():
                     'normalized',
                     'assembly',
                     'transcriptome_annotation',
-                    'cell_type_annotation.term_name'
+                    'cell_type_annotation.term_name',
+                    'workflow.name',
+                    'workflow.uniform_pipeline',
                 ],
             },
             {

@@ -372,3 +372,19 @@ def test_file_assay_titles(
     )
     res = testapp.get(alignment_file['@id'])
     assert set(res.json.get('assay_titles', [])) == {'10x multiome with MULTI-seq'}
+
+
+def test_file_workflow(
+    testapp,
+    tabular_file,
+    analysis_step_version,
+    base_workflow
+):
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'analysis_step_version': analysis_step_version['@id']
+        }
+    )
+    res = testapp.get(tabular_file['@id'])
+    assert res.json.get('workflow', '')['@id'] == base_workflow['@id']

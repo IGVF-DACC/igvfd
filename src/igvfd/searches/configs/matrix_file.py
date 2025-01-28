@@ -46,6 +46,12 @@ def matrix_file():
             'file_set.samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
+            'workflow.name': {
+                'title': 'Workflow'
+            },
+            'workflow.uniform_pipeline': {
+                'title': 'Uniformly Processed'
+            },
             'collections': {
                 'title': 'Collections'
             },
