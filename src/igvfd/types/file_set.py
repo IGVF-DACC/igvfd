@@ -1161,12 +1161,12 @@ class ConstructLibrarySet(FileSet):
         Path('applied_to_samples.targeted_sample_term', include=['@id', 'term_name', 'status']),
         Path('applied_to_samples.modifications', include=['@id', 'modality', 'summary', 'status']),
         Path('applied_to_samples.treatments', include=['@id', 'treatment_term_name', 'summary', 'status']),
+        Path('applied_to_samples.file_sets', include=['@id', '@type', 'accession', 'aliases', 'summary', 'status']),
         Path('large_scale_gene_list', include=['@id', 'accession', 'aliases', 'status']),
         Path('large_scale_loci_list', include=['@id', 'accession', 'aliases', 'status']),
         Path('orf_list', include=['@id', 'orf_id', 'genes', 'aliases', 'status']),
         Path('orf_list.genes', include=['@id', 'symbol', 'status']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
-        Path('file_sets', include=['@id', '@type', 'accession', 'summary', 'status']),
     ]
     audit_inherit = [
         'award',
