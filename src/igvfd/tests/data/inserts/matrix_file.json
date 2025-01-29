@@ -146,5 +146,30 @@
             "peak"
         ],
         "analysis_step_version": "igvf-dacc:analysis_step_version_02"
+    },
+    {
+        "uuid": "bfc5ca24-7b53-92fa-c8c9-5b200ca6768a",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_4"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-11-06T12:34:56Z",
+        "md5sum": "68475de077e51fd61a4039aa6bda1a4a",
+        "file_format": "hdf5",
+        "content_type": "sample barcode count matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/matrix_file_4.h5ad",
+        "file_size": 8200010,
+        "upload_status": "validated",
+        "file_set": "igvf:analysis_set_with_workflow_2",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
+            "barcode count"
+        ],
+        "analysis_step_version": "igvf-dacc:analysis_step_version_02"
     }
 ]
