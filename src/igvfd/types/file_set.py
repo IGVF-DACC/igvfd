@@ -75,7 +75,6 @@ class FileSet(Item):
             'cell_fate_change_treatments',
             'cellular_sub_pool',
             'classifications',
-            'construct_library_sets',
             'disease_terms',
             'modifications',
             'sample_terms',
@@ -90,7 +89,7 @@ class FileSet(Item):
         Path('samples.targeted_sample_term', include=['@id', 'term_name', 'status']),
         Path('samples.modifications', include=['@id', 'modality', 'status']),
         Path('samples.treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
-        Path('samples.construct_library_sets.integrated_content_files', include=[
+        Path('construct_library_sets.integrated_content_files', include=[
              '@id', 'accession', 'file_set_type', 'summary', 'status', 'content_type', 'integrated_content_files']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
     ]
@@ -191,6 +190,33 @@ class FileSet(Item):
     })
     def input_for(self, request, input_for):
         return paths_filtered_by_status(request, input_for)
+
+    @calculated_property(
+        condition='samples',
+        schema={
+            'title': 'Construct Library Sets',
+            'description': 'The construct library sets associated with the samples of this file set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Construct Library Set',
+                'description': 'A construct library set associated with a sample of this file set.',
+                'type': 'string',
+                'linkTo': 'FileSet',
+            },
+            'notSubmittable': True
+        })
+    def construct_library_sets(self, request, samples=None):
+        construct_library_sets = []
+        for sample in samples:
+            sample_object = request.embed(sample,
+                                          '@@object_with_select_calculated_properties?'
+                                          'field=construct_library_sets'
+                                          )
+            construct_library_sets = construct_library_sets + sample_object.get('construct_library_sets', [])
+        if construct_library_sets:
+            return construct_library_sets
 
 
 @collection(
@@ -750,7 +776,7 @@ class MeasurementSet(FileSet):
         Path('related_multiome_datasets', include=['@id', 'accession', 'status']),
         Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
         Path('samples.cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
-        Path('samples.construct_library_sets.small_scale_gene_list', include=[
+        Path('construct_library_sets.small_scale_gene_list', include=[
              '@id', 'small_scale_gene_list', 'summary', 'geneid', 'symbol', 'name', 'status']),
         Path('files.sequencing_platform', include=['@id', 'term_name', 'status']),
         Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),

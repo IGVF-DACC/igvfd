@@ -58,6 +58,9 @@ def construct_library_set():
             'applied_to_samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
+            'applied_to_samples.file_sets.file_set_type': {
+                'title': 'File Set Type'
+            },
             'files.content_type': {
                 'title': 'File Types',
             },

@@ -16,14 +16,43 @@ def model_set():
             'assessed_genes': {
                 'title': 'Assessed Gene'
             },
+            'construct_library_sets.file_set_type': {
+                'title': 'Construct Library Data'
+            },
+            'donors.taxa': {
+                'title': 'Taxa',
+            },
+            'samples.classifications': {
+                'title': 'Classification',
+            },
+            'samples.sample_terms.term_name': {
+                'title': 'Sample',
+            },
+            'samples.targeted_sample_term.term_name': {
+                'title': 'Cellular Transformation Target',
+            },
+            'samples.disease_terms.term_name': {
+                'title': 'Disease',
+            },
+            'samples.modifications.modality': {
+                'title': 'Modification'
+            },
+            'samples.treatments.treatment_term_name': {
+                'title': 'Treatment'
+            },
             'files.content_type': {
                 'title': 'File Types',
             },
             'files.file_format': {
                 'title': 'File Format',
             },
+<<<<<<< HEAD
             'software_versions.software.title': {
                 'title': 'Software',
+=======
+            'construct_library_sets.integrated_content_files.content_type': {
+                'title': 'Construct Library Design'
+>>>>>>> 87202e45 (change calculated property and embedding for file sets)
             },
             'collections': {
                 'title': 'Collections',

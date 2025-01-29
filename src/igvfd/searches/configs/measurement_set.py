@@ -22,10 +22,10 @@ def measurement_set():
             'auxiliary_sets.file_set_type': {
                 'title': 'Auxiliary Data'
             },
-            'samples.construct_library_sets.file_set_type': {
+            'construct_library_sets.file_set_type': {
                 'title': 'Construct Library Data'
             },
-            'samples.construct_library_sets.small_scale_gene_list.symbol': {
+            'construct_library_sets.small_scale_gene_list.symbol': {
                 'title': 'Investigated Gene'
             },
             'targeted_genes.symbol': {
@@ -63,6 +63,9 @@ def measurement_set():
             },
             'files.file_format': {
                 'title': 'File Format',
+            },
+            'construct_library_sets.integrated_content_files.content_type': {
+                'title': 'Construct Library Design'
             },
             'collections': {
                 'title': 'Collections',
@@ -104,9 +107,9 @@ def measurement_set():
                     'control_type',
                     'functional_assay_mechanisms.term_name',
                     'auxiliary_sets.file_set_type',
-                    'samples.construct_library_sets.file_set_type',
+                    'construct_library_sets.file_set_type',
                     'targeted_genes.symbol',
-                    'samples.construct_library_sets.small_scale_gene_list.symbol',
+                    'construct_library_sets.small_scale_gene_list.symbol',
                     'files.sequencing_platform.term_name',
                 ],
             },
