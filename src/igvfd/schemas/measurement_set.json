@@ -112,6 +112,7 @@
                 "varACCESS",
                 "scATAC-seq",
                 "snATAC-seq",
+                "scMito-seq",
                 "DOGMA-seq",
                 "10x multiome",
                 "10x multiome with MULTI-seq",
