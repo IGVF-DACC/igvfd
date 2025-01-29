@@ -1288,7 +1288,369 @@
                                 "type": "keyword"
                             },
                             "construct_library_sets": {
-                                "type": "keyword"
+                                "properties": {
+                                    "@id": {
+                                        "type": "keyword"
+                                    },
+                                    "@type": {
+                                        "type": "keyword"
+                                    },
+                                    "accession": {
+                                        "type": "keyword"
+                                    },
+                                    "aliases": {
+                                        "type": "keyword"
+                                    },
+                                    "alternate_accessions": {
+                                        "type": "keyword"
+                                    },
+                                    "applied_to_samples": {
+                                        "type": "keyword"
+                                    },
+                                    "associated_phenotypes": {
+                                        "type": "keyword"
+                                    },
+                                    "average_guide_coverage": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "average_insert_size": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "award": {
+                                        "type": "keyword"
+                                    },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
+                                    "control_file_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "control_for": {
+                                        "type": "keyword"
+                                    },
+                                    "control_type": {
+                                        "type": "keyword"
+                                    },
+                                    "creation_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "documents": {
+                                        "type": "keyword"
+                                    },
+                                    "exon": {
+                                        "type": "keyword"
+                                    },
+                                    "file_set_type": {
+                                        "type": "keyword"
+                                    },
+                                    "files": {
+                                        "type": "keyword"
+                                    },
+                                    "guide_type": {
+                                        "type": "keyword"
+                                    },
+                                    "input_for": {
+                                        "type": "keyword"
+                                    },
+                                    "integrated_content_files": {
+                                        "properties": {
+                                            "@id": {
+                                                "type": "keyword"
+                                            },
+                                            "@type": {
+                                                "type": "keyword"
+                                            },
+                                            "accession": {
+                                                "type": "keyword"
+                                            },
+                                            "aliases": {
+                                                "type": "keyword"
+                                            },
+                                            "alternate_accessions": {
+                                                "type": "keyword"
+                                            },
+                                            "analysis_step_version": {
+                                                "type": "keyword"
+                                            },
+                                            "anvil_url": {
+                                                "type": "keyword"
+                                            },
+                                            "assay_titles": {
+                                                "type": "keyword"
+                                            },
+                                            "assembly": {
+                                                "type": "keyword"
+                                            },
+                                            "award": {
+                                                "type": "keyword"
+                                            },
+                                            "barcode_map_for": {
+                                                "type": "keyword"
+                                            },
+                                            "cell_type_annotation": {
+                                                "type": "keyword"
+                                            },
+                                            "checkfiles_version": {
+                                                "type": "keyword"
+                                            },
+                                            "collections": {
+                                                "type": "keyword"
+                                            },
+                                            "content_md5sum": {
+                                                "type": "keyword"
+                                            },
+                                            "content_type": {
+                                                "type": "keyword"
+                                            },
+                                            "controlled_access": {
+                                                "store": true,
+                                                "type": "boolean"
+                                            },
+                                            "creation_timestamp": {
+                                                "type": "date"
+                                            },
+                                            "dbxrefs": {
+                                                "type": "keyword"
+                                            },
+                                            "derived_from": {
+                                                "type": "keyword"
+                                            },
+                                            "derived_manually": {
+                                                "store": true,
+                                                "type": "boolean"
+                                            },
+                                            "description": {
+                                                "type": "text"
+                                            },
+                                            "documents": {
+                                                "type": "keyword"
+                                            },
+                                            "external": {
+                                                "store": true,
+                                                "type": "boolean"
+                                            },
+                                            "file_format": {
+                                                "type": "keyword"
+                                            },
+                                            "file_format_specifications": {
+                                                "type": "keyword"
+                                            },
+                                            "file_format_type": {
+                                                "type": "keyword"
+                                            },
+                                            "file_set": {
+                                                "type": "keyword"
+                                            },
+                                            "file_size": {
+                                                "store": true,
+                                                "type": "long"
+                                            },
+                                            "gene_list_for": {
+                                                "type": "keyword"
+                                            },
+                                            "href": {
+                                                "type": "keyword"
+                                            },
+                                            "input_file_for": {
+                                                "type": "keyword"
+                                            },
+                                            "integrated_in": {
+                                                "type": "keyword"
+                                            },
+                                            "lab": {
+                                                "type": "keyword"
+                                            },
+                                            "loci_list_for": {
+                                                "type": "keyword"
+                                            },
+                                            "md5sum": {
+                                                "type": "keyword"
+                                            },
+                                            "notes": {
+                                                "type": "text"
+                                            },
+                                            "release_timestamp": {
+                                                "type": "date"
+                                            },
+                                            "revoke_detail": {
+                                                "type": "keyword"
+                                            },
+                                            "s3_uri": {
+                                                "type": "keyword"
+                                            },
+                                            "schema_version": {
+                                                "type": "keyword"
+                                            },
+                                            "source_url": {
+                                                "type": "keyword"
+                                            },
+                                            "sources": {
+                                                "type": "keyword"
+                                            },
+                                            "status": {
+                                                "type": "keyword"
+                                            },
+                                            "submitted_by": {
+                                                "type": "keyword"
+                                            },
+                                            "submitted_file_name": {
+                                                "type": "keyword"
+                                            },
+                                            "submitter_comment": {
+                                                "type": "keyword"
+                                            },
+                                            "summary": {
+                                                "type": "keyword"
+                                            },
+                                            "transcriptome_annotation": {
+                                                "type": "keyword"
+                                            },
+                                            "upload_credentials": {
+                                                "properties": {},
+                                                "type": "object"
+                                            },
+                                            "upload_status": {
+                                                "type": "keyword"
+                                            },
+                                            "uuid": {
+                                                "type": "keyword"
+                                            },
+                                            "validation_error_detail": {
+                                                "type": "keyword"
+                                            },
+                                            "workflow": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "lab": {
+                                        "type": "keyword"
+                                    },
+                                    "large_scale_gene_list": {
+                                        "type": "keyword"
+                                    },
+                                    "large_scale_loci_list": {
+                                        "type": "keyword"
+                                    },
+                                    "lot_id": {
+                                        "type": "keyword"
+                                    },
+                                    "lower_bound_guide_coverage": {
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "lower_bound_insert_size": {
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "notes": {
+                                        "type": "text"
+                                    },
+                                    "orf_list": {
+                                        "type": "keyword"
+                                    },
+                                    "product_id": {
+                                        "type": "keyword"
+                                    },
+                                    "publications": {
+                                        "type": "keyword"
+                                    },
+                                    "release_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "revoke_detail": {
+                                        "type": "keyword"
+                                    },
+                                    "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "scope": {
+                                        "type": "keyword"
+                                    },
+                                    "selection_criteria": {
+                                        "type": "keyword"
+                                    },
+                                    "small_scale_gene_list": {
+                                        "type": "keyword"
+                                    },
+                                    "small_scale_loci_list": {
+                                        "properties": {
+                                            "assembly": {
+                                                "type": "keyword"
+                                            },
+                                            "chromosome": {
+                                                "type": "keyword"
+                                            },
+                                            "end": {
+                                                "store": true,
+                                                "type": "long"
+                                            },
+                                            "start": {
+                                                "store": true,
+                                                "type": "long"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "sources": {
+                                        "type": "keyword"
+                                    },
+                                    "status": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_by": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_files_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "submitter_comment": {
+                                        "type": "keyword"
+                                    },
+                                    "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "targeton": {
+                                        "type": "keyword"
+                                    },
+                                    "tile": {
+                                        "properties": {
+                                            "tile_end": {
+                                                "store": true,
+                                                "type": "long"
+                                            },
+                                            "tile_id": {
+                                                "type": "keyword"
+                                            },
+                                            "tile_start": {
+                                                "store": true,
+                                                "type": "long"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "tiling_modality": {
+                                        "type": "keyword"
+                                    },
+                                    "upper_bound_guide_coverage": {
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "upper_bound_insert_size": {
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "uuid": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "creation_timestamp": {
                                 "type": "date"
