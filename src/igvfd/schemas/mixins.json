@@ -450,12 +450,14 @@
                 "GENCODE 43",
                 "GENCODE 44",
                 "GENCODE 45",
+                "GENCODE 47",
                 "GENCODE Cast - M32",
                 "GENCODE M30",
                 "GENCODE M31",
                 "GENCODE M32",
                 "GENCODE M33",
-                "GENCODE M34"
+                "GENCODE M34",
+                "GENCODE M36"
             ],
             "submissionExample": {
                 "appscript": "GENCODE 40",

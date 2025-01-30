@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 12
 
+* Extend `transcriptome_annotation` enum list to include `GENCODE 47`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE M36`.
 * Add `workflow`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Add `checkfiles_version`.
