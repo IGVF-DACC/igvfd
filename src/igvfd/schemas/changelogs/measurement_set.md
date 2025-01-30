@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 23
 
-* Extend `preferred_assay_title` enum list ot include `scMito-seq`.
+* Extend `preferred_assay_title` enum list to include `scMito-seq`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Add `onlist_files`.
 * Add `onlist_method`.
