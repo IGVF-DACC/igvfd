@@ -137,5 +137,15 @@
         "release_timestamp": "2024-07-06T12:34:56Z",
         "status": "released",
         "uuid": "61241e42-a702-46ee-9a2b-15e5adf53ab7"
+    },
+    {
+        "term_id": "OBI:0002764",
+        "term_name": "single-cell ATAC-seq",
+        "preferred_assay_titles": [
+            "scMito-seq"
+        ],
+        "release_timestamp": "2024-07-06T12:34:56Z",
+        "status": "released",
+        "uuid": "ca926574-4695-4be3-8ff5-549aa62ac72e"
     }
 ]
