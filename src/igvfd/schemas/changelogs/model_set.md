@@ -2,7 +2,7 @@
 
 ### Schema version 5
 
-* Add `software_versions`.
+* Add calculated property `software_versions`.
 * Remove `software_version`.
 
 ### Minor changes since schema version 4
