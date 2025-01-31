@@ -15,7 +15,8 @@
             "base calling",
             "computational model training",
             "computational model prediction",
-            "transcriptome index generation"
+            "transcriptome index generation",
+            "genome index generation"
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "input_content_types": [

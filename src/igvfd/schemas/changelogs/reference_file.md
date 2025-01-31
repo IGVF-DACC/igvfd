@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 15
 
+* Extend `content_type` enum list to include `genome index`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 47`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE M36`.
 * Extend `content_type` enum list to include `transcriptome index`.
