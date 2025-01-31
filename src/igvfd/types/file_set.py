@@ -73,6 +73,7 @@ class FileSet(Item):
             'aliases',
             'treatments',
             'cell_fate_change_treatments',
+            'cellular_sub_pool',
             'classifications',
             'construct_library_sets',
             'disease_terms',
