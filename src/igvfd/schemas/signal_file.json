@@ -38,6 +38,9 @@
             "$ref": "mixins.json#/documents"
         },
         {
+            "$ref": "mixins.json#/filtered"
+        },
+        {
             "$ref": "mixins.json#/processed_files"
         },
         {
@@ -140,15 +143,6 @@
             "submissionExample": {
                 "appscript": "unstranded",
                 "igvf_utils": "unstranded"
-            }
-        },
-        "filtered": {
-            "title": "Filtered",
-            "description": "Indicates if the signal file is filtered.",
-            "type": "boolean",
-            "submissionExample": {
-                "appscript": true,
-                "igvf_utils": true
             }
         },
         "normalized": {

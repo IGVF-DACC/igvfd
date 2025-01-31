@@ -545,6 +545,15 @@
             }
         }
     },
+    "filtered": {
+        "title": "Filtered",
+        "description": "Indicates whether reads that did not pass a filtering step, such as PCR duplicates, have been removed from the file.",
+        "type": "boolean",
+        "submissionExample": {
+            "appscript": true,
+            "igvf_utils": true
+        }
+    },
     "loci": {
         "small_scale_loci_list": {
             "title": "Small Scale Loci List",

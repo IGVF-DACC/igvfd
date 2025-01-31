@@ -37,6 +37,9 @@
             "$ref": "mixins.json#/documents"
         },
         {
+            "$ref": "mixins.json#/filtered"
+        },
+        {
             "$ref": "mixins.json#/transcriptome_annotation"
         },
         {
@@ -221,15 +224,6 @@
             "submissionExample": {
                 "appscript": "tsv",
                 "igvf_utils": "tsv"
-            }
-        },
-        "filtered": {
-            "title": "Filtered",
-            "description": "Indicates whether reads that did not pass a filtering step, such as PCR duplicates, have been removed from the file.",
-            "type": "boolean",
-            "submissionExample": {
-                "appscript": true,
-                "igvf_utils": true
             }
         },
         "assembly": {
