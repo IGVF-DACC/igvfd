@@ -548,7 +548,7 @@
     "filtered": {
         "filtered": {
             "title": "Filtered",
-            "description": "Indicates whether reads that did not pass a filtering step, such as PCR duplicates, have been removed from the file.",
+            "description": "Indicates whether the file has gone through some filtering step, for removal of PCR duplicates or filtering based on significance calling.",
             "type": "boolean",
             "submissionExample": {
                 "appscript": true,
