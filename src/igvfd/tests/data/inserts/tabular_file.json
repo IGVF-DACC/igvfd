@@ -17,6 +17,7 @@
         "file_size": 738031,
         "upload_status": "validated",
         "assembly": "GRCh38",
+        "filtered": true,
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
     },

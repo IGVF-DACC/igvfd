@@ -1,6 +1,6 @@
 {
-    "hash": "42bdca0232ae3cc74c6012ec151c3ef1",
-    "index_name": "prediction_set_42bdca02",
+    "hash": "a753c4a1741ae2f5573182c09123db21",
+    "index_name": "prediction_set_a753c4a1",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1270,6 +1270,10 @@
                                 "store": true,
                                 "type": "long"
                             },
+                            "filtered": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "gene_list_for": {
                                 "type": "keyword"
                             },
@@ -1441,6 +1445,10 @@
                             "file_size": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "filtered": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "gene_list_for": {
                                 "type": "keyword"

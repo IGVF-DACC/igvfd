@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Add `filtered`.
 * Extend `secondary_dimensions` enum list to include `barcode count`.
 * Extend `content_type` enum list to include `sample barcode count matrix`.
 * Add `workflow`.
