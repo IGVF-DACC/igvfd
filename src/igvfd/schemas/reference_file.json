@@ -139,6 +139,8 @@
                         "exclusion list",
                         "inclusion list",
                         "spike-ins",
+                        "nascent transcriptome index",
+                        "transcriptome index",
                         "transcriptome reference"
                     ]
                 },
@@ -209,6 +211,8 @@
                 "exclusion list": "An exclusion list file contains a set of genomic regions or specific sequences that should be ignored or excluded during data analysis.",
                 "inclusion list": "An inclusion list file contains a set of specific genomic regions or sequences that should be included or focused on during data analysis.",
                 "spike-ins": "Nucleic acid fragments of known sequence and quantity used for calibration in high-throughput sequencing.",
+                "nascent transcriptome index": "A reference file consisting of nascent transcriptome index which contains both nascent transcripts and cDNAs and therefore can be used for applications where quantifying intron-spanning reads is important, such as single-nucleus RNA-seq or biophysical models that jointly consider spliced and unspliced transcripts.",
+                "transcriptome index": "A reference file consisting of standard transcriptome index which does not contain introns and is therefore only suitable for quantifying bulk and single-cell RNA-seq.",
                 "transcriptome_reference": "A reference file consisting of all known transcripts or coding regions of the genome."
             },
             "submissionExample": {

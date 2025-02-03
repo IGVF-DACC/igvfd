@@ -406,5 +406,21 @@
         "assembly": "custom",
         "controlled_access": false,
         "external": false
+    },
+    {
+        "uuid": "fcbdd56c-b4fe-4b70-be0e-77aac82a439c",
+        "aliases": [
+            "charles-gersbach:kallisto_transcriptome_index"
+        ],
+        "lab": "charles-gersbach",
+        "award": "1UM1HG012053-01",
+        "md5sum": "3c166d930e3bc2c182fa75acecdcc1bb",
+        "file_format": "tar",
+        "content_type": "transcriptome index",
+        "file_set": "igvf-dacc:GRCh38.p14_assembly",
+        "assembly": "GRCh38",
+        "controlled_access": false,
+        "external": false,
+        "analysis_step_version": "igvf-dacc:analysis_step_version_01"
     }
 ]

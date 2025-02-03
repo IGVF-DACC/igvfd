@@ -14,7 +14,8 @@
             "alignment",
             "base calling",
             "computational model training",
-            "computational model prediction"
+            "computational model prediction",
+            "transcriptome index generation"
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "input_content_types": [
@@ -29,7 +30,8 @@
             "inclusion list",
             "exclusion list",
             "elements reference",
-            "genome reference"
+            "genome reference",
+            "transcriptome index"
         ],
         "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2"
     },

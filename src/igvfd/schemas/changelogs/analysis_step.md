@@ -2,6 +2,11 @@
 
 ### Minor changes since schema version 5
 
+* Extend `output_content_types` enum list to include `nascent transcriptome index`.
+* Extend `input_content_types` enum list to include `nascent transcriptome index`.
+* Extend `output_content_types` enum list to include `transcriptome index`.
+* Extend `input_content_types` enum list to include `transcriptome index`.
+* Extend `analysis_step_types` enum list to include `transcriptome index generation`.
 * Extend `analysis_step_types` enum list to include `computational model training`.
 * Extend `analysis_step_types` enum list to include `computational model prediction`.
 * Extend `output_content_types` enum list to include `sample barcode count matrix`.
