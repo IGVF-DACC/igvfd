@@ -111,6 +111,15 @@ def assay_term_y2h(testapp):
 
 
 @pytest.fixture
+def assay_term_CRISPR_sorted(testapp):
+    item = {
+        'term_id': 'OBI:0003661',
+        'term_name': 'in vitro CRISPR screen using flow cytometry'
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def assay_term_v2(assay_term_v1):
     item = assay_term_v1.copy()
     item.update({

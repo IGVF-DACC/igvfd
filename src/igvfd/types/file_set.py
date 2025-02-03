@@ -807,7 +807,7 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, assay_term, preferred_assay_title=None, samples=None, control_type=None):
+    def summary(self, request, assay_term, preferred_assay_title=None, samples=None, control_type=None, targeted_genes=None):
         assay = request.embed(assay_term)['term_name']
         modality_set = set()
         cls_set = set()
@@ -816,6 +816,7 @@ class MeasurementSet(FileSet):
         cls_phrase = ''
         modality_phrase = ''
         assay_phrase = ''
+        target_phrase = ''
 
         for sample in samples:
             sample_object = request.embed(sample, '@@object')
@@ -835,6 +836,23 @@ class MeasurementSet(FileSet):
             assay = f'{assay} ({preferred_assay_title})'
         else:
             assay = preferred_assay_title
+
+        if targeted_genes:
+            # Special case for CRISPR screens using flow cytometry
+            if request.embed(assay_term)['term_id'] == 'OBI:0003661':
+                target_phrase = f' sorted on the expression of'
+            else:
+                target_phrase = f' targeting'
+            if len(targeted_genes) > 5:
+                target_phrase = f'{target_phrase} {len(targeted_genes)} genes'
+            elif len(targeted_genes) <= 5:
+                genes = []
+                for targeted_gene in targeted_genes:
+                    gene_object = request.embed(targeted_gene, '@@object?skip_calculated=true')
+                    gene_name = (gene_object.get('symbol'))
+                    genes.append(gene_name)
+                genes = sorted(genes)
+                target_phrase = f'{target_phrase} {", ".join(genes)}'
 
         if control_type:
             control_phrase = f'{control_type} '
@@ -879,6 +897,7 @@ class MeasurementSet(FileSet):
             control_phrase,
             modality_phrase,
             assay_phrase,
+            target_phrase,
             cls_phrase,
         ]
         for phrase in sentence_parts:
