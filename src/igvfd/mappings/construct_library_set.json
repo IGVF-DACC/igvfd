@@ -1,6 +1,6 @@
 {
-    "hash": "9a734b8d392f3f75fca0805a7d7e7bf9",
-    "index_name": "construct_library_set_9a734b8d",
+    "hash": "804152f27e53e1b78e72a7fb3825dd27",
+    "index_name": "construct_library_set_804152f2",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1815,6 +1815,10 @@
                                 "store": true,
                                 "type": "long"
                             },
+                            "filtered": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "gene_list_for": {
                                 "type": "keyword"
                             },
@@ -2047,6 +2051,10 @@
                                 "store": true,
                                 "type": "long"
                             },
+                            "filtered": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "gene_list_for": {
                                 "type": "keyword"
                             },
@@ -2218,6 +2226,10 @@
                             "file_size": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "filtered": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "gene_list_for": {
                                 "type": "keyword"

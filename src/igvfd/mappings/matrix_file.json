@@ -1,6 +1,6 @@
 {
-    "hash": "0ad4fbc5ef1ea0801d36375c4c208780",
-    "index_name": "matrix_file_0ad4fbc5",
+    "hash": "91e4d6f017ab90d0e153353501b85961",
+    "index_name": "matrix_file_91e4d6f0",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1276,6 +1276,10 @@
                     "file_size": {
                         "store": true,
                         "type": "long"
+                    },
+                    "filtered": {
+                        "store": true,
+                        "type": "boolean"
                     },
                     "gene_list_for": {
                         "type": "keyword"
