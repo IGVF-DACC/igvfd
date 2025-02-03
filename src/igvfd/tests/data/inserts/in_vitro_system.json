@@ -238,6 +238,7 @@
         "sources": [
             "/labs/j-michael-cherry/"
         ],
+        "nucleic_acid_delivery": "lipofectamine",
         "demultiplexed_from": "IGVFSM0001AAAZ",
         "growth_medium": "DMEM with serum",
         "virtual": false,
@@ -281,7 +282,7 @@
         "biosample_qualifiers": [
             "6 days calcified"
         ],
-        "nucleic_acid_delivery": "transfection",
+        "nucleic_acid_delivery": "electroporation",
         "modifications": [
             "b4a370ee-18a7-2857-bc2b-b157d05f4458"
         ]
