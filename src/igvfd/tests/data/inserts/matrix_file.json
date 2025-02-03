@@ -173,5 +173,29 @@
             "barcode count"
         ],
         "analysis_step_version": "igvf-dacc:analysis_step_version_02"
+    },
+    {
+        "uuid": "a26c9840-c47f-4065-a8ae-6fa10ba6e174",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_robj_1"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "77d03604f1faf938d80d58a9a7f03977",
+        "file_format": "Robj",
+        "content_type": "sparse peak count matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/matrix_file_robj_1.robj",
+        "file_size": 5200010,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
+            "peak"
+        ]
     }
 ]
