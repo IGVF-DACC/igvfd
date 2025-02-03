@@ -438,7 +438,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "24"
+            "default": "25"
         },
         "classifications": {
             "title": "Classifications",
@@ -612,7 +612,8 @@
                 "description": "An array of various cell states. This property provides additional information about a cell at a finer-grained level compared to what ontologies currently capture. For example, exhausted T-cells.",
                 "type": "string",
                 "enum": [
-                    "calcified",
+                    "calcification 6 days",
+                    "calcification 10 days",
                     "exhausted"
                 ]
             },

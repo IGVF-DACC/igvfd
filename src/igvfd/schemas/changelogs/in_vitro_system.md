@@ -1,5 +1,11 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 25
+
+* Remove `calcified` from `biosample_qualifiers`
+* Add `calcification 6 days` to enum list of `biosample_qualifiers`
+* Add `calcification 10 days` to enum list of `biosample_qualifiers`
+
 ### Schema version 24
 
 * Require `targeted_sample_term`, `time_post_change`, `time_post_change_units` and one of `cell_fate_change_treatments` or `cell_fate_change_protocols`  if `classification` is `gastruloid`.
