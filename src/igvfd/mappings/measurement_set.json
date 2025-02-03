@@ -1,6 +1,6 @@
 {
-    "hash": "22893b12b29a93447ae71d4c84de74ea",
-    "index_name": "measurement_set_22893b12",
+    "hash": "32dc3ea3e6583af3d19af66828f50e6b",
+    "index_name": "measurement_set_32dc3ea3",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -717,7 +717,7 @@
                                 },
                                 "type": "object"
                             },
-                            "software_version": {
+                            "software_versions": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1022,7 +1022,7 @@
                                 },
                                 "type": "object"
                             },
-                            "software_version": {
+                            "software_versions": {
                                 "type": "keyword"
                             },
                             "sources": {

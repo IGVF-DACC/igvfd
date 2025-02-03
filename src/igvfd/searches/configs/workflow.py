@@ -7,7 +7,7 @@ from snovault.elasticsearch.searches.configs import search_config
 def workflow():
     return {
         'facets': {
-            'analysis_steps.analysis_step_versions.software_versions.software.name': {
+            'analysis_steps.analysis_step_versions.software_versions.software.title': {
                 'title': 'Software',
             },
             'analysis_steps.analysis_step_types': {
@@ -45,7 +45,7 @@ def workflow():
             {
                 'title': 'Workflow',
                 'facet_fields': [
-                    'analysis_steps.analysis_step_versions.software_versions.software.name',
+                    'analysis_steps.analysis_step_versions.software_versions.software.title',
                     'analysis_steps.analysis_step_types',
                     'analysis_steps.output_content_types',
                 ],

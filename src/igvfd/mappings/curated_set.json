@@ -1,6 +1,6 @@
 {
-    "hash": "274e4d8d7bbf9629efb2aceefca56fa8",
-    "index_name": "curated_set_274e4d8d",
+    "hash": "b3a92c78e976dd4a386b8f4060bdc650",
+    "index_name": "curated_set_b3a92c78",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -534,7 +534,7 @@
                                 },
                                 "type": "object"
                             },
-                            "software_version": {
+                            "software_versions": {
                                 "type": "keyword"
                             },
                             "sources": {

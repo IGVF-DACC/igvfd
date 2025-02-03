@@ -1,6 +1,6 @@
 {
-    "hash": "c8efff1063914694fcb74f1708a06df6",
-    "index_name": "analysis_set_c8efff10",
+    "hash": "43128dd31a13acec23306e056c996cba",
+    "index_name": "analysis_set_43128dd3",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -534,7 +534,7 @@
                                 },
                                 "type": "object"
                             },
-                            "software_version": {
+                            "software_versions": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1329,7 +1329,7 @@
                                 },
                                 "type": "object"
                             },
-                            "software_version": {
+                            "software_versions": {
                                 "type": "keyword"
                             },
                             "sources": {

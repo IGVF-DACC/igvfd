@@ -10,8 +10,7 @@
         "model_name",
         "file_set_type",
         "model_version",
-        "prediction_objects",
-        "software_version"
+        "prediction_objects"
     ],
     "identifyingProperties": [
         "uuid",
@@ -56,7 +55,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "5"
         },
         "model_name": {
             "title": "Model Name",
@@ -133,16 +132,6 @@
             "submissionExample": {
                 "appscript": "https://kipoi.org/models/Basset/",
                 "igvf_utils": "https://kipoi.org/models/Basset/"
-            }
-        },
-        "software_version": {
-            "title": "Software Version",
-            "description": "Version of software used for the derivation of this model set.",
-            "type": "string",
-            "linkTo": "SoftwareVersion",
-            "submissionExample": {
-                "appscript": "igvf:bedtoolsv109 or bedtools-v.1.0.9",
-                "igvf_utils": "igvf:bedtoolsv109 or bedtools-v.1.0.9"
             }
         },
         "assessed_genes": {

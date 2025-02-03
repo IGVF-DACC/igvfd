@@ -22,6 +22,9 @@ def model_set():
             'files.file_format': {
                 'title': 'File Format',
             },
+            'software_versions.software.title': {
+                'title': 'Software',
+            },
             'collections': {
                 'title': 'Collections',
             },
@@ -67,6 +70,12 @@ def model_set():
                 'facet_fields': [
                     'files.content_type',
                     'files.file_format',
+                ],
+            },
+            {
+                'title': 'Software',
+                'facet_fields': [
+                    'software_versions.software.title'
                 ],
             },
             {

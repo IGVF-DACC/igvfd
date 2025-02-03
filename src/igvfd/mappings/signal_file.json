@@ -1,6 +1,6 @@
 {
-    "hash": "5cae71fd2ef4ddec92ed9c3057a7921a",
-    "index_name": "signal_file_5cae71fd",
+    "hash": "56599ada32cd9fbd63766fe88242cb6d",
+    "index_name": "signal_file_56599ada",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -1287,7 +1287,7 @@
                                 },
                                 "type": "object"
                             },
-                            "software_version": {
+                            "software_versions": {
                                 "type": "keyword"
                             },
                             "sources": {

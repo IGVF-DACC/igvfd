@@ -1,6 +1,6 @@
 {
-    "hash": "ff56c17904244518c7b5942eb2929550",
-    "index_name": "image_file_ff56c179",
+    "hash": "c3ba053cb69a2c6bdbbd3d15793df858",
+    "index_name": "image_file_c3ba053c",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -1197,7 +1197,7 @@
                                 },
                                 "type": "object"
                             },
-                            "software_version": {
+                            "software_versions": {
                                 "type": "keyword"
                             },
                             "sources": {

@@ -936,11 +936,12 @@ class ModelSet(FileSet):
     schema = load_schema('igvfd:schemas/model_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('input_file_sets', include=['@id', 'accession', 'aliases', 'status']),
-        Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status'])
+        Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
+        Path('software_versions.software', include=['@id', 'summary', 'title', 'source_url', 'download_id', 'status'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + [
-        'software_version'
+        'software_versions'
     ]
     set_status_down = FileSet.set_status_down + []
 
@@ -969,6 +970,38 @@ class ModelSet(FileSet):
                 if file_object.get('externally_hosted'):
                     externally_hosted_value = True
         return externally_hosted_value
+
+    @calculated_property(
+        schema={
+            'title': 'Software Versions',
+            'description': 'The software versions used to produce this predictive model.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Software Version',
+                'description': 'A software version used to produce this predictive model.',
+                'type': 'string',
+                'linkTo': 'SoftwareVersion',
+            },
+            'notSubmittable': True
+
+        }
+    )
+    def software_versions(self, request, files=None):
+        software_versions = []
+        if files:
+            for file in files:
+                if file.startswith('/model-files/'):
+                    file_object = request.embed(file, '@@object?skip_calculated=true')
+                    analysis_step_version = file_object.get('analysis_step_version', '')
+                    if analysis_step_version:
+                        analysis_step_version_object = request.embed(
+                            analysis_step_version, '@@object?skip_calculated=true')
+                        software_versions = software_versions + \
+                            analysis_step_version_object.get('software_versions', [])
+        if software_versions:
+            return list(set(software_versions))
 
 
 @collection(
