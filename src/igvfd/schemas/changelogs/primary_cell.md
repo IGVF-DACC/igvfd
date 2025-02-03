@@ -8,6 +8,7 @@
 
 ### Minor changes since schema version 21
 
+* Extend `nucleic_acid_delivery` enum list to include `lipofectamine` and `electroporation`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Extend `biosample_qualifiers` enum list to include `calcified`.
 * Extend `status` enum list to include `preview`.

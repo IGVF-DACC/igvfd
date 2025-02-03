@@ -217,9 +217,11 @@
             "description": "Method of introduction of nucleic acid into the cell.",
             "type": "string",
             "enum": [
-                "transfection",
                 "adenoviral transduction",
-                "lentiviral transduction"
+                "lipofectamine",
+                "electroporation",
+                "lentiviral transduction",
+                "transfection"
             ],
             "submissionExample": {
                 "appscript": "transfection",

@@ -1,5 +1,6 @@
 ## Changelog for *`sample.json`*
 
+* Extend `nucleic_acid_delivery` enum list to include `lipofectamine` and `electroporation`. (02/03/2025)
 * Extend `status` enum list to include `preview`. (11/22/2024)
 * Remove `publication_identifiers`. (07/31/2024)
 * Restrict `publication_identifiers` to submission by admins only. (07/17/2024)
