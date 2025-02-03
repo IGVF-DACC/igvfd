@@ -39,6 +39,9 @@
             "$ref": "mixins.json#/documents"
         },
         {
+            "$ref": "mixins.json#/filtered"
+        },
+        {
             "$ref": "mixins.json#/processed_files"
         },
         {

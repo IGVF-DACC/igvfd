@@ -481,5 +481,5 @@ def model_set_4_5(value, system):
     software_version = value.get('software_version', '')
     if software_version:
         notes += f' This model set previously specified {software_version}, but this property has been removed and replaced by software_versions calculated through analysis_step_version on the model file.'
-        value['notes'] = notes
+        value['notes'] = notes.strip()
         del value['software_version']
