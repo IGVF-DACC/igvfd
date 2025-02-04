@@ -97,7 +97,7 @@ def audit_missing_seqspec(value, system):
             "audit_description": "Sequence files in a file set associated with single cell data are expected to link to a sequence specification file.",
             "audit_category": "missing sequence specification",
             "audit_level": "NOT_COMPLIANT"
-        },
+        }
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
