@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 13
 
+* Extend `transcriptome_annotation` enum list to include `GENCODE 47`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE M36`.
 * Add `filtered`.
 * Add `workflow`.
 * Extend `content_type` enum list to include `reporter experiment barcode`.

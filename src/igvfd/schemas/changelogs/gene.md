@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 8
 
+* Extend `transcriptome_annotation` enum list to include `GENCODE 47`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE M36`.
 * Extend `status` enum list to include `preview`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 32`.
 * Extend `locations.assembly` enum list to include `custom`.

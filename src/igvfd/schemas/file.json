@@ -207,7 +207,8 @@
                                     "GENCODE M31",
                                     "GENCODE M32",
                                     "GENCODE M33",
-                                    "GENCODE M34"
+                                    "GENCODE M34",
+                                    "GENCODE M36"
                                 ]
                             }
                         }
@@ -255,7 +256,8 @@
                                     "GENCODE 42",
                                     "GENCODE 43",
                                     "GENCODE 44",
-                                    "GENCODE 45"
+                                    "GENCODE 45",
+                                    "GENCODE 47"
                                 ]
                             }
                         }
