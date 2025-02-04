@@ -137,6 +137,7 @@
                 "Migration CRISPR screen",
                 "CRISPR FlowFISH screen",
                 "CRISPR FACS screen",
+                "CRISPR MACS screen",
                 "CRISPR mCherry screen",
                 "HCR-FlowFISH screen",
                 "scCRISPR screen",
