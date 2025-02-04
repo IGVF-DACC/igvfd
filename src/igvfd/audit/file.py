@@ -102,7 +102,7 @@ def audit_external_reference_files(value, system):
         {
             "audit_description": "Reference files uploaded from external resources are expected to have external identifiers in dbxrefs.",
             "audit_category": "missing dbxrefs",
-            "audit_level": "WARNING"
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
