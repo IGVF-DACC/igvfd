@@ -32,15 +32,14 @@ def single_cell_check(system, value, object_type):
         assay_term = value.get('assay_term')
         return assay_term in single_cell_assay_terms
     elif object_type == 'Auxiliary set':
-        assay_terms = []
         measurement_sets = value.get('measurement_sets')
         for measurement_set in measurement_sets:
             measurement_set_obj = system.get('request').embed(measurement_set, '@@object?skip_calculated=true')
             assay_term = measurement_set_obj.get('assay_term')
-            assay_terms.append(assay_term)
-        return any(assay in single_cell_assay_terms for assay in assay_terms)
+            if assay_term in single_cell_assay_terms:
+                return True
+        return False
     elif object_type == 'Construct library set':
-        assay_terms = []
         samples = value.get('applied_to_samples')
         for sample in samples:
             sample_obj = system.get('request').embed(sample)
@@ -49,16 +48,18 @@ def single_cell_check(system, value, object_type):
                 if file_set.startswith('/measurement-sets/'):
                     measurement_set_obj = system.get('request').embed(measurement_set, '@@object?skip_calculated=true')
                     assay_term = measurement_set_obj.get('assay_term')
-                    assay_terms.append(assay_term)
-        return any(assay in single_cell_assay_terms for assay in assay_terms)
+                    if assay_term in single_cell_assay_terms:
+                        return True
+        return False
     elif object_type == 'Analysis set':
-        assay_terms = []
         for input_file_set in value.get('input_file_sets', []):
             if input_file_set.startswith('/measurement-sets/'):
                 measurement_set_obj = system.get('request').embed(input_file_set, '@@object?skip_calculated=true')
                 assay_term = measurement_set_obj.get('assay_term')
                 assay_terms.append(assay_term)
-        return any(assay in single_cell_assay_terms for assay in assay_terms)
+                if assay_term in single_cell_assay_terms:
+                    return True
+        return False
     else:
         return False
 
