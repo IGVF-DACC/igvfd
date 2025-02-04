@@ -318,7 +318,6 @@ def audit_inconsistent_sequencing_kit(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_inconsistent_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=0)
-    audit_message_missing_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=1)
     if 'files' in value:
         file_info = {}
         for file in value['files']:
@@ -351,9 +350,9 @@ def audit_inconsistent_sequencing_kit(value, system):
 
     if missing_kit:
         if single_cell_check(system, value, object_type):
-            audit_message_missing_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=1)
-        else:
             audit_message_missing_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=2)
+        else:
+            audit_message_missing_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=1)
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence '
             f'file(s) {", ".join([audit_link(path_to_text(f), f) for f in missing_kit])} '
