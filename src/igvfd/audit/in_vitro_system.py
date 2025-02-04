@@ -41,7 +41,7 @@ def audit_cell_fate_change_treatments_purpose(value, system):
         {
             "audit_description": "Cell fate change treatments are expected to have a purpose associated with cell fate change.",
             "audit_category": "inconsistent treatment purpose",
-            "audit_level": "WARNING"
+            "audit_level": "ERROR"
         }
     ]
     '''

@@ -257,7 +257,7 @@ def test_audit_preferred_assay_title(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent preferred assay title'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
         assay_term_starr['@id'],
@@ -268,7 +268,7 @@ def test_audit_preferred_assay_title(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent preferred assay title'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
 
 
@@ -400,7 +400,8 @@ def test_audit_missing_seqspec(
     testapp,
     measurement_set,
     sequence_file,
-    configuration_file_seqspec
+    configuration_file_seqspec,
+    assay_term_scrna
 ):
     testapp.patch_json(
         sequence_file['@id'],
@@ -412,6 +413,21 @@ def test_audit_missing_seqspec(
     assert any(
         error['category'] == 'missing sequence specification'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_scrna['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    assert any(
+        error['category'] == 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         configuration_file_seqspec['@id'],
@@ -635,7 +651,8 @@ def test_audit_inconsistent_sequencing_kit(
     measurement_set,
     sequence_file,
     sequence_file_sequencing_run_2,
-    platform_term_NovaSeq
+    platform_term_NovaSeq,
+    assay_term_scrna
 ):
     testapp.patch_json(
         sequence_file['@id'],
@@ -648,6 +665,22 @@ def test_audit_inconsistent_sequencing_kit(
         error['category'] == 'missing sequencing kit'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_scrna['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequencing kit'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    assert any(
+        error['category'] == 'missing sequencing kit'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.pa
     testapp.patch_json(
         sequence_file['@id'],
         {
@@ -759,7 +792,7 @@ def test_audit_missing_auxiliary_set_link(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing auxiliary set'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
         measurement_set['@id'],
@@ -770,7 +803,7 @@ def test_audit_missing_auxiliary_set_link(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing auxiliary set'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
 
 
@@ -1005,7 +1038,7 @@ def test_audit_targeted_genes(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'unexpected targeted genes'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
 
 
@@ -1077,7 +1110,7 @@ def test_audit_missing_read_names(
     res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing read names'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         sequence_file['@id'],
@@ -1088,7 +1121,7 @@ def test_audit_missing_read_names(
     res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing read names'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         sequence_file['@id'],
@@ -1119,7 +1152,7 @@ def test_audit_onlist(testapp, measurement_set_one_onlist, measurement_set, assa
     res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing barcode onlist'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     # Patch a correct single cell measurement set to be a non-single cell to see if no onlist needed audit shows
     testapp.patch_json(
@@ -1131,13 +1164,13 @@ def test_audit_onlist(testapp, measurement_set_one_onlist, measurement_set, assa
     res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
     assert any(
         error['category'] == 'unexpected barcode onlist'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
     # Check if a non-scRNAseq MeaSet without onlist files and method will trigger warnings.
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing barcode onlist'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     # Patch the basic MeaSet to be scRNAseq without an onlist method or files to trigger audit
     testapp.patch_json(
@@ -1150,7 +1183,7 @@ def test_audit_onlist(testapp, measurement_set_one_onlist, measurement_set, assa
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing barcode onlist'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
 
@@ -1159,13 +1192,13 @@ def test_audit_inconsistent_barcode_onlist(testapp, measurement_set_one_onlist, 
     res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent barcode onlist'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
     # Check if the measurement set fixture with two file and combination method is audit-free
     res = testapp.get(measurement_set_two_onlists['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent barcode onlist'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
     # Add another onlist file to a MeaSet that is no-combination for onlist method.
     testapp.patch_json(
@@ -1177,7 +1210,7 @@ def test_audit_inconsistent_barcode_onlist(testapp, measurement_set_one_onlist, 
     res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent barcode onlist'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
     # Remove an onlist file to a MeaSet with a combination onlist method.
     testapp.patch_json(
@@ -1189,7 +1222,7 @@ def test_audit_inconsistent_barcode_onlist(testapp, measurement_set_one_onlist, 
     res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent barcode onlist'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
 
 
@@ -1198,7 +1231,7 @@ def test_audit_unexpected_onlist_files(testapp, measurement_set_one_onlist, tabu
     res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
     assert all(
         error['category'] != 'unexpected onlist files'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
     # Check if other content type will trigger warning
     testapp.patch_json(
@@ -1210,5 +1243,5 @@ def test_audit_unexpected_onlist_files(testapp, measurement_set_one_onlist, tabu
     res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
     assert any(
         error['category'] == 'unexpected onlist files'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
