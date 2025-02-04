@@ -536,3 +536,55 @@ def audit_MPRA_read_names(value, system):
             f'{unexpected_read_names} with `read_names` not associated with the MPRA uniform processing pipeline.'
         )
         yield AuditFailure(audit_message_unexpected.get('audit_category', ''), f'{detail} {audit_message_unexpected.get("audit_description", "")}', level=audit_message_unexpected.get('audit_level', ''))
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_single_cell_read_names(value, system):
+    '''
+    [
+        {
+            "audit_description": "Sequence files are expected to have read names.",
+            "audit_category": "missing read names",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Single cell assay measurement sets are only expected to have sequence files with read names: Read 1, Read 2, and Barcode index.",
+            "audit_category": "unexpected read names",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    audit_message_missing_read_names = get_audit_message(audit_single_cell_read_names, index=0)
+    audit_message_unexpected_read_names = get_audit_message(audit_single_cell_read_names, index=1)
+    # Check read_names info on SeqFile objects from single cell MeaSet
+    # Either sort the errors into missing or unexpected read names
+    if single_cell_check(system, value, 'Measurement set'):
+        if 'files' in value:
+            missing_read_names = []
+            unexpected_read_names = []
+            for file in value['files']:
+                if file.startswith('/sequence-files/'):
+                    sequence_file_object = system.get('request').embed(file)
+                    read_names = sequence_file_object.get('read_names', '')
+                    if read_names:
+                        if any(read_name not in ['Read 1', 'Read 2', 'Barcode index'] for read_name in read_names):
+                            unexpected_read_names.append(file)
+                    else:
+                        missing_read_names.append(file)
+        # Audit for missing read names
+        if missing_read_names:
+            for file in missing_read_names:
+                detail = (
+                    f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has a sequence '
+                    f'file {audit_link(path_to_text(file), file)} missing `read_names`.'
+                )
+                yield AuditFailure(audit_message_missing_read_names.get('audit_category', ''), f'{detail} {audit_message_missing_read_names.get("audit_description", "")}', level=audit_message_missing_read_names.get('audit_level', ''))
+        # Audit for unexpected read names
+        if unexpected_read_names:
+            for file in unexpected_read_names:
+                detail = (
+                    f'Single cell Measurement Set {audit_link(path_to_text(value["@id"]), value["@id"])} has a sequence '
+                    f'file {audit_link(path_to_text(file), file)} with `read_names` not associated with the single cell uniform processing '
+                    f'pipeline.'
+                )
+                yield AuditFailure(audit_message_unexpected_read_names.get('audit_category', ''), f'{detail} {audit_message_unexpected_read_names.get("audit_description", "")}', level=audit_message_unexpected_read_names.get('audit_level', ''))
