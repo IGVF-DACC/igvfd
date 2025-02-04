@@ -132,7 +132,8 @@
                 "time",
                 "treatment",
                 "variant",
-                "genomic position"
+                "genomic position",
+                "spot barcode"
             ],
             "submissionExample": {
                 "appscript": "cell",

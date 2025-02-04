@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Extend `principal_dimension` enum list to include `spot barcode`.
 * Extend `file_format` enum list to include `Robj`.
 * Add `filtered`.
 * Extend `secondary_dimensions` enum list to include `barcode count`.
