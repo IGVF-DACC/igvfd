@@ -51,6 +51,16 @@ def single_cell_check(system, value, object_type):
                     assay_term = measurement_set_obj.get('assay_term')
                     assay_terms.append(assay_term)
         return any(assay in single_cell_assay_terms for assay in assay_terms)
+    elif object_type == 'Analysis set':
+        assay_terms = []
+        for input_file_set in value.get('input_file_sets', []):
+            if input_file_set.startswith('/measurement-sets/'):
+                measurement_set_obj = system.get('request').embed(input_file_set, '@@object?skip_calculated=true')
+                assay_term = measurement_set_obj.get('assay_term')
+                assay_terms.append(assay_term)
+        return any(assay in single_cell_assay_terms for assay in assay_terms)
+    else:
+        return False
 
 
 @audit_checker('FileSet', frame='object')
@@ -60,13 +70,13 @@ def audit_no_files(value, system):
         {
             "audit_description": "File sets are expected to have files.",
             "audit_category": "missing files",
-            "audit_level": "WARNING"
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_missing_files = get_audit_message(audit_no_files, index=0)
-    if not (value.get('files', '')):
+    if not (value.get('files', '')) and object_type != 'Construct library set':
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `files`.'
@@ -79,14 +89,18 @@ def audit_missing_seqspec(value, system):
     '''
     [
         {
-            "audit_description": "Sequence files in a file set are expected to link to a sequence specification file.",
+            "audit_description": "Sequence files in a file set associated with bulk data are expected to link to a sequence specification file.",
             "audit_category": "missing sequence specification",
             "audit_level": "INTERNAL_ACTION"
-        }
+        },
+        {
+            "audit_description": "Sequence files in a file set associated with single cell data are expected to link to a sequence specification file.",
+            "audit_category": "missing sequence specification",
+            "audit_level": "NOT_COMPLIANT"
+        },
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message = get_audit_message(audit_missing_seqspec)
     if 'files' in value:
         no_seqspec = []
         for file in value['files']:
@@ -97,6 +111,10 @@ def audit_missing_seqspec(value, system):
         if no_seqspec:
             no_seqspec = ', '.join([audit_link(path_to_text(file_no_seqspec), file_no_seqspec)
                                    for file_no_seqspec in no_seqspec])
+            if single_cell_check(system, value, object_type):
+                audit_message = get_audit_message(audit_missing_seqspec, index=1)
+            else:
+                audit_message = get_audit_message(audit_missing_seqspec, index=0)
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file(s): '
                 f'{no_seqspec} which do not have any `seqspecs`.'
@@ -287,9 +305,14 @@ def audit_inconsistent_sequencing_kit(value, system):
             "audit_level": "ERROR"
         },
         {
-            "audit_description": "Sequence files should specify a sequencing kit.",
+            "audit_description": "Sequence files in a file set associated wtih bulk data should specify a sequencing kit.",
             "audit_category": "missing sequencing kit",
             "audit_level": "INTERNAL_ACTION"
+        },
+        {
+            "audit_description": "Sequence files in a file set associated wtih single cell data should specify a sequencing kit.",
+            "audit_category": "missing sequencing kit",
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
@@ -327,6 +350,10 @@ def audit_inconsistent_sequencing_kit(value, system):
                     yield AuditFailure(audit_message_inconsistent_kit.get('audit_category', ''), f'{detail} {audit_message_inconsistent_kit.get("audit_description", "")}', level=audit_message_inconsistent_kit.get('audit_level', ''))
 
     if missing_kit:
+        if single_cell_check(system, value, object_type):
+            audit_message_missing_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=1)
+        else:
+            audit_message_missing_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=2)
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence '
             f'file(s) {", ".join([audit_link(path_to_text(f), f) for f in missing_kit])} '
@@ -423,7 +450,7 @@ def audit_input_for(value, system):
         {
             "audit_description": "Raw data sets with files are expected to be associated with at least one analysis set.",
             "audit_category": "missing analysis",
-            "audit_level": "NOT_COMPLIANT"
+            "audit_level": "WARNING"
         }
     ]
     '''
@@ -484,7 +511,7 @@ def audit_MPRA_read_names(value, system):
         {
             "audit_description": "MPRA measurement set and auxiliary set sequence files are expected to specify a read name.",
             "audit_category": "missing read names",
-            "audit_level": "WARNING"
+            "audit_level": "NOT_COMPLIANT"
         },
         {
             "audit_description": "MPRA measurement set and auxiliary set sequence files are only expected to specify read names: Barcode forward, UMI, or Barcode reverse.",

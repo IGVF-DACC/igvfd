@@ -105,7 +105,7 @@ def test_audit_external_identifiers(testapp, model_file):
     res = testapp.get(model_file['@id'] + '@@audit')
     assert any(
         audit['category'] == 'missing dbxrefs'
-        for audit in res.json['audit'].get('WARNING', {})
+        for audit in res.json['audit'].get('NOT_COMPLIANT', {})
     )
     testapp.patch_json(
         model_file['@id'],
@@ -116,7 +116,7 @@ def test_audit_external_identifiers(testapp, model_file):
     res = testapp.get(model_file['@id'] + '@@audit')
     assert all(
         audit['category'] != 'missing dbxrefs'
-        for audit in res.json['audit'].get('WARNING', {})
+        for audit in res.json['audit'].get('NOT_COMPLIANT', {})
     )
 
 
@@ -130,7 +130,7 @@ def test_audit_external_reference_files(testapp, reference_file):
     res = testapp.get(reference_file['@id'] + '@@audit')
     assert any(
         audit['category'] == 'missing dbxrefs'
-        for audit in res.json['audit'].get('WARNING', {})
+        for audit in res.json['audit'].get('NOT_COMPLIANT', {})
     )
     testapp.patch_json(
         reference_file['@id'],
@@ -141,7 +141,7 @@ def test_audit_external_reference_files(testapp, reference_file):
     res = testapp.get(reference_file['@id'] + '@@audit')
     assert all(
         audit['category'] != 'missing dbxrefs'
-        for audit in res.json['audit'].get('WARNING', {})
+        for audit in res.json['audit'].get('NOT_COMPLIANT', {})
     )
 
 

@@ -16,7 +16,7 @@ def audit_external_input_data_content_type(value, system):
         {
             "audit_description": "Tabular files linked as `external_input_data` must be of type external source data.",
             "audit_category": "inconsistent external input data",
-            "audit_level": "WARNING"
+            "audit_level": "ERROR"
         }
     ]
     '''

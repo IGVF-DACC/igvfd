@@ -15,7 +15,7 @@ def test_audit_external_input_data_content_type(
     res = testapp.get(model_set_no_input['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent external input data'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
         tabular_file['@id'],
