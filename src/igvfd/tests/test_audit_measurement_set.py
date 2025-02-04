@@ -680,7 +680,6 @@ def test_audit_inconsistent_sequencing_kit(
         error['category'] == 'missing sequencing kit'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
-    testapp.pa
     testapp.patch_json(
         sequence_file['@id'],
         {
