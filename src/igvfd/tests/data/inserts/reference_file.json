@@ -422,5 +422,21 @@
         "controlled_access": false,
         "external": false,
         "analysis_step_version": "igvf-dacc:analysis_step_version_01"
+    },
+    {
+        "uuid": "6775a800-97c4-4e35-b561-b6213b9fd424",
+        "aliases": [
+            "charles-gersbach:chromap_genome_index"
+        ],
+        "lab": "charles-gersbach",
+        "award": "1UM1HG012053-01",
+        "md5sum": "3ea90a940b0e8715f6d32df1aa693148",
+        "file_format": "tar",
+        "content_type": "genome index",
+        "file_set": "igvf-dacc:GRCh38.p14_assembly",
+        "assembly": "GRCh38",
+        "controlled_access": false,
+        "external": false,
+        "analysis_step_version": "igvf-dacc:analysis_step_version_01"
     }
 ]

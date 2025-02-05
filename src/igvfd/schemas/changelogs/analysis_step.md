@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 5
 
+* Extend `input_content_types` enum list to include `genome index`.
+* Extend `output_content_types` enum list to include `genome index`.
+* Extend `analysis_step_types` enum list to include `genome index generation`.
 * Extend `output_content_types` enum list to include `nascent transcriptome index`.
 * Extend `input_content_types` enum list to include `nascent transcriptome index`.
 * Extend `output_content_types` enum list to include `transcriptome index`.
