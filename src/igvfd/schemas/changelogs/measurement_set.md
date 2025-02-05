@@ -4,6 +4,7 @@
 
 * Extend `preferred_assay_title` enum list to include `CRISPR MACS screen`.
 * Extend `preferred_assay_title` enum list to include `scMito-seq`.
+* Extend `preferred_assay_title` enum list to include `WGS`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Add `onlist_files`.
 * Add `onlist_method`.

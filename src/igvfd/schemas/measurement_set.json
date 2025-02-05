@@ -162,7 +162,8 @@
                 "HT-recruit",
                 "ONT dRNA",
                 "ONT Fiber-seq",
-                "ONT direct WGS"
+                "ONT direct WGS",
+                "WGS"
             ],
             "submissionExample": {
                 "appscript": "10x multiome",
