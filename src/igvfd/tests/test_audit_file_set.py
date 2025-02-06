@@ -170,6 +170,10 @@ def test_audit_control_for_control_type(
         error['category'] != 'missing control for'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+    assert all(
+        error['category'] != 'missing control type'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
     testapp.patch_json(
         construct_library_set_reporter['@id'],
         {
@@ -190,6 +194,10 @@ def test_audit_control_for_control_type(
     res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing control type'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    assert all(
+        error['category'] != 'missing control for'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
