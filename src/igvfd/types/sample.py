@@ -394,6 +394,11 @@ class Biosample(Sample):
         elif len(sample_terms) > 1:
             summary_terms = 'mixed'
 
+        # Prepend biosample qualifiers if they exist
+        if biosample_qualifiers:
+            qualifiers_string = ', '.join(biosample_qualifiers)
+            summary_terms = f'{qualifiers_string} {summary_terms}'
+
         # embryonic is prepended to the start of the summary
         if (embryonic and
                 biosample_type in ['primary_cell', 'tissue']):
