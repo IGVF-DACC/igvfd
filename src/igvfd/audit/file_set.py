@@ -42,7 +42,8 @@ def single_cell_check(system, value, object_type):
     elif object_type == 'Construct library set':
         samples = value.get('applied_to_samples')
         for sample in samples:
-            sample_obj = system.get('request').embed(sample)
+            sample_obj = system.get('request').embed(
+                sample, '@@object_with_select_calculated_properties?field=file_sets')
             file_sets = sample_obj.get('file_sets')
             for file_set in file_sets:
                 if file_set.startswith('/measurement-sets/'):
@@ -56,7 +57,6 @@ def single_cell_check(system, value, object_type):
             if input_file_set.startswith('/measurement-sets/'):
                 measurement_set_obj = system.get('request').embed(input_file_set, '@@object?skip_calculated=true')
                 assay_term = measurement_set_obj.get('assay_term')
-                assay_terms.append(assay_term)
                 if assay_term in single_cell_assay_terms:
                     return True
         return False
