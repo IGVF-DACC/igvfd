@@ -676,28 +676,6 @@ class Tissue(Biosample):
     def classifications(self):
         return [self.item_type.replace('_', ' ')]
 
-    tissue_homo_sapiens = {
-        'x': {
-            'group_by': 'donors.ethnicities',
-            'label': 'Ethnicity'
-        },
-        'y': {
-            'group_by': ['sample_terms.term_name', 'sex'],
-            'label': 'Tissue'
-        }
-    }
-
-    tissue_mus_musculus = {
-        'x': {
-            'group_by': 'donors.strain',
-            'label': 'Strain'
-        },
-        'y': {
-            'group_by': ['sample_terms.term_name', 'sex'],
-            'label': 'Tissue'
-        }
-    }
-
 
 @collection(
     name='technical-samples',

@@ -380,7 +380,7 @@ def tissue_homo_sapiens(context, request):
             ContextResponseField(),
             MissingMatrixWithFacetsResponseField(
                 default_item_types=DEFAULT_ITEM_TYPES,
-                matrix_definition_name='tissue_homo_sapiens',
+                config='tissue-homo-sapiens-matrix',
                 reserved_keys=RESERVED_KEYS,
             ),
             FacetGroupsResponseField(),
@@ -411,7 +411,7 @@ def tissue_mus_musculus(context, request):
             ContextResponseField(),
             MissingMatrixWithFacetsResponseField(
                 default_item_types=DEFAULT_ITEM_TYPES,
-                matrix_definition_name='tissue_mus_musculus',
+                config='tissue-mus-musculus-matrix',
                 reserved_keys=RESERVED_KEYS,
             ),
             FacetGroupsResponseField(),
