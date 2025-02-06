@@ -269,8 +269,8 @@ def tissue_mus_musculus_matrix_config():
     return {
         'matrix': {
             'x': {
-                'group_by': 'donors.ethnicities',
-                'label': 'Ethnicity'
+                'group_by': 'donors.strain',
+                'label': 'Strain'
             },
             'y': {
                 'group_by': ['sample_terms.term_name', 'sex'],
