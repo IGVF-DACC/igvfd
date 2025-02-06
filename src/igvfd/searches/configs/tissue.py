@@ -243,6 +243,7 @@ def tissue():
         }
     }
 
+
 @search_config(
     name='tissue-homo-sapiens-matrix'
 )
@@ -259,6 +260,7 @@ def tissue_homo_sapiens_matrix_config():
             }
         }
     }
+
 
 @search_config(
     name='tissue-mus-musculus-matrix'
