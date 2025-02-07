@@ -205,7 +205,7 @@ def test_audit_analysis_set_multiplexed_samples(
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing demultiplexed sample'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         analysis_set_base['@id'],
@@ -216,7 +216,7 @@ def test_audit_analysis_set_multiplexed_samples(
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing demultiplexed sample'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         measurement_set['@id'],

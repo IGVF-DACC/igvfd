@@ -169,7 +169,7 @@ def audit_construct_library_sets_types(value, system):
         {
             "audit_description": "Samples are expected to link to a construct library sets with the same file set type.",
             "audit_category": "inconsistent construct library sets",
-            "audit_level": "WARNING"
+            "audit_level": "ERROR"
         }
     ]
     '''

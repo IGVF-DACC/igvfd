@@ -53,7 +53,7 @@ def test_audit_cell_fate_change_treatments(
     res = testapp.get(in_vitro_differentiated_cell['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent treatment purpose'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
         treatment_chemical['@id'],
@@ -70,7 +70,7 @@ def test_audit_cell_fate_change_treatments(
     res = testapp.get(in_vitro_differentiated_cell['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent treatment purpose'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
 
 

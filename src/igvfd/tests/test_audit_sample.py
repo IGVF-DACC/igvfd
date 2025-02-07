@@ -124,7 +124,7 @@ def test_audit_inconsistent_construct_library_sets_types(
     res = testapp.get(primary_cell['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent construct library sets'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
         primary_cell['@id'],
@@ -137,7 +137,7 @@ def test_audit_inconsistent_construct_library_sets_types(
     res = testapp.get(primary_cell['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent construct library sets'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
         primary_cell['@id'],
@@ -148,7 +148,7 @@ def test_audit_inconsistent_construct_library_sets_types(
     res = testapp.get(primary_cell['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent construct library sets'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
 
 

@@ -167,7 +167,7 @@ def audit_preferred_assay_title(value, system):
         {
             "audit_description": "Measurement sets are expected to specify an appropriate preferred assay title for its respective assay term.",
             "audit_category": "inconsistent preferred assay title",
-            "audit_level": "WARNING"
+            "audit_level": "ERROR"
         }
     ]
     '''
@@ -266,7 +266,7 @@ def audit_missing_auxiliary_set_link(value, system):
         {
             "audit_description": "Measurement sets are expected to link to auxiliary sets if they share the same sample.",
             "audit_category": "missing auxiliary set",
-            "audit_level": "WARNING"
+            "audit_level": "ERROR"
         }
     ]
     '''
@@ -297,7 +297,7 @@ def audit_targeted_genes(value, system):
         {
             "audit_description": "Only ChIP-seq and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
             "audit_category": "unexpected targeted genes",
-            "audit_level": "WARNING"
+            "audit_level": "ERROR"
         }
     ]
     '''
@@ -490,12 +490,12 @@ def audit_onlist(value, system):
         {
             "audit_description": "Measurement sets to be processed via the single cell uniform pipeline are expected to have onlist files and onlist methods indicated.",
             "audit_category": "missing barcode onlist",
-            "audit_level": "WARNING"
+            "audit_level": "NOT_COMPLIANT"
         },
         {
             "audit_description": "Measurement sets not intended for the single cell uniform pipeline are expected not to have onlist files or onlist methods.",
             "audit_category": "unexpected barcode onlist",
-            "audit_level": "WARNING"
+            "audit_level": "ERROR"
         }
     ]
     '''
@@ -536,12 +536,12 @@ def audit_inconsistent_onlist_info(value, system):
         {
             "audit_description": "Measurement sets with 2 or more barcode onlist files are expected to have an onlist method of either product or multi.",
             "audit_category": "inconsistent barcode onlist",
-            "audit_level": "WARNING"
+            "audit_level": "ERROR"
         },
         {
             "audit_description": "Measurement sets with only 1 barcode onlist files are expected to have an onlist method of no combination.",
             "audit_category": "inconsistent barcode onlist",
-            "audit_level": "WARNING"
+            "audit_level": "ERROR"
         }
     ]
     '''
@@ -566,7 +566,7 @@ def audit_unexpected_onlist_content(value, system):
         {
             "audit_description": "Onlist files are expected to be tabular files with barcode onlist as the content type.",
             "audit_category": "unexpected onlist files",
-            "audit_level": "WARNING"
+            "audit_level": "ERROR"
         }
     ]
     '''
