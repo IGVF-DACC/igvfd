@@ -51,6 +51,8 @@ def includeme(config):
     config.add_route('multireport', '/multireport{slash:/?}')
     config.add_route('matrix', '/matrix{slash:/?}')
     config.add_route('missing-matrix', '/missing-matrix{slash:/?}')
+    config.add_route('tissue-homo-sapiens', '/tissue-homo-sapiens{slash:/?}')
+    config.add_route('tissue-mus-musculus', '/tissue-mus-musculus{slash:/?}')
     config.add_route('summary', '/summary{slash:/?}')
     config.add_route('dataset-summary', '/dataset-summary{slash:/?}')
     config.add_route('dataset-summary-agg', '/dataset-summary-agg{slash:/?}')
@@ -348,6 +350,68 @@ def missing_matrix(context, request):
             ContextResponseField(),
             MissingMatrixWithFacetsResponseField(
                 default_item_types=DEFAULT_ITEM_TYPES,
+                reserved_keys=RESERVED_KEYS,
+            ),
+            FacetGroupsResponseField(),
+            NotificationResponseField(),
+            FiltersResponseField(),
+            TypeOnlyClearFiltersResponseField(),
+            DebugQueryResponseField()
+        ]
+    )
+    return fr.render()
+
+
+@view_config(route_name='tissue-homo-sapiens', request_method='GET', permission='search')
+def tissue_homo_sapiens(context, request):
+    fr = FieldedResponse(
+        _meta={
+            'params_parser': ParamsParser(request)
+        },
+        response_fields=[
+            TitleResponseField(
+                title='Homo Sapiens Tissue Summary'
+            ),
+            TypeResponseField(
+                at_type=['TissueSummaryHomoSapiens']
+            ),
+            IDResponseField(),
+            SearchBaseResponseField(),
+            ContextResponseField(),
+            MissingMatrixWithFacetsResponseField(
+                default_item_types=DEFAULT_ITEM_TYPES,
+                config='tissue-homo-sapiens-matrix',
+                reserved_keys=RESERVED_KEYS,
+            ),
+            FacetGroupsResponseField(),
+            NotificationResponseField(),
+            FiltersResponseField(),
+            TypeOnlyClearFiltersResponseField(),
+            DebugQueryResponseField()
+        ]
+    )
+    return fr.render()
+
+
+@view_config(route_name='tissue-mus-musculus', request_method='GET', permission='search')
+def tissue_mus_musculus(context, request):
+    fr = FieldedResponse(
+        _meta={
+            'params_parser': ParamsParser(request)
+        },
+        response_fields=[
+            TitleResponseField(
+                title='Mus Musculus Tissue Summary'
+            ),
+            TypeResponseField(
+                at_type=['TissueSummaryMusMusculus']
+            ),
+            IDResponseField(),
+            SearchBaseResponseField(),
+            ContextResponseField(),
+            MissingMatrixWithFacetsResponseField(
+                default_item_types=DEFAULT_ITEM_TYPES,
+                config='tissue-mus-musculus-matrix',
                 reserved_keys=RESERVED_KEYS,
             ),
             FacetGroupsResponseField(),

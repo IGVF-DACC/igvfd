@@ -242,3 +242,39 @@ def tissue():
             }
         }
     }
+
+
+@search_config(
+    name='tissue-homo-sapiens-matrix'
+)
+def tissue_homo_sapiens_matrix_config():
+    return {
+        'matrix': {
+            'x': {
+                'group_by': 'donors.ethnicities',
+                'label': 'Ethnicity'
+            },
+            'y': {
+                'group_by': ['sample_terms.term_name', 'sex'],
+                'label': 'Tissue'
+            }
+        }
+    }
+
+
+@search_config(
+    name='tissue-mus-musculus-matrix'
+)
+def tissue_mus_musculus_matrix_config():
+    return {
+        'matrix': {
+            'x': {
+                'group_by': 'donors.strain',
+                'label': 'Strain'
+            },
+            'y': {
+                'group_by': ['sample_terms.term_name', 'sex'],
+                'label': 'Tissue'
+            }
+        }
+    }
