@@ -519,9 +519,9 @@ def in_vitro_system_23_24(value, system):
 @upgrade_step('in_vitro_system', '24', '25')
 def sample_21_22(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2310
-    if 'calcified' in value['biosample_qualifiers']:
-        value['biosample_qualifiers'].remove('calcified')
-        value['biosample_qualifiers'].append('6 days calcified')
-        notes = value.get('notes', '')
-        notes += f'This object\'s biosample_qualifiers has been set to 6 days calcified based by an upgrade. Please make sure it is correct before removing the notes.'
-        value['notes'] = notes.strip()
+    if 'calcified' in value.get('biosample_qualifiers', [])
+    value['biosample_qualifiers'].remove('calcified')
+    value['biosample_qualifiers'].append('6 days calcified')
+    notes = value.get('notes', '')
+    notes += f'This object\'s biosample_qualifiers has been set to 6 days calcified based by an upgrade. Please make sure it is correct before removing the notes.'
+    value['notes'] = notes.strip()
