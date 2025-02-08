@@ -159,3 +159,9 @@ def test_primary_cell_upgrade_20_21(upgrader, primary_cell_v20):
     value = upgrader.upgrade('primary_cell', primary_cell_v20, current_version='20', target_version='21')
     assert value['schema_version'] == '21'
     assert 'publication_identifiers' not in value
+
+
+def test_primary_cell_upgrade_21_22(upgrader, primary_cell_v21):
+    value = upgrader.upgrade('primary_cell', primary_cell_v21, current_version='21', target_version='22')
+    assert value['schema_version'] == '22'
+    assert value['biosample_qualifiers'] == ['6 days calcified']
