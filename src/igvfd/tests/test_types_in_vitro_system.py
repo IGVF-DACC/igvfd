@@ -107,12 +107,13 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
-            'growth_medium': 'DMEM with serum'
+            'growth_medium': 'DMEM with serum',
+            'biosample_qualifier': 'exhausted'
         }
     )
     res = testapp.get(in_vitro_differentiated_cell['@id'])
     assert res.json.get(
-        'summary') == 'lymphoblastoid differentiated cell specimen line induced to brown adipose tissue for 5 minutes, Homo sapiens transfected with a reporter library (MOI of 2), grown in DMEM with serum'
+        'summary') == 'exhausted lymphoblastoid differentiated cell specimen line induced to brown adipose tissue for 5 minutes, Homo sapiens transfected with a reporter library (MOI of 2), grown in DMEM with serum'
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
