@@ -278,6 +278,9 @@
             "igvf:basic_construct_library_set_1"
         ],
         "moi": 1,
+        "biosample_qualifiers": [
+            "6 days calcified"
+        ],
         "nucleic_acid_delivery": "transfection",
         "modifications": [
             "b4a370ee-18a7-2857-bc2b-b157d05f4458"

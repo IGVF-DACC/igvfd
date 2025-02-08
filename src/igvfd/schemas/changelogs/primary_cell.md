@@ -1,5 +1,11 @@
 ## Changelog for *`primary_cell.json`*
 
+### Schema version 22
+
+* Adjust `biosample_qualifiers` enum list to remove `calcified`.
+* Extend `biosample_qualifiers` enum list to include `6 days calcified`.
+* Extend `biosample_qualifiers` enum list to include `10 days calcified`.
+
 ### Minor changes since schema version 21
 
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.

@@ -316,3 +316,15 @@ def in_vitro_system_v23(
         'classifications': ['gastruloid']
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v24(
+    in_vitro_cell_line
+):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '24',
+        'biosample_qualifiers': ['calcified']
+    })
+    return item

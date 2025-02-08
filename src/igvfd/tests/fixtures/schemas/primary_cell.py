@@ -324,3 +324,13 @@ def primary_cell_v20(primary_cell):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v21(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '21',
+        'biosample_qualifiers': ['calcified']
+    })
+    return item
