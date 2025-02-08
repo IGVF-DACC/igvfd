@@ -513,3 +513,13 @@ def in_vitro_system_23_24(value, system):
             f' Please make sure it is correct before removing the notes.'
         )
         value['notes'] = notes.strip()
+
+
+@upgrade_step('primary_cell', '21', '22')
+@upgrade_step('in_vitro_system', '24', '25')
+def sample_21_22(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2310
+    value['biosample_qualifiers'] = ['6 days calcified']
+    notes = value.get('notes', '')
+    notes += f'This object\'s biosample_qualifiers has been set to 6 days calcified based by an upgrade. Please make sure it is correct before removing the notes.'
+    value['notes'] = notes.strip()
