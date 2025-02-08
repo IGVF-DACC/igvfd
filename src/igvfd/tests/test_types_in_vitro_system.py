@@ -108,7 +108,7 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
         in_vitro_differentiated_cell['@id'],
         {
             'growth_medium': 'DMEM with serum',
-            'biosample_qualifier': 'exhausted'
+            'biosample_qualifiers': ['exhausted']
         }
     )
     res = testapp.get(in_vitro_differentiated_cell['@id'])
