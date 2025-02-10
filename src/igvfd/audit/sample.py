@@ -215,3 +215,25 @@ def audit_parent_sample_with_singular_child(value, system):
                 f'in `{child_sample_type}`.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+@audit_checker('Sample', frame='object')
+def audit_missing_nucleic_acid_delivery(value, system):
+    '''
+    [
+        {
+            "audit_description": "Samples linked to construct library sets are expected to specify nucleic acid delivery method.",
+            "audit_category": "missing nucleic acid delivery",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message = get_audit_message(audit_missing_nucleic_acid_delivery)
+    if 'construct_library_sets' in value and len(value['construct_library_sets']) > 0:
+        if 'nucleic_acid_delivery_method' not in value:
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has `construct_library_sets` but is missing `nucleic_acid_delivery`.'
+            )
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
