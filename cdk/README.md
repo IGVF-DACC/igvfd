@@ -67,7 +67,7 @@ Log in at [SSO login portal](https://igvf-dacc.awsapps.com/start/#), choose `Acc
 Open a terminal window and run aws sso configuration command:
 
 ```bash
-$ aws sso configure
+$ aws configure sso
 ```
 
 Choose `igvf-dev` account, enter the `SSO start URL` and `SSO region`, choose `PowerUserAccess` role. The `CLI Profile name` will default to `PowerUserAccess-xyz`, you might want to enter something more easy to remember, such as `igvf-dev-sso`.
