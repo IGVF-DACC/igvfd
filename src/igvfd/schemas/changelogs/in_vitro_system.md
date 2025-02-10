@@ -1,6 +1,6 @@
 ## Changelog for *`in_vitro_system.json`*
 
-### Minor changes since schema version 24
+### Minor changes since schema version 25
 
 * Extend `nucleic_acid_delivery` enum list to include `lipofectamine` and `electroporation`.
 
