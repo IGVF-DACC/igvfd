@@ -157,3 +157,57 @@ def test_audit_single_cell_read_names(testapp, measurement_set_one_onlist, seque
         error['category'] == 'unexpected read names'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_control_for_control_type(
+    testapp,
+    measurement_set_mpra,
+    construct_library_set_reporter,
+    analysis_set_base
+):
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing control for'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    assert all(
+        error['category'] != 'missing control type'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        construct_library_set_reporter['@id'],
+        {
+            'control_file_sets': [measurement_set_mpra['@id']]
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing control type'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'control_type': 'low FACS signal'
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing control type'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    assert all(
+        error['category'] != 'missing control for'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        construct_library_set_reporter['@id'],
+        {
+            'control_file_sets': [analysis_set_base['@id']]
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing control for'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )

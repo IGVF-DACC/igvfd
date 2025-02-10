@@ -615,3 +615,38 @@ def audit_single_cell_read_names(value, system):
                     f'pipeline.'
                 )
                 yield AuditFailure(audit_message_unexpected_read_names.get('audit_category', ''), f'{detail} {audit_message_unexpected_read_names.get("audit_description", "")}', level=audit_message_unexpected_read_names.get('audit_level', ''))
+
+
+@audit_checker('FileSet', frame='object')
+def audit_control_for_control_type(value, system):
+    '''
+    [
+        {
+            "audit_description": "File sets that are controls for other file sets are expected to define a control type.",
+            "audit_category": "missing control type",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "File sets that specify a control type are expected to be a control for other file sets.",
+            "audit_category": "missing control for",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message_missing_control_type = get_audit_message(audit_control_for_control_type, index=0)
+    audit_message_missing_control_for = get_audit_message(audit_control_for_control_type, index=1)
+    if value.get('control_for', '') and not (value.get('control_type', '')):
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has no `control_type`.'
+        )
+        yield AuditFailure(audit_message_missing_control_type.get('audit_category', ''), f'{detail} {audit_message_missing_control_type.get("audit_description", "")}', level=audit_message_missing_control_type.get('audit_level', ''))
+    elif value.get('control_type', '') and not (value.get('control_for', '')):
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has no `control_for`. The `control_file_sets` should be patched on '
+            f'the file sets it serves as a control for and this property, `control_for`, '
+            f'will be reverse calculated.'
+        )
+        yield AuditFailure(audit_message_missing_control_for.get('audit_category', ''), f'{detail} {audit_message_missing_control_for.get("audit_description", "")}', level=audit_message_missing_control_for.get('audit_level', ''))
