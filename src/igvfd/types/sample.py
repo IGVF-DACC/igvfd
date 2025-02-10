@@ -353,7 +353,7 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None):
+    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None, biosample_qualifiers=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
         biosample_type = self.item_type
@@ -393,6 +393,11 @@ class Biosample(Sample):
             summary_terms = concat_numeric_and_units(len(donors), term_name, no_numeric_on_one=True)
         elif len(sample_terms) > 1:
             summary_terms = 'mixed'
+
+        # Prepend biosample qualifiers if they exist
+        if biosample_qualifiers:
+            qualifiers_string = ', '.join(biosample_qualifiers)
+            summary_terms = f'{qualifiers_string} {summary_terms}'
 
         # embryonic is prepended to the start of the summary
         if (embryonic and
