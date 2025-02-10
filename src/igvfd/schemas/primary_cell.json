@@ -61,7 +61,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "21"
+            "default": "22"
         },
         "passage_number": {
             "title": "Passage Number",
@@ -115,7 +115,8 @@
                 "description": "An array of various cell states. This property provides additional information about a cell at a finer-grained level compared to what ontologies currently capture. For example, exhausted T-cells.",
                 "type": "string",
                 "enum": [
-                    "calcified",
+                    "6 days calcified",
+                    "10 days calcified",
                     "exhausted"
                 ]
             },

@@ -183,3 +183,9 @@ def test_in_vitro_system_upgrade_23_24(upgrader, in_vitro_system_v23):
     assert value['cell_fate_change_protocols'] == ['j-michael-cherry:dummy_document']
     assert 'notes' in value and value['notes'].endswith(
         'cell_fate_change_protocols, time_post_change, time_post_change_units and targeted_sample_term has been arbitrarily set based on an upgrade due to additional gastruloid dependencies. Please make sure it is correct before removing the notes.')
+
+
+def test_in_vitro_system_upgrade_24_25(upgrader, in_vitro_system_v24):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v24, current_version='24', target_version='25')
+    assert value['schema_version'] == '25'
+    assert value['biosample_qualifiers'] == ['6 days calcified']
