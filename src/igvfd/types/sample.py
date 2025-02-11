@@ -129,7 +129,7 @@ class Sample(Item):
         },
         'notSubmittable': True,
     })
-    def file_sets(self, request, file_sets):
+    def file_sets(self, request, file_sets, multiplexed_in=[]):
         # This is required to get the analysis set reverse links since analysis set calculates samples
         for file_set in file_sets:
             file_set_object = request.embed(
@@ -137,6 +137,14 @@ class Sample(Item):
             for input_for in file_set_object.get('input_for', []):
                 if input_for.startswith('/analysis-sets/') and input_for not in file_sets:
                     file_sets.append(input_for)
+        # file sets associated with a multiplexed sample that a sample was multiplexed in are included
+        for multiplexed_sample in multiplexed_in:
+            multiplexed_sample_object = request.embed(
+                multiplexed_sample, '@@object_with_select_calculated_properties?field=file_sets')
+            multiplexed_file_sets = multiplexed_sample_object.get('file_sets')
+            for file_set in multiplexed_file_sets:
+                if file_set not in file_sets:
+                    file_sets.append(file_set)
         return paths_filtered_by_status(request, file_sets)
 
     @calculated_property(schema={
