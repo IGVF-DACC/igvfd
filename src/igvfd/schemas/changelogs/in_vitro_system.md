@@ -2,7 +2,8 @@
 
 ### Minor changes since schema version 25
 
-* Extend `nucleic_acid_delivery` enum list to include `lipofectamine` and `electroporation`.
+* Extend `nucleic_acid_delivery` enum list to include `lipofectamine`.
+* Extend `nucleic_acid_delivery` enum list to include `electroporation`.
 
 ### Schema version 25
 
