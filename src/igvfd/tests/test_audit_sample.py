@@ -188,7 +188,7 @@ def test_audit_missing_nucleic_acid_delivery(
     construct_library_set_genome_wide
 ):
     testapp.patch_json(
-        in_vitro_differentiated_cell['@id'],
+        in_vitro_cell_line['@id'],
         {
             'construct_library_sets': [construct_library_set_genome_wide['@id']],
             'nucleic_acid_delivery': None
@@ -200,7 +200,7 @@ def test_audit_missing_nucleic_acid_delivery(
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
     testapp.patch_json(
-        in_vitro_organoid['@id'],
+        in_vitro_cell_line['@id'],
         {
             'nucleic_acid_delivery': 'lipofectamine'
         }
