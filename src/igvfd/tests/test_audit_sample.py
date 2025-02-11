@@ -197,7 +197,7 @@ def test_audit_missing_nucleic_acid_delivery(
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing nucleic acid delivery'
-        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+        for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
         in_vitro_cell_line['@id'],
@@ -208,5 +208,5 @@ def test_audit_missing_nucleic_acid_delivery(
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing nucleic acid delivery'
-        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+        for error in res.json['audit'].get('WARNING', [])
     )
