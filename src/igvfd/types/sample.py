@@ -11,10 +11,15 @@ from .base import (
 )
 
 
-def collect_multiplexed_samples_prop(request, multiplexed_samples, property_name):
+def collect_multiplexed_samples_prop(request, multiplexed_samples, property_name, skip_calculated=True):
     property_set = set()
     for sample in multiplexed_samples:
-        sample_props = request.embed(sample, '@@object?skip_calculated=true')
+        # If to get a specific calculated property
+        if skip_calculated is False:
+            sample_props = request.embed(sample, f'@@object_with_select_calculated_properties?field={property_name}')
+        # If to get non-calculated properties
+        else:
+            sample_props = request.embed(sample, '@@object?skip_calculated=true')
         property_contents = sample_props.get(property_name, None)
         if property_contents:
             if type(property_contents) == list:
@@ -1059,5 +1064,9 @@ class MultiplexedSample(Sample):
             'notSubmittable': True,
         }
     )
-    def classifications(self):
-        return [self.item_type.replace('_', ' ')]
+    def classifications(self, request, multiplexed_samples):
+        # Get unique properties of individual samples' item types
+        sample_classfications = collect_multiplexed_samples_prop(
+            request, multiplexed_samples, 'classifications', skip_calculated=False)
+        self_classification = [self.item_type.replace('_', ' ')]
+        return sample_classfications + self_classification
