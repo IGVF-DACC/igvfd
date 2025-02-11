@@ -190,8 +190,7 @@ def test_audit_missing_nucleic_acid_delivery(
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'construct_library_sets': [construct_library_set_genome_wide['@id']],
-            'nucleic_acid_delivery': None
+            'construct_library_sets': [construct_library_set_genome_wide['@id']]
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
