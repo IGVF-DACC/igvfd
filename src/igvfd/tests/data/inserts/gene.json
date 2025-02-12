@@ -282,7 +282,9 @@
         "taxa": "Mus musculus",
         "status": "archived",
         "collections": "TOPMED Freeze 8",
-        "research_groups": "j-michael-cherry",
+        "research_groups": [
+            "j-michael-cherry"
+        ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "Gm13255"
     }
