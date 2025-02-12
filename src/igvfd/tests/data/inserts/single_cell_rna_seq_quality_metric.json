@@ -1,0 +1,16 @@
+[
+    {
+        "uuid": "862fba59-0804-876e-acaf-c4abc6dc1782",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:scrna_seq_quality_metric_01"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "quality_metric_of": [
+            "IGVFFI0006MPST"
+        ],
+        "analysis_step_version": "igvf-dacc:analysis_step_version_02"
+    }
+]

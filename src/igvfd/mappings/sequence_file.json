@@ -1,6 +1,6 @@
 {
-    "hash": "9820847ce590d0701c53cfa8bbffd162",
-    "index_name": "sequence_file_9820847c",
+    "hash": "96d12ac96a9882f7b35904a705bdbc48",
+    "index_name": "sequence_file_96d12ac9",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1743,6 +1743,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "quality_metrics": {
+                        "type": "keyword"
                     },
                     "read_count": {
                         "store": true,

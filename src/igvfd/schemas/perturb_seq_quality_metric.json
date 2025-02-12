@@ -1,0 +1,174 @@
+{
+    "title": "Perturb-seq Quality Metric",
+    "$id": "/profiles/perturb_seq_quality_metric.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Schema for submission of a Perturb-seq uniform pipeline quality metric.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "quality_metric_of",
+        "analysis_step_version"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "quality_metric.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/attachment"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "quality_metric.json#/dependentSchemas"
+        ]
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "total_cells_passing_filters": {
+            "title": "Total Cells Passing Filters",
+            "description": "Total Cells Passing Filters",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "pct_cells_assigned_guide": {
+            "title": "Percent Cells Assigned Guide",
+            "description": "Percent Cells Assigned Guide",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "avg_cells_per_target": {
+            "title": "Average Cells Per Target",
+            "description": "Average Cells Per Target",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "moi": {
+            "title": "Multiplicity Of Infection",
+            "description": "Multiplicity Of Infection",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "avg_umis_per_cell": {
+            "title": "Average UMIs Per Cell",
+            "description": "Average UMIs Per Cell",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "total_guides": {
+            "title": "Total Guides",
+            "description": "Total Guides",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "total_targets": {
+            "title": "Total Targets",
+            "description": "Total Targets",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "guide_diversity": {
+            "title": "Guide Diversity",
+            "description": "Guide diversity (Gini index)",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "mean_mitochondrial_reads": {
+            "title": "Mean Mitochondrial Reads",
+            "description": "Mean mitochondrial reads.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "total_reads": {
+            "title": "Total Reads",
+            "description": "Total reads (n_processed) reported by Kallisto.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "paired_reads_mapped": {
+            "title": "Paired Reads Mapped",
+            "description": "Paired reads mapped (n_pseudoaligned) reported by Kallisto.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "alignment_percentage": {
+            "title": "Alignment Percentage",
+            "description": "Alignment percentage (p_pseudoaligned) reported by Kallisto.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "total_detected_scrna_barcodes": {
+            "title": "Total Detected scRNA Barcodes",
+            "description": "Unfiltered total detected scRNA barcodes (numBarcodes) reported by Kallisto.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "description",
+        "summary"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "quality_metric_of"
+    ],
+    "changelog": "/profiles/changelogs/perturb_seq_quality_metric.md"
+}

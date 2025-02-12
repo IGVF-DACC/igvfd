@@ -1,6 +1,6 @@
 {
-    "hash": "64177f11b1d8e75f393e496cbedc624a",
-    "index_name": "construct_library_set_64177f11",
+    "hash": "c226c3fa55ed82664167a8e4647db77d",
+    "index_name": "construct_library_set_c226c3fa",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1621,6 +1621,9 @@
                             "principal_dimension": {
                                 "type": "keyword"
                             },
+                            "quality_metrics": {
+                                "type": "keyword"
+                            },
                             "read_count": {
                                 "store": true,
                                 "type": "long"
@@ -1842,6 +1845,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "quality_metrics": {
+                                "type": "keyword"
                             },
                             "release_timestamp": {
                                 "type": "date"
@@ -2079,6 +2085,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "quality_metrics": {
+                                "type": "keyword"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -2254,6 +2263,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "quality_metrics": {
+                                "type": "keyword"
                             },
                             "release_timestamp": {
                                 "type": "date"

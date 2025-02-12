@@ -1,6 +1,6 @@
 {
-    "hash": "19e93a3331de4afde65b629878761208",
-    "index_name": "alignment_file_19e93a33",
+    "hash": "ec6a9f459d2d7882011e2dbca2eb1505",
+    "index_name": "alignment_file_ec6a9f45",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1718,6 +1718,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "quality_metrics": {
+                        "type": "keyword"
                     },
                     "read_count": {
                         "store": true,

@@ -1,6 +1,6 @@
 {
-    "hash": "e1c5b0086e11ab8257d6d9afb305d33b",
-    "index_name": "model_file_e1c5b008",
+    "hash": "3464f583e70f6bd2f77914498ad309e1",
+    "index_name": "model_file_3464f583",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -1715,6 +1715,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "quality_metrics": {
+                        "type": "keyword"
                     },
                     "release_timestamp": {
                         "type": "date"

@@ -1,6 +1,6 @@
 {
-    "hash": "9c9d463717add9ea6747363c2eb436ce",
-    "index_name": "reference_file_9c9d4637",
+    "hash": "c2b30c706c8c196971c0bd51f52ac109",
+    "index_name": "reference_file_c2b30c70",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -1718,6 +1718,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "quality_metrics": {
+                        "type": "keyword"
                     },
                     "release_timestamp": {
                         "type": "date"

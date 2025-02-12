@@ -1,0 +1,16 @@
+[
+    {
+        "uuid": "184e65e2-0804-4f7e-833b-abfc8c6c19d2",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:scatac_seq_quality_metric_01"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "quality_metric_of": [
+            "IGVFFI0001PKBD"
+        ],
+        "analysis_step_version": "igvf-dacc:analysis_step_version_02"
+    }
+]

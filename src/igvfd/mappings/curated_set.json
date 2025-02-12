@@ -1,6 +1,6 @@
 {
-    "hash": "66d85def600756d3a7ec24e2848e3a37",
-    "index_name": "curated_set_66d85def",
+    "hash": "048a5861694a1b0caf722d17fcb3962a",
+    "index_name": "curated_set_048a5861",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -925,6 +925,9 @@
                                 "type": "text"
                             },
                             "principal_dimension": {
+                                "type": "keyword"
+                            },
+                            "quality_metrics": {
                                 "type": "keyword"
                             },
                             "read_count": {

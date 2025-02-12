@@ -138,7 +138,8 @@ class File(Item):
         'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),
         'gene_list_for': ('FileSet', 'large_scale_gene_list'),
         'loci_list_for': ('FileSet', 'large_scale_loci_list'),
-        'input_file_for': ('File', 'derived_from')
+        'input_file_for': ('File', 'derived_from'),
+        'quality_metrics': ('QualityMetric', 'quality_metric_of')
     }
 
     set_status_up = [
@@ -209,6 +210,22 @@ class File(Item):
     })
     def loci_list_for(self, request, loci_list_for):
         return paths_filtered_by_status(request, loci_list_for)
+
+    @calculated_property(schema={
+        'title': 'Quality Metrics',
+        'description': 'The quality metrics that are associated with this file.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Quality Metric',
+            'type': ['string', 'object'],
+            'linkFrom': 'QualityMetric.quality_metric_of',
+        },
+        'notSubmittable': True
+    })
+    def quality_metrics(self, request, quality_metrics):
+        return paths_filtered_by_status(request, quality_metrics)
 
     @calculated_property(
         schema={

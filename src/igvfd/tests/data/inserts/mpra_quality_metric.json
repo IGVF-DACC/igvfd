@@ -1,0 +1,15 @@
+[
+    {
+        "uuid": "a0696f31-1422-4946-ddea-21da73f7d04a",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:mpra_quality_metric_01"
+        ],
+        "status": "in progress",
+        "quality_metric_of": [
+            "IGVFFI0000CSVV"
+        ],
+        "analysis_step_version": "igvf-dacc:analysis_step_version_02"
+    }
+]

@@ -1,0 +1,79 @@
+{
+    "title": "Quality Metric",
+    "$id": "/profiles/quality_metric.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Abstract schema for submission of a quality metric.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "quality_metric_of",
+        "analysis_step_version"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/attachment"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        }
+    ],
+    "dependentSchemas": {
+        "release_timestamp": {
+            "comment": "Release timestamp is required if status is released, revoked or archived.",
+            "required": [
+                "status"
+            ],
+            "properties": {
+                "status": {
+                    "enum": [
+                        "revoked",
+                        "archived",
+                        "released"
+                    ]
+                }
+            }
+        }
+    },
+    "properties": {
+        "quality_metric_of": {
+            "title": "Quality Metric Of",
+            "description": "The file(s) to which this quality metric applies.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "permission": "admin_only",
+            "items": {
+                "title": "Quality Metric Of",
+                "comment": "See file.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "File"
+            },
+            "submissionExample": {
+                "appscript": "[\"IGVFFI1234ABCD\", \"john-doe:file01\"]",
+                "igvf_utils": "IGVFFI1234ABCD, john-doe:file01"
+            }
+        },
+        "analysis_step_version": {
+            "title": "Analysis Step Version",
+            "description": "The analysis step version of the quality metric.",
+            "type": "string",
+            "linkTo": "AnalysisStepVersion",
+            "submissionExample": {
+                "appscript": "john-doe:analysis_step_version_01 or /analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/",
+                "igvf_utils": "john-doe:analysis_step_version_01 or /analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/"
+            }
+        }
+    },
+    "changelog": "/profiles/changelogs/quality_metric.md"
+}

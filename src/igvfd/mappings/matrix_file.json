@@ -1,6 +1,6 @@
 {
-    "hash": "f1a2f8d9d03d3985c87b7b46197c2723",
-    "index_name": "matrix_file_f1a2f8d9",
+    "hash": "c9d612323fcec4d3acc0f8474d1216a2",
+    "index_name": "matrix_file_c9d61232",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1710,6 +1710,9 @@
                         "type": "text"
                     },
                     "principal_dimension": {
+                        "type": "keyword"
+                    },
+                    "quality_metrics": {
                         "type": "keyword"
                     },
                     "reference_files": {

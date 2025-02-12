@@ -1,0 +1,15 @@
+[
+    {
+        "uuid": "076c38e6-1422-1a61-551b-21da73f7d04a",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:starr_seq_quality_metric_01"
+        ],
+        "status": "in progress",
+        "quality_metric_of": [
+            "IGVFFI0000CSVV"
+        ],
+        "analysis_step_version": "igvf-dacc:analysis_step_version_02"
+    }
+]

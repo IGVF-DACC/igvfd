@@ -1,0 +1,447 @@
+{
+    "hash": "a182f8d8fed16133b4df97bcbdb13b26",
+    "index_name": "perturb_seq_quality_metric_a182f8d8",
+    "item_type": "perturb_seq_quality_metric",
+    "mapping": {
+        "dynamic_templates": [
+            {
+                "template_principals_allowed": {
+                    "mapping": {
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string",
+                    "path_match": "principals_allowed.*"
+                }
+            },
+            {
+                "template_unique_keys": {
+                    "mapping": {
+                        "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string",
+                    "path_match": "unique_keys.*"
+                }
+            },
+            {
+                "template_links": {
+                    "mapping": {
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string",
+                    "path_match": "links.*"
+                }
+            },
+            {
+                "strings": {
+                    "mapping": {
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string"
+                }
+            },
+            {
+                "integers": {
+                    "mapping": {
+                        "type": "long"
+                    },
+                    "match_mapping_type": "long"
+                }
+            }
+        ],
+        "properties": {
+            "_exact": {
+                "analyzer": "snovault_exact_index_and_search_analyzer",
+                "search_analyzer": "snovault_exact_index_and_search_analyzer",
+                "store": false,
+                "type": "text"
+            },
+            "_fuzzy": {
+                "analyzer": "snovault_fuzzy_index_analyzer",
+                "search_analyzer": "snovault_fuzzy_search_analyzer",
+                "store": false,
+                "type": "text"
+            },
+            "audit": {
+                "properties": {
+                    "ERROR": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "INTERNAL_ACTION": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "NOT_COMPLIANT": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "WARNING": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "embedded": {
+                "properties": {
+                    "@id": {
+                        "type": "keyword"
+                    },
+                    "@type": {
+                        "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "aliases": {
+                        "type": "keyword"
+                    },
+                    "alignment_percentage": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "analysis_step_version": {
+                        "type": "keyword"
+                    },
+                    "attachment": {
+                        "properties": {
+                            "download": {
+                                "type": "keyword"
+                            },
+                            "height": {
+                                "store": true,
+                                "type": "long"
+                            },
+                            "href": {
+                                "type": "keyword"
+                            },
+                            "md5sum": {
+                                "type": "keyword"
+                            },
+                            "size": {
+                                "store": true,
+                                "type": "long"
+                            },
+                            "type": {
+                                "type": "keyword"
+                            },
+                            "width": {
+                                "store": true,
+                                "type": "long"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "avg_cells_per_target": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "avg_umis_per_cell": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "award": {
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "component": {
+                                "type": "keyword"
+                            },
+                            "contact_pi": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "date"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "end_date": {
+                                "type": "keyword"
+                            },
+                            "name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "pis": {
+                                "type": "keyword"
+                            },
+                            "project": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "start_date": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "title": {
+                                "type": "keyword"
+                            },
+                            "url": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            },
+                            "viewing_group": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "creation_timestamp": {
+                        "type": "date"
+                    },
+                    "description": {
+                        "copy_to": "_fuzzy",
+                        "type": "text"
+                    },
+                    "guide_diversity": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "lab": {
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "awards": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "date"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "institute_label": {
+                                "type": "keyword"
+                            },
+                            "name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "pi": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "title": {
+                                "type": "keyword"
+                            },
+                            "url": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "mean_mitochondrial_reads": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "moi": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "notes": {
+                        "type": "text"
+                    },
+                    "paired_reads_mapped": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "pct_cells_assigned_guide": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "quality_metric_of": {
+                        "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "release_timestamp": {
+                        "type": "date"
+                    },
+                    "schema_version": {
+                        "type": "keyword"
+                    },
+                    "status": {
+                        "type": "keyword"
+                    },
+                    "submitted_by": {
+                        "type": "keyword"
+                    },
+                    "submitter_comment": {
+                        "type": "keyword"
+                    },
+                    "summary": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "total_cells_passing_filters": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "total_detected_scrna_barcodes": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "total_guides": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "total_reads": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "total_targets": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "uuid": {
+                        "type": "keyword"
+                    }
+                },
+                "type": "object"
+            },
+            "embedded_uuids": {
+                "type": "keyword"
+            },
+            "index_name": {
+                "type": "keyword"
+            },
+            "item_type": {
+                "copy_to": "_exact",
+                "type": "keyword"
+            },
+            "linked_uuids": {
+                "type": "keyword"
+            },
+            "object": {
+                "enabled": false,
+                "type": "object"
+            },
+            "paths": {
+                "type": "keyword"
+            },
+            "properties": {
+                "enabled": false,
+                "type": "object"
+            },
+            "propsheets": {
+                "enabled": false,
+                "type": "object"
+            },
+            "tid": {
+                "type": "keyword"
+            },
+            "uuid": {
+                "copy_to": "_exact",
+                "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
+            }
+        }
+    }
+}
