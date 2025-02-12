@@ -1,6 +1,6 @@
 {
-    "hash": "96d12ac96a9882f7b35904a705bdbc48",
-    "index_name": "sequence_file_96d12ac9",
+    "hash": "84d2ba235e1a8dd2f7c9f7c216ac6e46",
+    "index_name": "sequence_file_84d2ba23",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1505,6 +1505,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -1547,6 +1550,9 @@
                                     },
                                     "release_timestamp": {
                                         "type": "date"
+                                    },
+                                    "research_groups": {
+                                        "type": "keyword"
                                     },
                                     "schema_version": {
                                         "type": "keyword"

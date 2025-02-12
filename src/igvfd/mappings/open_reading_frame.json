@@ -1,6 +1,6 @@
 {
-    "hash": "3049f1a9feae6882c619b2a3fe46bb3e",
-    "index_name": "open_reading_frame_3049f1a9",
+    "hash": "48eed168eac58a9c75c2986c0683d0fd",
+    "index_name": "open_reading_frame_48eed168",
     "item_type": "open_reading_frame",
     "mapping": {
         "dynamic_templates": [
@@ -175,6 +175,9 @@
                             "aliases": {
                                 "type": "keyword"
                             },
+                            "collections": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
                             },
@@ -217,6 +220,9 @@
                             },
                             "release_timestamp": {
                                 "type": "date"
+                            },
+                            "research_groups": {
+                                "type": "keyword"
                             },
                             "schema_version": {
                                 "type": "keyword"

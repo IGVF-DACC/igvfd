@@ -1,6 +1,6 @@
 {
-    "hash": "92da45454833e99ea18598cf818c7fa9",
-    "index_name": "tissue_92da4545",
+    "hash": "09adece68e3b689de692af8a14eea37b",
+    "index_name": "tissue_09adece6",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -271,6 +271,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -313,6 +316,9 @@
                                     },
                                     "release_timestamp": {
                                         "type": "date"
+                                    },
+                                    "research_groups": {
+                                        "type": "keyword"
                                     },
                                     "schema_version": {
                                         "type": "keyword"
@@ -1482,6 +1488,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -1524,6 +1533,9 @@
                                     },
                                     "release_timestamp": {
                                         "type": "date"
+                                    },
+                                    "research_groups": {
+                                        "type": "keyword"
                                     },
                                     "schema_version": {
                                         "type": "keyword"

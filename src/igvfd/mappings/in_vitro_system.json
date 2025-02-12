@@ -1,6 +1,6 @@
 {
-    "hash": "ce20a13a119c6f5cb02e5fbe55a89a16",
-    "index_name": "in_vitro_system_ce20a13a",
+    "hash": "4683077adb826745053fe4d707d01f47",
+    "index_name": "in_vitro_system_4683077a",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -271,6 +271,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -313,6 +316,9 @@
                                     },
                                     "release_timestamp": {
                                         "type": "date"
+                                    },
+                                    "research_groups": {
+                                        "type": "keyword"
                                     },
                                     "schema_version": {
                                         "type": "keyword"
@@ -1608,6 +1614,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -1650,6 +1659,9 @@
                                     },
                                     "release_timestamp": {
                                         "type": "date"
+                                    },
+                                    "research_groups": {
+                                        "type": "keyword"
                                     },
                                     "schema_version": {
                                         "type": "keyword"
