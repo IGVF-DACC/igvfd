@@ -281,7 +281,9 @@
         ],
         "taxa": "Mus musculus",
         "status": "archived",
-        "collections": "TOPMED Freeze 8",
+        "collections": [
+            "TOPMED Freeze 8"
+        ],
         "research_groups": [
             "j-michael-cherry"
         ],
