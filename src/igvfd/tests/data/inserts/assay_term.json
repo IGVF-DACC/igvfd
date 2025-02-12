@@ -67,11 +67,23 @@
         "term_id": "OBI:0002764",
         "term_name": "single-cell ATAC-seq",
         "preferred_assay_titles": [
-            "scMito-seq"
+            "scMito-seq",
+            "scACCESS-ATAC"
         ],
         "status": "released",
-        "release_timestamp": "2024-03-06T12:34:56Z",
-        "uuid": "99d4f728-edf2-4c5c-9b89-e280a396ce73"
+        "release_timestamp": "2025-02-06T12:34:56Z",
+        "uuid": "1472cf10-5ddf-420f-b019-6275fd43a30a"
+    },
+    {
+        "term_id": "OBI:0003089",
+        "term_name": "bulk assay for transposase-accessible chromatin using sequencing",
+        "preferred_assay_titles": [
+            "ATAC-seq",
+            "ACCESS-ATAC"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-02-06T12:34:56Z",
+        "uuid": "a00684d8-5f87-4129-82ea-66c0cbd74978"
     },
     {
         "term_id": "NTR:0000739",
