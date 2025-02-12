@@ -1,5 +1,10 @@
 ## Changelog for *`primary_cell.json`*
 
+### Minor changes since schema version 22
+
+* Extend `nucleic_acid_delivery` enum list to include `lipofectamine`.
+* Extend `nucleic_acid_delivery` enum list to include `electroporation`.
+
 ### Schema version 22
 
 * Adjust `biosample_qualifiers` enum list to remove `calcified`.

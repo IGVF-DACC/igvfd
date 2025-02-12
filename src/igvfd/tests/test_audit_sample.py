@@ -180,3 +180,32 @@ def test_audit_parent_sample_singular_children(
         error['category'] != 'missing sample'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
+
+
+def test_audit_missing_nucleic_acid_delivery(
+    testapp,
+    in_vitro_cell_line,
+    construct_library_set_genome_wide
+):
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'construct_library_sets': [construct_library_set_genome_wide['@id']]
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing nucleic acid delivery'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'nucleic_acid_delivery': 'lipofectamine'
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing nucleic acid delivery'
+        for error in res.json['audit'].get('WARNING', [])
+    )

@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 10
 
+* Extend `nucleic_acid_delivery` enum list to include `lipofectamine`.
+* Extend `nucleic_acid_delivery` enum list to include `electroporation`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Extend `status` enum list to include `preview`.
 * Add calculated property `taxa`.
