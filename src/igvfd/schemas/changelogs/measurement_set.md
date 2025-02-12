@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 23
 
+* Extend `preferred_assay_title` enum list to include `ACCESS-ATAC`.
+* Extend `preferred_assay_title` enum list to include `scACCESS-ATAC`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.
 * Extend `collections` enum list to include `StanfordFCC`.
