@@ -103,17 +103,24 @@ def test_audit_inconsistent_location_files(testapp, sequence_file_pod5, sequence
 
 
 def test_audit_single_cell_read_names(testapp, measurement_set_one_onlist, sequence_file, sequence_file_sequencing_run_2):
-    # Patch a single cell MeaSet SeqFiles without read_names (audit)
+    # Patch a single cell SeqFiles without read_names and I1 (no audit)
     testapp.patch_json(
         sequence_file['@id'],
         {
-            'file_set': measurement_set_one_onlist['@id']
+            'file_set': measurement_set_one_onlist['@id'],
+            'illumina_read_type': 'I1'
         }
     )
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing read names'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # Patch a single cell SeqFiles without read_names and R1 (audit)
     testapp.patch_json(
-        sequence_file_sequencing_run_2['@id'],
+        sequence_file['@id'],
         {
-            'file_set': measurement_set_one_onlist['@id']
+            'illumina_read_type': 'R1'
         }
     )
     res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
@@ -121,22 +128,18 @@ def test_audit_single_cell_read_names(testapp, measurement_set_one_onlist, seque
         error['category'] == 'missing read names'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
-    # Patch the a MeaSet with one SeqFile with read_names and one without (audit)
+    # Patch SeqFiles with R-read type and read_names (no audit)
     testapp.patch_json(
         sequence_file['@id'],
         {
-            'read_names': ['Read 1'],
+            'read_names': ['Read 1']
         }
     )
-    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing read names'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-    # Patch both SeqFiles with read_names (no audit)
     testapp.patch_json(
         sequence_file_sequencing_run_2['@id'],
         {
+            'file_set': measurement_set_one_onlist['@id'],
+            'illumina_read_type': 'R2',
             'read_names': ['Read 2', 'Barcode index']
         }
     )

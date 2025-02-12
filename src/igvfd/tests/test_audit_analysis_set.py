@@ -305,28 +305,61 @@ def test_audit_analysis_set_demultiplexed_sample(
     )
 
 
-def test_audit_analysis_set_inconsistent_barcode_onlist(testapp, analysis_set_with_scrna_measurement_sets, measurement_set_one_onlist, measurement_set_two_onlists, tabular_file_onlist_1, tabular_file_onlist_2):
-    # Check if the audit can catch input MeaSets have multiple onlist methods and 2 different sets of onlist files
-    testapp.patch_json(
-        analysis_set_with_scrna_measurement_sets['@id'],
-        {
-            'input_file_sets': [measurement_set_one_onlist['@id'], measurement_set_two_onlists['@id']]
-        }
-    )
-    res = testapp.get(analysis_set_with_scrna_measurement_sets['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'inconsistent barcode onlist'
+def test_audit_analysis_set_inconsistent_barcode_onlist(testapp, analysis_set_with_scrna_measurement_sets, analysis_set_with_multiome_measurement_sets, measurement_set_one_onlist, measurement_set_two_onlists, measurement_set_one_onlist_atac, measurement_set_two_onlists_atac, tabular_file_onlist_1, tabular_file_onlist_2):
+    # Analysis set with 1 ATAC measurement set and 1 RNA measurement set with different onlist info (no audit)
+    res = testapp.get(analysis_set_with_multiome_measurement_sets['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent barcode onlists'
         for error in res.json['audit'].get('WARNING', [])
     )
-    # Check if an analysis set with 2 measurement sets have the same onlist info will be audit-free
+    assert all(
+        error['category'] != 'inconsistent barcode method'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+    # Analysis set with 2 ATAC measurement set and 2 RNA measurement set
+    # Each assay type has 2 measurement sets with different onlist info (audit)
+    testapp.patch_json(
+        analysis_set_with_multiome_measurement_sets['@id'],
+        {
+            'input_file_sets': [measurement_set_one_onlist['@id'],
+                                measurement_set_two_onlists['@id'],
+                                measurement_set_one_onlist_atac['@id'],
+                                measurement_set_two_onlists_atac['@id']
+                                ]
+        }
+    )
+    res = testapp.get(analysis_set_with_multiome_measurement_sets['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent barcode onlists'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    assert any(
+        error['category'] == 'inconsistent barcode method'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+    # Patch the single onlist file measurement sets to be 2 onlist files and product as method (no audit)
     testapp.patch_json(
         measurement_set_one_onlist['@id'],
         {
-            'onlist_files': [tabular_file_onlist_1['@id'], tabular_file_onlist_2['@id']]
+            'onlist_files': [tabular_file_onlist_1['@id'], tabular_file_onlist_2['@id']],
+            'onlist_method': 'product'
+        }
+    )
+    testapp.patch_json(
+        measurement_set_one_onlist_atac['@id'],
+        {
+            'onlist_files': [tabular_file_onlist_1['@id'], tabular_file_onlist_2['@id']],
+            'onlist_method': 'product'
         }
     )
     res = testapp.get(analysis_set_with_scrna_measurement_sets['@id'] + '@@audit')
-    assert any(
-        error['category'] != 'inconsistent barcode onlist'
+    assert all(
+        error['category'] != 'inconsistent barcode onlists'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    assert all(
+        error['category'] != 'inconsistent barcode method'
         for error in res.json['audit'].get('WARNING', [])
     )

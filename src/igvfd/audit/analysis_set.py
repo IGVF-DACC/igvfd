@@ -262,32 +262,52 @@ def audit_analysis_set_inconsistent_onlist_info(value, system):
     '''
     [
         {
-            "audit_description": "Analysis sets for single cell uniform pipeline runs are expected to have measurement sets with the same barcode files.",
-            "audit_category": "inconsistent barcode onlist",
+            "audit_description": "Analysis sets to be processed by the single cell uniform pipeline runs are expected to have the same onlist files for input measurement sets of the same assay.",
+            "audit_category": "inconsistent barcode onlists",
             "audit_level": "WARNING"
         },
         {
-            "audit_description": "Analysis sets for single cell uniform pipeline runs are expected to have measurement sets with the same barcode methods.",
-            "audit_category": "inconsistent barcode onlist",
+            "audit_description": "Analysis sets to be processed by the single cell uniform pipeline runs are expected to have the same onlist methods for input measurement sets of the same assay.",
+            "audit_category": "inconsistent barcode method",
             "audit_level": "WARNING"
         }
     ]
     '''
     audit_msg_inconsistent_onlist_files = get_audit_message(audit_analysis_set_inconsistent_onlist_info, index=0)
-    audit_msg_inconsistent_onlist_methods = get_audit_message(audit_analysis_set_inconsistent_onlist_info, index=1)
-    all_onlist_files = []
-    all_onlist_methods = []
+    audit_msg_inconsistent_onlist_method = get_audit_message(audit_analysis_set_inconsistent_onlist_info, index=1)
+    onlist_files_by_assays = {}
+    onlist_methods_by_assays = {}
     input_file_sets = value.get('input_file_sets', [])
     for input_file_set in input_file_sets:
         if input_file_set.startswith('/measurement-sets/'):
             input_file_set_object = system.get('request').embed(input_file_set + '@@object?skip_calculated=true')
+            # Only check if single cell
             single_cell_assay_status = single_cell_check(system, input_file_set_object, 'Measurement set')
             if single_cell_assay_status:
-                all_onlist_files.append(sorted(input_file_set_object.get('onlist_files', '')))
-                all_onlist_methods.append(input_file_set_object.get('onlist_method', ''))
-    # If there are multiple onlist methods from the input measurement sets, trigger audit
-    if len(set(all_onlist_methods)) > 1:
-        yield AuditFailure(audit_msg_inconsistent_onlist_methods.get('audit_category', ''), audit_msg_inconsistent_onlist_methods.get('audit_description', ''), level=audit_msg_inconsistent_onlist_methods.get('audit_level', ''))
+                assay_term = input_file_set_object.get('assay_term', '')
+                # Onlist files are lists
+                onlist_files_by_assays.setdefault(assay_term, []).append(input_file_set_object.get('onlist_files', ''))
+                # Onlist methods are str
+                onlist_methods_by_assays.setdefault(assay_term, set()).add(
+                    input_file_set_object.get('onlist_method', ''))
+
+    # If there are multiple onlist methods from the input measurement sets of the same assay type, trigger audit
+    for assay_term, onlist_methods in onlist_methods_by_assays.items():
+        if len(onlist_methods) > 1:
+            assay_term_obj = system.get('request').embed(assay_term + '@@object?')
+            detail = (
+                f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has Measurement set(s) with assay term: {assay_term_obj.get("term_name", "")} '
+                f'with inconsistent `onlist_methods`.'
+            )
+            yield AuditFailure(audit_msg_inconsistent_onlist_method.get('audit_category', ''), f'{detail} {audit_msg_inconsistent_onlist_method.get("audit_description", "")}', level=audit_msg_inconsistent_onlist_method.get('audit_level', ''))
+
     # If the input measurement sets have different onlist files
-    elif not all(set(sublist) == set(all_onlist_files[0]) for sublist in all_onlist_files):
-        yield AuditFailure(audit_msg_inconsistent_onlist_files.get('audit_category', ''), audit_msg_inconsistent_onlist_files.get('audit_description', ''), level=audit_msg_inconsistent_onlist_files.get('audit_level', ''))
+    for assay_term, onlist_files in onlist_files_by_assays.items():
+        if not all(set(sublist) == set(onlist_files[0]) for sublist in onlist_files):
+            detail = (
+                f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has Measurement set(s) with assay term: {assay_term_obj.get("term_name", "")} '
+                f'with inconsistent `onlist_files`.'
+            )
+            yield AuditFailure(audit_msg_inconsistent_onlist_files.get('audit_category', ''), f'{detail} {audit_msg_inconsistent_onlist_files.get("audit_description", "")}', level=audit_msg_inconsistent_onlist_files.get('audit_level', ''))
