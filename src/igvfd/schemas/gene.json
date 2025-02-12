@@ -126,6 +126,44 @@
             },
             "permission": "admin_only"
         },
+        "collections": {
+            "title": "Collections",
+            "description": "Genes that are part of a particular data collections.",
+            "comment": "The list collections that genes was studied under.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Collection",
+                "description": "Genes that are part of a particular data collection.",
+                "type": "string",
+                "enum": [
+                    "Morphic",
+                    "StanfordFCC",
+                    "ACMG73",
+                    "GREGoR candidate",
+                    "IGVF phase 1",
+                    "TOPMED Freeze 8",
+                    "Williams Syndrome Research"
+                ]
+            },
+            "permission": "admin_only"
+        },
+        "research_groups": {
+            "title": "Research Groups",
+            "description": "List of research groups studing the gene.",
+            "comment": "The list of research groups analyzing this gene.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Research Group",
+                "description": "List of research groups studying this gene.",
+                "type": "string",
+                "linkTo": "Lab"
+            },
+            "permission": "admin_only"
+        },
         "dbxrefs": {
             "title": "External Resources",
             "description": "Unique identifiers from external resources.",
