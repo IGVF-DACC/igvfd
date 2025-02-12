@@ -1,6 +1,6 @@
 {
-    "hash": "c2b30c706c8c196971c0bd51f52ac109",
-    "index_name": "reference_file_c2b30c70",
+    "hash": "f08007d236fa3342697edbd2db9f0173",
+    "index_name": "reference_file_f08007d2",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -1496,6 +1496,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -1538,6 +1541,9 @@
                                     },
                                     "release_timestamp": {
                                         "type": "date"
+                                    },
+                                    "research_groups": {
+                                        "type": "keyword"
                                     },
                                     "schema_version": {
                                         "type": "keyword"

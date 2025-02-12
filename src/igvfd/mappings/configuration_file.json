@@ -1,6 +1,6 @@
 {
-    "hash": "f1b8dba1f4d2ccefd5f9208f4b848321",
-    "index_name": "configuration_file_f1b8dba1",
+    "hash": "f2af6e665844a88fbc770610af54420f",
+    "index_name": "configuration_file_f2af6e66",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1479,6 +1479,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -1521,6 +1524,9 @@
                                     },
                                     "release_timestamp": {
                                         "type": "date"
+                                    },
+                                    "research_groups": {
+                                        "type": "keyword"
                                     },
                                     "schema_version": {
                                         "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "503d7826b5626cb4cc12244dfda7baae",
-    "index_name": "genome_browser_annotation_file_503d7826",
+    "hash": "4b05e7b18b481c3f3e97d220ef46eff5",
+    "index_name": "genome_browser_annotation_file_4b05e7b1",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -1569,6 +1569,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -1611,6 +1614,9 @@
                                     },
                                     "release_timestamp": {
                                         "type": "date"
+                                    },
+                                    "research_groups": {
+                                        "type": "keyword"
                                     },
                                     "schema_version": {
                                         "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "a93dd9b7b3a5f012161d0fb62b9269bb",
-    "index_name": "multiplexed_sample_a93dd9b7",
+    "hash": "b2add144a1dd270e4a3278915dd9185f",
+    "index_name": "multiplexed_sample_b2add144",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -268,6 +268,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -310,6 +313,9 @@
                                     },
                                     "release_timestamp": {
                                         "type": "date"
+                                    },
+                                    "research_groups": {
+                                        "type": "keyword"
                                     },
                                     "schema_version": {
                                         "type": "keyword"
@@ -1460,6 +1466,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -1502,6 +1511,9 @@
                                     },
                                     "release_timestamp": {
                                         "type": "date"
+                                    },
+                                    "research_groups": {
+                                        "type": "keyword"
                                     },
                                     "schema_version": {
                                         "type": "keyword"

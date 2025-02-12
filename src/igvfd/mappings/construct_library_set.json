@@ -1,6 +1,6 @@
 {
-    "hash": "c226c3fa55ed82664167a8e4647db77d",
-    "index_name": "construct_library_set_c226c3fa",
+    "hash": "0b7bd1fce3546b2a050b9e6975ff23b5",
+    "index_name": "construct_library_set_0b7bd1fc",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -2371,6 +2371,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -2413,6 +2416,9 @@
                                     },
                                     "release_timestamp": {
                                         "type": "date"
+                                    },
+                                    "research_groups": {
+                                        "type": "keyword"
                                     },
                                     "schema_version": {
                                         "type": "keyword"
@@ -2667,6 +2673,9 @@
                             "aliases": {
                                 "type": "keyword"
                             },
+                            "collections": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
                             },
@@ -2709,6 +2718,9 @@
                             },
                             "release_timestamp": {
                                 "type": "date"
+                            },
+                            "research_groups": {
+                                "type": "keyword"
                             },
                             "schema_version": {
                                 "type": "keyword"

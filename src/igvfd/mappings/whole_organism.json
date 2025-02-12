@@ -1,6 +1,6 @@
 {
-    "hash": "11b2e4449d3ed63e28caa60bba650993",
-    "index_name": "whole_organism_11b2e444",
+    "hash": "25e080be816f071bb2b5ff18ae0b5c73",
+    "index_name": "whole_organism_25e080be",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -271,6 +271,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -313,6 +316,9 @@
                                     },
                                     "release_timestamp": {
                                         "type": "date"
+                                    },
+                                    "research_groups": {
+                                        "type": "keyword"
                                     },
                                     "schema_version": {
                                         "type": "keyword"
@@ -1479,6 +1485,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -1521,6 +1530,9 @@
                                     },
                                     "release_timestamp": {
                                         "type": "date"
+                                    },
+                                    "research_groups": {
+                                        "type": "keyword"
                                     },
                                     "schema_version": {
                                         "type": "keyword"
