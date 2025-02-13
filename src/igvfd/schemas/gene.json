@@ -165,9 +165,9 @@
             "permission": "admin_only"
         },
         "research_motivation": {
-            "title": "Research Labs",
-            "description": "The list of research labs studing this gene.",
-            "comment": "An array of research labs that are studying this gene.",
+            "title": "Research Motivation",
+            "description": "The motivation for studing this gene.",
+            "comment": "The primary motivation for studying this gene.",
             "type": "string",
             "permission": "admin_only"
         },
