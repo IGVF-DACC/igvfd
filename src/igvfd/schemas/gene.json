@@ -169,6 +169,7 @@
             "description": "The motivation for studing this gene.",
             "comment": "The primary motivation for studying this gene.",
             "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
             "permission": "admin_only"
         },
         "dbxrefs": {
