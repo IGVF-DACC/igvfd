@@ -1,6 +1,6 @@
 {
-    "hash": "6b9b4120701fb505a0bb57d1b65e1f57",
-    "index_name": "image_file_6b9b4120",
+    "hash": "6972d9f1ae6f703fabf0b670bc3ba324",
+    "index_name": "image_file_6972d9f1",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -1525,7 +1525,10 @@
                                     "release_timestamp": {
                                         "type": "date"
                                     },
-                                    "research_groups": {
+                                    "research_labs": {
+                                        "type": "keyword"
+                                    },
+                                    "research_motivation": {
                                         "type": "keyword"
                                     },
                                     "schema_version": {

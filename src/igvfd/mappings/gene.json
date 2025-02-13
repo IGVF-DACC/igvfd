@@ -1,6 +1,6 @@
 {
-    "hash": "45ada9da8a04dc44337c3aa52f02b84f",
-    "index_name": "gene_45ada9da",
+    "hash": "48dcd941eebcbe78c133243eeb645177",
+    "index_name": "gene_48dcd941",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -200,7 +200,10 @@
                     "release_timestamp": {
                         "type": "date"
                     },
-                    "research_groups": {
+                    "research_labs": {
+                        "type": "keyword"
+                    },
+                    "research_motivation": {
                         "type": "keyword"
                     },
                     "schema_version": {
