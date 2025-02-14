@@ -281,6 +281,9 @@
         ],
         "taxa": "Mus musculus",
         "status": "archived",
+        "collections": [
+            "Williams Syndrome Research"
+        ],
         "study_sets": [
             "Cardiomyopathy"
         ],
