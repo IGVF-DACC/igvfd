@@ -112,5 +112,18 @@
             "IGVF_catalog_beta_v0.4"
         ],
         "description": "A curated set for barcodes used in library preparation, such as for Parse Split-seq."
+    },
+    {
+        "award": "1U01HG011952-01",
+        "lab": "/labs/alan-boyle/",
+        "uuid": "1f31f99a-e3a3-4a1b-8d4d-6f33a16bcf4c",
+        "file_set_type": "model training source",
+        "accession": "IGVFDS8485BARC",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "aliases": [
+            "alan-boyle:model_source_curated_set"
+        ],
+        "description": "A curated set for data source used in training computational models, such as for SEMpl."
     }
 ]

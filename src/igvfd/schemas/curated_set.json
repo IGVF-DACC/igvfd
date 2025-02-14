@@ -66,6 +66,7 @@
                 "genome",
                 "genes",
                 "guide RNAs",
+                "model training source",
                 "transcriptome",
                 "variants"
             ],
@@ -77,6 +78,7 @@
                 "genome": "For hosting genome reference files.",
                 "genes": "List(s) of genes.",
                 "guide RNAs": "List(s) of guide RNAs used in CRISPR assays.",
+                "model training source": "For hosting files describing the training source of computational models,",
                 "transcriptome": "For hosting transcriptome reference files.",
                 "variants": "List(s) of variants."
             },
