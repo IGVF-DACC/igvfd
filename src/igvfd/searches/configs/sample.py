@@ -215,3 +215,39 @@ def sample():
             }
         ],
     }
+
+
+@search_config(
+    name='sample-cell-lines'
+)
+def sample_cell_lines():
+    return {
+        'matrix': {
+            'x': {
+                'group_by': 'file_sets.preferred_assay_title',
+                'label': 'Assays'
+            },
+            'y': {
+                'group_by': ['sample_terms.term_name', 'sex'],
+                'label': 'Samples'
+            }
+        }
+    }
+
+
+@search_config(
+    name='sample-differentiated-specimens'
+)
+def sample_differentiated_specimens():
+    return {
+        'matrix': {
+            'x': {
+                'group_by': 'file_sets.preferred_assay_title',
+                'label': 'Assays'
+            },
+            'y': {
+                'group_by': ['targeted_sample_term.term_name', 'sex'],
+                'label': 'Cellular Transformation Target'
+            }
+        }
+    }
