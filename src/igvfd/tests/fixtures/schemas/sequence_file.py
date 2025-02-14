@@ -267,8 +267,8 @@ def sequence_file_v12(sequence_file):
 
 
 @pytest.fixture
-def sequence_file_v14(sequence_file_v12):
-    item = sequence_file_v12.copy()
+def sequence_file_v14(sequence_file):
+    item = sequence_file.copy()
     item.update({
         'schema_version': '14',
         'minimum_read_length': 99.0,
