@@ -100,6 +100,7 @@
                 "graph structure",
                 "neural network architecture",
                 "position weight matrix",
+                "protein language model",
                 "SNP effect matrix"
             ],
             "enum_descriptions": {
