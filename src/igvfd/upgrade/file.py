@@ -382,3 +382,15 @@ def alignment_file_11_12(value, system):
         notes += f' This file lacked a newly required property assembly, and the assembly has been assigneed to be custom via an upgrade.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+
+@upgrade_step('sequence_file', '14', '15')
+@upgrade_step('alignment_file', '12', '13')
+def sequence_file_14_15_alignment_file_12_13(value, system):
+    #https://igvf.atlassian.net/browse/SNO2-71
+    keys = ['read_count', 'minimum_read_length', 'maximum_read_length']
+    for k in keys:
+        # Coerce values like 28.0 to ints.
+        if k in value:
+            value[k] = int(value[k])
