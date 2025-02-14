@@ -166,3 +166,15 @@ def alignment_file_v11(testapp, lab, award, principal_analysis_set, reference_fi
         'controlled_access': False
     }
     return item
+
+
+@pytest.fixture
+def alignment_file_v12(alignment_file_v11):
+    item = alignment_file_v11.copy()
+    item.update(
+        {
+            'schema_version': '11',
+            'read_count':  23040138.0,
+        }
+    )
+    return item

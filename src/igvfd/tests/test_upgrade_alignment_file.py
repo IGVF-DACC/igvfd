@@ -72,3 +72,10 @@ def test_alignment_file_upgrade_11_12(upgrader, alignment_file_v11):
     assert alignment_file_v11['assembly'] == 'custom'
     assert alignment_file_v11['notes'].endswith('has been assigneed to be custom via an upgrade.')
     assert alignment_file_v11['schema_version'] == '12'
+
+
+def test_alignment_file_upgrade_12_13(upgrader, alignment_file_v12):
+    assert alignment_file_v12['read_count'] == 23040138.0
+    value = upgrader.upgrade('alignment_file', alignment_file_v12, current_version='12', target_version='13')
+    assert alignment_file_v12['read_count'] == 23040138
+    assert alignment_file_v12['schema_version'] == '13'
