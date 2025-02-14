@@ -32,6 +32,9 @@
             "$ref": "mixins.json#/transcriptome_annotation"
         },
         {
+            "$ref": "mixins.json#/collections"
+        },
+        {
             "$ref": "mixins.json#/release_timestamp"
         }
     ],
@@ -128,8 +131,8 @@
         },
         "collections": {
             "title": "Collections",
-            "description": "Genes that are part of a particular data collections.",
-            "comment": "An array of research collections that is analyzing this gene.",
+            "description": "Is studied as a part of a particular data collections.",
+            "comment": "A.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
@@ -149,27 +152,19 @@
             },
             "permission": "admin_only"
         },
-        "research_labs": {
-            "title": "Research Labs",
-            "description": "The list of research labs studing this gene.",
-            "comment": "An array of research labs that are studying this gene.",
+        "study_sets": {
+            "title": "Study Sets",
+            "description": "The sets of IGVF studies that this gene was a part of.",
+            "comment": ".",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "Research Lab",
-                "description": "List of research groups studying this gene.",
+                "title": "Study Set",
+                "description": "The set of IGVF studies that this gene was a part of.",
                 "type": "string",
-                "linkTo": "Lab"
+                "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
             },
-            "permission": "admin_only"
-        },
-        "research_motivation": {
-            "title": "Research Motivation",
-            "description": "The motivation for studing this gene.",
-            "comment": "The primary motivation for studying this gene.",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
             "permission": "admin_only"
         },
         "dbxrefs": {

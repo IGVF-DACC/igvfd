@@ -3,8 +3,7 @@
 ### Minor changes since schema version 8
 
 * Add `collections`.
-* Add `research_labs`.
-* Add `research_motivation`.
+* Add `study_sets`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 47`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE M36`.
 * Extend `status` enum list to include `preview`.
