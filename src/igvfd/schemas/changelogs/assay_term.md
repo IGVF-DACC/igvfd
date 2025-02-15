@@ -2,7 +2,6 @@
 
 ### Minor changes since schema version 9
 
-* Extend `preferred_assay_titles` enum list to include `protein language model`.
 * Extend `preferred_assay_titles` enum list to include `ACCESS-ATAC`.
 * Extend `preferred_assay_titles` enum list to include `scACCESS-ATAC`.
 * Extend `preferred_assay_titles` enum list to include `CRISPR MACS screen`.
