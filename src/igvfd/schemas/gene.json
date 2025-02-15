@@ -32,7 +32,7 @@
             "$ref": "mixins.json#/transcriptome_annotation"
         },
         {
-            "$ref": "mixins.json#/collections"
+            "$ref": "mixins.json#/accession/collections"
         },
         {
             "$ref": "mixins.json#/release_timestamp"
