@@ -208,15 +208,16 @@ class FileSet(Item):
             'notSubmittable': True
         })
     def construct_library_sets(self, request, samples=None):
-        construct_library_sets = []
+        construct_library_sets = set()
         for sample in samples:
             sample_object = request.embed(sample,
                                           '@@object_with_select_calculated_properties?'
                                           'field=construct_library_sets'
                                           )
-            construct_library_sets = construct_library_sets + sample_object.get('construct_library_sets', [])
+            if sample_object.get('construct_library_sets', []):
+                construct_library_sets = construct_library_sets | set(sample_object.get('construct_library_sets', []))
         if construct_library_sets:
-            return construct_library_sets
+            return list(construct_library_sets)
 
 
 @collection(
