@@ -131,13 +131,13 @@
         },
         "study_sets": {
             "title": "Study Sets",
-            "description": "The sets of IGVF studies that this gene was a part of.",
+            "description": "The studies of IGVF that this gene was a part of.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Study Set",
-                "description": "The set of IGVF studies that this gene was a part of.",
+                "description": "The study of IGVF that this gene was a part of.",
                 "type": "string",
                 "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
             },
