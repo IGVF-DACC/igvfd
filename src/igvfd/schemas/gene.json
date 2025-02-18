@@ -132,7 +132,6 @@
         "study_sets": {
             "title": "Study Sets",
             "description": "The sets of IGVF studies that this gene was a part of.",
-            "comment": ".",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
