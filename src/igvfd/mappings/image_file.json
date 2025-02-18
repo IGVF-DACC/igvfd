@@ -1,6 +1,6 @@
 {
-    "hash": "6972d9f1ae6f703fabf0b670bc3ba324",
-    "index_name": "image_file_6972d9f1",
+    "hash": "454fc29f895f6bc3a44697623523ab66",
+    "index_name": "image_file_454fc29f",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -1525,16 +1525,13 @@
                                     "release_timestamp": {
                                         "type": "date"
                                     },
-                                    "research_labs": {
-                                        "type": "keyword"
-                                    },
-                                    "research_motivation": {
-                                        "type": "keyword"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {

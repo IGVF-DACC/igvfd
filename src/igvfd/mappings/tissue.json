@@ -1,6 +1,6 @@
 {
-    "hash": "34597466ffa4ae03c2c3cf036880f4af",
-    "index_name": "tissue_34597466",
+    "hash": "160aebcdeeb13eb8cee47c1afd39416c",
+    "index_name": "tissue_160aebcd",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -317,16 +317,13 @@
                                     "release_timestamp": {
                                         "type": "date"
                                     },
-                                    "research_labs": {
-                                        "type": "keyword"
-                                    },
-                                    "research_motivation": {
-                                        "type": "keyword"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {
@@ -1537,16 +1534,13 @@
                                     "release_timestamp": {
                                         "type": "date"
                                     },
-                                    "research_labs": {
-                                        "type": "keyword"
-                                    },
-                                    "research_motivation": {
-                                        "type": "keyword"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {

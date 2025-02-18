@@ -1,6 +1,6 @@
 {
-    "hash": "d43b3e3fa2b87335ae970bbf4a40ca9e",
-    "index_name": "primary_cell_d43b3e3f",
+    "hash": "accbe8dfc8e6100f82ab9ae085a94b86",
+    "index_name": "primary_cell_accbe8df",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -317,16 +317,13 @@
                                     "release_timestamp": {
                                         "type": "date"
                                     },
-                                    "research_labs": {
-                                        "type": "keyword"
-                                    },
-                                    "research_motivation": {
-                                        "type": "keyword"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {
@@ -1537,16 +1534,13 @@
                                     "release_timestamp": {
                                         "type": "date"
                                     },
-                                    "research_labs": {
-                                        "type": "keyword"
-                                    },
-                                    "research_motivation": {
-                                        "type": "keyword"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {

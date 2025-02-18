@@ -1,6 +1,6 @@
 {
-    "hash": "464e2f08f3bf5631b4a0b541d6443b06",
-    "index_name": "prediction_set_464e2f08",
+    "hash": "b2fbca9c0ef0c7ecec59276b9b615655",
+    "index_name": "prediction_set_b2fbca9c",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -214,16 +214,13 @@
                             "release_timestamp": {
                                 "type": "date"
                             },
-                            "research_labs": {
-                                "type": "keyword"
-                            },
-                            "research_motivation": {
-                                "type": "keyword"
-                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "study_sets": {
                                 "type": "keyword"
                             },
                             "submitted_by": {
@@ -2643,16 +2640,13 @@
                             "release_timestamp": {
                                 "type": "date"
                             },
-                            "research_labs": {
-                                "type": "keyword"
-                            },
-                            "research_motivation": {
-                                "type": "keyword"
-                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "study_sets": {
                                 "type": "keyword"
                             },
                             "submitted_by": {

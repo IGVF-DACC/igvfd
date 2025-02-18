@@ -1,6 +1,6 @@
 {
-    "hash": "f6e66581509452fe8a4006d824ad6a88",
-    "index_name": "in_vitro_system_f6e66581",
+    "hash": "4ef5c47cb3458d19fd2e93167818d378",
+    "index_name": "in_vitro_system_4ef5c47c",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -317,16 +317,13 @@
                                     "release_timestamp": {
                                         "type": "date"
                                     },
-                                    "research_labs": {
-                                        "type": "keyword"
-                                    },
-                                    "research_motivation": {
-                                        "type": "keyword"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {
@@ -1663,16 +1660,13 @@
                                     "release_timestamp": {
                                         "type": "date"
                                     },
-                                    "research_labs": {
-                                        "type": "keyword"
-                                    },
-                                    "research_motivation": {
-                                        "type": "keyword"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {

@@ -1,6 +1,6 @@
 {
-    "hash": "c3a9970cad6bdcf13ab9987218712876",
-    "index_name": "construct_library_set_c3a9970c",
+    "hash": "0d63cb7fe2f3b9b9fa42e83cded17bf3",
+    "index_name": "construct_library_set_0d63cb7f",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -2417,16 +2417,13 @@
                                     "release_timestamp": {
                                         "type": "date"
                                     },
-                                    "research_labs": {
-                                        "type": "keyword"
-                                    },
-                                    "research_motivation": {
-                                        "type": "keyword"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {
@@ -2722,16 +2719,13 @@
                             "release_timestamp": {
                                 "type": "date"
                             },
-                            "research_labs": {
-                                "type": "keyword"
-                            },
-                            "research_motivation": {
-                                "type": "keyword"
-                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "study_sets": {
                                 "type": "keyword"
                             },
                             "submitted_by": {

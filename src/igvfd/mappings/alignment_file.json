@@ -1,6 +1,6 @@
 {
-    "hash": "0a5b17e0d686d888d4ab21e9be01c058",
-    "index_name": "alignment_file_0a5b17e0",
+    "hash": "7f221dd2ce0c8f90adfd95ba7b025cab",
+    "index_name": "alignment_file_7f221dd2",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1542,16 +1542,13 @@
                                     "release_timestamp": {
                                         "type": "date"
                                     },
-                                    "research_labs": {
-                                        "type": "keyword"
-                                    },
-                                    "research_motivation": {
-                                        "type": "keyword"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {

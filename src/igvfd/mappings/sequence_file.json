@@ -1,6 +1,6 @@
 {
-    "hash": "abba25309abae0777471aa9890e34c20",
-    "index_name": "sequence_file_abba2530",
+    "hash": "eaa9f509cea03432d377ff7abefaef8b",
+    "index_name": "sequence_file_eaa9f509",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1551,16 +1551,13 @@
                                     "release_timestamp": {
                                         "type": "date"
                                     },
-                                    "research_labs": {
-                                        "type": "keyword"
-                                    },
-                                    "research_motivation": {
-                                        "type": "keyword"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {
