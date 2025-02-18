@@ -1,5 +1,9 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 15
+
+* Coerce `read_count`, `minimum_read_length`, and `maximum_read_length` float integer (e.g. 28.0) to int (28).
+
 ### Minor changes since schema version 14
 
 * Add `workflow`.

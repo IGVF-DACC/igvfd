@@ -76,3 +76,14 @@ def test_sequence_file_upgrade_12_13(upgrader, sequence_file_v12):
     value = upgrader.upgrade('sequence_file', sequence_file_v12, current_version='12', target_version='13')
     assert value['sequencing_kit'] == 'NovaSeq 6000 S4 Reagent Kit v1.5'
     assert value['schema_version'] == '13'
+
+
+def test_sequence_file_upgrade_14_15(upgrader, sequence_file_v14):
+    assert sequence_file_v14['minimum_read_length'] == 99.0
+    assert sequence_file_v14['maximum_read_length'] == 101.0
+    assert sequence_file_v14['read_count'] == 23040138.0
+    value = upgrader.upgrade('sequence_file', sequence_file_v14, current_version='14', target_version='15')
+    assert sequence_file_v14['minimum_read_length'] == 99
+    assert sequence_file_v14['maximum_read_length'] == 101
+    assert sequence_file_v14['read_count'] == 23040138
+    assert value['schema_version'] == '15'

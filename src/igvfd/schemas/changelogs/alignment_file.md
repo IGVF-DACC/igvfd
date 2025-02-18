@@ -1,5 +1,9 @@
 ## Changelog for *`alignment_file.json`*
 
+### Schema version 13
+
+* Coerce `read_count` float integer (e.g. 28.0) to int (28).
+
 ### Minor changes since schema version 12
 
 * Extend `transcriptome_annotation` enum list to include `GENCODE 47`.
