@@ -1,10 +1,6 @@
 ## Changelog for *`alignment_file.json`*
 
-### Schema version 13
-
-* Coerce `read_count` float integer (e.g. 28.0) to int (28).
-
-### Minor changes since schema version 12
+### Minor changes since schema version 13
 
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.
@@ -12,6 +8,13 @@
 * Extend `collections` enum list to include `IGVF phase 1`.
 * Extend `collections` enum list to include `TOPMED Freeze 8`.
 * Extend `collections` enum list to include `Williams Syndrome Research`.
+
+### Schema version 13
+
+* Coerce `read_count` float integer (e.g. 28.0) to int (28).
+
+### Minor changes since schema version 12
+
 * Extend `transcriptome_annotation` enum list to include `GENCODE 47`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE M36`.
 * Add `workflow`.
