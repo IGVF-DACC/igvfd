@@ -2,6 +2,12 @@
 
 ### Minor changes since schema version 10
 
+* Extend `collections` enum list to include `ACMG73`.
+* Extend `collections` enum list to include `Morphic`.
+* Extend `collections` enum list to include `StanfordFCC`.
+* Extend `collections` enum list to include `IGVF phase 1`.
+* Extend `collections` enum list to include `TOPMED Freeze 8`.
+* Extend `collections` enum list to include `Williams Syndrome Research`.
 * Update calculation of `summary`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Extend `selection_criteria` enum list to include `random selections`.

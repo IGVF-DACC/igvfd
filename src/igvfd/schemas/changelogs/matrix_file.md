@@ -2,6 +2,12 @@
 
 ### Minor changes since schema version 7
 
+* Extend `collections` enum list to include `ACMG73`.
+* Extend `collections` enum list to include `Morphic`.
+* Extend `collections` enum list to include `StanfordFCC`.
+* Extend `collections` enum list to include `IGVF phase 1`.
+* Extend `collections` enum list to include `TOPMED Freeze 8`.
+* Extend `collections` enum list to include `Williams Syndrome Research`.
 * Extend `principal_dimension` enum list to include `spot barcode`.
 * Extend `file_format` enum list to include `Robj`.
 * Add `filtered`.

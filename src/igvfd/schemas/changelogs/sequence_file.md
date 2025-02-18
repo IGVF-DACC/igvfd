@@ -6,6 +6,12 @@
 
 ### Minor changes since schema version 14
 
+* Extend `collections` enum list to include `ACMG73`.
+* Extend `collections` enum list to include `Morphic`.
+* Extend `collections` enum list to include `StanfordFCC`.
+* Extend `collections` enum list to include `IGVF phase 1`.
+* Extend `collections` enum list to include `TOPMED Freeze 8`.
+* Extend `collections` enum list to include `Williams Syndrome Research`.
 * Add `workflow`.
 * Extend `read_names` enum list to include `Barcode forward`.
 * Extend `read_names` enum list to include `UMI`.
