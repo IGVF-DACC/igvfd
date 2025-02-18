@@ -126,6 +126,7 @@
             "items": {
                 "type": "string",
                 "enum": [
+                    "ACMG73",
                     "ClinGen",
                     "ENCODE",
                     "GREGoR",
@@ -134,10 +135,15 @@
                     "IGVF_catalog_beta_v0.3",
                     "IGVF_catalog_beta_v0.4",
                     "IGVF_catalog_beta_v0.5",
+                    "IGVF phase 1",
                     "MaveDB",
+                    "Morphic",
                     "MPRAbase",
+                    "StanfordFCC",
+                    "TOPMED Freeze 8",
                     "VarChAMP",
-                    "Vista"
+                    "Vista",
+                    "Williams Syndrome Research"
                 ]
             }
         },

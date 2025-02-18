@@ -1,6 +1,6 @@
 {
-    "hash": "c9d612323fcec4d3acc0f8474d1216a2",
-    "index_name": "matrix_file_c9d61232",
+    "hash": "648d2fcde23db421f14ecbba94fe7153",
+    "index_name": "matrix_file_648d2fcd",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1486,6 +1486,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -1533,6 +1536,9 @@
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {

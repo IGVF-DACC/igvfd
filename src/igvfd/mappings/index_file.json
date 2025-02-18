@@ -1,6 +1,6 @@
 {
-    "hash": "74d793cd4e83c0e740c8fd1af57b93ac",
-    "index_name": "index_file_74d793cd",
+    "hash": "a147612e9013f900a3c1ac70cddd841e",
+    "index_name": "index_file_a147612e",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -1493,6 +1493,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -1540,6 +1543,9 @@
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {

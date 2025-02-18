@@ -281,6 +281,12 @@
         ],
         "taxa": "Mus musculus",
         "status": "archived",
+        "collections": [
+            "Williams Syndrome Research"
+        ],
+        "study_sets": [
+            "Cardiomyopathy"
+        ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "Gm13255"
     }

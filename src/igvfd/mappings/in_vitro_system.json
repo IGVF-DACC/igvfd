@@ -1,6 +1,6 @@
 {
-    "hash": "ce20a13a119c6f5cb02e5fbe55a89a16",
-    "index_name": "in_vitro_system_ce20a13a",
+    "hash": "4ef5c47cb3458d19fd2e93167818d378",
+    "index_name": "in_vitro_system_4ef5c47c",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -271,6 +271,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -318,6 +321,9 @@
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {
@@ -1608,6 +1614,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -1655,6 +1664,9 @@
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {

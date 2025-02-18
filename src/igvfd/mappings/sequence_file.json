@@ -1,6 +1,6 @@
 {
-    "hash": "96d12ac96a9882f7b35904a705bdbc48",
-    "index_name": "sequence_file_96d12ac9",
+    "hash": "eaa9f509cea03432d377ff7abefaef8b",
+    "index_name": "sequence_file_eaa9f509",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1505,6 +1505,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -1552,6 +1555,9 @@
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {

@@ -1,6 +1,6 @@
 {
-    "hash": "bf48792d4e3369fc227e59083bcaebb4",
-    "index_name": "gene_bf48792d",
+    "hash": "e737b8843faec762f28e9406f178224b",
+    "index_name": "gene_e737b884",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -151,6 +151,9 @@
                     "aliases": {
                         "type": "keyword"
                     },
+                    "collections": {
+                        "type": "keyword"
+                    },
                     "creation_timestamp": {
                         "type": "date"
                     },
@@ -201,6 +204,9 @@
                         "type": "keyword"
                     },
                     "status": {
+                        "type": "keyword"
+                    },
+                    "study_sets": {
                         "type": "keyword"
                     },
                     "submitted_by": {

@@ -1,6 +1,6 @@
 {
-    "hash": "3049f1a9feae6882c619b2a3fe46bb3e",
-    "index_name": "open_reading_frame_3049f1a9",
+    "hash": "7a97d43663f08d16805f6ea4cc648122",
+    "index_name": "open_reading_frame_7a97d436",
     "item_type": "open_reading_frame",
     "mapping": {
         "dynamic_templates": [
@@ -175,6 +175,9 @@
                             "aliases": {
                                 "type": "keyword"
                             },
+                            "collections": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
                             },
@@ -222,6 +225,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "study_sets": {
                                 "type": "keyword"
                             },
                             "submitted_by": {

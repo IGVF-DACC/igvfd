@@ -89,6 +89,9 @@
         "schema_version": {
             "default": "9"
         },
+        "collections": {
+            "$merge": "mixins.json#/accession/collections"
+        },
         "geneid": {
             "title": "ENSEMBL GeneID",
             "description": "ENSEMBL GeneID of official nomenclature approved gene. The GeneID does not include the current version number suffix.",
@@ -123,6 +126,20 @@
                 "description": "An alternative symbol/name referring to the gene.",
                 "type": "string",
                 "format": "gene_name"
+            },
+            "permission": "admin_only"
+        },
+        "study_sets": {
+            "title": "Study Sets",
+            "description": "The studies of IGVF that this gene was a part of.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Study Set",
+                "description": "The study of IGVF that this gene was a part of.",
+                "type": "string",
+                "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
             },
             "permission": "admin_only"
         },

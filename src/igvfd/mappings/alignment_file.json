@@ -1,6 +1,6 @@
 {
-    "hash": "ec6a9f459d2d7882011e2dbca2eb1505",
-    "index_name": "alignment_file_ec6a9f45",
+    "hash": "7f221dd2ce0c8f90adfd95ba7b025cab",
+    "index_name": "alignment_file_7f221dd2",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1496,6 +1496,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -1543,6 +1546,9 @@
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {

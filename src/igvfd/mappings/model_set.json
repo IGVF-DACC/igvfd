@@ -1,6 +1,6 @@
 {
-    "hash": "7a05713f795b34c86cbbaa0c5fc88ec0",
-    "index_name": "model_set_7a05713f",
+    "hash": "21263baed14c4358d833513a91cd6973",
+    "index_name": "model_set_21263bae",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -168,6 +168,9 @@
                             "aliases": {
                                 "type": "keyword"
                             },
+                            "collections": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
                             },
@@ -215,6 +218,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "study_sets": {
                                 "type": "keyword"
                             },
                             "submitted_by": {

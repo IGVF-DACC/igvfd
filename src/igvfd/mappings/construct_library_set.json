@@ -1,6 +1,6 @@
 {
-    "hash": "c226c3fa55ed82664167a8e4647db77d",
-    "index_name": "construct_library_set_c226c3fa",
+    "hash": "0d63cb7fe2f3b9b9fa42e83cded17bf3",
+    "index_name": "construct_library_set_0d63cb7f",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -2371,6 +2371,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -2418,6 +2421,9 @@
                                         "type": "keyword"
                                     },
                                     "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
                                         "type": "keyword"
                                     },
                                     "submitted_by": {
@@ -2667,6 +2673,9 @@
                             "aliases": {
                                 "type": "keyword"
                             },
+                            "collections": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
                             },
@@ -2714,6 +2723,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "study_sets": {
                                 "type": "keyword"
                             },
                             "submitted_by": {

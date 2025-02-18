@@ -1,5 +1,14 @@
 ## Changelog for *`sequence_file.json`*
 
+### Minor changes since schema version 15
+
+* Extend `collections` enum list to include `ACMG73`.
+* Extend `collections` enum list to include `Morphic`.
+* Extend `collections` enum list to include `StanfordFCC`.
+* Extend `collections` enum list to include `IGVF phase 1`.
+* Extend `collections` enum list to include `TOPMED Freeze 8`.
+* Extend `collections` enum list to include `Williams Syndrome Research`.
+
 ### Schema version 15
 
 * Coerce `read_count`, `minimum_read_length`, and `maximum_read_length` float integer (e.g. 28.0) to int (28).

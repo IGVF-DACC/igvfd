@@ -1,6 +1,6 @@
 {
-    "hash": "657c2b6577fc959190f279a4f94ff912",
-    "index_name": "measurement_set_657c2b65",
+    "hash": "558f566d153d4d2e10fa9f67b0a335ad",
+    "index_name": "measurement_set_558f566d",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2320,6 +2320,9 @@
                                             "aliases": {
                                                 "type": "keyword"
                                             },
+                                            "collections": {
+                                                "type": "keyword"
+                                            },
                                             "creation_timestamp": {
                                                 "type": "date"
                                             },
@@ -2367,6 +2370,9 @@
                                                 "type": "keyword"
                                             },
                                             "status": {
+                                                "type": "keyword"
+                                            },
+                                            "study_sets": {
                                                 "type": "keyword"
                                             },
                                             "submitted_by": {
@@ -3213,6 +3219,9 @@
                             "aliases": {
                                 "type": "keyword"
                             },
+                            "collections": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
                             },
@@ -3260,6 +3269,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "study_sets": {
                                 "type": "keyword"
                             },
                             "submitted_by": {
