@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 23
 
+* Add calculated property `construct_library_sets`.
 * Extend `preferred_assay_title` enum list to include `ACCESS-ATAC`.
 * Extend `preferred_assay_title` enum list to include `scACCESS-ATAC`.
 * Extend `collections` enum list to include `ACMG73`.

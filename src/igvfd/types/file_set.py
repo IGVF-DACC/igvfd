@@ -1235,32 +1235,6 @@ class ConstructLibrarySet(FileSet):
         return paths_filtered_by_status(request, applied_to_samples)
 
     @calculated_property(
-        condition='applied_to_samples',
-        schema={
-            'title': 'File Sets',
-            'description': 'The file sets with samples that integrate this construct library set.',
-            'type': 'array',
-            'minItems': 1,
-            'uniqueItems': True,
-            'items': {
-                'title': 'File Set',
-                'type': ['string', 'object'],
-                'linkTo': 'FileSet',
-            },
-            'notSubmittable': True
-        })
-    def file_sets(self, request, applied_to_samples=None):
-        file_sets = []
-        for sample in applied_to_samples:
-            sample_object = request.embed(sample,
-                                          '@@object_with_select_calculated_properties?'
-                                          'field=file_sets'
-                                          )
-            file_sets = file_sets + sample_object.get('file_sets', [])
-        if file_sets:
-            return file_sets
-
-    @calculated_property(
         schema={
             'title': 'Summary',
             'type': 'string',
