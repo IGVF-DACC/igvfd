@@ -608,6 +608,10 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "filtered": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
                                     "gene_list_for": {
                                         "type": "keyword"
                                     },
@@ -631,6 +635,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "quality_metrics": {
+                                        "type": "keyword"
                                     },
                                     "release_timestamp": {
                                         "type": "date"
@@ -799,7 +806,7 @@
                                 },
                                 "type": "object"
                             },
-                            "software_version": {
+                            "software_versions": {
                                 "type": "keyword"
                             },
                             "sources": {

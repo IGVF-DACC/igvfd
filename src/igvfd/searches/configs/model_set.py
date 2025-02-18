@@ -46,13 +46,11 @@ def model_set():
             'files.file_format': {
                 'title': 'File Format',
             },
-<<<<<<< HEAD
             'software_versions.software.title': {
                 'title': 'Software',
-=======
+            },
             'construct_library_sets.integrated_content_files.content_type': {
                 'title': 'Construct Library Design'
->>>>>>> 87202e45 (change calculated property and embedding for file sets)
             },
             'collections': {
                 'title': 'Collections',

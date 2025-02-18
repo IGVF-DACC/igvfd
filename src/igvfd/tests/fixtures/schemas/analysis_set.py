@@ -103,6 +103,17 @@ def analysis_set_with_scrna_measurement_sets(testapp, award, lab, measurement_se
 
 
 @pytest.fixture
+def analysis_set_with_CLS_input(testapp, award, lab, construct_library_set_reporter):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'intermediate analysis',
+        'input_file_sets': [construct_library_set_reporter['@id']]
+    }
+    return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def analysis_set_v1(analysis_set_base, curated_set_genome, human_donor, in_vitro_cell_line):
     item = analysis_set_base.copy()
     item.update({

@@ -340,10 +340,10 @@ class AnalysisSet(FileSet):
         targeted_genes_phrase = ''
         if targeted_genes:
             targeted_genes_phrase = f'targeting {", ".join(targeted_genes)}'
-        # The file set types are only shown if the inputs are all Auxiliary Sets
-        # and the Measurement Sets related to the Auxiliary Sets are not CRISPR screens.
+        # The file set types are only shown if the inputs are all Auxiliary Sets or Construct Library Sets
+        # and the Measurement Sets related to the Auxiliary Sets or Construct Library Sets are not CRISPR screens.
         file_set_type_phrase = ''
-        if fileset_types and len(fileset_subclasses) == 1 and 'AuxiliarySet' in fileset_subclasses:
+        if fileset_types and len(fileset_subclasses) == 1 and ('AuxiliarySet' in fileset_subclasses or 'ConstructLibrarySet' in fileset_subclasses):
             if not (assay_terms and all(x in crispr_screen_terms for x in assay_terms)):
                 file_set_type_phrase = ', '.join(fileset_types)
 
@@ -404,6 +404,16 @@ class AnalysisSet(FileSet):
                         preferred_assay_title = measurement_set_object.get('preferred_assay_title')
                         if preferred_assay_title:
                             assay_titles.add(preferred_assay_title)
+                elif 'ConstructLibrarySet' in file_set_object.get('@type'):
+                    for sample in file_set_object.get('applied_to_samples', []):
+                        sample_object = request.embed(
+                            sample, '@@object_with_select_calculated_properties?field=file_sets')
+                        for file_set in sample_object.get('file_sets', []):
+                            file_set_object = request.embed(
+                                file_set, '@@object_with_select_calculated_properties?field=preferred_assay_title')
+                            preferred_assay_title = file_set_object.get('preferred_assay_title')
+                            if preferred_assay_title:
+                                assay_titles.add(preferred_assay_title)
             return list(assay_titles)
 
     @calculated_property(
@@ -1180,14 +1190,15 @@ class ConstructLibrarySet(FileSet):
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name', 'status']),
         Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('applied_to_samples', include=['@id', '@type', 'accession',
-             'aliases', 'classifications', 'disease_terms', 'donors', 'sample_terms', 'targeted_sample_term', 'status', 'summary', 'modifications', 'treatments']),
+             'aliases', 'classifications', 'disease_terms', 'donors', 'sample_terms', 'targeted_sample_term', 'status', 'summary', 'modifications', 'treatments', 'nucleic_acid_delivery']),
         Path('applied_to_samples.donors', include=['@id', 'taxa', 'status']),
         Path('applied_to_samples.disease_terms', include=['@id', 'term_name', 'status']),
         Path('applied_to_samples.sample_terms', include=['@id', 'term_name', 'status']),
         Path('applied_to_samples.targeted_sample_term', include=['@id', 'term_name', 'status']),
         Path('applied_to_samples.modifications', include=['@id', 'modality', 'summary', 'status']),
         Path('applied_to_samples.treatments', include=['@id', 'treatment_term_name', 'summary', 'status']),
-        Path('applied_to_samples.file_sets', include=['@id', '@type', 'accession', 'aliases', 'summary', 'status']),
+        Path('applied_to_samples.file_sets', include=[
+             '@id', '@type', 'accession', 'aliases', 'summary', 'status', 'preferred_assay_title']),
         Path('large_scale_gene_list', include=['@id', 'accession', 'aliases', 'status']),
         Path('large_scale_loci_list', include=['@id', 'accession', 'aliases', 'status']),
         Path('orf_list', include=['@id', 'orf_id', 'genes', 'aliases', 'status']),

@@ -1,6 +1,6 @@
 {
-    "hash": "7c1ffe6188380b0f96155573211b3998",
-    "index_name": "auxiliary_set_7c1ffe61",
+    "hash": "170c9a644a75ee9fc586daf9c34d9605",
+    "index_name": "auxiliary_set_170c9a64",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -512,6 +512,10 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "filtered": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
                                     "gene_list_for": {
                                         "type": "keyword"
                                     },
@@ -535,6 +539,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "quality_metrics": {
+                                        "type": "keyword"
                                     },
                                     "release_timestamp": {
                                         "type": "date"
@@ -703,7 +710,7 @@
                                 },
                                 "type": "object"
                             },
-                            "software_version": {
+                            "software_versions": {
                                 "type": "keyword"
                             },
                             "sources": {

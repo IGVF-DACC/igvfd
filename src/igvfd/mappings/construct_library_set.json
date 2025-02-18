@@ -669,7 +669,7 @@
                                         },
                                         "type": "object"
                                     },
-                                    "software_version": {
+                                    "software_versions": {
                                         "type": "keyword"
                                     },
                                     "sources": {
