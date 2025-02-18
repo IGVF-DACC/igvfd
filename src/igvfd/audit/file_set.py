@@ -47,7 +47,7 @@ def single_cell_check(system, value, object_type):
             file_sets = sample_obj.get('file_sets')
             for file_set in file_sets:
                 if file_set.startswith('/measurement-sets/'):
-                    measurement_set_obj = system.get('request').embed(measurement_set, '@@object?skip_calculated=true')
+                    measurement_set_obj = system.get('request').embed(file_set, '@@object?skip_calculated=true')
                     assay_term = measurement_set_obj.get('assay_term')
                     if assay_term in single_cell_assay_terms:
                         return True

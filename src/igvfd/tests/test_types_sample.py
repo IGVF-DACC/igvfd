@@ -2,7 +2,7 @@ import pytest
 import json
 
 
-def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, curated_set_genome):
+def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, curated_set_genome, multiplexed_sample, in_vitro_cell_line):
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -32,6 +32,21 @@ def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, cur
         f_id.append(f['@id'])
     assert set(f_id) == {
         measurement_set['@id'], analysis_set_base['@id'], curated_set_genome['@id']}
+    testapp.patch_json(
+        multiplexed_sample['@id'],
+        {
+            'multiplexed_samples': [tissue['@id'], in_vitro_cell_line['@id']]
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [multiplexed_sample['@id']]
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'])
+    assert set([file_set['@id'] for file_set in res.json.get('file_sets')]
+               ) == {measurement_set['@id'], analysis_set_base['@id']}
 
 
 def test_multiplexed_sample_props(
