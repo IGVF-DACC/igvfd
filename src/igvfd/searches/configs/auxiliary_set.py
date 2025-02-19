@@ -19,6 +19,9 @@ def auxiliary_set():
             'files.transcriptome_annotation': {
                 'title': 'Transcriptome Annotation',
             },
+            'construct_library_sets.file_set_type': {
+                'title': 'Construct Library Data'
+            },
             'donors.taxa': {
                 'title': 'Taxa'
             },
@@ -48,6 +51,9 @@ def auxiliary_set():
             },
             'files.file_format': {
                 'title': 'File Format',
+            },
+            'construct_library_sets.integrated_content_files.content_type': {
+                'title': 'Construct Library Design'
             },
             'lab.title': {
                 'title': 'Lab'

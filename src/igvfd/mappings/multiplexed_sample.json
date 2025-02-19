@@ -1,6 +1,6 @@
 {
-    "hash": "9a39ffe650996dd4828d918c9332f1d0",
-    "index_name": "multiplexed_sample_9a39ffe6",
+    "hash": "5182a7959c84e45854a0cb1f86c40480",
+    "index_name": "multiplexed_sample_5182a795",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -509,6 +509,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "construct_library_sets": {
+                                "type": "keyword"
+                            },
                             "control_file_sets": {
                                 "type": "keyword"
                             },
@@ -937,6 +940,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "construct_library_sets": {
                                 "type": "keyword"
                             },
                             "control_file_sets": {

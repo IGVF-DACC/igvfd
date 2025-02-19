@@ -59,7 +59,7 @@ def test_calculated_samples(testapp, measurement_set, analysis_set_base, primary
     assert set([sample['@id'] for sample in res.json.get('samples')]) == {in_vitro_cell_line['@id']}
 
 
-def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurement_set_multiome, principal_analysis_set, measurement_set_no_files, base_auxiliary_set):
+def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurement_set_multiome, principal_analysis_set, measurement_set_no_files, base_auxiliary_set, analysis_set_with_CLS_input, construct_library_set_reporter, primary_cell):
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -107,9 +107,17 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
     )
     res = testapp.get(principal_analysis_set['@id'])
     assert set(res.json.get('assay_titles')) == {'CRISPR FlowFISH screen'}
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'construct_library_sets': [construct_library_set_reporter['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_with_CLS_input['@id'])
+    assert set(res.json.get('assay_titles')) == {'lentiMPRA'}
 
 
-def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_no_files, measurement_set_mpra, measurement_set_multiome, principal_analysis_set, tabular_file, gene_myc_hs, assay_term_atac, assay_term_crispr, primary_cell, crispr_modification):
+def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_no_files, measurement_set_mpra, measurement_set_multiome, principal_analysis_set, tabular_file, gene_myc_hs, assay_term_atac, assay_term_crispr, primary_cell, crispr_modification, construct_library_set_reporter, analysis_set_with_CLS_input):
     # With no input_file_sets and no files present, summary is based on analysis file_set_type only.
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get('summary', '') == 'Unspecified assay'
@@ -205,6 +213,14 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get('summary', '') == 'interference 10x multiome, SUPERSTARR, lentiMPRA targeting MYC: peaks'
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'construct_library_sets': [construct_library_set_reporter['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_with_CLS_input['@id']).json
+    assert res.get('summary', '') == 'lentiMPRA reporter library'
 
 
 def test_protocols(testapp, analysis_set_base, measurement_set_with_protocols):

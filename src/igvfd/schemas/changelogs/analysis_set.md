@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 9
 
+* Update calculation of `summary`.
+* Update calculation of `assay_titles`.
+* Add calculated property `construct_library_sets`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.
 * Extend `collections` enum list to include `StanfordFCC`.

@@ -1,6 +1,6 @@
 {
-    "hash": "eaa9f509cea03432d377ff7abefaef8b",
-    "index_name": "sequence_file_eaa9f509",
+    "hash": "a48edad850025cae67120cd5c5c1cc08",
+    "index_name": "sequence_file_a48edad8",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -347,6 +347,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "construct_library_sets": {
                                 "type": "keyword"
                             },
                             "control_file_sets": {
@@ -1409,6 +1412,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "construct_library_sets": {
                                 "type": "keyword"
                             },
                             "control_file_sets": {

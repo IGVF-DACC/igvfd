@@ -102,3 +102,30 @@ def test_input_for(testapp, principal_analysis_set, auxiliary_set_v5, measuremen
     assert res.json.get('input_for', []) == [principal_analysis_set['@id']]
     res = testapp.get(auxiliary_set_v5['@id'])
     assert res.json.get('input_for', []) == [principal_analysis_set['@id']]
+
+
+def test_construct_library_sets(testapp, principal_analysis_set, measurement_set, construct_library_set_genome_wide, base_expression_construct_library_set, tissue):
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'construct_library_sets': [construct_library_set_genome_wide['@id'], base_expression_construct_library_set['@id']]
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [tissue['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert set([file_set['@id'] for file_set in res.json.get('construct_library_sets', [])]
+               ) == {construct_library_set_genome_wide['@id'], base_expression_construct_library_set['@id']}
+    testapp.patch_json(
+        principal_analysis_set['@id'],
+        {
+            'input_file_sets': [measurement_set['@id']]
+        }
+    )
+    res = testapp.get(principal_analysis_set['@id'])
+    assert set([file_set['@id'] for file_set in res.json.get('construct_library_sets', [])]
+               ) == {construct_library_set_genome_wide['@id'], base_expression_construct_library_set['@id']}

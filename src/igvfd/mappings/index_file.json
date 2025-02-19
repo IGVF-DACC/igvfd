@@ -1,6 +1,6 @@
 {
-    "hash": "a147612e9013f900a3c1ac70cddd841e",
-    "index_name": "index_file_a147612e",
+    "hash": "be39bd35a8f339ff91c2abcb2408d874",
+    "index_name": "index_file_be39bd35",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -340,6 +340,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "construct_library_sets": {
                                 "type": "keyword"
                             },
                             "control_file_sets": {
@@ -1397,6 +1400,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "construct_library_sets": {
                                 "type": "keyword"
                             },
                             "control_file_sets": {
