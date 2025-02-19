@@ -61,12 +61,6 @@ def construct_library_set():
             'applied_to_samples.nucleic_acid_delivery': {
                 'title': 'Nucleic Acid Delivery Method'
             },
-            'applied_to_samples.file_sets.file_set_type': {
-                'title': 'File Set Type Used In'
-            },
-            'applied_to_samples.file_sets.preferred_assay_title': {
-                'title': 'Assay Used In'
-            },
             'files.content_type': {
                 'title': 'File Types',
             },
