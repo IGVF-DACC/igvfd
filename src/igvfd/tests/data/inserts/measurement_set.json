@@ -501,5 +501,37 @@
             "igvf:barcode_onlist_1",
             "igvf:barcode_onlist_2"
         ]
+    },
+    {
+        "aliases": [
+            "richard-sherwood:ACCESS-atac"
+        ],
+        "award": "1UM1HG012010-01",
+        "lab": "richard-sherwood",
+        "status": "released",
+        "release_timestamp": "2025-02-06T12:34:56Z",
+        "uuid": "bc4277d3-742f-4ea7-9141-b19d98d4af9f",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0003089/",
+        "preferred_assay_title": "ACCESS-ATAC",
+        "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "richard-sherwood:scACCESS-atac"
+        ],
+        "award": "1UM1HG012010-01",
+        "lab": "richard-sherwood",
+        "status": "released",
+        "release_timestamp": "2025-02-06T12:34:56Z",
+        "uuid": "44b18c56-30cf-4402-ba36-b91f63adc065",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0002764/",
+        "preferred_assay_title": "scACCESS-ATAC",
+        "file_set_type": "experimental data"
     }
 ]
