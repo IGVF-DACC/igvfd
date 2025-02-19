@@ -780,12 +780,14 @@ def test_audit_missing_auxiliary_set_link(
     testapp,
     measurement_set,
     base_auxiliary_set,
+    auxiliary_set_cell_sorting,
     tissue
 ):
     testapp.patch_json(
         base_auxiliary_set['@id'],
         {
-            'samples': [tissue['@id']]
+            'samples': [tissue['@id']],
+            'status': 'in progress'
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -797,6 +799,28 @@ def test_audit_missing_auxiliary_set_link(
         measurement_set['@id'],
         {
             'auxiliary_sets': [base_auxiliary_set['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing auxiliary set'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        auxiliary_set_cell_sorting['@id'],
+        {
+            'samples': [tissue['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing auxiliary set'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        auxiliary_set_cell_sorting['@id'],
+        {
+            'status': 'deleted'
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
