@@ -1191,7 +1191,7 @@ class ConstructLibrarySet(FileSet):
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name', 'status']),
         Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('applied_to_samples', include=['@id', '@type', 'accession',
-             'aliases', 'classifications', 'disease_terms', 'donors', 'sample_terms', 'targeted_sample_term', 'status', 'summary', 'modifications', 'treatments', 'nucleic_acid_delivery']),
+             'aliases', 'classifications', 'disease_terms', 'donors', 'sample_terms', 'targeted_sample_term', 'status', 'summary', 'modifications', 'treatments', 'nucleic_acid_delivery', 'file_sets']),
         Path('applied_to_samples.donors', include=['@id', 'taxa', 'status']),
         Path('applied_to_samples.disease_terms', include=['@id', 'term_name', 'status']),
         Path('applied_to_samples.sample_terms', include=['@id', 'term_name', 'status']),
