@@ -56,6 +56,15 @@ def assay_term_scrna(testapp):
 
 
 @pytest.fixture
+def assay_term_scatac(testapp):
+    item = {
+        'term_id': 'OBI:0002762',
+        'term_name': 'single-nucleus ATAC-seq'
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def assay_term_v1(assay_term_starr):
     item = assay_term_starr.copy()
     item.update({

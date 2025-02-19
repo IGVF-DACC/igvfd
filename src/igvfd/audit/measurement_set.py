@@ -537,16 +537,10 @@ def audit_inconsistent_onlist_info(value, system):
             "audit_description": "Measurement sets with 2 or more barcode onlist files are expected to have an onlist method of either product or multi.",
             "audit_category": "inconsistent barcode onlist",
             "audit_level": "ERROR"
-        },
-        {
-            "audit_description": "Measurement sets with only 1 barcode onlist files are expected to have an onlist method of no combination.",
-            "audit_category": "inconsistent barcode onlist",
-            "audit_level": "ERROR"
         }
     ]
     '''
     audit_message_missing_method_mismatch_combo = get_audit_message(audit_inconsistent_onlist_info, index=0)
-    audit_message_missing_method_mismatch_nocombo = get_audit_message(audit_inconsistent_onlist_info, index=1)
     onlist_files = value.get('onlist_files')
     onlist_method = value.get('onlist_method')
     # Only check if both files and method properties are present
@@ -554,9 +548,6 @@ def audit_inconsistent_onlist_info(value, system):
         # Check if multiple onlist files are submitted but the method is no combination
         if (len(onlist_files) > 1) and (onlist_method == 'no combination'):
             yield AuditFailure(audit_message_missing_method_mismatch_combo.get('audit_category', ''), audit_message_missing_method_mismatch_combo.get('audit_description', ''), level=audit_message_missing_method_mismatch_combo.get('audit_level', ''))
-        # Check if one onlist file is submitted but the method indicates combination
-        if (len(onlist_files) == 1) and (onlist_method != 'no combination'):
-            yield AuditFailure(audit_message_missing_method_mismatch_nocombo.get('audit_category', ''), audit_message_missing_method_mismatch_nocombo.get('audit_description', ''), level=audit_message_missing_method_mismatch_nocombo.get('audit_level', ''))
 
 
 @audit_checker('MeasurementSet', frame='object')

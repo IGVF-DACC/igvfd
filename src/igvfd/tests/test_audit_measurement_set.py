@@ -1187,35 +1187,17 @@ def test_audit_onlist(testapp, measurement_set_one_onlist, measurement_set, assa
 
 
 def test_audit_inconsistent_barcode_onlist(testapp, measurement_set_one_onlist, measurement_set_two_onlists, tabular_file_onlist_1, tabular_file_onlist_2):
-    # Check if the measurement set fixture with one file and no combination method is audit-free
-    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'inconsistent barcode onlist'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-    # Check if the measurement set fixture with two file and combination method is audit-free
+    # Check the MeaSet with two file and combination method (no audit)
     res = testapp.get(measurement_set_two_onlists['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent barcode onlist'
         for error in res.json['audit'].get('ERROR', [])
     )
-    # Add another onlist file to a MeaSet that is no-combination for onlist method.
+    # Patch a MeaSet with 2 onlist files and no combination method (audit).
     testapp.patch_json(
         measurement_set_one_onlist['@id'],
         {
             'onlist_files': [tabular_file_onlist_1['@id'], tabular_file_onlist_2['@id']]
-        }
-    )
-    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'inconsistent barcode onlist'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-    # Remove an onlist file to a MeaSet with a combination onlist method.
-    testapp.patch_json(
-        measurement_set_two_onlists['@id'],
-        {
-            'onlist_files': [tabular_file_onlist_1['@id']]
         }
     )
     res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')

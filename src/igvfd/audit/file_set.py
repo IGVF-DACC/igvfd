@@ -592,12 +592,20 @@ def audit_single_cell_read_names(value, system):
             for file in value['files']:
                 if file.startswith('/sequence-files/'):
                     sequence_file_object = system.get('request').embed(file)
+                    applicable_read_types = ['R1', 'R2', 'R3']  # Skip Index 1 and Index 2
+                    # Get read type
+                    illumina_read_type = sequence_file_object.get('illumina_read_type', '')
+                    # If no read type or I-type, skip audit
+                    if illumina_read_type not in applicable_read_types:
+                        continue
+                    # Check for read names
                     read_names = sequence_file_object.get('read_names', '')
                     if read_names:
                         if any(read_name not in ['Read 1', 'Read 2', 'Barcode index'] for read_name in read_names):
                             unexpected_read_names.append(file)
                     else:
                         missing_read_names.append(file)
+
         # Audit for missing read names
         if missing_read_names:
             for file in missing_read_names:
