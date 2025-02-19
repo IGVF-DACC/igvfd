@@ -2,16 +2,13 @@
 
 ### Minor changes since schema version 12
 
-<<<<<<< HEAD
+* Add calculated property `construct_library_sets`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.
 * Extend `collections` enum list to include `StanfordFCC`.
 * Extend `collections` enum list to include `IGVF phase 1`.
 * Extend `collections` enum list to include `TOPMED Freeze 8`.
 * Extend `collections` enum list to include `Williams Syndrome Research`.
-=======
-* Add calculated property `construct_library_sets`.
->>>>>>> 8cee011f (remove file_sets)
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 
 ### Schema version 12
