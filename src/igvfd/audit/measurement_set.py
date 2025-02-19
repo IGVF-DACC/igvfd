@@ -277,12 +277,14 @@ def audit_missing_auxiliary_set_link(value, system):
         sample_object = system.get('request').embed(sample, '@@object')
         for file_set in sample_object.get('file_sets', []):
             if file_set.startswith('/auxiliary-sets/') and file_set not in auxiliary_sets:
-                detail = (
-                    f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} links '
-                    f'to sample {audit_link(path_to_text(sample), sample)} which links to auxiliary set '
-                    f'{audit_link(path_to_text(file_set), file_set)} but is not in its `auxiliary_sets`.'
-                )
-                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+                auxiliary_set_object = system.get('request').embed(file_set, '@@object?skip_calculated=true')
+                if auxiliary_set_object.get('status', '') in ['in progress', 'released', 'archived']:
+                    detail = (
+                        f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} links '
+                        f'to sample {audit_link(path_to_text(sample), sample)} which links to auxiliary set '
+                        f'{audit_link(path_to_text(file_set), file_set)} but is not in its `auxiliary_sets`.'
+                    )
+                    yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('MeasurementSet', frame='object')
