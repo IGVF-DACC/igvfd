@@ -10,6 +10,12 @@ def gene():
             'taxa': {
                 'title': 'Taxa'
             },
+            'collections': {
+                'title': 'Collections'
+            },
+            'study_sets': {
+                'title': 'Study Sets'
+            },
             'status': {
                 'title': 'Status'
             },
