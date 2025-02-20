@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Extend `transcriptome_annotation` enum list to include `GENCODE 22`.
 * Add `collections`.
 * Add `study_sets`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 47`.

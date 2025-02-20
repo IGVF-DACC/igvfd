@@ -8,7 +8,7 @@
             "igvf:genome_browser_annotation_file_bigbed"
         ],
         "status": "released",
-        "transcriptome_annotation": "GENCODE 32",
+        "transcriptome_annotation": "GENCODE 22",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "3d8b17dea86105dd96c182c0a91c3156",
         "file_format": "bigBed",
