@@ -62,7 +62,7 @@
         "file_format": "bam",
         "assembly": "GRCh38",
         "content_type": "transcriptome alignments",
-        "transcriptome_annotation": "GENCODE 32",
+        "transcriptome_annotation": "GENCODE 22",
         "upload_status": "pending",
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
