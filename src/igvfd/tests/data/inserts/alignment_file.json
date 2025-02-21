@@ -62,6 +62,31 @@
         "file_format": "bam",
         "assembly": "GRCh38",
         "content_type": "transcriptome alignments",
+        "transcriptome_annotation": "GENCODE 32",
+        "upload_status": "pending",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "derived_manually": true,
+        "collections": [
+            "Vista",
+            "VarChAMP"
+        ],
+        "filtered": false,
+        "redacted": false,
+        "controlled_access": true
+    },
+    {
+        "uuid": "f3b8d5e2-7c49-4e87-bf07-2d6a2c1e9a35",
+        "accession": "IGVFFI0079ALTB",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "status": "in progress",
+        "md5sum": "ae2a551dee7bb691f0b0ff6fc173f10c",
+        "file_format": "bam",
+        "assembly": "GRCh38",
+        "content_type": "transcriptome alignments",
         "transcriptome_annotation": "GENCODE 22",
         "upload_status": "pending",
         "file_set": "igvf:basic_analysis_set",
