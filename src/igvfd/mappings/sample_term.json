@@ -1,6 +1,6 @@
 {
-    "hash": "9a81d9e2ad065c5cf3345ad018c36033",
-    "index_name": "sample_term_9a81d9e2",
+    "hash": "c26f84199c32a7f615422127f69ff5da",
+    "index_name": "sample_term_c26f8419",
     "item_type": "sample_term",
     "mapping": {
         "dynamic_templates": [
@@ -162,6 +162,9 @@
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "definition": {
                         "type": "keyword"
                     },
                     "deprecated_ntr_terms": {

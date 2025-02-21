@@ -1,6 +1,6 @@
 {
-    "hash": "15be7644360e46e912ad8a19cba1471b",
-    "index_name": "phenotype_term_15be7644",
+    "hash": "71db3f1b65b263b2f7969ab701c0e863",
+    "index_name": "phenotype_term_71db3f1b",
     "item_type": "phenotype_term",
     "mapping": {
         "dynamic_templates": [
@@ -156,6 +156,9 @@
                     },
                     "creation_timestamp": {
                         "type": "date"
+                    },
+                    "definition": {
+                        "type": "keyword"
                     },
                     "deprecated_ntr_terms": {
                         "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "94a2f1b9ae4b549139b32cea915535b3",
-    "index_name": "human_donor_94a2f1b9",
+    "hash": "a99a11ba4bfc4c79c847617658c9e1f2",
+    "index_name": "human_donor_a99a11ba",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -350,6 +350,9 @@
                                     },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"

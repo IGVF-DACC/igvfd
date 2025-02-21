@@ -1,6 +1,6 @@
 {
-    "hash": "9a92d8cddad37092d6e50a912a17db19",
-    "index_name": "model_set_9a92d8cd",
+    "hash": "d88b9d587c903aad12da4b3145be628a",
+    "index_name": "model_set_d88b9d58",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -2234,6 +2234,9 @@
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
+                                    "definition": {
+                                        "type": "keyword"
+                                    },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
                                     },
@@ -2503,6 +2506,9 @@
                                     "dbxrefs": {
                                         "type": "keyword"
                                     },
+                                    "definition": {
+                                        "type": "keyword"
+                                    },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
                                     },
@@ -2623,6 +2629,9 @@
                                         "type": "date"
                                     },
                                     "dbxrefs": {
+                                        "type": "keyword"
+                                    },
+                                    "definition": {
                                         "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {

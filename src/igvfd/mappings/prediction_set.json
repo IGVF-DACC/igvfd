@@ -1,6 +1,6 @@
 {
-    "hash": "250c4be07b883a0101bfb246c22e8a7b",
-    "index_name": "prediction_set_250c4be0",
+    "hash": "0d9575fd71bce099d3e42c5c7df32fbe",
+    "index_name": "prediction_set_0d9575fd",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -2462,6 +2462,9 @@
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
+                                    "definition": {
+                                        "type": "keyword"
+                                    },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
                                     },
@@ -2731,6 +2734,9 @@
                                     "dbxrefs": {
                                         "type": "keyword"
                                     },
+                                    "definition": {
+                                        "type": "keyword"
+                                    },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
                                     },
@@ -2851,6 +2857,9 @@
                                         "type": "date"
                                     },
                                     "dbxrefs": {
+                                        "type": "keyword"
+                                    },
+                                    "definition": {
                                         "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {

@@ -1,6 +1,6 @@
 {
-    "hash": "51b272f869f13d46ffdef5d2abb4b841",
-    "index_name": "primary_cell_51b272f8",
+    "hash": "b24688e32e9362829240301096e816db",
+    "index_name": "primary_cell_b24688e3",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -450,6 +450,9 @@
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
+                                    "definition": {
+                                        "type": "keyword"
+                                    },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
                                     },
@@ -707,6 +710,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "definition": {
+                                "type": "keyword"
                             },
                             "deprecated_ntr_terms": {
                                 "type": "keyword"
@@ -1956,6 +1962,9 @@
                                 "type": "date"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "definition": {
                                 "type": "keyword"
                             },
                             "deprecated_ntr_terms": {

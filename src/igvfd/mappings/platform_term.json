@@ -1,6 +1,6 @@
 {
-    "hash": "c5f6754ae4c113e405b0b7f442a94f6d",
-    "index_name": "platform_term_c5f6754a",
+    "hash": "3d1160ae5b12e2e3e2fa4e8ed6355614",
+    "index_name": "platform_term_3d1160ae",
     "item_type": "platform_term",
     "mapping": {
         "dynamic_templates": [
@@ -159,6 +159,9 @@
                     },
                     "creation_timestamp": {
                         "type": "date"
+                    },
+                    "definition": {
+                        "type": "keyword"
                     },
                     "deprecated_ntr_terms": {
                         "type": "keyword"

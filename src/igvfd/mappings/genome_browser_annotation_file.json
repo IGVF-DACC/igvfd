@@ -1,6 +1,6 @@
 {
-    "hash": "cec0bd8c3eb8479c820a3403ae775be6",
-    "index_name": "genome_browser_annotation_file_cec0bd8c",
+    "hash": "759d9dcd1604c42cca39b520ded067af",
+    "index_name": "genome_browser_annotation_file_759d9dcd",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -259,6 +259,9 @@
                                 "type": "date"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "definition": {
                                 "type": "keyword"
                             },
                             "deprecated_ntr_terms": {
@@ -655,6 +658,9 @@
                                             "creation_timestamp": {
                                                 "type": "date"
                                             },
+                                            "definition": {
+                                                "type": "keyword"
+                                            },
                                             "deprecated_ntr_terms": {
                                                 "type": "keyword"
                                             },
@@ -924,6 +930,9 @@
                                             "dbxrefs": {
                                                 "type": "keyword"
                                             },
+                                            "definition": {
+                                                "type": "keyword"
+                                            },
                                             "deprecated_ntr_terms": {
                                                 "type": "keyword"
                                             },
@@ -1043,6 +1052,9 @@
                                                 "type": "date"
                                             },
                                             "dbxrefs": {
+                                                "type": "keyword"
+                                            },
+                                            "definition": {
                                                 "type": "keyword"
                                             },
                                             "deprecated_ntr_terms": {
@@ -1412,6 +1424,9 @@
                                     },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "b3f2470a4ac00c4049541c1e079b02cb",
-    "index_name": "assay_term_b3f2470a",
+    "hash": "0f2d108a2b58fb3fce1bee5dd9339160",
+    "index_name": "assay_term_0f2d108a",
     "item_type": "assay_term",
     "mapping": {
         "dynamic_templates": [
@@ -162,6 +162,9 @@
                     },
                     "creation_timestamp": {
                         "type": "date"
+                    },
+                    "definition": {
+                        "type": "keyword"
                     },
                     "deprecated_ntr_terms": {
                         "type": "keyword"

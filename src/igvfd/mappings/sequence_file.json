@@ -1,6 +1,6 @@
 {
-    "hash": "a48edad850025cae67120cd5c5c1cc08",
-    "index_name": "sequence_file_a48edad8",
+    "hash": "4bb13d0df7982165fb483ab6ec342105",
+    "index_name": "sequence_file_4bb13d0d",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -582,6 +582,9 @@
                                             "creation_timestamp": {
                                                 "type": "date"
                                             },
+                                            "definition": {
+                                                "type": "keyword"
+                                            },
                                             "deprecated_ntr_terms": {
                                                 "type": "keyword"
                                             },
@@ -851,6 +854,9 @@
                                             "dbxrefs": {
                                                 "type": "keyword"
                                             },
+                                            "definition": {
+                                                "type": "keyword"
+                                            },
                                             "deprecated_ntr_terms": {
                                                 "type": "keyword"
                                             },
@@ -970,6 +976,9 @@
                                                 "type": "date"
                                             },
                                             "dbxrefs": {
+                                                "type": "keyword"
+                                            },
+                                            "definition": {
                                                 "type": "keyword"
                                             },
                                             "deprecated_ntr_terms": {
@@ -1348,6 +1357,9 @@
                                     },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
@@ -1803,6 +1815,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "definition": {
+                                "type": "keyword"
                             },
                             "deprecated_ntr_terms": {
                                 "type": "keyword"

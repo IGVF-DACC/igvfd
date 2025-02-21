@@ -1,6 +1,6 @@
 {
-    "hash": "c2f24a479121ea32c2e8fd5687fff44d",
-    "index_name": "construct_library_set_c2f24a47",
+    "hash": "d4f58592b6cf93028b3f6bd3557283e3",
+    "index_name": "construct_library_set_d4f58592",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -247,6 +247,9 @@
                                     },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
@@ -643,6 +646,9 @@
                                     "dbxrefs": {
                                         "type": "keyword"
                                     },
+                                    "definition": {
+                                        "type": "keyword"
+                                    },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
                                     },
@@ -761,6 +767,9 @@
                                         "type": "date"
                                     },
                                     "dbxrefs": {
+                                        "type": "keyword"
+                                    },
+                                    "definition": {
                                         "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
@@ -990,6 +999,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "definition": {
+                                "type": "keyword"
                             },
                             "deprecated_ntr_terms": {
                                 "type": "keyword"

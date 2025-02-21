@@ -1,6 +1,6 @@
 {
-    "hash": "745f109b9b3ba23e187d2e8502d86185",
-    "index_name": "technical_sample_745f109b",
+    "hash": "8c254be5ba62ed54a31707ebbf69dd13",
+    "index_name": "technical_sample_8c254be5",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -270,6 +270,9 @@
                                     },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
@@ -1130,6 +1133,9 @@
                                 "type": "date"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "definition": {
                                 "type": "keyword"
                             },
                             "deprecated_ntr_terms": {

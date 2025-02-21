@@ -1,6 +1,6 @@
 {
-    "hash": "0ac87b33ef392b249da4c24d023a6e90",
-    "index_name": "rodent_donor_0ac87b33",
+    "hash": "6db3e6260d5d8e71aa982e9dc1b9977b",
+    "index_name": "rodent_donor_6db3e626",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -353,6 +353,9 @@
                                     },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "77492da46f48723e6e08145731442254",
-    "index_name": "whole_organism_77492da4",
+    "hash": "2727eb96bcd0c9bbbee278d196793961",
+    "index_name": "whole_organism_2727eb96",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -447,6 +447,9 @@
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
+                                    "definition": {
+                                        "type": "keyword"
+                                    },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
                                     },
@@ -704,6 +707,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "definition": {
+                                "type": "keyword"
                             },
                             "deprecated_ntr_terms": {
                                 "type": "keyword"
@@ -1949,6 +1955,9 @@
                                 "type": "date"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "definition": {
                                 "type": "keyword"
                             },
                             "deprecated_ntr_terms": {

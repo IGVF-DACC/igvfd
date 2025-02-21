@@ -1,6 +1,6 @@
 {
-    "hash": "8bfe66504f1c9d6cae853c37f5d7025a",
-    "index_name": "matrix_file_8bfe6650",
+    "hash": "4f565eb11a60e4a02e11b37cda539d89",
+    "index_name": "matrix_file_4f565eb1",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -568,6 +568,9 @@
                                             "creation_timestamp": {
                                                 "type": "date"
                                             },
+                                            "definition": {
+                                                "type": "keyword"
+                                            },
                                             "deprecated_ntr_terms": {
                                                 "type": "keyword"
                                             },
@@ -837,6 +840,9 @@
                                             "dbxrefs": {
                                                 "type": "keyword"
                                             },
+                                            "definition": {
+                                                "type": "keyword"
+                                            },
                                             "deprecated_ntr_terms": {
                                                 "type": "keyword"
                                             },
@@ -956,6 +962,9 @@
                                                 "type": "date"
                                             },
                                             "dbxrefs": {
+                                                "type": "keyword"
+                                            },
+                                            "definition": {
                                                 "type": "keyword"
                                             },
                                             "deprecated_ntr_terms": {
@@ -1329,6 +1338,9 @@
                                     },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
