@@ -40,6 +40,15 @@ def assay_term_atac(testapp):
 @pytest.fixture
 def assay_term_rna(testapp):
     item = {
+        'term_id': 'OBI:0001271',
+        'term_name': 'RNA-seq'
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def assay_term_bulk_rna(testapp):
+    item = {
         'term_id': 'OBI:0003090',
         'term_name': 'bulk RNA-seq assay'
     }
