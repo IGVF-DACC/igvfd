@@ -155,3 +155,13 @@ def reference_file_v14(reference_file_v6):
         'external_id': 'ENCFF743WOO'
     })
     return item
+
+
+@pytest.fixture
+def reference_file_v15(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '15',
+        'content_type': 'regulatory_regions'
+    })
+    return item

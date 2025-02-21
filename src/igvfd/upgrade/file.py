@@ -393,3 +393,14 @@ def sequence_file_14_15_alignment_file_12_13(value, system):
         # Coerce values like 28.0 to ints.
         if k in value:
             value[k] = int(value[k])
+
+
+@upgrade_step('reference_file', '15', '16')
+def reference_file_15_16(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2381
+    notes = value.get('notes', '')
+    if value['content_type'] == 'regulatory_regions':
+        value['content_type'] = 'genomic_elements'
+        notes += f' This file\'s content_type was regulatory_regions, but has been upgraded to genomic_elements.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
