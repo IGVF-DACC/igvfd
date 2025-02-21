@@ -371,7 +371,7 @@ def test_audit_missing_transcriptome(
     alignment_file,
     reference_file,
     measurement_set,
-    assay_term_rna
+    assay_term_bulk_rna
 ):
     testapp.patch_json(
         alignment_file['@id'],
@@ -393,7 +393,7 @@ def test_audit_missing_transcriptome(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_rna['@id']
+            'assay_term': assay_term_bulk_rna['@id']
         }
     )
     testapp.patch_json(
