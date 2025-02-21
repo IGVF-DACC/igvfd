@@ -403,7 +403,6 @@ def test_audit_missing_transcriptome(
         }
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
-    print(res.json['audit'])
     assert any(
         error['category'] == 'missing reference files'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
