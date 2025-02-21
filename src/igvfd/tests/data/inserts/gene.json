@@ -289,16 +289,5 @@
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "Gm13255"
-    },
-    {
-        "geneid": "ENSG00000227232",
-        "version_number": "2",
-        "transcriptome_annotation": "GENCODE 22",
-        "uuid": "b7f92a60-64e6-4c3e-bb0a-9c5b8c8c2f98",
-        "name": "WASH7P",
-        "taxa": "Homo sapiens",
-        "status": "released",
-        "release_timestamp": "2024-03-06T12:34:56Z",
-        "symbol": "WASH7P"
     }
 ]
