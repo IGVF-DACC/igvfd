@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Add `comment`.
 * Add `definition`.
 * Extend `preferred_assay_titles` enum list to include `ACCESS-ATAC`.
 * Extend `preferred_assay_titles` enum list to include `scACCESS-ATAC`.

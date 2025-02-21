@@ -1,5 +1,6 @@
 ## Changelog for *`ontology_term.json`*
 
+* Add `comment`. (02/20/2025)
 * Add `definition`. (02/20/2025)
 * Extend `status` enum list to include `preview`. (11/22/2024)
 * Require `release_timestamp` for any objects with `released` or `archived` status. (03/06/2024)
