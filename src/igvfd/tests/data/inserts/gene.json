@@ -2,7 +2,7 @@
     {
         "geneid": "ENSG00000158473",
         "version_number": "2",
-        "transcriptome_annotation": "GENCODE 22",
+        "transcriptome_annotation": "GENCODE 32",
         "uuid": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
         "dbxrefs": [
             "MIM:188410",
@@ -289,5 +289,29 @@
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "Gm13255"
+    },
+    {
+        "geneid": "ENSG00000158473",
+        "version_number": "2",
+        "transcriptome_annotation": "GENCODE 22",
+        "uuid": "b7f92a60-64e6-4c3e-bb0a-9c5b8c8c2f98",
+        "dbxrefs": [
+            "MIM:188410",
+            "HGNC:1637",
+            "IMGT/GENE-DB:CD1D",
+            "Vega:OTTHUMG00000022436",
+            "UniProtKB:P15813"
+        ],
+        "name": "CD1d molecule",
+        "taxa": "Homo sapiens",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "symbol": "CD1D",
+        "synonyms": [
+            "CD1A",
+            "R3",
+            "R3G1"
+        ],
+        "notes": "Adding a note to test it."
     }
 ]
