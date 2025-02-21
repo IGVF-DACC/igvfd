@@ -83,4 +83,4 @@ def test_reference_file_upgrade_14_15(upgrader, reference_file_v14):
 def test_reference_file_upgrade_15_16(upgrader, reference_file_v15):
     value = upgrader.upgrade('reference_file', reference_file_v15, current_version='15', target_version='16')
     assert value['content_type'] == 'genomic_elements'
-    assert value['schema_version'] == '15'
+    assert value['schema_version'] == '16'
