@@ -127,7 +127,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "15"
+            "default": "16"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
@@ -172,7 +172,7 @@
                         "pathways_pathways",
                         "proteins",
                         "proteins_proteins",
-                        "regulatory_regions",
+                        "genomic_elements",
                         "regulatory_regions_genes",
                         "regulatory_regions_genes_biosamples",
                         "regulatory_regions_genes_biosamples_donors",

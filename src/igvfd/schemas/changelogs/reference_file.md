@@ -1,5 +1,10 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 16
+
+* Adjust `content_type` enum list to disallow `regulatory_regions` for all users and admins.
+* Extend `content_type` enum list to include `genomic_elements` for admins.
+
 ### Minor changes since schema version 15
 
 * Extend `transcriptome_annotation` enum list to include `GENCODE 22`.
