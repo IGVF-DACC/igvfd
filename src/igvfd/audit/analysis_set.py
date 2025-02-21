@@ -13,6 +13,15 @@ from .file_set import (
 )
 
 
+def get_assay_terms(value, system):
+    assay_terms = set()
+    for input_file_set in value.get('input_file_sets', []):
+        if input_file_set.startswith('/measurement-sets/'):
+            input_file_set_object = system.get('request').embed(input_file_set + '@@object?skip_calculated=true')
+            assay_terms.add(input_file_set_object.get('assay_term'))
+    return list(assay_terms)
+
+
 @audit_checker('AnalysisSet', frame='object')
 def audit_input_file_sets_derived_from(value, system):
     '''
@@ -311,3 +320,52 @@ def audit_analysis_set_inconsistent_onlist_info(value, system):
                 f'with inconsistent `onlist_files`.'
             )
             yield AuditFailure(audit_msg_inconsistent_onlist_files.get('audit_category', ''), f'{detail} {audit_msg_inconsistent_onlist_files.get("audit_description", "")}', level=audit_msg_inconsistent_onlist_files.get('audit_level', ''))
+
+
+@audit_checker('AnalysisSet', frame='object')
+def audit_missing_transcriptome(value, system):
+    '''
+    [
+        {
+            "audit_description": "Analysis set files processed from transcript sequence data are expected to link to a transcriptome reference.",
+            "audit_category": "missing reference files",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    audit_message = get_audit_message(audit_missing_transcriptome, index=0)
+    assay_terms = get_assay_terms(value, system)
+    transcript_assay_terms = ['/assay-terms/OBI_0003090/',  # bulk RNA-seq assay
+                              '/assay-terms/OBI_0002631/',  # single-cell RNA sequencing assay
+                              '/assay-terms/OBI_0003109/',  # single-nucleus RNA sequencing assay
+                              '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
+                              '/assay-terms/OBI_0003662/'  # single-nucleus methylcytosine and transcriptome sequencing assay
+                              '/assay-terms/NTR_0000761/'  # spatial transcriptomics
+                              ]
+    if any(assay_term in transcript_assay_terms for assay_term in assay_terms):
+        files = value.get('files', [])
+        files_missing_transcriptome = []
+        if files:
+            for file in files:
+                if file.startswith(('/alignment-files/', '/matrix-files/', '/signal-files/')):
+                    file_object = system.get('request').embed(file + '@@object?skip_caluculated=true')
+                    reference_files = file_object.get('reference_files', [])
+                    if reference_files:
+                        has_transcriptome = False
+                        for reference_file in reference_files:
+                            reference_file_object = system.get('request').embed(
+                                reference_file + '@@object?skip_caluculated=true')
+                            if reference_file_object.get('content_type', '') == 'transcriptome reference':
+                                has_transcriptome = True
+                        if not (has_transcriptome):
+                            files_missing_transcriptome.append(file)
+                    else:
+                        files_missing_transcriptome.append(file)
+    if files_missing_transcriptome:
+        files_missing_transcriptome = ', '.join([audit_link(path_to_text(file), file)
+                                                for file in files_missing_transcriptome])
+        detail = (
+            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has file(s) with no transcriptome `reference_files`: {files_missing_transcriptome} '
+        )
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
