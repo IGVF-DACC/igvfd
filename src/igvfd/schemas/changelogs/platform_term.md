@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Add `definition`.
 * Extend `company` enum list to include `Element Biosciences`.
 * Extend `sequencing_kits` enum list to include `AVITI 2x75 Sequencing Kit Cloudbreak High Output`.
 * Extend `sequencing_kits` enum list to include `AVITI 2x150 Sequencing Kit Cloudbreak High Output`.

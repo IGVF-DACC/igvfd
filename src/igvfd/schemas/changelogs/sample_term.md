@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Add `definition`.
 * Extend `status` enum list to include `preview`.
 * Update calculation of `summary`.
 
