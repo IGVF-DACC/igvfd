@@ -1,6 +1,6 @@
 {
-    "hash": "8c254be5ba62ed54a31707ebbf69dd13",
-    "index_name": "technical_sample_8c254be5",
+    "hash": "ee298397a99f9a07ab39f6d255e49e41",
+    "index_name": "technical_sample_ee298397",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -266,6 +266,9 @@
                                         "type": "keyword"
                                     },
                                     "ancestors": {
+                                        "type": "keyword"
+                                    },
+                                    "comment": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
@@ -1127,6 +1130,9 @@
                                 "type": "keyword"
                             },
                             "cell_slims": {
+                                "type": "keyword"
+                            },
+                            "comment": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

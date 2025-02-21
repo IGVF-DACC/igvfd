@@ -1,6 +1,6 @@
 {
-    "hash": "d4f58592b6cf93028b3f6bd3557283e3",
-    "index_name": "construct_library_set_d4f58592",
+    "hash": "57e1e31b2b9efad29507e894d9483c27",
+    "index_name": "construct_library_set_57e1e31b",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -243,6 +243,9 @@
                                         "type": "keyword"
                                     },
                                     "ancestors": {
+                                        "type": "keyword"
+                                    },
+                                    "comment": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
@@ -640,6 +643,9 @@
                                     "cell_slims": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -761,6 +767,9 @@
                                         "type": "keyword"
                                     },
                                     "cell_slims": {
+                                        "type": "keyword"
+                                    },
+                                    "comment": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
@@ -995,6 +1004,9 @@
                                 "type": "keyword"
                             },
                             "ancestors": {
+                                "type": "keyword"
+                            },
+                            "comment": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

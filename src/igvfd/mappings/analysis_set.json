@@ -1,6 +1,6 @@
 {
-    "hash": "b5a2e9434d91a72ef1205921eebbe36e",
-    "index_name": "analysis_set_b5a2e943",
+    "hash": "e4b95d3f2188abcf87facf4accc24647",
+    "index_name": "analysis_set_e4b95d3f",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -1529,6 +1529,9 @@
                             "ancestors": {
                                 "type": "keyword"
                             },
+                            "comment": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
                             },
@@ -2198,6 +2201,9 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -2467,6 +2473,9 @@
                                     "cell_slims": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -2590,6 +2599,9 @@
                                         "type": "keyword"
                                     },
                                     "cell_slims": {
+                                        "type": "keyword"
+                                    },
+                                    "comment": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {

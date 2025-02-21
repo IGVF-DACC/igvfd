@@ -1,6 +1,6 @@
 {
-    "hash": "7f574e7f40cbe4fa881c7dca3c094844",
-    "index_name": "measurement_set_7f574e7f",
+    "hash": "8db117269c06d4899c788534cd01febe",
+    "index_name": "measurement_set_8db11726",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -175,6 +175,9 @@
                                 "type": "keyword"
                             },
                             "category_slims": {
+                                "type": "keyword"
+                            },
+                            "comment": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -2066,6 +2069,9 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "company": {
                                         "type": "keyword"
                                     },
@@ -2195,6 +2201,9 @@
                                 "type": "keyword"
                             },
                             "ancestors": {
+                                "type": "keyword"
+                            },
+                            "comment": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -2823,6 +2832,9 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -3093,6 +3105,9 @@
                                     "cell_slims": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
@@ -3216,6 +3231,9 @@
                                         "type": "keyword"
                                     },
                                     "cell_slims": {
+                                        "type": "keyword"
+                                    },
+                                    "comment": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {

@@ -1,6 +1,6 @@
 {
-    "hash": "c26f84199c32a7f615422127f69ff5da",
-    "index_name": "sample_term_c26f8419",
+    "hash": "5eeb3c18c863c5d76f7d6b61d7979d3f",
+    "index_name": "sample_term_5eeb3c18",
     "item_type": "sample_term",
     "mapping": {
         "dynamic_templates": [
@@ -155,6 +155,9 @@
                         "type": "keyword"
                     },
                     "cell_slims": {
+                        "type": "keyword"
+                    },
+                    "comment": {
                         "type": "keyword"
                     },
                     "creation_timestamp": {

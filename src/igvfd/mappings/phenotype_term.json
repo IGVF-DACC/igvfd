@@ -1,6 +1,6 @@
 {
-    "hash": "71db3f1b65b263b2f7969ab701c0e863",
-    "index_name": "phenotype_term_71db3f1b",
+    "hash": "4c374112c675ebaed289bf13c59fafc9",
+    "index_name": "phenotype_term_4c374112",
     "item_type": "phenotype_term",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,9 @@
                         "type": "keyword"
                     },
                     "ancestors": {
+                        "type": "keyword"
+                    },
+                    "comment": {
                         "type": "keyword"
                     },
                     "creation_timestamp": {

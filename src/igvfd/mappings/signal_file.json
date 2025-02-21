@@ -1,6 +1,6 @@
 {
-    "hash": "9ab9caf10f72cd62db9457ffc962559b",
-    "index_name": "signal_file_9ab9caf1",
+    "hash": "38435e792ea3050a5ed56162d480a3c7",
+    "index_name": "signal_file_38435e79",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -253,6 +253,9 @@
                                 "type": "keyword"
                             },
                             "cell_slims": {
+                                "type": "keyword"
+                            },
+                            "comment": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -655,6 +658,9 @@
                                             "ancestors": {
                                                 "type": "keyword"
                                             },
+                                            "comment": {
+                                                "type": "keyword"
+                                            },
                                             "creation_timestamp": {
                                                 "type": "date"
                                             },
@@ -924,6 +930,9 @@
                                             "cell_slims": {
                                                 "type": "keyword"
                                             },
+                                            "comment": {
+                                                "type": "keyword"
+                                            },
                                             "creation_timestamp": {
                                                 "type": "date"
                                             },
@@ -1046,6 +1055,9 @@
                                                 "type": "keyword"
                                             },
                                             "cell_slims": {
+                                                "type": "keyword"
+                                            },
+                                            "comment": {
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
@@ -1424,6 +1436,9 @@
                                         "type": "keyword"
                                     },
                                     "ancestors": {
+                                        "type": "keyword"
+                                    },
+                                    "comment": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {

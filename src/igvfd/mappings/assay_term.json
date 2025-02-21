@@ -1,6 +1,6 @@
 {
-    "hash": "0f2d108a2b58fb3fce1bee5dd9339160",
-    "index_name": "assay_term_0f2d108a",
+    "hash": "a65e4a14027839f2602ab17cc6014470",
+    "index_name": "assay_term_a65e4a14",
     "item_type": "assay_term",
     "mapping": {
         "dynamic_templates": [
@@ -158,6 +158,9 @@
                         "type": "keyword"
                     },
                     "category_slims": {
+                        "type": "keyword"
+                    },
+                    "comment": {
                         "type": "keyword"
                     },
                     "creation_timestamp": {
