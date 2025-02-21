@@ -2,7 +2,7 @@
 
 ### Schema version 16
 
-* Adjust `content_type` enum list to disallow `regulatory_regions` for all users and admins.
+* Adjust `content_type` enum list to remove `regulatory_regions`.
 * Extend `content_type` enum list to include `genomic_elements` for admins.
 
 ### Minor changes since schema version 15
