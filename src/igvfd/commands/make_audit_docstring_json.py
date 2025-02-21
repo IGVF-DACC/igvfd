@@ -15,7 +15,9 @@ import igvfd.audit.matrix_file
 import igvfd.audit.measurement_set
 import igvfd.audit.multiplexed_sample
 import igvfd.audit.ontology_term
+import igvfd.audit.reference_file
 import igvfd.audit.sample
+import igvfd.audit.sequence_file
 import igvfd.audit.tissue
 import igvfd.audit.treatment
 import igvfd.audit.whole_organism
