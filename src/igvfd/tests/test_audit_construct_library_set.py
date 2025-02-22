@@ -184,8 +184,20 @@ def test_audit_construct_library_set_with_invalid_chroms(
 def test_audit_construct_library_set_guide_library_guide_rna_sequences(
     testapp,
     construct_library_set_genome_wide,
-    tabular_file
+    tabular_file,
+    assay_term_crispr,
+    measurement_set,
+    tissue
 ):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {'assay_term': assay_term_crispr['@id'],
+         'samples': [tissue['@id']]}
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {'construct_library_sets': [construct_library_set_genome_wide['@id']]}
+    )
     res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing guide RNA sequences'
@@ -213,8 +225,21 @@ def test_audit_construct_library_set_guide_library_guide_rna_sequences(
 def test_audit_construct_library_set_mpra_sequence_designs(
     testapp,
     construct_library_set_reporter,
-    tabular_file
+    tabular_file,
+    assay_term_mpra,
+    measurement_set,
+    tissue,
+    assay_term_starr
 ):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {'assay_term': assay_term_mpra['@id'],
+         'samples': [tissue['@id']]}
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {'construct_library_sets': [construct_library_set_reporter['@id']]}
+    )
     res = testapp.get(construct_library_set_reporter['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing MPRA sequence designs'
@@ -228,6 +253,19 @@ def test_audit_construct_library_set_mpra_sequence_designs(
     assert any(
         error['category'] == 'missing MPRA sequence designs'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {'assay_term': assay_term_starr['@id']}
+    )
+    res = testapp.get(construct_library_set_reporter['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing MPRA sequence designs'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {'assay_term': assay_term_mpra['@id']}
     )
     testapp.patch_json(
         tabular_file['@id'],

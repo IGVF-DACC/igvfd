@@ -1,5 +1,6 @@
 ## Changelog for *`biosample.json`*
 
+* Extend `nucleic_acid_delivery` enum list to include `nucleofection`. (02/27/2025)
 * Extend `status` enum list to include `preview`. (11/22/2024)
 * Add `publication_identifiers`. (07/31/2024)
 * Restrict `publication_identifiers` to submission by admins only. (07/17/2024)

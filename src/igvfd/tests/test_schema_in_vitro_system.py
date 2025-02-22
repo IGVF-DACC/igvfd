@@ -12,7 +12,7 @@ def test_passage_number_dependency(in_vitro_cell_line, testapp):
     assert res.status_code == 422
 
 
-def test_time_post_factors_dependency(in_vitro_cell_line, treatment_chemical, sample_term_endothelial_cell, testapp):
+def test_time_post_change_dependency(testapp, in_vitro_cell_line, treatment_chemical, sample_term_endothelial_cell):
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
@@ -28,6 +28,21 @@ def test_time_post_factors_dependency(in_vitro_cell_line, treatment_chemical, sa
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
         {'classifications': ['differentiated cell specimen'], 'time_post_change': 3, 'time_post_change_units': 'day', 'cell_fate_change_treatments': [treatment_chemical['@id']], 'targeted_sample_term': sample_term_endothelial_cell['@id']})
+    assert res.status_code == 200
+
+
+def test_time_post_change_dependency_modified_cell_line(testapp, in_vitro_cell_line, experimental_protocol_document, crispr_modification):
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'time_post_change': 3, 'time_post_change_units': 'day'}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'time_post_change': 3, 'time_post_change_units': 'day', 'cell_fate_change_protocol': experimental_protocol_document['@id']}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'time_post_change': 3, 'time_post_change_units': 'day', 'modifications': [crispr_modification['@id']]})
     assert res.status_code == 200
 
 

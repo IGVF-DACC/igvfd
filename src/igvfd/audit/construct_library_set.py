@@ -9,6 +9,19 @@ from .formatter import (
 )
 
 
+def get_assay_terms(value, system):
+    assay_terms = set()
+    for sample in value.get('applied_to_samples', []):
+        sample_object = system.get('request').embed(
+            sample + '@@object_with_select_calculated_properties?field=file_sets')
+        file_sets = sample_object.get('file_sets', [])
+        for file_set in file_sets:
+            if file_set.startswith('/measurement-sets/'):
+                input_file_set_object = system.get('request').embed(file_set + '@@object?skip_calculated=true')
+                assay_terms.add(input_file_set_object.get('assay_term'))
+    return list(assay_terms)
+
+
 @audit_checker('ConstructLibrarySet', frame='object')
 def audit_construct_library_set_associated_phenotypes(value, system):
     '''
@@ -97,12 +110,12 @@ def audit_integrated_content_files(value, system):
     '''
     [
         {
-            "audit_description": "Guide libraries are expected to link to an integrated content file of guide RNA sequences.",
+            "audit_description": "Guide libraries used in CRISPR assays are expected to link to an integrated content file of guide RNA sequences.",
             "audit_category": "missing guide RNA sequences",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Reporter libraries are expected to link to an integrated content file of MPRA sequence designs.",
+            "audit_description": "Reporter libraries used in MPRA assays are expected to link to an integrated content file of MPRA sequence designs.",
             "audit_category": "missing MPRA sequence designs",
             "audit_level": "NOT_COMPLIANT"
         }
@@ -110,13 +123,22 @@ def audit_integrated_content_files(value, system):
     '''
     audit_message_guide = get_audit_message(audit_integrated_content_files, index=0)
     audit_message_reporter = get_audit_message(audit_integrated_content_files, index=1)
+    assay_terms = get_assay_terms(value, system)
+    CRISPR_assays = [
+        '/assay-terms/OBI_0003659/',  # in vitro CRISPR screen assay
+        '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
+        '/assay-terms/OBI_0003661/'  # in vitro CRISPR screen using flow cytometry
+    ]
+    MPRA_assays = [
+        '/assay-terms/OBI_0002675/'  # massively parallel reporter assay
+    ]
     library_expectation = {
-        'guide library': ('guide RNA sequences', audit_message_guide),
-        'reporter library': ('MPRA sequence designs', audit_message_reporter),
+        'guide library': ('guide RNA sequences', audit_message_guide, CRISPR_assays),
+        'reporter library': ('MPRA sequence designs', audit_message_reporter, MPRA_assays),
     }
     integrated_content_files = value.get('integrated_content_files', '')
     library_type = value.get('file_set_type', '')
-    if library_type in library_expectation:
+    if library_type in library_expectation and any(assay_term in library_expectation[library_type][2] for assay_term in assay_terms):
         file_expectation = library_expectation[library_type][0]
         audit_message = library_expectation[library_type][1]
         if integrated_content_files:
