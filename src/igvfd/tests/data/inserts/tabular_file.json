@@ -483,5 +483,23 @@
         "upload_status": "validated",
         "file_set": "j-michael-cherry:barcodes_curated_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "858449fd-5f24-4a51-a4ab-e8aba826b94f",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:differential_peak_quantifications"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-02-01T21:29:45Z",
+        "md5sum": "08dc4cb2eee35c7a2c7cb200cb17282a",
+        "file_format": "tsv",
+        "content_type": "differential peak quantifications",
+        "submitted_file_name": "/Users/igvf/igvf_files/differential_peak_quantifications.tsv.gz",
+        "file_size": 145360919,
+        "upload_status": "validated",
+        "file_set": "igvf:analysis_set_with_input",
+        "controlled_access": false
     }
 ]
