@@ -221,7 +221,8 @@
                 "lipofectamine",
                 "electroporation",
                 "lentiviral transduction",
-                "transfection"
+                "transfection",
+                "nucleofection"
             ],
             "submissionExample": {
                 "appscript": "transfection",
