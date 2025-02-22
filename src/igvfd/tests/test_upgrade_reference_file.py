@@ -80,8 +80,50 @@ def test_reference_file_upgrade_14_15(upgrader, reference_file_v14):
     assert value['schema_version'] == '15'
 
 
-def test_reference_file_upgrade_15_16(upgrader, reference_file_v15_regulatory_regions):
+def test_reference_file_upgrade_15_16_regulatory_regions(upgrader, reference_file_v15_regulatory_regions):
     value = upgrader.upgrade('reference_file', reference_file_v15_regulatory_regions,
                              current_version='15', target_version='16')
     assert value['content_type'] == 'genomic_elements'
+    assert value['schema_version'] == '16'
+
+
+def test_reference_file_upgrade_15_16_regulatory_regions_genes(upgrader, reference_file_v15_regulatory_regions_genes):
+    value = upgrader.upgrade('reference_file', reference_file_v15_regulatory_regions_genes,
+                             current_version='15', target_version='16')
+    assert value['content_type'] == 'genomic_elements_genes'
+    assert value['schema_version'] == '16'
+
+
+def test_reference_file_upgrade_15_16_regulatory_regions_genes_biosamples(upgrader, reference_file_v15_regulatory_regions_genes_biosamples):
+    value = upgrader.upgrade('reference_file', reference_file_v15_regulatory_regions_genes_biosamples,
+                             current_version='15', target_version='16')
+    assert value['content_type'] == 'genomic_elements_genes_biosamples'
+    assert value['schema_version'] == '16'
+
+
+def test_reference_file_upgrade_15_16_regulatory_regions_genes_biosamples_donors(upgrader, reference_file_v15_regulatory_regions_genes_biosamples_donors):
+    value = upgrader.upgrade('reference_file', reference_file_v15_regulatory_regions_genes_biosamples_donors,
+                             current_version='15', target_version='16')
+    assert value['content_type'] == 'genomic_elements_genes_biosamples_donors'
+    assert value['schema_version'] == '16'
+
+
+def test_reference_file_upgrade_15_16_regulatory_regions_genes_biosamples_treatments_chebi(upgrader, reference_file_v15_regulatory_regions_genes_biosamples_treatments_chebi):
+    value = upgrader.upgrade('reference_file', reference_file_v15_regulatory_regions_genes_biosamples_treatments_chebi,
+                             current_version='15', target_version='16')
+    assert value['content_type'] == 'genomic_elements_genes_biosamples_treatments_chebi'
+    assert value['schema_version'] == '16'
+
+
+def test_reference_file_upgrade_15_16_regulatory_regions_genes_biosamples_treatments_proteins(upgrader, reference_file_v15_regulatory_regions):
+    value = upgrader.upgrade('reference_file', reference_file_v15_regulatory_regions_genes_biosamples_treatments_proteins,
+                             current_version='15', target_version='16')
+    assert value['content_type'] == 'genomic_elements_genes_biosamples_treatments_proteins'
+    assert value['schema_version'] == '16'
+
+
+def test_reference_file_upgrade_15_16_regulatory_regions_regulatory_regions(upgrader, reference_file_v15_regulatory_regions_regulatory_regions):
+    value = upgrader.upgrade('reference_file', reference_file_v15_regulatory_regions_regulatory_regions,
+                             current_version='15', target_version='16')
+    assert value['content_type'] == 'genomic_elements_genomic_elements'
     assert value['schema_version'] == '16'
