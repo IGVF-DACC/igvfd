@@ -115,7 +115,7 @@ def test_reference_file_upgrade_15_16_regulatory_regions_genes_biosamples_treatm
     assert value['schema_version'] == '16'
 
 
-def test_reference_file_upgrade_15_16_regulatory_regions_genes_biosamples_treatments_proteins(upgrader, reference_file_v15_regulatory_regions):
+def test_reference_file_upgrade_15_16_regulatory_regions_genes_biosamples_treatments_proteins(upgrader, reference_file_v15_regulatory_regions_genes_biosamples_treatments_proteins):
     value = upgrader.upgrade('reference_file', reference_file_v15_regulatory_regions_genes_biosamples_treatments_proteins,
                              current_version='15', target_version='16')
     assert value['content_type'] == 'genomic_elements_genes_biosamples_treatments_proteins'
