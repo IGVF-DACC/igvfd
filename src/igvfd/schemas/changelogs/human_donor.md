@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Extend `ethnicities` enum list to include `Indigenous in North America`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.
 * Extend `collections` enum list to include `StanfordFCC`.
