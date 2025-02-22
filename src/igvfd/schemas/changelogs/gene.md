@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Update `chromosome` regex in `locations` to allow genes not on standard chromosomes.
 * Add `collections`.
 * Add `study_sets`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 47`.
