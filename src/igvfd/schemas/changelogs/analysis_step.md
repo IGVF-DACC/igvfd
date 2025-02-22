@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 5
 
+* Extend `input_content_types` enum list to include `differential peak quantifications`.
+* Extend `output_content_types` enum list to include `differential peak quantifications`.
 * Extend `input_content_types` enum list to include `protein language model`.
 * Extend `output_content_types` enum list to include `protein language model`.
 * Extend `input_content_types` enum list to include `genome index`.
