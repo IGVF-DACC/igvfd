@@ -211,13 +211,13 @@
         "uuid": "6d1a1811-2133-474d-b3b1-a07ad1f7e4e1",
         "accession": "IGVFFI6791GUEE",
         "aliases": [
-            "igvf:tsv_regulatory_regions_regulatory_regions"
+            "igvf:tsv_genomic_elements_genomic_elements"
         ],
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "md5sum": "ee570198468d172dc018978a49b7db53",
         "file_format": "tsv",
-        "content_type": "regulatory_regions_regulatory_regions",
+        "content_type": "genomic_elements_genomic_elements",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],

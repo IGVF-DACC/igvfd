@@ -404,3 +404,33 @@ def reference_file_15_16(value, system):
         notes += f' This file\'s content_type was regulatory_regions, but has been upgraded to genomic_elements.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+    if value['content_type'] == 'regulatory_regions_genes':
+        value['content_type'] = 'genomic_elements_genes'
+        notes += f' This file\'s content_type was regulatory_regions_genes, but has been upgraded to genomic_elements_genes.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+    if value['content_type'] == 'regulatory_regions_genes_biosamples':
+        value['content_type'] = 'genomic_elements_genes_biosamples'
+        notes += f' This file\'s content_type was regulatory_regions_genes_biosamples, but has been upgraded to genomic_elements_genes_biosamples.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+    if value['content_type'] == 'regulatory_regions_genes_biosamples_donors':
+        value['content_type'] = 'genomic_elements_genes_biosamples_donors'
+        notes += f' This file\'s content_type was regulatory_regions_genes_biosamples_donors, but has been upgraded to genomic_elements_genes_biosamples_donors.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+    if value['content_type'] == 'regulatory_regions_genes_biosamples_treatments_chebi':
+        value['content_type'] = 'genomic_elements_genes_biosamples_treatments_chebi'
+        notes += f' This file\'s content_type was regulatory_regions_genes_biosamples_treatments_chebi, but has been upgraded to genomic_elements_genes_biosamples_treatments_chebi.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+    if value['content_type'] == 'regulatory_regions_genes_biosamples_treatments_proteins':
+        value['content_type'] = 'genomic_elements_genes_biosamples_treatments_proteins'
+        notes += f' This file\'s content_type was regulatory_regions_genes_biosamples_treatments_proteins, but has been upgraded to genomic_elements_genes_biosamples_treatments_proteins.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+    if value['content_type'] == 'regulatory_regions_genomic_elements':
+        value['content_type'] = 'genomic_elements_genomic_elements'
+        notes += f' This file\'s content_type was regulatory_regions_genomic_elements, but has been upgraded to genomic_elements_genomic_elements.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
