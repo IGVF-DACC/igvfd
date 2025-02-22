@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Extend `content_type` enum list to include `differential peak quantifications`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.
 * Extend `collections` enum list to include `StanfordFCC`.
