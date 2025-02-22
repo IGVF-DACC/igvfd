@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `transcriptome_annotation` enum list to include `GENCODE 22`. (02/20/2025)
 * Extend `collections` enum list to include `ACMG73`. (02/14/2025)
 * Extend `collections` enum list to include `Morphic`. (02/14/2025)
 * Extend `collections` enum list to include `StanfordFCC`. (02/14/2025)
