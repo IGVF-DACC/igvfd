@@ -303,5 +303,35 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "SOX30"
+    },
+    {
+        "dbxrefs": [
+            "HGNC:18196"
+        ],
+        "uuid": "d5212ac2-cb7c-4f21-962b-081635ea18f7",
+        "geneid": "ENSG00000285438",
+        "version_number": "12",
+        "transcriptome_annotation": "GENCODE 43",
+        "locations": [
+            {
+                "assembly": "GRCh38",
+                "chromosome": "chr8_KZ208915v1_fix",
+                "start": 2616666,
+                "end": 2623410
+            }
+        ],
+        "name": "SRY-box transcription factor 7",
+        "taxa": "Homo sapiens",
+        "schema_version": "3",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "symbol": "SOX7",
+        "synonyms": [
+            "SOX7",
+            "transcription factor SOX-7",
+            "SRY-box transcription factor 7",
+            "SRY-box 7",
+            "SRY (sex determining region Y)-box 7"
+        ]
     }
 ]
