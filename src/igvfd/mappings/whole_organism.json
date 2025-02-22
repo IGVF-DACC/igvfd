@@ -1,6 +1,6 @@
 {
-    "hash": "77492da46f48723e6e08145731442254",
-    "index_name": "whole_organism_77492da4",
+    "hash": "36fe67c7880890e4dac25249cba35f87",
+    "index_name": "whole_organism_36fe67c7",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -444,8 +444,14 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
@@ -702,8 +708,14 @@
                             "ancestors": {
                                 "type": "keyword"
                             },
+                            "comment": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "definition": {
+                                "type": "keyword"
                             },
                             "deprecated_ntr_terms": {
                                 "type": "keyword"
@@ -1945,10 +1957,16 @@
                             "cell_slims": {
                                 "type": "keyword"
                             },
+                            "comment": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "definition": {
                                 "type": "keyword"
                             },
                             "deprecated_ntr_terms": {

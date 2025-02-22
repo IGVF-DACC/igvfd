@@ -1,6 +1,6 @@
 {
-    "hash": "51b272f869f13d46ffdef5d2abb4b841",
-    "index_name": "primary_cell_51b272f8",
+    "hash": "0b96fcc1e6472aa476953730b31bf71e",
+    "index_name": "primary_cell_0b96fcc1",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -447,8 +447,14 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
@@ -705,8 +711,14 @@
                             "ancestors": {
                                 "type": "keyword"
                             },
+                            "comment": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "definition": {
+                                "type": "keyword"
                             },
                             "deprecated_ntr_terms": {
                                 "type": "keyword"
@@ -1952,10 +1964,16 @@
                             "cell_slims": {
                                 "type": "keyword"
                             },
+                            "comment": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "definition": {
                                 "type": "keyword"
                             },
                             "deprecated_ntr_terms": {

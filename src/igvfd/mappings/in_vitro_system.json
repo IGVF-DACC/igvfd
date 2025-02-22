@@ -1,6 +1,6 @@
 {
-    "hash": "fa1e8769dddf9d6b871ba3551ef1acea",
-    "index_name": "in_vitro_system_fa1e8769",
+    "hash": "abcb013aadc2cb4f7d2cc6d5bb60c0b5",
+    "index_name": "in_vitro_system_abcb013a",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -564,8 +564,14 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
@@ -828,8 +834,14 @@
                             "ancestors": {
                                 "type": "keyword"
                             },
+                            "comment": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "definition": {
+                                "type": "keyword"
                             },
                             "deprecated_ntr_terms": {
                                 "type": "keyword"
@@ -2329,10 +2341,16 @@
                             "cell_slims": {
                                 "type": "keyword"
                             },
+                            "comment": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "definition": {
                                 "type": "keyword"
                             },
                             "deprecated_ntr_terms": {
@@ -2838,10 +2856,16 @@
                             "cell_slims": {
                                 "type": "keyword"
                             },
+                            "comment": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "definition": {
                                 "type": "keyword"
                             },
                             "deprecated_ntr_terms": {

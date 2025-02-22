@@ -1,6 +1,6 @@
 {
-    "hash": "8bfe66504f1c9d6cae853c37f5d7025a",
-    "index_name": "matrix_file_8bfe6650",
+    "hash": "33d0b086f6b4736eefc28834eb23c413",
+    "index_name": "matrix_file_33d0b086",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -565,8 +565,14 @@
                                             "ancestors": {
                                                 "type": "keyword"
                                             },
+                                            "comment": {
+                                                "type": "keyword"
+                                            },
                                             "creation_timestamp": {
                                                 "type": "date"
+                                            },
+                                            "definition": {
+                                                "type": "keyword"
                                             },
                                             "deprecated_ntr_terms": {
                                                 "type": "keyword"
@@ -831,10 +837,16 @@
                                             "cell_slims": {
                                                 "type": "keyword"
                                             },
+                                            "comment": {
+                                                "type": "keyword"
+                                            },
                                             "creation_timestamp": {
                                                 "type": "date"
                                             },
                                             "dbxrefs": {
+                                                "type": "keyword"
+                                            },
+                                            "definition": {
                                                 "type": "keyword"
                                             },
                                             "deprecated_ntr_terms": {
@@ -952,10 +964,16 @@
                                             "cell_slims": {
                                                 "type": "keyword"
                                             },
+                                            "comment": {
+                                                "type": "keyword"
+                                            },
                                             "creation_timestamp": {
                                                 "type": "date"
                                             },
                                             "dbxrefs": {
+                                                "type": "keyword"
+                                            },
+                                            "definition": {
                                                 "type": "keyword"
                                             },
                                             "deprecated_ntr_terms": {
@@ -1327,8 +1345,14 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"

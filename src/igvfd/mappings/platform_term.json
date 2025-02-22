@@ -1,6 +1,6 @@
 {
-    "hash": "c5f6754ae4c113e405b0b7f442a94f6d",
-    "index_name": "platform_term_c5f6754a",
+    "hash": "e4e7314b92c58105030e1fa3829c4a99",
+    "index_name": "platform_term_e4e7314b",
     "item_type": "platform_term",
     "mapping": {
         "dynamic_templates": [
@@ -154,11 +154,17 @@
                     "ancestors": {
                         "type": "keyword"
                     },
+                    "comment": {
+                        "type": "keyword"
+                    },
                     "company": {
                         "type": "keyword"
                     },
                     "creation_timestamp": {
                         "type": "date"
+                    },
+                    "definition": {
+                        "type": "keyword"
                     },
                     "deprecated_ntr_terms": {
                         "type": "keyword"

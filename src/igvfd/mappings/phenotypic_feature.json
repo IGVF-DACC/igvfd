@@ -1,6 +1,6 @@
 {
-    "hash": "e2876d176360b9f5ade77287b8b22b4c",
-    "index_name": "phenotypic_feature_e2876d17",
+    "hash": "2b180f2643d8b4a1119a744c81f9cda4",
+    "index_name": "phenotypic_feature_2b180f26",
     "item_type": "phenotypic_feature",
     "mapping": {
         "dynamic_templates": [
@@ -242,8 +242,14 @@
                             "ancestors": {
                                 "type": "keyword"
                             },
+                            "comment": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "definition": {
+                                "type": "keyword"
                             },
                             "deprecated_ntr_terms": {
                                 "type": "keyword"

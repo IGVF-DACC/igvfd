@@ -1,6 +1,6 @@
 {
-    "hash": "745f109b9b3ba23e187d2e8502d86185",
-    "index_name": "technical_sample_745f109b",
+    "hash": "ee298397a99f9a07ab39f6d255e49e41",
+    "index_name": "technical_sample_ee298397",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -268,8 +268,14 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
@@ -1126,10 +1132,16 @@
                             "cell_slims": {
                                 "type": "keyword"
                             },
+                            "comment": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "definition": {
                                 "type": "keyword"
                             },
                             "deprecated_ntr_terms": {

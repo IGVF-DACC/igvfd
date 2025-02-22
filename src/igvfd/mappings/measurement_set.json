@@ -1,6 +1,6 @@
 {
-    "hash": "7e5b4443a1742f74570be6eec15f6f19",
-    "index_name": "measurement_set_7e5b4443",
+    "hash": "8db117269c06d4899c788534cd01febe",
+    "index_name": "measurement_set_8db11726",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -177,8 +177,14 @@
                             "category_slims": {
                                 "type": "keyword"
                             },
+                            "comment": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "definition": {
+                                "type": "keyword"
                             },
                             "deprecated_ntr_terms": {
                                 "type": "keyword"
@@ -2063,11 +2069,17 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "company": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
@@ -2191,8 +2203,14 @@
                             "ancestors": {
                                 "type": "keyword"
                             },
+                            "comment": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "definition": {
+                                "type": "keyword"
                             },
                             "deprecated_ntr_terms": {
                                 "type": "keyword"
@@ -2814,8 +2832,14 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
@@ -3081,10 +3105,16 @@
                                     "cell_slims": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
                                     "dbxrefs": {
+                                        "type": "keyword"
+                                    },
+                                    "definition": {
                                         "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {
@@ -3203,10 +3233,16 @@
                                     "cell_slims": {
                                         "type": "keyword"
                                     },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "date"
                                     },
                                     "dbxrefs": {
+                                        "type": "keyword"
+                                    },
+                                    "definition": {
                                         "type": "keyword"
                                     },
                                     "deprecated_ntr_terms": {

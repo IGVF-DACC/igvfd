@@ -1,6 +1,6 @@
 {
-    "hash": "9a81d9e2ad065c5cf3345ad018c36033",
-    "index_name": "sample_term_9a81d9e2",
+    "hash": "5eeb3c18c863c5d76f7d6b61d7979d3f",
+    "index_name": "sample_term_5eeb3c18",
     "item_type": "sample_term",
     "mapping": {
         "dynamic_templates": [
@@ -157,11 +157,17 @@
                     "cell_slims": {
                         "type": "keyword"
                     },
+                    "comment": {
+                        "type": "keyword"
+                    },
                     "creation_timestamp": {
                         "type": "date"
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "definition": {
                         "type": "keyword"
                     },
                     "deprecated_ntr_terms": {

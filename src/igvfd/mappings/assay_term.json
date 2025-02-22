@@ -1,6 +1,6 @@
 {
-    "hash": "b3f2470a4ac00c4049541c1e079b02cb",
-    "index_name": "assay_term_b3f2470a",
+    "hash": "a65e4a14027839f2602ab17cc6014470",
+    "index_name": "assay_term_a65e4a14",
     "item_type": "assay_term",
     "mapping": {
         "dynamic_templates": [
@@ -160,8 +160,14 @@
                     "category_slims": {
                         "type": "keyword"
                     },
+                    "comment": {
+                        "type": "keyword"
+                    },
                     "creation_timestamp": {
                         "type": "date"
+                    },
+                    "definition": {
+                        "type": "keyword"
                     },
                     "deprecated_ntr_terms": {
                         "type": "keyword"

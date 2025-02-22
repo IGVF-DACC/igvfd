@@ -14,6 +14,8 @@
     {
         "term_id": "EFO:0008637",
         "term_name": "Illumina NovaSeq 6000",
+        "definition": "Illumina NovaSeq 6000 sequencing platform",
+        "comment": "The Illumina NovaSeq 6000 is a high-throughput sequencing platform that can sequence up to 20 billion reads per run.",
         "sequencing_kits": [
             "NovaSeq 6000 SP Reagent Kit v1.5",
             "NovaSeq 6000 S1 Reagent Kit v1.5",

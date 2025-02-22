@@ -2,6 +2,8 @@
     {
         "term_id": "DOID:10652",
         "term_name": "Alzheimer's disease",
+        "definition": "A neurodegenerative disease that is characterized by progressive cognitive deterioration together with declining activities of daily living and neuropsychiatric symptoms or behavioral changes. The most common early symptom is difficulty in remembering recent events.",
+        "comment": "Alzheimer's disease is the most common form of dementia among older people.",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "93634a0b-e033-3730-b64c-c0c9b4597e0e",
