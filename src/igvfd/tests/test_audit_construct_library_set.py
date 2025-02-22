@@ -192,11 +192,11 @@ def test_audit_construct_library_set_guide_library_guide_rna_sequences(
     testapp.patch_json(
         measurement_set['@id'],
         {'assay_term': assay_term_crispr['@id'],
-         'samples': tissue['@id']}
+         'samples': [tissue['@id']]}
     )
     testapp.patch_json(
         tissue['@id'],
-        {'construct_library_sets': construct_library_set_genome_wide['@id']}
+        {'construct_library_sets': [construct_library_set_genome_wide['@id']]}
     )
     res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
     assert any(
@@ -234,11 +234,11 @@ def test_audit_construct_library_set_mpra_sequence_designs(
     testapp.patch_json(
         measurement_set['@id'],
         {'assay_term': assay_term_mpra['@id'],
-         'samples': tissue['@id']}
+         'samples': [tissue['@id']]}
     )
     testapp.patch_json(
         tissue['@id'],
-        {'construct_library_sets': construct_library_set_reporter['@id']}
+        {'construct_library_sets': [construct_library_set_reporter['@id']]}
     )
     res = testapp.get(construct_library_set_reporter['@id'] + '@@audit')
     assert any(

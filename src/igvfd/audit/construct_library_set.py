@@ -17,7 +17,7 @@ def get_assay_terms(value, system):
         file_sets = sample_object.get('file_sets', [])
         for file_set in file_sets:
             if file_set.startswith('/measurement-sets/'):
-                input_file_set_object = system.get('request').embed(input_file_set + '@@object?skip_calculated=true')
+                input_file_set_object = system.get('request').embed(file_set + '@@object?skip_calculated=true')
                 assay_terms.add(input_file_set_object.get('assay_term'))
     return list(assay_terms)
 
@@ -125,8 +125,8 @@ def audit_integrated_content_files(value, system):
     audit_message_reporter = get_audit_message(audit_integrated_content_files, index=1)
     assay_terms = get_assay_terms(value, system)
     CRISPR_assays = [
-        '/assay-terms/OBI_0003659/'  # in vitro CRISPR screen assay
-        '/assay-terms/OBI_0003660/'  # in vitro CRISPR screen using single-cell RNA-seq
+        '/assay-terms/OBI_0003659/',  # in vitro CRISPR screen assay
+        '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
         '/assay-terms/OBI_0003661/'  # in vitro CRISPR screen using flow cytometry
     ]
     MPRA_assays = [
