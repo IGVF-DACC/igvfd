@@ -83,8 +83,14 @@
                 "milli-International Unit per milliliter",
                 "picogram per milliliter",
                 "nanogram per milliliter",
-                "milligram per deciliter"
+                "milligram per deciliter",
+                "UPDRS",
+                "MMSE"
             ],
+            "enum_descriptions": {
+                "UPDRS": "The Unified Parkinson's Disease Rating Scale to measure the severity of motor symptoms.",
+                "MMSE": " The mini mental status exam score with values ranging from 0-30 with 30 being highest performance."
+            },
             "submissionExample": {
                 "appscript": "gram",
                 "igvf_utils": "gram"
