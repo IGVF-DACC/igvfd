@@ -69,5 +69,29 @@
         "notes": "Phenotypic feature of optic atrophy",
         "lab": "j-michael-cherry",
         "award": "HG012012"
+    },
+    {
+        "feature": "f0aa38a6-fdf2-11ec-7aee-fc96ac1250ce",
+        "quantity": 3,
+        "quantity_units": "UPDRS",
+        "observation_date": "2022-01-04",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "917116f3-34e0-45ae-8477-660211369ea7",
+        "notes": "UPDRS 3",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    },
+    {
+        "feature": "f0aa38a6-fdf2-11ec-7aee-fc96ac1250ce",
+        "quantity": 7,
+        "quantity_units": "MMSE",
+        "observation_date": "2022-01-04",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "8b03214b-657c-4baa-bdc2-325d4815858d",
+        "notes": "UPDRS 3",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
     }
 ]
