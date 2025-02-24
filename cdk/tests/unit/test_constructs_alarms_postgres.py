@@ -60,7 +60,7 @@ def test_constructs_alarms_postgres_initialize_postgres_alarms(stack, vpc, insta
             ],
             'Period': 300,
             'Statistic': 'Average',
-            'Threshold': 85
+            'Threshold': 98
         }
 
     )
@@ -91,7 +91,7 @@ def test_constructs_alarms_postgres_initialize_postgres_alarms(stack, vpc, insta
             ],
             'Period': 300,
             'Statistic': 'Average',
-            'Threshold': 2000000000
+            'Threshold': 1750000000
         }
     )
     template.has_resource_properties(
