@@ -112,26 +112,15 @@
                 },
                 {
                     "if": {
-                        "allOf": [
-                            {
-                                "properties": {
-                                    "classifications": {
-                                        "contains": {
-                                            "enum": [
-                                                "cell line"
-                                            ]
-                                        }
-                                    }
-                                }
-                            },
-                            {
-                                "not": {
-                                    "required": [
-                                        "modifications"
+                        "properties": {
+                            "classifications": {
+                                "contains": {
+                                    "enum": [
+                                        "cell line"
                                     ]
                                 }
                             }
-                        ]
+                        }
                     },
                     "then": {
                         "not": {
@@ -412,12 +401,6 @@
                         "time_post_change_units",
                         "cell_fate_change_protocol"
                     ]
-                },
-                {
-                    "required": [
-                        "time_post_change_units",
-                        "modifications"
-                    ]
                 }
             ]
         },
@@ -434,12 +417,6 @@
                     "required": [
                         "time_post_change",
                         "cell_fate_change_protocol"
-                    ]
-                },
-                {
-                    "required": [
-                        "time_post_change",
-                        "modifications"
                     ]
                 }
             ]
@@ -501,7 +478,7 @@
         },
         "time_post_change": {
             "title": "Time Post Change",
-            "description": "The time that elapsed past the time-point when the cell fate change treatments or genetic modifications were introduced.",
+            "description": "The time that elapsed past the time-point when the cell fate change treatments were introduced.",
             "type": "number",
             "submissionExample": {
                 "appscript": 27,
@@ -510,7 +487,7 @@
         },
         "time_post_change_units": {
             "title": "Time Post Change Units",
-            "description": "The units of time that elapsed past the point when the cell fate change treatments or genetic modifications were introduced.",
+            "description": "The units of time that elapsed past the point when the cell fate change treatments were introduced.",
             "type": "string",
             "enum": [
                 "minute",

@@ -31,21 +31,6 @@ def test_time_post_change_dependency(testapp, in_vitro_cell_line, treatment_chem
     assert res.status_code == 200
 
 
-def test_time_post_change_dependency_modified_cell_line(testapp, in_vitro_cell_line, experimental_protocol_document, crispr_modification):
-    res = testapp.patch_json(
-        in_vitro_cell_line['@id'],
-        {'time_post_change': 3, 'time_post_change_units': 'day'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        in_vitro_cell_line['@id'],
-        {'time_post_change': 3, 'time_post_change_units': 'day', 'cell_fate_change_protocol': experimental_protocol_document['@id']}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        in_vitro_cell_line['@id'],
-        {'time_post_change': 3, 'time_post_change_units': 'day', 'modifications': [crispr_modification['@id']]})
-    assert res.status_code == 200
-
-
 def test_sorted_from(testapp, in_vitro_organoid, in_vitro_differentiated_cell):
     res = testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
