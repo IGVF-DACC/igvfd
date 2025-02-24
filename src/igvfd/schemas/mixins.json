@@ -449,6 +449,7 @@
             "description": "The annotation and version of the reference resource.",
             "type": "string",
             "enum": [
+                "GENCODE 22",
                 "GENCODE 32",
                 "GENCODE 40",
                 "GENCODE 41",

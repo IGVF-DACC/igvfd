@@ -23,5 +23,30 @@
             "IGVFFI0001PKBD"
         ],
         "checkfiles_version": "v13"
+    },
+    {
+        "uuid": "3d1a9e4b-2f4c-4c72-9c60-5f1d8e7b3a42",
+        "accession": "IGVFFI0019BGBD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:genome_browser_annotation_file_bigbed_gencode_22"
+        ],
+        "status": "released",
+        "transcriptome_annotation": "GENCODE 22",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "8929bb71b8f9a11c14d79ff22fa11d09",
+        "file_format": "bigBed",
+        "file_format_type": "bed3",
+        "content_type": "peaks",
+        "submitted_file_name": "/Users/igvf/igvf_files/peaks_05.bigBed",
+        "file_size": 98280399,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "igvf:basic_analysis_set",
+        "derived_from": [
+            "IGVFFI0001PKBD"
+        ],
+        "checkfiles_version": "v13"
     }
 ]
