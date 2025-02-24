@@ -434,3 +434,8 @@ def reference_file_15_16(value, system):
         notes += f' This file\'s content_type was regulatory_regions_regulatory_regions, but has been upgraded to genomic_elements_genomic_elements.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+    if value['content_type'] == 'variants_regulatory_regions':
+        value['content_type'] = 'variants_genomic_elements'
+        notes += f' This file\'s content_type was variants_regulatory_regions, but has been upgraded to variants_genomic_elements.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

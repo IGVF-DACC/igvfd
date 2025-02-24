@@ -199,7 +199,7 @@
                         "variants_proteins_terms",
                         "variants_proteins_biosamples",
                         "variants_proteins_phenotypes",
-                        "variants_regulatory_regions",
+                        "variants_genetic_elements",
                         "variants_variants",
                         "vector sequences"
                     ],

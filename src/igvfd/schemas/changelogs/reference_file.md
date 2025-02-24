@@ -9,6 +9,7 @@
 * Adjust `content_type` enum list to remove `regulatory_regions_genes_biosamples_treatments_chebi`.
 * Adjust `content_type` enum list to remove `regulatory_regions_genes_biosamples_treatments_proteins`.
 * Adjust `content_type` enum list to remove `regulatory_regions_regulatory_regions`.
+* Adjust `content_type` enum list to remove `variants_regulatory_regions`.
 * Extend `content_type` enum list to include `genomic_elements` for admins.
 * Extend `content_type` enum list to include `genomic_elements_genes` for admins.
 * Extend `content_type` enum list to include `genomic_elements_genes_biosamples` for admins.
@@ -16,6 +17,7 @@
 * Extend `content_type` enum list to include `genomic_elements_genes_biosamples_treatments_chebi` for admins.
 * Extend `content_type` enum list to include `genomic_elements_genes_biosamples_treatments_proteins` for admins.
 * Extend `content_type` enum list to include `genomic_elements_genomic_elements` for admins.
+* Extend `content_type` enum list to include `variants_genomic_elements` for admins.
 
 ### Minor changes since schema version 15
 

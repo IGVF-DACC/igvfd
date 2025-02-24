@@ -127,3 +127,10 @@ def test_reference_file_upgrade_15_16_regulatory_regions_regulatory_regions(upgr
                              current_version='15', target_version='16')
     assert value['content_type'] == 'genomic_elements_genomic_elements'
     assert value['schema_version'] == '16'
+
+
+def test_reference_file_upgrade_15_16_variants_regulatory_regions(upgrader, reference_file_v15_variants_regulatory_regions):
+    value = upgrader.upgrade('reference_file', reference_file_v15_variants_regulatory_regions,
+                             current_version='15', target_version='16')
+    assert value['content_type'] == 'variants_genomic_elements'
+    assert value['schema_version'] == '16'
