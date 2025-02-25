@@ -127,7 +127,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "15"
+            "default": "16"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
@@ -172,13 +172,13 @@
                         "pathways_pathways",
                         "proteins",
                         "proteins_proteins",
-                        "regulatory_regions",
-                        "regulatory_regions_genes",
-                        "regulatory_regions_genes_biosamples",
-                        "regulatory_regions_genes_biosamples_donors",
-                        "regulatory_regions_genes_biosamples_treatments_chebi",
-                        "regulatory_regions_genes_biosamples_treatments_proteins",
-                        "regulatory_regions_regulatory_regions",
+                        "genomic_elements",
+                        "genomic_elements_genes",
+                        "genomic_elements_genes_biosamples",
+                        "genomic_elements_genes_biosamples_donors",
+                        "genomic_elements_genes_biosamples_treatments_chebi",
+                        "genomic_elements_genes_biosamples_treatments_proteins",
+                        "genomic_elements_genomic_elements",
                         "sequence barcodes",
                         "studies",
                         "studies_variants",
@@ -199,7 +199,7 @@
                         "variants_proteins_terms",
                         "variants_proteins_biosamples",
                         "variants_proteins_phenotypes",
-                        "variants_regulatory_regions",
+                        "variants_genomic_elements",
                         "variants_variants",
                         "vector sequences"
                     ],

@@ -393,3 +393,49 @@ def sequence_file_14_15_alignment_file_12_13(value, system):
         # Coerce values like 28.0 to ints.
         if k in value:
             value[k] = int(value[k])
+
+
+@upgrade_step('reference_file', '15', '16')
+def reference_file_15_16(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2381
+    notes = value.get('notes', '')
+    if value['content_type'] == 'regulatory_regions':
+        value['content_type'] = 'genomic_elements'
+        notes += f' This file\'s content_type was regulatory_regions, but has been upgraded to genomic_elements.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+    if value['content_type'] == 'regulatory_regions_genes':
+        value['content_type'] = 'genomic_elements_genes'
+        notes += f' This file\'s content_type was regulatory_regions_genes, but has been upgraded to genomic_elements_genes.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+    if value['content_type'] == 'regulatory_regions_genes_biosamples':
+        value['content_type'] = 'genomic_elements_genes_biosamples'
+        notes += f' This file\'s content_type was regulatory_regions_genes_biosamples, but has been upgraded to genomic_elements_genes_biosamples.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+    if value['content_type'] == 'regulatory_regions_genes_biosamples_donors':
+        value['content_type'] = 'genomic_elements_genes_biosamples_donors'
+        notes += f' This file\'s content_type was regulatory_regions_genes_biosamples_donors, but has been upgraded to genomic_elements_genes_biosamples_donors.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+    if value['content_type'] == 'regulatory_regions_genes_biosamples_treatments_chebi':
+        value['content_type'] = 'genomic_elements_genes_biosamples_treatments_chebi'
+        notes += f' This file\'s content_type was regulatory_regions_genes_biosamples_treatments_chebi, but has been upgraded to genomic_elements_genes_biosamples_treatments_chebi.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+    if value['content_type'] == 'regulatory_regions_genes_biosamples_treatments_proteins':
+        value['content_type'] = 'genomic_elements_genes_biosamples_treatments_proteins'
+        notes += f' This file\'s content_type was regulatory_regions_genes_biosamples_treatments_proteins, but has been upgraded to genomic_elements_genes_biosamples_treatments_proteins.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+    if value['content_type'] == 'regulatory_regions_regulatory_regions':
+        value['content_type'] = 'genomic_elements_genomic_elements'
+        notes += f' This file\'s content_type was regulatory_regions_regulatory_regions, but has been upgraded to genomic_elements_genomic_elements.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+    if value['content_type'] == 'variants_regulatory_regions':
+        value['content_type'] = 'variants_genomic_elements'
+        notes += f' This file\'s content_type was variants_regulatory_regions, but has been upgraded to variants_genomic_elements.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

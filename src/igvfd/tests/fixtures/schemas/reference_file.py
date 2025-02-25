@@ -155,3 +155,83 @@ def reference_file_v14(reference_file_v6):
         'external_id': 'ENCFF743WOO'
     })
     return item
+
+
+@pytest.fixture
+def reference_file_v15_regulatory_regions(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '15',
+        'content_type': 'regulatory_regions'
+    })
+    return item
+
+
+@pytest.fixture
+def reference_file_v15_regulatory_regions_genes(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '15',
+        'content_type': 'regulatory_regions_genes'
+    })
+    return item
+
+
+@pytest.fixture
+def reference_file_v15_regulatory_regions_genes_biosamples(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '15',
+        'content_type': 'regulatory_regions_genes_biosamples'
+    })
+    return item
+
+
+@pytest.fixture
+def reference_file_v15_regulatory_regions_genes_biosamples_donors(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '15',
+        'content_type': 'regulatory_regions_genes_biosamples_donors'
+    })
+    return item
+
+
+@pytest.fixture
+def reference_file_v15_regulatory_regions_genes_biosamples_treatments_chebi(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '15',
+        'content_type': 'regulatory_regions_genes_biosamples_treatments_chebi'
+    })
+    return item
+
+
+@pytest.fixture
+def reference_file_v15_regulatory_regions_genes_biosamples_treatments_proteins(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '15',
+        'content_type': 'regulatory_regions_genes_biosamples_treatments_proteins'
+    })
+    return item
+
+
+@pytest.fixture
+def reference_file_v15_regulatory_regions_regulatory_regions(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '15',
+        'content_type': 'regulatory_regions_regulatory_regions'
+    })
+    return item
+
+
+@pytest.fixture
+def reference_file_v15_variants_regulatory_regions(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '15',
+        'content_type': 'variants_regulatory_regions'
+    })
+    return item
