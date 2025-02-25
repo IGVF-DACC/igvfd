@@ -394,6 +394,7 @@
     },
     {
         "uuid": "b2fe68c1-253b-4c94-b573-979e7e352e0f",
+        "accession": "IGVFFI8455GRSQ",
         "aliases": [
             "charles-gersbach:gRNA_sequences"
         ],
@@ -409,6 +410,7 @@
     },
     {
         "uuid": "fcbdd56c-b4fe-4b70-be0e-77aac82a439c",
+        "accession": "IGVFFI0282KLTI",
         "aliases": [
             "charles-gersbach:kallisto_transcriptome_index"
         ],
@@ -425,6 +427,7 @@
     },
     {
         "uuid": "6775a800-97c4-4e35-b561-b6213b9fd424",
+        "accession": "IGVFFI3399CHGI",
         "aliases": [
             "charles-gersbach:chromap_genome_index"
         ],

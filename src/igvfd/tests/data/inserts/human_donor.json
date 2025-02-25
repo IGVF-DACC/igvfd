@@ -1,6 +1,7 @@
 [
     {
         "uuid": "9050f480-1d11-4d2a-b6f2-5979c2af4fd6",
+        "accession": "IGVFDO5323HUES",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -33,6 +34,7 @@
     },
     {
         "uuid": "a1abeff6-8024-41d3-a713-5d22c86ffc57",
+        "accession": "IGVFDO3983KFST",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -66,6 +68,7 @@
     },
     {
         "uuid": "38d6630f-5b87-47a1-ae7d-174eab5758d2",
+        "accession": "IGVFDO8802DONO",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -89,6 +92,7 @@
     },
     {
         "uuid": "ee99221f-a11a-4f8b-baf3-9919db92f2f9",
+        "accession": "IGVFDO2021FIBR",
         "lab": "chongyuan-luo",
         "award": "1U01HG012079-01",
         "aliases": [
@@ -115,6 +119,7 @@
     },
     {
         "uuid": "e37bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
+        "accession": "IGVFDO0200COLO",
         "lab": "chongyuan-luo",
         "award": "1U01HG012079-01",
         "ethnicities": [
@@ -127,6 +132,7 @@
     },
     {
         "uuid": "e47bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
+        "accession": "IGVFDO3802CVIE",
         "lab": "chongyuan-luo",
         "award": "1U01HG012079-01",
         "ethnicities": [
@@ -139,6 +145,7 @@
     },
     {
         "uuid": "e57bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
+        "accession": "IGVFDO8473PURI",
         "lab": "chongyuan-luo",
         "award": "1U01HG012079-01",
         "ethnicities": [
@@ -153,6 +160,7 @@
     },
     {
         "uuid": "4771fdf1-b0cf-4c33-ab30-2c8c7b83996e",
+        "accession": "IGVFDO9920ENTX",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "sex": "male",

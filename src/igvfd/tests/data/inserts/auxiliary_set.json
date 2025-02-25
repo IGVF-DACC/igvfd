@@ -36,6 +36,7 @@
         "aliases": [
             "igvf:auxiliary_set_3"
         ],
+        "accession": "IGVFDS0993CRBD",
         "submitter_comment": "circularized barcode detection comment",
         "file_set_type": "circularized RNA barcode detection",
         "samples": [
@@ -51,6 +52,7 @@
         "aliases": [
             "igvf:auxiliary_set_4"
         ],
+        "accession": "IGVFDS4783QDBS",
         "submitter_comment": "quantification barcode sequencing comment",
         "file_set_type": "quantification DNA barcode sequencing",
         "samples": [
@@ -66,6 +68,7 @@
         "aliases": [
             "igvf:auxiliary_set_cell_sorting"
         ],
+        "accession": "IGVFDS4755CESO",
         "file_set_type": "cell sorting",
         "samples": [
             "igvf-dacc:in_vitro_system_demultiplexed_01"
@@ -80,6 +83,7 @@
         "aliases": [
             "igvf:auxiliary_set_lipid_conjugated_oligo_sequencing"
         ],
+        "accession": "IGVFDS0001LCOS",
         "file_set_type": "lipid-conjugated oligo sequencing",
         "samples": [
             "igvf:alias3"
@@ -94,6 +98,7 @@
         "aliases": [
             "igvf:auxiliary_set_test_barcode_map"
         ],
+        "accession": "IGVFDS8981LCOS",
         "file_set_type": "lipid-conjugated oligo sequencing",
         "samples": [
             "igvf:alias3"

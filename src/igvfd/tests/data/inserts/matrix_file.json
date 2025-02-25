@@ -1,6 +1,7 @@
 [
     {
         "uuid": "ef1d306c-069d-4d9a-b047-4936047c6a1b",
+        "accession": "IGVFFI7677SGCM",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -26,6 +27,7 @@
     },
     {
         "uuid": "8676b49a-4578-4ce9-b7e4-78b9679f2e76",
+        "accession": "IGVFFI8032SPCM",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -51,6 +53,7 @@
     },
     {
         "uuid": "90a0caf1-acef-48cb-840c-6a2d1a76d5e0",
+        "accession": "IGVFFI2020RFBM",
         "lab": "christina-leslie",
         "award": "1U01HG012103-01",
         "aliases": [
@@ -77,6 +80,7 @@
     },
     {
         "uuid": "3a7c6036-be08-45b2-aa5f-d7c3250e0177",
+        "accession": "IGVFFI0032COOL",
         "lab": "charles-gersbach",
         "award": "1UM1HG012053-01",
         "aliases": [
@@ -101,6 +105,7 @@
     },
     {
         "uuid": "8278b2bd-6dd8-475d-a0cd-07fbd5765e41",
+        "accession": "IGVFFI8883SPCM",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -126,6 +131,7 @@
     },
     {
         "uuid": "f98cdce1-d4a0-4dfa-8ae1-5ba676200c8a",
+        "accession": "IGVFFI4677SPCM",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -151,6 +157,7 @@
     },
     {
         "uuid": "bfc5ca24-7b53-92fa-c8c9-5b200ca6768a",
+        "accession": "IGVFFI8489SBCM",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -176,6 +183,7 @@
     },
     {
         "uuid": "a26c9840-c47f-4065-a8ae-6fa10ba6e174",
+        "accession": "IGVFFI0190ROBJ",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [

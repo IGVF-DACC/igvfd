@@ -42,6 +42,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "7dd534f7-4349-4485-bc7a-4b7038a55588",
+        "accession": "IGVFDS9003ATAC",
         "samples": [
             "igvf:alias10"
         ],
@@ -59,6 +60,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "e78a8e0f-537f-4c3c-8741-db6ae4a8f986",
+        "accession": "IGVFDS4482SCRN",
         "samples": [
             "igvf:alias10"
         ],
@@ -100,6 +102,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "0707e33c-4fbe-4965-9d8c-196f1ff7f047",
+        "accession": "IGVFDS8826LNMP",
         "samples": [
             "igvf:alias10"
         ],
@@ -116,6 +119,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "cd5a15a7-8e33-4e41-86b9-8ccc0d508bcd",
+        "accession": "IGVFDS2204YNTH",
         "samples": [
             "igvf:alias2"
         ],
@@ -132,6 +136,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "826c046f-5c06-430b-856c-7c0aefc3c70a",
+        "accession": "IGVFDS6520SQER",
         "samples": [
             "igvf:alias10"
         ],
@@ -148,6 +153,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "ec4b039c-5c06-11fd-856c-7c09f6bfffb9",
+        "accession": "IGVFDS8943PRSE",
         "samples": [
             "igvf:alias10"
         ],
@@ -164,6 +170,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "2c2e2b40-ada6-4a8b-8be0-e0e84c42d8ad",
+        "accession": "IGVFDS4575MLTI",
         "samples": [
             "igvf:alias10"
         ],
@@ -180,6 +187,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "c2c9896e-73e8-4f0c-a914-1f71b9b5553b",
+        "accession": "IGVFDS0027MCTS",
         "samples": [
             "igvf:alias10"
         ],
@@ -196,6 +204,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "bb40e507-93cb-4ba6-b0b2-fd73e4ba1736",
+        "accession": "IGVFDS3933STAR",
         "samples": [
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
@@ -212,6 +221,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "3f757230-b466-4da8-bae7-9a6f3c5ee290",
+        "accession": "IGVFDS0438CERE",
         "samples": [
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
@@ -228,6 +238,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "185b7ca8-e741-4ffe-96af-4b91c13428b4",
+        "accession": "IGVFDS1102VREF",
         "samples": [
             "igvf-dacc:in_vitro_system_cell_line"
         ],
@@ -244,6 +255,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "4d4cabaa-617d-47bb-857b-66e4347de8d1",
+        "accession": "IGVFDS4900SNMC",
         "samples": [
             "igvf:alias10"
         ],
@@ -263,6 +275,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "75762345-c2a7-4b97-832d-731bd060d434",
+        "accession": "IGVFDS8403RNAS",
         "samples": [
             "igvf:alias10"
         ],
@@ -279,6 +292,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "9a721e59-98d4-4e10-8244-f08d835cf04f",
+        "accession": "IGVFDS0411SCTC",
         "samples": [
             "igvf:alias10"
         ],
@@ -295,6 +309,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "ac11b2d1-0313-437b-8486-82d0edc1f081",
+        "accession": "IGVFDS7812SCRA",
         "samples": [
             "igvf:alias10"
         ],
@@ -311,6 +326,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "557c36d8-b67d-42b7-9a34-77f075e9a59b",
+        "accession": "IGVFDS8833MPRA",
         "samples": [
             "igvf:alias10"
         ],
@@ -330,6 +346,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "3fca9c80-b67d-94d0-9a34-a927506ea59b",
+        "accession": "IGVFDS2920IMAG",
         "samples": [
             "igvf:alias10"
         ],
@@ -350,6 +367,7 @@
         "status": "released",
         "release_timestamp": "2024-06-06T12:35:55Z",
         "uuid": "477b4e32-7674-4ff4-a574-4639007707e4",
+        "accession": "IGVFDS0295HHIC",
         "samples": [
             "IGVFSM0000MPXD"
         ],
@@ -391,6 +409,7 @@
         "status": "released",
         "release_timestamp": "2024-07-06T12:35:55Z",
         "uuid": "f64b07a2-6f85-478a-9b39-1703811e40a1",
+        "accession": "IGVFDS8943PRSE",
         "samples": [
             "IGVFSM0003KASP"
         ],
@@ -407,6 +426,7 @@
         "status": "released",
         "release_timestamp": "2024-07-06T12:35:55Z",
         "uuid": "eda106ea-f04f-459c-9b21-7216fae11552",
+        "accession": "IGVFDS7577VAMP",
         "samples": [
             "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_1"
         ],
@@ -426,6 +446,7 @@
         "status": "released",
         "release_timestamp": "2024-07-06T12:35:55Z",
         "uuid": "eb04955c-6405-41c8-92a8-b94e93846e45",
+        "accession": "IGVFDS4488VRPI",
         "samples": [
             "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_1"
         ],
@@ -442,6 +463,7 @@
         "status": "released",
         "release_timestamp": "2024-10-09T12:34:56Z",
         "uuid": "ab2a9e3e-fffb-42d9-8325-f4d8a478f9b0",
+        "accession": "IGVFDS6650OWGS",
         "samples": [
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
@@ -458,6 +480,7 @@
         "status": "released",
         "release_timestamp": "2024-10-09T12:34:56Z",
         "uuid": "ad0f9fd3-5d82-4c4f-9b55-779cf03f4783",
+        "accession": "IGVFDS0924OFIB",
         "samples": [
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
@@ -474,6 +497,7 @@
         "status": "released",
         "release_timestamp": "2024-10-09T12:34:56Z",
         "uuid": "5fae38f7-8079-4a75-bf56-9d50c12d8b09",
+        "accession": "IGVFDS7800ODRN",
         "samples": [
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
@@ -490,6 +514,7 @@
         "status": "released",
         "release_timestamp": "2024-10-09T12:34:56Z",
         "uuid": "5606b9d1-dece-4ed0-8612-9b42485892ce",
+        "accession": "IGVFDS6000RNON",
         "samples": [
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
@@ -511,6 +536,7 @@
         "status": "released",
         "release_timestamp": "2025-02-06T12:34:56Z",
         "uuid": "bc4277d3-742f-4ea7-9141-b19d98d4af9f",
+        "accession": "IGVFDS3999ACCA",
         "samples": [
             "igvf:alias10"
         ],
@@ -527,6 +553,7 @@
         "status": "released",
         "release_timestamp": "2025-02-06T12:34:56Z",
         "uuid": "44b18c56-30cf-4402-ba36-b91f63adc065",
+        "accession": "IGVFDS2009SACC",
         "samples": [
             "igvf:alias10"
         ],

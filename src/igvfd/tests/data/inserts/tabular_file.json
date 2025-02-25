@@ -188,6 +188,7 @@
     },
     {
         "uuid": "0062d84b-7f9d-417f-a20a-cb1ed8d7a79f",
+        "accession": "IGVFFI8391BTHM",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -207,6 +208,7 @@
     },
     {
         "uuid": "0d7534bf-ab7b-4016-a877-d8a69165e931",
+        "accession": "IGVFFI0219BTVM",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -246,6 +248,7 @@
     },
     {
         "uuid": "94a5dd91-ad21-445c-9352-dfb76632f825",
+        "accession": "IGVFFI6620VLCI",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -265,6 +268,7 @@
     },
     {
         "uuid": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "accession": "IGVFFI1882PKQN",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -285,6 +289,7 @@
     },
     {
         "uuid": "47dfe2d3-0fb3-437f-84a1-aec2d7648300",
+        "accession": "IGVFFI4723CVEF",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -304,6 +309,7 @@
     },
     {
         "uuid": "3d4e0cba-1df9-4c98-9139-42fbe6e1c3d8",
+        "accession": "IGVFFI5550BTOM",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -323,6 +329,7 @@
     },
     {
         "uuid": "1eb8777d-a690-4dad-9973-22e6b8dc1ea5",
+        "accession": "IGVFFI6301RGVE",
         "lab": "martin-kircher",
         "award": "1UM1HG011966-01",
         "aliases": [
@@ -342,6 +349,7 @@
     },
     {
         "uuid": "28979093-7022-4f46-b61d-585119ae485c",
+        "accession": "IGVFFI7332BNPC",
         "lab": "charles-gersbach",
         "award": "1UM1HG012053-01",
         "aliases": [
@@ -361,6 +369,7 @@
     },
     {
         "uuid": "c4ac1af1-e3e3-4719-86b6-bf7aaaf61337",
+        "accession": "IGVFFI0063DCCQ",
         "lab": "charles-gersbach",
         "award": "1UM1HG012053-01",
         "aliases": [
@@ -380,6 +389,7 @@
     },
     {
         "uuid": "06bd6423-6d6a-44ba-a42e-161a05e81a21",
+        "accession": "IGVFFI2973VFCP",
         "lab": "charles-gersbach",
         "award": "1UM1HG012053-01",
         "aliases": [
@@ -418,6 +428,7 @@
     },
     {
         "uuid": "8444c1a5-fc09-4fbc-b27a-8931975acf41",
+        "accession": "IGVFFI8951REXB",
         "lab": "martin-kircher",
         "award": "1UM1HG011966-01",
         "aliases": [
@@ -437,6 +448,7 @@
     },
     {
         "uuid": "b71dd20b-6f07-47b5-ba37-463a5b386e64",
+        "accession": "IGVFFI6208BCON",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -455,6 +467,7 @@
     },
     {
         "uuid": "cfed9981-a18d-47bd-be54-c9ace085a1ab",
+        "accession": "IGVFFI2900BCON",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
