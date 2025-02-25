@@ -3,6 +3,7 @@
         "aliases": [
             "igvf:basic_analysis_set"
         ],
+        "accession": "IGVFDS5575ANST",
         "submitter_comment": "Comment for an analysis set.",
         "description": "A basic analysis set.",
         "award": "HG012012",
@@ -22,6 +23,7 @@
         "aliases": [
             "igvf:analysis_set_with_input"
         ],
+        "accession": "IGVFDS5300PRAN",
         "submitter_comment": "Comment for an analysis set.",
         "description": "An analysis set with an input file set.",
         "award": "HG012012",
@@ -48,6 +50,7 @@
         "aliases": [
             "leif-ludwig:analysis_set"
         ],
+        "accession": "IGVFDS8302INAN",
         "award": "HG012009",
         "lab": "j-michael-cherry",
         "status": "released",
@@ -59,6 +62,7 @@
         "aliases": [
             "igvf:analysis_set_with_workflow"
         ],
+        "accession": "IGVFDS4655ALYS",
         "submitter_comment": "Comment for an analysis set.",
         "description": "An analysis set with an input file set.",
         "award": "HG012012",
@@ -82,6 +86,7 @@
         "aliases": [
             "igvf:analysis_set_with_workflow_2"
         ],
+        "accession": "IGVFDS9009ANWK",
         "submitter_comment": "Comment for an analysis set.",
         "description": "An analysis set with an input file set.",
         "award": "HG012012",
