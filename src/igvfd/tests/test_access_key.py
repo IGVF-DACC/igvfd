@@ -2,6 +2,10 @@ import pytest
 from webtest import AppError
 
 
+def test_failing_test():
+    assert False
+
+
 def basic_auth(username, password):
     from base64 import b64encode
     from snovault.compat import ascii_native_
