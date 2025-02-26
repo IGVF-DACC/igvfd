@@ -39,6 +39,9 @@ def institutional_certificate():
             'certificate_identifier': {
                 'title': 'Certificate Identifier'
             },
+            'data_use_limitation_summary': {
+                'title': 'Data Use Limitation'
+            },
             'urls': {
                 'title': 'URL'
             },
