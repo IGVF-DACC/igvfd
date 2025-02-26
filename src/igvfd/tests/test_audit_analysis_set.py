@@ -363,3 +363,58 @@ def test_audit_analysis_set_inconsistent_barcode_onlist(testapp, analysis_set_wi
         error['category'] != 'inconsistent barcode method'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_missing_transcriptome(
+    testapp,
+    analysis_set_base,
+    alignment_file,
+    reference_file,
+    measurement_set,
+    assay_term_bulk_rna
+):
+    testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'file_set': analysis_set_base['@id']
+        }
+    )
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'content_type': 'genome reference'
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing reference files'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_bulk_rna['@id']
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing reference files'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'content_type': 'transcriptome reference'
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing reference files'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
