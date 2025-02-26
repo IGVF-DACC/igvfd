@@ -511,9 +511,10 @@ class AnalysisSet(FileSet):
     def sample_summary(self, request, samples=None):
         sample_classification_term_target = dict()
         treatment_purposes = set()
+        treatment_summaries = set()
         differentiation_times = set()
         construct_library_set_types = set()
-        modification_types = set()
+        modification_summaries = set()
         sorted_from = set()
         targeted_genes_for_sorting = set()
 
@@ -540,17 +541,24 @@ class AnalysisSet(FileSet):
 
             for term in sample_object['sample_terms']:
                 sample_term_object = request.embed(term, '@@object?skip_calculated=true')
+                sample_phrase = f"{sample_term_object['term_name']}"
+                # Avoid redundancy of classification and term name
+                # e.g. "HFF-1 cell cell line"
+                if 'cell' in sample_phrase and 'cell' in classification:
+                    sample_phrase = sample_phrase.replace('cell', classification)
+                elif 'tissue' in sample_phrase and 'tissue' in classification:
+                    sample_phrase = sample_phrase.replace('tissue', classification)
+                elif 'gastruloid' in sample_phrase:
+                    sample_phrase = sample_phrase.replace('gastruloid', '')
+
+                targeted_sample_suffix = ''
                 if 'targeted_sample_term' in sample_object:
                     targeted_sample_term_object = request.embed(
                         sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
-                    sample_classification_term_target[classification].add(
-                        f"{sample_term_object['term_name']} "
-                        f"induced to {targeted_sample_term_object['term_name']}"
-                    )
-                else:
-                    sample_classification_term_target[classification].add(
-                        f"{sample_term_object['term_name']}"
-                    )
+                    targeted_sample_suffix = f"induced to {targeted_sample_term_object['term_name']}"
+                if targeted_sample_suffix:
+                    sample_phrase = f'{sample_phrase} {targeted_sample_suffix}'
+                sample_classification_term_target[classification].add(sample_phrase)
 
             if 'time_post_change' in sample_object:
                 time = sample_object['time_post_change']
@@ -558,11 +566,9 @@ class AnalysisSet(FileSet):
                 differentiation_times.add(f'{time} {time_unit}')
             if 'modifications' in sample_object:
                 for modification in sample_object['modifications']:
-                    if modification.startswith('/crispr-modifications/'):
-                        modification_type = 'CRISPR'
-                    elif modification.startswith('/degron-modifications/'):
-                        modification_type = 'Degron'
-                    modification_types.add(modification_type)
+                    modification_object = request.embed(
+                        modification, '@@object_with_select_calculated_properties?field=summary')
+                    modification_summaries.add(modification_object['summary'])
             if 'construct_library_sets' in sample_object:
                 for construct_library_set in sample_object['construct_library_sets']:
                     cls_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
@@ -578,8 +584,11 @@ class AnalysisSet(FileSet):
                                 targeted_genes_for_sorting.add(gene_object['symbol'])
             if 'treatments' in sample_object:
                 for treatment in sample_object['treatments']:
-                    treatment_object = request.embed(treatment, '@@object?skip_calculated=true')
+                    treatment_object = request.embed(
+                        treatment, '@@object_with_select_calculated_properties?field=summary')
                     treatment_purposes.add(treatment_purpose_to_adjective.get(treatment_object['purpose'], ''))
+                    truncated_summary = treatment_object['summary'].split(' of ')[1]
+                    treatment_summaries.add(truncated_summary)
 
         all_sample_terms = []
         for classification in sorted(sample_classification_term_target.keys()):
@@ -595,15 +604,14 @@ class AnalysisSet(FileSet):
 
         differentiation_time_phrase = ''
         if differentiation_times:
-            differentiation_time_phrase = f'at {len(differentiation_times)} time point(s) post change'
+            differentiation_time_phrase = f'at {", ".join(sorted(differentiation_times))}(s) post change'
         treatments_phrase = ''
-        if treatment_purposes:
-            treatments_phrase = f"{', '.join(treatment_purposes)} with treatment(s)"
-        modification_type_phrase = ''
-        if modification_types:
-            modification_types = sorted(modification_types)
-            # since there will only be at most 2 modification types, the list can be joined with "and"
-            modification_type_phrase = f'modified with {" and ".join(modification_types)} modifications'
+        if treatment_purposes and treatment_summaries:
+            treatments_phrase = f"{', '.join(sorted(treatment_purposes))} with {', '.join(sorted(treatment_summaries))}"
+        modification_summary_phrase = ''
+        if modification_summaries:
+            modification_summaries = sorted(modification_summaries)
+            modification_summary_phrase = f'modified with {", ".join(modification_summaries)}'
         construct_library_set_type_phrase = ''
         if construct_library_set_types:
             construct_library_set_type_phrase = f'transfected with a {", ".join(construct_library_set_types)}'
@@ -617,7 +625,7 @@ class AnalysisSet(FileSet):
         additional_phrases = [
             differentiation_time_phrase,
             treatments_phrase,
-            modification_type_phrase,
+            modification_summary_phrase,
             construct_library_set_type_phrase,
             sorted_phrase
         ]
