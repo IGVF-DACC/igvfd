@@ -1,6 +1,6 @@
 {
-    "hash": "b464684b9845164e436946b3495abc71",
-    "index_name": "primary_cell_b464684b",
+    "hash": "df36261081287bb4cdba05902050a79a",
+    "index_name": "primary_cell_df362610",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1313,6 +1313,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "partner_labs": {
+                                "type": "keyword"
                             },
                             "release_timestamp": {
                                 "type": "date"
