@@ -15,6 +15,10 @@
         "urls": [
             "https://drive.google.com/file/d/gKzWb71JFEMGvHjGOySb4tnPr5u_l7ZFr/view"
         ],
+        "partner_labs": [
+            "marlene-rabinovitch",
+            "will-greenleaf"
+        ],
         "award": "HG012012",
         "lab": "j-michael-cherry",
         "uuid": "ed7bb4fd-b1d5-442b-a4ab-4de1291d07b5",

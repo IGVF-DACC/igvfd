@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 2
 
+* Add `partner_labs`.
 * Add calculated property `data_use_limitation_summary`.
 * Extend `status` enum list to include `preview`.
 

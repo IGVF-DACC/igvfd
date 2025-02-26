@@ -249,6 +249,9 @@ def audit_missing_institutional_certification(value, system):
         for nic in sample.get('institutional_certificates', []):
             nic_object = system.get('request').embed(nic, '@@object?skip_calculated=true')
             nic_labs.append(nic_object.get('lab', ''))
+            if 'partner_labs' in nic_object:
+                for partner in nic_object.get('partner_labs', []):
+                    nic_labs.append(partner)
             nic_awards.append(nic_object.get('award', ''))
         if lab not in nic_labs or award not in nic_awards:
             detail = (

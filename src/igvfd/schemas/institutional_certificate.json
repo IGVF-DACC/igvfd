@@ -157,6 +157,22 @@
                 "appscript": "[\"https://drive.google.com/file/d/7FH5GQ86h5D1JGkRpcmeySb4tn7/view\"]",
                 "igvf_utils": "https://drive.google.com/file/d/7FH5GQ86h5D1JGkRpcmeySb4tn7/view"
             }
+        },
+        "partner_labs": {
+            "title": "Partner Labs",
+            "description": "Labs which belong to same institution as the signing PI and can share this institutional certificate.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Partner Lab",
+                "type": "string",
+                "linkTo": "Lab"
+            },
+            "submissionExample": {
+                "appscript": "[\"/labs/john-doe/\"]",
+                "igvf_utils": "/labs/john-doe/"
+            }
         }
     },
     "fuzzy_searchable_fields": [
