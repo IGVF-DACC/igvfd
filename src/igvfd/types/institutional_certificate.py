@@ -32,7 +32,7 @@ class InstitutionalCertificate(Item):
     @calculated_property(schema={
         'title': 'Data Use Limitation Summary',
         'type': 'string',
-        'description': 'A unique identifier for the ontology term, reformatted from the original term ID.',
+        'description': 'A combination of the data use limitation and its modifiers',
         'notSubmittable': True,
         'uniqueKey': True
     })
