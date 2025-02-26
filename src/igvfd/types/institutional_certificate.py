@@ -34,7 +34,6 @@ class InstitutionalCertificate(Item):
         'type': 'string',
         'description': 'A combination of the data use limitation and its modifiers',
         'notSubmittable': True,
-        'uniqueKey': True
     })
     def data_use_limitation_summary(self, properties=None):
         if properties is None:
