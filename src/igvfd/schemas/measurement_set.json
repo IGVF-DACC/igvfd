@@ -253,16 +253,20 @@
             "enum": [
                 "control transduction",
                 "low FACS signal",
+                "non-targeting",
                 "pre-selection",
                 "unsorted FACS input",
-                "untransfected"
+                "untransfected",
+                "untreated"
             ],
             "enum_descriptions": {
                 "control transduction": "The samples have been transduced with a construct that serves as a control.",
                 "low FACS signal": "The samples have minimal fluorescence in Flow Cytometry (FACS), used as a baseline or negative control.",
+                "non-targeting": "The samples have been treated with a construct that does not target any specific gene or region.",
                 "pre-selection": "The samples were collected before any selection or sorting process, representing the starting population.",
                 "unsorted FACS input": "The samples analyzed by Flow Cytometry (FACS) without any sorting, representing the full, unsorted population.",
-                "untransfected": "The samples have not undergone transfection, used as a baseline or negative control."
+                "untransfected": "The samples have not undergone transfection, used as a baseline or negative control.",
+                "untreated": "The samples have not been treated with any experimental conditions, used as a baseline or negative control."
             },
             "submissionExample": {
                 "appscript": "low FACS signal",
