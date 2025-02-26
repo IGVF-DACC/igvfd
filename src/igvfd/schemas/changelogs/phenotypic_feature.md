@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 3
 
+* Extend `quantity_units` enum list to include `UPDRS`.
+* Extend `quantity_units` enum list to include `MMSE`.
 * Extend `status` enum list to include `preview`.
 * Add `quality`.
 * Update calculation of `summary`.
