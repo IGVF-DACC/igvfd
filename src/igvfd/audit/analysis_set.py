@@ -303,7 +303,7 @@ def audit_analysis_set_inconsistent_onlist_info(value, system):
     # If there are multiple onlist methods from the input measurement sets of the same assay type, trigger audit
     for assay_term, onlist_methods in onlist_methods_by_assays.items():
         if len(onlist_methods) > 1:
-            assay_term_obj = system.get('request').embed(assay_term + '@@object?')
+            assay_term_obj = system.get('request').embed(assay_term + '@@object?skip_calculated=true')
             detail = (
                 f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has Measurement set(s) with assay term: {assay_term_obj.get("term_name", "")} '
@@ -314,6 +314,7 @@ def audit_analysis_set_inconsistent_onlist_info(value, system):
     # If the input measurement sets have different onlist files
     for assay_term, onlist_files in onlist_files_by_assays.items():
         if not all(set(sublist) == set(onlist_files[0]) for sublist in onlist_files):
+            assay_term_obj = system.get('request').embed(assay_term + '@@object?skip_calculated=true')
             detail = (
                 f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has Measurement set(s) with assay term: {assay_term_obj.get("term_name", "")} '
