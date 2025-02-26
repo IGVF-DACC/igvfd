@@ -25,7 +25,11 @@
         "virtual": false,
         "protocols": [
             "https://www.protocols.io/test-protocols-url-12345"
-        ]
+        ],
+        "construct_library_sets": [
+            "igvf:basic_construct_library_set_1"
+        ],
+        "nucleic_acid_delivery": "nucleofection"
     },
     {
         "uuid": "d4c46526-0307-11ed-b939-0242ac120002",
