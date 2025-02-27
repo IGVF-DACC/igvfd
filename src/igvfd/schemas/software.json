@@ -51,7 +51,7 @@
             "title": "Name",
             "description": "Unique name of the software package; a lowercase version of the title.",
             "type": "string",
-            "pattern": "^[a-z0-9\\-\\_]+",
+            "pattern": "^[a-z0-9\\-_]+",
             "uniqueKey": "software:name",
             "submissionExample": {
                 "appscript": "bedtools",
