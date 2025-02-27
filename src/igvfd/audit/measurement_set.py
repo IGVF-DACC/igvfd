@@ -253,6 +253,9 @@ def audit_missing_institutional_certification(value, system):
                 for partner in nic_object.get('partner_labs', []):
                     nic_labs.append(partner)
             nic_awards.append(nic_object.get('award', ''))
+            if 'partner_awards' in nic_object:
+                for partner in nic_object.get('partner_awards', []):
+                    nic_awards.append(partner)
         if lab not in nic_labs or award not in nic_awards:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has '

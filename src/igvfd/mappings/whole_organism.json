@@ -1,6 +1,6 @@
 {
-    "hash": "90bcda763b4b37bad966024bd1dd5e4f",
-    "index_name": "whole_organism_90bcda76",
+    "hash": "d332b9dea78889607466e432b4c7a146",
+    "index_name": "whole_organism_d332b9de",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1310,6 +1310,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "partner_awards": {
+                                "type": "keyword"
                             },
                             "partner_labs": {
                                 "type": "keyword"

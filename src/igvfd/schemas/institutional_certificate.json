@@ -173,6 +173,22 @@
                 "appscript": "[\"/labs/john-doe/\"]",
                 "igvf_utils": "/labs/john-doe/"
             }
+        },
+        "partner_awards": {
+            "title": "Partner Awards",
+            "description": "Awards granted to at least one lab that belongs to same institution as the signing PI and can share this institutional certificate.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Partner Award",
+                "type": "string",
+                "linkTo": "Award"
+            },
+            "submissionExample": {
+                "appscript": "[\"/awards/HG000111/\"]",
+                "igvf_utils": "/awards/HG000111/"
+            }
         }
     },
     "fuzzy_searchable_fields": [
