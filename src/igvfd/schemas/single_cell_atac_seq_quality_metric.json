@@ -107,15 +107,6 @@
                 "igvf_utils": 8
             }
         },
-        "total": {
-            "title": "Total Number",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
         "duplicate": {
             "title": "Duplicate Number",
             "description": "",
@@ -154,7 +145,7 @@
         },
         "n_reads": {
             "title": "Number Of Reads",
-            "description": "",
+            "description": "Total count of sequencing reads processed.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -163,7 +154,7 @@
         },
         "n_mapped_reads": {
             "title": "Number Of Mapped Reads",
-            "description": "",
+            "description": "Reads successfully aligned to the reference genome.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -172,7 +163,7 @@
         },
         "n_uniquely_mapped_reads": {
             "title": "Number Of Uniquely Mapped Reads",
-            "description": "",
+            "description": "Reads aligned to a single location in the genome.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -181,7 +172,7 @@
         },
         "n_reads_with_multi_mappings": {
             "title": "Number Of Reads With Multi-Mappings",
-            "description": "",
+            "description": "Reads aligned to multiple locations in the genome.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -190,7 +181,7 @@
         },
         "n_candidates": {
             "title": "Number Of Candidates",
-            "description": "",
+            "description": "Potential mapping locations considered during alignment.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -199,7 +190,7 @@
         },
         "n_mappings": {
             "title": "Number Of Mappings",
-            "description": "",
+            "description": "Total successful alignments, including multiple mappings per read.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -208,7 +199,7 @@
         },
         "n_uni_mappings": {
             "title": "Number Of Uni-Mappings",
-            "description": "",
+            "description": "Total alignments where reads map to a single location.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -217,7 +208,7 @@
         },
         "n_multi_mappings": {
             "title": "Number Of Multi-Mappings",
-            "description": "",
+            "description": "Total alignments where reads map to multiple locations.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -226,7 +217,7 @@
         },
         "n_barcodes_on_onlist": {
             "title": "Number Of Barcodes On Onlist",
-            "description": "",
+            "description": "Barcodes matching the expected list of valid barcodes.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -235,7 +226,7 @@
         },
         "n_corrected_barcodes": {
             "title": "Number Of Corrected Barcodes",
-            "description": "",
+            "description": "Barcodes adjusted to match valid entries in the onlist.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -244,7 +235,34 @@
         },
         "n_output_mappings": {
             "title": "Number Of Output Mappings",
-            "description": "",
+            "description": "Final count of fragments after deduplication and filtering.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "uni_mappings": {
+            "title": "Uni-Mappings",
+            "description": "Number of fragments mapping to single location in the genome.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "multi_mappings": {
+            "title": "Multi-Mappings",
+            "description": "Number of fragments mappig in multiple locations in the genome.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "total": {
+            "title": "Total",
+            "description": "Sum of uni-mappings and multi-mappings.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
