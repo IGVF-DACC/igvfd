@@ -1,6 +1,6 @@
 {
-    "hash": "b59085ea130f423f0373216000656434",
-    "index_name": "multiplexed_sample_b59085ea",
+    "hash": "6da2d55744ceb8edd350045552c2a70d",
+    "index_name": "multiplexed_sample_6da2d557",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1302,6 +1302,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "partner_awards": {
+                                "type": "keyword"
                             },
                             "partner_labs": {
                                 "type": "keyword"

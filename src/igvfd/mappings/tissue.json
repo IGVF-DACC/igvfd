@@ -1,6 +1,6 @@
 {
-    "hash": "0e1ee36688c66890ad21fc97541f6df5",
-    "index_name": "tissue_0e1ee366",
+    "hash": "6a3163850b76fc6bbe96a3a28a6be820",
+    "index_name": "tissue_6a316385",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1313,6 +1313,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "partner_awards": {
+                                "type": "keyword"
                             },
                             "partner_labs": {
                                 "type": "keyword"
