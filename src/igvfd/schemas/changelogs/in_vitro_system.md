@@ -2,7 +2,6 @@
 
 ### Minor changes since schema version 25
 
-* Add calculated property `data_use_limitation_summary`.
 * Extend `nucleic_acid_delivery` enum list to include `nucleofection`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.
