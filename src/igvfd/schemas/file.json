@@ -300,22 +300,6 @@
                 "igvf_utils": "john-doe:analysis_step_version_01 or /analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/"
             }
         },
-        "catalog_adapter": {
-            "title": "IGVF Catalog Adapters",
-            "comment": "IGVF Catalog Adapters that ingests this file",
-            "type": "array",
-            "permission": "admin_only",
-            "uniqueItems": true,
-            "items": {
-                "title": "IGVF Catalog Adapter Github Link",
-                "description": "Identifier pointing to a Github link of the IGVF Catalog adapter that processes this file.",
-                "type": "string",
-                "pattern": "https:\\/\\/github\\.com\\/IGVF-DACC\\/igvf-catalog\\/blob\\/dev\\/data\\/adapters\\/(.)*\\.py"
-            },
-            "submissionExample": {
-                "igvf_utils": "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/ccre_adapter.py"
-            }
-        },
         "content_md5sum": {
             "title": "Content MD5sum",
             "description": "The MD5sum of the uncompressed file.",
