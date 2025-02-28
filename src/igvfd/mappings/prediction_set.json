@@ -1,6 +1,6 @@
 {
-    "hash": "6043812cb2a4bff1193e881a2fbea6b8",
-    "index_name": "prediction_set_6043812c",
+    "hash": "d9cea0a4900b8a5a5935b1f238835e31",
+    "index_name": "prediction_set_d9cea0a4",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -548,6 +548,9 @@
                                         "type": "keyword"
                                     },
                                     "barcode_map_for": {
+                                        "type": "keyword"
+                                    },
+                                    "catalog_adapter": {
                                         "type": "keyword"
                                     },
                                     "cell_type_annotation": {
@@ -1378,6 +1381,9 @@
                             "base_modifications": {
                                 "type": "keyword"
                             },
+                            "catalog_adapter": {
+                                "type": "keyword"
+                            },
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
@@ -1706,6 +1712,9 @@
                             "barcode_map_for": {
                                 "type": "keyword"
                             },
+                            "catalog_adapter": {
+                                "type": "keyword"
+                            },
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
@@ -1883,6 +1892,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map_for": {
+                                "type": "keyword"
+                            },
+                            "catalog_adapter": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {

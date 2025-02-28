@@ -1,6 +1,6 @@
 {
-    "hash": "38435e792ea3050a5ed56162d480a3c7",
-    "index_name": "signal_file_38435e79",
+    "hash": "9388155da5c6df7e50befe4297000a30",
+    "index_name": "signal_file_9388155d",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -237,6 +237,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "catalog_adapter": {
+                        "type": "keyword"
                     },
                     "cell_type_annotation": {
                         "properties": {

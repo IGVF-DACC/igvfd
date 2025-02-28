@@ -1,6 +1,6 @@
 {
-    "hash": "8b04987ac7cba785cacfeae8af242157",
-    "index_name": "measurement_set_8b04987a",
+    "hash": "a8079a5e3012fa53b00852fc51b5f201",
+    "index_name": "measurement_set_a8079a5e",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -645,6 +645,9 @@
                                         "type": "keyword"
                                     },
                                     "barcode_map_for": {
+                                        "type": "keyword"
+                                    },
+                                    "catalog_adapter": {
                                         "type": "keyword"
                                     },
                                     "cell_type_annotation": {
@@ -1883,6 +1886,9 @@
                                 "type": "keyword"
                             },
                             "base_modifications": {
+                                "type": "keyword"
+                            },
+                            "catalog_adapter": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {

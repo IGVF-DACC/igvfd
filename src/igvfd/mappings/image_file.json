@@ -1,6 +1,6 @@
 {
-    "hash": "4a8c2c36f85bea119c86af21dab9a65a",
-    "index_name": "image_file_4a8c2c36",
+    "hash": "9113baf952fc2dac12895672a13f38ba",
+    "index_name": "image_file_9113baf9",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -234,6 +234,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "catalog_adapter": {
+                        "type": "keyword"
                     },
                     "checkfiles_version": {
                         "type": "keyword"
