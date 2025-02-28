@@ -131,7 +131,7 @@
         },
         "catalog_adapter": {
             "title": "IGVF Catalog Adapters",
-            "comment": "IGVF Catalog Adapters that ingests this file",
+            "description": "IGVF Catalog Adapters that ingests this file",
             "type": "array",
             "permission": "admin_only",
             "uniqueItems": true,
