@@ -1,6 +1,6 @@
 {
-    "hash": "8b04987ac7cba785cacfeae8af242157",
-    "index_name": "measurement_set_8b04987a",
+    "hash": "2fb34a9cdc20a1d7baa311b13475753f",
+    "index_name": "measurement_set_2fb34a9c",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2179,6 +2179,10 @@
                             },
                             "uuid": {
                                 "type": "keyword"
+                            },
+                            "validate_onlist_files": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "validation_error_detail": {
                                 "type": "keyword"
