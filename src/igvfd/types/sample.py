@@ -1038,7 +1038,8 @@ class MultiplexedSample(Sample):
         }
     )
     def construct_library_sets(self, request, multiplexed_samples):
-        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'construct_library_sets')
+        if 'construct_library_sets' in request:
+            return collect_multiplexed_samples_prop(request, multiplexed_samples, 'construct_library_sets')
 
     @calculated_property(
         schema={
