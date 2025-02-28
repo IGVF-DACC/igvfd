@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-    "hash": "4b44870254cadca665f5069391947118",
-    "index_name": "measurement_set_4b448702",
-=======
-    "hash": "a8079a5e3012fa53b00852fc51b5f201",
-    "index_name": "measurement_set_a8079a5e",
->>>>>>> 7911fe8f (adding catalog adapter property to file)
+    "hash": "d9132df5ec13df4d0d184cc641acbc07",
+    "index_name": "measurement_set_d9132df5",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -652,7 +647,7 @@
                                     "barcode_map_for": {
                                         "type": "keyword"
                                     },
-                                    "catalog_adapter": {
+                                    "catalog_adapters": {
                                         "type": "keyword"
                                     },
                                     "cell_type_annotation": {
@@ -1893,7 +1888,7 @@
                             "base_modifications": {
                                 "type": "keyword"
                             },
-                            "catalog_adapter": {
+                            "catalog_adapters": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {

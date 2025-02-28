@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 16
 
-* Add `catalog_adapter`.
+* Add `catalog_adapters`.
 
 ### Schema version 16
 

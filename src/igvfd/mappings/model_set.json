@@ -1,6 +1,6 @@
 {
-    "hash": "360ae4f892fb77601690e085d8709a02",
-    "index_name": "model_set_360ae4f8",
+    "hash": "50f0be56081c76bf6354dc57543c34fd",
+    "index_name": "model_set_50f0be56",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -550,7 +550,7 @@
                                     "barcode_map_for": {
                                         "type": "keyword"
                                     },
-                                    "catalog_adapter": {
+                                    "catalog_adapters": {
                                         "type": "keyword"
                                     },
                                     "cell_type_annotation": {
@@ -1388,7 +1388,7 @@
                             "base_modifications": {
                                 "type": "keyword"
                             },
-                            "catalog_adapter": {
+                            "catalog_adapters": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {

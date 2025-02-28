@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-    "hash": "ec380d33e1128463cb1ff695cf31a906",
-    "index_name": "analysis_set_ec380d33",
-=======
-    "hash": "8c28a5a9cb46023b0298dc07d98716d8",
-    "index_name": "analysis_set_8c28a5a9",
->>>>>>> 7911fe8f (adding catalog adapter property to file)
+    "hash": "445b738da5f3161d8f623ff9b514274d",
+    "index_name": "analysis_set_445b738d",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -460,7 +455,7 @@
                                     "barcode_map_for": {
                                         "type": "keyword"
                                     },
-                                    "catalog_adapter": {
+                                    "catalog_adapters": {
                                         "type": "keyword"
                                     },
                                     "cell_type_annotation": {
@@ -1296,7 +1291,7 @@
                             "base_modifications": {
                                 "type": "keyword"
                             },
-                            "catalog_adapter": {
+                            "catalog_adapters": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {

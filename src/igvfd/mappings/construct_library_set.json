@@ -1,6 +1,6 @@
 {
-    "hash": "1361581a2cb358347d3913b5154c4c19",
-    "index_name": "construct_library_set_1361581a",
+    "hash": "faac54198ed97f36e77c6afc8382d8b2",
+    "index_name": "construct_library_set_faac5419",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1522,7 +1522,7 @@
                             "base_modifications": {
                                 "type": "keyword"
                             },
-                            "catalog_adapter": {
+                            "catalog_adapters": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {
@@ -1793,7 +1793,7 @@
                             "barcode_map_for": {
                                 "type": "keyword"
                             },
-                            "catalog_adapter": {
+                            "catalog_adapters": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {
@@ -2035,7 +2035,7 @@
                             "barcode_map_for": {
                                 "type": "keyword"
                             },
-                            "catalog_adapter": {
+                            "catalog_adapters": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {
@@ -2217,7 +2217,7 @@
                             "barcode_map_for": {
                                 "type": "keyword"
                             },
-                            "catalog_adapter": {
+                            "catalog_adapters": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {
