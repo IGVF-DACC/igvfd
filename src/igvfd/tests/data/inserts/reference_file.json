@@ -120,7 +120,9 @@
         "award": "HG012012",
         "md5sum": "91e20f3990eb96c1ad4ba603db78298e",
         "file_format": "PWM",
-        "catalog_adapter": ["https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/motif_adapter.py"],
+        "catalog_adapter": [
+            "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/motif_adapter.py"
+        ],
         "content_type": "motifs",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
