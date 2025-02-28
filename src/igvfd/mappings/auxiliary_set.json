@@ -1,6 +1,6 @@
 {
-    "hash": "4b7c2995cd2c16cb7772ff70677e53b0",
-    "index_name": "auxiliary_set_4b7c2995",
+    "hash": "e8ada75585a90a472b81c11070bf6c0b",
+    "index_name": "auxiliary_set_e8ada755",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1505,6 +1505,10 @@
                             },
                             "uuid": {
                                 "type": "keyword"
+                            },
+                            "validate_onlist_files": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "validation_error_detail": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "faac54198ed97f36e77c6afc8382d8b2",
-    "index_name": "construct_library_set_faac5419",
+    "hash": "2cddd829a918c7d54ff47289bde752e7",
+    "index_name": "construct_library_set_2cddd829",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1742,6 +1742,10 @@
                             },
                             "uuid": {
                                 "type": "keyword"
+                            },
+                            "validate_onlist_files": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "validation_error_detail": {
                                 "type": "keyword"

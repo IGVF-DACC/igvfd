@@ -461,3 +461,33 @@ def test_upload_credentials_allowed_when_status_is_preview(testapp, reference_fi
         status=200
     )
     testapp.post_json(reference_file['@id'] + '@@upload', {}, status=200)
+
+
+def test_validate_onlist_files(testapp, configuration_file_json, configuration_file_seqspec, base_auxiliary_set, measurement_set_one_onlist):
+    # If a Config File is not a seqspec
+    res = testapp.get(configuration_file_json['@id'])
+    assert res.json.get('validate_onlist_files', '') is False
+
+    # IF a ConfigFile seqpec is not linked to a single cell measeurement set
+    res = testapp.get(configuration_file_seqspec['@id'])
+    assert res.json.get('validate_onlist_files', '') is False
+
+    # If a ConfigFile seqspec is linked to an AuxSet
+    testapp.patch_json(
+        configuration_file_seqspec['@id'],
+        {
+            'file_set': base_auxiliary_set['@id']
+        }
+    )
+    res = testapp.get(configuration_file_seqspec['@id'])
+    assert res.json.get('validate_onlist_files', '') is False
+
+    # If a seqspec has seqspec_of and is a single cell measurement set
+    testapp.patch_json(
+        configuration_file_seqspec['@id'],
+        {
+            'file_set': measurement_set_one_onlist['@id']
+        }
+    )
+    res = testapp.get(configuration_file_seqspec['@id'])
+    assert res.json.get('validate_onlist_files', '') is True

@@ -1,6 +1,6 @@
 {
-    "hash": "2c608701af9f56355653b3c944b0a1f8",
-    "index_name": "configuration_file_2c608701",
+    "hash": "c41e936a2a22314c9e79f4dcd86f638b",
+    "index_name": "configuration_file_c41e936a",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1848,6 +1848,10 @@
                     },
                     "uuid": {
                         "type": "keyword"
+                    },
+                    "validate_onlist_files": {
+                        "store": true,
+                        "type": "boolean"
                     },
                     "validation_error_detail": {
                         "type": "keyword"

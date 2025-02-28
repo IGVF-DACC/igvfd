@@ -1,6 +1,6 @@
 {
-    "hash": "651f8b85458078a9cf22869f7e858374",
-    "index_name": "model_set_651f8b85",
+    "hash": "79bcda40c81379c2ea17e239984a0a23",
+    "index_name": "model_set_79bcda40",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1608,6 +1608,10 @@
                             },
                             "uuid": {
                                 "type": "keyword"
+                            },
+                            "validate_onlist_files": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "validation_error_detail": {
                                 "type": "keyword"
