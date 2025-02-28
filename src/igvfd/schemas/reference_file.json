@@ -136,13 +136,13 @@
             "permission": "admin_only",
             "uniqueItems": true,
             "items": {
-                "title": "IGVF Catalog Adapter Github Link",
+                "title": "IGVF Catalog Adapter",
                 "description": "Identifier pointing to a Github link of the IGVF Catalog adapter that processes this file.",
                 "type": "string",
                 "pattern": "https:\\/\\/github\\.com\\/IGVF-DACC\\/igvf-catalog\\/blob\\/dev\\/data\\/adapters\\/(.)*\\.py"
             },
             "submissionExample": {
-                "igvf_utils": "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/ccre_adapter.py"
+                "appscript": "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/ccre_adapter.py"
             }
         },
         "content_type": {
