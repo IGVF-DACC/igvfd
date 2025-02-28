@@ -1,6 +1,6 @@
 {
-    "hash": "6dc407bba187d8e4fbfa33d097dcb76c",
-    "index_name": "curated_set_6dc407bb",
+    "hash": "d036f9e6fa384ec6143caf9a81c16c36",
+    "index_name": "curated_set_d036f9e6",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1500,6 +1500,10 @@
                             },
                             "uuid": {
                                 "type": "keyword"
+                            },
+                            "validate_onlist_files": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "validation_error_detail": {
                                 "type": "keyword"

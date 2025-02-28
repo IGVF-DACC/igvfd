@@ -1,6 +1,6 @@
 {
-    "hash": "6aedb30a9960e4ac9f08e080d9c028d6",
-    "index_name": "construct_library_set_6aedb30a",
+    "hash": "7986da31c4bd625d499b157fcf8976d9",
+    "index_name": "construct_library_set_7986da31",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1739,6 +1739,10 @@
                             },
                             "uuid": {
                                 "type": "keyword"
+                            },
+                            "validate_onlist_files": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "validation_error_detail": {
                                 "type": "keyword"

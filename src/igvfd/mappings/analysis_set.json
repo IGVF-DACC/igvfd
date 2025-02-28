@@ -1,6 +1,6 @@
 {
-    "hash": "0e8098c579b3f7a1a5600c504d1d3d33",
-    "index_name": "analysis_set_0e8098c5",
+    "hash": "b47b6157547db0aa093965a90037853f",
+    "index_name": "analysis_set_b47b6157",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -1505,6 +1505,10 @@
                             },
                             "uuid": {
                                 "type": "keyword"
+                            },
+                            "validate_onlist_files": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "validation_error_detail": {
                                 "type": "keyword"
