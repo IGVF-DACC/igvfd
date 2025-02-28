@@ -1038,8 +1038,10 @@ class MultiplexedSample(Sample):
         }
     )
     def construct_library_sets(self, request, multiplexed_samples):
-        if collect_multiplexed_samples_prop(request, multiplexed_samples, 'construct_library_sets'):
-            return collect_multiplexed_samples_prop(request, multiplexed_samples, 'construct_library_sets')
+        construct_library_sets = collect_multiplexed_samples_prop(
+            request, multiplexed_samples, 'construct_library_sets')
+        if construct_library_sets:
+            return construct_library_sets
         else:
             return None
 
