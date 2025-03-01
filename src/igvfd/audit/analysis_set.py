@@ -348,13 +348,13 @@ def audit_missing_transcriptome(value, system):
         if files:
             for file in files:
                 if file.startswith(('/alignment-files/', '/matrix-files/', '/signal-files/')):
-                    file_object = system.get('request').embed(file + '@@object?skip_caluculated=true')
+                    file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
                     reference_files = file_object.get('reference_files', [])
                     if reference_files:
                         has_transcriptome = False
                         for reference_file in reference_files:
                             reference_file_object = system.get('request').embed(
-                                reference_file + '@@object?skip_caluculated=true')
+                                reference_file + '@@object?skip_calculated=true')
                             if reference_file_object.get('content_type', '') == 'transcriptome reference':
                                 has_transcriptome = True
                         if not (has_transcriptome):
