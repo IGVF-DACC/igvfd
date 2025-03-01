@@ -236,11 +236,7 @@ def audit_missing_institutional_certification(value, system):
             multiplexed_phrase = f' that is multiplexed in {audit_link(path_to_text(multiplexed_sample_id), multiplexed_sample_id)}'
             for mux_sample in sample_object['multiplexed_samples']:
                 mux_sample_object = system.get('request').embed(mux_sample, '@@object')
-                mux_sample_taxa = set()
-                for donor in mux_sample_object.get('donors', []):
-                    mux_donor_obj = system.get('request').embed(donor, '@@object?skip_calculated=true')
-                    mux_sample_taxa.add(mux_donor_obj.get('taxa', ''))
-                if 'Homo sapiens' in mux_sample_taxa:
+                if any(donor.startswith('/human-donors/') for donor in mux_sample_object.get('donors', [])):
                     sample_objects_to_check.append((mux_sample_object, multiplexed_phrase))
         else:
             sample_objects_to_check.append((sample_object, ''))
