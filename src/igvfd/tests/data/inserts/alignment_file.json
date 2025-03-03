@@ -101,5 +101,31 @@
         "filtered": false,
         "redacted": false,
         "controlled_access": true
+    },
+    {
+        "uuid": "dd8497be-6384-4af2-9c5f-01f5cf93d54c",
+        "notes": "test satpathy cell ranger human-mouse processed file",
+        "accession": "IGVFFI0079ALTC",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "status": "in progress",
+        "md5sum": "5d41402abc4b2a76b9719d911017c592",
+        "file_format": "bam",
+        "assembly": "GRCh38, GRCm38",
+        "content_type": "transcriptome alignments",
+        "transcriptome_annotation": "GENCODE 28, GENCODE M17",
+        "upload_status": "pending",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "derived_manually": true,
+        "collections": [
+            "Vista",
+            "VarChAMP"
+        ],
+        "filtered": false,
+        "redacted": false,
+        "controlled_access": true
     }
 ]

@@ -3,6 +3,13 @@
 ### Minor changes since schema version 13
 
 * Add `catalog_adapters`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE 28`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE M17`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE 28, GENCODE M17`.
+* Extend `assembly` enum list to include `hg19`.
+* Extend `assembly` enum list to include `Cast - GRCm39`.
+* Extend `assembly` enum list to include `mm10`.
+* Extend `assembly` enum list to include `GRCh38, GRCm38`.
 * Extend `content_type` enum list to include `differential peak quantifications`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 22`.
 * Extend `collections` enum list to include `ACMG73`.
