@@ -213,6 +213,9 @@
                     "$merge": "image_file.json#/properties/content_type"
                 },
                 {
+                    "$merge": "index_file.json#/properties/content_type"
+                },
+                {
                     "$merge": "matrix_file.json#/properties/content_type"
                 },
                 {
