@@ -142,12 +142,8 @@
                 "pattern": "https:\\/\\/github\\.com\\/IGVF-DACC\\/igvf-catalog\\/blob\\/dev\\/data\\/adapters\\/(.)*\\.py"
             },
             "submissionExample": {
-                "appscript": [
-                    "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/ccre_adapter.py"
-                ],
-                "igvf_utils": [
-                    "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/ccre_adapter.py"
-                ]
+                "appscript": "[\"https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/ccre_adapter.py\"]",
+                "igvf_utils": "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/ccre_adapter.py"
             }
         },
         "content_type": {
