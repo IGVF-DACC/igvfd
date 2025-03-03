@@ -262,17 +262,6 @@
                 "igvf_utils": "vcf"
             }
         },
-        "assembly": {
-            "description": "Genome assembly applicable for the reference data.",
-            "enum": [
-                "GRCh38",
-                "hg19",
-                "Cast - GRCm39",
-                "GRCm39",
-                "mm10",
-                "custom"
-            ]
-        },
         "source_url": {
             "description": "Link to external resource, such as NCBI or GENCODE, where the reference data was obtained.",
             "submissionExample": {
