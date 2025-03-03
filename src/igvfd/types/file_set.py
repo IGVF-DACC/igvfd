@@ -535,11 +535,12 @@ class AnalysisSet(FileSet):
 
             # Group sample and targeted sample terms according to classification.
             # Other metadata such as treatment info are lumped together.
+            mux_prefix = ''
             if 'multiplexed sample' in sample_object['classifications']:
-                other_classifications = ', '.join(sample_object['classifications'].remove('multiplexed sample'))
-                classification = f'multiplexed sample of {other_classifications}'
-            else:
-                classification = ' and '.join(sample_object['classifications'])
+                sample_object['classifications'].remove('multiplexed sample')
+                mux_prefix = 'multiplexed sample of '
+                # classification = f'multiplexed sample of {", ".join(sample_object["classifications"])}'
+            classification = f"{mux_prefix}{' and '.join(sample_object['classifications'])}"
             if classification not in sample_classification_term_target:
                 sample_classification_term_target[classification] = set()
 
@@ -601,6 +602,10 @@ class AnalysisSet(FileSet):
             if 'induced to' in terms_by_classification:
                 terms_by_classification = terms_by_classification.replace(
                     'induced to', f'{classification} induced to'
+                )
+            elif 'multiplexed sample of' in classification:
+                terms_by_classification = classification.replace(
+                    'multiplexed sample of', f'multiplexed sample of {terms_by_classification}'
                 )
             else:
                 terms_by_classification = f'{terms_by_classification} {classification}'

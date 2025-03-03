@@ -234,7 +234,7 @@ def test_protocols(testapp, analysis_set_base, measurement_set_with_protocols):
     assert res.json.get('protocols') == ['https://www.protocols.io/test-protocols-url-12345']
 
 
-def test_analysis_set_sample_summary(testapp, principal_analysis_set, measurement_set_mpra, construct_library_set_genome_wide, sample_term_endothelial_cell, gene_myc_hs, treatment_chemical, in_vitro_differentiated_cell, in_vitro_cell_line, multiplexed_sample, crispr_modification, degron_modification):
+def test_analysis_set_sample_summary(testapp, principal_analysis_set, measurement_set_mpra, construct_library_set_genome_wide, sample_term_endothelial_cell, gene_myc_hs, treatment_chemical, in_vitro_differentiated_cell, in_vitro_cell_line, multiplexed_sample, crispr_modification, degron_modification, sample_term_lymphoblastoid):
     testapp.patch_json(
         principal_analysis_set['@id'],
         {
@@ -275,9 +275,21 @@ def test_analysis_set_sample_summary(testapp, principal_analysis_set, measuremen
             'samples': [multiplexed_sample['@id']]
         }
     )
+    testapp.patch_json(
+        multiplexed_sample['@id'],
+        {
+            'multiplexed_samples': [in_vitro_differentiated_cell['@id'], in_vitro_cell_line['@id']]
+        }
+    )
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'sample_terms': [sample_term_lymphoblastoid['@id']],
+        }
+    )
     res = testapp.get(principal_analysis_set['@id']).json
     print(res.get('sample_summary'))
-    assert res.get('sample_summary', '') == 'multiplexed sample of K562 differentiated cell specimen induced to endothelial cell of vascular tree, at 5 minute(s) post change, differentiated with 10 mM lactate for 1 hour, modified with AID system targeting MYC, CRISPRi Sp-dCas9, transfected with a guide library, sorted on expression of MYC'
+    assert res.get('sample_summary', '') == 'multiplexed sample of lymphoblastoid cell line, K562 differentiated cell specimen, differentiated with 10 mM lactate for 1 hour, modified with AID system targeting MYC, CRISPRi Sp-dCas9, transfected with a guide library'
 
 
 def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set, measurement_set_with_functional_assay_mechanisms, phenotype_term_from_go, phenotype_term_myocardial_infarction):
