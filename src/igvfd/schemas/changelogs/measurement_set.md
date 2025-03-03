@@ -2,8 +2,6 @@
 
 ### Minor changes since schema version 23
 
-* Extend `control_type` enum list to include `untreated`.
-* Extend `control_type` enum list to include `non-targeting`.
 * Add calculated property `construct_library_sets`.
 * Extend `preferred_assay_title` enum list to include `ACCESS-ATAC`.
 * Extend `preferred_assay_title` enum list to include `scACCESS-ATAC`.
