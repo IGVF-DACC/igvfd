@@ -535,7 +535,11 @@ class AnalysisSet(FileSet):
 
             # Group sample and targeted sample terms according to classification.
             # Other metadata such as treatment info are lumped together.
-            classification = ' and '.join(sample_object['classifications'])
+            if 'multiplexed sample' in sample_object['classifications']:
+                other_classifications = ', '.join(sample_object['classifications'].remove('multiplexed sample'))
+                classification = f'multiplexed sample of {other_classifications}'
+            else:
+                classification = ' and '.join(sample_object['classifications'])
             if classification not in sample_classification_term_target:
                 sample_classification_term_target[classification] = set()
 
