@@ -461,6 +461,7 @@
                 "GENCODE 47",
                 "GENCODE Cast - M32",
                 "GENCODE M17",
+                "GENCODE M25",
                 "GENCODE M30",
                 "GENCODE M31",
                 "GENCODE M32",
@@ -486,6 +487,7 @@
                 "Cast - GRCm39",
                 "GRCm39",
                 "mm10",
+                "GRCm38",
                 "GRCh38, GRCm38",
                 "custom"
             ],

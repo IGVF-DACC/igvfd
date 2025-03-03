@@ -6,7 +6,9 @@
 * Extend `transcriptome_annotation` enum list to include `GENCODE 28`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE M17`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 28, GENCODE M17`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE M25`.
 * Extend `assembly` enum list to include `GRCh38, GRCm38`.
+* Extend `assembly` enum list to include `GRCm38`.
 
 ### Schema version 16
 
