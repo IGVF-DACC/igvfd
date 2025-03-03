@@ -413,6 +413,7 @@
         "samples": [
             "IGVFSM0003KASP"
         ],
+        "control_type": "untreated",
         "assay_term": "/assay-terms/OBI_0002041/",
         "preferred_assay_title": "STARR-seq",
         "file_set_type": "experimental data"
@@ -450,6 +451,7 @@
         "samples": [
             "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_1"
         ],
+        "control_type": "non-targeting",
         "assay_term": "/assay-terms/OBI_0000916/",
         "preferred_assay_title": "Variant painting via fluorescence",
         "file_set_type": "experimental data"
