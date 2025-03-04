@@ -216,7 +216,8 @@
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "input_content_types": [
-            "reads"
+            "reads",
+            "index"
         ],
         "output_content_types": [
             "fragments",
