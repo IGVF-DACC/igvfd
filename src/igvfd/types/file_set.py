@@ -540,6 +540,9 @@ class AnalysisSet(FileSet):
             if 'multiplexed sample' in sample_object['classifications']:
                 sample_classifications.remove('multiplexed sample')
                 mux_prefix = 'multiplexed sample of '
+            concatenated_classifications = ''
+            if 'differentiated cell specimen' in sample_classifications:
+                concatenated_classifications = ''
             classification = f"{mux_prefix}{' and '.join(sample_classifications)}"
             if classification not in sample_classification_term_target:
                 sample_classification_term_target[classification] = set()
@@ -550,6 +553,9 @@ class AnalysisSet(FileSet):
                 # Avoid redundancy of classification and term name
                 # e.g. "HFF-1 cell cell line"
                 if not classification.startswith('multiplexed sample of'):
+                    if sample_phrase.endswith('cell') and 'cell' in classification:
+                        sample_phrase = sample_phrase.replace('cell', classification)
+
                     if ' cell' in sample_phrase and 'cell' in classification:
                         sample_phrase = sample_phrase.replace(' cell ', classification)
                     elif ' tissue' in sample_phrase and 'tissue' in classification:
