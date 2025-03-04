@@ -1,6 +1,6 @@
 {
-    "hash": "0b96fcc1e6472aa476953730b31bf71e",
-    "index_name": "primary_cell_0b96fcc1",
+    "hash": "b464684b9845164e436946b3495abc71",
+    "index_name": "primary_cell_b464684b",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1300,6 +1300,9 @@
                                 "type": "keyword"
                             },
                             "data_use_limitation_modifiers": {
+                                "type": "keyword"
+                            },
+                            "data_use_limitation_summary": {
                                 "type": "keyword"
                             },
                             "description": {

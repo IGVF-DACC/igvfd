@@ -1,6 +1,6 @@
 {
-    "hash": "fb2b064871bbc34854efd36df1d56cbf",
-    "index_name": "institutional_certificate_fb2b0648",
+    "hash": "39b217320775ce39e57eb6ed404389ca",
+    "index_name": "institutional_certificate_39b21732",
     "item_type": "institutional_certificate",
     "mapping": {
         "dynamic_templates": [
@@ -237,6 +237,9 @@
                         "type": "keyword"
                     },
                     "data_use_limitation_modifiers": {
+                        "type": "keyword"
+                    },
+                    "data_use_limitation_summary": {
                         "type": "keyword"
                     },
                     "description": {

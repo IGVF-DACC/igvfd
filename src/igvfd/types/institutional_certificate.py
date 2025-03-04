@@ -28,3 +28,17 @@ class InstitutionalCertificate(Item):
 
     set_status_up = []
     set_status_down = []
+
+    @calculated_property(schema={
+        'title': 'Data Use Limitation Summary',
+        'type': 'string',
+        'description': 'A combination of the data use limitation and its modifiers',
+        'notSubmittable': True,
+    })
+    def data_use_limitation_summary(self, properties=None):
+        if properties is None:
+            properties = self.upgrade_properties()
+        limitation = properties.get('data_use_limitation', 'No limitations')
+        modifiers = properties.get('data_use_limitation_modifiers', [])
+        joined_modifiers = ','.join(modifiers) if modifiers else ''
+        return f'{limitation}-{joined_modifiers}' if joined_modifiers else limitation

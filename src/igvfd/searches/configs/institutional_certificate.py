@@ -7,6 +7,12 @@ from snovault.elasticsearch.searches.configs import search_config
 def institutional_certificate():
     return {
         'facets': {
+            'data_use_limitation_summary': {
+                'title': 'Data Use Limitation',
+            },
+            'controlled_access': {
+                'title': 'Controlled Access',
+            },
             'lab.title': {
                 'title': 'Lab'
             },
@@ -29,28 +35,12 @@ def institutional_certificate():
                 'title': 'Audit Category: Internal Action'
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'lab.title',
-                    'award.component',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ],
-            },
-        ],
         'columns': {
             'certificate_identifier': {
                 'title': 'Certificate Identifier'
+            },
+            'data_use_limitation_summary': {
+                'title': 'Data Use Limitation'
             },
             'urls': {
                 'title': 'URL'
