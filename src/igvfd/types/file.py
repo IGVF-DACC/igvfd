@@ -629,11 +629,15 @@ class MatrixFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, content_summary, file_set, filtered=None):
+    def summary(self, request, content_summary, file_set, filtered=False):
         file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
+        if filtered and filtered is False:
+            filtered_phrase = 'unfiltered'
+        else:
+            filtered_phrase = 'filtered'
         return ' '.join(
             [x for x in [filtered, predicted, content_summary] if x is not None]
         )
@@ -793,7 +797,7 @@ class TabularFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None, filtered=None):
+    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None, filtered=False):
         file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
@@ -801,8 +805,12 @@ class TabularFile(File):
         formatted_assembly = assembly
         if assembly and assembly == 'custom':
             formatted_assembly = f'{assembly} assembly'
+        if filtered and filtered is False:
+            filtered_phrase = 'unfiltered'
+        else:
+            filtered_phrase = 'filtered'
         return ' '.join(
-            [x for x in [filtered, formatted_assembly, transcriptome_annotation, predicted, content_type]
+            [x for x in [formatted_assembly, transcriptome_annotation, predicted, filtered_phrase, content_type]
              if x is not None]
         )
 
