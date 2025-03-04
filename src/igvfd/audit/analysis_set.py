@@ -342,19 +342,19 @@ def audit_missing_transcriptome(value, system):
                               '/assay-terms/OBI_0003662/'  # single-nucleus methylcytosine and transcriptome sequencing assay
                               '/assay-terms/NTR_0000761/'  # spatial transcriptomics
                               ]
+    files_missing_transcriptome = []
     if any(assay_term in transcript_assay_terms for assay_term in assay_terms):
         files = value.get('files', [])
-        files_missing_transcriptome = []
         if files:
             for file in files:
                 if file.startswith(('/alignment-files/', '/matrix-files/', '/signal-files/')):
-                    file_object = system.get('request').embed(file + '@@object?skip_caluculated=true')
+                    file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
                     reference_files = file_object.get('reference_files', [])
                     if reference_files:
                         has_transcriptome = False
                         for reference_file in reference_files:
                             reference_file_object = system.get('request').embed(
-                                reference_file + '@@object?skip_caluculated=true')
+                                reference_file + '@@object?skip_calculated=true')
                             if reference_file_object.get('content_type', '') == 'transcriptome reference':
                                 has_transcriptome = True
                         if not (has_transcriptome):
