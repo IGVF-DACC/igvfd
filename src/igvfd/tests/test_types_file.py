@@ -301,11 +301,12 @@ def test_file_summaries(
         tabular_file['@id'],
         {
             'assembly': 'GRCh38',
-            'transcriptome_annotation': 'GENCODE 43'
+            'transcriptome_annotation': 'GENCODE 43',
+            'filtered': True
         }
     )
     res = testapp.get(tabular_file['@id'])
-    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 peaks'
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 filtered peaks'
     testapp.patch_json(
         tabular_file['@id'],
         {
