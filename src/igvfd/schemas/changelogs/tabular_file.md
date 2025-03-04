@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Add `catalog_adapters`.
 * Extend `content_type` enum list to include `differential peak quantifications`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 22`.
 * Extend `collections` enum list to include `ACMG73`.
@@ -30,7 +31,6 @@
 * Extend `content_type` enum list to include `variant functional predictions`.
 * Extend `assembly` enum list to include `custom`.
 * Extend `content_type` enum list to include `bin paired count`.
-* Add `catalog_adapters`.
 
 ### Schema version 13
 
