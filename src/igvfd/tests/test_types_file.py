@@ -245,7 +245,7 @@ def test_file_summaries(
     assert res.json.get('summary', '') == 'detected tissue'
 
     res = testapp.get(matrix_file['@id'])
-    assert res.json.get('summary', '') == 'cell by gene in sparse gene count matrix'
+    assert res.json.get('summary', '') == 'unfiltered cell by gene in sparse gene count matrix'
 
     res = testapp.get(model_file['@id'])
     assert res.json.get('summary', '') == 'graph structure'
