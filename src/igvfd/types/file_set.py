@@ -550,9 +550,7 @@ class AnalysisSet(FileSet):
                 # Avoid redundancy of classification and term name
                 # e.g. "HFF-1 cell cell line"
                 if not classification.startswith('multiplexed sample of'):
-                    if ' cell line' in sample_phrase and 'cell line' in classification:
-                        sample_phrase = sample_phrase.replace(' cell line', classification)
-                    elif ' cell' in sample_phrase and 'cell' in classification:
+                    if ' cell' in sample_phrase and 'cell' in classification:
                         sample_phrase = sample_phrase.replace(' cell ', classification)
                     elif ' tissue' in sample_phrase and 'tissue' in classification:
                         sample_phrase = sample_phrase.replace(' tissue ', classification)
