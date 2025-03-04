@@ -301,20 +301,20 @@ def test_file_summaries(
         tabular_file['@id'],
         {
             'assembly': 'GRCh38',
-            'transcriptome_annotation': 'GENCODE 43',
+            'transcriptome_annotation': 'GENCODE 43'
+        }
+    )
+    res = testapp.get(tabular_file['@id'])
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 unfiltered peaks'
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'file_set': base_prediction_set['@id'],
             'filtered': True
         }
     )
     res = testapp.get(tabular_file['@id'])
-    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 filtered peaks'
-    testapp.patch_json(
-        tabular_file['@id'],
-        {
-            'file_set': base_prediction_set['@id']
-        }
-    )
-    res = testapp.get(tabular_file['@id'])
-    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 predictive unfiltered peaks'
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 predictive filtered peaks'
 
 
 def test_barcode_map_for(testapp, multiplexed_sample_v7, tabular_file_v10):
