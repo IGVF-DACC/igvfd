@@ -536,11 +536,11 @@ class AnalysisSet(FileSet):
             # Group sample and targeted sample terms according to classification.
             # Other metadata such as treatment info are lumped together.
             mux_prefix = ''
+            sample_classifications = sample_object['classifications']
             if 'multiplexed sample' in sample_object['classifications']:
-                sample_object['classifications'].remove('multiplexed sample')
+                sample_classifications.remove('multiplexed sample')
                 mux_prefix = 'multiplexed sample of '
-                # classification = f'multiplexed sample of {", ".join(sample_object["classifications"])}'
-            classification = f"{mux_prefix}{' and '.join(sample_object['classifications'])}"
+            classification = f"{mux_prefix}{' and '.join(sample_classifications)}"
             if classification not in sample_classification_term_target:
                 sample_classification_term_target[classification] = set()
 
@@ -549,12 +549,15 @@ class AnalysisSet(FileSet):
                 sample_phrase = f"{sample_term_object['term_name']}"
                 # Avoid redundancy of classification and term name
                 # e.g. "HFF-1 cell cell line"
-                if 'cell' in sample_phrase and 'cell' in classification:
-                    sample_phrase = sample_phrase.replace('cell', classification)
-                elif 'tissue' in sample_phrase and 'tissue' in classification:
-                    sample_phrase = sample_phrase.replace('tissue', classification)
-                elif 'gastruloid' in sample_phrase:
-                    sample_phrase = sample_phrase.replace('gastruloid', '')
+                # Drop the phrase from the sample terms instead of the classifications.
+                if ' cell line' in sample_phrase and 'cell line' in classification:
+                    sample_phrase = sample_phrase.replace(' cell line', '')
+                elif ' cell' in sample_phrase and 'cell' in classification:
+                    sample_phrase = sample_phrase.replace(' cell ', '')
+                elif ' tissue' in sample_phrase and 'tissue' in classification:
+                    sample_phrase = sample_phrase.replace(' tissue ', '')
+                elif ' gastruloid' in sample_phrase:
+                    sample_phrase = sample_phrase.replace(' gastruloid', '')
 
                 targeted_sample_suffix = ''
                 if 'targeted_sample_term' in sample_object:
@@ -597,12 +600,14 @@ class AnalysisSet(FileSet):
 
         all_sample_terms = []
         for classification in sorted(sample_classification_term_target.keys()):
-            terms_by_classification = f"{', '.join(sample_classification_term_target[classification])}"
+            terms_by_classification = f"{', '.join(sorted(sample_classification_term_target[classification]))}"
             # Insert the classification before the targeted_sample_term if it exists.
             if 'induced to' in terms_by_classification:
                 terms_by_classification = terms_by_classification.replace(
                     'induced to', f'{classification} induced to'
                 )
+            # Put the terms after the "multiplexed sample of" but before the
+            # underlying classifications.
             elif 'multiplexed sample of' in classification:
                 terms_by_classification = classification.replace(
                     'multiplexed sample of', f'multiplexed sample of {terms_by_classification}'
