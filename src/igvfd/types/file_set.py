@@ -549,15 +549,15 @@ class AnalysisSet(FileSet):
                 sample_phrase = f"{sample_term_object['term_name']}"
                 # Avoid redundancy of classification and term name
                 # e.g. "HFF-1 cell cell line"
-                # Drop the phrase from the sample terms instead of the classifications.
-                if ' cell line' in sample_phrase and 'cell line' in classification:
-                    sample_phrase = sample_phrase.replace(' cell line', '')
-                elif ' cell' in sample_phrase and 'cell' in classification:
-                    sample_phrase = sample_phrase.replace(' cell ', '')
-                elif ' tissue' in sample_phrase and 'tissue' in classification:
-                    sample_phrase = sample_phrase.replace(' tissue ', '')
-                elif ' gastruloid' in sample_phrase:
-                    sample_phrase = sample_phrase.replace(' gastruloid', '')
+                if not classification.startswith('multiplexed sample of'):
+                    if ' cell line' in sample_phrase and 'cell line' in classification:
+                        sample_phrase = sample_phrase.replace(' cell line', classification)
+                    elif ' cell' in sample_phrase and 'cell' in classification:
+                        sample_phrase = sample_phrase.replace(' cell ', classification)
+                    elif ' tissue' in sample_phrase and 'tissue' in classification:
+                        sample_phrase = sample_phrase.replace(' tissue ', classification)
+                    elif ' gastruloid' in sample_phrase:
+                        sample_phrase = sample_phrase.replace(' gastruloid', '')
 
                 targeted_sample_suffix = ''
                 if 'targeted_sample_term' in sample_object:
@@ -606,12 +606,10 @@ class AnalysisSet(FileSet):
                 terms_by_classification = terms_by_classification.replace(
                     'induced to', f'{classification} induced to'
                 )
-            # Put the terms after the "multiplexed sample of" but before the
-            # underlying classifications.
+            # Put the terms after the "multiplexed sample of" and drop
+            # the underlying classifications
             elif 'multiplexed sample of' in classification:
-                terms_by_classification = classification.replace(
-                    'multiplexed sample of', f'multiplexed sample of {terms_by_classification}'
-                )
+                terms_by_classification = f'multiplexed sample of {terms_by_classification}'
             else:
                 terms_by_classification = f'{terms_by_classification} {classification}'
             all_sample_terms.append(terms_by_classification)
