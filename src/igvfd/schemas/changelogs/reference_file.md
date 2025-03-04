@@ -1,6 +1,7 @@
 ## Changelog for *`reference_file.json`*
 
 ### Minor changes since schema version 16
+
 * Extend `transcriptome_annotation` enum list to include `GENCODE 28`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE M17`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 28, GENCODE M17`.

@@ -3,7 +3,7 @@
 ### Minor changes since schema version 13
 
 * Extend `transcriptome_annotation` enum list to include `GENCODE 28`.
-* Extend `transcriptome_annotation` enum list to include `GENCODE 25`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE M25`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE M17`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 28, GENCODE M17`.
 * Extend `assembly` enum list to include `hg19`.
