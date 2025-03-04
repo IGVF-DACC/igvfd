@@ -237,10 +237,10 @@
             "submissionExample": {
                 "appscript": "variants",
                 "igvf_utils": "variants"
-            },
-            "assembly": {
-                "description": "Genome assembly applicable for the reference data."
             }
+        },
+        "assembly": {
+            "description": "Genome assembly applicable for the reference data."
         },
         "file_format": {
             "enum": [
