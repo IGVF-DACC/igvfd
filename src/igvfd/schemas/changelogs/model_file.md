@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 1
 
+* Add `catalog_adapters`.
 * Extend `content_type` enum list to include `protein language model`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.
@@ -26,4 +27,3 @@
 * Update calculation of `summary`.
 * Add `analysis_step_version`.
 * Add calculated property `input_file_for`.
-* Add `catalog_adapters`.
