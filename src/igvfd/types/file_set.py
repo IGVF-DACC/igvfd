@@ -530,19 +530,33 @@ class AnalysisSet(FileSet):
             'stimulation': 'stimulated'
         }
 
+        two_classification_cases = {
+            ('differentiated cell specimen', 'pooled cell specimen'): 'pooled differentiated cell specimen',
+            ('reprogrammed cell specimen', 'pooled cell specimen'): 'pooled reprogrammed cell specimen',
+        }
+
+        classification_to_prefix = {
+            'differentiated cell specimen': 'differentiated',
+            'reprogrammed cell specimen': 'reprogrammed',
+            'pooled differentiated cell specimen': 'pooled differentiated',
+            'pooled reprogrammed cell specimen': 'pooled reprogrammed'
+        }
+
         for sample in samples:
             sample_object = request.embed(sample, '@@object')
 
             # Group sample and targeted sample terms according to classification.
             # Other metadata such as treatment info are lumped together.
             mux_prefix = ''
-            sample_classifications = sample_object['classifications']
+            sample_classifications = sorted(sample_object['classifications'])
             if 'multiplexed sample' in sample_object['classifications']:
                 sample_classifications.remove('multiplexed sample')
                 mux_prefix = 'multiplexed sample of '
-            concatenated_classifications = ''
-            if 'differentiated cell specimen' in sample_classifications:
-                concatenated_classifications = ''
+            if set(sample_classifications) in two_classification_cases:
+                sample_classifications = two_classification_cases[set(sample_classifications)]
+            # The variable "classification" can potentially be very long for
+            # a Multiplexed Sample, but it will be entirely dropped for
+            # Multiplexed Sample in the end - so it is ok.
             classification = f"{mux_prefix}{' and '.join(sample_classifications)}"
             if classification not in sample_classification_term_target:
                 sample_classification_term_target[classification] = set()
@@ -555,13 +569,14 @@ class AnalysisSet(FileSet):
                 if not classification.startswith('multiplexed sample of'):
                     if sample_phrase.endswith('cell') and 'cell' in classification:
                         sample_phrase = sample_phrase.replace('cell', classification)
-
-                    if ' cell' in sample_phrase and 'cell' in classification:
-                        sample_phrase = sample_phrase.replace(' cell ', classification)
-                    elif ' tissue' in sample_phrase and 'tissue' in classification:
-                        sample_phrase = sample_phrase.replace(' tissue ', classification)
-                    elif ' gastruloid' in sample_phrase:
-                        sample_phrase = sample_phrase.replace(' gastruloid', '')
+                    elif 'cell' in sample_phrase and classification in classification_to_prefix:
+                        sample_phrase = f'{classification_to_prefix[classification]} {sample_phrase}'
+                    # if ' cell' in sample_phrase and 'cell' in classification:
+                    #     sample_phrase = sample_phrase.replace(' cell ', classification)
+                    # elif ' tissue' in sample_phrase and 'tissue' in classification:
+                    #     sample_phrase = sample_phrase.replace(' tissue ', classification)
+                    # elif ' gastruloid' in sample_phrase:
+                    #     sample_phrase = sample_phrase.replace(' gastruloid', '')
 
                 targeted_sample_suffix = ''
                 if 'targeted_sample_term' in sample_object:
@@ -614,7 +629,7 @@ class AnalysisSet(FileSet):
             # the underlying classifications
             elif 'multiplexed sample of' in classification:
                 terms_by_classification = f'multiplexed sample of {terms_by_classification}'
-            else:
+            elif not any(terms_by_classification.startswith(x) for x in ['differentiated', 'reprogrammed', 'pooled']):
                 terms_by_classification = f'{terms_by_classification} {classification}'
             all_sample_terms.append(terms_by_classification)
 
