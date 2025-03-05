@@ -305,7 +305,7 @@ def test_file_summaries(
         }
     )
     res = testapp.get(tabular_file['@id'])
-    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 unfiltered peaks'
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 peaks'
     testapp.patch_json(
         tabular_file['@id'],
         {

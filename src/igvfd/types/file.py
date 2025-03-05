@@ -634,9 +634,11 @@ class MatrixFile(File):
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
-        filtered_phrase = 'unfiltered'
+        filtered_phrase = ''
         if filtered is True:
             filtered_phrase = 'filtered'
+        elif filtered is False:
+            filtered_phrase = 'unfiltered'
         return ' '.join(
             [x for x in [predicted, filtered_phrase, content_summary] if x is not None]
         )
@@ -804,9 +806,11 @@ class TabularFile(File):
         formatted_assembly = assembly
         if assembly and assembly == 'custom':
             formatted_assembly = f'{assembly} assembly'
-        filtered_phrase = 'unfiltered'
+        filtered_phrase = ''
         if filtered is True:
             filtered_phrase = 'filtered'
+        elif filtered is False:
+            filtered_phrase = 'unfiltered'
         return ' '.join(
             [x for x in [formatted_assembly, transcriptome_annotation, predicted, filtered_phrase, content_type]
              if x is not None]
