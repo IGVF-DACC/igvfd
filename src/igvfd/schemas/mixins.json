@@ -487,8 +487,7 @@
                 "Cast - GRCm39",
                 "GRCm39",
                 "mm10",
-                "GRCm38",
-                "GRCh38, GRCm38",
+                "GRCh38, mm10",
                 "custom"
             ],
             "submissionExample": {

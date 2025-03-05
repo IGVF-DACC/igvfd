@@ -111,7 +111,7 @@
         "status": "in progress",
         "md5sum": "5d41402abc4b2a76b9719d911017c592",
         "file_format": "bam",
-        "assembly": "GRCh38, GRCm38",
+        "assembly": "GRCh38, mm10",
         "content_type": "transcriptome alignments",
         "transcriptome_annotation": "GENCODE 28, GENCODE M17",
         "upload_status": "pending",
