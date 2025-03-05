@@ -1212,4 +1212,7 @@ def download(context, request):
     accel_redirect_header = request.registry.settings.get('accel_redirect_header')
     if proxy and accel_redirect_header:
         return InternalRedirect(headers={accel_redirect_header: '/_proxy/' + str(location)})
-    raise HTTPTemporaryRedirect(location=location)
+    raise HTTPTemporaryRedirect(
+        location=location,
+        headers=request.response.headers,  # Maintain any CORS headers set.
+    )
