@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 24
+
+* Adjust `preferred_assay_title` enum list to replace `scMito-seq` with `10x multiome with scMito-seq`.
+
 ### Minor changes since schema version 23
 
 * Extend `control_type` enum list to include `untreated`.

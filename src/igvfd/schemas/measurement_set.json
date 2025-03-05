@@ -65,7 +65,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "23"
+            "default": "24"
         },
         "samples": {
             "maxItems": 1
@@ -114,7 +114,7 @@
                 "scATAC-seq",
                 "scACCESS-ATAC",
                 "snATAC-seq",
-                "scMito-seq",
+                "10x multiome with scMito-seq",
                 "DOGMA-seq",
                 "10x multiome",
                 "10x multiome with MULTI-seq",
@@ -178,7 +178,7 @@
                 "varACCESS": "A high-throughput assay that integrates genome variants into chromatin accessibility analysis.",
                 "scATAC-seq": "Single-cell ATAC-seq (scATAC-seq) profiles chromatin accessibility at single-cell resolution.",
                 "snATAC-seq": "Single-nucleus ATAC-seq (snATAC-seq) profiles chromatin accessibility in individual nuclei.",
-                "scMito-seq": "Single-cell mitochondrial sequencing (scMito-seq) profiles mitochondrial DNA (mtDNA) variants and transcriptional activity in individual cells.",
+                "10x multiome with scMito-seq": "Combines 10x multiome with single-cell mitochondrial sequencing (scMito-seq) profiles mitochondrial DNA (mtDNA) variants and transcriptional activity in individual cells.",
                 "DOGMA-seq": "An adaptation of CITE-seq (Cellular Indexing of Transcriptomes and Epitopes by sequencing) for measuring gene activity across the central dogma of gene regulation.",
                 "10x multiome": "A single-cell assay for simultaneously profiling gene expression (scRNA-seq) and chromatin accessibility (scATAC-seq) from the same sample.",
                 "10x multiome with MULTI-seq": "Combines 10x Multiome with MULTI-seq, enabling simultaneous profiling of gene expression, chromatin accessibility, and sample multiplexing.",

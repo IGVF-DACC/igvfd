@@ -483,3 +483,13 @@ def model_set_4_5(value, system):
         notes += f' This model set previously specified {software_version}, but this property has been removed and replaced by software_versions calculated through analysis_step_version on the model file.'
         value['notes'] = notes.strip()
         del value['software_version']
+
+
+@upgrade_step('measurement_set', '23', '24')
+def measurement_set_23_24(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2431
+    notes = value.get('notes', '')
+    if value.get('preferred_assay_title') == 'scMito-seq':
+        value['preferred_assay_title'] = '10x multiome with scMito-seq'
+        notes += f' This measurement set previously used scMito-seq as a preferred_assay_title, but this enum is now replaced with 10x multiome with scMito-seq.'
+        value['notes'] = notes.strip()

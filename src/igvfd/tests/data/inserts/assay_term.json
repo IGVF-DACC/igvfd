@@ -69,7 +69,7 @@
         "term_id": "OBI:0002764",
         "term_name": "single-cell ATAC-seq",
         "preferred_assay_titles": [
-            "scMito-seq",
+            "10x multiome with scMito-seq",
             "scACCESS-ATAC"
         ],
         "status": "released",

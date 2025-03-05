@@ -1,5 +1,9 @@
 ## Changelog for *`assay_term.json`*
 
+### Schema version 10
+
+* Adjust `preferred_assay_titles` enum list to replace `scMito-seq` with `10x multiome with scMito-seq`.
+
 ### Minor changes since schema version 9
 
 * Add `comment`.
