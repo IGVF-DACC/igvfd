@@ -1,6 +1,6 @@
 {
-    "hash": "99bdac7a39ede972cafb123da971788c",
-    "index_name": "single_cell_atac_seq_quality_metric_99bdac7a",
+    "hash": "53fce3cde9a8b7c4d4eb446b582361f5",
+    "index_name": "single_cell_atac_seq_quality_metric_53fce3cd",
     "item_type": "single_cell_atac_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -340,6 +340,10 @@
                         "store": true,
                         "type": "float"
                     },
+                    "multi_mappings": {
+                        "store": true,
+                        "type": "float"
+                    },
                     "n_barcodes": {
                         "store": true,
                         "type": "float"
@@ -431,6 +435,10 @@
                         "type": "float"
                     },
                     "tsse": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "uni_mappings": {
                         "store": true,
                         "type": "float"
                     },
