@@ -189,7 +189,7 @@ def audit_missing_institutional_certification(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets for mapping assays or controlled access characterization assays involving samples with a human origin are expected to link to the relevant institutional certificates issued to a matching lab and award.",
+            "audit_description": "Measurement sets for mapping assays or controlled access characterization assays involving samples with a human origin are expected to link to the relevant institutional certificates.",
             "audit_category": "missing NIH certification",
             "audit_level": "NOT_COMPLIANT"
         }
@@ -261,7 +261,7 @@ def audit_missing_institutional_certification(value, system):
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has '
                 f'a sample {audit_link(path_to_text(sample["@id"]), sample["@id"])}{multiplexed_phrase} '
                 f'that lacks any `institutional_certificates` issued to the lab '
-                f'that submitted this file set or to a partner lab of the submitting lab.'
+                f'that submitted this file set or to a partner lab/award of the submitting lab.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
