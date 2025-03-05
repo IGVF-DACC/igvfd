@@ -634,7 +634,7 @@ class MatrixFile(File):
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
-        filtered_phrase = ''
+        filtered_phrase = None
         if filtered is True:
             filtered_phrase = 'filtered'
         elif filtered is False:
@@ -806,7 +806,7 @@ class TabularFile(File):
         formatted_assembly = assembly
         if assembly and assembly == 'custom':
             formatted_assembly = f'{assembly} assembly'
-        filtered_phrase = ''
+        filtered_phrase = None
         if filtered is True:
             filtered_phrase = 'filtered'
         elif filtered is False:
