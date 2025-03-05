@@ -145,3 +145,9 @@ def test_measurement_set_upgrade_22_23(upgrader, measurement_set_v22):
     value = upgrader.upgrade('measurement_set', measurement_set_v22, current_version='22', target_version='23')
     assert value['schema_version'] == '23'
     assert value.get('preferred_assay_title') == 'Variant-EFFECTS'
+
+
+def test_measurement_set_upgrade_23_24(upgrader, measurement_set_v23):
+    value = upgrader.upgrade('measurement_set', measurement_set_v23, current_version='23', target_version='24')
+    assert value['schema_version'] == '24'
+    assert value.get('preferred_assay_title') == '10x multiome with scMito-seq'

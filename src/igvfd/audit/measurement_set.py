@@ -41,7 +41,7 @@ def audit_related_multiome_datasets(value, system):
     related_multiome_datasets = value.get('related_multiome_datasets', [])
     multiome_size = value.get('multiome_size')
     preferred_assay_title = value.get('preferred_assay_title', '')
-    if preferred_assay_title in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
+    if preferred_assay_title in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq', '10x multiome with scMito-seq']:
         if not multiome_size:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '

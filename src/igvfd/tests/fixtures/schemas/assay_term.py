@@ -195,3 +195,13 @@ def assay_term_v8(assay_term_crispr):
         'preferred_assay_titles': ['Variant FlowFISH']
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v9(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '9',
+        'preferred_assay_titles': ['scMito-seq']
+    })
+    return item
