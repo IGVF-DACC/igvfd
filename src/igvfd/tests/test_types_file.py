@@ -309,11 +309,12 @@ def test_file_summaries(
     testapp.patch_json(
         tabular_file['@id'],
         {
-            'file_set': base_prediction_set['@id']
+            'file_set': base_prediction_set['@id'],
+            'filtered': True
         }
     )
     res = testapp.get(tabular_file['@id'])
-    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 predictive peaks'
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 predictive filtered peaks'
 
 
 def test_barcode_map_for(testapp, multiplexed_sample_v7, tabular_file_v10):

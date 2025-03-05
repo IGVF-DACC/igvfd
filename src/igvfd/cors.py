@@ -39,6 +39,8 @@ CONTENT_TYPE = 'Content-Type'
 EXPIRES = 'Expires'
 LAST_MODIFIED = 'Last-Modified'
 PRAGMA = 'Pragma'
+RANGE = 'Range'
+CONTENT_RANGE = 'Content-Range'
 DATE = 'Date'
 TRANSFER_ENCODING = 'Transfer-Encoding'
 CONNECTION = 'Connection'
@@ -73,6 +75,7 @@ ALLOWED_HEADERS = [
     ACCEPT,
     X_CSRF_TOKEN,
     X_IF_MATCH_USER,
+    RANGE,
 ]
 
 ALLOWED_EXPOSE_HEADERS = [
@@ -88,6 +91,8 @@ ALLOWED_EXPOSE_HEADERS = [
     CONNECTION,
     X_REQUEST_URL,
     X_STATS,
+    RANGE,
+    CONTENT_RANGE,
 ]
 
 CORS_VARY = (

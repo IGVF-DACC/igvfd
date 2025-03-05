@@ -629,13 +629,18 @@ class MatrixFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, content_summary, file_set):
+    def summary(self, request, content_summary, file_set, filtered=None):
         file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
+        filtered_phrase = None
+        if filtered is True:
+            filtered_phrase = 'filtered'
+        elif filtered is False:
+            filtered_phrase = 'unfiltered'
         return ' '.join(
-            [x for x in [predicted, content_summary] if x is not None]
+            [x for x in [predicted, filtered_phrase, content_summary] if x is not None]
         )
 
 
@@ -793,7 +798,7 @@ class TabularFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None):
+    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None, filtered=None):
         file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
@@ -801,8 +806,13 @@ class TabularFile(File):
         formatted_assembly = assembly
         if assembly and assembly == 'custom':
             formatted_assembly = f'{assembly} assembly'
+        filtered_phrase = None
+        if filtered is True:
+            filtered_phrase = 'filtered'
+        elif filtered is False:
+            filtered_phrase = 'unfiltered'
         return ' '.join(
-            [x for x in [formatted_assembly, transcriptome_annotation, predicted, content_type]
+            [x for x in [formatted_assembly, transcriptome_annotation, predicted, filtered_phrase, content_type]
              if x is not None]
         )
 
@@ -1212,4 +1222,7 @@ def download(context, request):
     accel_redirect_header = request.registry.settings.get('accel_redirect_header')
     if proxy and accel_redirect_header:
         return InternalRedirect(headers={accel_redirect_header: '/_proxy/' + str(location)})
-    raise HTTPTemporaryRedirect(location=location)
+    raise HTTPTemporaryRedirect(
+        location=location,
+        headers=request.response.headers,  # Maintain any CORS headers set.
+    )
