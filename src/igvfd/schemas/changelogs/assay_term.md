@@ -2,7 +2,7 @@
 
 ### Schema version 10
 
-* Adjust `preferred_assay_title` enum list to replace `scMito-seq` with `10x multiome with scMito-seq`.
+* Adjust `preferred_assay_titles` enum list to replace `scMito-seq` with `10x multiome with scMito-seq`.
 
 ### Minor changes since schema version 9
 
