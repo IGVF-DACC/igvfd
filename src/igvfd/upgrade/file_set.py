@@ -491,5 +491,5 @@ def measurement_set_23_24(value, system):
     notes = value.get('notes', '')
     if value.get('preferred_assay_title') == 'scMito-seq':
         value['preferred_assay_title'] = '10x multiome with scMito-seq'
-        notes += f' This measurement set previously used scMito-seq as a preferred_assay_title, but this enum is now replaced with 10x Multiome with scMito-seq.'
+        notes += f' This measurement set previously used scMito-seq as a preferred_assay_title, but this enum is now replaced with 10x multiome with scMito-seq.'
         value['notes'] = notes.strip()
