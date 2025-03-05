@@ -287,6 +287,7 @@ def test_audit_missing_institutional_certification(
     testapp,
     measurement_set,
     assay_term_mpra,
+    lab,
     other_lab,
     tissue,
     multiplexed_sample,
@@ -403,6 +404,19 @@ def test_audit_missing_institutional_certification(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing NIH certification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # If the file set's lab is a partner lab on the IC, don't flag.
+    testapp.patch_json(
+        institutional_certificate['@id'],
+        {
+            'partner_labs': [lab['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing NIH certification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 

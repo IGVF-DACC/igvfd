@@ -157,6 +157,38 @@
                 "appscript": "[\"https://drive.google.com/file/d/7FH5GQ86h5D1JGkRpcmeySb4tn7/view\"]",
                 "igvf_utils": "https://drive.google.com/file/d/7FH5GQ86h5D1JGkRpcmeySb4tn7/view"
             }
+        },
+        "partner_labs": {
+            "title": "Partner Labs",
+            "description": "Labs which belong to same institution as the signing PI and can share this institutional certificate.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Partner Lab",
+                "type": "string",
+                "linkTo": "Lab"
+            },
+            "submissionExample": {
+                "appscript": "[\"/labs/john-doe/\"]",
+                "igvf_utils": "/labs/john-doe/"
+            }
+        },
+        "partner_awards": {
+            "title": "Partner Awards",
+            "description": "Awards granted to at least one lab that belongs to same institution as the signing PI and can share this institutional certificate.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Partner Award",
+                "type": "string",
+                "linkTo": "Award"
+            },
+            "submissionExample": {
+                "appscript": "[\"/awards/HG000111/\"]",
+                "igvf_utils": "/awards/HG000111/"
+            }
         }
     },
     "fuzzy_searchable_fields": [
