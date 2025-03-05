@@ -1,6 +1,6 @@
 {
-    "hash": "39b217320775ce39e57eb6ed404389ca",
-    "index_name": "institutional_certificate_39b21732",
+    "hash": "e57526e51f8b9608b281cc88255d7c94",
+    "index_name": "institutional_certificate_e57526e5",
     "item_type": "institutional_certificate",
     "mapping": {
         "dynamic_templates": [
@@ -306,6 +306,12 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "partner_awards": {
+                        "type": "keyword"
+                    },
+                    "partner_labs": {
+                        "type": "keyword"
                     },
                     "release_timestamp": {
                         "type": "date"
