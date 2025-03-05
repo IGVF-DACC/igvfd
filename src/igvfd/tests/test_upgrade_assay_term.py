@@ -56,7 +56,7 @@ def test_assay_term_upgrade_8_9(upgrader, assay_term_v8):
     assert set(value.get('preferred_assay_titles')) == {'Variant-EFFECTS'}
 
 
-def test_assay_term_upgrade_8_9(upgrader, assay_term_v9):
+def test_assay_term_upgrade_9_10(upgrader, assay_term_v9):
     value = upgrader.upgrade('assay_term', assay_term_v9, current_version='9', target_version='10')
     assert value['schema_version'] == '10'
     assert set(value.get('preferred_assay_titles')) == {'10x multiome with scMito-seq'}
