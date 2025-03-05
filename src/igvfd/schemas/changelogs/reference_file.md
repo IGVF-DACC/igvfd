@@ -3,6 +3,12 @@
 ### Minor changes since schema version 16
 
 * Add `catalog_adapters`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE 28`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE M17`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE 28, GENCODE M17`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE M25`.
+* Extend `assembly` enum list to include `GRCh38, mm10`.
+* Extend `assembly` enum list to include `mm10`.
 
 ### Schema version 16
 

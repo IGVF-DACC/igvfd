@@ -450,6 +450,7 @@
             "type": "string",
             "enum": [
                 "GENCODE 22",
+                "GENCODE 28",
                 "GENCODE 32",
                 "GENCODE 40",
                 "GENCODE 41",
@@ -459,12 +460,15 @@
                 "GENCODE 45",
                 "GENCODE 47",
                 "GENCODE Cast - M32",
+                "GENCODE M17",
+                "GENCODE M25",
                 "GENCODE M30",
                 "GENCODE M31",
                 "GENCODE M32",
                 "GENCODE M33",
                 "GENCODE M34",
-                "GENCODE M36"
+                "GENCODE M36",
+                "GENCODE 28, GENCODE M17"
             ],
             "submissionExample": {
                 "appscript": "GENCODE 40",
@@ -478,9 +482,12 @@
             "description": "Genome assembly.",
             "type": "string",
             "enum": [
-                "Cast - GRCm39",
                 "GRCh38",
+                "hg19",
+                "Cast - GRCm39",
                 "GRCm39",
+                "mm10",
+                "GRCh38, mm10",
                 "custom"
             ],
             "submissionExample": {
