@@ -1,6 +1,6 @@
 {
-    "hash": "e55a54c20cea64f0753ec56ad7a4756a",
-    "index_name": "reference_file_e55a54c2",
+    "hash": "0e9c065f0bf95e4ebb98099745c14158",
+    "index_name": "reference_file_0e9c065f",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -240,6 +240,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "catalog_adapters": {
+                        "type": "keyword"
                     },
                     "checkfiles_version": {
                         "type": "keyword"

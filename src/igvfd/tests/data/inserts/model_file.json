@@ -91,6 +91,9 @@
         "release_timestamp": "2024-05-14T12:34:56Z",
         "file_set": "j-michael-cherry:barcodes_curated_set",
         "externally_hosted": false,
-        "submitted_file_name": "/Users/igvf/igvf_files/model_file_in_pytorch.pt"
+        "submitted_file_name": "/Users/igvf/igvf_files/model_file_in_pytorch.pt",
+        "catalog_adapters": [
+            "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/gencode_adapter.py"
+        ]
     }
 ]

@@ -123,7 +123,10 @@
         "upload_status": "validated",
         "assembly": "GRCh38",
         "file_set": "igvf:basic_analysis_set",
-        "controlled_access": false
+        "controlled_access": false,
+        "catalog_adapters": [
+            "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/mpra_adapter.py"
+        ]
     },
     {
         "uuid": "81585158-73e8-4eb4-ba41-21ab323b5de5",

@@ -129,6 +129,23 @@
         "schema_version": {
             "default": "16"
         },
+        "catalog_adapters": {
+            "title": "IGVF Catalog Adapters",
+            "description": "IGVF Catalog Adapters that ingests this file",
+            "type": "array",
+            "permission": "admin_only",
+            "uniqueItems": true,
+            "items": {
+                "title": "IGVF Catalog Adapter",
+                "description": "Identifier pointing to a Github link of the IGVF Catalog adapter that processes this file.",
+                "type": "string",
+                "pattern": "https:\\/\\/github\\.com\\/IGVF-DACC\\/igvf-catalog\\/blob\\/dev\\/data\\/adapters\\/(.)*\\.py"
+            },
+            "submissionExample": {
+                "appscript": "[\"https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/ccre_adapter.py\"]",
+                "igvf_utils": "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/ccre_adapter.py"
+            }
+        },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "oneOf": [

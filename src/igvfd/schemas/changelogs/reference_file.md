@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 16
+
+* Add `catalog_adapters`.
+
 ### Schema version 16
 
 * Adjust `content_type` enum list to remove `regulatory_regions`.

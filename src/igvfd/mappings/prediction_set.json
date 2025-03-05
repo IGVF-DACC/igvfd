@@ -1,6 +1,6 @@
 {
-    "hash": "6043812cb2a4bff1193e881a2fbea6b8",
-    "index_name": "prediction_set_6043812c",
+    "hash": "a1c55c1d3c91744cf2bd0d8dc42853cc",
+    "index_name": "prediction_set_a1c55c1d",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -548,6 +548,9 @@
                                         "type": "keyword"
                                     },
                                     "barcode_map_for": {
+                                        "type": "keyword"
+                                    },
+                                    "catalog_adapters": {
                                         "type": "keyword"
                                     },
                                     "cell_type_annotation": {
@@ -1378,6 +1381,9 @@
                             "base_modifications": {
                                 "type": "keyword"
                             },
+                            "catalog_adapters": {
+                                "type": "keyword"
+                            },
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
@@ -1706,6 +1712,9 @@
                             "barcode_map_for": {
                                 "type": "keyword"
                             },
+                            "catalog_adapters": {
+                                "type": "keyword"
+                            },
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
@@ -1883,6 +1892,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map_for": {
+                                "type": "keyword"
+                            },
+                            "catalog_adapters": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {
