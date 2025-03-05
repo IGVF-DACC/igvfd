@@ -218,6 +218,28 @@
                     "if": {
                         "properties": {
                             "assembly": {
+                                "const": "mm10"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "GENCODE M25",
+                                    "GENCODE M17"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
                                 "const": "Cast - GRCm39"
                             }
                         },
@@ -251,6 +273,7 @@
                             "transcriptome_annotation": {
                                 "enum": [
                                     "GENCODE 22",
+                                    "GENCODE 28",
                                     "GENCODE 32",
                                     "GENCODE 40",
                                     "GENCODE 41",
@@ -280,6 +303,27 @@
                             "required": [
                                 "transcriptome_annotation"
                             ]
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "GRCh38, mm10"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "GENCODE 28, GENCODE M17"
+                                ]
+                            }
                         }
                     }
                 }

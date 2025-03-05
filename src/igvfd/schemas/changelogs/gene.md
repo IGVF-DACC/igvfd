@@ -8,8 +8,7 @@
 * Extend `transcriptome_annotation` enum list to include `GENCODE 28, GENCODE M17`.
 * Extend `locations.assembly` enum list to include `hg19`.
 * Extend `locations.assembly` enum list to include `mm10`.
-* Extend `locations.assembly` enum list to include `GRCh38, GRCm38`.
-* Extend `locations.assembly` enum list to include `GRCm38`.
+* Extend `locations.assembly` enum list to include `GRCh38, mm10`.
 * Update `chromosome` regex in `locations` to allow genes not on standard chromosomes.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 22`.
 * Add `collections`.
