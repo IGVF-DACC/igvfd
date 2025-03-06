@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 5
 
+* Extend `input_content_types` enum list to include `primer sequences`.
+* Extend `output_content_types` enum list to include `primer sequences`.
 * Extend `input_content_types` enum list to include `index`.
 * Extend `output_content_types` enum list to include `index`.
 * Extend `input_content_types` enum list to include `differential peak quantifications`.

@@ -504,5 +504,23 @@
         "upload_status": "validated",
         "file_set": "igvf:analysis_set_with_input",
         "controlled_access": false
+    },
+    {
+        "uuid": "b3e8c3d1-4f12-43c7-9d7e-1a2b5c6f8e9d",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:primer_sequences"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-02-01T21:29:45Z",
+        "md5sum": "a7f5d6e4c9b2a1d3e8f7c6b5d4e3a2f1",
+        "file_format": "tsv",
+        "content_type": "primer sequences",
+        "submitted_file_name": "/Users/igvf/igvf_files/differential_peak_quantifications.tsv.gz",
+        "file_size": 145360919,
+        "upload_status": "validated",
+        "file_set": "igvf:analysis_set_with_input",
+        "controlled_access": false
     }
 ]

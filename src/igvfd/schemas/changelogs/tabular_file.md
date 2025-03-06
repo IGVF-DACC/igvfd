@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Extend `content_type` enum list to include `primer sequences`.
 * Add `catalog_adapters`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 28`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE M25`.
