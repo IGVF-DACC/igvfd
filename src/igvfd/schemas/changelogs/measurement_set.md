@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 25
+
+* Adjust `preferred_assay_title` enum list to remove `Growth CRISPR screen`.
+
 ### Schema version 24
 
 * Adjust `preferred_assay_title` enum list to replace `scMito-seq` with `10x multiome with scMito-seq`.
