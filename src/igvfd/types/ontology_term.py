@@ -243,7 +243,11 @@ class AssayTerm(OntologyTerm):
         }
     )
     def assay_slims(self, registry, term_id):
-        return self._get_ontology_slims(registry, term_id, 'assay')
+        slims = self._get_ontology_slims(registry, term_id, 'assay')
+        if slims:
+            return slims
+        else:
+            return ['no category']
 
     @calculated_property(
         condition='term_id',
