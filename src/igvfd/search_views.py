@@ -510,9 +510,16 @@ def omnimatrix(context, request):
     keys_to_remove = [
         'facets',
         'facet_groups',
+        'search_base',
+        'clear_filters',
+        'filters'
     ]
-    return {
+    omnimatrix = {
         k: v
         for k, v in r.items()
         if k not in keys_to_remove
     }
+    omnimatrix['@id'] = omnimatrix['@id'].replace('missing-matrix', 'omnimatrix')
+    omnimatrix['@type'] = 'Omnimatrix'
+    omnimatrix['title'] = 'Omnimatrix'
+    return omnimatrix
