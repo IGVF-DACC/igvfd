@@ -507,7 +507,12 @@ def omnimatrix(context, request):
     '''
     qs = QueryString(request)
     r = request.embed(f'/missing-matrix/?{qs.get_query_string()}', as_user='EMBED')
+    keys_to_remove = [
+        'facets',
+        'facet_groups',
+    ]
     return {
-        'matrix': r['matrix'],
-        'total': r['total'],
+        k: v
+        for k, v in r.items()
+        if k not in keys_to_remove
     }
