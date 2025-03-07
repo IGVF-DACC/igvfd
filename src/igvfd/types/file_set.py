@@ -531,8 +531,8 @@ class AnalysisSet(FileSet):
         }
 
         two_classification_cases = {
-            ('differentiated cell specimen', 'pooled cell specimen'): 'pooled differentiated cell specimen',
-            ('reprogrammed cell specimen', 'pooled cell specimen'): 'pooled reprogrammed cell specimen',
+            'differentiated cell specimen, pooled cell specimen': ['pooled differentiated cell specimen'],
+            'pooled cell specimen, reprogrammed cell specimen': ['pooled reprogrammed cell specimen'],
         }
 
         classification_to_prefix = {
@@ -552,8 +552,8 @@ class AnalysisSet(FileSet):
             if 'multiplexed sample' in sample_object['classifications']:
                 sample_classifications.remove('multiplexed sample')
                 mux_prefix = 'multiplexed sample of '
-            if set(sample_classifications) in two_classification_cases:
-                sample_classifications = two_classification_cases[set(sample_classifications)]
+            if ', '.join(sorted(sample_classifications)) in two_classification_cases:
+                sample_classifications = two_classification_cases[', '.join(sorted(sample_classifications))]
             # The variable "classification" can potentially be very long for
             # a Multiplexed Sample, but it will be entirely dropped for
             # Multiplexed Sample in the end - so it is ok.
