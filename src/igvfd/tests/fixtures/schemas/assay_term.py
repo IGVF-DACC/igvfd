@@ -205,3 +205,13 @@ def assay_term_v9(assay_term_crispr):
         'preferred_assay_titles': ['scMito-seq']
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v10(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '10',
+        'preferred_assay_titles': ['Growth CRISPR screen']
+    })
+    return item
