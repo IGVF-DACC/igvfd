@@ -115,6 +115,16 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
     assert res.json.get(
         'summary') == 'exhausted lymphoblastoid differentiated cell specimen line induced to brown adipose tissue for 5 minutes, Homo sapiens transfected with a reporter library (MOI of 2), grown in DMEM with serum'
     testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'time_post_library_delivery': 7,
+            'time_post_library_delivery_units': 'day'
+        }
+    )
+    res = testapp.get(in_vitro_differentiated_cell['@id'])
+    assert res.json.get(
+        'summary') == 'exhausted lymphoblastoid differentiated cell specimen line induced to brown adipose tissue for 5 minutes, Homo sapiens 7 day(s) after transfection with a reporter library (MOI of 2), grown in DMEM with serum'
+    testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
             'classifications': ['gastruloid'],
