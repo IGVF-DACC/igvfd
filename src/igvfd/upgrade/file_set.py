@@ -493,3 +493,13 @@ def measurement_set_23_24(value, system):
         value['preferred_assay_title'] = '10x multiome with scMito-seq'
         notes += f' This measurement set previously used scMito-seq as a preferred_assay_title, but this enum is now replaced with 10x multiome with scMito-seq.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '24', '25')
+def measurement_set_24_25(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2426
+    notes = value.get('notes', '')
+    if value.get('preferred_assay_title') == 'Growth CRISPR screen':
+        value['preferred_assay_title'] = 'Proliferation CRISPR screen'
+        notes += f' This measurement set previously used Growth CRISPR screen as a preferred_assay_title, but the preferred_assay_title has now been updated to Proliferation CRISPR screen via an upgrade.'
+        value['notes'] = notes.strip()

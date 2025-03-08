@@ -151,3 +151,9 @@ def test_measurement_set_upgrade_23_24(upgrader, measurement_set_v23):
     value = upgrader.upgrade('measurement_set', measurement_set_v23, current_version='23', target_version='24')
     assert value['schema_version'] == '24'
     assert value.get('preferred_assay_title') == '10x multiome with scMito-seq'
+
+
+def test_measurement_set_upgrade_24_25(upgrader, measurement_set_v24):
+    value = upgrader.upgrade('measurement_set', measurement_set_v24, current_version='24', target_version='25')
+    assert value['schema_version'] == '25'
+    assert value.get('preferred_assay_title') == 'Proliferation CRISPR screen'

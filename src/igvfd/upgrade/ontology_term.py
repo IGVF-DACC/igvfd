@@ -127,3 +127,13 @@ def assay_term_9_10(value, system):
         index = preferred_assay_titles.index('scMito-seq')
         preferred_assay_titles[index] = '10x multiome with scMito-seq'
         value['preferred_assay_titles'] = preferred_assay_titles
+
+
+@upgrade_step('assay_term', '10', '11')
+def assay_term_10_11(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2426
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    if 'Growth CRISPR screen' in preferred_assay_titles:
+        index = preferred_assay_titles.index('Growth CRISPR screen')
+        preferred_assay_titles[index] = 'Proliferation CRISPR screen'
+        value['preferred_assay_titles'] = preferred_assay_titles

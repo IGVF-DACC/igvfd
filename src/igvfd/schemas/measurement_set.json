@@ -65,7 +65,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "24"
+            "default": "25"
         },
         "samples": {
             "maxItems": 1
@@ -135,7 +135,6 @@
                 "smFISH",
                 "MERFISH",
                 "Proliferation CRISPR screen",
-                "Growth CRISPR screen",
                 "Migration CRISPR screen",
                 "CRISPR FlowFISH screen",
                 "CRISPR FACS screen",
@@ -199,7 +198,6 @@
                 "smFISH": "Single-molecule fluorescence in situ hybridization (smFISH) is used to study gene expression in individual cells by detecting and counting RNA molecules.",
                 "MERFISH": "Multiplexed error-robust fluorescence in situ hybridization (MERFISH) is used to simultaneously image and analyze thousands of RNA species in individual cells.",
                 "Proliferation CRISPR screen": "A CRISPR-based screen that measures cell survival or proliferation as the primary readout.",
-                "Growth CRISPR screen": "A CRISPR-based screen designed to identify genes and regulatory elements that influence cell proliferation and expansion over time.",
                 "Migration CRISPR screen": "A CRISPR-based screen used to identify genes and regulatory elements that influence cell motility. ",
                 "CRISPR FlowFISH screen": "A CRISPR-based screen that uses Flow Cytometry and Fluorescence In Situ Hybridization (FlowFISH) to measure the impact of genetic perturbations on RNA expression levels.",
                 "CRISPR FACS screen": "A CRISPR-based screen that employs Fluorescence-Activated Cell Sorting (FACS) to separate and analyze cell populations based on fluorescence markers.",
