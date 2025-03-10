@@ -1064,7 +1064,7 @@ class MultiplexedSample(Sample):
         }
     )
     def institutional_certificates(self, request, multiplexed_samples):
-        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'institutional_certificates')
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'institutional_certificates', skip_calculated=False)
 
     @calculated_property(
         schema={
