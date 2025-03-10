@@ -51,6 +51,7 @@ def includeme(config):
     config.add_route('multireport', '/multireport{slash:/?}')
     config.add_route('matrix', '/matrix{slash:/?}')
     config.add_route('missing-matrix', '/missing-matrix{slash:/?}')
+    config.add_route('omnimatrix', '/omnimatrix{slash:/?}')
     config.add_route('tissue-homo-sapiens', '/tissue-homo-sapiens{slash:/?}')
     config.add_route('tissue-mus-musculus', '/tissue-mus-musculus{slash:/?}')
     config.add_route('summary', '/summary{slash:/?}')
@@ -497,3 +498,28 @@ def datasets_released(context, request):
             for x in results.to_dict()['aggregations']['datasets_released']['buckets']
         ]
     }
+
+
+@view_config(route_name='omnimatrix', request_method='GET', permission='search')
+def omnimatrix(context, request):
+    '''
+    Aggregate over all data, not just data visible to a particular user.
+    '''
+    qs = QueryString(request)
+    r = request.embed(f'/missing-matrix/?{qs.get_query_string()}', as_user='EMBED')
+    keys_to_remove = [
+        'facets',
+        'facet_groups',
+        'search_base',
+        'clear_filters',
+        'filters'
+    ]
+    omnimatrix = {
+        k: v
+        for k, v in r.items()
+        if k not in keys_to_remove
+    }
+    omnimatrix['@id'] = omnimatrix['@id'].replace('missing-matrix', 'omnimatrix')
+    omnimatrix['@type'] = 'Omnimatrix'
+    omnimatrix['title'] = 'Omnimatrix'
+    return omnimatrix

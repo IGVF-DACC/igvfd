@@ -469,3 +469,25 @@ def test_search_views_tissue_mus_musculus(workbook, testapp):
     assert r.json['matrix']['x']['doc_count'] > 5
     assert r.json['matrix']['y']['doc_count'] > 5
     assert r.json['matrix']['y']['sample_terms.term_name']['buckets'][0]['sex']['buckets'] is not None
+
+
+def test_search_views_omnimatrix(workbook, testapp):
+    r1 = testapp.get(
+        '/omnimatrix/?type=MeasurementSet&config=PreferredAssayTitleSummary',
+        status=200,
+    )
+    assert 'matrix' in r1.json
+    assert r1.json['matrix']['y']['doc_count'] > 10
+    assert r1.json['matrix']['y']['lab.title']['buckets'][0]['preferred_assay_title']['buckets'] is not None
+    assert r1.json['@type'] == 'Omnimatrix'
+    assert r1.json['title'] == 'Omnimatrix'
+    assert 'facets' not in r1
+    assert 'facet_groups' not in r1
+    assert 'filters' not in r1
+    assert 'clear_filters' not in r1
+    assert 'search_base' not in r1
+    r2 = testapp.get(
+        '/missing-matrix/?type=MeasurementSet&config=PreferredAssayTitleSummary',
+        status=200,
+    )
+    assert r1.json['total'] >= r2.json['total']
