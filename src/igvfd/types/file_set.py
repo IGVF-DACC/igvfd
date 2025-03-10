@@ -569,14 +569,10 @@ class AnalysisSet(FileSet):
                 if not classification.startswith('multiplexed sample of'):
                     if sample_phrase.endswith('cell') and 'cell' in classification:
                         sample_phrase = sample_phrase.replace('cell', classification)
+                    elif sample_phrase.endswith(' gastruloid') and 'gastruloid' in classification:
+                        sample_phrase = sample_phrase.replace(' gastruloid', '')
                     elif 'cell' in sample_phrase and classification in classification_to_prefix:
                         sample_phrase = f'{classification_to_prefix[classification]} {sample_phrase}'
-                    # if ' cell' in sample_phrase and 'cell' in classification:
-                    #     sample_phrase = sample_phrase.replace(' cell ', classification)
-                    # elif ' tissue' in sample_phrase and 'tissue' in classification:
-                    #     sample_phrase = sample_phrase.replace(' tissue ', classification)
-                    # elif ' gastruloid' in sample_phrase:
-                    #     sample_phrase = sample_phrase.replace(' gastruloid', '')
 
                 targeted_sample_suffix = ''
                 if 'targeted_sample_term' in sample_object:
