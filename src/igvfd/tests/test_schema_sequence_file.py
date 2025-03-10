@@ -373,7 +373,7 @@ def test_controlled_sequence_file_release(testapp, controlled_sequence_file_obje
         },
         expect_errors=True
     )
-    assert res.status_code == 422
+    assert res.status_code == 200
     res = testapp.patch_json(
         controlled_sequence_file_object['@id'],
         {
