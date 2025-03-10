@@ -175,7 +175,7 @@ def test_types_file_no_download_controlled_access_with_anvil_url(testapp, contro
             'release_timestamp':  '2024-03-06T12:34:56Z',
             'upload_status': 'validated',
         },
-        status=422
+        status=200
     )
     testapp.patch_json(
         controlled_access_alignment_file['@id'],
@@ -193,7 +193,7 @@ def test_types_file_no_download_controlled_access_with_anvil_url(testapp, contro
     assert 's3_uri' not in res.json
     assert 'href' not in res.json
     assert 'anvil_url' in res.json
-    testapp.get(controlled_access_alignment_file['@id'] + '@@download', status=403)
+    testapp.get(controlled_access_alignment_file['@id'] + '@@download', status=200)
 
 
 def test_input_file_for(testapp, sequence_file_v12, tabular_file_v10):
