@@ -237,7 +237,7 @@ def measurement_set_report_view():
         'preferred_assay_title': {
             'title': 'Preferred Assay Title'
         },
-        'assay_term.assay_slims': {
+        'assay_term.term_name': {
             'title': 'Assay'
         },
         'files.content_type': {
