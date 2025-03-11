@@ -99,6 +99,11 @@ def test_controlled_file_only_viewing_group_members_can_download_controlled_acce
     # Not anon or verified user.
     anontestapp.get(controlled_access_alignment_file['@id'] + '@@download', status=403)
     verified_member_testapp.get(controlled_access_alignment_file['@id'] + '@@download', status=403)
+    # Also can't read in progress file metadata unless admin/viewing group.
+    testapp.get(controlled_access_alignment_file['@id'], status=200)
+    viewing_group_member_testapp.get(controlled_access_alignment_file['@id'], status=200)
+    anontestapp.get(controlled_access_alignment_file['@id'], status=403)
+    verified_member_testapp.get(controlled_access_alignment_file['@id'], status=403)
     testapp.patch_json(
         controlled_access_alignment_file['@id'],
         {
@@ -120,3 +125,8 @@ def test_controlled_file_only_viewing_group_members_can_download_controlled_acce
     anontestapp.get(controlled_access_alignment_file['@id'] + '@@download', status=403)
     r = verified_member_testapp.get(controlled_access_alignment_file['@id'] + '@@download', status=403)
     assert r.json['detail'] == 'Downloading controlled-access file not allowed.'
+    # All can read released file metadata.
+    testapp.get(controlled_access_alignment_file['@id'], status=200)
+    viewing_group_member_testapp.get(controlled_access_alignment_file['@id'], status=200)
+    anontestapp.get(controlled_access_alignment_file['@id'], status=200)
+    verified_member_testapp.get(controlled_access_alignment_file['@id'], status=200)
