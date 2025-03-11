@@ -73,6 +73,29 @@ def test_controlled_file_only_viewing_group_members_can_download_controlled_acce
     assert 's3_uri' in res.json
     assert 'href' in res.json
     assert 'anvil_url' not in res.json
+    # Can download normal file in progress versus released?
+    testapp.get(alignment_file['@id'] + '@@download', status=307)
+    authenticated_testapp.get(alignment_file['@id'] + '@@download', status=307)
+    submitter_testapp.get(alignment_file['@id'] + '@@download', status=307)
+    viewing_group_member_testapp.get(alignment_file['@id'] + '@@download', status=307)
+    anontestapp.get(alignment_file['@id'] + '@@download', status=403)
+    verified_member_testapp.get(alignment_file['@id'] + '@@download', status=403)
+    testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'status': 'released',
+            'release_timestamp':  '2024-03-06T12:34:56Z',
+            'upload_status': 'validated',
+        },
+        status=200
+    )
+    testapp.get(alignment_file['@id'] + '@@download', status=307)
+    authenticated_testapp.get(alignment_file['@id'] + '@@download', status=307)
+    submitter_testapp.get(alignment_file['@id'] + '@@download', status=307)
+    viewing_group_member_testapp.get(alignment_file['@id'] + '@@download', status=307)
+    anontestapp.get(alignment_file['@id'] + '@@download', status=307)
+    verified_member_testapp.get(alignment_file['@id'] + '@@download', status=307)
+    # Can download controlled-access file?
     res = testapp.get(controlled_access_alignment_file['@id'])
     assert res.json['controlled_access'] is True
     assert res.json['status'] == 'in progress'
@@ -128,5 +151,7 @@ def test_controlled_file_only_viewing_group_members_can_download_controlled_acce
     # All can read released file metadata.
     testapp.get(controlled_access_alignment_file['@id'], status=200)
     viewing_group_member_testapp.get(controlled_access_alignment_file['@id'], status=200)
+    anontestapp.get(controlled_access_alignment_file['@id'], status=200)
+    verified_member_testapp.get(controlled_access_alignment_file['@id'], status=200)
     anontestapp.get(controlled_access_alignment_file['@id'], status=200)
     verified_member_testapp.get(controlled_access_alignment_file['@id'], status=200)
