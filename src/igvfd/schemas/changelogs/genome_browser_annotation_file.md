@@ -1,5 +1,9 @@
 ## Changelog for *`genome_browser_annotation_file.json`*
 
+### Schema version 10
+
+* Extend `transcriptome_annotation` enum list to include `GENCODE 32, GENCODE M23`.
+
 ### Minor changes since schema version 9
 
 * Extend `transcriptome_annotation` enum list to include `GENCODE 28`.

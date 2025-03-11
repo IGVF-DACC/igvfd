@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 14
+
+* Extend `transcriptome_annotation` enum list to include `GENCODE 32, GENCODE M23`.
+
 ### Minor changes since schema version 13
 
 * Add `catalog_adapters`.

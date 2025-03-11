@@ -173,3 +173,15 @@ def gene_v8(gene_myc_hs):
         'synonyms': []
     })
     return item
+
+
+@pytest.fixture
+def gene_v9(gene_myc_hs):
+    item = gene_myc_hs.copy()
+    item.update(
+        {
+            'schema_version': '9',
+            'transcriptome_annotation': 'GENCODE 28, GENCODE M17'
+        }
+    )
+    return item
