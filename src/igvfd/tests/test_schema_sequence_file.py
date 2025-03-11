@@ -370,10 +370,9 @@ def test_controlled_sequence_file_release(testapp, controlled_sequence_file_obje
             'file_size': 5495803,
             'upload_status': 'validated',
             'release_timestamp': '2024-05-31T12:34:56Z'
-        },
-        expect_errors=True
+        }
     )
-    assert res.status_code == 422
+    assert res.status_code == 200
     res = testapp.patch_json(
         controlled_sequence_file_object['@id'],
         {
@@ -386,8 +385,7 @@ def test_controlled_sequence_file_release(testapp, controlled_sequence_file_obje
             'upload_status': 'validated',
             'release_timestamp': '2024-05-31T12:34:56Z',
             'anvil_url': 'http://abc.123'
-        },
-        expect_errors=True
+        }
     )
     assert res.status_code == 200
 
