@@ -79,3 +79,9 @@ def test_alignment_file_upgrade_12_13(upgrader, alignment_file_v12):
     value = upgrader.upgrade('alignment_file', alignment_file_v12, current_version='12', target_version='13')
     assert alignment_file_v12['read_count'] == 23040138
     assert alignment_file_v12['schema_version'] == '13'
+
+
+def test_alignment_file_upgrade_13_14(upgrader, alignment_file_v13):
+    value = upgrader.upgrade('alignment_file', alignment_file_v13, current_version='13', target_version='14')
+    assert value['schema_version'] == '14'
+    assert set(value.get('transcriptome_annotation')) == 'GENCODE 32, GENCODE M23'

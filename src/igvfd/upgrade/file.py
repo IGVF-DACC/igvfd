@@ -439,3 +439,17 @@ def reference_file_15_16(value, system):
         notes += f' This file\'s content_type was variants_regulatory_regions, but has been upgraded to variants_genomic_elements.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('alignment_file', '13', '14')
+@upgrade_step('genome_browser_annotation_file', '9', '10')
+@upgrade_step('reference_file', '16', '17')
+@upgrade_step('signal_file', '9', '10')
+@upgrade_step('tabular_file', '13', '14')
+def file_14_15(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2468
+    notes = value.get('notes', '')
+    if value.get('transcriptome_annotation') == 'GENCODE 28, GENCODE M17':
+        value['transcriptome_annotation'] = 'GENCODE 32, GENCODE M23'
+        notes += f'This object\'s transcriptome_annotation was GENCODE 28, GENCODE M17 but has been upgraded to GENCODE 32, GENCODE M23 as requested by the lab.'
+    return

@@ -178,3 +178,16 @@ def alignment_file_v12(alignment_file):
         }
     )
     return item
+
+
+@pytest.fixture
+def alignment_file_v13(alignment_file):
+    item = alignment_file.copy()
+    item.update(
+        {
+            'schema_version': '13',
+            'assembly': 'GRCh38, mm10',
+            'transcriptome_annotation': 'GENCODE 28, GENCODE M17'
+        }
+    )
+    return item
