@@ -1114,7 +1114,8 @@ def validate_bucket_location(request, properties, bucket):
                 f'File is controlled_access=True but was created using bucket {bucket}'
             )
     else:
-        if bucket != request.registry.settings['file_upload_bucket']:
+        # Allow download from prod bucket in sandbox/staging, as long as not restricted bucket.
+        if 'restricted' in bucket:
             raise HTTPForbidden(
                 f'File is controlled_access=False but was created using bucket {bucket}'
             )
@@ -1219,6 +1220,11 @@ def post_upload(context, request):
 )
 def download(context, request):
     properties = context.upgrade_properties()
+    if properties.get('controlled_access') is True:
+        if not request.has_permission('download_controlled_access_file'):
+            raise HTTPForbidden(
+                'Downloading controlled-access file not allowed.'
+            )
     if properties.get('anvil_url') is not None:
         raise HTTPForbidden(
             'Downloading Anvil file not allowed.'
