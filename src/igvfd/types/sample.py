@@ -95,7 +95,8 @@ class Sample(Item):
         Path('biomarkers.gene', include=['@id', 'name_quantification', 'classification', 'gene', 'symbol', 'status']),
         Path('modifications.tagged_proteins', include=[
              '@id', 'summary', 'status', 'tagged_proteins', 'modality', 'fused_domain', 'symbol', 'cas', 'cas_species', 'degron_system']),
-        Path('institutional_certificates', include=['@id', 'certificate_identifier', 'status']),
+        Path('institutional_certificates', include=[
+             '@id', 'certificate_identifier', 'status', 'data_use_limitation', 'data_use_limitation_modifiers', 'controlled_access']),
         Path('construct_library_sets.associated_phenotypes', include=[
              '@id', 'accession', 'file_set_type', 'term_name', 'associated_phenotypes', 'status']),
         Path('donors', include=['@id', 'accession', 'status', 'strain', 'ethnicities']),
