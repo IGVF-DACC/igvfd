@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Add calculated property `validate_onlist_files`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.
 * Extend `collections` enum list to include `StanfordFCC`.

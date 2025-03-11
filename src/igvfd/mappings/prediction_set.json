@@ -1,6 +1,6 @@
 {
-    "hash": "8d20ae35bb6d16c79cfd26a82f0f36f4",
-    "index_name": "prediction_set_8d20ae35",
+    "hash": "c2c845a182ed2f81c5c9960b226e99bd",
+    "index_name": "prediction_set_c2c845a1",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1601,6 +1601,10 @@
                             },
                             "uuid": {
                                 "type": "keyword"
+                            },
+                            "validate_onlist_files": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "validation_error_detail": {
                                 "type": "keyword"

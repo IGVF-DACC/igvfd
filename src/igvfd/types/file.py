@@ -32,6 +32,10 @@ from igvfd.types.base import (
     paths_filtered_by_status
 )
 
+from igvfd.audit.file_set import (
+    SINGLE_CELL_ASSAY_TERMS
+)
+
 from igvfd.upload_credentials import get_s3_client
 from igvfd.upload_credentials import get_sts_client
 from igvfd.upload_credentials import get_restricted_sts_client
@@ -759,6 +763,27 @@ class ConfigurationFile(File):
             file_accessions = [x.split('/')[-2] for x in seqspec_of]
             seqspec_of_formatted = f" of {', '.join(file_accessions)}"
         return f'{content_type}{seqspec_of_formatted}'
+
+    @calculated_property(
+        schema={
+            'title': 'Validate Onlist Files',
+            'type': 'boolean',
+            'description': 'Whether checkfiles will validate the onlist files.',
+            'notSubmittable': True
+        }
+    )
+    def validate_onlist_files(self, request, content_type, file_set):
+        # Validate onlist files if the file is not linked to a single cell assay measurement set
+        # If not seqspec, return False
+        if content_type != 'seqspec':
+            return False
+        # If not measurement set, return False
+        if not file_set.startswith('/measurement-sets/'):
+            return False
+        # Get the file set object
+        fileset_object = request.embed(file_set, '@@object?skip_calculated_properties=true')
+        # Check if any is single cell
+        return fileset_object.get('assay_term', '') in SINGLE_CELL_ASSAY_TERMS
 
 
 @collection(
