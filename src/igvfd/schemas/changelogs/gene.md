@@ -2,7 +2,7 @@
 
 ### Schema version 9
 
-* Extend `transcriptome_annotation` enum list to include `GENCODE 32, GENCODE M23`.
+* Adjust `transcriptome_annotation` enum list to replace `GENCODE 28, GENCODE M17` with `GENCODE 32, GENCODE M23`.
 
 ### Minor changes since schema version 8
 
