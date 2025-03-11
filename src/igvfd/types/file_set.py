@@ -785,7 +785,7 @@ class MeasurementSet(FileSet):
     item_type = 'measurement_set'
     schema = load_schema('igvfd:schemas/measurement_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('assay_term', include=['@id', 'term_name', 'status']),
+        Path('assay_term', include=['@id', 'term_name', 'assay_slims', 'status']),
         Path('control_file_sets', include=['@id', 'accession', 'aliases', 'status']),
         Path('related_multiome_datasets', include=['@id', 'accession', 'status']),
         Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
