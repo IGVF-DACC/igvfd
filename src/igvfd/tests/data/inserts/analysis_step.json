@@ -130,7 +130,7 @@
             "guide quantifications",
             "tissue positions",
             "sample sort parameters",
-            "sequence barcodes",
+            "barcode onlist",
             "SNP effect matrix"
         ],
         "output_content_types": [

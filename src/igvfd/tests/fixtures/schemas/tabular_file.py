@@ -137,3 +137,13 @@ def tabular_file_v12(tabular_file):
         'file_format': 'txt'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v14(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '14',
+        'content_type': 'sequence barcodes'
+    })
+    return item

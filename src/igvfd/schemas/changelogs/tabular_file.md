@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 15
+
+* Reduce `content_type` enum list to exclude `sequence barcodes`.
+
 ### Schema version 14
 
 * Adjust `transcriptome_annotation` enum list to replace `GENCODE 28, GENCODE M17` with `GENCODE 32, GENCODE M23`.

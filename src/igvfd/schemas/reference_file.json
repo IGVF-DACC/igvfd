@@ -127,7 +127,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "17"
+            "default": "18"
         },
         "catalog_adapters": {
             "title": "IGVF Catalog Adapters",
@@ -196,7 +196,6 @@
                         "genomic_elements_genes_biosamples_treatments_chebi",
                         "genomic_elements_genes_biosamples_treatments_proteins",
                         "genomic_elements_genomic_elements",
-                        "sequence barcodes",
                         "studies",
                         "studies_variants",
                         "studies_variants_phenotypes",

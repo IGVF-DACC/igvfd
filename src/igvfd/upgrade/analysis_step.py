@@ -50,3 +50,17 @@ def analysis_step_4_5(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_step', '5', '6')
+def analysis_step_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2253
+    notes = value.get('notes', '')
+    for key in ['input_content_types', 'output_content_types']:
+        if 'sequence barcodes' in value[key]:
+            new_content_list = ['barcode onlist' if content ==
+                                'sequence barcodes' else content for content in value[key]]
+            value[key] = sorted(set(new_content_list))
+            notes += f' "sequence barcodes" was removed from {key}, and has been upgraded to "barcode onlist".'
+    if notes != '':
+        value['notes'] = notes.strip()

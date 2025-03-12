@@ -107,7 +107,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "14"
+            "default": "15"
         },
         "catalog_adapters": {
             "title": "IGVF Catalog Adapters",
@@ -168,7 +168,6 @@
                 "reporter genomic element effects",
                 "reporter genomic variant effects",
                 "sample sort parameters",
-                "sequence barcodes",
                 "tissue positions",
                 "transcript quantifications",
                 "unfiltered global differential expression",
@@ -220,7 +219,6 @@
                 "reporter genomic element effects": "Defines the activity of an element/region within a genome associated with a reporter assay.",
                 "reporter genomic variant effects": "Defines the activity of a variant within a genome associated with a reporter assay.",
                 "sample sort parameters": "The parameters/quantifications used for sorting biological samples, such as those in flow cytometry.",
-                "sequence barcodes": "The barcodes associated with different sequences, used for sample identification and multiplexing.",
                 "tissue positions": "The spatial coordinates or positions of tissue samples or sections in experiments.",
                 "transcript quantifications": "The quantified levels of transcripts.",
                 "unfiltered global differential expression": "A file listing differentially expressed genes across the entire dataset, capturing all detected hits without filtering.",

@@ -235,3 +235,13 @@ def reference_file_v15_variants_regulatory_regions(reference_file_v6):
         'content_type': 'variants_regulatory_regions'
     })
     return item
+
+
+@pytest.fixture
+def reference_file_v17(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '17',
+        'content_type': 'sequence barcodes'
+    })
+    return item
