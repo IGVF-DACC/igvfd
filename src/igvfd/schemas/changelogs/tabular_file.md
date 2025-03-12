@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 14
+
+* Reduce `content_type` enum list to exclude `sequence barcodes`.
+
 ### Minor changes since schema version 13
 
 * Extend `content_type` enum list to include `primer sequences`.

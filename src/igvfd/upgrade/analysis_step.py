@@ -1,6 +1,13 @@
 from snovault import upgrade_step
 
 
+def replace_seq_barcodes(content_types: list):
+    # Replaces sequence barcodes with barcode onlist, then trim duplicates
+    updated_content_types = ['barcode onlist' if element ==
+                             'sequence barcodes' else element for element in content_types]
+    return sorted(set(updated_content_types))
+
+
 @upgrade_step('analysis_step', '1', '2')
 def analysis_step_1_2(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1212
@@ -49,4 +56,16 @@ def analysis_step_4_5(value, system):
         value['release_timestamp'] = '2024-03-06T12:34:56Z'
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_step', '5', '6')
+def analysis_step_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2253
+    notes = value.get('notes', '')
+    for key in ['input_content_types', 'output_content_types']:
+        if 'sequence barcodes' in value[key]:
+            value[key] = replace_seq_barcodes(content_types=value[key])
+            notes += f' "sequence barcodes" was removed from {key} and replaced with "barcode onlist".'
+    if notes != '':
         value['notes'] = notes.strip()
