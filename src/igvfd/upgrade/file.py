@@ -439,3 +439,24 @@ def reference_file_15_16(value, system):
         notes += f' This file\'s content_type was variants_regulatory_regions, but has been upgraded to variants_genomic_elements.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('tabular_file', '13', '14')
+def tabular_file_13_14(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2253
+    notes = value.get('notes', '')
+    if value['content_type'] == 'sequence barcodes':
+        value['content_type'] = 'barcode onlist'
+        notes += ' This file\'s content_type was sequence barcodes, but has been upgraded to barcode onlist.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('reference_file', '16', '17')
+def reference_file_16_17(value, system):
+    notes = value.get('notes', '')
+    if value['content_type'] == 'sequence barcodes':
+        value['content_type'] = 'genomic_elements_genes'
+        notes += f' This file\'s content_type was sequence barcodes, but has been upgraded to genomic_elements_genes.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

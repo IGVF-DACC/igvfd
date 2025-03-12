@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 14
+
+* Reduce `content_type` enum list to exclude `sequence barcodes`.
+
 ### Minor changes since schema version 13
 
 * Allow `controlled_access` files to be released without `anvil_url`.
