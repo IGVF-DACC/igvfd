@@ -153,5 +153,5 @@ def test_controlled_file_only_viewing_group_members_can_download_controlled_acce
     viewing_group_member_testapp.get(controlled_access_alignment_file['@id'], status=200)
     anontestapp.get(controlled_access_alignment_file['@id'], status=200)
     verified_member_testapp.get(controlled_access_alignment_file['@id'], status=200)
-    anontestapp.get(controlled_access_alignment_file['@id'], status=200)
-    verified_member_testapp.get(controlled_access_alignment_file['@id'], status=200)
+    authenticated_testapp.get(controlled_access_alignment_file['@id'], status=200)
+    submitter_testapp.get(controlled_access_alignment_file['@id'], status=200)
