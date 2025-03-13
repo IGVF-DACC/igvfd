@@ -28,12 +28,12 @@ def test_assembly_transcriptome_dependency(testapp, alignment_file):
     res = testapp.patch_json(
         alignment_file['@id'],
         {'assembly': 'GRCh38, mm10',
-         'transcriptome_annotation': 'GENCODE 28, GENCODE M17'})
+         'transcriptome_annotation': 'GENCODE 32, GENCODE M23'})
     assert res.status_code == 200
     res = testapp.patch_json(
         alignment_file['@id'],
         {'assembly': 'GRCh38',
-         'transcriptome_annotation': 'GENCODE 28, GENCODE M17'}, expect_errors=True)
+         'transcriptome_annotation': 'GENCODE 32, GENCODE M23'}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         alignment_file['@id'],

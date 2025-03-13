@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 17
+
+* Adjust `transcriptome_annotation` enum list to replace `GENCODE 28, GENCODE M17` with `GENCODE 32, GENCODE M23`.
+
 ### Minor changes since schema version 16
 
 * Allow `controlled_access` files to be released without `anvil_url`.

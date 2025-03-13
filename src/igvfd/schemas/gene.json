@@ -87,7 +87,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "9"
+            "default": "10"
         },
         "collections": {
             "$merge": "mixins.json#/accession/collections"

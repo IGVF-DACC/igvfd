@@ -113,7 +113,7 @@
         "file_format": "bam",
         "assembly": "GRCh38, mm10",
         "content_type": "transcriptome alignments",
-        "transcriptome_annotation": "GENCODE 28, GENCODE M17",
+        "transcriptome_annotation": "GENCODE 32, GENCODE M23",
         "upload_status": "pending",
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
