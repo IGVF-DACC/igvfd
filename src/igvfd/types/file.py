@@ -3,6 +3,12 @@ import os
 import pytz
 import time
 
+from pyramid.authorization import (
+    Allow,
+    Deny,
+    Everyone,
+)
+
 from pyramid.httpexceptions import HTTPForbidden
 from pyramid.httpexceptions import HTTPNotFound
 from pyramid.httpexceptions import HTTPTemporaryRedirect
@@ -40,6 +46,15 @@ from igvfd.upload_credentials import get_s3_client
 from igvfd.upload_credentials import get_sts_client
 from igvfd.upload_credentials import get_restricted_sts_client
 from igvfd.upload_credentials import UploadCredentials
+
+
+# Consortium members (viewing group members) can download controlled_access files.
+ALLOW_DOWNLOAD_CONTROLLED_ACCESS_FILE = [
+    (Allow, 'role.viewing_group_member', 'download_controlled_access_file'),
+    (Allow, 'group.admin', 'download_controlled_access_file'),
+    (Allow, 'group.read-only-admin', 'download_controlled_access_file'),
+    (Deny, Everyone, 'download_controlled_access_file'),
+]
 
 
 FILE_FORMAT_TO_FILE_EXTENSION = {
@@ -150,6 +165,9 @@ class File(Item):
         'file_format_specifications'
     ]
     set_status_down = []
+
+    def __acl__(self):
+        return ALLOW_DOWNLOAD_CONTROLLED_ACCESS_FILE + super().__acl__()
 
     @calculated_property(schema={
         'title': 'Integrated In',
@@ -1096,7 +1114,8 @@ def validate_bucket_location(request, properties, bucket):
                 f'File is controlled_access=True but was created using bucket {bucket}'
             )
     else:
-        if bucket != request.registry.settings['file_upload_bucket']:
+        # Allow download from prod bucket in sandbox/staging, as long as not restricted bucket.
+        if 'restricted' in bucket:
             raise HTTPForbidden(
                 f'File is controlled_access=False but was created using bucket {bucket}'
             )
@@ -1201,6 +1220,11 @@ def post_upload(context, request):
 )
 def download(context, request):
     properties = context.upgrade_properties()
+    if properties.get('controlled_access') is True:
+        if not request.has_permission('download_controlled_access_file'):
+            raise HTTPForbidden(
+                'Downloading controlled-access file not allowed.'
+            )
     if properties.get('anvil_url') is not None:
         raise HTTPForbidden(
             'Downloading Anvil file not allowed.'

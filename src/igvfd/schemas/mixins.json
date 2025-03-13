@@ -217,7 +217,6 @@
         "anvil_url": {
             "title": "AnVIL URL",
             "description": "URL linking to the controlled access file that has been deposited at AnVIL workspace.",
-            "comment": "Specification of AnVIL URL is required for controlled access files to be released.",
             "type": "string",
             "permission": "admin_only",
             "submissionExample": {

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Allow `controlled_access` files to be released without `anvil_url`.
 * Extend `content_type` enum list to include `primer sequences`.
 * Add `catalog_adapters`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 28`.

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 16
 
+* Allow `controlled_access` files to be released without `anvil_url`.
 * Add `catalog_adapters`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 28`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE M17`.
