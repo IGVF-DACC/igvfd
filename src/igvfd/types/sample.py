@@ -367,7 +367,7 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None, biosample_qualifiers=None):
+    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None, biosample_qualifiers=None, time_post_library_delivery=None, time_post_library_delivery_units=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
         biosample_type = self.item_type
@@ -529,6 +529,8 @@ class Biosample(Sample):
         if (construct_library_sets and
                 biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
             verb = 'transfected with'
+            if time_post_library_delivery:
+                verb = f'{time_post_library_delivery} {time_post_library_delivery_units}(s) after transfection with'
             library_types = set()
             for construct_library_set in construct_library_sets:
                 construct_library_set_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
