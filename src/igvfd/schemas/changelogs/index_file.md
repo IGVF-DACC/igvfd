@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 1
 
+* Allow 'controlled_access' files to be released without `anvil_url`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 22`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.

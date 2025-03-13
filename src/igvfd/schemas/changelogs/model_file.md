@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 1
 
+* Allow 'controlled_access' files to be released without `anvil_url`.
 * Add `catalog_adapters`.
 * Extend `content_type` enum list to include `protein language model`.
 * Extend `collections` enum list to include `ACMG73`.
