@@ -128,7 +128,8 @@ def controlled_sequence_file_2(testapp, lab, award, principal_analysis_set, plat
         'file_format': 'fastq',
         'file_set': principal_analysis_set['@id'],
         'content_type': 'reads',
-        'sequencing_run': 1,
+        'sequencing_run': 2,
+        'illumina_read_type': 'R1',
         'sequencing_platform': platform_term_HiSeq['@id'],
         'controlled_access': True
     }
