@@ -9,7 +9,6 @@
         "version_number",
         "transcriptome_annotation",
         "symbol",
-        "dbxrefs",
         "taxa"
     ],
     "identifyingProperties": [
