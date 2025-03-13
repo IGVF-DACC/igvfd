@@ -22,6 +22,9 @@ def file():
             'transcriptome_annotation': {
                 'title': 'Transcriptome Annotation'
             },
+            'controlled_access': {
+                'title': 'Controlled Access'
+            },
             'sequencing_platform.term_name': {
                 'title': 'Sequencing Platform'
             },
@@ -30,6 +33,9 @@ def file():
             },
             'assay_titles': {
                 'title': 'Assay'
+            },
+            'file_set.assay_term.term_name': {
+                'title': 'Assay Term'
             },
             'cell_type_annotation.term_name': {
                 'title': 'Annotated Cell Type'
@@ -110,6 +116,7 @@ def file():
                     'file_format_type',
                     'assembly',
                     'transcriptome_annotation',
+                    'controlled_access',
                     'sequencing_platform.term_name',
                     'workflow.name',
                     'workflow.uniform_pipeline',

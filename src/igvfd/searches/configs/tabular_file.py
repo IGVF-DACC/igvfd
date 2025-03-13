@@ -25,11 +25,17 @@ def tabular_file():
             'transcriptome_annotation': {
                 'title': 'Transcriptome Annotation'
             },
+            'controlled_access': {
+                'title': 'Controlled Access'
+            },
             'file_set.file_set_type': {
                 'title': 'File Set Type'
             },
             'assay_titles': {
                 'title': 'Assay'
+            },
+            'file_set.assay_term.term_name': {
+                'title': 'Assay Term'
             },
             'integrated_in.file_set_type': {
                 'title': 'Library Type'
@@ -112,6 +118,7 @@ def tabular_file():
                     'file_format',
                     'file_format_type',
                     'cell_type_annotation.term_name',
+                    'controlled_access',
                     'workflow.name',
                     'workflow.uniform_pipeline',
                 ],
