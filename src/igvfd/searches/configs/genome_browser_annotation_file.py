@@ -31,6 +31,9 @@ def genome_browser_annotation_file():
             'assay_titles': {
                 'title': 'Assay'
             },
+            'file_set.assay_term.term_name': {
+                'title': 'Assay Term'
+            },
             'file_set.samples.taxa': {
                 'title': 'Taxa'
             },
