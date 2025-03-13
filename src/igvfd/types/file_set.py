@@ -91,7 +91,7 @@ class FileSet(Item):
         Path('samples.modifications', include=['@id', 'modality', 'status']),
         Path('samples.treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('samples.institutional_certificates', include=['@id',
-             'certificate_identifier', 'status', 'data_use_limitation', 'data_use_limitation_modifiers', 'controlled_access']),
+             'certificate_identifier', 'status', 'data_use_limitation', 'data_use_limitation_modifiers', 'data_use_limitation_summary', 'controlled_access']),
         Path('construct_library_sets.integrated_content_files', include=[
              '@id', 'accession', 'file_set_type', 'summary', 'status', 'content_type', 'integrated_content_files']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
