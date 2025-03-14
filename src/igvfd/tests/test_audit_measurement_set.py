@@ -425,6 +425,7 @@ def test_audit_inconsistent_controlled_access(
     testapp,
     measurement_set,
     sequence_file,
+    sequence_file_sequencing_run_2,
     controlled_sequence_file_2,
     tissue,
     institutional_certificate
@@ -446,6 +447,26 @@ def test_audit_inconsistent_controlled_access(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent controlled access'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Multiple files of same access + IC of different access
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'file_set': measurement_set['@id']
+        }
+    )
+    testapp.patch_json(
+        institutional_certificate['@id'],
+        {
+            'controlled_access': True,
+            'data_use_limitation': 'GRU'
+
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent controlled access'
         for error in res.json['audit'].get('ERROR', [])
     )
     # Audit if any file's controlled access is different

@@ -288,11 +288,12 @@ def audit_inconsistent_controlled_access(value, system):
     files_by_access = {}
     files = value.get('files', [])
     for file in files:
-        file_object = system.get('request').embed(file, '@@object')
-        if file_object.get('controlled_access', '') not in files_by_access:
-            files_by_access[file_object.get('controlled_access', '')] = [file_object.get('@id')]
-        else:
-            files_by_access[file_object.get('controlled_access', '')].append(file_object.get('@id'))
+        file_object = system.get('request').embed(file, '@@object_with_select_calculated_properties?field=@id')
+        if file_object.get('controlled_access', None) is not None:
+            if file_object.get('controlled_access', None) not in files_by_access:
+                files_by_access[file_object.get('controlled_access', None)] = [file_object.get('@id')]
+            else:
+                files_by_access[file_object.get('controlled_access', None)].append(file_object.get('@id'))
 
     if True in files_by_access and False in files_by_access:
         controlled_access_of_files_phrase = 'controlled and uncontrolled access'
@@ -316,10 +317,11 @@ def audit_inconsistent_controlled_access(value, system):
     samples = value.get('samples', [])
     for sample in samples:
         sample_object = system.get('request').embed(
-            sample, '@@object_with_select_calculated_properties?field=institutional_certificates')
+            sample, '@@object_with_select_calculated_properties?field=institutional_certificates&field=@id')
         for ic in sample_object.get('institutional_certificates'):
-            if any(ic.get('controlled_access') != access for access in files_by_access):
-                if ic.get('controlled_access') is True:
+            ic_object = system.get('request').embed(ic, '@@object_with_select_calculated_properties?field=@id')
+            if any(ic_object.get('controlled_access') != access for access in files_by_access):
+                if ic_object.get('controlled_access') is True:
                     controlled_access_of_ic_phrase = 'controlled access'
                 else:
                     controlled_access_of_ic_phrase = 'uncontrolled access'
@@ -327,7 +329,7 @@ def audit_inconsistent_controlled_access(value, system):
                     f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                     f'contains files submitted as {controlled_access_of_files_phrase} but the '
                     f'sample {audit_link(path_to_text(sample_object["@id"]), sample_object["@id"])} '
-                    f'is covered by institutional certificate {audit_link(ic["certificate_identifier"], ic["@id"])} '
+                    f'is covered by institutional certificate {audit_link(ic_object["certificate_identifier"], ic_object["@id"])} '
                     f'which requires {controlled_access_of_ic_phrase}.'
                 )
                 yield AuditFailure(
