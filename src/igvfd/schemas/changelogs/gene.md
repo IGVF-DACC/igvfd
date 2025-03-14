@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 8
 
-* Remove `dbxrefs` from `required`.
+* Update required properties to remove `dbxrefs`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 28`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE M25`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE M17`.
