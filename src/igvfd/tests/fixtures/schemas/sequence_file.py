@@ -120,6 +120,23 @@ def controlled_sequence_file(lab, award, principal_analysis_set, platform_term_H
 
 
 @pytest.fixture
+def controlled_sequence_file_2(testapp, lab, award, principal_analysis_set, platform_term_HiSeq):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'c7959c698b818dc8d303ea1be819c0f1',
+        'file_format': 'fastq',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'reads',
+        'sequencing_run': 2,
+        'illumina_read_type': 'R1',
+        'sequencing_platform': platform_term_HiSeq['@id'],
+        'controlled_access': True
+    }
+    return testapp.post_json('/sequence_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def controlled_sequence_file_object(testapp, controlled_sequence_file):
     return testapp.post_json('/sequence_file', controlled_sequence_file, status=201).json['@graph'][0]
 
