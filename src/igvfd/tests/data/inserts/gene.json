@@ -333,5 +333,23 @@
             "SRY-box 7",
             "SRY (sex determining region Y)-box 7"
         ]
+    },
+    {
+        "geneid": "ENSG00000231702",
+        "locations": [
+            {
+                "assembly": "GRCh38",
+                "chromosome": "chr1",
+                "start": 1008076,
+                "end": 1008229
+            }
+        ],
+        "symbol": "ENSG00000231702",
+        "taxa": "Homo sapiens",
+        "transcriptome_annotation": "GENCODE 43",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "6781bacd-d557-41d5-8c64-98322558cb25",
+        "version_number": "2"
     }
 ]
