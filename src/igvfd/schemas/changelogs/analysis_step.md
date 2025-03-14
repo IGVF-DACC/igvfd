@@ -1,10 +1,5 @@
 ## Changelog for *`analysis_step.json`*
 
-### Schema version 6
-
-* Reduce `output_content_types` enum list to exclude `sequence barcodes`.
-* Reduce `input_content_types` enum list to exclude `sequence barcodes`.
-
 ### Minor changes since schema version 5
 
 * Extend `input_content_types` enum list to include `primer sequences`.

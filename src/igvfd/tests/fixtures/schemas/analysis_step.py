@@ -55,14 +55,3 @@ def analysis_step_v2(testapp, base_workflow):
         'workflow': base_workflow['@id']
     }
     return item
-
-
-@pytest.fixture
-def analysis_step_v5(testapp, analysis_step):
-    item = analysis_step.copy()
-    item.update({
-        'schema_version': '5',
-        'input_content_types': ['sequence barcodes'],
-        'output_content_types': ['alignments', 'sequence barcodes', 'barcode onlist']
-    })
-    return item

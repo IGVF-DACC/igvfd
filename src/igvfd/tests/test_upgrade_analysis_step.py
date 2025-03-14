@@ -14,11 +14,3 @@ def test_analysis_step_upgrade_2_3(upgrader, analysis_step_v2):
     value = upgrader.upgrade('analysis_step', analysis_step_v2, current_version='2', target_version='3')
     assert value['lab'] == '/labs/j-michael-cherry/'
     assert value['award'] == '/awards/HG012012/'
-
-
-def test_analysis_step_upgrade_5_6(upgrader, analysis_step_v5):
-    value = upgrader.upgrade('analysis_step', analysis_step_v5, current_version='5', target_version='6')
-    assert 'sequence barcodes' not in value['input_content_types']
-    assert value['input_content_types'] == ['barcode onlist']
-    assert 'sequence barcodes' not in value['output_content_types']
-    assert value['output_content_types'] == ['alignments', 'barcode onlist']
