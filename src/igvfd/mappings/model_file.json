@@ -1,6 +1,6 @@
 {
-    "hash": "127391967946aca6d6bfedfcc08e1f82",
-    "index_name": "model_file_12739196",
+    "hash": "ad5e463b77bc316849a606df74db97c0",
+    "index_name": "model_file_ad5e463b",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -656,7 +656,82 @@
                                         "type": "keyword"
                                     },
                                     "institutional_certificates": {
-                                        "type": "keyword"
+                                        "properties": {
+                                            "@id": {
+                                                "type": "keyword"
+                                            },
+                                            "@type": {
+                                                "type": "keyword"
+                                            },
+                                            "aliases": {
+                                                "type": "keyword"
+                                            },
+                                            "award": {
+                                                "type": "keyword"
+                                            },
+                                            "certificate_identifier": {
+                                                "type": "keyword"
+                                            },
+                                            "controlled_access": {
+                                                "store": true,
+                                                "type": "boolean"
+                                            },
+                                            "creation_timestamp": {
+                                                "type": "date"
+                                            },
+                                            "data_use_limitation": {
+                                                "type": "keyword"
+                                            },
+                                            "data_use_limitation_modifiers": {
+                                                "type": "keyword"
+                                            },
+                                            "data_use_limitation_summary": {
+                                                "type": "keyword"
+                                            },
+                                            "description": {
+                                                "type": "text"
+                                            },
+                                            "lab": {
+                                                "type": "keyword"
+                                            },
+                                            "notes": {
+                                                "type": "text"
+                                            },
+                                            "partner_awards": {
+                                                "type": "keyword"
+                                            },
+                                            "partner_labs": {
+                                                "type": "keyword"
+                                            },
+                                            "release_timestamp": {
+                                                "type": "date"
+                                            },
+                                            "samples": {
+                                                "type": "keyword"
+                                            },
+                                            "schema_version": {
+                                                "type": "keyword"
+                                            },
+                                            "status": {
+                                                "type": "keyword"
+                                            },
+                                            "submitted_by": {
+                                                "type": "keyword"
+                                            },
+                                            "submitter_comment": {
+                                                "type": "keyword"
+                                            },
+                                            "summary": {
+                                                "type": "keyword"
+                                            },
+                                            "urls": {
+                                                "type": "keyword"
+                                            },
+                                            "uuid": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "type": "object"
                                     },
                                     "lab": {
                                         "type": "keyword"
