@@ -1,6 +1,6 @@
 {
-    "hash": "c41e936a2a22314c9e79f4dcd86f638b",
-    "index_name": "configuration_file_c41e936a",
+    "hash": "2d8734413c629051373ba638281ee8c2",
+    "index_name": "configuration_file_2d873441",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -298,7 +298,90 @@
                                 "type": "keyword"
                             },
                             "assay_term": {
-                                "type": "keyword"
+                                "properties": {
+                                    "@id": {
+                                        "type": "keyword"
+                                    },
+                                    "@type": {
+                                        "type": "keyword"
+                                    },
+                                    "aliases": {
+                                        "type": "keyword"
+                                    },
+                                    "ancestors": {
+                                        "type": "keyword"
+                                    },
+                                    "assay_slims": {
+                                        "type": "keyword"
+                                    },
+                                    "category_slims": {
+                                        "type": "keyword"
+                                    },
+                                    "comment": {
+                                        "type": "keyword"
+                                    },
+                                    "creation_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
+                                    },
+                                    "deprecated_ntr_terms": {
+                                        "type": "keyword"
+                                    },
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "is_a": {
+                                        "type": "keyword"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
+                                    "notes": {
+                                        "type": "text"
+                                    },
+                                    "objective_slims": {
+                                        "type": "keyword"
+                                    },
+                                    "ontology": {
+                                        "type": "keyword"
+                                    },
+                                    "preferred_assay_titles": {
+                                        "type": "keyword"
+                                    },
+                                    "release_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "status": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_by": {
+                                        "type": "keyword"
+                                    },
+                                    "submitter_comment": {
+                                        "type": "keyword"
+                                    },
+                                    "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "synonyms": {
+                                        "type": "keyword"
+                                    },
+                                    "term_id": {
+                                        "type": "keyword"
+                                    },
+                                    "term_name": {
+                                        "type": "keyword"
+                                    },
+                                    "uuid": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "assay_titles": {
                                 "type": "keyword"
