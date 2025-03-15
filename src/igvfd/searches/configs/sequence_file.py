@@ -114,6 +114,7 @@ def sequence_file():
                 'facet_fields': [
                     'file_set.file_set_type',
                     'assay_titles',
+                    'file_set.assay_term.term_name',
                 ],
             },
             {
