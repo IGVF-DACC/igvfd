@@ -128,6 +128,7 @@ def tabular_file():
                 'facet_fields': [
                     'file_set.file_set_type',
                     'assay_titles',
+                    'file_set.assay_term.term_name',
                     'integrated_in.file_set_type',
                     'integrated_in.associated_phenotypes.term_name',
                     'integrated_in.small_scale_gene_list.symbol',
