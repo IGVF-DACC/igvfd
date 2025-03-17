@@ -503,7 +503,7 @@ def audit_missing_strand_specificity(value, system):
         }
     ]
     '''
-    audit_message_strand_specificity = get_audit_message(audit_missing_strand_specificity, index=0)
+    audit_message_strand_specificity = get_audit_message(audit_missing_strand_specificity)
 
     expected_assays = {'Perturb-seq', 'scCRISPR screen', 'TAP-seq', 'CERES-seq'}
     preferred_assay_title = value.get('preferred_assay_title')
