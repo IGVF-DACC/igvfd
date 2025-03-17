@@ -616,10 +616,14 @@ class AnalysisSet(FileSet):
         all_sample_terms = []
         for classification in sorted(sample_classification_term_target.keys()):
             terms_by_classification = f"{', '.join(sorted(sample_classification_term_target[classification]))}"
+            # Put the terms after the "multiplexed sample of" and drop
+            # the underlying classifications
+            if 'multiplexed sample of' in classification:
+                terms_by_classification = f'multiplexed sample of {terms_by_classification}'
             # Differentiated, reprogrammed, pooled cell specimen can be merged
             # into the terms_by_classification before this. Therefore we don't
             # want to append it to the terms_by_classification a second time.
-            if not any(x in terms_by_classification for x in [
+            elif not any(x in terms_by_classification for x in [
                     'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen']
             ):
                 # Insert the classification before the targeted_sample_term if it exists.
@@ -629,10 +633,6 @@ class AnalysisSet(FileSet):
                     )
                 else:
                     terms_by_classification = f'{terms_by_classification} {classification}'
-            # Put the terms after the "multiplexed sample of" and drop
-            # the underlying classifications
-            elif 'multiplexed sample of' in classification:
-                terms_by_classification = f'multiplexed sample of {terms_by_classification}'
             # Failsafe case.
             else:
                 terms_by_classification = f'{terms_by_classification} {classification}'
