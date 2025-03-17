@@ -1284,13 +1284,14 @@ def test_audit_missing_strand_specificity(testapp, measurement_set_perturb_seq):
         error['category'] == 'missing strand specificity'
         for error in res.json['audit'].get('ERROR', [])
     )
-    # Check if other content type will trigger warning
+    # Patch the measurement set to include strand_specificity
     testapp.patch_json(
         measurement_set_perturb_seq['@id'],
         {
             'strand_specificity': "5' to 3'"
         }
     )
+    # Ensure the audit no longer triggers after adding strand_specificity
     res = testapp.get(measurement_set_perturb_seq['@id'] + '@@audit')
     assert any(
         error['category'] != 'missing strand specificity'
