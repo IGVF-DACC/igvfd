@@ -19,6 +19,9 @@ def image_file():
             'assay_titles': {
                 'title': 'Assay'
             },
+            'file_set.assay_term.term_name': {
+                'title': 'Assay Term'
+            },
             'file_set.samples.taxa': {
                 'title': 'Taxa'
             },
@@ -92,6 +95,7 @@ def image_file():
                 'facet_fields': [
                     'file_set.file_set_type',
                     'assay_titles',
+                    'file_set.assay_term.term_name'
                 ],
             },
             {
