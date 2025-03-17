@@ -620,7 +620,8 @@ class AnalysisSet(FileSet):
             # into the terms_by_classification before this. Therefore we don't
             # want to append it to the terms_by_classification a second time.
             if not any(x in terms_by_classification for x in [
-                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen']):
+                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen']
+            ):
                 # Insert the classification before the targeted_sample_term if it exists.
                 if 'induced to' in terms_by_classification:
                     terms_by_classification = terms_by_classification.replace(
@@ -632,6 +633,9 @@ class AnalysisSet(FileSet):
             # the underlying classifications
             elif 'multiplexed sample of' in classification:
                 terms_by_classification = f'multiplexed sample of {terms_by_classification}'
+            # Failsafe case.
+            else:
+                terms_by_classification = f'{terms_by_classification} {classification}'
 
             all_sample_terms.append(terms_by_classification)
 
