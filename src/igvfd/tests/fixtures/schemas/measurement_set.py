@@ -389,3 +389,12 @@ def measurement_set_v24(measurement_set):
         'preferred_assay_title': 'Growth CRISPR screen'
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_perturb_seq(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'preferred_assay_title': 'Perturb-seq'
+    })
+    return item

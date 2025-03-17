@@ -1275,3 +1275,24 @@ def test_audit_unexpected_onlist_files(testapp, measurement_set_one_onlist, tabu
         error['category'] == 'unexpected onlist files'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_missing_strand_specificity(testapp, measurement_set_perturb_seq):
+    # Check if the measurement set with no strand_specificity and preferred assay title Perturb-seq is audited
+    res = testapp.get(measurement_set_perturb_seq['@id'] + '@@audit')
+    assert all(
+        error['category'] == 'missing strand specificity'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Check if other content type will trigger warning
+    testapp.patch_json(
+        measurement_set_perturb_seq['@id'],
+        {
+            'strand_specificity': "5' to 3'"
+        }
+    )
+    res = testapp.get(measurement_set_perturb_seq['@id'] + '@@audit')
+    assert any(
+        error['category'] != 'missing strand specificity'
+        for error in res.json['audit'].get('ERROR', [])
+    )
