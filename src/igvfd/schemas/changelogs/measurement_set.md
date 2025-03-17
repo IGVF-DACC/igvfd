@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 23
+
+* Add `strand_specificity`.
+
 ### Schema version 25
 
 * Adjust `preferred_assay_title` enum list to remove `Growth CRISPR screen`.
