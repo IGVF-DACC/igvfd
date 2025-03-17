@@ -311,7 +311,7 @@ def audit_inconsistent_controlled_access(value, system):
         )
     elif True in files_by_access and False not in files_by_access:
         controlled_access_of_files_phrase = 'controlled access'
-    elif True not in files_by_access and False in files_by_access:
+    else:
         controlled_access_of_files_phrase = 'uncontrolled access'
 
     samples = value.get('samples', [])
