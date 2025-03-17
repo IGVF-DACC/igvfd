@@ -1,6 +1,6 @@
 {
-    "hash": "4a8c2c36f85bea119c86af21dab9a65a",
-    "index_name": "image_file_4a8c2c36",
+    "hash": "831a308fe9fde250a90ea578b5f83b68",
+    "index_name": "image_file_831a308f",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -1225,6 +1225,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "strand_specificity": {
                                 "type": "keyword"
                             },
                             "submitted_by": {

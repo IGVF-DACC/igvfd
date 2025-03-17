@@ -1,6 +1,6 @@
 {
-    "hash": "c2c845a182ed2f81c5c9960b226e99bd",
-    "index_name": "prediction_set_c2c845a1",
+    "hash": "b8073a392bccf7e91ac015cd328067af",
+    "index_name": "prediction_set_b8073a39",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -818,6 +818,9 @@
                             "status": {
                                 "type": "keyword"
                             },
+                            "strand_specificity": {
+                                "type": "keyword"
+                            },
                             "submitted_by": {
                                 "type": "keyword"
                             },
@@ -1124,6 +1127,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "strand_specificity": {
                                 "type": "keyword"
                             },
                             "submitted_by": {

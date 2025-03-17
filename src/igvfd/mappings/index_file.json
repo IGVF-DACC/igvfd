@@ -1,6 +1,6 @@
 {
-    "hash": "a2c49525a57bf1175e46b2db98f2ee32",
-    "index_name": "index_file_a2c49525",
+    "hash": "ef6051fd6e7bc9355abb53c692470b26",
+    "index_name": "index_file_ef6051fd",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -1235,6 +1235,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "strand_specificity": {
                                 "type": "keyword"
                             },
                             "submitted_by": {

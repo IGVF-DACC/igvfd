@@ -1,6 +1,6 @@
 {
-    "hash": "747326bfe566b99e8a779726aca366f2",
-    "index_name": "primary_cell_747326bf",
+    "hash": "b25ebc1940ee10d59ef75b0381090c62",
+    "index_name": "primary_cell_b25ebc19",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1206,6 +1206,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "strand_specificity": {
                                 "type": "keyword"
                             },
                             "submitted_by": {

@@ -1,6 +1,6 @@
 {
-    "hash": "1416c2921f8a65fcbeb1d40510c2e605",
-    "index_name": "tissue_1416c292",
+    "hash": "5f397b7798bec1e8be2bd1c0d1e034a4",
+    "index_name": "tissue_5f397b77",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1206,6 +1206,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "strand_specificity": {
                                 "type": "keyword"
                             },
                             "submitted_by": {

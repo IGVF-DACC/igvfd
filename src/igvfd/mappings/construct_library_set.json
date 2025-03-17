@@ -1,6 +1,6 @@
 {
-    "hash": "2cddd829a918c7d54ff47289bde752e7",
-    "index_name": "construct_library_set_2cddd829",
+    "hash": "e962982c9179b545abb0185e38b5ce5e",
+    "index_name": "construct_library_set_e962982c",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1398,6 +1398,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "strand_specificity": {
                                 "type": "keyword"
                             },
                             "submitted_by": {

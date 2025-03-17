@@ -1,6 +1,6 @@
 {
-    "hash": "38435e792ea3050a5ed56162d480a3c7",
-    "index_name": "signal_file_38435e79",
+    "hash": "42853d655c7873f731f6275d1a370604",
+    "index_name": "signal_file_42853d65",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -1321,6 +1321,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "strand_specificity": {
                                 "type": "keyword"
                             },
                             "submitted_by": {
