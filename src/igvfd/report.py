@@ -97,10 +97,10 @@ def _convert_camel_to_snake(type_str):
 def get_host_type(host):
     host_type = 'localhost'
     if host.endswith('igvf.org'):
-        host_url_split = host.split('.')
-        host_type = host_url_split[-3]
+        host_split = host.split('.')
+        host_type = host_split[-3]
         if host_type == 'demo':
-            host_type = host_url_split[0]
+            host_type = host_split[0]
     return host_type
 
 
