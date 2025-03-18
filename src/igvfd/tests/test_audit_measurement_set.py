@@ -1282,7 +1282,7 @@ def test_audit_missing_strand_specificity(testapp, measurement_set_perturb_seq):
     res = testapp.get(measurement_set_perturb_seq['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing strand specificity'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     # Patch the measurement set to include strand_specificity
     testapp.patch_json(
@@ -1295,5 +1295,5 @@ def test_audit_missing_strand_specificity(testapp, measurement_set_perturb_seq):
     res = testapp.get(measurement_set_perturb_seq['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing strand specificity'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )

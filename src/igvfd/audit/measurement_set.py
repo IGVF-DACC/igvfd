@@ -499,7 +499,7 @@ def audit_missing_strand_specificity(value, system):
         {
             "audit_description": "Single-cell CRISPR screens, such as Perturb-seq, scCRISPR screen, TAP-seq, and CERES-seq, are expected to specify strand specificity.",
             "audit_category": "missing strand specificity",
-            "audit_level": "WARNING"
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
