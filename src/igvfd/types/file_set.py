@@ -533,6 +533,7 @@ class AnalysisSet(FileSet):
         two_classification_cases = {
             'differentiated cell specimen, pooled cell specimen': ['pooled differentiated cell specimen'],
             'pooled cell specimen, reprogrammed cell specimen': ['pooled reprogrammed cell specimen'],
+            'cell line, pooled cell specimen': ['pooled cell specimen']
         }
 
         classification_to_prefix = {
