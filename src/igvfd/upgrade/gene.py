@@ -99,4 +99,5 @@ def gene_9_10(value, system):
     if value.get('transcriptome_annotation') == 'GENCODE 28, GENCODE M17':
         value['transcriptome_annotation'] = 'GENCODE 32, GENCODE M23'
         notes += f'This object\'s transcriptome_annotation was GENCODE 28, GENCODE M17 but has been upgraded to GENCODE 32, GENCODE M23 as requested by the lab.'
+        value['notes'] = notes.strip()
     return
