@@ -1,6 +1,6 @@
 ## Changelog for *`measurement_set.json`*
 
-### Minor changes since schema version 23
+### Minor changes since schema version 25
 
 * Add `strand_specificity`.
 

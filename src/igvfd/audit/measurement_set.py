@@ -492,7 +492,7 @@ def audit_missing_auxiliary_set(value, system):
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('MeasurementSet', frame='embedded')
+@audit_checker('MeasurementSet', frame='object')
 def audit_missing_strand_specificity(value, system):
     '''
     [
@@ -507,7 +507,7 @@ def audit_missing_strand_specificity(value, system):
 
     expected_assays = {'Perturb-seq', 'scCRISPR screen', 'TAP-seq', 'CERES-seq'}
     preferred_assay_title = value.get('preferred_assay_title')
-    strand_specificity = value.get('strand_specificity')
+    strand_specificity = value.get('strand_specificity', None)
 
     if preferred_assay_title in expected_assays and strand_specificity is None:
         detail = (
