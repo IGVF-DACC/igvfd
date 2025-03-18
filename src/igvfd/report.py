@@ -94,6 +94,16 @@ def _convert_camel_to_snake(type_str):
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', tmp).lower()
 
 
+def get_host_type(host):
+    host_type = 'localhost'
+    if host.endswith('igvf.org'):
+        host_url_split = host.split('.')
+        host_type = host_url_split[-3]
+        if host_type == 'demo':
+            host_type = host_url_split[0]
+    return host_type
+
+
 @view_config(route_name='report_download', request_method='GET')
 def report_download(context, request):
     downloadtime = datetime.datetime.now()
@@ -236,10 +246,7 @@ def multitype_report_download(context, request):
 
     # Stream response using chunked encoding.
     request.response.content_type = 'text/tsv'
-    host_url_split = request.host_url.split('://')[-1].split('.')
-    host_type = host_url_split[-3]
-    if host_type == 'demo':
-        host_type = host_url_split[0]
+    host_type = get_host_type(request.host)
     request.response.content_disposition = 'attachment;filename="igvf_{}_{}_report_{}_{}_{}_{}h_{}m.tsv"'.format(
         host_type,
         report_type,

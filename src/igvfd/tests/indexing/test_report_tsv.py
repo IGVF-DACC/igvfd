@@ -38,7 +38,8 @@ def test_multitype_report_download_no_href(workbook, testapp):
     res = testapp.get('/multireport.tsv?institute_label=Stanford')
     assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
     disposition = res.headers['content-disposition']
-    assert disposition.startswith('attachment;filename="igvf_lab') and disposition.endswith('.tsv"')
+    assert disposition.startswith('attachment;filename="igvf') and disposition.endswith(
+        '.tsv"') and 'lab_report' in disposition
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
     assert lines[1].split(b'\t') == [
