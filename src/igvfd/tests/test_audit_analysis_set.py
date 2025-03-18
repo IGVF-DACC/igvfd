@@ -418,3 +418,38 @@ def test_audit_missing_transcriptome(
         error['category'] != 'missing reference files'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_inconsistent_controlled_access_analysis_set(
+    testapp,
+    principal_analysis_set,
+    analysis_set_base,
+    alignment_file,
+    controlled_access_alignment_file,
+    tissue,
+    institutional_certificate
+):
+    # The Analysis Set has a controlled bam, resulting in the audit.
+    testapp.patch_json(
+        institutional_certificate['@id'],
+        {
+            'samples': [tissue['@id']]
+        }
+    )
+    res = testapp.get(principal_analysis_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent controlled access'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Move the controlled file away to a different file set.
+    testapp.patch_json(
+        controlled_access_alignment_file['@id'],
+        {
+            'file_set': analysis_set_base['@id']
+        }
+    )
+    res = testapp.get(principal_analysis_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent controlled access'
+        for error in res.json['audit'].get('ERROR', [])
+    )

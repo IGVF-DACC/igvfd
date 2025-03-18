@@ -421,7 +421,7 @@ def test_audit_missing_institutional_certification(
     )
 
 
-def test_audit_inconsistent_controlled_access(
+def test_audit_inconsistent_controlled_access_measurement_set(
     testapp,
     measurement_set,
     sequence_file,
