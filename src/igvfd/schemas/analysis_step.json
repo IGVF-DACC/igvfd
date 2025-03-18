@@ -92,7 +92,7 @@
                     "computational model training": "The process of creating or refining a computational model.",
                     "counts normalization": "Adjusting raw read counts to account for biases in sequencing depth or composition.",
                     "demultiplexing": "The process of assigning sequencing reads to individual samples or cells using barcode identifiers or genetic demultiplexing based on natural genetic variation.",
-                    "differential expression analysis": "The statistical comparison of gene expression levels between conditions or cell populations.",
+                    "differential expression analysis": "The statistical comparison of gene expression levels between two or more conditions or cell populations.",
                     "fastq concatenation": "The process of combining fastqs files from multiple lanes.",
                     "file format conversion": "The conversion of data files from one file format to another.",
                     "filtering": "The removal of low-quality reads or sequences based on specified criteria.",
