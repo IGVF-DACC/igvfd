@@ -20,6 +20,7 @@ METADATA_COLUMN_TO_FIELDS_MAPPING = OrderedDict(
         ('File content', ['files.content_type']),
         ('Fileset accession', ['accession']),
         ('Assay', ['assay_term.term_name']),
+        ('Preferred assay title', ['preferred_assay_title']),
         ('Donor(s)', ['donors.accession']),
         ('Sample(s)', ['samples.accession']),
         ('Sample term name', ['samples.sample_term.term_name']),
