@@ -1,6 +1,6 @@
 {
-    "hash": "102a26aa47d2ccad8cc80415857f487f",
-    "index_name": "measurement_set_102a26aa",
+    "hash": "f7ef34843999ecdc00eac6e1cacc8e7d",
+    "index_name": "measurement_set_f7ef3484",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1011,6 +1011,9 @@
                             "status": {
                                 "type": "keyword"
                             },
+                            "strand_specificity": {
+                                "type": "keyword"
+                            },
                             "submitted_by": {
                                 "type": "keyword"
                             },
@@ -1319,6 +1322,9 @@
                             "status": {
                                 "type": "keyword"
                             },
+                            "strand_specificity": {
+                                "type": "keyword"
+                            },
                             "submitted_by": {
                                 "type": "keyword"
                             },
@@ -1625,6 +1631,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "strand_specificity": {
                                 "type": "keyword"
                             },
                             "submitted_by": {
@@ -2614,6 +2623,9 @@
                             "status": {
                                 "type": "keyword"
                             },
+                            "strand_specificity": {
+                                "type": "keyword"
+                            },
                             "submitted_by": {
                                 "type": "keyword"
                             },
@@ -3549,6 +3561,9 @@
                         "type": "keyword"
                     },
                     "status": {
+                        "type": "keyword"
+                    },
+                    "strand_specificity": {
                         "type": "keyword"
                     },
                     "submitted_by": {

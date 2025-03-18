@@ -389,3 +389,16 @@ def measurement_set_v24(measurement_set):
         'preferred_assay_title': 'Growth CRISPR screen'
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_perturb_seq(testapp, lab, award, assay_term_crispr, tissue):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_crispr['@id'],
+        'samples': [tissue['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_title': 'Perturb-seq'
+    }
+    return testapp.post_json('/measurement_set', item).json['@graph'][0]

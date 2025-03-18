@@ -302,6 +302,20 @@
                 "igvf_utils": "direct RNA, exome capture"
             }
         },
+        "strand_specificity": {
+            "title": "Strand Specificity",
+            "description": "The strand-specificity of the sequencing results within Perturb-seq, scCRISPR screen, TAP-seq, and CERES-seq assays.",
+            "type": "string",
+            "enum": [
+                "5' to 3'",
+                "3' to 5'",
+                "unstranded"
+            ],
+            "submissionExample": {
+                "appscript": "5' to 3'",
+                "igvf_utils": "5' to 3'"
+            }
+        },
         "auxiliary_sets": {
             "title": "Auxiliary Sets",
             "description": "The auxiliary sets of files produced alongside raw data from this measurement set.",

@@ -1,6 +1,6 @@
 {
-    "hash": "79bcda40c81379c2ea17e239984a0a23",
-    "index_name": "model_set_79bcda40",
+    "hash": "1f53a705260590ed0847ca641646249a",
+    "index_name": "model_set_1f53a705",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -818,6 +818,9 @@
                             "status": {
                                 "type": "keyword"
                             },
+                            "strand_specificity": {
+                                "type": "keyword"
+                            },
                             "submitted_by": {
                                 "type": "keyword"
                             },
@@ -1124,6 +1127,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "strand_specificity": {
                                 "type": "keyword"
                             },
                             "submitted_by": {
@@ -1865,6 +1871,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "strand_specificity": {
                                 "type": "keyword"
                             },
                             "submitted_by": {

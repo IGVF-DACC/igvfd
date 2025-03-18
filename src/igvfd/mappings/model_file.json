@@ -1,6 +1,6 @@
 {
-    "hash": "127391967946aca6d6bfedfcc08e1f82",
-    "index_name": "model_file_12739196",
+    "hash": "f0f169cd02a831054fb6bb9fd3de5ef4",
+    "index_name": "model_file_f0f169cd",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -1242,6 +1242,9 @@
                                 "type": "keyword"
                             },
                             "status": {
+                                "type": "keyword"
+                            },
+                            "strand_specificity": {
                                 "type": "keyword"
                             },
                             "submitted_by": {
