@@ -72,7 +72,7 @@
             }
         },
         "classifications": {
-            "comment": "If an in vitro system has classification organoid, gastruloid, differentiated cell specimen, or reprogrammed cell specimen then targeted_sample_term, cell_fate_change_treatments, time_post_change, and time_post_change_units are required.",
+            "comment": "If an in vitro system has classification organoid, gastruloid, differentiated cell specimen, or reprogrammed cell specimen then targeted_sample_term, cell_fate_change_treatments, time_post_change, and time_post_change_units are required. If an in vitro system classifciations is pooled cell specimen, it needs to be paired with either differentiated cell specimen, reprogrammed cell specimen, or cell line classifications.",
             "allOf": [
                 {
                     "if": {
@@ -297,29 +297,6 @@
                         {
                             "properties": {
                                 "classifications": {
-                                    "contains": {
-                                        "enum": [
-                                            "pooled cell specimen"
-                                        ]
-                                    },
-                                    "not": {
-                                        "contains": {
-                                            "enum": [
-                                                "cell line",
-                                                "organoid",
-                                                "gastruloid",
-                                                "embryoid",
-                                                "differentiated cell specimen",
-                                                "reprogrammed cell specimen"
-                                            ]
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        {
-                            "properties": {
-                                "classifications": {
                                     "allOf": [
                                         {
                                             "contains": {
@@ -373,6 +350,39 @@
                                         "contains": {
                                             "enum": [
                                                 "cell line",
+                                                "organoid",
+                                                "gastruloid",
+                                                "embryoid",
+                                                "differentiated cell specimen"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "classifications": {
+                                    "allOf": [
+                                        {
+                                            "contains": {
+                                                "enum": [
+                                                    "cell line"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "contains": {
+                                                "enum": [
+                                                    "pooled cell specimen"
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "not": {
+                                        "contains": {
+                                            "enum": [
+                                                "reprogrammed cell specimen",
                                                 "organoid",
                                                 "gastruloid",
                                                 "embryoid",
@@ -438,7 +448,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "25"
+            "default": "26"
         },
         "classifications": {
             "title": "Classifications",

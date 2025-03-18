@@ -189,3 +189,9 @@ def test_in_vitro_system_upgrade_24_25(upgrader, in_vitro_system_v24):
     value = upgrader.upgrade('in_vitro_system', in_vitro_system_v24, current_version='24', target_version='25')
     assert value['schema_version'] == '25'
     assert value['biosample_qualifiers'] == ['6 days calcified']
+
+
+def test_in_vitro_system_upgrade_25_26(upgrader, in_vitro_system_v25):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v25, current_version='25', target_version='26')
+    assert value['schema_version'] == '26'
+    assert sorted(value['classifications']) == sorted(['pooled cell specimen', 'cell line'])
