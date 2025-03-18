@@ -236,7 +236,12 @@ def multitype_report_download(context, request):
 
     # Stream response using chunked encoding.
     request.response.content_type = 'text/tsv'
-    request.response.content_disposition = 'attachment;filename="igvf_{}_report_{}_{}_{}_{}h_{}m.tsv"'.format(
+    host_url_split = request.host_url.split('://')[-1].split('.')
+    host_type = host_url_split[-3]
+    if host_type == 'demo':
+        host_type = host_url_split[0]
+    request.response.content_disposition = 'attachment;filename="igvf_{}_{}_report_{}_{}_{}_{}h_{}m.tsv"'.format(
+        host_type,
         report_type,
         downloadtime.year,
         downloadtime.month,
