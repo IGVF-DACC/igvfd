@@ -392,9 +392,13 @@ def measurement_set_v24(measurement_set):
 
 
 @pytest.fixture
-def measurement_set_perturb_seq(measurement_set):
-    item = measurement_set.copy()
-    item.update({
+def measurement_set_perturb_seq(testapp, lab, award, assay_term_crispr, tissue):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_crispr['@id'],
+        'samples': [tissue['@id']],
+        'file_set_type': 'experimental data',
         'preferred_assay_title': 'Perturb-seq'
-    })
-    return item
+    }
+    return testapp.post_json('/measurement_set', item).json['@graph'][0]
