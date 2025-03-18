@@ -304,7 +304,7 @@
         },
         "strand_specificity": {
             "title": "Strand Specificity",
-            "description": "The strand-specificty of the sequencing results within Perturb-seq, scCRISPR screen, TAP-seq, and CERES-seq assays.",
+            "description": "The strand-specificity of the sequencing results within Perturb-seq, scCRISPR screen, TAP-seq, and CERES-seq assays.",
             "type": "string",
             "enum": [
                 "5' to 3'",
