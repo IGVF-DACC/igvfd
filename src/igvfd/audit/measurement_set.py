@@ -492,39 +492,33 @@ def audit_missing_auxiliary_set(value, system):
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-def test_audit_missing_strand_specificity(testapp, measurement_set_perturb_seq):
-    # Ensure strand_specificity is missing before testing
-    testapp.patch_json(
-        measurement_set_perturb_seq['@id'],
-        {'strand_specificity': None}
-    )
+@audit_checker('MeasurementSet', frame='embedded')
+def audit_missing_strand_specificity(value, system):
+    '''
+    [
+        {
+            "audit_description": "Single-cell CRISPR screens, such as Perturb-seq, scCRISPR screen, TAP-seq, and CERES-seq, are expected to specify strand specificity.",
+            "audit_category": "missing strand specificity",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    audit_message_strand_specificity = get_audit_message(audit_missing_strand_specificity)
 
-    # Fetch the audit response
-    res = testapp.get(measurement_set_perturb_seq['@id'] + '@@audit')
+    expected_assays = {'Perturb-seq', 'scCRISPR screen', 'TAP-seq', 'CERES-seq'}
+    preferred_assay_title = value.get('preferred_assay_title')
+    strand_specificity = value.get('strand_specificity')
 
-    # Debugging: Print full audit response if test fails
-    print('Audit response:', res.json['audit'])
-
-    # Check if the audit is triggered under WARNING
-    assert any(
-        error['category'] == 'missing strand specificity'
-        for error in res.json['audit'].get('WARNING', [])
-    ), f"Audit did not trigger as expected. Full audit response: {res.json['audit']}"
-
-    # Patch the measurement set to include strand_specificity
-    testapp.patch_json(
-        measurement_set_perturb_seq['@id'],
-        {'strand_specificity': "5' to 3'"}
-    )
-
-    # Fetch updated audit results
-    res = testapp.get(measurement_set_perturb_seq['@id'] + '@@audit')
-
-    # Ensure the audit no longer triggers
-    assert all(
-        error['category'] != 'missing strand specificity'
-        for error in res.json['audit'].get('WARNING', [])
-    ), f"Audit still triggered incorrectly after adding strand_specificity. Full audit response: {res.json['audit']}"
+    if preferred_assay_title in expected_assays and strand_specificity is None:
+        detail = (
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'is missing required `strand_specificity` for assay {preferred_assay_title}.'
+        )
+        yield AuditFailure(
+            audit_message_strand_specificity.get('audit_category', ''),
+            f'{detail} {audit_message_strand_specificity.get("audit_description", "")}',
+            level=audit_message_strand_specificity.get('audit_level', '')
+        )
 
 
 @audit_checker('MeasurementSet', frame='object')
