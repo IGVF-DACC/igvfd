@@ -46,7 +46,7 @@
         },
         "pearson_correlation": {
             "title": "Pearson Correlation",
-            "description": "The correlation of log2 RNA/DNA ratios across tested sequences as a measure of replicable activity signal.",
+            "description": "The correlation of log2 RNA/DNA ratios across tested sequences as a measure of replicable activity signal. Value is the median of replicate comparisons using only oligos with >= 10 barcodes.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -55,7 +55,7 @@
         },
         "median_barcodes_passing_filtering": {
             "title": "Median Barcodes Passing Filtering",
-            "description": "Median number of barcodes across tested sequences that passed filtering to determine if there was sufficient barcode to oligo coverage.",
+            "description": "Median number of barcodes across tested sequences that passed filtering to determine if there was sufficient barcode to oligo coverage. Value is the median of all replicates.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -64,25 +64,25 @@
         },
         "median_rna_read_count": {
             "title": "Median RNA Read Count",
-            "description": "Median of RNA read count for oligos that passed filtering to determine sufficient coverage in terms of read count.",
+            "description": "Median of RNA read count for oligos that passed filtering to determine sufficient coverage in terms of read count. Value is the median of all replicates.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
                 "igvf_utils": 8
             }
         },
-        "pct_oligos_passing": {
-            "title": "Percent Of Oligos Passing Filters",
-            "description": "Percent of tested sequences that passed filtering of the mappable sequences to determine if the designed library was sufficiently recovered.",
+        "fraction_oligos_passing": {
+            "title": "Fraction Of Oligos Passing Filters",
+            "description": "Fraction of tested sequences that passed filtering of the mappable sequences to determine if the designed library was sufficiently recovered. Value is the median of all replicates.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
                 "igvf_utils": 8
             }
         },
-        "median_assigned_barocdes": {
+        "median_assigned_barcodes": {
             "title": "Median Number Of Assigned Barcodes",
-            "description": "Median number of barcodes assigned to tested sequences in mapping as a quality control measure for the mapping step, whether there is sufficient barcode to oligo coverage.",
+            "description": "Median number of barcodes assigned to tested sequences in mapping as a quality control measure for the assignment step, whether there is sufficient barcode to oligo coverage.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -91,7 +91,7 @@
         },
         "fraction_assigned_oligos": {
             "title": "Fraction Of Assigned Oligos",
-            "description": "Fraction of assigned tested sequences in mapping to determine if the library during the mapping step was sufficiently recovered.",
+            "description": "Fraction of assigned tested sequences in mapping to determine if the library during the assignment step was sufficiently recovered.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
