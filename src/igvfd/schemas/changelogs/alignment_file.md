@@ -1,5 +1,9 @@
 ## Changelog for *`alignment_file.json`*
 
+### Minor changes since schema version 14
+
+* Extend `file_format` enum list to include `cram`.
+
 ### Schema version 14
 
 * Adjust `transcriptome_annotation` enum list to replace `GENCODE 28, GENCODE M17` with `GENCODE 32, GENCODE M23`.
