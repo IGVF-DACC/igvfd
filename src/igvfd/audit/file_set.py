@@ -660,3 +660,82 @@ def audit_control_for_control_type(value, system):
             f'will be reverse calculated.'
         )
         yield AuditFailure(audit_message_missing_control_for.get('audit_category', ''), f'{detail} {audit_message_missing_control_for.get("audit_description", "")}', level=audit_message_missing_control_for.get('audit_level', ''))
+
+
+@audit_checker('MeasurementSet', frame='object')
+@audit_checker('AnalysisSet', frame='object')
+def audit_inconsistent_controlled_access(value, system):
+    '''
+    [
+        {
+            "audit_description": "The files in a file set should be submitted with the same access restrictions as indicated by the institutional certificate covering the samples linked to the same file set.",
+            "audit_category": "inconsistent controlled access",
+            "audit_level": "ERROR"
+        },
+        {
+            "audit_description": "All files in a file set should be submitted with the same access restrictions as each other.",
+            "audit_category": "inconsistent controlled access",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message_file_sample = get_audit_message(audit_inconsistent_controlled_access, index=0)
+    audit_message_mixed_files = get_audit_message(audit_inconsistent_controlled_access, index=1)
+
+    formats_to_check = ['bam', 'cram', 'fastq']
+    files_by_access = {}
+    files = value.get('files', [])
+    for file in files:
+        file_object = system.get('request').embed(file, '@@object_with_select_calculated_properties?field=@id')
+        if file_object.get('file_format', '') in formats_to_check and file_object.get('controlled_access', None) is not None:
+            if file_object.get('controlled_access', None) not in files_by_access:
+                files_by_access[file_object.get('controlled_access', None)] = [file_object.get('@id')]
+            else:
+                files_by_access[file_object.get('controlled_access', None)].append(file_object.get('@id'))
+
+    if True in files_by_access and False in files_by_access:
+        controlled_access_of_files_phrase = 'controlled and uncontrolled access'
+        # Mixed controlled access is only unexpected for Meas Sets
+        if 'MeasurementSet' in value.get('@type', []):
+            controlled_files_link = ', '.join([audit_link(path_to_text(file), file) for file in files_by_access[True]])
+            uncontrolled_files_link = ', '.join([audit_link(path_to_text(file), file)
+                                                for file in files_by_access[False]])
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} contains '
+                f'files {controlled_files_link} submitted as controlled access and files {uncontrolled_files_link} '
+                f'submitted as uncontrolled access.'
+            )
+            yield AuditFailure(
+                audit_message_mixed_files.get('audit_category', ''),
+                f'{detail} {audit_message_mixed_files.get("audit_description", "")}',
+                level=audit_message_mixed_files.get('audit_level', '')
+            )
+    elif True in files_by_access and False not in files_by_access:
+        controlled_access_of_files_phrase = 'controlled access'
+    else:
+        controlled_access_of_files_phrase = 'uncontrolled access'
+
+    samples = value.get('samples', [])
+    for sample in samples:
+        sample_object = system.get('request').embed(
+            sample, '@@object_with_select_calculated_properties?field=institutional_certificates&field=@id')
+        for ic in sample_object.get('institutional_certificates'):
+            ic_object = system.get('request').embed(ic, '@@object_with_select_calculated_properties?field=@id')
+            if any(ic_object.get('controlled_access') != access for access in files_by_access):
+                if ic_object.get('controlled_access') is True:
+                    controlled_access_of_ic_phrase = 'controlled access'
+                else:
+                    controlled_access_of_ic_phrase = 'uncontrolled access'
+                detail = (
+                    f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                    f'contains files submitted as {controlled_access_of_files_phrase} but the '
+                    f'sample {audit_link(path_to_text(sample_object["@id"]), sample_object["@id"])} '
+                    f'is covered by institutional certificate {audit_link(ic_object["certificate_identifier"], ic_object["@id"])} '
+                    f'which requires {controlled_access_of_ic_phrase}.'
+                )
+                yield AuditFailure(
+                    audit_message_file_sample.get('audit_category', ''),
+                    f'{detail} {audit_message_file_sample.get("audit_description", "")}',
+                    level=audit_message_file_sample.get('audit_level', '')
+                )

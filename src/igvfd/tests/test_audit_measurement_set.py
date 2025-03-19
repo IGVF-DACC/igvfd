@@ -421,6 +421,69 @@ def test_audit_missing_institutional_certification(
     )
 
 
+def test_audit_inconsistent_controlled_access_measurement_set(
+    testapp,
+    measurement_set,
+    sequence_file,
+    sequence_file_sequencing_run_2,
+    controlled_sequence_file_2,
+    tissue,
+    institutional_certificate
+):
+    # No audit when the file and the sample's IC
+    # are both uncontrolled (or both controlled)
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_set': measurement_set['@id']
+        }
+    )
+    testapp.patch_json(
+        institutional_certificate['@id'],
+        {
+            'samples': [tissue['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent controlled access'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Multiple files of same access + IC of different access
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'file_set': measurement_set['@id']
+        }
+    )
+    testapp.patch_json(
+        institutional_certificate['@id'],
+        {
+            'controlled_access': True,
+            'data_use_limitation': 'GRU'
+
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent controlled access'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Audit if any file's controlled access is different
+    # from the sample's IC, or the files are mixed access.
+    testapp.patch_json(
+        controlled_sequence_file_2['@id'],
+        {
+            'file_set': measurement_set['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent controlled access'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+
 def test_audit_missing_seqspec(
     testapp,
     measurement_set,
