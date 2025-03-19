@@ -679,6 +679,7 @@ def audit_inconsistent_controlled_access(value, system):
         }
     ]
     '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_file_sample = get_audit_message(audit_inconsistent_controlled_access, index=0)
     audit_message_mixed_files = get_audit_message(audit_inconsistent_controlled_access, index=1)
 
@@ -701,7 +702,7 @@ def audit_inconsistent_controlled_access(value, system):
             uncontrolled_files_link = ', '.join([audit_link(path_to_text(file), file)
                                                 for file in files_by_access[False]])
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} contains '
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} contains '
                 f'files {controlled_files_link} submitted as controlled access and files {uncontrolled_files_link} '
                 f'submitted as uncontrolled access.'
             )
@@ -727,7 +728,7 @@ def audit_inconsistent_controlled_access(value, system):
                 else:
                     controlled_access_of_ic_phrase = 'uncontrolled access'
                 detail = (
-                    f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                    f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
                     f'contains files submitted as {controlled_access_of_files_phrase} but the '
                     f'sample {audit_link(path_to_text(sample_object["@id"]), sample_object["@id"])} '
                     f'is covered by institutional certificate {audit_link(ic_object["certificate_identifier"], ic_object["@id"])} '
