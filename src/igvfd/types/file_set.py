@@ -634,6 +634,12 @@ class AnalysisSet(FileSet):
                     )
                 else:
                     terms_by_classification = f'{terms_by_classification} {classification}'
+            elif any(x in terms_by_classification for x in [
+                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen']
+            ):
+                # Don't add anything when the classification was already in
+                # the terms_by_classification.
+                continue
             # Failsafe case.
             else:
                 terms_by_classification = f'{terms_by_classification} {classification}'
