@@ -116,7 +116,15 @@
                     "MDS",
                     "NPU",
                     "PUB"
-                ]
+                ],
+                "enum_descriptions": {
+                    "COL": "Collaboration Required. Requestor must provide a letter of collaboration with the primary study investigator(s).",
+                    "GSO": "Genetic Studies Only. Use of the data is limited to genetic studies only.",
+                    "IRB": "IRB Approval Required. Requestor must provide documentation of local IRB approval.",
+                    "MDS": "Methods. Use of the data includes methods development research (e.g., development of software or algorithms).",
+                    "NPU": "Not-for-profit Use Only. Use of the data is limited to not-for-profit organizations.",
+                    "PUB": "Publication Required. Requestor agrees to make results of studies using the data available to the larger scientific community."
+                }
             },
             "submissionExample": {
                 "appscript": "[\"PUB\", \"GSO\"]",
