@@ -528,10 +528,10 @@ def sample_21_22(value, system):
 
 
 @upgrade_step('in_vitro_system', '25', '26')
-def in_vitro_stystem_25_26(value, system):
+def in_vitro_system_25_26(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2486
     if value['classifications'] == ['pooled cell specimen']:
-        value['classifications'] == ['cell line', 'pooled cell specimen']
+        value['classifications'] = ['cell line', 'pooled cell specimen']
         notes = value.get('notes', '')
         notes += f'This object\'s classifications was previously pooled cell specimen. It has been upgraded to both cell line and pooled cell specimen classifications by an upgrade.'
         value['notes'] = notes.strip()
