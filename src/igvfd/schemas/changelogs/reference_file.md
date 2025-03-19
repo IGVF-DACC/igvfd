@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 17
+
+* Reduce `content_type` enum list to exclude `sequence barcodes`.
+
 ### Minor changes since schema version 16
 
 * Allow `controlled_access` files to be released without `anvil_url`.
