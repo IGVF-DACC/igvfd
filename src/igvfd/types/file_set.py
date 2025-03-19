@@ -511,9 +511,10 @@ class AnalysisSet(FileSet):
     def sample_summary(self, request, samples=None):
         sample_classification_term_target = dict()
         treatment_purposes = set()
+        treatment_summaries = set()
         differentiation_times = set()
         construct_library_set_types = set()
-        modification_types = set()
+        modification_summaries = set()
         sorted_from = set()
         targeted_genes_for_sorting = set()
 
@@ -529,28 +530,59 @@ class AnalysisSet(FileSet):
             'stimulation': 'stimulated'
         }
 
+        two_classification_cases = {
+            'differentiated cell specimen, pooled cell specimen': ['pooled differentiated cell specimen'],
+            'pooled cell specimen, reprogrammed cell specimen': ['pooled reprogrammed cell specimen'],
+            'cell line, pooled cell specimen': ['pooled cell specimen']
+        }
+
+        classification_to_prefix = {
+            'differentiated cell specimen': 'differentiated',
+            'reprogrammed cell specimen': 'reprogrammed',
+            'pooled differentiated cell specimen': 'pooled differentiated',
+            'pooled reprogrammed cell specimen': 'pooled reprogrammed'
+        }
+
         for sample in samples:
             sample_object = request.embed(sample, '@@object')
 
             # Group sample and targeted sample terms according to classification.
             # Other metadata such as treatment info are lumped together.
-            classification = ' and '.join(sample_object['classifications'])
+            mux_prefix = ''
+            sample_classifications = sorted(sample_object['classifications'])
+            if 'multiplexed sample' in sample_object['classifications']:
+                sample_classifications.remove('multiplexed sample')
+                mux_prefix = 'multiplexed sample of '
+            if ', '.join(sorted(sample_classifications)) in two_classification_cases:
+                sample_classifications = two_classification_cases[', '.join(sorted(sample_classifications))]
+            # The variable "classification" can potentially be very long for
+            # a Multiplexed Sample, but it will be entirely dropped for
+            # Multiplexed Sample in the end - so it is ok.
+            classification = f"{mux_prefix}{' and '.join(sample_classifications)}"
             if classification not in sample_classification_term_target:
                 sample_classification_term_target[classification] = set()
 
             for term in sample_object['sample_terms']:
                 sample_term_object = request.embed(term, '@@object?skip_calculated=true')
+                sample_phrase = f"{sample_term_object['term_name']}"
+                # Avoid redundancy of classification and term name
+                # e.g. "HFF-1 cell cell line"
+                if not classification.startswith('multiplexed sample of'):
+                    if sample_phrase.endswith('cell') and 'cell' in classification:
+                        sample_phrase = sample_phrase.replace('cell', classification)
+                    elif sample_phrase.endswith(' gastruloid') and 'gastruloid' in classification:
+                        sample_phrase = sample_phrase.replace(' gastruloid', '')
+                    elif 'cell' in sample_phrase and classification in classification_to_prefix:
+                        sample_phrase = f'{classification_to_prefix[classification]} {sample_phrase}'
+
+                targeted_sample_suffix = ''
                 if 'targeted_sample_term' in sample_object:
                     targeted_sample_term_object = request.embed(
                         sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
-                    sample_classification_term_target[classification].add(
-                        f"{sample_term_object['term_name']} "
-                        f"induced to {targeted_sample_term_object['term_name']}"
-                    )
-                else:
-                    sample_classification_term_target[classification].add(
-                        f"{sample_term_object['term_name']}"
-                    )
+                    targeted_sample_suffix = f"induced to {targeted_sample_term_object['term_name']}"
+                if targeted_sample_suffix:
+                    sample_phrase = f'{sample_phrase} {targeted_sample_suffix}'
+                sample_classification_term_target[classification].add(sample_phrase)
 
             if 'time_post_change' in sample_object:
                 time = sample_object['time_post_change']
@@ -558,11 +590,9 @@ class AnalysisSet(FileSet):
                 differentiation_times.add(f'{time} {time_unit}')
             if 'modifications' in sample_object:
                 for modification in sample_object['modifications']:
-                    if modification.startswith('/crispr-modifications/'):
-                        modification_type = 'CRISPR'
-                    elif modification.startswith('/degron-modifications/'):
-                        modification_type = 'Degron'
-                    modification_types.add(modification_type)
+                    modification_object = request.embed(
+                        modification, '@@object_with_select_calculated_properties?field=summary')
+                    modification_summaries.add(modification_object['summary'])
             if 'construct_library_sets' in sample_object:
                 for construct_library_set in sample_object['construct_library_sets']:
                     cls_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
@@ -578,32 +608,54 @@ class AnalysisSet(FileSet):
                                 targeted_genes_for_sorting.add(gene_object['symbol'])
             if 'treatments' in sample_object:
                 for treatment in sample_object['treatments']:
-                    treatment_object = request.embed(treatment, '@@object?skip_calculated=true')
+                    treatment_object = request.embed(
+                        treatment, '@@object_with_select_calculated_properties?field=summary')
                     treatment_purposes.add(treatment_purpose_to_adjective.get(treatment_object['purpose'], ''))
+                    truncated_summary = treatment_object['summary'].split(' of ')[1]
+                    treatment_summaries.add(truncated_summary)
 
         all_sample_terms = []
         for classification in sorted(sample_classification_term_target.keys()):
-            terms_by_classification = f"{', '.join(sample_classification_term_target[classification])}"
-            # Insert the classification before the targeted_sample_term if it exists.
-            if 'induced to' in terms_by_classification:
-                terms_by_classification = terms_by_classification.replace(
-                    'induced to', f'{classification} induced to'
-                )
+            terms_by_classification = f"{', '.join(sorted(sample_classification_term_target[classification]))}"
+            # Put the terms after the "multiplexed sample of" and drop
+            # the underlying classifications
+            if 'multiplexed sample of' in classification:
+                terms_by_classification = f'multiplexed sample of {terms_by_classification}'
+            # Differentiated, reprogrammed, pooled cell specimen can be merged
+            # into the terms_by_classification before this. Therefore we don't
+            # want to append it to the terms_by_classification a second time.
+            elif not any(x in terms_by_classification for x in [
+                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen']
+            ):
+                # Insert the classification before the targeted_sample_term if it exists.
+                if 'induced to' in terms_by_classification:
+                    terms_by_classification = terms_by_classification.replace(
+                        'induced to', f'{classification} induced to'
+                    )
+                else:
+                    terms_by_classification = f'{terms_by_classification} {classification}'
+            elif any(x in terms_by_classification for x in [
+                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen']
+            ):
+                # Don't add anything when the classification was already in
+                # the terms_by_classification.
+                terms_by_classification = f'{terms_by_classification}'
+            # Failsafe case.
             else:
                 terms_by_classification = f'{terms_by_classification} {classification}'
+
             all_sample_terms.append(terms_by_classification)
 
         differentiation_time_phrase = ''
         if differentiation_times:
-            differentiation_time_phrase = f'at {len(differentiation_times)} time point(s) post change'
+            differentiation_time_phrase = f'at {", ".join(sorted(differentiation_times))}(s) post change'
         treatments_phrase = ''
-        if treatment_purposes:
-            treatments_phrase = f"{', '.join(treatment_purposes)} with treatment(s)"
-        modification_type_phrase = ''
-        if modification_types:
-            modification_types = sorted(modification_types)
-            # since there will only be at most 2 modification types, the list can be joined with "and"
-            modification_type_phrase = f'modified with {" and ".join(modification_types)} modifications'
+        if treatment_purposes and treatment_summaries:
+            treatments_phrase = f"{', '.join(sorted(treatment_purposes))} with {', '.join(sorted(treatment_summaries))}"
+        modification_summary_phrase = ''
+        if modification_summaries:
+            modification_summaries = sorted(modification_summaries)
+            modification_summary_phrase = f'modified with {", ".join(modification_summaries)}'
         construct_library_set_type_phrase = ''
         if construct_library_set_types:
             construct_library_set_type_phrase = f'transfected with a {", ".join(construct_library_set_types)}'
@@ -617,7 +669,7 @@ class AnalysisSet(FileSet):
         additional_phrases = [
             differentiation_time_phrase,
             treatments_phrase,
-            modification_type_phrase,
+            modification_summary_phrase,
             construct_library_set_type_phrase,
             sorted_phrase
         ]
