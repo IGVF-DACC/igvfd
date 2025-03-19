@@ -1,5 +1,9 @@
 ## Changelog for *`alignment_file.json`*
 
+### Schema version 14
+
+* Adjust `transcriptome_annotation` enum list to replace `GENCODE 28, GENCODE M17` with `GENCODE 32, GENCODE M23`.
+
 ### Minor changes since schema version 13
 
 * Allow `controlled_access` files to be released without `anvil_url`.

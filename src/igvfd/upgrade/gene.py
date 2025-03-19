@@ -90,3 +90,14 @@ def gene_8_9(value, system):
     if 'synonyms' in value:
         if len(value['synonyms']) < 1:
             del value['synonyms']
+
+
+@upgrade_step('gene', '9', '10')
+def gene_9_10(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2468
+    notes = value.get('notes', '')
+    if value.get('transcriptome_annotation') == 'GENCODE 28, GENCODE M17':
+        value['transcriptome_annotation'] = 'GENCODE 32, GENCODE M23'
+        notes += f'This object\'s transcriptome_annotation was GENCODE 28, GENCODE M17 but has been upgraded to GENCODE 32, GENCODE M23 as requested by the lab.'
+        value['notes'] = notes.strip()
+    return

@@ -278,7 +278,7 @@
                         "properties": {
                             "transcriptome_annotation": {
                                 "enum": [
-                                    "GENCODE 28, GENCODE M17"
+                                    "GENCODE 32, GENCODE M23"
                                 ]
                             }
                         }

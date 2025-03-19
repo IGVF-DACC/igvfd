@@ -1,5 +1,9 @@
 ## Changelog for *`gene.json`*
 
+### Schema version 9
+
+* Adjust `transcriptome_annotation` enum list to replace `GENCODE 28, GENCODE M17` with `GENCODE 32, GENCODE M23`.
+
 ### Minor changes since schema version 8
 
 * Update required properties to remove `dbxrefs`.

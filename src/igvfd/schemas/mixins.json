@@ -467,7 +467,7 @@
                 "GENCODE M33",
                 "GENCODE M34",
                 "GENCODE M36",
-                "GENCODE 28, GENCODE M17"
+                "GENCODE 32, GENCODE M23"
             ],
             "submissionExample": {
                 "appscript": "GENCODE 40",
