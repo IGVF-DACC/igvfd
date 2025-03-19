@@ -639,7 +639,7 @@ class AnalysisSet(FileSet):
             ):
                 # Don't add anything when the classification was already in
                 # the terms_by_classification.
-                continue
+                terms_by_classification = f'{terms_by_classification}'
             # Failsafe case.
             else:
                 terms_by_classification = f'{terms_by_classification} {classification}'
