@@ -10,6 +10,12 @@
         "quality_metric_of": [
             "IGVFFI0000CSVV"
         ],
-        "analysis_step_version": "igvf-dacc:analysis_step_version_02"
+        "analysis_step_version": "igvf-dacc:analysis_step_version_02",
+        "pearson_correlation": 0.77,
+        "median_barcodes_passing_filtering": 460,
+        "median_rna_read_count": 39,
+        "fraction_oligos_passing": 0.6,
+        "median_assigned_barcodes": 5,
+        "fraction_assigned_oligos": 0.94
     }
 ]
