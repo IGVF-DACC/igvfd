@@ -286,5 +286,38 @@
         "modifications": [
             "b4a370ee-18a7-2857-bc2b-b157d05f4458"
         ]
+    },
+    {
+        "uuid": "23dd9597-fc37-4ca9-be1f-15ecf3cf9ed3",
+        "classifications": [
+            "pooled cell specimen",
+            "cell line"
+        ],
+        "lab": "danwei-huangfu",
+        "accession": "IGVFSM0008FUES",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "danwei-huangfu:test_pooled_cell_line_classifications"
+        ],
+        "donors": [
+            "igvf:alias_human_donor1"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "sample_terms": [
+            "/sample-terms/92c5f1a9-7503-460b-99b3-f5b84c82b067/"
+        ],
+        "sources": [
+            "/labs/danwei-huangfu/"
+        ],
+        "virtual": false,
+        "construct_library_sets": [
+            "igvf:basic_construct_library_set_1"
+        ],
+        "moi": 1,
+        "nucleic_acid_delivery": "transfection",
+        "modifications": [
+            "b4a370ee-18a7-2857-bc2b-b157d05f4458"
+        ]
     }
 ]
