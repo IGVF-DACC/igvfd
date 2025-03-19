@@ -790,18 +790,25 @@ class ConfigurationFile(File):
             'notSubmittable': True
         }
     )
-    def validate_onlist_files(self, request, content_type, file_set):
+    def validate_onlist_files(self, request, content_type, seqspec_of=None):
         # Validate onlist files if the file is not linked to a single cell assay measurement set
         # If not seqspec, return False
         if content_type != 'seqspec':
             return False
-        # If not measurement set, return False
-        if not file_set.startswith('/measurement-sets/'):
-            return False
         # Get the file set object
-        fileset_object = request.embed(file_set, '@@object?skip_calculated_properties=true')
-        # Check if any is single cell
-        return fileset_object.get('assay_term', '') in SINGLE_CELL_ASSAY_TERMS
+        if not seqspec_of:
+            return False
+        # Get all file sets linked to the seqspec files
+        linked_file_sets = sorted(
+            set([request.embed(seqfile, '@@object?skip_calculated_properties=true').get('file_set') for seqfile in seqspec_of]))
+        # If none is a measurement set, return False
+        if all([not file_set.startswith('/measurement-sets/') for file_set in linked_file_sets]):
+            return False
+        # Get assay terms for all the measurement sets
+        assay_terms = sorted(set([request.embed(
+            file_set, '@@object?skip_calculated_properties=true').get('assay_term', '') for file_set in linked_file_sets]))
+        # Check if any of the assay terms are single cell assay terms
+        return any([assay_term in SINGLE_CELL_ASSAY_TERMS for assay_term in assay_terms])
 
 
 @collection(
