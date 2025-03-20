@@ -335,6 +335,6 @@ def in_vitro_system_v25(in_vitro_cell_line):
     item = in_vitro_cell_line.copy()
     item.update({
         'schema_version': '25',
-        'classifications': ['cell line', 'pooled cell specimen']
+        'classifications': ['pooled cell specimen']
     })
     return item
