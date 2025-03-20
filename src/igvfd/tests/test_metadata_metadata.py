@@ -677,7 +677,7 @@ def test_metadata_metadata_report_split_column_and_fields_by_experiment_and_file
         'Sample(s)': ['samples.accession'],
         'Sample term name': ['samples.sample_term.term_name'],
         'Creation timestamp': ['creation_timestamp'],
-        'Lab': ['lab.title']
+        'Fileset lab': ['lab.title']
     }
     for k, v in mr.file_column_to_fields_mapping.items():
         assert tuple(expected_file_column_to_fields_mapping[k]) == tuple(v), f'{k, v} not in expected'
@@ -1100,7 +1100,7 @@ def test_metadata_metadata_report_get_experiment_data(dummy_request):
         'Donor(s)': '',
         'Sample(s)': '',
         'Creation timestamp': '',
-        'Lab': ''
+        'Fileset lab': ''
     }
     experiment_data = mr._get_experiment_data(embedded_experiment())
     for k, v in expected_experiment_data.items():
