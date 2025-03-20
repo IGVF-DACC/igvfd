@@ -659,7 +659,7 @@ def test_metadata_metadata_report_split_column_and_fields_by_experiment_and_file
         'File accession': ['accession'],
         'File format': ['file_format'],
         'File content': ['content_type'],
-        'Size': ['file_size'],
+        'File size': ['file_size'],
         'File download URL': ['href'],
         'File s3_uri': ['s3_uri'],
         'File assembly': ['assembly'],
@@ -1094,7 +1094,7 @@ def test_metadata_metadata_report_get_experiment_data(dummy_request):
     mr._initialize_report()
     mr._build_params()
     expected_experiment_data = {
-        'Accession': 'ENCSR434TGY',
+        'Fileset accession': 'ENCSR434TGY',
         'Assay': '',
         'Donor(s)': '',
         'Sample(s)': '',
@@ -1118,7 +1118,7 @@ def test_metadata_metadata_report_get_file_data(dummy_request):
         'File accession': '',
         'File format': 'bed',
         'File content': '',
-        'Size': 3356650,
+        'File size': 3356650,
         'File download URL': 'http://localhost/files/ENCFF244PJU/@@download/ENCFF244PJU.bed.gz'
     }
     file_data = mr._get_file_data(file_())
