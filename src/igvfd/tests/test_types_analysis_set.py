@@ -221,6 +221,14 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_with_CLS_input['@id']).json
     assert res.get('summary', '') == 'lentiMPRA reporter library'
+    testapp.patch_json(
+        analysis_set_with_CLS_input['@id'],
+        {
+            'input_file_sets': [measurement_set_multiome['@id'], construct_library_set_reporter['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_with_CLS_input['@id']).json
+    assert res.get('summary', '') == '10x multiome'
 
 
 def test_protocols(testapp, analysis_set_base, measurement_set_with_protocols):
