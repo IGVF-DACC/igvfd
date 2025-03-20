@@ -1,6 +1,6 @@
 {
-    "hash": "e8d174aa9952383f4875265036fe7a72",
-    "index_name": "sequence_file_e8d174aa",
+    "hash": "628d924195b9b0d81c2116a0d9be0ae5",
+    "index_name": "sequence_file_628d9241",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -361,8 +361,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "d69ea356af8194640f5a02004f458f50",
-    "index_name": "multiplexed_sample_d69ea356",
+    "hash": "aba57f46964026f242a4003a369ebb5e",
+    "index_name": "multiplexed_sample_aba57f46",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -966,8 +966,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"

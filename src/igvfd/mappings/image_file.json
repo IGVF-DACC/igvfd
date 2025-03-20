@@ -1,6 +1,6 @@
 {
-    "hash": "831a308fe9fde250a90ea578b5f83b68",
-    "index_name": "image_file_831a308f",
+    "hash": "4ba4c11589952f8dc77c51b3f2e2222b",
+    "index_name": "image_file_4ba4c115",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -344,8 +344,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"

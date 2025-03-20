@@ -1,6 +1,6 @@
 {
-    "hash": "491396cadd832d7e408959afa0a9156e",
-    "index_name": "primary_cell_491396ca",
+    "hash": "f798a7537b52e1b1204611333f3f5ed5",
+    "index_name": "primary_cell_f798a753",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -976,8 +976,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"

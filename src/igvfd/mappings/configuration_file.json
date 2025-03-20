@@ -1,6 +1,6 @@
 {
-    "hash": "12bc1ca0a055d2b0537adf8d4a27fe35",
-    "index_name": "configuration_file_12bc1ca0",
+    "hash": "2afed645851c4a5ecdcceab466d3ad00",
+    "index_name": "configuration_file_2afed645",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -344,8 +344,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"

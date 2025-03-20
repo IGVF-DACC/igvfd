@@ -1,6 +1,6 @@
 {
-    "hash": "cbae39892e4240c0f683efe79bb60cf5",
-    "index_name": "reference_file_cbae3989",
+    "hash": "a1d2309453f4582298d91a5d5f42dc2f",
+    "index_name": "reference_file_a1d23094",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -364,8 +364,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"

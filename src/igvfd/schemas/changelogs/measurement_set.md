@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 25
 
+* Add calculated property `data_use_limitation_summaries`.
+* Add calculated property `controlled_access`.
 * Add `strand_specificity`.
 
 ### Schema version 25

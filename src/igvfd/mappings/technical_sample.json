@@ -1,6 +1,6 @@
 {
-    "hash": "1bccda6152e28796a83c4367bf07f09a",
-    "index_name": "technical_sample_1bccda61",
+    "hash": "2e4ac42b3b5b734c868cbb805b06dc2a",
+    "index_name": "technical_sample_2e4ac42b",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -588,8 +588,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"
