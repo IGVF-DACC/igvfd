@@ -1,6 +1,6 @@
 {
-    "hash": "3af8cc0ece3861f6a0410723f92e6a14",
-    "index_name": "tabular_file_3af8cc0e",
+    "hash": "b9e070f8a92814cc1e854db0201d3995",
+    "index_name": "tabular_file_b9e070f8",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -536,8 +536,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"

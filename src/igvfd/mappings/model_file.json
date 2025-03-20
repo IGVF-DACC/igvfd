@@ -1,6 +1,6 @@
 {
-    "hash": "13c570cbfdc4b0a21938ac816ecf3901",
-    "index_name": "model_file_13c570cb",
+    "hash": "c2fb0d49f08240815466c861c6af0039",
+    "index_name": "model_file_c2fb0d49",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -444,8 +444,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "a0c17e4ddd423227611431b28e0b8270",
-    "index_name": "reference_file_a0c17e4d",
+    "hash": "a1d2309453f4582298d91a5d5f42dc2f",
+    "index_name": "reference_file_a1d23094",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -447,8 +447,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"

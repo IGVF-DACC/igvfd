@@ -1,6 +1,6 @@
 {
-    "hash": "b8073a392bccf7e91ac015cd328067af",
-    "index_name": "prediction_set_b8073a39",
+    "hash": "a78aecc0dbdd8abcbd33801d94c45f78",
+    "index_name": "prediction_set_a78aecc0",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -463,8 +463,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"
@@ -953,8 +960,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"

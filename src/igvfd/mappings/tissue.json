@@ -1,6 +1,6 @@
 {
-    "hash": "f1baaa3ecf73fef696d82a929ec59415",
-    "index_name": "tissue_f1baaa3e",
+    "hash": "8c49abce436d97e3b5bc3def5e84eaad",
+    "index_name": "tissue_8c49abce",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -976,8 +976,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"
