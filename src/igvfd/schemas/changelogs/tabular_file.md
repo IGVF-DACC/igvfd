@@ -4,6 +4,10 @@
 
 * Reduce `content_type` enum list to exclude `sequence barcodes`.
 
+### Minor changes since schema version 14
+
+* Extend `content_type` enum list to include `element to gene predictions`.
+
 ### Schema version 14
 
 * Adjust `transcriptome_annotation` enum list to replace `GENCODE 28, GENCODE M17` with `GENCODE 32, GENCODE M23`.
