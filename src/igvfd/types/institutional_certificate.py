@@ -42,3 +42,17 @@ class InstitutionalCertificate(Item):
         modifiers = properties.get('data_use_limitation_modifiers', [])
         joined_modifiers = ','.join(modifiers) if modifiers else ''
         return f'{limitation}-{joined_modifiers}' if joined_modifiers else limitation
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the institutional certificate.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, title, certificate_identifier, controlled_access):
+        if self.controlled_access:
+            return self.certificate_identifier + ' (controlled)'
+        else:
+            return self.certificate_identifier + ' (unrestricted)'
