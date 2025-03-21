@@ -675,7 +675,7 @@ def test_metadata_metadata_report_split_column_and_fields_by_experiment_and_file
         'Preferred assay title': ['preferred_assay_title'],
         'Donor(s)': ['donors.accession'],
         'Sample(s)': ['samples.accession'],
-        'Sample term name': ['samples.sample_term.term_name'],
+        'Sample term name': ['samples.sample_terms.term_name'],
         'Creation timestamp': ['creation_timestamp'],
         'Fileset lab': ['lab.title']
     }
@@ -768,7 +768,7 @@ def test_metadata_metadata_report_add_fields_to_param_list(dummy_request):
         'preferred_assay_title',
         'donors.accession',
         'samples.accession',
-        'samples.sample_term.term_name',
+        'samples.sample_terms.term_name',
         'creation_timestamp',
         'files.file_size',
         'lab.title',
@@ -877,7 +877,7 @@ def test_metadata_metadata_report_get_field_params(dummy_request):
         ('field', 'preferred_assay_title'),
         ('field', 'donors.accession'),
         ('field', 'samples.accession'),
-        ('field', 'samples.sample_term.term_name'),
+        ('field', 'samples.sample_terms.term_name'),
         ('field', 'creation_timestamp'),
         ('field', 'files.file_size'),
         ('field', 'lab.title'),
@@ -1039,7 +1039,7 @@ def test_metadata_metadata_report_build_new_request(dummy_request):
         '&field=preferred_assay_title'
         '&field=donors.accession'
         '&field=samples.accession'
-        '&field=samples.sample_term.term_name'
+        '&field=samples.sample_terms.term_name'
         '&field=creation_timestamp'
         '&field=files.file_size'
         '&field=lab.title'
