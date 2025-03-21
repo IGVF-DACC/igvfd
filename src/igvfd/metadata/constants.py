@@ -18,14 +18,23 @@ METADATA_COLUMN_TO_FIELDS_MAPPING = OrderedDict(
         ('File accession', ['files.accession']),
         ('File format', ['files.file_format']),
         ('File content', ['files.content_type']),
-        ('Accession', ['accession']),
-        ('Assay', ['assay_term.term_name']),
-        ('Donor(s)', ['donors.accession']),
-        ('Sample(s)', ['samples.accession']),
+        ('Fileset accession', ['accession']),
+        ('Assay', ['assay_term.term_name']),  # MeasurementSet assay_term
+        ('Preferred assay title', ['preferred_assay_title']),  # MeasurementSet preferred_assay_title
+        ('Donor(s)', ['donors.accession']),  # MeasurementSet donors
+        ('Sample(s)', ['samples.accession']),  # MeasurementSet samples
+        ('Sample term name', ['samples.sample_terms.term_name']),  # MeasurementSet samples.sample_terms.term_name
         ('Creation timestamp', ['creation_timestamp']),
-        ('Size', ['files.file_size']),
-        ('Lab', ['lab.title']),
+        ('File size', ['files.file_size']),
+        ('Fileset lab', ['lab.title']),
         ('File download URL', ['files.href']),
+        ('File s3_uri', ['files.s3_uri']),
+        ('File assembly', ['files.assembly']),
+        ('File transcriptome annotation', ['files.transcriptome_annotation']),
+        ('File controlled access', ['files.controlled_access']),
+        ('File md5sum', ['files.md5sum']),
+        ('File derived from', ['files.derived_from']),
+        ('File upload status', ['files.upload_status']),
     ]
 )
 
