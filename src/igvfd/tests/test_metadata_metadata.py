@@ -971,8 +971,8 @@ def test_metadata_metadata_report_initialize_report(dummy_request):
     mr._initialize_report()
     assert len(mr.header) == 23
     assert len(mr.experiment_column_to_fields_mapping.keys()
-               ) == 6, f'{len(mr.experiment_column_to_fields_mapping.keys())}'
-    assert len(mr.file_column_to_fields_mapping.keys()) == 5, f'{len(mr.file_column_to_fields_mapping.keys())}'
+               ) == 8, f'{len(mr.experiment_column_to_fields_mapping.keys())}'
+    assert len(mr.file_column_to_fields_mapping.keys()) == 12, f'{len(mr.file_column_to_fields_mapping.keys())}'
     dummy_request.environ['QUERY_STRING'] = (
         'type=MeasurementSet&files.file_type=bigWig&files.file_type=bam'
         '&replicates.library.size_range=50-100'
