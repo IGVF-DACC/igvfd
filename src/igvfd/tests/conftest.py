@@ -67,6 +67,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.construct_library_set',
     'igvfd.tests.fixtures.schemas.institutional_certificate',
     'igvfd.tests.fixtures.schemas.image_file',
+    'igvfd.tests.fixtures.schemas.mpra_quality_metric',
 ]
 
 
