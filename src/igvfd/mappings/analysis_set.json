@@ -1,6 +1,6 @@
 {
-    "hash": "4f91eb8e222ebe4d10aeaf9eb5c0a513",
-    "index_name": "analysis_set_4f91eb8e",
+    "hash": "8691b6c7ab990c245d8162f56f63999f",
+    "index_name": "analysis_set_8691b6c7",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -1117,8 +1117,15 @@
                     "control_type": {
                         "type": "keyword"
                     },
+                    "controlled_access": {
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "creation_timestamp": {
                         "type": "date"
+                    },
+                    "data_use_limitation_summaries": {
+                        "type": "keyword"
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",

@@ -1,6 +1,6 @@
 {
-    "hash": "8542a9cecfd0de83a3d17799d1ca877f",
-    "index_name": "model_set_8542a9ce",
+    "hash": "a6ab209637e4dcb5949f13d4b76c4577",
+    "index_name": "model_set_a6ab2096",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1212,8 +1212,15 @@
                     "control_type": {
                         "type": "keyword"
                     },
+                    "controlled_access": {
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "creation_timestamp": {
                         "type": "date"
+                    },
+                    "data_use_limitation_summaries": {
+                        "type": "keyword"
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",

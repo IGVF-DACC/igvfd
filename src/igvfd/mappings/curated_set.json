@@ -1,6 +1,6 @@
 {
-    "hash": "60133cd200f35d1f45d6a9f893514ef9",
-    "index_name": "curated_set_60133cd2",
+    "hash": "7556b0994c86c637619307d0835cea67",
+    "index_name": "curated_set_7556b099",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1117,8 +1117,15 @@
                     "control_type": {
                         "type": "keyword"
                     },
+                    "controlled_access": {
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "creation_timestamp": {
                         "type": "date"
+                    },
+                    "data_use_limitation_summaries": {
+                        "type": "keyword"
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",
