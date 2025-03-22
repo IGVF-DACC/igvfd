@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 9
 
+* Add calculated property `data_use_limitation_summaries`.
+* Add calculated property `controlled_access`.
 * Update calculation of `summary`.
 * Update calculation of `assay_titles`.
 * Add calculated property `construct_library_sets`.

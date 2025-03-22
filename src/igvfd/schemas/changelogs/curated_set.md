@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 8
 
+* Add calculated property `data_use_limitation_summaries`.
+* Add calculated property `controlled_access`.
 * Add calculated property `construct_library_sets`.
 * Extend `file_set_type` enum list to include `training data for predictive models`.
 * Extend `collections` enum list to include `ACMG73`.
