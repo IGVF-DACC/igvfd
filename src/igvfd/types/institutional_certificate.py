@@ -51,8 +51,8 @@ class InstitutionalCertificate(Item):
             'notSubmittable': True,
         }
     )
-    def summary(self, title, certificate_identifier, controlled_access):
-        if self.controlled_access:
-            return self.certificate_identifier + ' (controlled)'
+    def summary(self, certificate_identifier, controlled_access):
+        if controlled_access:
+            return certificate_identifier + ' (controlled)'
         else:
-            return self.certificate_identifier + ' (unrestricted)'
+            return certificate_identifier + ' (unrestricted)'
