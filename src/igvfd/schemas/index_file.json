@@ -54,7 +54,10 @@
                     "if": {
                         "properties": {
                             "file_format": {
-                                "const": "bai"
+                                "enum": [
+                                    "bai",
+                                    "crai"
+                                ]
                             }
                         }
                     },
@@ -119,6 +122,7 @@
         "file_format": {
             "enum": [
                 "bai",
+                "crai",
                 "tbi"
             ],
             "submissionExample": {

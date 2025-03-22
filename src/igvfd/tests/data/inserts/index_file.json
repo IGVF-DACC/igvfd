@@ -45,5 +45,30 @@
         "derived_from": [
             "IGVFFI0002ALTB"
         ]
+    },
+    {
+        "uuid": "dc2b91e3-11ef-4d8e-ebdc-06743b0d6003",
+        "accession": "IGVFFI0001CRAI",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:index_file_crai"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "f44984b551c38304b4bcb39a676b61c6",
+        "file_format": "crai",
+        "content_type": "index",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/index_file.cram.crai",
+        "file_size": 896310,
+        "upload_status": "validated",
+        "file_set": "igvf:analysis_set_with_input",
+        "controlled_access": false,
+        "derived_from": [
+            "IGVFFI0000CRAM"
+        ]
     }
 ]
