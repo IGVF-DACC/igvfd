@@ -48,7 +48,7 @@
             "file.json#/dependentSchemas"
         ],
         "file_format": {
-            "comment": "Bai files must be derived from an alignment file. Tbi files must be derived from a tabular file or a reference file.",
+            "comment": "Bai or crai files must be derived from an alignment file. Tbi files must be derived from a tabular file or a reference file.",
             "allOf": [
                 {
                     "if": {
