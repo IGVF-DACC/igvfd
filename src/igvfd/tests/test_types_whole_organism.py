@@ -3,7 +3,7 @@ import pytest
 
 def test_summary(testapp, whole_organism, rodent_donor, parent_rodent_donor_1, human_donor, treatment_protein):
     res = testapp.get(whole_organism['@id'])
-    assert res.json.get('summary') == 'whole organism, male, Mus musculus strain1'
+    assert res.json.get('summary') == 'Mus musculus strain1 (male) whole organism'
     testapp.patch_json(
         whole_organism['@id'],
         {
@@ -13,7 +13,7 @@ def test_summary(testapp, whole_organism, rodent_donor, parent_rodent_donor_1, h
         }
     )
     res = testapp.get(whole_organism['@id'])
-    assert res.json.get('summary') == 'whole organism, male, Mus musculus strain1 (1 hour)'
+    assert res.json.get('summary') == 'Mus musculus strain1 (male, 1 hour) whole organism'
     testapp.patch_json(
         whole_organism['@id'],
         {
@@ -24,7 +24,7 @@ def test_summary(testapp, whole_organism, rodent_donor, parent_rodent_donor_1, h
         }
     )
     res = testapp.get(whole_organism['@id'])
-    assert res.json.get('summary') == '2 whole organisms, mixed sex, Mus musculus strain1, strain2 (1-5 hours)'
+    assert res.json.get('summary') == 'Mus musculus strain1, strain2 (mixed sex, 1-5 hours) 2 whole organisms'
     testapp.patch_json(
         human_donor['@id'],
         {
@@ -43,4 +43,4 @@ def test_summary(testapp, whole_organism, rodent_donor, parent_rodent_donor_1, h
     )
     res = testapp.get(whole_organism['@id'])
     assert res.json.get(
-        'summary') == '2 whole organisms, male, Homo sapiens and Mus musculus strain1 (10 months) treated with 10 ng/mL G-CSF'
+        'summary') == 'Homo sapiens and Mus musculus strain1 (male, 10 months) 2 whole organisms treated with 10 ng/mL G-CSF'
