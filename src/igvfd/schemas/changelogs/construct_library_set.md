@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 10
 
+* Add calculated property `data_use_limitation_summaries`.
+* Add calculated property `controlled_access`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.
 * Extend `collections` enum list to include `StanfordFCC`.
