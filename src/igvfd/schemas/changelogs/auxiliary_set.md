@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 12
 
+* Add calculated property `data_use_limitation_summaries`.
+* Add calculated property `controlled_access`.
 * Add calculated property `construct_library_sets`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.

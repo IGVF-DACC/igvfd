@@ -1,6 +1,6 @@
 {
-    "hash": "efe99b6cc35d86b38c8a5fbc0c7cce99",
-    "index_name": "tissue_efe99b6c",
+    "hash": "c69295774bb87563562df2cbf7121e25",
+    "index_name": "tissue_c6929577",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -533,8 +533,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "description": {
                                 "type": "text"
@@ -976,8 +983,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"

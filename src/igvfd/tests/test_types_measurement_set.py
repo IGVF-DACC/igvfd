@@ -212,3 +212,56 @@ def test_calculated_externally_hosted(testapp, measurement_set, sequence_file):
     )
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('externally_hosted') == True
+
+
+def test_calculated_controlled_access_data_use_limitations(testapp, measurement_set, in_vitro_cell_line, institutional_certificate, institutional_certificate_controlled_access, other_lab, lab):
+    # IC is not of the same lab.
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [in_vitro_cell_line['@id']]
+        }
+    )
+    testapp.patch_json(
+        institutional_certificate['@id'],
+        {
+            'samples': [in_vitro_cell_line['@id']],
+            'lab': other_lab['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert 'controlled_access' not in res.json
+    assert 'data_use_limitation_summaries' not in res.json
+    # Add the lab of Measurement set as a partner lab.
+    testapp.patch_json(
+        institutional_certificate['@id'],
+        {
+            'partner_labs': [lab['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('controlled_access') == False
+    assert res.json.get('data_use_limitation_summaries') == ['No limitations']
+    # Add another IC for other lab, without partner labs.
+    # Calculated props should be the same as before.
+    testapp.patch_json(
+        institutional_certificate_controlled_access['@id'],
+        {
+            'samples': [in_vitro_cell_line['@id']],
+            'lab': other_lab['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('controlled_access') == False
+    assert res.json.get('data_use_limitation_summaries') == ['No limitations']
+    # Change 2nd IC to the right lab. Calculated props
+    # should change now.
+    testapp.patch_json(
+        institutional_certificate_controlled_access['@id'],
+        {
+            'lab': lab['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('controlled_access') == True
+    assert set(res.json.get('data_use_limitation_summaries')) == set(['GRU', 'No limitations'])

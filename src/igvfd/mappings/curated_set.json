@@ -1,6 +1,6 @@
 {
-    "hash": "d76f5ef6c92e634874ba36264ea66014",
-    "index_name": "curated_set_d76f5ef6",
+    "hash": "7556b0994c86c637619307d0835cea67",
+    "index_name": "curated_set_7556b099",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -368,8 +368,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"
@@ -858,8 +865,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"
@@ -1103,8 +1117,15 @@
                     "control_type": {
                         "type": "keyword"
                     },
+                    "controlled_access": {
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "creation_timestamp": {
                         "type": "date"
+                    },
+                    "data_use_limitation_summaries": {
+                        "type": "keyword"
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",
