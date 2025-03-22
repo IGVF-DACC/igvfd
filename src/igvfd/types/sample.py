@@ -422,6 +422,43 @@ class Biosample(Sample):
                 biosample_type in ['primary_cell', 'tissue']):
             summary_terms = f'embryonic {summary_terms}'
 
+        # sex and age are prepended to the start of the summary
+        sex_and_age = [None, None]
+        if (sex and
+                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+            if sex != 'unspecified':
+                if sex == 'mixed':
+                    sex_and_age[0] = 'mixed sex'
+                else:
+                    sex_and_age[0] = sex
+
+        if (age != 'unknown' and
+                biosample_type in ['primary_cell', 'tissue', 'whole_organism']):
+            age = concat_numeric_and_units(age, age_units)
+            sex_and_age[1] = age
+
+        if any(x is not None for x in sex_and_age):
+            summary_terms = f'({", ".join([x for x in sex_and_age if x is not None])}) {summary_terms}'
+
+        # taxa of the donor(s) is prepended to the start of the summary
+        if (donors and
+                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+            if not taxa or taxa == 'Mus musculus':
+                taxa_set = set()
+                strains_set = set()
+                for donor in donors:
+                    donor_object = request.embed(donor, '@@object?skip_calculated=true')
+                    taxa_set.add(donor_object['taxa'])
+                    if donor_object['taxa'] == 'Mus musculus':
+                        strains_set.add(donor_object.get('strain', ''))
+                strains = ', '.join(sorted(strains_set))
+                taxa_list = sorted(list(taxa_set))
+                if 'Mus musculus' in taxa_list:
+                    mouse_index = taxa_list.index('Mus musculus')
+                    taxa_list[mouse_index] += f' {strains}'
+                taxa = ' and '.join(taxa_list)
+            summary_terms = f'{taxa} {summary_terms}'
+
         # virtual is prepended to the start of the summary
         if (virtual and
                 biosample_type in ['primary_cell', 'in_vitro_system', 'tissue']):
@@ -442,42 +479,6 @@ class Biosample(Sample):
         if (cellular_sub_pool and
                 biosample_type in ['primary_cell', 'in_vitro_system', 'tissue']):
             summary_terms += f' (cellular sub pool: {cellular_sub_pool})'
-
-        # a comma is added before sex or taxa if sex is unspecified
-        summary_terms += ','
-
-        # sex is appended to the end of the summary
-        if (sex and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
-            if sex != 'unspecified':
-                if sex == 'mixed':
-                    sex = 'mixed sex'
-                summary_terms += f' {sex},'
-
-        # taxa of the donor(s) is appended to the end of the summary
-        if (donors and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
-            if not taxa or taxa == 'Mus musculus':
-                taxa_set = set()
-                strains_set = set()
-                for donor in donors:
-                    donor_object = request.embed(donor, '@@object?skip_calculated=true')
-                    taxa_set.add(donor_object['taxa'])
-                    if donor_object['taxa'] == 'Mus musculus':
-                        strains_set.add(donor_object.get('strain', ''))
-                strains = ', '.join(sorted(strains_set))
-                taxa_list = sorted(list(taxa_set))
-                if 'Mus musculus' in taxa_list:
-                    mouse_index = taxa_list.index('Mus musculus')
-                    taxa_list[mouse_index] += f' {strains}'
-                taxa = ' and '.join(taxa_list)
-            summary_terms += f' {taxa}'
-
-        # age is appended to the end of the summary
-        if (age != 'unknown' and
-                biosample_type in ['primary_cell', 'tissue', 'whole_organism']):
-            age = concat_numeric_and_units(age, age_units)
-            summary_terms += f' ({age})'
 
         # sorted from detail is appended to the end of the summary
         if (sorted_from_detail and

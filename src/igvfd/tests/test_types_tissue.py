@@ -3,7 +3,7 @@ import pytest
 
 def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor_2, sample_term_brown_adipose_tissue, phenotype_term_alzheimers, treatment_chemical):
     res = testapp.get(tissue['@id'])
-    assert res.json.get('summary') == 'adrenal gland tissue, male, Mus musculus strain1'
+    assert res.json.get('summary') == 'Mus musculus strain1 (male) adrenal gland tissue'
     testapp.patch_json(
         tissue['@id'],
         {
@@ -13,7 +13,7 @@ def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor
         }
     )
     res = testapp.get(tissue['@id'])
-    assert res.json.get('summary') == 'adrenal gland tissue, male, Mus musculus strain1 (10 months)'
+    assert res.json.get('summary') == 'Mus musculus strain1 (male, 10 months) adrenal gland tissue'
     testapp.patch_json(
         human_donor['@id'],
         {
@@ -33,7 +33,7 @@ def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor
         }
     )
     res = testapp.get(tissue['@id'])
-    assert res.json.get('summary') == 'virtual embryonic brown adipose tissue, male, Homo sapiens (50-100 days)'
+    assert res.json.get('summary') == 'virtual Homo sapiens (male, 50-100 days) embryonic brown adipose tissue'
     testapp.patch_json(
         rodent_donor['@id'],
         {
@@ -57,7 +57,7 @@ def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor
     )
     res = testapp.get(tissue['@id'])
     assert res.json.get(
-        'summary') == f'virtual embryonic brown adipose tissue (cellular sub pool: PKR-1128), mixed sex, Mus musculus strain1, strain3 (50-100 days) associated with Alzheimer\'s disease, treated with 10 mM lactate for 1 hour'
+        'summary') == f'virtual Mus musculus strain1, strain3 (mixed sex, 50-100 days) embryonic brown adipose tissue (cellular sub pool: PKR-1128) associated with Alzheimer\'s disease, treated with 10 mM lactate for 1 hour'
 
 
 def test_age_in_hours(testapp, tissue):
