@@ -1,6 +1,6 @@
 {
-    "hash": "9eba8c5fd7f4b5cb3bd5a2f7bce6ed5b",
-    "index_name": "auxiliary_set_9eba8c5f",
+    "hash": "6c5997b796cb8b20734e9bbdcc33b257",
+    "index_name": "auxiliary_set_6c5997b7",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1116,8 +1116,15 @@
                     "control_type": {
                         "type": "keyword"
                     },
+                    "controlled_access": {
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "creation_timestamp": {
                         "type": "date"
+                    },
+                    "data_use_limitation_summaries": {
+                        "type": "keyword"
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",

@@ -1,6 +1,6 @@
 {
-    "hash": "20c012793fb7e72041bd3ffdc8c556d9",
-    "index_name": "alignment_file_20c01279",
+    "hash": "c1e499a5ea044a312ddae73294236e2d",
+    "index_name": "alignment_file_c1e499a5",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1534,8 +1534,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "description": {
                                 "type": "text"

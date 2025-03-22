@@ -1,6 +1,6 @@
 {
-    "hash": "2230d4a27efcecabc129b15d86c412cb",
-    "index_name": "index_file_2230d4a2",
+    "hash": "5dac86421ab01573ec45c6e60d67b99a",
+    "index_name": "index_file_5dac8642",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -1531,8 +1531,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "description": {
                                 "type": "text"

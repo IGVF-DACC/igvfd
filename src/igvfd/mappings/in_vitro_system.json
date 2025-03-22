@@ -1,6 +1,6 @@
 {
-    "hash": "8d4b78a73a25fe5ea67ebdeead3ed2b1",
-    "index_name": "in_vitro_system_8d4b78a7",
+    "hash": "228dd767b0f43023dbffd6845700a9cd",
+    "index_name": "in_vitro_system_228dd767",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -650,8 +650,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "description": {
                                 "type": "text"
