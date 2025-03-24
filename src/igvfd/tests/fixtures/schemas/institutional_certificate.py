@@ -19,6 +19,7 @@ def institutional_certificate_controlled(testapp, lab, award):
         'award': award['@id'],
         'lab': lab['@id'],
         'urls': ['https://drive.google.com/file/example-url-123'],
+        'data_use_limitation': 'GRU',
         'certificate_identifier': 'IP321-45',
         'controlled_access': True
     }
