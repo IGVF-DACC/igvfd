@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "285df18f7e5892e521eb8a23ebc7e12a",
     "index_name": "configuration_file_285df18f",
+=======
+    "hash": "b45241ad630c85b48112f06b867bca15",
+    "index_name": "configuration_file_b45241ad",
+>>>>>>> 49411780 (mappings)
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
