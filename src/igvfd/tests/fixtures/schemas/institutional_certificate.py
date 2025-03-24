@@ -14,6 +14,12 @@ def institutional_certificate(testapp, lab, award):
 
 
 @pytest.fixture
-def institutional_certificate_noncontrolled(institutional_certificate):
-    item = institutional_certificate.copy()
-    return item
+def institutional_certificate_controlled(testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'urls': ['https://drive.google.com/file/example-url-123'],
+        'certificate_identifier': 'IP321-45',
+        'controlled_access': True
+    }
+    return testapp.post_json('/institutional_certificate', item).json['@graph'][0]
