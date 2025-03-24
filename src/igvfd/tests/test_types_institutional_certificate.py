@@ -8,7 +8,7 @@ def test_types_institutional_certificate_summary(testapp, institutional_certific
     testapp.patch_json(
         institutional_certificate_noncontrolled['@id'],
         {
-            'controlled_access': 'true'
+            'controlled_access': 'True'
         }
     )
     res = testapp.get(institutional_certificate_noncontrolled['@id'])
