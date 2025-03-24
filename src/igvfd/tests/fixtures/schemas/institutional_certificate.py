@@ -11,3 +11,9 @@ def institutional_certificate(testapp, lab, award):
         'controlled_access': False
     }
     return testapp.post_json('/institutional_certificate', item).json['@graph'][0]
+
+
+@pytest.fixture
+def institutional_certificate_noncontrolled(institutional_certificate):
+    item = institutional_certificate.copy()
+    return item
