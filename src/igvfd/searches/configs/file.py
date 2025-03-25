@@ -32,10 +32,10 @@ def file():
                 'title': 'File Set Type'
             },
             'assay_titles': {
-                'title': 'Assay'
+                'title': 'Preferred Assay Title'
             },
             'file_set.assay_term.term_name': {
-                'title': 'Assay Term'
+                'title': 'Assay'
             },
             'cell_type_annotation.term_name': {
                 'title': 'Annotated Cell Type'

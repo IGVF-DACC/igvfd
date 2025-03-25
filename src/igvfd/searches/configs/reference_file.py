@@ -23,10 +23,10 @@ def reference_file():
                 'title': 'File Set Type'
             },
             'assay_titles': {
-                'title': 'Assay'
+                'title': 'Preferred Assay Title'
             },
             'file_set.assay_term.term_name': {
-                'title': 'Assay Term'
+                'title': 'Assay'
             },
             'assembly': {
                 'title': 'Assembly'
