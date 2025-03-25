@@ -6,6 +6,7 @@
 
 ### Minor changes since schema version 14
 
+* Extend `file_format` enum list to include `bedpe`.
 * Extend `content_type` enum list to include `machine learning model features`.
 * Extend `content_type` enum list to include `element to gene predictions`.
 
