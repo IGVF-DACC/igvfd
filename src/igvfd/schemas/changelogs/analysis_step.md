@@ -7,6 +7,8 @@
 
 ### Minor changes since schema version 5
 
+* Extend `input_content_types` enum list to include `machine learning model features`.
+* Extend `output_content_types` enum list to include `machine learning model features`.
 * Extend `input_content_types` enum list to include `feature weights`.
 * Extend `output_content_types` enum list to include `feature weights`.
 * Extend `input_content_types` enum list to include `element to gene predictions`.

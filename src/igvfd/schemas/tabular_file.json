@@ -242,6 +242,7 @@
         "file_format": {
             "enum": [
                 "bed",
+                "bedpe",
                 "csv",
                 "gtf",
                 "tsv",
