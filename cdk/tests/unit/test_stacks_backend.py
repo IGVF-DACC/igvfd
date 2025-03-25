@@ -87,7 +87,7 @@ def test_stacks_backend_initialize_backend_stack(config):
                     'Rollback': True
                 },
                 'MaximumPercent': 200,
-                'MinimumHealthyPercent': 50
+                'MinimumHealthyPercent': 100
             },
             'DeploymentController': {
                 'Type': 'ECS'

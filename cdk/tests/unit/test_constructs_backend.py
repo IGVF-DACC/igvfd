@@ -84,7 +84,7 @@ def test_constructs_backend_initialize_backend_construct(
                     'Rollback': True
                 },
                 'MaximumPercent': 200,
-                'MinimumHealthyPercent': 50
+                'MinimumHealthyPercent': 100
             },
             'DeploymentController': {
                 'Type': 'ECS'
