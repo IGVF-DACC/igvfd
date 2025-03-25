@@ -392,6 +392,9 @@ class AnalysisSet(FileSet):
     def assay_titles(self, request, input_file_sets=None):
         assay_titles = set()
         if input_file_sets is not None:
+            only_construct_library_sets = False
+            if all(input_file_set.startswith('/construct-library-sets/') for input_file_set in input_file_sets):
+                only_construct_library_sets = True
             for fileset in input_file_sets:
                 file_set_object = request.embed(fileset, '@@object')
                 if 'MeasurementSet' in file_set_object.get('@type'):
@@ -408,7 +411,7 @@ class AnalysisSet(FileSet):
                         preferred_assay_title = measurement_set_object.get('preferred_assay_title')
                         if preferred_assay_title:
                             assay_titles.add(preferred_assay_title)
-                elif 'ConstructLibrarySet' in file_set_object.get('@type'):
+                elif 'ConstructLibrarySet' in file_set_object.get('@type') and only_construct_library_sets:
                     for sample in file_set_object.get('applied_to_samples', []):
                         sample_object = request.embed(
                             sample, '@@object_with_select_calculated_properties?field=file_sets')
