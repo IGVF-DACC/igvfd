@@ -87,7 +87,7 @@ class BatchUpgrade(Construct):
             ),
             ContainerOverride(
                 container_name='nginx',
-                command=['sleep', '3600'],
+                command=['sleep', '5400'],
             ),
         ]
 
