@@ -144,7 +144,7 @@ def test_constructs_indexer_initialize_indexer(
                     'Rollback': True
                 },
                 'MaximumPercent': 200,
-                'MinimumHealthyPercent': 50
+                'MinimumHealthyPercent': 100
             },
             'DeploymentController': {
                 'Type': 'ECS'
@@ -191,7 +191,7 @@ def test_constructs_indexer_initialize_indexer(
                     'Rollback': True
                 },
                 'MaximumPercent': 200,
-                'MinimumHealthyPercent': 50
+                'MinimumHealthyPercent': 100
             },
             'DeploymentController': {
                 'Type': 'ECS'

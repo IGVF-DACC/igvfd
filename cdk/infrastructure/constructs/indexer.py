@@ -169,6 +169,8 @@ class Indexer(Construct):
             max_scaling_capacity=self.props.invalidation_service_props.max_scaling_capacity,
             scaling_steps=self.props.invalidation_service_props.scaling_steps,
             enable_execute_command=True,
+            min_healthy_percent=100,
+            max_healthy_percent=200,
             circuit_breaker=DeploymentCircuitBreaker(
                 rollback=True,
             ),
@@ -217,6 +219,8 @@ class Indexer(Construct):
             max_scaling_capacity=self.props.indexing_service_props.max_scaling_capacity,
             scaling_steps=self.props.indexing_service_props.scaling_steps,
             enable_execute_command=True,
+            min_healthy_percent=100,
+            max_healthy_percent=200,
             circuit_breaker=DeploymentCircuitBreaker(
                 rollback=True,
             ),

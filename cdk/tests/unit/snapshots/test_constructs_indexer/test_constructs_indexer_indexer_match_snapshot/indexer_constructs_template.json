@@ -952,7 +952,7 @@
                         "Rollback": true
                     },
                     "MaximumPercent": 200,
-                    "MinimumHealthyPercent": 50
+                    "MinimumHealthyPercent": 100
                 },
                 "DeploymentController": {
                     "Type": "ECS"
@@ -1563,7 +1563,7 @@
                         "Rollback": true
                     },
                     "MaximumPercent": 200,
-                    "MinimumHealthyPercent": 50
+                    "MinimumHealthyPercent": 100
                 },
                 "DeploymentController": {
                     "Type": "ECS"
