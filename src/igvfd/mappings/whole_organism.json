@@ -1,6 +1,6 @@
 {
-    "hash": "abdf14d9950f271adde9c050fdb88509",
-    "index_name": "whole_organism_abdf14d9",
+    "hash": "ff52efaf159288d0888ae8f40691496c",
+    "index_name": "whole_organism_ff52efaf",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -530,8 +530,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "description": {
                                 "type": "text"
@@ -973,8 +980,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"

@@ -222,6 +222,61 @@ class FileSet(Item):
         if construct_library_sets:
             return list(construct_library_sets)
 
+    @calculated_property(
+        condition='samples',
+        schema={
+            'title': 'Data Use Limitation Summaries',
+            'description': 'The data use limitation summaries of institutional certificates covering the sample associated with this file set which are signed by the same lab (or their partner lab) as the lab that submitted this file set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Data Use Limitation Summary',
+                'description': 'A combination of the data use limitation and its modifiers.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def data_use_limitation_summaries(self, request, lab, samples=None):
+        summaries_to_return = []
+        for sample in samples:
+            sample_object = request.embed(
+                sample, '@@object_with_select_calculated_properties?field=institutional_certificates')
+            for ic in sample_object.get('institutional_certificates', []):
+                ic_object = request.embed(
+                    ic, '@@object_with_select_calculated_properties?field=data_use_limitation_summary')
+                ic_labs = [ic_object.get('lab', None)] + ic_object.get('partner_labs', [])
+                if lab in ic_labs:
+                    summaries_to_return.append(ic_object.get('data_use_limitation_summary', None))
+        if summaries_to_return:
+            return list(set(summaries_to_return))
+
+    @calculated_property(
+        condition='samples',
+        schema={
+            'title': 'Controlled Access',
+            'description': 'The controlled access of the institutional certificates covering the sample associated with this file set which are signed by the same lab (or their partner lab) as the lab that submitted this file set.',
+            'type': 'boolean',
+            'notSubmittable': True,
+        }
+    )
+    def controlled_access(self, request, lab, samples=None):
+        controlled_access_to_return = []
+        for sample in samples:
+            sample_object = request.embed(
+                sample, '@@object_with_select_calculated_properties?field=institutional_certificates')
+            for ic in sample_object.get('institutional_certificates', []):
+                ic_object = request.embed(ic, '@@object?skip_calculated=true')
+                ic_labs = [ic_object.get('lab', None)] + ic_object.get('partner_labs', [])
+                if lab in ic_labs:
+                    controlled_access_to_return.append(ic_object.get('controlled_access'))
+        if controlled_access_to_return:
+            if any(controlled_access_to_return):
+                return True
+            else:
+                return False
+
 
 @collection(
     name='analysis-sets',

@@ -1,6 +1,6 @@
 {
-    "hash": "75bc28d8d3c7c71a1616fed16f34903d",
-    "index_name": "measurement_set_75bc28d8",
+    "hash": "c0d50645c3da816a36aa50a7fed534a8",
+    "index_name": "measurement_set_c0d50645",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -281,8 +281,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"
@@ -560,8 +567,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"
@@ -1146,8 +1160,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"
@@ -1457,8 +1478,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"
@@ -1702,8 +1730,15 @@
                     "control_type": {
                         "type": "keyword"
                     },
+                    "controlled_access": {
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "creation_timestamp": {
                         "type": "date"
+                    },
+                    "data_use_limitation_summaries": {
+                        "type": "keyword"
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",
@@ -2543,8 +2578,15 @@
                             "control_type": {
                                 "type": "keyword"
                             },
+                            "controlled_access": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "data_use_limitation_summaries": {
+                                "type": "keyword"
                             },
                             "dbxrefs": {
                                 "type": "keyword"
