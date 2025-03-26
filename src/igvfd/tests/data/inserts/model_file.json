@@ -95,27 +95,5 @@
         "catalog_adapters": [
             "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/gencode_adapter.py"
         ]
-    },
-    {
-        "uuid": "c551d590-a84d-4b94-add0-32b71cbad3b6",
-        "accession": "IGVFFI0001PTOR",
-        "lab": "j-michael-cherry",
-        "award": "HG012012",
-        "aliases": [
-            "igvf:model_featured_weights_01"
-        ],
-        "md5sum": "94626c2839050ccf5524cbb32e22e050",
-        "file_format": "pkl",
-        "content_type": "feature weights",
-        "file_size": 7330,
-        "upload_status": "validated",
-        "status": "released",
-        "release_timestamp": "2024-05-14T12:34:56Z",
-        "file_set": "j-michael-cherry:barcodes_curated_set",
-        "externally_hosted": false,
-        "submitted_file_name": "/Users/igvf/igvf_files/model_file_in_pytorch.pkl",
-        "catalog_adapters": [
-            "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/gencode_adapter.py"
-        ]
     }
 ]
