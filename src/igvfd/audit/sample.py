@@ -163,37 +163,6 @@ def get_virtual_sample_failures(
 
 
 @audit_checker('Sample', frame='object')
-def audit_construct_library_sets_types(value, system):
-    '''
-    [
-        {
-            "audit_description": "Samples are expected to link to a construct library sets with the same file set type.",
-            "audit_category": "inconsistent construct library sets",
-            "audit_level": "ERROR"
-        }
-    ]
-    '''
-    object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message = get_audit_message(audit_construct_library_sets_types)
-    if 'construct_library_sets' in value and len(value['construct_library_sets']) > 1:
-        library_types = set()
-        for CLS in value['construct_library_sets']:
-            CLS_object = system.get('request').embed(CLS, '@@object?skip_calculated=true')
-            library_types.add(CLS_object['file_set_type'])
-        if len(library_types) > 1:
-            if len(library_types) > 2:
-                library_types = list(library_types)
-                library_types = ', and '.join([', '.join(library_types[:-1]), library_types[-1]])
-            else:
-                library_types = ' and '.join(library_types)
-            detail = (
-                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has `construct_library_sets` of multiple types {library_types}.'
-            )
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
-
-
-@audit_checker('Sample', frame='object')
 def audit_parent_sample_with_singular_child(value, system):
     '''
     [
