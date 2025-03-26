@@ -8,7 +8,7 @@ def test_phenotypic_feature_required_lab_award(
     item = {
         'feature': phenotype_term_ncit_feature['@id']
     }
-    testapp.post_json('/phenotypic_feature', item, expect_errors=True)
+    res = testapp.post_json('/phenotypic_feature', item, expect_errors=True)
     assert res.status_code == 422
 
 
