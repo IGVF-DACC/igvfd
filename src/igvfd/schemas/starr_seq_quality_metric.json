@@ -73,6 +73,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "description",
         "summary"
     ],

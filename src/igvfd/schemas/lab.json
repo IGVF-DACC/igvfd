@@ -83,6 +83,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "name",
         "institute_label"
     ],

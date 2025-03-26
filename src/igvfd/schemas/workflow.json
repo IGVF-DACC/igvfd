@@ -121,6 +121,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "name",
         "submitted_by.title",
         "analysis_steps.analysis_step_types",

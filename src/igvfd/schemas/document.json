@@ -133,6 +133,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "description",
         "document_type",
         "characterization_method",

@@ -105,6 +105,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "name",
         "title",
         "layout.blocks.body"

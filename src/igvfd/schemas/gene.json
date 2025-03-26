@@ -212,6 +212,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "geneid",
         "name",
         "symbol",

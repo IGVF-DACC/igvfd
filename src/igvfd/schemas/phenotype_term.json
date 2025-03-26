@@ -48,6 +48,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "term_name",
         "synonyms"
     ],

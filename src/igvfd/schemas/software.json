@@ -97,6 +97,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "description",
         "name",
         "submitted_by.title",

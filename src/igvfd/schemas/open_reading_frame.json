@@ -132,6 +132,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "orf_id"
     ],
     "exact_searchable_fields": [

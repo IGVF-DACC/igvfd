@@ -157,6 +157,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "modality",
         "submitted_by.title",
         "summary"
