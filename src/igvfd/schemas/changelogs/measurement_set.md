@@ -7,6 +7,8 @@
 
 ### Minor changes since schema version 25
 
+* Extend `preferred_assay_title` enum list to include `10X ATAC with Scale pre-indexing`.
+* Extend `preferred_assay_title` enum list to include `10X RNA with Scale pre-indexing`.
 * Add calculated property `data_use_limitation_summaries`.
 * Add calculated property `controlled_access`.
 * Add `strand_specificity`.
