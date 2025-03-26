@@ -118,7 +118,7 @@ def test_collection_post(testapp, pi):
         'pi': pi['@id'],
         'status': 'current'
     }
-    return testapp.post_json('/lab', item, status=201)
+    testapp.post_json('/lab', item, status=201)
 
 
 def test_collection_post_bad_json(testapp):
@@ -231,11 +231,11 @@ def test_page_nested(workbook, anontestapp):
 
 
 def test_page_nested_in_progress(workbook, anontestapp):
-    return anontestapp.get('/test-section/subpage-in-progress/', status=403)
+    anontestapp.get('/test-section/subpage-in-progress/', status=403)
 
 
 def test_page_nested_preview_status(workbook, anontestapp):
-    return anontestapp.get('/test-section/subpage-preview-status/', status=200)
+    anontestapp.get('/test-section/subpage-preview-status/', status=200)
 
 
 def test_page_homepage(workbook, anontestapp, testapp):
