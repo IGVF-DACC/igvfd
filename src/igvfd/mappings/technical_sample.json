@@ -1,6 +1,6 @@
 {
-    "hash": "3766ad7c45e830a34a4b32cf55298a95",
-    "index_name": "technical_sample_3766ad7c",
+    "hash": "b6d34aeb51d03b7c521835bb51f2ccb6",
+    "index_name": "technical_sample_b6d34aeb",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {

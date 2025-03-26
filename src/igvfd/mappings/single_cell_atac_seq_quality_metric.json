@@ -1,6 +1,6 @@
 {
-    "hash": "53fce3cde9a8b7c4d4eb446b582361f5",
-    "index_name": "single_cell_atac_seq_quality_metric_53fce3cd",
+    "hash": "2698b393d65cf7c1ddafc8a042e513fc",
+    "index_name": "single_cell_atac_seq_quality_metric_2698b393",
     "item_type": "single_cell_atac_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "analysis_step_version": {

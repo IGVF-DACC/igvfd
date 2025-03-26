@@ -1,6 +1,6 @@
 {
-    "hash": "d88af3394eee086cc970e9cbe07ec6ad",
-    "index_name": "award_d88af339",
+    "hash": "421428df6ac97adc917741087d0582c7",
+    "index_name": "award_421428df",
     "item_type": "award",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "component": {

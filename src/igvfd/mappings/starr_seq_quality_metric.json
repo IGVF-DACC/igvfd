@@ -1,6 +1,6 @@
 {
-    "hash": "3b90bed107a2048581a4c0b80a5abba4",
-    "index_name": "starr_seq_quality_metric_3b90bed1",
+    "hash": "1a6928b899913a9611606fd68c7f7a8d",
+    "index_name": "starr_seq_quality_metric_1a6928b8",
     "item_type": "starr_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "analysis_step_version": {

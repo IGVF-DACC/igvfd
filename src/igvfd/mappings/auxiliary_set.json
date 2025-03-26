@@ -1,6 +1,6 @@
 {
-    "hash": "6c5997b796cb8b20734e9bbdcc33b257",
-    "index_name": "auxiliary_set_6c5997b7",
+    "hash": "c903990f3c606ce100ac14486dedc64e",
+    "index_name": "auxiliary_set_c903990f",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {

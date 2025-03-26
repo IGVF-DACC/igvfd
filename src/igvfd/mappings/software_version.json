@@ -1,6 +1,6 @@
 {
-    "hash": "9aafbac8420ef7bc68d8e3bdc36491bf",
-    "index_name": "software_version_9aafbac8",
+    "hash": "9694ff9e268520130bf1a24d955f0197",
+    "index_name": "software_version_9694ff9e",
     "item_type": "software_version",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "award": {

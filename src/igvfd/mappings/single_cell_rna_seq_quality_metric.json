@@ -1,6 +1,6 @@
 {
-    "hash": "857301d93bc3aa633865fc234f1adc30",
-    "index_name": "single_cell_rna_seq_quality_metric_857301d9",
+    "hash": "c0766febba5340a74014824efaf6ca0d",
+    "index_name": "single_cell_rna_seq_quality_metric_c0766feb",
     "item_type": "single_cell_rna_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "analysis_step_version": {

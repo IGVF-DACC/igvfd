@@ -1,6 +1,6 @@
 {
-    "hash": "7fe64975c09784aebb24176a34f17674",
-    "index_name": "image_file_7fe64975",
+    "hash": "8c10c089965560987a988b138abb6465",
+    "index_name": "image_file_8c10c089",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {

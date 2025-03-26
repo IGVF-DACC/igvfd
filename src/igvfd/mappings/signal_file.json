@@ -1,6 +1,6 @@
 {
-    "hash": "f83462b17cb5401ac09cd407cce0964b",
-    "index_name": "signal_file_f83462b1",
+    "hash": "cf4011c6e91f5c91f2085736fa2e0c69",
+    "index_name": "signal_file_cf4011c6",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {

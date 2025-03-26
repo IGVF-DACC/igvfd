@@ -1,6 +1,6 @@
 {
-    "hash": "7a97d43663f08d16805f6ea4cc648122",
-    "index_name": "open_reading_frame_7a97d436",
+    "hash": "3fbc6a2deac76ead3855e049e9d92782",
+    "index_name": "open_reading_frame_3fbc6a2d",
     "item_type": "open_reading_frame",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "award": {

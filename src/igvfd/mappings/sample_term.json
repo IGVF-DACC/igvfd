@@ -1,6 +1,6 @@
 {
-    "hash": "5eeb3c18c863c5d76f7d6b61d7979d3f",
-    "index_name": "sample_term_5eeb3c18",
+    "hash": "234c7ba7017b99f5c210ae873fb3ca64",
+    "index_name": "sample_term_234c7ba7",
     "item_type": "sample_term",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "ancestors": {

@@ -1,6 +1,6 @@
 {
-    "hash": "095ea784711a167adbc34f4bd6ec84d4",
-    "index_name": "mpra_quality_metric_095ea784",
+    "hash": "52ff20e86eb658ed28b984e1b4c6eb8c",
+    "index_name": "mpra_quality_metric_52ff20e8",
     "item_type": "mpra_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "analysis_step_version": {

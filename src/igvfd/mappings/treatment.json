@@ -1,6 +1,6 @@
 {
-    "hash": "b3c574c2e3f9ebe03b41d37648e632ef",
-    "index_name": "treatment_b3c574c2",
+    "hash": "6daaa54ddbf7c0e42e0f9a14937d17b5",
+    "index_name": "treatment_6daaa54d",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "amount": {

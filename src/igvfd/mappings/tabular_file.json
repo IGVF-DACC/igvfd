@@ -1,6 +1,6 @@
 {
-    "hash": "99116fa734d3749e0b9bc72705119799",
-    "index_name": "tabular_file_99116fa7",
+    "hash": "eced3b5b95827f398abf0cff35c86dfa",
+    "index_name": "tabular_file_eced3b5b",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {
