@@ -522,5 +522,23 @@
         "upload_status": "validated",
         "file_set": "igvf:analysis_set_with_input",
         "controlled_access": false
+    },
+    {
+        "uuid": "b63de552-a4a9-47da-a703-1b19ced30944",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:machine_learning_model_features"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-02-01T21:29:45Z",
+        "md5sum": "31dc62e99075bb077e112ef5b5f38fd2",
+        "file_format": "tsv",
+        "content_type": "machine learning model features",
+        "submitted_file_name": "/Users/igvf/igvf_files/machine_learning_model_features.tsv.gz",
+        "file_size": 145360919,
+        "upload_status": "validated",
+        "file_set": "igvf:analysis_set_with_input",
+        "controlled_access": false
     }
 ]
