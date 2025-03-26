@@ -535,7 +535,7 @@
         "md5sum": "35fc02ac7130ef797e68b5b40146a73e",
         "file_format": "bedpe",
         "assembly": "GRCh38",
-        "content_type": "element to gene prediction",
+        "content_type": "element to gene predictions",
         "submitted_file_name": "/Users/igvf/igvf_files/DNaseOnly_thresholded_predictions.bedpe.gz",
         "file_size": 145360919,
         "upload_status": "validated",
