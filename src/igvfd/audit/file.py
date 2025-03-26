@@ -102,7 +102,7 @@ def audit_file_no_file_format_specifications(value, system):
     '''
     [
         {
-            "audit_description": "Tabular files are expected to link to a file format specifications document describing the headers of the file.",
+            "audit_description": "Tabular files, with the exception of vcf files, are expected to link to a file format specifications document describing the headers of the file.",
             "audit_category": "missing file format specifications",
             "audit_level": "NOT_COMPLIANT"
         },
@@ -120,6 +120,8 @@ def audit_file_no_file_format_specifications(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     if object_type == 'Tabular file':
+        if value.get('file_format') == 'vcf':
+            return
         audit_message = get_audit_message(audit_file_no_file_format_specifications, index=0)
     elif object_type == 'Matrix file':
         audit_message = get_audit_message(audit_file_no_file_format_specifications, index=1)
