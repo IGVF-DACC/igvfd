@@ -1,6 +1,6 @@
 {
-    "hash": "bee5cb9d16df810f23c9f4c76453811c",
-    "index_name": "image_bee5cb9d",
+    "hash": "325df7a4a74caafcf95f13b9bd0272c8",
+    "index_name": "image_325df7a4",
     "item_type": "image",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "attachment": {

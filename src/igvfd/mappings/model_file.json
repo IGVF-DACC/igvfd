@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "e657775051e2322b8e51a4fc2ceeb56c",
     "index_name": "model_file_e6577750",
+=======
+    "hash": "d592d767c6d7638dd9c90e8d5a227743",
+    "index_name": "model_file_d592d767",
+>>>>>>> 4c7097bf6 (mappings)
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +157,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {

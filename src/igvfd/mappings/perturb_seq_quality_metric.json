@@ -1,6 +1,6 @@
 {
-    "hash": "a182f8d8fed16133b4df97bcbdb13b26",
-    "index_name": "perturb_seq_quality_metric_a182f8d8",
+    "hash": "273448b9e43a12e555b2ffe9a815508d",
+    "index_name": "perturb_seq_quality_metric_273448b9",
     "item_type": "perturb_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alignment_percentage": {

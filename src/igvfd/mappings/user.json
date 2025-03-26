@@ -1,6 +1,6 @@
 {
-    "hash": "953bf251823ab77fa1ee0d6f1985e09a",
-    "index_name": "user_953bf251",
+    "hash": "5c03ef1473624e278e12428c9253f369",
+    "index_name": "user_5c03ef14",
     "item_type": "user",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "creation_timestamp": {

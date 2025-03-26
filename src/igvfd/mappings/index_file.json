@@ -1,6 +1,6 @@
 {
-    "hash": "d01db706f231a21b4054fc3d370b2a7e",
-    "index_name": "index_file_d01db706",
+    "hash": "8bb4507103b16e52477ee6d548fa0391",
+    "index_name": "index_file_8bb45071",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {

@@ -84,7 +84,7 @@
                 "igvf_utils": "Saccharomyces cerevisiae"
             }
         },
-        "   s": {
+        "sample_terms": {
             "title": "Sample Terms",
             "description": "Ontology terms identifying a technical sample.",
             "type": "array",

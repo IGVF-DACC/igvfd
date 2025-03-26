@@ -1,6 +1,6 @@
 {
-    "hash": "bb7f3906bb10d9bc9fc98defeac74d04",
-    "index_name": "reference_file_bb7f3906",
+    "hash": "16dacdd222931b050b3d92b19a5cf839",
+    "index_name": "reference_file_16dacdd2",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {

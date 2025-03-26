@@ -1,6 +1,6 @@
 {
-    "hash": "845a009fda2e52f5dd0f15d89ba57a17",
-    "index_name": "source_845a009f",
+    "hash": "a08015a23c6afb4e6335ba4c871b0751",
+    "index_name": "source_a08015a2",
     "item_type": "source",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "creation_timestamp": {

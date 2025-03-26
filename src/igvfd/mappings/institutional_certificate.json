@@ -1,6 +1,6 @@
 {
-    "hash": "61089748f68cac088b79e30901bf8914",
-    "index_name": "institutional_certificate_61089748",
+    "hash": "a7cd0da18821cd56cfbbc35d30587501",
+    "index_name": "institutional_certificate_a7cd0da1",
     "item_type": "institutional_certificate",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "award": {
