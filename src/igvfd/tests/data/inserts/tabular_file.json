@@ -532,7 +532,7 @@
         ],
         "status": "released",
         "release_timestamp": "2025-02-01T21:29:45Z",
-        "md5sum": "8ca240cb615a0068e64c0a736f049fb8",
+        "md5sum": "35fc02ac7130ef797e68b5b40146a73e",
         "file_format": "bedpe",
         "assembly": "GRCh38",
         "content_type": "element to gene prediction",

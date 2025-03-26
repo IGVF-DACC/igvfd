@@ -102,9 +102,9 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "igvf:model_file_in_pytorch_01"
+            "igvf:model_featured_weights_01"
         ],
-        "md5sum": "8ba44b03278fd6968042d09a01f4cdf7",
+        "md5sum": "94626c2839050ccf5524cbb32e22e050",
         "file_format": "pkl",
         "content_type": "feature weights",
         "file_size": 7330,
