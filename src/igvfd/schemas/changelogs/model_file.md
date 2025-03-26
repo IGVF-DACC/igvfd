@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 1
 
+* Extend `file_format` enum list to include `pkl`.
+* Extend `content_type` enum list to include `feature weights`.
 * Allow `controlled_access` files to be released without `anvil_url`.
 * Add `catalog_adapters`.
 * Extend `content_type` enum list to include `protein language model`.

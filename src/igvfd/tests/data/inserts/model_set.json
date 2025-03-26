@@ -30,7 +30,7 @@
             "igvf:model_set_SEMpl"
         ],
         "model_version": "v1.0.1",
-        "file_set_type": "variant binding effect",
+        "file_set_type": "logistic regression",
         "prediction_objects": [
             "all variants"
         ],

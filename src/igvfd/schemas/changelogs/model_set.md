@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Extend `file_set_type` enum list to include `logistic regression`.
 * Add calculated property `data_use_limitation_summaries`.
 * Add calculated property `controlled_access`.
 * Add calculated property `construct_library_sets`.

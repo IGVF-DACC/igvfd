@@ -81,6 +81,7 @@
             "comment": "File set type describes the framework of the model in this model set.",
             "enum": [
                 "decision tree",
+                "logistic regression",
                 "neural network",
                 "random forest",
                 "support vector machine",
