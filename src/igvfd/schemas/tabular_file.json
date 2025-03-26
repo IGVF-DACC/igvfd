@@ -91,6 +91,7 @@
                             "properties": {
                                 "file_format": {
                                     "enum": [
+                                        "bedpe",
                                         "csv",
                                         "gtf",
                                         "tsv",
