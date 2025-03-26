@@ -65,7 +65,7 @@ class FileSet(Item):
              'file_format', 'file_size', 'href', 's3_uri', 'submitted_file_name', 'status', 'transcriptome_annotation',
                                'creation_timestamp', 'sequencing_platform', 'upload_status']),
         Path('control_for', include=['@id', 'accession', 'aliases', 'status']),
-        Path('donors', include=['@id', 'accession', 'aliases', 'sex', 'status', 'taxa']),
+        Path('donors', include=['@id', 'accession', 'aliases', 'sex', 'status', 'strain_background', 'taxa']),
         Path('samples.sample_terms', include=[
             '@id',
             '@type',
