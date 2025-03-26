@@ -29,6 +29,9 @@ def genome_browser_annotation_file():
                 'title': 'File Set Type'
             },
             'assay_titles': {
+                'title': 'Preferred Assay Title'
+            },
+            'file_set.assay_term.term_name': {
                 'title': 'Assay'
             },
             'file_set.samples.taxa': {
@@ -108,6 +111,7 @@ def genome_browser_annotation_file():
                 'facet_fields': [
                     'file_set.file_set_type',
                     'assay_titles',
+                    'file_set.assay_term.term_name'
                 ],
             },
             {

@@ -13,10 +13,16 @@ def model_file():
             'file_format': {
                 'title': 'File Format'
             },
+            'controlled_access': {
+                'title': 'Controlled Access'
+            },
             'file_set.file_set_type': {
                 'title': 'File Set Type'
             },
             'assay_titles': {
+                'title': 'Preferred Assay Title'
+            },
+            'file_set.assay_term.term_name': {
                 'title': 'Assay'
             },
             'file_set.samples.taxa': {
@@ -83,6 +89,7 @@ def model_file():
                 'facet_fields': [
                     'content_type',
                     'file_format',
+                    'controlled_access',
                     'workflow.name',
                     'workflow.uniform_pipeline',
                 ],
@@ -92,6 +99,7 @@ def model_file():
                 'facet_fields': [
                     'file_set.file_set_type',
                     'assay_titles',
+                    'file_set.assay_term.term_name',
                 ],
             },
             {

@@ -16,10 +16,16 @@ def reference_file():
             'file_format_type': {
                 'title': 'File Format Type'
             },
+            'controlled_access': {
+                'title': 'Controlled Access'
+            },
             'file_set.file_set_type': {
                 'title': 'File Set Type'
             },
             'assay_titles': {
+                'title': 'Preferred Assay Title'
+            },
+            'file_set.assay_term.term_name': {
                 'title': 'Assay'
             },
             'assembly': {
@@ -95,6 +101,7 @@ def reference_file():
                     'file_format_type',
                     'assembly',
                     'transcriptome_annotation',
+                    'controlled_access',
                     'workflow.name',
                     'workflow.uniform_pipeline',
                 ],
@@ -104,6 +111,7 @@ def reference_file():
                 'facet_fields': [
                     'file_set.file_set_type',
                     'assay_titles',
+                    'file_set.assay_term.term_name'
                 ],
             },
             {

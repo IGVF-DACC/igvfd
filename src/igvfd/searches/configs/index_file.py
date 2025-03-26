@@ -19,10 +19,16 @@ def index_file():
             'transcriptome_annotation': {
                 'title': 'Transcriptome Annotation'
             },
+            'controlled_access': {
+                'title': 'Controlled Access'
+            },
             'file_set.file_set_type': {
                 'title': 'File Set Type'
             },
             'assay_titles': {
+                'title': 'Preferred Assay Title'
+            },
+            'file_set.assay_term.term_name': {
                 'title': 'Assay'
             },
             'file_set.samples.taxa': {
@@ -79,6 +85,7 @@ def index_file():
                     'content_type',
                     'filtered',
                     'redacted',
+                    'controlled_access',
                     'workflow.name',
                     'workflow.uniform_pipeline',
                 ],
@@ -88,6 +95,7 @@ def index_file():
                 'facet_fields': [
                     'file_set.file_set_type',
                     'assay_titles',
+                    'file_set.assay_term.term_name'
                 ],
             },
             {
