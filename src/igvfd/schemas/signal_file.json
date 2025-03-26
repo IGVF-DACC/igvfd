@@ -172,6 +172,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "assay_titles",
         "cell_type_annotation.term_name",
         "content_type",

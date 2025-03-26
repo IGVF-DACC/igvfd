@@ -159,6 +159,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "description",
         "submitted_by.title",
         "summary",

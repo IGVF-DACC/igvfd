@@ -109,6 +109,7 @@
     },
     "fuzzy_searchable_fields": [
         "@type",
+        "aliases",
         "assay_titles",
         "collections",
         "description",

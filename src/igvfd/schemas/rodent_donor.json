@@ -185,6 +185,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "genotype",
         "phenotypic_features.feature.term_name",
         "submitted_by.title",

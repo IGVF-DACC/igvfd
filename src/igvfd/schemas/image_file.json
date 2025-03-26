@@ -84,6 +84,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "assay_titles",
         "content_type",
         "description",

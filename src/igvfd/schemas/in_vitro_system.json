@@ -634,6 +634,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "classifications",
         "description",
         "taxa",

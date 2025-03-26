@@ -61,6 +61,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "description",
         "title"
     ],

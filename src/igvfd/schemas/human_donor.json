@@ -187,6 +187,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "dbxrefs",
         "taxa",
         "ethnicities",

@@ -122,6 +122,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "title"
     ],
     "exact_searchable_fields": [

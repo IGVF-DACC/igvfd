@@ -206,6 +206,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "certificate_identifier"
     ],
     "exact_searchable_fields": [

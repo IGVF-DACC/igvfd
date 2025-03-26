@@ -1045,6 +1045,7 @@
     },
     "fuzzy_searchable_fields": [
         "@type",
+        "aliases",
         "collections",
         "description",
         "files.content_type",
