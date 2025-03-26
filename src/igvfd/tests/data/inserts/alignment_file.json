@@ -127,5 +127,32 @@
         "filtered": false,
         "redacted": false,
         "controlled_access": true
+    },
+    {
+        "uuid": "99a26003-e11d-ea86-7c84-bc7307d94636",
+        "accession": "IGVFFI0000CRAM",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:alignments_file_cram"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "61887609c334d7c3f01792b8aacf2ec5",
+        "file_format": "cram",
+        "assembly": "GRCh38",
+        "content_type": "alignments",
+        "submitted_file_name": "/Users/igvf/igvf_files/alignments.cram",
+        "file_size": 2850010,
+        "read_count": 700845675,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "redacted": false,
+        "filtered": false,
+        "controlled_access": false,
+        "checkfiles_version": "v10"
     }
 ]

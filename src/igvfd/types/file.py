@@ -67,6 +67,8 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'bigWig': '.bigWig',
     'cool': '.cool',
     'mcool': '.mcool',
+    'crai': '.crai',
+    'cram': '.cram',
     'csv': '.csv.gz',
     'database': '.db',
     'dat': '.dat.gz',
