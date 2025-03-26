@@ -540,5 +540,24 @@
         "upload_status": "validated",
         "file_set": "igvf:analysis_set_with_input",
         "controlled_access": false
+    },
+    {
+        "uuid": "0a5e0934-8096-4c72-a2c4-6593d13a1289",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:element_to_gene_predictions"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-02-01T21:29:45Z",
+        "md5sum": "482ec315a5e803d8206f88b52e99948b",
+        "file_format": "bedpe",
+        "assembly": "GRCh38",
+        "content_type": "element to gene predictions",
+        "submitted_file_name": "/Users/igvf/igvf_files/element_to_gene_predictions.bedpe.gz",
+        "file_size": 145360919,
+        "upload_status": "validated",
+        "file_set": "igvf:analysis_set_with_input",
+        "controlled_access": false
     }
 ]
