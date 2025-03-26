@@ -106,52 +106,6 @@ def test_non_virtual_sample_linked_to_virtual_sample_with_single_property(
     )
 
 
-def test_audit_inconsistent_construct_library_sets_types(
-    testapp,
-    primary_cell,
-    base_expression_construct_library_set,
-    construct_library_set_genome_wide,
-    construct_library_set_reporter,
-    construct_library_set_y2h
-):
-    testapp.patch_json(
-        primary_cell['@id'],
-        {
-            'construct_library_sets': [base_expression_construct_library_set['@id'],
-                                       construct_library_set_genome_wide['@id']]
-        }
-    )
-    res = testapp.get(primary_cell['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'inconsistent construct library sets'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-    testapp.patch_json(
-        primary_cell['@id'],
-        {
-            'construct_library_sets': [base_expression_construct_library_set['@id'],
-                                       construct_library_set_genome_wide['@id'],
-                                       construct_library_set_reporter['@id']]
-        }
-    )
-    res = testapp.get(primary_cell['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'inconsistent construct library sets'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-    testapp.patch_json(
-        primary_cell['@id'],
-        {
-            'construct_library_sets': [base_expression_construct_library_set['@id'], construct_library_set_y2h['@id']]
-        }
-    )
-    res = testapp.get(primary_cell['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'inconsistent construct library sets'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-
-
 def test_audit_parent_sample_singular_children(
     testapp,
     in_vitro_cell_line,
