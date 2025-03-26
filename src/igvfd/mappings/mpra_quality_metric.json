@@ -1,6 +1,6 @@
 {
-    "hash": "dff453412cfba1eb10dbd7e4516814b0",
-    "index_name": "mpra_quality_metric_dff45341",
+    "hash": "095ea784711a167adbc34f4bd6ec84d4",
+    "index_name": "mpra_quality_metric_095ea784",
     "item_type": "mpra_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -265,6 +265,10 @@
                         "store": true,
                         "type": "float"
                     },
+                    "fraction_oligos_passing": {
+                        "store": true,
+                        "type": "float"
+                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -324,7 +328,7 @@
                         },
                         "type": "object"
                     },
-                    "median_assigned_barocdes": {
+                    "median_assigned_barcodes": {
                         "store": true,
                         "type": "float"
                     },
@@ -338,10 +342,6 @@
                     },
                     "notes": {
                         "type": "text"
-                    },
-                    "pct_oligos_passing": {
-                        "store": true,
-                        "type": "float"
                     },
                     "pearson_correlation": {
                         "store": true,
