@@ -454,3 +454,25 @@ def file_14_15(value, system):
         notes += f'This object\'s transcriptome_annotation was GENCODE 28, GENCODE M17 but has been upgraded to GENCODE 32, GENCODE M23 as requested by the lab.'
         value['notes'] = notes.strip()
     return
+
+
+@upgrade_step('tabular_file', '14', '15')
+def tabular_file_14_15(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2253
+    notes = value.get('notes', '')
+    if value['content_type'] == 'sequence barcodes':
+        value['content_type'] = 'barcode onlist'
+        notes += ' This file\'s content_type was sequence barcodes, but has been upgraded to barcode onlist.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('reference_file', '17', '18')
+def reference_file_17_18(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2253
+    notes = value.get('notes', '')
+    if value['content_type'] == 'sequence barcodes':
+        value['content_type'] = 'genomic_elements_genes'
+        notes += f' This file\'s content_type was sequence barcodes, but has been upgraded to genomic_elements_genes.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
