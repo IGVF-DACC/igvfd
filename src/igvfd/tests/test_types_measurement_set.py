@@ -214,7 +214,7 @@ def test_calculated_externally_hosted(testapp, measurement_set, sequence_file):
     assert res.json.get('externally_hosted') == True
 
 
-def test_calculated_controlled_access_data_use_limitations(testapp, measurement_set, in_vitro_cell_line, institutional_certificate, institutional_certificate_controlled_access, other_lab, lab):
+def test_calculated_controlled_access_data_use_limitations(testapp, measurement_set, in_vitro_cell_line, institutional_certificate, institutional_certificate_controlled, other_lab, lab):
     # IC is not of the same lab.
     testapp.patch_json(
         measurement_set['@id'],
@@ -245,7 +245,7 @@ def test_calculated_controlled_access_data_use_limitations(testapp, measurement_
     # Add another IC for other lab, without partner labs.
     # Calculated props should be the same as before.
     testapp.patch_json(
-        institutional_certificate_controlled_access['@id'],
+        institutional_certificate_controlled['@id'],
         {
             'samples': [in_vitro_cell_line['@id']],
             'lab': other_lab['@id']
@@ -257,7 +257,7 @@ def test_calculated_controlled_access_data_use_limitations(testapp, measurement_
     # Change 2nd IC to the right lab. Calculated props
     # should change now.
     testapp.patch_json(
-        institutional_certificate_controlled_access['@id'],
+        institutional_certificate_controlled['@id'],
         {
             'lab': lab['@id']
         }
