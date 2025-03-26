@@ -2,6 +2,8 @@
 
 ### Schema version 11
 
+* Extend `preferred_assay_titles` enum list to include `10X ATAC with Scale pre-indexing`.
+* Extend `preferred_assay_titles` enum list to include `10X RNA with Scale pre-indexing`.
 * Adjust `preferred_assay_titles` enum list to remove `Growth CRISPR screen`.
 
 ### Schema version 10

@@ -118,6 +118,8 @@
                 "DOGMA-seq",
                 "10x multiome",
                 "10x multiome with MULTI-seq",
+                "10X ATAC with Scale pre-indexing",
+                "10X RNA with Scale pre-indexing",
                 "MULTI-seq",
                 "SHARE-seq",
                 "Histone ChIP-seq",
