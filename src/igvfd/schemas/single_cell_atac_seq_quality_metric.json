@@ -332,7 +332,6 @@
                     "title": "MIME type",
                     "type": "string",
                     "enum": [
-                        "text/csv",
                         "text/tab-separated-values"
                     ]
                 },
@@ -377,7 +376,6 @@
                     "title": "MIME type",
                     "type": "string",
                     "enum": [
-                        "text/csv",
                         "text/tab-separated-values"
                     ]
                 },
