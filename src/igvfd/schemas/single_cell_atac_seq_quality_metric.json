@@ -268,6 +268,138 @@
                 "appscript": 8,
                 "igvf_utils": 8
             }
+        },
+        "atac_fragments_alignment_stats": {
+            "title": "ATAC Fragments Alignment Stats",
+            "description": "",
+            "type": "object",
+            "additionalProperties": false,
+            "attachment": true,
+            "properties": {
+                "download": {
+                    "title": "File Name",
+                    "type": "string"
+                },
+                "href": {
+                    "comment": "Internal webapp URL for document file",
+                    "type": "string"
+                },
+                "type": {
+                    "title": "MIME type",
+                    "type": "string",
+                    "enum": [
+                        "text/plain"
+                    ]
+                },
+                "size": {
+                    "title": "File size",
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "md5sum": {
+                    "format": "md5sum",
+                    "type": "string",
+                    "title": "MD5sum"
+                },
+                "width": {
+                    "title": "Image width",
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "height": {
+                    "title": "Image height",
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        },
+        "atac_bam_summary_stats": {
+            "title": "ATAC Bam Summary Stats",
+            "description": "",
+            "type": "object",
+            "additionalProperties": false,
+            "attachment": true,
+            "properties": {
+                "download": {
+                    "title": "File Name",
+                    "type": "string"
+                },
+                "href": {
+                    "comment": "Internal webapp URL for document file",
+                    "type": "string"
+                },
+                "type": {
+                    "title": "MIME type",
+                    "type": "string",
+                    "enum": [
+                        "text/tab-separated-values"
+                    ]
+                },
+                "size": {
+                    "title": "File size",
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "md5sum": {
+                    "format": "md5sum",
+                    "type": "string",
+                    "title": "MD5sum"
+                },
+                "width": {
+                    "title": "Image width",
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "height": {
+                    "title": "Image height",
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        },
+        "atac_fragment_summary_stats": {
+            "title": "ATAC Fragment Summary Stats",
+            "description": "",
+            "type": "object",
+            "additionalProperties": false,
+            "attachment": true,
+            "properties": {
+                "download": {
+                    "title": "File Name",
+                    "type": "string"
+                },
+                "href": {
+                    "comment": "Internal webapp URL for document file",
+                    "type": "string"
+                },
+                "type": {
+                    "title": "MIME type",
+                    "type": "string",
+                    "enum": [
+                        "text/tab-separated-values"
+                    ]
+                },
+                "size": {
+                    "title": "File size",
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "md5sum": {
+                    "format": "md5sum",
+                    "type": "string",
+                    "title": "MD5sum"
+                },
+                "width": {
+                    "title": "Image width",
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "height": {
+                    "title": "Image height",
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
         }
     },
     "fuzzy_searchable_fields": [

@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 1
 
+* Add `atac_fragments_alignment_stats`.
+* Add `atac_bam_summary_stats`.
+* Add `atac_fragment_summary_stats`.
 * Adjust `quality_metric_of` to allow usage by all users.
 * Add `uni_mappings`.
 * Add `multi_mappings`.
