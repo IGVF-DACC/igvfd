@@ -53,3 +53,24 @@ def test_audit_biomarker_name(testapp, primary_cell, biomarker_CD243_absent, bio
         error['category'] != 'inconsistent biomarkers'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_mismatched_institutional_certificates(testapp, primary_cell, institutional_certificate, institutional_certificate_controlled):
+    testapp.patch_json(
+        institutional_certificate['@id'],
+        {'samples': [primary_cell['@id']]}
+    )
+    res = testapp.get(primary_cell['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent institutional certificates'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        institutional_certificate_controlled['@id'],
+        {'samples': [primary_cell['@id']]}
+    )
+    res = testapp.get(primary_cell['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent institutional certificates'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
