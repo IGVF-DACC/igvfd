@@ -158,6 +158,7 @@
     },
     "fuzzy_searchable_fields": [
         "aliases",
+        "lab.title",
         "modality",
         "submitted_by.title",
         "summary"

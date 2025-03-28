@@ -1,6 +1,6 @@
 {
-    "hash": "a86d4ac582b76f72d84afd6078e85a61",
-    "index_name": "genome_browser_annotation_file_a86d4ac5",
+    "hash": "a4e61707204163a96bd798058fb705cd",
+    "index_name": "genome_browser_annotation_file_a4e61707",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -166,6 +166,7 @@
                         "type": "keyword"
                     },
                     "assembly": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "award": {
@@ -1915,6 +1916,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
@@ -2034,6 +2036,7 @@
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "upload_credentials": {

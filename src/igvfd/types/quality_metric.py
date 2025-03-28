@@ -27,6 +27,7 @@ class QualityMetric(Item, ItemWithAttachment):
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
     ]
     audit_inherit = []
     set_status_up = []

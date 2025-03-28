@@ -1,6 +1,6 @@
 {
-    "hash": "47849738e77c55781b2fba3569daf1b5",
-    "index_name": "biomarker_47849738",
+    "hash": "0f364278533f47581a58f5e6f78a9947",
+    "index_name": "biomarker_0f364278",
     "item_type": "biomarker",
     "mapping": {
         "dynamic_templates": [
@@ -287,6 +287,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {

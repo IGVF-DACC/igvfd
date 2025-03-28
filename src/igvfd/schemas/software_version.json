@@ -102,6 +102,7 @@
     },
     "fuzzy_searchable_fields": [
         "aliases",
+        "lab.title",
         "submitted_by.title"
     ],
     "exact_searchable_fields": [

@@ -1,6 +1,6 @@
 {
-    "hash": "eced3b5b95827f398abf0cff35c86dfa",
-    "index_name": "tabular_file_eced3b5b",
+    "hash": "ad8301d6c42c0de298eee2d082bbb3f6",
+    "index_name": "tabular_file_ad8301d6",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -169,6 +169,7 @@
                         "type": "keyword"
                     },
                     "assembly": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "award": {
@@ -2051,6 +2052,7 @@
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "upload_credentials": {

@@ -1,6 +1,6 @@
 {
-    "hash": "6da7bdcaa29813b61eec54eda2062cd8",
-    "index_name": "crispr_modification_6da7bdca",
+    "hash": "531402206357c9b6af73d7a1c1c5dee3",
+    "index_name": "crispr_modification_53140220",
     "item_type": "crispr_modification",
     "mapping": {
         "dynamic_templates": [
@@ -302,6 +302,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {

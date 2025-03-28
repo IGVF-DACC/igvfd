@@ -129,11 +129,12 @@
     "fuzzy_searchable_fields": [
         "aliases",
         "description",
+        "donors.ethnicities",
+        "donors.strain",
+        "lab.title",
         "summary",
         "submitted_by.title",
-        "taxa",
-        "donors.ethnicities",
-        "donors.strain"
+        "taxa"
     ],
     "exact_searchable_fields": [
         "@type",

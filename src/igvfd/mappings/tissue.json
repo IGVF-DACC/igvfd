@@ -1,6 +1,6 @@
 {
-    "hash": "4ad63739b2d24b3f3988b38cdbf8fb0a",
-    "index_name": "tissue_4ad63739",
+    "hash": "528834d7a61575e10ea4db4d1b9fd2e7",
+    "index_name": "tissue_528834d7",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1416,6 +1416,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
