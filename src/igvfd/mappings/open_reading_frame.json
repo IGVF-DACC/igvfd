@@ -1,6 +1,6 @@
 {
-    "hash": "2eccba353c4a18536163d04d6d1dbead",
-    "index_name": "open_reading_frame_2eccba35",
+    "hash": "373021b01b4ea6127c0c76a0453090e5",
+    "index_name": "open_reading_frame_373021b0",
     "item_type": "open_reading_frame",
     "mapping": {
         "dynamic_templates": [
@@ -396,7 +396,7 @@
                         "type": "text"
                     },
                     "orf_id": {
-                        "copy_to": "_exact",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "pct_coverage_orf": {

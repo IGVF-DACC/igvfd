@@ -63,8 +63,8 @@
     "fuzzy_searchable_fields": [
         "aliases",
         "description",
-        "title",
-        "submitted_by.title"
+        "submitted_by.title",
+        "title"
     ],
     "exact_searchable_fields": [
         "@type"
