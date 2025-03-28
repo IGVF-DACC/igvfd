@@ -227,7 +227,7 @@
         ],
         "assay_term": "/assay-terms/igvf:CRISPR/",
         "preferred_assay_title": "CERES-seq",
-        "strand_specificity": "5' to 3'",
+        "strand_specificity": "5 prime to 3 prime",
         "file_set_type": "experimental data"
     },
     {

@@ -157,3 +157,17 @@ def test_measurement_set_upgrade_24_25(upgrader, measurement_set_v24):
     value = upgrader.upgrade('measurement_set', measurement_set_v24, current_version='24', target_version='25')
     assert value['schema_version'] == '25'
     assert value.get('preferred_assay_title') == 'Proliferation CRISPR screen'
+
+
+def test_measurement_set_upgrade_25_26_5_prime_to_3_prime(upgrader, measurement_set_v25_5_prime_to_3_prime):
+    value = upgrader.upgrade('measurement_set', measurement_set_v25_5_prime_to_3_prime,
+                             current_version='25', target_version='26')
+    assert value['schema_version'] == '26'
+    assert value.get('strand_specificity') == '5 prime to 3 prime'
+
+
+def test_measurement_set_upgrade_25_26_3_prime_to_5_prime(upgrader, measurement_set_v25_3_prime_to_5_prime):
+    value = upgrader.upgrade('measurement_set', measurement_set_v25_3_prime_to_5_prime,
+                             current_version='25', target_version='26')
+    assert value['schema_version'] == '26'
+    assert value.get('strand_specificity') == '3 prime to 5 prime'
