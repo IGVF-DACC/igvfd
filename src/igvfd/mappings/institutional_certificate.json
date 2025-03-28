@@ -1,6 +1,6 @@
 {
-    "hash": "61089748f68cac088b79e30901bf8914",
-    "index_name": "institutional_certificate_61089748",
+    "hash": "6e06bdb5539de5541f2f73573de9f479",
+    "index_name": "institutional_certificate_6e06bdb5",
     "item_type": "institutional_certificate",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "award": {
@@ -293,6 +294,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
@@ -382,6 +384,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {

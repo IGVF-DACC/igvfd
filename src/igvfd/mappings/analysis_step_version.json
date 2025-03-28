@@ -1,6 +1,6 @@
 {
-    "hash": "7b3a50164c3cb12a4399040a8af6b2f0",
-    "index_name": "analysis_step_version_7b3a5016",
+    "hash": "4811669cd44bafcd4dc47a25df4c6c30",
+    "index_name": "analysis_step_version_4811669c",
     "item_type": "analysis_step_version",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "analysis_step": {
@@ -184,6 +185,7 @@
                                 "type": "keyword"
                             },
                             "name": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "notes": {
@@ -223,7 +225,97 @@
                                 "type": "keyword"
                             },
                             "workflow": {
-                                "type": "keyword"
+                                "properties": {
+                                    "@id": {
+                                        "type": "keyword"
+                                    },
+                                    "@type": {
+                                        "type": "keyword"
+                                    },
+                                    "accession": {
+                                        "copy_to": "_exact",
+                                        "type": "keyword"
+                                    },
+                                    "aliases": {
+                                        "type": "keyword"
+                                    },
+                                    "alternate_accessions": {
+                                        "type": "keyword"
+                                    },
+                                    "analysis_steps": {
+                                        "type": "keyword"
+                                    },
+                                    "award": {
+                                        "type": "keyword"
+                                    },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
+                                    "creation_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "documents": {
+                                        "type": "keyword"
+                                    },
+                                    "lab": {
+                                        "type": "keyword"
+                                    },
+                                    "name": {
+                                        "copy_to": "_fuzzy",
+                                        "type": "keyword"
+                                    },
+                                    "notes": {
+                                        "type": "text"
+                                    },
+                                    "publications": {
+                                        "type": "keyword"
+                                    },
+                                    "release_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "revoke_detail": {
+                                        "type": "keyword"
+                                    },
+                                    "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "source_url": {
+                                        "type": "keyword"
+                                    },
+                                    "standards_page": {
+                                        "type": "keyword"
+                                    },
+                                    "status": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_by": {
+                                        "type": "keyword"
+                                    },
+                                    "submitter_comment": {
+                                        "type": "keyword"
+                                    },
+                                    "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "uniform_pipeline": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
+                                    "uuid": {
+                                        "type": "keyword"
+                                    },
+                                    "workflow_repositories": {
+                                        "type": "keyword"
+                                    },
+                                    "workflow_version": {
+                                        "store": true,
+                                        "type": "long"
+                                    }
+                                },
+                                "type": "object"
                             }
                         },
                         "type": "object"
@@ -354,6 +446,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
@@ -401,6 +494,7 @@
                                 "type": "keyword"
                             },
                             "name": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "notes": {

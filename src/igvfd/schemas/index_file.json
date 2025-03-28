@@ -138,11 +138,13 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "assay_titles",
         "content_type",
         "description",
         "file_set.samples.summary",
         "file_set.summary",
+        "lab.title",
         "submitted_by.title",
         "submitted_file_name",
         "summary",
@@ -150,9 +152,11 @@
     ],
     "exact_searchable_fields": [
         "@type",
+        "assembly",
         "dbxrefs",
         "file_format",
-        "file_set.accession"
+        "file_set.accession",
+        "transcriptome_annotation"
     ],
     "changelog": "/profiles/changelogs/index_file.md"
 }

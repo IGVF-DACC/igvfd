@@ -253,7 +253,10 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "description",
+        "lab.title",
+        "submitted_by.title",
         "summary"
     ],
     "exact_searchable_fields": [

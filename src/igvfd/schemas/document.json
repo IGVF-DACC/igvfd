@@ -133,9 +133,10 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
+        "characterization_method",
         "description",
         "document_type",
-        "characterization_method",
         "lab.title",
         "submitted_by.title"
     ],

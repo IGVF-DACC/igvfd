@@ -1,6 +1,6 @@
 {
-    "hash": "1882075f8f392f34a5adfecdc1691ba4",
-    "index_name": "configuration_file_1882075f",
+    "hash": "4ea31d144ed8792b050e622d6fae70ed",
+    "index_name": "configuration_file_4ea31d14",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {
@@ -1818,6 +1819,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {

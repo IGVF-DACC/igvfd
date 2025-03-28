@@ -105,7 +105,9 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "description",
+        "lab.title",
         "sample_material",
         "submitted_by.title",
         "summary",

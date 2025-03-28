@@ -1,6 +1,6 @@
 {
-    "hash": "857301d93bc3aa633865fc234f1adc30",
-    "index_name": "single_cell_rna_seq_quality_metric_857301d9",
+    "hash": "7032631e3fa95dc5ac9968ae20768358",
+    "index_name": "single_cell_rna_seq_quality_metric_7032631e",
     "item_type": "single_cell_rna_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "analysis_step_version": {
@@ -337,6 +338,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
@@ -425,7 +427,73 @@
                         "type": "keyword"
                     },
                     "submitted_by": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "date"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "email": {
+                                "type": "keyword"
+                            },
+                            "first_name": {
+                                "type": "keyword"
+                            },
+                            "groups": {
+                                "type": "keyword"
+                            },
+                            "job_title": {
+                                "type": "keyword"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "last_name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submits_for": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "title": {
+                                "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            },
+                            "viewing_groups": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "submitter_comment": {
                         "type": "keyword"

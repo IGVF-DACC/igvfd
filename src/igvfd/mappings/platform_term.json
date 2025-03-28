@@ -1,6 +1,6 @@
 {
-    "hash": "e4e7314b92c58105030e1fa3829c4a99",
-    "index_name": "platform_term_e4e7314b",
+    "hash": "87b7009d6972a7a08b73ed760b1ac36b",
+    "index_name": "platform_term_87b7009d",
     "item_type": "platform_term",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "ancestors": {

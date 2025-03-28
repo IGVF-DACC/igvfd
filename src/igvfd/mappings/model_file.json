@@ -1,6 +1,6 @@
 {
-    "hash": "3cd246a42c94b921f887fa968b564614",
-    "index_name": "model_file_3cd246a4",
+    "hash": "b9409bdd2778fa464bc7969016eca658",
+    "index_name": "model_file_b9409bdd",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {
@@ -1835,6 +1836,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {

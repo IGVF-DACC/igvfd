@@ -169,6 +169,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "lab.title",
         "submitted_by.title"
     ],

@@ -1,6 +1,6 @@
 {
-    "hash": "c0d50645c3da816a36aa50a7fed534a8",
-    "index_name": "measurement_set_c0d50645",
+    "hash": "674d1868783467d61b9145d62541a016",
+    "index_name": "measurement_set_674d1868",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {

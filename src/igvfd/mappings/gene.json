@@ -1,6 +1,6 @@
 {
-    "hash": "e737b8843faec762f28e9406f178224b",
-    "index_name": "gene_e737b884",
+    "hash": "14095fab5a9211e6a836fd565789a395",
+    "index_name": "gene_14095fab",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "collections": {

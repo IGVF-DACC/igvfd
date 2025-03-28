@@ -90,6 +90,7 @@
     },
     "fuzzy_searchable_fields": [
         "@type",
+        "aliases",
         "collections",
         "description",
         "file_set_type",

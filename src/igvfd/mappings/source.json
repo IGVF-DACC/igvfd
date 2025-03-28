@@ -1,6 +1,6 @@
 {
-    "hash": "845a009fda2e52f5dd0f15d89ba57a17",
-    "index_name": "source_845a009f",
+    "hash": "c21325e21fb561f21a124f0aa06a0689",
+    "index_name": "source_c21325e2",
     "item_type": "source",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "creation_timestamp": {
@@ -230,6 +231,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {

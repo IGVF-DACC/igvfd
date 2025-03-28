@@ -634,13 +634,15 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "classifications",
         "description",
-        "taxa",
+        "donors.ethnicities",
+        "donors.strain",
+        "lab.title",
         "submitted_by.title",
         "summary",
-        "donors.ethnicities",
-        "donors.strain"
+        "taxa"
     ],
     "exact_searchable_fields": [
         "@type",
