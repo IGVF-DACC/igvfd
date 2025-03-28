@@ -1,6 +1,6 @@
 {
-    "hash": "a3d8004a878f6f6ca8f30675168351e2",
-    "index_name": "workflow_a3d8004a",
+    "hash": "2065d467fc4759cafc3ad847802e94dd",
+    "index_name": "workflow_2065d467",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -370,12 +370,14 @@
                                 "type": "text"
                             },
                             "input_content_types": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "lab": {
                                 "type": "keyword"
                             },
                             "name": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "notes": {

@@ -1,6 +1,6 @@
 {
-    "hash": "bc556e273ab51b5bf69cbc28c9779a99",
-    "index_name": "analysis_step_bc556e27",
+    "hash": "5f325ab2f7131b675221f517bcb98701",
+    "index_name": "analysis_step_5f325ab2",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -217,6 +217,7 @@
                                         "type": "keyword"
                                     },
                                     "name": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "notes": {
@@ -606,6 +607,7 @@
                                 "type": "keyword"
                             },
                             "accession": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "aliases": {
@@ -636,6 +638,7 @@
                                 "type": "keyword"
                             },
                             "name": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "notes": {

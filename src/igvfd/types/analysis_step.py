@@ -29,7 +29,7 @@ class AnalysisStep(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('parents', include=['@id', 'title', 'status']),
-        Path('workflow', include=['@id', 'accession', 'status']),
+        Path('workflow', include=['@id', 'accession', 'name', 'status']),
         Path('submitted_by', include=['@id', 'title']),
         Path('analysis_step_versions.software_versions', include=[
              '@id', 'analysis_step_versions', 'software_versions', 'name'])

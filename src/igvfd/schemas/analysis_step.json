@@ -244,13 +244,16 @@
     },
     "fuzzy_searchable_fields": [
         "aliases",
+        "analysis_step_versions.software_versions.name",
         "description",
         "lab.title",
         "submitted_by.title",
-        "title"
+        "title",
+        "workflow.name"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "@type",
+        "workflow.accession"
     ],
     "changelog": "/profiles/changelogs/analysis_step.md"
 }
