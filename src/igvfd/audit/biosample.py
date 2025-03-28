@@ -103,3 +103,42 @@ def audit_biomarker_name(value, system):
                     f'{biomarkers_to_link} with the same `name`: {name}.'
                 )
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+@audit_checker('Biosample', frame='object')
+def audit_multiple_ics_with_mismatched_access(value, system):
+    '''
+    [
+        {
+            "audit_description": "If a biosample has more than one institutional certificate, it is expected for all of them to have the same controlled_access.",
+            "audit_category": "inconsistent institutional certificates",
+            "audit_level": "INTERNAL_ACTION"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message = get_audit_message(audit_multiple_ics_with_mismatched_access)
+    if 'institutional_certificates' in value:
+        ic_controlled_access_values = dict()
+        for ic in value['institutional_certificates']:
+            ic_object = system.get('request').embed(ic)
+            if ic_object.get('controlled_access', '') not in ic_controlled_access_values:
+                ic_controlled_access_values[ic_object.get('controlled_access', '')] = [(
+                    ic_object.get('certificate_identifier', ''), ic_object.get('@id', ''))]
+            else:
+                ic_controlled_access_values[ic_object.get('controlled_access', '')].append(
+                    (ic_object.get('certificate_identifier', ''), ic_object.get('@id', '')))
+
+        if len(ic_controlled_access_values) > 1:
+            controlled_links = ', '.join(
+                [audit_link(path_to_text(x[0]), x[1]) for x in ic_controlled_access_values[True]]
+            )
+            uncontrolled_links = ', '.join(
+                [audit_link(path_to_text(x[0]), x[1]) for x in ic_controlled_access_values[False]]
+            )
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has both'
+                f'controlled access institutional certificates {controlled_links} and '
+                f'uncontrolled access institutional certificates {uncontrolled_links}.'
+            )
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
