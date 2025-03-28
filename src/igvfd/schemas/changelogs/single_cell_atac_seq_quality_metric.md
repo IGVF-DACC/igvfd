@@ -2,5 +2,6 @@
 
 ### Minor changes since schema version 1
 
+* Adjust `quality_metric_of` to allow usage by all users.
 * Add `uni_mappings`.
 * Add `multi_mappings`.
