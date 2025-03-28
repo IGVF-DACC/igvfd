@@ -1297,7 +1297,7 @@ class ConstructLibrarySet(FileSet):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('files', include=['@id', 'accession', 'aliases',
-             'content_type', 'file_format', 'upload_status', 'status']),
+             'content_type', 'href', 'file_format', 'upload_status', 'status']),
         Path('integrated_content_files', include=['@id', 'accession',
              'aliases', 'content_type', 'file_format', 'upload_status', 'status']),
         Path('control_for', include=['@id', 'accession', 'aliases', 'status']),
