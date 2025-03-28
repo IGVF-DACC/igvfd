@@ -402,3 +402,23 @@ def measurement_set_perturb_seq(testapp, lab, award, assay_term_crispr, tissue):
         'preferred_assay_title': 'Perturb-seq'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
+
+
+@pytest.fixture
+def measurement_set_v25_5_prime_to_3_prime(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '25',
+        'strand_specificity': '5\' to 3\''
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v25_3_prime_to_5_prime(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '25',
+        'strand_specificity': '3\' to 5\''
+    })
+    return item

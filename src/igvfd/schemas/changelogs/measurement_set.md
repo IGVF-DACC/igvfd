@@ -1,5 +1,10 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 25
+
+* Adjust `strand_specificity` enum list to replace `5' to 3'` with `5 prime to 3 prime`.
+* Adjust `strand_specificity` enum list to replace `3' to 5'` with `3 prime to 5 prime`.
+
 ### Minor changes since schema version 25
 
 * Add calculated property `data_use_limitation_summaries`.
