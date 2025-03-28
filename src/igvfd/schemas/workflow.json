@@ -123,6 +123,7 @@
     "fuzzy_searchable_fields": [
         "aliases",
         "name",
+        "lab.title",
         "submitted_by.title",
         "analysis_steps.analysis_step_types",
         "analysis_steps.output_content_types"

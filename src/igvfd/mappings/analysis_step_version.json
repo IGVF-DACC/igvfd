@@ -1,6 +1,6 @@
 {
-    "hash": "99d756917b7454f0819fc31c7b2b7e54",
-    "index_name": "analysis_step_version_99d75691",
+    "hash": "5a8a10c8b1cc166c46cdfbf884b6d21c",
+    "index_name": "analysis_step_version_5a8a10c8",
     "item_type": "analysis_step_version",
     "mapping": {
         "dynamic_templates": [
@@ -355,6 +355,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {

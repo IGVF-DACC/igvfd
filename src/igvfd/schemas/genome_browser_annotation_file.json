@@ -119,6 +119,7 @@
         "description",
         "file_set.samples.summary",
         "file_set.summary",
+        "lab.title",
         "submitted_by.title",
         "submitted_file_name",
         "summary",
@@ -127,8 +128,10 @@
     "exact_searchable_fields": [
         "@type",
         "dbxrefs",
+        "assembly",
         "file_format",
-        "file_set.accession"
+        "file_set.accession",
+        "transcriptome_annotation"
     ],
     "changelog": "/profiles/changelogs/genome_browser_annotation_file.md"
 }

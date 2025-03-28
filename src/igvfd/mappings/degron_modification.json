@@ -1,6 +1,6 @@
 {
-    "hash": "d6d746087216c0ccf644c35a4d5741fa",
-    "index_name": "degron_modification_d6d74608",
+    "hash": "7fe71c4e650756f09525be0179a445af",
+    "index_name": "degron_modification_7fe71c4e",
     "item_type": "degron_modification",
     "mapping": {
         "dynamic_templates": [
@@ -296,6 +296,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {

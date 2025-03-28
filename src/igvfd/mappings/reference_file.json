@@ -1,6 +1,6 @@
 {
-    "hash": "16dacdd222931b050b3d92b19a5cf839",
-    "index_name": "reference_file_16dacdd2",
+    "hash": "084fc9f543ce8f5e56ad9d2d8d81dea5",
+    "index_name": "reference_file_084fc9f5",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -169,6 +169,7 @@
                         "type": "keyword"
                     },
                     "assembly": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "award": {
@@ -1839,6 +1840,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
@@ -1875,6 +1877,7 @@
                         "type": "keyword"
                     },
                     "source_url": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "sources": {
@@ -1964,6 +1967,7 @@
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "upload_credentials": {

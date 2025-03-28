@@ -126,7 +126,8 @@
         "title"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "@type",
+        "email"
     ],
     "changelog": "/profiles/changelogs/user.md"
 }

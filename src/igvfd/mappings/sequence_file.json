@@ -1,6 +1,6 @@
 {
-    "hash": "e831f54b25de2de7db4d31fb73e64a95",
-    "index_name": "sequence_file_e831f54b",
+    "hash": "c339198fccb7c0ff93d1f01521c8496a",
+    "index_name": "sequence_file_c339198f",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1845,6 +1845,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {

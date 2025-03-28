@@ -23,6 +23,9 @@ class OpenReadingFrame(Item):
     name_key = 'orf_id'
     embedded_with_frame = [
         Path('genes', include=['@id', 'symbol', 'geneid', 'status']),
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
     ]
 
     @calculated_property(

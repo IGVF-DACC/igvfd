@@ -1,6 +1,6 @@
 {
-    "hash": "22feba582fdf654aad25527fd876a02b",
-    "index_name": "alignment_file_22feba58",
+    "hash": "f1411f0f4bc67b027cf375c8224e34b4",
+    "index_name": "alignment_file_f1411f0f",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -169,6 +169,7 @@
                         "type": "keyword"
                     },
                     "assembly": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "award": {
@@ -1836,6 +1837,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
@@ -1966,6 +1968,7 @@
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "upload_credentials": {

@@ -101,6 +101,7 @@
     },
     "fuzzy_searchable_fields": [
         "aliases",
+        "lab.title",
         "name",
         "gene",
         "synonyms",

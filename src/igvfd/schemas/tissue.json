@@ -161,6 +161,7 @@
     "fuzzy_searchable_fields": [
         "aliases",
         "description",
+        "lab.title",
         "submitted_by.title",
         "summary",
         "taxa",

@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-    "hash": "5d2f92a0c69684b95ece72b74a2ed1d5",
-    "index_name": "matrix_file_5d2f92a0",
-=======
-    "hash": "9fd492505e52353d3ef011d4a0f9ab03",
-    "index_name": "matrix_file_9fd49250",
->>>>>>> 4c7097bf6 (mappings)
+    "hash": "013f0b5d56f91f023027bfa1a44c75aa",
+    "index_name": "matrix_file_013f0b5d",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1831,6 +1826,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {

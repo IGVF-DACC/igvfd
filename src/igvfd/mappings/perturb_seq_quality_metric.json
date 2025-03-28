@@ -1,6 +1,6 @@
 {
-    "hash": "273448b9e43a12e555b2ffe9a815508d",
-    "index_name": "perturb_seq_quality_metric_273448b9",
+    "hash": "0958cb7154120fc1a6a36efc9dc4a5c2",
+    "index_name": "perturb_seq_quality_metric_0958cb71",
     "item_type": "perturb_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -326,6 +326,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
@@ -370,7 +371,73 @@
                         "type": "keyword"
                     },
                     "submitted_by": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "date"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "email": {
+                                "type": "keyword"
+                            },
+                            "first_name": {
+                                "type": "keyword"
+                            },
+                            "groups": {
+                                "type": "keyword"
+                            },
+                            "job_title": {
+                                "type": "keyword"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "last_name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submits_for": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "title": {
+                                "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            },
+                            "viewing_groups": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "submitter_comment": {
                         "type": "keyword"

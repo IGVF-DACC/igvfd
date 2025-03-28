@@ -1,6 +1,6 @@
 {
-    "hash": "5c03ef1473624e278e12428c9253f369",
-    "index_name": "user_5c03ef14",
+    "hash": "3d1da73e1c25af95fc9173f1d2fc5552",
+    "index_name": "user_3d1da73e",
     "item_type": "user",
     "mapping": {
         "dynamic_templates": [
@@ -159,6 +159,7 @@
                         "type": "text"
                     },
                     "email": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "first_name": {
