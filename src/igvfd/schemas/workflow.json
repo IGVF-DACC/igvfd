@@ -131,7 +131,7 @@
     "exact_searchable_fields": [
         "@type",
         "publications.publication_identifiers",
-        "analysis_steps.analysis_step_versions.software_versions.software.name"
+        "analysis_steps.analysis_step_versions.software_versions.software.title"
     ],
     "changelog": "/profiles/changelogs/workflow.md"
 }

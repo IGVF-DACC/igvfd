@@ -1,6 +1,6 @@
 {
-    "hash": "4fcb51da6629d9f5c4ddc15c70290be4",
-    "index_name": "workflow_4fcb51da",
+    "hash": "a3d8004a878f6f6ca8f30675168351e2",
+    "index_name": "workflow_a3d8004a",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -273,7 +273,6 @@
                                                         "type": "keyword"
                                                     },
                                                     "name": {
-                                                        "copy_to": "_exact",
                                                         "type": "keyword"
                                                     },
                                                     "notes": {
@@ -304,6 +303,7 @@
                                                         "type": "keyword"
                                                     },
                                                     "title": {
+                                                        "copy_to": "_exact",
                                                         "type": "keyword"
                                                     },
                                                     "used_by": {
