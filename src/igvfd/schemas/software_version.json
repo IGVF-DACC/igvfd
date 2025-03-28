@@ -103,12 +103,12 @@
     "fuzzy_searchable_fields": [
         "aliases",
         "lab.title",
-        "submitted_by.title",
-        "software.title"
+        "submitted_by.title"
     ],
     "exact_searchable_fields": [
         "@type",
-        "publications.publication_identifiers"
+        "publications.publication_identifiers",
+        "software.title"
     ],
     "changelog": "/profiles/changelogs/software_version.md"
 }
