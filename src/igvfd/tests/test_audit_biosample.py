@@ -63,7 +63,7 @@ def test_audit_mismatched_institutional_certificates(testapp, primary_cell, inst
     res = testapp.get(primary_cell['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent institutional certificates'
-        for error in res.json['audit'].get('ERROR', [])
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
     testapp.patch_json(
         institutional_certificate_controlled['@id'],
