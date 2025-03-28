@@ -134,13 +134,12 @@
     "fuzzy_searchable_fields": [
         "aliases",
         "lab.title",
-        "submitted_by.title",
-        "orf_id"
+        "orf_id",
+        "submitted_by.title"
     ],
     "exact_searchable_fields": [
         "@type",
-        "dbxrefs",
-        "orf_id"
+        "dbxrefs"
     ],
     "changelog": "/profiles/changelogs/open_reading_frame.md"
 }

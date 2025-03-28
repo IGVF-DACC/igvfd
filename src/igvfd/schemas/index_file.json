@@ -152,9 +152,11 @@
     ],
     "exact_searchable_fields": [
         "@type",
+        "assembly",
         "dbxrefs",
         "file_format",
-        "file_set.accession"
+        "file_set.accession",
+        "transcriptome_annotation"
     ],
     "changelog": "/profiles/changelogs/index_file.md"
 }
