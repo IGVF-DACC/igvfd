@@ -16,12 +16,12 @@ def audit_tissue_ccf_id(value, system):
         {
             "audit_description": "Human tissues are expected to specify a common coordinate framework identifier (CCF ID).",
             "audit_category": "missing CCF ID",
-            "audit_level": "NOT_COMPLIANT"
+            "audit_level": "WARNING"
         },
         {
             "audit_description": "Non-human tissues are not expected to specify a common coordinate framework identifier (CCF ID).",
             "audit_category": "unexpected CCF ID",
-            "audit_level": "ERROR"
+            "audit_level": "WARNING"
         }
     ]
     '''
