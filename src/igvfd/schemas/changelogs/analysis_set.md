@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Extend `analysis_step_types` enum list to include `barcode correction`.
 * Update calculation of `summary`.
 * Update calculation of `assay_titles`.
 * Add calculated property `construct_library_sets`.

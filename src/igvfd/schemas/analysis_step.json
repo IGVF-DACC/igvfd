@@ -54,6 +54,7 @@
                 "type": "string",
                 "enum": [
                     "alignment",
+                    "barcode correction",
                     "barcode counting",
                     "barcode mapping generation",
                     "base calling",
@@ -84,6 +85,7 @@
                 ],
                 "enum_descriptions": {
                     "alignment": "The aligning of reads to a reference genome or transcriptome.",
+                    "barcode correction": "The process of correcting errors in barcode sequences.",
                     "barcode mapping generation": "The process of assigning barcode sequences to specific reads for identification and separation of samples.",
                     "barcode counting": "The process of quantifying the occurrence of unique barcodes in sequencing data.",
                     "base calling": "The conversion of raw sequencing signals into nucleotide sequences, determining the identity of each base in the reads.",
