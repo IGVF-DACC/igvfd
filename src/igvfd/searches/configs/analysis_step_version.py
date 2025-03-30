@@ -57,6 +57,9 @@ def analysis_step_version():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'software_versions': {
+                'title': 'Software Versions'
             }
         }
     }
