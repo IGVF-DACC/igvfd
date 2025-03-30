@@ -505,8 +505,8 @@ def measurement_set_24_25(value, system):
         value['notes'] = notes.strip()
 
 
-@upgrade_step('measurement_set', '24', '25')
-def measurement_set_24_25(value, system):
+@upgrade_step('measurement_set', '25', '26')
+def measurement_set_25_26(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2541
     notes = value.get('notes', '')
     if value.get('strand_specificity') == '5\' to 3\'':
