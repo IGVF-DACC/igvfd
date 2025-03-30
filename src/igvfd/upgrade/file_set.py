@@ -509,11 +509,11 @@ def measurement_set_24_25(value, system):
 def measurement_set_25_26(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2541
     notes = value.get('notes', '')
-    if value.get('strand_specificity') == '5\' to 3\'':
+    if value.get('strand_specificity') == "5' to 3'":
         value['strand_specificity'] = '5 prime to 3 prime'
         notes += f' This measurement set previously used 5\' to 3\' as strand_specificity, but the strand_specificity has now been updated to 5 prime to 3 prime via an upgrade.'
         value['notes'] = notes.strip()
-    if value.get('strand_specificity') == '3\' to 5\'':
+    if value.get('strand_specificity') == "3' to 5'":
         value['strand_specificity'] = '3 prime to 5 prime'
         notes += f' This measurement set previously used 3\' to 5\' as strand_specificity, but the strand_specificity has now been updated to 3 prime to 5 prime via an upgrade.'
         value['notes'] = notes.strip()
