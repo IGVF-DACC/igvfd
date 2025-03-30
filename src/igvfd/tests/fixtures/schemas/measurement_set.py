@@ -409,7 +409,7 @@ def measurement_set_v25_5_prime_to_3_prime(measurement_set):
     item = measurement_set.copy()
     item.update({
         'schema_version': '25',
-        'strand_specificity': '5 to 3'
+        'strand_specificity': '5\' to 3\''
     })
     return item
 
@@ -419,6 +419,6 @@ def measurement_set_v25_3_prime_to_5_prime(measurement_set):
     item = measurement_set.copy()
     item.update({
         'schema_version': '25',
-        'strand_specificity': '3 to 5'
+        'strand_specificity': '3\' to 5\''
     })
     return item
