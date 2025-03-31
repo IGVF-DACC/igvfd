@@ -226,3 +226,25 @@ def audit_sample_missing_publication(value, system):
             f'has no `publications`.'
         )
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+@audit_checker('Sample', frame='object')
+def audit_missing_association(value, system):
+    '''
+    [
+        {
+            "audit_description": "Samples are expected to be associated with another sample or file set.",
+            "audit_category": "missing association",
+            "audit_level": "INTERNAL_ACTION"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message = get_audit_message(audit_missing_association)
+    properties = ['file_sets', 'origin_of', 'parts', 'sorted_fractions', 'multiplexed_in', 'pooled_in']
+    if all(not value.get(prop) for prop in properties):
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'is not associated with any file set, nor is the parent of any sample.'
+        )
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
