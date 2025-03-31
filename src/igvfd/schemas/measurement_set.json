@@ -65,7 +65,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "25"
+            "default": "26"
         },
         "samples": {
             "maxItems": 1
@@ -309,13 +309,13 @@
             "description": "The strand-specificity of the sequencing results within Perturb-seq, scCRISPR screen, TAP-seq, and CERES-seq assays.",
             "type": "string",
             "enum": [
-                "5' to 3'",
-                "3' to 5'",
+                "5 prime to 3 prime",
+                "3 prime to 5 prime",
                 "unstranded"
             ],
             "submissionExample": {
-                "appscript": "5' to 3'",
-                "igvf_utils": "5' to 3'"
+                "appscript": "5 prime to 3 prime",
+                "igvf_utils": "5 prime to 3 prime"
             }
         },
         "auxiliary_sets": {

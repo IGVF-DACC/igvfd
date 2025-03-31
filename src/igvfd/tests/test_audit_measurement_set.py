@@ -1351,7 +1351,7 @@ def test_audit_missing_strand_specificity(testapp, measurement_set_perturb_seq):
     testapp.patch_json(
         measurement_set_perturb_seq['@id'],
         {
-            'strand_specificity': "5' to 3'"
+            'strand_specificity': '5 prime to 3 prime'
         }
     )
     # Ensure the audit no longer triggers after adding strand_specificity
