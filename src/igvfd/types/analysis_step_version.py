@@ -28,7 +28,7 @@ class AnalysisStepVersion(Item):
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
-        Path('analysis_step', include=['@id', 'name', 'status']),
+        Path('analysis_step', include=['@id', 'name', 'status', 'title']),
         Path('software_versions', include=['@id', 'name', 'status']),
         Path('submitted_by', include=['@id', 'title']),
     ]
