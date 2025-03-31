@@ -89,7 +89,7 @@ def test_multitype_report_download_no_href(workbook, testapp):
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
     assert lines[1].split(b'\t') == [
-        b'ID', b'UUID', b'Accession', b'Alternate Accessions', b'Content Type', b'File Format', b'Lab', b'Status', b'File Set', b'Illumina Read Type', b'External Identifiers', b'Upload Status', b'Reference Files', b'Content Summary'
+        b'ID', b'UUID', b'Accession', b'Alternate Accessions', b'Content Type', b'File Format', b'Lab', b'Status', b'File Set', b'Illumina Read Type', b'External Identifiers', b'Upload Status', b'Reference Files', b'Content Summary', b'File Set Type'
     ]
 
 
