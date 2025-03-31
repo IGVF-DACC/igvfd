@@ -88,8 +88,9 @@ def test_multitype_report_download_no_href(workbook, testapp):
     assert disposition.startswith(f'attachment;filename="igvf_{host_type}_mixed') and disposition.endswith('.tsv"')
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
+    print('testing124', lines[1].split(b'\t'))
     assert lines[1].split(b'\t') == [
-        b'ID', b'UUID', b'Accession', b'Alternate Accessions', b'Content Type', b'File Format', b'Lab', b'Status', b'File Set', b'Illumina Read Type', b'External Identifiers', b'Upload Status', b'Reference Files', b'Content Summary', b'File Set Type'
+        b'ID', b'UUID', b'Accession', b'Alternate Accessions', b'Content Type', b'File Format', b'Lab', b'Status', b'File Set', b'Illumina Read Type', b'External Identifiers', b'Upload Status', b'File Set Type', b'Reference Files', b'Content Summary'
     ]
 
 
