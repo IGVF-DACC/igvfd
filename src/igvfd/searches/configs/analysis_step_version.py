@@ -60,6 +60,12 @@ def analysis_step_version():
             },
             'software_versions': {
                 'title': 'Software Versions'
+            },
+            'analysis_step': {
+                'title': 'Analysis Step'
+            },
+            'analysis_step.title': {
+                'title': 'Analysis Step Title'
             }
         }
     }
