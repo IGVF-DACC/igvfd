@@ -10,7 +10,7 @@ def try_to_convert_to_int(item):
     try:
         return int(item)
     except ValueError:
-        return -1
+        return item
 
 
 class MyGunicornLogger(gunicorn.glogging.Logger):
@@ -57,6 +57,7 @@ class MyGunicornLogger(gunicorn.glogging.Logger):
             'wsgi_begin': -1,
             'wsgi_end': -1,
             'wsgi_time': -1,
+            'item_type': '-',
         }
 
         # add request headers
