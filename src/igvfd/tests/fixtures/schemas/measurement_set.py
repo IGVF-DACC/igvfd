@@ -129,6 +129,47 @@ def measurement_set_two_onlists_atac(testapp, lab, award, assay_term_scatac, tis
 
 
 @pytest.fixture
+def measurement_set_perturb_seq(testapp, lab, award, assay_term_crispr_single_cell, tissue):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_crispr_single_cell['@id'],
+        'samples': [tissue['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_title': 'Perturb-seq'
+    }
+    return testapp.post_json('/measurement_set', item).json['@graph'][0]
+
+
+@pytest.fixture
+def measurement_set_with_protocols(testapp, lab, award, assay_term_starr, tissue):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_starr['@id'],
+        'samples': [tissue['@id']],
+        'file_set_type': 'experimental data',
+        'protocols': ['https://www.protocols.io/test-protocols-url-12345'],
+        'preferred_assay_title': 'SUPERSTARR'
+    }
+    return testapp.post_json('/measurement_set', item).json['@graph'][0]
+
+
+@pytest.fixture
+def measurement_set_with_functional_assay_mechanisms(testapp, lab, award, assay_term_starr, tissue, phenotype_term_from_go):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_starr['@id'],
+        'samples': [tissue['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_title': 'SUPERSTARR',
+        'functional_assay_mechanisms': [phenotype_term_from_go['@id']]
+    }
+    return testapp.post_json('/measurement_set', item).json['@graph'][0]
+
+
+@pytest.fixture
 def measurement_set_v1(measurement_set, in_vitro_cell_line, human_donor):
     item = measurement_set.copy()
     item.update({
@@ -324,34 +365,6 @@ def measurement_set_v20(lab, award, assay_term_starr, tissue):
 
 
 @pytest.fixture
-def measurement_set_with_protocols(testapp, lab, award, assay_term_starr, tissue):
-    item = {
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'assay_term': assay_term_starr['@id'],
-        'samples': [tissue['@id']],
-        'file_set_type': 'experimental data',
-        'protocols': ['https://www.protocols.io/test-protocols-url-12345'],
-        'preferred_assay_title': 'SUPERSTARR'
-    }
-    return testapp.post_json('/measurement_set', item).json['@graph'][0]
-
-
-@pytest.fixture
-def measurement_set_with_functional_assay_mechanisms(testapp, lab, award, assay_term_starr, tissue, phenotype_term_from_go):
-    item = {
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'assay_term': assay_term_starr['@id'],
-        'samples': [tissue['@id']],
-        'file_set_type': 'experimental data',
-        'preferred_assay_title': 'SUPERSTARR',
-        'functional_assay_mechanisms': [phenotype_term_from_go['@id']]
-    }
-    return testapp.post_json('/measurement_set', item).json['@graph'][0]
-
-
-@pytest.fixture
 def measurement_set_v21(measurement_set):
     item = measurement_set.copy()
     item.update({
@@ -389,19 +402,6 @@ def measurement_set_v24(measurement_set):
         'preferred_assay_title': 'Growth CRISPR screen'
     })
     return item
-
-
-@pytest.fixture
-def measurement_set_perturb_seq(testapp, lab, award, assay_term_crispr, tissue):
-    item = {
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'assay_term': assay_term_crispr['@id'],
-        'samples': [tissue['@id']],
-        'file_set_type': 'experimental data',
-        'preferred_assay_title': 'Perturb-seq'
-    }
-    return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
 
 @pytest.fixture

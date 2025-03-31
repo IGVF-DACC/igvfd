@@ -111,7 +111,7 @@ def assay_term_crispr(testapp):
 
 
 @pytest.fixture
-def assay_term_crispr(testapp):
+def assay_term_crispr_single_cell(testapp):
     item = {
         'term_id': 'OBI:0003660',
         'term_name': 'in vitro CRISPR screen using single-cell RNA-seq'
