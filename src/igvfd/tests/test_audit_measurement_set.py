@@ -1340,8 +1340,20 @@ def test_audit_unexpected_onlist_files(testapp, measurement_set_one_onlist, tabu
     )
 
 
-def test_audit_missing_strand_specificity(testapp, measurement_set_perturb_seq):
-    # Check if the measurement set with no strand_specificity and preferred assay title Perturb-seq is audited
+def test_audit_missing_strand_specificity(testapp, measurement_set_perturb_seq, assay_term_scrna):
+    # Check if the Perturb-seq measurement set with no strand_specificity is audited
+    res = testapp.get(measurement_set_perturb_seq['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing strand specificity'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # Check if the single-cell RNA-seq measurement set with no strand_specificity is audited
+    testapp.patch_json(
+        measurement_set_perturb_seq['@id'],
+        {
+            'assay_term': assay_term_scrna['@id']
+        }
+    )
     res = testapp.get(measurement_set_perturb_seq['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing strand specificity'
