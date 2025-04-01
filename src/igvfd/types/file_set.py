@@ -560,7 +560,7 @@ class AnalysisSet(FileSet):
     @calculated_property(
         condition='samples',
         schema={
-            'title': 'Sample Summary',
+            'title': 'Simplified Sample Summary',
             'description': 'A summary of the samples associated with input file sets of this analysis set.',
             'type': 'string',
             'notSubmittable': True,
