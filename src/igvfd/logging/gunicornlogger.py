@@ -57,6 +57,7 @@ class MyGunicornLogger(gunicorn.glogging.Logger):
             'wsgi_begin': -1,
             'wsgi_end': -1,
             'wsgi_time': -1,
+            'item_type': '-',
         }
 
         # add request headers
@@ -83,11 +84,13 @@ class MyGunicornLogger(gunicorn.glogging.Logger):
 
         # separate x-stats and add to atoms
         if '{x-stats}o' in atoms:
-            try:
-                x_stats = atoms['{x-stats}o'].split('&')
-                x_stats_tokens = [{x[0]: try_to_convert_to_int(x[1])} for x in [x.split('=') for x in x_stats]]
-                for token in x_stats_tokens:
-                    atoms.update(token)
-            except IndexError:
-                return atoms
+            x_stats = atoms['{x-stats}o'].split('&')
+            for x in x_stats:
+                if '=' not in x:  # Blank "-" line?
+                    continue
+                k, v = x.split('=')
+                if k == 'item_type':
+                    atoms.update({k: v})
+                else:
+                    atoms.update({k: try_to_convert_to_int(v)})
         return atoms

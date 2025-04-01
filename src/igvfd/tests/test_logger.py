@@ -69,6 +69,28 @@ def test_two_x_stat_tokens():
     assert atoms['foo'] == 42
 
 
+def test_two_x_stat_tokens_with_item_type():
+    response = SimpleNamespace(
+        status='200', response_length=1024,
+        headers=(
+            ('Content-Type', 'application/json'),
+            ('X-Stats', 'x=y&foo=42&item_type=user'),
+        ),
+        sent=1024,
+    )
+    request = SimpleNamespace(headers=(('Accept', 'application/json'),))
+    environ = {
+        'REQUEST_METHOD': 'GET', 'RAW_URI': '/my/path?foo=bar',
+        'PATH_INFO': '/my/path', 'QUERY_STRING': 'foo=bar',
+        'SERVER_PROTOCOL': 'HTTP/1.1',
+    }
+    logger = MyGunicornLogger(Config())
+    atoms = logger.atoms(response, request, environ, datetime.timedelta(seconds=1))
+    assert atoms['x'] == -1
+    assert atoms['foo'] == 42
+    assert atoms['item_type'] == 'user'
+
+
 def test_no_x_stat_tokens():
     response = SimpleNamespace(
         status='200', response_length=1024,
