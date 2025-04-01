@@ -165,6 +165,7 @@ class File(Item):
     }
 
     set_status_up = [
+        'analysis_step_version',
         'file_format_specifications'
     ]
     set_status_down = []
