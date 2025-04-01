@@ -739,3 +739,24 @@ def audit_inconsistent_controlled_access(value, system):
                     f'{detail} {audit_message_file_sample.get("audit_description", "")}',
                     level=audit_message_file_sample.get('audit_level', '')
                 )
+
+
+@audit_checker('FileSet', frame='object')
+def audit_file_set_missing_publication(value, system):
+    '''
+    [
+        {
+            "audit_description": "Released file sets are expected to be associated with a publication.",
+            "audit_category": "missing publication",
+            "audit_level": "INTERNAL_ACTION"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message = get_audit_message(audit_file_set_missing_publication, index=0)
+    if value.get('status') in ['released', 'archived'] and not (value.get('publications')):
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has no `publications`.'
+        )
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
