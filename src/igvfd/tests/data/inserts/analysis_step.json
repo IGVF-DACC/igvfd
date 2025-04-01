@@ -208,6 +208,7 @@
         "step_label": "example-analysis-three-step",
         "analysis_step_types": [
             "alignment",
+            "barcode correction",
             "read trimming",
             "fastq concatenation",
             "fragment generation",

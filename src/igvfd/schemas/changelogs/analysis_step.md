@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_step.json`*
 
+### Minor changes since schema version 6
+
+* Extend `analysis_step_types` enum list to include `barcode correction`.
+
 ### Schema version 6
 
 * Reduce `input_content_types` enum list to exclude `sequence barcodes`.
