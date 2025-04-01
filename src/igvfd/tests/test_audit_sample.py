@@ -165,7 +165,7 @@ def test_audit_missing_nucleic_acid_delivery(
     )
 
 
-def test_audit_missing_nucleic_acid_delivery(
+def test_audit_missing_association(
     testapp,
     pooled_from_primary_cell,
     in_vitro_cell_line
