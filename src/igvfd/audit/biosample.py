@@ -121,7 +121,7 @@ def audit_multiple_ics_with_mismatched_access(value, system):
     if 'institutional_certificates' in value:
         ic_controlled_access_values = dict()
         for ic in value['institutional_certificates']:
-            ic_object = system.get('request').embed(ic + '@@object?skip_calculated=true')
+            ic_object = system.get('request').embed(ic + '@@object')
             if ic_object.get('controlled_access', '') not in ic_controlled_access_values:
                 ic_controlled_access_values[ic_object.get('controlled_access', '')] = [(
                     ic_object.get('certificate_identifier', ''), ic_object.get('@id', ''))]
@@ -131,10 +131,10 @@ def audit_multiple_ics_with_mismatched_access(value, system):
 
         if len(ic_controlled_access_values) > 1:
             controlled_links = ', '.join(
-                [audit_link(path_to_text(x[0]), x[1]) for x in ic_controlled_access_values[True]]
+                [audit_link(x[0], x[1]) for x in ic_controlled_access_values[True]]
             )
             uncontrolled_links = ', '.join(
-                [audit_link(path_to_text(x[0]), x[1]) for x in ic_controlled_access_values[False]]
+                [audit_link(x[0], x[1]) for x in ic_controlled_access_values[False]]
             )
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has both '
