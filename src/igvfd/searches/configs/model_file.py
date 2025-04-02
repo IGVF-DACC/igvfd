@@ -163,8 +163,8 @@ def model_file():
             'upload_status': {
                 'title': 'Upload Status'
             },
-            'file_set.type': {
-                'title': 'File Set Type'
+            'file_set.@type': {
+                'title': 'File Set @Type'
             }
         }
     }
