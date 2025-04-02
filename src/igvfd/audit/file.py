@@ -72,7 +72,6 @@ def audit_file_format_specifications(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('ModelFile', frame='object')
 @audit_checker('SequenceFile', frame='object')
 def audit_external_identifiers(value, system):
     '''
