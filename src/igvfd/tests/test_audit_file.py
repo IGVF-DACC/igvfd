@@ -94,26 +94,26 @@ def test_audit_file_format_specifications(testapp, matrix_file, experimental_pro
     )
 
 
-def test_audit_external_identifiers(testapp, model_file):
+def test_audit_external_identifiers(testapp, sequence_file):
     testapp.patch_json(
-        model_file['@id'],
+        sequence_file['@id'],
         {
             'externally_hosted': True,
             'external_host_url': 'http://test_url'
         }
     )
-    res = testapp.get(model_file['@id'] + '@@audit')
+    res = testapp.get(sequence_file['@id'] + '@@audit')
     assert any(
         audit['category'] == 'missing dbxrefs'
         for audit in res.json['audit'].get('NOT_COMPLIANT', {})
     )
     testapp.patch_json(
-        model_file['@id'],
+        sequence_file['@id'],
         {
-            'dbxrefs': ['Kipoi:test']
+            'dbxrefs': ['SRA:SRR20474123']
         }
     )
-    res = testapp.get(model_file['@id'] + '@@audit')
+    res = testapp.get(sequence_file['@id'] + '@@audit')
     assert all(
         audit['category'] != 'missing dbxrefs'
         for audit in res.json['audit'].get('NOT_COMPLIANT', {})
