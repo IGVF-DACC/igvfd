@@ -187,12 +187,14 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "dbxrefs",
-        "taxa",
         "ethnicities",
         "human_donor_identifiers",
+        "lab.title",
         "phenotypic_features.feature.term_name",
-        "submitted_by.title"
+        "submitted_by.title",
+        "taxa"
     ],
     "exact_searchable_fields": [
         "@type",

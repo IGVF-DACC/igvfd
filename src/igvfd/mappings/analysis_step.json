@@ -1,6 +1,6 @@
 {
-    "hash": "ce1430ccecfdcec6d1066ee5672f1f9a",
-    "index_name": "analysis_step_ce1430cc",
+    "hash": "5f325ab2f7131b675221f517bcb98701",
+    "index_name": "analysis_step_5f325ab2",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "analysis_step_types": {
@@ -216,6 +217,7 @@
                                         "type": "keyword"
                                     },
                                     "name": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "notes": {
@@ -404,6 +406,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
@@ -604,6 +607,7 @@
                                 "type": "keyword"
                             },
                             "accession": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "aliases": {
@@ -634,6 +638,7 @@
                                 "type": "keyword"
                             },
                             "name": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "notes": {

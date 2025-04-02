@@ -1,6 +1,6 @@
 {
-    "hash": "b97dd10f016de46557524e7faafa72b5",
-    "index_name": "lab_b97dd10f",
+    "hash": "b4f5df7c2c5dab3faad0f8ff367b2e7a",
+    "index_name": "lab_b4f5df7c",
     "item_type": "lab",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "awards": {

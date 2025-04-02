@@ -61,7 +61,9 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "description",
+        "submitted_by.title",
         "title"
     ],
     "exact_searchable_fields": [

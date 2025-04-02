@@ -1,6 +1,6 @@
 {
-    "hash": "a6ab209637e4dcb5949f13d4b76c4577",
-    "index_name": "model_set_a6ab2096",
+    "hash": "ace9be6533c28e887d817fdd044cd626",
+    "index_name": "model_set_ace9be65",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {

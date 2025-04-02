@@ -166,6 +166,7 @@
     },
     "fuzzy_searchable_fields": [
         "@type",
+        "aliases",
         "collections",
         "dbxrefs",
         "description",

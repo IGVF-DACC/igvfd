@@ -1,6 +1,6 @@
 {
-    "hash": "f83462b17cb5401ac09cd407cce0964b",
-    "index_name": "signal_file_f83462b1",
+    "hash": "f30a7fc33acf0df59e9764a5c35fa0b5",
+    "index_name": "signal_file_f30a7fc3",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {
@@ -165,6 +166,7 @@
                         "type": "keyword"
                     },
                     "assembly": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "award": {
@@ -1918,6 +1920,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
@@ -2050,6 +2053,7 @@
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "upload_credentials": {

@@ -1,6 +1,6 @@
 {
-    "hash": "03a3d173ff79518a5c30d78b46181206",
-    "index_name": "primary_cell_03a3d173",
+    "hash": "f0a012bdb1b8c11b67d55ea6dc7d4b88",
+    "index_name": "primary_cell_f0a012bd",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -158,6 +158,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {
@@ -1415,6 +1416,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {

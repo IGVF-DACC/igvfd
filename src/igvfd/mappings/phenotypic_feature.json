@@ -1,6 +1,6 @@
 {
-    "hash": "2b180f2643d8b4a1119a744c81f9cda4",
-    "index_name": "phenotypic_feature_2b180f26",
+    "hash": "ed9500d9cf6d28dc5c45adcc9ab2f4fd",
+    "index_name": "phenotypic_feature_ed9500d9",
     "item_type": "phenotypic_feature",
     "mapping": {
         "dynamic_templates": [
@@ -149,6 +149,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "award": {
@@ -351,6 +352,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {

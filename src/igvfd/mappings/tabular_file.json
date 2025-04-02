@@ -1,6 +1,6 @@
 {
-    "hash": "1042b79f4bcf63221d810cc1d21aa6da",
-    "index_name": "tabular_file_1042b79f",
+    "hash": "95a3e28732000de4d08f630183499e6e",
+    "index_name": "tabular_file_95a3e287",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,7 @@
                         "type": "keyword"
                     },
                     "aliases": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "alternate_accessions": {
@@ -168,6 +169,7 @@
                         "type": "keyword"
                     },
                     "assembly": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "award": {
@@ -1931,6 +1933,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
@@ -2050,6 +2053,7 @@
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "upload_credentials": {

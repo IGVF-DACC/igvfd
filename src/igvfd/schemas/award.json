@@ -152,6 +152,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "component",
         "name",
         "project",

@@ -46,6 +46,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "aliases",
         "attachment.type",
         "caption"
     ],
