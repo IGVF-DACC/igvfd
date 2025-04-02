@@ -185,6 +185,9 @@ def signal_file():
             },
             'upload_status': {
                 'title': 'Upload Status'
+            },
+            'file_set.@type': {
+                'title': 'File Set @Type'
             }
         }
     }

@@ -165,6 +165,9 @@ def index_file():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'file_set.@type': {
+                'title': 'File Set @Type'
             }
         }
     }

@@ -62,6 +62,9 @@ def institutional_certificate():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'controlled_access': {
+                'title': 'Controlled Access',
             }
         }
     }
