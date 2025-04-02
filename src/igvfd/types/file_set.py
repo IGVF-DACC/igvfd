@@ -560,13 +560,14 @@ class AnalysisSet(FileSet):
     @calculated_property(
         condition='samples',
         schema={
-            'title': 'Sample Summary',
+            'title': 'Simplified Sample Summary',
             'description': 'A summary of the samples associated with input file sets of this analysis set.',
             'type': 'string',
             'notSubmittable': True,
         }
     )
     def sample_summary(self, request, samples=None):
+        taxa = set()
         sample_classification_term_target = dict()
         treatment_purposes = set()
         treatment_summaries = set()
@@ -603,6 +604,8 @@ class AnalysisSet(FileSet):
 
         for sample in samples:
             sample_object = request.embed(sample, '@@object')
+
+            taxa.add(sample_object.get('taxa', ''))
 
             # Group sample and targeted sample terms according to classification.
             # Other metadata such as treatment info are lumped together.
@@ -735,7 +738,7 @@ class AnalysisSet(FileSet):
         additional_phrase_suffix = ''
         if additional_phrases_joined:
             additional_phrase_suffix = f', {additional_phrases_joined}'
-        summary = f"{', '.join(all_sample_terms)}{additional_phrase_suffix}"
+        summary = f"{', '.join(taxa)} {', '.join(all_sample_terms)}{additional_phrase_suffix}"
 
         return summary
 

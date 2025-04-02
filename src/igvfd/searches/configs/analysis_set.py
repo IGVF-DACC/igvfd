@@ -200,6 +200,9 @@ def analysis_set_report_view():
         'samples.summary': {
             'title': 'Sample Summary'
         },
+        'sample_summary': {
+            'title': 'Simplified Sample Summary'
+        },
         'assay_titles': {
             'title': 'Assay'
         },
