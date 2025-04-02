@@ -250,6 +250,131 @@
                 "appscript": 8,
                 "igvf_utils": 8
             }
+        },
+        "rnaseq_kb_info": {
+            "title": "RNA-seq KB Info",
+            "description": "",
+            "type": "object",
+            "additionalProperties": false,
+            "attachment": true,
+            "properties": {
+                "download": {
+                    "title": "File Name",
+                    "type": "string"
+                },
+                "href": {
+                    "comment": "Internal webapp URL for document file",
+                    "type": "string"
+                },
+                "type": {
+                    "title": "MIME type",
+                    "type": "string",
+                    "enum": [
+                        "application/json"
+                    ]
+                },
+                "size": {
+                    "title": "File size",
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "md5sum": {
+                    "format": "md5sum",
+                    "type": "string",
+                    "title": "MD5sum"
+                },
+                "width": {
+                    "title": "Image width",
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "height": {
+                    "title": "Image height",
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        },
+        "n_targets": {
+            "title": "",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 356673,
+                "igvf_utils": 356673
+            }
+        },
+        "n_bootstraps": {
+            "title": "",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "n_processed": {
+            "title": "",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 973282824,
+                "igvf_utils": 973282824
+            }
+        },
+        "n_pseudoaligned": {
+            "title": "",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 662527599,
+                "igvf_utils": 662527599
+            }
+        },
+        "n_unique": {
+            "title": "",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 455501195,
+                "igvf_utils": 455501195
+            }
+        },
+        "p_pseudoaligned": {
+            "title": "",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 68.1,
+                "igvf_utils": 68.1
+            }
+        },
+        "p_unique": {
+            "title": "",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 46.8,
+                "igvf_utils": 46.8
+            }
+        },
+        "index_version": {
+            "title": "",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "k-mer length": {
+            "title": "",
+            "description": "",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 31,
+                "igvf_utils": 31
+            }
         }
     },
     "fuzzy_searchable_fields": [
