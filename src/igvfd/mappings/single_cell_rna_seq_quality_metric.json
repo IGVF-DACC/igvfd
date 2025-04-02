@@ -1,6 +1,6 @@
 {
-    "hash": "7032631e3fa95dc5ac9968ae20768358",
-    "index_name": "single_cell_rna_seq_quality_metric_7032631e",
+    "hash": "d74a5506283efeaa056d2858d0da3c97",
+    "index_name": "single_cell_rna_seq_quality_metric_d74a5506",
     "item_type": "single_cell_rna_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -286,7 +286,15 @@
                         "store": true,
                         "type": "float"
                     },
+                    "index_version": {
+                        "store": true,
+                        "type": "float"
+                    },
                     "joint_barcodes_passing": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "k-mer length": {
                         "store": true,
                         "type": "float"
                     },
@@ -378,7 +386,19 @@
                         "store": true,
                         "type": "float"
                     },
+                    "n_bootstraps": {
+                        "store": true,
+                        "type": "float"
+                    },
                     "n_genes": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "n_processed": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "n_pseudoaligned": {
                         "store": true,
                         "type": "float"
                     },
@@ -390,6 +410,14 @@
                         "store": true,
                         "type": "float"
                     },
+                    "n_targets": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "n_unique": {
+                        "store": true,
+                        "type": "float"
+                    },
                     "notes": {
                         "type": "text"
                     },
@@ -398,6 +426,14 @@
                         "type": "float"
                     },
                     "numReadsOnOnlist": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "p_pseudoaligned": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "p_unique": {
                         "store": true,
                         "type": "float"
                     },
@@ -419,6 +455,35 @@
                     },
                     "release_timestamp": {
                         "type": "date"
+                    },
+                    "rnaseq_kb_info": {
+                        "properties": {
+                            "download": {
+                                "type": "keyword"
+                            },
+                            "height": {
+                                "store": true,
+                                "type": "long"
+                            },
+                            "href": {
+                                "type": "keyword"
+                            },
+                            "md5sum": {
+                                "type": "keyword"
+                            },
+                            "size": {
+                                "store": true,
+                                "type": "long"
+                            },
+                            "type": {
+                                "type": "keyword"
+                            },
+                            "width": {
+                                "store": true,
+                                "type": "long"
+                            }
+                        },
+                        "type": "object"
                     },
                     "schema_version": {
                         "type": "keyword"
