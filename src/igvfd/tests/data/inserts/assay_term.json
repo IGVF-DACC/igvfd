@@ -48,7 +48,8 @@
         "term_id": "OBI:0002631",
         "term_name": "single-cell RNA sequencing assay",
         "preferred_assay_titles": [
-            "scNT-seq2"
+            "scNT-seq2",
+            "10X RNA with Scale pre-indexing"
         ],
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
@@ -70,6 +71,7 @@
         "term_name": "single-cell ATAC-seq",
         "preferred_assay_titles": [
             "10x multiome with scMito-seq",
+            "10X ATAC with Scale pre-indexing",
             "scACCESS-ATAC"
         ],
         "status": "released",

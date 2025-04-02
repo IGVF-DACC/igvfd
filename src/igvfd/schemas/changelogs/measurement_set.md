@@ -1,6 +1,11 @@
 ## Changelog for *`measurement_set.json`*
 
-### Schema version 25
+### Minor changes since schema version 26
+
+* Extend `preferred_assay_title` enum list to include `10X ATAC with Scale pre-indexing`.
+* Extend `preferred_assay_title` enum list to include `10X RNA with Scale pre-indexing`.
+
+### Schema version 26
 
 * Adjust `strand_specificity` enum list to replace `5' to 3'` with `5 prime to 3 prime`.
 * Adjust `strand_specificity` enum list to replace `3' to 5'` with `3 prime to 5 prime`.
