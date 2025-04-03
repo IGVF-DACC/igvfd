@@ -40,6 +40,12 @@
         "$merge": [
             "shared_dependencies.json#/product_info"
         ],
+        "annotated_from": {
+            "comment": "Specification of annotated_from requires construct_library_sets.",
+            "required": [
+                "virtual"
+            ]
+        },
         "sorted_from": {
             "comment": "Specification of sorted_from requires sorted_from_detail.",
             "required": [
@@ -182,6 +188,16 @@
             "submissionExample": {
                 "appscript": false,
                 "igvf_utils": false
+            }
+        },
+        "annotated_from": {
+            "title": "Annotated From",
+            "description": "Links to the sample that was used as a reference for annotating this sample.",
+            "type": "string",
+            "linkTo": "Sample",
+            "submissionExample": {
+                "appscript": "IGVFSM4738BZBA or john-doe:tissue01",
+                "igvf_utils": "IGVFSM4738BZBA or john-doe:tissue01"
             }
         },
         "construct_library_sets": {
