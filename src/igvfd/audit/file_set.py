@@ -688,7 +688,9 @@ def audit_inconsistent_controlled_access(value, system):
     files = value.get('files', [])
     for file in files:
         file_object = system.get('request').embed(file, '@@object_with_select_calculated_properties?field=@id')
-        if file_object.get('file_format', '') in formats_to_check and file_object.get('controlled_access', None) is not None:
+        if file_object.get('file_format', '') in formats_to_check \
+                and not file_object.get('redacted', None) \
+                and file_object.get('controlled_access', None) is not None:
             if file_object.get('controlled_access', None) not in files_by_access:
                 files_by_access[file_object.get('controlled_access', None)] = [file_object.get('@id')]
             else:
@@ -713,8 +715,13 @@ def audit_inconsistent_controlled_access(value, system):
             )
     elif True in files_by_access and False not in files_by_access:
         controlled_access_of_files_phrase = 'controlled access'
+        controlled_files_link = ', '.join([audit_link(path_to_text(file), file) for file in files_by_access[True]])
+        uncontrolled_files_link = ''
     else:
         controlled_access_of_files_phrase = 'uncontrolled access'
+        controlled_files_link = ''
+        uncontrolled_files_link = ', '.join([audit_link(path_to_text(file), file)
+                                             for file in files_by_access[False]])
 
     samples = value.get('samples', [])
     for sample in samples:
@@ -727,9 +734,16 @@ def audit_inconsistent_controlled_access(value, system):
                     controlled_access_of_ic_phrase = 'controlled access'
                 else:
                     controlled_access_of_ic_phrase = 'uncontrolled access'
+                file_links_phrase = ''
+                if controlled_access_of_files_phrase == 'controlled and uncontrolled access':
+                    file_links_phrase = f'{controlled_files_link} and {uncontrolled_files_link} respectively'
+                elif controlled_access_of_files_phrase == 'controlled access':
+                    file_links_phrase = f'{controlled_files_link}'
+                else:
+                    file_links_phrase = f'{uncontrolled_files_link}'
                 detail = (
                     f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                    f'contains files submitted as {controlled_access_of_files_phrase} but the '
+                    f'contains {controlled_access_of_files_phrase} files {file_links_phrase}, but the '
                     f'sample {audit_link(path_to_text(sample_object["@id"]), sample_object["@id"])} '
                     f'is covered by institutional certificate {audit_link(ic_object["certificate_identifier"], ic_object["@id"])} '
                     f'which requires {controlled_access_of_ic_phrase}.'
