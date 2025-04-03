@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Extend `content_type` enum list to include `comprehensive gene count matrix`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 22`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.
