@@ -113,13 +113,20 @@ def audit_multiple_ics_with_mismatched_access(value, system):
             "audit_description": "If a biosample has more than one institutional certificate, it is expected for all of them to have the same controlled_access.",
             "audit_category": "inconsistent institutional certificates",
             "audit_level": "INTERNAL_ACTION"
+        },
+        {
+            "audit_description": "If a biosample has more than one institutional certificate, it is expected for all of them to have the same data_use_limitation_summary.",
+            "audit_category": "inconsistent institutional certificates",
+            "audit_level": "INTERNAL_ACTION"
         }
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message = get_audit_message(audit_multiple_ics_with_mismatched_access)
+    audit_message_controlled_access = get_audit_message(audit_multiple_ics_with_mismatched_access, index=0)
+    audit_message_dul = get_audit_message(audit_multiple_ics_with_mismatched_access, index=1)
     if 'institutional_certificates' in value:
         ic_controlled_access_values = dict()
+        ic_duls = dict()
         for ic in value['institutional_certificates']:
             ic_object = system.get('request').embed(ic + '@@object')
             if ic_object.get('controlled_access', '') not in ic_controlled_access_values:
@@ -128,6 +135,14 @@ def audit_multiple_ics_with_mismatched_access(value, system):
             else:
                 ic_controlled_access_values[ic_object.get('controlled_access', '')].append(
                     (ic_object.get('certificate_identifier', ''), ic_object.get('@id', '')))
+
+            if ic_object.get('controlled_access', ''):
+                if ic_object.get('data_use_limitation_summary', '') not in ic_duls:
+                    ic_duls[ic_object.get('data_use_limitation_summary', '')] = [(
+                        ic_object.get('certificate_identifier', ''), ic_object.get('@id', ''))]
+                else:
+                    ic_duls[ic_object.get('controlled_access', '')].append(
+                        (ic_object.get('data_use_limitation_summary', ''), ic_object.get('@id', '')))
 
         if len(ic_controlled_access_values) > 1:
             controlled_links = ', '.join(
@@ -141,4 +156,16 @@ def audit_multiple_ics_with_mismatched_access(value, system):
                 f'controlled access institutional certificates {controlled_links} and '
                 f'uncontrolled access institutional certificates {uncontrolled_links}.'
             )
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+            yield AuditFailure(audit_message_controlled_access.get('audit_category', ''), f'{detail} {audit_message_controlled_access.get("audit_description", "")}', level=audit_message_controlled_access.get('audit_level', ''))
+
+        if len(ic_duls) > 1:
+            links_by_dul = []
+            for dul in ic_duls:
+                links_by_dul.append(f"{dul} from {', '.join([audit_link(x[0], x[1]) for x in ic_duls[dul]])}")
+
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has institutional certificates with differing data use limitations: '
+                f'{", ".join(links_by_dul)}.'
+            )
+            yield AuditFailure(audit_message_dul.get('audit_category', ''), f'{detail} {audit_message_dul.get("audit_description", "")}', level=audit_message_dul.get('audit_level', ''))
