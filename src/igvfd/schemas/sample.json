@@ -95,6 +95,16 @@
         "accession": {
             "accessionType": "SM"
         },
+        "annotated_from": {
+            "title": "Annotated From",
+            "description": "Links to the sample that was used as a reference for annotating this sample.",
+            "type": "string",
+            "linkTo": "Sample",
+            "submissionExample": {
+                "appscript": "IGVFSM4738BZBA or john-doe:tissue01",
+                "igvf_utils": "IGVFSM4738BZBA or john-doe:tissue01"
+            }
+        },
         "starting_amount": {
             "title": "Starting Amount",
             "description": "The initial quantity of samples obtained.",
@@ -188,16 +198,6 @@
             "submissionExample": {
                 "appscript": false,
                 "igvf_utils": false
-            }
-        },
-        "annotated_from": {
-            "title": "Annotated From",
-            "description": "Links to the sample that was used as a reference for annotating this sample.",
-            "type": "string",
-            "linkTo": "Sample",
-            "submissionExample": {
-                "appscript": "IGVFSM4738BZBA or john-doe:tissue01",
-                "igvf_utils": "IGVFSM4738BZBA or john-doe:tissue01"
             }
         },
         "construct_library_sets": {
