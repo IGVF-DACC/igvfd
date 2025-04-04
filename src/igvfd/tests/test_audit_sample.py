@@ -163,3 +163,29 @@ def test_audit_missing_nucleic_acid_delivery(
         error['category'] != 'missing nucleic acid delivery'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_missing_association(
+    testapp,
+    pooled_from_primary_cell,
+    in_vitro_cell_line
+):
+    res = testapp.get(pooled_from_primary_cell['@id']).json
+    assert (all(not res.get(prop) for prop in ['file_sets', 'origin_of',
+            'parts', 'sorted_fractions', 'multiplexed_in', 'pooled_in']))
+    res = testapp.get(pooled_from_primary_cell['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing association'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'part_of': pooled_from_primary_cell['@id']
+        }
+    )
+    res = testapp.get(pooled_from_primary_cell['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing association'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
