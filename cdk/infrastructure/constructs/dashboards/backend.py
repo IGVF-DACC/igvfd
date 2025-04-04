@@ -191,12 +191,12 @@ class BackendDashboard(Construct):
                 FilterPattern.string_value(json_field='$.statusline', comparison='=', value='*@@index-data-external*'),
                 FilterPattern.string_value(json_field='$.item_type', comparison='=', value='in_vitro_system')
             ),
-            metric_value='$.wsgi_time / 1000000'
+            metric_value='$.wsgi_time'
         )
         sequence_file_indexing_metric = sequence_file_indexing_metric_filter.metric(
             color=Color.PINK,
-            label='In Vitro System Indexing Time Seconds',
-            unit=Unit.SECONDS
+            label='In Vitro System Indexing Time Microseconds',
+            unit=Unit.MICROSECONDS
         )
         sequence_file_indexing_widget = GraphWidget(
             left=[sequence_file_indexing_metric],
