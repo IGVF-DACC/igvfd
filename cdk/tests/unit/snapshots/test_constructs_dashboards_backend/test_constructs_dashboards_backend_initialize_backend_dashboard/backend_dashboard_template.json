@@ -1,0 +1,221 @@
+{
+    "Parameters": {
+        "BootstrapVersion": {
+            "Default": "/cdk-bootstrap/hnb659fds/version",
+            "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+            "Type": "AWS::SSM::Parameter::Value<String>"
+        }
+    },
+    "Resources": {
+        "TestDashboard2xxResponseCountFilter34EF5C37": {
+            "Properties": {
+                "FilterPattern": "{ $.status = \"2**\" }",
+                "LogGroupName": {
+                    "Ref": "TestLogGroup4EEF7AD4"
+                },
+                "MetricTransformations": [
+                    {
+                        "MetricName": "2xx Response Count",
+                        "MetricNamespace": "some-branch",
+                        "MetricValue": "1"
+                    }
+                ]
+            },
+            "Type": "AWS::Logs::MetricFilter"
+        },
+        "TestDashboard4xxResponseCountFilterFAE9512D": {
+            "Properties": {
+                "FilterPattern": "{ $.status = \"4**\" }",
+                "LogGroupName": {
+                    "Ref": "TestLogGroup4EEF7AD4"
+                },
+                "MetricTransformations": [
+                    {
+                        "MetricName": "4xx Response Count",
+                        "MetricNamespace": "some-branch",
+                        "MetricValue": "1"
+                    }
+                ]
+            },
+            "Type": "AWS::Logs::MetricFilter"
+        },
+        "TestDashboard5xxResponseCountFilterD9CFD967": {
+            "Properties": {
+                "FilterPattern": "{ $.status = \"5**\" }",
+                "LogGroupName": {
+                    "Ref": "TestLogGroup4EEF7AD4"
+                },
+                "MetricTransformations": [
+                    {
+                        "MetricName": "5xx Response Count",
+                        "MetricNamespace": "some-branch",
+                        "MetricValue": "1"
+                    }
+                ]
+            },
+            "Type": "AWS::Logs::MetricFilter"
+        },
+        "TestDashboard9C938E2E": {
+            "Properties": {
+                "DashboardBody": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "{\"widgets\":[{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":0,\"y\":0,\"properties\":{\"view\":\"timeSeries\",\"region\":\"",
+                            {
+                                "Ref": "AWS::Region"
+                            },
+                            "\",\"metrics\":[[\"some-branch\",\"WSGI Time\",{\"label\":\"WSGI Time microseconds\"}]],\"yAxis\":{\"left\":{\"showUnits\":false}},\"period\":60}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":6,\"y\":0,\"properties\":{\"view\":\"timeSeries\",\"region\":\"",
+                            {
+                                "Ref": "AWS::Region"
+                            },
+                            "\",\"metrics\":[[\"some-branch\",\"ES Time\",{\"label\":\"ES Time microseconds\"}]],\"yAxis\":{\"left\":{\"showUnits\":false}},\"period\":60}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":12,\"y\":0,\"properties\":{\"view\":\"timeSeries\",\"region\":\"",
+                            {
+                                "Ref": "AWS::Region"
+                            },
+                            "\",\"metrics\":[[\"some-branch\",\"DB Time\",{\"label\":\"DB Time microseconds\"}]],\"yAxis\":{\"left\":{\"showUnits\":false}},\"period\":60}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":18,\"y\":0,\"properties\":{\"view\":\"timeSeries\",\"region\":\"",
+                            {
+                                "Ref": "AWS::Region"
+                            },
+                            "\",\"metrics\":[[\"some-branch\",\"Response Length\",{\"label\":\"Response Length bytes\"}]],\"yAxis\":{\"left\":{\"showUnits\":false}},\"period\":60}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":0,\"y\":6,\"properties\":{\"view\":\"timeSeries\",\"region\":\"",
+                            {
+                                "Ref": "AWS::Region"
+                            },
+                            "\",\"metrics\":[[\"some-branch\",\"2xx Response Count\",{\"label\":\"2xx Response Count\",\"stat\":\"Sum\"}]],\"yAxis\":{\"left\":{\"showUnits\":false}},\"period\":60}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":6,\"y\":6,\"properties\":{\"view\":\"timeSeries\",\"region\":\"",
+                            {
+                                "Ref": "AWS::Region"
+                            },
+                            "\",\"metrics\":[[\"some-branch\",\"4xx Response Count\",{\"label\":\"4xx Response Count\",\"stat\":\"Sum\"}]],\"yAxis\":{\"left\":{\"showUnits\":false}},\"period\":60}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":12,\"y\":6,\"properties\":{\"view\":\"timeSeries\",\"region\":\"",
+                            {
+                                "Ref": "AWS::Region"
+                            },
+                            "\",\"metrics\":[[\"some-branch\",\"5xx Response Count\",{\"label\":\"5xx Response Count\",\"stat\":\"Sum\"}]],\"yAxis\":{\"left\":{\"showUnits\":false}},\"period\":60}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":18,\"y\":6,\"properties\":{\"view\":\"timeSeries\",\"region\":\"",
+                            {
+                                "Ref": "AWS::Region"
+                            },
+                            "\",\"metrics\":[[\"some-branch\",\"SequenceFileIndexing\",{\"label\":\"Sequence File Indexing Time microseconds\"}]],\"yAxis\":{\"left\":{\"showUnits\":false}},\"period\":60}}]}"
+                        ]
+                    ]
+                },
+                "DashboardName": "igvfd-demo-some-branch-backend"
+            },
+            "Type": "AWS::CloudWatch::Dashboard"
+        },
+        "TestDashboardDBTimeMetricFilter01917080": {
+            "Properties": {
+                "FilterPattern": "{ ($.db_time = \"*\") && ($.db_time > 0) }",
+                "LogGroupName": {
+                    "Ref": "TestLogGroup4EEF7AD4"
+                },
+                "MetricTransformations": [
+                    {
+                        "MetricName": "DB Time",
+                        "MetricNamespace": "some-branch",
+                        "MetricValue": "$.db_time"
+                    }
+                ]
+            },
+            "Type": "AWS::Logs::MetricFilter"
+        },
+        "TestDashboardESTimeMetricFilterD3B2BE38": {
+            "Properties": {
+                "FilterPattern": "{ ($.es_time = \"*\") && ($.es_time > 0) }",
+                "LogGroupName": {
+                    "Ref": "TestLogGroup4EEF7AD4"
+                },
+                "MetricTransformations": [
+                    {
+                        "MetricName": "ES Time",
+                        "MetricNamespace": "some-branch",
+                        "MetricValue": "$.es_time"
+                    }
+                ]
+            },
+            "Type": "AWS::Logs::MetricFilter"
+        },
+        "TestDashboardResponseLengthMetricFilter69874522": {
+            "Properties": {
+                "FilterPattern": "{ $.response_length = \"*\" }",
+                "LogGroupName": {
+                    "Ref": "TestLogGroup4EEF7AD4"
+                },
+                "MetricTransformations": [
+                    {
+                        "MetricName": "Response Length",
+                        "MetricNamespace": "some-branch",
+                        "MetricValue": "$.response_length"
+                    }
+                ]
+            },
+            "Type": "AWS::Logs::MetricFilter"
+        },
+        "TestDashboardSequenceFileIndexingMetricFilter889CE3E4": {
+            "Properties": {
+                "FilterPattern": "{ ($.statusline = \"*@@index-data-external*\") && ($.item_type = \"sequence_file\") }",
+                "LogGroupName": {
+                    "Ref": "TestLogGroup4EEF7AD4"
+                },
+                "MetricTransformations": [
+                    {
+                        "DefaultValue": 0,
+                        "MetricName": "SequenceFileIndexing",
+                        "MetricNamespace": "some-branch",
+                        "MetricValue": "$.wsgi_time"
+                    }
+                ]
+            },
+            "Type": "AWS::Logs::MetricFilter"
+        },
+        "TestDashboardWsgiTimeMetricFilter776EADC8": {
+            "Properties": {
+                "FilterPattern": "{ $.wsgi_time = \"*\" }",
+                "LogGroupName": {
+                    "Ref": "TestLogGroup4EEF7AD4"
+                },
+                "MetricTransformations": [
+                    {
+                        "MetricName": "WSGI Time",
+                        "MetricNamespace": "some-branch",
+                        "MetricValue": "$.wsgi_time"
+                    }
+                ]
+            },
+            "Type": "AWS::Logs::MetricFilter"
+        },
+        "TestLogGroup4EEF7AD4": {
+            "DeletionPolicy": "Retain",
+            "Properties": {
+                "RetentionInDays": 731
+            },
+            "Type": "AWS::Logs::LogGroup",
+            "UpdateReplacePolicy": "Retain"
+        }
+    },
+    "Rules": {
+        "CheckBootstrapVersion": {
+            "Assertions": [
+                {
+                    "Assert": {
+                        "Fn::Not": [
+                            {
+                                "Fn::Contains": [
+                                    [
+                                        "1",
+                                        "2",
+                                        "3",
+                                        "4",
+                                        "5"
+                                    ],
+                                    {
+                                        "Ref": "BootstrapVersion"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+                }
+            ]
+        }
+    }
+}
