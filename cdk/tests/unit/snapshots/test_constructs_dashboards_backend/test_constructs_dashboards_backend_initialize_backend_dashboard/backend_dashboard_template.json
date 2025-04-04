@@ -93,7 +93,7 @@
                             {
                                 "Ref": "AWS::Region"
                             },
-                            "\",\"metrics\":[[\"some-branch\",\"InVitroSystemIndexing\",{\"label\":\"In Vitro System Indexing Time Seconds\"}]],\"yAxis\":{\"left\":{\"showUnits\":false}},\"period\":60}}]}"
+                            "\",\"metrics\":[[\"some-branch\",\"InVitroSystemIndexing\",{\"color\":\"#e377c2\",\"label\":\"In Vitro System Indexing Time Seconds\"}]],\"yAxis\":{\"left\":{\"showUnits\":false}},\"period\":60}}]}"
                         ]
                     ]
                 },
@@ -159,7 +159,7 @@
                     {
                         "MetricName": "InVitroSystemIndexing",
                         "MetricNamespace": "some-branch",
-                        "MetricValue": "$.wsgi_time/1000000"
+                        "MetricValue": "$.wsgi_time / 1000000"
                     }
                 ]
             },
