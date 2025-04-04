@@ -212,7 +212,7 @@ def audit_sample_missing_publication(value, system):
     '''
     [
         {
-            "audit_description": "Released samples are expected to be associated with a publication.",
+            "audit_description": "Released and archived samples are expected to be associated with a publication.",
             "audit_category": "missing publication",
             "audit_level": "INTERNAL_ACTION"
         }

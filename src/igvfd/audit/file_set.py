@@ -746,7 +746,7 @@ def audit_file_set_missing_publication(value, system):
     '''
     [
         {
-            "audit_description": "Released file sets are expected to be associated with a publication.",
+            "audit_description": "Released and archived file sets are expected to be associated with a publication.",
             "audit_category": "missing publication",
             "audit_level": "INTERNAL_ACTION"
         }
