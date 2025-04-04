@@ -214,3 +214,35 @@ def test_audit_control_for_control_type(
         error['category'] == 'missing control for'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_missing_publication(
+    testapp,
+    measurement_set_no_files,
+    publication
+):
+    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert res.json.get('publications', '') == ''
+    testapp.patch_json(
+        measurement_set_no_files['@id'],
+        {
+            'status': 'released',
+            'release_timestamp': '2025-03-06T12:34:56Z'
+        }
+    )
+    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing publication'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    testapp.patch_json(
+        measurement_set_no_files['@id'],
+        {
+            'publications': [publication['@id']]
+        }
+    )
+    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing publication'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )

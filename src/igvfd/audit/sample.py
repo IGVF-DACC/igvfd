@@ -205,3 +205,24 @@ def audit_missing_nucleic_acid_delivery(value, system):
             f'has `construct_library_sets` but is missing `nucleic_acid_delivery`.'
         )
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+@audit_checker('Sample', frame='object')
+def audit_sample_missing_publication(value, system):
+    '''
+    [
+        {
+            "audit_description": "Released and archived samples are expected to be associated with a publication.",
+            "audit_category": "missing publication",
+            "audit_level": "INTERNAL_ACTION"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message = get_audit_message(audit_sample_missing_publication, index=0)
+    if value.get('status') in ['released', 'archived'] and not (value.get('publications')):
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has no `publications`.'
+        )
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

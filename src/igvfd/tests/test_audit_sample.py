@@ -163,3 +163,35 @@ def test_audit_missing_nucleic_acid_delivery(
         error['category'] != 'missing nucleic acid delivery'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_missing_publication(
+    testapp,
+    in_vitro_cell_line,
+    publication
+):
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
+    assert res.json.get('publications', '') == ''
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'status': 'released',
+            'release_timestamp': '2025-03-06T12:34:56Z'
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing publication'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'publications': [publication['@id']]
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing publication'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
