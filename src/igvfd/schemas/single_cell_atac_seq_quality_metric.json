@@ -42,16 +42,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
-        },
-        "tsse": {
-            "title": "Transcription Start Site Enrichment",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
+            "default": "2"
         },
         "n_fragments": {
             "title": "Number Of Fragments",
@@ -73,60 +64,6 @@
         },
         "pct_duplicates": {
             "title": "Percent Duplicates",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "n_fragment": {
-            "title": "Number Of Fragments",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "frac_dup": {
-            "title": "Duplicate Fraction",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "frac_mito": {
-            "title": "Mitochondrial Fraction",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "duplicate": {
-            "title": "Duplicate Number",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "unmapped": {
-            "title": "Unmapped Number",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "lowmapq": {
-            "title": "Low Mapping Quality",
             "description": "",
             "type": "number",
             "submissionExample": {
