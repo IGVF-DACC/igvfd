@@ -184,7 +184,7 @@ class BackendDashboard(Construct):
             'SequenceFileIndexingMetricFilter',
             log_group=self.props.log_group,
             metric_namespace=self.props.config.branch,
-            metric_name='SequenceFileIndexing',
+            metric_name='InVitroSystemIndexing',
             filter_pattern=FilterPattern.all(
                 FilterPattern.string_value(json_field='$.statusline', comparison='=', value='*@@index-data-external*'),
                 FilterPattern.string_value(json_field='$.item_type', comparison='=', value='in_vitro_system')
