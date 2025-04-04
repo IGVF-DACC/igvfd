@@ -4,6 +4,7 @@ from constructs import Construct
 
 from aws_cdk.aws_cloudwatch import Dashboard
 from aws_cdk.aws_cloudwatch import GraphWidget
+from aws_cdk.aws_cloudwatch import IMetric
 from aws_cdk.aws_cloudwatch import IWidget
 from aws_cdk.aws_cloudwatch import LogQueryWidget
 from aws_cdk.aws_cloudwatch import Stats
@@ -22,6 +23,66 @@ from typing import Optional
 
 from infrastructure.config import Config
 
+ITEM_TYPES = [
+    'access_key',
+    'alignment_file',
+    'analysis_set',
+    'analysis_step',
+    'analysis_step_version',
+    'assay_term',
+    'auxiliary_set',
+    'award',
+    'biomarker',
+    'configuration_file',
+    'construct_library_set',
+    'crispr_modification',
+    'curated_set',
+    'degron_modification',
+    'document',
+    'gene',
+    'genome_browser_annotation_file',
+    'human_donor',
+    'image',
+    'image_file',
+    'in_vitro_system',
+    'index_file',
+    'institutional_certificate',
+    'lab',
+    'matrix_file',
+    'measurement_set',
+    'model_file',
+    'model_set',
+    'mpra_quality_metric',
+    'multiplexed_sample',
+    'open_reading_frame',
+    'page',
+    'perturb_seq_quality_metric',
+    'phenotype_term',
+    'phenotypic_feature',
+    'platform_term',
+    'prediction_set',
+    'primary_cell',
+    'publication',
+    'reference_file',
+    'rodent_donor',
+    'sample_term',
+    'sequence_file',
+    'signal_file',
+    'single_cell_atac_seq_quality_metric',
+    'single_cell_rna_seq_quality_metric',
+    'software',
+    'software_version',
+    'source',
+    'starr_seq_quality_metric',
+    'tabular_file',
+    'technical_sample',
+    'tissue',
+    'treatment',
+    'user',
+    'whole_organism',
+    'workflow',
+]
+
 
 @dataclass
 class BackendDashboardProps:
@@ -33,6 +94,67 @@ class BackendDashboard(Construct):
 
     props: BackendDashboardProps
     _widgets: List[IWidget]
+    _indexing_metrics: List[IMetric]
+
+    ITEM_TYPES: List[str] = [
+        'access_key',
+        'alignment_file',
+        'analysis_set',
+        'analysis_step',
+        'analysis_step_version',
+        'assay_term',
+        'auxiliary_set',
+        'award',
+        'biomarker',
+        'configuration_file',
+        'construct_library_set',
+        'crispr_modification',
+        'curated_set',
+        'degron_modification',
+        'document',
+        'gene',
+        'genome_browser_annotation_file',
+        'human_donor',
+        'image',
+        'image_file',
+        'in_vitro_system',
+        'index_file',
+        'institutional_certificate',
+        'lab',
+        'matrix_file',
+        'measurement_set',
+        'model_file',
+        'model_set',
+        'mpra_quality_metric',
+        'multiplexed_sample',
+        'open_reading_frame',
+        'page',
+        'perturb_seq_quality_metric',
+        'phenotype_term',
+        'phenotypic_feature',
+        'platform_term',
+        'prediction_set',
+        'primary_cell',
+        'publication',
+        'reference_file',
+        'rodent_donor',
+        'sample_term',
+        'sequence_file',
+        'signal_file',
+        'single_cell_atac_seq_quality_metric',
+        'single_cell_rna_seq_quality_metric',
+        'software',
+        'software_version',
+        'source',
+        'starr_seq_quality_metric',
+        'tabular_file',
+        'technical_sample',
+        'tissue',
+        'treatment',
+        'user',
+        'whole_organism',
+        'workflow',
+    ]
 
     def __init__(
             self,
@@ -45,6 +167,7 @@ class BackendDashboard(Construct):
         super().__init__(scope, construct_id, **kwargs)
         self.props = props
         self._widgets = []
+        self._indexing_metrics = []
         self._define_wsgi_time_widget()
         self._define_es_time_widget()
         self._define_db_time_widget()
@@ -52,7 +175,32 @@ class BackendDashboard(Construct):
         self._define_response_2xx_count_widget()
         self._define_response_4xx_count_widget()
         self._define_response_5xx_count_widget()
+        self._define_sequence_file_indexing_metric()
         self._define_dashboard()
+
+    def _define_sequence_file_indexing_metric(self) -> None:
+        sequence_file_indexing_metric_filter = MetricFilter(
+            self,
+            'SequenceFileIndexingMetricFilter',
+            log_group=self.props.log_group,
+            metric_namespace=self.props.config.branch,
+            metric_name='SequenceFileIndexing',
+            filter_pattern=FilterPattern.all(
+                FilterPattern.string_value(json_field='$.statusline', comparison='=', value='*@@index-data-external*'),
+                FilterPattern.string_value(json_field='$.item_type', comparison='=', value='sequence_file')
+            ),
+            metric_value='$.wsgi_time',
+            default_value=0
+        )
+        sequence_file_indexing_metric = sequence_file_indexing_metric_filter.metric(
+            label='Sequence File Indexing Time microseconds',
+        )
+        sequence_file_indexing_widget = GraphWidget(
+            left=[sequence_file_indexing_metric],
+            left_y_axis=YAxisProps(show_units=False),
+            period=cdk.Duration.seconds(60),
+        )
+        self._widgets.append(sequence_file_indexing_widget)
 
     def _define_wsgi_time_widget(self) -> None:
         wsgi_time_metric_filter = MetricFilter(
