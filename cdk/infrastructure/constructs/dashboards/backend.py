@@ -8,6 +8,7 @@ from aws_cdk.aws_cloudwatch import IMetric
 from aws_cdk.aws_cloudwatch import IWidget
 from aws_cdk.aws_cloudwatch import LogQueryWidget
 from aws_cdk.aws_cloudwatch import Stats
+from aws_cdk.aws_cloudwatch import Unit
 from aws_cdk.aws_cloudwatch import YAxisProps
 
 from aws_cdk.aws_logs import LogGroup
@@ -189,10 +190,11 @@ class BackendDashboard(Construct):
                 FilterPattern.string_value(json_field='$.statusline', comparison='=', value='*@@index-data-external*'),
                 FilterPattern.string_value(json_field='$.item_type', comparison='=', value='in_vitro_system')
             ),
-            metric_value='$.wsgi_time'
+            metric_value='$.wsgi_time/1000000'
         )
         sequence_file_indexing_metric = sequence_file_indexing_metric_filter.metric(
-            label='In Vitro System Indexing Time microseconds',
+            label='In Vitro System Indexing Time Seconds',
+            unit=Unit.SECONDS
         )
         sequence_file_indexing_widget = GraphWidget(
             left=[sequence_file_indexing_metric],
