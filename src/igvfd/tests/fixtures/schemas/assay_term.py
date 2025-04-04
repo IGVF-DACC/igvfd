@@ -111,6 +111,15 @@ def assay_term_crispr(testapp):
 
 
 @pytest.fixture
+def assay_term_crispr_single_cell(testapp):
+    item = {
+        'term_id': 'OBI:0003660',
+        'term_name': 'in vitro CRISPR screen using single-cell RNA-seq'
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def assay_term_cas_mediated_mutagenesis(testapp):
     item = {
         'term_id': 'OBI:0003133',

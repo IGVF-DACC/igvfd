@@ -497,28 +497,26 @@ def audit_missing_strand_specificity(value, system):
     '''
     [
         {
-            "audit_description": "Single-cell CRISPR screens, such as Perturb-seq, scCRISPR screen, TAP-seq, and CERES-seq, are expected to specify strand specificity.",
+            "audit_description": "Single-cell assays are expected to specify strand specificity.",
             "audit_category": "missing strand specificity",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
     audit_message_strand_specificity = get_audit_message(audit_missing_strand_specificity)
-
-    expected_assays = {'Perturb-seq', 'scCRISPR screen', 'TAP-seq', 'CERES-seq'}
-    preferred_assay_title = value.get('preferred_assay_title')
     strand_specificity = value.get('strand_specificity', None)
-
-    if preferred_assay_title in expected_assays and strand_specificity is None:
-        detail = (
-            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'is missing required `strand_specificity` for assay {preferred_assay_title}.'
-        )
-        yield AuditFailure(
-            audit_message_strand_specificity.get('audit_category', ''),
-            f'{detail} {audit_message_strand_specificity.get("audit_description", "")}',
-            level=audit_message_strand_specificity.get('audit_level', '')
-        )
+    if not (strand_specificity):
+        single_cell_assay_status = single_cell_check(system, value, 'Measurement set')
+        if single_cell_assay_status:
+            detail = (
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'is missing required `strand_specificity`.'
+            )
+            yield AuditFailure(
+                audit_message_strand_specificity.get('audit_category', ''),
+                f'{detail} {audit_message_strand_specificity.get("audit_description", "")}',
+                level=audit_message_strand_specificity.get('audit_level', '')
+            )
 
 
 @audit_checker('MeasurementSet', frame='object')
