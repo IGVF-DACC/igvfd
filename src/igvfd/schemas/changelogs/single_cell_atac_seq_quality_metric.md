@@ -1,5 +1,15 @@
 ## Changelog for *`single_cell_atac_seq_quality_metric.json`*
 
+### Schema version 2
+
+* Remove `n_fragment`.
+* Remove `frac_dup`.
+* Remove `frac_mito`.
+* Remove `tsse`.
+* Remove `duplicate`.
+* Remove `unmapped`.
+* Remove `lowmapq`.
+
 ### Minor changes since schema version 1
 
 * Add `atac_fragments_alignment_stats`.
