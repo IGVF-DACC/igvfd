@@ -2,6 +2,7 @@ import aws_cdk as cdk
 
 from constructs import Construct
 
+from aws_cdk.aws_cloudwatch import Color
 from aws_cdk.aws_cloudwatch import Dashboard
 from aws_cdk.aws_cloudwatch import GraphWidget
 from aws_cdk.aws_cloudwatch import IMetric
@@ -190,9 +191,10 @@ class BackendDashboard(Construct):
                 FilterPattern.string_value(json_field='$.statusline', comparison='=', value='*@@index-data-external*'),
                 FilterPattern.string_value(json_field='$.item_type', comparison='=', value='in_vitro_system')
             ),
-            metric_value='$.wsgi_time/1000000'
+            metric_value='$.wsgi_time / 1000000'
         )
         sequence_file_indexing_metric = sequence_file_indexing_metric_filter.metric(
+            color=Color.PINK,
             label='In Vitro System Indexing Time Seconds',
             unit=Unit.SECONDS
         )
