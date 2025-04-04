@@ -93,7 +93,7 @@
                             {
                                 "Ref": "AWS::Region"
                             },
-                            "\",\"metrics\":[[\"some-branch\",\"SequenceFileIndexing\",{\"label\":\"Sequence File Indexing Time microseconds\"}]],\"yAxis\":{\"left\":{\"showUnits\":false}},\"period\":60}}]}"
+                            "\",\"metrics\":[[\"some-branch\",\"SequenceFileIndexing\",{\"label\":\"In Vitro System Indexing Time microseconds\"}]],\"yAxis\":{\"left\":{\"showUnits\":false}},\"period\":60}}]}"
                         ]
                     ]
                 },
@@ -151,7 +151,7 @@
         },
         "TestDashboardSequenceFileIndexingMetricFilter889CE3E4": {
             "Properties": {
-                "FilterPattern": "{ ($.statusline = \"*@@index-data-external*\") && ($.item_type = \"sequence_file\") }",
+                "FilterPattern": "{ ($.statusline = \"*@@index-data-external*\") && ($.item_type = \"in_vitro_system\") }",
                 "LogGroupName": {
                     "Ref": "TestLogGroup4EEF7AD4"
                 },

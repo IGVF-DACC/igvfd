@@ -187,13 +187,13 @@ class BackendDashboard(Construct):
             metric_name='SequenceFileIndexing',
             filter_pattern=FilterPattern.all(
                 FilterPattern.string_value(json_field='$.statusline', comparison='=', value='*@@index-data-external*'),
-                FilterPattern.string_value(json_field='$.item_type', comparison='=', value='sequence_file')
+                FilterPattern.string_value(json_field='$.item_type', comparison='=', value='in_vitro_system')
             ),
             metric_value='$.wsgi_time',
             default_value=0
         )
         sequence_file_indexing_metric = sequence_file_indexing_metric_filter.metric(
-            label='Sequence File Indexing Time microseconds',
+            label='In Vitro System Indexing Time microseconds',
         )
         sequence_file_indexing_widget = GraphWidget(
             left=[sequence_file_indexing_metric],
