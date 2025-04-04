@@ -157,7 +157,6 @@
                 },
                 "MetricTransformations": [
                     {
-                        "DefaultValue": 0,
                         "MetricName": "InVitroSystemIndexing",
                         "MetricNamespace": "some-branch",
                         "MetricValue": "$.wsgi_time"
