@@ -87,20 +87,15 @@
         "if": {
             "properties": {
                 "virtual": {
-                    "const": true
+                    "const": false
                 }
             }
         },
         "then": {
-            "required": [
-                "annotated_from"
-            ]
-        },
-        "else": {
-            "not": {
-                "required": [
-                    "annotated_from"
-                ]
+            "properties": {
+                "annotated_from": {
+                    "not": {}
+                }
             }
         }
     },
