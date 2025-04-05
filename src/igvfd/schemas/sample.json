@@ -40,12 +40,6 @@
         "$merge": [
             "shared_dependencies.json#/product_info"
         ],
-        "annotated_from": {
-            "comment": "Specification of annotated_from requires construct_library_sets.",
-            "required": [
-                "virtual"
-            ]
-        },
         "sorted_from": {
             "comment": "Specification of sorted_from requires sorted_from_detail.",
             "required": [
@@ -89,6 +83,25 @@
                 "time_post_library_delivery",
                 "construct_library_sets"
             ]
+        },
+        "if": {
+            "properties": {
+                "virtual": {
+                    "const": true
+                }
+            }
+        },
+        "then": {
+            "required": [
+                "annotated_from"
+            ]
+        },
+        "else": {
+            "not": {
+                "required": [
+                    "annotated_from"
+                ]
+            }
         }
     },
     "properties": {
