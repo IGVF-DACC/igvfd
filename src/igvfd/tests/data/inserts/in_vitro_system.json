@@ -59,6 +59,7 @@
     },
     {
         "uuid": "1b14530d-5514-419a-ad8f-e2f110c26232",
+        "annotated_from": "igvf-dacc:in_vitro_system_cell_line",
         "classifications": [
             "differentiated cell specimen"
         ],
