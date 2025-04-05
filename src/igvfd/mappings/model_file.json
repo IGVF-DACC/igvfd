@@ -1,6 +1,6 @@
 {
-    "hash": "dba242eda5f20613f6091c96e291fc18",
-    "index_name": "model_file_dba242ed",
+    "hash": "d0669dba4cd55da14c221475fad27a19",
+    "index_name": "model_file_d0669dba",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -603,6 +603,9 @@
                                         "type": "keyword"
                                     },
                                     "alternate_accessions": {
+                                        "type": "keyword"
+                                    },
+                                    "annotated_from": {
                                         "type": "keyword"
                                     },
                                     "award": {

@@ -1,6 +1,6 @@
 {
-    "hash": "084fc9f543ce8f5e56ad9d2d8d81dea5",
-    "index_name": "reference_file_084fc9f5",
+    "hash": "50ab2e37b427a2d5b6365cc97eb940f0",
+    "index_name": "reference_file_50ab2e37",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -607,6 +607,9 @@
                                         "type": "keyword"
                                     },
                                     "alternate_accessions": {
+                                        "type": "keyword"
+                                    },
+                                    "annotated_from": {
                                         "type": "keyword"
                                     },
                                     "award": {

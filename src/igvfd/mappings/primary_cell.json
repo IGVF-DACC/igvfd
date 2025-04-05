@@ -1,6 +1,6 @@
 {
-    "hash": "f0a012bdb1b8c11b67d55ea6dc7d4b88",
-    "index_name": "primary_cell_f0a012bd",
+    "hash": "a4d54e58c4d52fe0433c9ae30b2944cf",
+    "index_name": "primary_cell_a4d54e58",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -162,6 +162,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "annotated_from": {
                         "type": "keyword"
                     },
                     "award": {
@@ -1649,6 +1652,9 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "annotated_from": {
+                                "type": "keyword"
+                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -2094,6 +2100,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotated_from": {
                                 "type": "keyword"
                             },
                             "award": {

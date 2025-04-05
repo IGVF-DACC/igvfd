@@ -1,6 +1,6 @@
 {
-    "hash": "cd6cf79a3c44787c7330c6505830112e",
-    "index_name": "technical_sample_cd6cf79a",
+    "hash": "6142b0b5bfeefcfb62fd00606101b005",
+    "index_name": "technical_sample_6142b0b5",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -156,6 +156,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "annotated_from": {
                         "type": "keyword"
                     },
                     "award": {
@@ -1250,6 +1253,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotated_from": {
                                 "type": "keyword"
                             },
                             "award": {

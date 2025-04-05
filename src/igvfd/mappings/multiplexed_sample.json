@@ -1,6 +1,6 @@
 {
-    "hash": "fbc6f222250d779cb6b199e12164f2ad",
-    "index_name": "multiplexed_sample_fbc6f222",
+    "hash": "d7ffcc7e547996e1afa10988fe8b5e4b",
+    "index_name": "multiplexed_sample_d7ffcc7e",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -156,6 +156,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "annotated_from": {
                         "type": "keyword"
                     },
                     "award": {
@@ -1627,6 +1630,9 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "annotated_from": {
+                                "type": "keyword"
+                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -1799,6 +1805,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotated_from": {
                                 "type": "keyword"
                             },
                             "award": {
@@ -2599,6 +2608,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotated_from": {
                                 "type": "keyword"
                             },
                             "award": {

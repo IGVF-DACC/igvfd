@@ -1,6 +1,6 @@
 {
-    "hash": "a72e517c5f536f3aad0a30f2cd06a24a",
-    "index_name": "analysis_set_a72e517c",
+    "hash": "92ca191754f78bee8df4ad990818d966",
+    "index_name": "analysis_set_92ca1917",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -2182,6 +2182,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotated_from": {
                                 "type": "keyword"
                             },
                             "award": {

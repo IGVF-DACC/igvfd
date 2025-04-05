@@ -1,6 +1,6 @@
 {
-    "hash": "ec86a1cda9c2d59d7f69ee59f0cdc1d0",
-    "index_name": "prediction_set_ec86a1cd",
+    "hash": "328b10d1e112aa12e8cc03345adefcd6",
+    "index_name": "prediction_set_328b10d1",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -2240,6 +2240,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotated_from": {
                                 "type": "keyword"
                             },
                             "award": {

@@ -1,6 +1,6 @@
 {
-    "hash": "b2d6e3e02b755aba00c46455809ccf5d",
-    "index_name": "index_file_b2d6e3e0",
+    "hash": "6c286f27843b119c0fb276e935649114",
+    "index_name": "index_file_6c286f27",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -597,6 +597,9 @@
                                         "type": "keyword"
                                     },
                                     "alternate_accessions": {
+                                        "type": "keyword"
+                                    },
+                                    "annotated_from": {
                                         "type": "keyword"
                                     },
                                     "award": {

@@ -1,6 +1,6 @@
 {
-    "hash": "ace9be6533c28e887d817fdd044cd626",
-    "index_name": "model_set_ace9be65",
+    "hash": "7e09cb575f31dcb259fee7a61546a109",
+    "index_name": "model_set_7e09cb57",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -2212,6 +2212,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotated_from": {
                                 "type": "keyword"
                             },
                             "award": {
