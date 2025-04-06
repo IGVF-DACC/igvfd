@@ -92,10 +92,10 @@
             }
         },
         "then": {
-            "properties": {
-                "annotated_from": {
-                    "not": {}
-                }
+            "not": {
+                "required": [
+                    "annotated_from"
+                ]
             }
         }
     },
