@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Remove calculated property `thumb_nail`.
 * Extend `status` enum list to include `preview`.
 * Change default value of `status` to `in progress`.
 * Update calculation of `summary`.
