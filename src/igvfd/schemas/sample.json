@@ -84,18 +84,21 @@
                 "construct_library_sets"
             ]
         },
-        "if": {
-            "properties": {
-                "virtual": {
-                    "const": false
+        "virtual": {
+            "comment": "Specification of annotated_from should be allowed only if virtual is true.",
+            "if": {
+                "properties": {
+                    "virtual": {
+                        "const": false
+                    }
                 }
-            }
-        },
-        "then": {
-            "not": {
-                "required": [
-                    "annotated_from"
-                ]
+            },
+            "then": {
+                "not": {
+                    "required": [
+                        "annotated_from"
+                    ]
+                }
             }
         }
     },
