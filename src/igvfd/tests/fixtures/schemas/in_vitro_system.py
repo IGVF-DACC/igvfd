@@ -341,7 +341,7 @@ def in_vitro_system_v25(in_vitro_cell_line):
 
 
 @pytest.fixture
-def in_vitro_system_v25(in_vitro_cell_line):
+def in_vitro_system_v26(in_vitro_cell_line):
     item = in_vitro_cell_line.copy()
     item.update({
         'schema_version': '26'
