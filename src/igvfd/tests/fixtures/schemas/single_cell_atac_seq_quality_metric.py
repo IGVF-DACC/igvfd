@@ -32,7 +32,7 @@ def single_cell_atac_seq_quality_metric(
         'atac_fragment_summary_stats': {'download': 'red-dot.png', 'href': RED_DOT},
         'analysis_step_version': analysis_step_version['@id']
     }
-    return testapp.post_json('/mpra_quality_metric', item, status=201).json['@graph'][0]
+    return testapp.post_json('/single_cell_atac_seq_quality_metric', item, status=201).json['@graph'][0]
 
 
 @pytest.fixture
