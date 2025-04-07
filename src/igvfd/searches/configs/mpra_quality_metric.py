@@ -19,6 +19,14 @@ def mpra_quality_metric():
             'type': {
                 'title': 'Object Type'
             },
+            'fraction_assigned_oligos': {
+                'title': 'Fraction Assigned Oligos',
+                'type': 'stats'
+            },
+            'median_assigned_barcodes': {
+                'title': 'Median Assigned Barcodes',
+                'type': 'stats'
+            },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error'
             },
