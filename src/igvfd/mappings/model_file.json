@@ -626,9 +626,6 @@
                                     "cell_fate_change_protocol": {
                                         "type": "keyword"
                                     },
-                                    "cell_fate_change_treatments": {
-                                        "type": "keyword"
-                                    },
                                     "cellular_sub_pool": {
                                         "type": "keyword"
                                     },

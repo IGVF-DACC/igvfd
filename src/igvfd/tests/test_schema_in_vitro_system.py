@@ -12,7 +12,7 @@ def test_passage_number_dependency(in_vitro_cell_line, testapp):
     assert res.status_code == 422
 
 
-def test_time_post_factors_dependency(in_vitro_cell_line, treatment_chemical, sample_term_endothelial_cell, testapp):
+def test_time_post_change_dependency(in_vitro_cell_line, treatment_chemical, sample_term_endothelial_cell, experimental_protocol_document, testapp):
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
@@ -23,11 +23,11 @@ def test_time_post_factors_dependency(in_vitro_cell_line, treatment_chemical, sa
     assert res.status_code == 422
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
-        {'classifications': ['differentiated cell specimen'], 'cell_fate_change_treatments': [treatment_chemical['@id']]}, expect_errors=True)
+        {'classifications': ['differentiated cell specimen'], 'cell_fate_change_protocol': experimental_protocol_document['@id']}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
-        {'classifications': ['differentiated cell specimen'], 'time_post_change': 3, 'time_post_change_units': 'day', 'cell_fate_change_treatments': [treatment_chemical['@id']], 'targeted_sample_term': sample_term_endothelial_cell['@id']})
+        {'classifications': ['differentiated cell specimen'], 'time_post_change': 3, 'time_post_change_units': 'day', 'cell_fate_change_protocol': experimental_protocol_document['@id'], 'targeted_sample_term': sample_term_endothelial_cell['@id']})
     assert res.status_code == 200
 
 
@@ -74,7 +74,7 @@ def test_cellular_sub_pool(testapp, in_vitro_differentiated_cell, primary_cell, 
         {'cellular_sub_pool': 'LW231B-2'}, expect_errors=True)
 
 
-def test_classifications_dependency(testapp, lab, award, source, human_donor, sample_term_K562, treatment_chemical, in_vitro_cell_line, sample_term_brown_adipose_tissue):
+def test_classifications_dependency(testapp, lab, award, source, human_donor, sample_term_K562, experimental_protocol_document, in_vitro_cell_line, sample_term_brown_adipose_tissue):
     item = {
         'classifications': ['differentiated cell specimen'],
         'award': award['@id'],
@@ -83,7 +83,7 @@ def test_classifications_dependency(testapp, lab, award, source, human_donor, sa
         'taxa': 'Homo sapiens',
         'donors': [human_donor['@id']],
         'sample_terms': [sample_term_K562['@id']],
-        'cell_fate_change_treatments': [treatment_chemical['@id']],
+        'cell_fate_change_protocol': experimental_protocol_document['@id'],
         'time_post_change': 5,
         'time_post_change_units': 'minute'
     }
@@ -93,7 +93,7 @@ def test_classifications_dependency(testapp, lab, award, source, human_donor, sa
         in_vitro_cell_line['@id'],
         {
             'classifications': ['organoid'],
-            'cell_fate_change_treatments': [treatment_chemical['@id']],
+            'cell_fate_change_protocol': experimental_protocol_document['@id'],
             'time_post_change': 5,
             'time_post_change_units': 'minute'
         }, expect_errors=True)
@@ -102,7 +102,7 @@ def test_classifications_dependency(testapp, lab, award, source, human_donor, sa
         in_vitro_cell_line['@id'],
         {
             'classifications': ['organoid'],
-            'cell_fate_change_treatments': [treatment_chemical['@id']],
+            'cell_fate_change_protocol': experimental_protocol_document['@id'],
             'time_post_change': 5,
             'time_post_change_units': 'minute',
             'targeted_sample_term': sample_term_brown_adipose_tissue['@id']
@@ -200,7 +200,7 @@ def test_product_id_dependency(award, source, lab, rodent_donor, sample_term_K56
     assert res.status_code == 201
 
 
-def test_gastruloid_dependency(in_vitro_cell_line, treatment_chemical, sample_term_endothelial_cell, testapp):
+def test_gastruloid_dependency(in_vitro_cell_line, experimental_protocol_document, sample_term_endothelial_cell, testapp):
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
@@ -211,9 +211,9 @@ def test_gastruloid_dependency(in_vitro_cell_line, treatment_chemical, sample_te
     assert res.status_code == 422
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
-        {'classifications': ['gastruloid'], 'cell_fate_change_treatments': [treatment_chemical['@id']]}, expect_errors=True)
+        {'classifications': ['gastruloid'], 'cell_fate_change_protocol': experimental_protocol_document['@id']}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
-        {'classifications': ['gastruloid'], 'time_post_change': 3, 'time_post_change_units': 'day', 'cell_fate_change_treatments': [treatment_chemical['@id']], 'targeted_sample_term': sample_term_endothelial_cell['@id']})
+        {'classifications': ['gastruloid'], 'time_post_change': 3, 'time_post_change_units': 'day', 'cell_fate_change_protocol': experimental_protocol_document['@id'], 'targeted_sample_term': sample_term_endothelial_cell['@id']})
     assert res.status_code == 200

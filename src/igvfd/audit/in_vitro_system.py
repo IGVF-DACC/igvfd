@@ -35,29 +35,6 @@ def audit_targeted_sample_term_check(value, system):
 
 
 @audit_checker('InVitroSystem', frame='embedded')
-def audit_cell_fate_change_treatments_purpose(value, system):
-    '''
-    [
-        {
-            "audit_description": "Cell fate change treatments are expected to have a purpose associated with cell fate change.",
-            "audit_category": "inconsistent treatment purpose",
-            "audit_level": "ERROR"
-        }
-    ]
-    '''
-    audit_message = get_audit_message(audit_cell_fate_change_treatments_purpose)
-    if 'cell_fate_change_treatments' in value:
-        for treatment in value.get('cell_fate_change_treatments'):
-            if treatment['purpose'] in ['perturbation', 'agonist', 'antagonist', 'control']:
-                detail = (
-                    f'In vitro system {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                    f'has a treatment {audit_link(path_to_text(treatment["@id"]), treatment["@id"])} in `cell_fate_change_treatments` '
-                    f'that has `purpose` {treatment["purpose"]}.'
-                )
-                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
-
-
-@audit_checker('InVitroSystem', frame='embedded')
 def audit_cell_fate_change_protocol_document_type(value, system):
     '''
     [

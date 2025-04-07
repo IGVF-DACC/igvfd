@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 26
+
+* Remove `cell_fate_change_treatments`.
+
 ### Minor changes since schema version 25
 
 * Add `annotated_from`.
