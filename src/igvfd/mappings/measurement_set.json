@@ -3455,6 +3455,7 @@
                                         "type": "keyword"
                                     },
                                     "treatment_term_name": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "treatment_type": {
