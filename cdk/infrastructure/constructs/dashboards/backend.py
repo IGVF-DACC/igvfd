@@ -196,7 +196,6 @@ class BackendDashboard(Construct):
             metric_value='$.wsgi_time'
         )
         item_type_indexing_metric = item_type_indexing_metric_filter.metric(
-            color=Color.PINK,
             label=f'{item_type_camel_case} Indexing Time Microseconds',
             unit=Unit.MICROSECONDS
         )
