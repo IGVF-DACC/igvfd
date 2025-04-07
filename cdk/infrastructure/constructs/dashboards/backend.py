@@ -96,7 +96,7 @@ class BackendDashboard(Construct):
 
     props: BackendDashboardProps
     _widgets: List[IWidget]
-    _indexing_metrics: List[IMetric]
+    _item_type_indexing_metrics: List[IMetric]
 
     ITEM_TYPES: List[str] = [
         'access_key',
@@ -169,7 +169,7 @@ class BackendDashboard(Construct):
         super().__init__(scope, construct_id, **kwargs)
         self.props = props
         self._widgets = []
-        self._indexing_metrics = []
+        self._item_type_indexing_metrics = []
         self._define_wsgi_time_widget()
         self._define_es_time_widget()
         self._define_db_time_widget()
@@ -177,33 +177,43 @@ class BackendDashboard(Construct):
         self._define_response_2xx_count_widget()
         self._define_response_4xx_count_widget()
         self._define_response_5xx_count_widget()
-        self._define_sequence_file_indexing_metric()
+        self._define_item_type_indexing_metrics()
+        self._define_item_type_indexing_widget()
         self._define_dashboard()
 
-    def _define_sequence_file_indexing_metric(self) -> None:
-        sequence_file_indexing_metric_filter = MetricFilter(
+    def _define_item_type_indexing_metric(self, item_type: str) -> IMetric:
+        item_type_camel_case = ''.join(word.capitalize() for word in item_type.split('_'))
+        item_type_indexing_metric_filter = MetricFilter(
             self,
-            'SequenceFileIndexingMetricFilter',
+            f'{item_type}IndexingMetricFilter',
             log_group=self.props.log_group,
             metric_namespace=self.props.config.branch,
-            metric_name='InVitroSystemIndexing',
+            metric_name=f'{item_type_camel_case}Indexing',
             filter_pattern=FilterPattern.all(
                 FilterPattern.string_value(json_field='$.statusline', comparison='=', value='*@@index-data-external*'),
-                FilterPattern.string_value(json_field='$.item_type', comparison='=', value='in_vitro_system')
+                FilterPattern.string_value(json_field='$.item_type', comparison='=', value=item_type)
             ),
             metric_value='$.wsgi_time'
         )
-        sequence_file_indexing_metric = sequence_file_indexing_metric_filter.metric(
+        item_type_indexing_metric = item_type_indexing_metric_filter.metric(
             color=Color.PINK,
-            label='In Vitro System Indexing Time Microseconds',
+            label=f'{item_type_camel_case} Indexing Time Microseconds',
             unit=Unit.MICROSECONDS
         )
-        sequence_file_indexing_widget = GraphWidget(
-            left=[sequence_file_indexing_metric],
+        return item_type_indexing_metric
+
+    def _define_item_type_indexing_metrics(self) -> None:
+        for item_type in self.ITEM_TYPES:
+            self._item_type_indexing_metrics.append(self._define_item_type_indexing_metric(item_type))
+
+    def _define_item_type_indexing_widget(self) -> None:
+        item_type_indexing_widget = GraphWidget(
+            left=self._item_type_indexing_metrics,
             left_y_axis=YAxisProps(show_units=False),
             period=cdk.Duration.seconds(60),
+            title='Per Item Type Indexing Time Microseconds',
         )
-        self._widgets.append(sequence_file_indexing_widget)
+        self._widgets.append(item_type_indexing_widget)
 
     def _define_wsgi_time_widget(self) -> None:
         wsgi_time_metric_filter = MetricFilter(
