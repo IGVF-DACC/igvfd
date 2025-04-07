@@ -4,13 +4,13 @@ from constructs import Construct
 
 from aws_cdk.aws_cloudwatch import Dashboard
 from aws_cdk.aws_cloudwatch import GraphWidget
+from aws_cdk.aws_cloudwatch import IMetric
 from aws_cdk.aws_cloudwatch import IWidget
-from aws_cdk.aws_cloudwatch import LogQueryWidget
 from aws_cdk.aws_cloudwatch import Stats
+from aws_cdk.aws_cloudwatch import Unit
 from aws_cdk.aws_cloudwatch import YAxisProps
 
 from aws_cdk.aws_logs import LogGroup
-from aws_cdk.aws_logs import ILogGroup
 from aws_cdk.aws_logs import MetricFilter
 from aws_cdk.aws_logs import FilterPattern
 
@@ -18,9 +18,9 @@ from dataclasses import dataclass
 
 from typing import Any
 from typing import List
-from typing import Optional
 
 from infrastructure.config import Config
+from infrastructure.constructs.dashboards.constants import ITEM_TYPES
 
 
 @dataclass
@@ -33,6 +33,7 @@ class BackendDashboard(Construct):
 
     props: BackendDashboardProps
     _widgets: List[IWidget]
+    _item_type_indexing_metrics: List[IMetric]
 
     def __init__(
             self,
@@ -45,6 +46,7 @@ class BackendDashboard(Construct):
         super().__init__(scope, construct_id, **kwargs)
         self.props = props
         self._widgets = []
+        self._item_type_indexing_metrics = []
         self._define_wsgi_time_widget()
         self._define_es_time_widget()
         self._define_db_time_widget()
@@ -52,7 +54,42 @@ class BackendDashboard(Construct):
         self._define_response_2xx_count_widget()
         self._define_response_4xx_count_widget()
         self._define_response_5xx_count_widget()
+        self._define_item_type_indexing_metrics()
+        self._define_item_type_indexing_widget()
         self._define_dashboard()
+
+    def _define_item_type_indexing_metric(self, item_type: str) -> IMetric:
+        item_type_camel_case = ''.join(word.capitalize() for word in item_type.split('_'))
+        item_type_indexing_metric_filter = MetricFilter(
+            self,
+            f'{item_type}IndexingMetricFilter',
+            log_group=self.props.log_group,
+            metric_namespace=self.props.config.branch,
+            metric_name=f'{item_type_camel_case}Indexing',
+            filter_pattern=FilterPattern.all(
+                FilterPattern.string_value(json_field='$.statusline', comparison='=', value='*@@index-data-external*'),
+                FilterPattern.string_value(json_field='$.item_type', comparison='=', value=item_type)
+            ),
+            metric_value='$.wsgi_time'
+        )
+        item_type_indexing_metric = item_type_indexing_metric_filter.metric(
+            label=f'{item_type_camel_case}',
+            unit=Unit.MICROSECONDS
+        )
+        return item_type_indexing_metric
+
+    def _define_item_type_indexing_metrics(self) -> None:
+        for item_type in ITEM_TYPES:
+            self._item_type_indexing_metrics.append(self._define_item_type_indexing_metric(item_type))
+
+    def _define_item_type_indexing_widget(self) -> None:
+        item_type_indexing_widget = GraphWidget(
+            left=self._item_type_indexing_metrics,
+            left_y_axis=YAxisProps(show_units=False),
+            period=cdk.Duration.seconds(60),
+            title='Per Item Type Indexing Time Microseconds',
+        )
+        self._widgets.append(item_type_indexing_widget)
 
     def _define_wsgi_time_widget(self) -> None:
         wsgi_time_metric_filter = MetricFilter(
