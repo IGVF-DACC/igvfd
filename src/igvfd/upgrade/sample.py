@@ -535,3 +535,10 @@ def in_vitro_system_25_26(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s classifications was previously pooled cell specimen. It has been upgraded to both cell line and pooled cell specimen classifications by an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('in_vitro_system', '26', '27')
+def in_vitro_system_26_27(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2107
+    # This upgrade to replace cell_fate_change_treatments with cell_fate_change_protocol was done manually across the every server.
+    return
