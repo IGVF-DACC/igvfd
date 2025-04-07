@@ -1,6 +1,5 @@
 ## Changelog for *`sample.json`*
 
-* Add `annotated_from`. (04/07/2025)
 * Extend `nucleic_acid_delivery` enum list to include `nucleofection`. (02/27/2025)
 * Extend `nucleic_acid_delivery` enum list to include `lipofectamine` and `electroporation`. (02/03/2025)
 * Extend `status` enum list to include `preview`. (11/22/2024)
