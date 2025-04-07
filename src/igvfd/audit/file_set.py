@@ -696,6 +696,8 @@ def audit_inconsistent_controlled_access(value, system):
             else:
                 files_by_access[file_object.get('controlled_access', None)].append(file_object.get('@id'))
 
+    controlled_files_link = ''
+    uncontrolled_files_link = ''
     if True in files_by_access and False in files_by_access:
         controlled_access_of_files_phrase = 'controlled and uncontrolled access'
         # Mixed controlled access is only unexpected for Meas Sets
