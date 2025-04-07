@@ -2,18 +2,15 @@ import aws_cdk as cdk
 
 from constructs import Construct
 
-from aws_cdk.aws_cloudwatch import Color
 from aws_cdk.aws_cloudwatch import Dashboard
 from aws_cdk.aws_cloudwatch import GraphWidget
 from aws_cdk.aws_cloudwatch import IMetric
 from aws_cdk.aws_cloudwatch import IWidget
-from aws_cdk.aws_cloudwatch import LogQueryWidget
 from aws_cdk.aws_cloudwatch import Stats
 from aws_cdk.aws_cloudwatch import Unit
 from aws_cdk.aws_cloudwatch import YAxisProps
 
 from aws_cdk.aws_logs import LogGroup
-from aws_cdk.aws_logs import ILogGroup
 from aws_cdk.aws_logs import MetricFilter
 from aws_cdk.aws_logs import FilterPattern
 
@@ -21,7 +18,6 @@ from dataclasses import dataclass
 
 from typing import Any
 from typing import List
-from typing import Optional
 
 from infrastructure.config import Config
 
