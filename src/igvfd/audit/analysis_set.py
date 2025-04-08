@@ -356,7 +356,7 @@ def audit_missing_transcriptome(value, system):
                         for reference_file in reference_files:
                             reference_file_object = system.get('request').embed(
                                 reference_file + '@@object?skip_calculated=true')
-                            if reference_file_object.get('content_type', '') == 'transcriptome reference':
+                            if reference_file_object.get('content_type', '') in ['transcriptome reference', 'transcriptome index']:
                                 has_transcriptome = True
                         if not (has_transcriptome):
                             files_missing_transcriptome.append(file)
