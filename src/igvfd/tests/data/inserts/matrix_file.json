@@ -205,5 +205,30 @@
         "secondary_dimensions": [
             "peak"
         ]
+    },
+    {
+        "uuid": "c0dab576-1503-4547-bcf5-5d0a542afd89",
+        "accession": "IGVFFI1010KBFI",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_kb_output"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "967a60b67372c5aa0bf68166c7001f6f",
+        "file_format": "tar",
+        "content_type": "comprehensive gene count matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/matrix_file_kb_output.tar.gz",
+        "file_size": 5200010,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
+            "gene"
+        ]
     }
 ]
