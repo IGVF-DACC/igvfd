@@ -65,6 +65,35 @@ class OntologyTerm(Item):
     @calculated_property(
         condition='term_id',
         schema={
+            'title': 'Definition',
+            'type': 'string',
+            'description': 'Definition for the term that was recorded in an ontology.',
+            'notSubmittable': True,
+        }
+    )
+    def definition(self, registry, term_id):
+        return self._get_ontology_strin(registry, term_id, 'definition')
+
+    @calculated_property(
+        condition='term_id',
+        schema={
+            'title': 'comment',
+            'type': 'array',
+            'description': 'Comment for the term that was recorded in an ontology.',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'type': 'string',
+            },
+            'notSubmittable': True,
+        }
+    )
+    def comment(self, registry, term_id):
+        return self._get_ontology_slims(registry, term_id, 'synonyms')
+
+    @calculated_property(
+        condition='term_id',
+        schema={
             'title': 'Synonyms',
             'type': 'array',
             'description': 'Synonyms for the term that have been recorded in an ontology.',
