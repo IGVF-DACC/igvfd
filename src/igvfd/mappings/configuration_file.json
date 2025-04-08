@@ -1,6 +1,6 @@
 {
-    "hash": "4ea31d144ed8792b050e622d6fae70ed",
-    "index_name": "configuration_file_4ea31d14",
+    "hash": "2581df4f8c2d48307d52bbc15b9db769",
+    "index_name": "configuration_file_2581df4f",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -586,6 +586,9 @@
                                         "type": "keyword"
                                     },
                                     "alternate_accessions": {
+                                        "type": "keyword"
+                                    },
+                                    "annotated_from": {
                                         "type": "keyword"
                                     },
                                     "award": {

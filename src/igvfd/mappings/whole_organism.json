@@ -1,6 +1,6 @@
 {
-    "hash": "550fc31aae5b6e617b6486a7c8a58fbc",
-    "index_name": "whole_organism_550fc31a",
+    "hash": "753af24a8346f1af29c7215b33382958",
+    "index_name": "whole_organism_753af24a",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -162,6 +162,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "annotated_from": {
                         "type": "keyword"
                     },
                     "award": {
@@ -2087,6 +2090,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotated_from": {
                                 "type": "keyword"
                             },
                             "award": {

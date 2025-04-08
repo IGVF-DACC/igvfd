@@ -1,6 +1,6 @@
 {
-    "hash": "99e479f5eb5de9b7c1db2d6a0107cff6",
-    "index_name": "model_file_99e479f5",
+    "hash": "a46b76e43e42865fe58d076ce5185331",
+    "index_name": "model_file_a46b76e4",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -603,6 +603,9 @@
                                         "type": "keyword"
                                     },
                                     "alternate_accessions": {
+                                        "type": "keyword"
+                                    },
+                                    "annotated_from": {
                                         "type": "keyword"
                                     },
                                     "award": {
