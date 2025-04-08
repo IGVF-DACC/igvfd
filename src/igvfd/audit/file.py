@@ -28,7 +28,7 @@ def audit_upload_status(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     upload_status = value.get('upload_status')
-    if upload_status not in ['validated', 'validation exempted']:
+    if upload_status not in ['validated', 'validation exempted'] and not (value.get('externally_hosted', False)):
         if value.get('external'):
             audit_level = 'WARNING'
             audit_message = get_audit_message(audit_upload_status, index=1)

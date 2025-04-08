@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_audit_upload_status(testapp, reference_file):
+def test_audit_upload_status(testapp, reference_file, model_file):
     testapp.patch_json(
         reference_file['@id'],
         {
@@ -66,6 +66,36 @@ def test_audit_upload_status(testapp, reference_file):
     assert all(
         audit['category'] != 'upload status not validated'
         for audit in res.json['audit'].get('ERROR', {})
+    )
+    # No audit for externally hosted files.
+    testapp.patch_json(
+        model_file['@id'],
+        {
+            'upload_status': 'pending'
+        },
+        status=200,
+    )
+    res = testapp.get(model_file['@id'] + '@@audit')
+    assert any(
+        audit['category'] == 'upload status not validated'
+        for audit in res.json['audit'].get('ERROR', {})
+    )
+    testapp.patch_json(
+        model_file['@id'],
+        {
+            'externally_hosted': True,
+            'external_host_url': 'https://external_host.com/'
+        },
+        status=200,
+    )
+    res = testapp.get(model_file['@id'] + '@@audit')
+    assert all(
+        audit['category'] != 'upload status not validated'
+        for audit in res.json['audit'].get('ERROR', {})
+    )
+    assert all(
+        audit['category'] != 'upload status not validated'
+        for audit in res.json['audit'].get('WARNING', {})
     )
 
 
