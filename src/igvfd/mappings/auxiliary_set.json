@@ -1,6 +1,6 @@
 {
-    "hash": "7fa5f995c16759e0534914881ad1bfa4",
-    "index_name": "auxiliary_set_7fa5f995",
+    "hash": "ea9cbf89997d7c9f729b0cb3256361d9",
+    "index_name": "auxiliary_set_ea9cbf89",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1931,6 +1931,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotated_from": {
                                 "type": "keyword"
                             },
                             "award": {

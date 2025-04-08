@@ -68,9 +68,36 @@
                 "lower_bound_age",
                 "upper_bound_age"
             ]
+        },
+        "virtual": {
+            "comment": "Specification of annotated_from should be allowed only if virtual is true.",
+            "if": {
+                "properties": {
+                    "virtual": {
+                        "const": false
+                    }
+                }
+            },
+            "then": {
+                "not": {
+                    "required": [
+                        "annotated_from"
+                    ]
+                }
+            }
         }
     },
     "properties": {
+        "annotated_from": {
+            "title": "Annotated From",
+            "description": "Links to the sample that was used as a reference for annotating this sample.",
+            "type": "string",
+            "linkTo": "Sample",
+            "submissionExample": {
+                "appscript": "IGVFSM4738BZBA or john-doe:tissue01",
+                "igvf_utils": "IGVFSM4738BZBA or john-doe:tissue01"
+            }
+        },
         "lower_bound_age": {
             "title": "Lower Bound Age",
             "description": "Lower bound of age of the organism at the time of collection of the sample.",

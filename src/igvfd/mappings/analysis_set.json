@@ -1,6 +1,6 @@
 {
-    "hash": "5d6afac2f1ff4e1f20cb35b0eb5ca3d0",
-    "index_name": "analysis_set_5d6afac2",
+    "hash": "38c4b44cb67e7eef1630225395b993e0",
+    "index_name": "analysis_set_38c4b44c",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -2182,6 +2182,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "annotated_from": {
                                 "type": "keyword"
                             },
                             "award": {

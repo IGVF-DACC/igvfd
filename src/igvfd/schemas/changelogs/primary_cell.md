@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 22
 
+* Add `annotated_from`.
 * Extend `nucleic_acid_delivery` enum list to include `nucleofection`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.
