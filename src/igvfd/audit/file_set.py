@@ -686,6 +686,10 @@ def audit_inconsistent_controlled_access(value, system):
     formats_to_check = ['bam', 'cram', 'fastq']
     files_by_access = {}
     files = value.get('files', [])
+
+    if not files:
+        return
+
     for file in files:
         file_object = system.get('request').embed(file, '@@object_with_select_calculated_properties?field=@id')
         if file_object.get('file_format', '') in formats_to_check \
@@ -698,6 +702,7 @@ def audit_inconsistent_controlled_access(value, system):
 
     controlled_files_link = ''
     uncontrolled_files_link = ''
+    controlled_access_of_files_phrase = ''
     if True in files_by_access and False in files_by_access:
         controlled_access_of_files_phrase = 'controlled and uncontrolled access'
         # Mixed controlled access is only unexpected for Meas Sets
@@ -724,8 +729,6 @@ def audit_inconsistent_controlled_access(value, system):
         controlled_files_link = ''
         uncontrolled_files_link = ', '.join([audit_link(path_to_text(file), file)
                                              for file in files_by_access[False]])
-    else:
-        controlled_access_of_files_phrase = ''
 
     samples = value.get('samples', [])
     for sample in samples:
