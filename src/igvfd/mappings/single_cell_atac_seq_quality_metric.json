@@ -1,6 +1,6 @@
 {
-    "hash": "a8711913d7a8c8ac5d3220c9360d1060",
-    "index_name": "single_cell_atac_seq_quality_metric_a8711913",
+    "hash": "a15bc6a82a0bff47e2bea87220a5ba9f",
+    "index_name": "single_cell_atac_seq_quality_metric_a15bc6a8",
     "item_type": "single_cell_atac_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -349,18 +349,6 @@
                         "copy_to": "_fuzzy",
                         "type": "text"
                     },
-                    "duplicate": {
-                        "store": true,
-                        "type": "float"
-                    },
-                    "frac_dup": {
-                        "store": true,
-                        "type": "float"
-                    },
-                    "frac_mito": {
-                        "store": true,
-                        "type": "float"
-                    },
                     "joint_barcodes_passing": {
                         "store": true,
                         "type": "float"
@@ -425,10 +413,6 @@
                         },
                         "type": "object"
                     },
-                    "lowmapq": {
-                        "store": true,
-                        "type": "float"
-                    },
                     "multi_mappings": {
                         "store": true,
                         "type": "float"
@@ -446,10 +430,6 @@
                         "type": "float"
                     },
                     "n_corrected_barcodes": {
-                        "store": true,
-                        "type": "float"
-                    },
-                    "n_fragment": {
                         "store": true,
                         "type": "float"
                     },
@@ -589,15 +569,7 @@
                         "store": true,
                         "type": "float"
                     },
-                    "tsse": {
-                        "store": true,
-                        "type": "float"
-                    },
                     "uni_mappings": {
-                        "store": true,
-                        "type": "float"
-                    },
-                    "unmapped": {
                         "store": true,
                         "type": "float"
                     },
