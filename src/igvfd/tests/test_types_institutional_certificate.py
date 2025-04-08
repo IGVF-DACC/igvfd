@@ -12,6 +12,5 @@ def test_types_institutional_certificate_summary(testapp, institutional_certific
 
 def test_types_dul_summaries(testapp, institutional_certificate_multiple_dulm):
     res = testapp.get(institutional_certificate_multiple_dulm['@id'])
-    print(institutional_certificate_multiple_dulm['data_use_limitation_summary'])
     assert res.json.get(
         'data_use_limitation_summary') == 'GRU-NPU-PUB'
