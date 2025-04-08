@@ -719,11 +719,13 @@ def audit_inconsistent_controlled_access(value, system):
         controlled_access_of_files_phrase = 'controlled access'
         controlled_files_link = ', '.join([audit_link(path_to_text(file), file) for file in files_by_access[True]])
         uncontrolled_files_link = ''
-    else:
+    elif True not in files_by_access and False in files_by_access:
         controlled_access_of_files_phrase = 'uncontrolled access'
         controlled_files_link = ''
         uncontrolled_files_link = ', '.join([audit_link(path_to_text(file), file)
                                              for file in files_by_access[False]])
+    else:
+        controlled_access_of_files_phrase = ''
 
     samples = value.get('samples', [])
     for sample in samples:
