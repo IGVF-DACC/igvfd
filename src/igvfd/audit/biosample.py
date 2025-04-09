@@ -141,8 +141,8 @@ def audit_multiple_ics_with_mismatched_access(value, system):
                     ic_duls[ic_object.get('data_use_limitation_summary', '')] = [(
                         ic_object.get('certificate_identifier', ''), ic_object.get('@id', ''))]
                 else:
-                    ic_duls[ic_object.get('controlled_access', '')].append(
-                        (ic_object.get('data_use_limitation_summary', ''), ic_object.get('@id', '')))
+                    ic_duls[ic_object.get('data_use_limitation_summary', '')].append(
+                        (ic_object.get('certificate_identifier', ''), ic_object.get('@id', '')))
 
         if len(ic_controlled_access_values) > 1:
             controlled_links = ', '.join(
