@@ -73,10 +73,12 @@
             "comment": "Content Type describes the content of the file.",
             "enum": [
                 "alignments",
+                "methylated reads",
                 "transcriptome alignments"
             ],
             "enum_descriptions": {
                 "alignments": "The mapping locations of input reads with respect to a genome.",
+                "methylated reads": "Basecalled and aligned reads from direct RNA sequencing which includes methylation data.",
                 "transcriptome alignments": "The mapping locations of input reads with respect to a transcriptome."
             },
             "submissionExample": {
