@@ -16,18 +16,19 @@ METADATA_ALLOWED_TYPES = [
 METADATA_COLUMN_TO_FIELDS_MAPPING = OrderedDict(
     [
         ('File accession', ['files.accession']),
+        ('File id', ['files.@id']),
         ('File format', ['files.file_format']),
         ('File content', ['files.content_type']),
         ('Fileset accession', ['accession']),  # All file_set_type accessions
         ('Fileset Subtype', ['@type']),  # All file_set_type titles
         ('Fileset type', ['file_set_type']),  # All assay_types file_set_type
-        ('Assay', ['assay_term.term_name']),  # MeasurementSet assay_term
-        ('Preferred assay title', ['preferred_assay_title']),  # MeasurementSet preferred_assay_title
-        ('Assay titles', ['assay_titles']),  # AnalysisSet assay_titles
-        ('Auxiliary set assay', ['measurement_sets.preferred_assay_title']),  # AuxiliarySet preferred_assay_title
-        ('Donor(s)', ['donors.accession']),  # MeasurementSet donors
-        ('Sample(s)', ['samples.accession']),  # MeasurementSet samples
-        ('Sample term name', ['samples.sample_terms.term_name']),  # MeasurementSet samples.sample_terms.term_name
+        ('Measurement set assay term', ['assay_term.term_name']),  # MeasurementSet assay_term
+        ('Measurement set preferred assay title', ['preferred_assay_title']),  # MeasurementSet preferred_assay_title
+        ('Analysis set assay titles', ['assay_titles']),  # AnalysisSet assay_titles
+        ('Auxiliary set assay titles', ['measurement_sets.preferred_assay_title']),
+        ('Donor(s)', ['donors.accession']),
+        ('Sample(s)', ['samples.accession']),
+        ('Sample term name', ['samples.sample_terms.term_name']),
         ('Creation timestamp', ['creation_timestamp']),
         ('File size', ['files.file_size']),
         ('Fileset lab', ['lab.title']),
