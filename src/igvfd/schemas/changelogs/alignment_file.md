@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Extend `content_type` enum list to include `methylated reads`.
 * Extend `file_format` enum list to include `cram`.
 
 ### Schema version 14
