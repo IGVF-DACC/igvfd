@@ -622,11 +622,16 @@ def test_metadata_metadata_report_build_header(dummy_request):
     mr._build_header()
     expected_header = [
         'File accession',
+        'File id',
         'File format',
         'File content',
         'Fileset accession',
-        'Assay',
-        'Preferred assay title',
+        'Fileset Subtype',
+        'Fileset type',
+        'Measurement set assay term',
+        'Measurement set preferred assay title',
+        'Analysis set assay titles',
+        'Auxiliary set assay titles',
         'Donor(s)',
         'Sample(s)',
         'Sample term name',
@@ -657,6 +662,7 @@ def test_metadata_metadata_report_split_column_and_fields_by_experiment_and_file
     mr._split_column_and_fields_by_experiment_and_file()
     expected_file_column_to_fields_mapping = {
         'File accession': ['accession'],
+        'File id': ['@id'],
         'File format': ['file_format'],
         'File content': ['content_type'],
         'File size': ['file_size'],
@@ -671,8 +677,12 @@ def test_metadata_metadata_report_split_column_and_fields_by_experiment_and_file
     }
     expected_experiment_column_to_fields_mapping = {
         'Fileset accession': ['accession'],
-        'Assay': ['assay_term.term_name'],
-        'Preferred assay title': ['preferred_assay_title'],
+        'Fileset Subtype': ['@type'],
+        'Fileset type': ['file_set_type'],
+        'Measurement set assay term': ['assay_term.term_name'],
+        'Measurement set preferred assay title': ['preferred_assay_title'],
+        'Analysis set assay titles': ['assay_titles'],
+        'Auxiliary set assay titles': ['measurement_sets.preferred_assay_title'],
         'Donor(s)': ['donors.accession'],
         'Sample(s)': ['samples.accession'],
         'Sample term name': ['samples.sample_terms.term_name'],
@@ -979,7 +989,7 @@ def test_metadata_metadata_report_initialize_report(dummy_request):
     )
     mr = MetadataReport(dummy_request)
     mr._initialize_report()
-    assert len(mr.header) == 25
+    assert len(mr.header) == 28
     assert len(mr.experiment_column_to_fields_mapping.keys()
                ) == 12, f'{len(mr.experiment_column_to_fields_mapping.keys())}'
     assert len(mr.file_column_to_fields_mapping.keys()) == 13, f'{len(mr.file_column_to_fields_mapping.keys())}'
@@ -1006,7 +1016,7 @@ def test_metadata_metadata_report_build_params(dummy_request):
     dummy_request.json = {'elements': ['/experiments/ENCSR123ABC/']}
     mr = MetadataReport(dummy_request)
     mr._build_params()
-    assert len(mr.param_list['field']) == 25, f'{len(mr.param_list["field"])} not expected'
+    assert len(mr.param_list['field']) == 28, f'{len(mr.param_list["field"])} not expected'
     assert len(mr.param_list['@id']) == 1
 
 
