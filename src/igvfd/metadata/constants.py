@@ -19,12 +19,12 @@ METADATA_COLUMN_TO_FIELDS_MAPPING = OrderedDict(
         ('File id', ['files.@id']),
         ('File format', ['files.file_format']),
         ('File content', ['files.content_type']),
-        ('Fileset accession', ['accession']),  # All file_set_type accessions
-        ('Fileset subtype', ['@type']),  # All file_set_type titles
-        ('Fileset type', ['file_set_type']),  # All assay_types file_set_type
-        ('Measurement set assay term', ['assay_term.term_name']),  # MeasurementSet assay_term
-        ('Measurement set preferred assay title', ['preferred_assay_title']),  # MeasurementSet preferred_assay_title
-        ('Analysis set assay titles', ['assay_titles']),  # AnalysisSet assay_titles
+        ('Fileset accession', ['accession']),
+        ('Fileset subtype', ['@type']),
+        ('Fileset type', ['file_set_type']),
+        ('Measurement set assay term', ['assay_term.term_name']),
+        ('Measurement set preferred assay title', ['preferred_assay_title']),
+        ('Analysis set assay titles', ['assay_titles']),
         ('Auxiliary set assay titles', ['measurement_sets.preferred_assay_title']),
         ('Donor(s)', ['donors.accession']),
         ('Sample(s)', ['samples.accession']),
