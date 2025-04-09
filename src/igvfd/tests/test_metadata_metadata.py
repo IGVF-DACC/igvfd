@@ -1035,7 +1035,7 @@ def test_metadata_metadata_report_build_new_request(dummy_request):
     new_request = mr._build_new_request()
     assert new_request.path_info == '/search/'
     assert new_request.registry
-    print(str(new_request.query_string))  # Print the query string for debugging
+    # print(str(new_request.query_string))  # Print the query string for debugging
     assert str(new_request.query_string) == (
         'type=MeasurementSet'
         '&files.file_type=bigWig'
@@ -1055,8 +1055,12 @@ def test_metadata_metadata_report_build_new_request(dummy_request):
         '&field=files.accession'
         '&field=files.content_type'
         '&field=accession'
+        '&field=%40type'
+        '&field=file_set_type'
         '&field=assay_term.term_name'
         '&field=preferred_assay_title'
+        '&field=assay_titles'
+        '&field=measurement_sets.preferred_assay_title'
         '&field=donors.accession'
         '&field=samples.accession'
         '&field=samples.sample_terms.term_name'
