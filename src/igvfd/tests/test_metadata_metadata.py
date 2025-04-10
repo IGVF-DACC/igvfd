@@ -626,7 +626,7 @@ def test_metadata_metadata_report_build_header(dummy_request):
         'File format',
         'File content',
         'Fileset accession',
-        'Fileset subtype',
+        'Fileset classification',
         'Fileset type',
         'Measurement set assay term',
         'Measurement set preferred assay title',
@@ -677,7 +677,7 @@ def test_metadata_metadata_report_split_column_and_fields_by_experiment_and_file
     }
     expected_experiment_column_to_fields_mapping = {
         'Fileset accession': ['accession'],
-        'Fileset subtype': ['@type'],
+        'Fileset classification': ['@type'],
         'Fileset type': ['file_set_type'],
         'Measurement set assay term': ['assay_term.term_name'],
         'Measurement set preferred assay title': ['preferred_assay_title'],
