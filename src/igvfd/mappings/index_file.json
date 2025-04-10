@@ -1,6 +1,6 @@
 {
-    "hash": "6c286f27843b119c0fb276e935649114",
-    "index_name": "index_file_6c286f27",
+    "hash": "84c1cf543649bc819240d5f61b97fba6",
+    "index_name": "index_file_84c1cf54",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -440,8 +440,7 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -1537,8 +1536,7 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "date"

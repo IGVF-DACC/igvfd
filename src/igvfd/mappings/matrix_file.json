@@ -1,6 +1,6 @@
 {
-    "hash": "a26df8e165800562bb980669dbde6743",
-    "index_name": "matrix_file_a26df8e1",
+    "hash": "af33de4335a938be8f37fb2f22ec0dc7",
+    "index_name": "matrix_file_af33de43",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -432,8 +432,7 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -1529,8 +1528,7 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "date"
