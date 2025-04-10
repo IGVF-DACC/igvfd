@@ -83,56 +83,6 @@ def analysis_set():
                 'title': 'Object Type',
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Analysis Set Details',
-                'facet_fields': [
-                    'file_set_type',
-                    'assay_titles',
-                    'workflows.uniform_pipeline',
-                    'files.assembly',
-                    'files.transcriptome_annotation'
-                ],
-            },
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'donors.taxa',
-                    'samples.classifications',
-                    'samples.sample_terms.term_name',
-                    'samples.targeted_sample_term.term_name',
-                    'samples.disease_terms.term_name',
-                    'samples.modifications.modality',
-                    'samples.treatments.treatment_term_name'
-                ],
-            },
-            {
-                'title': 'Files',
-                'facet_fields': [
-                    'files.content_type',
-                    'files.file_format'
-                ],
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'lab.title',
-                    'award.component',
-                    'collections',
-                    'type',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ],
-            },
-        ],
         'columns': {
             'accession': {
                 'title': 'Accession'
@@ -199,6 +149,9 @@ def analysis_set_report_view():
         },
         'samples.summary': {
             'title': 'Sample Summary'
+        },
+        'samples.institutional_certificates': {
+            'title': 'Sample Institutional Certificates'
         },
         'sample_summary': {
             'title': 'Simplified Sample Summary'
