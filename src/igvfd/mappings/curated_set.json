@@ -1,6 +1,6 @@
 {
-    "hash": "d5d9eb7b15cf8f7f670ed701ef90ebe7",
-    "index_name": "curated_set_d5d9eb7b",
+    "hash": "becec7cf2d9e0ad4be49f3f7d3d0b6ff",
+    "index_name": "curated_set_becec7cf",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -664,6 +664,9 @@
                             "preferred_assay_title": {
                                 "type": "keyword"
                             },
+                            "primer_designs": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -980,6 +983,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {

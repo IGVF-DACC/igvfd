@@ -1,6 +1,6 @@
 {
-    "hash": "c0031cf74b9500d9bef07b91066cc330",
-    "index_name": "genome_browser_annotation_file_c0031cf7",
+    "hash": "f34b104da19ed2a403fe36e375b0a2e5",
+    "index_name": "genome_browser_annotation_file_f34b104d",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -639,6 +639,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {

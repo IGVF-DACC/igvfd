@@ -1,6 +1,6 @@
 {
-    "hash": "20a335e01d0c5c7fe418d143f786459c",
-    "index_name": "construct_library_set_20a335e0",
+    "hash": "a8f61d5bfbaa3f2b612f8e9a39dc5a0b",
+    "index_name": "construct_library_set_a8f61d5b",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1342,6 +1342,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {

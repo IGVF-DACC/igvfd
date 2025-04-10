@@ -1,6 +1,6 @@
 {
-    "hash": "38c4b44cb67e7eef1630225395b993e0",
-    "index_name": "analysis_set_38c4b44c",
+    "hash": "040af57a873277f9877bbb45b2b6406e",
+    "index_name": "analysis_set_040af57a",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -664,6 +664,9 @@
                             "preferred_assay_title": {
                                 "type": "keyword"
                             },
+                            "primer_designs": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -980,6 +983,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {
@@ -1811,6 +1817,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {

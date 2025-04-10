@@ -1,6 +1,6 @@
 {
-    "hash": "83758c73bc418ac803a729a072cb6725",
-    "index_name": "tabular_file_83758c73",
+    "hash": "574ecd0f79312e5ea2bb228f9cda5f11",
+    "index_name": "tabular_file_574ecd0f",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -652,6 +652,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {

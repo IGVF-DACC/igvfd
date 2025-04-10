@@ -1,6 +1,6 @@
 {
-    "hash": "d59204f576441d54dd4fd89241033bce",
-    "index_name": "in_vitro_system_d59204f5",
+    "hash": "8b9db2f79ee96a17a5f93d0f29ebc810",
+    "index_name": "in_vitro_system_8b9db2f7",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1280,6 +1280,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {
