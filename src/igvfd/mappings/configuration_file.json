@@ -1,6 +1,6 @@
 {
-    "hash": "2581df4f8c2d48307d52bbc15b9db769",
-    "index_name": "configuration_file_2581df4f",
+    "hash": "851972082921491b579fca30df2111b3",
+    "index_name": "configuration_file_85197208",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -429,8 +429,7 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -1522,8 +1521,7 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "date"

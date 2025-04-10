@@ -1,6 +1,6 @@
 {
-    "hash": "9ce4e012628960bf15bcb1b647ead555",
-    "index_name": "sequence_file_9ce4e012",
+    "hash": "ee2d2062ca274461748d2508858275c1",
+    "index_name": "sequence_file_ee2d2062",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -446,8 +446,7 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -1548,8 +1547,7 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "date"

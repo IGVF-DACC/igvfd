@@ -1,6 +1,6 @@
 {
-    "hash": "83758c73bc418ac803a729a072cb6725",
-    "index_name": "tabular_file_83758c73",
+    "hash": "ddc7351b72ca8b33f7a376d2b91ab30d",
+    "index_name": "tabular_file_ddc7351b",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -539,8 +539,7 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -1636,8 +1635,7 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "date"
