@@ -161,7 +161,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "status": "in progress",
-        "md5sum": "eb7e77fc1e92a71456e9a80d762dd31",
+        "md5sum": "325ed9ac71105b86762dd8641de8a3ac",
         "file_format": "bam",
         "assembly": "GRCh38",
         "content_type": "methylated reads",
@@ -170,7 +170,6 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "derived_manually": true,
         "filtered": false,
         "redacted": false,
         "controlled_access": false
