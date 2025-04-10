@@ -154,5 +154,24 @@
         "filtered": false,
         "controlled_access": false,
         "checkfiles_version": "v10"
+    },
+    {
+        "uuid": "2b27eab8-8dbc-3567-89f2-a31c16ed9cbe",
+        "accession": "IGVFFI0007MTYL",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "status": "in progress",
+        "md5sum": "325ed9ac71105b86762dd8641de8a3ac",
+        "file_format": "bam",
+        "assembly": "GRCh38",
+        "content_type": "methylated reads",
+        "upload_status": "pending",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "filtered": false,
+        "redacted": false,
+        "controlled_access": false
     }
 ]
