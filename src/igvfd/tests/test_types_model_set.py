@@ -1,9 +1,46 @@
 import pytest
 
 
-def test_summary(testapp, model_set_no_input):
+def test_summary(testapp, model_set_no_input, gene_myc_hs, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, gene_zscan10_mm):
+    # Test Model Set summary if without assessed genes
     res = testapp.get(model_set_no_input['@id'])
     assert res.json.get('summary') == 'predictive model v0.0.1 neural network predicting genes'
+
+    # Test Model Set summary if with 5 assessed genes
+    testapp.patch_json(
+        model_set_no_input['@id'],
+        {
+            'assessed_genes':
+                [gene_myc_hs['@id'],
+                 gene_CRLF2_par_y['@id'],
+                 gene_CD1E['@id'],
+                 gene_TAB3_AS1['@id'],
+                 gene_MAGOH2P['@id']
+                 ]
+        }
+    )
+    res = testapp.get(model_set_no_input['@id'])
+    assert res.json.get(
+        'summary') == 'predictive model v0.0.1 neural network for CD1E, CRLF2, MAGOH2P, MYC, TAB3-AS1 predicting genes'
+
+    # Test Model Set summary if with 6+ assessed gene
+    testapp.patch_json(
+        model_set_no_input['@id'],
+        {
+            'assessed_genes':
+                [
+                    gene_myc_hs['@id'],
+                    gene_CRLF2_par_y['@id'],
+                    gene_CD1E['@id'],
+                    gene_TAB3_AS1['@id'],
+                    gene_MAGOH2P['@id'],
+                    gene_zscan10_mm['@id']
+                ]
+        }
+    )
+    res = testapp.get(model_set_no_input['@id'])
+    assert res.json.get(
+        'summary') == 'predictive model v0.0.1 neural network for 6 assessed genes predicting genes'
 
 
 def test_calculated_externally_hosted(testapp, model_file, model_set_no_input):
