@@ -1,6 +1,6 @@
 {
-    "hash": "c0031cf74b9500d9bef07b91066cc330",
-    "index_name": "genome_browser_annotation_file_c0031cf7",
+    "hash": "38511bffae276c06b90b5c25ac045d81",
+    "index_name": "genome_browser_annotation_file_38511bff",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -704,9 +704,6 @@
                                         "type": "keyword"
                                     },
                                     "cell_fate_change_protocol": {
-                                        "type": "keyword"
-                                    },
-                                    "cell_fate_change_treatments": {
                                         "type": "keyword"
                                     },
                                     "cellular_sub_pool": {

@@ -1,5 +1,13 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 27
+
+* Remove `cell_fate_change_treatments`.
+
+### Schema version 26
+
+* Restrict `pooled cell specimen` to specify an additional `classifications`.
+
 ### Minor changes since schema version 25
 
 * Add `annotated_from`.

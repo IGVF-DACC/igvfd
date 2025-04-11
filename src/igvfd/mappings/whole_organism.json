@@ -1,6 +1,6 @@
 {
-    "hash": "d4a596167b381d4bdb9c035dc816e358",
-    "index_name": "whole_organism_d4a59616",
+    "hash": "3c3ce60f010ce0ae129f0b32b9252f3f",
+    "index_name": "whole_organism_3c3ce60f",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -2111,9 +2111,6 @@
                                 "type": "keyword"
                             },
                             "cell_fate_change_protocol": {
-                                "type": "keyword"
-                            },
-                            "cell_fate_change_treatments": {
                                 "type": "keyword"
                             },
                             "cellular_sub_pool": {

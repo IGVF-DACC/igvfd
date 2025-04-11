@@ -72,7 +72,6 @@ class FileSet(Item):
             'accession',
             'aliases',
             'treatments',
-            'cell_fate_change_treatments',
             'cellular_sub_pool',
             'classifications',
             'disease_terms',
@@ -902,7 +901,6 @@ class MeasurementSet(FileSet):
         Path('control_file_sets', include=['@id', 'accession', 'aliases', 'status']),
         Path('related_multiome_datasets', include=['@id', 'accession', 'status']),
         Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
-        Path('samples.cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('construct_library_sets.small_scale_gene_list', include=[
              '@id', 'small_scale_gene_list', 'summary', 'geneid', 'symbol', 'name', 'status']),
         Path('files.sequencing_platform', include=['@id', 'term_name', 'status']),

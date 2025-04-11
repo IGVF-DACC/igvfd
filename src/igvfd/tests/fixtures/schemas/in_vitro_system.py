@@ -16,7 +16,7 @@ def in_vitro_cell_line(testapp, other_lab, award, rodent_donor, sample_term_K562
 
 
 @pytest.fixture
-def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sample_term_K562, treatment_chemical, sample_term_brown_adipose_tissue):
+def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sample_term_K562, experimental_protocol_document, sample_term_brown_adipose_tissue):
     item = {
         'classifications': ['differentiated cell specimen'],
         'award': award['@id'],
@@ -24,7 +24,7 @@ def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sampl
         'sources': [source['@id']],
         'donors': [human_donor['@id']],
         'sample_terms': [sample_term_K562['@id']],
-        'cell_fate_change_treatments': [treatment_chemical['@id']],
+        'cell_fate_change_protocol': experimental_protocol_document['@id'],
         'time_post_change': 5,
         'time_post_change_units': 'minute',
         'targeted_sample_term': sample_term_brown_adipose_tissue['@id']
@@ -33,7 +33,7 @@ def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sampl
 
 
 @pytest.fixture
-def in_vitro_organoid(testapp, lab, award, source, human_donor, sample_term_adrenal_gland, treatment_protein):
+def in_vitro_organoid(testapp, lab, award, source, human_donor, sample_term_adrenal_gland, experimental_protocol_document):
     item = {
         'classifications': ['organoid'],
         'award': award['@id'],
@@ -41,7 +41,7 @@ def in_vitro_organoid(testapp, lab, award, source, human_donor, sample_term_adre
         'sources': [source['@id']],
         'donors': [human_donor['@id']],
         'sample_terms': [sample_term_adrenal_gland['@id']],
-        'cell_fate_change_treatments': [treatment_protein['@id']],
+        'cell_fate_change_protocol': experimental_protocol_document['@id'],
         'time_post_change': 10,
         'time_post_change_units': 'day',
         'targeted_sample_term': sample_term_adrenal_gland['@id']
@@ -336,5 +336,14 @@ def in_vitro_system_v25(in_vitro_cell_line):
     item.update({
         'schema_version': '25',
         'classifications': ['pooled cell specimen']
+    })
+    return item
+
+
+@pytest.fixture
+def in_vitro_system_v26(in_vitro_cell_line):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '26'
     })
     return item

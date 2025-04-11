@@ -72,9 +72,7 @@
         "donors": [
             "igvf:alias_human_donor1"
         ],
-        "cell_fate_change_treatments": [
-            "/treatments/bd2cb34e-c72c-11ec-9d64-0242ac120002/"
-        ],
+        "cell_fate_change_protocol": "bcb5f3c8-d5e9-40d2-805f-4274f940c36d",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "time_post_change": 24,
@@ -261,9 +259,7 @@
         "donors": [
             "igvf:alias_human_donor1"
         ],
-        "cell_fate_change_treatments": [
-            "/treatments/bd2cb34e-c72c-11ec-9d64-0242ac120002/"
-        ],
+        "cell_fate_change_protocol": "bcb5f3c8-d5e9-40d2-805f-4274f940c36d",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "time_post_change": 24,

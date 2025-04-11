@@ -642,7 +642,6 @@ class InVitroSystem(Biosample):
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
     rev = Biosample.rev | {'demultiplexed_to': ('InVitroSystem', 'demultiplexed_from')}
     embedded_with_frame = Biosample.embedded_with_frame + [
-        Path('cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('targeted_sample_term', include=['@id', 'term_name', 'status']),
         Path('originated_from', include=['@id', 'accession', 'status']),
     ]

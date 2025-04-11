@@ -1,6 +1,6 @@
 {
-    "hash": "a26df8e165800562bb980669dbde6743",
-    "index_name": "matrix_file_a26df8e1",
+    "hash": "a9d3f91bcb2f681b82bdeea67dc12447",
+    "index_name": "matrix_file_a9d3f91b",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -610,9 +610,6 @@
                                         "type": "keyword"
                                     },
                                     "cell_fate_change_protocol": {
-                                        "type": "keyword"
-                                    },
-                                    "cell_fate_change_treatments": {
                                         "type": "keyword"
                                     },
                                     "cellular_sub_pool": {

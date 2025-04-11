@@ -5,13 +5,13 @@ def test_audit_targeted_sample_term(
     testapp,
     in_vitro_cell_line,
     sample_term_K562,
-    treatment_chemical
+    experimental_protocol_document
 ):
     # In vitro systems should not have the same sample_term specified in targeted_sample_term and sample_terms.
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {'targeted_sample_term': sample_term_K562['@id'],
-         'cell_fate_change_treatments': [treatment_chemical['@id']],
+         'cell_fate_change_protocol': experimental_protocol_document['@id'],
          'time_post_change': 10,
          'time_post_change_units': 'minute',
          'classifications': ['differentiated cell specimen']}
@@ -19,57 +19,6 @@ def test_audit_targeted_sample_term(
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent targeted sample term'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-
-
-def test_audit_cell_fate_change_treatments(
-    testapp,
-    in_vitro_differentiated_cell,
-    treatment_chemical,
-    treatment_protein
-):
-    # Treatments in cell_fate_change_treatments should not be of purpose "perturbation", "agonist", "antagonist", or "control".
-    testapp.patch_json(
-        treatment_chemical['@id'],
-        {
-            'purpose': 'perturbation'
-        }
-    )
-    testapp.patch_json(
-        treatment_protein['@id'],
-        {
-            'purpose': 'control'
-        }
-    )
-    testapp.patch_json(
-        in_vitro_differentiated_cell['@id'],
-        {
-            'cell_fate_change_treatments': [treatment_chemical['@id'], treatment_protein['@id']],
-            'time_post_change': 5,
-            'time_post_change_units': 'minute'
-        }
-    )
-    res = testapp.get(in_vitro_differentiated_cell['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'inconsistent treatment purpose'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-    testapp.patch_json(
-        treatment_chemical['@id'],
-        {
-            'purpose': 'differentiation'
-        }
-    )
-    testapp.patch_json(
-        treatment_protein['@id'],
-        {
-            'purpose': 'de-differentiation'
-        }
-    )
-    res = testapp.get(in_vitro_differentiated_cell['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'inconsistent treatment purpose'
         for error in res.json['audit'].get('ERROR', [])
     )
 

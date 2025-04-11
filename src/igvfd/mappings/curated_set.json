@@ -1,6 +1,6 @@
 {
-    "hash": "d5d9eb7b15cf8f7f670ed701ef90ebe7",
-    "index_name": "curated_set_d5d9eb7b",
+    "hash": "cafd5d5145d77e1e19499ef287f00f2d",
+    "index_name": "curated_set_cafd5d51",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1799,9 +1799,6 @@
                                 "type": "keyword"
                             },
                             "cell_fate_change_protocol": {
-                                "type": "keyword"
-                            },
-                            "cell_fate_change_treatments": {
                                 "type": "keyword"
                             },
                             "cellular_sub_pool": {

@@ -1,6 +1,6 @@
 {
-    "hash": "a0f438a8d571411ba4f6742f2e4fac5f",
-    "index_name": "alignment_file_a0f438a8",
+    "hash": "01300707b4227e24f412dcbf7f0fffb2",
+    "index_name": "alignment_file_01300707",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -621,9 +621,6 @@
                                         "type": "keyword"
                                     },
                                     "cell_fate_change_protocol": {
-                                        "type": "keyword"
-                                    },
-                                    "cell_fate_change_treatments": {
                                         "type": "keyword"
                                     },
                                     "cellular_sub_pool": {

@@ -1,6 +1,6 @@
 {
-    "hash": "a43874db783fddc70134477870011f89",
-    "index_name": "model_set_a43874db",
+    "hash": "a599a725899a7e8742ec7194211d8e10",
+    "index_name": "model_set_a599a725",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -2233,9 +2233,6 @@
                                 "type": "keyword"
                             },
                             "cell_fate_change_protocol": {
-                                "type": "keyword"
-                            },
-                            "cell_fate_change_treatments": {
                                 "type": "keyword"
                             },
                             "cellular_sub_pool": {
