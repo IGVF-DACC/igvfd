@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 6
 
+* Extend `analysis_step_types` enum list to include `custom genome assembly`.
 * Extend `output_content_types` enum list to include `comprehensive gene count matrix`.
 * Extend `input_content_types` enum list to include `comprehensive gene count matrix`.
 * Extend `analysis_step_types` enum list to include `barcode correction`.
