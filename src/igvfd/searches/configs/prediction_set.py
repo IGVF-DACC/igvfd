@@ -83,56 +83,6 @@ def prediction_set():
                 'title': 'Object Type',
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Prediction Set Details',
-                'facet_fields': [
-                    'file_set_type',
-                    'scope',
-                    'assessed_genes',
-                    'files.assembly',
-                    'files.transcriptome_annotation',
-                ],
-            },
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'donors.taxa',
-                    'samples.classifications',
-                    'samples.sample_terms.term_name',
-                    'samples.targeted_sample_term.term_name',
-                    'samples.disease_terms.term_name',
-                    'samples.modifications.modality',
-                    'samples.treatments.treatment_term_name',
-                ],
-            },
-            {
-                'title': 'Files',
-                'facet_fields': [
-                    'files.content_type',
-                    'files.file_format',
-                ],
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'lab.title',
-                    'award.component',
-                    'type',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ],
-            },
-        ],
         'columns': {
             'accession': {
                 'title': 'Accession'
@@ -178,6 +128,9 @@ def prediction_set_report_view():
         },
         'samples.summary': {
             'title': 'Sample Summary'
+        },
+        'samples.institutional_certificates': {
+            'title': 'Sample Institutional Certificates'
         },
         'scope': {
             'title': 'Prediction Scope'

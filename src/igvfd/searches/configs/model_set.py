@@ -83,49 +83,6 @@ def model_set():
                 'title': 'Object Type',
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Model Set Details',
-                'facet_fields': [
-                    'file_set_type',
-                    'prediction_objects',
-                    'assessed_genes',
-                ],
-            },
-            {
-                'title': 'Files',
-                'facet_fields': [
-                    'files.content_type',
-                    'files.file_format',
-                ],
-            },
-            {
-                'title': 'Software',
-                'facet_fields': [
-                    'software_versions.software.title'
-                ],
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'lab.title',
-                    'award.component',
-                    'type',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                    'externally_hosted',
-                ],
-            },
-        ],
         'columns': {
             'accession': {
                 'title': 'Accession'
@@ -141,6 +98,12 @@ def model_set():
             },
             'status': {
                 'title': 'Status'
+            },
+            'samples.summary': {
+                'title': 'Sample Summary'
+            },
+            'samples.institutional_certificates': {
+                'title': 'Sample Institutional Certificates'
             },
             'lab': {
                 'title': 'Lab'
