@@ -418,6 +418,18 @@ def test_audit_missing_transcriptome(
         error['category'] != 'missing reference files'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+    # Check if the transcriptome index also works
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'content_type': 'transcriptome index'
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing reference files'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
 
 
 def test_audit_inconsistent_controlled_access_analysis_set(
