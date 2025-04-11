@@ -622,16 +622,30 @@ def test_metadata_metadata_report_build_header(dummy_request):
     mr._build_header()
     expected_header = [
         'File accession',
+        'File id',
         'File format',
         'File content',
-        'Accession',
-        'Assay',
+        'Fileset accession',
+        'Fileset classification',
+        'Fileset type',
+        'Measurement set assay term',
+        'Measurement set preferred assay title',
+        'Analysis set assay titles',
+        'Auxiliary set assay titles',
         'Donor(s)',
         'Sample(s)',
+        'Sample term name',
         'Creation timestamp',
-        'Size',
-        'Lab',
+        'File size',
+        'Fileset lab',
         'File download URL',
+        'File s3_uri',
+        'File assembly',
+        'File transcriptome annotation',
+        'File controlled access',
+        'File md5sum',
+        'File derived from',
+        'File upload status',
         'Audit WARNING',
         'Audit NOT_COMPLIANT',
         'Audit ERROR',
@@ -648,18 +662,32 @@ def test_metadata_metadata_report_split_column_and_fields_by_experiment_and_file
     mr._split_column_and_fields_by_experiment_and_file()
     expected_file_column_to_fields_mapping = {
         'File accession': ['accession'],
+        'File id': ['@id'],
         'File format': ['file_format'],
         'File content': ['content_type'],
-        'Size': ['file_size'],
+        'File size': ['file_size'],
         'File download URL': ['href'],
+        'File s3_uri': ['s3_uri'],
+        'File assembly': ['assembly'],
+        'File transcriptome annotation': ['transcriptome_annotation'],
+        'File controlled access': ['controlled_access'],
+        'File md5sum': ['md5sum'],
+        'File derived from': ['derived_from'],
+        'File upload status': ['upload_status']
     }
     expected_experiment_column_to_fields_mapping = {
-        'Accession': ['accession'],
-        'Assay': ['assay_term.term_name'],
+        'Fileset accession': ['accession'],
+        'Fileset classification': ['@type'],
+        'Fileset type': ['file_set_type'],
+        'Measurement set assay term': ['assay_term.term_name'],
+        'Measurement set preferred assay title': ['preferred_assay_title'],
+        'Analysis set assay titles': ['assay_titles'],
+        'Auxiliary set assay titles': ['measurement_sets.preferred_assay_title'],
         'Donor(s)': ['donors.accession'],
         'Sample(s)': ['samples.accession'],
+        'Sample term name': ['samples.sample_terms.term_name'],
         'Creation timestamp': ['creation_timestamp'],
-        'Lab': ['lab.title']
+        'Fileset lab': ['lab.title']
     }
     for k, v in mr.file_column_to_fields_mapping.items():
         assert tuple(expected_file_column_to_fields_mapping[k]) == tuple(v), f'{k, v} not in expected'
@@ -743,16 +771,30 @@ def test_metadata_metadata_report_add_fields_to_param_list(dummy_request):
     mr._add_fields_to_param_list()
     expected_fields = [
         'files.accession',
+        'files.@id',
         'files.file_format',
         'files.content_type',
         'accession',
+        '@type',
+        'file_set_type',
         'assay_term.term_name',
+        'preferred_assay_title',
+        'assay_titles',
+        'measurement_sets.preferred_assay_title',
         'donors.accession',
         'samples.accession',
+        'samples.sample_terms.term_name',
         'creation_timestamp',
         'files.file_size',
         'lab.title',
         'files.href',
+        'files.s3_uri',
+        'files.assembly',
+        'files.transcriptome_annotation',
+        'files.controlled_access',
+        'files.md5sum',
+        'files.derived_from',
+        'files.upload_status',
         'files.file_type',
         'files.file_type',
         'files.biological_replicates',
@@ -843,16 +885,30 @@ def test_metadata_metadata_report_get_field_params(dummy_request):
     mr._add_fields_to_param_list()
     expected_field_params = [
         ('field', 'files.accession'),
+        ('field', 'files.@id'),
         ('field', 'files.file_format'),
         ('field', 'files.content_type'),
         ('field', 'accession'),
+        ('field', '@type'),
+        ('field', 'file_set_type'),
         ('field', 'assay_term.term_name'),
+        ('field', 'preferred_assay_title'),
+        ('field', 'assay_titles'),
+        ('field', 'measurement_sets.preferred_assay_title'),
         ('field', 'donors.accession'),
         ('field', 'samples.accession'),
+        ('field', 'samples.sample_terms.term_name'),
         ('field', 'creation_timestamp'),
         ('field', 'files.file_size'),
         ('field', 'lab.title'),
         ('field', 'files.href'),
+        ('field', 'files.s3_uri'),
+        ('field', 'files.assembly'),
+        ('field', 'files.transcriptome_annotation'),
+        ('field', 'files.controlled_access'),
+        ('field', 'files.md5sum'),
+        ('field', 'files.derived_from'),
+        ('field', 'files.upload_status'),
         ('field', 'files.file_type'),
         ('field', 'files.file_type'),
         ('field', 'files.biological_replicates'),
@@ -933,10 +989,10 @@ def test_metadata_metadata_report_initialize_report(dummy_request):
     )
     mr = MetadataReport(dummy_request)
     mr._initialize_report()
-    assert len(mr.header) == 14
+    assert len(mr.header) == 28
     assert len(mr.experiment_column_to_fields_mapping.keys()
-               ) == 6, f'{len(mr.experiment_column_to_fields_mapping.keys())}'
-    assert len(mr.file_column_to_fields_mapping.keys()) == 5, f'{len(mr.file_column_to_fields_mapping.keys())}'
+               ) == 12, f'{len(mr.experiment_column_to_fields_mapping.keys())}'
+    assert len(mr.file_column_to_fields_mapping.keys()) == 13, f'{len(mr.file_column_to_fields_mapping.keys())}'
     dummy_request.environ['QUERY_STRING'] = (
         'type=MeasurementSet&files.file_type=bigWig&files.file_type=bam'
         '&replicates.library.size_range=50-100'
@@ -960,7 +1016,7 @@ def test_metadata_metadata_report_build_params(dummy_request):
     dummy_request.json = {'elements': ['/experiments/ENCSR123ABC/']}
     mr = MetadataReport(dummy_request)
     mr._build_params()
-    assert len(mr.param_list['field']) == 14, f'{len(mr.param_list["field"])} not expected'
+    assert len(mr.param_list['field']) == 28, f'{len(mr.param_list["field"])} not expected'
     assert len(mr.param_list['@id']) == 1
 
 
@@ -980,13 +1036,46 @@ def test_metadata_metadata_report_build_new_request(dummy_request):
     assert new_request.path_info == '/search/'
     assert new_request.registry
     assert str(new_request.query_string) == (
-        'type=MeasurementSet&files.file_type=bigWig&files.file_type=bam&replicates.library.size_range=50-100'
-        '&files.status%21=archived&files.biological_replicates=2&files.derived_from=%2Fexperiments%2FENCSR123ABC%2F'
-        '&files.replicate.library=%2A&field=audit&field=files.%40id&field=files.href&field=files.file_format'
-        '&field=files.file_format_type&field=files.status&limit=all&field=files.accession&field=files.content_type'
-        '&field=accession&field=assay_term.term_name&field=donors.accession&field=samples.accession&field=creation_timestamp'
-        '&field=files.file_size&field=lab.title&field=files.file_type&field=files.biological_replicates'
-        '&field=files.derived_from&field=files.replicate.library&%40id=%2Fexperiments%2FENCSR123ABC%2F'
+        'type=MeasurementSet'
+        '&files.file_type=bigWig'
+        '&files.file_type=bam'
+        '&replicates.library.size_range=50-100'
+        '&files.status%21=archived'
+        '&files.biological_replicates=2'
+        '&files.derived_from=%2Fexperiments%2FENCSR123ABC%2F'
+        '&files.replicate.library=%2A'
+        '&field=audit'
+        '&field=files.%40id'
+        '&field=files.href'
+        '&field=files.file_format'
+        '&field=files.file_format_type'
+        '&field=files.status'
+        '&limit=all'
+        '&field=files.accession'
+        '&field=files.content_type'
+        '&field=accession'
+        '&field=%40type'
+        '&field=file_set_type'
+        '&field=assay_term.term_name'
+        '&field=preferred_assay_title'
+        '&field=assay_titles'
+        '&field=measurement_sets.preferred_assay_title'
+        '&field=donors.accession'
+        '&field=samples.accession'
+        '&field=samples.sample_terms.term_name'
+        '&field=creation_timestamp'
+        '&field=files.file_size'
+        '&field=lab.title'
+        '&field=files.s3_uri'
+        '&field=files.assembly'
+        '&field=files.transcriptome_annotation'
+        '&field=files.controlled_access'
+        '&field=files.md5sum'
+        '&field=files.derived_from'
+        '&field=files.upload_status'
+        '&field=files.file_type'
+        '&field=files.biological_replicates'
+        '&field=files.replicate.library&%40id=%2Fexperiments%2FENCSR123ABC%2F'
     )
     assert new_request.effective_principals == ['system.Everyone']
 
@@ -1059,12 +1148,12 @@ def test_metadata_metadata_report_get_experiment_data(dummy_request):
     mr._initialize_report()
     mr._build_params()
     expected_experiment_data = {
-        'Accession': 'ENCSR434TGY',
-        'Assay': '',
+        'Fileset accession': 'ENCSR434TGY',
+        'Measurement set assay term': '',
         'Donor(s)': '',
         'Sample(s)': '',
         'Creation timestamp': '',
-        'Lab': ''
+        'Fileset lab': ''
     }
     experiment_data = mr._get_experiment_data(embedded_experiment())
     for k, v in expected_experiment_data.items():
@@ -1083,7 +1172,7 @@ def test_metadata_metadata_report_get_file_data(dummy_request):
         'File accession': '',
         'File format': 'bed',
         'File content': '',
-        'Size': 3356650,
+        'File size': 3356650,
         'File download URL': 'http://localhost/files/ENCFF244PJU/@@download/ENCFF244PJU.bed.gz'
     }
     file_data = mr._get_file_data(file_())
