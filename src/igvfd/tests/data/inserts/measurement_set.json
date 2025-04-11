@@ -580,5 +580,25 @@
         "assay_term": "/assay-terms/OBI_0002764/",
         "preferred_assay_title": "10x multiome with scMito-seq",
         "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:tap_seq_with_primers"
+        ],
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "18339d6d-5ecc-4b3e-9c03-9f3a88161a8c",
+        "accession": "IGVFDS0420CTRL",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "primer_designs": [
+            "igvf:primer_sequences_2"
+        ],
+        "assay_term": "/assay-terms/OBI_0002764/",
+        "preferred_assay_title": "TAP-seq",
+        "file_set_type": "experimental data"
     }
 ]
