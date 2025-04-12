@@ -41,17 +41,6 @@ class Image(ItemWithAttachment, Item):
 
     @calculated_property(
         schema={
-            'title': 'Thumb Nail',
-            'description': 'Image url',
-            'type': 'string',
-            'notSubmittable': True,
-        }
-    )
-    def thumb_nail(self, request, attachment):
-        return self.jsonld_id(request) + attachment['href']
-
-    @calculated_property(
-        schema={
             'title': 'Download Url',
             'description': 'Download Url',
             'type': 'string',
