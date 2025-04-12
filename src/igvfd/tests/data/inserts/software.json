@@ -12,6 +12,9 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "6a733684-c159-49ab-9624-ac19c0f1c95d",
-        "source_url": "https://bowtie-bio.sourceforge.net/bowtie2/index.shtml"
+        "source_url": "https://bowtie-bio.sourceforge.net/bowtie2/index.shtml",
+        "categories": [
+            "General Bioinformatic Utilities"
+        ]
     }
 ]
