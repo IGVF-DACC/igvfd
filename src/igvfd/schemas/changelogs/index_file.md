@@ -2,6 +2,11 @@
 
 ### Minor changes since schema version 1
 
+* Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
+* Update `aliases` regex to add `steven-gazal` as a namespace.
+* Update `aliases` regex to add `katie-pollard` as a namespace.
+* Update `aliases` regex to add `kushal-dey` as a namespace.
+* Update `aliases` regex to add `stephen-yi` as a namespace.
 * Extend `file_format` enum list to include `crai`.
 * Allow `controlled_access` files to be released without `anvil_url`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 22`.

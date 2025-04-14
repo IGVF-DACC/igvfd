@@ -578,5 +578,23 @@
         "upload_status": "validated",
         "file_set": "igvf:primer_design_curated_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "0a7960b8-1a21-422a-98fc-1c0253871f44",
+        "lab": "stephen-yi",
+        "award": "affiliate",
+        "aliases": [
+            "stephen-yi:ppi_predictions"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-02-01T21:29:45Z",
+        "md5sum": "0e55c613cc9b42bd23a92f4306fe759d",
+        "file_format": "tsv",
+        "content_type": "protein to protein interaction score",
+        "submitted_file_name": "/Users/igvf/igvf_files/ppi_predictions.tsv.gz",
+        "file_size": 145360919,
+        "upload_status": "validated",
+        "file_set": "igvf:analysis_set_with_input",
+        "controlled_access": false
     }
 ]

@@ -2,6 +2,11 @@
 
 ### Minor changes since schema version 26
 
+* Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
+* Update `aliases` regex to add `steven-gazal` as a namespace.
+* Update `aliases` regex to add `katie-pollard` as a namespace.
+* Update `aliases` regex to add `kushal-dey` as a namespace.
+* Update `aliases` regex to add `stephen-yi` as a namespace.
 * Add `primer_designs`.
 * Extend `preferred_assay_title` enum list to include `10X ATAC with Scale pre-indexing`.
 * Extend `preferred_assay_title` enum list to include `10X RNA with Scale pre-indexing`.

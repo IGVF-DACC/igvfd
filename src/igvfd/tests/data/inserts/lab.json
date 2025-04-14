@@ -628,5 +628,17 @@
         "name": "jishnu-das",
         "uuid": "74e4618f-c240-46c3-8ccf-52aa7fbf310c",
         "pi": "451013d3-a28a-4fa6-993e-e065f2e63724"
+    },
+    {
+        "institute_label": "Stanford",
+        "name": "igvf-dacc-processing-pipeline",
+        "uuid": "2ff2acf3-0821-4da7-8539-1d5efb635937",
+        "pi": "273ad438-f963-4327-b37b-26efbb1f8cd7"
+    },
+    {
+        "institute_label": "UT",
+        "name": "stephen-yi",
+        "uuid": "4d90fc59-cbdb-4af3-81ed-c476802f2454",
+        "pi": "8b230044-3dbc-4640-8896-4a9686ec2228"
     }
 ]

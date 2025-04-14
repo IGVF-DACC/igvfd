@@ -1,5 +1,13 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Minor changes since schema version 27
+
+* Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
+* Update `aliases` regex to add `steven-gazal` as a namespace.
+* Update `aliases` regex to add `katie-pollard` as a namespace.
+* Update `aliases` regex to add `kushal-dey` as a namespace.
+* Update `aliases` regex to add `stephen-yi` as a namespace.
+
 ### Schema version 27
 
 * Remove `cell_fate_change_treatments`.
