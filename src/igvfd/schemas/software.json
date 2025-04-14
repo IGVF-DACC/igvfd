@@ -108,8 +108,8 @@
                 "type": "string",
                 "enum": [
                     "CRISPR Screens",
-                    "Genomic Annotations",
                     "General Bioinformatic Utilities",
+                    "Genomic Annotations",
                     "Networks",
                     "Predictions",
                     "Reporter Assays",
@@ -117,8 +117,8 @@
                 ],
                 "enum_descriptions": {
                     "CRISPR Screens": "Software used for designing or analyzing CRISPR-based functional screens.",
-                    "Genomic Annotations": "Software used for scoring or collating information to annotate genomic elements or variants.",
                     "General Bioinformatic Utilities": "Software used in general bioinformatic tasks for the manipulation of files and sequences.",
+                    "Genomic Annotations": "Software used for scoring or collating information to annotate genomic elements or variants.",
                     "Networks": "Software used for analyzing or reconstructing regulatory networks",
                     "Predictions": "Software used for predicting or prioritizing genetic variants on functional effects, pathogenicity or clinical impacts.",
                     "Reporter Assays": "Software used for designing or analyzing reporter assays such as STARR-seq or MPRA.",
