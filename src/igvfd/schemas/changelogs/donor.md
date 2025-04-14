@@ -1,5 +1,10 @@
 ## Changelog for *`donor.json`*
 
+* Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace. (04/16/2025)
+* Update `aliases` regex to add `steven-gazal` as a namespace. (04/16/2025)
+* Update `aliases` regex to add `katie-pollard` as a namespace. (04/16/2025)
+* Update `aliases` regex to add `kushal-dey` as a namespace. (04/16/2025)
+* Update `aliases` regex to add `stephen-yi` as a namespace. (04/16/2025)
 * Extend `status` enum list to include `preview`. (11/22/2024)
 * Remove `publication_identifiers`. (07/31/2024)
 * Restrict `publication_identifiers` to submission by admins only. (07/17/2024)

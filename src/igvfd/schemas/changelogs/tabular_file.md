@@ -1,8 +1,12 @@
 ## Changelog for *`tabular_file.json`*
 
-
 ### Minor changes since schema version 15
 
+* Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
+* Update `aliases` regex to add `steven-gazal` as a namespace.
+* Update `aliases` regex to add `katie-pollard` as a namespace.
+* Update `aliases` regex to add `kushal-dey` as a namespace.
+* Update `aliases` regex to add `stephen-yi` as a namespace.
 * Add calculated property `primer_design_for`.
 * Extend `file_format` enum list to include `bedpe`.
 * Extend `content_type` enum list to include `machine learning model features`.
