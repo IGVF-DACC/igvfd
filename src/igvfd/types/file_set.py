@@ -39,6 +39,29 @@ def get_file_objs_from_files(request, files):
     return file_objs
 
 
+def get_assessed_gene_symbols(request, assessed_genes=None):
+    '''Get gene symbols from an array of assessed genes.'''
+    if not assessed_genes:
+        return ''
+    else:
+        gene_symbols = []
+        for assessed_gene in assessed_genes:
+            gene_symbols.append(request.embed(
+                assessed_gene, '@@object?skip_calculated=true').get('symbol', ''))
+        return ', '.join(sorted(gene_symbols))
+
+
+def get_assessed_gene_phrase(request, assessed_genes=None):
+    """Get the assessed gene phrase from assessed_genes. If more than 5, return the number of assessed genes.
+    """
+    len_assessed_genes = len(assessed_genes) if assessed_genes else 0
+    if len_assessed_genes > 5:
+        assessed_gene_phrase = f'{len_assessed_genes} assessed genes'
+    else:
+        assessed_gene_phrase = get_assessed_gene_symbols(request, assessed_genes)
+    return assessed_gene_phrase
+
+
 @abstract_collection(
     name='file-sets',
     unique_key='accession',
@@ -1122,8 +1145,17 @@ class ModelSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type, model_name, model_version, prediction_objects):
-        return f'{model_name} {model_version} {file_set_type} predicting {", ".join(prediction_objects)}'
+    def summary(self, request, file_set_type, model_name, model_version, prediction_objects, assessed_genes=None):
+        # Get assessed genes phrase
+        assessed_gene_phrase = get_assessed_gene_phrase(request, assessed_genes)
+        return ' '.join(filter(None, [
+            model_name,
+            model_version,
+            file_set_type,
+            f'for {assessed_gene_phrase}' if assessed_genes else '',
+            'predicting',
+            ', '.join(prediction_objects)
+        ]))
 
     @calculated_property(
         schema={
@@ -1277,11 +1309,19 @@ class PredictionSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, file_set_type, scope=None):
+    def summary(self, request, file_set_type, assessed_genes=None, scope=None):
+        # Get scope info
         scope_phrase = ''
         if scope:
             scope_phrase = f' on scope of {scope}'
-        return f'{file_set_type} prediction{scope_phrase}'
+        # Get assessed genes info
+        assessed_genes_phrase = get_assessed_gene_phrase(request, assessed_genes)
+        # Final summary
+        return ' '.join(filter(None, [
+            file_set_type,
+            f'prediction{scope_phrase}',
+            f'for {assessed_genes_phrase}' if assessed_genes else ''
+        ]))
 
 
 @collection(
