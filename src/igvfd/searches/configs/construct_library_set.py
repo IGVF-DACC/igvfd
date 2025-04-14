@@ -67,14 +67,20 @@ def construct_library_set():
             'files.file_format': {
                 'title': 'File Format',
             },
+            'collections': {
+                'title': 'Collections',
+            },
+            'controlled_access': {
+                'title': 'Controlled Access',
+            },
+            'data_use_limitation_summaries': {
+                'title': 'Data Use Limitation',
+            },
             'lab.title': {
                 'title': 'Lab'
             },
             'award.component': {
                 'title': 'Award'
-            },
-            'collections': {
-                'title': 'Collections',
             },
             'status': {
                 'title': 'Status'
@@ -95,61 +101,6 @@ def construct_library_set():
                 'title': 'Object Type',
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Library Set Details',
-                'facet_fields': [
-                    'file_set_type',
-                    'selection_criteria',
-                    'scope',
-                    'associated_phenotypes.term_name',
-                    'small_scale_gene_list.symbol',
-                    'orf_list.gene.symbol',
-                    'control_type',
-                    'tiling_modality',
-                    'guide_type',
-                    'integrated_content_files.content_type',
-                ],
-            },
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'applied_to_samples.donors.taxa',
-                    'applied_to_samples.classifications',
-                    'applied_to_samples.sample_terms.term_name',
-                    'applied_to_samples.targeted_sample_term.term_name',
-                    'applied_to_samples.disease_terms.term_name',
-                    'applied_to_samples.modifications.modality',
-                    'applied_to_samples.treatments.treatment_term_name',
-                ],
-            },
-            {
-                'title': 'Files',
-                'facet_fields': [
-                    'files.content_type',
-                    'files.file_format',
-                ],
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'lab.title',
-                    'award.component',
-                    'type',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ],
-            },
-        ],
         'columns': {
             'accession': {
                 'title': 'Accession'

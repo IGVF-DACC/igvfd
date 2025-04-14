@@ -106,6 +106,12 @@ def sample():
             'collections': {
                 'title': 'Collection',
             },
+            'institutional_certificates.controlled_access': {
+                'title': 'Controlled Access',
+            },
+            'institutional_certificates.data_use_limitation_summary': {
+                'title': 'Data Use Limitation',
+            },
             'lab.title': {
                 'title': 'Lab',
             },
@@ -131,89 +137,6 @@ def sample():
                 'title': 'Audit Category: Internal Action'
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'taxa',
-                    'sex',
-                    'classifications',
-                    'sample_terms.term_name',
-                    'disease_terms.term_name',
-                    'biosample_qualifiers',
-                    'targeted_sample_term.term_name',
-                    'growth_medium',
-                    'multiplexing_methods',
-                    'preservation_method',
-                    'embryonic',
-                    'virtual',
-                    'donors.ethnicities',
-                    'donors.strain',
-                ]
-            },
-            {
-                'title': 'File Set',
-                'facet_fields': [
-                    'file_sets.preferred_assay_title',
-                    'file_sets.file_set_type',
-                ]
-            },
-            {
-                'title': 'Construct Library',
-                'facet_fields': [
-                    'construct_library_sets.file_set_type',
-                    'construct_library_sets.associated_phenotypes.term_name',
-                    'nucleic_acid_delivery',
-                ]
-            },
-            {
-                'title': 'Treatment',
-                'facet_fields': [
-                    'treatments.treatment_type',
-                    'treatments.treatment_term_name',
-                    'treatments.purpose',
-                    'treatments.depletion',
-                ]
-            },
-            {
-                'title': 'Biomarker',
-                'facet_fields': [
-                    'biomarkers.name_quantification',
-                    'biomarkers.classification',
-                    'biomarkers.gene.symbol',
-                ]
-            },
-            {
-                'title': 'Modification',
-                'facet_fields': [
-                    'modifications.modality',
-                    'modifications.cas',
-                    'modifications.cas_species',
-                    'modifications.fused_domain',
-                    'modifications.degron_system',
-                    'modifications.tagged_proteins.symbol',
-                ]
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'lab.title',
-                    'award.component',
-                    'type',
-                ]
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ]
-            }
-        ],
     }
 
 

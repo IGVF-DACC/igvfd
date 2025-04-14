@@ -55,6 +55,12 @@ def model_set():
             'collections': {
                 'title': 'Collections',
             },
+            'controlled_access': {
+                'title': 'Controlled Access',
+            },
+            'data_use_limitation_summaries': {
+                'title': 'Data Use Limitation',
+            },
             'lab.title': {
                 'title': 'Lab'
             },
