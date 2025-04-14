@@ -105,62 +105,6 @@ def measurement_set():
                 'title': 'Object Type',
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Measurement Set Details',
-                'facet_fields': [
-                    'assay_term.assay_slims',
-                    'preferred_assay_title',
-                    'control_type',
-                    'functional_assay_mechanisms.term_name',
-                    'auxiliary_sets.file_set_type',
-                    'construct_library_sets.file_set_type',
-                    'targeted_genes.symbol',
-                    'construct_library_sets.small_scale_gene_list.symbol',
-                    'files.sequencing_platform.term_name',
-                ],
-            },
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'donors.taxa',
-                    'samples.classifications',
-                    'samples.sample_terms.term_name',
-                    'samples.targeted_sample_term.term_name',
-                    'samples.disease_terms.term_name',
-                    'samples.modifications.modality',
-                    'samples.treatments.treatment_term_name',
-                    'sequencing_library_types',
-                ],
-            },
-            {
-                'title': 'Files',
-                'facet_fields': [
-                    'files.content_type',
-                    'files.file_format'
-                ],
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'lab.title',
-                    'award.component',
-                    'type',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                    'externally_hosted',
-                ],
-            },
-        ],
         'columns': {
             'accession': {
                 'title': 'Accession'
@@ -233,6 +177,9 @@ def measurement_set_report_view():
         },
         'samples.summary': {
             'title': 'Sample Summary'
+        },
+        'samples.institutional_certificates': {
+            'title': 'Sample Institutional Certificates'
         },
         'preferred_assay_title': {
             'title': 'Preferred Assay Title'

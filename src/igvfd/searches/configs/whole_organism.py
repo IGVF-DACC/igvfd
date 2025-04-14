@@ -116,83 +116,6 @@ def whole_organism():
                 'title': 'Audit Category: Internal Action'
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'taxa',
-                    'classifications',
-                    'sample_terms.term_name',
-                    'disease_terms.term_name',
-                    'embryonic',
-                    'virtual',
-                    'donors.ethnicities',
-                    'donors.strain',
-                ]
-            },
-            {
-                'title': 'File Set',
-                'facet_fields': [
-                    'file_sets.preferred_assay_title',
-                    'file_sets.file_set_type',
-                ]
-            },
-            {
-                'title': 'Construct Library',
-                'facet_fields': [
-                    'construct_library_sets.file_set_type',
-                    'construct_library_sets.associated_phenotypes.term_name',
-                    'nucleic_acid_delivery',
-                ]
-            },
-            {
-                'title': 'Treatment',
-                'facet_fields': [
-                    'treatments.treatment_type',
-                    'treatments.treatment_term_name',
-                    'treatments.purpose',
-                    'treatments.depletion',
-                ]
-            },
-            {
-                'title': 'Biomarker',
-                'facet_fields': [
-                    'biomarkers.name_quantification',
-                    'biomarkers.classification',
-                    'biomarkers.gene.symbol',
-                ]
-            },
-            {
-                'title': 'Modification',
-                'facet_fields': [
-                    'modifications.modality',
-                    'modifications.cas',
-                    'modifications.cas_species',
-                    'modifications.fused_domain',
-                    'modifications.degron_system',
-                    'modifications.tagged_proteins.symbol',
-                ]
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'lab.title',
-                    'award.component',
-                    'type',
-                ]
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ]
-            }
-        ],
         'columns': {
             'uuid': {
                 'title': 'UUID'
@@ -217,6 +140,9 @@ def whole_organism():
             },
             'taxa': {
                 'title': 'Taxa'
+            },
+            'institutional_certificates': {
+                'title': 'Institutional Certificates'
             },
             'award': {
                 'title': 'Award'

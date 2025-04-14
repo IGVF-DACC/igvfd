@@ -65,52 +65,6 @@ def technical_sample():
                 'title': 'Audit Category: Internal Action'
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'taxa',
-                    'classifications',
-                    'sample_terms.term_name',
-                    'sample_material',
-                    'virtual',
-                ]
-            },
-            {
-                'title': 'File Set',
-                'facet_fields': [
-                    'file_sets.preferred_assay_title',
-                    'file_sets.file_set_type',
-                ]
-            },
-            {
-                'title': 'Construct Library',
-                'facet_fields': [
-                    'construct_library_sets.file_set_type',
-                    'construct_library_sets.associated_phenotypes.term_name',
-                    'nucleic_acid_delivery',
-                ]
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'lab.title',
-                    'award.component',
-                    'type',
-                ]
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ]
-            }
-        ],
         'columns': {
             'uuid': {
                 'title': 'UUID'
@@ -129,6 +83,9 @@ def technical_sample():
             },
             'date_obtained': {
                 'title': 'Date Obtained'
+            },
+            'institutional_certificates': {
+                'title': 'Institutional Certificates'
             },
             'award': {
                 'title': 'Award'
