@@ -84,6 +84,8 @@
             "type": "string",
             "enum": [
                 "2xVP64",
+                "2xVP64-2A-Puro",
+                "2xVP64-2A-Thy1.1",
                 "3xVP64",
                 "ABE8e",
                 "ABE8.20",
