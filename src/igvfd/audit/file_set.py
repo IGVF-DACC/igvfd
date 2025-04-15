@@ -825,3 +825,34 @@ def audit_file_set_missing_publication(value, system):
             f'has no `publications`.'
         )
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+@audit_checker('MeasurementSet', frame='object')
+@audit_checker('AuxiliarySet', frame='object')
+@audit_checker('AnalysisSet', frame='object')
+def audit_file_set_missing_anvil_url(value, system):
+    '''
+    [
+        {
+            "audit_description": "Restricted access datasets are expected to have their files loaded in anvil.",
+            "audit_category": "missing anvil url",
+            "audit_level": "INTERNAL_ACTION"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message = get_audit_message(audit_file_set_missing_anvil_url, index=0)
+    if value.get('status') in ['released', 'archived'] and value.get('data_use_limitation_summaries', []):
+        files_with_missing_anvil_url = []
+        for file in value.get('files', []):
+            file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
+            if file_object.get('status') in ['released', 'archived'] and not (file_object.get('anvil_url', '')):
+                files_with_missing_anvil_url.append(file)
+        if files_with_missing_anvil_url:
+            files_with_missing_anvil_url = ', '.join(
+                [audit_link(path_to_text(file), file) for file in files_with_missing_anvil_url])
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has no `files`: {files_with_missing_anvil_url} with no `anvil_url`.'
+            )
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
