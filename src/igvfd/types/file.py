@@ -887,6 +887,22 @@ class TabularFile(File):
     def barcode_map_for(self, request, barcode_map_for):
         return paths_filtered_by_status(request, barcode_map_for)
 
+    @calculated_property(schema={
+        'title': 'Primer Design For',
+        'description': 'Link(s) to the MeasurementSets using this file as a primer design.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Primer Design For',
+            'type': ['string', 'object'],
+            'linkFrom': 'MeasurementSet.primer_designs',
+        },
+        'notSubmittable': True
+    })
+    def barcode_map_for(self, request, primer_design_for):
+        return paths_filtered_by_status(request, primer_design_for)
+
 
 @collection(
     name='genome-browser-annotation-files',
