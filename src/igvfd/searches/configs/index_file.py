@@ -22,6 +22,9 @@ def index_file():
             'controlled_access': {
                 'title': 'Controlled Access'
             },
+            'file_set.data_use_limitation_summaries': {
+                'title': 'Data Use Limitation'
+            },
             'file_set.file_set_type': {
                 'title': 'File Set Type'
             },
