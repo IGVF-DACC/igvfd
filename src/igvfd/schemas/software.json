@@ -94,6 +94,37 @@
                 "appscript": "[\"DACC\", \"processing pipelines\"]",
                 "igvf_utils": "DACC, processing pipelines"
             }
+        },
+        "categories": {
+            "title": "Categories",
+            "description": "The general categories of this software.",
+            "comment": "The specified category should indicate what this software is primarily used for.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Category",
+                "description": "The main category describing the primary use of this software.",
+                "type": "string",
+                "enum": [
+                    "CRISPR Screens",
+                    "General Bioinformatic Utilities",
+                    "Genomic Annotations",
+                    "Networks",
+                    "Predictions",
+                    "Reporter Assays",
+                    "Single Cell Multiome"
+                ],
+                "enum_descriptions": {
+                    "CRISPR Screens": "Software used for designing or analyzing CRISPR-based functional screens.",
+                    "General Bioinformatic Utilities": "Software used in general bioinformatic tasks for the manipulation of files and sequences.",
+                    "Genomic Annotations": "Software used for scoring or collating information to annotate genomic elements or variants.",
+                    "Networks": "Software used for analyzing or reconstructing regulatory networks",
+                    "Predictions": "Software used for predicting or prioritizing genetic variants on functional effects, pathogenicity or clinical impacts.",
+                    "Reporter Assays": "Software used for designing or analyzing reporter assays such as STARR-seq or MPRA.",
+                    "Single Cell Multiome": "Software used for analyzing single cell or nuclei experiments such as RNA-seq or ATAC-seq."
+                }
+            }
         }
     },
     "fuzzy_searchable_fields": [

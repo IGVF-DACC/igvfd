@@ -1,6 +1,6 @@
 {
-    "hash": "851fc0d1469cb7ab7aa7e23afe38c0a0",
-    "index_name": "software_851fc0d1",
+    "hash": "6565741c037e1d087db581f2f72c2f5e",
+    "index_name": "software_6565741c",
     "item_type": "software",
     "mapping": {
         "dynamic_templates": [
@@ -222,6 +222,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "categories": {
+                        "type": "keyword"
                     },
                     "creation_timestamp": {
                         "type": "date"

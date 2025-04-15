@@ -82,5 +82,8 @@ def software():
             'lab': {
                 'title': 'Lab'
             },
+            'categories': {
+                'title': 'Categories',
+            }
         }
     }
