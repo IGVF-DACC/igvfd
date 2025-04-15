@@ -79,6 +79,7 @@
                 "genome": "For hosting genome reference files.",
                 "genes": "List(s) of genes.",
                 "guide RNAs": "List(s) of guide RNAs used in CRISPR assays.",
+                "primer design": "For hosting files describing the design of primers.",
                 "training data for predictive models": "For hosting files describing the training data of predictive models,",
                 "transcriptome": "For hosting transcriptome reference files.",
                 "variants": "List(s) of variants."

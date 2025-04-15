@@ -830,7 +830,8 @@ class TabularFile(File):
         Path('cell_type_annotation', include=['@id', 'term_name', 'status'])
     ]
     rev = File.rev | {
-        'barcode_map_for': ('MultiplexedSample', 'barcode_map')
+        'barcode_map_for': ('MultiplexedSample', 'barcode_map'),
+        'primer_design_for': ('PrimerDesign', 'primer_design_file')
     }
 
     set_status_up = File.set_status_up + []
