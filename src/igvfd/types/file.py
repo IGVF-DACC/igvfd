@@ -831,7 +831,7 @@ class TabularFile(File):
     ]
     rev = File.rev | {
         'barcode_map_for': ('MultiplexedSample', 'barcode_map'),
-        'primer_design_for': ('PrimerDesign', 'primer_design_file')
+        'primer_design_for': ('MeasurementSet', 'primer_designs')
     }
 
     set_status_up = File.set_status_up + []
