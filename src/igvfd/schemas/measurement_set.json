@@ -318,8 +318,8 @@
                 "linkTo": "TabularFile"
             },
             "submissionExample": {
-                "appscript": "[\"john-doe:primer_designs\", \"TSTFF98084731\"]",
-                "igvf_utils": "john-doe:primer_designs, TSTFF98084731"
+                "appscript": "[\"john-doe:primer_designs\", \"/tabular-files/IGVFFI7587TJLC/\"]",
+                "igvf_utils": "john-doe:primer_designs, /tabular-files/IGVFFI7587TJLC/"
             }
         },
         "strand_specificity": {
