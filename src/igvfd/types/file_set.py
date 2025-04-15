@@ -328,14 +328,17 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type, input_file_sets=[], files=[], assay_titles=[], samples=[]):
+    def summary(self, request, file_set_type, input_file_sets=[], files=[], samples=[]):
         inspected_filesets = set()
         fileset_types = set()
         file_content_types = set()
         targeted_genes = set()
         fileset_subclasses = set()
         assay_terms = set()
+        assay_titles = set()
+        cls_derived_assay_titles = set()
         crispr_modalities = set()
+        cls_type_set = set()
         unspecified_assay = ''
         crispr_screen_terms = [
             '/assay-terms/OBI_0003659/',
@@ -361,7 +364,7 @@ class AnalysisSet(FileSet):
                         '@@object_with_select_calculated_properties?'
                         'field=@type&field=file_set_type&field=measurement_sets'
                         '&field=input_file_sets&field=targeted_genes.symbol'
-                        '&field=assay_term'
+                        '&field=assay_term&field=applied_to_samples'
                     )
                     # Trace back from Analysis Sets to identify their
                     # input file sets.
@@ -377,6 +380,13 @@ class AnalysisSet(FileSet):
                                 gene_object = request.embed(gene, '@@object?skip_calculated=true')
                                 targeted_genes.add(gene_object['symbol'])
                         assay_terms.add(fileset_object['assay_term'])
+                        if fileset_object['preferred_assay_title'] in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
+                            assay_term_object = request.embed(
+                                fileset_object['assay_term'], '@@object?skip_calculated=true')
+                            assay_term_name = assay_term_object.get('term_name', '')
+                            assay_titles.add(f"{assay_term_name} ({fileset_object['preferred_assay_title']})")
+                        else:
+                            assay_titles.add(fileset_object['preferred_assay_title'])
                     # Retrieve Measurement Sets associated with Auxiliary Sets.
                     elif input_fileset.startswith('/auxiliary-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
@@ -385,8 +395,32 @@ class AnalysisSet(FileSet):
                                 measurement_set_object = request.embed(
                                     candidate_fileset, '@@object?skip_calculated=true')
                                 assay_terms.add(measurement_set_object['assay_term'])
+                                if measurement_set_object['preferred_assay_title'] in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
+                                    assay_term_object = request.embed(
+                                        measurement_set_object['assay_term'], '@@object?skip_calculated=true')
+                                    assay_term_name = assay_term_object.get('term_name', '')
+                                    assay_titles.add(f"{assay_term_name} ({fileset_object['preferred_assay_title']})")
+                                else:
+                                    assay_titles.add(measurement_set_object['preferred_assay_title'])
                                 if candidate_fileset not in inspected_filesets:
                                     filesets_to_inspect.add(candidate_fileset)
+                    elif input_fileset.startswith('/construct-library-sets/'):
+                        for sample in fileset_object.get('applied_to_samples', []):
+                            sample_object = request.embed(
+                                sample, '@@object_with_select_calculated_properties?field=file_sets')
+                            for file_set in sample_object.get('file_sets', []):
+                                file_set_object = request.embed(
+                                    file_set, '@@object_with_select_calculated_properties?field=preferred_assay_title')
+                                if file_set_object.get('preferred_assay_title'):
+                                    if file_set_object['preferred_assay_title'] in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
+                                        assay_term_object = request.embed(
+                                            file_set_object['assay_term'], '@@object?skip_calculated=true')
+                                        assay_term_name = assay_term_object.get('term_name', '')
+                                        cls_derived_assay_titles.add(
+                                            f"{assay_term_name} ({file_set_object['preferred_assay_title']})")
+                                    else:
+                                        cls_derived_assay_titles.add(file_set_object['preferred_assay_title'])
+                        fileset_types.add(fileset_object['file_set_type'])
                     elif not input_fileset.startswith('/analysis-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
 
@@ -396,7 +430,7 @@ class AnalysisSet(FileSet):
                 file_object = request.embed(file, '@@object?skip_calculated=true')
                 file_content_types.add(file_object['content_type'])
 
-        # Collect CRISPR modalities from associated samples.
+        # Collect CRISPR modalities and file set type from associated samples.
         if samples:
             for sample in samples:
                 sample_object = request.embed(sample, '@@object?skip_calculated=true')
@@ -404,16 +438,27 @@ class AnalysisSet(FileSet):
                     for modification in sample_object['modifications']:
                         modification_object = request.embed(modification, '@@object?skip_calculated=true')
                         crispr_modalities.add(modification_object['modality'])
+                if sample_object.get('construct_library_sets'):
+                    for construct_library in sample_object.get('construct_library_sets'):
+                        cls_type = request.embed(construct_library)['file_set_type']
+                        cls_type_set.add(cls_type)
 
         # Assay titles if there are input file sets, otherwise unspecified.
-        assay_title_phrase = ''
+        # Only use the CLS derived assay titles if there were no other assay titles.
+        if cls_derived_assay_titles and not assay_titles:
+            assay_titles = cls_derived_assay_titles
+        assay_title_phrase = 'Unspecified assay'
         if assay_titles:
             assay_title_phrase = ', '.join(sorted(assay_titles))
-        else:
-            assay_title_phrase = 'Unspecified assay'
+        if 'guide library' in cls_type_set:
+            if 'CRISPR' not in assay_title_phrase:
+                assay_title_phrase = f'CRISPR {assay_title_phrase}'
         # Add modalities to the assay titles.
         if crispr_modalities:
-            modality_set = ', '.join(sorted(crispr_modalities))
+            if len(crispr_modalities) > 1:
+                modality_set = 'mixed'
+            elif len(crispr_modalities) == 1:
+                modality_set = ''.join(crispr_modalities)
             if 'CRISPR' in assay_title_phrase:
                 assay_title_phrase = assay_title_phrase.replace('CRISPR', f'CRISPR {modality_set}')
             else:
