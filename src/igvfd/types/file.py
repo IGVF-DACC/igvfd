@@ -900,7 +900,7 @@ class TabularFile(File):
         },
         'notSubmittable': True
     })
-    def barcode_map_for(self, request, primer_design_for):
+    def primer_design_for(self, request, primer_design_for):
         return paths_filtered_by_status(request, primer_design_for)
 
 
