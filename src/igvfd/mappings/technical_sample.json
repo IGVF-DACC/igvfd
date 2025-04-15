@@ -1,6 +1,6 @@
 {
-    "hash": "66485b25f08a30217f50edc683043f6e",
-    "index_name": "technical_sample_66485b25",
+    "hash": "6c813a26604df20fbc46f4d1ec0a2862",
+    "index_name": "technical_sample_6c813a26",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -356,8 +356,7 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -597,8 +596,7 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "date"
