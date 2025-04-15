@@ -55,6 +55,12 @@ def file_set():
             'collections': {
                 'title': 'Collections',
             },
+            'controlled_access': {
+                'title': 'Controlled Access',
+            },
+            'data_use_limitation_summaries': {
+                'title': 'Data Use Limitation',
+            },
             'lab.title': {
                 'title': 'Lab'
             },
@@ -83,54 +89,4 @@ def file_set():
                 'title': 'Object Type',
             },
         },
-        'facet_groups': [
-            {
-                'title': 'File Set',
-                'facet_fields': [
-                    'file_set_type',
-                    'assembly',
-                    'transcriptome_annotation',
-                ],
-            },
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'donors.taxa',
-                    'samples.classifications',
-                    'samples.sample_terms.term_name',
-                    'samples.targeted_sample_term.term_name',
-                    'samples.disease_terms.term_name',
-                    'samples.modifications.modality',
-                    'samples.treatments.treatment_term_name',
-                    'sequencing_library_types',
-                ],
-            },
-            {
-                'title': 'Files',
-                'facet_fields': [
-                    'files.content_type'
-                    'files.file_format'
-                ],
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'lab.title',
-                    'award.component',
-                    'type',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                    'externally_hosted',
-                ],
-            },
-        ]
     }

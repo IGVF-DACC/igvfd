@@ -40,6 +40,12 @@ def technical_sample():
             'collections': {
                 'title': 'Collection',
             },
+            'institutional_certificates.controlled_access': {
+                'title': 'Controlled Access',
+            },
+            'institutional_certificates.data_use_limitation_summary': {
+                'title': 'Data Use Limitation',
+            },
             'lab.title': {
                 'title': 'Lab',
             },

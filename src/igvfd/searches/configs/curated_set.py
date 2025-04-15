@@ -46,6 +46,12 @@ def curated_set():
             'collections': {
                 'title': 'Collections'
             },
+            'controlled_access': {
+                'title': 'Controlled Access',
+            },
+            'data_use_limitation_summaries': {
+                'title': 'Data Use Limitation',
+            },
             'lab.title': {
                 'title': 'Lab'
             },
@@ -71,54 +77,6 @@ def curated_set():
                 'title': 'Object Type'
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Curated Set Details',
-                'facet_fields': [
-                    'file_set_type',
-                    'assemblies',
-                    'transcriptome_annotations',
-                    'taxa'
-                ],
-            },
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'samples.classifications',
-                    'samples.sample_terms.term_name',
-                    'samples.targeted_sample_term.term_name',
-                    'samples.disease_terms.term_name',
-                    'samples.modifications.modality',
-                    'samples.treatments.treatment_term_name'
-                ],
-            },
-            {
-                'title': 'Files',
-                'facet_fields': [
-                    'files.content_type',
-                    'files.file_format',
-                ],
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'lab.title',
-                    'award.component',
-                    'type',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ],
-            },
-        ],
         'columns': {
             'accession': {
                 'title': 'Accession'

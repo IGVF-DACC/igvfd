@@ -55,17 +55,23 @@ def prediction_set():
             'construct_library_sets.integrated_content_files.content_type': {
                 'title': 'Construct Library Design'
             },
-            'status': {
-                'title': 'Status'
+            'collections': {
+                'title': 'Collections',
             },
-            'award.component': {
-                'title': 'Award'
+            'controlled_access': {
+                'title': 'Controlled Access',
+            },
+            'data_use_limitation_summaries': {
+                'title': 'Data Use Limitation',
             },
             'lab.title': {
                 'title': 'Lab'
             },
-            'collections': {
-                'title': 'Collections',
+            'award.component': {
+                'title': 'Award'
+            },
+            'status': {
+                'title': 'Status'
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error'

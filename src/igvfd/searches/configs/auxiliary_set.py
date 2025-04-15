@@ -55,14 +55,20 @@ def auxiliary_set():
             'construct_library_sets.integrated_content_files.content_type': {
                 'title': 'Construct Library Design'
             },
+            'collections': {
+                'title': 'Collections',
+            },
+            'controlled_access': {
+                'title': 'Controlled Access',
+            },
+            'data_use_limitation_summaries': {
+                'title': 'Data Use Limitation',
+            },
             'lab.title': {
                 'title': 'Lab'
             },
             'award.component': {
                 'title': 'Award'
-            },
-            'collections': {
-                'title': 'Collections',
             },
             'status': {
                 'title': 'Status'
@@ -83,56 +89,6 @@ def auxiliary_set():
                 'title': 'Object Type',
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Auxiliary Set Details',
-                'facet_fields': [
-                    'file_set_type',
-                    'measurement_sets.preferred_assay_title',
-                    'files.assembly',
-                    'files.transcriptome_annotation'
-                ],
-            },
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'donors.taxa',
-                    'samples.classifications',
-                    'samples.sample_terms.term_name',
-                    'samples.targeted_sample_term.term_name',
-                    'samples.disease_terms.term_name',
-                    'samples.modifications.modality',
-                    'samples.treatments.treatment_term_name',
-                    'sequencing_library_types',
-                ],
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'lab.title',
-                    'award.component',
-                    'type',
-                ],
-            },
-            {
-                'title': 'Files',
-                'facet_fields': [
-                    'files.content_type',
-                    'files.file_format'
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ],
-            },
-        ],
         'columns': {
             'accession': {
                 'title': 'Accession'
