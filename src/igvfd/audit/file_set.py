@@ -125,7 +125,9 @@ def audit_missing_seqspec(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('FileSet', frame='object')
+@audit_checker('MeasurementSet', frame='object')
+@audit_checker('AuxiliarySet', frame='object')
+@audit_checker('ConstructLibrarySet', frame='object')
 def audit_files_associated_with_incorrect_fileset(value, system):
     '''
     [
@@ -138,11 +140,12 @@ def audit_files_associated_with_incorrect_fileset(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message = get_audit_message(audit_files_associated_with_incorrect_fileset)
+    # Non-sc seqspec submitted through file sets should still be audited like single cells
     if 'files' in value:
         for file in value['files']:
+            # Audit 1: Seqspec have seqspec_of files that are not in the same file set as the seqspec
             if file.startswith('/sequence-files/'):
                 sequence_file_object = system.get('request').embed(file)
-
                 # Audit the file set with sequence files without the associated seqspec also in the file set.
                 if sequence_file_object.get('seqspecs'):
                     for configuration_file in sequence_file_object.get('seqspecs'):
@@ -154,7 +157,7 @@ def audit_files_associated_with_incorrect_fileset(value, system):
                             )
                             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
-            # Audit the file set with a seqspec configuration file without the associated sequence files also in the file set.
+            # Audit 2: the file set with a seqspec configuration file without the associated sequence files also in the file set.
             if file.startswith('/configuration-files/'):
                 configuration_file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
                 if configuration_file_object['content_type'] == 'seqspec' and configuration_file_object.get('seqspec_of'):
@@ -171,7 +174,9 @@ def audit_files_associated_with_incorrect_fileset(value, system):
                         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('FileSet', frame='object')
+@audit_checker('MeasurementSet', frame='object')
+@audit_checker('AuxiliarySet', frame='object')
+@audit_checker('ConstructLibrarySet', frame='object')
 def audit_inconsistent_seqspec(value, system):
     '''
     [
@@ -184,28 +189,27 @@ def audit_inconsistent_seqspec(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message = get_audit_message(audit_inconsistent_seqspec)
+
+    # Set up lookup ref as {seq_set_key: {seq_file: set(seqspecs)}}
     if 'files' in value:
         sequence_to_seqspec = {}
         for file in value['files']:
             if file.startswith('/sequence-files/'):
                 sequence_file_object = system.get('request').embed(file)
-
                 sequencing_run = str(sequence_file_object.get('sequencing_run'))
                 flowcell_id = sequence_file_object.get('flowcell_id', '')
                 lane = str(sequence_file_object.get('lane', ''))
                 index = sequence_file_object.get('index', '')
-                if single_cell_check(system, value, object_type):
-                    key_list = [sequencing_run, flowcell_id, lane, index]
-                else:
-                    key_list = [flowcell_id, lane, index]
-                key_list = [item for item in key_list if item != '']
-                key = ':'.join(key_list)
-
+                seq_set_identifies = [sequencing_run, flowcell_id, lane, index]
+                key_list = [item for item in seq_set_identifies if item != '']
+                key = ':'.join(key_list)    # combined run, flowcell, lane, index as identifiers
                 if key not in sequence_to_seqspec:
                     sequence_to_seqspec[key] = {file: set(sequence_file_object.get('seqspecs', []))}
                 else:
                     sequence_to_seqspec[key][file] = set(sequence_file_object.get('seqspecs', []))
 
+        # Audit 1: If seqfiles from the same sequencing set have different seqspecs, flag it
+        # Single cell or not, this audit should stay for all SeqFiles
         for key, file_dict in sequence_to_seqspec.items():
             first_seqspec = next(iter(file_dict.values()), None)
             if not (all(seqspec == first_seqspec for seqspec in file_dict.values())):
@@ -217,7 +221,12 @@ def audit_inconsistent_seqspec(value, system):
                 )
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
-        seqspec_to_sequence = {}
+        # Audit 2: If the same seqspec is linked to different sequencing sets, flag it
+        # now limit it to single cell only
+        if not single_cell_check(system, value, object_type):
+            return
+
+        seqspec_to_sequence = {}    # {list_of_seqspec_as_str: [(seq_set_key, seq_file)]}
         for key, file_dict in sequence_to_seqspec.items():
             for file, seqspec in file_dict.items():
                 if seqspec:
@@ -229,7 +238,7 @@ def audit_inconsistent_seqspec(value, system):
 
         for seqspec, sequence_files in seqspec_to_sequence.items():
             key_set = set()
-            for key, file in sequence_files:
+            for key, file in sequence_files:    # key here is seq_set_key
                 key_set.add(key)
             if len(key_set) > 1:
                 seqspec_paths = [audit_link(path_to_text(x), x) for x in seqspec.split(':')]
