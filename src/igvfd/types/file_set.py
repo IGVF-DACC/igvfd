@@ -338,6 +338,7 @@ class AnalysisSet(FileSet):
         assay_titles = set()
         cls_derived_assay_titles = set()
         crispr_modalities = set()
+        cls_type_set = set()
         unspecified_assay = ''
         crispr_screen_terms = [
             '/assay-terms/OBI_0003659/',
@@ -429,7 +430,7 @@ class AnalysisSet(FileSet):
                 file_object = request.embed(file, '@@object?skip_calculated=true')
                 file_content_types.add(file_object['content_type'])
 
-        # Collect CRISPR modalities from associated samples.
+        # Collect CRISPR modalities and file set type from associated samples.
         if samples:
             for sample in samples:
                 sample_object = request.embed(sample, '@@object?skip_calculated=true')
@@ -437,16 +438,21 @@ class AnalysisSet(FileSet):
                     for modification in sample_object['modifications']:
                         modification_object = request.embed(modification, '@@object?skip_calculated=true')
                         crispr_modalities.add(modification_object['modality'])
+                if sample_object.get('construct_library_sets'):
+                    for construct_library in sample_object.get('construct_library_sets'):
+                        cls_type = request.embed(construct_library)['file_set_type']
+                        cls_type_set.add(cls_type)
 
         # Assay titles if there are input file sets, otherwise unspecified.
         # Only use the CLS derived assay titles if there were no other assay titles.
         if cls_derived_assay_titles and not assay_titles:
             assay_titles = cls_derived_assay_titles
-        assay_title_phrase = ''
+        assay_title_phrase = 'Unspecified assay'
         if assay_titles:
             assay_title_phrase = ', '.join(sorted(assay_titles))
-        else:
-            assay_title_phrase = 'Unspecified assay'
+        if 'guide library' in cls_type_set:
+            if 'CRISPR' not in assay_title_phrase:
+                assay_title_phrase = f'CRISPR {assay_title_phrase}'
         # Add modalities to the assay titles.
         if crispr_modalities:
             if len(crispr_modalities) > 1:
@@ -456,7 +462,7 @@ class AnalysisSet(FileSet):
             if 'CRISPR' in assay_title_phrase:
                 assay_title_phrase = assay_title_phrase.replace('CRISPR', f'CRISPR {modality_set}')
             else:
-                assay_title_phrase = f'CRISPR {modality_set} {assay_title_phrase}'
+                assay_title_phrase = f'{modality_set} {assay_title_phrase}'
         # Targeted genes.
         targeted_genes_phrase = ''
         if targeted_genes:

@@ -203,7 +203,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'CRISPR interference ATAC-seq (10x multiome), SUPERSTARR, lentiMPRA: peaks'
+    assert res.get('summary', '') == 'interference ATAC-seq (10x multiome), SUPERSTARR, lentiMPRA: peaks'
     # Display any targeted_genes from an input Measurement Set.
     testapp.patch_json(
         measurement_set_mpra['@id'],
@@ -212,7 +212,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'CRISPR interference ATAC-seq (10x multiome), SUPERSTARR, lentiMPRA targeting MYC: peaks'
+    assert res.get('summary', '') == 'interference ATAC-seq (10x multiome), SUPERSTARR, lentiMPRA targeting MYC: peaks'
     testapp.patch_json(
         primary_cell['@id'],
         {
