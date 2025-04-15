@@ -834,7 +834,7 @@ def audit_file_set_missing_anvil_url(value, system):
     '''
     [
         {
-            "audit_description": "Relased or archived restricted access file sets are expected to have their files loaded in anvil.",
+            "audit_description": "Released and archived restricted access file sets are expected to have their files loaded in anvil.",
             "audit_category": "missing anvil url",
             "audit_level": "INTERNAL_ACTION"
         }
