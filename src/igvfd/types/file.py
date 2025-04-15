@@ -1164,7 +1164,7 @@ def validate_bucket_location(request, properties, bucket):
 )
 def post_upload(context, request):
     properties = context.upgrade_properties()
-    if properties['upload_status'] == 'validated':
+    if properties['upload_status'] in ['validated', 'validation exempted']:
         raise HTTPForbidden(
             'Unable to issue new credentials when uploading_status is validated'
         )
