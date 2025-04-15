@@ -274,13 +274,15 @@ class FileSet(Item):
                     summaries_to_return.append(ic_object.get('data_use_limitation_summary', None))
         if summaries_to_return:
             return list(set(summaries_to_return))
+        else:
+            return ['no certificate']
 
     @calculated_property(
         condition='samples',
         schema={
             'title': 'Controlled Access',
             'description': 'The controlled access of the institutional certificates covering the sample associated with this file set which are signed by the same lab (or their partner lab) as the lab that submitted this file set.',
-            'type': 'boolean',
+            'type': 'string',
             'notSubmittable': True,
         }
     )
@@ -296,9 +298,11 @@ class FileSet(Item):
                     controlled_access_to_return.append(ic_object.get('controlled_access'))
         if controlled_access_to_return:
             if any(controlled_access_to_return):
-                return True
+                return 'true'
             else:
-                return False
+                return 'false'
+        else:
+            return 'no certificate'
 
 
 @collection(

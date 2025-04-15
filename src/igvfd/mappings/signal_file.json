@@ -1,6 +1,6 @@
 {
-    "hash": "e4271082c2e7b1ec3ab0262943f29c21",
-    "index_name": "signal_file_e4271082",
+    "hash": "4959e2ac08a42ad5d91da5e5accb0356",
+    "index_name": "signal_file_4959e2ac",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -526,8 +526,7 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -1620,8 +1619,7 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "date"
