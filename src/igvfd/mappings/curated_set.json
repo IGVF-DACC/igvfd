@@ -1,6 +1,6 @@
 {
-    "hash": "389de8b76a3d8699388fa117a6f79fd5",
-    "index_name": "curated_set_389de8b7",
+    "hash": "76f1bd5a3a1c750643f34b81abb90c8e",
+    "index_name": "curated_set_76f1bd5a",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -370,7 +370,8 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "type": "keyword"
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -866,7 +867,8 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "type": "keyword"
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -1117,7 +1119,8 @@
                         "type": "keyword"
                     },
                     "controlled_access": {
-                        "type": "keyword"
+                        "store": true,
+                        "type": "boolean"
                     },
                     "creation_timestamp": {
                         "type": "date"

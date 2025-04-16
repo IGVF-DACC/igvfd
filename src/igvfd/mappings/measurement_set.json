@@ -1,6 +1,6 @@
 {
-    "hash": "b609fe9456edd08f8df17d281060222f",
-    "index_name": "measurement_set_b609fe94",
+    "hash": "b023c6ba81979d641c0c43a1e55ae53d",
+    "index_name": "measurement_set_b023c6ba",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -283,7 +283,8 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "type": "keyword"
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -568,7 +569,8 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "type": "keyword"
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -1160,7 +1162,8 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "type": "keyword"
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -1477,7 +1480,8 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "type": "keyword"
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -1728,7 +1732,8 @@
                         "type": "keyword"
                     },
                     "controlled_access": {
-                        "type": "keyword"
+                        "store": true,
+                        "type": "boolean"
                     },
                     "creation_timestamp": {
                         "type": "date"
@@ -2575,7 +2580,8 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "type": "keyword"
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "date"

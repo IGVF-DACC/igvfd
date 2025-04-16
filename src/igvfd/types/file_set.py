@@ -282,7 +282,7 @@ class FileSet(Item):
         schema={
             'title': 'Controlled Access',
             'description': 'The controlled access of the institutional certificates covering the sample associated with this file set which are signed by the same lab (or their partner lab) as the lab that submitted this file set.',
-            'type': 'string',
+            'type': 'boolean',
             'notSubmittable': True,
         }
     )
@@ -298,11 +298,9 @@ class FileSet(Item):
                     controlled_access_to_return.append(ic_object.get('controlled_access'))
         if controlled_access_to_return:
             if any(controlled_access_to_return):
-                return 'true'
+                return True
             else:
-                return 'false'
-        else:
-            return 'no certificate'
+                return False
 
 
 @collection(
