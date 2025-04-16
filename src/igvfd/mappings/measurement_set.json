@@ -1,6 +1,6 @@
 {
-    "hash": "b609fe9456edd08f8df17d281060222f",
-    "index_name": "measurement_set_b609fe94",
+    "hash": "afa8fc72da60b2668662632c6d3a6d74",
+    "index_name": "measurement_set_afa8fc72",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2090,6 +2090,9 @@
                                 "type": "keyword"
                             },
                             "secondary_dimensions": {
+                                "type": "keyword"
+                            },
+                            "seqspec_document": {
                                 "type": "keyword"
                             },
                             "seqspec_of": {
