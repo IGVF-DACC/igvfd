@@ -62,6 +62,23 @@ def get_assessed_gene_phrase(request, assessed_genes=None):
     return assessed_gene_phrase
 
 
+def get_cls_phrase(cls_set):
+    cls_phrases = []
+    for summary in cls_set:
+        article = 'a'
+        if any(summary.startswith(x) for x in ['a', 'e', 'i', 'o', 'u']):
+            article = 'an'
+        cls_phrases.append(f'{article} {summary[0].lower()}{summary[1:]}')
+    if len(cls_phrases) == 1:
+        cls_phrase = cls_phrases[0]
+    elif len(cls_phrases) == 2:
+        cls_phrase = ' and '.join(cls_phrases)
+    elif len(cls_phrases) > 2:
+        cls_phrase = ', '.join(cls_phrases[:-1]) + ', and ' + cls_phrases[-1]
+    cls_phrase = f' integrating {cls_phrase}'
+    return cls_phrase
+
+
 @abstract_collection(
     name='file-sets',
     unique_key='accession',
@@ -330,7 +347,7 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type, input_file_sets=[], files=[], samples=[]):
+    def summary(self, request, file_set_type, input_file_sets=[], files=[], samples=[], construct_library_sets=[]):
         inspected_filesets = set()
         fileset_types = set()
         file_content_types = set()
@@ -341,6 +358,7 @@ class AnalysisSet(FileSet):
         cls_derived_assay_titles = set()
         crispr_modalities = set()
         cls_type_set = set()
+        cls_set = set()
         unspecified_assay = ''
         crispr_screen_terms = [
             '/assay-terms/OBI_0003659/',
@@ -441,10 +459,16 @@ class AnalysisSet(FileSet):
                     for modification in sample_object['modifications']:
                         modification_object = request.embed(modification, '@@object?skip_calculated=true')
                         crispr_modalities.add(modification_object['modality'])
-                if sample_object.get('construct_library_sets'):
-                    for construct_library in sample_object.get('construct_library_sets'):
-                        cls_type = request.embed(construct_library)['file_set_type']
-                        cls_type_set.add(cls_type)
+
+        # Collect construct library set summaries and types
+        if construct_library_sets:
+            for construct_library_set in construct_library_sets:
+                construct_library_set_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
+                cls_type_set.add(construct_library_set_object['file_set_type'])
+                cls_set.add(construct_library_set_object['summary'])
+        cls_phrase = ''
+        if len(cls_set) > 0:
+            cls_phrase = get_cls_phrase(cls_set)
 
         # Assay titles if there are input file sets, otherwise unspecified.
         # Only use the CLS derived assay titles if there were no other assay titles.
@@ -489,6 +513,7 @@ class AnalysisSet(FileSet):
         all_phrases = [
             assay_title_phrase,
             targeted_genes_phrase,
+            cls_phrase,
             file_set_type_phrase,
             files_phrase
         ]
@@ -1100,19 +1125,7 @@ class MeasurementSet(FileSet):
             assay_phrase = f'{assay}'
 
         if len(cls_set) > 0:
-            cls_phrases = []
-            for summary in cls_set:
-                article = 'a'
-                if any(summary.startswith(x) for x in ['a', 'e', 'i', 'o', 'u']):
-                    article = 'an'
-                cls_phrases.append(f'{article} {summary[0].lower()}{summary[1:]}')
-            if len(cls_phrases) == 1:
-                cls_phrase = cls_phrases[0]
-            elif len(cls_phrases) == 2:
-                cls_phrase = ' and '.join(cls_phrases)
-            elif len(cls_phrases) > 2:
-                cls_phrase = ', '.join(cls_phrases[:-1]) + ', and ' + cls_phrases[-1]
-            cls_phrase = f' integrating {cls_phrase}'
+            cls_phrase = get_cls_phrase(cls_set)
 
         sentence = ''
         sentence_parts = [
