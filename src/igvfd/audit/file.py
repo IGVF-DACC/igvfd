@@ -137,7 +137,7 @@ def audit_file_missing_anvil_url(value, system):
             value.get('file_set'), '@@object_with_select_calculated_properties?field=data_use_limitation_summaries')
         if file_set_object.get('status') in ['released', 'archived']:
             data_use_limitation_summaries = file_set_object.get('data_use_limitation_summaries', '')
-            if data_use_limitation_summaries:
+            if data_use_limitation_summaries and data_use_limitation_summaries != ['no certificate']:
                 detail = (
                     f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
                     f'has no `anvil_url`.'
