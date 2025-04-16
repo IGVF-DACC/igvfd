@@ -1,6 +1,6 @@
 {
-    "hash": "5abde87cc95eea25fb4598da1cda7d54",
-    "index_name": "construct_library_set_5abde87c",
+    "hash": "11a6a17fd18aad56dc824f8df67d67f5",
+    "index_name": "construct_library_set_11a6a17f",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1226,7 +1226,8 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "type": "keyword"
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -1477,7 +1478,8 @@
                         "type": "keyword"
                     },
                     "controlled_access": {
-                        "type": "keyword"
+                        "store": true,
+                        "type": "boolean"
                     },
                     "creation_timestamp": {
                         "type": "date"

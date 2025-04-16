@@ -1,6 +1,6 @@
 {
-    "hash": "eff3581e7a027fe31c98193aa1bb6b14",
-    "index_name": "prediction_set_eff3581e",
+    "hash": "bf8b30b79158c25c11a10c6127d1b714",
+    "index_name": "prediction_set_bf8b30b7",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -465,7 +465,8 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "type": "keyword"
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -961,7 +962,8 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "type": "keyword"
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -1212,7 +1214,8 @@
                         "type": "keyword"
                     },
                     "controlled_access": {
-                        "type": "keyword"
+                        "store": true,
+                        "type": "boolean"
                     },
                     "creation_timestamp": {
                         "type": "date"
@@ -2319,7 +2322,8 @@
                                         "type": "keyword"
                                     },
                                     "controlled_access": {
-                                        "type": "keyword"
+                                        "store": true,
+                                        "type": "boolean"
                                     },
                                     "creation_timestamp": {
                                         "type": "date"

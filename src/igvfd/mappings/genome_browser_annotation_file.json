@@ -1,6 +1,6 @@
 {
-    "hash": "07b55c196dc705a141fb764ef037704b",
-    "index_name": "genome_browser_annotation_file_07b55c19",
+    "hash": "d667bd32aa21aea4087912a618b43543",
+    "index_name": "genome_browser_annotation_file_d667bd32",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -526,7 +526,8 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "type": "keyword"
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "date"
@@ -1615,7 +1616,8 @@
                                 "type": "keyword"
                             },
                             "controlled_access": {
-                                "type": "keyword"
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "date"
