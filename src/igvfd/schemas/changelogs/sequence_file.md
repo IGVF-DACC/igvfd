@@ -7,6 +7,7 @@
 * Update `aliases` regex to add `katie-pollard` as a namespace.
 * Update `aliases` regex to add `kushal-dey` as a namespace.
 * Update `aliases` regex to add `stephen-yi` as a namespace.
+* Add `seqspec document`.
 * Allow `controlled_access` files to be released without `anvil_url`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.
