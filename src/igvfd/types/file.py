@@ -1166,7 +1166,7 @@ def post_upload(context, request):
     properties = context.upgrade_properties()
     if properties['upload_status'] not in ['pending', 'file not found', 'invalidated']:
         raise HTTPForbidden(
-            'Unable to issue new credentials when uploading_status is validated or validation exempted'
+            'Unable to issue new credentials when upload_status is validated or validation exempted'
         )
     if properties.get('status') not in ['in progress', 'preview']:
         raise HTTPForbidden(
