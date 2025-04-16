@@ -7,6 +7,7 @@
         "aliases": [
             "igvf:bam_subreads_file_new"
         ],
+        "seqspec_document": "igvf:generic_seqspec_insert",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "71ffd7ed8bcd85ec3f01887601178db6",

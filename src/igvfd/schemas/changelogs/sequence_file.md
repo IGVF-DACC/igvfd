@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 15
 
-* Add `seqspec document`.
+* Add `seqspec_document`.
 * Allow `controlled_access` files to be released without `anvil_url`.
 * Extend `collections` enum list to include `ACMG73`.
 * Extend `collections` enum list to include `Morphic`.
