@@ -230,7 +230,7 @@ def test_calculated_controlled_access_data_use_limitations(testapp, measurement_
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('controlled_access') == 'no certificate'
+    assert 'controlled_access' not in res.json
     assert res.json.get('data_use_limitation_summaries') == ['no certificate']
     # Add the lab of Measurement set as a partner lab.
     testapp.patch_json(
@@ -240,7 +240,7 @@ def test_calculated_controlled_access_data_use_limitations(testapp, measurement_
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('controlled_access') == 'false'
+    assert res.json.get('controlled_access') == False
     assert res.json.get('data_use_limitation_summaries') == ['No limitations']
     # Add another IC for other lab, without partner labs.
     # Calculated props should be the same as before.
@@ -252,7 +252,7 @@ def test_calculated_controlled_access_data_use_limitations(testapp, measurement_
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('controlled_access') == 'false'
+    assert res.json.get('controlled_access') == False
     assert res.json.get('data_use_limitation_summaries') == ['No limitations']
     # Change 2nd IC to the right lab. Calculated props
     # should change now.
@@ -263,5 +263,5 @@ def test_calculated_controlled_access_data_use_limitations(testapp, measurement_
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('controlled_access') == 'true'
+    assert res.json.get('controlled_access') == True
     assert set(res.json.get('data_use_limitation_summaries')) == set(['GRU', 'No limitations'])
