@@ -223,6 +223,16 @@
             "minimum": 0,
             "maximum": 300000000
         },
+        "seqspec_document": {
+            "title": "Seqspec Document",
+            "description": "A generic seqspec document describing the library and read structure.",
+            "type": "string",
+            "linkTo": "Document",
+            "submissionExample": {
+                "appscript": "/documents/f47ac10b-58cc-4372-a567-0e02b2c3d479/",
+                "igvf_utils": "/documents/f47ac10b-58cc-4372-a567-0e02b2c3d479/"
+            }
+        },
         "sequencing_platform": {
             "title": "Sequencing Platform",
             "description": "The measurement device used to produce sequencing data.",
