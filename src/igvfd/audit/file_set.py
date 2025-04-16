@@ -109,6 +109,8 @@ def audit_missing_seqspec(value, system):
         for file in value['files']:
             if file.startswith('/sequence-files/'):
                 sequence_file_object = system.get('request').embed(file)
+                if sequence_file_object.get('file_format') == 'pod5':
+                    continue
                 if not sequence_file_object.get('seqspecs'):
                     no_seqspec.append(file)
         if no_seqspec:
