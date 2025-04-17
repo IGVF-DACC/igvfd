@@ -450,6 +450,16 @@
                 "appscript": "[\"/tabular-files/IGVFFI7587TJLC/\"]",
                 "igvf_utils": "/tabular-files/IGVFFI7587TJLC/"
             }
+        },
+        "barcode_replacement_file": {
+            "title": "Barcode Replacement File",
+            "description": "A file containing original barcodes and the new barcodes used to replace the original barcodes. One common application is to use in preprocessing Parse SPLiT-seq data with the single cell uniform pipeline.",
+            "type": "string",
+            "linkTo": "TabularFile",
+            "submissionExample": {
+                "appscript": "/tabular-files/IGVFFI1234ABCD/",
+                "igvf_utils": "/tabular-files/IGVFFI1234ABCD/"
+            }
         }
     },
     "fuzzy_searchable_fields": [

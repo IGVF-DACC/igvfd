@@ -1,6 +1,6 @@
 {
-    "hash": "33485edd9872991a29aa5c3942bfd849",
-    "index_name": "image_file_33485edd",
+    "hash": "7eaa34b1f40c7cf9ef758b01961e5f71",
+    "index_name": "image_file_7eaa34b1",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -411,6 +411,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {

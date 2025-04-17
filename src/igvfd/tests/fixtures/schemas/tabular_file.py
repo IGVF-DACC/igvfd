@@ -44,6 +44,20 @@ def tabular_file_onlist_2(testapp, lab, award, curated_set_barcode):
 
 
 @pytest.fixture
+def tabular_file_barcode_replacement(testapp, lab, award, curated_set_barcode):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '851086f8543eb2aff3488e82b25d45eb',
+        'file_format': 'tsv',
+        'file_set': curated_set_barcode['@id'],
+        'content_type': 'barcode replacement',
+        'controlled_access': False
+    }
+    return testapp.post_json('/tabular_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def tabular_file_v1(tabular_file):
     item = tabular_file.copy()
     item.update({

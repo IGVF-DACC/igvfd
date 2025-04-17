@@ -1,6 +1,6 @@
 {
-    "hash": "74393f8bbb53f4308fb3390df475e640",
-    "index_name": "genome_browser_annotation_file_74393f8b",
+    "hash": "54b3fa21c7216e4baf1523de7543bd2d",
+    "index_name": "genome_browser_annotation_file_54b3fa21",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -508,6 +508,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {

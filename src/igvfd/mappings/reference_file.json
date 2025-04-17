@@ -1,6 +1,6 @@
 {
-    "hash": "02570759b50b7184d7a438e4a52afc83",
-    "index_name": "reference_file_02570759",
+    "hash": "8ae69eb39df3eae746603141f3d9b814",
+    "index_name": "reference_file_8ae69eb3",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -432,6 +432,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {

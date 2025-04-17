@@ -1,6 +1,6 @@
 {
-    "hash": "9d1a6fde096f9c38b1218ddb2861b1ab",
-    "index_name": "prediction_set_9d1a6fde",
+    "hash": "54631a7f65784fac0e76fd013aaba7e5",
+    "index_name": "prediction_set_54631a7f",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -447,6 +447,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -950,6 +953,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {

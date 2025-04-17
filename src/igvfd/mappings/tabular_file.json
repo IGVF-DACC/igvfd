@@ -1,6 +1,6 @@
 {
-    "hash": "8dd71839c5892f01fca09e7bf4488c1e",
-    "index_name": "tabular_file_8dd71839",
+    "hash": "a5a9c226dea3541f80c7edc23feac632",
+    "index_name": "tabular_file_a5a9c226",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -521,6 +521,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {

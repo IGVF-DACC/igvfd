@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 6
 
+* Extend `output_content_types` enum list to include `barcode replacement`.
+* Extend `input_content_types` enum list to include `barcode replacement`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
 * Update `aliases` regex to add `steven-gazal` as a namespace.
 * Update `aliases` regex to add `katie-pollard` as a namespace.

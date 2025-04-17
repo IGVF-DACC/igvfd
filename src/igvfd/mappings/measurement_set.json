@@ -1,6 +1,6 @@
 {
-    "hash": "ab0f6796de26663a0cebc7f7b1250e21",
-    "index_name": "measurement_set_ab0f6796",
+    "hash": "dd698e9636884e38733f9587b544949c",
+    "index_name": "measurement_set_dd698e96",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -497,6 +497,9 @@
                         },
                         "type": "object"
                     },
+                    "barcode_replacement_file": {
+                        "type": "keyword"
+                    },
                     "collections": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
@@ -551,6 +554,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1152,6 +1158,9 @@
                             "barcode_map": {
                                 "type": "keyword"
                             },
+                            "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1471,6 +1480,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -2583,6 +2595,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {

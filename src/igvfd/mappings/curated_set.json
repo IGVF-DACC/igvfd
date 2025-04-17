@@ -1,6 +1,6 @@
 {
-    "hash": "e6cb5964a07333c4cb37ca4ba9573f7a",
-    "index_name": "curated_set_e6cb5964",
+    "hash": "817d6154656fbc378380b3563a67a71c",
+    "index_name": "curated_set_817d6154",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -352,6 +352,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -855,6 +858,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {

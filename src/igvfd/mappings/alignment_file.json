@@ -1,6 +1,6 @@
 {
-    "hash": "1806a54be6a1705ca8ed48873f07fa1e",
-    "index_name": "alignment_file_1806a54b",
+    "hash": "0d3bb60d84f80c99526ccf331f6b4595",
+    "index_name": "alignment_file_0d3bb60d",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -428,6 +428,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {
