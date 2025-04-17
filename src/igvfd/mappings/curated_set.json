@@ -1,6 +1,6 @@
 {
-    "hash": "76f1bd5a3a1c750643f34b81abb90c8e",
-    "index_name": "curated_set_76f1bd5a",
+    "hash": "b99d174898c3c397ebff2193fad095e2",
+    "index_name": "curated_set_b99d1748",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -552,6 +552,9 @@
                                     "notes": {
                                         "type": "text"
                                     },
+                                    "primer_design_for": {
+                                        "type": "keyword"
+                                    },
                                     "quality_metrics": {
                                         "type": "keyword"
                                     },
@@ -662,6 +665,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {
@@ -980,6 +986,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {
@@ -1442,6 +1451,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "primer_design_for": {
+                                "type": "keyword"
                             },
                             "principal_dimension": {
                                 "type": "keyword"

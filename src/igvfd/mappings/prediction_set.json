@@ -1,6 +1,6 @@
 {
-    "hash": "bf8b30b79158c25c11a10c6127d1b714",
-    "index_name": "prediction_set_bf8b30b7",
+    "hash": "84e8d5ee1a83bb9f3caeddb684f0c14d",
+    "index_name": "prediction_set_84e8d5ee",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -647,6 +647,9 @@
                                     "notes": {
                                         "type": "text"
                                     },
+                                    "primer_design_for": {
+                                        "type": "keyword"
+                                    },
                                     "quality_metrics": {
                                         "type": "keyword"
                                     },
@@ -757,6 +760,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {
@@ -1075,6 +1081,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {
@@ -1538,6 +1547,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "primer_design_for": {
+                                "type": "keyword"
+                            },
                             "principal_dimension": {
                                 "type": "keyword"
                             },
@@ -1833,6 +1845,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "primer_design_for": {
+                                "type": "keyword"
+                            },
                             "quality_metrics": {
                                 "type": "keyword"
                             },
@@ -2014,6 +2029,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "primer_design_for": {
+                                "type": "keyword"
                             },
                             "quality_metrics": {
                                 "type": "keyword"

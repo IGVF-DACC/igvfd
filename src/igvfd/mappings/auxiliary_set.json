@@ -1,6 +1,6 @@
 {
-    "hash": "5cb6b4e28c62fe032395a0867bf19cfd",
-    "index_name": "auxiliary_set_5cb6b4e2",
+    "hash": "b80be6864436b4650d7383f0add5ba16",
+    "index_name": "auxiliary_set_b80be686",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -551,6 +551,9 @@
                                     "notes": {
                                         "type": "text"
                                     },
+                                    "primer_design_for": {
+                                        "type": "keyword"
+                                    },
                                     "quality_metrics": {
                                         "type": "keyword"
                                     },
@@ -661,6 +664,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {
@@ -979,6 +985,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {
@@ -1442,6 +1451,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "primer_design_for": {
+                                "type": "keyword"
+                            },
                             "principal_dimension": {
                                 "type": "keyword"
                             },
@@ -1711,6 +1723,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "protocols": {

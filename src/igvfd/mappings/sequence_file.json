@@ -1,6 +1,6 @@
 {
-    "hash": "a9f42981dd074e70ca18723243c3f664",
-    "index_name": "sequence_file_a9f42981",
+    "hash": "b94b0079164c53ec9b849910ec272639",
+    "index_name": "sequence_file_b94b0079",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -559,6 +559,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {

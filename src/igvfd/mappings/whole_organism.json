@@ -1,6 +1,6 @@
 {
-    "hash": "3c3ce60f010ce0ae129f0b32b9252f3f",
-    "index_name": "whole_organism_3c3ce60f",
+    "hash": "5c0cb42fabd7a051df9fdcf6a467270d",
+    "index_name": "whole_organism_5c0cb42f",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1154,6 +1154,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {

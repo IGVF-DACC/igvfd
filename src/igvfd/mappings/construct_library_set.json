@@ -1,6 +1,6 @@
 {
-    "hash": "11a6a17fd18aad56dc824f8df67d67f5",
-    "index_name": "construct_library_set_11a6a17f",
+    "hash": "6857503318f0081b8ff9879a2027a146",
+    "index_name": "construct_library_set_68575033",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1341,6 +1341,9 @@
                             "preferred_assay_title": {
                                 "type": "keyword"
                             },
+                            "primer_designs": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -1669,6 +1672,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "primer_design_for": {
+                                "type": "keyword"
+                            },
                             "principal_dimension": {
                                 "type": "keyword"
                             },
@@ -1903,6 +1909,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "primer_design_for": {
+                                "type": "keyword"
                             },
                             "quality_metrics": {
                                 "type": "keyword"
@@ -2146,6 +2155,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "primer_design_for": {
+                                "type": "keyword"
+                            },
                             "quality_metrics": {
                                 "type": "keyword"
                             },
@@ -2327,6 +2339,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "primer_design_for": {
+                                "type": "keyword"
                             },
                             "quality_metrics": {
                                 "type": "keyword"
