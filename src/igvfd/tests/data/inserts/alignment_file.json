@@ -172,6 +172,10 @@
         ],
         "filtered": false,
         "redacted": false,
-        "controlled_access": false
+        "controlled_access": false,
+        "base_modifications": [
+            "5mC",
+            "inosine"
+        ]
     }
 ]
