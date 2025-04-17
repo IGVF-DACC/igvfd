@@ -1,6 +1,6 @@
 {
-    "hash": "32f22cefa3ba383826fbe71fce305eec",
-    "index_name": "genome_browser_annotation_file_32f22cef",
+    "hash": "ae315771d4b240c016f3f7e33fdae299",
+    "index_name": "genome_browser_annotation_file_ae315771",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -1516,7 +1516,356 @@
                                 "type": "keyword"
                             },
                             "applied_to_samples": {
-                                "type": "keyword"
+                                "properties": {
+                                    "@id": {
+                                        "type": "keyword"
+                                    },
+                                    "@type": {
+                                        "type": "keyword"
+                                    },
+                                    "accession": {
+                                        "type": "keyword"
+                                    },
+                                    "age": {
+                                        "type": "keyword"
+                                    },
+                                    "age_units": {
+                                        "type": "keyword"
+                                    },
+                                    "aliases": {
+                                        "type": "keyword"
+                                    },
+                                    "alternate_accessions": {
+                                        "type": "keyword"
+                                    },
+                                    "annotated_from": {
+                                        "type": "keyword"
+                                    },
+                                    "award": {
+                                        "type": "keyword"
+                                    },
+                                    "barcode_map": {
+                                        "type": "keyword"
+                                    },
+                                    "biomarkers": {
+                                        "type": "keyword"
+                                    },
+                                    "biosample_qualifiers": {
+                                        "type": "keyword"
+                                    },
+                                    "ccf_id": {
+                                        "type": "keyword"
+                                    },
+                                    "cell_fate_change_protocol": {
+                                        "type": "keyword"
+                                    },
+                                    "cellular_sub_pool": {
+                                        "type": "keyword"
+                                    },
+                                    "classifications": {
+                                        "type": "keyword"
+                                    },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
+                                    "construct_library_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "creation_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "date_obtained": {
+                                        "type": "keyword"
+                                    },
+                                    "dbxrefs": {
+                                        "type": "keyword"
+                                    },
+                                    "demultiplexed_from": {
+                                        "type": "keyword"
+                                    },
+                                    "demultiplexed_to": {
+                                        "type": "keyword"
+                                    },
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "disease_terms": {
+                                        "type": "keyword"
+                                    },
+                                    "documents": {
+                                        "type": "keyword"
+                                    },
+                                    "donors": {
+                                        "type": "keyword"
+                                    },
+                                    "embryonic": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
+                                    "file_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "growth_medium": {
+                                        "type": "keyword"
+                                    },
+                                    "institutional_certificates": {
+                                        "type": "keyword"
+                                    },
+                                    "lab": {
+                                        "type": "keyword"
+                                    },
+                                    "lot_id": {
+                                        "type": "keyword"
+                                    },
+                                    "lower_bound_age": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "lower_bound_age_in_hours": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "modifications": {
+                                        "type": "keyword"
+                                    },
+                                    "moi": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "multiplexed_in": {
+                                        "type": "keyword"
+                                    },
+                                    "multiplexed_samples": {
+                                        "type": "keyword"
+                                    },
+                                    "multiplexing_methods": {
+                                        "type": "keyword"
+                                    },
+                                    "notes": {
+                                        "type": "text"
+                                    },
+                                    "nucleic_acid_delivery": {
+                                        "type": "keyword"
+                                    },
+                                    "origin_of": {
+                                        "type": "keyword"
+                                    },
+                                    "originated_from": {
+                                        "type": "keyword"
+                                    },
+                                    "part_of": {
+                                        "type": "keyword"
+                                    },
+                                    "parts": {
+                                        "type": "keyword"
+                                    },
+                                    "passage_number": {
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "pmi": {
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "pmi_units": {
+                                        "type": "keyword"
+                                    },
+                                    "pooled_from": {
+                                        "type": "keyword"
+                                    },
+                                    "pooled_in": {
+                                        "type": "keyword"
+                                    },
+                                    "preservation_method": {
+                                        "type": "keyword"
+                                    },
+                                    "product_id": {
+                                        "type": "keyword"
+                                    },
+                                    "protocols": {
+                                        "type": "keyword"
+                                    },
+                                    "publications": {
+                                        "type": "keyword"
+                                    },
+                                    "release_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "revoke_detail": {
+                                        "type": "keyword"
+                                    },
+                                    "sample_material": {
+                                        "type": "keyword"
+                                    },
+                                    "sample_terms": {
+                                        "properties": {
+                                            "@id": {
+                                                "type": "keyword"
+                                            },
+                                            "@type": {
+                                                "type": "keyword"
+                                            },
+                                            "aliases": {
+                                                "type": "keyword"
+                                            },
+                                            "ancestors": {
+                                                "type": "keyword"
+                                            },
+                                            "cell_slims": {
+                                                "type": "keyword"
+                                            },
+                                            "comment": {
+                                                "type": "keyword"
+                                            },
+                                            "creation_timestamp": {
+                                                "type": "date"
+                                            },
+                                            "dbxrefs": {
+                                                "type": "keyword"
+                                            },
+                                            "definition": {
+                                                "type": "keyword"
+                                            },
+                                            "deprecated_ntr_terms": {
+                                                "type": "keyword"
+                                            },
+                                            "description": {
+                                                "type": "text"
+                                            },
+                                            "developmental_slims": {
+                                                "type": "keyword"
+                                            },
+                                            "is_a": {
+                                                "type": "keyword"
+                                            },
+                                            "name": {
+                                                "type": "keyword"
+                                            },
+                                            "notes": {
+                                                "type": "text"
+                                            },
+                                            "ontology": {
+                                                "type": "keyword"
+                                            },
+                                            "organ_slims": {
+                                                "type": "keyword"
+                                            },
+                                            "release_timestamp": {
+                                                "type": "date"
+                                            },
+                                            "schema_version": {
+                                                "type": "keyword"
+                                            },
+                                            "status": {
+                                                "type": "keyword"
+                                            },
+                                            "submitted_by": {
+                                                "type": "keyword"
+                                            },
+                                            "submitter_comment": {
+                                                "type": "keyword"
+                                            },
+                                            "summary": {
+                                                "type": "keyword"
+                                            },
+                                            "synonyms": {
+                                                "type": "keyword"
+                                            },
+                                            "system_slims": {
+                                                "type": "keyword"
+                                            },
+                                            "term_id": {
+                                                "type": "keyword"
+                                            },
+                                            "term_name": {
+                                                "type": "keyword"
+                                            },
+                                            "uuid": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "sex": {
+                                        "type": "keyword"
+                                    },
+                                    "sorted_fractions": {
+                                        "type": "keyword"
+                                    },
+                                    "sorted_from": {
+                                        "type": "keyword"
+                                    },
+                                    "sorted_from_detail": {
+                                        "type": "keyword"
+                                    },
+                                    "sources": {
+                                        "type": "keyword"
+                                    },
+                                    "starting_amount": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "starting_amount_units": {
+                                        "type": "keyword"
+                                    },
+                                    "status": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_by": {
+                                        "type": "keyword"
+                                    },
+                                    "submitter_comment": {
+                                        "type": "keyword"
+                                    },
+                                    "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "targeted_sample_term": {
+                                        "type": "keyword"
+                                    },
+                                    "taxa": {
+                                        "type": "keyword"
+                                    },
+                                    "time_post_change": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "time_post_change_units": {
+                                        "type": "keyword"
+                                    },
+                                    "time_post_library_delivery": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "time_post_library_delivery_units": {
+                                        "type": "keyword"
+                                    },
+                                    "treatments": {
+                                        "type": "keyword"
+                                    },
+                                    "upper_bound_age": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "upper_bound_age_in_hours": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "url": {
+                                        "type": "keyword"
+                                    },
+                                    "uuid": {
+                                        "type": "keyword"
+                                    },
+                                    "virtual": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "associated_phenotypes": {
                                 "properties": {

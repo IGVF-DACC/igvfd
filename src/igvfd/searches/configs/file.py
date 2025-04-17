@@ -70,6 +70,15 @@ def file():
             'integrated_in.file_set_type': {
                 'title': 'Library Type'
             },
+            'integrated_in.associated_phenotypes.term_name': {
+                'title': 'Associated Phenotype'
+            },
+            'integrated_in.small_scale_gene_list.symbol': {
+                'title': 'Construct Target Genes'
+            },
+            'integrated_in.applied_to_samples.sample_terms.term_name': {
+                'title': 'Sample Integrated In'
+            },
             'sequencing_kit': {
                 'title': 'Sequencing Kit'
             },
