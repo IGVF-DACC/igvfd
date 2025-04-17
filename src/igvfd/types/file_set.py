@@ -75,7 +75,7 @@ def get_cls_phrase(cls_set):
         cls_phrase = ' and '.join(cls_phrases)
     elif len(cls_phrases) > 2:
         cls_phrase = ', '.join(cls_phrases[:-1]) + ', and ' + cls_phrases[-1]
-    cls_phrase = f' integrating {cls_phrase}'
+    cls_phrase = f'integrating {cls_phrase}'
     return cls_phrase
 
 
@@ -235,6 +235,7 @@ class FileSet(Item):
         return paths_filtered_by_status(request, input_for)
 
     @calculated_property(
+        define=True,
         condition='samples',
         schema={
             'title': 'Construct Library Sets',
@@ -462,7 +463,8 @@ class AnalysisSet(FileSet):
         # Collect construct library set summaries and types
         if construct_library_sets:
             for construct_library_set in construct_library_sets:
-                construct_library_set_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
+                construct_library_set_object = request.embed(
+                    construct_library_set, '@@object_with_select_calculated_properties?field=summary')
                 cls_type_set.add(construct_library_set_object['file_set_type'])
                 cls_set.add(construct_library_set_object['summary'])
         cls_phrase = ''
@@ -1124,7 +1126,7 @@ class MeasurementSet(FileSet):
             assay_phrase = f'{assay}'
 
         if len(cls_set) > 0:
-            cls_phrase = get_cls_phrase(cls_set)
+            cls_phrase = f' {get_cls_phrase(cls_set)}'
 
         sentence = ''
         sentence_parts = [
