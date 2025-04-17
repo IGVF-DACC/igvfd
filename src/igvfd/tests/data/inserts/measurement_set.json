@@ -600,5 +600,22 @@
         "assay_term": "/assay-terms/OBI_0002764/",
         "preferred_assay_title": "TAP-seq",
         "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:parse_split_seq_with_barcode_replacement"
+        ],
+        "award": "1UM1HG012077-01",
+        "lab": "/labs/ali-mortazavi/",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "c0996aa6-a27d-4650-ae04-1bba94055c0d",
+        "accession": "IGVFDS0417PSPL",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0002631/",
+        "preferred_assay_title": "Parse SPLiT-seq",
+        "file_set_type": "experimental data"
     }
 ]

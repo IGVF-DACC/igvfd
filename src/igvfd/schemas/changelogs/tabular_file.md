@@ -1,8 +1,8 @@
 ## Changelog for *`tabular_file.json`*
 
-
 ### Minor changes since schema version 15
 
+* Extend `content_type` enum list to include `barcode replacement`.
 * Add calculated property `primer_design_for`.
 * Extend `file_format` enum list to include `bedpe`.
 * Extend `content_type` enum list to include `machine learning model features`.
