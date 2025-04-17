@@ -1,5 +1,10 @@
 ## Changelog for *`crispr_modification.json`*
 
+### Minor changes since schema version 4
+
+* Extend `fused_domain` enum list to include `2xVP64-2A-Puro`.
+* Extend `fused_domain` enum list to include `2xVP64-2A-Thy1.1`.
+
 ### Schema version 4
 
 * Extend `status` enum list to include `preview`.

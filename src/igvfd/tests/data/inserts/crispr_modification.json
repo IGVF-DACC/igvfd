@@ -145,5 +145,39 @@
         ],
         "product_id": "addgene:132775",
         "cas_species": "Streptococcus pyogenes (Sp)"
+    },
+    {
+        "uuid": "d160fc67-4e2f-4edf-aee5-8b779ce6b1c0",
+        "lab": "charles-gersbach",
+        "award": "1UM1HG012053-01",
+        "aliases": [
+            "igvf:crispr_fused_domain_2xVP64-2A-Puro"
+        ],
+        "cas": "dCas9",
+        "fused_domain": "2xVP64-2A-Puro",
+        "modality": "activation",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "sources": [
+            "409d724e-067e-4744-8d5b-c8f806136d80"
+        ],
+        "cas_species": "Streptococcus pyogenes (Sp)"
+    },
+    {
+        "uuid": "1e9cf402-012f-4944-b1ef-19915938dded",
+        "lab": "charles-gersbach",
+        "award": "1UM1HG012053-01",
+        "aliases": [
+            "igvf:crispr_fused_domain_2xVP64-2A-Thy1"
+        ],
+        "cas": "nCas9",
+        "fused_domain": "2xVP64-2A-Thy1.1",
+        "modality": "activation",
+        "status": "released",
+        "release_timestamp": "2025-04-06T12:34:56Z",
+        "sources": [
+            "409d724e-067e-4744-8d5b-c8f806136d80"
+        ],
+        "cas_species": "Streptococcus pyogenes (Sp)"
     }
 ]
