@@ -1057,7 +1057,7 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, assay_term, preferred_assay_title=None, samples=None, control_type=None, targeted_genes=None):
+    def summary(self, request, assay_term, preferred_assay_title=None, samples=None, control_type=None, targeted_genes=None, construct_library_sets=[]):
         assay = request.embed(assay_term)['term_name']
         modality_set = set()
         cls_set = set()
@@ -1075,12 +1075,13 @@ class MeasurementSet(FileSet):
                     modality = request.embed(modification).get('modality', '')
                     if modality:
                         modality_set.add(modality)
-            if sample_object.get('construct_library_sets'):
-                for construct_library in sample_object.get('construct_library_sets'):
-                    cls_summary = request.embed(construct_library)['summary']
-                    cls_set.add(cls_summary)
-                    cls_type = request.embed(construct_library)['file_set_type']
-                    cls_type_set.add(cls_type)
+
+        if construct_library_sets:
+            for construct_library_set in construct_library_sets:
+                construct_library_set_object = request.embed(
+                    construct_library_set, '@@object_with_select_calculated_properties?field=summary')
+                cls_type_set.add(construct_library_set_object['file_set_type'])
+                cls_set.add(construct_library_set_object['summary'])
 
         if preferred_assay_title in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
             assay = f'{assay} ({preferred_assay_title})'
