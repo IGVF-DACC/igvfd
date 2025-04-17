@@ -43,20 +43,6 @@
             "pattern": "^(?![\\s\"'])[\\S|\\s]*[^\\s\"']$",
             "type": "string"
         },
-        "definition": {
-            "title": "Definition",
-            "description": "Defintion of the term.",
-            "permission": "admin_only",
-            "type": "string",
-            "pattern": "^(?![\\s\"'])[\\S|\\s]*[^\\s\"']$"
-        },
-        "comment": {
-            "title": "Comment",
-            "description": "A comment about the term.",
-            "permission": "admin_only",
-            "type": "string",
-            "pattern": "^(?![\\s\"'])[\\S|\\s]*[^\\s\"']$"
-        },
         "deprecated_ntr_terms": {
             "title": "Deprecated NTR terms",
             "description": "A list of deprecated NTR terms previously associated with this ontology term.",
