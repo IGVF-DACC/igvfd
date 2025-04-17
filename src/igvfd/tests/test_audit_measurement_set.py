@@ -550,7 +550,40 @@ def test_audit_missing_seqspec(
     )
 
 
-def test_audit_files_associated_with_incorrect_fileset(testapp, measurement_set, measurement_set_one_onlist, sequence_file, configuration_file_seqspec):
+def test_audit_missing_seqspec(
+    testapp,
+    measurement_set,
+    sequence_file,
+    configuration_file_seqspec
+):
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_set': measurement_set['@id'],
+            'content_type': 'Nanopore reads',
+            'file_format': 'pod5'
+        }
+    )
+    testapp.patch_json(
+        configuration_file_seqspec['@id'],
+        {
+            'seqspec_of': [sequence_file['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+
+def test_audit_files_associated_with_incorrect_fileset(
+    testapp,
+    measurement_set,
+    measurement_set_multiome,
+    sequence_file,
+    configuration_file_seqspec,
+):
     # Test 1: seqfile file set != seqspec file set when not single cell (no audit)
     testapp.patch_json(
         configuration_file_seqspec['@id'],
