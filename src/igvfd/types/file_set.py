@@ -401,7 +401,8 @@ class AnalysisSet(FileSet):
                                     assay_term_object = request.embed(
                                         measurement_set_object['assay_term'], '@@object?skip_calculated=true')
                                     assay_term_name = assay_term_object.get('term_name', '')
-                                    assay_titles.add(f"{assay_term_name} ({fileset_object['preferred_assay_title']})")
+                                    assay_titles.add(
+                                        f"{assay_term_name} ({measurement_set_object['preferred_assay_title']})")
                                 else:
                                     assay_titles.add(measurement_set_object['preferred_assay_title'])
                                 if candidate_fileset not in inspected_filesets:
