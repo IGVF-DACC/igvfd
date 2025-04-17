@@ -1,6 +1,6 @@
 {
-    "hash": "ad8523e7b18790e054834f025957f445",
-    "index_name": "tabular_file_ad8523e7",
+    "hash": "b4a7f10a502e653dfd96d734bc873e50",
+    "index_name": "tabular_file_b4a7f10a",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -652,6 +652,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {
@@ -1953,6 +1956,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "primer_design_for": {
+                        "type": "keyword"
                     },
                     "quality_metrics": {
                         "type": "keyword"

@@ -559,5 +559,24 @@
         "upload_status": "validated",
         "file_set": "igvf:analysis_set_with_input",
         "controlled_access": false
+    },
+    {
+        "uuid": "7f9c3dbe-1d7f-4c3e-9e23-7b86f3f8f2d6",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "accession": "IGVFFI0001PRIM",
+        "aliases": [
+            "igvf:primer_sequences_2"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-02-01T21:29:45Z",
+        "md5sum": "b4bf7449cc02f3bd0aebe58ebabfd352",
+        "file_format": "tsv",
+        "content_type": "primer sequences",
+        "submitted_file_name": "/Users/igvf/igvf_files/primer_sequences.tsv.gz",
+        "file_size": 145360919,
+        "upload_status": "validated",
+        "file_set": "igvf:primer_design_curated_set",
+        "controlled_access": false
     }
 ]

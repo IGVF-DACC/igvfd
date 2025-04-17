@@ -1,6 +1,6 @@
 {
-    "hash": "cb01d5fd4bae9dba80da2bf103e62742",
-    "index_name": "tissue_cb01d5fd",
+    "hash": "e5340e03486a69e4e732bc16a49aecb2",
+    "index_name": "tissue_e5340e03",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1157,6 +1157,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {

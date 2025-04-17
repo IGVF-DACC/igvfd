@@ -306,6 +306,22 @@
                 "igvf_utils": "direct RNA, exome capture"
             }
         },
+        "primer_designs": {
+            "title": "Primer Designs",
+            "description": "The primer designs used in this measurement set.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Primer Design",
+                "type": "string",
+                "linkTo": "TabularFile"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:primer_designs\", \"/tabular-files/IGVFFI7587TJLC/\"]",
+                "igvf_utils": "john-doe:primer_designs, /tabular-files/IGVFFI7587TJLC/"
+            }
+        },
         "strand_specificity": {
             "title": "Strand Specificity",
             "description": "The strand-specificity of the sequencing results within Perturb-seq, scCRISPR screen, TAP-seq, and CERES-seq assays.",

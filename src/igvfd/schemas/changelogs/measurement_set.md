@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 26
 
+* Add `primer_designs`.
 * Extend `preferred_assay_title` enum list to include `10X ATAC with Scale pre-indexing`.
 * Extend `preferred_assay_title` enum list to include `10X RNA with Scale pre-indexing`.
 

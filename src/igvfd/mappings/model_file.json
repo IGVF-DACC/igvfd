@@ -1,6 +1,6 @@
 {
-    "hash": "9d2fc0f5a020b5edf98075aa9a263928",
-    "index_name": "model_file_9d2fc0f5",
+    "hash": "101f79d1fcac4a0aa36a7f3e2be5131e",
+    "index_name": "model_file_101f79d1",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -559,6 +559,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {

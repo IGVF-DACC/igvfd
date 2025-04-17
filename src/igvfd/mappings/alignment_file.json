@@ -1,6 +1,6 @@
 {
-    "hash": "b9939f6b02854b31049bb54d4f39db73",
-    "index_name": "alignment_file_b9939f6b",
+    "hash": "d3debc1ca002da60e9b89a30983d939e",
+    "index_name": "alignment_file_d3debc1c",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -556,6 +556,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {

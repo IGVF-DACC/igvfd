@@ -125,5 +125,18 @@
             "alan-boyle:model_source_curated_set"
         ],
         "description": "A curated set for data source used in training computational models, such as for SEMpl."
+    },
+    {
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "6f3c2a4f-8d65-4c57-b8e4-12e6f3e09c1f",
+        "file_set_type": "primer design",
+        "accession": "IGVFDS9480BARK",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "aliases": [
+            "igvf:primer_design_curated_set"
+        ],
+        "description": "A curated set to store primer design files."
     }
 ]

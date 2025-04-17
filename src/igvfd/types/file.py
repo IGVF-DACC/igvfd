@@ -830,7 +830,8 @@ class TabularFile(File):
         Path('cell_type_annotation', include=['@id', 'term_name', 'status'])
     ]
     rev = File.rev | {
-        'barcode_map_for': ('MultiplexedSample', 'barcode_map')
+        'barcode_map_for': ('MultiplexedSample', 'barcode_map'),
+        'primer_design_for': ('MeasurementSet', 'primer_designs')
     }
 
     set_status_up = File.set_status_up + []
@@ -885,6 +886,22 @@ class TabularFile(File):
     })
     def barcode_map_for(self, request, barcode_map_for):
         return paths_filtered_by_status(request, barcode_map_for)
+
+    @calculated_property(schema={
+        'title': 'Primer Design For',
+        'description': 'Link(s) to the MeasurementSets using this file as a primer design.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Primer Design For',
+            'type': ['string', 'object'],
+            'linkFrom': 'MeasurementSet.primer_designs',
+        },
+        'notSubmittable': True
+    })
+    def primer_design_for(self, request, primer_design_for):
+        return paths_filtered_by_status(request, primer_design_for)
 
 
 @collection(

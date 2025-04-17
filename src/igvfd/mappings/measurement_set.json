@@ -1,6 +1,6 @@
 {
-    "hash": "b023c6ba81979d641c0c43a1e55ae53d",
-    "index_name": "measurement_set_b023c6ba",
+    "hash": "dbf5be8a2bfe9605502cd6df07ac7892",
+    "index_name": "measurement_set_dbf5be8a",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -751,6 +751,9 @@
                                     "notes": {
                                         "type": "text"
                                     },
+                                    "primer_design_for": {
+                                        "type": "keyword"
+                                    },
                                     "quality_metrics": {
                                         "type": "keyword"
                                     },
@@ -861,6 +864,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {
@@ -1277,6 +1283,9 @@
                             "preferred_assay_title": {
                                 "type": "keyword"
                             },
+                            "primer_designs": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -1593,6 +1602,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "product_id": {
@@ -2062,6 +2074,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "primer_design_for": {
+                                "type": "keyword"
+                            },
                             "principal_dimension": {
                                 "type": "keyword"
                             },
@@ -2399,6 +2414,9 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
+                    "primer_designs": {
+                        "type": "keyword"
+                    },
                     "protocols": {
                         "type": "keyword"
                     },
@@ -2637,6 +2655,9 @@
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
+                                "type": "keyword"
+                            },
+                            "primer_designs": {
                                 "type": "keyword"
                             },
                             "protocols": {
