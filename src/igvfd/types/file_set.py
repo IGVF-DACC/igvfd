@@ -63,6 +63,7 @@ def get_assessed_gene_phrase(request, assessed_genes=None):
 
 
 def get_cls_phrase(cls_set):
+    cls_set = sorted(cls_set)
     cls_phrases = []
     for summary in cls_set:
         article = 'a'
