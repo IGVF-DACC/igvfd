@@ -842,7 +842,7 @@ class MultiplexedSample(Sample):
         Path('multiplexed_samples.donors', include=['@id', 'accession', 'status']),
     ]
     audit_inherit = Biosample.audit_inherit + [
-        'samples'
+        'multiplexed_samples'
     ]
     set_status_up = Biosample.set_status_up + [
         'multiplexed_samples'
