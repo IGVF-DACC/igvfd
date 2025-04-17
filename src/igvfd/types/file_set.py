@@ -1411,6 +1411,7 @@ class ConstructLibrarySet(FileSet):
         'lab',
         'files',
         'documents',
+        'integrated_content_files'
     ]
 
     rev = FileSet.rev | {'applied_to_samples': ('Sample', 'construct_library_sets')}
