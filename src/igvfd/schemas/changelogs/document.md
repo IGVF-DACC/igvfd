@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 4
 
-* Extend `document_type` enum list to include `generic seqspec`.
+* Extend `document_type` enum list to include `library structure seqspec`.
 * Extend `status` enum list to include `preview`.
 * Extend `document_type` enum list to include `quality control report`.
 * Extend `document_type` enum list to include `model source data`.

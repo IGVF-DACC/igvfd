@@ -256,8 +256,8 @@
         "aliases": [
             "igvf:generic_seqspec_insert"
         ],
-        "description": "Generic seqspec.",
-        "attachment": "Treg-CRISPRi-GITR-methods.pdf",
+        "description": "library structure seqspec.",
+        "attachment": "generic_seqspec.yaml",
         "award": "HG012012",
         "document_type": "generic seqspec",
         "lab": "j-michael-cherry",

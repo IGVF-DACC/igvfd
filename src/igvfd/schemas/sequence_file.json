@@ -225,7 +225,7 @@
         },
         "seqspec_document": {
             "title": "Seqspec Document",
-            "description": "A generic seqspec document describing the library and read structure.",
+            "description": "A seqspec document describing the library and read structure.",
             "type": "string",
             "linkTo": "Document",
             "submissionExample": {
