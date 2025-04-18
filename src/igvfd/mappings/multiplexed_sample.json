@@ -1,6 +1,6 @@
 {
-    "hash": "5208300012fc7c8ce58e8a115400b3a8",
-    "index_name": "multiplexed_sample_52083000",
+    "hash": "841ed7f164bd296d061e366d2f8f04a1",
+    "index_name": "multiplexed_sample_841ed7f1",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -957,6 +957,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {

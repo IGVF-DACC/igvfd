@@ -1,6 +1,6 @@
 {
-    "hash": "b94b0079164c53ec9b849910ec272639",
-    "index_name": "sequence_file_b94b0079",
+    "hash": "9fe1c855be96c4b153810dd1f6fcacfe",
+    "index_name": "sequence_file_9fe1c855",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -428,6 +428,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {

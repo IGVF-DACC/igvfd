@@ -1,6 +1,6 @@
 {
-    "hash": "ddab1d720f60adb3225625037aacbb3c",
-    "index_name": "model_set_ddab1d72",
+    "hash": "751e3c34b92760b05e1039fc2a73c318",
+    "index_name": "model_set_751e3c34",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -447,6 +447,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -950,6 +953,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1714,6 +1720,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {
