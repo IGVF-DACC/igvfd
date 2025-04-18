@@ -62,7 +62,15 @@
     "dependentSchemas": {
         "$merge": [
             "file.json#/dependentSchemas"
-        ]
+        ],
+        "base_modifications": {
+            "comment": "Only methylated reads can specify base modifications.",
+            "properties": {
+                "content_type": {
+                    "const": "methylated reads"
+                }
+            }
+        }
     },
     "type": "object",
     "properties": {
@@ -114,6 +122,9 @@
         },
         "assembly": {
             "description": "Genome assembly applicable for the annotation data."
+        },
+        "base_modifications": {
+            "$merge": "sequence_file.json#/properties/base_modifications"
         }
     },
     "fuzzy_searchable_fields": [
