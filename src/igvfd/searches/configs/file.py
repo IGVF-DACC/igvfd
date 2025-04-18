@@ -25,6 +25,10 @@ def file():
             'controlled_access': {
                 'title': 'Controlled Access'
             },
+            'file_size': {
+                'title': 'File Size',
+                'type': 'stats'
+            },
             'sequencing_platform.term_name': {
                 'title': 'Sequencing Platform'
             },
@@ -106,65 +110,5 @@ def file():
             'externally_hosted': {
                 'title': 'Externally Hosted'
             }
-        },
-        'facet_groups': [
-            {
-                'title': 'File Details',
-                'facet_fields': [
-                    'content_type',
-                    'file_format',
-                    'file_format_type',
-                    'assembly',
-                    'transcriptome_annotation',
-                    'controlled_access',
-                    'sequencing_platform.term_name',
-                    'workflow.name',
-                    'workflow.uniform_pipeline',
-                ],
-            },
-            {
-                'title': 'File Set',
-                'facet_fields': [
-                    'file_set.file_set_type',
-                    'assay_titles',
-                    'file_set.assay_term.term_name'
-                    'cell_type_annotation.term_name',
-                    'integrated_in.file_set_type',
-                ],
-            },
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'file_set.samples.taxa',
-                    'file_set.samples.classifications',
-                    'file_set.samples.sample_terms.term_name',
-                    'file_set.samples.targeted_sample_term.term_name',
-                    'file_set.samples.disease_terms.term_name',
-                    'file_set.samples.modifications.modality',
-                    'file_set.samples.treatments.treatment_term_name',
-                    'sequencing_kit',
-                ],
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'lab.title',
-                    'award.component',
-                    'type',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'upload_status',
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                    'externally_hosted',
-                ],
-            },
-        ]
+        }
     }
