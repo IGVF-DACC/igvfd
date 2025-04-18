@@ -230,5 +230,30 @@
         "secondary_dimensions": [
             "gene"
         ]
+    },
+    {
+        "uuid": "b8f82b21-b5db-4af7-8cee-a7f831d07285",
+        "accession": "IGVFFI1234KBFI",
+        "lab": "igvf-dacc-processing-pipeline",
+        "award": "HG012012",
+        "aliases": [
+            "igvf-dacc-processing-pipeline:uniform_pipeline_data"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "7d7f65fbaab98eef94c98423d2b3e84b",
+        "file_format": "tar",
+        "content_type": "comprehensive gene count matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/matrix_file_kb_output_2.tar.gz",
+        "file_size": 5200010,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
+            "gene"
+        ]
     }
 ]

@@ -1,5 +1,13 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 18
+
+* Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
+* Update `aliases` regex to add `steven-gazal` as a namespace.
+* Update `aliases` regex to add `katie-pollard` as a namespace.
+* Update `aliases` regex to add `kushal-dey` as a namespace.
+* Update `aliases` regex to add `stephen-yi` as a namespace.
+
 ### Schema version 18
 
 * Reduce `content_type` enum list to exclude `sequence barcodes`.

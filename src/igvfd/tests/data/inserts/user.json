@@ -1822,5 +1822,35 @@
         ],
         "status": "current",
         "uuid": "82c1a7c4-3cb1-4f30-9498-8430881a1c0a"
+    },
+    {
+        "email": "song.stephen.yi@gmail.com",
+        "first_name": "Stephen",
+        "last_name": "Yi",
+        "lab": "/labs/stephen-yi/",
+        "job_title": "Principal Investigator",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/stephen-yi/"
+        ],
+        "status": "current",
+        "uuid": "8b230044-3dbc-4640-8896-4a9686ec2228"
+    },
+    {
+        "email": "igvf-dacc@gowustl.onmicrosoft.com",
+        "first_name": "IGVF",
+        "last_name": "Consortium",
+        "lab": "/labs/igvf-dacc-processing-pipeline/",
+        "job_title": "Principal Investigator",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/igvf-dacc-processing-pipeline/"
+        ],
+        "status": "current",
+        "uuid": "273ad438-f963-4327-b37b-26efbb1f8cd7"
     }
 ]

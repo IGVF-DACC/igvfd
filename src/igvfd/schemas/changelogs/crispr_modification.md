@@ -2,6 +2,11 @@
 
 ### Minor changes since schema version 4
 
+* Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
+* Update `aliases` regex to add `steven-gazal` as a namespace.
+* Update `aliases` regex to add `katie-pollard` as a namespace.
+* Update `aliases` regex to add `kushal-dey` as a namespace.
+* Update `aliases` regex to add `stephen-yi` as a namespace.
 * Extend `fused_domain` enum list to include `2xVP64-2A-Puro`.
 * Extend `fused_domain` enum list to include `2xVP64-2A-Thy1.1`.
 
