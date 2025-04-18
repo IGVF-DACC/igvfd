@@ -785,7 +785,7 @@ class AnalysisSet(FileSet):
             # into the terms_by_classification before this. Therefore we don't
             # want to append it to the terms_by_classification a second time.
             elif not any(x in terms_by_classification for x in [
-                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen']
+                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen', 'primary cell']
             ):
                 # Insert the classification before the targeted_sample_term if it exists.
                 if 'induced to' in terms_by_classification:
@@ -795,7 +795,7 @@ class AnalysisSet(FileSet):
                 else:
                     terms_by_classification = f'{terms_by_classification} {classification}'
             elif any(x in terms_by_classification for x in [
-                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen']
+                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen', 'primary cell']
             ):
                 # Don't add anything when the classification was already in
                 # the terms_by_classification.
