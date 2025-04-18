@@ -530,17 +530,11 @@ def test_audit_missing_seqspec(
     )
 
 
-def test_audit_files_associated_with_incorrect_fileset(
-    testapp,
-    measurement_set,
-    measurement_set_multiome,
-    sequence_file,
-    configuration_file_seqspec,
-):
+def test_audit_files_associated_with_incorrect_fileset(testapp, measurement_set, measurement_set_one_onlist, sequence_file, configuration_file_seqspec):
+    # Test 1: seqfile file set != seqspec file set when not single cell (no audit)
     testapp.patch_json(
         configuration_file_seqspec['@id'],
         {
-            'file_set': measurement_set['@id'],
             'seqspec_of': [sequence_file['@id']]
         }
     )
@@ -549,6 +543,8 @@ def test_audit_files_associated_with_incorrect_fileset(
         error['category'] == 'missing related files'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+    # Test 2: seqfile file set == seqspec file set when not single cell (no audit)
     testapp.patch_json(
         sequence_file['@id'],
         {
@@ -560,24 +556,28 @@ def test_audit_files_associated_with_incorrect_fileset(
         error['category'] != 'missing related files'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+    # Test 3: seqfile file set != seqspec file set when single cell (audit)
     testapp.patch_json(
         sequence_file['@id'],
         {
-            'file_set': measurement_set_multiome['@id']
+            'file_set': measurement_set_one_onlist['@id']
         }
     )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing related files'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+    # Test 4: seqfile file set == seqspec file set when single cell (no audit)
     testapp.patch_json(
         configuration_file_seqspec['@id'],
         {
-            'file_set': measurement_set_multiome['@id']
+            'file_set': measurement_set_one_onlist['@id']
         }
     )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing related files'
         for error in res.json['audit'].get('ERROR', [])
@@ -591,18 +591,23 @@ def test_audit_inconsistent_seqspec(
     sequence_file_sequencing_run_2,
     configuration_file_seqspec,
     configuration_file_seqspec_2,
-    assay_term_scrna
+    assay_term_scrna,
+    assay_term_starr
 ):
-    # sequence files from the same sequencing run should link to the same seqspec
+    # Test 1: if the seq files from the SAME SET are linked to different seqspecs when not single cell (audit)
     testapp.patch_json(
         sequence_file['@id'],
         {
             'file_set': measurement_set['@id'],
             'illumina_read_type': 'R1',
             'sequencing_run': 1,
-            'flowcell_id': 'HJTW3BBXY',
-            'lane': 1,
-            'index': 'ACTG'
+            'lane': 1
+        }
+    )
+    testapp.patch_json(
+        configuration_file_seqspec['@id'],
+        {
+            'seqspec_of': [sequence_file['@id']]
         }
     )
     testapp.patch_json(
@@ -611,15 +616,7 @@ def test_audit_inconsistent_seqspec(
             'file_set': measurement_set['@id'],
             'illumina_read_type': 'R2',
             'sequencing_run': 1,
-            'flowcell_id': 'HJTW3BBXY',
-            'lane': 1,
-            'index': 'ACTG'
-        }
-    )
-    testapp.patch_json(
-        configuration_file_seqspec['@id'],
-        {
-            'seqspec_of': [sequence_file['@id']]
+            'lane': 1
         }
     )
     testapp.patch_json(
@@ -633,35 +630,8 @@ def test_audit_inconsistent_seqspec(
         error['category'] == 'inconsistent sequence specifications'
         for error in res.json['audit'].get('ERROR', [])
     )
-    testapp.patch_json(
-        configuration_file_seqspec['@id'],
-        {
-            'seqspec_of': [sequence_file['@id'], sequence_file_sequencing_run_2['@id']]
-        }
-    )
-    testapp.patch_json(
-        configuration_file_seqspec_2['@id'],
-        {
-            'seqspec_of': [sequence_file['@id'], sequence_file_sequencing_run_2['@id']]
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'inconsistent sequence specifications'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-    # sequence files from single cell assays with different sequencing runs should not link to the same seqspec
-    testapp.patch_json(
-        sequence_file_sequencing_run_2['@id'],
-        {
-            'sequencing_run': 2
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'inconsistent sequence specifications'
-        for error in res.json['audit'].get('ERROR', [])
-    )
+
+    # Test 2: Patch the measurement set above to be single cell (audit)
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -673,46 +643,18 @@ def test_audit_inconsistent_seqspec(
         error['category'] == 'inconsistent sequence specifications'
         for error in res.json['audit'].get('ERROR', [])
     )
-    testapp.patch_json(
-        configuration_file_seqspec_2['@id'],
-        {
-            'seqspec_of': [sequence_file_sequencing_run_2['@id']]
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'inconsistent sequence specifications'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-    # sequence files from the same index should link to the same seqspec
-    testapp.patch_json(
-        sequence_file['@id'],
-        {
-            'index': 'GATT'
-        }
-    )
-    testapp.patch_json(
-        sequence_file_sequencing_run_2['@id'],
-        {
-            'index': 'GATT',
-            'sequencing_run': 1
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'inconsistent sequence specifications'
-        for error in res.json['audit'].get('ERROR', [])
-    )
+
+    # Test 3: if seqfiles and seqspecs are correct when single cell (no audit)
     testapp.patch_json(
         configuration_file_seqspec['@id'],
         {
-            'seqspec_of': [sequence_file['@id'], sequence_file_sequencing_run_2['@id']],
+            'seqspec_of': [sequence_file['@id'], sequence_file_sequencing_run_2['@id']]
         }
     )
     testapp.patch_json(
         configuration_file_seqspec_2['@id'],
         {
-            'seqspec_of': [sequence_file['@id'], sequence_file_sequencing_run_2['@id']],
+            'seqspec_of': [sequence_file['@id'], sequence_file_sequencing_run_2['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -720,11 +662,38 @@ def test_audit_inconsistent_seqspec(
         error['category'] != 'inconsistent sequence specifications'
         for error in res.json['audit'].get('ERROR', [])
     )
-    # sequence files from different indices should not link to the same seqspec
+
+    # Test 4: Patch the Test 3 measurement set to STARRseq (no audit)
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_starr['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent sequence specifications'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+    # Test 5: seqfiles from different sets have the same seqspecs as STARRseq (no audit)
     testapp.patch_json(
         sequence_file_sequencing_run_2['@id'],
         {
-            'index': 'TACA'
+            'sequencing_run': 2
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent sequence specifications'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+    # Test 6: Patch the Test 5 measurement set to be single cell (audit)
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_scrna['@id']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
