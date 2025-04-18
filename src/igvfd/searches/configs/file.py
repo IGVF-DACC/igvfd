@@ -26,7 +26,7 @@ def file():
                 'title': 'Controlled Access'
             },
             'file_size': {
-                'title': 'File Size (Bytes)',
+                'title': 'File Size',
                 'type': 'stats'
             },
             'sequencing_platform.term_name': {

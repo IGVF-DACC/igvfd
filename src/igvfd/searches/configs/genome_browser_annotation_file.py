@@ -26,7 +26,7 @@ def genome_browser_annotation_file():
                 'title': 'Transcriptome Annotation'
             },
             'file_size': {
-                'title': 'File Size (Bytes)',
+                'title': 'File Size',
                 'type': 'stats'
             },
             'file_set.file_set_type': {

@@ -32,7 +32,7 @@ def signal_file():
                 'title': 'Annotated Cell Type'
             },
             'file_size': {
-                'title': 'File Size (Bytes)',
+                'title': 'File Size',
                 'type': 'stats'
             },
             'file_set.file_set_type': {

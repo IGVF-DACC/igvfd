@@ -17,7 +17,7 @@ def model_file():
                 'title': 'Controlled Access'
             },
             'file_size': {
-                'title': 'File Size (Bytes)',
+                'title': 'File Size',
                 'type': 'stats'
             },
             'file_set.file_set_type': {
