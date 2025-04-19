@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Add `standardized_file_format`.
 * Extend `status` enum list to include `preview`.
 * Extend `document_type` enum list to include `quality control report`.
 * Extend `document_type` enum list to include `model source data`.

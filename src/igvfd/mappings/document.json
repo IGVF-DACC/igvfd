@@ -1,6 +1,6 @@
 {
-    "hash": "f5f0dce511f96b0949f369d7b2a08af6",
-    "index_name": "document_f5f0dce5",
+    "hash": "3d9648aa69a8334d887f0c64966b3c81",
+    "index_name": "document_3d9648aa",
     "item_type": "document",
     "mapping": {
         "dynamic_templates": [
@@ -335,6 +335,10 @@
                     },
                     "schema_version": {
                         "type": "keyword"
+                    },
+                    "standardized_file_format": {
+                        "store": true,
+                        "type": "boolean"
                     },
                     "status": {
                         "type": "keyword"

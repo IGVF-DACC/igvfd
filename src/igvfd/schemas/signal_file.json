@@ -177,6 +177,7 @@
         "cell_type_annotation.term_name",
         "content_type",
         "description",
+        "file_format_specifications.description",
         "file_set.samples.summary",
         "file_set.summary",
         "lab.title",
