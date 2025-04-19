@@ -439,7 +439,7 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "standardized": {
+                            "standardized_file_format": {
                                 "store": true,
                                 "type": "boolean"
                             },

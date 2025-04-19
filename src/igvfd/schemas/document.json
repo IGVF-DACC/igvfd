@@ -65,11 +65,11 @@
                 }
             ]
         },
-        "standardized": {
-            "comment": "If standardized is true, the document_type must be file format specification",
+        "standardized_file_format": {
+            "comment": "If standardized_file_format is true, the document_type must be file format specification",
             "if": {
                 "properties": {
-                    "standardized": {
+                    "standardized_file_format": {
                         "const": true
                     }
                 }
@@ -149,7 +149,7 @@
                 "igvf_utils": "https://www.addgene.org/search/catalog/plasmids/?q=cas9"
             }
         },
-        "standardized": {
+        "standardized_file_format": {
             "title": "Standardized File Format",
             "description": "Specifies whether this format is an IGVF-standardized file format defined by Focus Groups or produced by a uniform pipeline.",
             "type": "boolean",
