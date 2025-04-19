@@ -114,17 +114,12 @@ def audit_file_no_file_format_specifications(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('IndexFile', frame='object')
-@audit_checker('AlignmentFile', frame='object')
-@audit_checker('TabularFile', frame='object')
-@audit_checker('ReferenceFile', frame='object')
-@audit_checker('ModelFile', frame='object')
-@audit_checker('SequenceFile', frame='object')
+@audit_checker('File', frame='object')
 def audit_file_missing_anvil_url(value, system):
     '''
     [
         {
-            "audit_description": "Released and archived files that are restricted access are expected to be loaded in anvil.",
+            "audit_description": "Released and archived files that hosted in restricted access file sets are expected to be loaded in anvil.",
             "audit_category": "missing anvil url",
             "audit_level": "INTERNAL_ACTION"
         }
@@ -132,12 +127,12 @@ def audit_file_missing_anvil_url(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message = get_audit_message(audit_file_missing_anvil_url, index=0)
-    if value.get('status') in ['released', 'archived'] and value.get('controlled_access', False) and not value.get('anvil_url'):
+    if value.get('status') in ['released', 'archived'] and not value.get('anvil_url'):
         file_set_object = system.get('request').embed(
-            value.get('file_set'), '@@object_with_select_calculated_properties?field=data_use_limitation_summaries')
-        if file_set_object.get('status') in ['released', 'archived']:
-            data_use_limitation_summaries = file_set_object.get('data_use_limitation_summaries', '')
-            if data_use_limitation_summaries and data_use_limitation_summaries != ['no certificate']:
+            value.get('file_set'), '@@object_with_select_calculated_properties?field=controlled_access&field=data_use_limitation_summaries')
+        if file_set_object.get('status') in ['released', 'archived'] and file_set_object.get('controlled_access', False):
+            data_use_limitation_summaries = file_set_object.get('data_use_limitation_summaries', [])
+            if data_use_limitation_summaries and data_use_limitation_summaries not in [['No limitations'], ['no certificate']]:
                 data_use_limitation_summaries = ', '.join(data_use_limitation_summaries)
                 detail = (
                     f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
