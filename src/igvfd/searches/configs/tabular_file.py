@@ -83,6 +83,9 @@ def tabular_file():
             'workflow.uniform_pipeline': {
                 'title': 'Uniformly Processed'
             },
+            'file_format_specifications.standardized': {
+                'title': 'Standardized Format'
+            },
             'integrated_in.file_set_type': {
                 'title': 'Library Type'
             },
