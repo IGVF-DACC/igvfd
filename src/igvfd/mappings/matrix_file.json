@@ -1,6 +1,6 @@
 {
-    "hash": "75cfc164353f9a3f60f5d421db2f5e80",
-    "index_name": "matrix_file_75cfc164",
+    "hash": "54d4d6f3ac9390bef77805d7804bf134",
+    "index_name": "matrix_file_54d4d6f3",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -345,7 +345,7 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "standardized": {
+                            "standardized_file_format": {
                                 "store": true,
                                 "type": "boolean"
                             },

@@ -1,6 +1,6 @@
 {
-    "hash": "907e691d103675c3a24fac54b49b8adb",
-    "index_name": "reference_file_907e691d",
+    "hash": "cea9aad854db8218bb296773ae7370f1",
+    "index_name": "reference_file_cea9aad8",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -360,7 +360,7 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "standardized": {
+                            "standardized_file_format": {
                                 "store": true,
                                 "type": "boolean"
                             },

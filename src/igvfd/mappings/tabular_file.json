@@ -1,6 +1,6 @@
 {
-    "hash": "91d1824d4c28114508cb6cf18ba1775b",
-    "index_name": "tabular_file_91d1824d",
+    "hash": "c43a1afc3e843a53b8f1684cae4a60e5",
+    "index_name": "tabular_file_c43a1afc",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -449,7 +449,7 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "standardized": {
+                            "standardized_file_format": {
                                 "store": true,
                                 "type": "boolean"
                             },

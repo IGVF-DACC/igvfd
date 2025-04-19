@@ -1,6 +1,6 @@
 {
-    "hash": "68cdde28b4fe5bdbbc275564d36d5ddb",
-    "index_name": "sequence_file_68cdde28",
+    "hash": "41eb2db644f5ec6d16809293d6e597ff",
+    "index_name": "sequence_file_41eb2db6",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -359,7 +359,7 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "standardized": {
+                            "standardized_file_format": {
                                 "store": true,
                                 "type": "boolean"
                             },

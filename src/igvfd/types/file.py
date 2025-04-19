@@ -155,7 +155,7 @@ class File(Item):
         Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol', 'status']),
         Path('workflow', include=['@id', 'uniform_pipeline', 'name']),
         Path('file_set.assay_term', include=['@id', 'term_name']),
-        Path('file_format_specifications', include=['@id', 'description', 'standardized'])
+        Path('file_format_specifications', include=['@id', 'description', 'standardized_file_format'])
     ]
     rev = {
         'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),
