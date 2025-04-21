@@ -1,5 +1,13 @@
 ## Changelog for *`gene.json`*
 
+### Minor changes since schema version 9
+
+* Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
+* Update `aliases` regex to add `steven-gazal` as a namespace.
+* Update `aliases` regex to add `katie-pollard` as a namespace.
+* Update `aliases` regex to add `kushal-dey` as a namespace.
+* Update `aliases` regex to add `stephen-yi` as a namespace.
+
 ### Schema version 9
 
 * Adjust `transcriptome_annotation` enum list to replace `GENCODE 28, GENCODE M17` with `GENCODE 32, GENCODE M23`.
