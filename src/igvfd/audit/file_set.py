@@ -109,6 +109,8 @@ def audit_missing_seqspec(value, system):
         for file in value['files']:
             if file.startswith('/sequence-files/'):
                 sequence_file_object = system.get('request').embed(file)
+                if sequence_file_object.get('file_format') == 'pod5':
+                    continue
                 if not sequence_file_object.get('seqspecs'):
                     no_seqspec.append(file)
         if no_seqspec:
@@ -121,6 +123,39 @@ def audit_missing_seqspec(value, system):
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file(s): '
                 f'{no_seqspec} which do not have any `seqspecs`.'
+            )
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+@audit_checker('MeasurementSet', frame='object')
+@audit_checker('AuxiliarySet', frame='object')
+@audit_checker('ConstructLibrarySet', frame='object')
+def audit_unexpected_seqspec(value, system):
+    '''
+    [
+        {
+            "audit_description": "Pod5 sequence files in a file set should not be linked to a sequence specification file.",
+            "audit_category": "unexpected sequence specification",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message = get_audit_message(audit_unexpected_seqspec)
+    if 'files' in value:
+        has_seqspec = []
+        for file in value['files']:
+            if file.startswith('/sequence-files/'):
+                sequence_file_object = system.get('request').embed(file)
+                if sequence_file_object.get('file_format') == 'pod5' and sequence_file_object.get('seqspecs'):
+                    has_seqspec.append(file)
+
+        if has_seqspec:
+            has_seqspec = ', '.join([audit_link(path_to_text(file_with_seqspec), file_with_seqspec)
+                                     for file_with_seqspec in has_seqspec])
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has pod5 sequence file(s): '
+                f'{has_seqspec} which are linked to a seqspec.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 

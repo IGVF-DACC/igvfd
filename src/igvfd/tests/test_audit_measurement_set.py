@@ -502,6 +502,26 @@ def test_audit_missing_seqspec(
         error['category'] == 'missing sequence specification'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
+    # pod5 files should not trigger the missing seqspec audit.
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_format': 'pod5',
+            'content_type': 'Nanopore reads'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_format': 'fastq',
+            'content_type': 'reads'
+        }
+    )
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -527,6 +547,33 @@ def test_audit_missing_seqspec(
     assert all(
         error['category'] != 'missing sequence specification'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+
+
+def test_audit_unexpected_seqspec(
+    testapp,
+    measurement_set,
+    sequence_file,
+    configuration_file_seqspec
+):
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_set': measurement_set['@id'],
+            'content_type': 'Nanopore reads',
+            'file_format': 'pod5'
+        }
+    )
+    testapp.patch_json(
+        configuration_file_seqspec['@id'],
+        {
+            'seqspec_of': [sequence_file['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
 
