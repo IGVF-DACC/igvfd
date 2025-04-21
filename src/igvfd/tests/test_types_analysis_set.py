@@ -117,7 +117,7 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
     assert set(res.json.get('assay_titles')) == {'lentiMPRA'}
 
 
-def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_no_files, measurement_set_mpra, measurement_set_multiome, principal_analysis_set, tabular_file, gene_myc_hs, assay_term_atac, assay_term_crispr, primary_cell, crispr_modification, construct_library_set_reporter, analysis_set_with_CLS_input):
+def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_no_files, measurement_set_mpra, measurement_set_multiome, principal_analysis_set, tabular_file, gene_myc_hs, assay_term_atac, assay_term_crispr, primary_cell, crispr_modification, construct_library_set_reporter, analysis_set_with_CLS_input, tissue, base_expression_construct_library_set):
     # With no input_file_sets and no files present, summary is based on analysis file_set_type only.
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get('summary', '') == 'Unspecified assay'
@@ -229,6 +229,23 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_with_CLS_input['@id']).json
     assert res.get('summary', '') == 'ATAC-seq (10x multiome)'
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'construct_library_sets': [construct_library_set_reporter['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_with_CLS_input['@id']).json
+    assert res.get(
+        'summary', '') == 'ATAC-seq (10x multiome) integrating a reporter library targeting accessible genome regions genome-wide'
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'construct_library_sets': [construct_library_set_reporter['@id'], base_expression_construct_library_set['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_with_CLS_input['@id']).json
+    assert res.get('summary', '') == 'ATAC-seq (10x multiome) integrating an expression vector library of exon E3 of MYC and a reporter library targeting accessible genome regions genome-wide'
 
 
 def test_protocols(testapp, analysis_set_base, measurement_set_with_protocols):
