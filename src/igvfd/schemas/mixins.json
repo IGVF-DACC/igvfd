@@ -281,8 +281,7 @@
                         "text/autosql",
                         "text/html",
                         "text/plain",
-                        "text/tab-separated-values",
-                        "text/yaml"
+                        "text/tab-separated-values"
                     ]
                 },
                 "md5sum": {
