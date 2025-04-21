@@ -160,7 +160,9 @@ def audit_unexpected_seqspec(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('FileSet', frame='object')
+@audit_checker('MeasurementSet', frame='object')
+@audit_checker('AuxiliarySet', frame='object')
+@audit_checker('ConstructLibrarySet', frame='object')
 def audit_files_associated_with_incorrect_fileset(value, system):
     '''
     [

@@ -577,13 +577,7 @@ def test_audit_missing_seqspec(
     )
 
 
-def test_audit_files_associated_with_incorrect_fileset(
-    testapp,
-    measurement_set,
-    measurement_set_multiome,
-    sequence_file,
-    configuration_file_seqspec,
-):
+def test_audit_files_associated_with_incorrect_fileset(testapp, measurement_set, measurement_set_one_onlist, sequence_file, configuration_file_seqspec):
     # Test 1: seqfile file set != seqspec file set when not single cell (no audit)
     testapp.patch_json(
         configuration_file_seqspec['@id'],
