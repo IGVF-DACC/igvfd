@@ -1356,34 +1356,33 @@ def test_audit_unexpected_onlist_files(testapp, measurement_set_one_onlist, tabu
     )
 
 
-def test_audit_missing_strand_specificity(testapp, measurement_set_perturb_seq, assay_term_scrna):
-    # Check if the Perturb-seq measurement set with no strand_specificity is audited
-    res = testapp.get(measurement_set_perturb_seq['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing strand specificity'
+def test_audit_missing_strand_specificity(testapp, measurement_set, assay_term_scrna):
+    # Check if non-gene expr measurement set with no strand_specificity is audited (no audit)
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing strand specificity'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
-    # Check if the single-cell RNA-seq measurement set with no strand_specificity is audited
+    # Check if the single-cell RNA-seq measurement set with no strand_specificity is audited (yes audit)
     testapp.patch_json(
-        measurement_set_perturb_seq['@id'],
+        measurement_set['@id'],
         {
             'assay_term': assay_term_scrna['@id']
         }
     )
-    res = testapp.get(measurement_set_perturb_seq['@id'] + '@@audit')
+    res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing strand specificity'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
-    # Patch the measurement set to include strand_specificity
+    # Check if gene expression measurement set with strand info gets audited (no audit)
     testapp.patch_json(
-        measurement_set_perturb_seq['@id'],
+        measurement_set['@id'],
         {
             'strand_specificity': '5 prime to 3 prime'
         }
     )
-    # Ensure the audit no longer triggers after adding strand_specificity
-    res = testapp.get(measurement_set_perturb_seq['@id'] + '@@audit')
+    res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing strand specificity'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
