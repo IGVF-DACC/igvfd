@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_audit_missing_analysis_step_version_model_set(
+def test_audit_missing_analysis_step_version_prediction_set(
     testapp,
     base_prediction_set,
     matrix_file,
