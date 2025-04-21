@@ -72,7 +72,7 @@ class OntologyTerm(Item):
         }
     )
     def definition(self, registry, term_id):
-        return self._get_ontology_strin(registry, term_id, 'definition')
+        return self._get_ontology_string(registry, term_id, 'definition')
 
     @calculated_property(
         condition='term_id',
@@ -89,7 +89,7 @@ class OntologyTerm(Item):
         }
     )
     def comment(self, registry, term_id):
-        return self._get_ontology_slims(registry, term_id, 'synonyms')
+        return self._get_ontology_slims(registry, term_id, 'comment')
 
     @calculated_property(
         condition='term_id',
