@@ -107,6 +107,7 @@
                 "snRNA-seq",
                 "scNT-seq",
                 "scNT-seq2",
+                "scMultiome-NT-seq",
                 "Parse SPLiT-seq",
                 "ATAC-seq",
                 "varACCESS",
