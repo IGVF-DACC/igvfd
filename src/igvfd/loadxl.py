@@ -442,7 +442,6 @@ def attachment(path):
     from PIL import Image
     from base64 import b64encode
 
-    mimetypes.add_type('text/plain', '.yaml')
     filename = os.path.basename(path)
     mime_type, encoding = mimetypes.guess_type(path)
     if encoding == 'gzip':
