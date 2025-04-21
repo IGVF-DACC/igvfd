@@ -13,7 +13,7 @@ def document():
             'characterization_method': {
                 'title': 'Characterization Method'
             },
-            'standardized': {
+            'standardized_file_format': {
                 'title': 'Standardized File Format'
             },
             'lab.title': {
