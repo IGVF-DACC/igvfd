@@ -589,15 +589,9 @@ class AnalysisSet(FileSet):
                         if preferred_assay_title:
                             assay_titles.add(preferred_assay_title)
                 elif 'ConstructLibrarySet' in file_set_object.get('@type') and only_construct_library_sets:
-                    for sample in file_set_object.get('applied_to_samples', []):
-                        sample_object = request.embed(
-                            sample, '@@object_with_select_calculated_properties?field=file_sets')
-                        for file_set in sample_object.get('file_sets', []):
-                            file_set_object = request.embed(
-                                file_set, '@@object_with_select_calculated_properties?field=preferred_assay_title')
-                            preferred_assay_title = file_set_object.get('preferred_assay_title')
-                            if preferred_assay_title:
-                                assay_titles.add(preferred_assay_title)
+                    input_CLS_assay_titles = set(file_set_object.get('assay_titles', []))
+                    if input_CLS_assay_titles:
+                        assay_titles = assay_titles | input_CLS_assay_titles
             return list(assay_titles)
 
     @calculated_property(
@@ -1469,21 +1463,53 @@ class ConstructLibrarySet(FileSet):
     set_status_up = FileSet.set_status_up + []
     set_status_down = FileSet.set_status_down + []
 
-    @calculated_property(schema={
-        'title': 'Applied to Samples',
-        'description': 'The samples that link to this construct library set.',
-        'type': 'array',
-        'minItems': 1,
-        'uniqueItems': True,
-        'items': {
-            'title': 'Applied to Sample',
-            'type': ['string', 'object'],
-            'linkFrom': 'Sample.construct_library_sets',
-        },
-        'notSubmittable': True
-    })
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Applied to Samples',
+            'description': 'The samples that link to this construct library set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Applied to Sample',
+                'type': ['string', 'object'],
+                'linkFrom': 'Sample.construct_library_sets',
+            },
+            'notSubmittable': True
+        })
     def applied_to_samples(self, request, applied_to_samples):
         return paths_filtered_by_status(request, applied_to_samples)
+
+    @calculated_property(
+        define=True,
+        condition='applied_to_samples',
+        schema={
+            'title': 'Assay Titles',
+            'description': 'Title(s) of assay that produced data this construct library set was used in.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Assay Title',
+                'description': 'Title of assay that produced data this construct library set was used in.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def assay_titles(self, request, applied_to_samples=[]):
+        assay_titles = set()
+        for sample in applied_to_samples:
+            sample_object = request.embed(
+                sample, '@@object_with_select_calculated_properties?field=file_sets')
+            for file_set in sample_object.get('file_sets', []):
+                file_set_object = request.embed(
+                    file_set, '@@object_with_select_calculated_properties?field=preferred_assay_title')
+                preferred_assay_title = file_set_object.get('preferred_assay_title')
+                if preferred_assay_title:
+                    assay_titles.add(preferred_assay_title)
+        return list(assay_titles)
 
     @calculated_property(
         schema={
@@ -1493,7 +1519,8 @@ class ConstructLibrarySet(FileSet):
         }
     )
     def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, large_scale_gene_list=None, guide_type=None,
-                small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, orf_list=None, associated_phenotypes=None, control_type=None, targeton=None):
+                small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, orf_list=None, associated_phenotypes=None,
+                control_type=None, targeton=None, assay_titles=None, integrated_content_files=None):
         library_type = file_set_type
         target_phrase = ''
         pheno_terms = []
@@ -1569,6 +1596,12 @@ class ConstructLibrarySet(FileSet):
                 pheno_phrase = f' associated with {phenos}'
             else:
                 pheno_phrase = f' associated with {len(pheno_terms)} phenotypes'
+
+        # special case for SUPERSTARR libraries
+        if assay_titles and 'SUPERSTARR' in assay_titles:
+            for integrated_content_file in integrated_content_files:
+                integrated_content_file_object = request.embed(integrated_content_file, '@@object?skip_calculated=true')
+                integrated_content_file_object.get('content_type')
 
         if file_set_type == 'expression vector library':
             if 'genes' in criteria:
