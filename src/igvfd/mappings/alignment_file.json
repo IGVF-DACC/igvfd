@@ -1,6 +1,6 @@
 {
-    "hash": "485fc233d1abdeb4c46aeed7d7e80e12",
-    "index_name": "alignment_file_485fc233",
+    "hash": "d362acd1b9327dd29ffff321a0a96a50",
+    "index_name": "alignment_file_d362acd1",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -242,6 +242,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "base_modifications": {
+                        "type": "keyword"
                     },
                     "checkfiles_version": {
                         "type": "keyword"
