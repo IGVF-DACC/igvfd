@@ -36,7 +36,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "11"
+            "default": "12"
         },
         "term_id": {
             "@type": "@id",

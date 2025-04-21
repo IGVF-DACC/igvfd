@@ -1,5 +1,12 @@
 ## Changelog for *`platform_term.json`*
 
+### Schema version 4
+
+* Add calculated `comment`.
+* Add calculated `definition`.
+* Remove `comment`.
+* Remove `definition`.
+
 ### Minor changes since schema version 4
 
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.

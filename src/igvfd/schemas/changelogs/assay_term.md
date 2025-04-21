@@ -1,5 +1,12 @@
 ## Changelog for *`assay_term.json`*
 
+### Schema version 12
+
+* Add calculated `comment`.
+* Add calculated `definition`.
+* Remove `comment`.
+* Remove `definition`.
+
 ### Minor changes since schema version 11
 
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
