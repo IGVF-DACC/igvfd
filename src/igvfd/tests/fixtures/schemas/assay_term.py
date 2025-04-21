@@ -224,3 +224,14 @@ def assay_term_v10(assay_term_crispr):
         'preferred_assay_titles': ['Growth CRISPR screen']
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v11(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '11',
+        'definition': 'test definition',
+        'comment': 'test comment'
+    })
+    return item
