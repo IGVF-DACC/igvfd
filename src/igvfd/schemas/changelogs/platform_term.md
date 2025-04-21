@@ -1,6 +1,6 @@
 ## Changelog for *`platform_term.json`*
 
-### Schema version 4
+### Schema version 5
 
 * Add calculated `comment`.
 * Add calculated `definition`.
