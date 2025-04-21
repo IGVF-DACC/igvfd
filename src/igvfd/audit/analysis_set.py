@@ -104,36 +104,6 @@ def audit_input_file_sets_derived_from(value, system):
 
 
 @audit_checker('AnalysisSet', frame='object')
-def audit_analysis_set_files_missing_analysis_step_version(value, system):
-    '''
-    [
-        {
-            "audit_description": "Analysis set files are expected to specify analysis step version.",
-            "audit_category": "missing analysis step version",
-            "audit_level": "NOT_COMPLIANT"
-        }
-    ]
-    '''
-    audit_message_missing_step_version = get_audit_message(
-        audit_analysis_set_files_missing_analysis_step_version, index=0)
-    files = value.get('files')
-    files_with_missing_asv = []
-    for file in files:
-        file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
-        if file_object.get('derived_manually', ''):
-            continue
-        if not (file_object.get('analysis_step_version', '')):
-            files_with_missing_asv.append(file)
-    if files_with_missing_asv:
-        files_with_missing_asv = ', '.join([audit_link(path_to_text(file), file) for file in files_with_missing_asv])
-        detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'links to file(s) {files_with_missing_asv} that are missing `analysis_step_version`.'
-        )
-        yield AuditFailure(audit_message_missing_step_version.get('audit_category', ''), f'{detail} {audit_message_missing_step_version.get("audit_description", "")}', level=audit_message_missing_step_version.get('audit_level', ''))
-
-
-@audit_checker('AnalysisSet', frame='object')
 def audit_analysis_set_multiple_workflows(value, system):
     '''
     [

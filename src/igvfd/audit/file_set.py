@@ -825,3 +825,36 @@ def audit_file_set_missing_publication(value, system):
             f'has no `publications`.'
         )
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+@audit_checker('AnalysisSet', frame='object')
+@audit_checker('ModelSet', frame='object')
+@audit_checker('PredictionSet', frame='object')
+def audit_file_set_files_missing_analysis_step_version(value, system):
+    '''
+    [
+        {
+            "audit_description": "Analysis set, prediction set, and model set files are expected to specify analysis step version.",
+            "audit_category": "missing analysis step version",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message = get_audit_message(
+        audit_file_set_files_missing_analysis_step_version, index=0)
+    files = value.get('files')
+    files_with_missing_asv = []
+    for file in files:
+        file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
+        if file_object.get('derived_manually', ''):
+            continue
+        if not (file_object.get('analysis_step_version', '')):
+            files_with_missing_asv.append(file)
+    if files_with_missing_asv:
+        files_with_missing_asv = ', '.join([audit_link(path_to_text(file), file) for file in files_with_missing_asv])
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'links to file(s) {files_with_missing_asv} that are missing `analysis_step_version`.'
+        )
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
