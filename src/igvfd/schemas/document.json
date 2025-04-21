@@ -154,6 +154,7 @@
             "description": "Specifies whether this format is an IGVF-standardized file format defined by Focus Groups or produced by a uniform pipeline.",
             "type": "boolean",
             "default": false,
+            "permission": "admin_only",
             "submissionExample": {
                 "appscript": true,
                 "igvf_utils": true
