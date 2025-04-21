@@ -550,7 +550,7 @@ def test_audit_missing_seqspec(
     )
 
 
-def test_audit_missing_seqspec(
+def test_audit_unexpected_seqspec(
     testapp,
     measurement_set,
     sequence_file,
