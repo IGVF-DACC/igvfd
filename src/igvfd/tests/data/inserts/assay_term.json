@@ -47,6 +47,7 @@
         "term_name": "single-cell RNA sequencing assay",
         "preferred_assay_titles": [
             "scNT-seq2",
+            "scMultiome-NT-seq",
             "10X RNA with Scale pre-indexing"
         ],
         "status": "released",
