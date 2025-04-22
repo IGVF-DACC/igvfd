@@ -1597,11 +1597,21 @@ class ConstructLibrarySet(FileSet):
             else:
                 pheno_phrase = f' associated with {len(pheno_terms)} phenotypes'
 
-        # special case for SUPERSTARR libraries
+        # special case for SUPERSTARR libraries to display 1000 genomes IDs
         if assay_titles and 'SUPERSTARR' in assay_titles:
+            thousand_genomes_ids = set()
             for integrated_content_file in integrated_content_files:
                 integrated_content_file_object = request.embed(integrated_content_file, '@@object?skip_calculated=true')
-                integrated_content_file_object.get('content_type')
+                file_set_object = request.embed(integrated_content_file_object.get(
+                    'file_set'), '@@object?skip_calculated=true')
+                donors = file_set_object.get('donors', [])
+                for donor in donors:
+                    donor_object = request.embed(donor, '@@object?skip_calculated=true')
+                    dbxrefs = donor_object.get('dbxrefs')
+                    for dbxref in dbxrefs:
+                        if dbxref.startswith('IGSR'):
+                            thousand_genomes_id = dbxref.split(':')[1]
+                            thousand_genomes_ids.add(thousand_genomes_id)
 
         if file_set_type == 'expression vector library':
             if 'genes' in criteria:
