@@ -66,3 +66,10 @@ def test_assay_term_upgrade_10_11(upgrader, assay_term_v10):
     value = upgrader.upgrade('assay_term', assay_term_v10, current_version='10', target_version='11')
     assert value['schema_version'] == '11'
     assert set(value.get('preferred_assay_titles')) == {'Proliferation CRISPR screen'}
+
+
+def test_assay_term_upgrade_11_12(upgrader, assay_term_v11):
+    value = upgrader.upgrade('assay_term', assay_term_v11, current_version='11', target_version='12')
+    assert 'definition' not in value
+    assert 'comment' not in value
+    assert value['schema_version'] == '12'
