@@ -44,8 +44,8 @@ def platform_term_v3(platform_term_HiSeq):
 
 
 @pytest.fixture
-def platform_term_v4(phenotype_term_v1):
-    item = platform_term_v1.copy()
+def platform_term_v4(platform_term_v3):
+    item = platform_term_v3.copy()
     item.update({
         'schema_version': '4',
         'definition': 'test definition',
