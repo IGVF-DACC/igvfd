@@ -2,7 +2,7 @@
 
 ### Schema version 6
 
-* Add calculated `comment`.
+* Add calculated `comments`.
 * Add calculated `definition`.
 * Remove `comment`.
 * Remove `definition`.
