@@ -83,7 +83,7 @@ class OntologyTerm(Item):
     @calculated_property(
         condition='term_id',
         schema={
-            'title': 'comment',
+            'title': 'Comments',
             'type': 'array',
             'description': 'Comment for the term that was recorded in an ontology.',
             'minItems': 1,
@@ -94,8 +94,8 @@ class OntologyTerm(Item):
             'notSubmittable': True,
         }
     )
-    def comment(self, registry, term_id):
-        return self._get_ontology_slims(registry, term_id, 'comment')
+    def comments(self, registry, term_id):
+        return self._get_ontology_slims(registry, term_id, 'comments')
 
     @calculated_property(
         condition='term_id',
