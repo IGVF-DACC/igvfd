@@ -62,6 +62,12 @@ class OntologyTerm(Item):
             slim for slim in key
         ))
 
+    @staticmethod
+    def _get_ontology_string(registry, term_id, string_key):
+        if term_id not in registry['ontology']:
+            return ''
+        return registry['ontology'][term_id].get(string_key, '')
+
     @calculated_property(
         condition='term_id',
         schema={
