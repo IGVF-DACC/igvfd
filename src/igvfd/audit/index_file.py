@@ -15,7 +15,7 @@ def audit_index_files_derived_from(value, system):
     '''
     [
         {
-            "audit_description": "Index files in tbi format are expected to have a corresponding tsv or vcf file in `derived_from`.",
+            "audit_description": "Index files in tbi format are expected to have a corresponding bed, tsv or vcf file in `derived_from`.",
             "audit_category": "unexpected indexed file",
             "audit_level": "ERROR"
         }
@@ -28,7 +28,7 @@ def audit_index_files_derived_from(value, system):
     derived_from_file = value.get('derived_from', [])
     derived_from_file_obj = system.get('request').embed(derived_from_file[0], '@@object?skip_calculated=true')
     if value['file_format'] == 'tbi':
-        if derived_from_file_obj.get('file_format') not in ['tsv', 'vcf']:
+        if derived_from_file_obj.get('file_format') not in ['tsv', 'vcf', 'bed']:
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has a file of unexpected file format in `derived_from`.')

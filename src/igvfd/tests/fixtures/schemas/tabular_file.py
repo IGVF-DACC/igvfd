@@ -58,6 +58,21 @@ def tabular_file_barcode_replacement(testapp, lab, award, curated_set_barcode):
 
 
 @pytest.fixture
+def tabular_file_bed(testapp, lab, award, principal_analysis_set):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '1897bf4e87141798373aced2a6508c28',
+        'file_format_type': 'bed5',
+        'file_format': 'bed',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'peaks',
+        'controlled_access': False
+    }
+    return testapp.post_json('/tabular_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def tabular_file_v1(tabular_file):
     item = tabular_file.copy()
     item.update({
