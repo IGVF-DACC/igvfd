@@ -1,6 +1,6 @@
 {
-    "hash": "3caf24f45807006046c63db0c03b90b6",
-    "index_name": "sample_term_3caf24f4",
+    "hash": "3bde2ab41385c73a83a7bb322f272e7b",
+    "index_name": "sample_term_3bde2ab4",
     "item_type": "sample_term",
     "mapping": {
         "dynamic_templates": [
