@@ -1388,3 +1388,85 @@ def test_audit_missing_strand_specificity(testapp, measurement_set_perturb_seq, 
         error['category'] != 'missing strand specificity'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_missing_barcode_replacement_file(testapp, measurement_set_one_onlist, tabular_file_barcode_replacement):
+    # Test 1: Non-Parse without barcode replacement file (no audit)
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing barcode replacement file'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Test 2: Parse without barcode replacement audit (audit)
+    testapp.patch_json(
+        measurement_set_one_onlist['@id'],
+        {
+            'preferred_assay_title': 'Parse SPLiT-seq'
+        }
+    )
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing barcode replacement file'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Test 3: Parse with correct TabFile (no audit)
+    testapp.patch_json(
+        measurement_set_one_onlist['@id'],
+        {
+            'barcode_replacement_file': tabular_file_barcode_replacement['@id']
+        }
+    )
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing barcode replacement file'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Test 4: Non-Parse MeaSet with correct TabFile (audit)
+    testapp.patch_json(
+        measurement_set_one_onlist['@id'],
+        {
+            'preferred_assay_title': 'scRNA-seq'
+        }
+    )
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected barcode replacement file'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+
+def test_audit_unexpected_barcode_replacement_file(
+    testapp,
+    measurement_set_one_onlist,
+    tabular_file,
+    tabular_file_barcode_replacement
+):
+    # Test 1: Parse MeaSet with a TabFile with wrong content type (audit)
+    testapp.patch_json(
+        measurement_set_one_onlist['@id'],
+        {
+            'barcode_replacement_file': tabular_file['@id'],
+            'preferred_assay_title': 'Parse SPLiT-seq'
+        }
+    )
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent barcode replacement file'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Test 2: Parse MeaSet with the correct TabFile (no audit)
+    testapp.patch_json(
+        measurement_set_one_onlist['@id'],
+        {
+            'barcode_replacement_file': tabular_file_barcode_replacement['@id']
+        }
+    )
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent barcode replacement file'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )

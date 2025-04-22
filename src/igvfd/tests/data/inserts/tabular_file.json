@@ -596,5 +596,23 @@
         "upload_status": "validated",
         "file_set": "igvf:analysis_set_with_input",
         "controlled_access": false
+    },
+    {
+        "uuid": "1b64c845-e9b8-4219-aeb6-eb62d7150af5",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:barcode_replacement_file"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-02-01T21:29:45Z",
+        "md5sum": "5bdfd7ac085b4152f9f0eaa46a140d36",
+        "file_format": "tsv",
+        "content_type": "barcode replacement",
+        "submitted_file_name": "/Users/igvf/igvf_files/barcode_replacement.tsv.gz",
+        "file_size": 20005,
+        "upload_status": "validated",
+        "file_set": "igvf:parse_split_seq_with_barcode_replacement",
+        "controlled_access": false
     }
 ]

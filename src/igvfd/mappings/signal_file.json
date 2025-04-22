@@ -1,6 +1,6 @@
 {
-    "hash": "bc622cb8f22d62d46b5937db78030dae",
-    "index_name": "signal_file_bc622cb8",
+    "hash": "10ea3dabecf34c97e772cd092d6d5427",
+    "index_name": "signal_file_10ea3dab",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -508,6 +508,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {

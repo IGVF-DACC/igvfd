@@ -1,6 +1,6 @@
 {
-    "hash": "10372754152903ec0092fdb7e5191d11",
-    "index_name": "analysis_set_10372754",
+    "hash": "544922144924afc68d9efb3b35b0a798",
+    "index_name": "analysis_set_54492214",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -352,6 +352,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -855,6 +858,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1695,6 +1701,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map": {
+                                "type": "keyword"
+                            },
+                            "barcode_replacement_file": {
                                 "type": "keyword"
                             },
                             "collections": {

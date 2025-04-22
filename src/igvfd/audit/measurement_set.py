@@ -613,3 +613,70 @@ def audit_unexpected_onlist_content(value, system):
                                        f'{details} {audit_message_unexpected_onlist_content.get("audit_description", "")}',
                                        level=audit_message_unexpected_onlist_content.get('audit_level', '')
                                        )
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_missing_barcode_replacement_file(value, system):
+    '''
+    [
+        {
+            "audit_description": "Measurement sets with `preferred_assay_title` Parse SPLiT-seq are expected to have `barcode_replacement_file`.",
+            "audit_category": "missing barcode replacement file",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Measurement sets without `preferred_assay_title` Parse SPLiT-seq are not expected to have `barcode_replacement_file`.",
+            "audit_category": "unexpected barcode replacement file",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    msg_no_replacement_file = get_audit_message(audit_missing_barcode_replacement_file, index=0)
+    msg_unexpected_replacement_file = get_audit_message(audit_missing_barcode_replacement_file, index=1)
+    preferred_assay_title = value.get('preferred_assay_title')
+    barcode_replacement_file = value.get('barcode_replacement_file', None)
+    if preferred_assay_title == 'Parse SPLiT-seq':
+        # Audit 1: If a Parse MeaSet has no barcode replacement file, audit it.
+        if barcode_replacement_file is None:
+            detail = (
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has no `barcode_replacement_file`.'
+            )
+            yield AuditFailure(msg_no_replacement_file.get('audit_category', ''), f'{detail} {msg_no_replacement_file.get("audit_description", "")}', level=msg_no_replacement_file.get('audit_level', ''))
+    else:
+        # Audit 2: If a non-Parse MeaSet has a barcode replacement file, audit it.
+        if barcode_replacement_file:
+            detail = (
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has unexpected `barcode_replacement_file` {audit_link(path_to_text(barcode_replacement_file), barcode_replacement_file)}. '
+                f'Only measurement sets with `preferred_assay_title` Parse SPLiT-seq are expected to have `barcode_replacement_file`.'
+            )
+            yield AuditFailure(msg_unexpected_replacement_file.get('audit_category', ''), f'{detail} {msg_unexpected_replacement_file.get("audit_description", "")}', level=msg_unexpected_replacement_file.get('audit_level', ''))
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_inconsistent_barcode_replacement_file(value, system):
+    '''
+    [
+        {
+            "audit_description": "Measurement sets with `preferred_assay_title` Parse SPLiT-seq are expected to have `barcode_replacement_file` that is linked to a Tabular File with `content_type` barcode replacement.",
+            "audit_category": "inconsistent barcode replacement file",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    msg_wrong_replacement_file = get_audit_message(audit_inconsistent_barcode_replacement_file, index=0)
+    preferred_assay_title = value.get('preferred_assay_title')
+    if preferred_assay_title == 'Parse SPLiT-seq':
+        barcode_replacement_file = value.get('barcode_replacement_file', None)
+        # Audit 1: If barcode replacement file is a Tabular File with content_type of barcode replacement, audit it
+        if barcode_replacement_file is not None:
+            barcode_replacement_file_obj = system.get('request').embed(
+                barcode_replacement_file, '@@object?skip_calculated=true')
+            if barcode_replacement_file_obj.get('content_type') != 'barcode replacement':
+                detail = (
+                    f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                    f'has a `barcode_replacement_file` {audit_link(path_to_text(barcode_replacement_file), barcode_replacement_file)} '
+                    f'but it is not a Tabular File with `content_type` of `barcode replacement`.'
+                )
+                yield AuditFailure(msg_wrong_replacement_file.get('audit_category', ''), f'{detail} {msg_wrong_replacement_file.get("audit_description", "")}', level=msg_wrong_replacement_file.get('audit_level', ''))
