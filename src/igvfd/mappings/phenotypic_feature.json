@@ -1,6 +1,6 @@
 {
-    "hash": "ed9500d9cf6d28dc5c45adcc9ab2f4fd",
-    "index_name": "phenotypic_feature_ed9500d9",
+    "hash": "426356322c870d2a4700ebd8b2639b36",
+    "index_name": "phenotypic_feature_42635632",
     "item_type": "phenotypic_feature",
     "mapping": {
         "dynamic_templates": [
@@ -243,7 +243,7 @@
                             "ancestors": {
                                 "type": "keyword"
                             },
-                            "comment": {
+                            "comments": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

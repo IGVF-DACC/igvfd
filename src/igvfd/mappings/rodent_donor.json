@@ -1,6 +1,6 @@
 {
-    "hash": "650938b3b846dfb27863f641e3d86e6a",
-    "index_name": "rodent_donor_650938b3",
+    "hash": "67bb34b1d5b5a7d33dd2c6b0ee7769ad",
+    "index_name": "rodent_donor_67bb34b1",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -353,7 +353,7 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
-                                    "comment": {
+                                    "comments": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {

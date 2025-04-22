@@ -1,6 +1,6 @@
 {
-    "hash": "5c0cb42fabd7a051df9fdcf6a467270d",
-    "index_name": "whole_organism_5c0cb42f",
+    "hash": "a14ffc9a3a45913240c7e884fb31cdc8",
+    "index_name": "whole_organism_a14ffc9a",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -448,7 +448,7 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
-                                    "comment": {
+                                    "comments": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
@@ -719,7 +719,7 @@
                             "ancestors": {
                                 "type": "keyword"
                             },
-                            "comment": {
+                            "comments": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -1991,7 +1991,7 @@
                             "cell_slims": {
                                 "type": "keyword"
                             },
-                            "comment": {
+                            "comments": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
