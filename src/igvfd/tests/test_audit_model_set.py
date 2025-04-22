@@ -45,7 +45,7 @@ def test_audit_missing_analysis_step_version_model_set(
     res = testapp.get(model_set_no_input['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing analysis step version'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+        for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
         matrix_file['@id'],
@@ -56,5 +56,5 @@ def test_audit_missing_analysis_step_version_model_set(
     res = testapp.get(model_set_no_input['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing analysis step version'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+        for error in res.json['audit'].get('WARNING', [])
     )

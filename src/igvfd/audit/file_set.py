@@ -834,15 +834,24 @@ def audit_file_set_files_missing_analysis_step_version(value, system):
     '''
     [
         {
-            "audit_description": "Analysis set, prediction set, and model set files are expected to specify analysis step version.",
+            "audit_description": "Analysis set and prediction set files are expected to specify analysis step version.",
             "audit_category": "missing analysis step version",
             "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Model set files are expected to specify analysis step version.",
+            "audit_category": "missing analysis step version",
+            "audit_level": "WARNING"
         }
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message = get_audit_message(
-        audit_file_set_files_missing_analysis_step_version, index=0)
+    audit_message_analysis_prediction = get_audit_message(audit_file_set_files_missing_analysis_step_version, index=0)
+    audit_message_model = get_audit_message(audit_file_set_files_missing_analysis_step_version, index=1)
+    if object_type == 'Model set':
+        audit_message = audit_message_model
+    else:
+        audit_message = audit_message_analysis_prediction
     files = value.get('files')
     files_with_missing_asv = []
     for file in files:
