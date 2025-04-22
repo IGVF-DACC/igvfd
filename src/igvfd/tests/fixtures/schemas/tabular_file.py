@@ -65,6 +65,7 @@ def tabular_file_bed(testapp, lab, award, principal_analysis_set):
         'md5sum': '1897bf4e87141798373aced2a6508c28',
         'file_format_type': 'bed5',
         'file_format': 'bed',
+        'assembly': 'GRCh38',
         'file_set': principal_analysis_set['@id'],
         'content_type': 'peaks',
         'controlled_access': False
