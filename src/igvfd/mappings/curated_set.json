@@ -1,6 +1,6 @@
 {
-    "hash": "faf77a04fafea6b949d3ba6dc29e28ed",
-    "index_name": "curated_set_faf77a04",
+    "hash": "e6cb5964a07333c4cb37ca4ba9573f7a",
+    "index_name": "curated_set_e6cb5964",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1488,6 +1488,9 @@
                                 "type": "keyword"
                             },
                             "secondary_dimensions": {
+                                "type": "keyword"
+                            },
+                            "seqspec_document": {
                                 "type": "keyword"
                             },
                             "seqspec_of": {

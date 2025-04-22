@@ -243,12 +243,25 @@
         "aliases": [
             "igvf:quality_control_report_insert"
         ],
-        "description": "Quality control reporr example.",
+        "description": "Quality control report example.",
         "attachment": "Treg-CRISPRi-GITR-methods.pdf",
         "award": "1U01HG011952-01",
         "document_type": "quality control report",
         "lab": "alan-boyle",
         "uuid": "2621585d-ca1e-4aa4-81c1-e0ae2b20d9c4",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
+    },
+    {
+        "aliases": [
+            "igvf:generic_seqspec_insert"
+        ],
+        "description": "library structure seqspec.",
+        "attachment": "generic_seqspec.txt",
+        "award": "HG012012",
+        "document_type": "library structure seqspec",
+        "lab": "j-michael-cherry",
+        "uuid": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z"
     }
