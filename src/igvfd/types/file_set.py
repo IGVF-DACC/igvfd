@@ -486,7 +486,7 @@ class AnalysisSet(FileSet):
         # Add modalities to the assay titles.
         if crispr_modalities:
             if len(crispr_modalities) > 1:
-                modality_set = 'mixed'
+                modality_set = ', '.join(crispr_modalities)
             elif len(crispr_modalities) == 1:
                 modality_set = ''.join(crispr_modalities)
             if 'CRISPR' in assay_title_phrase:
@@ -504,21 +504,11 @@ class AnalysisSet(FileSet):
             if not (assay_terms and all(x in crispr_screen_terms for x in assay_terms)):
                 file_set_type_phrase = ', '.join(fileset_types)
 
-        # Only display up to 5 unique content types.
-        files_phrase = ''
-        if file_content_types:
-            sorted_files_list = sorted(file_content_types)
-            if len(file_content_types) > 5:
-                files_phrase = f': {", ".join(sorted_files_list[0:5])} and {len(file_content_types)-5} more'
-            else:
-                files_phrase = f': {", ".join(sorted_files_list)}'
-
         all_phrases = [
             assay_title_phrase,
             targeted_genes_phrase,
             cls_phrase,
-            file_set_type_phrase,
-            files_phrase
+            file_set_type_phrase
         ]
         merged_phrase = ' '.join([x for x in all_phrases if x != '']).replace(' : ', ': ')
         if merged_phrase:
@@ -1116,7 +1106,12 @@ class MeasurementSet(FileSet):
                 assay = f'CRISPR {assay}'
 
         if len(modality_set) > 1:
-            modality_phrase = f'mixed'
+            modality_set = ', '.join(modality_set)
+            if 'CRISPR' in assay:
+                assay_phrase = assay.replace('CRISPR', f'CRISPR {modality_set}')
+            else:
+                modality_phrase = f'{modality_set} '
+                assay_phrase = f'{assay}'
             assay_phrase = f' {assay}'
         if len(modality_set) == 1:
             modality_set = ''.join(modality_set)
