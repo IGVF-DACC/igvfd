@@ -1,6 +1,6 @@
 {
-    "hash": "87b7009d6972a7a08b73ed760b1ac36b",
-    "index_name": "platform_term_87b7009d",
+    "hash": "cb06039f5b66b10c91464e093fe869db",
+    "index_name": "platform_term_cb06039f",
     "item_type": "platform_term",
     "mapping": {
         "dynamic_templates": [
@@ -155,7 +155,7 @@
                     "ancestors": {
                         "type": "keyword"
                     },
-                    "comment": {
+                    "comments": {
                         "type": "keyword"
                     },
                     "company": {

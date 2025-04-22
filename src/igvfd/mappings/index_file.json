@@ -1,6 +1,6 @@
 {
-    "hash": "50a9c8721171ca2957d8dd2298c936f0",
-    "index_name": "index_file_50a9c872",
+    "hash": "c14342c3e54e4dd71ec450be9a56b9d0",
+    "index_name": "index_file_c14342c3",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -329,7 +329,7 @@
                                     "category_slims": {
                                         "type": "keyword"
                                     },
-                                    "comment": {
+                                    "comments": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
@@ -667,7 +667,7 @@
                                             "ancestors": {
                                                 "type": "keyword"
                                             },
-                                            "comment": {
+                                            "comments": {
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
@@ -939,7 +939,7 @@
                                             "cell_slims": {
                                                 "type": "keyword"
                                             },
-                                            "comment": {
+                                            "comments": {
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
@@ -1066,7 +1066,7 @@
                                             "cell_slims": {
                                                 "type": "keyword"
                                             },
-                                            "comment": {
+                                            "comments": {
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
@@ -1632,7 +1632,7 @@
                                             "cell_slims": {
                                                 "type": "keyword"
                                             },
-                                            "comment": {
+                                            "comments": {
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
@@ -1799,7 +1799,7 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
-                                    "comment": {
+                                    "comments": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {

@@ -137,3 +137,15 @@ def assay_term_10_11(value, system):
         index = preferred_assay_titles.index('Growth CRISPR screen')
         preferred_assay_titles[index] = 'Proliferation CRISPR screen'
         value['preferred_assay_titles'] = preferred_assay_titles
+
+
+@upgrade_step('phenotype_term', '4', '5')
+@upgrade_step('assay_term', '11', '12')
+@upgrade_step('sample_term', '5', '6')
+@upgrade_step('platform_term', '4', '5')
+def ontology_term_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2399
+    if 'comment' in value:
+        del value['comment']
+    if 'definition' in value:
+        del value['definition']

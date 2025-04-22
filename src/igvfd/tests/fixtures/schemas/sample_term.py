@@ -121,3 +121,14 @@ def sample_term_v4(sample_term_v1):
         'dbxrefs': []
     })
     return item
+
+
+@pytest.fixture
+def sample_term_v5(sample_term_v1):
+    item = sample_term_v1.copy()
+    item.update({
+        'schema_version': '5',
+        'definition': 'test definition',
+        'comment': 'test comment'
+    })
+    return item

@@ -1,6 +1,6 @@
 {
-    "hash": "ae315771d4b240c016f3f7e33fdae299",
-    "index_name": "genome_browser_annotation_file_ae315771",
+    "hash": "74393f8bbb53f4308fb3390df475e640",
+    "index_name": "genome_browser_annotation_file_74393f8b",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -257,7 +257,7 @@
                             "cell_slims": {
                                 "type": "keyword"
                             },
-                            "comment": {
+                            "comments": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -415,7 +415,7 @@
                                     "category_slims": {
                                         "type": "keyword"
                                     },
-                                    "comment": {
+                                    "comments": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
@@ -753,7 +753,7 @@
                                             "ancestors": {
                                                 "type": "keyword"
                                             },
-                                            "comment": {
+                                            "comments": {
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
@@ -1025,7 +1025,7 @@
                                             "cell_slims": {
                                                 "type": "keyword"
                                             },
-                                            "comment": {
+                                            "comments": {
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
@@ -1152,7 +1152,7 @@
                                             "cell_slims": {
                                                 "type": "keyword"
                                             },
-                                            "comment": {
+                                            "comments": {
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
@@ -1714,7 +1714,7 @@
                                             "cell_slims": {
                                                 "type": "keyword"
                                             },
-                                            "comment": {
+                                            "comments": {
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
@@ -1881,7 +1881,7 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
-                                    "comment": {
+                                    "comments": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {

@@ -41,3 +41,14 @@ def platform_term_v3(platform_term_HiSeq):
         'sequencing_kits': ['NovaSeq 6000 S4 Reagent Kit V1.5']
     })
     return item
+
+
+@pytest.fixture
+def platform_term_v4(platform_term_v3):
+    item = platform_term_v3.copy()
+    item.update({
+        'schema_version': '4',
+        'definition': 'test definition',
+        'comment': 'test comment'
+    })
+    return item

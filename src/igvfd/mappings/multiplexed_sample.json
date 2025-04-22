@@ -1,6 +1,6 @@
 {
-    "hash": "5208300012fc7c8ce58e8a115400b3a8",
-    "index_name": "multiplexed_sample_52083000",
+    "hash": "8ba79f28de55a271bbb89a1e7913dccb",
+    "index_name": "multiplexed_sample_8ba79f28",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -442,7 +442,7 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
-                                    "comment": {
+                                    "comments": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
@@ -713,7 +713,7 @@
                             "ancestors": {
                                 "type": "keyword"
                             },
-                            "comment": {
+                            "comments": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -1869,7 +1869,7 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
-                                    "comment": {
+                                    "comments": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
@@ -2177,7 +2177,7 @@
                                     "cell_slims": {
                                         "type": "keyword"
                                     },
-                                    "comment": {
+                                    "comments": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
@@ -2503,7 +2503,7 @@
                             "cell_slims": {
                                 "type": "keyword"
                             },
-                            "comment": {
+                            "comments": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

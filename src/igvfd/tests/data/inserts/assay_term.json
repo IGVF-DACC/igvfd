@@ -2,8 +2,6 @@
     {
         "term_id": "OBI:0002041",
         "term_name": "STARR-seq",
-        "definition": "Assay for mapping enhancer activity",
-        "comment": "STARR-seq is a high-throughput method for mapping enhancer activity in the genome. It is based on the self-transcribing active regulatory region sequencing (STARR-seq) method.",
         "status": "released",
         "uuid": "df207aeb-3484-3730-b64c-d3fdb4506a5e",
         "aliases": [

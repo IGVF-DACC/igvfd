@@ -1,6 +1,6 @@
 {
-    "hash": "68bc629028001341d8483713c90f2dc6",
-    "index_name": "human_donor_68bc6290",
+    "hash": "b273a3fcb99834423d842b3ac3fb5cc1",
+    "index_name": "human_donor_b273a3fc",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -350,7 +350,7 @@
                                     "ancestors": {
                                         "type": "keyword"
                                     },
-                                    "comment": {
+                                    "comments": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
