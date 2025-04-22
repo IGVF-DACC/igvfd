@@ -6,10 +6,13 @@ from .formatter import (
     audit_link,
     path_to_text,
     get_audit_message,
-    space_in_words
+    space_in_words,
+    join_obj_paths
 )
 
 # Single cell assay terms
+import json
+
 SINGLE_CELL_ASSAY_TERMS = ['/assay-terms/OBI_0002762/',  # single-nucleus ATAC-seq
                            '/assay-terms/OBI_0003109/',  # single-nucleus RNA sequencing assay
                            '/assay-terms/OBI_0002631/',  # single-cell RNA sequencing assay
@@ -97,14 +100,16 @@ def audit_no_files(value, system):
         yield AuditFailure(audit_message_missing_files.get('audit_category', ''), f'{detail} {audit_message_missing_files.get("audit_description", "")}', level=audit_message_missing_files.get('audit_level', ''))
 
 
-@audit_checker('FileSet', frame='object')
+@audit_checker('AuxiliarySet', frame='object')
+@audit_checker('ConstructLibrarySet', frame='object')
+@audit_checker('MeasurementSet', frame='object')
 def audit_missing_seqspec(value, system):
     '''
     [
         {
-            "audit_description": "Sequence files in a file set associated with bulk data are expected to link to a sequence specification file.",
+            "audit_description": "Sequence files in a file set associated with non-single cell data are expected to link to a sequence specification document.",
             "audit_category": "missing sequence specification",
-            "audit_level": "INTERNAL_ACTION"
+            "audit_level": "NOT_COMPLIANT"
         },
         {
             "audit_description": "Sequence files in a file set associated with single cell data are expected to link to a sequence specification file.",
@@ -115,24 +120,41 @@ def audit_missing_seqspec(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     if 'files' in value:
-        no_seqspec = []
+        # Check single cell status
+        is_single_cell = single_cell_check(system, value, object_type)
+        no_seqspec = []  # For Audit 1
+        no_seqspec_doc = []  # For Audit 2
         for file in value['files']:
             if file.startswith('/sequence-files/'):
                 sequence_file_object = system.get('request').embed(file)
                 if sequence_file_object.get('file_format') == 'pod5':
                     continue
+                # Overall audit: if a SeqFile has no seqspec ConfigFile
                 if not sequence_file_object.get('seqspecs'):
-                    no_seqspec.append(file)
+                    # Audit 1: For single cell, we expect seqspecs to be ConfigFiles
+                    if is_single_cell:
+                        no_seqspec.append(file)
+                    # Audit 2: For non-single cell, we expect seqspecs to be seqspec_document
+                    else:
+                        if not sequence_file_object.get('seqspec_document'):
+                            no_seqspec_doc.append(file)
+        # Audit 1: Single cell SeqFiles are expected linked to ConfigFile seqspecs
         if no_seqspec:
-            no_seqspec = ', '.join([audit_link(path_to_text(file_no_seqspec), file_no_seqspec)
-                                   for file_no_seqspec in no_seqspec])
-            if single_cell_check(system, value, object_type):
-                audit_message = get_audit_message(audit_missing_seqspec, index=1)
-            else:
-                audit_message = get_audit_message(audit_missing_seqspec, index=0)
+            audit_message = get_audit_message(audit_missing_seqspec, index=1)
+            no_seqspec_paths = join_obj_paths(data_object_paths=no_seqspec)
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file(s): '
-                f'{no_seqspec} which do not have any `seqspecs`.'
+                f'{no_seqspec_paths} which do not have any `seqspecs`.'
+            )
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+        # Audit 2: Check if non-single cell SeqFiles without seqspec ConfigFile still have seqspec_document.
+        if no_seqspec_doc:
+            # Get audit message for missing seqspec_document
+            no_seqspec_doc_paths = join_obj_paths(data_object_paths=no_seqspec_doc)
+            audit_message = get_audit_message(audit_missing_seqspec, index=0)
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file(s): '
+                f'{no_seqspec_doc_paths} which do not have a `seqspec_document`.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
@@ -146,28 +168,78 @@ def audit_unexpected_seqspec(value, system):
         {
             "audit_description": "Pod5 sequence files in a file set should not be linked to a sequence specification file.",
             "audit_category": "unexpected sequence specification",
-            "audit_level": "NOT_COMPLIANT"
+            "audit_level": "ERROR"
+        },
+        {
+            "audit_description": "Sequence files should not have both `seqspecs` and `seqspec_document`.",
+            "audit_category": "unexpected sequence specification",
+            "audit_level": "ERROR"
+        },
+        {
+            "audit_description": "Non-single cell sequence files are expected to link to a Document with `document_type` library structure seqspec.",
+            "audit_category": "unexpected sequence specification",
+            "audit_level": "ERROR"
         }
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message = get_audit_message(audit_unexpected_seqspec)
+    has_seqspec = []    # For Audit 1
+    had_duo_seqspecs = []   # For Audit 2
+    has_seqspec_document = []   # For Audit 3
     if 'files' in value:
-        has_seqspec = []
         for file in value['files']:
             if file.startswith('/sequence-files/'):
                 sequence_file_object = system.get('request').embed(file)
+                # Audit 1: Pod5 sequence files should not be linked to a seqspec
                 if sequence_file_object.get('file_format') == 'pod5' and sequence_file_object.get('seqspecs'):
                     has_seqspec.append(file)
+                # Audit 2: SeqFiles should not have both seqspec_of and seqspec_document
+                elif sequence_file_object.get('seqspecs') and sequence_file_object.get('seqspec_document'):
+                    had_duo_seqspecs.append(file)
+                # Audit 3: SeqFiles should link to library structure seqspec document
+                elif not sequence_file_object.get('seqspecs') and sequence_file_object.get('seqspec_document'):
+                    has_seqspec_document.append(file)
 
+        # Audit message for Audit 1
         if has_seqspec:
-            has_seqspec = ', '.join([audit_link(path_to_text(file_with_seqspec), file_with_seqspec)
-                                     for file_with_seqspec in has_seqspec])
+            audit_message_pod5 = get_audit_message(audit_unexpected_seqspec, index=0)
+            has_seqspec_paths = join_obj_paths(data_object_paths=has_seqspec)
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has pod5 sequence file(s): '
-                f'{has_seqspec} which are linked to a seqspec.'
+                f'{has_seqspec_paths} which are linked to a seqspec.'
             )
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+            yield AuditFailure(audit_message_pod5.get('audit_category', ''), f'{detail} {audit_message_pod5.get("audit_description", "")}', level=audit_message_pod5.get('audit_level', ''))
+
+        # Audit message for Audit 2
+        if had_duo_seqspecs:
+            audit_msg_double_seqspec = get_audit_message(audit_unexpected_seqspec, index=1)
+            had_duo_seqspecs_paths = join_obj_paths(data_object_paths=had_duo_seqspecs)
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file(s): '
+                f'{had_duo_seqspecs_paths} which are linked to both sequence specification files as Configuration File and library structure seqspec as Document.'
+            )
+            yield AuditFailure(audit_msg_double_seqspec.get('audit_category', ''), f'{detail} {audit_msg_double_seqspec.get("audit_description", "")}', level=audit_msg_double_seqspec.get('audit_level', ''))
+
+        # Audit message for Audit 3
+        if has_seqspec_document:
+            wrong_documents = []
+            for seqfile in has_seqspec_document:
+                # Get file obj to get to seqspec doc
+                seqfile_obj = system.get('request').embed(seqfile + '@@object?skip_calculated=true')
+                # Get to document obj to get doc type
+                document_obj = system.get('request').embed(seqfile_obj.get(
+                    'seqspec_document') + '@@object?skip_calculated=true')
+                if document_obj.get('document_type') != 'library structure seqspec':
+                    wrong_documents.append(seqfile)
+            # Output error msg if there are wrong document types used
+            if wrong_documents:
+                wrong_document_paths = join_obj_paths(data_object_paths=wrong_documents)
+                audit_msg_wrong_seqspec_doc = get_audit_message(audit_unexpected_seqspec, index=2)
+                detail = (
+                    f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file(s): '
+                    f'{wrong_document_paths} which link to a `seqspec_document` that is not a library structure seqspec document.'
+                )
+                yield AuditFailure(audit_msg_wrong_seqspec_doc.get('audit_category', ''), f'{detail} {audit_msg_wrong_seqspec_doc.get("audit_description", "")}', level=audit_msg_wrong_seqspec_doc.get('audit_level', ''))
 
 
 @audit_checker('MeasurementSet', frame='object')

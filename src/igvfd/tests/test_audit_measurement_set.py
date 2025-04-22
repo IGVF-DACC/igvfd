@@ -484,13 +484,17 @@ def test_audit_inconsistent_controlled_access_measurement_set(
     )
 
 
-def test_audit_missing_seqspec(
+def test_audit_missing_seqspec_measet(
     testapp,
     measurement_set,
     sequence_file,
+    sequence_file_sequencing_run_2,
     configuration_file_seqspec,
-    assay_term_scrna
+    experimental_protocol_document,
+    assay_term_scrna,
+    assay_term_starr
 ):
+    # Test: sequence file without seqspec config or seqspec doc should trigger Internal action audit
     testapp.patch_json(
         sequence_file['@id'],
         {
@@ -500,9 +504,9 @@ def test_audit_missing_seqspec(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing sequence specification'
-        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
-    # pod5 files should not trigger the missing seqspec audit.
+    # Test: pod5 files should not trigger the missing seqspec audit.
     testapp.patch_json(
         sequence_file['@id'],
         {
@@ -513,8 +517,9 @@ def test_audit_missing_seqspec(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing sequence specification'
-        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+    # Test: if single cell missing seqspec, error is on NOT_COMPLIANT
     testapp.patch_json(
         sequence_file['@id'],
         {
@@ -529,14 +534,11 @@ def test_audit_missing_seqspec(
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'missing sequence specification'
-        for error in res.json['audit'].get('INTERNAL_ACTION', [])
-    )
     assert any(
         error['category'] == 'missing sequence specification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+    # Test: no audit is all is correct
     testapp.patch_json(
         configuration_file_seqspec['@id'],
         {
@@ -546,16 +548,45 @@ def test_audit_missing_seqspec(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing sequence specification'
-        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # Test: if non-single cell has seqspec doc (no audit)
+    testapp.patch_json(
+        experimental_protocol_document['@id'],
+        {
+            'document_type': 'library structure seqspec'
+        }
+    )
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'seqspec_document': experimental_protocol_document['@id'],
+            'file_set': measurement_set['@id']
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_starr['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
 
-def test_audit_unexpected_seqspec(
+def test_audit_unexpected_seqspec_measet(
     testapp,
     measurement_set,
+    measurement_set_no_files,
     sequence_file,
-    configuration_file_seqspec
+    sequence_file_sequencing_run_2,
+    configuration_file_seqspec,
+    experimental_protocol_document
 ):
+    # Test: if a SeqFile is pod5 with seqspec (audit)
     testapp.patch_json(
         sequence_file['@id'],
         {
@@ -573,11 +604,63 @@ def test_audit_unexpected_seqspec(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'unexpected sequence specification'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Test: if a SeqFile has both seqspec and seqspec_doc (audit)
+    testapp.patch_json(
+        experimental_protocol_document['@id'],
+        {
+            'document_type': 'library structure seqspec'
+        }
+    )
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_set': measurement_set['@id'],
+            'content_type': 'reads',
+            'file_format': 'fastq',
+            'seqspec_document': experimental_protocol_document['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected sequence specification'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Test if a seqspec document is the wrong content type (audit)
+    testapp.patch_json(
+        experimental_protocol_document['@id'],
+        {
+            'document_type': 'standards'
+        }
+    )
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'file_set': measurement_set_no_files['@id'],
+            'seqspec_document': experimental_protocol_document['@id']
+        }
+    )
+    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected sequence specification'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Test: if everything is correct (no audit)
+    testapp.patch_json(
+        experimental_protocol_document['@id'],
+        {
+            'document_type': 'library structure seqspec'
+        }
+    )
+    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected sequence specification'
+        for error in res.json['audit'].get('ERROR', [])
     )
 
 
-def test_audit_files_associated_with_incorrect_fileset(testapp, measurement_set, measurement_set_one_onlist, sequence_file, configuration_file_seqspec):
+def test_audit_files_associated_with_incorrect_fileset_measet(testapp, measurement_set, measurement_set_one_onlist, sequence_file, configuration_file_seqspec):
     # Test 1: seqfile file set != seqspec file set when not single cell (no audit)
     testapp.patch_json(
         configuration_file_seqspec['@id'],
@@ -631,7 +714,7 @@ def test_audit_files_associated_with_incorrect_fileset(testapp, measurement_set,
     )
 
 
-def test_audit_inconsistent_seqspec(
+def test_audit_inconsistent_seqspec_measet(
     testapp,
     measurement_set,
     sequence_file,
