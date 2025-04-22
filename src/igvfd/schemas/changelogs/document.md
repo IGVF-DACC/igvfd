@@ -2,12 +2,12 @@
 
 ### Minor changes since schema version 4
 
+* Extend `document_type` enum list to include `library structure seqspec`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
 * Update `aliases` regex to add `steven-gazal` as a namespace.
 * Update `aliases` regex to add `katie-pollard` as a namespace.
 * Update `aliases` regex to add `kushal-dey` as a namespace.
 * Update `aliases` regex to add `stephen-yi` as a namespace.
-* Extend `document_type` enum list to include `library structure seqspec`.
 * Extend `status` enum list to include `preview`.
 * Extend `document_type` enum list to include `quality control report`.
 * Extend `document_type` enum list to include `model source data`.
