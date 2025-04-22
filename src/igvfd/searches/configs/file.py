@@ -25,6 +25,9 @@ def file():
             'controlled_access': {
                 'title': 'Controlled Access'
             },
+            'file_set.data_use_limitation_summaries': {
+                'title': 'Data Use Limitation'
+            },
             'sequencing_platform.term_name': {
                 'title': 'Sequencing Platform'
             },
