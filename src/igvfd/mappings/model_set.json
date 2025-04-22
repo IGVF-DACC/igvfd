@@ -1,6 +1,6 @@
 {
-    "hash": "a54be55dd11c885b0f8804a68375f99c",
-    "index_name": "model_set_a54be55d",
+    "hash": "c87e65db9161688da280230aa93d5275",
+    "index_name": "model_set_c87e65db",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1590,6 +1590,9 @@
                                 "type": "keyword"
                             },
                             "secondary_dimensions": {
+                                "type": "keyword"
+                            },
+                            "seqspec_document": {
                                 "type": "keyword"
                             },
                             "seqspec_of": {
