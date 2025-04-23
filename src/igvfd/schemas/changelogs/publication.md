@@ -1,6 +1,6 @@
 ## Changelog for *`publication.json`*
 
-### Minor changes since schema version 5
+### Minor changes since schema version 6
 
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
 * Update `aliases` regex to add `steven-gazal` as a namespace.
@@ -14,6 +14,10 @@
 * Add calculated property `workflows`.
 * Add calculated property `software`.
 * Add calculated property `software_versions`.
+
+### Schema version 6
+
+* Require `published_by` to have a minimum of one value.
 
 ### Schema version 5
 
