@@ -465,3 +465,62 @@ def test_audit_inconsistent_controlled_access_analysis_set(
         error['category'] != 'inconsistent controlled access'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_multiple_barcode_replacement_files_in_input_anaset(
+    testapp,
+    analysis_set_base,
+    measurement_set,
+    measurement_set_multiome,
+    tabular_file,
+    tabular_file_barcode_replacement
+):
+    # Test 1: 2 Parse input file sets with 2 barcode replacement file (audit)
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'barcode_replacement_file': tabular_file_barcode_replacement['@id'],
+            'preferred_assay_title': 'Parse SPLiT-seq'
+        }
+    )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'content_type': 'barcode replacement'
+        }
+    )
+    testapp.patch_json(
+        measurement_set_multiome['@id'],
+        {
+            'barcode_replacement_file': tabular_file['@id'],
+            'preferred_assay_title': 'Parse SPLiT-seq'
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets':
+                [
+                    measurement_set['@id'],
+                    measurement_set_multiome['@id']
+                ]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected barcode replacement file'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Test 2: 2 Parse input filesets with 1 barcode replacement file (audit)
+    testapp.patch_json(
+        measurement_set_multiome['@id'],
+        {
+            'barcode_replacement_file': tabular_file_barcode_replacement['@id']
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected barcode replacement file'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
