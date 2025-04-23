@@ -79,11 +79,11 @@ class BackendProps:
     ini_name: str
     cpu: int
     memory_limit_mib: int
-    desired_count: Optional[int] = None
     max_capacity: int
     use_postgres_named: str
     read_from_opensearch_named: str
     write_to_opensearch_named: str
+    desired_count: Optional[int] = None
 
 
 class Backend(Construct):
