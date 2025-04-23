@@ -99,7 +99,6 @@ config: Dict[str, Any] = {
             'backend': {
                 'cpu': 2048,
                 'memory_limit_mib': 4096,
-                'desired_count': 1,
                 'max_capacity': 10,
                 'ini_name': 'demo.ini',
                 'use_postgres_named': 'Postgres',
@@ -166,7 +165,6 @@ config: Dict[str, Any] = {
             'backend': {
                 'cpu': 2048,
                 'memory_limit_mib': 4096,
-                'desired_count': 1,
                 'max_capacity': 10,
                 'ini_name': 'demo.ini',
                 'use_postgres_named': 'Postgres',
@@ -231,7 +229,6 @@ config: Dict[str, Any] = {
             'backend': {
                 'cpu': 2048,
                 'memory_limit_mib': 4096,
-                'desired_count': 1,
                 'max_capacity': 10,
                 'ini_name': 'staging.ini',
                 'use_postgres_named': 'Postgres',
@@ -297,7 +294,6 @@ config: Dict[str, Any] = {
             'backend': {
                 'cpu': 2048,
                 'memory_limit_mib': 4096,
-                'desired_count': 1,
                 'max_capacity': 10,
                 'ini_name': 'sandbox.ini',
                 'use_postgres_named': 'Postgres',
@@ -362,7 +358,6 @@ config: Dict[str, Any] = {
             'backend': {
                 'cpu': 2048,
                 'memory_limit_mib': 4096,
-                'desired_count': 1,
                 'max_capacity': 10,
                 'ini_name': 'production.ini',
                 'use_postgres_named': 'Postgres',

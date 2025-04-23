@@ -55,6 +55,7 @@ from infrastructure.multiplexer import Multiplexer
 
 from typing import Any
 from typing import cast
+from typing import Optional
 
 from dataclasses import dataclass
 
@@ -78,7 +79,7 @@ class BackendProps:
     ini_name: str
     cpu: int
     memory_limit_mib: int
-    desired_count: int
+    desired_count: Optional[int] = None
     max_capacity: int
     use_postgres_named: str
     read_from_opensearch_named: str
@@ -188,19 +189,18 @@ class Backend(Construct):
             )
 
     def _define_fargate_service(self) -> None:
-        self.fargate_service = ApplicationLoadBalancedFargateService(
-            self,
-            'Fargate',
-            service_name='Backend',
-            vpc=self.props.existing_resources.network.vpc,
-            cpu=self.props.cpu,
-            desired_count=self.props.desired_count,
-            min_healthy_percent=100,
-            max_healthy_percent=200,
-            circuit_breaker=DeploymentCircuitBreaker(
+        # Create the Fargate service with all required parameters
+        # If desired_count is None, don't include it to avoid defaulting to 1
+        fargate_props = {
+            'service_name': 'Backend',
+            'vpc': self.props.existing_resources.network.vpc,
+            'cpu': self.props.cpu,
+            'min_healthy_percent': 100,
+            'max_healthy_percent': 200,
+            'circuit_breaker': DeploymentCircuitBreaker(
                 rollback=True,
             ),
-            task_image_options=ApplicationLoadBalancedTaskImageOptions(
+            'task_image_options': ApplicationLoadBalancedTaskImageOptions(
                 container_name='nginx',
                 image=self.nginx_image,
                 log_driver=LogDriver.aws_logs(
@@ -208,15 +208,35 @@ class Backend(Construct):
                     mode=AwsLogDriverMode.NON_BLOCKING,
                 ),
             ),
-            memory_limit_mib=self.props.memory_limit_mib,
-            public_load_balancer=True,
-            idle_timeout=cdk.Duration.seconds(100),
-            assign_public_ip=True,
-            certificate=self.props.existing_resources.domain.certificate,
-            domain_zone=self.props.existing_resources.domain.zone,
-            domain_name=self.domain_name,
-            redirect_http=True,
+            'memory_limit_mib': self.props.memory_limit_mib,
+            'public_load_balancer': True,
+            'idle_timeout': cdk.Duration.seconds(100),
+            'assign_public_ip': True,
+            'certificate': self.props.existing_resources.domain.certificate,
+            'domain_zone': self.props.existing_resources.domain.zone,
+            'domain_name': self.domain_name,
+            'redirect_http': True,
+        }
+
+        # Only include desired_count if it's explicitly set if we just set it to None
+        # it will end up defaulting to 1 so this workaround is needed
+        if self.props.desired_count is not None:
+            fargate_props['desired_count'] = self.props.desired_count
+
+        self.fargate_service = ApplicationLoadBalancedFargateService(
+            self,
+            'Fargate',
+            **fargate_props
         )
+
+        # For existing services, this prevents the desiredCount from being overwritten
+        # Make CDK leave the desired count undefined so CloudFormation preserves the existing value
+        cfn_service = cast(
+            CfnService,
+            self.fargate_service.service.node.default_child
+        )
+        # This is the key fix - set desiredCount to undefined to preserve existing value
+        cfn_service.desired_count = None
 
     def _get_database_secret(self) -> Secret:
         database_secret = self.postgres.database.secret
