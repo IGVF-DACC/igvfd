@@ -216,15 +216,6 @@ class Backend(Construct):
             redirect_http=True,
         )
 
-        # For existing services, this prevents the desiredCount from being overwritten
-        # Make CDK leave the desired count undefined so CloudFormation preserves the existing value
-        cfn_service = cast(
-            CfnService,
-            self.fargate_service.service.node.default_child
-        )
-        # This is the key fix - set desiredCount to undefined to preserve existing value
-        cfn_service.desired_count = None
-
     def _get_database_secret(self) -> Secret:
         database_secret = self.postgres.database.secret
         # Unwrap optional for mypy.
