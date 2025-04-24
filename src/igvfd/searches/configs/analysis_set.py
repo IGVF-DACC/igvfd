@@ -143,6 +143,9 @@ def analysis_set():
             },
             'functional_assay_mechanisms.term_name': {
                 'title': 'Functional Assay Mechanisms'
+            },
+            'files.content_type': {
+                'title': 'File Content Type'
             }
         },
     }
