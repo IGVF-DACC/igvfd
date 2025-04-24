@@ -108,6 +108,9 @@ def auxiliary_set():
             'file_set_type': {
                 'title': 'File Set Type'
             },
+            'data_use_limitation_summaries': {
+                'title': 'Data Use Limitation Summaries'
+            },
             'samples': {
                 'title': 'Samples'
             },

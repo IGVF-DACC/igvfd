@@ -108,6 +108,9 @@ def analysis_set():
             'samples': {
                 'title': 'Samples'
             },
+            'data_use_limitation_summaries': {
+                'title': 'Data Use Limitation Summaries'
+            },
             'donors': {
                 'title': 'Donors'
             },

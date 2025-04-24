@@ -111,6 +111,9 @@ def model_set():
             'samples.institutional_certificates': {
                 'title': 'Sample Institutional Certificates'
             },
+            'data_use_limitation_summaries': {
+                'title': 'Data Use Limitation Summaries'
+            },
             'lab': {
                 'title': 'Lab'
             },
