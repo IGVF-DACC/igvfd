@@ -142,6 +142,42 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     assert res.json.get('summary') == 'editing template library targeting histone modifications in targeton1 of MYC'
 
 
+def test_summary_starr_seq_1000_genomes(testapp, construct_library_set_reporter, human_donor, human_donor_orphan, curated_set_genome, tabular_file):
+    testapp.patch_json(
+        human_donor['@id'],
+        {
+            'dbxrefs': ['IGSR:NA18910']
+        }
+    )
+    testapp.patch_json(
+        human_donor_orphan['@id'],
+        {
+            'dbxrefs': ['IGSR:NA18912']
+        }
+    )
+    testapp.patch_json(
+        curated_set_genome['@id'],
+        {
+            'donors': [human_donor['@id'], human_donor_orphan['@id']]
+        }
+    )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'file_set': curated_set_genome['@id']
+        }
+    )
+    testapp.patch_json(
+        construct_library_set_reporter['@id'],
+        {
+            'integrated_content_files': [tabular_file['@id']]
+        }
+    )
+    res = testapp.get(construct_library_set_reporter['@id'])
+    print(res.json.get('summary'))
+    assert res.json.get('summary') == 'reporter library targeting TF binding sites genome-wide'
+
+
 def test_integrated_content_files_dependency(testapp, app, submitter, lab, award, tabular_file, signal_file):
     testapp.patch_json(submitter['@id'], {'groups': ['verified']})
     test_user = _remote_user_testapp(app, submitter['uuid'])

@@ -238,7 +238,6 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    print(res)
     assert res.get(
         'summary', '') == 'interference ATAC-seq (10x multiome), Perturb-seq, SUPERSTARR, lentiMPRA targeting MYC with low FACS signal, untransfected controls'
     testapp.patch_json(

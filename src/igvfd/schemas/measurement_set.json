@@ -65,7 +65,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "26"
+            "default": "27"
         },
         "samples": {
             "maxItems": 1
@@ -131,7 +131,6 @@
                 "AAV-MPRA",
                 "lentiMPRA",
                 "STARR-seq",
-                "SUPERSTARR",
                 "Cell painting",
                 "Variant painting via fluorescence",
                 "Variant painting via immunostaining",
@@ -197,7 +196,6 @@
                 "AAV-MPRA": "Adeno-Associated Virus Massively Parallel Reporter Assay (AAV-MPRA) is used to evaluate the activity of regulatory elements by introducing them into cells via AAV vectors.",
                 "lentiMPRA": "Lentiviral Massively Parallel Reporter Assay (lentiMPRA) is used to evaluate the activity of regulatory elements by introducing them into cells via lentiviral vectors.",
                 "STARR-seq": "STARR-seq (Self-Transcribing Active Regulatory Region sequencing) is used to identify and quantify enhancer activity by enabling direct transcription of candidate regulatory regions into reporter RNA.",
-                "SUPERSTARR": "A variant of STARR-seq used to investigate regions of interest which are amplified from DNA derived from many unique individuals.",
                 "Cell painting": "A morphological profiling assay that multiplexes fluorescent dyes to reveal relevant cellular components or organelles.",
                 "Variant painting via fluorescence": "A modification of Cell Painting that employs fluorescent protein fusions to protein coding variants to characterize localization alongside cellular morphology.",
                 "Variant painting via immunostaining": "A modification of Cell Painting that employs epitope tagging and immunostaining of protein coding variants to characterize localization alongside cellular morphology.",

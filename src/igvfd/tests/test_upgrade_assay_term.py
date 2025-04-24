@@ -70,6 +70,11 @@ def test_assay_term_upgrade_10_11(upgrader, assay_term_v10):
 
 def test_assay_term_upgrade_11_12(upgrader, assay_term_v11):
     value = upgrader.upgrade('assay_term', assay_term_v11, current_version='11', target_version='12')
+<<<<<<< HEAD
     assert 'definition' not in value
     assert 'comment' not in value
     assert value['schema_version'] == '12'
+=======
+    assert value['schema_version'] == '12'
+    assert set(value.get('preferred_assay_titles')) == {'STARR-seq'}
+>>>>>>> 2fa4cdd3 (calculate assay titles fix)
