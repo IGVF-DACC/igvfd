@@ -1,8 +1,14 @@
 ## Changelog for *`assay_term.json`*
 
+<<<<<<< HEAD
 ### Minor changes since schema version 12
 
 * Add `preview_timestamp`.
+=======
+### Schema version 13
+
+* Adjust `preferred_assay_titles` enum list to remove `SUPERSTARR`.
+>>>>>>> 98027864 (calculate assay titles fix)
 
 ### Schema version 12
 

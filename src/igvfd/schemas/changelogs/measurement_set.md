@@ -2,7 +2,11 @@
 
 ### Schema version 27
 
+<<<<<<< HEAD
 * Adjust `control_type` enum list to replace `control transduction` with `reference transduction`.
+=======
+* Adjust `preferred_assay_title` enum list to remove `SUPERSTARR`.
+>>>>>>> 98027864 (calculate assay titles fix)
 
 ### Minor changes since schema version 26
 
