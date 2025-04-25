@@ -9,7 +9,8 @@ from .formatter import (
 )
 
 from .file_set import (
-    single_cell_check
+    single_cell_check,
+    TRANSCRIPT_ASSAY_TERMS
 )
 
 
@@ -497,25 +498,26 @@ def audit_missing_strand_specificity(value, system):
     '''
     [
         {
-            "audit_description": "Single-cell assays are expected to specify strand specificity.",
+            "audit_description": "Gene expression based assays are expected to specify strand specificity.",
             "audit_category": "missing strand specificity",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
-    audit_message_strand_specificity = get_audit_message(audit_missing_strand_specificity)
+    audit_msg_no_strand_specificity = get_audit_message(audit_missing_strand_specificity, index=0)
     strand_specificity = value.get('strand_specificity', None)
+    assay_term = value.get('assay_term')    # Assay term should always be present in MeasurementSet
     if not (strand_specificity):
-        single_cell_assay_status = single_cell_check(system, value, 'Measurement set')
-        if single_cell_assay_status:
+        # Audit 1: Flag if gene expression assays are missing strand specificity
+        if assay_term in TRANSCRIPT_ASSAY_TERMS:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'is missing required `strand_specificity`.'
             )
             yield AuditFailure(
-                audit_message_strand_specificity.get('audit_category', ''),
-                f'{detail} {audit_message_strand_specificity.get("audit_description", "")}',
-                level=audit_message_strand_specificity.get('audit_level', '')
+                audit_msg_no_strand_specificity.get('audit_category', ''),
+                f'{detail} {audit_msg_no_strand_specificity.get("audit_description", "")}',
+                level=audit_msg_no_strand_specificity.get('audit_level', '')
             )
 
 

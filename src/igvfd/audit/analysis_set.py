@@ -9,7 +9,8 @@ from .formatter import (
 )
 
 from .file_set import (
-    single_cell_check
+    single_cell_check,
+    TRANSCRIPT_ASSAY_TERMS
 )
 
 
@@ -306,15 +307,8 @@ def audit_missing_transcriptome(value, system):
     '''
     audit_message = get_audit_message(audit_missing_transcriptome, index=0)
     assay_terms = get_assay_terms(value, system)
-    transcript_assay_terms = ['/assay-terms/OBI_0003090/',  # bulk RNA-seq assay
-                              '/assay-terms/OBI_0002631/',  # single-cell RNA sequencing assay
-                              '/assay-terms/OBI_0003109/',  # single-nucleus RNA sequencing assay
-                              '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
-                              '/assay-terms/OBI_0003662/'  # single-nucleus methylcytosine and transcriptome sequencing assay
-                              '/assay-terms/NTR_0000761/'  # spatial transcriptomics
-                              ]
     files_missing_transcriptome = []
-    if any(assay_term in transcript_assay_terms for assay_term in assay_terms):
+    if any(assay_term in TRANSCRIPT_ASSAY_TERMS for assay_term in assay_terms):
         files = value.get('files', [])
         if files:
             for file in files:
