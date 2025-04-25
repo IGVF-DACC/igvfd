@@ -1470,9 +1470,8 @@ class ConstructLibrarySet(FileSet):
     set_status_down = FileSet.set_status_down + []
 
     @calculated_property(
-        define=True,
         schema={
-            'title': '3',
+            'title': 'Applied to Samples',
             'description': 'The samples that link to this construct library set.',
             'type': 'array',
             'minItems': 1,
@@ -1496,7 +1495,7 @@ class ConstructLibrarySet(FileSet):
     )
     def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, large_scale_gene_list=None, guide_type=None,
                 small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, orf_list=None, associated_phenotypes=None,
-                control_type=None, targeton=None, integrated_content_files=None):
+                control_type=None, targeton=None, integrated_content_files=[]):
         library_type = file_set_type
         target_phrase = ''
         pheno_terms = []
