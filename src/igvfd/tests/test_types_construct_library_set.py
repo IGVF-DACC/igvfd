@@ -174,8 +174,8 @@ def test_summary_starr_seq_1000_genomes(testapp, construct_library_set_reporter,
         }
     )
     res = testapp.get(construct_library_set_reporter['@id'])
-    print(res.json.get('summary'))
-    assert res.json.get('summary') == 'reporter library targeting TF binding sites genome-wide'
+    assert res.json.get(
+        'summary') == 'reporter library targeting accessible genome regions genome-wide pooled from 1000 Genomes donors: NA18912, NA18910'
 
 
 def test_integrated_content_files_dependency(testapp, app, submitter, lab, award, tabular_file, signal_file):
