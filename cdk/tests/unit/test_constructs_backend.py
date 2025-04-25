@@ -58,7 +58,6 @@ def test_constructs_backend_initialize_backend_construct(
             feature_flag_service=feature_flag_service,
             cpu=2048,
             memory_limit_mib=4096,
-            desired_count=4,
             max_capacity=7,
             ini_name='demo.ini',
             use_postgres_named='Postgres',
@@ -89,7 +88,6 @@ def test_constructs_backend_initialize_backend_construct(
             'DeploymentController': {
                 'Type': 'ECS'
             },
-            'DesiredCount': 4,
             'EnableECSManagedTags': False,
             'EnableExecuteCommand': True,
             'HealthCheckGracePeriodSeconds': 60,
@@ -1001,7 +999,6 @@ def test_constructs_backend_backend_construct_define_domain_name(
             feature_flag_service=feature_flag_service,
             cpu=2048,
             memory_limit_mib=4096,
-            desired_count=4,
             max_capacity=7,
             ini_name='demo.ini',
             use_postgres_named='Postgres',
@@ -1037,7 +1034,6 @@ def test_constructs_backend_backend_construct_define_domain_name(
             feature_flag_service=feature_flag_service,
             cpu=2048,
             memory_limit_mib=4096,
-            desired_count=4,
             max_capacity=7,
             ini_name='demo.ini',
             use_postgres_named='Postgres',

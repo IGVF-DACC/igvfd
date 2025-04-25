@@ -78,7 +78,6 @@ class BackendProps:
     ini_name: str
     cpu: int
     memory_limit_mib: int
-    desired_count: int
     max_capacity: int
     use_postgres_named: str
     read_from_opensearch_named: str
@@ -194,7 +193,6 @@ class Backend(Construct):
             service_name='Backend',
             vpc=self.props.existing_resources.network.vpc,
             cpu=self.props.cpu,
-            desired_count=self.props.desired_count,
             min_healthy_percent=100,
             max_healthy_percent=200,
             circuit_breaker=DeploymentCircuitBreaker(

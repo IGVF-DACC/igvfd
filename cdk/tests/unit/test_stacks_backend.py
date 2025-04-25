@@ -92,7 +92,6 @@ def test_stacks_backend_initialize_backend_stack(config):
             'DeploymentController': {
                 'Type': 'ECS'
             },
-            'DesiredCount': 1,
             'EnableECSManagedTags': False,
             'EnableExecuteCommand': True,
             'HealthCheckGracePeriodSeconds': 60,
