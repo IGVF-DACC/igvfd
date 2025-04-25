@@ -55,3 +55,22 @@ def single_cell_atac_seq_quality_metric_v1(
         'analysis_step_version': analysis_step_version['@id']
     }
     return item
+
+
+@pytest.fixture
+def single_cell_atac_seq_quality_metric_v2(
+        lab, award, alignment_file, analysis_step_version):
+    item = {
+        'schema_version': '2',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'quality_metric_of': alignment_file['@id'],
+        'n_uniquely_mapped_reads': 97820912,
+        'n_barcodes': 1700,
+        'n_fragments': 239056,
+        'joint_barcodes_passing': 0.8,
+        'frac_dup': 0.2,
+        'lowmapq': 521,
+        'analysis_step_version': analysis_step_version['@id']
+    }
+    return item

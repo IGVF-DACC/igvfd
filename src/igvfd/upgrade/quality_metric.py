@@ -29,3 +29,37 @@ def single_cell_atac_seq_quality_metric_1_2(value, system):
         del value['unmapped']
     if 'lowmapq' in value:
         del value['lowmapq']
+
+
+@upgrade_step('single_cell_atac_seq_quality_metric', '2', '3')
+def single_cell_atac_seq_quality_metric_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2660
+    if 'joint_barcodes_passing' in value:
+        del value['joint_barcodes_passing']
+    if 'n_barcodes' in value:
+        del value['n_barcodes']
+    if 'n_fragments' in value:
+        del value['n_fragments']
+
+
+@upgrade_step('single_cell_rna_seq_quality_metric', '1', '2')
+def single_cell_rna_seq_quality_metric_1_2(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2660
+    if 'frac_dup' in value:
+        del value['frac_dup']
+    if 'frac_mito' in value:
+        del value['frac_mito']
+    if 'frac_mito_genes' in value:
+        del value['frac_mito_genes']
+    if 'frac_reads_in_genes_barcode' in value:
+        del value['frac_reads_in_genes_barcode']
+    if 'frac_reads_in_genes_library' in value:
+        del value['frac_reads_in_genes_library']
+    if 'joint_barcodes_passing' in value:
+        del value['joint_barcodes_passing']
+    if 'median_genes_per_barcode' in value:
+        del value['median_genes_per_barcode']
+    if 'n_genes' in value:
+        del value['n_genes']
+    if 'pct_duplicates' in value:
+        del value['pct_duplicates']
