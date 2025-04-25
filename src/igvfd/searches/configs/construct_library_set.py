@@ -123,6 +123,9 @@ def construct_library_set():
             'data_use_limitation_summaries': {
                 'title': 'Data Use Limitation Summaries'
             },
+            'controlled_access': {
+                'title': 'Controlled Access'
+            },
             'selection_criteria': {
                 'title': 'Selection Criteria'
             },
