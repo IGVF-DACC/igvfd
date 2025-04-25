@@ -371,7 +371,7 @@ def tissue_homo_sapiens(context, request):
         },
         response_fields=[
             TitleResponseField(
-                title='Homo Sapiens Tissue Summary'
+                title='Homo Sapiens Tissue / Organ Summary'
             ),
             TypeResponseField(
                 at_type=['TissueSummaryHomoSapiens']
@@ -402,7 +402,7 @@ def tissue_mus_musculus(context, request):
         },
         response_fields=[
             TitleResponseField(
-                title='Mus Musculus Tissue Summary'
+                title='Mus Musculus Tissue / Organ Summary'
             ),
             TypeResponseField(
                 at_type=['TissueSummaryMusMusculus']

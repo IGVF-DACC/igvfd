@@ -182,12 +182,12 @@ def tissue_homo_sapiens_matrix_config():
     return {
         'matrix': {
             'x': {
-                'group_by': 'donors.ethnicities',
-                'label': 'Ethnicity'
+                'group_by': 'file_sets.preferred_assay_title',
+                'label': 'Assays'
             },
             'y': {
                 'group_by': ['sample_terms.term_name', 'sex'],
-                'label': 'Tissue'
+                'label': 'Tissue / Organ'
             }
         }
     }
@@ -205,7 +205,7 @@ def tissue_mus_musculus_matrix_config():
             },
             'y': {
                 'group_by': ['sample_terms.term_name', 'sex'],
-                'label': 'Tissue'
+                'label': 'Tissue / Organ'
             }
         }
     }
