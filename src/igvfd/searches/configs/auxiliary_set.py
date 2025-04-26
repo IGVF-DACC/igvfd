@@ -111,6 +111,9 @@ def auxiliary_set():
             'data_use_limitation_summaries': {
                 'title': 'Data Use Limitation Summaries'
             },
+            'controlled_access': {
+                'title': 'Controlled Access'
+            },
             'samples': {
                 'title': 'Samples'
             },

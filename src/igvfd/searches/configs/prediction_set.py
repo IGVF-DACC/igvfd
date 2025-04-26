@@ -114,6 +114,9 @@ def prediction_set():
             'data_use_limitation_summaries': {
                 'title': 'Data Use Limitation Summaries'
             },
+            'controlled_access': {
+                'title': 'Controlled Access'
+            },
             'donors': {
                 'title': 'Donors'
             },
