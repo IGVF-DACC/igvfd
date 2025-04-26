@@ -1,6 +1,6 @@
 {
-    "hash": "f6e32ec5b7007caf7d10b7d7ee616c06",
-    "index_name": "index_file_f6e32ec5",
+    "hash": "8af90fee4b6b2b6323fb26695293a053",
+    "index_name": "index_file_8af90fee",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -286,7 +286,97 @@
                         "type": "keyword"
                     },
                     "file_format_specifications": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "attachment": {
+                                "properties": {
+                                    "download": {
+                                        "type": "keyword"
+                                    },
+                                    "height": {
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "href": {
+                                        "type": "keyword"
+                                    },
+                                    "md5sum": {
+                                        "type": "keyword"
+                                    },
+                                    "size": {
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "type": {
+                                        "type": "keyword"
+                                    },
+                                    "width": {
+                                        "store": true,
+                                        "type": "long"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "award": {
+                                "type": "keyword"
+                            },
+                            "characterization_method": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "date"
+                            },
+                            "description": {
+                                "copy_to": "_fuzzy",
+                                "type": "text"
+                            },
+                            "document_type": {
+                                "type": "keyword"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "release_timestamp": {
+                                "type": "date"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "standardized_file_format": {
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "urls": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "file_set": {
                         "properties": {

@@ -59,6 +59,9 @@ def matrix_file():
             'workflow.uniform_pipeline': {
                 'title': 'Uniformly Processed'
             },
+            'file_format_specifications.standardized_file_format': {
+                'title': 'Standardized Format'
+            },
             'collections': {
                 'title': 'Collections'
             },

@@ -1,6 +1,6 @@
 {
-    "hash": "a5a9c226dea3541f80c7edc23feac632",
-    "index_name": "tabular_file_a5a9c226",
+    "hash": "ae72ee50dfd78f438e2741a8bbbbcd64",
+    "index_name": "tabular_file_ae72ee50",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -382,7 +382,97 @@
                         "type": "keyword"
                     },
                     "file_format_specifications": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "attachment": {
+                                "properties": {
+                                    "download": {
+                                        "type": "keyword"
+                                    },
+                                    "height": {
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "href": {
+                                        "type": "keyword"
+                                    },
+                                    "md5sum": {
+                                        "type": "keyword"
+                                    },
+                                    "size": {
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "type": {
+                                        "type": "keyword"
+                                    },
+                                    "width": {
+                                        "store": true,
+                                        "type": "long"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "award": {
+                                "type": "keyword"
+                            },
+                            "characterization_method": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "date"
+                            },
+                            "description": {
+                                "copy_to": "_fuzzy",
+                                "type": "text"
+                            },
+                            "document_type": {
+                                "type": "keyword"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "release_timestamp": {
+                                "type": "date"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "standardized_file_format": {
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "urls": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "file_format_type": {
                         "type": "keyword"
