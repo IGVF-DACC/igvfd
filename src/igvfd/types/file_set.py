@@ -1465,8 +1465,7 @@ class ConstructLibrarySet(FileSet):
     ]
 
     rev = FileSet.rev | {
-        'applied_to_samples': ('Sample', 'construct_library_sets'),
-        'file_sets': ('FileSet', 'construct_library_sets')
+        'applied_to_samples': ('Sample', 'construct_library_sets')
     }
 
     set_status_up = FileSet.set_status_up + []
