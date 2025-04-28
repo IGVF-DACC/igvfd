@@ -1,6 +1,6 @@
 {
-    "hash": "a15bc6a82a0bff47e2bea87220a5ba9f",
-    "index_name": "single_cell_atac_seq_quality_metric_a15bc6a8",
+    "hash": "09fb0a01c83774fbcd5818e31042f44d",
+    "index_name": "single_cell_atac_seq_quality_metric_09fb0a01",
     "item_type": "single_cell_atac_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -349,10 +349,6 @@
                         "copy_to": "_fuzzy",
                         "type": "text"
                     },
-                    "joint_barcodes_passing": {
-                        "store": true,
-                        "type": "float"
-                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -417,10 +413,6 @@
                         "store": true,
                         "type": "float"
                     },
-                    "n_barcodes": {
-                        "store": true,
-                        "type": "float"
-                    },
                     "n_barcodes_on_onlist": {
                         "store": true,
                         "type": "float"
@@ -430,10 +422,6 @@
                         "type": "float"
                     },
                     "n_corrected_barcodes": {
-                        "store": true,
-                        "type": "float"
-                    },
-                    "n_fragments": {
                         "store": true,
                         "type": "float"
                     },

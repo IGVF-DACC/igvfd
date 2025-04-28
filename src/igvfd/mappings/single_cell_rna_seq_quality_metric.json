@@ -1,6 +1,6 @@
 {
-    "hash": "d74a5506283efeaa056d2858d0da3c97",
-    "index_name": "single_cell_rna_seq_quality_metric_d74a5506",
+    "hash": "dad68bcc9c50a3dfd49122ba55076d62",
+    "index_name": "single_cell_rna_seq_quality_metric_dad68bcc",
     "item_type": "single_cell_rna_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -262,26 +262,6 @@
                         "copy_to": "_fuzzy",
                         "type": "text"
                     },
-                    "frac_dup": {
-                        "store": true,
-                        "type": "float"
-                    },
-                    "frac_mito": {
-                        "store": true,
-                        "type": "float"
-                    },
-                    "frac_mito_genes": {
-                        "store": true,
-                        "type": "float"
-                    },
-                    "frac_reads_in_genes_barcode": {
-                        "store": true,
-                        "type": "float"
-                    },
-                    "frac_reads_in_genes_library": {
-                        "store": true,
-                        "type": "float"
-                    },
                     "gt_records": {
                         "store": true,
                         "type": "float"
@@ -290,11 +270,7 @@
                         "store": true,
                         "type": "float"
                     },
-                    "joint_barcodes_passing": {
-                        "store": true,
-                        "type": "float"
-                    },
-                    "k-mer length": {
+                    "kmer_length": {
                         "store": true,
                         "type": "float"
                     },
@@ -366,10 +342,6 @@
                         "store": true,
                         "type": "float"
                     },
-                    "median_genes_per_barcode": {
-                        "store": true,
-                        "type": "float"
-                    },
                     "median_reads_per_barcode": {
                         "store": true,
                         "type": "float"
@@ -387,10 +359,6 @@
                         "type": "float"
                     },
                     "n_bootstraps": {
-                        "store": true,
-                        "type": "float"
-                    },
-                    "n_genes": {
                         "store": true,
                         "type": "float"
                     },
@@ -421,11 +389,11 @@
                     "notes": {
                         "type": "text"
                     },
-                    "numBarcodesOnOnlist": {
+                    "num_barcodes_on_onlist": {
                         "store": true,
                         "type": "float"
                     },
-                    "numReadsOnOnlist": {
+                    "num_reads_on_onlist": {
                         "store": true,
                         "type": "float"
                     },
@@ -437,15 +405,11 @@
                         "store": true,
                         "type": "float"
                     },
-                    "pct_duplicates": {
+                    "percentage_barcodes_on_onlist": {
                         "store": true,
                         "type": "float"
                     },
-                    "percentageBarcodesOnOnlist": {
-                        "store": true,
-                        "type": "float"
-                    },
-                    "percentageReadsOnOnlist": {
+                    "percentage_reads_on_onlist": {
                         "store": true,
                         "type": "float"
                     },
