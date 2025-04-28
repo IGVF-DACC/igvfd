@@ -129,7 +129,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'Unspecified assay: peaks'
+    assert res.get('summary', '') == 'Unspecified assay'
     # Case where the only input is an Auxiliary Set, which is not
     # linked to any Measurement Set.
     testapp.patch_json(
@@ -139,7 +139,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'Unspecified assay gRNA sequencing: peaks'
+    assert res.get('summary', '') == 'Unspecified assay gRNA sequencing'
     # When no MeasurementSets (even nested in AnalysisSets) are present,
     # data for other FileSet types are included in the summary only if the
     # Measurement Set is not a CRISPR screen.
@@ -158,7 +158,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'ATAC-seq gRNA sequencing: peaks'
+    assert res.get('summary', '') == 'ATAC-seq gRNA sequencing'
     # CRISPR screens do not mention the Aux Set file_set_type.
     # Also, modality appears in the summary.
     testapp.patch_json(
@@ -169,7 +169,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'CRISPR FlowFISH screen: peaks'
+    assert res.get('summary', '') == 'CRISPR FlowFISH screen'
     # Mixed input file sets with Auxiliary Set and Measurement Set
     testapp.patch_json(
         analysis_set_base['@id'],
@@ -186,7 +186,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'ATAC-seq (10x multiome), CRISPR interference FlowFISH screen, MPRA: peaks'
+    assert res.get('summary', '') == 'ATAC-seq (10x multiome), CRISPR interference FlowFISH screen, MPRA'
     # Preferred_assay_title of MeasurementSet is used instead of assay_term in summary whenever present
     testapp.patch_json(
         measurement_set_mpra['@id'],
@@ -203,7 +203,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'interference ATAC-seq (10x multiome), SUPERSTARR, lentiMPRA: peaks'
+    assert res.get('summary', '') == 'interference ATAC-seq (10x multiome), SUPERSTARR, lentiMPRA'
     # Display any targeted_genes from an input Measurement Set.
     testapp.patch_json(
         measurement_set_mpra['@id'],
@@ -212,7 +212,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'interference ATAC-seq (10x multiome), SUPERSTARR, lentiMPRA targeting MYC: peaks'
+    assert res.get('summary', '') == 'interference ATAC-seq (10x multiome), SUPERSTARR, lentiMPRA targeting MYC'
     testapp.patch_json(
         primary_cell['@id'],
         {
