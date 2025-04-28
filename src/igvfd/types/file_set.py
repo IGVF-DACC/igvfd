@@ -1464,7 +1464,10 @@ class ConstructLibrarySet(FileSet):
         'integrated_content_files'
     ]
 
-    rev = FileSet.rev | {'applied_to_samples': ('Sample', 'construct_library_sets')}
+    rev = FileSet.rev | {
+        'applied_to_samples': ('Sample', 'construct_library_sets'),
+        'file_sets': ('FileSet', 'construct_library_sets')
+    }
 
     set_status_up = FileSet.set_status_up + []
     set_status_down = FileSet.set_status_down + []
@@ -1487,6 +1490,55 @@ class ConstructLibrarySet(FileSet):
         return paths_filtered_by_status(request, applied_to_samples)
 
     @calculated_property(
+        define=True,
+        schema={
+            'title': 'File Sets',
+            'description': 'The file sets that used this construct library set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'File Set',
+                'type': ['string', 'object'],
+                'linkTo': 'FileSet'
+            },
+            'notSubmittable': True
+        })
+    def file_sets(self, request, applied_to_samples=[]):
+        linked_file_sets = set()
+        for sample in applied_to_samples:
+            sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=file_sets')
+            for file_set in sample_object.get('file_sets', []):
+                linked_file_sets.add(file_set)
+        if linked_file_sets:
+            return list(linked_file_sets)
+
+    @calculated_property(
+        condition='file_sets',
+        define=True,
+        schema={
+            'title': 'Assay Titles',
+            'description': 'The assay titles of the file sets that used this construct library set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Assay Title',
+                'type': 'string'
+            },
+            'notSubmittable': True
+        })
+    def assay_titles(self, request, file_sets=[]):
+        assay_titles = set()
+        for file_set in file_sets:
+            if file_set.startswith('/measurement-sets/'):
+                file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
+                preferred_assay_title = file_set_object.get('preferred_assay_title')
+                if preferred_assay_title:
+                    assay_titles.add(preferred_assay_title)
+        return list(assay_titles)
+
+    @calculated_property(
         schema={
             'title': 'Summary',
             'type': 'string',
@@ -1495,7 +1547,7 @@ class ConstructLibrarySet(FileSet):
     )
     def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, large_scale_gene_list=None, guide_type=None,
                 small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, orf_list=None, associated_phenotypes=None,
-                control_type=None, targeton=None, integrated_content_files=[]):
+                control_type=None, targeton=None, assay_titles=[], integrated_content_files=[]):
         library_type = file_set_type
         target_phrase = ''
         pheno_terms = []
@@ -1573,7 +1625,7 @@ class ConstructLibrarySet(FileSet):
             else:
                 pheno_phrase = f' associated with {len(pheno_terms)} phenotypes'
 
-        if library_type == 'reporter library':
+        if assay_titles and 'STARR-seq' in assay_titles:
             thousand_genomes_ids = set()
             for integrated_content_file in integrated_content_files:
                 integrated_content_file_object = request.embed(integrated_content_file, '@@object?skip_calculated=true')
@@ -1588,7 +1640,7 @@ class ConstructLibrarySet(FileSet):
                             thousand_genomes_id = dbxref.split(':')[1]
                             thousand_genomes_ids.add(thousand_genomes_id)
             if thousand_genomes_ids:
-                thousand_genomes_ids = ', '.join(list(thousand_genomes_ids))
+                thousand_genomes_ids = ', '.join(sorted(list(thousand_genomes_ids)))
                 pool_phrase = f' pooled from 1000 Genomes donors: {thousand_genomes_ids}'
 
         if file_set_type == 'expression vector library':

@@ -2349,6 +2349,9 @@
                                     "applied_to_samples": {
                                         "type": "keyword"
                                     },
+                                    "assay_titles": {
+                                        "type": "keyword"
+                                    },
                                     "associated_phenotypes": {
                                         "type": "keyword"
                                     },

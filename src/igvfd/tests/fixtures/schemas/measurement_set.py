@@ -437,7 +437,7 @@ def measurement_set_v26(measurement_set):
 def measurement_set_v25(measurement_set):
     item = measurement_set.copy()
     item.update({
-        'schema_version': '25',
+        'schema_version': '26',
         'preferred_assay_title': 'SUPERSTARR'
     })
     return item
