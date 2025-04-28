@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 15
 
+* Extend `content_type` enum list to include `primers table`.
+* Extend `content_type` enum list to include `primers track`.
+* Extend `content_type` enum list to include `target transcripts`.
 * Extend `content_type` enum list to include `barcode replacement`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
 * Update `aliases` regex to add `steven-gazal` as a namespace.

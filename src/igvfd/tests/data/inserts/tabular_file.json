@@ -614,5 +614,59 @@
         "upload_status": "validated",
         "file_set": "igvf:parse_split_seq_with_barcode_replacement",
         "controlled_access": false
-    }
+    },
+    {
+        "uuid": "2c75d956-fa2b-4320-bf8d-cc73e8251c97",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:primers_table"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-04-01T21:29:45Z",
+        "md5sum": "8f2d9b2c0e334fdb854f495ab7b672c2",
+        "file_format": "tsv",
+        "content_type": "primers table",
+        "submitted_file_name": "/Users/igvf/igvf_files/primers_table.tsv.gz",
+        "file_size": 20009,
+        "upload_status": "validated",
+        "file_set": "igvf:primer_design_curated_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "3c8f2b5e-1a4d-4b0e-8f7c-6a9d3f5b1c2e",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:primers_track"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-04-01T21:29:45Z",
+        "md5sum": "9f2d9b2c0e334fdb854f495ab7b672c2",
+        "file_format": "bed",
+        "content_type": "primers track",
+        "submitted_file_name": "/Users/igvf/igvf_files/primers_track.bed.gz",
+        "file_size": 200456,
+        "upload_status": "validated",
+        "file_set": "igvf:primer_design_curated_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "4d8f2b5e-1a4d-4b0e-8f7c-6a9d3f5b1c2e",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:barcode_replacement_file_3"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-04-01T21:29:45Z",
+        "md5sum": "af2d9b2c0e334fdb854f495ab7b672c2",
+        "file_format": "gtf",
+        "content_type": "target transcripts",
+        "submitted_file_name": "/Users/igvf/igvf_files/target_transcripts.tsv.gz",
+        "file_size": 2078878,
+        "upload_status": "validated",
+        "file_set": "igvf:primer_design_curated_set",
+        "controlled_access": false
+    }    
 ]
