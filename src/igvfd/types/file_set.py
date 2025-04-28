@@ -1464,27 +1464,24 @@ class ConstructLibrarySet(FileSet):
         'integrated_content_files'
     ]
 
-    rev = FileSet.rev | {
-        'applied_to_samples': ('Sample', 'construct_library_sets')
-    }
+    rev = FileSet.rev | {'applied_to_samples': ('Sample', 'construct_library_sets')}
 
     set_status_up = FileSet.set_status_up + []
     set_status_down = FileSet.set_status_down + []
 
-    @calculated_property(
-        schema={
-            'title': 'Applied to Samples',
-            'description': 'The samples that link to this construct library set.',
-            'type': 'array',
-            'minItems': 1,
-            'uniqueItems': True,
-            'items': {
+    @calculated_property(schema={
+        'title': 'Applied to Samples',
+        'description': 'The samples that link to this construct library set.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
                 'title': 'Applied to Sample',
                 'type': ['string', 'object'],
                 'linkFrom': 'Sample.construct_library_sets',
-            },
-            'notSubmittable': True
-        })
+        },
+        'notSubmittable': True
+    })
     def applied_to_samples(self, request, applied_to_samples):
         return paths_filtered_by_status(request, applied_to_samples)
 
