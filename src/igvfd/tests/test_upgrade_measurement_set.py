@@ -175,5 +175,5 @@ def test_measurement_set_upgrade_25_26_3_prime_to_5_prime(upgrader, measurement_
 
 def test_measurement_set_upgrade_26_27(upgrader, measurement_set_v26):
     value = upgrader.upgrade('measurement_set', measurement_set_v26, current_version='26', target_version='27')
-    assert value['schema_version'] == '26'
+    assert value['schema_version'] == '27'
     assert value.get('preferred_assay_title') == 'STARR-seq'
