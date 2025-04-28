@@ -63,3 +63,18 @@ def single_cell_rna_seq_quality_metric_1_2(value, system):
         del value['n_genes']
     if 'pct_duplicates' in value:
         del value['pct_duplicates']
+    if 'numBarcodesOnOnlist' in value:
+        value['num_barcodes_on_onlist'] = value['numBarcodesOnOnlist']
+        del value['numBarcodesOnOnlist']
+    if 'percentageBarcodesOnOnlist' in value:
+        value['percentage_barcodes_on_onlist'] = value['percentageBarcodesOnOnlist']
+        del value['percentageBarcodesOnOnlist']
+    if 'numReadsOnOnlist' in value:
+        value['num_reads_on_onlist'] = value['numReadsOnOnlist']
+        del value['numReadsOnOnlist']
+    if 'percentageReadsOnOnlist' in value:
+        value['percentage_reads_on_onlist'] = value['percentageReadsOnOnlist']
+        del value['percentageReadsOnOnlist']
+    if 'k-mer length' in value:
+        value['kmer_length'] = value['k-mer length']
+        del value['k-mer length']

@@ -13,4 +13,14 @@ def test_single_cell_rna_seq_quality_metric_upgrade_1_2(upgrader, single_cell_rn
     assert 'median_genes_per_barcode' not in value
     assert 'n_genes' not in value
     assert 'pct_duplicates' not in value
+    assert 'numBarcodesOnOnlist' not in value
+    assert 'percentageBarcodesOnOnlist' not in value
+    assert 'numReadsOnOnlist' not in value
+    assert 'percentageReadsOnOnlist' not in value
+    assert 'k-mer length' not in value
+    assert 'num_barcodes_on_onlist' in value
+    assert 'percentage_barcodes_on_onlist' in value
+    assert 'num_reads_on_onlist' in value
+    assert 'percentage_reads_on_onlist' in value
+    assert 'kmer_length' in value
     assert value['schema_version'] == '2'

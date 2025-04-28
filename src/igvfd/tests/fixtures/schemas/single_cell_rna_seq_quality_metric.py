@@ -55,6 +55,11 @@ def single_cell_rna_seq_quality_metric_v1(
         'median_genes_per_barcode': 2,
         'n_genes': 70,
         'pct_duplicates': 0.99,
+        'numBarcodesOnOnlist': 800,
+        'percentageBarcodesOnOnlist': 0.77,
+        'numReadsOnOnlist': 800,
+        'percentageReadsOnOnlist': 0.6,
+        'k-mer length': 5,
         'analysis_step_version': analysis_step_version['@id']
     }
     return item
