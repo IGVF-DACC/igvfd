@@ -1242,7 +1242,7 @@ def test_audit_targeted_genes(
     testapp.patch_json(
         assay_term_chip['@id'],
         {
-            'term_name': 'RNA-seq'
+            'term_id': 'OBI:0002018'
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
