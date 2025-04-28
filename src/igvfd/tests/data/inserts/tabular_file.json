@@ -634,39 +634,42 @@
         "controlled_access": false
     },
     {
-        "uuid": "3c8f2b5e-1a4d-4b0e-8f7c-6a9d3f5b1c2e",
+        "uuid": "4e97fb78-bc4d-45b3-8421-c8e6d5c698b3",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
             "igvf:primers_track"
         ],
         "status": "released",
-        "release_timestamp": "2025-04-01T21:29:45Z",
-        "md5sum": "9a30cb1c1eac4a6492cfe0248b07c1f8",
+        "release_timestamp": "2025-02-01T21:29:45Z",
+        "md5sum": "7d53bc9f11424b1d847f1d62e3d4171e",
         "file_format": "bed",
+        "file_format_type": "bed6+",
         "content_type": "primers track",
-        "submitted_file_name": "/Users/igvf/igvf_files/primers_track.bed.gz",
-        "file_size": 200456,
+        "submitted_file_name": "/Users/igvf/igvf_files/primers_track.tsv.gz",
+        "file_size": 20005,
         "upload_status": "validated",
-        "file_set": "igvf:primer_design_curated_set",
+        "assembly": "GRCh38",
+        "filtered": true,
+        "file_set": "igvf:parse_split_seq_with_barcode_replacement",
         "controlled_access": false
     },
     {
-        "uuid": "4e97fb78-bc4d-45b3-8421-c8e6d5c698b3",
+        "uuid": "3d86ea67-ab3c-4f41-9310-a6d5a5d587a5",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "igvf:barcode_replacement_file_3"
+            "igvf:target_transcripts"
         ],
         "status": "released",
-        "release_timestamp": "2025-04-01T21:29:45Z",
-        "md5sum": "7d53bc9f11424b1d847f1d62e3d4171e",
+        "release_timestamp": "2025-02-01T21:29:45Z",
+        "md5sum": "9a30cb1c1eac4a6492cfe0248b07c1f8",
         "file_format": "gtf",
         "content_type": "target transcripts",
         "submitted_file_name": "/Users/igvf/igvf_files/target_transcripts.tsv.gz",
-        "file_size": 2078878,
+        "file_size": 20005,
         "upload_status": "validated",
-        "file_set": "igvf:primer_design_curated_set",
+        "file_set": "igvf:parse_split_seq_with_barcode_replacement",
         "controlled_access": false
     }
 ]
