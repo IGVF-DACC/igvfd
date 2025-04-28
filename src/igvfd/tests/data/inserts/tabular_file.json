@@ -642,7 +642,7 @@
         ],
         "status": "released",
         "release_timestamp": "2025-04-01T21:29:45Z",
-        "md5sum": "9f2d9b2c0e334fdb854f495ab7b672c2",
+        "md5sum": "9a30cb1c1eac4a6492cfe0248b07c1f8",
         "file_format": "bed",
         "content_type": "primers track",
         "submitted_file_name": "/Users/igvf/igvf_files/primers_track.bed.gz",
@@ -652,7 +652,7 @@
         "controlled_access": false
     },
     {
-        "uuid": "4d8f2b5e-1a4d-4b0e-8f7c-6a9d3f5b1c2e",
+        "uuid": "4e97fb78-bc4d-45b3-8421-c8e6d5c698b3",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -660,7 +660,7 @@
         ],
         "status": "released",
         "release_timestamp": "2025-04-01T21:29:45Z",
-        "md5sum": "af2d9b2c0e334fdb854f495ab7b672c2",
+        "md5sum": "7d53bc9f11424b1d847f1d62e3d4171e",
         "file_format": "gtf",
         "content_type": "target transcripts",
         "submitted_file_name": "/Users/igvf/igvf_files/target_transcripts.tsv.gz",
