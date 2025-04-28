@@ -2,6 +2,11 @@
 
 ### Schema version 2
 
+* Rename `numBarcodesOnOnlist` to `num_barcodes_on_onlist`.
+* Rename `percentageBarcodesOnOnlist` to `percentage_barcodes_on_onlist`.
+* Rename `numReadsOnOnlist` to `num_reads_on_onlist`.
+* Rename `percentageReadsOnOnlist` to `percentage_reads_on_onlist`.
+* Rename `k-mer length` to `kmer_length`.
 * Remove `frac_dup`.
 * Remove `frac_mito`.
 * Remove `frac_mito_genes`.

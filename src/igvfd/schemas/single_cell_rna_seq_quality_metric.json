@@ -134,7 +134,7 @@
                 "igvf_utils": 8
             }
         },
-        "numBarcodesOnOnlist": {
+        "num_barcodes_on_onlist": {
             "title": "Number Of Barcodes On Onlist",
             "description": "",
             "type": "number",
@@ -143,7 +143,7 @@
                 "igvf_utils": 8
             }
         },
-        "percentageBarcodesOnOnlist": {
+        "percentage_barcodes_on_onlist": {
             "title": "Percentage Of Barcodes On Onlist",
             "description": "",
             "type": "number",
@@ -152,7 +152,7 @@
                 "igvf_utils": 8
             }
         },
-        "numReadsOnOnlist": {
+        "num_reads_on_onlist": {
             "title": "Number Of Reads On Onlist",
             "description": "",
             "type": "number",
@@ -161,7 +161,7 @@
                 "igvf_utils": 8
             }
         },
-        "percentageReadsOnOnlist": {
+        "percentage_reads_on_onlist": {
             "title": "Percentage Of Reads On Onlist",
             "description": "",
             "type": "number",
@@ -286,7 +286,7 @@
                 "igvf_utils": 8
             }
         },
-        "k-mer length": {
+        "kmer_length": {
             "title": "",
             "description": "",
             "type": "number",
