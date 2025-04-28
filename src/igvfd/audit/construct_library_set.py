@@ -9,19 +9,6 @@ from .formatter import (
 )
 
 
-def get_assay_terms(value, system):
-    assay_terms = set()
-    for sample in value.get('applied_to_samples', []):
-        sample_object = system.get('request').embed(
-            sample + '@@object_with_select_calculated_properties?field=file_sets')
-        file_sets = sample_object.get('file_sets', [])
-        for file_set in file_sets:
-            if file_set.startswith('/measurement-sets/'):
-                input_file_set_object = system.get('request').embed(file_set + '@@object?skip_calculated=true')
-                assay_terms.add(input_file_set_object.get('assay_term'))
-    return list(assay_terms)
-
-
 @audit_checker('ConstructLibrarySet', frame='object')
 def audit_construct_library_set_associated_phenotypes(value, system):
     '''
@@ -123,7 +110,14 @@ def audit_integrated_content_files(value, system):
     '''
     audit_message_guide = get_audit_message(audit_integrated_content_files, index=0)
     audit_message_reporter = get_audit_message(audit_integrated_content_files, index=1)
-    assay_terms = get_assay_terms(value, system)
+    assay_titles = value.get('assay_titles', [])
+    print(assay_titles)
+    assay_terms = set()
+    # file_sets = value.get('file_sets', [])
+    # for file_set in file_sets:
+    #     if file_set.startswith('/measurement-sets/'):
+    #         file_set_object = system.get('request').embed(file_set, '@@object?skip_calculated=true')
+    #         assay_terms.add(file_set_object['assay_term'])
     CRISPR_assays = [
         '/assay-terms/OBI_0003659/',  # in vitro CRISPR screen assay
         '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
@@ -136,7 +130,7 @@ def audit_integrated_content_files(value, system):
         'guide library': ('guide RNA sequences', audit_message_guide, CRISPR_assays),
         'reporter library': ('MPRA sequence designs', audit_message_reporter, MPRA_assays),
     }
-    integrated_content_files = value.get('integrated_content_files', '')
+    integrated_content_files = value.get('integrated_content_files', [])
     library_type = value.get('file_set_type', '')
     if library_type in library_expectation and any(assay_term in library_expectation[library_type][2] for assay_term in assay_terms):
         file_expectation = library_expectation[library_type][0]

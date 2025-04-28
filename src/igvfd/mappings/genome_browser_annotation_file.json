@@ -1959,6 +1959,9 @@
                                 },
                                 "type": "object"
                             },
+                            "assay_titles": {
+                                "type": "keyword"
+                            },
                             "associated_phenotypes": {
                                 "properties": {
                                     "@id": {
