@@ -1476,9 +1476,9 @@ class ConstructLibrarySet(FileSet):
         'minItems': 1,
         'uniqueItems': True,
         'items': {
-                'title': 'Applied to Sample',
-                'type': ['string', 'object'],
-                'linkFrom': 'Sample.construct_library_sets',
+            'title': 'Applied to Sample',
+            'type': ['string', 'object'],
+            'linkFrom': 'Sample.construct_library_sets',
         },
         'notSubmittable': True
     })
