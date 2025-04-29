@@ -16,7 +16,7 @@ def test_single_cell_atac_seq_quality_metric_upgrade_1_2(upgrader, single_cell_a
 
 def test_single_cell_atac_seq_quality_metric_upgrade_2_3(upgrader, single_cell_atac_seq_quality_metric_v2):
     value = upgrader.upgrade('single_cell_atac_seq_quality_metric',
-                             single_cell_atac_seq_quality_metric_v1, current_version='2', target_version='3')
+                             single_cell_atac_seq_quality_metric_v2, current_version='2', target_version='3')
     assert 'joint_barcodes_passing' not in value
     assert 'n_barcodes' not in value
     assert 'n_fragments' not in value
