@@ -40,6 +40,7 @@ def single_cell_rna_seq_quality_metric(
 def single_cell_rna_seq_quality_metric_v1(
         lab, award, alignment_file, analysis_step_version):
     item = {
+        'schema_version': '1',
         'award': award['@id'],
         'lab': lab['@id'],
         'quality_metric_of': alignment_file['@id'],
