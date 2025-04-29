@@ -79,7 +79,7 @@ def test_audit_missing_measurement_sets(
     )
 
 
-def test_audit_files_associated_with_incorrect_fileset(testapp, base_auxiliary_set, configuration_file_seqspec, sequence_file):
+def test_audit_files_associated_with_incorrect_fileset_auxset(testapp, base_auxiliary_set, configuration_file_seqspec, sequence_file):
     # Test 1: seqfiles file set != seqspec file set (audit)
     testapp.patch_json(
         configuration_file_seqspec['@id'],
@@ -108,7 +108,7 @@ def test_audit_files_associated_with_incorrect_fileset(testapp, base_auxiliary_s
     )
 
 
-def test_audit_inconsistent_seqspec(testapp, base_auxiliary_set, configuration_file_seqspec, configuration_file_seqspec_2, sequence_file, sequence_file_sequencing_run_2):
+def test_audit_inconsistent_seqspec_auxset(testapp, base_auxiliary_set, configuration_file_seqspec, configuration_file_seqspec_2, sequence_file, sequence_file_sequencing_run_2):
     # Test 1: seqfiles from the same set have different seqspecs (audit)
     testapp.patch_json(
         sequence_file['@id'],
@@ -182,4 +182,127 @@ def test_audit_inconsistent_seqspec(testapp, base_auxiliary_set, configuration_f
     assert all(
         error['category'] != 'inconsistent sequence specifications'
         for error in res.json['audit'].get('ERROR', [])
+    )
+
+
+def test_audit_unexpected_seqspec_auxset(testapp, sequence_file_pod5, sequence_file, sequence_file_sequencing_run_2, configuration_file_seqspec, base_auxiliary_set, auxiliary_set_cell_sorting, experimental_protocol_document):
+    # Test: If pod5, seqspec is unexpected (audit)
+    testapp.patch_json(
+        configuration_file_seqspec['@id'],
+        {
+            'seqspec_of': [sequence_file_pod5['@id']],
+            'file_set': base_auxiliary_set['@id']
+        }
+    )
+    testapp.patch_json(
+        sequence_file_pod5['@id'],
+        {
+            'file_set': base_auxiliary_set['@id']
+        }
+    )
+    res = testapp.get(base_auxiliary_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected sequence specification'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Patch: make a seqspec document
+    testapp.patch_json(
+        experimental_protocol_document['@id'],
+        {
+            'document_type': 'library structure seqspec',
+        }
+    )
+    # Test: If double seqspec and non-single cell (audit)
+    testapp.patch_json(
+        configuration_file_seqspec['@id'],
+        {
+            'seqspec_of': [sequence_file['@id']],
+            'file_set': auxiliary_set_cell_sorting['@id']
+        }
+    )
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'seqspec_document': experimental_protocol_document['@id'],
+            'file_set': auxiliary_set_cell_sorting['@id']
+        }
+    )
+    res = testapp.get(auxiliary_set_cell_sorting['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected sequence specification'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Test: If wrong seqspec document type (audit)
+    testapp.patch_json(
+        experimental_protocol_document['@id'],
+        {
+            'document_type': 'standards',
+        }
+    )
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'seqspec_document': experimental_protocol_document['@id'],
+            'file_set': auxiliary_set_cell_sorting['@id']
+        }
+    )
+    res = testapp.get(auxiliary_set_cell_sorting['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected sequence specification'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+
+def test_audit_missing_seqspec_auxset(testapp, sequence_file, sequence_file_sequencing_run_2, experimental_protocol_document, configuration_file_seqspec, base_auxiliary_set):
+    # Patch: make a seqspec document
+    testapp.patch_json(
+        experimental_protocol_document['@id'],
+        {
+            'document_type': 'library structure seqspec',
+        }
+    )
+    # Test 1: SeqFiles without seqspec config or doc (Internal action)
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_set': base_auxiliary_set['@id']
+        }
+    )
+    res = testapp.get(base_auxiliary_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Test 2: SeqFile with seqspec doc (no internal action)
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'seqspec_document': experimental_protocol_document['@id']
+        }
+    )
+    res = testapp.get(base_auxiliary_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Test 3: SeqFile with seqspec ConfigFile (no internal action)
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'file_set': base_auxiliary_set['@id']
+        }
+    )
+    testapp.patch_json(
+        configuration_file_seqspec['@id'],
+        {
+            'file_set': base_auxiliary_set['@id'],
+            'seqspec_of': [sequence_file_sequencing_run_2['@id']]
+        }
+    )
+    res = testapp.get(base_auxiliary_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )

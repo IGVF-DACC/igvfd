@@ -28,5 +28,14 @@ def get_audit_message(audit_function, index=0):
     if docstring:
         try:
             return json.loads(docstring)[index]
-        except:
-            return ValueError(f'Docstring: {docstring!r} in function: {audit_function.__name__!r} is not valid JSON format.')
+        except Exception as e:
+            raise ValueError(
+                f'Docstring: {docstring!r} in function: {audit_function.__name__!r} is not valid JSON format. Error: {str(e)}')
+
+
+def join_obj_paths(data_object_paths: list) -> str:
+    """Join a list of object paths into a single string for audit messages."""
+    if not data_object_paths:
+        raise ValueError('No data objects provided for joining paths.')
+    # Remove leading and trailing slashes and join with commas
+    return ', '.join([audit_link(path_to_text(data_obj), data_obj)for data_obj in data_object_paths])

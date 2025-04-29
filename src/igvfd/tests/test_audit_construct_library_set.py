@@ -326,7 +326,7 @@ def test_audit_inconsistent_gene(
     )
 
 
-def test_audit_files_associated_with_incorrect_fileset(testapp, base_expression_construct_library_set, configuration_file_seqspec, sequence_file):
+def test_audit_files_associated_with_incorrect_fileset_cls(testapp, base_expression_construct_library_set, configuration_file_seqspec, sequence_file):
     # Test 1: seqfiles file set != seqspec file set (audit)
     testapp.patch_json(
         configuration_file_seqspec['@id'],
@@ -355,7 +355,7 @@ def test_audit_files_associated_with_incorrect_fileset(testapp, base_expression_
     )
 
 
-def test_audit_inconsistent_seqspec(testapp, base_expression_construct_library_set, configuration_file_seqspec, configuration_file_seqspec_2, sequence_file, sequence_file_sequencing_run_2):
+def test_audit_inconsistent_seqspec_cls(testapp, base_expression_construct_library_set, configuration_file_seqspec, configuration_file_seqspec_2, sequence_file, sequence_file_sequencing_run_2):
     # Test 1: seqfiles from the same set have different seqspecs (audit)
     testapp.patch_json(
         sequence_file['@id'],
@@ -429,4 +429,120 @@ def test_audit_inconsistent_seqspec(testapp, base_expression_construct_library_s
     assert all(
         error['category'] != 'inconsistent sequence specifications'
         for error in res.json['audit'].get('ERROR', [])
+    )
+
+
+def test_audit_unexpected_seqspec_cls(testapp, sequence_file_pod5, sequence_file, configuration_file_seqspec, construct_library_set_genome_wide, base_expression_construct_library_set, experimental_protocol_document):
+    # Test: If pod5, seqspec is unexpected (audit)
+    testapp.patch_json(
+        configuration_file_seqspec['@id'],
+        {
+            'seqspec_of': [sequence_file_pod5['@id']],
+            'file_set': construct_library_set_genome_wide['@id']
+        }
+    )
+    testapp.patch_json(
+        sequence_file_pod5['@id'],
+        {
+            'file_set': construct_library_set_genome_wide['@id']
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected sequence specification'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Patch: make a seqspec document
+    testapp.patch_json(
+        experimental_protocol_document['@id'],
+        {
+            'document_type': 'library structure seqspec',
+        }
+    )
+    # Test: If double seqspec and non-single cell (audit)
+    testapp.patch_json(
+        configuration_file_seqspec['@id'],
+        {
+            'seqspec_of': [sequence_file['@id']],
+            'file_set': base_expression_construct_library_set['@id']
+        }
+    )
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'seqspec_document': experimental_protocol_document['@id'],
+            'file_set': base_expression_construct_library_set['@id']
+        }
+    )
+    res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected sequence specification'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Test: If seqspec document is not a library structure seqspec (audit)
+    testapp.patch_json(
+        experimental_protocol_document['@id'],
+        {
+            'document_type': 'standards',
+        }
+    )
+    res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected sequence specification'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+
+def test_audit_missing_seqspec_cls(testapp, sequence_file, sequence_file_sequencing_run_2, experimental_protocol_document, configuration_file_seqspec, base_expression_construct_library_set):
+    # Patch: make a seqspec document
+    testapp.patch_json(
+        experimental_protocol_document['@id'],
+        {
+            'document_type': 'library structure seqspec',
+        }
+    )
+    # Test: SeqFiles without seqspec config or doc (audit)
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_set': base_expression_construct_library_set['@id']
+        }
+    )
+    res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Test: SeqFile with seqspec doc (no audit)
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'seqspec_document': experimental_protocol_document['@id']
+        }
+    )
+    res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Test: SeqFile with seqspec ConfigFile (no audit)
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'file_set': base_expression_construct_library_set['@id']
+        }
+    )
+    testapp.patch_json(
+        configuration_file_seqspec['@id'],
+        {
+            'file_set': base_expression_construct_library_set['@id'],
+            'seqspec_of': [sequence_file_sequencing_run_2['@id']]
+        }
+    )
+    res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
