@@ -2,6 +2,12 @@
 
 ### Minor changes since schema version 6
 
+* Extend `output_content_types` enum list to include `primers table`.
+* Extend `input_content_types` enum list to include `primers table`.
+* Extend `output_content_types` enum list to include `primers track`.
+* Extend `input_content_types` enum list to include `primers track`.
+* Extend `output_content_types` enum list to include `target transcripts`.
+* Extend `input_content_types` enum list to include `target transcripts`.
 * Extend `output_content_types` enum list to include `barcode replacement`.
 * Extend `input_content_types` enum list to include `barcode replacement`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
