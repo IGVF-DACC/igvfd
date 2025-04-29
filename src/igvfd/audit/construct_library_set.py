@@ -110,14 +110,12 @@ def audit_integrated_content_files(value, system):
     '''
     audit_message_guide = get_audit_message(audit_integrated_content_files, index=0)
     audit_message_reporter = get_audit_message(audit_integrated_content_files, index=1)
-    assay_titles = value.get('assay_titles', [])
-    print(assay_titles)
     assay_terms = set()
-    # file_sets = value.get('file_sets', [])
-    # for file_set in file_sets:
-    #     if file_set.startswith('/measurement-sets/'):
-    #         file_set_object = system.get('request').embed(file_set, '@@object?skip_calculated=true')
-    #         assay_terms.add(file_set_object['assay_term'])
+    file_sets = value.get('file_sets', [])
+    for file_set in file_sets:
+        if file_set.startswith('/measurement-sets/'):
+            file_set_object = system.get('request').embed(file_set, '@@object?skip_calculated=true')
+            assay_terms.add(file_set_object['assay_term'])
     CRISPR_assays = [
         '/assay-terms/OBI_0003659/',  # in vitro CRISPR screen assay
         '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
@@ -136,6 +134,7 @@ def audit_integrated_content_files(value, system):
         file_expectation = library_expectation[library_type][0]
         audit_message = library_expectation[library_type][1]
         if integrated_content_files:
+            print(integrated_content_files)
             files = [system.get('request').embed(file, '@@object?skip_calculated=true')
                      for file in integrated_content_files]
             if not ([file for file in files if file['content_type'] == file_expectation]):
