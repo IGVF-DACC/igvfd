@@ -41,34 +41,6 @@ def workflow():
                 'title': 'Audit Category: Internal Action'
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Workflow',
-                'facet_fields': [
-                    'analysis_steps.analysis_step_versions.software_versions.software.title',
-                    'analysis_steps.analysis_step_types',
-                    'analysis_steps.output_content_types',
-                ],
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'lab.title',
-                    'award.component',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ],
-            },
-        ],
         'columns': {
             'accession': {
                 'title': 'Accession'

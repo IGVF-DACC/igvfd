@@ -41,33 +41,6 @@ def sample_term():
                 'title': 'Audit Category: Internal Action'
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Sample',
-                'facet_fields': [
-                    'organ_slims',
-                    'cell_slims',
-                    'developmental_slims',
-                    'system_slims',
-                ]
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'type',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                    'audit.ERROR.category',
-                    'audit.NOT_COMPLIANT.category',
-                    'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category',
-                ]
-            },
-        ],
         'columns': {
             'uuid': {
                 'title': 'UUID'

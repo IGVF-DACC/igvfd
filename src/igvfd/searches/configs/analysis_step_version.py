@@ -20,22 +20,6 @@ def analysis_step_version():
                 'title': 'Status'
             }
         },
-        'facet_groups': [
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'collections',
-                    'lab.title',
-                    'award.component',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                ],
-            },
-        ],
         'columns': {
             'uuid': {
                 'title': 'UUID'
