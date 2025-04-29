@@ -253,3 +253,36 @@ def audit_missing_transcriptome(value, system):
             f'has file(s) with no transcriptome `reference_files`: {files_missing_transcriptome} '
         )
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+@audit_checker('AnalysisSet', frame='object')
+def audit_multiple_barcode_replacement_files_in_input(value, system):
+    '''
+    [
+        {
+            "audit_description": "All input Parse SPLiT-seq measurement sets linked to the same analysis set are expected to have the same barcode replacement file.",
+            "audit_category": "unexpected barcode replacement file",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    audit_msg_unexpected_file = get_audit_message(audit_multiple_barcode_replacement_files_in_input, index=0)
+    barcode_replacement_files = set()
+    parse_splitseq_file_sets = []
+    if value.get('input_file_sets'):
+        for file in value.get('input_file_sets'):
+            if file.startswith('/measurement-sets/'):
+                input_file_set_object = system.get('request').embed(file + '@@object?skip_calculated=true')
+                assay_term = input_file_set_object.get('preferred_assay_title')
+                if assay_term == 'Parse SPLiT-seq':
+                    barcode_replacement_files.add(input_file_set_object.get('barcode_replacement_file', ''))
+                    parse_splitseq_file_sets.append(file)
+    # Audit 1: If all input Parse measurement sets have different barcode replacement files, trigger audit
+    if len(barcode_replacement_files) > 1:
+        barcode_replacement_files_links = ', '.join(
+            [audit_link(path_to_text(tab_file), tab_file) for tab_file in barcode_replacement_files])
+        detail = (
+            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has `input_file_sets` with `preferred_assay_title` Parse SPLiT-seq that are linked to different `barcode_replacement_file`s: {barcode_replacement_files_links}.'
+        )
+        yield AuditFailure(audit_msg_unexpected_file.get('audit_category', ''), f'{detail} {audit_msg_unexpected_file.get("audit_description", "")}', level=audit_msg_unexpected_file.get('audit_level', ''))
