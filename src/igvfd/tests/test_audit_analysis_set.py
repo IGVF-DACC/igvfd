@@ -370,13 +370,21 @@ def test_audit_missing_transcriptome(
     analysis_set_base,
     alignment_file,
     reference_file,
+    tabular_file_onlist_1,
     measurement_set,
-    assay_term_bulk_rna
+    assay_term_bulk_rna,
+    assay_term_scatac,
+    sequence_file,
+    tabular_file
 ):
+    # Overall note: The test spot checks Alignment Files, but the idea is the same for matrix and signal files.
+    # Test: If an alignment file is derived from a non-seq file and has genome ref, no audit
     testapp.patch_json(
         alignment_file['@id'],
         {
-            'file_set': analysis_set_base['@id']
+            'file_set': analysis_set_base['@id'],
+            'derived_from': [tabular_file_onlist_1['@id']],
+            'reference_files': [reference_file['@id']]
         }
     )
     testapp.patch_json(
@@ -390,27 +398,23 @@ def test_audit_missing_transcriptome(
         error['category'] != 'missing reference files'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+    # Test: If an alignment file is derived from a non-transcript seqfile and has genome ref, no audit
+    testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'derived_from': [sequence_file['@id']]
+        }
+    )
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_set': measurement_set['@id']
+        }
+    )
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_bulk_rna['@id']
-        }
-    )
-    testapp.patch_json(
-        analysis_set_base['@id'],
-        {
-            'input_file_sets': [measurement_set['@id']]
-        }
-    )
-    res = testapp.get(analysis_set_base['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing reference files'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-    testapp.patch_json(
-        reference_file['@id'],
-        {
-            'content_type': 'transcriptome reference'
+            'assay_term': assay_term_scatac['@id']
         }
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
@@ -418,7 +422,19 @@ def test_audit_missing_transcriptome(
         error['category'] != 'missing reference files'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
-    # Check if the transcriptome index also works
+    # Test: If an alignment file is derived from a transcript seqfile and has genome ref, audit
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_bulk_rna['@id']
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing reference files'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # Test: If an alignment file is derived from a transcript seqfile and has transcript ref, no audit
     testapp.patch_json(
         reference_file['@id'],
         {
@@ -428,6 +444,39 @@ def test_audit_missing_transcriptome(
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing reference files'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # Test 2 lvls up: If an alignment file is derived from a tab file,
+    # which is derived from a transcript seqfile and has transcript ref, no audit
+    testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'derived_from': [tabular_file['@id']]
+        }
+    )
+    # SeqFile is linked an RNA measurement set
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'derived_from': [sequence_file['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing reference files'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # Test 2 lvls up: If an alignment file is derived from a tab file,
+    # which is derived from a transcript seqfile and has genome ref, audit
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'content_type': 'genome reference'
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing reference files'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
