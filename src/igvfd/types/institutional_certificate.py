@@ -40,7 +40,7 @@ class InstitutionalCertificate(Item):
             properties = self.upgrade_properties()
         limitation = properties.get('data_use_limitation', 'No limitations')
         modifiers = properties.get('data_use_limitation_modifiers', [])
-        joined_modifiers = '-'.join(modifiers) if modifiers else ''
+        joined_modifiers = '-'.join(sorted(modifiers)) if modifiers else ''
         return f'{limitation}-{joined_modifiers}' if joined_modifiers else limitation
 
     @calculated_property(
