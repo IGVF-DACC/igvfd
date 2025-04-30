@@ -275,8 +275,11 @@ def audit_multiple_barcode_replacement_files_in_input(value, system):
                 input_file_set_object = system.get('request').embed(file + '@@object?skip_calculated=true')
                 assay_term = input_file_set_object.get('preferred_assay_title')
                 if assay_term == 'Parse SPLiT-seq':
-                    barcode_replacement_files.add(input_file_set_object.get('barcode_replacement_file', ''))
-                    parse_splitseq_file_sets.append(file)
+                    barcode_replacement_file = input_file_set_object.get('barcode_replacement_file', '')
+                    # Only append replacement files that are not empty (or else it will result in a None value downstream)
+                    if barcode_replacement_file:
+                        barcode_replacement_files.add(barcode_replacement_file)
+                        parse_splitseq_file_sets.append(file)
     # Audit 1: If all input Parse measurement sets have different barcode replacement files, trigger audit
     if len(barcode_replacement_files) > 1:
         barcode_replacement_files_links = ', '.join(
