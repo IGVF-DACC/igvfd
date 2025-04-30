@@ -50,9 +50,7 @@ def test_summary(testapp, measurement_set, measurement_set_mpra, measurement_set
     measurement_set_multiome_summary = measurement_set_multiome['summary']
     res = testapp.get(base_auxiliary_set['@id'])
     auxiliary_summary = res.json.get('summary')
-    assert auxiliary_summary.endswith(', ... and 1 more measurement set')
-    assert sum(1 for summary in [measurement_set_summary, measurement_set_mpra_summary,
-               measurement_set_multiome_summary] if summary in auxiliary_summary) == 2
+    assert auxiliary_summary == 'gRNA sequencing for ATAC-seq (10x multiome), MPRA, SUPERSTARR'
 
 
 def test_calculated_donors(testapp, base_auxiliary_set, primary_cell, human_donor, in_vitro_cell_line, rodent_donor):
