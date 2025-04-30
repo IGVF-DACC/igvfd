@@ -1,5 +1,5 @@
 {
-    "title": "Tissue",
+    "title": "Tissue/Organ",
     "$id": "/profiles/tissue.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "A biosample that is directly harvested from a donor, typically a dissection from an organ.",
@@ -81,7 +81,7 @@
         "pmi": {
             "title": "Post-mortem Interval",
             "description": "The amount of time elapsed since death.",
-            "comment": "Post-mortem interval for tissues should be reported, if known.",
+            "comment": "Post-mortem interval for tissues/organs should be reported, if known.",
             "type": "integer",
             "minimum": 1,
             "submissionExample": {
@@ -92,7 +92,7 @@
         "pmi_units": {
             "title": "Post-mortem Interval Units",
             "description": "The unit in which the PMI time was reported.",
-            "comment": "Post-mortem interval units for tissues should be reported with PMI value, if known.",
+            "comment": "Post-mortem interval units for tissues/organs should be reported with PMI value, if known.",
             "type": "string",
             "enum": [
                 "second",
@@ -108,7 +108,7 @@
         },
         "ccf_id": {
             "title": "Common Coordinate Framework Identifier",
-            "description": "HubMap Common Coordinate Framework unique identifier corresponding to the organ, biological structure, and spatial location of the tissue specimen.",
+            "description": "HubMap Common Coordinate Framework unique identifier corresponding to the organ, biological structure, and spatial location of the tissue specimen within an organ.",
             "comment": "This identifier will be later linked to: https://portal.hubmapconsortium.org/ccf-eui",
             "type": "string",
             "format": "uuid",
@@ -119,8 +119,8 @@
         },
         "preservation_method": {
             "title": "Preservation Method",
-            "description": "The method by which the tissue was preserved: cryopreservation (slow-freeze) or flash-freezing.",
-            "comment": "Indicate the tissue preservation_method if known and may be/become an experimental variable to track.",
+            "description": "The method by which the tissue/organ was preserved: cryopreservation (slow-freeze) or flash-freezing.",
+            "comment": "Indicate the tissue/organ preservation_method if known and may be/become an experimental variable to track.",
             "type": "string",
             "enum": [
                 "cryopreservation",
