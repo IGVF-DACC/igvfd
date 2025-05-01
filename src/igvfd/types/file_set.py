@@ -1312,8 +1312,8 @@ class AuxiliarySet(FileSet):
     def summary(self, request, file_set_type, measurement_sets=None):
         if not measurement_sets:
             return f'{file_set_type}'
-        measurement_sets_summaries = sorted(list(set([request.embed(measurement_set, '@@object').get('summary')
-                                                      for measurement_set in measurement_sets if measurement_set])))
+        measurement_sets_summaries = sorted(list(set(
+            [request.embed(measurement_set, '@@object_with_select_calculated_properties?field=summary').get('summary') for measurement_set in measurement_sets if measurement_set])))
         return f'{file_set_type} for {", ".join(measurement_sets_summaries)}'
 
     @calculated_property(
