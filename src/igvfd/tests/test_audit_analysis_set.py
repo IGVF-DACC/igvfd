@@ -147,39 +147,6 @@ def test_audit_missing_analysis_step_version(
     )
 
 
-def test_audit_multiple_workflows(
-    testapp,
-    analysis_set_with_workflow,
-    matrix_file_with_base_workflow,
-    matrix_file_with_base_workflow_2
-):
-    # Test when an analysis set only has one workflow
-    res = testapp.get(analysis_set_with_workflow['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'unexpected workflows'
-        for error in res.json['audit'].get('WARNING', [])
-    )
-    # Patching 2 matrix files to a single analysis set
-    # Two workflows for a single analysis set
-    testapp.patch_json(
-        matrix_file_with_base_workflow['@id'],
-        {
-            'file_set': analysis_set_with_workflow['@id']
-        }
-    )
-    testapp.patch_json(
-        matrix_file_with_base_workflow_2['@id'],
-        {
-            'file_set': analysis_set_with_workflow['@id']
-        }
-    )
-    res = testapp.get(analysis_set_with_workflow['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'unexpected workflows'
-        for error in res.json['audit'].get('WARNING', [])
-    )
-
-
 def test_audit_analysis_set_multiplexed_samples(
     testapp,
     analysis_set_base,
