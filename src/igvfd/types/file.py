@@ -183,7 +183,7 @@ class File(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Integrated In',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'ConstructLibrarySet.integrated_content_files',
         },
         'notSubmittable': True
@@ -199,7 +199,7 @@ class File(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Input File For',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'File.derived_from',
         },
         'notSubmittable': True
@@ -215,7 +215,7 @@ class File(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Gene List For',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'FileSet.large_scale_gene_list',
         },
         'notSubmittable': True
@@ -231,7 +231,7 @@ class File(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Loci List For',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'FileSet.large_scale_loci_list',
         },
         'notSubmittable': True
@@ -247,7 +247,7 @@ class File(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Quality Metric',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'QualityMetric.quality_metric_of',
         },
         'notSubmittable': True
@@ -471,7 +471,7 @@ class SequenceFile(File):
         'uniqueItems': True,
         'items': {
             'title': 'Seqspecs',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'ConfigurationFile.seqspec_of',
         },
         'notSubmittable': True
@@ -881,7 +881,7 @@ class TabularFile(File):
         'uniqueItems': True,
         'items': {
             'title': 'Barcode Map For',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'MultiplexedSample.barcode_map',
         },
         'notSubmittable': True
@@ -897,7 +897,7 @@ class TabularFile(File):
         'uniqueItems': True,
         'items': {
             'title': 'Primer Design For',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'MeasurementSet.primer_designs',
         },
         'notSubmittable': True

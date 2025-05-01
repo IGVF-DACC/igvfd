@@ -168,7 +168,7 @@ class FileSet(Item):
         'uniqueItems': True,
         'items': {
             'title': 'File',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'File.file_set',
         },
         'notSubmittable': True
@@ -184,7 +184,7 @@ class FileSet(Item):
         'uniqueItems': True,
         'items': {
             'title': 'File Set Controlled By This File Set',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'FileSet.control_file_sets',
         },
         'notSubmittable': True
@@ -227,7 +227,7 @@ class FileSet(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Input For',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'FileSet.input_file_sets',
         },
         'notSubmittable': True
@@ -1294,7 +1294,7 @@ class AuxiliarySet(FileSet):
         'uniqueItems': True,
         'items': {
             'title': 'Measurement Set',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'MeasurementSet.auxiliary_sets',
         },
         'notSubmittable': True
@@ -1440,7 +1440,7 @@ class ConstructLibrarySet(FileSet):
         'uniqueItems': True,
         'items': {
             'title': 'Applied to Sample',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'Sample.construct_library_sets',
         },
         'notSubmittable': True

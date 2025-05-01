@@ -152,7 +152,7 @@ class TestingLinkTarget(Item):
         'title': 'Sources',
         'type': 'array',
         'items': {
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'TestingLinkSource.target',
         },
     })
