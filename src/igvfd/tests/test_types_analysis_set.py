@@ -214,6 +214,15 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get('summary', '') == 'interference ATAC-seq (10x multiome), SUPERSTARR, lentiMPRA targeting MYC'
     testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'control_type': 'low FACS signal'
+        }
+    )
+    res = testapp.get(analysis_set_base['@id']).json
+    assert res.get(
+        'summary', '') == 'interference ATAC-seq (10x multiome), SUPERSTARR, lentiMPRA targeting MYC with low FACS signal control'
+    testapp.patch_json(
         primary_cell['@id'],
         {
             'construct_library_sets': [construct_library_set_reporter['@id']]
