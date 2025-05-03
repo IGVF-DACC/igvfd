@@ -17,6 +17,18 @@ def measurement_set():
                     }
                 ]
             },
+            'release_timestamp': {
+                'title': 'Release Date',
+                'type': 'date_histogram',
+                'calendar_interval': 'month',
+                'format': 'yyyy-MM-dd'
+            },
+            'creation_timestamp': {
+                'title': 'Creation Date',
+                'type': 'date_histogram',
+                'calendar_interval': 'month',
+                'format': 'yyyy-MM-dd'
+            },
             'preferred_assay_title': {
                 'title': 'Preferred Assay Title'
             },
