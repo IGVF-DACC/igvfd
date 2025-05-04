@@ -132,6 +132,9 @@ def construct_library_set():
             'small_scale_gene_list.symbol': {
                 'title': 'Genes'
             },
+            'associated_phenotypes.term_name': {
+                'title': 'Associated Phenotypes'
+            },
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
             },
