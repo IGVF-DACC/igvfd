@@ -13,7 +13,7 @@ def assay_term_starr(testapp):
 @pytest.fixture
 def assay_term_chip(testapp):
     item = {
-        'term_id': 'OBI:0000716',
+        'term_id': 'OBI:0002017',
         'term_name': 'ChIP-seq assay'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
@@ -71,16 +71,6 @@ def assay_term_scatac(testapp):
         'term_name': 'single-nucleus ATAC-seq'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
-
-
-@pytest.fixture
-def assay_term_v1(assay_term_starr):
-    item = assay_term_starr.copy()
-    item.update({
-        'schema_version': '1',
-        'aliases': []
-    })
-    return item
 
 
 @pytest.fixture
@@ -144,6 +134,16 @@ def assay_term_CRISPR_sorted(testapp):
         'term_name': 'in vitro CRISPR screen using flow cytometry'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def assay_term_v1(assay_term_starr):
+    item = assay_term_starr.copy()
+    item.update({
+        'schema_version': '1',
+        'aliases': []
+    })
+    return item
 
 
 @pytest.fixture

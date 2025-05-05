@@ -12,7 +12,7 @@ def test_term_unique_keys(
 ):
     res = testapp.patch_json(
         assay_term_starr['@id'],
-        {'term_id': 'OBI:0000716'},
+        {'term_id': 'OBI:0002017'},
         expect_errors=True)
     assert res.status_code == 409
     res = testapp.patch_json(

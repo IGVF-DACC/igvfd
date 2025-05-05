@@ -314,22 +314,18 @@ def audit_targeted_genes(value, system):
     audit_message_missing = get_audit_message(audit_targeted_genes, index=0)
     audit_message_unexpected = get_audit_message(audit_targeted_genes, index=1)
     assay_term = value.get('assay_term')
-    assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-    assay_term_name = assay_object.get('term_name', '')
     targeted_genes = value.get('targeted_genes', '')
-    preferred_assay_title = value.get('preferred_assay_title', '')
-    expecting_targeted_genes_by_assay_term = ['in vitro CRISPR screen using flow cytometry',
-                                              'ChIP-seq assay',
-                                              'transcription factor binding site identification by ChIP-Seq assay',
-                                              ]
-    expecting_targeted_genes_by_preferred_assay_title = ['Variant-EFFECTS']
-    if not (targeted_genes) and (assay_term_name in expecting_targeted_genes_by_assay_term or preferred_assay_title in expecting_targeted_genes_by_preferred_assay_title):
+    expecting_targeted_genes_by_assay = ['/assay-terms/OBI_0003661/',  # in vitro CRISPR screen using flow cytometry
+                                         '/assay-terms/OBI_0002017/',  # histone modification identification by ChIP-Seq assay
+                                         '/assay-terms/OBI_0002019/'  # transcription factor binding site identification by ChIP-Seq assay
+                                         ]
+    if not (targeted_genes) and (assay_term in expecting_targeted_genes_by_assay):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `targeted_genes`.'
         )
         yield AuditFailure(audit_message_missing.get('audit_category', ''), f'{detail} {audit_message_missing.get("audit_description", "")}', level=audit_message_missing.get('audit_level', ''))
-    if targeted_genes and (assay_term_name not in expecting_targeted_genes_by_assay_term and preferred_assay_title not in expecting_targeted_genes_by_preferred_assay_title):
+    if targeted_genes and (assay_term not in expecting_targeted_genes_by_assay):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has `targeted_genes`.'
