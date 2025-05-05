@@ -49,6 +49,7 @@
         "assay_term": "/assay-terms/OBI_0002764/",
         "multiome_size": 2,
         "preferred_assay_title": "10x multiome",
+        "control_type": "baseline",
         "file_set_type": "experimental data"
     },
     {

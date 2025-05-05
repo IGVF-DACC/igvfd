@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 26
 
+* Extend `control_type` enum list to include `baseline`.
 * Add `barcode_replacement_file`.
 * Extend `preferred_assay_title` enum list to include `scMultiome-NT-seq`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.

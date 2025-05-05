@@ -255,6 +255,7 @@
             "description": "The type of control this file set represents.",
             "type": "string",
             "enum": [
+                "baseline",
                 "control transduction",
                 "low FACS signal",
                 "non-targeting",
@@ -264,6 +265,7 @@
                 "untreated"
             ],
             "enum_descriptions": {
+                "baseline": "The samples have not been treated with any guide libraries, but used as a baseline for other experiments.",
                 "control transduction": "The samples have been transduced with a construct that serves as a control.",
                 "low FACS signal": "The samples have minimal fluorescence in Flow Cytometry (FACS), used as a baseline or negative control.",
                 "non-targeting": "The samples have been treated with a construct that does not target any specific gene or region.",
