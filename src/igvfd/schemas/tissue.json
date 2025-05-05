@@ -151,7 +151,7 @@
         },
         "pooled_from": {
             "items": {
-                "title": "Tissue Pooled From",
+                "title": "Tissue/Organ Pooled From",
                 "linkTo": "Tissue",
                 "type": "string"
             },
