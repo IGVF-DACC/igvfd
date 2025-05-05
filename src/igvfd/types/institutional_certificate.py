@@ -42,8 +42,11 @@ class InstitutionalCertificate(Item):
         limitation = properties.get('data_use_limitation', 'No limitations')
         modifiers = properties.get('data_use_limitation_modifiers', [])
 
-        order = ['IRB', 'PUB', 'NPU', 'MDS', 'GSO']
-        sorted_modifiers = sorted(modifiers, key=order.index) if modifiers else []
+        modifier_order = ['IRB', 'PUB', 'NPU', 'MDS', 'GSO', 'COL']
+        sorted_modifiers = sorted(
+            modifiers,
+            key=lambda m: modifier_order.index(m) if m in modifier_order else 100
+        )
 
         return f'{limitation}-{"-".join(sorted_modifiers)}' if sorted_modifiers else limitation
 
