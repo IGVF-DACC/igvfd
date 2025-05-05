@@ -117,7 +117,7 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
     assert set(res.json.get('assay_titles')) == {'lentiMPRA'}
 
 
-def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_no_files, measurement_set_mpra, measurement_set_multiome, principal_analysis_set, tabular_file, gene_myc_hs, assay_term_atac, assay_term_crispr, primary_cell, crispr_modification, construct_library_set_reporter, analysis_set_with_CLS_input, tissue, base_expression_construct_library_set):
+def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_no_files, measurement_set_mpra, measurement_set_multiome, measurement_set_perturb_seq, principal_analysis_set, tabular_file, gene_myc_hs, assay_term_atac, assay_term_crispr, primary_cell, crispr_modification, construct_library_set_reporter, analysis_set_with_CLS_input, tissue, base_expression_construct_library_set):
     # With no input_file_sets and no files present, summary is based on analysis file_set_type only.
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get('summary', '') == 'Unspecified assay'
@@ -222,6 +222,25 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
         'summary', '') == 'interference ATAC-seq (10x multiome), SUPERSTARR, lentiMPRA targeting MYC with low FACS signal control'
+    testapp.patch_json(
+        measurement_set_perturb_seq['@id'],
+        {
+            'control_type': 'untransfected'
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set_mpra['@id'],
+                                measurement_set_multiome['@id'],
+                                measurement_set_perturb_seq['@id'],
+                                principal_analysis_set['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id']).json
+    print(res)
+    assert res.get(
+        'summary', '') == 'interference ATAC-seq (10x multiome), Perturb-seq, SUPERSTARR, lentiMPRA targeting MYC with low FACS signal, untransfected controls'
     testapp.patch_json(
         primary_cell['@id'],
         {

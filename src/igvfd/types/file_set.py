@@ -510,7 +510,10 @@ class AnalysisSet(FileSet):
 
         control_phrase = ''
         if len(control_type_set) > 0:
-            control_phrase = f'with {", ".join(control_type_set)} control'
+            suffix = ''
+            if len(control_type_set) > 1:
+                suffix = 's'
+            control_phrase = f'with {", ".join(sorted(control_type_set))} control{suffix}'
 
         all_phrases = [
             assay_title_phrase,
