@@ -34,12 +34,31 @@
     ],
     "dependentSchemas": {
         "derived_manually": {
-            "comment": "Specification of derived_manually is mutually exclusive with specification of analysis_step_version.",
-            "not": {
-                "required": [
-                    "analysis_step_version"
-                ]
-            }
+            "comment": "Specification of analysis_step_version should be allowed only if derived_manually is false.",
+            "oneOf": [
+                {
+                    "properties": {
+                        "activated": {
+                            "const": true
+                        }
+                    },
+                    "not": {
+                        "required": [
+                            "analysis_step_version"
+                        ]
+                    }
+                },
+                {
+                    "properties": {
+                        "activated": {
+                            "const": false
+                        }
+                    },
+                    "required": [
+                        "analysis_step_version"
+                    ]
+                }
+            ]
         },
         "analysis_step_version": {
             "comment": "Specification of analysis_step_version is mutually exclusive with specification of derived_manually.",
@@ -360,6 +379,7 @@
             "title": "Derived Manually",
             "description": "A boolean indicating whether the file has been dervided manually without automated computational methods.",
             "type": "boolean",
+            "default": false,
             "submissionExample": {
                 "appscript": "true",
                 "igvf_utils": "true"

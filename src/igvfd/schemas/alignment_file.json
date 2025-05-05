@@ -122,6 +122,7 @@
             "title": "Redacted",
             "description": "Indicates whether the alignments data have been sanitized (redacted) to prevent leakage of private and potentially identifying genomic information.",
             "type": "boolean",
+            "default": false,
             "submissionExample": {
                 "appscript": false,
                 "igvf_utils": false

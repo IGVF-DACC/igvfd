@@ -51,7 +51,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "product_id": {
             "title": "Product ID",
