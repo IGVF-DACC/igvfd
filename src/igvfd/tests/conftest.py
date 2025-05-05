@@ -69,6 +69,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.image_file',
     'igvfd.tests.fixtures.schemas.mpra_quality_metric',
     'igvfd.tests.fixtures.schemas.single_cell_atac_seq_quality_metric',
+    'igvfd.tests.fixtures.schemas.single_cell_rna_seq_quality_metric',
 ]
 
 

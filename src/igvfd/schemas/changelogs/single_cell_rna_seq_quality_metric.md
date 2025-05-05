@@ -1,5 +1,22 @@
 ## Changelog for *`single_cell_rna_seq_quality_metric.json`*
 
+### Schema version 2
+
+* Rename `numBarcodesOnOnlist` to `num_barcodes_on_onlist`.
+* Rename `percentageBarcodesOnOnlist` to `percentage_barcodes_on_onlist`.
+* Rename `numReadsOnOnlist` to `num_reads_on_onlist`.
+* Rename `percentageReadsOnOnlist` to `percentage_reads_on_onlist`.
+* Rename `k-mer length` to `kmer_length`.
+* Remove `frac_dup`.
+* Remove `frac_mito`.
+* Remove `frac_mito_genes`.
+* Remove `frac_reads_in_genes_barcode`.
+* Remove `frac_reads_in_genes_library`.
+* Remove `joint_barcodes_passing`.
+* Remove `median_genes_per_barcode`.
+* Remove `n_genes`.
+* Remove `pct_duplicates`.
+
 ### Minor changes since schema version 1
 
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.

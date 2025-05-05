@@ -42,7 +42,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "n_records": {
             "title": "Number Of Records",
@@ -64,15 +64,6 @@
         },
         "n_barcodes": {
             "title": "Number Of Barcodes",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "frac_reads_in_genes_library": {
-            "title": "Fraction Of Reads In Genes Library",
             "description": "",
             "type": "number",
             "submissionExample": {
@@ -116,15 +107,6 @@
                 "igvf_utils": 8
             }
         },
-        "median_genes_per_barcode": {
-            "title": "Median Genes Per Barcode",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
         "median_umis_per_barcode": {
             "title": "Median UMIs Per Barcode",
             "description": "",
@@ -143,69 +125,6 @@
                 "igvf_utils": 8
             }
         },
-        "pct_duplicates": {
-            "title": "Percent Duplicates",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "n_genes": {
-            "title": "Number Of Genes",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "frac_dup": {
-            "title": "Duplicate Fraction",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "frac_mito": {
-            "title": "Mitochondrial Fraction",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "frac_mito_genes": {
-            "title": "Mitochondrial Genes Fraction",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "frac_reads_in_genes_barcode": {
-            "title": "Fraction Of Reads In Genes Barcode",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "joint_barcodes_passing": {
-            "title": "Joint Barcodes Passing",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
         "gt_records": {
             "title": "GtRecords",
             "description": "",
@@ -215,7 +134,7 @@
                 "igvf_utils": 8
             }
         },
-        "numBarcodesOnOnlist": {
+        "num_barcodes_on_onlist": {
             "title": "Number Of Barcodes On Onlist",
             "description": "",
             "type": "number",
@@ -224,7 +143,7 @@
                 "igvf_utils": 8
             }
         },
-        "percentageBarcodesOnOnlist": {
+        "percentage_barcodes_on_onlist": {
             "title": "Percentage Of Barcodes On Onlist",
             "description": "",
             "type": "number",
@@ -233,7 +152,7 @@
                 "igvf_utils": 8
             }
         },
-        "numReadsOnOnlist": {
+        "num_reads_on_onlist": {
             "title": "Number Of Reads On Onlist",
             "description": "",
             "type": "number",
@@ -242,7 +161,7 @@
                 "igvf_utils": 8
             }
         },
-        "percentageReadsOnOnlist": {
+        "percentage_reads_on_onlist": {
             "title": "Percentage Of Reads On Onlist",
             "description": "",
             "type": "number",
@@ -367,7 +286,7 @@
                 "igvf_utils": 8
             }
         },
-        "k-mer length": {
+        "kmer_length": {
             "title": "",
             "description": "",
             "type": "number",

@@ -42,37 +42,10 @@
     },
     "properties": {
         "schema_version": {
-            "default": "2"
-        },
-        "n_fragments": {
-            "title": "Number Of Fragments",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "n_barcodes": {
-            "title": "Number Of Barcodes",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
+            "default": "3"
         },
         "pct_duplicates": {
             "title": "Percent Duplicates",
-            "description": "",
-            "type": "number",
-            "submissionExample": {
-                "appscript": 8,
-                "igvf_utils": 8
-            }
-        },
-        "joint_barcodes_passing": {
-            "title": "Joint Barcodes Passing",
             "description": "",
             "type": "number",
             "submissionExample": {

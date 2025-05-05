@@ -1,5 +1,11 @@
 ## Changelog for *`single_cell_atac_seq_quality_metric.json`*
 
+### Schema version 3
+
+* Remove `joint_barcodes_passing`.
+* Remove `n_barcodes`.
+* Remove `n_fragments`.
+
 ### Minor changes since schema version 2
 
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
