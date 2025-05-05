@@ -47,3 +47,14 @@ def crispr_modification_3_4(value, system):
     if 'tagged_protein' in value:
         value['tagged_proteins'] = [value['tagged_protein']]
         del value['tagged_protein']
+
+
+@upgrade_step('crispr_modification', '4', '5')
+@upgrade_step('degron_modification', '1', '2')
+def modification_1_2(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2085
+    if 'activated' not in value:
+        value['activated'] = False
+        value.pop('activating_agent_term_id', None)
+        value.pop('activating_agent_term_name', None)
+        notes += f'activated=false was temporarily added for an upgrade. This should be reviewed.'
