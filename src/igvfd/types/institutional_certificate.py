@@ -38,10 +38,17 @@ class InstitutionalCertificate(Item):
     def data_use_limitation_summary(self, properties=None):
         if properties is None:
             properties = self.upgrade_properties()
+
         limitation = properties.get('data_use_limitation', 'No limitations')
         modifiers = properties.get('data_use_limitation_modifiers', [])
-        joined_modifiers = '-'.join(modifiers) if modifiers else ''
-        return f'{limitation}-{joined_modifiers}' if joined_modifiers else limitation
+
+        modifier_order = ['IRB', 'PUB', 'COL', 'NPU', 'MDS', 'GSO']
+        sorted_modifiers = sorted(
+            modifiers,
+            key=lambda m: modifier_order.index(m) if m in modifier_order else 100
+        )
+
+        return f'{limitation}-{"-".join(sorted_modifiers)}' if sorted_modifiers else limitation
 
     @calculated_property(
         schema={
