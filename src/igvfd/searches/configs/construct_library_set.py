@@ -17,7 +17,7 @@ def construct_library_set():
                 'title': 'Scope'
             },
             'associated_phenotypes.term_name': {
-                'title': 'Associated Phenotypes'
+                'title': 'Associated Phenotypes Term Name'
             },
             'small_scale_gene_list.symbol': {
                 'title': 'Targeted Genes'
