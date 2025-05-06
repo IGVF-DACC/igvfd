@@ -24,50 +24,6 @@ def get_assay_terms(value, system):
 
 
 @audit_checker('AnalysisSet', frame='object')
-def audit_analysis_set_multiple_workflows(value, system):
-    '''
-    [
-        {
-            "audit_description": "Analysis sets are not expected to link to more than one workflow.",
-            "audit_category": "unexpected workflows",
-            "audit_level": "WARNING"
-        }
-    ]
-    '''
-    audit_message_multiple_workflows = get_audit_message(audit_analysis_set_multiple_workflows, index=0)
-    workflows = value.get('workflows', [])
-    if len(workflows) > 1:
-        file_workflow_report = {}
-        files = value.get('files')
-        for file in files:
-            file_object = system.get('request').embed(file + '@@object?skip_caluculated=true')
-            file_analysis_step_version = file_object.get('analysis_step_version', '')
-            if file_analysis_step_version:
-                file_analysis_step_version_obj = system.get('request').embed(
-                    file_analysis_step_version + '@@object?skip_caluculated=true')
-                file_analysis_step = file_analysis_step_version_obj.get('analysis_step', '')
-                if file_analysis_step:
-                    file_analysis_step_obj = system.get('request').embed(
-                        file_analysis_step + '@@object?skip_caluculated=true')
-                    file_workflow = file_analysis_step_obj.get('workflow', '')
-                if file_workflow:
-                    if file_workflow in file_workflow_report:
-                        file_workflow_report[file_workflow] = file_workflow_report[file_workflow] + [file]
-                    else:
-                        file_workflow_report[file_workflow] = [file]
-        file_workflow_report = [
-            f"{', '.join([audit_link(path_to_text(file), file) for file in files])} link(s) to {audit_link(path_to_text(workflow), workflow)}" for workflow, files in file_workflow_report.items()]
-        details = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} has multiple '
-            f'`workflows` linked to its files: {", ".join(file_workflow_report)}.'
-        )
-        yield AuditFailure(audit_message_multiple_workflows.get('audit_category', ''),
-                           f'{details} {audit_message_multiple_workflows.get("audit_description", "")}',
-                           audit_message_multiple_workflows.get('audit_level', '')
-                           )
-
-
-@audit_checker('AnalysisSet', frame='object')
 def audit_analysis_set_multiplexed_samples(value, system):
     '''
     [
