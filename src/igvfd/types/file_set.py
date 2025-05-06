@@ -361,6 +361,7 @@ class AnalysisSet(FileSet):
         crispr_modalities = set()
         cls_type_set = set()
         cls_set = set()
+        control_type_set = set()
         unspecified_assay = ''
         crispr_screen_terms = [
             '/assay-terms/OBI_0003659/',
@@ -446,6 +447,9 @@ class AnalysisSet(FileSet):
                         fileset_types.add(fileset_object['file_set_type'])
                     elif not input_fileset.startswith('/analysis-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
+                    # Collect control types.
+                    if 'control_type' in fileset_object:
+                        control_type_set.add(fileset_object['control_type'])
 
         # Collect content_types of files.
         if files:
@@ -504,11 +508,19 @@ class AnalysisSet(FileSet):
             if not (assay_terms and all(x in crispr_screen_terms for x in assay_terms)):
                 file_set_type_phrase = ', '.join(fileset_types)
 
+        control_phrase = ''
+        if len(control_type_set) > 0:
+            suffix = ''
+            if len(control_type_set) > 1:
+                suffix = 's'
+            control_phrase = f'with {", ".join(sorted(control_type_set))} control{suffix}'
+
         all_phrases = [
             assay_title_phrase,
             targeted_genes_phrase,
             cls_phrase,
-            file_set_type_phrase
+            file_set_type_phrase,
+            control_phrase
         ]
         merged_phrase = ' '.join([x for x in all_phrases if x != '']).replace(' : ', ': ')
         if merged_phrase:
