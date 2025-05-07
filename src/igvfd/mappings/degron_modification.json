@@ -1,6 +1,6 @@
 {
-    "hash": "7fe71c4e650756f09525be0179a445af",
-    "index_name": "degron_modification_7fe71c4e",
+    "hash": "0c7df4bca26106f844f1ef9a3cf7a215",
+    "index_name": "degron_modification_0c7df4bc",
     "item_type": "degron_modification",
     "mapping": {
         "dynamic_templates": [
@@ -197,6 +197,9 @@
                             "pis": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -280,6 +283,9 @@
                             "pi": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -316,6 +322,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "product_id": {
                         "type": "keyword"
@@ -369,6 +378,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "94a055fa55aa5ae8142d7ea675d5e5dd",
-    "index_name": "software_version_94a055fa",
+    "hash": "9cb0d378eab6946ffd433dfb651c780c",
+    "index_name": "software_version_9cb0d378",
     "item_type": "software_version",
     "mapping": {
         "dynamic_templates": [
@@ -187,6 +187,9 @@
                             "pis": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -264,6 +267,9 @@
                             "pi": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -297,6 +303,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "publications": {
                         "properties": {
@@ -379,6 +388,9 @@
                             },
                             "page": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "publication_identifiers": {
                                 "copy_to": "_exact",
@@ -471,6 +483,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "publications": {
                                 "type": "keyword"
                             },
@@ -554,6 +569,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

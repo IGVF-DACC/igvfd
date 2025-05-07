@@ -1,6 +1,6 @@
 {
-    "hash": "b273a3fcb99834423d842b3ac3fb5cc1",
-    "index_name": "human_donor_b273a3fc",
+    "hash": "0b92aabc9e0051ef6f787d75a2bce104",
+    "index_name": "human_donor_0b92aabc",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -193,6 +193,9 @@
                             "pis": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -284,6 +287,9 @@
                             },
                             "pi": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -377,6 +383,9 @@
                                     "ontology": {
                                         "type": "keyword"
                                     },
+                                    "preview_timestamp": {
+                                        "type": "date"
+                                    },
                                     "release_timestamp": {
                                         "type": "date"
                                     },
@@ -420,6 +429,9 @@
                             "observation_date": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "quality": {
                                 "type": "keyword"
                             },
@@ -453,6 +465,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "publications": {
                         "properties": {
@@ -535,6 +550,9 @@
                             },
                             "page": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "publication_identifiers": {
                                 "copy_to": "_exact",
@@ -641,6 +659,9 @@
                                     },
                                     "phenotypic_features": {
                                         "type": "keyword"
+                                    },
+                                    "preview_timestamp": {
+                                        "type": "date"
                                     },
                                     "publications": {
                                         "type": "keyword"
@@ -754,6 +775,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

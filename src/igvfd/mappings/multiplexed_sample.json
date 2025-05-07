@@ -1,6 +1,6 @@
 {
-    "hash": "98df9ab0c63a2f4657ce67982a005b97",
-    "index_name": "multiplexed_sample_98df9ab0",
+    "hash": "385d1b68755099fd42a6ac98337b3ee5",
+    "index_name": "multiplexed_sample_385d1b68",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -193,6 +193,9 @@
                             "pis": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -312,6 +315,9 @@
                                     "notes": {
                                         "type": "text"
                                     },
+                                    "preview_timestamp": {
+                                        "type": "date"
+                                    },
                                     "release_timestamp": {
                                         "type": "date"
                                     },
@@ -368,6 +374,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "quantification": {
                                 "type": "keyword"
@@ -468,6 +477,9 @@
                                     },
                                     "ontology": {
                                         "type": "keyword"
+                                    },
+                                    "preview_timestamp": {
+                                        "type": "date"
                                     },
                                     "release_timestamp": {
                                         "type": "date"
@@ -587,6 +599,9 @@
                             },
                             "orf_list": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "product_id": {
                                 "type": "keyword"
@@ -740,6 +755,9 @@
                             "ontology": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -836,6 +854,9 @@
                             },
                             "phenotypic_features": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "product_id": {
                                 "type": "keyword"
@@ -1071,6 +1092,9 @@
                                     "pi": {
                                         "type": "keyword"
                                     },
+                                    "preview_timestamp": {
+                                        "type": "date"
+                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
@@ -1148,6 +1172,9 @@
                             },
                             "preferred_assay_title": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "primer_designs": {
                                 "type": "keyword"
@@ -1333,6 +1360,9 @@
                             "partner_labs": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -1394,6 +1424,9 @@
                             },
                             "pi": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -1483,6 +1516,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -1560,6 +1596,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "preview_timestamp": {
+                                        "type": "date"
                                     },
                                     "release_timestamp": {
                                         "type": "date"
@@ -1708,6 +1747,9 @@
                             },
                             "origin_of": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "protocols": {
                                 "type": "keyword"
@@ -1899,6 +1941,9 @@
                                     "ontology": {
                                         "type": "keyword"
                                     },
+                                    "preview_timestamp": {
+                                        "type": "date"
+                                    },
                                     "release_timestamp": {
                                         "type": "date"
                                     },
@@ -1994,6 +2039,9 @@
                                     },
                                     "phenotypic_features": {
                                         "type": "keyword"
+                                    },
+                                    "preview_timestamp": {
+                                        "type": "date"
                                     },
                                     "product_id": {
                                         "type": "keyword"
@@ -2145,6 +2193,9 @@
                             "preservation_method": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -2215,6 +2266,9 @@
                                     },
                                     "organ_slims": {
                                         "type": "keyword"
+                                    },
+                                    "preview_timestamp": {
+                                        "type": "date"
                                     },
                                     "release_timestamp": {
                                         "type": "date"
@@ -2345,6 +2399,9 @@
                     "origin_of": {
                         "type": "keyword"
                     },
+                    "preview_timestamp": {
+                        "type": "date"
+                    },
                     "protocols": {
                         "type": "keyword"
                     },
@@ -2429,6 +2486,9 @@
                             },
                             "page": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "publication_identifiers": {
                                 "copy_to": "_exact",
@@ -2541,6 +2601,9 @@
                             },
                             "organ_slims": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "release_timestamp": {
                                 "type": "date"
@@ -2748,6 +2811,9 @@
                             "preservation_method": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -2885,6 +2951,9 @@
                             "pi": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -2962,6 +3031,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -3074,6 +3146,9 @@
                             },
                             "post_treatment_time_units": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "product_id": {
                                 "type": "keyword"

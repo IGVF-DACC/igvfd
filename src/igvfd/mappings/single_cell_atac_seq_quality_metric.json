@@ -1,6 +1,6 @@
 {
-    "hash": "09fb0a01c83774fbcd5818e31042f44d",
-    "index_name": "single_cell_atac_seq_quality_metric_09fb0a01",
+    "hash": "6a6e1e3644d8e071b1ba5568b3f35c6c",
+    "index_name": "single_cell_atac_seq_quality_metric_6a6e1e36",
     "item_type": "single_cell_atac_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -306,6 +306,9 @@
                             "pis": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -380,6 +383,9 @@
                             },
                             "pi": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -464,6 +470,9 @@
                         "store": true,
                         "type": "float"
                     },
+                    "preview_timestamp": {
+                        "type": "date"
+                    },
                     "quality_metric_of": {
                         "copy_to": "_exact",
                         "type": "keyword"
@@ -514,6 +523,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

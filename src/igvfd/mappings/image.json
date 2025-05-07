@@ -1,6 +1,6 @@
 {
-    "hash": "8f2495b3b82e4baced8370de7142565b",
-    "index_name": "image_8f2495b3",
+    "hash": "6e855ab5de4917e54b2790ae6ecbcd8d",
+    "index_name": "image_6e855ab5",
     "item_type": "image",
     "mapping": {
         "dynamic_templates": [
@@ -198,6 +198,9 @@
                     "notes": {
                         "type": "text"
                     },
+                    "preview_timestamp": {
+                        "type": "date"
+                    },
                     "release_timestamp": {
                         "type": "date"
                     },
@@ -244,6 +247,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

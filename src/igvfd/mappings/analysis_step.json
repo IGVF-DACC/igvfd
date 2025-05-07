@@ -1,6 +1,6 @@
 {
-    "hash": "5f325ab2f7131b675221f517bcb98701",
-    "index_name": "analysis_step_5f325ab2",
+    "hash": "34199232c2f62025dbce0e89c18755a8",
+    "index_name": "analysis_step_34199232",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -184,6 +184,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -222,6 +225,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "preview_timestamp": {
+                                        "type": "date"
                                     },
                                     "publications": {
                                         "type": "keyword"
@@ -312,6 +318,9 @@
                             "pis": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -389,6 +398,9 @@
                             },
                             "pi": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -471,6 +483,9 @@
                             "parents": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -503,6 +518,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "release_timestamp": {
                         "type": "date"
@@ -553,6 +571,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -643,6 +664,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "publications": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "426356322c870d2a4700ebd8b2639b36",
-    "index_name": "phenotypic_feature_42635632",
+    "hash": "a168233122bc119d6d4e3ebf338eceb9",
+    "index_name": "phenotypic_feature_a1682331",
     "item_type": "phenotypic_feature",
     "mapping": {
         "dynamic_templates": [
@@ -187,6 +187,9 @@
                             "pis": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -270,6 +273,9 @@
                             "ontology": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -336,6 +342,9 @@
                             "pi": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -369,6 +378,9 @@
                     },
                     "observation_date": {
                         "type": "keyword"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "quality": {
                         "type": "keyword"
@@ -426,6 +438,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

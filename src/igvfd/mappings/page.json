@@ -1,6 +1,6 @@
 {
-    "hash": "b324328713898ca0f91f821bea1e12d8",
-    "index_name": "page_b3243287",
+    "hash": "cec42da207597d064e9f44125a795913",
+    "index_name": "page_cec42da2",
     "item_type": "page",
     "mapping": {
         "dynamic_templates": [
@@ -197,6 +197,9 @@
                     "notes": {
                         "type": "text"
                     },
+                    "preview_timestamp": {
+                        "type": "date"
+                    },
                     "release_timestamp": {
                         "type": "date"
                     },
@@ -243,6 +246,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

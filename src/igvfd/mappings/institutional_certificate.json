@@ -1,6 +1,6 @@
 {
-    "hash": "41e88b0ea1dff31cf46c57adef41ed33",
-    "index_name": "institutional_certificate_41e88b0e",
+    "hash": "90a209c3370c3ec3fb1bd90079bf0e61",
+    "index_name": "institutional_certificate_90a209c3",
     "item_type": "institutional_certificate",
     "mapping": {
         "dynamic_templates": [
@@ -187,6 +187,9 @@
                             "pis": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -278,6 +281,9 @@
                             "pi": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -314,6 +320,9 @@
                     },
                     "partner_labs": {
                         "type": "keyword"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "release_timestamp": {
                         "type": "date"
@@ -364,6 +373,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "cb06039f5b66b10c91464e093fe869db",
-    "index_name": "platform_term_cb06039f",
+    "hash": "c89eafa40dd1641e8ac9a841fd2f3c3e",
+    "index_name": "platform_term_c89eafa4",
     "item_type": "platform_term",
     "mapping": {
         "dynamic_templates": [
@@ -185,6 +185,9 @@
                     "ontology": {
                         "type": "keyword"
                     },
+                    "preview_timestamp": {
+                        "type": "date"
+                    },
                     "release_timestamp": {
                         "type": "date"
                     },
@@ -234,6 +237,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

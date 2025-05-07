@@ -1,6 +1,6 @@
 {
-    "hash": "67bb34b1d5b5a7d33dd2c6b0ee7769ad",
-    "index_name": "rodent_donor_67bb34b1",
+    "hash": "b6088ec0890e07b7d2333b07cbe28c37",
+    "index_name": "rodent_donor_b6088ec0",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -193,6 +193,9 @@
                             "pis": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -284,6 +287,9 @@
                             },
                             "pi": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -380,6 +386,9 @@
                                     "ontology": {
                                         "type": "keyword"
                                     },
+                                    "preview_timestamp": {
+                                        "type": "date"
+                                    },
                                     "release_timestamp": {
                                         "type": "date"
                                     },
@@ -423,6 +432,9 @@
                             "observation_date": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "quality": {
                                 "type": "keyword"
                             },
@@ -456,6 +468,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "product_id": {
                         "type": "keyword"
@@ -541,6 +556,9 @@
                             },
                             "page": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "publication_identifiers": {
                                 "copy_to": "_exact",
@@ -643,6 +661,9 @@
                             "pi": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -721,6 +742,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

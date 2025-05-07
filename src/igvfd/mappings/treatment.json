@@ -1,6 +1,6 @@
 {
-    "hash": "6daaa54ddbf7c0e42e0f9a14937d17b5",
-    "index_name": "treatment_6daaa54d",
+    "hash": "5cb3e38e5b2825aeb687d97b60167529",
+    "index_name": "treatment_5cb3e38e",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -194,6 +194,9 @@
                             "pis": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -286,6 +289,9 @@
                             "pi": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -331,6 +337,9 @@
                     "post_treatment_time_units": {
                         "type": "keyword"
                     },
+                    "preview_timestamp": {
+                        "type": "date"
+                    },
                     "product_id": {
                         "type": "keyword"
                     },
@@ -375,6 +384,9 @@
                             },
                             "pi": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "release_timestamp": {
                                 "type": "date"
@@ -446,6 +458,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

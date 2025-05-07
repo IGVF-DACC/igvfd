@@ -1,6 +1,6 @@
 {
-    "hash": "3d9648aa69a8334d887f0c64966b3c81",
-    "index_name": "document_3d9648aa",
+    "hash": "69e9cb097288384a58471bcb4666ea5f",
+    "index_name": "document_69e9cb09",
     "item_type": "document",
     "mapping": {
         "dynamic_templates": [
@@ -216,6 +216,9 @@
                             "pis": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -299,6 +302,9 @@
                             "pi": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -329,6 +335,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "release_timestamp": {
                         "type": "date"
@@ -380,6 +389,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

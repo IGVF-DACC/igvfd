@@ -1,6 +1,6 @@
 {
-    "hash": "373021b01b4ea6127c0c76a0453090e5",
-    "index_name": "open_reading_frame_373021b0",
+    "hash": "038c538b5841c3c3c3e22e878eb18f5b",
+    "index_name": "open_reading_frame_038c538b",
     "item_type": "open_reading_frame",
     "mapping": {
         "dynamic_templates": [
@@ -187,6 +187,9 @@
                             "pis": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -287,6 +290,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -364,6 +370,9 @@
                             "pi": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -410,6 +419,9 @@
                     "pct_identical_protein": {
                         "store": true,
                         "type": "float"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "protein_id": {
                         "type": "keyword"
@@ -460,6 +472,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

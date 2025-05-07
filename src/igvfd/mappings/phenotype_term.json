@@ -1,6 +1,6 @@
 {
-    "hash": "eb43a207a6887536bbe9734a91720493",
-    "index_name": "phenotype_term_eb43a207",
+    "hash": "e68e62855a0e9188ac0c0963f915ee40",
+    "index_name": "phenotype_term_e68e6285",
     "item_type": "phenotype_term",
     "mapping": {
         "dynamic_templates": [
@@ -182,6 +182,9 @@
                     "ontology": {
                         "type": "keyword"
                     },
+                    "preview_timestamp": {
+                        "type": "date"
+                    },
                     "release_timestamp": {
                         "type": "date"
                     },
@@ -228,6 +231,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

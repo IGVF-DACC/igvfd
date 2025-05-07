@@ -1,6 +1,6 @@
 {
-    "hash": "a8da35e17d6191b00b7087a8586e282a",
-    "index_name": "publication_a8da35e1",
+    "hash": "5797fc0128324f93735764093d8192bf",
+    "index_name": "publication_5797fc01",
     "item_type": "publication",
     "mapping": {
         "dynamic_templates": [
@@ -222,6 +222,9 @@
                             "pis": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -314,6 +317,9 @@
                             "pi": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -347,6 +353,9 @@
                     },
                     "page": {
                         "type": "keyword"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "publication_identifiers": {
                         "copy_to": "_exact",
@@ -414,6 +423,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

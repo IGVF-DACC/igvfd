@@ -1,6 +1,6 @@
 {
-    "hash": "dad68bcc9c50a3dfd49122ba55076d62",
-    "index_name": "single_cell_rna_seq_quality_metric_dad68bcc",
+    "hash": "fea4a7cfddeb9e7f9f894a2ce51d9f2b",
+    "index_name": "single_cell_rna_seq_quality_metric_fea4a7cf",
     "item_type": "single_cell_rna_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -219,6 +219,9 @@
                             "pis": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -305,6 +308,9 @@
                             },
                             "pi": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -413,6 +419,9 @@
                         "store": true,
                         "type": "float"
                     },
+                    "preview_timestamp": {
+                        "type": "date"
+                    },
                     "quality_metric_of": {
                         "copy_to": "_exact",
                         "type": "keyword"
@@ -492,6 +501,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

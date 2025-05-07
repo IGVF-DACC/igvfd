@@ -1,6 +1,6 @@
 {
-    "hash": "49cf4594523cafba629aeef6764d4856",
-    "index_name": "sample_term_49cf4594",
+    "hash": "b4dced8c568390cd07e29a0c2238bd89",
+    "index_name": "sample_term_b4dced8c",
     "item_type": "sample_term",
     "mapping": {
         "dynamic_templates": [
@@ -195,6 +195,9 @@
                     "organ_slims": {
                         "type": "keyword"
                     },
+                    "preview_timestamp": {
+                        "type": "date"
+                    },
                     "release_timestamp": {
                         "type": "date"
                     },
@@ -241,6 +244,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

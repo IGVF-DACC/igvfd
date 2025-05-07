@@ -1,6 +1,6 @@
 {
-    "hash": "14095fab5a9211e6a836fd565789a395",
-    "index_name": "gene_14095fab",
+    "hash": "b8ce207fc9a8849e42731d92df8e5a90",
+    "index_name": "gene_b8ce207f",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -198,6 +198,9 @@
                     "notes": {
                         "type": "text"
                     },
+                    "preview_timestamp": {
+                        "type": "date"
+                    },
                     "release_timestamp": {
                         "type": "date"
                     },
@@ -247,6 +250,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
