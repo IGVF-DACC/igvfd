@@ -33,6 +33,9 @@
         },
         {
             "$ref": "mixins.json#/standard_status"
+        },
+        {
+            "$ref": "mixins.json#/preview_timestamp"
         }
     ],
     "dependentSchemas": {

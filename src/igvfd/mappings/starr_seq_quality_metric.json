@@ -1,6 +1,6 @@
 {
-    "hash": "2d3ca5dce4aa8007aeb61a8621e6316d",
-    "index_name": "starr_seq_quality_metric_2d3ca5dc",
+    "hash": "951c2f96c9c46869482985f6e48af013",
+    "index_name": "starr_seq_quality_metric_951c2f96",
     "item_type": "starr_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -332,6 +332,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "quality_metric_of": {
                         "copy_to": "_exact",

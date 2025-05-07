@@ -1,6 +1,6 @@
 {
-    "hash": "0958cb7154120fc1a6a36efc9dc4a5c2",
-    "index_name": "perturb_seq_quality_metric_0958cb71",
+    "hash": "a6ed4a79f04fc2b5fc3bf384a7991666",
+    "index_name": "perturb_seq_quality_metric_a6ed4a79",
     "item_type": "perturb_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -356,6 +356,9 @@
                     "pct_cells_assigned_guide": {
                         "store": true,
                         "type": "float"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "quality_metric_of": {
                         "copy_to": "_exact",

@@ -1,6 +1,6 @@
 {
-    "hash": "6daaa54ddbf7c0e42e0f9a14937d17b5",
-    "index_name": "treatment_6daaa54d",
+    "hash": "1091d418b5237b2a05f0f6b6a9b23235",
+    "index_name": "treatment_1091d418",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -331,6 +331,9 @@
                     "post_treatment_time_units": {
                         "type": "keyword"
                     },
+                    "preview_timestamp": {
+                        "type": "date"
+                    },
                     "product_id": {
                         "type": "keyword"
                     },
@@ -375,6 +378,9 @@
                             },
                             "pi": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "release_timestamp": {
                                 "type": "date"

@@ -1,6 +1,6 @@
 {
-    "hash": "dad68bcc9c50a3dfd49122ba55076d62",
-    "index_name": "single_cell_rna_seq_quality_metric_dad68bcc",
+    "hash": "70aeb48e808d41e6311a2eca8ac72f73",
+    "index_name": "single_cell_rna_seq_quality_metric_70aeb48e",
     "item_type": "single_cell_rna_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -412,6 +412,9 @@
                     "percentage_reads_on_onlist": {
                         "store": true,
                         "type": "float"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "quality_metric_of": {
                         "copy_to": "_exact",

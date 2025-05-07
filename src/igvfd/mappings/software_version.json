@@ -1,6 +1,6 @@
 {
-    "hash": "94a055fa55aa5ae8142d7ea675d5e5dd",
-    "index_name": "software_version_94a055fa",
+    "hash": "06ed65e69db9086fc31173d10ff6b865",
+    "index_name": "software_version_06ed65e6",
     "item_type": "software_version",
     "mapping": {
         "dynamic_templates": [
@@ -298,6 +298,9 @@
                     "notes": {
                         "type": "text"
                     },
+                    "preview_timestamp": {
+                        "type": "date"
+                    },
                     "publications": {
                         "properties": {
                             "@id": {
@@ -379,6 +382,9 @@
                             },
                             "page": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "publication_identifiers": {
                                 "copy_to": "_exact",
@@ -470,6 +476,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "publications": {
                                 "type": "keyword"

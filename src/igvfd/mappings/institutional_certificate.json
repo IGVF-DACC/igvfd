@@ -1,6 +1,6 @@
 {
-    "hash": "2004ed03a0bdee428c77ffbab22c1981",
-    "index_name": "institutional_certificate_2004ed03",
+    "hash": "e24bb1d49ba15bb09781930000ff29fd",
+    "index_name": "institutional_certificate_e24bb1d4",
     "item_type": "institutional_certificate",
     "mapping": {
         "dynamic_templates": [
@@ -314,6 +314,9 @@
                     },
                     "partner_labs": {
                         "type": "keyword"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "release_timestamp": {
                         "type": "date"

@@ -1,5 +1,9 @@
 ## Changelog for *`sample_term.json`*
 
+### Minor changes since schema version 6
+
+* Add `preview_timestamp`.
+
 ### Schema version 6
 
 * Add calculated `comments`.

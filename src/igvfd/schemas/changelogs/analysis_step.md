@@ -7,6 +7,7 @@
 
 ### Minor changes since schema version 6
 
+* Add `preview_timestamp`.
 * Extend `output_content_types` enum list to include `primers table`.
 * Extend `input_content_types` enum list to include `primers table`.
 * Extend `output_content_types` enum list to include `primers track`.

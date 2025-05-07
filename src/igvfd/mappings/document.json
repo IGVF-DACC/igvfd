@@ -1,6 +1,6 @@
 {
-    "hash": "3d9648aa69a8334d887f0c64966b3c81",
-    "index_name": "document_3d9648aa",
+    "hash": "770115f3ddb1a29caee33f8e6965040c",
+    "index_name": "document_770115f3",
     "item_type": "document",
     "mapping": {
         "dynamic_templates": [
@@ -329,6 +329,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "release_timestamp": {
                         "type": "date"

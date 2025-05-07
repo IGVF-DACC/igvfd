@@ -56,6 +56,9 @@
         },
         {
             "$ref": "mixins.json#/cell_type_annotation"
+        },
+        {
+            "$ref": "mixins.json#/preview_timestamp"
         }
     ],
     "dependentSchemas": {

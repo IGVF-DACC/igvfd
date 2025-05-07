@@ -1,6 +1,6 @@
 {
-    "hash": "b324328713898ca0f91f821bea1e12d8",
-    "index_name": "page_b3243287",
+    "hash": "5df8ebb3388fb7d71fe0985cb51cb438",
+    "index_name": "page_5df8ebb3",
     "item_type": "page",
     "mapping": {
         "dynamic_templates": [
@@ -196,6 +196,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "release_timestamp": {
                         "type": "date"

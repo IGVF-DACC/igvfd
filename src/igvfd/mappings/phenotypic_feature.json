@@ -1,6 +1,6 @@
 {
-    "hash": "426356322c870d2a4700ebd8b2639b36",
-    "index_name": "phenotypic_feature_42635632",
+    "hash": "867cb8700a85d13cb02aa5c57765eeae",
+    "index_name": "phenotypic_feature_867cb870",
     "item_type": "phenotypic_feature",
     "mapping": {
         "dynamic_templates": [
@@ -270,6 +270,9 @@
                             "ontology": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -369,6 +372,9 @@
                     },
                     "observation_date": {
                         "type": "keyword"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "quality": {
                         "type": "keyword"

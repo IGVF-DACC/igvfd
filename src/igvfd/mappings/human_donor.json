@@ -1,6 +1,6 @@
 {
-    "hash": "b273a3fcb99834423d842b3ac3fb5cc1",
-    "index_name": "human_donor_b273a3fc",
+    "hash": "7ad422ed32f4cf43c329b86ae1d36c5f",
+    "index_name": "human_donor_7ad422ed",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -377,6 +377,9 @@
                                     "ontology": {
                                         "type": "keyword"
                                     },
+                                    "preview_timestamp": {
+                                        "type": "date"
+                                    },
                                     "release_timestamp": {
                                         "type": "date"
                                     },
@@ -420,6 +423,9 @@
                             "observation_date": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "quality": {
                                 "type": "keyword"
                             },
@@ -453,6 +459,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "publications": {
                         "properties": {
@@ -535,6 +544,9 @@
                             },
                             "page": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "publication_identifiers": {
                                 "copy_to": "_exact",
@@ -641,6 +653,9 @@
                                     },
                                     "phenotypic_features": {
                                         "type": "keyword"
+                                    },
+                                    "preview_timestamp": {
+                                        "type": "date"
                                     },
                                     "publications": {
                                         "type": "keyword"
