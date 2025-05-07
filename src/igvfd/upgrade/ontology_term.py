@@ -151,8 +151,8 @@ def ontology_term_4_5(value, system):
         del value['definition']
 
 
-@upgrade_step('assay_term', '11', '12')
-def assay_term_11_12(value, system):
+@upgrade_step('assay_term', '12', '13')
+def assay_term_12_13(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2634
     preferred_assay_titles = value.get('preferred_assay_titles', [])
     if 'SUPERSTARR' in preferred_assay_titles:
