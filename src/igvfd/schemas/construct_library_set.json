@@ -852,7 +852,7 @@
             }
         },
         "associated_phenotypes": {
-            "title": "Associated Phenotypes",
+            "title": "Associated Phenotype Terms",
             "description": "Ontological terms for diseases or phenotypes associated with the sequence material cloned in this construct library.",
             "type": "array",
             "minItems": 1,
