@@ -73,3 +73,9 @@ def test_assay_term_upgrade_11_12(upgrader, assay_term_v11):
     assert 'definition' not in value
     assert 'comment' not in value
     assert value['schema_version'] == '12'
+
+
+def test_assay_term_upgrade_12_13(upgrader, assay_term_v12):
+    value = upgrader.upgrade('assay_term', assay_term_v12, current_version='12', target_version='13')
+    assert 'SUPERSTARR' not in value['preferred_assay_titles'] and 'STARR-seq' in value['preferred_assay_titles']
+    assert value['schema_version'] == '13'

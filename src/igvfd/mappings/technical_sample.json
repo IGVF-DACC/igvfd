@@ -1,6 +1,6 @@
 {
-    "hash": "d430cbad660790f0ac034645494bb625",
-    "index_name": "technical_sample_d430cbad",
+    "hash": "763b226f8b9d04070335d95985b48ecd",
+    "index_name": "technical_sample_763b226f",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -253,6 +253,9 @@
                                 "type": "keyword"
                             },
                             "applied_to_samples": {
+                                "type": "keyword"
+                            },
+                            "assay_titles": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {

@@ -1,6 +1,6 @@
 {
-    "hash": "276fe53add5b9c1f491fddcb8d107c4d",
-    "index_name": "sequence_file_276fe53a",
+    "hash": "acf79a16a8aba069966dbca91dec2932",
+    "index_name": "sequence_file_acf79a16",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1888,6 +1888,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "assay_titles": {
+                                "type": "keyword"
                             },
                             "associated_phenotypes": {
                                 "properties": {

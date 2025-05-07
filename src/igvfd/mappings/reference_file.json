@@ -1,6 +1,6 @@
 {
-    "hash": "d93fd25239648373a22c806da79d6ed5",
-    "index_name": "reference_file_d93fd252",
+    "hash": "e77edf090dfc5dfb97fc3a9470ea9db3",
+    "index_name": "reference_file_e77edf09",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -1884,6 +1884,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "assay_titles": {
+                                "type": "keyword"
                             },
                             "associated_phenotypes": {
                                 "properties": {

@@ -343,7 +343,7 @@ def test_file_assay_titles(
         }
     )
     res = testapp.get(alignment_file['@id'])
-    assert set(res.json.get('assay_titles', [])) == {'SUPERSTARR'}
+    assert set(res.json.get('assay_titles', [])) == {'STARR-seq'}
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -357,7 +357,7 @@ def test_file_assay_titles(
         }
     )
     res = testapp.get(alignment_file['@id'])
-    assert set(res.json.get('assay_titles', [])) == {'SUPERSTARR', '10x multiome'}
+    assert set(res.json.get('assay_titles', [])) == {'STARR-seq', '10x multiome'}
     testapp.patch_json(
         measurement_set_multiome['@id'],
         {
