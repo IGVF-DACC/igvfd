@@ -185,10 +185,15 @@ def test_audit_construct_library_set_guide_library_guide_rna_sequences(
     testapp,
     construct_library_set_genome_wide,
     tabular_file,
+    curated_set_genome,
     assay_term_crispr,
     measurement_set,
     tissue
 ):
+    testapp.patch_json(
+        tabular_file['@id'],
+        {'file_set': curated_set_genome['@id']}
+    )
     testapp.patch_json(
         measurement_set['@id'],
         {'assay_term': assay_term_crispr['@id'],
@@ -226,11 +231,16 @@ def test_audit_construct_library_set_mpra_sequence_designs(
     testapp,
     construct_library_set_reporter,
     tabular_file,
+    curated_set_genome,
     assay_term_mpra,
     measurement_set,
     tissue,
     assay_term_starr
 ):
+    testapp.patch_json(
+        tabular_file['@id'],
+        {'file_set': curated_set_genome['@id']}
+    )
     testapp.patch_json(
         measurement_set['@id'],
         {'assay_term': assay_term_mpra['@id'],
