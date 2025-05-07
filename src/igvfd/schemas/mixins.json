@@ -527,6 +527,16 @@
             "permission": "admin_only"
         }
     },
+    "preview_timestamp": {
+        "preview_timestamp": {
+            "title": "Preview Timestamp",
+            "description": "The date the object was previewed.",
+            "comment": "Do not submit. The date the object is previewed is assigned by the server.",
+            "type": "string",
+            "format": "date-time",
+            "permission": "admin_only"
+        }
+    },
     "genes": {
         "small_scale_gene_list": {
             "title": "Small Scale Gene List",

@@ -24,6 +24,9 @@
         },
         {
             "$ref": "mixins.json#/shared_status"
+        },
+        {
+            "$ref": "mixins.json#/preview_timestamp"
         }
     ],
     "type": "object",

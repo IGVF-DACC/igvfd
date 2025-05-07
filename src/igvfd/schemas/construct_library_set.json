@@ -48,6 +48,9 @@
         },
         {
             "$ref": "mixins.json#/control_file_sets"
+        },
+        {
+            "$ref": "mixins.json#/preview_timestamp"
         }
     ],
     "dependentSchemas": {
