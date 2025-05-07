@@ -1,5 +1,9 @@
 ## Changelog for *`platform_term.json`*
 
+### Minor changes since schema version 5
+
+* Add `preview_timestamp`.
+
 ### Schema version 5
 
 * Add calculated `comment`.

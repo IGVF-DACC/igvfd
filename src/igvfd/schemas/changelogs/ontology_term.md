@@ -1,5 +1,6 @@
 ## Changelog for *`ontology_term.json`*
 
+* Add `preview_timestamp`. (05/06/2025)
 * Add calculated `comments`. (04/22/2025)
 * Add calculated `definition`. (04/22/2025)
 * Remove `comment`. (04/22/2025)

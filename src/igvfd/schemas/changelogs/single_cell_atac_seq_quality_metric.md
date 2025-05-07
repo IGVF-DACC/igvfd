@@ -1,5 +1,9 @@
 ## Changelog for *`single_cell_atac_seq_quality_metric.json`*
 
+### Minor changes since schema version 3
+
+* Add `preview_timestamp`.
+
 ### Schema version 3
 
 * Remove `joint_barcodes_passing`.

@@ -1,5 +1,9 @@
 ## Changelog for *`assay_term.json`*
 
+### Minor changes since schema version 12
+
+* Add `preview_timestamp`.
+
 ### Schema version 12
 
 * Add calculated `comments`.
