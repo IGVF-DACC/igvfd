@@ -348,6 +348,7 @@
         "upload_status": "validated",
         "assembly": "GRCh38",
         "file_set": "leif-ludwig:analysis_set",
+        "analysis_step_version": "/analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/",
         "controlled_access": false
     },
     {
@@ -368,6 +369,7 @@
         "upload_status": "validated",
         "assembly": "GRCh38",
         "file_set": "leif-ludwig:analysis_set",
+        "analysis_step_version": "/analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/",
         "controlled_access": false
     },
     {
@@ -388,6 +390,7 @@
         "upload_status": "validated",
         "assembly": "GRCh38",
         "file_set": "leif-ludwig:analysis_set",
+        "analysis_step_version": "/analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/",
         "controlled_access": false
     },
     {

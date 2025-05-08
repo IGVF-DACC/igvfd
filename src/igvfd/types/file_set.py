@@ -104,7 +104,8 @@ class FileSet(Item):
         Path('submitted_by', include=['@id', 'title']),
         Path('files', include=['@id', 'accession', 'aliases', 'assembly', 'content_type', 'controlled_access', 'derived_from',
              'file_format', 'file_size', 'href', 'md5sum', 's3_uri', 'submitted_file_name', 'status', 'transcriptome_annotation',
-                               'creation_timestamp', 'sequencing_platform', 'upload_status', 'submitted_file_name']),
+                               'creation_timestamp', 'sequencing_platform', 'upload_status', 'submitted_file_name', 'workflow']),
+        Path('files.workflow', include=['@id', 'name']),
         Path('control_for', include=['@id', 'accession', 'aliases', 'status']),
         Path('donors', include=['@id', 'accession', 'aliases', 'sex', 'status', 'strain_background', 'taxa']),
         Path('samples.sample_terms', include=[
