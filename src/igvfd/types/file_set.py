@@ -465,7 +465,6 @@ class AnalysisSet(FileSet):
                     for modification in sample_object['modifications']:
                         modification_object = request.embed(modification, '@@object?skip_calculated=true')
                         crispr_modalities.add(modification_object['modality'])
-
         # Collect construct library set summaries and types
         if construct_library_sets:
             for construct_library_set in construct_library_sets:
@@ -597,7 +596,7 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def samples(self, request, input_file_sets=None, demultiplexed_sample=None):
+    def samples(self, request, input_file_sets=None, demultiplexed_samples=None):
         if input_file_sets is not None:
             samples = set()
             for fileset in input_file_sets:
@@ -606,10 +605,10 @@ class AnalysisSet(FileSet):
                 if input_file_set_samples:
                     samples = samples | input_file_set_samples
             samples = list(samples)
-            if demultiplexed_sample:
+            if demultiplexed_samples:
                 # if the analysis set specifies a demultiplexed sample and all input data is multiplexed return just the demultiplexed_sample
                 if not ([sample for sample in samples if not (sample.startswith('/multiplexed-samples/'))]):
-                    return [demultiplexed_sample]
+                    return demultiplexed_samples
             return samples
 
     @calculated_property(
@@ -677,6 +676,7 @@ class AnalysisSet(FileSet):
         modification_summaries = set()
         sorted_from = set()
         targeted_genes_for_sorting = set()
+        cellular_sub_pools = set()
 
         treatment_purpose_to_adjective = {
             'activation': 'activated',
@@ -775,6 +775,8 @@ class AnalysisSet(FileSet):
                     treatment_purposes.add(treatment_purpose_to_adjective.get(treatment_object['purpose'], ''))
                     truncated_summary = treatment_object['summary'].split(' of ')[1]
                     treatment_summaries.add(truncated_summary)
+            if 'cellular_sub_pool' in sample_object:
+                cellular_sub_pools.add(sample_object['cellular_sub_pool'])
 
         all_sample_terms = []
         for classification in sorted(sample_classification_term_target.keys()):
@@ -827,13 +829,17 @@ class AnalysisSet(FileSet):
                 sorted_phrase = f'sorted on expression of {", ".join(targeted_genes_for_sorting)}'
             else:
                 sorted_phrase = f'sorted into bins'
+        cellular_sub_pool_phrase = ''
+        if cellular_sub_pools:
+            cellular_sub_pool_phrase = f'cellular sub pool(s): {", ".join(sorted(cellular_sub_pools))}'
 
         additional_phrases = [
             differentiation_time_phrase,
             treatments_phrase,
             modification_summary_phrase,
             construct_library_set_type_phrase,
-            sorted_phrase
+            sorted_phrase,
+            cellular_sub_pool_phrase
         ]
         additional_phrases_joined = ', '.join([x for x in additional_phrases if x != ''])
         additional_phrase_suffix = ''

@@ -1,6 +1,6 @@
 {
-    "hash": "54328a9cfc93238f0784c275f14e4667",
-    "index_name": "measurement_set_54328a9c",
+    "hash": "5837acd54f6713439204dca6db0ec557",
+    "index_name": "measurement_set_5837acd5",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -587,7 +587,7 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
-                            "demultiplexed_sample": {
+                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -1189,7 +1189,7 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
-                            "demultiplexed_sample": {
+                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -1513,7 +1513,7 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
-                            "demultiplexed_sample": {
+                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {

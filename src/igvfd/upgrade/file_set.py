@@ -517,3 +517,11 @@ def measurement_set_25_26(value, system):
         value['strand_specificity'] = '3 prime to 5 prime'
         notes += f' This measurement set previously used 3\' to 5\' as strand_specificity, but the strand_specificity has now been updated to 3 prime to 5 prime via an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_set', '9', '10')
+def analysis_set_9_10(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2318
+    if 'demultiplexed_sample' in value:
+        value['demultiplexed_samples'] = [value['demultiplexed_sample']]
+        del value['demultiplexed_sample']
