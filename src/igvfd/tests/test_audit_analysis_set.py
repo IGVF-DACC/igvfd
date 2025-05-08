@@ -177,7 +177,7 @@ def test_audit_analysis_set_multiplexed_samples(
     testapp.patch_json(
         analysis_set_base['@id'],
         {
-            'demultiplexed_sample': tissue['@id']
+            'demultiplexed_samples': [tissue['@id']]
         }
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
@@ -216,7 +216,7 @@ def test_audit_analysis_set_multiplexed_samples(
     testapp.patch_json(
         analysis_set_no_input['@id'],
         {
-            'demultiplexed_sample': tissue['@id']
+            'demultiplexed_samples': [tissue['@id']]
         }
     )
     res = testapp.get(analysis_set_no_input['@id'] + '@@audit')
@@ -251,7 +251,7 @@ def test_audit_analysis_set_demultiplexed_sample(
         analysis_set_base['@id'],
         {
             'input_file_sets': [measurement_set['@id']],
-            'demultiplexed_sample': primary_cell['@id']
+            'demultiplexed_samples': [primary_cell['@id']]
         }
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
@@ -262,7 +262,7 @@ def test_audit_analysis_set_demultiplexed_sample(
     testapp.patch_json(
         analysis_set_base['@id'],
         {
-            'demultiplexed_sample': tissue['@id']
+            'demultiplexed_samples': [tissue['@id']]
         }
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
