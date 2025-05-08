@@ -1,6 +1,6 @@
 {
-    "hash": "a1895d1dbb6206f18ab751a7b295b4de",
-    "index_name": "image_file_a1895d1d",
+    "hash": "0423b1931559b91d5ecbb8aa8625ce8a",
+    "index_name": "image_file_0423b193",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -534,7 +534,7 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
-                            "demultiplexed_sample": {
+                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
