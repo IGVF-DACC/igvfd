@@ -44,7 +44,7 @@ def test_calculated_samples(testapp, measurement_set, analysis_set_base, primary
     testapp.patch_json(
         analysis_set_base['@id'],
         {
-            'demultiplexed_sample': in_vitro_cell_line['@id']
+            'demultiplexed_samples': [in_vitro_cell_line['@id']]
         }
     )
     res = testapp.get(analysis_set_base['@id'])
@@ -238,7 +238,6 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    print(res)
     assert res.get(
         'summary', '') == 'interference ATAC-seq (10x multiome), Perturb-seq, SUPERSTARR, lentiMPRA targeting MYC with low FACS signal, untransfected controls'
     testapp.patch_json(
@@ -350,6 +349,14 @@ def test_analysis_set_sample_summary(testapp, principal_analysis_set, measuremen
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get('sample_summary', '') == 'Mixed species multiplexed sample of K562, lymphoblastoid cell line, differentiated with 10 mM lactate for 1 hour, modified with AID system targeting MYC, CRISPRi Sp-dCas9, transfected with a guide library'
+    testapp.patch_json(
+        multiplexed_sample['@id'],
+        {
+            'cellular_sub_pool': '001ABC'
+        }
+    )
+    res = testapp.get(principal_analysis_set['@id']).json
+    assert res.get('sample_summary', '') == 'Mixed species multiplexed sample of K562, lymphoblastoid cell line, differentiated with 10 mM lactate for 1 hour, modified with AID system targeting MYC, CRISPRi Sp-dCas9, transfected with a guide library, cellular sub pool(s): 001ABC'
 
 
 def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set, measurement_set_with_functional_assay_mechanisms, phenotype_term_from_go, phenotype_term_myocardial_infarction):
