@@ -517,3 +517,11 @@ def measurement_set_25_26(value, system):
         value['strand_specificity'] = '3 prime to 5 prime'
         notes += f' This measurement set previously used 3\' to 5\' as strand_specificity, but the strand_specificity has now been updated to 3 prime to 5 prime via an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '27', '28')
+@upgrade_step('construct_library_set', '10', '11')
+def measurement_set_25_26(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2692
+    if value.get('control_type') == 'control transduction':
+        value['control_type'] = 'reference transduction'
