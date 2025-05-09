@@ -979,7 +979,7 @@ def test_audit_missing_auxiliary_set_link(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'missing auxiliary set'
+        error['category'] == 'missing auxiliary set link'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -990,7 +990,7 @@ def test_audit_missing_auxiliary_set_link(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'missing auxiliary set'
+        error['category'] != 'missing auxiliary set link'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -1001,7 +1001,7 @@ def test_audit_missing_auxiliary_set_link(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'missing auxiliary set'
+        error['category'] == 'missing auxiliary set link'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -1012,7 +1012,7 @@ def test_audit_missing_auxiliary_set_link(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'missing auxiliary set'
+        error['category'] != 'missing auxiliary set link'
         for error in res.json['audit'].get('ERROR', [])
     )
 
@@ -1091,7 +1091,8 @@ def test_audit_missing_cell_sorting_auxiliary_set(
     testapp,
     measurement_set,
     assay_term_crispr,
-    auxiliary_set_cell_sorting
+    auxiliary_set_cell_sorting,
+    lab
 ):
     testapp.patch_json(
         assay_term_crispr['@id'],
@@ -1106,9 +1107,20 @@ def test_audit_missing_cell_sorting_auxiliary_set(
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        lab['@id'],
+        {
+            'name': 'jesse-engreitz'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing auxiliary set'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         measurement_set['@id'],
@@ -1119,7 +1131,7 @@ def test_audit_missing_cell_sorting_auxiliary_set(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing auxiliary set'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
 
