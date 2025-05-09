@@ -481,7 +481,7 @@ def audit_missing_auxiliary_set(value, system):
             expected_auxiliary_set_type = expected_auxiliary_set[0]
             audit_message = expected_auxiliary_set[1]
 
-            # Only Engreitz lab has/uses this data, so only their lab's file sets will be expected to post it
+            # Only Engreitz lab has/uses this data, so only their lab's measurement sets will be audited
             if expected_auxiliary_set_type == 'cell sorting':
                 if value['lab']['@id'] != '/labs/jesse-engreitz/':
                     continue
