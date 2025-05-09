@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 28
+
+* Adjust `control_type` enum list to replace `control transduction` with `reference transduction`.
+
 ### Minor changes since schema version 26
 
 * Extend `control_type` enum list to include `baseline`.

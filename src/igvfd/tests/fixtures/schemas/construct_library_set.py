@@ -130,7 +130,7 @@ def construct_library_set_editing_template_library_2(testapp, lab, award, gene_m
 
 
 @pytest.fixture
-def construct_library_set_control_transduction(testapp, lab, award):
+def construct_library_set_reference_transduction(testapp, lab, award):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -139,7 +139,7 @@ def construct_library_set_control_transduction(testapp, lab, award):
         'selection_criteria': [
             'controls'
         ],
-        'control_type': 'control transduction'
+        'control_type': 'reference transduction'
     }
     return testapp.post_json('/construct_library_set', item).json['@graph'][0]
 
@@ -228,5 +228,15 @@ def construct_library_set_v9(construct_library_set_genome_wide, tabular_file, re
     item.update({
         'schema_version': '9',
         'integrated_content_files': [tabular_file['uuid'], reference_file['uuid'], sequence_file['uuid']]
+    })
+    return item
+
+
+@pytest.fixture
+def construct_library_set_v10(construct_library_set_reference_transduction):
+    item = construct_library_set_reference_transduction.copy()
+    item.update({
+        'schema_version': '10',
+        'control_type': 'control transduction'
     })
     return item

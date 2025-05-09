@@ -422,3 +422,13 @@ def measurement_set_v25_3_prime_to_5_prime(measurement_set):
         'strand_specificity': '3\' to 5\''
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v27(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '27',
+        'control_type': 'control transduction'
+    })
+    return item

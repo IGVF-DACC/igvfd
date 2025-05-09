@@ -137,7 +137,7 @@
         ],
         "accession": "IGVFDS9999CONT",
         "scope": "control",
-        "control_type": "control transduction",
+        "control_type": "reference transduction",
         "award": "HG012012",
         "lab": "j-michael-cherry",
         "uuid": "cef437f6-198b-488d-88cd-03d0d42c9338",
