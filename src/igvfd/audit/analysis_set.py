@@ -5,13 +5,16 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_message
+    get_audit_message,
+    join_obj_paths
 )
 
 from .file_set import (
     single_cell_check,
     TRANSCRIPT_ASSAY_TERMS
 )
+
+from typing import Iterable
 
 
 def get_assay_terms(value, system):
@@ -21,6 +24,68 @@ def get_assay_terms(value, system):
             input_file_set_object = system.get('request').embed(input_file_set + '@@object?skip_calculated=true')
             assay_terms.add(input_file_set_object.get('assay_term'))
     return list(assay_terms)
+
+
+def yield_all_upstream_seqfiles(file, system) -> Iterable[str]:
+    '''
+    Traverse recursively from Analysis set files upstream via derived_from until sequence files.
+
+    Args:
+        file (_type_): file type+accession, e.g. '/alignment-files/ENCFF123ABC'
+        system (_type_): _description_
+
+    Returns:
+        Iterable[str]: SeqFiles
+
+    Yields:
+        Iterator[Iterable[str]]: SeqFiles
+    '''
+    if file.startswith('/sequence-files/'):
+        yield file
+        return
+    file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
+    for dfile in file_object.get('derived_from', []):
+        yield from yield_all_upstream_seqfiles(dfile, system)
+
+
+def check_transcriptome_reference(file, system) -> bool:
+    '''Check if the file has a transcriptome reference.
+
+    Args:
+        file (str): file type+accession, e.g. '/alignment-files/ENCFF123ABC'
+        system (_type_): _description_
+
+    Returns:
+        bool: True if transcriptome reference exists, False otherwise.
+    '''
+    file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
+    reference_files = file_object.get('reference_files', [])
+    ref_file_objects = []
+    if reference_files:
+        ref_file_objects = [system.get('request').embed(reference_file + '@@object?skip_calculated=true')
+                            for reference_file in reference_files]
+    return any(ref_file_object.get('content_type') in ['transcriptome reference', 'transcriptome index'] for ref_file_object in ref_file_objects)
+
+
+def check_transcriptome_assay(file, system) -> bool:
+    '''Check if the sequence file is linked to a Measurement Set of a transcriptome assay.
+
+    Args:
+        file (_type_): file type+accession, e.g. '/sequence-files/ENCFF123ABC'
+        system (_type_): _description_
+
+    Returns:
+        bool: If linked to a transcriptome assay, return True, otherwise False.
+    '''
+    seqfile_object = system.get('request').embed(file + '@@object?skip_calculated=true')
+    seqfile_fileset_object = system.get('request').embed(
+        seqfile_object.get('file_set', '') + '@@object?skip_calculated=true')
+    # assay_term is only on measurement set for now, still spelling it out explicitly
+    assay_term = seqfile_fileset_object.get('assay_term', '')
+    if assay_term:
+        return assay_term in TRANSCRIPT_ASSAY_TERMS
+    else:
+        return False
 
 
 @audit_checker('AnalysisSet', frame='object')
@@ -181,29 +246,26 @@ def audit_missing_transcriptome(value, system):
     ]
     '''
     audit_message = get_audit_message(audit_missing_transcriptome, index=0)
-    assay_terms = get_assay_terms(value, system)
-    files_missing_transcriptome = []
-    if any(assay_term in TRANSCRIPT_ASSAY_TERMS for assay_term in assay_terms):
-        files = value.get('files', [])
-        if files:
-            for file in files:
-                if file.startswith(('/alignment-files/', '/matrix-files/', '/signal-files/')):
-                    file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
-                    reference_files = file_object.get('reference_files', [])
-                    if reference_files:
-                        has_transcriptome = False
-                        for reference_file in reference_files:
-                            reference_file_object = system.get('request').embed(
-                                reference_file + '@@object?skip_calculated=true')
-                            if reference_file_object.get('content_type', '') in ['transcriptome reference', 'transcriptome index']:
-                                has_transcriptome = True
-                        if not (has_transcriptome):
-                            files_missing_transcriptome.append(file)
-                    else:
-                        files_missing_transcriptome.append(file)
+    files = value.get('files', [])
+    files_missing_transcriptome = []    # List of files missing transcriptome reference
+    if files:
+        for file in files:
+            if not file.startswith(('/alignment-files/', '/matrix-files/', '/signal-files/')):
+                continue
+            # Get all upstream Seqfiles that eventually lead to data file
+            # and check if upstream seqfiles are transcriptome based assays
+            is_transcriptome_assay = any(
+                check_transcriptome_assay(seq_file, system)
+                for seq_file in yield_all_upstream_seqfiles(file, system)
+            )
+            # Check if the data file under the Analysis Set has a transcriptome reference
+            has_transcriptome_reference = check_transcriptome_reference(file, system)
+            # If a transcriptome seqfile doesn't have transcriptome reference, add it to the list
+            if is_transcriptome_assay and not has_transcriptome_reference:
+                files_missing_transcriptome.append(file)
+    # Audit 1: if there are transcriptome based analysis files missing transcriptome references
     if files_missing_transcriptome:
-        files_missing_transcriptome = ', '.join([audit_link(path_to_text(file), file)
-                                                for file in files_missing_transcriptome])
+        files_missing_transcriptome = join_obj_paths(data_object_paths=files_missing_transcriptome)
         detail = (
             f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has file(s) with no transcriptome `reference_files`: {files_missing_transcriptome} '
