@@ -118,7 +118,7 @@
         },
         "mean_umis_per_barcode": {
             "title": "Mean UMIs Per Barcode",
-            "description": "Mean number of unique molecular identifiers (UMIs) per cell barcode.",
+            "description": "Mean number of UMIs per cell barcode.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -145,7 +145,7 @@
         },
         "percentage_barcodes_on_onlist": {
             "title": "Percentage Of Barcodes On Onlist",
-            "description": "Percentage of cell barcodes matching an expected list of barcodes.",
+            "description": "Percentage of cell barcodes matching an expected list of barcodes (onlist).",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -172,7 +172,7 @@
         },
         "rnaseq_kb_info": {
             "title": "RNA-seq KB Info",
-            "description": "RNA-seq KB Info.",
+            "description": "The content of the kb-python RNAseq kb_info.json file.",
             "type": "object",
             "additionalProperties": false,
             "attachment": true,
@@ -278,7 +278,7 @@
             }
         },
         "index_version": {
-            "title": "Index Version",
+            "title": "Kallisto Index Version",
             "description": "Version of Kallisto index command used for building the transcriptome index.",
             "type": "number",
             "submissionExample": {
@@ -287,7 +287,7 @@
             }
         },
         "kmer_length": {
-            "title": "Kmer Length",
+            "title": "K-mer Length",
             "description": "Length of k-mers used for building the transcriptome index.",
             "type": "number",
             "submissionExample": {
