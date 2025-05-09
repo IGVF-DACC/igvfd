@@ -685,7 +685,6 @@ def audit_inconsistent_barcode_replacement_file(value, system):
                 yield AuditFailure(msg_wrong_replacement_file.get('audit_category', ''), f'{detail} {msg_wrong_replacement_file.get("audit_description", "")}', level=msg_wrong_replacement_file.get('audit_level', ''))
 
 
-@audit_checker('MeasurementSet', frame='object')
 def audit_missing_external_image_url(value, system):
     '''
     [
@@ -714,3 +713,39 @@ def audit_missing_external_image_url(value, system):
             f'{detail} {audit_message.get("audit_description", "")}',
             level=audit_message.get('audit_level', '')
         )
+
+
+function_dispatcher_object_frame = [
+    audit_related_multiome_datasets,
+    audit_unspecified_protocol,
+    audit_CRISPR_screen_lacking_modifications,
+    audit_preferred_assay_title,
+    audit_missing_institutional_certification,
+    audit_missing_auxiliary_set_link,
+    audit_targeted_genes,
+    audit_missing_strand_specificity,
+    audit_onlist,
+    audit_inconsistent_onlist_info,
+    audit_unexpected_onlist_content,
+    audit_missing_barcode_replacement_file,
+    audit_inconsistent_barcode_replacement_file,
+    audit_missing_external_image_url
+]
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_measurement_set_object_frame(value, system):
+    for function_name in function_dispatcher_object_frame:
+        yield from function_name(value, system)
+
+
+function_dispatcher_embedded_frame = [
+    audit_missing_construct_library_set,
+    audit_missing_auxiliary_set
+]
+
+
+@audit_checker('MeasurementSet', frame='embedded')
+def audit_measurement_set_embedded_frame(value, system):
+    for function_name in function_dispatcher_embedded_frame:
+        yield from function_name(value, system)

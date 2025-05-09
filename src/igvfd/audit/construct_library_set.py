@@ -19,7 +19,6 @@ def get_assay_terms(value, system):
     return list(assay_terms)
 
 
-@audit_checker('ConstructLibrarySet', frame='object')
 def audit_construct_library_set_associated_phenotypes(value, system):
     '''
     [
@@ -46,7 +45,6 @@ def audit_construct_library_set_associated_phenotypes(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('ConstructLibrarySet', frame='object')
 def audit_construct_library_set_plasmid_map(value, system):
     '''
     [
@@ -78,7 +76,6 @@ def audit_construct_library_set_plasmid_map(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('ConstructLibrarySet', frame='object')
 def audit_construct_library_set_scope(value, system):
     '''
     [
@@ -102,7 +99,6 @@ def audit_construct_library_set_scope(value, system):
                                f'{detail} {audit_message.get("audit_description", "")})', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('ConstructLibrarySet', frame='object')
 def audit_integrated_content_files(value, system):
     '''
     [
@@ -151,7 +147,6 @@ def audit_integrated_content_files(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('ConstructLibrarySet', frame='object')
 def audit_construct_library_set_orf_gene(value, system):
     '''
     [
@@ -180,3 +175,17 @@ def audit_construct_library_set_orf_gene(value, system):
                 f'has a `small_scale_gene_list` which does not match the genes of its associated `orf_list`.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+function_dispatcher = [
+    audit_construct_library_set_associated_phenotypes,
+    audit_construct_library_set_plasmid_map,
+    audit_construct_library_set_scope,
+    audit_construct_library_set_orf_gene
+]
+
+
+@audit_checker('ConstructLibrarySet', frame='object')
+def audit_construct_library_set(value, system):
+    for function_name in function_dispatcher:
+        yield from function_name(value, system)
