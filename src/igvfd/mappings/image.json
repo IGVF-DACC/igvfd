@@ -1,6 +1,6 @@
 {
-    "hash": "6e855ab5de4917e54b2790ae6ecbcd8d",
-    "index_name": "image_6e855ab5",
+    "hash": "f34adc63ad8e42bd1c2d0db1cf73d42b",
+    "index_name": "image_f34adc63",
     "item_type": "image",
     "mapping": {
         "dynamic_templates": [
@@ -247,9 +247,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

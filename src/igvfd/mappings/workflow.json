@@ -1,6 +1,6 @@
 {
-    "hash": "2122ef8c0f5eb9b9557ff0429d847578",
-    "index_name": "workflow_2122ef8c",
+    "hash": "6b296bb23390b857b94cbdb7dd38cbfb",
+    "index_name": "workflow_6b296bb2",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -473,9 +473,6 @@
                             "pis": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -555,9 +552,6 @@
                             },
                             "pi": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -871,9 +865,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "09b6ed43055c409e2adb78a1aa547def",
-    "index_name": "biomarker_09b6ed43",
+    "hash": "6a72952afe913fb045eb4a3ada04cbfd",
+    "index_name": "biomarker_6a72952a",
     "item_type": "biomarker",
     "mapping": {
         "dynamic_templates": [
@@ -187,9 +187,6 @@
                             "pis": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -273,9 +270,6 @@
                             },
                             "pi": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -367,9 +361,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

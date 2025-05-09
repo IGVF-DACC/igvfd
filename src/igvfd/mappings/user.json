@@ -1,6 +1,6 @@
 {
-    "hash": "b9fcd5d0a103524a2dbeb4a4776bc769",
-    "index_name": "user_b9fcd5d0",
+    "hash": "3d1da73e1c25af95fc9173f1d2fc5552",
+    "index_name": "user_3d1da73e",
     "item_type": "user",
     "mapping": {
         "dynamic_templates": [
@@ -180,9 +180,6 @@
                     "notes": {
                         "type": "text"
                     },
-                    "preview_timestamp": {
-                        "type": "date"
-                    },
                     "schema_version": {
                         "type": "keyword"
                     },
@@ -229,9 +226,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

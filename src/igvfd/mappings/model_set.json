@@ -1,6 +1,6 @@
 {
-    "hash": "c4746c407ad08463c4ce1d281801a059",
-    "index_name": "model_set_c4746c40",
+    "hash": "f782b1b332bdfca838141960f379ada5",
+    "index_name": "model_set_f782b1b3",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -312,9 +312,6 @@
                                     "notes": {
                                         "type": "text"
                                     },
-                                    "preview_timestamp": {
-                                        "type": "date"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
@@ -362,9 +359,6 @@
                             },
                             "pis": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "project": {
                                 "type": "keyword"
@@ -2057,9 +2051,6 @@
                             "pi": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -3247,9 +3238,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

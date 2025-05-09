@@ -1,6 +1,6 @@
 {
-    "hash": "b6088ec0890e07b7d2333b07cbe28c37",
-    "index_name": "rodent_donor_b6088ec0",
+    "hash": "414d2106479ce616a7f12fbca375d364",
+    "index_name": "rodent_donor_414d2106",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -193,9 +193,6 @@
                             "pis": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -287,9 +284,6 @@
                             },
                             "pi": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -742,9 +736,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

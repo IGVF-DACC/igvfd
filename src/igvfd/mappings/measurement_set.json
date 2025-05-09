@@ -1,6 +1,6 @@
 {
-    "hash": "4e903589029343a25266c86e2242786b",
-    "index_name": "measurement_set_4e903589",
+    "hash": "fbf054fc27df9391115c610356208fcd",
+    "index_name": "measurement_set_fbf054fc",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -419,9 +419,6 @@
                                     "notes": {
                                         "type": "text"
                                     },
-                                    "preview_timestamp": {
-                                        "type": "date"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
@@ -469,9 +466,6 @@
                             },
                             "pis": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "project": {
                                 "type": "keyword"
@@ -2423,9 +2417,6 @@
                             "pi": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -3647,9 +3638,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

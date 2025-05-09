@@ -1,6 +1,6 @@
 {
-    "hash": "b4dced8c568390cd07e29a0c2238bd89",
-    "index_name": "sample_term_b4dced8c",
+    "hash": "0e0f7c67381defa0593cc23fa99b89d6",
+    "index_name": "sample_term_0e0f7c67",
     "item_type": "sample_term",
     "mapping": {
         "dynamic_templates": [
@@ -244,9 +244,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

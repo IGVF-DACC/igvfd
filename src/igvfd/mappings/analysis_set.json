@@ -1,6 +1,6 @@
 {
-    "hash": "cb06e8a8e97f6b91bac175f64c76d07b",
-    "index_name": "analysis_set_cb06e8a8",
+    "hash": "dc61d54df15ff1238d171337ea970cdb",
+    "index_name": "analysis_set_dc61d54d",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -214,9 +214,6 @@
                                     "notes": {
                                         "type": "text"
                                     },
-                                    "preview_timestamp": {
-                                        "type": "date"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
@@ -264,9 +261,6 @@
                             },
                             "pis": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "project": {
                                 "type": "keyword"
@@ -2035,9 +2029,6 @@
                             "pi": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -3075,9 +3066,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "6909053a4da998311a560889cb256b3b",
-    "index_name": "perturb_seq_quality_metric_6909053a",
+    "hash": "a6ed4a79f04fc2b5fc3bf384a7991666",
+    "index_name": "perturb_seq_quality_metric_a6ed4a79",
     "item_type": "perturb_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -231,9 +231,6 @@
                             "pis": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -312,9 +309,6 @@
                             },
                             "pi": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -416,9 +410,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

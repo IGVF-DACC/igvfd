@@ -1,6 +1,6 @@
 {
-    "hash": "2c7a51a0503e7eeb113879378c07663f",
-    "index_name": "auxiliary_set_2c7a51a0",
+    "hash": "96791ea5f7ef77ba94fb1e00cc07fb35",
+    "index_name": "auxiliary_set_96791ea5",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -210,9 +210,6 @@
                                     "notes": {
                                         "type": "text"
                                     },
-                                    "preview_timestamp": {
-                                        "type": "date"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
@@ -260,9 +257,6 @@
                             },
                             "pis": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "project": {
                                 "type": "keyword"
@@ -1624,9 +1618,6 @@
                             "pi": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -2821,9 +2812,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

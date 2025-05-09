@@ -1,6 +1,6 @@
 {
-    "hash": "b9973834f570810ff29438fe701bb24a",
-    "index_name": "mpra_quality_metric_b9973834",
+    "hash": "9bf9a0dd855e00fcac2e9f77cd2c51c4",
+    "index_name": "mpra_quality_metric_9bf9a0dd",
     "item_type": "mpra_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -219,9 +219,6 @@
                             "pis": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -304,9 +301,6 @@
                             },
                             "pi": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -408,9 +402,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

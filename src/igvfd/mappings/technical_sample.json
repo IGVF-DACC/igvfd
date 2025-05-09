@@ -1,6 +1,6 @@
 {
-    "hash": "d91c39a5b38fd8b54f1b4c7e8e6523bc",
-    "index_name": "technical_sample_d91c39a5",
+    "hash": "eb6ca8914f41cd6cd731e33f0759f776",
+    "index_name": "technical_sample_eb6ca891",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -192,9 +192,6 @@
                             },
                             "pis": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "project": {
                                 "type": "keyword"
@@ -702,9 +699,6 @@
                                     "pi": {
                                         "type": "keyword"
                                     },
-                                    "preview_timestamp": {
-                                        "type": "date"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
@@ -956,9 +950,6 @@
                             },
                             "pi": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -1646,9 +1637,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "b8ce207fc9a8849e42731d92df8e5a90",
-    "index_name": "gene_b8ce207f",
+    "hash": "a7f401b4016c2639f50bc92b2a533a25",
+    "index_name": "gene_a7f401b4",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -250,9 +250,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

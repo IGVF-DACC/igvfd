@@ -1,6 +1,6 @@
 {
-    "hash": "0b92aabc9e0051ef6f787d75a2bce104",
-    "index_name": "human_donor_0b92aabc",
+    "hash": "7ad422ed32f4cf43c329b86ae1d36c5f",
+    "index_name": "human_donor_7ad422ed",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -193,9 +193,6 @@
                             "pis": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -287,9 +284,6 @@
                             },
                             "pi": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -775,9 +769,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

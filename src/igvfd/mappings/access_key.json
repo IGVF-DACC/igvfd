@@ -1,6 +1,6 @@
 {
-    "hash": "f605bd396b682c544e8bea904f78459c",
-    "index_name": "access_key_f605bd39",
+    "hash": "4155a0dc1d62dbd57bb20ce58b5f8feb",
+    "index_name": "access_key_4155a0dc",
     "item_type": "access_key",
     "mapping": {
         "dynamic_templates": [
@@ -209,9 +209,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "8550fc222134e09727bccb04dd2530b0",
-    "index_name": "reference_file_8550fc22",
+    "hash": "9cddf36584eb7eb053ad382ca735c4a0",
+    "index_name": "reference_file_9cddf365",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -206,9 +206,6 @@
                             },
                             "pis": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "project": {
                                 "type": "keyword"
@@ -2315,9 +2312,6 @@
                             "pi": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -2420,9 +2414,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

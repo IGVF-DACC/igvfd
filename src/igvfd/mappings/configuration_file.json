@@ -1,6 +1,6 @@
 {
-    "hash": "986d6c3656dd21496e22dec5985f682a",
-    "index_name": "configuration_file_986d6c36",
+    "hash": "ef6375c7c9a0a5f500367e0393d0159a",
+    "index_name": "configuration_file_ef6375c7",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -199,9 +199,6 @@
                             },
                             "pis": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "project": {
                                 "type": "keyword"
@@ -2293,9 +2290,6 @@
                             "pi": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -2394,9 +2388,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

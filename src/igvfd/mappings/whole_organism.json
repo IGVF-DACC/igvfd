@@ -1,6 +1,6 @@
 {
-    "hash": "3b52aeaa569c3230abf33c6c4e2ad13e",
-    "index_name": "whole_organism_3b52aeaa",
+    "hash": "c2b15528e414864af9e48581bf39f2c6",
+    "index_name": "whole_organism_c2b15528",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -201,9 +201,6 @@
                             },
                             "pis": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "project": {
                                 "type": "keyword"
@@ -1102,9 +1099,6 @@
                                     "pi": {
                                         "type": "keyword"
                                     },
-                                    "preview_timestamp": {
-                                        "type": "date"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
@@ -1435,9 +1429,6 @@
                             },
                             "pi": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -2510,9 +2501,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

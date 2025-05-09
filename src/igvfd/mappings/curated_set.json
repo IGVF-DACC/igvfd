@@ -1,6 +1,6 @@
 {
-    "hash": "608de1f781cac9822dc616dbb331df0e",
-    "index_name": "curated_set_608de1f7",
+    "hash": "bc71a965af00d3b2b47ee366c7491d14",
+    "index_name": "curated_set_bc71a965",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -214,9 +214,6 @@
                                     "notes": {
                                         "type": "text"
                                     },
-                                    "preview_timestamp": {
-                                        "type": "date"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
@@ -264,9 +261,6 @@
                             },
                             "pis": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "project": {
                                 "type": "keyword"
@@ -1625,9 +1619,6 @@
                             "pi": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -2659,9 +2650,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

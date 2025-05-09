@@ -1,6 +1,6 @@
 {
-    "hash": "2243d7cc9feecc87ffd9e6a934534b35",
-    "index_name": "crispr_modification_2243d7cc",
+    "hash": "fedc9868969a9cf3cbedee1290113335",
+    "index_name": "crispr_modification_fedc9868",
     "item_type": "crispr_modification",
     "mapping": {
         "dynamic_templates": [
@@ -197,9 +197,6 @@
                             "pis": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -288,9 +285,6 @@
                             },
                             "pi": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -385,9 +379,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

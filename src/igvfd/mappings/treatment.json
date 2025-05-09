@@ -1,6 +1,6 @@
 {
-    "hash": "5cb3e38e5b2825aeb687d97b60167529",
-    "index_name": "treatment_5cb3e38e",
+    "hash": "1091d418b5237b2a05f0f6b6a9b23235",
+    "index_name": "treatment_1091d418",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -194,9 +194,6 @@
                             "pis": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -288,9 +285,6 @@
                             },
                             "pi": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -458,9 +452,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

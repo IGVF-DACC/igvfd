@@ -1,6 +1,6 @@
 {
-    "hash": "5b47cf80ce000a6596067fd2650040eb",
-    "index_name": "analysis_step_version_5b47cf80",
+    "hash": "b0e1d4bdb77214b0bad979e59b0064e4",
+    "index_name": "analysis_step_version_b0e1d4bd",
     "item_type": "analysis_step_version",
     "mapping": {
         "dynamic_templates": [
@@ -361,9 +361,6 @@
                             "pis": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "project": {
                                 "type": "keyword"
                             },
@@ -438,9 +435,6 @@
                             },
                             "pi": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -594,9 +588,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

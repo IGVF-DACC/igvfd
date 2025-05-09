@@ -1,6 +1,6 @@
 {
-    "hash": "3900db558b66e8d3e51e780e95dc2e65",
-    "index_name": "sequence_file_3900db55",
+    "hash": "3cfd586ba6b552fea6188a75030fbf5e",
+    "index_name": "sequence_file_3cfd586b",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -202,9 +202,6 @@
                             },
                             "pis": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "project": {
                                 "type": "keyword"
@@ -2319,9 +2316,6 @@
                             "pi": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -2536,9 +2530,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

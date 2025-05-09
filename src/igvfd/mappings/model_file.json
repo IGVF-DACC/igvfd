@@ -1,6 +1,6 @@
 {
-    "hash": "c70324875b7fe60adb8a7791b6782a99",
-    "index_name": "model_file_c7032487",
+    "hash": "fb8c0c26ba4177b39c1e0c7b7f1ca83c",
+    "index_name": "model_file_fb8c0c26",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -202,9 +202,6 @@
                             },
                             "pis": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "project": {
                                 "type": "keyword"
@@ -2310,9 +2307,6 @@
                             "pi": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -2408,9 +2402,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

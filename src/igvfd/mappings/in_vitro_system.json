@@ -1,6 +1,6 @@
 {
-    "hash": "eba4882edcd3f02dad7e5e89878e2f4c",
-    "index_name": "in_vitro_system_eba4882e",
+    "hash": "51bf1b7e9345d6132f84b4fd96263d3d",
+    "index_name": "in_vitro_system_51bf1b7e",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -201,9 +201,6 @@
                             },
                             "pis": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "project": {
                                 "type": "keyword"
@@ -1115,9 +1112,6 @@
                                     "pi": {
                                         "type": "keyword"
                                     },
-                                    "preview_timestamp": {
-                                        "type": "date"
-                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
@@ -1451,9 +1445,6 @@
                             },
                             "pi": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -2784,9 +2775,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

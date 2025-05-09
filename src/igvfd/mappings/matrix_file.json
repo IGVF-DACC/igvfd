@@ -1,6 +1,6 @@
 {
-    "hash": "9cc47578a196acbb31cb135119865035",
-    "index_name": "matrix_file_9cc47578",
+    "hash": "7badc80e3956c4afdf32688f7f1f2e43",
+    "index_name": "matrix_file_7badc80e",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -199,9 +199,6 @@
                             },
                             "pis": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "project": {
                                 "type": "keyword"
@@ -2300,9 +2297,6 @@
                             "pi": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -2407,9 +2401,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"

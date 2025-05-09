@@ -1,6 +1,6 @@
 {
-    "hash": "a626d84a9c379a1b81ef9572e187f10f",
-    "index_name": "alignment_file_a626d84a",
+    "hash": "07487a131767cf565c0032d6a34ff71c",
+    "index_name": "alignment_file_07487a13",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -206,9 +206,6 @@
                             },
                             "pis": {
                                 "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "project": {
                                 "type": "keyword"
@@ -2314,9 +2311,6 @@
                             "pi": {
                                 "type": "keyword"
                             },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -2423,9 +2417,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
