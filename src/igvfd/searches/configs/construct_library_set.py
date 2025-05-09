@@ -133,7 +133,7 @@ def construct_library_set():
                 'title': 'Genes'
             },
             'associated_phenotypes.term_name': {
-                'title': 'Associated Phenotypes'
+                'title': 'Associated Phenotypes Name'
             },
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
