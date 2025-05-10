@@ -114,6 +114,22 @@ def construct_library_set_editing_template_library(testapp, lab, award, gene_myc
 
 
 @pytest.fixture
+def construct_library_set_editing_template_library_2(testapp, lab, award, gene_myc_hs):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'editing template library',
+        'scope': 'targeton',
+        'small_scale_gene_list': [gene_myc_hs['@id']],
+        'targeton': 'targeton2',
+        'selection_criteria': [
+            'sequence variants'
+        ]
+    }
+    return testapp.post_json('/construct_library_set', item).json['@graph'][0]
+
+
+@pytest.fixture
 def construct_library_set_control_transduction(testapp, lab, award):
     item = {
         'award': award['@id'],
