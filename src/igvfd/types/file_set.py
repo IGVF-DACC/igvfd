@@ -74,8 +74,30 @@ def get_cls_phrase(cls_set):
         cls_phrase = cls_phrases[0]
     elif len(cls_phrases) == 2:
         cls_phrase = ' and '.join(cls_phrases)
+    # make special case for SGE assays: >20 CLS under each analysis set
     elif len(cls_phrases) > 2:
-        cls_phrase = ', '.join(cls_phrases[:-1]) + ', and ' + cls_phrases[-1]
+        if cls_phrases[0].startswith('an editing template library'):
+            common_phrase = cls_phrases[0].split(' in ')[0]
+            # only condense sentence if all CLS have the same selection criteria (i.e. sequence variants)
+            if all(cls_phrase.startswith(common_phrase) for cls_phrase in cls_phrases):
+                targeton_dict = {}
+                for cls_phrase in cls_phrases:
+                    # e.g. editing template library targeting sequence variants in exon6B of BARD1
+                    gene = cls_phrase.split(' ')[-1]
+                    targeton = cls_phrase.split(' ')[-3]
+                    if gene not in targeton_dict:
+                        targeton_dict[gene] = set([targeton])
+                    else:
+                        targeton_dict[gene].add(targeton)
+                cls_count_phrases = []
+                for gene, targetons in targeton_dict.items():
+                    cls_count_phrases.append(f'in {len(targetons)} targetons of {gene}')
+                cls_phrase = common_phrase.replace('an ', '').replace(
+                    'library', 'libraries') + ' ' + ', '.join(cls_count_phrases)
+            else:
+                cls_phrase = ', '.join(cls_phrases[:-1]) + ', and ' + cls_phrases[-1]
+        else:
+            cls_phrase = ', '.join(cls_phrases[:-1]) + ', and ' + cls_phrases[-1]
     cls_phrase = f'integrating {cls_phrase}'
     return cls_phrase
 
