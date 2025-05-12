@@ -548,7 +548,7 @@ def in_vitro_system_26_27(value, system):
 @upgrade_step('in_vitro_system', '27', '28')
 @upgrade_step('tissue', '21', '22')
 @upgrade_step('whole_organism', '24', '25')
-def sample_19_20(value, system):
+def sample_22_23(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2085
     if 'embryonic' not in value:
         value['embryonic'] = False
