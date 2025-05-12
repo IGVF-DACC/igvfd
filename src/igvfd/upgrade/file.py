@@ -512,9 +512,9 @@ def file_15_16(value, system):
             notes += f'This file analysis_step_version was previously {analysis_step_version}. However, derived_manually is true, therefore should not have analysis_step_version and was removed during an upgrade.'
             value['notes'] = notes.strip()
             del value['analysis_step_version']
-    if 'SignalFile' not in value['@type']:
+    if 'SignalFile' in value['@type']:
         if 'normalized' not in value:
             value['normalized'] = False
-    if 'AlignmentFile' not in value['@type']:
+    if 'AlignmentFile' in value['@type']:
         if 'redacted' not in value:
             value['redacted'] = False
