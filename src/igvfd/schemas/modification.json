@@ -64,7 +64,6 @@
             "description": "A boolean indicating whether the modification has been activated by a chemical agent.",
             "comment": "This property is affected by dependencies. See https://data.igvf.org/profiles/modification/schema/dependencies/.",
             "type": "boolean",
-            "default": false,
             "submissionExample": {
                 "appscript": "true",
                 "igvf_utils": "true"
