@@ -181,6 +181,7 @@ function_dispatcher = [
     audit_construct_library_set_associated_phenotypes,
     audit_construct_library_set_plasmid_map,
     audit_construct_library_set_scope,
+    audit_integrated_content_files,
     audit_construct_library_set_orf_gene
 ]
 
