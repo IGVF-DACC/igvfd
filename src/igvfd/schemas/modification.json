@@ -36,33 +36,25 @@
         "$merge": [
             "shared_dependencies.json#/standard_status"
         ],
+        "activating_agent_term_id": {
+            "comment": "Specification of activating_agent_term_id requires activating_agent_term_name and activated.",
+            "required": [
+                "activated",
+                "activating_agent_term_name"
+            ]
+        },
+        "activating_agent_term_name": {
+            "comment": "Specification of activating_agent_term_name requires activating_agent_term_id and activated.",
+            "required": [
+                "activated",
+                "activating_agent_term_id"
+            ]
+        },
         "activated": {
-            "comment": "Specification of activating_agent_term_id and activating_agent_term_name should be allowed only if activated is true.",
-            "oneOf": [
-                {
-                    "properties": {
-                        "activated": {
-                            "const": false
-                        }
-                    },
-                    "not": {
-                        "required": [
-                            "activating_agent_term_id",
-                            "activating_agent_term_name"
-                        ]
-                    }
-                },
-                {
-                    "properties": {
-                        "activated": {
-                            "const": true
-                        }
-                    },
-                    "required": [
-                        "activating_agent_term_id",
-                        "activating_agent_term_name"
-                    ]
-                }
+            "comment": "Specification of activated requires activating_agent_term_id and activating_agent_term_name.",
+            "required": [
+                "activating_agent_term_id",
+                "activating_agent_term_name"
             ]
         }
     },
