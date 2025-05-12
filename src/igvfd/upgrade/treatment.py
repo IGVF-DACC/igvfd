@@ -87,4 +87,6 @@ def treatment_7_8(value, system):
 @upgrade_step('treatment', '8', '9')
 def treatment_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2085
+    if 'depletion' not in value:
+        value['depletion'] = False
     return

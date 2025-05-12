@@ -103,3 +103,23 @@ def signal_file_v8(signal_file):
         'content_type': 'fold over change control'
     })
     return item
+
+
+@pytest.fixture
+def signal_file_v10(testapp, lab, award, principal_analysis_set, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '350e99db0738e1987d3d6b53c22c3937',
+        'file_format': 'bigWig',
+        'file_set': principal_analysis_set['@id'],
+        'file_size': 4328491803,
+        'assembly': 'GRCh38',
+        'content_type': 'signal of all reads',
+        'reference_files': [
+            reference_file['@id']
+        ],
+        'strand_specificity': 'plus',
+        'filtered': False
+    }
+    return testapp.post_json('/signal_file', item, status=201).json['@graph'][0]
