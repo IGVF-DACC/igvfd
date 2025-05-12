@@ -1,5 +1,9 @@
 ## Changelog for *`matrix_file.json`*
 
+### Schema verion 8
+
+* Adjust `content_type` enum list to replace `comprehensive gene count matrix` with `kallisto single cell RNAseq output`.
+
 ### Minor changes since schema version 7
 
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.

@@ -33,3 +33,9 @@ def test_matrix_file_upgrade_6_7(upgrader, matrix_file_v6):
     assert value['schema_version'] == '7'
     assert value['principal_dimension'] == 'cell'
     assert value['secondary_dimensions'] == ['gene']
+
+
+def test_matrix_file_upgrade_7_8(upgrader, matrix_file_v7):
+    value = upgrader.upgrade('matrix_file', matrix_file_v7, current_version='7', target_version='8')
+    assert value['schema_version'] == '8'
+    assert value['content_type'] == 'kallisto single cell RNAseq output'

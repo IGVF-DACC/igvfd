@@ -139,3 +139,14 @@ def matrix_file_v6(testapp, lab, award, measurement_set, reference_file):
         'dimension2': 'gene'
     }
     return item
+
+
+@pytest.fixture
+def matrix_file_v7(matrix_file):
+    item = matrix_file.copy()
+    item.update({
+        'schema_version': '7',
+        'content_type': 'comprehensive gene count matrix',
+        'file_format': 'tar'
+    })
+    return item
