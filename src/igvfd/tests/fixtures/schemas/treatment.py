@@ -153,3 +153,12 @@ def treatment_v7b(treatment_chemical):
         'lot_id': '123'
     })
     return item
+
+
+@pytest.fixture
+def treatment_v8(treatment_chemical):
+    item = treatment_chemical.copy()
+    item.update({
+        'schema_version': '8'
+    })
+    return item
