@@ -58,7 +58,8 @@ def test_construct_library_set_upgrade_9_10(upgrader, construct_library_set_v9, 
     assert value['notes']
 
 
-def test_construct_library_set_upgrade_10_11(upgrader, measurement_set_v10):
-    value = upgrader.upgrade('construct_library_set', measurement_set_v10, current_version='10', target_version='11')
+def test_construct_library_set_upgrade_10_11(upgrader, construct_library_set_v10):
+    value = upgrader.upgrade('construct_library_set', construct_library_set_v10,
+                             current_version='10', target_version='11')
     assert value['schema_version'] == '11'
     assert value.get('control_type') == 'reference transduction'
