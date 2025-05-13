@@ -1,5 +1,9 @@
 ## Changelog for *`primary_cell.json`*
 
+### Schema version 23
+
+* Adjust `embryonic` to have default value `False`.
+
 ### Minor changes since schema version 22
 
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.

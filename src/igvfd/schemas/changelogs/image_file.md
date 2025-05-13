@@ -1,5 +1,9 @@
 ## Changelog for *`image_file.json`*
 
+### Schema version 5
+
+* Adjust `derived_manually` to have default value `False`.
+
 ### Minor changes since schema version 4
 
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
