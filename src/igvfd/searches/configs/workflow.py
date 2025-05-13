@@ -7,6 +7,9 @@ from snovault.elasticsearch.searches.configs import search_config
 def workflow():
     return {
         'facets': {
+            'uniform_pipeline': {
+                'title': 'Uniform Pipeline'
+            },
             'analysis_steps.analysis_step_versions.software_versions.software.title': {
                 'title': 'Software',
             },
@@ -47,6 +50,9 @@ def workflow():
             },
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
+            },
+            'uniform_pipeline': {
+                'title': 'Uniform Pipeline'
             },
             'uuid': {
                 'title': 'UUID'

@@ -70,6 +70,12 @@ def prediction_set():
             'award.component': {
                 'title': 'Award'
             },
+            'release_timestamp': {
+                'title': 'Release Date',
+            },
+            'creation_timestamp': {
+                'title': 'Creation Date',
+            },
             'status': {
                 'title': 'Status'
             },
