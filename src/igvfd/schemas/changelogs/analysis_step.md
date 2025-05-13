@@ -1,5 +1,10 @@
 ## Changelog for *`analysis_step.json`*
 
+### Schema version 7
+
+* Adjust `output_content_types` enum list to replace `comprehensive gene count matrix` with `kallisto single cell RNAseq output`.
+* Adjust `input_content_types` enum list to replace `comprehensive gene count matrix` with `kallisto single cell RNAseq output`.
+
 ### Minor changes since schema version 6
 
 * Extend `output_content_types` enum list to include `primers table`.

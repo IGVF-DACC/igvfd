@@ -64,3 +64,18 @@ def analysis_step_5_6(value, system):
             notes += f' "sequence barcodes" was removed from {key}, and has been upgraded to "barcode onlist".'
     if notes != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_step', '6', '7')
+def analysis_step_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2718
+    notes = value.get('notes', '')
+    old_enum = 'comprehensive gene count matrix'
+    new_enum = 'kallisto single cell RNAseq output'
+    for key in ['input_content_types', 'output_content_types']:
+        if old_enum in value[key]:
+            new_content_list = [new_enum if content == old_enum else content for content in value[key]]
+            value[key] = sorted(set(new_content_list))
+            notes += f' "{old_enum}" was removed from {key}, and has been upgraded to "{new_enum}".'
+    if notes != '':
+        value['notes'] = notes.strip()

@@ -92,14 +92,14 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "7"
+            "default": "8"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
-                "comprehensive gene count matrix",
                 "contact matrix",
                 "filtered feature barcode matrix",
+                "kallisto single cell RNAseq output",
                 "raw feature barcode matrix",
                 "sample barcode count matrix",
                 "sparse gene count matrix",
@@ -108,9 +108,9 @@
                 "transcriptome annotations"
             ],
             "enum_descriptions": {
-                "comprehensive gene count matrix": "A collection of files that contain gene count matrices, logs, and software specific output files such as gene count .mtx files, .bus files, and .json log files.",
                 "contact matrix": "A matrix used in genomic assays, particularly in chromosome conformation capture techniques like Hi-C, to represent the frequency of physical interactions between different regions of the genome.",
                 "filtered feature barcode matrix": "A matrix output from Cell Ranger, where rows represent features and columns represent barcoded spots or cells. It contains counts of sequencing reads after filtering out low-quality or low-abundance features.",
+                "kallisto single cell RNAseq output": "A tar.gz file containing the output of the kb-python count run directory using the nac mode containing everything except for the h5ad file chosen to be the primary result.",
                 "raw feature barcode matrix": "A matrix output from Cell Ranger, where rows represent features and columns represent barcoded spots or cells. It contains raw counts of sequencing reads before any filtering or normalization.",
                 "sample barcode count matrix": "A matrix of cells (rows) by MULTI-seq sample barcode (columns) count.",
                 "sparse gene count matrix": "A matrix where rows represent genes and columns represent samples or cells, containing counts of sequencing reads that map to each gene.",

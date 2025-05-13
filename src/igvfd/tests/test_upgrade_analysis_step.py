@@ -21,3 +21,10 @@ def test_analysis_step_upgrade_5_6(upgrader, analysis_step_v5):
     assert sorted(value['input_content_types']) == sorted(['reads', 'barcode onlist'])
     assert sorted(value['output_content_types']) == sorted(['alignments'])
     assert value['schema_version'] == '6'
+
+
+def test_analysis_step_upgrade_6_7(upgrader, analysis_step_v6):
+    value = upgrader.upgrade('analysis_step', analysis_step_v6, current_version='6', target_version='7')
+    assert sorted(value['input_content_types']) == sorted(['reads', 'kallisto single cell RNAseq output'])
+    assert sorted(value['output_content_types']) == sorted(['alignments', 'kallisto single cell RNAseq output'])
+    assert value['schema_version'] == '7'

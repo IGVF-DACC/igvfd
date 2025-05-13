@@ -476,3 +476,14 @@ def reference_file_17_18(value, system):
         notes += f' This file\'s content_type was sequence barcodes, but has been upgraded to genomic_elements_genes.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('matrix_file', '7', '8')
+def matrix_file_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2718
+    notes = value.get('notes', '')
+    if value['content_type'] == 'comprehensive gene count matrix':
+        value['content_type'] = 'kallisto single cell RNAseq output'
+        notes += f' This file\'s content_type was comprehensive gene count matrix, but has been upgraded to kallisto single cell RNAseq output.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
