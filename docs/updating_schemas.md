@@ -214,7 +214,7 @@ Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/
                     'type': 'array',
                     'items': {
                         'title': 'File',
-                        'type': ['string', 'object'],
+                        'type': 'string',
                         'linkFrom': 'File.file_set',
                     },
                     'notSubmittable': True
