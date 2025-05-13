@@ -1,6 +1,6 @@
 {
-    "hash": "29edf91e5487db9b73211de68d53db63",
-    "index_name": "curated_set_29edf91e",
+    "hash": "2d40adc5dfcce06c7041cb0225747ffd",
+    "index_name": "curated_set_2d40adc5",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -385,7 +385,7 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
-                            "demultiplexed_sample": {
+                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -891,7 +891,7 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
-                            "demultiplexed_sample": {
+                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
