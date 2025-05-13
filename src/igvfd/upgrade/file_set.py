@@ -527,7 +527,7 @@ def analysis_set_9_10(value, system):
         del value['demultiplexed_sample']
 
 
-@upgrade_step('measurement_set', '27', '28')
+@upgrade_step('measurement_set', '26', '27')
 @upgrade_step('construct_library_set', '10', '11')
 def file_set_26_27(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2692
