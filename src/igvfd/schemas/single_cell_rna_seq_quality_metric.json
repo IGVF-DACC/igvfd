@@ -46,7 +46,7 @@
         },
         "n_records": {
             "title": "Number Of Records",
-            "description": "",
+            "description": "Number of records in BUS file.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -55,7 +55,7 @@
         },
         "n_reads": {
             "title": "Number Of Reads",
-            "description": "",
+            "description": "Total number of input reads.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -64,7 +64,7 @@
         },
         "n_barcodes": {
             "title": "Number Of Barcodes",
-            "description": "",
+            "description": "Total number of valid cell barcodes detected.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -73,7 +73,7 @@
         },
         "total_umis": {
             "title": "Total UMIs",
-            "description": "",
+            "description": "Total number of UMIs detected.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -82,7 +82,7 @@
         },
         "n_barcode_umis": {
             "title": "Number Of Barcode UMIs",
-            "description": "",
+            "description": "Total number of UMIs associated with cell barcodes.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -91,7 +91,7 @@
         },
         "median_reads_per_barcode": {
             "title": "Median Reads Per Barcode",
-            "description": "",
+            "description": "Median number of reads per cell barcode.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -100,7 +100,7 @@
         },
         "mean_reads_per_barcode": {
             "title": "Mean Reads Per Barcode",
-            "description": "",
+            "description": "Mean number of reads per cell barcode.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -109,7 +109,7 @@
         },
         "median_umis_per_barcode": {
             "title": "Median UMIs Per Barcode",
-            "description": "",
+            "description": "Median number of UMIs per cell barcode.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -118,7 +118,7 @@
         },
         "mean_umis_per_barcode": {
             "title": "Mean UMIs Per Barcode",
-            "description": "",
+            "description": "Mean number of UMIs per cell barcode.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -126,8 +126,8 @@
             }
         },
         "gt_records": {
-            "title": "GtRecords",
-            "description": "",
+            "title": "Good-Toulmin Estimation Records",
+            "description": "Number of BUS records for Good-Toulmin estimation.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -136,7 +136,7 @@
         },
         "num_barcodes_on_onlist": {
             "title": "Number Of Barcodes On Onlist",
-            "description": "",
+            "description": "Number of cell barcodes matching an expected list of barcodes (onlist).",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -145,7 +145,7 @@
         },
         "percentage_barcodes_on_onlist": {
             "title": "Percentage Of Barcodes On Onlist",
-            "description": "",
+            "description": "Percentage of cell barcodes matching an expected list of barcodes (onlist).",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -154,7 +154,7 @@
         },
         "num_reads_on_onlist": {
             "title": "Number Of Reads On Onlist",
-            "description": "",
+            "description": "Number of reads associated with barcodes on the onlist.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -163,7 +163,7 @@
         },
         "percentage_reads_on_onlist": {
             "title": "Percentage Of Reads On Onlist",
-            "description": "",
+            "description": "Percentage of reads associated with barcodes on the onlist.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -172,7 +172,7 @@
         },
         "rnaseq_kb_info": {
             "title": "RNA-seq KB Info",
-            "description": "",
+            "description": "The content of the kb-python RNAseq kb_info.json file.",
             "type": "object",
             "additionalProperties": false,
             "attachment": true,
@@ -215,8 +215,8 @@
             }
         },
         "n_targets": {
-            "title": "",
-            "description": "",
+            "title": "Number Of Target Sequences",
+            "description": "Total number of target sequences (e.g., transcripts) in the index.",
             "type": "number",
             "submissionExample": {
                 "appscript": 356673,
@@ -224,8 +224,8 @@
             }
         },
         "n_bootstraps": {
-            "title": "",
-            "description": "",
+            "title": "Number Of Bootstrap Iterations",
+            "description": "Number of bootstrap iterations used to estimate expression uncertainty.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -233,8 +233,8 @@
             }
         },
         "n_processed": {
-            "title": "",
-            "description": "",
+            "title": "Number Of Reads Processed",
+            "description": "Number of valid reads processed by Kallisto.",
             "type": "number",
             "submissionExample": {
                 "appscript": 973282824,
@@ -242,8 +242,8 @@
             }
         },
         "n_pseudoaligned": {
-            "title": "",
-            "description": "",
+            "title": "Number Of Reads Pseudoaligned",
+            "description": "Number of reads that could be pseudoaligned to the transcriptome index.",
             "type": "number",
             "submissionExample": {
                 "appscript": 662527599,
@@ -251,8 +251,8 @@
             }
         },
         "n_unique": {
-            "title": "",
-            "description": "",
+            "title": "Number Of Reads Uniquely Pseudoaligned",
+            "description": "Number of reads that could be pseudoaligned to a unique target sequence.",
             "type": "number",
             "submissionExample": {
                 "appscript": 455501195,
@@ -260,8 +260,8 @@
             }
         },
         "p_pseudoaligned": {
-            "title": "",
-            "description": "",
+            "title": "Percentage Of Reads Pseudoaligned",
+            "description": "Percentage of reads that could be pseudoaligned to the transcriptome index.",
             "type": "number",
             "submissionExample": {
                 "appscript": 68.1,
@@ -269,8 +269,8 @@
             }
         },
         "p_unique": {
-            "title": "",
-            "description": "",
+            "title": "Percentage Of Reads Uniquely Pseudoaligned",
+            "description": "Percentage of reads that could be pseudoaligned to a unique target sequence.",
             "type": "number",
             "submissionExample": {
                 "appscript": 46.8,
@@ -278,8 +278,8 @@
             }
         },
         "index_version": {
-            "title": "",
-            "description": "",
+            "title": "Kallisto Index Version",
+            "description": "Version of Kallisto index command used for building the transcriptome index.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -287,8 +287,8 @@
             }
         },
         "kmer_length": {
-            "title": "",
-            "description": "",
+            "title": "K-mer Length",
+            "description": "Length of k-mers used for building the transcriptome index.",
             "type": "number",
             "submissionExample": {
                 "appscript": 31,
