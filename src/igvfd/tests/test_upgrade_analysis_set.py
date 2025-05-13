@@ -45,3 +45,11 @@ def test_analysis_set_upgrade_8_9(upgrader, analysis_set_v8):
     value = upgrader.upgrade('analysis_set', analysis_set_v8, current_version='8', target_version='9')
     assert value['schema_version'] == '9'
     assert 'samples' not in value
+
+
+def test_analysis_set_upgrade_9_10(upgrader, analysis_set_v9):
+    value = upgrader.upgrade('analysis_set', analysis_set_v9, current_version='9', target_version='10')
+    assert value['schema_version'] == '10'
+    assert 'demultiplexed_sample' not in value
+    assert 'demultiplexed_samples' in value
+    assert len(value['demultiplexed_samples']) == 1

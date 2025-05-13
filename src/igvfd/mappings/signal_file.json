@@ -1,6 +1,6 @@
 {
-    "hash": "e341b5bb4d1f8f24876e888a5f029ac1",
-    "index_name": "signal_file_e341b5bb",
+    "hash": "c137cac27c18964584c512174b85357b",
+    "index_name": "signal_file_c137cac2",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -631,7 +631,7 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
-                            "demultiplexed_sample": {
+                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {

@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_set.json`*
 
+### Schema version 10
+
+* Rename `demultiplexed_sample` to `demultiplexed_samples`.
+
 ### Minor changes since schema version 9
 
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
