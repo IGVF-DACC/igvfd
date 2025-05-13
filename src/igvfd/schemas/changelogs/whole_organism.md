@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 25
+
+* Adjust `embryonic` to have default value `False`.
+
 ### Minor changes since schema version 24
 
 * Add `preview_timestamp`.

@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 16
+
+* Adjust `derived_manually` to have default value `False`.
+
 ### Minor changes since schema version 15
 
 * Extend `content_type` enum list to include `variant pathogenicity`.

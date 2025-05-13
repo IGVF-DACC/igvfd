@@ -1,5 +1,9 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 16
+
+* Adjust `derived_manually` to have default value `False`.
+
 ### Minor changes since schema version 15
 
 * Extend `base_modifications` enum list to include `m5C`.

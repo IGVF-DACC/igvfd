@@ -1,5 +1,9 @@
 ## Changelog for *`treatment.json`*
 
+### Schema version 9
+
+* Adjust `depletion` to have default value `False`.
+
 ### Minor changes since schema version 8
 
 * Add `preview_timestamp`.

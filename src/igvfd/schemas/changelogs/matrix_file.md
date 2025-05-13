@@ -1,5 +1,9 @@
 ## Changelog for *`matrix_file.json`*
 
+### Schema version 9
+
+* Adjust `derived_manually` to have default value `False`.
+
 ### Schema verion 8
 
 * Adjust `content_type` enum list to replace `comprehensive gene count matrix` with `kallisto single cell RNAseq output`.

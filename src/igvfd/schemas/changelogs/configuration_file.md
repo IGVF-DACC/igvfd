@@ -1,5 +1,9 @@
 ## Changelog for *`configuration_file.json`*
 
+### Schema version 8
+
+* Adjust `derived_manually` to have default value `False`.
+
 ### Minor changes since schema version 7
 
 * Add `preview_timestamp`.
