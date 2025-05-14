@@ -6,11 +6,13 @@ from .formatter import (
     audit_link,
     path_to_text,
     get_audit_message,
-    space_in_words
+    space_in_words,
+    register_dispatcher,
+    register_all_dispatchers
 )
 
 
-@audit_checker('ReferenceFile', frame='object')
+@register_dispatcher(['ReferenceFile'], frame='object')
 def audit_external_reference_files(value, system):
     '''
     [
@@ -30,3 +32,6 @@ def audit_external_reference_files(value, system):
                 f'but does not have identifier(s) from an external resource listed in `dbxrefs`.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+register_all_dispatchers()

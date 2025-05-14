@@ -6,11 +6,13 @@ from .formatter import (
     audit_link,
     path_to_text,
     get_audit_message,
-    space_in_words
+    space_in_words,
+    register_dispatcher,
+    register_all_dispatchers
 )
 
 
-@audit_checker('IndexFile', frame='object')
+@register_dispatcher(['IndexFile'], frame='object')
 def audit_index_files_derived_from(value, system):
     '''
     [
@@ -37,3 +39,6 @@ def audit_index_files_derived_from(value, system):
                 f'{detail} {audit_message_tbi.get("audit_description", "")}',
                 level=audit_message_tbi.get('audit_level', '')
             )
+
+
+register_all_dispatchers()

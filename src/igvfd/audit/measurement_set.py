@@ -5,7 +5,9 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_message
+    get_audit_message,
+    register_dispatcher,
+    register_all_dispatchers
 )
 
 from .file_set import (
@@ -14,6 +16,7 @@ from .file_set import (
 )
 
 
+@register_dispatcher(['MeasurementSet'], frame='object')
 def audit_related_multiome_datasets(value, system):
     '''
     [
@@ -105,6 +108,7 @@ def audit_related_multiome_datasets(value, system):
             yield AuditFailure(audit_message_inconsistent_multiome.get('audit_category', ''), f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}', level=audit_message_inconsistent_multiome.get('audit_level', ''))
 
 
+@register_dispatcher(['MeasurementSet'], frame='object')
 def audit_unspecified_protocol(value, system):
     '''
     [
@@ -124,6 +128,7 @@ def audit_unspecified_protocol(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+@register_dispatcher(['MeasurementSet'], frame='object')
 def audit_CRISPR_screen_lacking_modifications(value, system):
     '''
     [
@@ -158,6 +163,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+@register_dispatcher(['MeasurementSet'], frame='object')
 def audit_preferred_assay_title(value, system):
     '''
     [
@@ -181,6 +187,7 @@ def audit_preferred_assay_title(value, system):
         yield AuditFailure(audit_message_inconsistent.get('audit_category', ''), f'{detail} {audit_message_inconsistent.get("audit_description", "")}', level=audit_message_inconsistent.get('audit_level', ''))
 
 
+@register_dispatcher(['MeasurementSet'], frame='object')
 def audit_missing_institutional_certification(value, system):
     '''
     [
@@ -262,6 +269,7 @@ def audit_missing_institutional_certification(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+@register_dispatcher(['MeasurementSet'], frame='object')
 def audit_missing_auxiliary_set_link(value, system):
     '''
     [
@@ -289,6 +297,7 @@ def audit_missing_auxiliary_set_link(value, system):
                     yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+@register_dispatcher(['MeasurementSet'], frame='object')
 def audit_targeted_genes(value, system):
     '''
     [
@@ -326,6 +335,7 @@ def audit_targeted_genes(value, system):
         yield AuditFailure(audit_message_unexpected.get('audit_category', ''), f'{detail} {audit_message_unexpected.get("audit_description", "")}', level=audit_message_unexpected.get('audit_level', ''))
 
 
+@register_dispatcher(['MeasurementSet'], frame='embedded')
 def audit_missing_construct_library_set(value, system):
     '''
     [
@@ -407,6 +417,7 @@ def audit_missing_construct_library_set(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+@register_dispatcher(['MeasurementSet'], frame='embedded')
 def audit_missing_auxiliary_set(value, system):
     '''
     [
@@ -485,6 +496,7 @@ def audit_missing_auxiliary_set(value, system):
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+@register_dispatcher(['MeasurementSet'], frame='object')
 def audit_missing_strand_specificity(value, system):
     '''
     [
@@ -512,6 +524,7 @@ def audit_missing_strand_specificity(value, system):
             )
 
 
+@register_dispatcher(['MeasurementSet'], frame='object')
 def audit_onlist(value, system):
     '''
     [
@@ -557,6 +570,7 @@ def audit_onlist(value, system):
                            )
 
 
+@register_dispatcher(['MeasurementSet'], frame='object')
 def audit_inconsistent_onlist_info(value, system):
     '''
     [
@@ -577,6 +591,7 @@ def audit_inconsistent_onlist_info(value, system):
             yield AuditFailure(audit_message_missing_method_mismatch_combo.get('audit_category', ''), audit_message_missing_method_mismatch_combo.get('audit_description', ''), level=audit_message_missing_method_mismatch_combo.get('audit_level', ''))
 
 
+@register_dispatcher(['MeasurementSet'], frame='object')
 def audit_unexpected_onlist_content(value, system):
     '''
     [
@@ -605,6 +620,7 @@ def audit_unexpected_onlist_content(value, system):
                                        )
 
 
+@register_dispatcher(['MeasurementSet'], frame='object')
 def audit_missing_barcode_replacement_file(value, system):
     '''
     [
@@ -643,6 +659,7 @@ def audit_missing_barcode_replacement_file(value, system):
             yield AuditFailure(msg_unexpected_replacement_file.get('audit_category', ''), f'{detail} {msg_unexpected_replacement_file.get("audit_description", "")}', level=msg_unexpected_replacement_file.get('audit_level', ''))
 
 
+@register_dispatcher(['MeasurementSet'], frame='object')
 def audit_inconsistent_barcode_replacement_file(value, system):
     '''
     [
