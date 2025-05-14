@@ -6,7 +6,9 @@ from .formatter import (
     audit_link,
     path_to_text,
     get_audit_message,
-    join_obj_paths
+    join_obj_paths,
+    register_dispatcher,
+    register_all_dispatchers
 )
 
 from .file_set import (
@@ -88,6 +90,7 @@ def check_transcriptome_assay(file, system) -> bool:
         return False
 
 
+@register_dispatcher(['AnalysisSet'], frame='object')
 def audit_analysis_set_multiplexed_samples(value, system):
     '''
     [
@@ -176,6 +179,7 @@ def audit_analysis_set_multiplexed_samples(value, system):
             yield AuditFailure(audit_message_inconsistent_demultiplexed_sample.get('audit_category', ''), f'{detail} {audit_message_inconsistent_demultiplexed_sample.get("audit_description", "")}', level=audit_message_inconsistent_demultiplexed_sample.get('audit_level', ''))
 
 
+@register_dispatcher(['AnalysisSet'], frame='object')
 def audit_analysis_set_inconsistent_onlist_info(value, system):
     '''
     [
@@ -232,6 +236,7 @@ def audit_analysis_set_inconsistent_onlist_info(value, system):
             yield AuditFailure(audit_msg_inconsistent_onlist_files.get('audit_category', ''), f'{detail} {audit_msg_inconsistent_onlist_files.get("audit_description", "")}', level=audit_msg_inconsistent_onlist_files.get('audit_level', ''))
 
 
+@register_dispatcher(['AnalysisSet'], frame='object')
 def audit_missing_transcriptome(value, system):
     '''
     [
@@ -270,6 +275,7 @@ def audit_missing_transcriptome(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+@register_dispatcher(['AnalysisSet'], frame='object')
 def audit_multiple_barcode_replacement_files_in_input(value, system):
     '''
     [
@@ -305,15 +311,4 @@ def audit_multiple_barcode_replacement_files_in_input(value, system):
         yield AuditFailure(audit_msg_unexpected_file.get('audit_category', ''), f'{detail} {audit_msg_unexpected_file.get("audit_description", "")}', level=audit_msg_unexpected_file.get('audit_level', ''))
 
 
-function_dispatcher = [
-    audit_analysis_set_multiplexed_samples,
-    audit_analysis_set_inconsistent_onlist_info,
-    audit_missing_transcriptome,
-    audit_multiple_barcode_replacement_files_in_input
-]
-
-
-@audit_checker('AnalysisSet', frame='object')
-def audit_analysis_set(value, system):
-    for function_name in function_dispatcher:
-        yield from function_name(value, system)
+register_all_dispatchers()
