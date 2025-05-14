@@ -6,11 +6,13 @@ from .formatter import (
     audit_link,
     path_to_text,
     get_audit_message,
-    space_in_words
+    space_in_words,
+    register_dispatcher,
+    register_all_dispatchers
 )
 
 
-@audit_checker('File', frame='object')
+@register_dispatcher(['File'], frame='object')
 def audit_upload_status(value, system):
     '''
     [
@@ -48,7 +50,7 @@ def audit_upload_status(value, system):
         )
 
 
-@audit_checker('File', frame='object')
+@register_dispatcher(['File'], frame='object')
 def audit_file_format_specifications(value, system):
     '''
     [
@@ -72,9 +74,7 @@ def audit_file_format_specifications(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('MatrixFile', frame='object')
-@audit_checker('ModelFile', frame='object')
-@audit_checker('TabularFile', frame='object')
+@register_dispatcher(['MatrixFile', 'ModelFile', 'TabularFile'], frame='object')
 def audit_file_no_file_format_specifications(value, system):
     '''
     [
@@ -112,3 +112,6 @@ def audit_file_no_file_format_specifications(value, system):
             f'has no `file_format_specifications`.'
         )
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+register_all_dispatchers()
