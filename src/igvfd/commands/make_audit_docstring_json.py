@@ -15,6 +15,8 @@ import igvfd.audit.matrix_file
 import igvfd.audit.measurement_set
 import igvfd.audit.multiplexed_sample
 import igvfd.audit.ontology_term
+import igvfd.audit.reference_file
+import igvfd.audit.sequence_file
 import igvfd.audit.sample
 import igvfd.audit.tissue
 import igvfd.audit.treatment
@@ -44,6 +46,8 @@ AUDIT_MODULES_TO_PROCESS = [
     igvfd.audit.measurement_set,
     igvfd.audit.multiplexed_sample,
     igvfd.audit.ontology_term,
+    igvfd.audit.reference_file,
+    igvfd.audit.sequence_file,
     igvfd.audit.sample,
     igvfd.audit.tissue,
     igvfd.audit.treatment,
@@ -57,7 +61,7 @@ def get_audit_function_names_from_module(module):
         attribute for attribute in module_attributes
         if attribute.startswith('audit_')
         and attribute not in NON_AUDIT_FUNCTION_NAMES
-        and not attribute.endswith('_dispatcher')  # <-- Skip dynamically registered stubs
+        and not attribute.endswith('_dispatcher')
     ]
     return audit_function_names
 
