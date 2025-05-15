@@ -104,6 +104,7 @@ def test_audit_annotated_from_virtual(testapp, primary_cell, tissue):
         tissue['@id'],
         {'virtual': True}
     )
+    res = testapp.get(primary_cell['@id'] + '@@audit')
     assert any(
         error['category'] == 'unexpected annotated from'
         for error in res.json['audit'].get('ERROR', [])
