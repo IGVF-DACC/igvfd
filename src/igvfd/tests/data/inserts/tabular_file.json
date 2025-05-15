@@ -491,6 +491,7 @@
         "uuid": "858449fd-5f24-4a51-a4ab-e8aba826b94f",
         "lab": "j-michael-cherry",
         "award": "HG012012",
+        "accession": "IGVFFI7099DPQN",
         "aliases": [
             "igvf:differential_peak_quantifications"
         ],
@@ -509,6 +510,7 @@
         "uuid": "b3e8c3d1-4f12-43c7-9d7e-1a2b5c6f8e9d",
         "lab": "j-michael-cherry",
         "award": "HG012012",
+        "accession": "IGVFFI9822PRSQ",
         "aliases": [
             "igvf:primer_sequences"
         ],
@@ -527,6 +529,7 @@
         "uuid": "b63de552-a4a9-47da-a703-1b19ced30944",
         "lab": "j-michael-cherry",
         "award": "HG012012",
+        "accession": "IGVFFI6621MLMF",
         "aliases": [
             "igvf:machine_learning_model_features"
         ],
@@ -545,6 +548,7 @@
         "uuid": "0a5e0934-8096-4c72-a2c4-6593d13a1289",
         "lab": "j-michael-cherry",
         "award": "HG012012",
+        "accession": "IGVFFI8932EGPR",
         "aliases": [
             "igvf:element_to_gene_predictions"
         ],
@@ -583,6 +587,7 @@
         "uuid": "0a7960b8-1a21-422a-98fc-1c0253871f44",
         "lab": "stephen-yi",
         "award": "affiliate",
+        "accession": "IGVFFI9900PPIP",
         "aliases": [
             "stephen-yi:ppi_predictions"
         ],
@@ -601,6 +606,7 @@
         "uuid": "1b64c845-e9b8-4219-aeb6-eb62d7150af5",
         "lab": "j-michael-cherry",
         "award": "HG012012",
+        "accession": "IGVFFI2002BRRF",
         "aliases": [
             "igvf:barcode_replacement_file"
         ],
@@ -619,6 +625,7 @@
         "uuid": "2c75d956-fa2b-4320-bf8d-cc73e8251c97",
         "lab": "j-michael-cherry",
         "award": "HG012012",
+        "accession": "IGVFFI1188PRTB",
         "aliases": [
             "igvf:primers_table"
         ],
@@ -637,6 +644,7 @@
         "uuid": "4e97fb78-bc4d-45b3-8421-c8e6d5c698b3",
         "lab": "j-michael-cherry",
         "award": "HG012012",
+        "accession": "IGVFFI1999PRIT",
         "aliases": [
             "igvf:primers_track"
         ],
@@ -658,6 +666,7 @@
         "uuid": "3d86ea67-ab3c-4f41-9310-a6d5a5d587a5",
         "lab": "j-michael-cherry",
         "award": "HG012012",
+        "accession": "IGVFFI3200TGTS",
         "aliases": [
             "igvf:target_transcripts"
         ],
@@ -671,5 +680,29 @@
         "upload_status": "validated",
         "file_set": "igvf:parse_split_seq_with_barcode_replacement",
         "controlled_access": false
+    },
+    {
+        "uuid": "27cd402e-ab3c-4f41-7ed6-a6d582d5b5b1",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "accession": "IGVFFI8000PSMS",
+        "aliases": [
+            "igvf:plus_strand_modification_state"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-05-01T21:29:45Z",
+        "md5sum": "48a30cb1c1eac497492cfe02ab07c1f3",
+        "file_format": "bed",
+        "content_type": "plus strand modification state",
+        "submitted_file_name": "/Users/igvf/igvf_files/plus_strand_modification_state.bed.gz",
+        "file_size": 84837,
+        "upload_status": "validated",
+        "file_set": "igvf:parse_split_seq_with_barcode_replacement",
+        "controlled_access": false,
+        "base_modifications": [
+            "5mC",
+            "m6A",
+            "inosine"
+        ]
     }
 ]

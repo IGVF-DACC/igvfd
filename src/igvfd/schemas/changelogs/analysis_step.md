@@ -1,5 +1,16 @@
 ## Changelog for *`analysis_step.json`*
 
+### Minor changes since schema version 7
+
+* Extend `output_content_types` enum list to include `alignments with modifications`.
+* Extend `input_content_types` enum list to include `alignments with modifications`.
+* Extend `output_content_types` enum list to include `minus strand modification state`.
+* Extend `input_content_types` enum list to include `minus strand modification state`.
+* Extend `output_content_types` enum list to include `plus strand modification state`.
+* Extend `input_content_types` enum list to include `plus strand modification state`.
+* Extend `analysis_step_types` enum list to include `modification calling`.
+* Extend `analysis_step_types` enum list to include `modification site annotation`.
+
 ### Schema version 7
 
 * Adjust `output_content_types` enum list to replace `comprehensive gene count matrix` with `kallisto single cell RNAseq output`.

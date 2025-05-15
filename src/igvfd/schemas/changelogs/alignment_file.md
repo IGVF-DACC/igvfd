@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 14
 
+* Extend `base_modifications` enum list to include `m5C`.
+* Extend `base_modifications` enum list to include `m6A`.
+* Extend `content_type` enum list to include `alignments with modifications`.
 * Add `preview_timestamp`.
 * Add `base_modifications`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.

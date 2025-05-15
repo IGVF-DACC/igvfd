@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 15
 
+* Extend `base_modifications` enum list to include `m5C`.
+* Extend `base_modifications` enum list to include `m6A`.
 * Add `preview_timestamp`.
 * Add `seqspec_document`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
