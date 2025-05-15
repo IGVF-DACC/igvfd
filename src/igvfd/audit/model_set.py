@@ -6,12 +6,12 @@ from .formatter import (
     audit_link,
     path_to_text,
     get_audit_message,
-    register_dispatcher,
-    register_all_dispatchers
+    register_audit,
+    register_all_audits
 )
 
 
-@register_dispatcher(['ModelSet'], frame='object')
+@register_audit(['ModelSet'], frame='object')
 def audit_external_input_data_content_type(value, system):
     '''
     [
@@ -40,4 +40,4 @@ def audit_external_input_data_content_type(value, system):
             )
 
 
-register_all_dispatchers()
+register_all_audits()

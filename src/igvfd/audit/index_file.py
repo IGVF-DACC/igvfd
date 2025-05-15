@@ -7,12 +7,12 @@ from .formatter import (
     path_to_text,
     get_audit_message,
     space_in_words,
-    register_dispatcher,
-    register_all_dispatchers
+    register_audit,
+    register_all_audits
 )
 
 
-@register_dispatcher(['IndexFile'], frame='object')
+@register_audit(['IndexFile'], frame='object')
 def audit_index_files_derived_from(value, system):
     '''
     [
@@ -41,4 +41,4 @@ def audit_index_files_derived_from(value, system):
             )
 
 
-register_all_dispatchers()
+register_all_audits()

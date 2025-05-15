@@ -7,12 +7,12 @@ from .formatter import (
     path_to_text,
     get_audit_message,
     space_in_words,
-    register_dispatcher,
-    register_all_dispatchers
+    register_audit,
+    register_all_audits
 )
 
 
-@register_dispatcher(['File'], frame='object')
+@register_audit(['File'], frame='object')
 def audit_upload_status(value, system):
     '''
     [
@@ -50,7 +50,7 @@ def audit_upload_status(value, system):
         )
 
 
-@register_dispatcher(['File'], frame='object')
+@register_audit(['File'], frame='object')
 def audit_file_format_specifications(value, system):
     '''
     [
@@ -74,7 +74,7 @@ def audit_file_format_specifications(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_dispatcher(['MatrixFile', 'ModelFile', 'TabularFile'], frame='object')
+@register_audit(['MatrixFile', 'ModelFile', 'TabularFile'], frame='object')
 def audit_file_no_file_format_specifications(value, system):
     '''
     [
@@ -114,4 +114,4 @@ def audit_file_no_file_format_specifications(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-register_all_dispatchers()
+register_all_audits()

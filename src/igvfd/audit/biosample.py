@@ -7,12 +7,12 @@ from .formatter import (
     path_to_text,
     get_audit_message,
     space_in_words,
-    register_dispatcher,
-    register_all_dispatchers
+    register_audit,
+    register_all_audits
 )
 
 
-@register_dispatcher(['Biosample'], frame='object')
+@register_audit(['Biosample'], frame='object')
 def audit_biosample_taxa_check(value, system):
     '''
     [
@@ -48,7 +48,7 @@ def audit_biosample_taxa_check(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_dispatcher(['Tissue', 'PrimaryCell', 'WholeOrganism'], frame='object')
+@register_audit(['Tissue', 'PrimaryCell', 'WholeOrganism'], frame='object')
 def audit_biosample_age(value, system):
     '''
     [
@@ -70,7 +70,7 @@ def audit_biosample_age(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_dispatcher(['Biosample'], frame='object')
+@register_audit(['Biosample'], frame='object')
 def audit_biomarker_name(value, system):
     '''
     [
@@ -105,7 +105,7 @@ def audit_biomarker_name(value, system):
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_dispatcher(['Biosample'], frame='object')
+@register_audit(['Biosample'], frame='object')
 def audit_multiple_ics_with_mismatched_access(value, system):
     '''
     [
@@ -171,7 +171,7 @@ def audit_multiple_ics_with_mismatched_access(value, system):
             yield AuditFailure(audit_message_dul.get('audit_category', ''), f'{detail} {audit_message_dul.get("audit_description", "")}', level=audit_message_dul.get('audit_level', ''))
 
 
-@register_dispatcher(['Biosample'], frame='object')
+@register_audit(['Biosample'], frame='object')
 def audit_annotated_from_virtual(value, system):
     '''
     [
@@ -195,4 +195,4 @@ def audit_annotated_from_virtual(value, system):
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
-register_all_dispatchers()
+register_all_audits()
