@@ -13,11 +13,12 @@ import igvfd.audit.in_vitro_system
 import igvfd.audit.index_file
 import igvfd.audit.matrix_file
 import igvfd.audit.measurement_set
+import igvfd.audit.model_set
 import igvfd.audit.multiplexed_sample
 import igvfd.audit.ontology_term
 import igvfd.audit.reference_file
-import igvfd.audit.sequence_file
 import igvfd.audit.sample
+import igvfd.audit.sequence_file
 import igvfd.audit.tissue
 import igvfd.audit.treatment
 import igvfd.audit.whole_organism
@@ -44,11 +45,12 @@ AUDIT_MODULES_TO_PROCESS = [
     igvfd.audit.index_file,
     igvfd.audit.matrix_file,
     igvfd.audit.measurement_set,
+    igvfd.audit.model_set,
     igvfd.audit.multiplexed_sample,
     igvfd.audit.ontology_term,
     igvfd.audit.reference_file,
-    igvfd.audit.sequence_file,
     igvfd.audit.sample,
+    igvfd.audit.sequence_file,
     igvfd.audit.tissue,
     igvfd.audit.treatment,
     igvfd.audit.whole_organism,
