@@ -59,8 +59,11 @@ def register_all_audits():
     for (object_type, frame), audit_functions in DISPATCHER_REGISTRY.items():
         function_name = f'audit_{object_type}_{frame}_dispatcher'
 
-        def dispatcher(value, system, functions=audit_functions):
-            for function in functions:
-                yield from function(value, system)
+        def make_dispatcher(functions):
+            def dispatcher(value, system):
+                for function in functions:
+                    yield from function(value, system)
+            return dispatcher
 
-        globals()[function_name] = audit_checker(object_type, frame=frame)(dispatcher)
+        dispatcher_function = make_dispatcher(audit_functions)
+        globals()[function_name] = audit_checker(object_type, frame=frame)(dispatcher_function)
