@@ -90,7 +90,10 @@ def test_audit_mismatched_institutional_certificates(testapp, primary_cell, inst
 def test_audit_annotated_from_virtual(testapp, primary_cell, tissue):
     testapp.patch_json(
         primary_cell['@id'],
-        {'annotated_from': tissue['@id']}
+        {
+            'annotated_from': tissue['@id'],
+            'virtual': True
+        }
     )
     res = testapp.get(primary_cell['@id'] + '@@audit')
     assert all(
