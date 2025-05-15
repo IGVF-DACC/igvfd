@@ -6,8 +6,8 @@ from .formatter import (
     audit_link,
     path_to_text,
     get_audit_message,
-    register_dispatcher,
-    register_all_dispatchers
+    register_audit,
+    register_all_audits
 )
 
 
@@ -21,7 +21,7 @@ def get_assay_terms(value, system):
     return list(assay_terms)
 
 
-@register_dispatcher(['ConstructLibrarySet'], frame='object')
+@register_audit(['ConstructLibrarySet'], frame='object')
 def audit_construct_library_set_associated_phenotypes(value, system):
     '''
     [
@@ -48,7 +48,7 @@ def audit_construct_library_set_associated_phenotypes(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_dispatcher(['ConstructLibrarySet'], frame='object')
+@register_audit(['ConstructLibrarySet'], frame='object')
 def audit_construct_library_set_plasmid_map(value, system):
     '''
     [
@@ -80,7 +80,7 @@ def audit_construct_library_set_plasmid_map(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_dispatcher(['ConstructLibrarySet'], frame='object')
+@register_audit(['ConstructLibrarySet'], frame='object')
 def audit_construct_library_set_scope(value, system):
     '''
     [
@@ -104,7 +104,7 @@ def audit_construct_library_set_scope(value, system):
                                f'{detail} {audit_message.get("audit_description", "")})', level=audit_message.get('audit_level', ''))
 
 
-@register_dispatcher(['ConstructLibrarySet'], frame='object')
+@register_audit(['ConstructLibrarySet'], frame='object')
 def audit_integrated_content_files(value, system):
     '''
     [
@@ -153,7 +153,7 @@ def audit_integrated_content_files(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_dispatcher(['ConstructLibrarySet'], frame='object')
+@register_audit(['ConstructLibrarySet'], frame='object')
 def audit_construct_library_set_orf_gene(value, system):
     '''
     [
@@ -184,4 +184,4 @@ def audit_construct_library_set_orf_gene(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-register_all_dispatchers()
+register_all_audits()

@@ -47,19 +47,19 @@ def join_obj_paths(data_object_paths: list) -> str:
 DISPATCHER_REGISTRY = {}
 
 
-def register_dispatcher(types, frame='object'):
+def register_audit(object_types, frame='object'):
     def decorator(function):
-        for type_ in types:
-            DISPATCHER_REGISTRY.setdefault((type_, frame), []).append(function)
+        for object_type in object_types:
+            DISPATCHER_REGISTRY.setdefault((object_type, frame), []).append(function)
         return function
     return decorator
 
 
-def register_all_dispatchers():
-    for (type_, frame), audit_functions in DISPATCHER_REGISTRY.items():
+def register_all_audits():
+    for (object_type, frame), audit_functions in DISPATCHER_REGISTRY.items():
         def dispatcher(value, system, functions=audit_functions):
             for function in functions:
                 yield from function(value, system)
 
-        dispatcher.__name__ = f'audit_{type_}_{frame}_dispatcher'
-        globals()[dispatcher.__name__] = audit_checker(type_, frame=frame)(dispatcher)
+        dispatcher.__name__ = f'audit_{object_type}_{frame}_dispatcher'
+        globals()[dispatcher.__name__] = audit_checker(object_type, frame=frame)(dispatcher)

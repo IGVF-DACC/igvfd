@@ -27,8 +27,8 @@ import igvfd.audit.whole_organism
 NON_AUDIT_FUNCTION_NAMES = [
     'audit_checker',
     'audit_link',
-    'register_dispatcher',
-    'register_all_dispatchers'
+    'register_audit',
+    'register_all_audits'
 ]
 
 AUDIT_MODULES_TO_PROCESS = [
