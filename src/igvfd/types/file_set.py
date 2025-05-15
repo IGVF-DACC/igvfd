@@ -261,7 +261,6 @@ class FileSet(Item):
 
     @calculated_property(
         define=True,
-        condition='samples',
         schema={
             'title': 'Construct Library Sets',
             'description': 'The construct library sets associated with the samples of this file set.',
@@ -276,15 +275,28 @@ class FileSet(Item):
             },
             'notSubmittable': True
         })
-    def construct_library_sets(self, request, samples=None):
+    def construct_library_sets(self, request, samples=None, input_file_sets=[]):
         construct_library_sets = set()
-        for sample in samples:
-            sample_object = request.embed(sample,
-                                          '@@object_with_select_calculated_properties?'
-                                          'field=construct_library_sets'
-                                          )
-            if sample_object.get('construct_library_sets', []):
-                construct_library_sets = construct_library_sets | set(sample_object.get('construct_library_sets', []))
+        if samples:
+            for sample in samples:
+                sample_object = request.embed(sample,
+                                              '@@object_with_select_calculated_properties?'
+                                              'field=construct_library_sets'
+                                              )
+                if sample_object.get('construct_library_sets', []):
+                    construct_library_sets = construct_library_sets | set(
+                        sample_object.get('construct_library_sets', []))
+        else:
+            all_inputs_cls = True
+            cls_in_input_file_sets = set()
+            if input_file_sets:
+                for input_set in input_file_sets:
+                    if input_set.startswith('/construct-library-sets/'):
+                        cls_in_input_file_sets.add(input_set)
+                    else:
+                        all_inputs_cls = False
+            if all_inputs_cls:
+                construct_library_sets = construct_library_sets | cls_in_input_file_sets
         if construct_library_sets:
             return list(construct_library_sets)
 
