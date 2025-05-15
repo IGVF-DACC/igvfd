@@ -502,6 +502,7 @@ def matrix_file_7_8(value, system):
 @upgrade_step('tabular_file', '15', '16')
 def file_15_16(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2085
+    root = system['registry']['root']
     notes = value.get('notes', '')
     if 'derived_manually' not in value:
         value['derived_manually'] = False
@@ -512,9 +513,9 @@ def file_15_16(value, system):
             notes += f'This file analysis_step_version was previously {analysis_step_version}. However, derived_manually is true, therefore should not have analysis_step_version and was removed during an upgrade.'
             value['notes'] = notes.strip()
             del value['analysis_step_version']
-    if 'SignalFile' in value['@type']:
+    if 'signal_file' in root.get_by_uuid(value).item_type:
         if 'normalized' not in value:
             value['normalized'] = False
-    if 'AlignmentFile' in value['@type']:
+    if 'alignment_file' in root.get_by_uuid(value).item_type:
         if 'redacted' not in value:
             value['redacted'] = False
