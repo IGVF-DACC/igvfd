@@ -54,7 +54,7 @@ def test_related_multiome_datasets(testapp, primary_cell, in_vitro_cell_line, me
 
 def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modification_activation, construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction, construct_library_set_genome_wide, assay_term_y2h):
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('summary') == 'SUPERSTARR'
+    assert res.json.get('summary') == 'STARR-seq'
     testapp.patch_json(
         measurement_set['@id'],
         {

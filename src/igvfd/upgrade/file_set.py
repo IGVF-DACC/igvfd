@@ -525,3 +525,13 @@ def analysis_set_9_10(value, system):
     if 'demultiplexed_sample' in value:
         value['demultiplexed_samples'] = [value['demultiplexed_sample']]
         del value['demultiplexed_sample']
+
+
+@upgrade_step('measurement_set', '26', '27')
+def measurement_set_26_27(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2634
+    notes = value.get('notes', '')
+    if value.get('preferred_assay_title') == 'SUPERSTARR':
+        value['preferred_assay_title'] = 'STARR-seq'
+        notes += f' This measurement set previously used SUPERSTARR as a preferred_assay_title, but the preferred_assay_title has now been updated to STARR-seq via an upgrade.'
+        value['notes'] = notes.strip()

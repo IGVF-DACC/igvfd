@@ -1,6 +1,6 @@
 {
-    "hash": "bc830e6e6a1212f7a985762355f5a3fc",
-    "index_name": "genome_browser_annotation_file_bc830e6e",
+    "hash": "917ce0861e71b1b857b43686a879d06c",
+    "index_name": "genome_browser_annotation_file_917ce086",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -1958,6 +1958,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "assay_titles": {
+                                "type": "keyword"
                             },
                             "associated_phenotypes": {
                                 "properties": {

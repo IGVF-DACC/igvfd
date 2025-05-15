@@ -1,6 +1,6 @@
 {
-    "hash": "94dd57594763a29f62af0085e9c9a853",
-    "index_name": "whole_organism_94dd5759",
+    "hash": "2a292dd12455c83f523ed2ee10763579",
+    "index_name": "whole_organism_2a292dd1",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -432,6 +432,9 @@
                                 "type": "keyword"
                             },
                             "applied_to_samples": {
+                                "type": "keyword"
+                            },
+                            "assay_titles": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {

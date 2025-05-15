@@ -34,6 +34,9 @@ def construct_library_set():
             'guide_type': {
                 'title': 'CRISPR Guide Type'
             },
+            'assay_titles': {
+                'title': 'Assay',
+            },
             'integrated_content_files.content_type': {
                 'title': 'Integrated Content',
             },

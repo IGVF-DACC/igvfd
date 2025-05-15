@@ -11,14 +11,11 @@ from .formatter import (
 
 def get_assay_terms(value, system):
     assay_terms = set()
-    for sample in value.get('applied_to_samples', []):
-        sample_object = system.get('request').embed(
-            sample + '@@object_with_select_calculated_properties?field=file_sets')
-        file_sets = sample_object.get('file_sets', [])
-        for file_set in file_sets:
-            if file_set.startswith('/measurement-sets/'):
-                input_file_set_object = system.get('request').embed(file_set + '@@object?skip_calculated=true')
-                assay_terms.add(input_file_set_object.get('assay_term'))
+    file_sets = value.get('file_sets', [])
+    for file_set in file_sets:
+        if file_set.startswith('/measurement-sets/'):
+            file_set_object = system.get('request').embed(file_set, '@@object?skip_calculated=true')
+            assay_terms.add(file_set_object['assay_term'])
     return list(assay_terms)
 
 

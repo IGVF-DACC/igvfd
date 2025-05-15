@@ -273,7 +273,7 @@ def test_audit_preferred_assay_title(
     testapp.patch_json(
         assay_term_starr['@id'],
         {
-            'preferred_assay_titles': ['SUPERSTARR']
+            'preferred_assay_titles': ['STARR-seq']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')

@@ -1,6 +1,6 @@
 {
-    "hash": "b4a90b8348ccd3526927a6bdecf54e7d",
-    "index_name": "configuration_file_b4a90b83",
+    "hash": "ae5b9d0a29852ed8765da0ec505395c3",
+    "index_name": "configuration_file_ae5b9d0a",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1862,6 +1862,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "assay_titles": {
+                                "type": "keyword"
                             },
                             "associated_phenotypes": {
                                 "properties": {
