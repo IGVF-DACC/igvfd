@@ -59,6 +59,9 @@
         },
         {
             "$ref": "mixins.json#/preview_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/base_modifications"
         }
     ],
     "dependentSchemas": {
@@ -106,6 +109,17 @@
                     ]
                 }
             ]
+        },
+        "base_modifications": {
+            "comment": "Only modification state files can specify base modifications.",
+            "properties": {
+                "content_type": {
+                    "enum": [
+                        "minus strand modification state",
+                        "plus strand modification state"
+                    ]
+                }
+            }
         }
     },
     "type": "object",
@@ -162,9 +176,11 @@
                 "guide RNA sequences",
                 "loci",
                 "machine learning model features",
+                "minus strand modification state",
                 "MPRA sequence designs",
                 "peaks",
                 "peak quantifications",
+                "plus strand modification state",
                 "prime editing guide RNA sequences",
                 "primer sequences",
                 "primers table",
