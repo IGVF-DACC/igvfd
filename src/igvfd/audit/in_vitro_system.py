@@ -6,12 +6,12 @@ from .formatter import (
     audit_link,
     path_to_text,
     get_audit_message,
-    register_dispatcher,
-    register_all_dispatchers
+    register_audit,
+    register_all_audits
 )
 
 
-@register_dispatcher(['InVitroSystem'], frame='object')
+@register_audit(['InVitroSystem'], frame='object')
 def audit_targeted_sample_term_check(value, system):
     '''
     [
@@ -36,7 +36,7 @@ def audit_targeted_sample_term_check(value, system):
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_dispatcher(['InVitroSystem'], frame='embedded')
+@register_audit(['InVitroSystem'], frame='embedded')
 def audit_cell_fate_change_protocol_document_type(value, system):
     '''
     [
@@ -59,4 +59,4 @@ def audit_cell_fate_change_protocol_document_type(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-register_all_dispatchers()
+register_all_audits()
