@@ -2,6 +2,7 @@
     {
         "uuid": "184e65e2-0804-4f7e-833b-abfc8c6c19d2",
         "lab": "j-michael-cherry",
+        "attachment": "generic_seqspec.txt",
         "award": "HG012012",
         "aliases": [
             "igvf:scatac_seq_quality_metric_01"
