@@ -85,3 +85,27 @@ def test_audit_mismatched_institutional_certificates(testapp, primary_cell, inst
         error['category'] == 'inconsistent institutional certificates'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
+
+
+def test_audit_annotated_from_virtual(testapp, primary_cell, tissue):
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'annotated_from': tissue['@id'],
+            'virtual': True
+        }
+    )
+    res = testapp.get(primary_cell['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected annotated from'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {'virtual': True}
+    )
+    res = testapp.get(primary_cell['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected annotated from'
+        for error in res.json['audit'].get('ERROR', [])
+    )
