@@ -1,5 +1,10 @@
 ## Changelog for *`signal_file.json`*
 
+### Schema version 11
+
+* Adjust `derived_manually` to have default value `False`.
+* Adjust `normalized` to have default value `False`.
+
 ### Minor changes since schema version 10
 
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.

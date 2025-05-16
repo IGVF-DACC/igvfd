@@ -154,3 +154,9 @@ def test_tissue_upgrade_20_21(upgrader, tissue_v20):
     value = upgrader.upgrade('tissue', tissue_v20, current_version='20', target_version='21')
     assert value['schema_version'] == '21'
     assert 'publication_identifiers' not in value
+
+
+def test_tissue_upgrade_21_22(upgrader, tissue_v21):
+    value = upgrader.upgrade('tissue', tissue_v21, current_version='21', target_version='22')
+    assert value['schema_version'] == '22'
+    assert value['embryonic'] == False

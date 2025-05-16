@@ -58,3 +58,9 @@ def test_treatment_upgrade_7_8(upgrader, treatment_v7a, treatment_v7b):
     assert 'lot_id' not in value
     assert 'notes' in value and value['notes'].endswith(
         'Lot_id 123 was removed from this treatment.')
+
+
+def test_treatment_upgrade_8_9(upgrader, treatment_v8):
+    value = upgrader.upgrade('treatment', treatment_v8, current_version='8', target_version='9')
+    assert value['schema_version'] == '9'
+    assert value['depletion'] == False

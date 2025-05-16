@@ -1,5 +1,9 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 16
+
+* Adjust `derived_manually` to have default value `False`.
+
 ### Minor changes since schema version 15
 
 * Add `seqspec_document`.
