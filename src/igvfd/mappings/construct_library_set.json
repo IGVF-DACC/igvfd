@@ -1,6 +1,6 @@
 {
-    "hash": "3130e3e86d76b6931cc0eda066e3a961",
-    "index_name": "construct_library_set_3130e3e8",
+    "hash": "78c144200a85a93232ea21a3c9078b17",
+    "index_name": "construct_library_set_78c14420",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1857,6 +1857,9 @@
                             "barcode_map_for": {
                                 "type": "keyword"
                             },
+                            "base_modifications": {
+                                "type": "keyword"
+                            },
                             "catalog_adapters": {
                                 "type": "keyword"
                             },
@@ -2105,6 +2108,9 @@
                             "barcode_map_for": {
                                 "type": "keyword"
                             },
+                            "base_modifications": {
+                                "type": "keyword"
+                            },
                             "catalog_adapters": {
                                 "type": "keyword"
                             },
@@ -2291,6 +2297,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map_for": {
+                                "type": "keyword"
+                            },
+                            "base_modifications": {
                                 "type": "keyword"
                             },
                             "catalog_adapters": {

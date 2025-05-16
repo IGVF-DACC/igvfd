@@ -1,6 +1,6 @@
 {
-    "hash": "52c88a7740b5b66ae49bbfc8fa22c75c",
-    "index_name": "auxiliary_set_52c88a77",
+    "hash": "f213f165d0e3290e5036c734f6dc14f3",
+    "index_name": "auxiliary_set_f213f165",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -463,6 +463,9 @@
                                         "type": "keyword"
                                     },
                                     "barcode_map_for": {
+                                        "type": "keyword"
+                                    },
+                                    "base_modifications": {
                                         "type": "keyword"
                                     },
                                     "catalog_adapters": {

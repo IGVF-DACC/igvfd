@@ -112,7 +112,8 @@
         "base_modifications": [
             "5mC",
             "5hmC",
-            "inosine"
+            "inosine",
+            "m5C"
         ],
         "submitted_file_name": "/Users/igvf/igvf_files/nanopore_raw.pod5",
         "file_size": 38200183,

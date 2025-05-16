@@ -1,6 +1,6 @@
 {
-    "hash": "b9d2cff2bd4e19bc4016e193e6e164dd",
-    "index_name": "prediction_set_b9d2cff2",
+    "hash": "fb3579e121d41743a84001e180e8f53f",
+    "index_name": "prediction_set_fb3579e1",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -562,6 +562,9 @@
                                         "type": "keyword"
                                     },
                                     "barcode_map_for": {
+                                        "type": "keyword"
+                                    },
+                                    "base_modifications": {
                                         "type": "keyword"
                                     },
                                     "catalog_adapters": {
@@ -1783,6 +1786,9 @@
                             "barcode_map_for": {
                                 "type": "keyword"
                             },
+                            "base_modifications": {
+                                "type": "keyword"
+                            },
                             "catalog_adapters": {
                                 "type": "keyword"
                             },
@@ -1969,6 +1975,9 @@
                                 "type": "keyword"
                             },
                             "barcode_map_for": {
+                                "type": "keyword"
+                            },
+                            "base_modifications": {
                                 "type": "keyword"
                             },
                             "catalog_adapters": {
