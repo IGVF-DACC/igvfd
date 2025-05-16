@@ -31,3 +31,19 @@ def test_item_summary_property(testapp, content, root):
     igvf_item_accession = res.json['accession']
     igvf_item_summary = res.json['summary']
     assert igvf_item_accession == igvf_item_summary
+
+
+def test_preview_and_release_timestamp(testapp, analysis_step_version):
+    # Patch to preview (use analysis_step_version because it require other metadata to have status update)
+    testapp.patch_json(analysis_step_version['@id'], {'status': 'in progress'})
+    testapp.patch_json(analysis_step_version['@id'] + '@@set_status?update=true', {'status': 'preview'}, status=200)
+    res = testapp.get(analysis_step_version['@id'])
+    assert res.json['status'] == 'preview'
+    assert 'preview_timestamp' in res.json.keys()
+
+    # Patch to released
+    testapp.patch_json(analysis_step_version['@id'] + '@@set_status?update=true', {'status': 'released'}, status=200)
+    res = testapp.get(analysis_step_version['@id'])
+    assert res.json['status'] == 'released'
+    assert 'preview_timestamp' in res.json.keys()
+    assert 'release_timestamp' in res.json.keys()

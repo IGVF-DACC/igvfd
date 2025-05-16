@@ -1,6 +1,6 @@
 {
-    "hash": "373021b01b4ea6127c0c76a0453090e5",
-    "index_name": "open_reading_frame_373021b0",
+    "hash": "06c4eb572f550da4f81fcd0b4a4f27f8",
+    "index_name": "open_reading_frame_06c4eb57",
     "item_type": "open_reading_frame",
     "mapping": {
         "dynamic_templates": [
@@ -287,6 +287,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -410,6 +413,9 @@
                     "pct_identical_protein": {
                         "store": true,
                         "type": "float"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "protein_id": {
                         "type": "keyword"

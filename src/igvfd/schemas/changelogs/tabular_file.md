@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 15
 
+* Add `preview_timestamp`.
 * Extend `content_type` enum list to include `primers table`.
 * Extend `content_type` enum list to include `primers track`.
 * Extend `content_type` enum list to include `target transcripts`.

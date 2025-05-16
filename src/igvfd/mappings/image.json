@@ -1,6 +1,6 @@
 {
-    "hash": "8f2495b3b82e4baced8370de7142565b",
-    "index_name": "image_8f2495b3",
+    "hash": "f34adc63ad8e42bd1c2d0db1cf73d42b",
+    "index_name": "image_f34adc63",
     "item_type": "image",
     "mapping": {
         "dynamic_templates": [
@@ -197,6 +197,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "release_timestamp": {
                         "type": "date"

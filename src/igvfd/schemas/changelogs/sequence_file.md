@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 15
 
+* Add `preview_timestamp`.
 * Add `seqspec_document`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
 * Update `aliases` regex to add `steven-gazal` as a namespace.

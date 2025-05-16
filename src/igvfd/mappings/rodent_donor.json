@@ -1,6 +1,6 @@
 {
-    "hash": "67bb34b1d5b5a7d33dd2c6b0ee7769ad",
-    "index_name": "rodent_donor_67bb34b1",
+    "hash": "414d2106479ce616a7f12fbca375d364",
+    "index_name": "rodent_donor_414d2106",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -380,6 +380,9 @@
                                     "ontology": {
                                         "type": "keyword"
                                     },
+                                    "preview_timestamp": {
+                                        "type": "date"
+                                    },
                                     "release_timestamp": {
                                         "type": "date"
                                     },
@@ -423,6 +426,9 @@
                             "observation_date": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "quality": {
                                 "type": "keyword"
                             },
@@ -456,6 +462,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "product_id": {
                         "type": "keyword"
@@ -541,6 +550,9 @@
                             },
                             "page": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "publication_identifiers": {
                                 "copy_to": "_exact",
@@ -642,6 +654,9 @@
                             },
                             "pi": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "release_timestamp": {
                                 "type": "date"

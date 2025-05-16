@@ -1,5 +1,9 @@
 ## Changelog for *`single_cell_rna_seq_quality_metric.json`*
 
+### Minor changes since schema version 2
+
+* Add `preview_timestamp`.
+
 ### Schema version 2
 
 * Rename `numBarcodesOnOnlist` to `num_barcodes_on_onlist`.

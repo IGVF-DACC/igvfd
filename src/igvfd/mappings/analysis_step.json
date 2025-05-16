@@ -1,6 +1,6 @@
 {
-    "hash": "5f325ab2f7131b675221f517bcb98701",
-    "index_name": "analysis_step_5f325ab2",
+    "hash": "a37ccd4c8766edecbde72c6b90046a02",
+    "index_name": "analysis_step_a37ccd4c",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -184,6 +184,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -222,6 +225,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "preview_timestamp": {
+                                        "type": "date"
                                     },
                                     "publications": {
                                         "type": "keyword"
@@ -471,6 +477,9 @@
                             "parents": {
                                 "type": "keyword"
                             },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -503,6 +512,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "release_timestamp": {
                         "type": "date"
@@ -643,6 +655,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "publications": {
                                 "type": "keyword"

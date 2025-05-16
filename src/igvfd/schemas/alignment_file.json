@@ -57,6 +57,9 @@
         },
         {
             "$ref": "mixins.json#/controlled_access"
+        },
+        {
+            "$ref": "mixins.json#/preview_timestamp"
         }
     ],
     "dependentSchemas": {

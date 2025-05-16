@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Add `preview_timestamp`.
 * Add `standardized_file_format`.
 * Extend `document_type` enum list to include `library structure seqspec`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.

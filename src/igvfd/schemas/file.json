@@ -27,6 +27,9 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/preview_timestamp"
         }
     ],
     "dependentSchemas": {

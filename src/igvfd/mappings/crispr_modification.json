@@ -1,6 +1,6 @@
 {
-    "hash": "531402206357c9b6af73d7a1c1c5dee3",
-    "index_name": "crispr_modification_53140220",
+    "hash": "fedc9868969a9cf3cbedee1290113335",
+    "index_name": "crispr_modification_fedc9868",
     "item_type": "crispr_modification",
     "mapping": {
         "dynamic_templates": [
@@ -323,6 +323,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "product_id": {
                         "type": "keyword"

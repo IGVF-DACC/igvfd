@@ -1,6 +1,6 @@
 {
-    "hash": "145d8e889f28e440045199342d298aab",
-    "index_name": "workflow_145d8e88",
+    "hash": "6b296bb23390b857b94cbdb7dd38cbfb",
+    "index_name": "workflow_6b296bb2",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -202,6 +202,9 @@
                                     "notes": {
                                         "type": "text"
                                     },
+                                    "preview_timestamp": {
+                                        "type": "date"
+                                    },
                                     "release_timestamp": {
                                         "type": "date"
                                     },
@@ -239,6 +242,9 @@
                                             },
                                             "notes": {
                                                 "type": "text"
+                                            },
+                                            "preview_timestamp": {
+                                                "type": "date"
                                             },
                                             "publications": {
                                                 "type": "keyword"
@@ -280,6 +286,9 @@
                                                     },
                                                     "notes": {
                                                         "type": "text"
+                                                    },
+                                                    "preview_timestamp": {
+                                                        "type": "date"
                                                     },
                                                     "publications": {
                                                         "type": "keyword"
@@ -392,6 +401,9 @@
                             },
                             "parents": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "release_timestamp": {
                                 "type": "date"
@@ -576,6 +588,9 @@
                     "notes": {
                         "type": "text"
                     },
+                    "preview_timestamp": {
+                        "type": "date"
+                    },
                     "publications": {
                         "properties": {
                             "@id": {
@@ -657,6 +672,9 @@
                             },
                             "page": {
                                 "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "publication_identifiers": {
                                 "copy_to": "_exact",
@@ -776,6 +794,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
                             },
                             "release_timestamp": {
                                 "type": "date"

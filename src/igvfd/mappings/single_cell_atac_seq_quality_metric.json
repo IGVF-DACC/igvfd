@@ -1,6 +1,6 @@
 {
-    "hash": "09fb0a01c83774fbcd5818e31042f44d",
-    "index_name": "single_cell_atac_seq_quality_metric_09fb0a01",
+    "hash": "1e88cd5f3d7d76f41702fd0de70c371a",
+    "index_name": "single_cell_atac_seq_quality_metric_1e88cd5f",
     "item_type": "single_cell_atac_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -463,6 +463,9 @@
                     "pct_duplicates": {
                         "store": true,
                         "type": "float"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "quality_metric_of": {
                         "copy_to": "_exact",

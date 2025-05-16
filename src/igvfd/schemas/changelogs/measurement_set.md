@@ -6,6 +6,7 @@
 
 ### Minor changes since schema version 26
 
+* Add `preview_timestamp`.
 * Extend `control_type` enum list to include `baseline`.
 * Add `barcode_replacement_file`.
 * Extend `preferred_assay_title` enum list to include `scMultiome-NT-seq`.

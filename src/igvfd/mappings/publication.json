@@ -1,6 +1,6 @@
 {
-    "hash": "a8da35e17d6191b00b7087a8586e282a",
-    "index_name": "publication_a8da35e1",
+    "hash": "ff8d912511a3337d7476aaf3d4195ea3",
+    "index_name": "publication_ff8d9125",
     "item_type": "publication",
     "mapping": {
         "dynamic_templates": [
@@ -347,6 +347,9 @@
                     },
                     "page": {
                         "type": "keyword"
+                    },
+                    "preview_timestamp": {
+                        "type": "date"
                     },
                     "publication_identifiers": {
                         "copy_to": "_exact",
