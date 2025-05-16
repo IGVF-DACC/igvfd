@@ -525,3 +525,14 @@ def analysis_set_9_10(value, system):
     if 'demultiplexed_sample' in value:
         value['demultiplexed_samples'] = [value['demultiplexed_sample']]
         del value['demultiplexed_sample']
+
+
+@upgrade_step('measurement_set', '26', '27')
+@upgrade_step('construct_library_set', '10', '11')
+def file_set_26_27(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2692
+    notes = value.get('notes', '')
+    if value.get('control_type') == 'control transduction':
+        value['control_type'] = 'reference transduction'
+        notes += f' This file set previously specified control_type control transduction but has since been upgraded to reference transduction.'
+        value['notes'] = notes.strip()

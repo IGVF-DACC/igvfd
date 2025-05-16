@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Schema version 11
+
+* Adjust `control_type` enum list to replace `control transduction` with `reference transduction`.
+
 ### Minor changes since schema version 10
 
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.

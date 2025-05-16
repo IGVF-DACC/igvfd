@@ -126,12 +126,12 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
         measurement_set['@id'],
         {
             'preferred_assay_title': 'scCRISPR screen',
-            'control_type': 'control transduction'
+            'control_type': 'reference transduction'
         }
     )
     res = testapp.get(measurement_set['@id'])
     assert res.json.get(
-        'summary') == 'control transduction scCRISPR activation screen integrating a guide (sgRNA) library targeting TF binding sites genome-wide associated with Alzheimer\'s disease and Myocardial infarction'
+        'summary') == 'reference transduction scCRISPR activation screen integrating a guide (sgRNA) library targeting TF binding sites genome-wide associated with Alzheimer\'s disease and Myocardial infarction'
 
 
 def test_summary_targeted_genes(testapp, measurement_set, assay_term_chip, assay_term_CRISPR_sorted, gene_myc_hs, gene_zscan10_mm, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P):

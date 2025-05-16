@@ -56,3 +56,10 @@ def test_construct_library_set_upgrade_9_10(upgrader, construct_library_set_v9, 
     assert tabular_file['uuid'] in value['integrated_content_files']
     assert reference_file['uuid'] in value['integrated_content_files']
     assert value['notes']
+
+
+def test_construct_library_set_upgrade_10_11(upgrader, construct_library_set_v10):
+    value = upgrader.upgrade('construct_library_set', construct_library_set_v10,
+                             current_version='10', target_version='11')
+    assert value['schema_version'] == '11'
+    assert value.get('control_type') == 'reference transduction'

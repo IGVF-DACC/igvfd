@@ -135,7 +135,7 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
             'award': award['@id'],
             'file_set_type': 'expression vector library',
             'scope': 'control',
-            'control_type': 'control transduction',
+            'control_type': 'reference transduction',
             'selection_criteria': ['TF binding sites'],
             'control_file_sets': [base_expression_construct_library_set['@id']]
         })

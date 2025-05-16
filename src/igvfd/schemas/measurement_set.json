@@ -65,7 +65,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "26"
+            "default": "27"
         },
         "samples": {
             "maxItems": 1
@@ -256,7 +256,7 @@
             "type": "string",
             "enum": [
                 "baseline",
-                "control transduction",
+                "reference transduction",
                 "low FACS signal",
                 "non-targeting",
                 "pre-selection",
@@ -266,7 +266,7 @@
             ],
             "enum_descriptions": {
                 "baseline": "A reference or background measurement for comparison across multiple assays or modalities.",
-                "control transduction": "The samples have been transduced with a construct that serves as a control.",
+                "reference transduction": "The samples were transduced with a construct that does not perturb the biological system of interest, serving as a reference point for evaluating other experimental transductions.",
                 "low FACS signal": "The samples have minimal fluorescence in Flow Cytometry (FACS), used as a baseline or negative control.",
                 "non-targeting": "The samples have been treated with a construct that does not target any specific gene or region.",
                 "pre-selection": "The samples were collected before any selection or sorting process, representing the starting population.",
