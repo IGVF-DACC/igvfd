@@ -1,6 +1,6 @@
 {
-    "hash": "8494dee8d2b38f66435045c87988be15",
-    "index_name": "genome_browser_annotation_file_8494dee8",
+    "hash": "3a95fd60d93456221127d1fb7afbccb0",
+    "index_name": "genome_browser_annotation_file_3a95fd60",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -2633,8 +2633,7 @@
                                 "type": "keyword"
                             },
                             "workflow_version": {
-                                "store": true,
-                                "type": "long"
+                                "type": "keyword"
                             }
                         },
                         "type": "object"

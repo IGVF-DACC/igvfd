@@ -1,6 +1,6 @@
 {
-    "hash": "993d37473d405812c3136433cebd6428",
-    "index_name": "index_file_993d3747",
+    "hash": "74eca689453b43a125211d4032ef2b3b",
+    "index_name": "index_file_74eca689",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -2553,8 +2553,7 @@
                                 "type": "keyword"
                             },
                             "workflow_version": {
-                                "store": true,
-                                "type": "long"
+                                "type": "keyword"
                             }
                         },
                         "type": "object"
