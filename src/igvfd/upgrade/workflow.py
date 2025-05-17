@@ -32,3 +32,11 @@ def workflow_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1789
     if 'publication_identifiers' in value:
         del value['publication_identifiers']
+
+
+@upgrade_step('workflow', '5', '6')
+def workflow_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2719
+    if 'workflow_version' in value:
+        version_old = str(value['workflow_version'])
+        value['workflow_version'] = f'v{version_old}.0.0'
