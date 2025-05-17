@@ -1,6 +1,6 @@
 {
-    "hash": "6b296bb23390b857b94cbdb7dd38cbfb",
-    "index_name": "workflow_6b296bb2",
+    "hash": "9ebb119fda72344d9a10c850ee2fd14c",
+    "index_name": "workflow_9ebb119f",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -914,8 +914,7 @@
                         "type": "keyword"
                     },
                     "workflow_version": {
-                        "store": true,
-                        "type": "long"
+                        "type": "keyword"
                     }
                 },
                 "type": "object"
