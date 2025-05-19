@@ -442,3 +442,13 @@ def measurement_set_v27(measurement_set):
         'preferred_assay_title': 'SUPERSTARR'
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v27(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '28',
+        'preferred_assay_title': 'mtscMultiome'
+    })
+    return item

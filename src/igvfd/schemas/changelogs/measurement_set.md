@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 29
+
+* Adjust `preferred_assay_title` enum list to replace `10x multiome with scMito-seq` with `mtscMultiome`.
+
 ### Schema version 28
 
 * Adjust `preferred_assay_title` enum list to remove `SUPERSTARR`.
