@@ -185,7 +185,8 @@ def audit_annotated_from_virtual(value, system):
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message = get_audit_message(audit_annotated_from_virtual)
     if 'annotated_from' in value:
-        annotated_from_object = system.get('request').embed(value['annotated_from'] + '@@object?skip_calculated=true')
+        annotated_from_object = system.get('request').embed(
+            value['annotated_from'] + '@@object_with_select_calculated_properties?field=@id')
         if annotated_from_object['virtual']:
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
