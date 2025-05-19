@@ -273,7 +273,7 @@ def audit_missing_auxiliary_set_link(value, system):
     [
         {
             "audit_description": "Measurement sets are expected to link to auxiliary sets if they share the same sample.",
-            "audit_category": "missing auxiliary set",
+            "audit_category": "missing auxiliary set link",
             "audit_level": "ERROR"
         }
     ]
@@ -437,7 +437,7 @@ def audit_missing_auxiliary_set(value, system):
         {
             "audit_description": "CRISPR-based measurement sets that utilize flow cytometry are expected to link to a cell sorting auxiliary set.",
             "audit_category": "missing auxiliary set",
-            "audit_level": "WARNING"
+            "audit_level": "NOT_COMPLIANT"
         },
         {
             "audit_description": "10X Multiome MULTI-seq measurement sets are expected to link to a lipid-conjugated oligo sequencing auxiliary set.",
@@ -480,6 +480,11 @@ def audit_missing_auxiliary_set(value, system):
         for expected_auxiliary_set in expected_auxiliary_sets:
             expected_auxiliary_set_type = expected_auxiliary_set[0]
             audit_message = expected_auxiliary_set[1]
+
+            # Only Engreitz lab has/uses this data, so only their lab's file sets will be expected to post it
+            if expected_auxiliary_set_type == 'cell sorting':
+                if value['lab']['@id'] != '/labs/jesse-engreitz/':
+                    continue
 
             if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type', '') == expected_auxiliary_set_type]):
                 detail = (
