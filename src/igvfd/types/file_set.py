@@ -544,10 +544,10 @@ class AnalysisSet(FileSet):
         targeted_genes_phrase = ''
         if targeted_genes:
             targeted_genes_phrase = f'targeting {", ".join(targeted_genes)}'
-        # The file set types are only shown if the inputs are all Auxiliary Sets or Construct Library Sets
-        # and the Measurement Sets related to the Auxiliary Sets or Construct Library Sets are not CRISPR screens.
+        # The file set types are only shown if the inputs are all Auxiliary Sets
+        # and the Measurement Sets related to the Auxiliary Sets are not CRISPR screens.
         file_set_type_phrase = ''
-        if fileset_types and len(fileset_subclasses) == 1 and ('AuxiliarySet' in fileset_subclasses or 'ConstructLibrarySet' in fileset_subclasses):
+        if fileset_types and len(fileset_subclasses) == 1 and ('AuxiliarySet' in fileset_subclasses):
             if not (assay_terms and all(x in crispr_screen_terms for x in assay_terms)):
                 file_set_type_phrase = ', '.join(fileset_types)
 
