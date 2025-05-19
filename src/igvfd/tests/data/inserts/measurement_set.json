@@ -567,7 +567,7 @@
     },
     {
         "aliases": [
-            "igvf:10x_multiome_scMito-seq"
+            "igvf:mtscMultiome"
         ],
         "award": "1U01HG012051-01",
         "lab": "danwei-huangfu",
@@ -579,7 +579,7 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
-        "preferred_assay_title": "10x multiome with scMito-seq",
+        "preferred_assay_title": "mtscMultiome",
         "file_set_type": "experimental data"
     },
     {
