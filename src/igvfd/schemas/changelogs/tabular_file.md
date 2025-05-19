@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 15
 
+* Extend `content_type` enum list to include `variant pathogenicity`.
 * Add `base_modifications`.
 * Extend `content_type` enum list to include `minus strand modification state`.
 * Extend `content_type` enum list to include `plus strand modification state`.
