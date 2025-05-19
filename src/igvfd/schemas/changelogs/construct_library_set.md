@@ -1,6 +1,6 @@
 ## Changelog for *`construct_library_set.json`*
 
-### Minor changes since schema version 10
+### Minor changes since schema version 11
 
 * Add calculated property `file_sets`.
 * Add calculated property `assay_titles`.
