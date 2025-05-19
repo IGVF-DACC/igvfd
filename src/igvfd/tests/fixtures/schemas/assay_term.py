@@ -252,6 +252,6 @@ def assay_term_v13(assay_term_crispr):
     item = assay_term_crispr.copy()
     item.update({
         'schema_version': '13',
-        'preferred_assay_titles': ['mtscMultiome-seq']
+        'preferred_assay_titles': ['10x multiome with scMito-seq']
     })
     return item
