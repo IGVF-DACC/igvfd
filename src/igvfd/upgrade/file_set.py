@@ -537,8 +537,8 @@ def file_set_26_27(value, system):
         notes += f' This file set previously specified control_type control transduction but has since been upgraded to reference transduction.'
 
 
-@upgrade_step('measurement_set', '26', '27')
-def measurement_set_26_27(value, system):
+@upgrade_step('measurement_set', '27', '28')
+def measurement_set_27_28(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2634
     notes = value.get('notes', '')
     if value.get('preferred_assay_title') == 'SUPERSTARR':
