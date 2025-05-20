@@ -1,6 +1,6 @@
 {
-    "hash": "68ff50a3f735ecc0330a1615f054a782",
-    "index_name": "configuration_file_68ff50a3",
+    "hash": "a8f493e40dc3f94d9aa9d86bf5fff3db",
+    "index_name": "configuration_file_a8f493e4",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -2466,6 +2466,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "analysis_step_versions": {
                                 "type": "keyword"
                             },
                             "analysis_steps": {

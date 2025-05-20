@@ -1,6 +1,6 @@
 {
-    "hash": "5ce85b3c740a615044bce7800cbcbc4b",
-    "index_name": "reference_file_5ce85b3c",
+    "hash": "3d6554d6914c645f6f2a4fa15d28a812",
+    "index_name": "reference_file_3d6554d6",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -2492,6 +2492,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "analysis_step_versions": {
                                 "type": "keyword"
                             },
                             "analysis_steps": {
