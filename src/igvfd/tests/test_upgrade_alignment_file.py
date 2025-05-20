@@ -85,3 +85,10 @@ def test_alignment_file_upgrade_13_14(upgrader, alignment_file_v13):
     value = upgrader.upgrade('alignment_file', alignment_file_v13, current_version='13', target_version='14')
     assert value['schema_version'] == '14'
     assert value.get('transcriptome_annotation') == 'GENCODE 32, GENCODE M23'
+
+
+def test_alignment_file_upgrade_14_15(upgrader, alignment_file_v14):
+    value = upgrader.upgrade('alignment_file', alignment_file_v14, current_version='14',
+                             target_version='15')
+    assert value['schema_version'] == '15'
+    assert value['derived_manually'] == False

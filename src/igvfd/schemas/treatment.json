@@ -227,7 +227,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "8"
+            "default": "9"
         },
         "documents": {
             "description": "Documents that describe the treatment protocol details.",
@@ -421,6 +421,7 @@
             "title": "Depletion",
             "description": "Treatment is depleted.",
             "type": "boolean",
+            "default": false,
             "submissionExample": {
                 "appscript": false,
                 "igvf_utils": false

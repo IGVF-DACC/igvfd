@@ -487,3 +487,28 @@ def matrix_file_7_8(value, system):
         notes += f' This file\'s content_type was comprehensive gene count matrix, but has been upgraded to kallisto single cell RNAseq output.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('alignment_file', '14', '15')
+@upgrade_step('configuration_file', '7', '8')
+@upgrade_step('genome_browser_annotation_file', '10', '11')
+@upgrade_step('image_file', '4', '5')
+@upgrade_step('index_file', '1', '2')
+@upgrade_step('matrix_file', '8', '9')
+@upgrade_step('model_file', '1', '2')
+@upgrade_step('reference_file', '18', '19')
+@upgrade_step('sequence_file', '15', '16')
+@upgrade_step('signal_file', '10', '11')
+@upgrade_step('tabular_file', '15', '16')
+def file_15_16(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2085
+    notes = value.get('notes', '')
+    if 'derived_manually' not in value:
+        value['derived_manually'] = False
+    if value.get('derived_manually') is True:
+        # Remove analysis_set_version if it exists
+        if 'analysis_step_version' in value:
+            analysis_step_version = value['analysis_step_version']
+            notes += f'This file analysis_step_version was previously {analysis_step_version}. However, derived_manually is true, therefore should not have analysis_step_version and was removed during an upgrade.'
+            value['notes'] = notes.strip()
+            del value['analysis_step_version']

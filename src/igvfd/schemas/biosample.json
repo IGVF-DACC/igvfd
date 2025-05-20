@@ -270,6 +270,7 @@
             "title": "Embryonic",
             "description": "Biosample is embryonic.",
             "type": "boolean",
+            "default": false,
             "submissionExample": {
                 "appscript": false,
                 "igvf_utils": false

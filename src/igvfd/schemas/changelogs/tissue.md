@@ -1,5 +1,9 @@
 ## Changelog for *`tissue.json`*
 
+### Schema version 22
+
+* Adjust `embryonic` to have default value `False`.
+
 ### Minor changes since schema version 21
 
 * Add `preview_timestamp`.

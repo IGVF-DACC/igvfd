@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 19
+
+* Adjust `derived_manually` to have default value `False`.
+
 ### Minor changes since schema version 18
 
 * Add `preview_timestamp`.

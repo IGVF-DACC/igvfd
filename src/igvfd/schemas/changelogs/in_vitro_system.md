@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 28
+
+* Adjust `embryonic` to have default value `False`.
+
 ### Minor changes since schema version 27
 
 * Add `preview_timestamp`.

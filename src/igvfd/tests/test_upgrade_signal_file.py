@@ -43,3 +43,10 @@ def test_signal_file_upgrade_8_9(upgrader, signal_file_v8):
     value = upgrader.upgrade('signal_file', signal_file_v8, current_version='8', target_version='9')
     assert value['content_type'] == 'fold change over control'
     assert value['schema_version'] == '9'
+
+
+def test_signal_file_upgrade_10_11(upgrader, signal_file_v10):
+    value = upgrader.upgrade('alignment_file', signal_file_v10, current_version='10',
+                             target_version='11')
+    assert value['schema_version'] == '11'
+    assert value['derived_manually'] == False

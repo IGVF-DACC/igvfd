@@ -542,3 +542,13 @@ def in_vitro_system_26_27(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2107
     # This upgrade to replace cell_fate_change_treatments with cell_fate_change_protocol was done manually across the every server.
     return
+
+
+@upgrade_step('primary_cell', '22', '23')
+@upgrade_step('in_vitro_system', '27', '28')
+@upgrade_step('tissue', '21', '22')
+@upgrade_step('whole_organism', '24', '25')
+def sample_22_23(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2085
+    if 'embryonic' not in value:
+        value['embryonic'] = False

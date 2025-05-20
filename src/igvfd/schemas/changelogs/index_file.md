@@ -1,5 +1,9 @@
 ## Changelog for *`index_file.json`*
 
+### Schema version 2
+
+* Adjust `derived_manually` to have default value `False`.
+
 ### Minor changes since schema version 1
 
 * Add `preview_timestamp`.

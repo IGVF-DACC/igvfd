@@ -15,7 +15,8 @@ def matrix_file(testapp, lab, award, principal_analysis_set, reference_file):
             reference_file['@id']
         ],
         'principal_dimension': 'cell',
-        'secondary_dimensions': ['gene']
+        'secondary_dimensions': ['gene'],
+        'derived_manually': False,
     }
     return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
 

@@ -1,5 +1,9 @@
 ## Changelog for *`alignment_file.json`*
 
+### Schema version 15
+
+* Adjust `derived_manually` to have default value `False`.
+
 ### Minor changes since schema version 14
 
 * Extend `base_modifications` enum list to include `m5C`.
