@@ -1,5 +1,9 @@
 ## Changelog for *`assay_term.json`*
 
+### Schema version 13
+
+* Adjust `preferred_assay_titles` enum list to remove `SUPERSTARR`.
+
 ### Minor changes since schema version 12
 
 * Add `preview_timestamp`.

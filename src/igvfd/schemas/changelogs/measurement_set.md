@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 28
+
+* Adjust `preferred_assay_title` enum list to remove `SUPERSTARR`.
+
 ### Schema version 27
 
 * Adjust `control_type` enum list to replace `control transduction` with `reference transduction`.

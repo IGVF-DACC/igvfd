@@ -1,5 +1,10 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Minor changes since schema version 11
+
+* Add calculated property `file_sets`.
+* Add calculated property `assay_titles`.
+
 ### Schema version 11
 
 * Adjust `control_type` enum list to replace `control transduction` with `reference transduction`.

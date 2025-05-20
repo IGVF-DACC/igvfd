@@ -177,3 +177,9 @@ def test_measurement_set_upgrade_26_27(upgrader, measurement_set_v26):
     value = upgrader.upgrade('measurement_set', measurement_set_v26, current_version='26', target_version='27')
     assert value['schema_version'] == '27'
     assert value.get('control_type') == 'reference transduction'
+
+
+def test_measurement_set_upgrade_27_28(upgrader, measurement_set_v27):
+    value = upgrader.upgrade('measurement_set', measurement_set_v27, current_version='27', target_version='28')
+    assert value['schema_version'] == '28'
+    assert value.get('preferred_assay_title') == 'STARR-seq'

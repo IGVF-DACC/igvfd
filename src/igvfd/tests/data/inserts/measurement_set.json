@@ -17,7 +17,7 @@
             "IGVFSM0000DDDD"
         ],
         "assay_term": "igvf:starr-seq",
-        "preferred_assay_title": "SUPERSTARR",
+        "preferred_assay_title": "STARR-seq",
         "protocols": [
             "https://www.protocols.io/test-protocols-url-12345"
         ],
@@ -210,7 +210,7 @@
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
         "assay_term": "/assay-terms/igvf:starr-seq/",
-        "preferred_assay_title": "SUPERSTARR",
+        "preferred_assay_title": "STARR-seq",
         "file_set_type": "experimental data"
     },
     {

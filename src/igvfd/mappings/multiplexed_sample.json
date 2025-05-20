@@ -1,6 +1,6 @@
 {
-    "hash": "7b2044d168ad1ff762de6f93dfb651a7",
-    "index_name": "multiplexed_sample_7b2044d1",
+    "hash": "6f556f199770de85e9e421dce26f2639",
+    "index_name": "multiplexed_sample_6f556f19",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -432,6 +432,9 @@
                                 "type": "keyword"
                             },
                             "applied_to_samples": {
+                                "type": "keyword"
+                            },
+                            "assay_titles": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {

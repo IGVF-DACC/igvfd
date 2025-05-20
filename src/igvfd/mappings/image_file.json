@@ -1,6 +1,6 @@
 {
-    "hash": "90bff319a182c3a2a7ad8cb19864c2ee",
-    "index_name": "image_file_90bff319",
+    "hash": "7ca968e4a52682e0cef7e61df952d13b",
+    "index_name": "image_file_7ca968e4",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -1895,6 +1895,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "assay_titles": {
+                                "type": "keyword"
                             },
                             "associated_phenotypes": {
                                 "properties": {

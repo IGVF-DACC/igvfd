@@ -1,6 +1,6 @@
 {
-    "hash": "4862c9d04c0aad69d1eb0078a58caf57",
-    "index_name": "model_file_4862c9d0",
+    "hash": "699af74e652b12c90e173c7808fe9f41",
+    "index_name": "model_file_699af74e",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -1912,6 +1912,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "assay_titles": {
+                                "type": "keyword"
                             },
                             "associated_phenotypes": {
                                 "properties": {

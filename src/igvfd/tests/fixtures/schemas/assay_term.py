@@ -235,3 +235,13 @@ def assay_term_v11(assay_term_crispr):
         'comment': 'test comment'
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v12(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '12',
+        'preferred_assay_titles': ['SUPERSTARR']
+    })
+    return item

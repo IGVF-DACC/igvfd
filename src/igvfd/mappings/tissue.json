@@ -1,6 +1,6 @@
 {
-    "hash": "219298b59324d2fdd480daa98f808e64",
-    "index_name": "tissue_219298b5",
+    "hash": "c0d10ae84c0d9d6b971d42a35efcb3cb",
+    "index_name": "tissue_c0d10ae8",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -441,6 +441,9 @@
                                 "type": "keyword"
                             },
                             "applied_to_samples": {
+                                "type": "keyword"
+                            },
+                            "assay_titles": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {

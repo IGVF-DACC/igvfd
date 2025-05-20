@@ -9,7 +9,7 @@ def measurement_set(testapp, lab, award, assay_term_starr, tissue):
         'assay_term': assay_term_starr['@id'],
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_title': 'SUPERSTARR'
+        'preferred_assay_title': 'STARR-seq'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -150,7 +150,7 @@ def measurement_set_with_protocols(testapp, lab, award, assay_term_starr, tissue
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
         'protocols': ['https://www.protocols.io/test-protocols-url-12345'],
-        'preferred_assay_title': 'SUPERSTARR'
+        'preferred_assay_title': 'STARR-seq'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -163,7 +163,7 @@ def measurement_set_with_functional_assay_mechanisms(testapp, lab, award, assay_
         'assay_term': assay_term_starr['@id'],
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_title': 'SUPERSTARR',
+        'preferred_assay_title': 'STARR-seq',
         'functional_assay_mechanisms': [phenotype_term_from_go['@id']]
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
@@ -430,5 +430,15 @@ def measurement_set_v26(measurement_set):
     item.update({
         'schema_version': '26',
         'control_type': 'control transduction'
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v27(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '27',
+        'preferred_assay_title': 'SUPERSTARR'
     })
     return item

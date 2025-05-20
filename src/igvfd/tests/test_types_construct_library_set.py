@@ -13,6 +13,28 @@ def test_samples_link(testapp, tissue, base_expression_construct_library_set):
     assert set([sample_id['@id'] for sample_id in res.json.get('applied_to_samples')]) == {tissue['@id']}
 
 
+def test_file_sets(testapp, primary_cell, base_expression_construct_library_set, measurement_set_mpra):
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'construct_library_sets': [base_expression_construct_library_set['@id']]
+        }
+    )
+    res = testapp.get(base_expression_construct_library_set['@id'])
+    assert set(res.json.get('file_sets')) == {measurement_set_mpra['@id']}
+
+
+def test_assay_titles(testapp, primary_cell, base_expression_construct_library_set, measurement_set_mpra):
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'construct_library_sets': [base_expression_construct_library_set['@id']]
+        }
+    )
+    res = testapp.get(base_expression_construct_library_set['@id'])
+    assert set(res.json.get('assay_titles')) == {'MPRA'}
+
+
 def test_summary(testapp, construct_library_set_genome_wide, base_expression_construct_library_set,
                  construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction,
                  gene_zscan10_mm, gene_myc_hs, construct_library_set_y2h, construct_library_set_orf, orf_foxp, orf_zscan10, construct_library_set_reference_transduction, construct_library_set_editing_template_library):
@@ -140,6 +162,48 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     assert res.json.get('summary') == 'reference transduction expression vector library'
     res = testapp.get(construct_library_set_editing_template_library['@id'])
     assert res.json.get('summary') == 'editing template library targeting histone modifications in targeton1 of MYC'
+
+
+def test_summary_starr_seq_1000_genomes(testapp, measurement_set, tissue, construct_library_set_reporter, human_donor, human_donor_orphan, curated_set_genome, tabular_file):
+    testapp.patch_json(
+        human_donor['@id'],
+        {
+            'dbxrefs': ['IGSR:NA18910']
+        }
+    )
+    testapp.patch_json(
+        human_donor_orphan['@id'],
+        {
+            'dbxrefs': ['IGSR:NA18912']
+        }
+    )
+    testapp.patch_json(
+        curated_set_genome['@id'],
+        {
+            'donors': [human_donor['@id'], human_donor_orphan['@id']]
+        }
+    )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'file_set': curated_set_genome['@id']
+        }
+    )
+    testapp.patch_json(
+        construct_library_set_reporter['@id'],
+        {
+            'integrated_content_files': [tabular_file['@id']]
+        }
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'construct_library_sets': [construct_library_set_reporter['@id']]
+        }
+    )
+    res = testapp.get(construct_library_set_reporter['@id'])
+    assert res.json.get(
+        'summary') == 'reporter library targeting accessible genome regions genome-wide pooled from 1000 Genomes donors: NA18910, NA18912'
 
 
 def test_integrated_content_files_dependency(testapp, app, submitter, lab, award, tabular_file, signal_file):
