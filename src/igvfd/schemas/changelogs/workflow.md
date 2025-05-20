@@ -1,5 +1,9 @@
 ## Changelog for *`workflow.json`*
 
+### Schema version 6
+
+* Change `workflow_version` from an integer to a string.
+
 ### Minor changes since schema version 5
 
 * Add `preview_timestamp`.
