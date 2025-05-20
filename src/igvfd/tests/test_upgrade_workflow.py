@@ -32,4 +32,5 @@ def test_workflow_upgrade_5_6(upgrader, workflow_v5):
         'workflow', workflow_v5,
         current_version='5', target_version='6')
     assert value['schema_version'] == '6'
+    assert isinstance(value['workflow_version'], str)
     assert value['workflow_version'] == 'v5.0.0'
