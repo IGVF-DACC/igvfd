@@ -159,3 +159,13 @@ def assay_term_12_13(value, system):
         index = preferred_assay_titles.index('SUPERSTARR')
         preferred_assay_titles[index] = 'STARR-seq'
         value['preferred_assay_titles'] = preferred_assay_titles
+
+
+@upgrade_step('assay_term', '13', '14')
+def assay_term_13_14(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2691
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    if '10x multiome with scMito-seq' in preferred_assay_titles:
+        index = preferred_assay_titles.index('10x multiome with scMito-seq')
+        preferred_assay_titles[index] = 'mtscMultiome'
+        value['preferred_assay_titles'] = preferred_assay_titles

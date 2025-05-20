@@ -545,3 +545,13 @@ def measurement_set_27_28(value, system):
         value['preferred_assay_title'] = 'STARR-seq'
         notes += f' This measurement set previously used SUPERSTARR as a preferred_assay_title, but the preferred_assay_title has now been updated to STARR-seq via an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '28', '29')
+def measurement_set_28_29(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2691
+    notes = value.get('notes', '')
+    if value.get('preferred_assay_title') == '10x multiome with scMito-seq':
+        value['preferred_assay_title'] = 'mtscMultiome'
+        notes += f' This measurement set previously used 10x multiome with scMito-seq as a preferred_assay_title, but the preferred_assay_title has now been updated to mtscMultiome via an upgrade.'
+        value['notes'] = notes.strip()

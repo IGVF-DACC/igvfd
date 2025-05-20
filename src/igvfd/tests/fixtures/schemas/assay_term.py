@@ -242,6 +242,16 @@ def assay_term_v12(assay_term_crispr):
     item = assay_term_crispr.copy()
     item.update({
         'schema_version': '12',
-        'preferred_assay_titles': ['SUPERSTARR']
+        'preferred_assay_titles': ['SUPERSTARR'],
+    })
+    return item
+
+
+@pytest.fixture
+def assay_term_v13(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '13',
+        'preferred_assay_titles': ['10x multiome with scMito-seq']
     })
     return item

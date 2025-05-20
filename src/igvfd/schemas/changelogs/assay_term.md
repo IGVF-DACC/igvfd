@@ -1,5 +1,9 @@
 ## Changelog for *`assay_term.json`*
 
+### Schema version 14
+
+* Adjust `preferred_assay_titles` enum list to replace `10x multiome with scMito-seq` with `mtscMultiome`.
+
 ### Schema version 13
 
 * Adjust `preferred_assay_titles` enum list to remove `SUPERSTARR`.

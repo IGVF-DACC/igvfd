@@ -19,7 +19,7 @@ def test_audit_missing_multiome_size(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'preferred_assay_title': '10x multiome with scMito-seq'
+            'preferred_assay_title': 'mtscMultiome'
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
