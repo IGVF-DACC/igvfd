@@ -1,6 +1,6 @@
 {
-    "hash": "cf6bd6e6aaa0bce613c76f3d91a3e040",
-    "index_name": "sequence_file_cf6bd6e6",
+    "hash": "b95c1ceeb9b465d38018d7b78246a78e",
+    "index_name": "sequence_file_b95c1cee",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -2678,8 +2678,7 @@
                                 "type": "keyword"
                             },
                             "workflow_version": {
-                                "store": true,
-                                "type": "long"
+                                "type": "keyword"
                             }
                         },
                         "type": "object"

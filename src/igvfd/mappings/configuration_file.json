@@ -1,6 +1,6 @@
 {
-    "hash": "4e13244d7334adb792ac6438aa90cb3d",
-    "index_name": "configuration_file_4e13244d",
+    "hash": "68ff50a3f735ecc0330a1615f054a782",
+    "index_name": "configuration_file_68ff50a3",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -2540,8 +2540,7 @@
                                 "type": "keyword"
                             },
                             "workflow_version": {
-                                "store": true,
-                                "type": "long"
+                                "type": "keyword"
                             }
                         },
                         "type": "object"
