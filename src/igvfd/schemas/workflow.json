@@ -121,6 +121,23 @@
                 "appscript": true,
                 "igvf_utils": true
             }
+        },
+        "analysis_step_versions": {
+            "title": "Analysis Step Versions",
+            "description": "The available versions of the analysis steps linked to this workflow.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Analysis Step Version",
+                "comment": "The version of the analysis step linked to this workflow.",
+                "type": "string",
+                "linkTo": "AnalysisStepVersion"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:analysis_step_version_01\" or \"/analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/\"]",
+                "igvf_utils": "john-doe:analysis_step_version_01, /analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/"
+            }
         }
     },
     "fuzzy_searchable_fields": [
