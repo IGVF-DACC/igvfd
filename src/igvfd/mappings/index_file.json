@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "d96a53136c4cd757a8d1a2bcf96f9e52",
     "index_name": "index_file_d96a5313",
+=======
+    "hash": "bc9482625b6c419271a63e8dd6ecc605",
+    "index_name": "index_file_bc948262",
+>>>>>>> 86fc642f (mappings)
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [

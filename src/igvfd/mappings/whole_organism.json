@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "d95e6d36c5c30bc5be00c1f3c4b6474e",
     "index_name": "whole_organism_d95e6d36",
+=======
+    "hash": "bcf8d3e02dc0fa1a3e737ec933d95ba2",
+    "index_name": "whole_organism_bcf8d3e0",
+>>>>>>> 86fc642f (mappings)
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [

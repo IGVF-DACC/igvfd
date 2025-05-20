@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "5711fea6ca7ccbe3c006ef251a34302c",
     "index_name": "sequence_file_5711fea6",
+=======
+    "hash": "0ce6c30cebfd1e39b0ca238c2cc1249e",
+    "index_name": "sequence_file_0ce6c30c",
+>>>>>>> 86fc642f (mappings)
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
