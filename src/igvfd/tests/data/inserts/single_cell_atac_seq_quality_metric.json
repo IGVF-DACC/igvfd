@@ -1,16 +1,32 @@
 [
     {
-        "uuid": "184e65e2-0804-4f7e-833b-abfc8c6c19d2",
-        "lab": "j-michael-cherry",
-        "award": "HG012012",
+        "analysis_step_version": "igvf-dacc:analysis_step_version_02",
         "aliases": [
             "igvf:scatac_seq_quality_metric_01"
         ],
-        "status": "released",
-        "release_timestamp": "2024-03-06T12:34:56Z",
+        "award": "HG012012",
+        "description": "This is a test description for single cell ATAC seq quality metric.",
+        "lab": "j-michael-cherry",
+        "multi_mappings": 31207,
+        "n_barcodes_on_onlist": 913221,
+        "n_candidates": 7624,
+        "n_corrected_barcodes": 1293,
+        "n_mapped_reads": 3812,
+        "n_mappings": 2318769,
+        "n_multi_mappings": 90212,
+        "n_output_mappings": 57834741,
+        "n_reads": 414508410,
+        "n_reads_with_multi_mappings": 15472392,
+        "n_uni_mappings": 318226470,
+        "n_uniquely_mapped_reads": 318226470,
+        "pct_duplicates": 62.7,
         "quality_metric_of": [
             "IGVFFI0001PKBD"
         ],
-        "analysis_step_version": "igvf-dacc:analysis_step_version_02"
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "status": "released",
+        "total": 64038283,
+        "uni_mappings": 59718606,
+        "uuid": "184e65e2-0804-4f7e-833b-abfc8c6c19d2"
     }
 ]

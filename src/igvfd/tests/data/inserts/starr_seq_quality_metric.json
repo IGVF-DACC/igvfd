@@ -1,15 +1,19 @@
 [
     {
-        "uuid": "076c38e6-1422-1a61-551b-21da73f7d04a",
-        "lab": "j-michael-cherry",
-        "award": "HG012012",
         "aliases": [
             "igvf:starr_seq_quality_metric_01"
         ],
-        "status": "in progress",
+        "analysis_step_version": "igvf-dacc:analysis_step_version_02",
+        "award": "HG012012",
+        "coverage": 0.86,
+        "coverage_per_basepair": 0.5,
+        "description": "This is a test description for starr seq quality metric.",
+        "rna_correlation_in_peaks": 0.8,
+        "lab": "j-michael-cherry",
         "quality_metric_of": [
             "IGVFFI0000CSVV"
         ],
-        "analysis_step_version": "igvf-dacc:analysis_step_version_02"
+        "status": "in progress",
+        "uuid": "076c38e6-1422-1a61-551b-21da73f7d04a"
     }
 ]

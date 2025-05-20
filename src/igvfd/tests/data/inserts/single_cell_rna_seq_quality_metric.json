@@ -1,16 +1,40 @@
 [
     {
-        "uuid": "862fba59-0804-876e-acaf-c4abc6dc1782",
-        "lab": "j-michael-cherry",
+        "analysis_step_version": "igvf-dacc:analysis_step_version_02",
+        "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
         "award": "HG012012",
         "aliases": [
             "igvf:scrna_seq_quality_metric_01"
         ],
-        "status": "released",
-        "release_timestamp": "2024-03-06T12:34:56Z",
+        "description": "This is a test description for single cell RNA seq quality metric.",
+        "gt_records": 2301,
+        "index_version": "1.0",
+        "kmer_length": 371074,
+        "lab": "j-michael-cherry",
+        "mean_reads_per_barcode": 3582.15,
+        "mean_umis_per_barcode": 502.31,
+        "median_reads_per_barcode": 98721.84,
+        "median_umis_per_barcode": 12031,
+        "n_barcode_umis": 47819,
+        "n_barcodes": 3510931,
+        "n_bootstraps": 731219,
+        "n_processed": 2318769,
+        "n_pseudoaligned": 9124,
+        "n_reads": 3958124,
+        "n_records": 2318769,
+        "n_targets": 7261,
+        "n_unique": 1983,
+        "num_barcodes_on_onlist": 913221,
+        "p_pseudoaligned": 0.0039,
+        "p_unique": "1.38",
+        "percentage_barcodes_on_onlist": 39.146,
+        "percentage_reads_on_onlist": 0.0039,
+        "total_umis": 10231732,
         "quality_metric_of": [
             "IGVFFI0006MPST"
         ],
-        "analysis_step_version": "igvf-dacc:analysis_step_version_02"
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "status": "released",
+        "uuid": "862fba59-0804-876e-acaf-c4abc6dc1782"
     }
 ]

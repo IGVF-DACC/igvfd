@@ -1,16 +1,30 @@
 [
     {
-        "uuid": "9ec12c54-0804-4f7e-acaf-bc6d2c19fc8a",
-        "lab": "j-michael-cherry",
-        "award": "HG012012",
         "aliases": [
             "igvf:perturb_seq_quality_metric_01"
         ],
-        "status": "released",
+        "alignment_percentage": 19.398,
+        "analysis_step_version": "igvf-dacc:analysis_step_version_02",
+        "avg_cells_per_target": 1674.35,
+        "avg_umis_per_cell": 177.358,
+        "award": "HG012012",
+        "description": "This is a test description for perturb seq quality metric.",
+        "guide_diversity": 0.5,
+        "lab": "j-michael-cherry",
+        "mean_mitochondrial_reads": 22393.3215,
+        "moi": 0.5,
+        "paired_reads_mapped": 73.978,
+        "pct_cells_assigned_guide": 81.232,
         "release_timestamp": "2024-03-06T12:34:56Z",
         "quality_metric_of": [
             "IGVFFI0001PKBD"
         ],
-        "analysis_step_version": "igvf-dacc:analysis_step_version_02"
+        "status": "released",
+        "total_cells_passing_filters": 5149,
+        "total_detected_scrna_barcodes": 1876,
+        "total_guides": 31073390,
+        "total_reads": 62418,
+        "total_targets": 38672,
+        "uuid": "9ec12c54-0804-4f7e-acaf-bc6d2c19fc8a"
     }
 ]
