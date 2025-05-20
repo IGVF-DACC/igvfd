@@ -177,5 +177,27 @@
             "5mC",
             "inosine"
         ]
+    },
+    {
+        "uuid": "6eda519c-8dbc-3567-89f2-a31c3bc94d75",
+        "accession": "IGVFFI0088ALMD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "status": "in progress",
+        "md5sum": "486c9b5fac71105b86762dd8625ed941",
+        "file_format": "bam",
+        "assembly": "GRCh38",
+        "content_type": "alignments with modifications",
+        "upload_status": "pending",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "filtered": false,
+        "redacted": false,
+        "controlled_access": false,
+        "base_modifications": [
+            "m6A"
+        ]
     }
 ]

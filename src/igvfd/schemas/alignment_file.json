@@ -60,6 +60,9 @@
         },
         {
             "$ref": "mixins.json#/preview_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/base_modifications"
         }
     ],
     "dependentSchemas": {
@@ -67,10 +70,13 @@
             "file.json#/dependentSchemas"
         ],
         "base_modifications": {
-            "comment": "Only methylated reads can specify base modifications.",
+            "comment": "Only methylated reads or alignments with modifications can specify base modifications.",
             "properties": {
                 "content_type": {
-                    "const": "methylated reads"
+                    "enum": [
+                        "alignments with modifications",
+                        "methylated reads"
+                    ]
                 }
             }
         }
@@ -84,6 +90,7 @@
             "comment": "Content Type describes the content of the file.",
             "enum": [
                 "alignments",
+                "alignments with modifications",
                 "methylated reads",
                 "transcriptome alignments"
             ],
@@ -125,9 +132,6 @@
         },
         "assembly": {
             "description": "Genome assembly applicable for the annotation data."
-        },
-        "base_modifications": {
-            "$merge": "sequence_file.json#/properties/base_modifications"
         }
     },
     "fuzzy_searchable_fields": [

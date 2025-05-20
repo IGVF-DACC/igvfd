@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 15
 
+* Add `base_modifications`.
+* Extend `content_type` enum list to include `minus strand modification state`.
+* Extend `content_type` enum list to include `plus strand modification state`.
 * Add `preview_timestamp`.
 * Extend `content_type` enum list to include `primers table`.
 * Extend `content_type` enum list to include `primers track`.

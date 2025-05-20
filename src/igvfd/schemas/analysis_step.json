@@ -76,6 +76,8 @@
                     "interaction calling",
                     "matrix generation",
                     "merging",
+                    "modification calling",
+                    "modification site annotation",
                     "peak calling",
                     "read trimming",
                     "quantification",

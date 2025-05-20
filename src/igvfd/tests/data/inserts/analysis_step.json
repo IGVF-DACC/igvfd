@@ -214,7 +214,9 @@
             "fastq concatenation",
             "fragment generation",
             "UMI deduplication",
-            "matrix generation"
+            "matrix generation",
+            "modification calling",
+            "modification site annotation"
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "input_content_types": [
@@ -224,7 +226,8 @@
         "output_content_types": [
             "fragments",
             "sparse gene count matrix",
-            "sample barcode count matrix"
+            "sample barcode count matrix",
+            "minus strand modification state"
         ],
         "workflow": "96fa0630-a88e-4946-bebd-23f417d0da7a"
     }
