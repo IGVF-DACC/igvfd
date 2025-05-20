@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "3a10045abbb108d609b6b2fc696dce96",
     "index_name": "curated_set_3a10045a",
+=======
+    "hash": "a842f4e940726ae6103bc832120a3f37",
+    "index_name": "curated_set_a842f4e9",
+>>>>>>> 86fc642f (mappings)
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [

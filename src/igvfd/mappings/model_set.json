@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "4f3d655283deccc67e665379c50e94cb",
     "index_name": "model_set_4f3d6552",
+=======
+    "hash": "e9565275ae435e42f50bd2fa2d6655c6",
+    "index_name": "model_set_e9565275",
+>>>>>>> 86fc642f (mappings)
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [

@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "64f1b5a498dc1d1ee043b010a5eed399",
     "index_name": "reference_file_64f1b5a4",
+=======
+    "hash": "bf5240d2609b07a53ebedcd5623f7ff4",
+    "index_name": "reference_file_bf5240d2",
+>>>>>>> 86fc642f (mappings)
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [

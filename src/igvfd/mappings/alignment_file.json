@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "abd67c19b19e8b4a921b50abc7d43c08",
     "index_name": "alignment_file_abd67c19",
+=======
+    "hash": "fe398bafc7aab2426aba104871d74327",
+    "index_name": "alignment_file_fe398baf",
+>>>>>>> 86fc642f (mappings)
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [

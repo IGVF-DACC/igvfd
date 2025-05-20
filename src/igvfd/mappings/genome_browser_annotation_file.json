@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "0276401dfc839665aa28fb5b97b1092b",
     "index_name": "genome_browser_annotation_file_0276401d",
+=======
+    "hash": "d9ee07456b90a09c59ee9cf36a14448b",
+    "index_name": "genome_browser_annotation_file_d9ee0745",
+>>>>>>> 86fc642f (mappings)
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
