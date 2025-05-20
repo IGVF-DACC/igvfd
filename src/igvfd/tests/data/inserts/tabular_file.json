@@ -706,5 +706,23 @@
             "m6A",
             "inosine"
         ]
+    },
+    {
+        "uuid": "348292c2-2fa2-434a-a005-8ff3bf85851f",
+        "lab": "predrag-radivojac",
+        "award": "1U01HG012022-01",
+        "aliases": [
+            "igvf:variant_pathogenicity_test"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-02-01T21:29:45Z",
+        "md5sum": "d3a513841a56b8014343a06decab2f9c",
+        "file_format": "tsv",
+        "content_type": "variant pathogenicity",
+        "submitted_file_name": "/Users/igvf/igvf_files/variant_pathogenicity_test.tsv.gz",
+        "file_size": 20005000,
+        "upload_status": "validated",
+        "file_set": "igvf:prediction_set_1",
+        "controlled_access": false
     }
 ]

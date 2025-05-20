@@ -203,6 +203,7 @@
                 "variant effects",
                 "variant functional predictions",
                 "variant localization impacts",
+                "variant pathogenicity",
                 "variant to element mapping"
             ],
             "enum_descriptions": {
@@ -260,6 +261,7 @@
                 "variant effects": "The genetic variant effects on gene expression.",
                 "variant functional predictions": "Predictions of the functional effects of genetic variants.",
                 "variant localization impacts": "Output of a variant painting experiement describing the measured impact of variants.",
+                "variant pathogenicity": "A file containing variant pathogenicity scores.",
                 "variant to element mapping": "A file describing the mapping of genetic variants to genomic elements."
             },
             "submissionExample": {
