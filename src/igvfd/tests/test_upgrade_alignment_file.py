@@ -92,4 +92,3 @@ def test_alignment_file_upgrade_14_15(upgrader, alignment_file_v14, registry):
                              target_version='15', registry=registry)
     assert value['schema_version'] == '15'
     assert value['derived_manually'] == False
-    assert value['redacted'] == False

@@ -3,7 +3,6 @@
 ### Schema version 15
 
 * Adjust `derived_manually` to have default value `False`.
-* Adjust `redacted` to have default value `False`.
 
 ### Minor changes since schema version 14
 

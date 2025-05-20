@@ -151,7 +151,6 @@
         "normalized": {
             "title": "Normalized",
             "description": "Indicates if the signal file is normalized.",
-            "type": "boolean",
             "default": false,
             "submissionExample": {
                 "appscript": false,

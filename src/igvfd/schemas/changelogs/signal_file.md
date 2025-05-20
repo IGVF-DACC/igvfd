@@ -3,7 +3,6 @@
 ### Schema version 11
 
 * Adjust `derived_manually` to have default value `False`.
-* Adjust `normalized` to have default value `False`.
 
 ### Minor changes since schema version 10
 

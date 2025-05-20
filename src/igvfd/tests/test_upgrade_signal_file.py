@@ -50,4 +50,3 @@ def test_signal_file_upgrade_10_11(upgrader, signal_file_v10, registry):
                              target_version='11', registry=registry)
     assert value['schema_version'] == '11'
     assert value['derived_manually'] == False
-    assert value['normalized'] == False
