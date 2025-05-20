@@ -151,7 +151,7 @@
         "normalized": {
             "title": "Normalized",
             "description": "Indicates if the signal file is normalized.",
-            "default": false,
+            "type": "boolean",
             "submissionExample": {
                 "appscript": false,
                 "igvf_utils": false

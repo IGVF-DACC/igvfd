@@ -103,3 +103,12 @@ def signal_file_v8(signal_file):
         'content_type': 'fold over change control'
     })
     return item
+
+
+@pytest.fixture
+def signal_file_v10(signal_file):
+    item = signal_file.copy()
+    item.update({
+        'schema_version': '10',
+    })
+    return item
