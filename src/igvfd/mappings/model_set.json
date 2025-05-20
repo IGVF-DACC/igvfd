@@ -1,6 +1,6 @@
 {
-    "hash": "d667d98f14e1287fcf4a08aa07b83a8c",
-    "index_name": "model_set_d667d98f",
+    "hash": "012c8fd812335451f129cf685dfe8890",
+    "index_name": "model_set_012c8fd8",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -562,6 +562,9 @@
                                         "type": "keyword"
                                     },
                                     "barcode_map_for": {
+                                        "type": "keyword"
+                                    },
+                                    "base_modifications": {
                                         "type": "keyword"
                                     },
                                     "catalog_adapters": {

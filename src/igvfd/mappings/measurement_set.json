@@ -1,6 +1,6 @@
 {
-    "hash": "fc10947203e9632ad93ffa2ae1009074",
-    "index_name": "measurement_set_fc109472",
+    "hash": "cae492da01f6842475b2458437a29b05",
+    "index_name": "measurement_set_cae492da",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -672,6 +672,9 @@
                                         "type": "keyword"
                                     },
                                     "barcode_map_for": {
+                                        "type": "keyword"
+                                    },
+                                    "base_modifications": {
                                         "type": "keyword"
                                     },
                                     "catalog_adapters": {
