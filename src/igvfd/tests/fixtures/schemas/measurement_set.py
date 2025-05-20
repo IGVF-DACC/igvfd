@@ -445,7 +445,7 @@ def measurement_set_v27(measurement_set):
 
 
 @pytest.fixture
-def measurement_set_v27(measurement_set):
+def measurement_set_v28(measurement_set):
     item = measurement_set.copy()
     item.update({
         'schema_version': '28',
