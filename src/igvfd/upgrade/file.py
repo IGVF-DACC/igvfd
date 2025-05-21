@@ -522,7 +522,7 @@ def alignment_file_15_16(value, system):
 
 
 @upgrade_step('signal_file', '11', '12')
-def signal_file_15_16(value, system):
+def signal_file_11_12(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2744
     if 'normalized' not in value:
         value['normalized'] = False
