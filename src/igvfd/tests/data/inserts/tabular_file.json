@@ -724,5 +724,53 @@
         "upload_status": "validated",
         "file_set": "igvf:prediction_set_1",
         "controlled_access": false
+    },
+    {
+        "uuid": "df8529ef-d72e-4b74-b44a-839700da496e",
+        "accession": "IGVFFI0001MPRA",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_bed_mpra_element"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-05-06T12:34:56Z",
+        "md5sum": "0a7b6ef9e28b599d5ec52a1f58ca72b7",
+        "file_format": "bed",
+        "file_format_type": "mpra_element",
+        "content_type": "reporter genomic element effects",
+        "submitted_file_name": "/Users/igvf/igvf_files/mpra_reporter_genomic_element_effects.bed.gz",
+        "file_size": 111111,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false,
+        "catalog_adapters": [
+            "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/mpra_adapter.py"
+        ]
+    },
+    {
+        "uuid": "91384635-68a6-42da-b981-0e903ed49d84",
+        "accession": "IGVFFI0002MPRA",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_bed_mpra_variant"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-05-06T12:34:56Z",
+        "md5sum": "aa7ac8cd5e0a6993a177746279cc00d2",
+        "file_format": "bed",
+        "file_format_type": "mpra_variant",
+        "content_type": "reporter genomic variant effects",
+        "submitted_file_name": "/Users/igvf/igvf_files/mpra_reporter_genomic_variant_effects.bed.gz",
+        "file_size": 5555555,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false,
+        "catalog_adapters": [
+            "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/mpra_adapter.py"
+        ]
     }
 ]

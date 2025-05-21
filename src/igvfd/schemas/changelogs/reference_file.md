@@ -1,5 +1,10 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 19
+
+* Extend `file_format_type` enum list to include `mpra_element`.
+* Extend `file_format_type` enum list to include `mpra_variant`.
+
 ### Schema version 19
 
 * Adjust `derived_manually` to have default value `False`.
