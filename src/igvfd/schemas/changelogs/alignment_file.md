@@ -1,5 +1,9 @@
 ## Changelog for *`alignment_file.json`*
 
+### Minor changes since schema version 15
+
+* Extend `transcriptome_annotation` enum list to include `GENCODE 24`.
+
 ### Schema version 15
 
 * Adjust `derived_manually` to have default value `False`.

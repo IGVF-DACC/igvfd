@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Extend `transcriptome_annotation` enum list to include `GENCODE 24`.
 * Add `preview_timestamp`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
 * Update `aliases` regex to add `steven-gazal` as a namespace.

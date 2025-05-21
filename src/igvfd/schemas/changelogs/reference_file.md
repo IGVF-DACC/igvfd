@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 19
+
+* Extend `transcriptome_annotation` enum list to include `GENCODE 24`.
+
 ### Schema version 19
 
 * Adjust `derived_manually` to have default value `False`.
