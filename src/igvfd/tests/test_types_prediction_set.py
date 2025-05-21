@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_summary(testapp, base_prediction_set, gene_myc_hs, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, gene_zscan10_mm):
+def test_summary(testapp, base_prediction_set, gene_myc_hs, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, gene_zscan10_mm, tabular_file, analysis_step_version):
     # Test Prediction Set summary if without assessed genes
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get('summary') == 'pathogenicity prediction'
@@ -20,8 +20,16 @@ def test_summary(testapp, base_prediction_set, gene_myc_hs, gene_CRLF2_par_y, ge
                 ]
         }
     )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'file_set': base_prediction_set['@id'],
+            'analysis_step_version': analysis_step_version['@id']
+        }
+    )
     res = testapp.get(base_prediction_set['@id'])
-    assert res.json.get('summary') == 'pathogenicity prediction for CD1E, CRLF2, MAGOH2P, MYC, TAB3-AS1'
+    assert res.json.get(
+        'summary') == 'pathogenicity prediction for CD1E, CRLF2, MAGOH2P, MYC, TAB3-AS1 using bowtie2-v2.4.4'
 
     # Test Prediction Set summary if with 6+ assessed genes
     testapp.patch_json(
@@ -39,4 +47,4 @@ def test_summary(testapp, base_prediction_set, gene_myc_hs, gene_CRLF2_par_y, ge
         }
     )
     res = testapp.get(base_prediction_set['@id'])
-    assert res.json.get('summary') == 'pathogenicity prediction for 6 assessed genes'
+    assert res.json.get('summary') == 'pathogenicity prediction for 6 assessed genes using bowtie2-v2.4.4'
