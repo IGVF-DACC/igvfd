@@ -219,7 +219,8 @@ def test_file_summaries(
     sequence_file,
     signal_file,
     tabular_file,
-    base_prediction_set
+    base_prediction_set,
+    analysis_step_version
 ):
     testapp.patch_json(
         alignment_file['@id'],
@@ -315,6 +316,14 @@ def test_file_summaries(
     )
     res = testapp.get(tabular_file['@id'])
     assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 predictive filtered peaks'
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'analysis_step_version': analysis_step_version['@id']
+        }
+    )
+    res = testapp.get(tabular_file['@id'])
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 predictive filtered peaks (bowtie2-v2.4.4)'
 
 
 def test_barcode_map_for(testapp, multiplexed_sample_v7, tabular_file_v10):
