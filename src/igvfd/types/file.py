@@ -869,7 +869,7 @@ class TabularFile(File):
         elif filtered is False:
             filtered_phrase = 'unfiltered'
         software_version_phrase = None
-        if analysis_step_version:
+        if analysis_step_version and predicted is not None:
             software_versions = set()
             asv_object = request.embed(analysis_step_version, '@@object?skip_calculated=true')
             for software_version in asv_object['software_versions']:
