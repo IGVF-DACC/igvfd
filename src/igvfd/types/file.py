@@ -855,7 +855,7 @@ class TabularFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None, filtered=None):
+    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None, filtered=None, analysis_step_version=None):
         file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
@@ -868,8 +868,17 @@ class TabularFile(File):
             filtered_phrase = 'filtered'
         elif filtered is False:
             filtered_phrase = 'unfiltered'
+        software_version_phrase = None
+        if analysis_step_version:
+            software_versions = set()
+            asv_object = request.embed(analysis_step_version, '@@object?skip_calculated=true')
+            for software_version in asv_object['software_versions']:
+                software_version_object = request.embed(
+                    software_version, '@@object_with_select_calculated_properties?field=name')
+                software_versions.add(software_version_object['name'])
+            software_version_phrase = f'({", ".join(sorted(software_versions))})'
         return ' '.join(
-            [x for x in [formatted_assembly, transcriptome_annotation, predicted, filtered_phrase, content_type]
+            [x for x in [formatted_assembly, transcriptome_annotation, predicted, filtered_phrase, content_type, software_version_phrase]
              if x is not None]
         )
 
