@@ -512,3 +512,17 @@ def file_15_16(value, system):
             notes += f'This file analysis_step_version was previously {analysis_step_version}. However, derived_manually is true, therefore should not have analysis_step_version and was removed during an upgrade.'
             value['notes'] = notes.strip()
             del value['analysis_step_version']
+
+
+@upgrade_step('alignment_file', '15', '16')
+def alignment_file_15_16(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2744
+    if 'redacted' not in value:
+        value['redacted'] = False
+
+
+@upgrade_step('signal_file', '11', '12')
+def signal_file_15_16(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2744
+    if 'normalized' not in value:
+        value['normalized'] = False

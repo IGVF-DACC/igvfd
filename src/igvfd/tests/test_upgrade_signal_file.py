@@ -46,7 +46,14 @@ def test_signal_file_upgrade_8_9(upgrader, signal_file_v8):
 
 
 def test_signal_file_upgrade_10_11(upgrader, signal_file_v10):
-    value = upgrader.upgrade('alignment_file', signal_file_v10, current_version='10',
+    value = upgrader.upgrade('signal_file', signal_file_v10, current_version='10',
                              target_version='11')
     assert value['schema_version'] == '11'
     assert value['derived_manually'] == False
+
+
+def test_signal_file_upgrade_11_12(upgrader, signal_file_v11):
+    value = upgrader.upgrade('signal_file', signal_file_v11, current_version='11',
+                             target_version='12')
+    assert value['schema_version'] == '12'
+    assert value['normalized'] == False
