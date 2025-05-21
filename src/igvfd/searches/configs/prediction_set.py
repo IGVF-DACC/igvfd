@@ -132,6 +132,9 @@ def prediction_set():
             'scope': {
                 'title': 'Prediction Scope'
             },
+            'files.content_type': {
+                'title': 'File Content Type'
+            }
         }
     }
 
