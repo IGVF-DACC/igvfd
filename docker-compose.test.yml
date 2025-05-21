@@ -44,6 +44,7 @@ services:
       - "6543:6543"
     depends_on:
       - postgres
+      - localstack
 
   nginx:
     build:

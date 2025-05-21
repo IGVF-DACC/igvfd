@@ -115,12 +115,12 @@ def show_upload_credentials(request=None, context=None, upload_status=None):
     return request.has_permission('edit', context)
 
 
-def show_href(anvil_url=None):
-    return anvil_url is None
+def show_href():
+    return True
 
 
-def show_s3uri(anvil_url=None):
-    return anvil_url is None
+def show_s3uri():
+    return True
 
 
 @abstract_collection(
@@ -1255,10 +1255,6 @@ def download(context, request):
             raise HTTPForbidden(
                 'Downloading controlled-access file not allowed.'
             )
-    if properties.get('anvil_url') is not None:
-        raise HTTPForbidden(
-            'Downloading Anvil file not allowed.'
-        )
     file_extension = FILE_FORMAT_TO_FILE_EXTENSION[properties['file_format']]
     accession = properties['accession']
     filename = f'{accession}{file_extension}'
