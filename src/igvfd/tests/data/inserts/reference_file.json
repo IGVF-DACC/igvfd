@@ -417,5 +417,25 @@
         "controlled_access": false,
         "external": false,
         "analysis_step_version": "igvf-dacc:analysis_step_version_01"
+    },
+    {
+        "uuid": "e9b3b6d8-2589-48b3-a27d-934e80057483",
+        "accession": "IGVFFI1234KLJH",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "c3981fa8d26e95d911fe8eaeb6570f2f",
+        "file_format": "gtf",
+        "content_type": "transcriptome reference",
+        "file_format_specifications": [
+            "igvf:transcriptome_reference_gencode_24"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38",
+        "transcriptome_annotation": "GENCODE 24",
+        "dbxrefs": [
+            "GENCODE:Release 24"
+        ],
+        "controlled_access": false,
+        "external": false
     }
 ]
