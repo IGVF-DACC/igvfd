@@ -151,7 +151,7 @@ def analysis_set():
                 'title': 'Functional Assay Mechanisms'
             },
             'files.content_type': {
-                'title': 'File Type'
+                'title': 'File Content Type'
             }
         },
     }
