@@ -53,9 +53,6 @@ class AnalysisStepVersion(Item):
         },
         'notSubmittable': True
     })
-    def workflows(self, request, workflows=None):
+    def workflows(self, request, workflows):
         """Return the workflow that this analysis step version is linked to."""
-        # If no workflow is linked to this ASV, the property should not be calculated
-        if not workflows:
-            return
         return paths_filtered_by_status(request, workflows)
