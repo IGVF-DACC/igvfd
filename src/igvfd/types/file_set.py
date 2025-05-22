@@ -1433,8 +1433,8 @@ class PredictionSet(FileSet):
                 for software_version in asv_object['software_versions']:
                     software_version_object = request.embed(
                         software_version,
-                        '@@object_with_select_calculated_properties?field=name')
-                    software_versions.add(software_version_object['name'])
+                        '@@object_with_select_calculated_properties?field=summary')
+                    software_versions.add(software_version_object['summary'])
         software_version_phrase = None
         if software_versions:
             software_version_phrase = f'using {", ".join(sorted(software_versions))}'

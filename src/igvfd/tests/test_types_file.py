@@ -323,7 +323,7 @@ def test_file_summaries(
         }
     )
     res = testapp.get(tabular_file['@id'])
-    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 predictive filtered peaks (bowtie2-v2.4.4)'
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 predictive filtered peaks (Bowtie2 v2.4.4)'
 
 
 def test_barcode_map_for(testapp, multiplexed_sample_v7, tabular_file_v10):

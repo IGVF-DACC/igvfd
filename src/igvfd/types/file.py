@@ -874,8 +874,8 @@ class TabularFile(File):
             asv_object = request.embed(analysis_step_version, '@@object?skip_calculated=true')
             for software_version in asv_object['software_versions']:
                 software_version_object = request.embed(
-                    software_version, '@@object_with_select_calculated_properties?field=name')
-                software_versions.add(software_version_object['name'])
+                    software_version, '@@object_with_select_calculated_properties?field=summary')
+                software_versions.add(software_version_object['summary'])
             software_version_phrase = f'({", ".join(sorted(software_versions))})'
         return ' '.join(
             [x for x in [formatted_assembly, transcriptome_annotation, predicted, filtered_phrase, content_type, software_version_phrase]
