@@ -246,14 +246,17 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
             'construct_library_sets': [construct_library_set_reporter['@id']]
         }
     )
-    testapp.patch_json(
-        measurement_set_mpra['@id'],
-        {
-            'samples': [primary_cell['@id']]
-        }
-    )
     res = testapp.get(analysis_set_with_CLS_input['@id']).json
     assert res.get('summary', '') == 'lentiMPRA integrating a reporter library targeting accessible genome regions genome-wide'
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [construct_library_set_reporter['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id']).json
+    assert res.get(
+        'summary', '') == 'lentiMPRA integrating a reporter library targeting accessible genome regions genome-wide'
     testapp.patch_json(
         analysis_set_with_CLS_input['@id'],
         {

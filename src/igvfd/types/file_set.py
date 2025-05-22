@@ -261,6 +261,7 @@ class FileSet(Item):
 
     @calculated_property(
         define=True,
+        condition='samples',
         schema={
             'title': 'Construct Library Sets',
             'description': 'The construct library sets associated with the samples of this file set.',
@@ -275,28 +276,15 @@ class FileSet(Item):
             },
             'notSubmittable': True
         })
-    def construct_library_sets(self, request, samples=None, input_file_sets=[]):
+    def construct_library_sets(self, request, samples=None):
         construct_library_sets = set()
-        if samples:
-            for sample in samples:
-                sample_object = request.embed(sample,
-                                              '@@object_with_select_calculated_properties?'
-                                              'field=construct_library_sets'
-                                              )
-                if sample_object.get('construct_library_sets', []):
-                    construct_library_sets = construct_library_sets | set(
-                        sample_object.get('construct_library_sets', []))
-        else:
-            all_inputs_cls = True
-            cls_in_input_file_sets = set()
-            if input_file_sets:
-                for input_set in input_file_sets:
-                    if input_set.startswith('/construct-library-sets/'):
-                        cls_in_input_file_sets.add(input_set)
-                    else:
-                        all_inputs_cls = False
-            if all_inputs_cls:
-                construct_library_sets = construct_library_sets | cls_in_input_file_sets
+        for sample in samples:
+            sample_object = request.embed(sample,
+                                          '@@object_with_select_calculated_properties?'
+                                          'field=construct_library_sets'
+                                          )
+            if sample_object.get('construct_library_sets', []):
+                construct_library_sets = construct_library_sets | set(sample_object.get('construct_library_sets', []))
         if construct_library_sets:
             return list(construct_library_sets)
 
@@ -488,7 +476,6 @@ class AnalysisSet(FileSet):
                                             f"{assay_term_name} ({file_set_object['preferred_assay_title']})")
                                     else:
                                         cls_derived_assay_titles.add(file_set_object['preferred_assay_title'])
-                        fileset_types.add(fileset_object['file_set_type'])
                     elif not input_fileset.startswith('/analysis-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
                     # Collect control types.
@@ -510,8 +497,13 @@ class AnalysisSet(FileSet):
                         modification_object = request.embed(modification, '@@object?skip_calculated=true')
                         crispr_modalities.add(modification_object['modality'])
         # Collect construct library set summaries and types
+        prop_with_cls = None
         if construct_library_sets:
-            for construct_library_set in construct_library_sets:
+            prop_with_cls = construct_library_sets
+        elif len(fileset_subclasses) == 1 and ('ConstructLibrarySet' in fileset_subclasses):
+            prop_with_cls = input_file_sets
+        if prop_with_cls:
+            for construct_library_set in prop_with_cls:
                 construct_library_set_object = request.embed(
                     construct_library_set, '@@object_with_select_calculated_properties?field=summary')
                 cls_type_set.add(construct_library_set_object['file_set_type'])
