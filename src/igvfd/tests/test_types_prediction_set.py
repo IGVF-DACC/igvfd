@@ -29,7 +29,7 @@ def test_summary(testapp, base_prediction_set, gene_myc_hs, gene_CRLF2_par_y, ge
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'pathogenicity prediction for CD1E, CRLF2, MAGOH2P, MYC, TAB3-AS1 using bowtie2-v2.4.4'
+        'summary') == 'pathogenicity prediction for CD1E, CRLF2, MAGOH2P, MYC, TAB3-AS1 using Bowtie2 v2.4.4'
 
     # Test Prediction Set summary if with 6+ assessed genes
     testapp.patch_json(
@@ -47,4 +47,4 @@ def test_summary(testapp, base_prediction_set, gene_myc_hs, gene_CRLF2_par_y, ge
         }
     )
     res = testapp.get(base_prediction_set['@id'])
-    assert res.json.get('summary') == 'pathogenicity prediction for 6 assessed genes using bowtie2-v2.4.4'
+    assert res.json.get('summary') == 'pathogenicity prediction for 6 assessed genes using Bowtie2 v2.4.4'
