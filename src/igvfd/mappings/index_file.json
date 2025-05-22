@@ -1,6 +1,6 @@
 {
-    "hash": "2ea0c7fb7bd8fea96cfa4a21499f7ae2",
-    "index_name": "index_file_2ea0c7fb",
+    "hash": "e74513d835413c10f7a732b3f5544796",
+    "index_name": "index_file_e74513d8",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -2482,6 +2482,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "analysis_step_versions": {
                                 "type": "keyword"
                             },
                             "analysis_steps": {

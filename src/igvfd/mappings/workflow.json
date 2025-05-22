@@ -1,6 +1,6 @@
 {
-    "hash": "6b296bb23390b857b94cbdb7dd38cbfb",
-    "index_name": "workflow_6b296bb2",
+    "hash": "5660dd9d5b787377b6131f712a1a43a1",
+    "index_name": "workflow_5660dd9d",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -156,6 +156,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "analysis_step_versions": {
                         "type": "keyword"
                     },
                     "analysis_steps": {
@@ -367,6 +370,9 @@
                                         "type": "keyword"
                                     },
                                     "uuid": {
+                                        "type": "keyword"
+                                    },
+                                    "workflows": {
                                         "type": "keyword"
                                     }
                                 },
