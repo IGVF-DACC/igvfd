@@ -466,7 +466,6 @@ class AnalysisSet(FileSet):
                                             f"{assay_term_name} ({file_set_object['preferred_assay_title']})")
                                     else:
                                         cls_derived_assay_titles.add(file_set_object['preferred_assay_title'])
-                        fileset_types.add(fileset_object['file_set_type'])
                     elif not input_fileset.startswith('/analysis-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
                     # Collect control types.
@@ -488,8 +487,13 @@ class AnalysisSet(FileSet):
                         modification_object = request.embed(modification, '@@object?skip_calculated=true')
                         crispr_modalities.add(modification_object['modality'])
         # Collect construct library set summaries and types
+        prop_with_cls = None
         if construct_library_sets:
-            for construct_library_set in construct_library_sets:
+            prop_with_cls = construct_library_sets
+        elif len(fileset_subclasses) == 1 and ('ConstructLibrarySet' in fileset_subclasses):
+            prop_with_cls = input_file_sets
+        if prop_with_cls:
+            for construct_library_set in prop_with_cls:
                 construct_library_set_object = request.embed(
                     construct_library_set, '@@object_with_select_calculated_properties?field=summary')
                 cls_type_set.add(construct_library_set_object['file_set_type'])
@@ -522,10 +526,10 @@ class AnalysisSet(FileSet):
         targeted_genes_phrase = ''
         if targeted_genes:
             targeted_genes_phrase = f'targeting {", ".join(targeted_genes)}'
-        # The file set types are only shown if the inputs are all Auxiliary Sets or Construct Library Sets
-        # and the Measurement Sets related to the Auxiliary Sets or Construct Library Sets are not CRISPR screens.
+        # The file set types are only shown if the inputs are all Auxiliary Sets
+        # and the Measurement Sets related to the Auxiliary Sets are not CRISPR screens.
         file_set_type_phrase = ''
-        if fileset_types and len(fileset_subclasses) == 1 and ('AuxiliarySet' in fileset_subclasses or 'ConstructLibrarySet' in fileset_subclasses):
+        if fileset_types and len(fileset_subclasses) == 1 and ('AuxiliarySet' in fileset_subclasses):
             if not (assay_terms and all(x in crispr_screen_terms for x in assay_terms)):
                 file_set_type_phrase = ', '.join(fileset_types)
 
