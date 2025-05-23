@@ -1,5 +1,9 @@
 ## Changelog for *`signal_file.json`*
 
+### Schema version 12
+
+* Adjust `normalized` to have default value `False`.
+
 ### Schema version 11
 
 * Adjust `derived_manually` to have default value `False`.

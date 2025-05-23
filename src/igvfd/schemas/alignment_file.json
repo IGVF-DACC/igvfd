@@ -84,7 +84,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "15"
+            "default": "16"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
@@ -122,6 +122,7 @@
             "title": "Redacted",
             "description": "Indicates whether the alignments data have been sanitized (redacted) to prevent leakage of private and potentially identifying genomic information.",
             "type": "boolean",
+            "default": false,
             "submissionExample": {
                 "appscript": false,
                 "igvf_utils": false

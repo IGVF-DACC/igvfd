@@ -1,5 +1,9 @@
 ## Changelog for *`alignment_file.json`*
 
+### Schema version 16
+
+* Adjust `redacted` to have default value `False`.
+
 ### Schema version 15
 
 * Adjust `derived_manually` to have default value `False`.

@@ -92,3 +92,10 @@ def test_alignment_file_upgrade_14_15(upgrader, alignment_file_v14):
                              target_version='15')
     assert value['schema_version'] == '15'
     assert value['derived_manually'] == False
+
+
+def test_alignment_file_upgrade_15_16(upgrader, alignment_file_v15):
+    value = upgrader.upgrade('alignment_file', alignment_file_v15, current_version='15',
+                             target_version='16')
+    assert value['schema_version'] == '16'
+    assert value['redacted'] == False
