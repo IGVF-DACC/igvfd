@@ -222,7 +222,9 @@ class FileSet(Item):
         'format': 'date-time',
         'notSubmittable': True
     })
-    def submitted_files_timestamp(self, request, files, auxiliary_sets=[]):
+    def submitted_files_timestamp(self, request, files, auxiliary_sets=None):
+        if auxiliary_sets is None:
+            auxiliary_sets = []
         timestamps = set()
         files_to_traverse = []
         if files:
@@ -371,7 +373,15 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type, input_file_sets=[], files=[], samples=[], construct_library_sets=[]):
+    def summary(self, request, file_set_type, input_file_sets=None, files=None, samples=None, construct_library_sets=None):
+        if input_file_sets is None:
+            input_file_set = []
+        if files is None:
+            files = []
+        if samples is None:
+            samples = []
+        if construct_library_sets is None:
+            construct_library_sets = []
         inspected_filesets = set()
         fileset_types = set()
         file_content_types = set()
@@ -1087,7 +1097,9 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, assay_term, preferred_assay_title=None, samples=None, control_type=None, targeted_genes=None, construct_library_sets=[]):
+    def summary(self, request, assay_term, preferred_assay_title=None, samples=None, control_type=None, targeted_genes=None, construct_library_sets=None):
+        if construct_library_sets is None:
+            construct_library_sets = []
         assay = request.embed(assay_term)['term_name']
         modality_set = set()
         cls_set = set()
@@ -1500,7 +1512,9 @@ class ConstructLibrarySet(FileSet):
             },
             'notSubmittable': True
         })
-    def file_sets(self, request, applied_to_samples=[]):
+    def file_sets(self, request, applied_to_samples=None):
+        if applied_to_samples is None:
+            applied_to_samples = []
         linked_file_sets = set()
         for sample in applied_to_samples:
             sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=file_sets')
@@ -1524,7 +1538,9 @@ class ConstructLibrarySet(FileSet):
             },
             'notSubmittable': True
         })
-    def assay_titles(self, request, file_sets=[]):
+    def assay_titles(self, request, file_sets=None):
+        if file_sets is None:
+            file_sets = []
         assay_titles = set()
         for file_set in file_sets:
             if file_set.startswith('/measurement-sets/'):
@@ -1543,7 +1559,11 @@ class ConstructLibrarySet(FileSet):
     )
     def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, large_scale_gene_list=None, guide_type=None,
                 small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, orf_list=None, associated_phenotypes=None,
-                control_type=None, targeton=None, assay_titles=[], integrated_content_files=[]):
+                control_type=None, targeton=None, assay_titles=None, integrated_content_files=None):
+        if assay_titles is None:
+            assay_titles = []
+        if integrated_content_files is None:
+            integrated_content_files = []
         library_type = file_set_type
         target_phrase = ''
         pheno_terms = []
