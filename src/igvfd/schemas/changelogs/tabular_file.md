@@ -1,5 +1,10 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 16
+
+* Extend `file_format_type` enum list to include `mpra_element`.
+* Extend `file_format_type` enum list to include `mpra_variant`.
+
 ### Schema version 16
 
 * Adjust `derived_manually` to have default value `False`.
