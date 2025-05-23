@@ -1017,7 +1017,7 @@ def audit_input_file_sets_derived_from(value, system):
         missing_derived_from_file_sets = ', '.join(
             [audit_link(path_to_text(file_set), file_set) for file_set in missing_derived_from_file_sets])
         detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'links to file(s) {files_to_link} that are `derived_from` '
             f'file(s) {derived_from_files_to_link} from file set(s) {missing_derived_from_file_sets} '
             f'which are not in `input_file_sets`.'
@@ -1030,7 +1030,7 @@ def audit_input_file_sets_derived_from(value, system):
             audit_message_missing_derived_from = audit_message_missing_derived_from_prediction_model
         missing_derived_from = ', '.join([audit_link(path_to_text(file), file) for file in missing_derived_from])
         detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'links to file(s) {missing_derived_from} that have no `derived_from`.'
         )
         yield AuditFailure(audit_message_missing_derived_from.get('audit_category', ''), f'{detail} {audit_message_missing_derived_from.get("audit_description", "")}', level=audit_message_missing_derived_from.get('audit_level', ''))
@@ -1039,7 +1039,7 @@ def audit_input_file_sets_derived_from(value, system):
         unexpected_file_sets = ', '.join(
             [audit_link(path_to_text(file_set), file_set) for file_set in unexpected_file_sets])
         detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'links to file set(s): {unexpected_file_sets} in `input_file_sets` that are not represented in the '
             f'`derived_from` of the file sets of the files in this analysis.'
         )
