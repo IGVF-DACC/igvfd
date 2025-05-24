@@ -221,19 +221,20 @@ class Item(snovault.Item):
 
     @calculated_property(
         schema={
-            'title': 'Summary',
+            'title': 'Summary a',
             'type': 'string',
             'description': 'A summary of the object.',
             'notSubmittable': True,
         }
     )
     def summary(self):
+        # Changes
         if self.name_key is None:
             return self.uuid
         properties = self.upgrade_properties()
         if properties.get('status') == 'replaced':
             return self.uuid
-        return properties.get(self.name_key, None) or self.uuid
+        return properties.get(self.name_key, None) or self.uuid or None
 
     @staticmethod
     def _valid_status(new_status, schema, parent):

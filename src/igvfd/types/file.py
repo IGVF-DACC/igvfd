@@ -221,7 +221,7 @@ class File(Item):
         'notSubmittable': True
     })
     def gene_list_for(self, request, gene_list_for):
-        return paths_filtered_by_status(request, gene_list_for)
+        return paths_filtered_by_status(request, gene_list_for) or None
 
     @calculated_property(schema={
         'title': 'Loci List For',

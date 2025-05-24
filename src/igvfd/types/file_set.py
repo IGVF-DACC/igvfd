@@ -212,7 +212,7 @@ class FileSet(Item):
         'notSubmittable': True
     })
     def control_for(self, request, control_for):
-        return paths_filtered_by_status(request, control_for)
+        return paths_filtered_by_status(request, control_for) or None
 
     @calculated_property(schema={
         'title': 'Submitted Files Timestamp',
