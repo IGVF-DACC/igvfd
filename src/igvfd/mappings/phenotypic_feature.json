@@ -1,6 +1,6 @@
 {
-    "hash": "867cb8700a85d13cb02aa5c57765eeae",
-    "index_name": "phenotypic_feature_867cb870",
+    "hash": "f1b492b233fd08aefcecc74245678b66",
+    "index_name": "phenotypic_feature_f1b492b2",
     "item_type": "phenotypic_feature",
     "mapping": {
         "dynamic_templates": [
@@ -181,6 +181,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -264,6 +267,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -333,6 +339,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -366,6 +375,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "no_change": {
+                        "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
@@ -428,6 +440,9 @@
                                 "type": "keyword"
                             },
                             "last_name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

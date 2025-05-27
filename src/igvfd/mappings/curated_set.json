@@ -1,6 +1,6 @@
 {
-    "hash": "3a10045abbb108d609b6b2fc696dce96",
-    "index_name": "curated_set_3a10045a",
+    "hash": "3117cd9d6f70f64d18b49969eb62482d",
+    "index_name": "curated_set_3117cd9d",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -211,6 +211,9 @@
                                     "last_name": {
                                         "type": "keyword"
                                     },
+                                    "no_change": {
+                                        "type": "keyword"
+                                    },
                                     "notes": {
                                         "type": "text"
                                     },
@@ -254,6 +257,9 @@
                                 "type": "keyword"
                             },
                             "name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
@@ -555,6 +561,9 @@
                                     "md5sum": {
                                         "type": "keyword"
                                     },
+                                    "no_change": {
+                                        "type": "keyword"
+                                    },
                                     "notes": {
                                         "type": "text"
                                     },
@@ -657,6 +666,9 @@
                             "multiome_size": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "no_change": {
+                                "type": "keyword"
                             },
                             "notes": {
                                 "type": "text"
@@ -985,6 +997,9 @@
                                 "store": true,
                                 "type": "long"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -1220,6 +1235,9 @@
                                 "type": "keyword"
                             },
                             "lot_id": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
@@ -1466,6 +1484,9 @@
                                 "store": true,
                                 "type": "long"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "normalized": {
                                 "store": true,
                                 "type": "boolean"
@@ -1616,6 +1637,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -1649,6 +1673,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "no_change": {
+                        "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
@@ -1730,6 +1757,9 @@
                                 "type": "keyword"
                             },
                             "lab": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
@@ -1911,6 +1941,9 @@
                                     "name": {
                                         "type": "keyword"
                                     },
+                                    "no_change": {
+                                        "type": "keyword"
+                                    },
                                     "notes": {
                                         "type": "text"
                                     },
@@ -2006,6 +2039,9 @@
                                         "type": "text"
                                     },
                                     "lab": {
+                                        "type": "keyword"
+                                    },
+                                    "no_change": {
                                         "type": "keyword"
                                     },
                                     "notes": {
@@ -2121,6 +2157,9 @@
                                     "modality": {
                                         "type": "keyword"
                                     },
+                                    "no_change": {
+                                        "type": "keyword"
+                                    },
                                     "notes": {
                                         "type": "text"
                                     },
@@ -2171,6 +2210,9 @@
                                 "type": "keyword"
                             },
                             "multiplexing_methods": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
@@ -2274,6 +2316,9 @@
                                         "type": "keyword"
                                     },
                                     "name": {
+                                        "type": "keyword"
+                                    },
+                                    "no_change": {
                                         "type": "keyword"
                                     },
                                     "notes": {
@@ -2407,6 +2452,9 @@
                                     "name": {
                                         "type": "keyword"
                                     },
+                                    "no_change": {
+                                        "type": "keyword"
+                                    },
                                     "notes": {
                                         "type": "text"
                                     },
@@ -2521,6 +2569,9 @@
                                         "type": "keyword"
                                     },
                                     "lot_id": {
+                                        "type": "keyword"
+                                    },
+                                    "no_change": {
                                         "type": "keyword"
                                     },
                                     "notes": {
@@ -2649,6 +2700,9 @@
                                 "type": "keyword"
                             },
                             "last_name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

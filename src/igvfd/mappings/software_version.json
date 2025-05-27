@@ -1,6 +1,6 @@
 {
-    "hash": "06ed65e69db9086fc31173d10ff6b865",
-    "index_name": "software_version_06ed65e6",
+    "hash": "6a5e5d37c27f4c32d092b62676249e17",
+    "index_name": "software_version_6a5e5d37",
     "item_type": "software_version",
     "mapping": {
         "dynamic_templates": [
@@ -181,6 +181,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -258,6 +261,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -293,6 +299,9 @@
                         "type": "object"
                     },
                     "name": {
+                        "type": "keyword"
+                    },
+                    "no_change": {
                         "type": "keyword"
                     },
                     "notes": {
@@ -375,6 +384,9 @@
                                 "type": "keyword"
                             },
                             "lab": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
@@ -474,6 +486,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -559,6 +574,9 @@
                                 "type": "keyword"
                             },
                             "last_name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

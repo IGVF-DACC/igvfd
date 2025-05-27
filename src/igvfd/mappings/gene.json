@@ -1,6 +1,6 @@
 {
-    "hash": "a7f401b4016c2639f50bc92b2a533a25",
-    "index_name": "gene_a7f401b4",
+    "hash": "f8bf7d8a06e11bef71d33b1ab2b8a202",
+    "index_name": "gene_f8bf7d8a",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -195,6 +195,9 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
+                    "no_change": {
+                        "type": "keyword"
+                    },
                     "notes": {
                         "type": "text"
                     },
@@ -246,6 +249,9 @@
                                 "type": "keyword"
                             },
                             "last_name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

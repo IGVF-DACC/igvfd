@@ -1,6 +1,6 @@
 {
-    "hash": "a6ed4a79f04fc2b5fc3bf384a7991666",
-    "index_name": "perturb_seq_quality_metric_a6ed4a79",
+    "hash": "72e40f0c776f79be3a49862e71a5da5d",
+    "index_name": "perturb_seq_quality_metric_72e40f0c",
     "item_type": "perturb_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -225,6 +225,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -304,6 +307,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -345,6 +351,9 @@
                     "moi": {
                         "store": true,
                         "type": "float"
+                    },
+                    "no_change": {
+                        "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
@@ -406,6 +415,9 @@
                                 "type": "keyword"
                             },
                             "last_name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

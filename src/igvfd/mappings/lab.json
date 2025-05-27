@@ -1,6 +1,6 @@
 {
-    "hash": "b4f5df7c2c5dab3faad0f8ff367b2e7a",
-    "index_name": "lab_b4f5df7c",
+    "hash": "63513459810d1ff7acfc8dfbc5c19a3c",
+    "index_name": "lab_63513459",
     "item_type": "lab",
     "mapping": {
         "dynamic_templates": [
@@ -181,6 +181,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -237,6 +240,9 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
+                    "no_change": {
+                        "type": "keyword"
+                    },
                     "notes": {
                         "type": "text"
                     },
@@ -282,6 +288,9 @@
                                 "type": "keyword"
                             },
                             "last_name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

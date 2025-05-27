@@ -1,6 +1,6 @@
 {
-    "hash": "7ad422ed32f4cf43c329b86ae1d36c5f",
-    "index_name": "human_donor_7ad422ed",
+    "hash": "7d4b0baa11cfff1aca793a5dd3ac7ff0",
+    "index_name": "human_donor_7d4b0baa",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -187,6 +187,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -279,6 +282,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -312,6 +318,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "no_change": {
+                        "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
@@ -371,6 +380,9 @@
                                     "name": {
                                         "type": "keyword"
                                     },
+                                    "no_change": {
+                                        "type": "keyword"
+                                    },
                                     "notes": {
                                         "type": "text"
                                     },
@@ -415,6 +427,9 @@
                                 "type": "object"
                             },
                             "lab": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
@@ -539,6 +554,9 @@
                             "lab": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -646,6 +664,9 @@
                                         "type": "keyword"
                                     },
                                     "lab": {
+                                        "type": "keyword"
+                                    },
+                                    "no_change": {
                                         "type": "keyword"
                                     },
                                     "notes": {
@@ -765,6 +786,9 @@
                                 "type": "keyword"
                             },
                             "last_name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

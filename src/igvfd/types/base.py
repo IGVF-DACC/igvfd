@@ -235,6 +235,17 @@ class Item(snovault.Item):
             return self.uuid
         return properties.get(self.name_key, None) or self.uuid
 
+    @calculated_property(
+        schema={
+            'title': 'NoChange',
+            'type': 'string',
+            'description': 'blah',
+            'notSubmittable': True,
+        }
+    )
+    def no_change(self):
+        return None
+
     @staticmethod
     def _valid_status(new_status, schema, parent):
         valid_statuses = schema.get('properties', {}).get('status', {}).get('enum', [])

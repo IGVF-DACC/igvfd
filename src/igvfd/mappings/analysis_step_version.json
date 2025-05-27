@@ -1,6 +1,6 @@
 {
-    "hash": "b0e1d4bdb77214b0bad979e59b0064e4",
-    "index_name": "analysis_step_version_b0e1d4bd",
+    "hash": "7167850f6b78a47a52d5cd81ccbcbdb6",
+    "index_name": "analysis_step_version_7167850f",
     "item_type": "analysis_step_version",
     "mapping": {
         "dynamic_templates": [
@@ -188,6 +188,9 @@
                                 "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -268,6 +271,9 @@
                                     },
                                     "name": {
                                         "copy_to": "_fuzzy",
+                                        "type": "keyword"
+                                    },
+                                    "no_change": {
                                         "type": "keyword"
                                     },
                                     "notes": {
@@ -355,6 +361,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -430,6 +439,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -463,6 +475,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "no_change": {
+                        "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
@@ -504,6 +519,9 @@
                             },
                             "name": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
@@ -584,6 +602,9 @@
                                 "type": "keyword"
                             },
                             "last_name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
