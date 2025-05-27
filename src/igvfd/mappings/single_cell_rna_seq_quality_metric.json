@@ -1,6 +1,6 @@
 {
-    "hash": "70aeb48e808d41e6311a2eca8ac72f73",
-    "index_name": "single_cell_rna_seq_quality_metric_70aeb48e",
+    "hash": "60f90ee96aec0525484ce6194b65a6e8",
+    "index_name": "single_cell_rna_seq_quality_metric_60f90ee9",
     "item_type": "single_cell_rna_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -213,6 +213,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -300,6 +303,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -385,6 +391,9 @@
                     "n_unique": {
                         "store": true,
                         "type": "float"
+                    },
+                    "no_change": {
+                        "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
@@ -491,6 +500,9 @@
                                 "type": "keyword"
                             },
                             "last_name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

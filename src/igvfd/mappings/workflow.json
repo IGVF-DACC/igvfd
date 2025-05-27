@@ -1,6 +1,6 @@
 {
-    "hash": "6b296bb23390b857b94cbdb7dd38cbfb",
-    "index_name": "workflow_6b296bb2",
+    "hash": "9b1776ecd6a6ec7c71e15e84cce7a5f5",
+    "index_name": "workflow_9b1776ec",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -199,6 +199,9 @@
                                     "lab": {
                                         "type": "keyword"
                                     },
+                                    "no_change": {
+                                        "type": "keyword"
+                                    },
                                     "notes": {
                                         "type": "text"
                                     },
@@ -238,6 +241,9 @@
                                                 "type": "keyword"
                                             },
                                             "name": {
+                                                "type": "keyword"
+                                            },
+                                            "no_change": {
                                                 "type": "keyword"
                                             },
                                             "notes": {
@@ -282,6 +288,9 @@
                                                         "type": "keyword"
                                                     },
                                                     "name": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "no_change": {
                                                         "type": "keyword"
                                                     },
                                                     "notes": {
@@ -392,6 +401,9 @@
                                 "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -465,6 +477,9 @@
                                 "type": "keyword"
                             },
                             "name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
@@ -547,6 +562,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -583,6 +601,9 @@
                     },
                     "name": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "no_change": {
                         "type": "keyword"
                     },
                     "notes": {
@@ -665,6 +686,9 @@
                                 "type": "keyword"
                             },
                             "lab": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
@@ -792,6 +816,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -861,6 +888,9 @@
                                 "type": "keyword"
                             },
                             "last_name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

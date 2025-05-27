@@ -1,6 +1,6 @@
 {
-    "hash": "fedc9868969a9cf3cbedee1290113335",
-    "index_name": "crispr_modification_fedc9868",
+    "hash": "f51b635b8d535f71b94b70576ca82fc4",
+    "index_name": "crispr_modification_f51b635b",
     "item_type": "crispr_modification",
     "mapping": {
         "dynamic_templates": [
@@ -191,6 +191,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -280,6 +283,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -319,6 +325,9 @@
                     },
                     "modality": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "no_change": {
                         "type": "keyword"
                     },
                     "notes": {
@@ -375,6 +384,9 @@
                                 "type": "keyword"
                             },
                             "last_name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

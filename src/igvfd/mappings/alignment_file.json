@@ -1,6 +1,6 @@
 {
-    "hash": "dd8cd04a66f865b2ba40079274e9ef63",
-    "index_name": "alignment_file_dd8cd04a",
+    "hash": "b1a14b2bb2583d40144a0433d3c1a702",
+    "index_name": "alignment_file_b1a14b2b",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -201,6 +201,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -350,6 +353,9 @@
                             "lab": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -447,6 +453,9 @@
                                         "type": "keyword"
                                     },
                                     "name": {
+                                        "type": "keyword"
+                                    },
+                                    "no_change": {
                                         "type": "keyword"
                                     },
                                     "notes": {
@@ -642,6 +651,9 @@
                                 "store": true,
                                 "type": "long"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -796,6 +808,9 @@
                                             "name": {
                                                 "type": "keyword"
                                             },
+                                            "no_change": {
+                                                "type": "keyword"
+                                            },
                                             "notes": {
                                                 "type": "text"
                                             },
@@ -928,6 +943,9 @@
                                             "modality": {
                                                 "type": "keyword"
                                             },
+                                            "no_change": {
+                                                "type": "keyword"
+                                            },
                                             "notes": {
                                                 "type": "text"
                                             },
@@ -978,6 +996,9 @@
                                         "type": "keyword"
                                     },
                                     "multiplexing_methods": {
+                                        "type": "keyword"
+                                    },
+                                    "no_change": {
                                         "type": "keyword"
                                     },
                                     "notes": {
@@ -1081,6 +1102,9 @@
                                                 "type": "keyword"
                                             },
                                             "name": {
+                                                "type": "keyword"
+                                            },
+                                            "no_change": {
                                                 "type": "keyword"
                                             },
                                             "notes": {
@@ -1213,6 +1237,9 @@
                                             "name": {
                                                 "type": "keyword"
                                             },
+                                            "no_change": {
+                                                "type": "keyword"
+                                            },
                                             "notes": {
                                                 "type": "text"
                                             },
@@ -1326,6 +1353,9 @@
                                                 "type": "keyword"
                                             },
                                             "lot_id": {
+                                                "type": "keyword"
+                                            },
+                                            "no_change": {
                                                 "type": "keyword"
                                             },
                                             "notes": {
@@ -1685,6 +1715,9 @@
                                     "multiplexing_methods": {
                                         "type": "keyword"
                                     },
+                                    "no_change": {
+                                        "type": "keyword"
+                                    },
                                     "notes": {
                                         "type": "text"
                                     },
@@ -1786,6 +1819,9 @@
                                                 "type": "keyword"
                                             },
                                             "name": {
+                                                "type": "keyword"
+                                            },
+                                            "no_change": {
                                                 "type": "keyword"
                                             },
                                             "notes": {
@@ -1955,6 +1991,9 @@
                                     "name": {
                                         "type": "keyword"
                                     },
+                                    "no_change": {
+                                        "type": "keyword"
+                                    },
                                     "notes": {
                                         "type": "text"
                                     },
@@ -2077,6 +2116,9 @@
                                 "store": true,
                                 "type": "long"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -2156,6 +2198,9 @@
                                         "type": "object"
                                     },
                                     "name": {
+                                        "type": "keyword"
+                                    },
+                                    "no_change": {
                                         "type": "keyword"
                                     },
                                     "notes": {
@@ -2308,6 +2353,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -2346,6 +2394,9 @@
                         "type": "keyword"
                     },
                     "md5sum": {
+                        "type": "keyword"
+                    },
+                    "no_change": {
                         "type": "keyword"
                     },
                     "notes": {
@@ -2416,6 +2467,9 @@
                                 "type": "keyword"
                             },
                             "last_name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
@@ -2520,6 +2574,9 @@
                             },
                             "name": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

@@ -1,6 +1,6 @@
 {
-    "hash": "951c2f96c9c46869482985f6e48af013",
-    "index_name": "starr_seq_quality_metric_951c2f96",
+    "hash": "4b223a5c12c3ee6362775690f87550a2",
+    "index_name": "starr_seq_quality_metric_4b223a5c",
     "item_type": "starr_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -213,6 +213,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -296,6 +299,9 @@
                             "name": {
                                 "type": "keyword"
                             },
+                            "no_change": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -329,6 +335,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "no_change": {
+                        "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
@@ -386,6 +395,9 @@
                                 "type": "keyword"
                             },
                             "last_name": {
+                                "type": "keyword"
+                            },
+                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
