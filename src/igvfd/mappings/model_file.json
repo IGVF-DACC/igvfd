@@ -1,6 +1,6 @@
 {
-    "hash": "bcefba4927f63ee2163824f25bd8d3b2",
-    "index_name": "model_file_bcefba49",
+    "hash": "dee918b3c6d43aa9893d2591fe863b1b",
+    "index_name": "model_file_dee918b3",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -2476,6 +2476,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "analysis_step_versions": {
                                 "type": "keyword"
                             },
                             "analysis_steps": {

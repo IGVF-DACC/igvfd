@@ -1,6 +1,6 @@
 {
-    "hash": "db9ebdf55206dda9754871967aed0a43",
-    "index_name": "analysis_step_version_db9ebdf5",
+    "hash": "c1eb32c2d024112b8adbcafb914420ba",
+    "index_name": "analysis_step_version_c1eb32c2",
     "item_type": "analysis_step_version",
     "mapping": {
         "dynamic_templates": [
@@ -243,6 +243,9 @@
                                         "type": "keyword"
                                     },
                                     "alternate_accessions": {
+                                        "type": "keyword"
+                                    },
+                                    "analysis_step_versions": {
                                         "type": "keyword"
                                     },
                                     "analysis_steps": {
@@ -626,6 +629,9 @@
                         "type": "keyword"
                     },
                     "uuid": {
+                        "type": "keyword"
+                    },
+                    "workflows": {
                         "type": "keyword"
                     }
                 },

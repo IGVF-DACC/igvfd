@@ -1,6 +1,6 @@
 {
-    "hash": "718b5fd89fc8d37f3c73b0d0bd070036",
-    "index_name": "genome_browser_annotation_file_718b5fd8",
+    "hash": "0276401dfc839665aa28fb5b97b1092b",
+    "index_name": "genome_browser_annotation_file_0276401d",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -2562,6 +2562,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "analysis_step_versions": {
                                 "type": "keyword"
                             },
                             "analysis_steps": {

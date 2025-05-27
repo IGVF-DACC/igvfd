@@ -1,6 +1,6 @@
 {
-    "hash": "26a524cdf4040b62e3a0f0b29223c554",
-    "index_name": "matrix_file_26a524cd",
+    "hash": "99681cbc10d32af8f8540e024ffaa4df",
+    "index_name": "matrix_file_99681cbc",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -2475,6 +2475,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "analysis_step_versions": {
                                 "type": "keyword"
                             },
                             "analysis_steps": {
