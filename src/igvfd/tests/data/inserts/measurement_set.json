@@ -618,5 +618,22 @@
         "assay_term": "/assay-terms/OBI_0002631/",
         "preferred_assay_title": "Parse SPLiT-seq",
         "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:parse_perturb_seq"
+        ],
+        "award": "1UM1HG011972-01",
+        "lab": "/labs/jesse-engreitz/",
+        "status": "released",
+        "release_timestamp": "2025-05-06T12:34:56Z",
+        "uuid": "7f9b42c4-0b6e-4cb4-86a4-1f60b8e98c3d",
+        "accession": "IGVFDS0527PSPL",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0002631/",
+        "preferred_assay_title": "Parse Perturb-seq",
+        "file_set_type": "experimental data"
     }
 ]
