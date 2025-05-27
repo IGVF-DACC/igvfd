@@ -240,14 +240,22 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
         'summary', '') == 'interference ATAC-seq (10x multiome), Perturb-seq, STARR-seq, lentiMPRA targeting MYC with low FACS signal, untransfected controls'
+    # Analysis Set that has construct_library_sets but the input_file_sets is a Measurement Set.
     testapp.patch_json(
         primary_cell['@id'],
         {
             'construct_library_sets': [construct_library_set_reporter['@id']]
         }
     )
+    testapp.patch_json(
+        analysis_set_with_CLS_input['@id'],
+        {
+            'input_file_sets': [measurement_set_mpra['@id']]
+        }
+    )
     res = testapp.get(analysis_set_with_CLS_input['@id']).json
-    assert res.get('summary', '') == 'lentiMPRA integrating a reporter library targeting accessible genome regions genome-wide'
+    assert res.get('summary', '') == 'interference lentiMPRA targeting MYC integrating a reporter library targeting accessible genome regions genome-wide with low FACS signal control'
+    # Analysis Set with only a CLS in input_file_sets.
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -256,7 +264,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'summary', '') == 'lentiMPRA integrating a reporter library targeting accessible genome regions genome-wide'
+        'summary', '') == 'lentiMPRA reporter library targeting accessible genome regions genome-wide'
     testapp.patch_json(
         analysis_set_with_CLS_input['@id'],
         {
