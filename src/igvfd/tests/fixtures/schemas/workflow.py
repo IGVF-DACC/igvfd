@@ -53,3 +53,13 @@ def workflow_v4(base_workflow):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def workflow_v5(base_workflow):
+    item = base_workflow.copy()
+    item.update({
+        'schema_version': '5',
+        'workflow_version': 5
+    })
+    return item

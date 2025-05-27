@@ -15,7 +15,7 @@
             "https://hub.docker.com/r/perturbseq_pipeline"
         ],
         "standards_page": "27f9abd9-0081-4ade-8c82-95ec12b3a7dd",
-        "workflow_version": 1,
+        "workflow_version": "v1.0.0",
         "uniform_pipeline": true,
         "collections": [
             "VarChAMP"
@@ -37,7 +37,7 @@
             "https://hub.docker.com/r/splitseq_pipeline"
         ],
         "standards_page": "235a1359-74bd-4b95-b0bb-70bf46f7856c",
-        "workflow_version": 1,
+        "workflow_version": "v1.0.0",
         "uniform_pipeline": false,
         "collections": [
             "VarChAMP"

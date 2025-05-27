@@ -1,6 +1,6 @@
 {
-    "hash": "a0afacb21562280b5f6c4fa4f0746d15",
-    "index_name": "tabular_file_a0afacb2",
+    "hash": "032dc34e6e71f945890cbaf9fcc1a7ec",
+    "index_name": "tabular_file_032dc34e",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -2661,8 +2661,7 @@
                                 "type": "keyword"
                             },
                             "workflow_version": {
-                                "store": true,
-                                "type": "long"
+                                "type": "keyword"
                             }
                         },
                         "type": "object"

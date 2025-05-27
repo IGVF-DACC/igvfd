@@ -1,6 +1,6 @@
 {
-    "hash": "1faea06dc0034b1849cd277fc1ae422e",
-    "index_name": "matrix_file_1faea06d",
+    "hash": "26a524cdf4040b62e3a0f0b29223c554",
+    "index_name": "matrix_file_26a524cd",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -2549,8 +2549,7 @@
                                 "type": "keyword"
                             },
                             "workflow_version": {
-                                "store": true,
-                                "type": "long"
+                                "type": "keyword"
                             }
                         },
                         "type": "object"
