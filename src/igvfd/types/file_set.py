@@ -62,14 +62,17 @@ def get_assessed_gene_phrase(request, assessed_genes=None):
     return assessed_gene_phrase
 
 
-def get_cls_phrase(cls_set):
+def get_cls_phrase(cls_set, only_cls_input=False):
     cls_set = sorted(cls_set)
     cls_phrases = []
     for summary in cls_set:
         article = 'a'
         if any(summary.startswith(x) for x in ['a', 'e', 'i', 'o', 'u']):
             article = 'an'
-        cls_phrases.append(f'{article} {summary[0].lower()}{summary[1:]}')
+        if only_cls_input:
+            cls_phrases.append(f'{summary[0].lower()}{summary[1:]}')
+        else:
+            cls_phrases.append(f'{article} {summary[0].lower()}{summary[1:]}')
     if len(cls_phrases) == 1:
         cls_phrase = cls_phrases[0]
     elif len(cls_phrases) == 2:
@@ -98,7 +101,9 @@ def get_cls_phrase(cls_set):
                 cls_phrase = ', '.join(cls_phrases[:-1]) + ', and ' + cls_phrases[-1]
         else:
             cls_phrase = ', '.join(cls_phrases[:-1]) + ', and ' + cls_phrases[-1]
-    cls_phrase = f'integrating {cls_phrase}'
+    if not only_cls_input:
+        # Do not add "integrating" when all input file sets are CLS.
+        cls_phrase = f'integrating {cls_phrase}'
     return cls_phrase
 
 
@@ -498,10 +503,13 @@ class AnalysisSet(FileSet):
                         crispr_modalities.add(modification_object['modality'])
         # Collect construct library set summaries and types
         prop_with_cls = None
+        only_cls_input = False
         if construct_library_sets:
             prop_with_cls = construct_library_sets
+            only_cls_input = False
         elif len(fileset_subclasses) == 1 and ('ConstructLibrarySet' in fileset_subclasses):
             prop_with_cls = input_file_sets
+            only_cls_input = True
         if prop_with_cls:
             for construct_library_set in prop_with_cls:
                 construct_library_set_object = request.embed(
@@ -510,7 +518,7 @@ class AnalysisSet(FileSet):
                 cls_set.add(construct_library_set_object['summary'])
         cls_phrase = ''
         if len(cls_set) > 0:
-            cls_phrase = get_cls_phrase(cls_set)
+            cls_phrase = get_cls_phrase(cls_set, only_cls_input=only_cls_input)
 
         # Assay titles if there are input file sets, otherwise unspecified.
         # Only use the CLS derived assay titles if there were no other assay titles.
