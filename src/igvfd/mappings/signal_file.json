@@ -1,6 +1,6 @@
 {
-    "hash": "bdde549692183e710b9dd75669c4e632",
-    "index_name": "signal_file_bdde5496",
+    "hash": "dab00f02c0bfc1e50153ad098c18372d",
+    "index_name": "signal_file_dab00f02",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -2654,8 +2654,7 @@
                                 "type": "keyword"
                             },
                             "workflow_version": {
-                                "store": true,
-                                "type": "long"
+                                "type": "keyword"
                             }
                         },
                         "type": "object"

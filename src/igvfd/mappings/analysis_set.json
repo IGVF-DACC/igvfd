@@ -1,6 +1,6 @@
 {
-    "hash": "0a3532cf8bbfc9cb36cd311ef10a3988",
-    "index_name": "analysis_set_0a3532cf",
+    "hash": "016f3dbafa20eb7afffa500486d4a33e",
+    "index_name": "analysis_set_016f3dba",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -3202,8 +3202,7 @@
                                 "type": "keyword"
                             },
                             "workflow_version": {
-                                "store": true,
-                                "type": "long"
+                                "type": "keyword"
                             }
                         },
                         "type": "object"

@@ -1,6 +1,6 @@
 {
-    "hash": "b0e1d4bdb77214b0bad979e59b0064e4",
-    "index_name": "analysis_step_version_b0e1d4bd",
+    "hash": "db9ebdf55206dda9754871967aed0a43",
+    "index_name": "analysis_step_version_db9ebdf5",
     "item_type": "analysis_step_version",
     "mapping": {
         "dynamic_templates": [
@@ -317,8 +317,7 @@
                                         "type": "keyword"
                                     },
                                     "workflow_version": {
-                                        "store": true,
-                                        "type": "long"
+                                        "type": "keyword"
                                     }
                                 },
                                 "type": "object"
