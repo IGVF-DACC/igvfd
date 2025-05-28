@@ -11,6 +11,13 @@ from .base import (
 )
 
 
+def alen(thing):
+    if thing is None:
+        return 'None'
+    else:
+        return len(thing)
+
+
 def collect_multiplexed_samples_prop(request, multiplexed_samples, property_name, skip_calculated=True):
     property_set = set()
     for sample in multiplexed_samples:
@@ -131,6 +138,7 @@ class Sample(Item):
         'notSubmittable': True,
     })
     def file_sets(self, request, file_sets, multiplexed_in=[]):
+        print('file_sets sample', 'file_sets', alen(file_sets), 'multiplexed_in', alen(multiplexed_in))
         # This is required to get the analysis set reverse links since analysis set calculates samples
         for file_set in file_sets:
             file_set_object = request.embed(

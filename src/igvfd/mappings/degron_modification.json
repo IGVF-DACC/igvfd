@@ -1,6 +1,6 @@
 {
-    "hash": "78b0ffdbe603bd5826524d84ec8b3656",
-    "index_name": "degron_modification_78b0ffdb",
+    "hash": "afb1b5e0c9752fa4ede2c68ddc4a7431",
+    "index_name": "degron_modification_afb1b5e0",
     "item_type": "degron_modification",
     "mapping": {
         "dynamic_templates": [
@@ -191,9 +191,6 @@
                             "name": {
                                 "type": "keyword"
                             },
-                            "no_change": {
-                                "type": "keyword"
-                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -277,9 +274,6 @@
                             "name": {
                                 "type": "keyword"
                             },
-                            "no_change": {
-                                "type": "keyword"
-                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -318,9 +312,6 @@
                         "type": "keyword"
                     },
                     "modality": {
-                        "type": "keyword"
-                    },
-                    "no_change": {
                         "type": "keyword"
                     },
                     "notes": {
@@ -377,9 +368,6 @@
                                 "type": "keyword"
                             },
                             "last_name": {
-                                "type": "keyword"
-                            },
-                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

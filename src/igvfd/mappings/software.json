@@ -1,6 +1,6 @@
 {
-    "hash": "0620ae62dca68a12b53162f3e8700e8d",
-    "index_name": "software_0620ae62",
+    "hash": "47398f6b1d2e1b7e3dac9a4085c8eff2",
+    "index_name": "software_47398f6b",
     "item_type": "software",
     "mapping": {
         "dynamic_templates": [
@@ -181,9 +181,6 @@
                             "name": {
                                 "type": "keyword"
                             },
-                            "no_change": {
-                                "type": "keyword"
-                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -262,9 +259,6 @@
                             "name": {
                                 "type": "keyword"
                             },
-                            "no_change": {
-                                "type": "keyword"
-                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -300,9 +294,6 @@
                     },
                     "name": {
                         "copy_to": "_fuzzy",
-                        "type": "keyword"
-                    },
-                    "no_change": {
                         "type": "keyword"
                     },
                     "notes": {
@@ -385,9 +376,6 @@
                                 "type": "keyword"
                             },
                             "lab": {
-                                "type": "keyword"
-                            },
-                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
@@ -497,9 +485,6 @@
                                 "type": "keyword"
                             },
                             "last_name": {
-                                "type": "keyword"
-                            },
-                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

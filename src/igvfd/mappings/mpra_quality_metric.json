@@ -1,6 +1,6 @@
 {
-    "hash": "20a3879799e26d56de8b7132fdc10964",
-    "index_name": "mpra_quality_metric_20a38797",
+    "hash": "9bf9a0dd855e00fcac2e9f77cd2c51c4",
+    "index_name": "mpra_quality_metric_9bf9a0dd",
     "item_type": "mpra_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -213,9 +213,6 @@
                             "name": {
                                 "type": "keyword"
                             },
-                            "no_change": {
-                                "type": "keyword"
-                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -299,9 +296,6 @@
                             "name": {
                                 "type": "keyword"
                             },
-                            "no_change": {
-                                "type": "keyword"
-                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -347,9 +341,6 @@
                     "median_rna_read_count": {
                         "store": true,
                         "type": "float"
-                    },
-                    "no_change": {
-                        "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
@@ -407,9 +398,6 @@
                                 "type": "keyword"
                             },
                             "last_name": {
-                                "type": "keyword"
-                            },
-                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

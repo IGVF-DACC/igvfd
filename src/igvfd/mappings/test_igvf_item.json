@@ -1,6 +1,6 @@
 {
-    "hash": "98aae37749dae52e58fc6ec5eb0186b1",
-    "index_name": "test_igvf_item_98aae377",
+    "hash": "3ed449be6c3aecc92ca90485dbd6f761",
+    "index_name": "test_igvf_item_3ed449be",
     "item_type": "test_igvf_item",
     "mapping": {
         "dynamic_templates": [
@@ -153,9 +153,6 @@
                     },
                     "description": {
                         "type": "text"
-                    },
-                    "no_change": {
-                        "type": "keyword"
                     },
                     "status": {
                         "type": "keyword"

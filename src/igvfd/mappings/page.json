@@ -1,6 +1,6 @@
 {
-    "hash": "91452374e266b223b3323cb947bba29d",
-    "index_name": "page_91452374",
+    "hash": "5df8ebb3388fb7d71fe0985cb51cb438",
+    "index_name": "page_5df8ebb3",
     "item_type": "page",
     "mapping": {
         "dynamic_templates": [
@@ -194,9 +194,6 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
-                    "no_change": {
-                        "type": "keyword"
-                    },
                     "notes": {
                         "type": "text"
                     },
@@ -245,9 +242,6 @@
                                 "type": "keyword"
                             },
                             "last_name": {
-                                "type": "keyword"
-                            },
-                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

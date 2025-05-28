@@ -1,6 +1,6 @@
 {
-    "hash": "3f2cf7ba710c4a3676ea99679878a6ee",
-    "index_name": "open_reading_frame_3f2cf7ba",
+    "hash": "06c4eb572f550da4f81fcd0b4a4f27f8",
+    "index_name": "open_reading_frame_06c4eb57",
     "item_type": "open_reading_frame",
     "mapping": {
         "dynamic_templates": [
@@ -181,9 +181,6 @@
                             "name": {
                                 "type": "keyword"
                             },
-                            "no_change": {
-                                "type": "keyword"
-                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -287,9 +284,6 @@
                             "name": {
                                 "type": "keyword"
                             },
-                            "no_change": {
-                                "type": "keyword"
-                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -367,9 +361,6 @@
                             "name": {
                                 "type": "keyword"
                             },
-                            "no_change": {
-                                "type": "keyword"
-                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -403,9 +394,6 @@
                             }
                         },
                         "type": "object"
-                    },
-                    "no_change": {
-                        "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
@@ -474,9 +462,6 @@
                                 "type": "keyword"
                             },
                             "last_name": {
-                                "type": "keyword"
-                            },
-                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

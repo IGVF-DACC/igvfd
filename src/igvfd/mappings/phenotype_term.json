@@ -1,6 +1,6 @@
 {
-    "hash": "0ce396693e712e52795bc601dbf65140",
-    "index_name": "phenotype_term_0ce39669",
+    "hash": "f352444f83265ac94dcab99f99ce3c68",
+    "index_name": "phenotype_term_f352444f",
     "item_type": "phenotype_term",
     "mapping": {
         "dynamic_templates": [
@@ -176,9 +176,6 @@
                     "name": {
                         "type": "keyword"
                     },
-                    "no_change": {
-                        "type": "keyword"
-                    },
                     "notes": {
                         "type": "text"
                     },
@@ -230,9 +227,6 @@
                                 "type": "keyword"
                             },
                             "last_name": {
-                                "type": "keyword"
-                            },
-                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

@@ -1,6 +1,6 @@
 {
-    "hash": "d8aebd702be85d70a5416a6d9f3bed21",
-    "index_name": "treatment_d8aebd70",
+    "hash": "1091d418b5237b2a05f0f6b6a9b23235",
+    "index_name": "treatment_1091d418",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -188,9 +188,6 @@
                             "name": {
                                 "type": "keyword"
                             },
-                            "no_change": {
-                                "type": "keyword"
-                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -283,9 +280,6 @@
                             "name": {
                                 "type": "keyword"
                             },
-                            "no_change": {
-                                "type": "keyword"
-                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -321,9 +315,6 @@
                         "type": "object"
                     },
                     "lot_id": {
-                        "type": "keyword"
-                    },
-                    "no_change": {
                         "type": "keyword"
                     },
                     "notes": {
@@ -380,9 +371,6 @@
                                 "type": "keyword"
                             },
                             "name": {
-                                "type": "keyword"
-                            },
-                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
@@ -460,9 +448,6 @@
                                 "type": "keyword"
                             },
                             "last_name": {
-                                "type": "keyword"
-                            },
-                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

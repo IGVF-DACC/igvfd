@@ -1,6 +1,6 @@
 {
-    "hash": "0fcec6e5156b1e72ce49eb631546c27a",
-    "index_name": "user_0fcec6e5",
+    "hash": "3d1da73e1c25af95fc9173f1d2fc5552",
+    "index_name": "user_3d1da73e",
     "item_type": "user",
     "mapping": {
         "dynamic_templates": [
@@ -177,9 +177,6 @@
                     "last_name": {
                         "type": "keyword"
                     },
-                    "no_change": {
-                        "type": "keyword"
-                    },
                     "notes": {
                         "type": "text"
                     },
@@ -225,9 +222,6 @@
                                 "type": "keyword"
                             },
                             "last_name": {
-                                "type": "keyword"
-                            },
-                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

@@ -14,6 +14,13 @@ from .base import (
 from datetime import datetime
 
 
+def alen(thing):
+    if thing is None:
+        return 'None'
+    else:
+        return len(thing)
+
+
 def get_donors_from_samples(request, samples):
     donor_objects = []
     for sample in samples:
@@ -223,6 +230,7 @@ class FileSet(Item):
         'notSubmittable': True
     })
     def submitted_files_timestamp(self, request, files, auxiliary_sets=[]):
+        print('submitted_files_timestamp', 'auxiliary_sets', alen(auxiliary_sets))
         timestamps = set()
         files_to_traverse = []
         if files:
@@ -372,6 +380,8 @@ class AnalysisSet(FileSet):
         }
     )
     def summary(self, request, file_set_type, input_file_sets=[], files=[], samples=[], construct_library_sets=[]):
+        print('summary', 'input_file_sets', alen(input_file_sets), '\n', 'files', alen(files), '\n',
+              'samples', alen(samples), '\n', 'construct_library_sets', alen(construct_library_sets))
         inspected_filesets = set()
         fileset_types = set()
         file_content_types = set()
@@ -1088,6 +1098,7 @@ class MeasurementSet(FileSet):
         }
     )
     def summary(self, request, assay_term, preferred_assay_title=None, samples=None, control_type=None, targeted_genes=None, construct_library_sets=[]):
+        print('summary Measurment set', 'construct_library_sets', alen(construct_library_sets))
         assay = request.embed(assay_term)['term_name']
         modality_set = set()
         cls_set = set()
@@ -1501,6 +1512,7 @@ class ConstructLibrarySet(FileSet):
             'notSubmittable': True
         })
     def file_sets(self, request, applied_to_samples=[]):
+        print('filesets CLS', 'applied_to_samples', alen(applied_to_samples))
         linked_file_sets = set()
         for sample in applied_to_samples:
             sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=file_sets')
@@ -1525,6 +1537,7 @@ class ConstructLibrarySet(FileSet):
             'notSubmittable': True
         })
     def assay_titles(self, request, file_sets=[]):
+        print('assay titles CLS',  'file_sets', alen(file_sets))
         assay_titles = set()
         for file_set in file_sets:
             if file_set.startswith('/measurement-sets/'):
@@ -1544,6 +1557,8 @@ class ConstructLibrarySet(FileSet):
     def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, large_scale_gene_list=None, guide_type=None,
                 small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, orf_list=None, associated_phenotypes=None,
                 control_type=None, targeton=None, assay_titles=[], integrated_content_files=[]):
+        print('summary CLS', 'assay_titles', alen(assay_titles),
+              'integrated_content_files', alen(integrated_content_files))
         library_type = file_set_type
         target_phrase = ''
         pheno_terms = []

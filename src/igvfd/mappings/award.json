@@ -1,6 +1,6 @@
 {
-    "hash": "26d5c657c4957da3d54098b5c487fd34",
-    "index_name": "award_26d5c657",
+    "hash": "421428df6ac97adc917741087d0582c7",
+    "index_name": "award_421428df",
     "item_type": "award",
     "mapping": {
         "dynamic_templates": [
@@ -172,9 +172,6 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
-                    "no_change": {
-                        "type": "keyword"
-                    },
                     "notes": {
                         "type": "text"
                     },
@@ -227,9 +224,6 @@
                                 "type": "keyword"
                             },
                             "last_name": {
-                                "type": "keyword"
-                            },
-                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

@@ -1,6 +1,6 @@
 {
-    "hash": "583ccb5095d1bbd062734dee8de10acd",
-    "index_name": "publication_583ccb50",
+    "hash": "ff8d912511a3337d7476aaf3d4195ea3",
+    "index_name": "publication_ff8d9125",
     "item_type": "publication",
     "mapping": {
         "dynamic_templates": [
@@ -216,9 +216,6 @@
                             "name": {
                                 "type": "keyword"
                             },
-                            "no_change": {
-                                "type": "keyword"
-                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -311,9 +308,6 @@
                             "name": {
                                 "type": "keyword"
                             },
-                            "no_change": {
-                                "type": "keyword"
-                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -347,9 +341,6 @@
                             }
                         },
                         "type": "object"
-                    },
-                    "no_change": {
-                        "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
@@ -422,9 +413,6 @@
                                 "type": "keyword"
                             },
                             "last_name": {
-                                "type": "keyword"
-                            },
-                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {

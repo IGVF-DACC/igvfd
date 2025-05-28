@@ -1,6 +1,6 @@
 {
-    "hash": "7a2baf7da7b087ee666755588d9bc350",
-    "index_name": "image_7a2baf7d",
+    "hash": "f34adc63ad8e42bd1c2d0db1cf73d42b",
+    "index_name": "image_f34adc63",
     "item_type": "image",
     "mapping": {
         "dynamic_templates": [
@@ -195,9 +195,6 @@
                     "download_url": {
                         "type": "keyword"
                     },
-                    "no_change": {
-                        "type": "keyword"
-                    },
                     "notes": {
                         "type": "text"
                     },
@@ -246,9 +243,6 @@
                                 "type": "keyword"
                             },
                             "last_name": {
-                                "type": "keyword"
-                            },
-                            "no_change": {
                                 "type": "keyword"
                             },
                             "notes": {
