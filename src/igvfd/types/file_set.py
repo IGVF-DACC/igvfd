@@ -1418,23 +1418,24 @@ class PredictionSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type, assessed_genes=None, scope=None, files=[]):
+    def summary(self, request, file_set_type, assessed_genes=None, scope=None, files=None):
         # Get scope info
         scope_phrase = ''
         if scope:
             scope_phrase = f' on scope of {scope}'
         software_versions = set()
-        for file in files:
-            file_object = request.embed(file, '@@object?skip_calculated=true')
-            if 'analysis_step_version' in file_object:
-                asv_object = request.embed(
-                    file_object['analysis_step_version'],
-                    '@@object?skip_calculated=true')
-                for software_version in asv_object['software_versions']:
-                    software_version_object = request.embed(
-                        software_version,
-                        '@@object_with_select_calculated_properties?field=summary')
-                    software_versions.add(software_version_object['summary'])
+        if files is not None:
+            for file in files:
+                file_object = request.embed(file, '@@object?skip_calculated=true')
+                if 'analysis_step_version' in file_object:
+                    asv_object = request.embed(
+                        file_object['analysis_step_version'],
+                        '@@object?skip_calculated=true')
+                    for software_version in asv_object['software_versions']:
+                        software_version_object = request.embed(
+                            software_version,
+                            '@@object_with_select_calculated_properties?field=summary')
+                        software_versions.add(software_version_object['summary'])
         software_version_phrase = None
         if software_versions:
             software_version_phrase = f'using {", ".join(sorted(software_versions))}'
