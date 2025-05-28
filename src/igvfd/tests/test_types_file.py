@@ -211,6 +211,7 @@ def test_file_summaries(
     testapp,
     alignment_file,
     configuration_file_seqspec,
+    configuration_file_json,
     genome_browser_annotation_file,
     image_file,
     matrix_file,
@@ -219,7 +220,8 @@ def test_file_summaries(
     sequence_file,
     signal_file,
     tabular_file,
-    base_prediction_set
+    base_prediction_set,
+    analysis_step_version
 ):
     testapp.patch_json(
         alignment_file['@id'],
@@ -246,6 +248,19 @@ def test_file_summaries(
 
     res = testapp.get(matrix_file['@id'])
     assert res.json.get('summary', '') == 'cell by gene in sparse gene count matrix'
+
+    # Predictive matrix file with software.
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'file_set': base_prediction_set['@id'],
+            'filtered': False,
+            'analysis_step_version': analysis_step_version['@id']
+        }
+    )
+    res = testapp.get(matrix_file['@id'])
+    assert res.json.get(
+        'summary', '') == 'predictive unfiltered cell by gene in sparse gene count matrix (Bowtie2 v2.4.4)'
 
     res = testapp.get(model_file['@id'])
     assert res.json.get('summary', '') == 'graph structure'
@@ -286,6 +301,17 @@ def test_file_summaries(
     res = testapp.get(configuration_file_seqspec['@id'])
     assert res.json.get('summary', '') == f'seqspec of {res_sequence_file.json.get("accession")}'
 
+    # Predictive configuration file (not seqspec)
+    testapp.patch_json(
+        configuration_file_json['@id'],
+        {
+            'file_set': base_prediction_set['@id'],
+            'analysis_step_version': analysis_step_version['@id']
+        }
+    )
+    res = testapp.get(configuration_file_json['@id'])
+    assert res.json.get('summary', '') == f'predictive scale factors (Bowtie2 v2.4.4)'
+
     testapp.patch_json(
         signal_file['@id'],
         {
@@ -296,6 +322,17 @@ def test_file_summaries(
     )
     res = testapp.get(signal_file['@id'])
     assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 filtered normalized plus strand signal of all reads'
+    # Predictive signal file with software.
+    testapp.patch_json(
+        signal_file['@id'],
+        {
+            'file_set': base_prediction_set['@id'],
+            'analysis_step_version': analysis_step_version['@id']
+        }
+    )
+    res = testapp.get(signal_file['@id'])
+    assert res.json.get(
+        'summary', '') == 'GRCh38 GENCODE 43 predictive filtered normalized plus strand signal of all reads (Bowtie2 v2.4.4)'
 
     testapp.patch_json(
         tabular_file['@id'],
@@ -315,6 +352,15 @@ def test_file_summaries(
     )
     res = testapp.get(tabular_file['@id'])
     assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 predictive filtered peaks'
+    # Predictive tabular file with software.
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'analysis_step_version': analysis_step_version['@id']
+        }
+    )
+    res = testapp.get(tabular_file['@id'])
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 predictive filtered peaks (Bowtie2 v2.4.4)'
 
 
 def test_barcode_map_for(testapp, multiplexed_sample_v7, tabular_file_v10):
