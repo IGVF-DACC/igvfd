@@ -168,5 +168,18 @@
         "preferred_assay_titles": [
             "WGS"
         ]
+    },
+    {
+        "term_id": "OBI:0003109",
+        "term_name": "single-nucleus RNA sequencing assay",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "uuid": "fef516d2-e908-4222-b2b5-992b17a2c260",
+        "aliases": [
+            "igvf:single_nucleus_RNA_sequencing_assay"
+        ],
+        "preferred_assay_titles": [
+            "Parse Perturb-seq"
+        ]
     }
 ]
