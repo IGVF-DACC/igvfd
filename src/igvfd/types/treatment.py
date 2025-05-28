@@ -65,7 +65,7 @@ class Treatment(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Biosamples Treated',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'Biosample.treatments',
         },
         'notSubmittable': True
