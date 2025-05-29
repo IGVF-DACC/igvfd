@@ -117,7 +117,7 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
     assert set(res.json.get('assay_titles')) == {'lentiMPRA'}
 
 
-def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_no_files, measurement_set_mpra, measurement_set_multiome, measurement_set_perturb_seq, principal_analysis_set, tabular_file, gene_myc_hs, assay_term_atac, assay_term_crispr, primary_cell, crispr_modification, construct_library_set_reporter, analysis_set_with_CLS_input, tissue, base_expression_construct_library_set, construct_library_set_editing_template_library, construct_library_set_editing_template_library_2):
+def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_no_files, measurement_set_mpra, measurement_set_multiome, measurement_set_perturb_seq, principal_analysis_set, tabular_file, gene_myc_hs, assay_term_atac, assay_term_crispr, primary_cell, crispr_modification, construct_library_set_reporter, analysis_set_with_CLS_input, tissue, base_expression_construct_library_set, construct_library_set_editing_template_library, construct_library_set_editing_template_library_2, construct_library_set_reference_transduction, construct_library_set_non_targeting):
     # With no input_file_sets and no files present, summary is based on analysis file_set_type only.
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get('summary', '') == 'Unspecified assay'
@@ -290,6 +290,29 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_with_CLS_input['@id']).json
     assert res.get('summary', '') == 'ATAC-seq (10x multiome) integrating an expression vector library of exon E3 of MYC and a reporter library targeting accessible genome regions genome-wide'
+    testapp.patch_json(
+        measurement_set_multiome['@id'],
+        {
+            'control_type': 'non-targeting'
+        }
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'construct_library_sets': [construct_library_set_reference_transduction['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_with_CLS_input['@id']).json
+    assert res.get(
+        'summary', '') == 'ATAC-seq (10x multiome) integrating a reference transduction expression vector library with non-targeting control'
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'construct_library_sets': [construct_library_set_reference_transduction['@id'], construct_library_set_non_targeting['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_with_CLS_input['@id']).json
+    assert res.get('summary', '') == 'CRISPR ATAC-seq (10x multiome) integrating a non-targeting guide (sgRNA) library and a reference transduction expression vector library'
     # when > 2 editing template libraries: display counts
     testapp.patch_json(
         construct_library_set_reporter['@id'],
@@ -319,7 +342,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_with_CLS_input['@id']).json
     assert res.get(
-        'summary', '') == 'ATAC-seq (10x multiome) integrating editing template libraries targeting sequence variants in 3 targetons of MYC'
+        'summary', '') == 'ATAC-seq (10x multiome) integrating editing template libraries targeting sequence variants in 3 targetons of MYC with non-targeting control'
 
 
 def test_protocols(testapp, analysis_set_base, measurement_set_with_protocols):
