@@ -861,21 +861,42 @@ class MultiplexedSample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, multiplexed_samples=None):
+    def summary(self, request, multiplexed_samples=None, donors=None, sample_terms=None):
+        sample_term_phrase = None
+        if sample_terms:
+            sample_term_term_names = []
+            for term in sample_terms:
+                term_object = request.embed(term, '@@object?skip_calculated=true')
+                sample_term_term_names.append(term_object['term_name'])
+            sample_term_term_names = sorted(sample_term_term_names)
+            if len(sample_terms) <= 5:
+                if len(sample_terms) < 3:
+                    sample_term_phrase = ' and '.join(sample_term_term_names)
+                else:
+                    sample_term_phrase = f"{', '.join(sample_term_term_names[0:-1])} and {sample_term_term_names[-1]}"
+            else:
+                sample_term_phrase = f'{", ".join(sample_term_term_names[0:4])} and {len(sample_terms)-5} more'
+        donors_phrase = None
+        if donors:
+            suffix = 's'
+            if len(donors) == 1:
+                suffix = ''
+            donors_phrase = f'{len(donors)} donor{suffix}'
+        samples_phrase = None
         if multiplexed_samples:
-            if any(sample.startswith('/multiplexed-samples/') for sample in multiplexed_samples):
-                multiplexed_samples = decompose_multiplexed_samples(request, multiplexed_samples)
-            multiplexed_samples = sorted(multiplexed_samples)
-            sample_summaries = [request.embed(
-                sample, '@@object').get('summary') for sample in multiplexed_samples[:2]]
-            if len(multiplexed_samples) > 2:
-                remainder = f'... and {len(multiplexed_samples) - 2} more sample{"s" if len(multiplexed_samples) - 2 != 1 else ""}'
-                sample_summaries += [remainder]
-            return f'multiplexed sample: {"; ".join(sample_summaries)}'
-        else:
-            return 'multiplexed sample'
+            suffix = 's'
+            if len(multiplexed_samples) == 1:
+                suffix = ''
+            samples_phrase = f'{len(multiplexed_samples)} sample{suffix}'
+        phrases = [
+            sample_term_phrase,
+            donors_phrase,
+            samples_phrase
+        ]
+        return f"multiplexed {', '.join([x for x in phrases if x is not None])}"
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Sample Terms',
             'type': 'array',
@@ -977,6 +998,7 @@ class MultiplexedSample(Sample):
         return collect_multiplexed_samples_prop(request, multiplexed_samples, 'modifications')
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Donors',
             'type': 'array',

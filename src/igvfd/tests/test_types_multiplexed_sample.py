@@ -1,10 +1,10 @@
 import pytest
 
 
-def test_summary(testapp, multiplexed_sample, tissue, in_vitro_cell_line, human_tissue, multiplexed_sample_x2, multiplexed_sample_x3):
+def test_summary(testapp, multiplexed_sample, tissue, in_vitro_cell_line, human_tissue, primary_cell, sample_term_endothelial_cell, in_vitro_differentiated_cell, in_vitro_organoid, sample_term_brown_adipose_tissue, sample_term_lymphoblastoid):
     res = testapp.get(multiplexed_sample['@id'])
     assert res.json.get(
-        'summary') == 'multiplexed sample: Mus musculus strain1 (male) K562 cell line; Mus musculus strain1 (male) adrenal gland tissue'
+        'summary') == 'multiplexed K562 and adrenal gland, 1 donor, 2 samples'
     testapp.patch_json(
         multiplexed_sample['@id'],
         {
@@ -13,13 +13,50 @@ def test_summary(testapp, multiplexed_sample, tissue, in_vitro_cell_line, human_
     )
     res = testapp.get(multiplexed_sample['@id'])
     assert res.json.get(
-        'summary') == 'multiplexed sample: Mus musculus strain1 (male) K562 cell line; Homo sapiens adrenal gland tissue; ... and 1 more sample'
-    res = testapp.get(multiplexed_sample_x2['@id'])
+        'summary') == 'multiplexed K562 and adrenal gland, 2 donors, 3 samples'
+    testapp.patch_json(
+        multiplexed_sample['@id'],
+        {
+            'multiplexed_samples': [tissue['@id'], in_vitro_cell_line['@id'], human_tissue['@id'], primary_cell['@id']],
+        }
+    )
+    res = testapp.get(multiplexed_sample['@id'])
     assert res.json.get(
-        'summary') == 'multiplexed sample: Mus musculus strain1 (male) K562 cell line; Homo sapiens pluripotent stem cell; ... and 2 more samples'
-    res = testapp.get(multiplexed_sample_x3['@id'])
+        'summary') == 'multiplexed K562, adrenal gland and pluripotent stem cell, 2 donors, 4 samples'
+    testapp.patch_json(
+        multiplexed_sample['@id'],
+        {
+            'multiplexed_samples': [
+                tissue['@id'],
+                in_vitro_cell_line['@id'],
+                human_tissue['@id'],
+                primary_cell['@id'],
+                in_vitro_differentiated_cell['@id'],
+                in_vitro_organoid['@id']
+            ]
+        }
+    )
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'sample_terms': [sample_term_brown_adipose_tissue['@id']]
+        }
+    )
+    testapp.patch_json(
+        in_vitro_organoid['@id'],
+        {
+            'sample_terms': [sample_term_lymphoblastoid['@id']]
+        }
+    )
+    testapp.patch_json(
+        human_tissue['@id'],
+        {
+            'sample_terms': [sample_term_endothelial_cell['@id']]
+        }
+    )
+    res = testapp.get(multiplexed_sample['@id'])
     assert res.json.get(
-        'summary') == 'multiplexed sample: Mus musculus strain1 (male) K562 cell line; Homo sapiens pluripotent stem cell; ... and 2 more samples'
+        'summary') == 'multiplexed K562, adrenal gland, brown adipose tissue, endothelial cell of vascular tree and 1 more, 2 donors, 6 samples'
 
 
 def test_taxa(testapp, multiplexed_sample_mixed_species, multiplexed_sample):
