@@ -69,7 +69,7 @@
             "file.json#/dependentSchemas"
         ],
         "file_format": {
-            "comment": "Bed files must specify their file format type.",
+            "comment": "Bed files must specify their file format type. Only files with content_type sample sort parameters can use tar as their file format.",
             "allOf": [
                 {
                     "$merge": "file.json#/dependentSchemas/file_format"
