@@ -68,56 +68,6 @@
         "$merge": [
             "file.json#/dependentSchemas"
         ],
-        "content_type": {
-            "comment": "Content Type describes the content of the file.",
-            "allOf": [
-                {
-                    "if": {
-                        "properties": {
-                            "file_format": {
-                                "const": "tar"
-                            }
-                        },
-                        "required": [
-                            "file_format"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "content_type": {
-                                "const": "sample sort parameters"
-                            }
-                        },
-                        "required": [
-                            "content_type"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "content_type": {
-                                "not": {
-                                    "const": "sample sort parameters"
-                                }
-                            }
-                        },
-                        "required": [
-                            "content_type"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "file_format": {
-                                "not": {
-                                    "const": "tar"
-                                }
-                            }
-                        }
-                    }
-                }
-            ]
-        },
         "file_format": {
             "comment": "Bed files must specify their file format type.",
             "allOf": [
@@ -157,6 +107,28 @@
                             }
                         }
                     ]
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "file_format": {
+                                "const": "tar"
+                            }
+                        },
+                        "required": [
+                            "file_format"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "content_type": {
+                                "const": "sample sort parameters"
+                            }
+                        },
+                        "required": [
+                            "content_type"
+                        ]
+                    }
                 }
             ]
         },
