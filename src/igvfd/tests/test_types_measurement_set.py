@@ -52,7 +52,7 @@ def test_related_multiome_datasets(testapp, primary_cell, in_vitro_cell_line, me
                ) == {measurement_set['@id'], measurement_set_multiome_2['@id']}
 
 
-def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modification_activation, construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction, construct_library_set_genome_wide, assay_term_y2h):
+def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modification_activation, construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction, construct_library_set_genome_wide, assay_term_y2h, construct_library_set_reference_transduction):
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('summary') == 'STARR-seq'
     testapp.patch_json(
@@ -132,6 +132,15 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
     res = testapp.get(measurement_set['@id'])
     assert res.json.get(
         'summary') == 'reference transduction scCRISPR activation screen integrating a guide (sgRNA) library targeting TF binding sites genome-wide associated with Alzheimer\'s disease and Myocardial infarction'
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'construct_library_sets': [construct_library_set_reference_transduction['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get(
+        'summary') == 'scCRISPR activation screen integrating a reference transduction expression vector library'
 
 
 def test_summary_targeted_genes(testapp, measurement_set, assay_term_chip, assay_term_CRISPR_sorted, gene_myc_hs, gene_zscan10_mm, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P):
