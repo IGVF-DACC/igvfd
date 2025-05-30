@@ -774,19 +774,19 @@
         ]
     },
     {
-        "uuid": "e2a7c9f4-3b5d-4f8e-9c2a-7d8f3e4b6a1d",
-        "accession": "IGVFFI0528MPRA",
+        "uuid": "d3a50b5a-bb10-4c9f-956b-bc7e3b6a62e0",
+        "accession": "IGVFFI0530MCRA",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "igvf:tabular_file_sample_sort_parameters_tar"
+            "igvf:tabular_file_pipeline_inputs"
         ],
         "status": "released",
         "release_timestamp": "2025-05-28T12:34:56Z",
-        "md5sum": "e4d909c290d0fb1ca068ffaddf22cbd0",
+        "md5sum": "0a60ad0bb8ac59f32fbf9fbe1e3f4b26",
         "file_format": "tar",
-        "content_type": "sample sort parameters",
-        "submitted_file_name": "/Users/igvf/igvf_files/sample_sort_parameters.tar.gz",
+        "content_type": "pipeline inputs",
+        "submitted_file_name": "/Users/igvf/igvf_files/pipeline_inputs.tar.gz",
         "file_size": 5555,
         "upload_status": "validated",
         "assembly": "GRCh38",
