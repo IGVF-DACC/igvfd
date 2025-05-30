@@ -241,6 +241,7 @@
                             "transcriptome_annotation": {
                                 "enum": [
                                     "GENCODE 22",
+                                    "GENCODE 24",
                                     "GENCODE 28",
                                     "GENCODE 32",
                                     "GENCODE 40",

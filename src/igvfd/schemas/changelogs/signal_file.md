@@ -1,5 +1,9 @@
 ## Changelog for *`signal_file.json`*
 
+### Minor changes since schema version 12
+
+* Extend `transcriptome_annotation` enum list to include `GENCODE 24`.
+
 ### Schema version 12
 
 * Adjust `normalized` to have default value `False`.
