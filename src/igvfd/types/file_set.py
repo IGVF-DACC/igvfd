@@ -559,7 +559,7 @@ class AnalysisSet(FileSet):
                 suffix = 's'
             control_types = [control_type for control_type in control_type_set if control_type not in cls_phrase]
             if control_types:
-                control_phrase = f'with { ", ".join(sorted(control_types))} control{suffix}'
+                control_phrase = f'with {", ".join(sorted(control_types))} control{suffix}'
 
         all_phrases = [
             assay_title_phrase,
