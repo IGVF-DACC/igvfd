@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 7
 
+* Extend `output_content_types` enum list to include `pipeline inputs`.
+* Extend `input_content_types` enum list to include `pipeline inputs`.
 * Extend `output_content_types` enum list to include `alignments with modifications`.
 * Extend `input_content_types` enum list to include `alignments with modifications`.
 * Extend `output_content_types` enum list to include `minus strand modification state`.
