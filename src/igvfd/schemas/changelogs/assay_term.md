@@ -1,5 +1,9 @@
 ## Changelog for *`assay_term.json`*
 
+### Minor changes since schema version 14
+
+* Extend `preferred_assay_titles` enum list to include `Parse Perturb-seq`.
+
 ### Schema version 14
 
 * Adjust `preferred_assay_titles` enum list to replace `10x multiome with scMito-seq` with `mtscMultiome`.

@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 29
+
+* Extend `preferred_assay_title` enum list to include `Parse Perturb-seq`.
+
 ### Schema version 29
 
 * Adjust `preferred_assay_title` enum list to replace `10x multiome with scMito-seq` with `mtscMultiome`.
