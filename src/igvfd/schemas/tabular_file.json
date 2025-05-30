@@ -107,28 +107,6 @@
                             }
                         }
                     ]
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "file_format": {
-                                "const": "tar"
-                            }
-                        },
-                        "required": [
-                            "file_format"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "content_type": {
-                                "const": "sample sort parameters"
-                            }
-                        },
-                        "required": [
-                            "content_type"
-                        ]
-                    }
                 }
             ]
         },
