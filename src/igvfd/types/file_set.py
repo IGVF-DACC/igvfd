@@ -497,6 +497,7 @@ class AnalysisSet(FileSet):
                     for modification in sample_object['modifications']:
                         modification_object = request.embed(modification, '@@object?skip_calculated=true')
                         crispr_modalities.add(modification_object['modality'])
+
         # Collect construct library set summaries and types
         if construct_library_sets:
             for construct_library_set in construct_library_sets:
@@ -544,7 +545,9 @@ class AnalysisSet(FileSet):
             suffix = ''
             if len(control_type_set) > 1:
                 suffix = 's'
-            control_phrase = f'with {", ".join(sorted(control_type_set))} control{suffix}'
+            control_types = [control_type for control_type in control_type_set if control_type not in cls_phrase]
+            if control_types:
+                control_phrase = f'with {", ".join(sorted(control_types))} control{suffix}'
 
         all_phrases = [
             assay_title_phrase,
@@ -1147,12 +1150,6 @@ class MeasurementSet(FileSet):
                 genes = sorted(genes)
                 target_phrase = f'{target_phrase} {", ".join(genes)}'
 
-        if control_type:
-            control_phrase = f'{control_type} '
-        # Special case for Y2H assays if control_type is not specified.
-        if request.embed(assay_term)['term_id'] == 'OBI:0000288' and control_type is None:
-            control_phrase = 'post-selection '
-
         if 'guide library' in cls_type_set:
             if 'CRISPR' not in assay:
                 assay = f'CRISPR {assay}'
@@ -1177,6 +1174,12 @@ class MeasurementSet(FileSet):
 
         if len(cls_set) > 0:
             cls_phrase = f' {get_cls_phrase(cls_set)}'
+
+        if control_type and control_type not in cls_phrase:
+            control_phrase = f'{control_type} '
+        # Special case for Y2H assays if control_type is not specified.
+        if request.embed(assay_term)['term_id'] == 'OBI:0000288' and control_type is None:
+            control_phrase = 'post-selection '
 
         sentence = ''
         sentence_parts = [
