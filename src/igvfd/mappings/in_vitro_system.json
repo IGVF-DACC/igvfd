@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-    "hash": "38adcadfe06d5fea52ea86a3054fab85",
-    "index_name": "in_vitro_system_38adcadf",
-=======
-    "hash": "e834731ad1c78598ddd816f00b596c47",
-    "index_name": "in_vitro_system_e834731a",
->>>>>>> 86fc642f (mappings)
+    "hash": "2667e6e393ab7ed8087339f21faba99d",
+    "index_name": "in_vitro_system_2667e6e3",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [

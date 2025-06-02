@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-    "hash": "5012570232c7aef8a37a2582f98b610c",
-    "index_name": "tissue_50125702",
-=======
-    "hash": "dbd0ddb6d6d177ba41fb538086f9a491",
-    "index_name": "tissue_dbd0ddb6",
->>>>>>> 86fc642f (mappings)
+    "hash": "7b82793d1a4ebb64306872ecedec01ec",
+    "index_name": "tissue_7b82793d",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [

@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-    "hash": "b0ac6232df00e006900fc75898669338",
-    "index_name": "auxiliary_set_b0ac6232",
-=======
-    "hash": "cb7d22324669b9c59c4f138a941a0a45",
-    "index_name": "auxiliary_set_cb7d2232",
->>>>>>> 86fc642f (mappings)
+    "hash": "cccec850901f924e7c2db13a9b6dc3b1",
+    "index_name": "auxiliary_set_cccec850",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
