@@ -772,5 +772,24 @@
         "catalog_adapters": [
             "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/mpra_adapter.py"
         ]
+    },
+    {
+        "uuid": "2f3a8e84-6c52-4e27-83fd-2d527314a174",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "accession": "IGVFFI0602PRTB",
+        "aliases": [
+            "igvf:pipeline_inputs"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-05-01T21:29:45Z",
+        "md5sum": "3fc3f1dc810e639e9a9ec7fa0a6ee5e2",
+        "file_format": "tar",
+        "content_type": "pipeline inputs",
+        "submitted_file_name": "/Users/igvf/igvf_files/primers_table.tsv.gz",
+        "file_size": 20090,
+        "upload_status": "validated",
+        "file_set": "igvf:primer_design_curated_set",
+        "controlled_access": false
     }
 ]
