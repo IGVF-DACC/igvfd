@@ -7,6 +7,7 @@ from .formatter import (
     path_to_text,
     get_audit_message
 )
+from .audit_registry import register_audit, run_audits
 
 
 @audit_checker('Workflow', frame='object')
@@ -25,3 +26,8 @@ def audit_workflow_without_asvs(value, system):
     if 'analysis_step_versions' not in value:
         detail = f'Workflow {audit_link(path_to_text(value["@id"]), value["@id"])} does not have any analysis step version.'
         yield AuditFailure(missing_asv_msg.get('audit_category', ''), f'{detail} {missing_asv_msg.get("audit_description", "")}', level=missing_asv_msg.get('audit_level', ''))
+
+
+@audit_checker('Workflow', frame='object')
+def audit_workflow_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')

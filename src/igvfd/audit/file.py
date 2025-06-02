@@ -6,10 +6,9 @@ from .formatter import (
     audit_link,
     path_to_text,
     get_audit_message,
-    space_in_words,
-    register_audit,
-    register_all_audits
+    space_in_words
 )
+from .audit_registry import register_audit, run_audits
 
 
 @register_audit(['File'], frame='object')
@@ -114,4 +113,21 @@ def audit_file_no_file_format_specifications(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-register_all_audits()
+@audit_checker('File', frame='object')
+def audit_file_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')
+
+
+@audit_checker('MatrixFile', frame='object')
+def audit_matrix_file_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')
+
+
+@audit_checker('ModelFile', frame='object')
+def audit_model_file_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')
+
+
+@audit_checker('TabularFile', frame='object')
+def audit_tabular_file_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')
