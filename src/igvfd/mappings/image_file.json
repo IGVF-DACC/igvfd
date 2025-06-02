@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-    "hash": "d73f9e058b756e712746ebc0b83f9f77",
-    "index_name": "image_file_d73f9e05",
-=======
-    "hash": "22fa8850e18a801c97953200ba22a485",
-    "index_name": "image_file_22fa8850",
->>>>>>> 86fc642f (mappings)
+    "hash": "0ec819cda3148c524a442b250d9309de",
+    "index_name": "image_file_0ec819cd",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
