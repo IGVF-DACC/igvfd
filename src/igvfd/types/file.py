@@ -657,18 +657,27 @@ class MatrixFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, content_summary, file_set, filtered=None):
+    def summary(self, request, content_summary, file_set, filtered=None, analysis_step_version=None):
         file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
+        software_version_phrase = None
+        if analysis_step_version and predicted is not None:
+            software_versions = set()
+            asv_object = request.embed(analysis_step_version, '@@object?skip_calculated=true')
+            for software_version in asv_object['software_versions']:
+                software_version_object = request.embed(
+                    software_version, '@@object_with_select_calculated_properties?field=summary')
+                software_versions.add(software_version_object['summary'])
+            software_version_phrase = f'({", ".join(sorted(software_versions))})'
         filtered_phrase = None
         if filtered is True:
             filtered_phrase = 'filtered'
         elif filtered is False:
             filtered_phrase = 'unfiltered'
         return ' '.join(
-            [x for x in [predicted, filtered_phrase, content_summary] if x is not None]
+            [x for x in [predicted, filtered_phrase, content_summary, software_version_phrase] if x is not None]
         )
 
 
@@ -736,16 +745,25 @@ class SignalFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, content_summary, file_set, assembly=None, transcriptome_annotation=None):
+    def summary(self, request, content_summary, file_set, assembly=None, transcriptome_annotation=None, analysis_step_version=None):
         file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
+        software_version_phrase = None
+        if analysis_step_version and predicted is not None:
+            software_versions = set()
+            asv_object = request.embed(analysis_step_version, '@@object?skip_calculated=true')
+            for software_version in asv_object['software_versions']:
+                software_version_object = request.embed(
+                    software_version, '@@object_with_select_calculated_properties?field=summary')
+                software_versions.add(software_version_object['summary'])
+            software_version_phrase = f'({", ".join(sorted(software_versions))})'
         formatted_assembly = assembly
         if assembly and assembly == 'custom':
             formatted_assembly = f'{assembly} assembly'
         return ' '.join(
-            [x for x in [formatted_assembly, transcriptome_annotation, predicted, content_summary]
+            [x for x in [formatted_assembly, transcriptome_annotation, predicted, content_summary, software_version_phrase]
              if x is not None]
         )
 
@@ -781,11 +799,28 @@ class ConfigurationFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_type, seqspec_of=None):
-        seqspec_of_formatted = ''
+    def summary(self, request, file_set, content_type, seqspec_of=None, analysis_step_version=None):
+        seqspec_of_formatted = None
         if seqspec_of:
             file_accessions = [x.split('/')[-2] for x in seqspec_of]
-            seqspec_of_formatted = f" of {', '.join(file_accessions)}"
+            seqspec_of_formatted = f"of {', '.join(file_accessions)}"
+        file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
+        predicted = None
+        if 'PredictionSet' in file_set_object['@type']:
+            predicted = 'predictive'
+        software_version_phrase = None
+        if analysis_step_version and predicted is not None:
+            software_versions = set()
+            asv_object = request.embed(analysis_step_version, '@@object?skip_calculated=true')
+            for software_version in asv_object['software_versions']:
+                software_version_object = request.embed(
+                    software_version, '@@object_with_select_calculated_properties?field=summary')
+                software_versions.add(software_version_object['summary'])
+            software_version_phrase = f'({", ".join(sorted(software_versions))})'
+        return ' '.join(
+            [x for x in [predicted, content_type, seqspec_of_formatted, software_version_phrase]
+             if x is not None]
+        )
         return f'{content_type}{seqspec_of_formatted}'
 
     @calculated_property(
@@ -855,7 +890,7 @@ class TabularFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None, filtered=None):
+    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None, filtered=None, analysis_step_version=None):
         file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
@@ -868,8 +903,17 @@ class TabularFile(File):
             filtered_phrase = 'filtered'
         elif filtered is False:
             filtered_phrase = 'unfiltered'
+        software_version_phrase = None
+        if analysis_step_version and predicted is not None:
+            software_versions = set()
+            asv_object = request.embed(analysis_step_version, '@@object?skip_calculated=true')
+            for software_version in asv_object['software_versions']:
+                software_version_object = request.embed(
+                    software_version, '@@object_with_select_calculated_properties?field=summary')
+                software_versions.add(software_version_object['summary'])
+            software_version_phrase = f'({", ".join(sorted(software_versions))})'
         return ' '.join(
-            [x for x in [formatted_assembly, transcriptome_annotation, predicted, filtered_phrase, content_type]
+            [x for x in [formatted_assembly, transcriptome_annotation, predicted, filtered_phrase, content_type, software_version_phrase]
              if x is not None]
         )
 
