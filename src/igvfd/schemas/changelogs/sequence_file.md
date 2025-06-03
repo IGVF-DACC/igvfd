@@ -2,6 +2,7 @@
 
 ### Schema version 16
 
+* Extend `base_modifications` enum list to include `Nm`.
 * Adjust `derived_manually` to have default value `False`.
 
 ### Minor changes since schema version 15
