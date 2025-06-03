@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Extend `document_type` enum list to include `pipeline parameters`.
 * Add `preview_timestamp`.
 * Add `standardized_file_format`.
 * Extend `document_type` enum list to include `library structure seqspec`.
