@@ -6,6 +6,7 @@
 * Extend `content_type` enum list to include `gene programs`.
 * Extend `content_type` enum list to include `gene program regulators`.
 * Extend `file_format` enum list to include `tar`.
+* Extend `content_type` enum list to include `pipeline inputs`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 24`.
 * Extend `file_format_type` enum list to include `mpra_element`.
 * Extend `file_format_type` enum list to include `mpra_variant`.
