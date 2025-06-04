@@ -13,6 +13,9 @@ def prediction_set():
             'scope': {
                 'title': 'Prediction Scope',
             },
+            'associated_phenotypes.term_name': {
+                'title': 'Associated Phenotypes'
+            },
             'files.assembly': {
                 'title': 'Assembly',
             },
@@ -161,6 +164,9 @@ def prediction_set_report_view():
         },
         'files.assembly': {
             'title': 'File Assembly'
+        },
+        'associated_phenotypes.term_name': {
+            'title': 'Associated Phenotypes Name'
         },
     }
     return config
