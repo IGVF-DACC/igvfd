@@ -791,5 +791,24 @@
         "upload_status": "validated",
         "file_set": "igvf:primer_design_curated_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "dba8ceb9-c50f-4bfb-9141-f61cfc4907d1",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "accession": "IGVFFI0602PRTC",
+        "aliases": [
+            "igvf:gene_programs"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-05-01T21:29:45Z",
+        "md5sum": "3a5d3dfb246ce07025118dc7070348fe",
+        "file_format": "tsv",
+        "content_type": "gene programs",
+        "submitted_file_name": "/Users/igvf/cellular_program_networks/gene_programs.tsv.gz",
+        "file_size": 20091,
+        "upload_status": "validated",
+        "file_set": "igvf:primer_design_curated_set",
+        "controlled_access": false
     }
 ]
