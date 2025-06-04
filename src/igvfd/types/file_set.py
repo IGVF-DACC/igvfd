@@ -1420,6 +1420,7 @@ class PredictionSet(FileSet):
         Path('large_scale_loci_list', include=['@id', 'accession', 'aliases', 'status']),
         Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
+        Path('associated_phenotypes', include=['@id', 'term_id', 'term_name', 'status']),
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
