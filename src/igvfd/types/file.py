@@ -951,53 +951,6 @@ class TabularFile(File):
 
 
 @collection(
-    name='genome-browser-annotation-files',
-    unique_key='accession',
-    properties={
-        'title': 'Genome Browser Annotation Files',
-        'description': 'Listing of genome browser annotation files',
-    }
-)
-class GenomeBrowserAnnotationFile(File):
-    item_type = 'genome_browser_annotation_file'
-    schema = load_schema('igvfd:schemas/genome_browser_annotation_file.json')
-    embedded_with_frame = File.embedded_with_frame + [
-        Path('cell_type_annotation', include=['@id', 'term_name', 'status'])
-    ]
-    set_status_up = File.set_status_up + []
-    set_status_down = File.set_status_down + []
-
-    def unique_keys(self, properties):
-        keys = super(File, self).unique_keys(properties)
-        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
-            if 'md5sum' in properties:
-                value = 'md5:{md5sum}'.format(**properties)
-                keys.setdefault('alias', []).append(value)
-        return keys
-
-    @calculated_property(
-        schema={
-            'title': 'Summary',
-            'type': 'string',
-            'description': 'A summary of the genome browser annotation file.',
-            'notSubmittable': True,
-        }
-    )
-    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None):
-        file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
-        predicted = None
-        if 'PredictionSet' in file_set_object['@type']:
-            predicted = 'predictive'
-        formatted_assembly = assembly
-        if assembly and assembly == 'custom':
-            formatted_assembly = f'{assembly} assembly'
-        return ' '.join(
-            [x for x in [formatted_assembly, transcriptome_annotation, predicted, content_type]
-             if x is not None]
-        )
-
-
-@collection(
     name='image-files',
     unique_key='accession',
     properties={
