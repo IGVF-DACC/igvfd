@@ -396,6 +396,7 @@ class AnalysisSet(FileSet):
         assay_titles = set()
         cls_derived_assay_titles = set()
         crispr_modalities = set()
+        multiplexing_methods = set()
         cls_type_set = set()
         cls_set = set()
         control_type_set = set()
@@ -501,6 +502,9 @@ class AnalysisSet(FileSet):
                     for modification in sample_object['modifications']:
                         modification_object = request.embed(modification, '@@object?skip_calculated=true')
                         crispr_modalities.add(modification_object['modality'])
+                if 'multiplexing_methods' in sample_object:
+                    for method in sample_object['multiplexing_methods']:
+                        multiplexing_methods.add(method)
 
         # Collect construct library set summaries and types
         prop_with_cls = None
@@ -541,6 +545,14 @@ class AnalysisSet(FileSet):
                 assay_title_phrase = assay_title_phrase.replace('CRISPR', f'CRISPR {modality_set}')
             else:
                 assay_title_phrase = f'{modality_set} {assay_title_phrase}'
+        if multiplexing_methods:
+            method_phrase_map = {
+                'barcode based': 'barcode based',
+                'genetic': 'genetically'
+            }
+            mux_method_list = [method_phrase_map[x] for x in sorted(list(multiplexing_methods))]
+            mux_method_phrase = f'({", ".join(mux_method_list)} multiplexed)'
+            assay_title_phrase = f'{assay_title_phrase} {mux_method_phrase}'
         # Targeted genes.
         targeted_genes_phrase = ''
         if targeted_genes:
