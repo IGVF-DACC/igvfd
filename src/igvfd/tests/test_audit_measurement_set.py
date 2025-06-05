@@ -1564,3 +1564,32 @@ def test_audit_unexpected_barcode_replacement_file(
         error['category'] != 'inconsistent barcode replacement file'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_missing_external_image_url(
+    testapp,
+    measurement_set
+):
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing external_image_url'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {'preferred_assay_title': 'Cell painting'}
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing external_image_url'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {'external_image_url': 'https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/'}
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing external_image_url'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
