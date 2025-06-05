@@ -85,3 +85,9 @@ def test_assay_term_upgrade_13_14(upgrader, assay_term_v13):
     value = upgrader.upgrade('assay_term', assay_term_v13, current_version='13', target_version='14')
     assert value['schema_version'] == '14'
     assert set(value.get('preferred_assay_titles')) == {'mtscMultiome'}
+
+
+def test_assay_term_upgrade_14_15(upgrader, assay_term_v14):
+    value = upgrader.upgrade('assay_term', assay_term_v14, current_version='14', target_version='15')
+    assert value['schema_version'] == '15'
+    assert 'preferred_assay_titles' not in value

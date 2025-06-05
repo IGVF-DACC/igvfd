@@ -189,3 +189,9 @@ def test_measurement_set_upgrade_28_29(upgrader, measurement_set_v28):
     value = upgrader.upgrade('measurement_set', measurement_set_v28, current_version='28', target_version='29')
     assert value['schema_version'] == '29'
     assert value.get('preferred_assay_title') == 'mtscMultiome'
+
+
+def test_measurement_set_upgrade_29_30(upgrader, measurement_set_v29):
+    value = upgrader.upgrade('measurement_set', measurement_set_v29, current_version='29', target_version='30')
+    assert value['schema_version'] == '30'
+    assert value.get('preferred_assay_title') == 'Perturb-seq'

@@ -452,3 +452,13 @@ def measurement_set_v28(measurement_set):
         'preferred_assay_title': '10x multiome with scMito-seq'
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v29(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '29',
+        'preferred_assay_title': 'CERES-seq'
+    })
+    return item

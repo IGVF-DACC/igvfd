@@ -68,7 +68,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "29"
+            "default": "30"
         },
         "samples": {
             "maxItems": 1
@@ -149,7 +149,6 @@
                 "scCRISPR screen",
                 "Perturb-seq",
                 "Parse Perturb-seq",
-                "CERES-seq",
                 "TAP-seq",
                 "Variant-EFFECTS",
                 "SGE",
@@ -215,7 +214,6 @@
                 "scCRISPR screen": "A CRISPR-based screen that combines CRISPR perturbations with single-cell RNA sequencing (scRNA-seq) to analyze gene expression changes and cellular phenotypes at the single-cell level.",
                 "Perturb-seq": "A single-cell CRISPR screen that combines CRISPR-based gene perturbation with single-cell RNA sequencing (scRNA-seq).",
                 "Parse Perturb-seq": "A type of Perturb-seq that uses a plate-based split-pool combinatorial barcoding method to label the cellular origin of transcripts and guides at single cell resolution in a cost-effective way.",
-                "CERES-seq": "CRISPR-dCas9-based Epigenomic Regulatory Element Screening using sequencing (CERES-seq) uses CRISPR-dCas9 constructs to either repress or activate specific regulatory elements and measures their impact on gene expression.",
                 "TAP-seq": "A high-throughput, cost-efficient variant of Perturb-seq that focuses single-cell RNA-seq coverage on specific genes of interest.",
                 "Variant-EFFECTS": "A CRISPR-based screen that combines CRISPR prime editing, RNA fluorescence in situ hybridization (FlowFISH), and cell sorting to quantitatively measure the effects of designed DNA sequence variants on gene expression.",
                 "SGE": "A CRISPR-based assay that systematically introduces and evaluates the functional impact of hundreds to thousands of nucleotide substitutions, insertions, or deletions at a specific genomic locus.",

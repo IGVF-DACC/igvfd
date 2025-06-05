@@ -215,7 +215,7 @@
     },
     {
         "aliases": [
-            "igvf:CERES-seq"
+            "igvf:Perturb-seq"
         ],
         "award": "1UM1HG012053-01",
         "lab": "/labs/tim-reddy/",
@@ -227,7 +227,7 @@
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
         "assay_term": "/assay-terms/igvf:CRISPR/",
-        "preferred_assay_title": "CERES-seq",
+        "preferred_assay_title": "Perturb-seq",
         "strand_specificity": "5 prime to 3 prime",
         "file_set_type": "experimental data"
     },
