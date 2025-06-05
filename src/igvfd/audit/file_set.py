@@ -91,13 +91,28 @@ def audit_no_files(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
+    preferred_assay_title = value.get('preferred_assay_title', '')
+
+    # Skip audit for specific Measurement set + assay combinations
+    skip_assays = [
+        'Variant painting via immunostaining',
+        'Variant painting via fluorescence',
+        'Cell Painting'
+    ]
+    if object_type == 'Measurement set' and preferred_assay_title in skip_assays:
+        return
+
     audit_message_missing_files = get_audit_message(audit_no_files, index=0)
-    if not (value.get('files', '')) and object_type != 'Construct library set':
+    if not value.get('files', '') and object_type != 'Construct library set':
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `files`.'
         )
-        yield AuditFailure(audit_message_missing_files.get('audit_category', ''), f'{detail} {audit_message_missing_files.get("audit_description", "")}', level=audit_message_missing_files.get('audit_level', ''))
+        yield AuditFailure(
+            audit_message_missing_files.get('audit_category', ''),
+            f'{detail} {audit_message_missing_files.get("audit_description", "")}',
+            level=audit_message_missing_files.get('audit_level', '')
+        )
 
 
 @audit_checker('AuxiliarySet', frame='object')

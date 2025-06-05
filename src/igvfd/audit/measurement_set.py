@@ -683,3 +683,34 @@ def audit_inconsistent_barcode_replacement_file(value, system):
                     f'but it is not a Tabular File with `content_type` of `barcode replacement`.'
                 )
                 yield AuditFailure(msg_wrong_replacement_file.get('audit_category', ''), f'{detail} {msg_wrong_replacement_file.get("audit_description", "")}', level=msg_wrong_replacement_file.get('audit_level', ''))
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_missing_external_image_url(value, system):
+    '''
+    [
+        {
+            "audit_description": "Cell Painting and Variant Painting assays are expected to have an external_image_url.",
+            "audit_category": "missing external_image_url",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    preferred_assay_title = value.get('preferred_assay_title')
+    painting_assays = [
+        'Variant painting via immunostaining',
+        'Variant painting via fluorescence',
+        'Cell painting'
+    ]
+    audit_message = get_audit_message(audit_missing_external_image_url, index=0)
+
+    if not value.get('external_image_url', '') and preferred_assay_title in painting_assays:
+        detail = (
+            f'MeasurementSet {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'is missing `external_image_url`.'
+        )
+        yield AuditFailure(
+            audit_message.get('audit_category', ''),
+            f'{detail} {audit_message.get("audit_description", "")}',
+            level=audit_message.get('audit_level', '')
+        )
