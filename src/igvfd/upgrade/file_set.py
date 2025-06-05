@@ -555,3 +555,13 @@ def measurement_set_28_29(value, system):
         value['preferred_assay_title'] = 'mtscMultiome'
         notes += f' This measurement set previously used 10x multiome with scMito-seq as a preferred_assay_title, but the preferred_assay_title has now been updated to mtscMultiome via an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '29', '30')
+def measurement_set_29_30(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2730
+    notes = value.get('notes', '')
+    if value.get('preferred_assay_title') == 'CERES-seq':
+        value['preferred_assay_title'] = 'Perturb-seq'
+        notes += f' This measurement set previously used CERES-seq as a preferred_assay_title, but the preferred_assay_title has now been updated to Perturb-seq via an upgrade.'
+        value['notes'] = notes.strip()

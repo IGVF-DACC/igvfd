@@ -1,5 +1,9 @@
 ## Changelog for *`assay_term.json`*
 
+### Schema version 15
+
+* Adjust `preferred_assay_titles` enum list to remove `CERES-seq`.
+
 ### Minor changes since schema version 14
 
 * Extend `preferred_assay_titles` enum list to include `Parse Perturb-seq`.
