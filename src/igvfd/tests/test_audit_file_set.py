@@ -15,8 +15,17 @@ def test_audit_missing_files(
     )
     testapp.patch_json(
         reference_file['@id'],
+        {'file_set': measurement_set_no_files['@id']}
+    )
+    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing files'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set_no_files['@id'],
         {
-            'file_set': measurement_set_no_files['@id']
+            'preferred_assay_title': 'Cell painting'
         }
     )
     res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
