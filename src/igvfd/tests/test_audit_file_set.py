@@ -14,8 +14,10 @@ def test_audit_missing_files(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
-        reference_file['@id'],
-        {'file_set': measurement_set_no_files['@id']}
+        measurement_set_no_files['@id'],
+        {
+            'preferred_assay_title': 'Cell painting'
+        }
     )
     res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
     assert all(
@@ -23,10 +25,12 @@ def test_audit_missing_files(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
+        reference_file['@id'],
+        {'file_set': measurement_set_no_files['@id']}
+    )
+    testapp.patch_json(
         measurement_set_no_files['@id'],
-        {
-            'preferred_assay_title': 'Cell painting'
-        }
+        {'preferred_assay_title': 'CRISPR FlowFISH screen'}
     )
     res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
     assert all(
