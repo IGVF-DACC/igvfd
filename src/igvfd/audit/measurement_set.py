@@ -690,7 +690,7 @@ def audit_missing_external_image_url(value, system):
     '''
     [
         {
-            "audit_description": "Cell Painting and Variant Painting assays are expected to have an external_image_url.",
+            "audit_description": "Cell Painting and Variant Painting assays are expected to have an `external_image_url`.",
             "audit_category": "missing external_image_url",
             "audit_level": "NOT_COMPLIANT"
         }

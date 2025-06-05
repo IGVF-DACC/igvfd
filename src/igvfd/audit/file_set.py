@@ -97,7 +97,7 @@ def audit_no_files(value, system):
     skip_assays = [
         'Variant painting via immunostaining',
         'Variant painting via fluorescence',
-        'Cell Painting'
+        'Cell painting'
     ]
     if object_type == 'Measurement set' and preferred_assay_title in skip_assays:
         return
