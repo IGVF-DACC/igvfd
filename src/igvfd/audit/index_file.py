@@ -1,6 +1,5 @@
 from snovault.auditor import (
-    audit_checker,
-    AuditFailure,
+    AuditFailure
 )
 from .formatter import (
     audit_link,
@@ -8,9 +7,10 @@ from .formatter import (
     get_audit_message,
     space_in_words
 )
+from .audit_registry import register_audit, register_all_audits
 
 
-@audit_checker('IndexFile', frame='object')
+@register_audit(['IndexFile'], frame='object')
 def audit_index_files_derived_from(value, system):
     '''
     [
@@ -37,3 +37,6 @@ def audit_index_files_derived_from(value, system):
                 f'{detail} {audit_message_tbi.get("audit_description", "")}',
                 level=audit_message_tbi.get('audit_level', '')
             )
+
+
+register_all_audits()

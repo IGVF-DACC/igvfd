@@ -1,6 +1,5 @@
 from snovault.auditor import (
-    audit_checker,
-    AuditFailure,
+    AuditFailure
 )
 from .formatter import (
     audit_link,
@@ -8,9 +7,10 @@ from .formatter import (
     get_audit_message,
     space_in_words
 )
+from .audit_registry import register_audit, register_all_audits
 
 
-@audit_checker('ReferenceFile', frame='object')
+@register_audit(['ReferenceFile'], frame='object')
 def audit_external_reference_files(value, system):
     '''
     [
@@ -30,3 +30,6 @@ def audit_external_reference_files(value, system):
                 f'but does not have identifier(s) from an external resource listed in `dbxrefs`.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+register_all_audits()

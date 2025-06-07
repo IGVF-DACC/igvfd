@@ -1,15 +1,15 @@
 from snovault.auditor import (
-    audit_checker,
-    AuditFailure,
+    AuditFailure
 )
 from .formatter import (
     audit_link,
     path_to_text,
     get_audit_message
 )
+from .audit_registry import register_audit, register_all_audits
 
 
-@audit_checker('MatrixFile', frame='object')
+@register_audit(['MatrixFile'], frame='object')
 def audit_matrix_file_dimensions(value, system):
     '''
     [
@@ -27,3 +27,6 @@ def audit_matrix_file_dimensions(value, system):
             f'has {value["principal_dimension"]} for both `principal_dimension` and `secondary_dimensions`.'
         )
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+register_all_audits()

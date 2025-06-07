@@ -1,15 +1,15 @@
 from snovault.auditor import (
-    audit_checker,
-    AuditFailure,
+    AuditFailure
 )
 from .formatter import (
     audit_link,
     path_to_text,
     get_audit_message
 )
+from .audit_registry import register_audit, register_all_audits
 
 
-@audit_checker('ModelSet', frame='object')
+@register_audit(['ModelSet'], frame='object')
 def audit_external_input_data_content_type(value, system):
     '''
     [
@@ -36,3 +36,6 @@ def audit_external_input_data_content_type(value, system):
                 f'{detail} {audit_message_inconsistent_external_input_data.get("audit_description", "")}',
                 level=audit_message_inconsistent_external_input_data.get('audit_level', '')
             )
+
+
+register_all_audits()

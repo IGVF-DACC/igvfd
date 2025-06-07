@@ -1,6 +1,5 @@
 from snovault.auditor import (
-    audit_checker,
-    AuditFailure,
+    AuditFailure
 )
 from .formatter import (
     audit_link,
@@ -8,9 +7,10 @@ from .formatter import (
     get_audit_message,
     space_in_words
 )
+from .audit_registry import register_audit, register_all_audits
 
 
-@audit_checker('Sample', frame='object?skip_calculated=true')
+@register_audit(['Sample'], frame='object?skip_calculated=true')
 def audit_sample_sorted_from_parent_child_check(value, system):
     '''
     [
@@ -73,7 +73,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
             yield AuditFailure(audit_message_metadata_inconsistency.get('audit_category', ''), f'{detail} {audit_message_metadata_inconsistency.get("audit_description", "")}', level=audit_message_metadata_inconsistency.get('audit_level', ''))
 
 
-@audit_checker('Sample', frame='object')
+@register_audit(['Sample'], frame='object')
 def audit_sample_virtual_donor_check(value, system):
     '''
     [
@@ -104,7 +104,7 @@ def audit_sample_virtual_donor_check(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Sample', frame='object')
+@register_audit(['Sample'], frame='object')
 def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
     '''
     [
@@ -162,7 +162,7 @@ def get_virtual_sample_failures(
         return None
 
 
-@audit_checker('Sample', frame='object')
+@register_audit(['Sample'], frame='object')
 def audit_parent_sample_with_singular_child(value, system):
     '''
     [
@@ -186,7 +186,7 @@ def audit_parent_sample_with_singular_child(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Sample', frame='object')
+@register_audit(['Sample'], frame='object')
 def audit_missing_nucleic_acid_delivery(value, system):
     '''
     [
@@ -207,7 +207,7 @@ def audit_missing_nucleic_acid_delivery(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Sample', frame='object')
+@register_audit(['Sample'], frame='object')
 def audit_sample_missing_publication(value, system):
     '''
     [
@@ -228,7 +228,7 @@ def audit_sample_missing_publication(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Sample', frame='object')
+@register_audit(['Sample'], frame='object')
 def audit_missing_association(value, system):
     '''
     [
@@ -248,3 +248,6 @@ def audit_missing_association(value, system):
             f'is not associated with any file set, nor is the parent of any sample.'
         )
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+register_all_audits()

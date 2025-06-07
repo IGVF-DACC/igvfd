@@ -1,6 +1,5 @@
 from snovault.auditor import (
-    audit_checker,
-    AuditFailure,
+    AuditFailure
 )
 from .formatter import (
     audit_link,
@@ -8,9 +7,10 @@ from .formatter import (
     get_audit_message,
     space_in_words
 )
+from .audit_registry import register_audit, register_all_audits
 
 
-@audit_checker('Biosample', frame='object')
+@register_audit(['Biosample'], frame='object')
 def audit_biosample_taxa_check(value, system):
     '''
     [
@@ -46,9 +46,7 @@ def audit_biosample_taxa_check(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Tissue', frame='object')
-@audit_checker('PrimaryCell', frame='object')
-@audit_checker('WholeOrganism', frame='object')
+@register_audit(['Tissue', 'PrimaryCell', 'WholeOrganism'], frame='object')
 def audit_biosample_age(value, system):
     '''
     [
@@ -70,7 +68,7 @@ def audit_biosample_age(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Biosample', frame='object')
+@register_audit(['Biosample'], frame='object')
 def audit_biomarker_name(value, system):
     '''
     [
@@ -105,7 +103,7 @@ def audit_biomarker_name(value, system):
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Biosample', frame='object')
+@register_audit(['Biosample'], frame='object')
 def audit_multiple_ics_with_mismatched_access(value, system):
     '''
     [
@@ -171,7 +169,7 @@ def audit_multiple_ics_with_mismatched_access(value, system):
             yield AuditFailure(audit_message_dul.get('audit_category', ''), f'{detail} {audit_message_dul.get("audit_description", "")}', level=audit_message_dul.get('audit_level', ''))
 
 
-@audit_checker('Biosample', frame='object')
+@register_audit(['Biosample'], frame='object')
 def audit_annotated_from_virtual(value, system):
     '''
     [
@@ -194,3 +192,6 @@ def audit_annotated_from_virtual(value, system):
                 f'{audit_link(path_to_text(annotated_from_object["@id"]), annotated_from_object["@id"])}.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+register_all_audits()

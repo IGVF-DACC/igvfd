@@ -1,6 +1,5 @@
 from snovault.auditor import (
-    audit_checker,
-    AuditFailure,
+    AuditFailure
 )
 from .formatter import (
     audit_link,
@@ -8,9 +7,10 @@ from .formatter import (
     get_audit_message,
     space_in_words
 )
+from .audit_registry import register_audit, register_all_audits
 
 
-@audit_checker('OntologyTerm', frame='object')
+@register_audit(['OntologyTerm'], frame='object')
 def audit_ntr_term_id(value, system):
     '''
     [
@@ -29,3 +29,6 @@ def audit_ntr_term_id(value, system):
         if term_id.startswith('NTR'):
             detail = f'{object_type} for {audit_link(path_to_text(ontologyterm_id), ontologyterm_id)} has been newly requested.'
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+register_all_audits()
