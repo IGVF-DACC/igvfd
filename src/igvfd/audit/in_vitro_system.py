@@ -1,5 +1,4 @@
 from snovault.auditor import (
-    audit_checker,
     AuditFailure,
 )
 from .formatter import (
@@ -7,7 +6,7 @@ from .formatter import (
     path_to_text,
     get_audit_message,
 )
-from .audit_registry import register_audit, run_audits
+from .audit_registry import register_audit, register_all_audits
 
 
 @register_audit(['InVitroSystem'], frame='object')
@@ -58,11 +57,4 @@ def audit_cell_fate_change_protocol_document_type(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('InVitroSystem', frame='object')
-def audit_in_vitro_system_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
-
-
-@audit_checker('InVitroSystem', frame='embedded')
-def audit_in_vitro_system_embedded_dispatcher(value, system):
-    yield from run_audits(value, system, frame='embedded')
+register_all_audits()

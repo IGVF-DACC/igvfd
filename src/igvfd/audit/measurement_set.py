@@ -1,14 +1,12 @@
 from snovault.auditor import (
-    audit_checker,
     AuditFailure,
 )
 from .formatter import (
     audit_link,
     path_to_text,
     get_audit_message,
-    register_audit,
 )
-from .audit_registry import register_audit, run_audits
+from .audit_registry import register_audit, register_all_audits
 
 from .file_set import (
     single_cell_check,
@@ -687,11 +685,4 @@ def audit_inconsistent_barcode_replacement_file(value, system):
                 yield AuditFailure(msg_wrong_replacement_file.get('audit_category', ''), f'{detail} {msg_wrong_replacement_file.get("audit_description", "")}', level=msg_wrong_replacement_file.get('audit_level', ''))
 
 
-@audit_checker('MeasurementSet', frame='object')
-def audit_measurement_set_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
-
-
-@audit_checker('MeasurementSet', frame='embedded')
-def audit_measurement_set_embedded_dispatcher(value, system):
-    yield from run_audits(value, system, frame='embedded')
+register_all_audits()

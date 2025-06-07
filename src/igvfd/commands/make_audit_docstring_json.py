@@ -22,6 +22,7 @@ import igvfd.audit.sequence_file
 import igvfd.audit.tissue
 import igvfd.audit.treatment
 import igvfd.audit.whole_organism
+import igvfd.audit.workflow
 
 
 NON_AUDIT_FUNCTION_NAMES = [
@@ -54,6 +55,7 @@ AUDIT_MODULES_TO_PROCESS = [
     igvfd.audit.tissue,
     igvfd.audit.treatment,
     igvfd.audit.whole_organism,
+    igvfd.audit.workflow
 ]
 
 

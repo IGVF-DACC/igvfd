@@ -1,8 +1,6 @@
 import re
 import json
 
-from snovault.auditor import audit_checker
-
 
 def audit_link(linkText, uri):
     """Generate link markdown from URI."""
@@ -41,26 +39,3 @@ def join_obj_paths(data_object_paths: list) -> str:
         raise ValueError('No data objects provided for joining paths.')
     # Remove leading and trailing slashes and join with commas
     return ', '.join([audit_link(path_to_text(data_obj), data_obj)for data_obj in data_object_paths])
-
-
-# === Dispatcher Registry ===
-AUDIT_FUNCTIONS = {}
-
-
-def register_audit(object_types, frame='object'):
-    def decorator(function):
-        for object_type in object_types:
-            key = (object_type, frame)
-            AUDIT_FUNCTIONS.setdefault(key, []).append(function)
-        return function
-    return decorator
-
-
-def run_audits(value, system):
-    object_type = value['@type'][0]
-    frame = system.get('frame', 'object')
-    key = (object_type, frame)
-
-    audit_functions = AUDIT_FUNCTIONS.get(key, [])
-    for func in audit_functions:
-        yield from func(value, system)

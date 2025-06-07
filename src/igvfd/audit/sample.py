@@ -1,5 +1,4 @@
 from snovault.auditor import (
-    audit_checker,
     AuditFailure,
 )
 from .formatter import (
@@ -8,7 +7,7 @@ from .formatter import (
     get_audit_message,
     space_in_words,
 )
-from .audit_registry import register_audit, run_audits
+from .audit_registry import register_audit, register_all_audits
 
 
 @register_audit(['Sample'], frame='object?skip_calculated=true')
@@ -251,6 +250,4 @@ def audit_missing_association(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Sample', frame='object')
-def audit_sample_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+register_all_audits()
