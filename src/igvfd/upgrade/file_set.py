@@ -555,3 +555,14 @@ def measurement_set_28_29(value, system):
         value['preferred_assay_title'] = 'mtscMultiome'
         notes += f' This measurement set previously used 10x multiome with scMito-seq as a preferred_assay_title, but the preferred_assay_title has now been updated to mtscMultiome via an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('prediction_set', '8', '9')
+def prediction_set_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2733
+    if value.get('file_set_type', '') == 'pathogenicity':
+        value['file_set_type'] = 'functional effect'
+        notes = value.get('notes', '')
+        notes += f'This object\'s file_set_type was pathogenicity and has been upgraded to functional effect.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

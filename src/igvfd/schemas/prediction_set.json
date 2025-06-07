@@ -221,7 +221,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "8"
+            "default": "9"
         },
         "file_set_type": {
             "description": "The category that best describes this prediction set.",
@@ -230,19 +230,17 @@
                 "activity level",
                 "binding effect",
                 "functional effect",
-                "pathogenicity",
                 "protein stability"
             ],
             "enum_descriptions": {
                 "activity level": "Predictive modeling of an input variable on activiy level.",
                 "binding effect": "Predictive modeling of an input variable on TF binding effect.",
                 "functional effect": "Predictive modeling of an input variable on functional effect.",
-                "pathogenicity": "Predictive modeling of an input variable on pathogenicity.",
                 "protein stability": "Predictive modeling of an input variable on protein stability."
             },
             "submissionExample": {
-                "appscript": "pathogenicity",
-                "igvf_utils": "pathogenicity"
+                "appscript": "protein stability",
+                "igvf_utils": "protein stability"
             }
         },
         "scope": {
