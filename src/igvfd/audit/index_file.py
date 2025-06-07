@@ -1,5 +1,4 @@
 from snovault.auditor import (
-    audit_checker,
     AuditFailure,
 )
 from .formatter import (
@@ -8,7 +7,7 @@ from .formatter import (
     get_audit_message,
     space_in_words,
 )
-from .audit_registry import register_audit, run_audits
+from .audit_registry import register_audit, register_all_audits
 
 
 @register_audit(['IndexFile'], frame='object')
@@ -40,6 +39,4 @@ def audit_index_files_derived_from(value, system):
             )
 
 
-@audit_checker('IndexFile', frame='object')
-def audit_index_file_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+register_all_audits()

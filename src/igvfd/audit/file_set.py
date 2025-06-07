@@ -1,5 +1,4 @@
 from snovault.auditor import (
-    audit_checker,
     AuditFailure,
 )
 from .formatter import (
@@ -9,10 +8,9 @@ from .formatter import (
     space_in_words,
     join_obj_paths,
 )
-from .audit_registry import register_audit, run_audits
+from .audit_registry import register_audit, register_all_audits
 
 # Single cell assay terms
-import json
 
 SINGLE_CELL_ASSAY_TERMS = ['/assay-terms/OBI_0002762/',  # single-nucleus ATAC-seq
                            '/assay-terms/OBI_0003109/',  # single-nucleus RNA sequencing assay
@@ -1041,31 +1039,4 @@ def audit_input_file_sets_derived_from(value, system):
         yield AuditFailure(audit_message_unexpected_input_file_set.get('audit_category', ''), f'{detail} {audit_message_unexpected_input_file_set.get("audit_description", "")}', level=audit_message_unexpected_input_file_set.get('audit_level', ''))
 
 
-@audit_checker('FileSet', frame='object')
-def audit_file_set_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
-
-
-@audit_checker('MeasurementSet', frame='object')
-def audit_measurement_set_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
-
-
-@audit_checker('ConstructLibrarySet', frame='object')
-def audit_construct_library_set_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
-
-
-@audit_checker('AnalysisSet', frame='object')
-def audit_analysis_set_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
-
-
-@audit_checker('PredictionSet', frame='object')
-def audit_prediction_set_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
-
-
-@audit_checker('ModelSet', frame='object')
-def audit_model_set_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+register_all_audits()
