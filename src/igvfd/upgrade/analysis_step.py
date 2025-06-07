@@ -79,3 +79,27 @@ def analysis_step_6_7(value, system):
             notes += f' "{old_enum}" was removed from {key}, and has been upgraded to "{new_enum}".'
     if notes != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_step', '7', '8')
+def analysis_step_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2733
+    notes = value.get('notes', '')
+    old_enum = 'variant functional predictions'
+    new_enum = 'variant functions'
+    for key in ['input_content_types', 'output_content_types']:
+        if old_enum in value[key]:
+            new_content_list = [new_enum if content == old_enum else content for content in value[key]]
+            value[key] = sorted(set(new_content_list))
+            notes += f' "{old_enum}" was removed from {key}, and has been upgraded to "{new_enum}".'
+    if notes != '':
+        value['notes'] = notes.strip()
+    old_enum = 'element to gene predictions'
+    new_enum = 'element to gene interactions'
+    for key in ['input_content_types', 'output_content_types']:
+        if old_enum in value[key]:
+            new_content_list = [new_enum if content == old_enum else content for content in value[key]]
+            value[key] = sorted(set(new_content_list))
+            notes += f' "{old_enum}" was removed from {key}, and has been upgraded to "{new_enum}".'
+    if notes != '':
+        value['notes'] = notes.strip()
