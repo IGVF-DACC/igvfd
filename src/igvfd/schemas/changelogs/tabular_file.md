@@ -1,5 +1,12 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 17
+
+* Extend `content_type` enum list to include `variant functions`.
+* Extend `content_type` enum list to include `element to gene interactions`.
+* Reduce `content_type` enum list to exclude `variant functional predictions`.
+* Reduce `content_type` enum list to exclude `element to gene predictions`.
+
 ### Minor changes since schema version 16
 
 * Extend `content_type` enum list to include `derived barcode mapping`.

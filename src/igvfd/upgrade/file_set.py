@@ -586,3 +586,14 @@ def measurement_set_30_31(value, system):
             else:
                 value['notes'] = f'Preferred_assay_title enum {old_assay_title} has been renamed to be {old_to_new[old_assay_title]}.'
     return
+
+
+@upgrade_step('prediction_set', '8', '9')
+def prediction_set_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2733
+    if value.get('file_set_type', '') == 'pathogenicity':
+        value['file_set_type'] = 'functional effect'
+        notes = value.get('notes', '')
+        notes += f'This object\'s file_set_type was pathogenicity and has been upgraded to functional effect.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
