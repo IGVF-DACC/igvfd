@@ -1,5 +1,12 @@
 ## Changelog for *`analysis_step.json`*
 
+### Schema version 8
+
+* Adjust `output_content_types` enum list to replace `variant functional predictions` with `variant functions`.
+* Adjust `input_content_types` enum list to replace `variant functional predictions` with `variant functions`.
+* Adjust `output_content_types` enum list to replace `element to gene predictions` with `element to gene interactions`.
+* Adjust `input_content_types` enum list to replace `element to gene predictions` with `element to gene interactions`.
+
 ### Minor changes since schema version 7
 
 * Extend `output_content_types` enum list to include `pipeline inputs`.
