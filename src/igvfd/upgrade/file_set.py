@@ -606,3 +606,14 @@ def file_set_32_33(value, system):
     if 'control_type' in value:
         value['control_types'] = list(value['control_type'])
         del value['control_type']
+
+
+@upgrade_step('prediction_set', '8', '9')
+def prediction_set_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2733
+    if value.get('file_set_type', '') == 'pathogenicity':
+        value['file_set_type'] = 'functional effect'
+        notes = value.get('notes', '')
+        notes += f'This object\'s file_set_type was pathogenicity and has been upgraded to functional effect.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

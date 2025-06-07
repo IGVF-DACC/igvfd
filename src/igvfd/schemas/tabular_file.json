@@ -126,7 +126,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "16"
+            "default": "17"
         },
         "catalog_adapters": {
             "title": "IGVF Catalog Adapters",
@@ -167,7 +167,7 @@
                 "DNA footprint scores",
                 "editing templates",
                 "element quantifications",
-                "element to gene predictions",
+                "element to gene interactions",
                 "elements reference",
                 "external source data",
                 "fold change over control",
@@ -206,7 +206,7 @@
                 "variants",
                 "variant binding effects",
                 "variant effects",
-                "variant functional predictions",
+                "variant functions",
                 "variant localization impacts",
                 "variant pathogenicity",
                 "variant to element mapping"
@@ -230,7 +230,7 @@
                 "DNA footprint scores": "A file containing DNA footprint scores, which represents the binding sites between DNA and proteins called from assays like ATAC-seq data.",
                 "editing templates": "The homology-directed DNA repair (HDR) templates containing SNVs in the library of saturation genome editing assays.",
                 "element quantifications": "The quantified levels of specific genomic elements. Formatting should follow https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/table_schemas/element_quant.json.",
-                "element to gene predictions": "A file summarizing the results of an E2G based prediction to identify the linkage between genomic elements and genes.",
+                "element to gene interactions": "A file summarizing the results of an E2G based prediction to identify the linkage between genomic elements and genes.",
                 "elements reference": "References for the genomic elements studied, including details like genomic coordinates or identifiers.",
                 "fold change over control": "The ratio of expression levels or other measurements in an experimental condition relative to a control.",
                 "fragments": "The quantified levels of ATAC-seq fragments.",
@@ -269,7 +269,7 @@
                 "variants": "A table listing genetic variants.",
                 "variant binding effects": "The genetic variant effects on transcription factor binding affinity.",
                 "variant effects": "The genetic variant effects on gene expression.",
-                "variant functional predictions": "Predictions of the functional effects of genetic variants.",
+                "variant functions": "Predictions of the functional effects of genetic variants.",
                 "variant localization impacts": "Output of a variant painting experiement describing the measured impact of variants.",
                 "variant pathogenicity": "A file containing variant pathogenicity scores.",
                 "variant to element mapping": "A file describing the mapping of genetic variants to genomic elements."
