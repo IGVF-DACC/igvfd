@@ -1,5 +1,5 @@
 from snovault.auditor import (
-    AuditFailure,
+    AuditFailure
 )
 from .formatter import (
     audit_link,

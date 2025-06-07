@@ -1,11 +1,10 @@
 from snovault.auditor import (
-    audit_checker,
-    AuditFailure,
+    AuditFailure
 )
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_message,
+    get_audit_message
 )
 from .audit_registry import register_audit, register_all_audits
 
