@@ -47,4 +47,4 @@ def test_summary(testapp, base_prediction_set, gene_myc_hs, gene_CRLF2_par_y, ge
         }
     )
     res = testapp.get(base_prediction_set['@id'])
-    assert res.json.get('summary') == 'pathogenicity prediction for 6 assessed genes using Bowtie2 v2.4.4'
+    assert res.json.get('summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4'
