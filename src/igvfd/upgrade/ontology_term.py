@@ -173,7 +173,6 @@ def assay_term_13_14(value, system):
 
 @upgrade_step('assay_term', '14', '15')
 def assay_term_14_15(value, system):
-<<<<<<< HEAD
     # https://igvf.atlassian.net/browse/IGVF-2730
     preferred_assay_titles = value.get('preferred_assay_titles', [])
     if 'CERES-seq' in preferred_assay_titles:
@@ -182,8 +181,11 @@ def assay_term_14_15(value, system):
         else:
             preferred_assay_titles.remove('CERES-seq')
             value['preferred_assay_titles'] = preferred_assay_titles
-=======
-    # https://igvf.atlassian.net/browse/IGVF-1504
+
+
+@upgrade_step('assay_term', '15', '16')
+def assay_term_15_16(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2450
     new_assay_titles = []
     new_notes = []
     prefix_note = 'Preferred_assay_titles enum '
@@ -207,4 +209,3 @@ def assay_term_14_15(value, system):
             value['notes'] = f"{value['notes']} {prefix_note} {', '.join(new_notes)}."
         else:
             value['notes'] = f"{prefix_note} {', '.join(new_notes)}."
->>>>>>> 93e85aa9 (IGVF-2450-vidal-preferred-assay)
