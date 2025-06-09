@@ -265,3 +265,13 @@ def assay_term_v14(assay_term_crispr):
         'preferred_assay_titles': ['CERES-seq']
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v15(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '15',
+        'preferred_assay_titles': ['Parse Split-seq', 'Saturation genome editing', 'SHARE-Seq', 'Y2H', 'yN2H']
+    })
+    return item

@@ -91,3 +91,22 @@ def test_assay_term_upgrade_14_15(upgrader, assay_term_v14):
     value = upgrader.upgrade('assay_term', assay_term_v14, current_version='14', target_version='15')
     assert value['schema_version'] == '15'
     assert 'preferred_assay_titles' not in value
+
+
+def test_assay_term_upgrade_15_16(upgrader, assay_term_v15):
+    value = upgrader.upgrade('assay_term', assay_term_v15, current_version='15', target_version='16')
+    expectation = sorted([
+        'Parse Split-seq',
+        'Saturation genome editing',
+        'SHARE-Seq',
+        'Arrayed Y2H v1',
+        'Arrayed yN2H'
+    ])
+    value = upgrader.upgrade(
+        'assay_term',
+        assay_term_v15,
+        current_version='15',
+        target_version='16'
+    )
+    assert value['schema_version'] == '16'
+    assert sorted(value['preferred_assay_titles']) == expectation

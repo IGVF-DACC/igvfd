@@ -181,5 +181,25 @@
         "preferred_assay_titles": [
             "Parse Perturb-seq"
         ]
+    },
+    {
+        "term_id": "OBI:0000288",
+        "term_name": "protein-protein interaction detection assay",
+        "preferred_assay_titles": [
+            "Arrayed Y2H v1",
+            "Arrayed Y2H v2",
+            "Arrayed Y2H v3",
+            "Pooled Y2H v1",
+            "Pooled Y2H v2",
+            "Pooled Y2H v3",
+            "Arrayed semi-qY2H v1",
+            "Arrayed semi-qY2H v2",
+            "Arrayed semi-qY2H v3",
+            "Arrayed yN2H",
+            "Arrayed mN2H"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-02-06T12:34:56Z",
+        "uuid": "3cbe28f9-eb52-4471-85a6-83003ca8fbc8"
     }
 ]
