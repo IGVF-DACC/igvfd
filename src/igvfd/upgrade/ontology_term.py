@@ -169,3 +169,15 @@ def assay_term_13_14(value, system):
         index = preferred_assay_titles.index('10x multiome with scMito-seq')
         preferred_assay_titles[index] = 'mtscMultiome'
         value['preferred_assay_titles'] = preferred_assay_titles
+
+
+@upgrade_step('assay_term', '14', '15')
+def assay_term_14_15(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2730
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    if 'CERES-seq' in preferred_assay_titles:
+        if len(preferred_assay_titles) == 1:
+            del value['preferred_assay_titles']
+        else:
+            preferred_assay_titles.remove('CERES-seq')
+            value['preferred_assay_titles'] = preferred_assay_titles

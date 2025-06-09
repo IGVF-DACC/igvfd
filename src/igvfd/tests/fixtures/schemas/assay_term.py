@@ -255,3 +255,13 @@ def assay_term_v13(assay_term_crispr):
         'preferred_assay_titles': ['10x multiome with scMito-seq']
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v14(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '14',
+        'preferred_assay_titles': ['CERES-seq']
+    })
+    return item

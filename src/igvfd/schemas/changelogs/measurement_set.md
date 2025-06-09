@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 30
+
+* Adjust `preferred_assay_title` enum list to remove `CERES-seq`.
+
 ### Minor changes since schema version 29
 
 * Extend `preferred_assay_title` enum list to include `Parse Perturb-seq`.
