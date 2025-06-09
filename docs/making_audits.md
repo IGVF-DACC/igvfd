@@ -26,13 +26,13 @@ Adding a new aduit
     * *Contained in an object* - all metadata need for audit are properties of the object where embedded
 objects referred to by an identifier:
 
-        @audit_checker('{metadata_object}', frame='object')
+        @register_audit(['metadata_object'], frame='object')
         def audit_new_audit_name(value, system):
             pass
 
     * *Requires metadata in other objects* - metadata need for audit are properties of the object as well as properties within embedded objects:
 
-        @audit_checker('{metadata_object}', frame=['{linked_object_1}'])
+        @register_audit(['metadata_object'], frame=['{linked_object_1}'])
         def audit_new_audit_name(value, system):
             pass
 
