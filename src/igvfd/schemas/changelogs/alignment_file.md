@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 16
 
+* Extend `base_modifications` enum list to include `Nm`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 24`.
 
 ### Schema version 16
