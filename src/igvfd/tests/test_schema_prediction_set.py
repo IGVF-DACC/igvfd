@@ -49,14 +49,14 @@ def test_sample_donor_dependency(testapp, lab, award, tissue, human_donor):
     item = {
         'lab': lab['@id'],
         'award': award['@id'],
-        'file_set_type': 'pathogenicity'
+        'file_set_type': 'functional effect',
     }
     response = testapp.post_json('/prediction_set', item, expect_errors=True)
     assert response.status_code == 422
     item = {
         'lab': lab['@id'],
         'award': award['@id'],
-        'file_set_type': 'pathogenicity',
+        'file_set_type': 'functional effect',
         'samples': [tissue['@id']]
     }
     response = testapp.post_json('/prediction_set', item)
@@ -64,7 +64,7 @@ def test_sample_donor_dependency(testapp, lab, award, tissue, human_donor):
     item = {
         'lab': lab['@id'],
         'award': award['@id'],
-        'file_set_type': 'pathogenicity',
+        'file_set_type': 'functional effect',
         'donors': [human_donor['@id']]
     }
     response = testapp.post_json('/prediction_set', item)
@@ -72,7 +72,7 @@ def test_sample_donor_dependency(testapp, lab, award, tissue, human_donor):
     item = {
         'lab': lab['@id'],
         'award': award['@id'],
-        'file_set_type': 'pathogenicity',
+        'file_set_type': 'functional effect',
         'samples': [tissue['@id']],
         'donors': [human_donor['@id']]
     }
