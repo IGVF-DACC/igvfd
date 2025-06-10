@@ -3,6 +3,8 @@
 ### Minor changes since schema version 16
 
 * Extend `base_modifications` enum list to include `Nm`.
+* Extend `content_type` enum list to include `gene programs`.
+* Extend `content_type` enum list to include `gene program regulators`.
 * Extend `file_format` enum list to include `tar`.
 * Extend `content_type` enum list to include `pipeline inputs`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 24`.
