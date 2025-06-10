@@ -1,4 +1,4 @@
-## Changelog for *`tissue.json`*
+## Changelog for *`tissue/organ.json`*
 
 ### Schema version 22
 
