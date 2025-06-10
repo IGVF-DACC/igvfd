@@ -177,3 +177,23 @@ def tabular_file_v14(tabular_file):
         'content_type': 'sequence barcodes'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v15_1(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '15',
+        'content_type': 'variant functional predictions'
+    })
+    return item
+
+
+@pytest.fixture
+def tabular_file_v15_2(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '15',
+        'content_type': 'element to gene predictions'
+    })
+    return item
