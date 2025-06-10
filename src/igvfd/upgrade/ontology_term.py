@@ -181,3 +181,31 @@ def assay_term_14_15(value, system):
         else:
             preferred_assay_titles.remove('CERES-seq')
             value['preferred_assay_titles'] = preferred_assay_titles
+
+
+@upgrade_step('assay_term', '15', '16')
+def assay_term_15_16(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2450
+    new_assay_titles = []
+    new_notes = []
+    prefix_note = 'Preferred_assay_titles enum '
+    old_to_new = {
+        'mN2H': 'Arrayed mN2H',
+        'semi-qY2H': 'Arrayed semi-qY2H v1',
+        'Y2H': 'Arrayed Y2H v1',
+        'yN2H': 'Arrayed yN2H'
+    }
+    if 'preferred_assay_titles' in value:
+        for assay_title in value['preferred_assay_titles']:
+            if assay_title in old_to_new:
+                new_assay_titles.append(old_to_new[assay_title])
+                new_notes.append(
+                    f'{assay_title} now has been renamed to be {old_to_new[assay_title]}')
+            else:
+                new_assay_titles.append(assay_title)
+    if len(new_assay_titles) >= 1:
+        value['preferred_assay_titles'] = list(set(new_assay_titles))
+        if 'notes' in value:
+            value['notes'] = f"{value['notes']} {prefix_note} {', '.join(new_notes)}."
+        else:
+            value['notes'] = f"{prefix_note} {', '.join(new_notes)}."

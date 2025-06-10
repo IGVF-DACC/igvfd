@@ -195,3 +195,11 @@ def test_measurement_set_upgrade_29_30(upgrader, measurement_set_v29):
     value = upgrader.upgrade('measurement_set', measurement_set_v29, current_version='29', target_version='30')
     assert value['schema_version'] == '30'
     assert value.get('preferred_assay_title') == 'Perturb-seq'
+
+
+def test_measurement_set_upgrade_30_31(upgrader, measurement_set_v30):
+    value = upgrader.upgrade('measurement_set', measurement_set_v30, current_version='30', target_version='31')
+    assert 'preferred_assay_title' in value
+    assert value['preferred_assay_title'] == 'Arrayed semi-qY2H v1'
+    assert value['schema_version'] == '31'
+    assert value['notes'] == 'Preferred_assay_title enum semi-qY2H has been renamed to be Arrayed semi-qY2H v1.'

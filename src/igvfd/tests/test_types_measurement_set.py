@@ -116,12 +116,12 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
         measurement_set['@id'],
         {
             'assay_term': assay_term_y2h['@id'],
-            'preferred_assay_title': 'yN2H'
+            'preferred_assay_title': 'Arrayed yN2H'
         }
     )
     res = testapp.get(measurement_set['@id'])
     assert res.json.get(
-        'summary') == 'post-selection CRISPR activation yN2H integrating a guide (sgRNA) library targeting TF binding sites genome-wide associated with Alzheimer\'s disease and Myocardial infarction'
+        'summary') == 'post-selection CRISPR activation Arrayed yN2H integrating a guide (sgRNA) library targeting TF binding sites genome-wide associated with Alzheimer\'s disease and Myocardial infarction'
     testapp.patch_json(
         measurement_set['@id'],
         {
