@@ -2,21 +2,18 @@
 
 ### Schema version 16
 
-* Adjust `preferred_assay_title` enum list to replace `mN2H` with `Arrayed mN2H`.
-* Adjust `preferred_assay_title` enum list to replace `semi-qY2H` with `Arrayed semi-qY2H v1`.
-* Adjust `preferred_assay_title` enum list to replace `Y2H` with `Arrayed Y2H v1`.
-* Adjust `preferred_assay_title` enum list to replace `yN2H` with `Arrayed yN2H`.
-* Extend `preferred_assay_title` enum list to include `Arrayed Y2H v1`.
-* Extend `preferred_assay_title` enum list to include `Arrayed Y2H v2`.
-* Extend `preferred_assay_title` enum list to include `Arrayed Y2H v3`.
-* Extend `preferred_assay_title` enum list to include `Pooled Y2H v1`.
-* Extend `preferred_assay_title` enum list to include `Pooled Y2H v2`.
-* Extend `preferred_assay_title` enum list to include `Pooled Y2H v3`.
-* Extend `preferred_assay_title` enum list to include `Arrayed semi-qY2H v1`.
-* Extend `preferred_assay_title` enum list to include `Arrayed semi-qY2H v2`.
-* Extend `preferred_assay_title` enum list to include `Arrayed semi-qY2H v3`.
-* Extend `preferred_assay_title` enum list to include `Arrayed yN2H`.
-* Extend `preferred_assay_title` enum list to include `Arrayed mN2H`.
+* Adjust `preferred_assay_titles` enum list to replace `mN2H` with `Arrayed mN2H`.
+* Adjust `preferred_assay_titles` enum list to replace `semi-qY2H` with `Arrayed semi-qY2H v1`.
+* Adjust `preferred_assay_titles` enum list to replace `Y2H` with `Arrayed Y2H v1`.
+* Adjust `preferred_assay_titles` enum list to replace `yN2H` with `Arrayed yN2H`.
+* Extend `preferred_assay_titles` enum list to include `Arrayed Y2H v2`.
+* Extend `preferred_assay_titles` enum list to include `Arrayed Y2H v3`.
+* Extend `preferred_assay_titles` enum list to include `Pooled Y2H v1`.
+* Extend `preferred_assay_titles` enum list to include `Pooled Y2H v2`.
+* Extend `preferred_assay_titles` enum list to include `Pooled Y2H v3`.
+* Extend `preferred_assay_titles` enum list to include `Arrayed semi-qY2H v2`.
+* Extend `preferred_assay_titles` enum list to include `Arrayed semi-qY2H v3`.
+
 
 ### Schema version 15
 

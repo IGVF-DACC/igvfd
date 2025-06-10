@@ -582,7 +582,7 @@ def measurement_set_30_31(value, system):
         if old_assay_title in old_to_new:
             value['preferred_assay_title'] = old_to_new[old_assay_title]
             if 'notes' in value:
-                value['notes'] = f"{value['notes']}. Preferred_assay_titles enum {old_assay_title} has been renamed to be {old_to_new[old_assay_title]}."
+                value['notes'] = f"{value['notes']}. Preferred_assay_title enum {old_assay_title} has been renamed to be {old_to_new[old_assay_title]}."
             else:
-                value['notes'] = f'Preferred_assay_titles enum {old_assay_title} has been renamed to be {old_to_new[old_assay_title]}.'
+                value['notes'] = f'Preferred_assay_title enum {old_assay_title} has been renamed to be {old_to_new[old_assay_title]}.'
     return

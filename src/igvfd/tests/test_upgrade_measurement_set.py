@@ -202,4 +202,4 @@ def test_measurement_set_upgrade_30_31(upgrader, measurement_set_v30):
     assert 'preferred_assay_title' in value
     assert value['preferred_assay_title'] == 'Arrayed semi-qY2H v1'
     assert value['schema_version'] == '31'
-    assert value['notes'] == 'Preferred_assay_titles enum semi-qY2H has been renamed to be Arrayed semi-qY2H v1.'
+    assert value['notes'] == 'Preferred_assay_title enum semi-qY2H has been renamed to be Arrayed semi-qY2H v1.'
