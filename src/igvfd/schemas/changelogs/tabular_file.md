@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 16
 
+* Extend `content_type` enum list to include `derived barcode mapping`.
 * Extend `base_modifications` enum list to include `Nm`.
 * Extend `content_type` enum list to include `gene programs`.
 * Extend `content_type` enum list to include `gene program regulators`.
