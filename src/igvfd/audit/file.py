@@ -1,5 +1,6 @@
 from snovault.auditor import (
-    AuditFailure
+    AuditFailure,
+    audit_checker
 )
 from .formatter import (
     audit_link,
@@ -7,7 +8,7 @@ from .formatter import (
     get_audit_message,
     space_in_words
 )
-from .audit_registry import register_audit, register_all_audits
+from .audit_registry import register_audit, run_audits
 
 
 @register_audit(['File'], frame='object')
@@ -112,4 +113,21 @@ def audit_file_no_file_format_specifications(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-register_all_audits()
+@audit_checker('File', frame='object')
+def audit_file_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')
+
+
+@audit_checker('MatrixFile', frame='object')
+def audit_file_matrix_file_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')
+
+
+@audit_checker('ModelFile', frame='object')
+def audit_file_model_file_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')
+
+
+@audit_checker('TabularFile', frame='object')
+def audit_file_tabular_file_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')

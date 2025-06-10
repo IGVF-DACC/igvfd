@@ -1,5 +1,6 @@
 from snovault.auditor import (
-    AuditFailure
+    AuditFailure,
+    audit_checker
 )
 from .formatter import (
     audit_link,
@@ -8,7 +9,7 @@ from .formatter import (
     space_in_words,
     join_obj_paths
 )
-from .audit_registry import register_audit, register_all_audits
+from .audit_registry import register_audit, run_audits
 
 # Single cell assay terms
 
@@ -1039,4 +1040,31 @@ def audit_input_file_sets_derived_from(value, system):
         yield AuditFailure(audit_message_unexpected_input_file_set.get('audit_category', ''), f'{detail} {audit_message_unexpected_input_file_set.get("audit_description", "")}', level=audit_message_unexpected_input_file_set.get('audit_level', ''))
 
 
-register_all_audits()
+@audit_checker('FileSet', frame='object')
+def audit_file_set_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_file_set_measurement_set_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')
+
+
+@audit_checker('ConstructLibrarySet', frame='object')
+def audit_file_set_construct_library_set_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')
+
+
+@audit_checker('AnalysisSet', frame='object')
+def audit_file_set_analysis_set_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')
+
+
+@audit_checker('PredictionSet', frame='object')
+def audit_file_set_prediction_set_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')
+
+
+@audit_checker('ModelSet', frame='object')
+def audit_file_set_model_set_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')

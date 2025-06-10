@@ -1,12 +1,13 @@
 from snovault.auditor import (
-    AuditFailure
+    AuditFailure,
+    audit_checker
 )
 from .formatter import (
     audit_link,
     path_to_text,
     get_audit_message
 )
-from .audit_registry import register_audit, register_all_audits
+from .audit_registry import register_audit, run_audits
 
 
 @register_audit(['Workflow'], frame='object')
@@ -27,4 +28,6 @@ def audit_workflow_without_asvs(value, system):
         yield AuditFailure(missing_asv_msg.get('audit_category', ''), f'{detail} {missing_asv_msg.get("audit_description", "")}', level=missing_asv_msg.get('audit_level', ''))
 
 
-register_all_audits()
+@audit_checker('Workflow', frame='object')
+def audit_workflow_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')

@@ -1,12 +1,13 @@
 from snovault.auditor import (
-    AuditFailure
+    AuditFailure,
+    audit_checker
 )
 from .formatter import (
     audit_link,
     path_to_text,
     get_audit_message
 )
-from .audit_registry import register_audit, register_all_audits
+from .audit_registry import register_audit, run_audits
 
 
 @register_audit(['ModelSet'], frame='object')
@@ -38,4 +39,6 @@ def audit_external_input_data_content_type(value, system):
             )
 
 
-register_all_audits()
+@audit_checker('ModelSet', frame='object')
+def audit_model_set_object_dispatcher(value, system):
+    yield from run_audits(value, system, frame='object')
