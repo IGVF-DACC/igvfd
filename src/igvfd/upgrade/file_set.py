@@ -589,7 +589,7 @@ def measurement_set_30_31(value, system):
 
 
 @upgrade_step('prediction_set', '8', '9')
-def prediction_set_6_7(value, system):
+def prediction_set_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2733
     if value.get('file_set_type', '') == 'pathogenicity':
         value['file_set_type'] = 'functional effect'
