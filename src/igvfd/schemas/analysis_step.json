@@ -11,8 +11,7 @@
         "step_label",
         "analysis_step_types",
         "input_content_types",
-        "output_content_types",
-        "workflow"
+        "output_content_types"
     ],
     "identifyingProperties": [
         "uuid",
@@ -44,7 +43,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "7"
+            "default": "8"
         },
         "analysis_step_types": {
             "title": "Analysis Step Types",
@@ -146,16 +145,6 @@
             "submissionExample": {
                 "appscript": "chip-seq-alignment-step or Chip-Seq-Alignment-Step",
                 "igvf_utils": "chip-seq-alignment-step or Chip-Seq-Alignment-Step"
-            }
-        },
-        "workflow": {
-            "title": "Workflow",
-            "description": "The computational workflow in which this analysis step belongs.",
-            "type": "string",
-            "linkTo": "Workflow",
-            "submissionExample": {
-                "appscript": "john-doe:workflow01 or IGVFWF6258ABCD",
-                "igvf_utils": "john-doe:workflow01 or IGVFWF6258ABCD"
             }
         },
         "parents": {
