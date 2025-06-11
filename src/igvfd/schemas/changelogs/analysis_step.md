@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_step.json`*
 
+### Schema version 9
+
+* Remove `workflow`.
+
 ### Schema version 8
 
 * Adjust `output_content_types` enum list to replace `variant functional predictions` with `variant functions`.

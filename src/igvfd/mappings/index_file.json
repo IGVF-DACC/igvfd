@@ -1,6 +1,6 @@
 {
-    "hash": "2709ce0729381cfd04da3b31d90c98eb",
-    "index_name": "index_file_2709ce07",
+    "hash": "a3d01545b0a4abb2b08577afbfba4f7c",
+    "index_name": "index_file_a3d01545",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -2473,7 +2473,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"

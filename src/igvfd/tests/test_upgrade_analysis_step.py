@@ -28,3 +28,9 @@ def test_analysis_step_upgrade_6_7(upgrader, analysis_step_v6):
     assert sorted(value['input_content_types']) == sorted(['reads', 'kallisto single cell RNAseq output'])
     assert sorted(value['output_content_types']) == sorted(['alignments', 'kallisto single cell RNAseq output'])
     assert value['schema_version'] == '7'
+
+
+def test_analysis_step_upgrade_8_9(upgrader, analysis_step_v8):
+    value = upgrader.upgrade('analysis_step', analysis_step_v8, current_version='8', target_version='9')
+    assert 'workflow' not in value
+    assert value['schema_version'] == '9'

@@ -458,14 +458,13 @@ def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set
                ) == {phenotype_term_from_go['@id'], phenotype_term_myocardial_infarction['@id']}
 
 
-def test_workflows(testapp, analysis_set_with_workflow, matrix_file_with_base_workflow):
-    '''Test to make sure that workflow is computed correctly.'''
+def test_workflows_calc_analysis_set(testapp, analysis_set_base, tabular_file, analysis_step_version_3, base_workflow_3):
     testapp.patch_json(
-        matrix_file_with_base_workflow['@id'],
+        tabular_file['@id'],
         {
-            'file_set': analysis_set_with_workflow['@id']
+            'file_set': analysis_set_base['@id'],
+            'analysis_step_version': analysis_step_version_3['@id']
         }
     )
-    res = testapp.get(analysis_set_with_workflow['@id'])
-    assert set([workflow['@id'] for workflow in res.json.get('workflows')]
-               ) == {'/workflows/IGVFWF0000WRKF/'}
+    res = testapp.get(analysis_set_base['@id'])
+    assert sorted(set([item['@id'] for item in res.json.get('workflows')])) == sorted(set([base_workflow_3['@id']]))

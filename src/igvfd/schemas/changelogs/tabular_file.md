@@ -8,6 +8,8 @@
 
 ### Minor changes since schema version 16
 
+* Add calculated property `workflows`.
+* Remove calculated property `workflow`.
 * Extend `content_type` enum list to include `derived barcode mapping`.
 * Extend `base_modifications` enum list to include `Nm`.
 * Extend `content_type` enum list to include `gene programs`.

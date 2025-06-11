@@ -103,3 +103,14 @@ def analysis_step_7_8(value, system):
             notes += f' "{old_enum}" was removed from {key}, and has been upgraded to "{new_enum}".'
     if notes != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_step', '8', '9')
+def analysis_step_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2735
+    notes = value.get('notes', '')
+    if 'workflow' in value:
+        workflow = value['workflow']
+        notes += f' This analysis step was previously linked to {workflow}, but the property `workflow` has been removed.'
+        value['notes'] = notes.strip()
+        del value['workflow']

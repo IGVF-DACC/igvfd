@@ -1,6 +1,6 @@
 {
-    "hash": "dd0048bfeb330533d4ca2e9be773e616",
-    "index_name": "tabular_file_dd0048bf",
+    "hash": "0a8c08da46363575fde50ea8d119222b",
+    "index_name": "tabular_file_0a8c08da",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -2578,7 +2578,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"

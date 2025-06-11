@@ -1,6 +1,6 @@
 {
-    "hash": "74e02eaa20a0452d5b4f23262a098c04",
-    "index_name": "reference_file_74e02eaa",
+    "hash": "95b52309b17bb019ade29b9d51a87c50",
+    "index_name": "reference_file_95b52309",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -2483,7 +2483,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"

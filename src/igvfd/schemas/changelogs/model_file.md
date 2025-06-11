@@ -1,5 +1,10 @@
 ## Changelog for *`model_file.json`*
 
+### Minor changes since schema version 2
+
+* Add calculated property `workflows`.
+* Remove calculated property `workflow`.
+
 ### Schema version 2
 
 * Adjust `derived_manually` to have default value `False`.
