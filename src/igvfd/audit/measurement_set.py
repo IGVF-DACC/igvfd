@@ -669,6 +669,7 @@ def audit_inconsistent_barcode_replacement_file(value, system):
                 )
                 yield AuditFailure(msg_wrong_replacement_file.get('audit_category', ''), f'{detail} {msg_wrong_replacement_file.get("audit_description", "")}', level=msg_wrong_replacement_file.get('audit_level', ''))
 
+
 def audit_missing_external_image_url(value, system):
     '''
     [
@@ -719,6 +720,7 @@ function_dispatcher_measurement_set_embedded = {
     'audit_missing_construct_library_set': audit_missing_construct_library_set,
     'audit_missing_auxiliary_set': audit_missing_auxiliary_set
 }
+
 
 @audit_checker('MeasurementSet', frame='object')
 def audit_measurement_set_object_dispatcher(value, system):
