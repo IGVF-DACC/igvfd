@@ -1,5 +1,10 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 31
+
+* Extend `preferred_assay_title` enum list to include `CUT&RUN`.
+* Extend `preferred_assay_title` enum list to include `Bisulfite-seq`.
+
 ### Schema version 31
 
 * Adjust `preferred_assay_title` enum list to replace `mN2H` with `Arrayed mN2H`.
