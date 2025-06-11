@@ -713,7 +713,8 @@ function_dispatcher_measurement_set_object = {
     'audit_inconsistent_onlist_info': audit_inconsistent_onlist_info,
     'audit_unexpected_onlist_content': audit_unexpected_onlist_content,
     'audit_missing_barcode_replacement_file': audit_missing_barcode_replacement_file,
-    'audit_inconsistent_barcode_replacement_file': audit_inconsistent_barcode_replacement_file
+    'audit_inconsistent_barcode_replacement_file': audit_inconsistent_barcode_replacement_file,
+    'audit_missing_external_image_url': audit_missing_external_image_url
 }
 
 function_dispatcher_measurement_set_embedded = {
