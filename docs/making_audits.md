@@ -80,7 +80,7 @@ The description, category, and level should be listed in the docstring of the au
 
 5. After writing the audit function add it to the function dispatcher located at the bottom of the audit script for its respective type and frame.
 
-5. In the **tests** directory add audit test to an existing/new python file named ```test_audit_{metadata_object}.py```. This example shows the basic structure of setting up ```pytest.fixture``` and test that ```property_1``` is present if ```property_2``` is RNA:
+6. In the **tests** directory add audit test to an existing/new python file named ```test_audit_{metadata_object}.py```. This example shows the basic structure of setting up ```pytest.fixture``` and test that ```property_1``` is present if ```property_2``` is RNA:
 
         @pytest.fixture
         def {metadata_object}_1:
