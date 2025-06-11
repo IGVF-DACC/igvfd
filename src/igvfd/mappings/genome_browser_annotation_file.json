@@ -1,7 +1,7 @@
 {
-    "hash": "fca3a115cb25b608baacf08dfc6ab563",
-    "index_name": "index_file_fca3a115",
-    "item_type": "index_file",
+    "hash": "cf9c43a8d03bbc1c012f95375008ef0d",
+    "index_name": "genome_browser_annotation_file_cf9c43a8",
+    "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
             {
@@ -161,9 +161,6 @@
                     "analysis_step_version": {
                         "type": "keyword"
                     },
-                    "anvil_url": {
-                        "type": "keyword"
-                    },
                     "assay_titles": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
@@ -243,6 +240,99 @@
                         },
                         "type": "object"
                     },
+                    "cell_type_annotation": {
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "ancestors": {
+                                "type": "keyword"
+                            },
+                            "cell_slims": {
+                                "type": "keyword"
+                            },
+                            "comments": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "date"
+                            },
+                            "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "definition": {
+                                "type": "keyword"
+                            },
+                            "deprecated_ntr_terms": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "developmental_slims": {
+                                "type": "keyword"
+                            },
+                            "is_a": {
+                                "type": "keyword"
+                            },
+                            "name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "ontology": {
+                                "type": "keyword"
+                            },
+                            "organ_slims": {
+                                "type": "keyword"
+                            },
+                            "preview_timestamp": {
+                                "type": "date"
+                            },
+                            "release_timestamp": {
+                                "type": "date"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "synonyms": {
+                                "type": "keyword"
+                            },
+                            "system_slims": {
+                                "type": "keyword"
+                            },
+                            "term_id": {
+                                "type": "keyword"
+                            },
+                            "term_name": {
+                                "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
                     "checkfiles_version": {
                         "type": "keyword"
                     },
@@ -255,10 +345,6 @@
                     "content_type": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
-                    },
-                    "controlled_access": {
-                        "store": true,
-                        "type": "boolean"
                     },
                     "creation_timestamp": {
                         "type": "date"
@@ -335,7 +421,6 @@
                                 "type": "date"
                             },
                             "description": {
-                                "copy_to": "_fuzzy",
                                 "type": "text"
                             },
                             "document_type": {
@@ -380,6 +465,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "file_format_type": {
+                        "type": "keyword"
                     },
                     "file_set": {
                         "properties": {
@@ -535,7 +623,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_types": {
+                            "control_type": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -1526,10 +1614,6 @@
                         "store": true,
                         "type": "long"
                     },
-                    "filtered": {
-                        "store": true,
-                        "type": "boolean"
-                    },
                     "gene_list_for": {
                         "type": "keyword"
                     },
@@ -2017,7 +2101,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_types": {
+                            "control_type": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -2356,10 +2440,6 @@
                     },
                     "quality_metrics": {
                         "type": "keyword"
-                    },
-                    "redacted": {
-                        "store": true,
-                        "type": "boolean"
                     },
                     "release_timestamp": {
                         "type": "date"
