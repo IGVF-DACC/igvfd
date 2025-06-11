@@ -22,6 +22,9 @@ class Workflow(Item):
     item_type = 'workflow'
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/workflow.json')
+    rev = {
+        'analysis_step_versions': ('AnalysisStepVersion', 'workflow')
+    }
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
@@ -47,7 +50,7 @@ class Workflow(Item):
         'items': {
             'title': 'Analysis Step',
             'type': ['string', 'object'],
-            'linkFrom': 'AnalysisStepVersion.analysis_step',
+            'linkTo': 'AnalysisStepVersion.analysis_step',
         },
         'notSubmittable': True
     })

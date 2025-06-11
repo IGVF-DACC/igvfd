@@ -46,35 +46,38 @@ class AnalysisStep(Item):
         keys.setdefault('analysis_step:name', []).append(self._name(properties))
         return keys
 
-    @calculated_property(schema={
-        'title': 'Analysis Step Versions',
-        'description': 'The analysis step versions associated with this analysis step.',
-        'type': 'array',
-        'minItems': 1,
-        'uniqueItems': True,
-        'items': {
-            'title': 'Analysis Step Version',
-            'type': ['string', 'object'],
-            'linkFrom': 'AnalysisStepVersion.analysis_step',
-        },
-        'notSubmittable': True
-    })
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Analysis Step Versions',
+            'description': 'The analysis step versions associated with this analysis step.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Analysis Step Version',
+                'type': ['string', 'object'],
+                'linkFrom': 'AnalysisStepVersion.analysis_step',
+            },
+            'notSubmittable': True
+        })
     def analysis_step_versions(self, request, analysis_step_versions):
         print('>>>>> ASVs', analysis_step_versions)
         return paths_filtered_by_status(request, analysis_step_versions)
 
-    @calculated_property(schema={
-        'title': 'Workflows',
-        'type': 'array',
-        'minItems': 1,
-        'uniqueItems': True,
-        'items': {
-            'title': 'Workflow',
-            'type': ['string', 'object'],
-            'linkFrom': 'AnalysisStepVersion.workflows',
-        },
-        'notSubmittable': True
-    })
+    @calculated_property(
+        schema={
+            'title': 'Workflows',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Workflow',
+                'type': ['string', 'object'],
+                'linkFrom': 'AnalysisStepVersion.workflows',
+            },
+            'notSubmittable': True
+        })
     def workflows(self, request, analysis_step_versions):
         """
         Returns a list of workflows associated with this analysis step via linked analysis step versions.
@@ -84,8 +87,8 @@ class AnalysisStep(Item):
         if not analysis_step_versions:
             return []
         for asv in analysis_step_versions:
+            asv_obj = request.embed(asv, '@@object_with_select_calculated_properties?field=workflows')
             if 'workflows' in asv:
-                asv_obj = request.embed(asv, '@@object_with_select_calculated_properties?field=workflows')
                 workflows.add(asv_obj['workflows'])
         return paths_filtered_by_status(request, sorted(workflows))
 
@@ -108,7 +111,6 @@ class AnalysisStep(Item):
     def _name(self, properties):
         """ Generate a unique name for the analysis step based on the associated workflows and step label.
         """
-        print('>>>>> NAME', properties)
         return properties['step_label']
         # workflow_names = set()
         # root = find_root(self)

@@ -13,5 +13,7 @@ def test_analysis_step_versions(testapp, analysis_step, analysis_step_version):
 
 
 def test_as_workflows(testapp, analysis_step, base_workflow_3):
+    """Test that the analysis step is correctly linked to the workflow.
+    """
     res = testapp.get(analysis_step['@id'])
     assert set(res.json.get['workflows']) == sorted([base_workflow_3['@id']])
