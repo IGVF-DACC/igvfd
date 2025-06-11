@@ -1,6 +1,6 @@
 {
-    "hash": "174541e06585b534df2408c4fec08191",
-    "index_name": "configuration_file_174541e0",
+    "hash": "d7ba820a2168aadcc71b33082be6bf43",
+    "index_name": "configuration_file_d7ba820a",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -569,6 +569,9 @@
                                 "type": "boolean"
                             },
                             "file_set_type": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
                                 "type": "keyword"
                             },
                             "files": {
@@ -2024,6 +2027,9 @@
                             "file_set_type": {
                                 "type": "keyword"
                             },
+                            "file_sets": {
+                                "type": "keyword"
+                            },
                             "files": {
                                 "type": "keyword"
                             },
@@ -2451,7 +2457,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -2469,9 +2475,6 @@
                                 "type": "keyword"
                             },
                             "analysis_step_versions": {
-                                "type": "keyword"
-                            },
-                            "analysis_steps": {
                                 "type": "keyword"
                             },
                             "award": {

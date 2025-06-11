@@ -1,6 +1,6 @@
 {
-    "hash": "dc2fbe070c4609ee4fa8f063915465b9",
-    "index_name": "auxiliary_set_dc2fbe07",
+    "hash": "25df165c0c461557533cbf4823169841",
+    "index_name": "auxiliary_set_25df165c",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -415,6 +415,9 @@
                             "file_set_type": {
                                 "type": "keyword"
                             },
+                            "file_sets": {
+                                "type": "keyword"
+                            },
                             "files": {
                                 "type": "keyword"
                             },
@@ -615,7 +618,7 @@
                                     "validation_error_detail": {
                                         "type": "keyword"
                                     },
-                                    "workflow": {
+                                    "workflows": {
                                         "type": "keyword"
                                     }
                                 },
@@ -928,6 +931,9 @@
                                 "type": "boolean"
                             },
                             "file_set_type": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
                                 "type": "keyword"
                             },
                             "files": {
@@ -1580,7 +1586,7 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
-                            "workflow": {
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

@@ -1,6 +1,6 @@
 {
-    "hash": "aa3bf8d682e569d9ec133deb1a8ac276",
-    "index_name": "matrix_file_aa3bf8d6",
+    "hash": "da687d1ad224995d5ec19a3d6c5fe5f4",
+    "index_name": "matrix_file_da687d1a",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -572,6 +572,9 @@
                                 "type": "boolean"
                             },
                             "file_set_type": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
                                 "type": "keyword"
                             },
                             "files": {
@@ -2031,6 +2034,9 @@
                             "file_set_type": {
                                 "type": "keyword"
                             },
+                            "file_sets": {
+                                "type": "keyword"
+                            },
                             "files": {
                                 "type": "keyword"
                             },
@@ -2460,7 +2466,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -2478,9 +2484,6 @@
                                 "type": "keyword"
                             },
                             "analysis_step_versions": {
-                                "type": "keyword"
-                            },
-                            "analysis_steps": {
                                 "type": "keyword"
                             },
                             "award": {

@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_step.json`*
 
+### Schema version 8
+
+* Remove `workflow`.
+
 ### Minor changes since schema version 7
 
 * Extend `output_content_types` enum list to include `pipeline inputs`.

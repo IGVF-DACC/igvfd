@@ -1,6 +1,6 @@
 {
-    "hash": "0ab866f470854be0b7dde72abce8d01b",
-    "index_name": "index_file_0ab866f4",
+    "hash": "96cab03f6d19543f7c2f137f21ba14c6",
+    "index_name": "index_file_96cab03f",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -580,6 +580,9 @@
                                 "type": "boolean"
                             },
                             "file_set_type": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
                                 "type": "keyword"
                             },
                             "files": {
@@ -2039,6 +2042,9 @@
                             "file_set_type": {
                                 "type": "keyword"
                             },
+                            "file_sets": {
+                                "type": "keyword"
+                            },
                             "files": {
                                 "type": "keyword"
                             },
@@ -2467,7 +2473,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -2485,9 +2491,6 @@
                                 "type": "keyword"
                             },
                             "analysis_step_versions": {
-                                "type": "keyword"
-                            },
-                            "analysis_steps": {
                                 "type": "keyword"
                             },
                             "award": {

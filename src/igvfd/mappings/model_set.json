@@ -1,6 +1,6 @@
 {
-    "hash": "4e7ba01f63ae16562a89b369357a5a23",
-    "index_name": "model_set_4e7ba01f",
+    "hash": "c68ffd31fc5035837bca1c87f716d485",
+    "index_name": "model_set_c68ffd31",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -514,6 +514,9 @@
                             "file_set_type": {
                                 "type": "keyword"
                             },
+                            "file_sets": {
+                                "type": "keyword"
+                            },
                             "files": {
                                 "type": "keyword"
                             },
@@ -714,7 +717,7 @@
                                     "validation_error_detail": {
                                         "type": "keyword"
                                     },
-                                    "workflow": {
+                                    "workflows": {
                                         "type": "keyword"
                                     }
                                 },
@@ -1027,6 +1030,9 @@
                                 "type": "boolean"
                             },
                             "file_set_type": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
                                 "type": "keyword"
                             },
                             "files": {
@@ -1686,7 +1692,7 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
-                            "workflow": {
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },
@@ -1806,6 +1812,9 @@
                                 "type": "boolean"
                             },
                             "file_set_type": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
                                 "type": "keyword"
                             },
                             "files": {

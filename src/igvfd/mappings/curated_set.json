@@ -1,6 +1,6 @@
 {
-    "hash": "0c971f105376c8fe0f714da44785e0d0",
-    "index_name": "curated_set_0c971f10",
+    "hash": "bde129ea59ce3b89cc9316f60048656a",
+    "index_name": "curated_set_bde129ea",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -416,6 +416,9 @@
                             "file_set_type": {
                                 "type": "keyword"
                             },
+                            "file_sets": {
+                                "type": "keyword"
+                            },
                             "files": {
                                 "type": "keyword"
                             },
@@ -616,7 +619,7 @@
                                     "validation_error_detail": {
                                         "type": "keyword"
                                     },
-                                    "workflow": {
+                                    "workflows": {
                                         "type": "keyword"
                                     }
                                 },
@@ -929,6 +932,9 @@
                                 "type": "boolean"
                             },
                             "file_set_type": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
                                 "type": "keyword"
                             },
                             "files": {
@@ -1581,7 +1587,7 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
-                            "workflow": {
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },
