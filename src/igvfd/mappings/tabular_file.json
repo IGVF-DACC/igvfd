@@ -1,6 +1,6 @@
 {
-    "hash": "a54c3a6bb2480971a709650fd9f7923d",
-    "index_name": "tabular_file_a54c3a6b",
+    "hash": "bc2d28b1b7c848bb3c582b780041d353",
+    "index_name": "tabular_file_bc2d28b1",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -2572,7 +2572,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -2590,9 +2590,6 @@
                                 "type": "keyword"
                             },
                             "analysis_step_versions": {
-                                "type": "keyword"
-                            },
-                            "analysis_steps": {
                                 "type": "keyword"
                             },
                             "award": {

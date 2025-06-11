@@ -1,6 +1,6 @@
 {
-    "hash": "0c971f105376c8fe0f714da44785e0d0",
-    "index_name": "curated_set_0c971f10",
+    "hash": "e28879c2b3e9fc1ddfb8ecc3ae2c3ef7",
+    "index_name": "curated_set_e28879c2",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -616,7 +616,7 @@
                                     "validation_error_detail": {
                                         "type": "keyword"
                                     },
-                                    "workflow": {
+                                    "workflows": {
                                         "type": "keyword"
                                     }
                                 },
@@ -1581,7 +1581,7 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
-                            "workflow": {
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

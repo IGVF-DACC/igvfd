@@ -410,20 +410,20 @@ def test_file_assay_titles(
     assert set(res.json.get('assay_titles', [])) == {'10x multiome with MULTI-seq'}
 
 
-def test_file_workflow(
+def test_file_workflows(
     testapp,
     tabular_file,
-    analysis_step_version,
-    base_workflow
+    analysis_step_version_3,
+    base_workflow_3
 ):
     testapp.patch_json(
         tabular_file['@id'],
         {
-            'analysis_step_version': analysis_step_version['@id']
+            'analysis_step_version': analysis_step_version_3['@id']
         }
     )
     res = testapp.get(tabular_file['@id'])
-    assert res.json.get('workflow', '')['@id'] == base_workflow['@id']
+    assert sorted(set([item['@id'] for item in res.json.get('workflows')])) == sorted(set([base_workflow_3['@id']]))
 
 
 def test_upload_credentials_forbidden_when_upload_status_is_validated(testapp, reference_file):
