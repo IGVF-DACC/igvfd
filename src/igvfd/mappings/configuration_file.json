@@ -1,6 +1,6 @@
 {
-    "hash": "a616864ee24fec8a5dcaffb13950fe7c",
-    "index_name": "configuration_file_a616864e",
+    "hash": "bcf8ed0a261c708095897adc2a80c9c3",
+    "index_name": "configuration_file_bcf8ed0a",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -569,6 +569,9 @@
                                 "type": "boolean"
                             },
                             "file_set_type": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
                                 "type": "keyword"
                             },
                             "files": {
@@ -2022,6 +2025,9 @@
                                 "type": "keyword"
                             },
                             "file_set_type": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
                                 "type": "keyword"
                             },
                             "files": {

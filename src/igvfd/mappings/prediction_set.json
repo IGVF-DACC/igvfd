@@ -1,6 +1,6 @@
 {
-    "hash": "64f17062ab784dd351a46e6326b0504f",
-    "index_name": "prediction_set_64f17062",
+    "hash": "e34baad3eae3332262773e6c312b16d7",
+    "index_name": "prediction_set_e34baad3",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -591,6 +591,9 @@
                             "file_set_type": {
                                 "type": "keyword"
                             },
+                            "file_sets": {
+                                "type": "keyword"
+                            },
                             "files": {
                                 "type": "keyword"
                             },
@@ -1104,6 +1107,9 @@
                                 "type": "boolean"
                             },
                             "file_set_type": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
                                 "type": "keyword"
                             },
                             "files": {
@@ -2487,6 +2493,9 @@
                                         "type": "keyword"
                                     },
                                     "file_set_type": {
+                                        "type": "keyword"
+                                    },
+                                    "file_sets": {
                                         "type": "keyword"
                                     },
                                     "files": {

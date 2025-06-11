@@ -1,6 +1,6 @@
 {
-    "hash": "10cb4f353d68883027e317587c4ef979",
-    "index_name": "multiplexed_sample_10cb4f35",
+    "hash": "c890b614a93bc4477fd54e6a8b1a7418",
+    "index_name": "multiplexed_sample_c890b614",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -562,6 +562,9 @@
                             "file_set_type": {
                                 "type": "keyword"
                             },
+                            "file_sets": {
+                                "type": "keyword"
+                            },
                             "files": {
                                 "type": "keyword"
                             },
@@ -1040,6 +1043,9 @@
                                 "type": "boolean"
                             },
                             "file_set_type": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
                                 "type": "keyword"
                             },
                             "files": {
