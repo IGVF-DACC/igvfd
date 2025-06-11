@@ -8,10 +8,8 @@ from .formatter import (
     get_audit_message,
     space_in_words
 )
-from .audit_registry import register_audit, run_audits
 
 
-@register_audit(['ReferenceFile'], frame='object')
 def audit_external_reference_files(value, system):
     '''
     [
@@ -33,6 +31,13 @@ def audit_external_reference_files(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+function_dispatcher_reference_file_object = {
+    'audit_external_reference_files': audit_external_reference_files
+}
+
+
 @audit_checker('ReferenceFile', frame='object')
 def audit_reference_file_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+    for function_name in function_dispatcher_reference_file_object.keys():
+        for failure in function_dispatcher_reference_file_object[function_name](value, system):
+            yield failure

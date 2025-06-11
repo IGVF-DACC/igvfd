@@ -7,10 +7,8 @@ from .formatter import (
     path_to_text,
     get_audit_message
 )
-from .audit_registry import register_audit, run_audits
 
 
-@register_audit(['ModelSet'], frame='object')
 def audit_external_input_data_content_type(value, system):
     '''
     [
@@ -39,6 +37,13 @@ def audit_external_input_data_content_type(value, system):
             )
 
 
+function_dispatcher_model_set_object = {
+    'audit_external_input_data_content_type': audit_external_input_data_content_type
+}
+
+
 @audit_checker('ModelSet', frame='object')
 def audit_model_set_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+    for function_name in function_dispatcher_model_set_object.keys():
+        for failure in function_dispatcher_model_set_object[function_name](value, system):
+            yield failure

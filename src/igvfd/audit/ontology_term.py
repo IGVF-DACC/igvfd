@@ -8,10 +8,8 @@ from .formatter import (
     get_audit_message,
     space_in_words
 )
-from .audit_registry import register_audit, run_audits
 
 
-@register_audit(['OntologyTerm'], frame='object')
 def audit_ntr_term_id(value, system):
     '''
     [
@@ -32,6 +30,13 @@ def audit_ntr_term_id(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+function_dispatcher_ontology_term_object = {
+    'audit_ntr_term_id': audit_ntr_term_id
+}
+
+
 @audit_checker('OntologyTerm', frame='object')
 def audit_ontology_term_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+    for function_name in function_dispatcher_ontology_term_object.keys():
+        for failure in function_dispatcher_ontology_term_object[function_name](value, system):
+            yield failure

@@ -8,10 +8,8 @@ from .formatter import (
     get_audit_message,
     space_in_words
 )
-from .audit_registry import register_audit, run_audits
 
 
-@register_audit(['IndexFile'], frame='object')
 def audit_index_files_derived_from(value, system):
     '''
     [
@@ -40,6 +38,13 @@ def audit_index_files_derived_from(value, system):
             )
 
 
+function_dispatcher_index_file_object = {
+    'audit_index_files_derived_from': audit_index_files_derived_from
+}
+
+
 @audit_checker('IndexFile', frame='object')
 def audit_index_file_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+    for function_name in function_dispatcher_index_file_object.keys():
+        for failure in function_dispatcher_index_file_object[function_name](value, system):
+            yield failure

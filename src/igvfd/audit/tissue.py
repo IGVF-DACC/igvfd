@@ -7,10 +7,8 @@ from .formatter import (
     path_to_text,
     get_audit_message
 )
-from .audit_registry import register_audit, run_audits
 
 
-@register_audit(['Tissue'], frame='object')
 def audit_tissue_ccf_id(value, system):
     '''
     [
@@ -44,6 +42,13 @@ def audit_tissue_ccf_id(value, system):
         yield AuditFailure(audit_message_non_human_tissue.get('audit_category', ''), f'{detail} {audit_message_non_human_tissue.get("audit_description", "")}', level=audit_message_non_human_tissue.get('audit_level', ''))
 
 
+function_dispatcher_tissue_object = {
+    'audit_tissue_ccf_id': audit_tissue_ccf_id
+}
+
+
 @audit_checker('Tissue', frame='object')
 def audit_tissue_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+    for function_name in function_dispatcher_tissue_object.keys():
+        for failure in function_dispatcher_tissue_object[function_name](value, system):
+            yield failure

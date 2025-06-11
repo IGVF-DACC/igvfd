@@ -7,10 +7,8 @@ from .formatter import (
     path_to_text,
     get_audit_message
 )
-from .audit_registry import register_audit, run_audits
 
 
-@register_audit(['MatrixFile'], frame='object')
 def audit_matrix_file_dimensions(value, system):
     '''
     [
@@ -30,6 +28,13 @@ def audit_matrix_file_dimensions(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+function_dispatcher_matrix_file_object = {
+    'audit_matrix_file_dimensions': audit_matrix_file_dimensions
+}
+
+
 @audit_checker('MatrixFile', frame='object')
 def audit_matrix_file_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+    for function_name in function_dispatcher_matrix_file_object.keys():
+        for failure in function_dispatcher_matrix_file_object[function_name](value, system):
+            yield failure

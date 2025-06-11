@@ -26,13 +26,11 @@ Adding a new aduit
     * *Contained in an object* - all metadata need for audit are properties of the object where embedded
 objects referred to by an identifier:
 
-        @register_audit(['metadata_object'], frame='object')
         def audit_new_audit_name(value, system):
             pass
 
     * *Requires metadata in other objects* - metadata need for audit are properties of the object as well as properties within embedded objects:
 
-        @register_audit(['metadata_object'], frame=['{linked_object_1}'])
         def audit_new_audit_name(value, system):
             pass
 
@@ -79,6 +77,8 @@ The description, category, and level should be listed in the docstring of the au
     Use ```audit_link``` to format links so that the front end can find and present them. The first parameter is the text to display for the link, while the second is the link path. You must import ```audit_link``` from the .formatter library.
 
     The .formatter library also includes a ```path_to_text``` utility to help generate link text if all you have is the ```@id```. Pass this ```@id``` to ```path_to_text``` and it returns just the accession portion as text that you can use as link text.
+
+5. After writing the audit function add it to the function dispatcher located at the bottom of the audit script for its respective type and frame.
 
 5. In the **tests** directory add audit test to an existing/new python file named ```test_audit_{metadata_object}.py```. This example shows the basic structure of setting up ```pytest.fixture``` and test that ```property_1``` is present if ```property_2``` is RNA:
 

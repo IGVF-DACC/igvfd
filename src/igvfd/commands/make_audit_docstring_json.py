@@ -27,9 +27,7 @@ import igvfd.audit.workflow
 
 NON_AUDIT_FUNCTION_NAMES = [
     'audit_checker',
-    'audit_link',
-    'register_audit',
-    'register_all_audits'
+    'audit_link'
 ]
 
 AUDIT_MODULES_TO_PROCESS = [

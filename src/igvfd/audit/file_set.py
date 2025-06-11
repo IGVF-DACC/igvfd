@@ -9,7 +9,6 @@ from .formatter import (
     space_in_words,
     join_obj_paths
 )
-from .audit_registry import register_audit, run_audits
 
 # Single cell assay terms
 
@@ -79,7 +78,6 @@ def single_cell_check(system, value, object_type, single_cell_assay_terms=SINGLE
         return False
 
 
-@register_audit(['FileSet'], frame='object')
 def audit_no_files(value, system):
     '''
     [
@@ -115,7 +113,6 @@ def audit_no_files(value, system):
         )
 
 
-@register_audit(['MeasurementSet', 'AuxiliarySet', 'ConstructLibrarySet'], frame='object')
 def audit_missing_seqspec(value, system):
     '''
     [
@@ -172,7 +169,6 @@ def audit_missing_seqspec(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_audit(['MeasurementSet', 'AuxiliarySet', 'ConstructLibrarySet'], frame='object')
 def audit_unexpected_seqspec(value, system):
     '''
     [
@@ -253,7 +249,6 @@ def audit_unexpected_seqspec(value, system):
                 yield AuditFailure(audit_msg_wrong_seqspec_doc.get('audit_category', ''), f'{detail} {audit_msg_wrong_seqspec_doc.get("audit_description", "")}', level=audit_msg_wrong_seqspec_doc.get('audit_level', ''))
 
 
-@register_audit(['MeasurementSet', 'AuxiliarySet', 'ConstructLibrarySet'], frame='object')
 def audit_files_associated_with_incorrect_fileset(value, system):
     '''
     [
@@ -300,7 +295,6 @@ def audit_files_associated_with_incorrect_fileset(value, system):
                         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_audit(['MeasurementSet', 'AuxiliarySet', 'ConstructLibrarySet'], frame='object')
 def audit_inconsistent_seqspec(value, system):
     '''
     [
@@ -375,7 +369,6 @@ def audit_inconsistent_seqspec(value, system):
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_audit(['ConstructLibrarySet', 'PredictionSet'], frame='object')
 def audit_loci_valid_chrom_sizes(value, system):
     '''
     [
@@ -430,7 +423,6 @@ def audit_loci_valid_chrom_sizes(value, system):
             yield AuditFailure(audit_message_inconsistent_loci.get('audit_category', ''), f'{detail} {audit_message_inconsistent_loci.get("audit_description", "")}', level=audit_message_inconsistent_loci.get('audit_level', ''))
 
 
-@register_audit(['FileSet'], frame='object')
 def audit_inconsistent_sequencing_kit(value, system):
     '''
     [
@@ -521,7 +513,6 @@ def audit_inconsistent_sequencing_kit(value, system):
             yield AuditFailure(audit_message_inconsistent_kit.get('audit_category', ''), f'{detail} {audit_message_inconsistent_kit.get("audit_category", "")}', level=audit_message_inconsistent_kit.get('audit_level', ''))
 
 
-@register_audit(['ConstructLibrarySet', 'AuxiliarySet'], frame='object')
 def audit_auxiliary_set_construct_library_set_files(value, system):
     '''
     [
@@ -544,7 +535,6 @@ def audit_auxiliary_set_construct_library_set_files(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_audit(['MeasurementSet', 'AuxiliarySet', 'ConstructLibrarySet'], frame='object')
 def audit_unexpected_virtual_samples(value, system):
     '''
     [
@@ -572,7 +562,6 @@ def audit_unexpected_virtual_samples(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_audit(['MeasurementSet', 'AuxiliarySet', 'ConstructLibrarySet'], frame='object')
 def audit_input_for(value, system):
     '''
     [
@@ -593,7 +582,6 @@ def audit_input_for(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_audit(['MeasurementSet', 'ModelSet'], frame='object')
 def audit_inconsistent_location_files(value, system):
     '''
     [
@@ -631,7 +619,6 @@ def audit_inconsistent_location_files(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_audit(['MeasurementSet', 'AuxiliarySet'], frame='object')
 def audit_MPRA_read_names(value, system):
     '''
     [
@@ -692,7 +679,6 @@ def audit_MPRA_read_names(value, system):
         yield AuditFailure(audit_message_unexpected.get('audit_category', ''), f'{detail} {audit_message_unexpected.get("audit_description", "")}', level=audit_message_unexpected.get('audit_level', ''))
 
 
-@register_audit(['MeasurementSet'], frame='object')
 def audit_single_cell_read_names(value, system):
     '''
     [
@@ -752,7 +738,6 @@ def audit_single_cell_read_names(value, system):
                 yield AuditFailure(audit_message_unexpected_read_names.get('audit_category', ''), f'{detail} {audit_message_unexpected_read_names.get("audit_description", "")}', level=audit_message_unexpected_read_names.get('audit_level', ''))
 
 
-@register_audit(['FileSet'], frame='object')
 def audit_control_for_control_type(value, system):
     '''
     [
@@ -787,7 +772,6 @@ def audit_control_for_control_type(value, system):
         yield AuditFailure(audit_message_missing_control_for.get('audit_category', ''), f'{detail} {audit_message_missing_control_for.get("audit_description", "")}', level=audit_message_missing_control_for.get('audit_level', ''))
 
 
-@register_audit(['MeasurementSet', 'AnalysisSet'], frame='object')
 def audit_inconsistent_controlled_access(value, system):
     '''
     [
@@ -886,7 +870,6 @@ def audit_inconsistent_controlled_access(value, system):
                 )
 
 
-@register_audit(['FileSet'], frame='object')
 def audit_file_set_missing_publication(value, system):
     '''
     [
@@ -907,7 +890,6 @@ def audit_file_set_missing_publication(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_audit(['AnalysisSet', 'ModelSet', 'PredictionSet'], frame='object')
 def audit_file_set_files_missing_analysis_step_version(value, system):
     '''
     [
@@ -948,7 +930,6 @@ def audit_file_set_files_missing_analysis_step_version(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@register_audit(['AnalysisSet', 'ModelSet', 'PredictionSet'], frame='object')
 def audit_input_file_sets_derived_from(value, system):
     '''
     [
@@ -1040,31 +1021,111 @@ def audit_input_file_sets_derived_from(value, system):
         yield AuditFailure(audit_message_unexpected_input_file_set.get('audit_category', ''), f'{detail} {audit_message_unexpected_input_file_set.get("audit_description", "")}', level=audit_message_unexpected_input_file_set.get('audit_level', ''))
 
 
+function_dispatcher_file_set_object = {
+    'audit_no_files': audit_no_files,
+    'audit_inconsistent_sequencing_kit': audit_inconsistent_sequencing_kit,
+    'audit_control_for_control_type': audit_control_for_control_type,
+    'audit_file_set_missing_publication': audit_file_set_missing_publication
+}
+
+function_dispatcher_measurement_set_object = {
+    'audit_missing_seqspec': audit_missing_seqspec,
+    'audit_unexpected_seqspec': audit_unexpected_seqspec,
+    'audit_files_associated_with_incorrect_fileset': audit_files_associated_with_incorrect_fileset,
+    'audit_inconsistent_seqspec': audit_inconsistent_seqspec,
+    'audit_unexpected_virtual_samples': audit_unexpected_virtual_samples,
+    'audit_input_for': audit_input_for,
+    'audit_inconsistent_location_files': audit_inconsistent_location_files,
+    'audit_MPRA_read_names': audit_MPRA_read_names,
+    'audit_single_cell_read_names': audit_single_cell_read_names,
+    'audit_inconsistent_controlled_access': audit_inconsistent_controlled_access
+}
+
+function_dispatcher_auxiliary_set_object = {
+    'audit_missing_seqspec': audit_missing_seqspec,
+    'audit_unexpected_seqspec': audit_unexpected_seqspec,
+    'audit_files_associated_with_incorrect_fileset': audit_files_associated_with_incorrect_fileset,
+    'audit_inconsistent_seqspec': audit_inconsistent_seqspec,
+    'audit_auxiliary_set_construct_library_set_files': audit_auxiliary_set_construct_library_set_files,
+    'audit_unexpected_virtual_samples': audit_unexpected_virtual_samples,
+    'audit_input_for': audit_input_for,
+    'audit_MPRA_read_names': audit_MPRA_read_names
+}
+
+function_dispatcher_construct_library_set_object = {
+    'audit_missing_seqspec': audit_missing_seqspec,
+    'audit_unexpected_seqspec': audit_unexpected_seqspec,
+    'audit_files_associated_with_incorrect_fileset': audit_files_associated_with_incorrect_fileset,
+    'audit_inconsistent_seqspec': audit_inconsistent_seqspec,
+    'audit_loci_valid_chrom_sizes': audit_loci_valid_chrom_sizes,
+    'audit_auxiliary_set_construct_library_set_files': audit_auxiliary_set_construct_library_set_files,
+    'audit_unexpected_virtual_samples': audit_unexpected_virtual_samples,
+    'audit_input_for': audit_input_for
+}
+
+function_dispatcher_analysis_set_object = {
+    'audit_inconsistent_controlled_access': audit_inconsistent_controlled_access,
+    'audit_input_file_sets_derived_from': audit_input_file_sets_derived_from,
+    'audit_file_set_files_missing_analysis_step_version': audit_file_set_files_missing_analysis_step_version
+}
+
+function_dispatcher_prediction_set_object = {
+    'audit_loci_valid_chrom_sizes': audit_loci_valid_chrom_sizes,
+    'audit_input_file_sets_derived_from': audit_input_file_sets_derived_from,
+    'audit_file_set_files_missing_analysis_step_version': audit_file_set_files_missing_analysis_step_version
+}
+
+function_dispatcher_model_set_object = {
+    'audit_inconsistent_location_files': audit_inconsistent_location_files,
+    'audit_input_file_sets_derived_from': audit_input_file_sets_derived_from,
+    'audit_file_set_files_missing_analysis_step_version': audit_file_set_files_missing_analysis_step_version
+}
+
+
 @audit_checker('FileSet', frame='object')
 def audit_file_set_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+    for function_name in function_dispatcher_file_set_object.keys():
+        for failure in function_dispatcher_file_set_object[function_name](value, system):
+            yield failure
 
 
 @audit_checker('MeasurementSet', frame='object')
-def audit_file_set_measurement_set_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+def audit_measurement_set_object_dispatcher(value, system):
+    for function_name in function_dispatcher_measurement_set_object.keys():
+        for failure in function_dispatcher_measurement_set_object[function_name](value, system):
+            yield failure
+
+
+@audit_checker('AuxiliarySet', frame='object')
+def audit_auxiliary_set_object_dispatcher(value, system):
+    for function_name in function_dispatcher_auxiliary_set_object.keys():
+        for failure in function_dispatcher_auxiliary_set_object[function_name](value, system):
+            yield failure
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
-def audit_file_set_construct_library_set_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+def audit_construct_library_set_object_dispatcher(value, system):
+    for function_name in function_dispatcher_construct_library_set_object.keys():
+        for failure in function_dispatcher_construct_library_set_object[function_name](value, system):
+            yield failure
 
 
 @audit_checker('AnalysisSet', frame='object')
-def audit_file_set_analysis_set_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+def audit_analysis_set_object_dispatcher(value, system):
+    for function_name in function_dispatcher_analysis_set_object.keys():
+        for failure in function_dispatcher_analysis_set_object[function_name](value, system):
+            yield failure
 
 
 @audit_checker('PredictionSet', frame='object')
-def audit_file_set_prediction_set_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+def audit_prediction_set_object_dispatcher(value, system):
+    for function_name in function_dispatcher_prediction_set_object.keys():
+        for failure in function_dispatcher_prediction_set_object[function_name](value, system):
+            yield failure
 
 
 @audit_checker('ModelSet', frame='object')
-def audit_file_set_model_set_object_dispatcher(value, system):
-    yield from run_audits(value, system, frame='object')
+def audit_model_set_object_dispatcher(value, system):
+    for function_name in function_dispatcher_model_set_object.keys():
+        for failure in function_dispatcher_model_set_object[function_name](value, system):
+            yield failure
