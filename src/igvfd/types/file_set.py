@@ -1388,7 +1388,7 @@ class AuxiliarySet(FileSet):
         'uniqueItems': True,
         'items': {
             'title': 'Measurement Set',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'MeasurementSet.auxiliary_sets',
         },
         'notSubmittable': True
@@ -1549,7 +1549,7 @@ class ConstructLibrarySet(FileSet):
         'uniqueItems': True,
         'items': {
             'title': 'Applied to Sample',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'Sample.construct_library_sets',
         },
         'notSubmittable': True
@@ -1567,7 +1567,7 @@ class ConstructLibrarySet(FileSet):
             'uniqueItems': True,
             'items': {
                 'title': 'File Set',
-                'type': ['string', 'object'],
+                'type': 'string',
                 'linkTo': 'FileSet'
             },
             'notSubmittable': True
