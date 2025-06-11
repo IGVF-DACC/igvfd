@@ -47,6 +47,49 @@ class AnalysisStep(Item):
         return keys
 
     @calculated_property(schema={
+        'title': 'Analysis Step Versions',
+        'description': 'The analysis step versions associated with this analysis step.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Analysis Step Version',
+            'type': ['string', 'object'],
+            'linkFrom': 'AnalysisStepVersion.analysis_step',
+        },
+        'notSubmittable': True
+    })
+    def analysis_step_versions(self, request, analysis_step_versions):
+        print('>>>>> ASVs', analysis_step_versions)
+        return paths_filtered_by_status(request, analysis_step_versions)
+
+    @calculated_property(schema={
+        'title': 'Workflows',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Workflow',
+            'type': ['string', 'object'],
+            'linkFrom': 'AnalysisStepVersion.workflows',
+        },
+        'notSubmittable': True
+    })
+    def workflows(self, request, analysis_step_versions):
+        """
+        Returns a list of workflows associated with this analysis step via linked analysis step versions.
+        """
+        workflows = set()
+        print('>>>>> WORKFLOWS', analysis_step_versions)
+        if not analysis_step_versions:
+            return []
+        for asv in analysis_step_versions:
+            if 'workflows' in asv:
+                asv_obj = request.embed(asv, '@@object_with_select_calculated_properties?field=workflows')
+                workflows.add(asv_obj['workflows'])
+        return paths_filtered_by_status(request, sorted(workflows))
+
+    @calculated_property(schema={
         'title': 'Name',
         'type': 'string',
         'description': 'Full name of the analysis step.',
@@ -63,23 +106,15 @@ class AnalysisStep(Item):
         return self._name(properties)
 
     def _name(self, properties):
-        root = find_root(self)
-        workflow_uuid = properties['workflow']
-        workflow = root.get_by_uuid(workflow_uuid)
-        return u'{}-{}'.format(workflow.upgrade_properties()['accession'], properties['step_label'])
-
-    @calculated_property(schema={
-        'title': 'Analysis Step Versions',
-        'description': 'The analysis step versions associated with this analysis step.',
-        'type': 'array',
-        'minItems': 1,
-        'uniqueItems': True,
-        'items': {
-            'title': 'Analysis Step Version',
-            'type': ['string', 'object'],
-            'linkFrom': 'AnalysisStepVersion.analysis_step',
-        },
-        'notSubmittable': True
-    })
-    def analysis_step_versions(self, request, analysis_step_versions):
-        return paths_filtered_by_status(request, analysis_step_versions)
+        """ Generate a unique name for the analysis step based on the associated workflows and step label.
+        """
+        print('>>>>> NAME', properties)
+        return properties['step_label']
+        # workflow_names = set()
+        # root = find_root(self)
+        # workflow_uuids = properties['workflows']
+        # for uuid in workflow_uuids:
+        #     workflow = root.get_by_uuid(uuid)
+        #     workflow_names.add(workflow.upgrade_properties()['name'])
+        # joined_workflow_names = '-'.join(sorted(workflow_names))
+        # return u'{}-{}'.format(joined_workflow_names, properties['step_label'])
