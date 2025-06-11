@@ -1,5 +1,10 @@
 ## Changelog for *`assay_term.json`*
 
+### Minor changes since schema version 16
+
+* Extend `preferred_assay_titles` enum list to include `CUT&RUN`.
+* Extend `preferred_assay_titles` enum list to include `Bisulfite-seq`.
+
 ### Schema version 16
 
 * Adjust `preferred_assay_titles` enum list to replace `mN2H` with `Arrayed mN2H`.
