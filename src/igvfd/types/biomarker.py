@@ -62,7 +62,7 @@ class Biomarker(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Biomarker For',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'Biosample.biomarkers',
         },
         'notSubmittable': True

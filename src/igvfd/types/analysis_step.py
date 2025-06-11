@@ -77,7 +77,7 @@ class AnalysisStep(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Analysis Step Version',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'AnalysisStepVersion.analysis_step',
         },
         'notSubmittable': True
