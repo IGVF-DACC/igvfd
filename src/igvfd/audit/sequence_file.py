@@ -1,6 +1,6 @@
 from snovault.auditor import (
-    audit_checker,
     AuditFailure,
+    audit_checker
 )
 from .formatter import (
     audit_link,
@@ -10,7 +10,6 @@ from .formatter import (
 )
 
 
-@audit_checker('SequenceFile', frame='object')
 def audit_multiple_seqspec_per_seqfile(value, system):
     '''
     [
@@ -49,7 +48,6 @@ def audit_multiple_seqspec_per_seqfile(value, system):
             yield AuditFailure(audit_msg_multi_inprogress_seqspec.get('audit_category', ''), f'{detail} {audit_msg_multi_inprogress_seqspec.get("audit_description", "")}', level=audit_msg_multi_inprogress_seqspec.get('audit_level', ''))
 
 
-@audit_checker('SequenceFile', frame='object')
 def audit_external_identifiers(value, system):
     '''
     [
@@ -69,3 +67,16 @@ def audit_external_identifiers(value, system):
                 f'but does not have identifier(s) from an external resource listed in `dbxrefs`.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+function_dispatcher_sequence_file_object = {
+    'audit_multiple_seqspec_per_seqfile': audit_multiple_seqspec_per_seqfile,
+    'audit_external_identifiers': audit_external_identifiers
+}
+
+
+@audit_checker('SequenceFile', frame='object')
+def audit_sequence_file_object_dispatcher(value, system):
+    for function_name in function_dispatcher_sequence_file_object.keys():
+        for failure in function_dispatcher_sequence_file_object[function_name](value, system):
+            yield failure

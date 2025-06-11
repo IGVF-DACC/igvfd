@@ -1,15 +1,14 @@
 from snovault.auditor import (
-    audit_checker,
     AuditFailure,
+    audit_checker
 )
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_message,
+    get_audit_message
 )
 
 
-@audit_checker('InVitroSystem', frame='object')
 def audit_targeted_sample_term_check(value, system):
     '''
     [
@@ -34,7 +33,6 @@ def audit_targeted_sample_term_check(value, system):
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('InVitroSystem', frame='embedded')
 def audit_cell_fate_change_protocol_document_type(value, system):
     '''
     [
@@ -55,3 +53,26 @@ def audit_cell_fate_change_protocol_document_type(value, system):
                 f'that does not have `document_type` cell fate change protocol.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+function_dispatcher_in_vitro_system_object = {
+    'audit_targeted_sample_term_check': audit_targeted_sample_term_check
+}
+
+function_dispatcher_in_vitro_system_embedded = {
+    'audit_cell_fate_change_protocol_document_type': audit_cell_fate_change_protocol_document_type
+}
+
+
+@audit_checker('InVitroSystem', frame='object')
+def audit_in_vitro_system_object_dispatcher(value, system):
+    for function_name in function_dispatcher_in_vitro_system_object.keys():
+        for failure in function_dispatcher_in_vitro_system_object[function_name](value, system):
+            yield failure
+
+
+@audit_checker('InVitroSystem', frame='embedded')
+def audit_in_vitro_system_embedded_dispatcher(value, system):
+    for function_name in function_dispatcher_in_vitro_system_embedded.keys():
+        for failure in function_dispatcher_in_vitro_system_embedded[function_name](value, system):
+            yield failure

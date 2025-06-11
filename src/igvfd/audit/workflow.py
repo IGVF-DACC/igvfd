@@ -1,6 +1,6 @@
 from snovault.auditor import (
-    audit_checker,
     AuditFailure,
+    audit_checker
 )
 from .formatter import (
     audit_link,
@@ -9,7 +9,6 @@ from .formatter import (
 )
 
 
-@audit_checker('Workflow', frame='object')
 def audit_workflow_without_asvs(value, system):
     '''
     [
@@ -25,3 +24,15 @@ def audit_workflow_without_asvs(value, system):
     if 'analysis_step_versions' not in value:
         detail = f'Workflow {audit_link(path_to_text(value["@id"]), value["@id"])} does not have any analysis step version.'
         yield AuditFailure(missing_asv_msg.get('audit_category', ''), f'{detail} {missing_asv_msg.get("audit_description", "")}', level=missing_asv_msg.get('audit_level', ''))
+
+
+function_dispatcher_workflow_object = {
+    'audit_workflow_without_asvs': audit_workflow_without_asvs
+}
+
+
+@audit_checker('Workflow', frame='object')
+def audit_workflow_object_dispatcher(value, system):
+    for function_name in function_dispatcher_workflow_object.keys():
+        for failure in function_dispatcher_workflow_object[function_name](value, system):
+            yield failure

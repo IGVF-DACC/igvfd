@@ -1,6 +1,6 @@
 from snovault.auditor import (
-    audit_checker,
     AuditFailure,
+    audit_checker
 )
 from .formatter import (
     audit_link,
@@ -9,7 +9,6 @@ from .formatter import (
 )
 
 
-@audit_checker('WholeOrganism', frame='object')
 def audit_whole_organism_human_taxa(value, system):
     '''
     [
@@ -40,3 +39,15 @@ def audit_whole_organism_human_taxa(value, system):
                 f'specifies that it has `donors` of `taxa` Homo sapiens.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+function_dispatcher_whole_organism_object = {
+    'audit_whole_organism_human_taxa': audit_whole_organism_human_taxa
+}
+
+
+@audit_checker('WholeOrganism', frame='object')
+def audit_whole_organism_object_dispatcher(value, system):
+    for function_name in function_dispatcher_whole_organism_object.keys():
+        for failure in function_dispatcher_whole_organism_object[function_name](value, system):
+            yield failure
