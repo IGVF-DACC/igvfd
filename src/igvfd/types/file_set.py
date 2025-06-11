@@ -18,7 +18,7 @@ def get_donors_from_samples(request, samples):
     donor_objects = []
     for sample in samples:
         donor_objects += request.embed(sample, '@@object').get('donors', [])
-    return list(set(donor_objects))
+    return sorted(list(set(donor_objects)))
 
 
 def get_fileset_objs_from_input_file_sets(request, input_file_sets):
@@ -195,7 +195,7 @@ class FileSet(Item):
         'uniqueItems': True,
         'items': {
             'title': 'File',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'File.file_set',
         },
         'notSubmittable': True
@@ -211,7 +211,7 @@ class FileSet(Item):
         'uniqueItems': True,
         'items': {
             'title': 'File Set Controlled By This File Set',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'FileSet.control_file_sets',
         },
         'notSubmittable': True
@@ -256,7 +256,7 @@ class FileSet(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Input For',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'FileSet.input_file_sets',
         },
         'notSubmittable': True
@@ -668,7 +668,7 @@ class AnalysisSet(FileSet):
                 # if the analysis set specifies a demultiplexed sample and all input data is multiplexed return just the demultiplexed_sample
                 if not ([sample for sample in samples if not (sample.startswith('/multiplexed-samples/'))]):
                     return demultiplexed_samples
-            return samples
+            return sorted(samples)
 
     @calculated_property(
         condition='samples',
@@ -714,7 +714,7 @@ class AnalysisSet(FileSet):
                 protocol = file_set_obj.get('protocols', [])
                 if protocol:
                     protocols.update(protocol)
-        return list(protocols)
+        return sorted(list(protocols))
 
     @calculated_property(
         condition='samples',
@@ -929,7 +929,7 @@ class AnalysisSet(FileSet):
         for file_set_object in file_set_objects:
             if 'MeasurementSet' in file_set_object.get('@type') or 'AnalysisSet' in file_set_object.get('@type'):
                 mechanism_objects.extend(file_set_object.get('functional_assay_mechanisms', []))
-        return list(set(mechanism_objects))
+        return sorted(list(set(mechanism_objects)))
 
     @calculated_property(
         schema={
@@ -963,7 +963,7 @@ class AnalysisSet(FileSet):
                     workflow = analysis_step_obj.get('workflow')
                     if workflow:
                         analysis_set_workflows_set.add(workflow)
-        return list(analysis_set_workflows_set)
+        return sorted(list(analysis_set_workflows_set))
 
 
 @collection(
@@ -1115,7 +1115,7 @@ class MeasurementSet(FileSet):
                             object_id != file_set_id and \
                                 file_set_id not in related_datasets:
                             related_datasets.append(file_set_id)
-            return related_datasets
+            return sorted(related_datasets)
 
     @calculated_property(
         schema={
@@ -1357,7 +1357,7 @@ class ModelSet(FileSet):
                         software_versions = software_versions + \
                             analysis_step_version_object.get('software_versions', [])
         if software_versions:
-            return list(set(software_versions))
+            return sorted(list(set(software_versions)))
 
 
 @collection(
@@ -1581,7 +1581,7 @@ class ConstructLibrarySet(FileSet):
             for file_set in sample_object.get('file_sets', []):
                 linked_file_sets.add(file_set)
         if linked_file_sets:
-            return list(linked_file_sets)
+            return sorted(list(linked_file_sets))
 
     @calculated_property(
         condition='file_sets',
@@ -1608,7 +1608,7 @@ class ConstructLibrarySet(FileSet):
                 preferred_assay_title = file_set_object.get('preferred_assay_title')
                 if preferred_assay_title:
                     assay_titles.add(preferred_assay_title)
-        return list(assay_titles)
+        return sorted(list(assay_titles))
 
     @calculated_property(
         schema={

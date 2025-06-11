@@ -49,7 +49,7 @@ class Modification(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Biosamples Modified',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'Biosample.modifications',
         },
         'notSubmittable': True

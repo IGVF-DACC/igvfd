@@ -136,7 +136,7 @@ def test_classifications(testapp, primary_cell, technical_sample, whole_organism
     assert res.json.get('classifications') == ['cell line']
     # This fixutre has one cell line and one tissue
     res = testapp.get(multiplexed_sample['@id'])
-    assert res.json.get('classifications') == ['cell line', 'tissue', 'multiplexed sample']
+    assert res.json.get('classifications') == sorted(['cell line', 'tissue', 'multiplexed sample'])
 
 
 def test_sorted_fractions(testapp, primary_cell, tissue, in_vitro_cell_line):
