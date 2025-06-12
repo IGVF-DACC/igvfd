@@ -128,6 +128,7 @@
                 "SHARE-seq",
                 "Histone ChIP-seq",
                 "TF ChIP-seq",
+                "CUT&RUN",
                 "MPRA",
                 "MPRA (scQer)",
                 "electroporated MPRA",
@@ -176,6 +177,7 @@
                 "ONT dRNA",
                 "ONT Fiber-seq",
                 "ONT direct WGS",
+                "Bisulfite-seq",
                 "WGS"
             ],
             "enum_descriptions": {
@@ -200,6 +202,7 @@
                 "SHARE-seq": "Simultaneous high-throughput ATAC and RNA expression with sequencing (SHARE-seq) is used for the measurement of chromatin accessibility and gene expression in the same single cell.",
                 "Histone ChIP-seq": "Chromatin immunoprecipitation sequencing (ChIP-seq) maps histone modifications to study their genome-wide distribution.",
                 "TF ChIP-seq": "Transcription Factor ChIP-seq (TF ChIP-seq) maps genome-wide transcription factor binding sites.",
+                "CUT&RUN": "Cleavage Under Targets and Release Using Nuclease (CUT&RUN) maps protein-DNA interactions, such as transcription factor binding or histone modifications, by targeting specific proteins with antibodies and releasing nearby DNA fragments using MNase.",
                 "MPRA": "Massively Parallel Reporter Assay (MPRA) evaluates the functional activity of regulatory elements by measuring reporter gene expression.",
                 "MPRA (scQer)": "MPRA single-cell Quantitative Expression Reporter (scQer) is a single-cell MPRA variant that uses dual RNA cassettes to separate detection and quantification of reporter gene expression.",
                 "electroporated MPRA": "Electroporated MPRA (Massively Parallel Reporter Assay) is used to evaluate the activity of regulatory elements by introducing them into cells via electroporation.",
@@ -248,6 +251,7 @@
                 "ONT dRNA": "An assay measuring gene expression by directly sequencing RNA instead of converting RNA to cDNA. This assay specifically utilizes Oxford Nanopore sequencing platforms.",
                 "ONT Fiber-seq": "A DNA methylation profiling assay in which chromatin stencils are created by treating nuclei with m6A methyltransferase (MTase) and then sequenced using single-molecule circular consensus sequencing to identify regions of accessible DNA at nucleotide resolution.",
                 "ONT direct WGS": "An assay to determine the entire sequence of an organism's genome. This assay specifically utilizes Oxford Nanopore sequencing platforms.",
+                "Bisulfite-seq": "Bisulfite sequencing (Bisulfite-seq) is used to detect DNA methylation by treating DNA with sodium bisulfite, which converts unmethylated cytosines to uracil, allowing the identification of methylated cytosines at single-base resolution through sequencing.",
                 "WGS": "Whole Genome Sequencing (WGS) is an assay to determine the entire sequence of an organism's genome."
             },
             "submissionExample": {

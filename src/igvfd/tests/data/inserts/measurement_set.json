@@ -635,5 +635,39 @@
         "assay_term": "/assay-terms/OBI_0002631/",
         "preferred_assay_title": "Parse Perturb-seq",
         "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:cut_and_run"
+        ],
+        "award": "1UM1HG012053-01",
+        "lab": "/labs/charles-gersbach/",
+        "status": "released",
+        "release_timestamp": "2025-06-06T12:34:56Z",
+        "uuid": "f8ba7650-d0f4-4314-950a-2f0b7d67fcc9",
+        "accession": "IGVFDS0000CUTN",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0002631/",
+        "preferred_assay_title": "CUT&RUN",
+        "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:bisulfite_seq"
+        ],
+        "award": "1UM1HG012053-01",
+        "lab": "/labs/charles-gersbach/",
+        "status": "released",
+        "release_timestamp": "2025-06-06T12:34:56Z",
+        "uuid": "ea2ba5a7-0886-4670-a3e1-dd7ad650874d",
+        "accession": "IGVFDS0000BISU",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0002631/",
+        "preferred_assay_title": "Bisulfite-seq",
+        "file_set_type": "experimental data"
     }
 ]
