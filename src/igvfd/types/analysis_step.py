@@ -16,7 +16,7 @@ from pyramid.traversal import (
 
 @collection(
     name='analysis-steps',
-    unique_key='analysis_step:name',
+    unique_key='analysis_step:uuid',
     properties={
         'title': 'Analysis Steps',
         'description': 'Listing of analysis steps',
@@ -31,7 +31,8 @@ class AnalysisStep(Item):
         Path('parents', include=['@id', 'title', 'status']),
         Path('submitted_by', include=['@id', 'title']),
         Path('analysis_step_versions.software_versions', include=[
-             '@id', 'analysis_step_versions', 'software_versions', 'name'])
+             '@id', 'analysis_step_versions', 'software_versions', 'name']),
+        Path('workflows', include=['@id', 'accession', 'name']),
     ]
 
     rev = {
@@ -40,11 +41,6 @@ class AnalysisStep(Item):
 
     set_status_up = []
     set_status_down = []
-
-    def unique_keys(self, properties):
-        keys = super(AnalysisStep, self).unique_keys(properties)
-        keys.setdefault('analysis_step:name', []).append(self._name(properties))
-        return keys
 
     @calculated_property(
         schema={
@@ -88,32 +84,3 @@ class AnalysisStep(Item):
             if 'workflows' in asv_obj:
                 workflows.update(asv_obj['workflows'])
         return paths_filtered_by_status(request, sorted(workflows))
-
-    @calculated_property(schema={
-        'title': 'Name',
-        'type': 'string',
-        'description': 'Full name of the analysis step.',
-        'comment': 'Do not submit. Value is automatically assigned by the server.',
-        'notSubmittable': True,
-        'uniqueKey': True
-    })
-    def name(self):
-        return self.__name__
-
-    @property
-    def __name__(self):
-        properties = self.upgrade_properties()
-        return self._name(properties)
-
-    def _name(self, properties):
-        """ Generate a unique name for the analysis step based on the associated workflows and step label.
-        """
-        return properties['step_label']
-        # workflow_names = set()
-        # root = find_root(self)
-        # workflow_uuids = properties['workflows']
-        # for uuid in workflow_uuids:
-        #     workflow = root.get_by_uuid(uuid)
-        #     workflow_names.add(workflow.upgrade_properties()['name'])
-        # joined_workflow_names = '-'.join(sorted(workflow_names))
-        # return u'{}-{}'.format(joined_workflow_names, properties['step_label'])
