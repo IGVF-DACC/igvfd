@@ -178,6 +178,10 @@
         "aliases": [
             "igvf:ENTEx_donor_1"
         ],
+        "ethnicities": [
+            "Hadza",
+            "Sandawe"
+        ],
         "virtual": false
     }
 ]
