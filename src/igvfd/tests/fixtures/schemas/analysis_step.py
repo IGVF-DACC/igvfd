@@ -68,8 +68,8 @@ def analysis_step_v5(testapp):
 
 
 @pytest.fixture
-def analysis_step_v6(testapp, base_workflow):
-    item = base_workflow.copy()
+def analysis_step_v6(testapp, analysis_step):
+    item = analysis_step.copy()
     item.update({
         'input_content_types': ['reads', 'comprehensive gene count matrix'],
         'output_content_types': ['alignments', 'comprehensive gene count matrix']
