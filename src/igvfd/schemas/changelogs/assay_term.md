@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 16
 
+* Extend `preferred_assay_titles` enum list to include `scNT-seq3`.
 * Extend `preferred_assay_titles` enum list to include `CUT&RUN`.
 * Extend `preferred_assay_titles` enum list to include `Bisulfite-seq`.
 

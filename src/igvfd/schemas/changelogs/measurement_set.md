@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 33
+
+* Extend `preferred_assay_title` enum list to include `scNT-seq3`.
+
 ### Schema version 33
 
 * Add `control_types`.
