@@ -76,7 +76,6 @@ def reference_file_4_5(value, system):
 @upgrade_step('configuration_file', '1', '2')
 @upgrade_step('alignment_file', '1', '2')
 @upgrade_step('sequence_file', '4', '5')
-@upgrade_step('genome_browser_annotation_file', '1', '2')
 @upgrade_step('tabular_file', '1', '2')
 def file_5_6(value, system):
     if 'dbxrefs' in value:
@@ -100,7 +99,6 @@ def reference_file_6_7(value, system):
 @upgrade_step('configuration_file', '2', '3')
 @upgrade_step('alignment_file', '2', '3')
 @upgrade_step('sequence_file', '5', '6')
-@upgrade_step('genome_browser_annotation_file', '2', '3')
 @upgrade_step('tabular_file', '2', '3')
 def file_6_7(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1170
@@ -115,7 +113,6 @@ def file_6_7(value, system):
 @upgrade_step('configuration_file', '3', '4')
 @upgrade_step('alignment_file', '3', '4')
 @upgrade_step('sequence_file', '6', '7')
-@upgrade_step('genome_browser_annotation_file', '3', '4')
 @upgrade_step('tabular_file', '3', '4')
 def file_7_8(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1327
@@ -128,7 +125,6 @@ def file_7_8(value, system):
 
 
 @upgrade_step('alignment_file', '4', '5')
-@upgrade_step('genome_browser_annotation_file', '4', '5')
 @upgrade_step('reference_file', '9', '10')
 @upgrade_step('signal_file', '4', '5')
 @upgrade_step('tabular_file', '4', '5')
@@ -180,7 +176,6 @@ def image_file_1_2(value, system):
 
 
 @upgrade_step('alignment_file', '5', '6')
-@upgrade_step('genome_browser_annotation_file', '5', '6')
 @upgrade_step('signal_file', '5', '6')
 @upgrade_step('tabular_file', '5', '6')
 def file_9_10(value, system):
@@ -220,7 +215,6 @@ def configuration_file_4_5(value, system):
 @upgrade_step('configuration_file', '5', '6')
 @upgrade_step('alignment_file', '6', '7')
 @upgrade_step('sequence_file', '9', '10')
-@upgrade_step('genome_browser_annotation_file', '6', '7')
 @upgrade_step('tabular_file', '6', '7')
 @upgrade_step('image_file', '2', '3')
 def file_10_11(value, system):
@@ -234,7 +228,6 @@ def file_10_11(value, system):
 
 @upgrade_step('alignment_file', '7', '8')
 @upgrade_step('configuration_file', '6', '7')
-@upgrade_step('genome_browser_annotation_file', '7', '8')
 @upgrade_step('image_file', '3', '4')
 @upgrade_step('matrix_file', '5', '6')
 @upgrade_step('reference_file', '11', '12')
@@ -362,17 +355,6 @@ def alignment_file_10_11(value, system):
         value['notes'] = notes.strip()
 
 
-@upgrade_step('genome_browser_annotation_file', '8', '9')
-def genome_browser_annotation_file_8_9(value, system):
-    # https://igvf.atlassian.net/browse/IGVF-2113
-    notes = value.get('notes', '')
-    if value['file_format'] == 'tabix':
-        value['file_format'] = 'bigBed'
-        notes += f' This file\'s file_format was .tabix, but has been upgraded to .bigBed.'
-    if notes.strip() != '':
-        value['notes'] = notes.strip()
-
-
 @upgrade_step('alignment_file', '11', '12')
 def alignment_file_11_12(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2175
@@ -442,7 +424,6 @@ def reference_file_15_16(value, system):
 
 
 @upgrade_step('alignment_file', '13', '14')
-@upgrade_step('genome_browser_annotation_file', '9', '10')
 @upgrade_step('reference_file', '16', '17')
 @upgrade_step('signal_file', '9', '10')
 @upgrade_step('tabular_file', '13', '14')
@@ -491,7 +472,6 @@ def matrix_file_7_8(value, system):
 
 @upgrade_step('alignment_file', '14', '15')
 @upgrade_step('configuration_file', '7', '8')
-@upgrade_step('genome_browser_annotation_file', '10', '11')
 @upgrade_step('image_file', '4', '5')
 @upgrade_step('index_file', '1', '2')
 @upgrade_step('matrix_file', '8', '9')
