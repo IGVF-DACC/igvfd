@@ -179,5 +179,22 @@
             "409d724e-067e-4744-8d5b-c8f806136d80"
         ],
         "cas_species": "Streptococcus pyogenes (Sp)"
+    },
+    {
+        "uuid": "ccff7720-3862-4aa9-a65e-893724b405e9",
+        "lab": "charles-gersbach",
+        "award": "1UM1HG012053-01",
+        "aliases": [
+            "igvf:crispr_fused_domain_Tet1"
+        ],
+        "cas": "dCas9",
+        "fused_domain": "Tet1",
+        "modality": "prime editing",
+        "status": "released",
+        "release_timestamp": "2025-05-06T12:34:56Z",
+        "sources": [
+            "409d724e-067e-4744-8d5b-c8f806136d80"
+        ],
+        "cas_species": "Streptococcus pyogenes (Sp)"
     }
 ]
