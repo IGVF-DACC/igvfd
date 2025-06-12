@@ -169,7 +169,7 @@
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
         "title": "Example Analysis Step",
-        "step_label": "example-analysis-step",
+        "step_label": "another-example-analysis-step",
         "analysis_step_types": [
             "alignment",
             "custom genome assembly"

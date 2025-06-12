@@ -244,12 +244,10 @@
         "description",
         "lab.title",
         "submitted_by.title",
-        "title",
-        "workflow.name"
+        "title"
     ],
     "exact_searchable_fields": [
-        "@type",
-        "workflow.accession"
+        "@type"
     ],
     "changelog": "/profiles/changelogs/analysis_step.md"
 }
