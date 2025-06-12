@@ -47,7 +47,6 @@ class AnalysisStep(Item):
         return keys
 
     @calculated_property(
-        define=True,
         schema={
             'title': 'Analysis Step Versions',
             'description': 'The analysis step versions associated with this analysis step.',
@@ -62,7 +61,6 @@ class AnalysisStep(Item):
             'notSubmittable': True
         })
     def analysis_step_versions(self, request, analysis_step_versions):
-        print('>>>>> ASVs', analysis_step_versions)
         return paths_filtered_by_status(request, analysis_step_versions)
 
     @calculated_property(
@@ -74,7 +72,7 @@ class AnalysisStep(Item):
             'items': {
                 'title': 'Workflow',
                 'type': ['string', 'object'],
-                'linkFrom': 'AnalysisStepVersion.workflows',
+                'linkTo': 'AnalysisStepVersion.workflows',
             },
             'notSubmittable': True
         })
@@ -83,13 +81,12 @@ class AnalysisStep(Item):
         Returns a list of workflows associated with this analysis step via linked analysis step versions.
         """
         workflows = set()
-        print('>>>>> WORKFLOWS', analysis_step_versions)
         if not analysis_step_versions:
             return []
         for asv in analysis_step_versions:
             asv_obj = request.embed(asv, '@@object_with_select_calculated_properties?field=workflows')
-            if 'workflows' in asv:
-                workflows.add(asv_obj['workflows'])
+            if 'workflows' in asv_obj:
+                workflows.update(asv_obj['workflows'])
         return paths_filtered_by_status(request, sorted(workflows))
 
     @calculated_property(schema={
