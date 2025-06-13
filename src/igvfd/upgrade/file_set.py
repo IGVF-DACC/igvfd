@@ -611,9 +611,9 @@ def file_set_32_33(value, system):
 @upgrade_step('prediction_set', '8', '9')
 def prediction_set_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2733
+    notes = value.get('notes', '')
     if value.get('file_set_type', '') == 'pathogenicity':
         value['file_set_type'] = 'functional effect'
-        notes = value.get('notes', '')
         notes += f'This object\'s file_set_type was pathogenicity and has been upgraded to functional effect.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
