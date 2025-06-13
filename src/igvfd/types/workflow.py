@@ -23,7 +23,7 @@ class Workflow(Item):
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/workflow.json')
     rev = {
-        'analysis_steps': ('AnalysisStep', 'workflow')
+        'analysis_step_versions': ('AnalysisStepVersion', 'workflow')
     }
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
@@ -49,10 +49,16 @@ class Workflow(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Analysis Step',
-            'type': ['string', 'object'],
-            'linkFrom': 'AnalysisStep.workflow',
+            'type': 'string',
+            'linkTo': 'AnalysisStep'
         },
         'notSubmittable': True
     })
-    def analysis_steps(self, request, analysis_steps):
-        return paths_filtered_by_status(request, analysis_steps)
+    def analysis_steps(self, request, analysis_step_versions):
+        analysis_steps = set()
+        for asv in analysis_step_versions:
+            # Analysis Step is a submitted property
+            asv_obj = request.embed(asv, '@@object?skip_calculated=true')
+            if asv_obj.get('analysis_step'):
+                analysis_steps.add(asv_obj['analysis_step'])
+        return paths_filtered_by_status(request, sorted(analysis_steps))
