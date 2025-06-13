@@ -209,3 +209,22 @@ def assay_term_15_16(value, system):
             value['notes'] = f"{value['notes']} {prefix_note} {', '.join(new_notes)}."
         else:
             value['notes'] = f"{prefix_note} {', '.join(new_notes)}."
+
+
+@upgrade_step('assay_term', '16', '17')
+def assay_term_16_17(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2793
+    new_assay_titles = []
+    old_assay_titles = []
+    notes = value.get('notes', '')
+    if 'preferred_assay_titles' in value:
+        for assay_title in value['preferred_assay_titles']:
+            if assay_title in ['10X ATAC with Scale pre-indexing', '10X RNA with Scale pre-indexing']:
+                old_assay_titles.append(assay_title)
+                new_assay_titles.append('10x multiome with Scale pre-indexing')
+            else:
+                new_assay_titles.append(assay_title)
+    if len(new_assay_titles) >= 1:
+        value['preferred_assay_titles'] = list(set(new_assay_titles))
+        notes += f' This assay term previously listed {old_assay_titles.join(" and ")} as preferred_assay_titles, but these preferred_assay_titles have been updated to 10x multiome with Scale pre-indexing via an upgrade.'
+        value['notes'] = notes.strip()

@@ -217,3 +217,11 @@ def test_measurement_set_upgrade_32_33(upgrader, measurement_set_v32):
     assert 'control_type' not in value
     assert 'control_types' in value and value['control_types'] == ['pre-selection']
     assert value['schema_version'] == '33'
+
+
+def test_measurement_set_upgrade_33_34(upgrader, measurement_set_v33):
+    value = upgrader.upgrade('measurement_set', measurement_set_v33, current_version='33', target_version='34')
+    assert 'preferred_assay_title' in value
+    assert value['preferred_assay_title'] == '10x multiome with Scale pre-indexing'
+    assert value['schema_version'] == '34'
+    assert value['notes'] == 'This measurement set previously used 10X ATAC with Scale pre-indexing as a preferred_assay_title, but the preferred_assay_title has been updated to 10x multiome with Scale pre-indexing via an upgrade.'
