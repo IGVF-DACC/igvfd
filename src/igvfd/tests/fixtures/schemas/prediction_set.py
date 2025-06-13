@@ -6,7 +6,7 @@ def base_prediction_set(testapp, lab, award, in_vitro_cell_line):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'file_set_type': 'pathogenicity',
+        'file_set_type': 'functional effect',
         'samples': [in_vitro_cell_line['@id']]
     }
     return testapp.post_json('/prediction_set', item).json['@graph'][0]
@@ -100,5 +100,15 @@ def prediction_set_v7(base_prediction_set):
     item.update({
         'schema_version': '7',
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item
+
+
+@pytest.fixture
+def prediction_set_v8(base_prediction_set):
+    item = base_prediction_set.copy()
+    item.update({
+        'schema_version': '8',
+        'file_set_type': 'pathogenicity'
     })
     return item

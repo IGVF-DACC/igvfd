@@ -52,7 +52,7 @@
             "igvf:prediction_set_3"
         ],
         "accession": "IGVFDS5278LBSV",
-        "file_set_type": "pathogenicity",
+        "file_set_type": "functional effect",
         "samples": [
             "igvf:mouse_embryo"
         ],
