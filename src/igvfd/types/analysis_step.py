@@ -67,8 +67,8 @@ class AnalysisStep(Item):
             'uniqueItems': True,
             'items': {
                 'title': 'Workflow',
-                'type': ['string', 'object'],
-                'linkTo': 'AnalysisStepVersion.workflows',
+                'type': 'string',
+                'linkTo': 'Workflow'
             },
             'notSubmittable': True
         })
