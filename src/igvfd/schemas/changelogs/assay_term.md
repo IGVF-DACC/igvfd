@@ -1,5 +1,11 @@
 ## Changelog for *`assay_term.json`*
 
+### Minor changes since schema version 16
+
+* Extend `preferred_assay_titles` enum list to include `scNT-seq3`.
+* Adjust `preferred_assay_titles` enum list to replace `10X ATAC with Scale pre-indexing` with `10x multiome with Scale pre-indexing`.
+* Adjust `preferred_assay_titles` enum list to replace `10X RNA with Scale pre-indexing` with `10x multiome with Scale pre-indexing`.
+
 ### Schema version 16
 
 * Adjust `preferred_assay_titles` enum list to replace `mN2H` with `Arrayed mN2H`.
