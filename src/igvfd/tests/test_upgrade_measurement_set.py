@@ -203,3 +203,11 @@ def test_measurement_set_upgrade_30_31(upgrader, measurement_set_v30):
     assert value['preferred_assay_title'] == 'Arrayed semi-qY2H v1'
     assert value['schema_version'] == '31'
     assert value['notes'] == 'Preferred_assay_title enum semi-qY2H has been renamed to be Arrayed semi-qY2H v1.'
+
+
+def test_measurement_set_upgrade_31_32(upgrader, measurement_set_v31):
+    value = upgrader.upgrade('measurement_set', measurement_set_v31, current_version='31', target_version='32')
+    assert 'preferred_assay_title' in value
+    assert value['preferred_assay_title'] == '10x multiome with Scale pre-indexing'
+    assert value['schema_version'] == '32'
+    assert value['notes'] == 'This measurement set previously used 10X ATAC with Scale pre-indexing as a preferred_assay_title, but the preferred_assay_title has been updated to 10x multiome with Scale pre-indexing via an upgrade.'

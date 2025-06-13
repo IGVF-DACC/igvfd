@@ -3,6 +3,8 @@
 ### Minor changes since schema version 31
 
 * Extend `preferred_assay_title` enum list to include `scNT-seq3`.
+* Adjust `preferred_assay_title` enum list to replace `10X ATAC with Scale pre-indexing` with `10x multiome with Scale pre-indexing`.
+* Adjust `preferred_assay_title` enum list to replace `10X RNA with Scale pre-indexing` with `10x multiome with Scale pre-indexing`.
 
 ### Schema version 31
 
