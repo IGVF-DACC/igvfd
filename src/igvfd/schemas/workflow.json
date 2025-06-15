@@ -142,9 +142,9 @@
     },
     "fuzzy_searchable_fields": [
         "aliases",
-        "analysis_steps.analysis_step_types",
-        "analysis_steps.input_content_types",
-        "analysis_steps.output_content_types",
+        "analysis_step_versions.analysis_step.analysis_step_types",
+        "analysis_step_versions.analysis_step.input_content_types",
+        "analysis_step_versions.analysis_step.output_content_types",
         "name",
         "lab.title",
         "submitted_by.title"
@@ -152,7 +152,7 @@
     "exact_searchable_fields": [
         "@type",
         "publications.publication_identifiers",
-        "analysis_steps.analysis_step_versions.software_versions.software.title"
+        "analysis_step_versions.software_versions.software.title"
     ],
     "changelog": "/profiles/changelogs/workflow.md"
 }
