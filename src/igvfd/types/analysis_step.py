@@ -31,8 +31,7 @@ class AnalysisStep(Item):
         Path('parents', include=['@id', 'title', 'status']),
         Path('submitted_by', include=['@id', 'title']),
         Path('analysis_step_versions.software_versions', include=[
-             '@id', 'analysis_step_versions', 'software_versions', 'name']),
-        Path('workflows', include=['@id', 'accession', 'name']),
+             '@id', 'analysis_step_versions', 'software_versions', 'name'])
     ]
 
     rev = {
@@ -58,29 +57,3 @@ class AnalysisStep(Item):
         })
     def analysis_step_versions(self, request, analysis_step_versions):
         return paths_filtered_by_status(request, analysis_step_versions)
-
-    @calculated_property(
-        schema={
-            'title': 'Workflows',
-            'type': 'array',
-            'minItems': 1,
-            'uniqueItems': True,
-            'items': {
-                'title': 'Workflow',
-                'type': 'string',
-                'linkTo': 'Workflow'
-            },
-            'notSubmittable': True
-        })
-    def workflows(self, request, analysis_step_versions):
-        """
-        Returns a list of workflows associated with this analysis step via linked analysis step versions.
-        """
-        workflows = set()
-        if not analysis_step_versions:
-            return []
-        for asv in analysis_step_versions:
-            asv_obj = request.embed(asv, '@@object_with_select_calculated_properties?field=workflows')
-            if 'workflows' in asv_obj:
-                workflows.update(asv_obj['workflows'])
-        return paths_filtered_by_status(request, sorted(workflows))

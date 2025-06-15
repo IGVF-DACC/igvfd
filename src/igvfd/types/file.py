@@ -290,6 +290,7 @@ class File(Item):
         return list(assay_titles)
 
     @calculated_property(
+        define=True,
         condition='analysis_step_version',
         schema={
             'title': 'Workflows',
