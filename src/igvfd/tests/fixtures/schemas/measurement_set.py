@@ -472,3 +472,13 @@ def measurement_set_v30(measurement_set):
         'preferred_assay_title': 'semi-qY2H'
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v31(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '31',
+        'control_type': 'pre-selection'
+    })
+    return item

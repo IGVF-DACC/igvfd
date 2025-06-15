@@ -203,3 +203,10 @@ def test_measurement_set_upgrade_30_31(upgrader, measurement_set_v30):
     assert value['preferred_assay_title'] == 'Arrayed semi-qY2H v1'
     assert value['schema_version'] == '31'
     assert value['notes'] == 'Preferred_assay_title enum semi-qY2H has been renamed to be Arrayed semi-qY2H v1.'
+
+
+def test_measurement_set_upgrade_31_32(upgrader, measurement_set_v31):
+    value = upgrader.upgrade('measurement_set', measurement_set_v31, current_version='31', target_version='32')
+    assert 'control_type' not in value
+    assert value['schema_version'] == '32'
+    assert value['notes'] == 'Control_type enum pre-selection was removed via upgrade.'

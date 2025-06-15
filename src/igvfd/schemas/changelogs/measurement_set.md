@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 32
+
+* Reduce `control_type` enum list to exclude `preselection`.
+
 ### Schema version 31
 
 * Adjust `preferred_assay_title` enum list to replace `mN2H` with `Arrayed mN2H`.
