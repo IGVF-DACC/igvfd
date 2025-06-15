@@ -57,6 +57,26 @@ def concat_numeric_and_units(numeric, numeric_units, no_numeric_on_one=False):
         return f'{numeric} {numeric_units}s'
 
 
+def compose_summary_sample_term_phrase(sample_term_term_names: list, cap_number: int) -> str:
+    """Compose a summary sample term phrase based on the number of terms and a max number of items.
+
+    Args:
+        sample_term_term_names (list): A list of unique sample term names
+        cap_number (int): An item count number used to determine how to format the summary (e.g., num of samples)
+
+    Returns:
+        str: A formatted string of sample term names
+    """
+    sample_term_term_names = sorted(sample_term_term_names)
+    if cap_number < 3:
+        sample_term_phrase = ' and '.join(sample_term_term_names)
+    elif 3 <= cap_number <= 5:
+        sample_term_phrase = f"{', '.join(sample_term_term_names[0:-1])} and {sample_term_term_names[-1]}"
+    else:
+        sample_term_phrase = f'{", ".join(sample_term_term_names[0:4])} and {(cap_number - 5)} more'
+    return sample_term_phrase
+
+
 @abstract_collection(
     name='samples',
     unique_key='accession',
@@ -862,36 +882,56 @@ class MultiplexedSample(Sample):
         }
     )
     def summary(self, request, multiplexed_samples=None, donors=None, sample_terms=None):
+        # Generate sample term phrase
         sample_term_phrase = None
         if sample_terms:
             sample_term_term_names = []
             for term in sample_terms:
                 term_object = request.embed(term, '@@object?skip_calculated=true')
                 sample_term_term_names.append(term_object['term_name'])
-            sample_term_term_names = sorted(sample_term_term_names)
-            if len(sample_terms) <= 5:
-                if len(sample_terms) < 3:
-                    sample_term_phrase = ' and '.join(sample_term_term_names)
-                else:
-                    sample_term_phrase = f"{', '.join(sample_term_term_names[0:-1])} and {sample_term_term_names[-1]}"
-            else:
-                sample_term_phrase = f'{", ".join(sample_term_term_names[0:4])} and {len(sample_terms)-5} more'
+        sample_term_phrase = compose_summary_sample_term_phrase(sample_term_term_names=sample_term_term_names,
+                                                                cap_number=len(sample_terms))
+
+        # Generate num of unique donors
         donors_phrase = None
         if donors:
             suffix = 's'
             if len(donors) == 1:
                 suffix = ''
             donors_phrase = f'{len(donors)} donor{suffix}'
+
+        # Generate num of samples and targeted_sample_terms in multiplexed_samples
         samples_phrase = None
         if multiplexed_samples:
             suffix = 's'
             if len(multiplexed_samples) == 1:
                 suffix = ''
             samples_phrase = f'{len(multiplexed_samples)} sample{suffix}'
+
+        # Generate unique targeted sample term phrase
+        # Could nest under the same if condition above, but this is more readable
+        targeted_sample_term_phrase = None
+        if multiplexed_samples:
+            targeted_sample_term_names = set()
+            for sample in multiplexed_samples:
+                # First, get sample object to see if it has a targeted sample term
+                sample_object = request.embed(sample, '@@object?skip_calculated=true')
+                if sample_object.get('targeted_sample_term'):
+                    # Get targeted sample term object if it exists
+                    targeted_sample_term_object = request.embed(
+                        sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
+                    targeted_sample_term_names.add(targeted_sample_term_object['term_name'])
+            targeted_sample_term_phrase = compose_summary_sample_term_phrase(
+                sample_term_term_names=targeted_sample_term_names,
+                cap_number=len(targeted_sample_term_names)
+            )
+
+        # Make final phrase
         phrases = [
             sample_term_phrase,
             donors_phrase,
-            samples_phrase
+            samples_phrase,
+            f'induced to {targeted_sample_term_phrase}' if targeted_sample_term_phrase else None
         ]
         return f"multiplexed {', '.join([x for x in phrases if x is not None])}"
 
