@@ -31,8 +31,7 @@ class AnalysisStepVersion(Item):
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
-        Path('analysis_step', include=['@id', 'name', 'status', 'title', 'workflow']),
-        Path('analysis_step.workflow', include=['@id', 'accession', 'name', 'status']),
+        Path('analysis_step', include=['@id', 'name', 'status', 'title']),
         Path('software_versions', include=['@id', 'name', 'status']),
         Path('submitted_by', include=['@id', 'title'])
     ]
@@ -40,19 +39,20 @@ class AnalysisStepVersion(Item):
     set_status_up = ['software_versions']
     set_status_down = []
 
-    @calculated_property(schema={
-        'title': 'Workflows',
-        'type': 'array',
-        'description': 'The workflows that this analysis step version is a part of.',
-        'minItems': 1,
-        'uniqueItems': True,
-        'items': {
-            'title': 'Workflow',
-            'type': ['string', 'object'],
-            'linkFrom': 'Workflow.analysis_step_versions'
-        },
-        'notSubmittable': True
-    })
+    @calculated_property(
+        schema={
+            'title': 'Workflows',
+            'type': 'array',
+            'description': 'The workflows that this analysis step version is a part of.',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Workflow',
+                'type': ['string', 'object'],
+                'linkFrom': 'Workflow.analysis_step_versions'
+            },
+            'notSubmittable': True
+        })
     def workflows(self, request, workflows):
         """Return the workflow that this analysis step version is linked to."""
         return paths_filtered_by_status(request, workflows)
