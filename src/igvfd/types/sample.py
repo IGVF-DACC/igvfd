@@ -486,6 +486,12 @@ class Biosample(Sample):
                 biosample_type in ['primary_cell', 'in_vitro_system', 'tissue']):
             summary_terms = f'virtual {summary_terms}'
 
+        if donors and 'pooled cell specimen' in classifications:
+            suffix = 's'
+            if len(donors) == 1:
+                suffix = ''
+            summary_terms += f' ({len(donors)} donor{suffix})'
+
         # time post change and targeted term are appended to the end of the summary
         if (time_post_change and
                 biosample_type in ['in_vitro_system']):
