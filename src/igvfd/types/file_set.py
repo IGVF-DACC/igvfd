@@ -396,6 +396,7 @@ class AnalysisSet(FileSet):
         assay_titles = set()
         cls_derived_assay_titles = set()
         crispr_modalities = set()
+        multiplexing_methods = set()
         cls_type_set = set()
         cls_set = set()
         control_type_set = set()
@@ -501,6 +502,9 @@ class AnalysisSet(FileSet):
                     for modification in sample_object['modifications']:
                         modification_object = request.embed(modification, '@@object?skip_calculated=true')
                         crispr_modalities.add(modification_object['modality'])
+                if 'multiplexing_methods' in sample_object:
+                    for method in sample_object['multiplexing_methods']:
+                        multiplexing_methods.add(method)
 
         # Collect construct library set summaries and types
         prop_with_cls = None
@@ -541,6 +545,14 @@ class AnalysisSet(FileSet):
                 assay_title_phrase = assay_title_phrase.replace('CRISPR', f'CRISPR {modality_set}')
             else:
                 assay_title_phrase = f'{modality_set} {assay_title_phrase}'
+        if multiplexing_methods:
+            method_phrase_map = {
+                'barcode based': 'barcode based',
+                'genetic': 'genetically'
+            }
+            mux_method_list = [method_phrase_map[x] for x in sorted(list(multiplexing_methods))]
+            mux_method_phrase = f'({", ".join(mux_method_list)} multiplexed)'
+            assay_title_phrase = f'{assay_title_phrase} {mux_method_phrase}'
         # Targeted genes.
         targeted_genes_phrase = ''
         if targeted_genes:
@@ -1119,6 +1131,7 @@ class MeasurementSet(FileSet):
         modality_set = set()
         cls_set = set()
         cls_type_set = set()
+        multiplexing_methods = set()
         control_phrase = ''
         cls_phrase = ''
         modality_phrase = ''
@@ -1132,6 +1145,9 @@ class MeasurementSet(FileSet):
                     modality = request.embed(modification).get('modality', '')
                     if modality:
                         modality_set.add(modality)
+            if 'multiplexing_methods' in sample_object:
+                for method in sample_object['multiplexing_methods']:
+                    multiplexing_methods.add(method)
 
         if construct_library_sets:
             for construct_library_set in construct_library_sets:
@@ -1183,6 +1199,14 @@ class MeasurementSet(FileSet):
                 assay_phrase = f'{assay}'
         if len(modality_set) == 0:
             assay_phrase = f'{assay}'
+        if multiplexing_methods:
+            method_phrase_map = {
+                'barcode based': 'barcode based',
+                'genetic': 'genetically'
+            }
+            mux_method_list = [method_phrase_map[x] for x in sorted(list(multiplexing_methods))]
+            mux_method_phrase = f'({", ".join(mux_method_list)} multiplexed)'
+            assay_phrase = f'{assay_phrase} {mux_method_phrase}'
 
         if len(cls_set) > 0:
             cls_phrase = f' {get_cls_phrase(cls_set)}'
