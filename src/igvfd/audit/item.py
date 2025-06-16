@@ -13,7 +13,7 @@ from snovault.util import simple_path_ids
 from .formatter import (
     audit_link,
     path_to_text,
-    space_in_words,
+    space_in_words
 )
 
 

@@ -1,6 +1,6 @@
 from snovault.auditor import (
-    audit_checker,
     AuditFailure,
+    audit_checker
 )
 from .formatter import (
     audit_link,
@@ -9,7 +9,6 @@ from .formatter import (
 )
 
 
-@audit_checker('ModelSet', frame='object')
 def audit_external_input_data_content_type(value, system):
     '''
     [
@@ -36,3 +35,15 @@ def audit_external_input_data_content_type(value, system):
                 f'{detail} {audit_message_inconsistent_external_input_data.get("audit_description", "")}',
                 level=audit_message_inconsistent_external_input_data.get('audit_level', '')
             )
+
+
+function_dispatcher_model_set_object = {
+    'audit_external_input_data_content_type': audit_external_input_data_content_type
+}
+
+
+@audit_checker('ModelSet', frame='object')
+def audit_model_set_object_dispatcher(value, system):
+    for function_name in function_dispatcher_model_set_object.keys():
+        for failure in function_dispatcher_model_set_object[function_name](value, system):
+            yield failure

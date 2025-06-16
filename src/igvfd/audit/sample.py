@@ -1,6 +1,6 @@
 from snovault.auditor import (
-    audit_checker,
     AuditFailure,
+    audit_checker
 )
 from .formatter import (
     audit_link,
@@ -10,7 +10,6 @@ from .formatter import (
 )
 
 
-@audit_checker('Sample', frame='object?skip_calculated=true')
 def audit_sample_sorted_from_parent_child_check(value, system):
     '''
     [
@@ -73,7 +72,6 @@ def audit_sample_sorted_from_parent_child_check(value, system):
             yield AuditFailure(audit_message_metadata_inconsistency.get('audit_category', ''), f'{detail} {audit_message_metadata_inconsistency.get("audit_description", "")}', level=audit_message_metadata_inconsistency.get('audit_level', ''))
 
 
-@audit_checker('Sample', frame='object')
 def audit_sample_virtual_donor_check(value, system):
     '''
     [
@@ -104,7 +102,6 @@ def audit_sample_virtual_donor_check(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Sample', frame='object')
 def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
     '''
     [
@@ -116,53 +113,31 @@ def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    sample_id = system.get('path')
-    sample_is_virtual = value.get('virtual', False)
-    links_to_check = [item for item in [
-        value.get('part_of', None),
-        value.get('originated_from', None),
-        value.get('sorted_from', None),
-    ] if item is not None]
-    links_to_check.extend(value.get('pooled_from', []))
-    for linked_sample in links_to_check:
-        audit_failure = get_virtual_sample_failures(
-            system,
-            sample_id,
-            sample_is_virtual,
-            linked_sample,
-            object_type
-        )
-        if audit_failure:
-            yield audit_failure
-
-
-def get_virtual_sample_failures(
-    system,
-    sample_id,
-    sample_is_virtual,
-    linked_sample_id,
-    object_type
-):
     audit_message = get_audit_message(audit_non_virtual_sample_linked_to_virtual_sample)
-    linked_data = system.get('request').embed(linked_sample_id + '@@object?skip_calculated=true')
-    if linked_data.get('virtual', False) != sample_is_virtual:
-        if sample_is_virtual:
-            audit_detail_body = 'is virtual'
-            audit_detail_end = 'that is not virtual'
-        else:
-            audit_detail_body = 'is not virtual'
-            audit_detail_end = 'that is virtual'
-        detail = (
-            f'{object_type} {audit_link(path_to_text(sample_id), sample_id)} '
-            f'{audit_detail_body} and has a linked sample '
-            f'{audit_link(path_to_text(linked_sample_id), linked_sample_id)} {audit_detail_end}.'
-        )
-        return AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
-    else:
-        return None
+    sample_is_virtual = value.get('virtual', False)
+    links_to_check = [v for v in [
+        value.get('part_of'),
+        value.get('originated_from'),
+        value.get('sorted_from'),
+    ] if v]
+    links_to_check.extend(value.get('pooled_from', []))
+    for linked_sample_id in links_to_check:
+        linked_data = system.get('request').embed(linked_sample_id + '@@object?skip_calculated=true')
+        linked_is_virtual = linked_data.get('virtual', False)
+        if linked_is_virtual != sample_is_virtual:
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'{"is virtual" if sample_is_virtual else "is not virtual"} and has a linked sample '
+                f'{audit_link(path_to_text(linked_sample_id), linked_sample_id)} '
+                f'{"that is not virtual" if sample_is_virtual else "that is virtual"}.'
+            )
+            yield AuditFailure(
+                audit_message.get('audit_category', ''),
+                f'{detail} {audit_message.get("audit_description", "")}',
+                level=audit_message.get('audit_level', '')
+            )
 
 
-@audit_checker('Sample', frame='object')
 def audit_parent_sample_with_singular_child(value, system):
     '''
     [
@@ -186,7 +161,6 @@ def audit_parent_sample_with_singular_child(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Sample', frame='object')
 def audit_missing_nucleic_acid_delivery(value, system):
     '''
     [
@@ -207,7 +181,6 @@ def audit_missing_nucleic_acid_delivery(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Sample', frame='object')
 def audit_sample_missing_publication(value, system):
     '''
     [
@@ -228,7 +201,6 @@ def audit_sample_missing_publication(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Sample', frame='object')
 def audit_missing_association(value, system):
     '''
     [
@@ -248,3 +220,31 @@ def audit_missing_association(value, system):
             f'is not associated with any file set, nor is the parent of any sample.'
         )
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+function_dispatcher_sample_skip_calculated = {
+    'audit_sample_sorted_from_parent_child_check': audit_sample_sorted_from_parent_child_check
+}
+
+function_dispatcher_sample_object = {
+    'audit_sample_virtual_donor_check': audit_sample_virtual_donor_check,
+    'audit_non_virtual_sample_linked_to_virtual_sample': audit_non_virtual_sample_linked_to_virtual_sample,
+    'audit_parent_sample_with_singular_child': audit_parent_sample_with_singular_child,
+    'audit_missing_nucleic_acid_delivery': audit_missing_nucleic_acid_delivery,
+    'audit_sample_missing_publication': audit_sample_missing_publication,
+    'audit_missing_association': audit_missing_association
+}
+
+
+@audit_checker('Sample', frame='object?skip_calculated=true')
+def audit_sample_skip_calculated_dispatcher(value, system):
+    for function_name in function_dispatcher_sample_skip_calculated.keys():
+        for failure in function_dispatcher_sample_skip_calculated[function_name](value, system):
+            yield failure
+
+
+@audit_checker('Sample', frame='object')
+def audit_sample_object_dispatcher(value, system):
+    for function_name in function_dispatcher_sample_object.keys():
+        for failure in function_dispatcher_sample_object[function_name](value, system):
+            yield failure

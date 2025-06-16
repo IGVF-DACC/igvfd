@@ -1,6 +1,6 @@
 from snovault.auditor import (
-    audit_checker,
     AuditFailure,
+    audit_checker
 )
 from .formatter import (
     audit_link,
@@ -9,7 +9,6 @@ from .formatter import (
 )
 
 
-@audit_checker('CuratedSet', frame='object')
 def audit_curated_set_mismatched_taxa(value, system):
     '''
     [
@@ -52,7 +51,6 @@ def audit_curated_set_mismatched_taxa(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('CuratedSet', frame='object')
 def audit_curated_set_non_virtual_sample(value, system):
     '''
     [
@@ -79,3 +77,16 @@ def audit_curated_set_non_virtual_sample(value, system):
             f'links to non-virtual sample(s): {non_virtual_samples}.'
         )
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+function_dispatcher_curated_set_object = {
+    'audit_curated_set_mismatched_taxa': audit_curated_set_mismatched_taxa,
+    'audit_curated_set_non_virtual_sample': audit_curated_set_non_virtual_sample
+}
+
+
+@audit_checker('CuratedSet', frame='object')
+def audit_curated_set_object_dispatcher(value, system):
+    for function_name in function_dispatcher_curated_set_object.keys():
+        for failure in function_dispatcher_curated_set_object[function_name](value, system):
+            yield failure

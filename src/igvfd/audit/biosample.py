@@ -1,6 +1,6 @@
 from snovault.auditor import (
-    audit_checker,
     AuditFailure,
+    audit_checker
 )
 from .formatter import (
     audit_link,
@@ -10,7 +10,6 @@ from .formatter import (
 )
 
 
-@audit_checker('Biosample', frame='object')
 def audit_biosample_taxa_check(value, system):
     '''
     [
@@ -46,9 +45,6 @@ def audit_biosample_taxa_check(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Tissue', frame='object')
-@audit_checker('PrimaryCell', frame='object')
-@audit_checker('WholeOrganism', frame='object')
 def audit_biosample_age(value, system):
     '''
     [
@@ -70,7 +66,6 @@ def audit_biosample_age(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Biosample', frame='object')
 def audit_biomarker_name(value, system):
     '''
     [
@@ -105,7 +100,6 @@ def audit_biomarker_name(value, system):
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-@audit_checker('Biosample', frame='object')
 def audit_multiple_ics_with_mismatched_access(value, system):
     '''
     [
@@ -171,7 +165,6 @@ def audit_multiple_ics_with_mismatched_access(value, system):
             yield AuditFailure(audit_message_dul.get('audit_category', ''), f'{detail} {audit_message_dul.get("audit_description", "")}', level=audit_message_dul.get('audit_level', ''))
 
 
-@audit_checker('Biosample', frame='object')
 def audit_annotated_from_virtual(value, system):
     '''
     [
@@ -194,3 +187,51 @@ def audit_annotated_from_virtual(value, system):
                 f'{audit_link(path_to_text(annotated_from_object["@id"]), annotated_from_object["@id"])}.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+function_dispatcher_biosample_object = {
+    'audit_biosample_taxa_check': audit_biosample_taxa_check,
+    'audit_biomarker_name': audit_biomarker_name,
+    'audit_multiple_ics_with_mismatched_access': audit_multiple_ics_with_mismatched_access,
+    'audit_annotated_from_virtual': audit_annotated_from_virtual
+}
+
+function_dispatcher_tissue_object = {
+    'audit_biosample_age': audit_biosample_age
+}
+
+function_dispatcher_primary_cell_object = {
+    'audit_biosample_age': audit_biosample_age
+}
+
+function_dispatcher_whole_organism_object = {
+    'audit_biosample_age': audit_biosample_age
+}
+
+
+@audit_checker('Biosample', frame='object')
+def audit_biosample_object_dispatcher(value, system):
+    for function_name in function_dispatcher_biosample_object.keys():
+        for failure in function_dispatcher_biosample_object[function_name](value, system):
+            yield failure
+
+
+@audit_checker('Tissue', frame='object')
+def audit_tissue_object_dispatcher(value, system):
+    for function_name in function_dispatcher_tissue_object.keys():
+        for failure in function_dispatcher_tissue_object[function_name](value, system):
+            yield failure
+
+
+@audit_checker('PrimaryCell', frame='object')
+def audit_primary_cell_object_dispatcher(value, system):
+    for function_name in function_dispatcher_primary_cell_object.keys():
+        for failure in function_dispatcher_primary_cell_object[function_name](value, system):
+            yield failure
+
+
+@audit_checker('WholeOrganism', frame='object')
+def audit_whole_organism_object_dispatcher(value, system):
+    for function_name in function_dispatcher_whole_organism_object.keys():
+        for failure in function_dispatcher_whole_organism_object[function_name](value, system):
+            yield failure

@@ -1,6 +1,6 @@
 from snovault.auditor import (
-    audit_checker,
     AuditFailure,
+    audit_checker
 )
 from .formatter import (
     audit_link,
@@ -9,7 +9,6 @@ from .formatter import (
 )
 
 
-@audit_checker('Tissue', frame='object')
 def audit_tissue_ccf_id(value, system):
     '''
     [
@@ -41,3 +40,15 @@ def audit_tissue_ccf_id(value, system):
             f'has a `ccf_id` but is associated with a non-human donor.'
         )
         yield AuditFailure(audit_message_non_human_tissue.get('audit_category', ''), f'{detail} {audit_message_non_human_tissue.get("audit_description", "")}', level=audit_message_non_human_tissue.get('audit_level', ''))
+
+
+function_dispatcher_tissue_object = {
+    'audit_tissue_ccf_id': audit_tissue_ccf_id
+}
+
+
+@audit_checker('Tissue', frame='object')
+def audit_tissue_object_dispatcher(value, system):
+    for function_name in function_dispatcher_tissue_object.keys():
+        for failure in function_dispatcher_tissue_object[function_name](value, system):
+            yield failure
