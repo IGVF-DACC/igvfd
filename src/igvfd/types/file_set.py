@@ -1558,7 +1558,7 @@ class ConstructLibrarySet(FileSet):
             'uniqueItems': True,
             'items': {
                 'title': 'File Set',
-                'type': 'string',
+                'type': ['string', 'object'],
                 'linkTo': 'FileSet'
             },
             'notSubmittable': True
