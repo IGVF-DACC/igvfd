@@ -2,7 +2,7 @@
 
 ### Schema version 32
 
-* Reduce `control_type` enum list to exclude `preselection`.
+* Reduce `control_type` enum list to exclude `pre-selection`.
 
 ### Minor changes since schema version 31
 
