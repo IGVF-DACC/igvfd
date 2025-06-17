@@ -1,5 +1,9 @@
 ## Changelog for *`prediction_set.json`*
 
+### Schema version 9
+
+* Reduce `file_set_type` enum list to exclude `pathogenicity`.
+
 ### Minor changes since schema version 8
 
 * Add `associated_phenotypes`.
