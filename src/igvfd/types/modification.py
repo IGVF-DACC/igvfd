@@ -30,6 +30,7 @@ class Modification(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
+        Path('tagged_proteins', include=['@id', 'symbol'])
     ]
     rev = {
         'biosamples_modified': ('Biosample', 'modifications')

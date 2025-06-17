@@ -120,6 +120,9 @@ def prediction_set():
             'samples': {
                 'title': 'Samples'
             },
+            'summary': {
+                'title': 'Summary'
+            },
             'data_use_limitation_summaries': {
                 'title': 'Data Use Limitation Summaries'
             },
