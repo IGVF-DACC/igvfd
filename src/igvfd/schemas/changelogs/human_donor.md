@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Extend `ethnicities` enum list to include `Not Hispanic`.
 * Extend `ethnicities` enum list to include `Sandawe`.
 * Extend `ethnicities` enum list to include `Hadza`.
 * Add `preview_timestamp`.
