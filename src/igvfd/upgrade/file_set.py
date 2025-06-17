@@ -586,3 +586,14 @@ def measurement_set_30_31(value, system):
             else:
                 value['notes'] = f'Preferred_assay_title enum {old_assay_title} has been renamed to be {old_to_new[old_assay_title]}.'
     return
+
+
+@upgrade_step('measurement_set', '31', '32')
+def measurement_set_31_32(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2786
+    notes = value.get('notes', '')
+    if 'control_type' in value:
+        if value['control_type'] == 'pre-selection':
+            value.pop('control_type')
+            notes += f'Control_type enum pre-selection was removed via upgrade.'
+            value['notes'] = notes.strip()
