@@ -34,7 +34,6 @@ TOP_HITS_ITEM_TYPES = [
     'MatrixFile',
     'ModelFile',
     'TabularFile',
-    'GenomeBrowserAnnotationFile',
     'ImageFile',
     'IndexFile',
     'InstitutionalCertificate',

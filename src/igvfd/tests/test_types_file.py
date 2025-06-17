@@ -212,7 +212,6 @@ def test_file_summaries(
     alignment_file,
     configuration_file_seqspec,
     configuration_file_json,
-    genome_browser_annotation_file,
     image_file,
     matrix_file,
     model_file,
@@ -232,16 +231,6 @@ def test_file_summaries(
     )
     res = testapp.get(alignment_file['@id'])
     assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 unfiltered redacted alignments'
-
-    testapp.patch_json(
-        genome_browser_annotation_file['@id'],
-        {
-            'assembly': 'GRCh38',
-            'transcriptome_annotation': 'GENCODE 43'
-        }
-    )
-    res = testapp.get(genome_browser_annotation_file['@id'])
-    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 peaks'
 
     res = testapp.get(image_file['@id'])
     assert res.json.get('summary', '') == 'detected tissue'

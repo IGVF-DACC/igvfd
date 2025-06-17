@@ -220,9 +220,6 @@
                     "$merge": "configuration_file.json#/properties/content_type"
                 },
                 {
-                    "$merge": "genome_browser_annotation_file.json#/properties/content_type"
-                },
-                {
                     "$merge": "image_file.json#/properties/content_type"
                 },
                 {

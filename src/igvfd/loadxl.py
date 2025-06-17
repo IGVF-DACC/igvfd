@@ -63,7 +63,6 @@ ORDER = [
     'model_file',
     'tabular_file',
     'index_file',
-    'genome_browser_annotation_file',
     'image_file',
     'mpra_quality_metric',
     'perturb_seq_quality_metric',
