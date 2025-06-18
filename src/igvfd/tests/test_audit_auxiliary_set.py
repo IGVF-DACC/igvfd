@@ -306,3 +306,37 @@ def test_audit_missing_seqspec_auxset(testapp, sequence_file, sequence_file_sequ
         error['category'] != 'missing sequence specification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_missing_barcode_map(
+    testapp,
+    auxiliary_set_cell_hashing,
+    tabular_file
+):
+    res = testapp.get(auxiliary_set_cell_hashing['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing barcode map'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        auxiliary_set_cell_hashing['@id'],
+        {
+            'barcode_map': tabular_file['@id']
+        }
+    )
+    res = testapp.get(auxiliary_set_cell_hashing['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing barcode map'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'content_type': 'barcode to hashtag mapping'
+        }
+    )
+    res = testapp.get(auxiliary_set_cell_hashing['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing barcode map'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
