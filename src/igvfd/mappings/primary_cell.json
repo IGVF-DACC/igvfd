@@ -1,6 +1,6 @@
 {
-    "hash": "368f2db5a3b4c60cf84f6c16e304f04d",
-    "index_name": "primary_cell_368f2db5",
+    "hash": "5a6b8e2c45a5194e73081db8859abd56",
+    "index_name": "primary_cell_5a6b8e2c",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -546,7 +546,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -1008,7 +1008,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {

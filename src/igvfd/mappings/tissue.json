@@ -1,6 +1,6 @@
 {
-    "hash": "8cf7252b2f545aeb4d36dd6da7affebe",
-    "index_name": "tissue_8cf7252b",
+    "hash": "28b4df50b24753e45b18ee2decad2c59",
+    "index_name": "tissue_28b4df50",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -546,7 +546,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -1008,7 +1008,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
