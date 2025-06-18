@@ -76,8 +76,8 @@
                 "quantification DNA barcode sequencing": "Sequencing data of DNA barcodes for reporter assays."
             },
             "submissionExample": {
-                "appscript": "cell hashing",
-                "igvf_utils": "cell hashing"
+                "appscript": "cell hashing barcode sequencing",
+                "igvf_utils": "cell hashing barcode sequencing"
             }
         },
         "barcode_map": {
