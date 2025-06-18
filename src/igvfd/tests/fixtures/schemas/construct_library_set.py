@@ -258,3 +258,13 @@ def construct_library_set_v10(construct_library_set_reference_transduction):
         'control_type': 'control transduction'
     })
     return item
+
+
+@pytest.fixture
+def construct_library_set_v11(construct_library_set_reference_transduction):
+    item = construct_library_set_reference_transduction.copy()
+    item.update({
+        'schema_version': '11',
+        'control_type': 'control transduction'
+    })
+    return item

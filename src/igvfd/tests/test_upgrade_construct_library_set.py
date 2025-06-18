@@ -63,3 +63,11 @@ def test_construct_library_set_upgrade_10_11(upgrader, construct_library_set_v10
                              current_version='10', target_version='11')
     assert value['schema_version'] == '11'
     assert value.get('control_type') == 'reference transduction'
+
+
+def test_construct_library_set_upgrade_11_12(upgrader, construct_library_set_v11):
+    control_type = construct_library_set_v11['control_type']
+    value = upgrader.upgrade('measurement_set', construct_library_set_v11, current_version='11', target_version='12')
+    assert 'control_type' not in value
+    assert 'control_types' in value and value['control_types'] == [control_type]
+    assert value['schema_version'] == '12'
