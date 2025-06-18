@@ -1,5 +1,10 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 33
+
+* Remove `control_type`.
+* Add `control_types`.
+
 ### Schema version 32
 
 * Reduce `control_type` enum list to exclude `pre-selection`.

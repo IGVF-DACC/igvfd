@@ -1,5 +1,10 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Schema version 12
+
+* Remove `control_type`.
+* Add `control_types`.
+
 ### Minor changes since schema version 11
 
 * Add calculated property `file_sets`.

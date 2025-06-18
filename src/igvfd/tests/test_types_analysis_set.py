@@ -216,7 +216,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     testapp.patch_json(
         measurement_set_mpra['@id'],
         {
-            'control_type': 'low FACS signal'
+            'control_types': ['low FACS signal']
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
@@ -225,7 +225,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     testapp.patch_json(
         measurement_set_perturb_seq['@id'],
         {
-            'control_type': 'untransfected'
+            'control_types': ['untransfected']
         }
     )
     testapp.patch_json(
@@ -303,7 +303,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     testapp.patch_json(
         measurement_set_multiome['@id'],
         {
-            'control_type': 'non-targeting'
+            'control_types': ['non-targeting']
         }
     )
     testapp.patch_json(

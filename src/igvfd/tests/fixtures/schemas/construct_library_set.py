@@ -139,7 +139,7 @@ def construct_library_set_reference_transduction(testapp, lab, award):
         'selection_criteria': [
             'controls'
         ],
-        'control_type': 'reference transduction'
+        'control_types': ['reference transduction']
     }
     return testapp.post_json('/construct_library_set', item).json['@graph'][0]
 
@@ -154,7 +154,7 @@ def construct_library_set_non_targeting(testapp, lab, award):
         'selection_criteria': [
             'controls'
         ],
-        'control_type': 'non-targeting',
+        'control_types': ['non-targeting'],
         'lower_bound_guide_coverage': 15,
         'upper_bound_guide_coverage': 20,
         'guide_type': 'sgRNA'

@@ -204,7 +204,7 @@ def test_audit_control_for_control_type(
     testapp.patch_json(
         measurement_set_mpra['@id'],
         {
-            'control_type': 'low FACS signal'
+            'control_types': ['low FACS signal']
         }
     )
     res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
