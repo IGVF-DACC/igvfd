@@ -16,7 +16,6 @@ SINGLE_CELL_ASSAY_TERMS = ['/assay-terms/OBI_0002762/',  # single-nucleus ATAC-s
                            '/assay-terms/OBI_0003109/',  # single-nucleus RNA sequencing assay
                            '/assay-terms/OBI_0002631/',  # single-cell RNA sequencing assay
                            '/assay-terms/OBI_0002764/',  # single-cell ATAC-seq
-                           '/assay-terms/OBI_0003660/'  # in vitro CRISPR screen using single-cell RNA-seq
                            ]
 
 # Gene expression assay terms
@@ -41,7 +40,10 @@ def load_chrom_sizes_file(file_path):
     return chromosome_sizes
 
 
-def single_cell_check(system, value, object_type, single_cell_assay_terms=SINGLE_CELL_ASSAY_TERMS):
+def single_cell_check(system, value, object_type, single_cell_assay_terms=SINGLE_CELL_ASSAY_TERMS, include_perturb_seq=False):
+    if include_perturb_seq:
+        # in vitro CRISPR screen using single-cell RNA-seq
+        single_cell_assay_terms = single_cell_assay_terms + ['/assay-terms/OBI_0003660/']
     if object_type == 'Measurement set':
         assay_term = value.get('assay_term')
         return assay_term in single_cell_assay_terms
@@ -131,7 +133,7 @@ def audit_missing_seqspec(value, system):
     object_type = space_in_words(value['@type'][0]).capitalize()
     if 'files' in value:
         # Check single cell status
-        is_single_cell = single_cell_check(system, value, object_type)
+        is_single_cell = single_cell_check(system, value, object_type, include_perturb_seq=True)
         no_seqspec = []  # For Audit 1
         no_seqspec_doc = []  # For Audit 2
         for file in value['files']:
@@ -341,7 +343,7 @@ def audit_inconsistent_seqspec(value, system):
 
         # Audit 2: If the same seqspec is linked to different sequencing sets, flag it
         # now limit it to single cell only
-        if not single_cell_check(system, value, object_type):
+        if not single_cell_check(system, value, object_type, include_perturb_seq=False):
             return
 
         seqspec_to_sequence = {}    # {list_of_seqspec_as_str: [(seq_set_key, seq_file)]}
@@ -476,7 +478,7 @@ def audit_inconsistent_sequencing_kit(value, system):
                     yield AuditFailure(audit_message_inconsistent_kit.get('audit_category', ''), f'{detail} {audit_message_inconsistent_kit.get("audit_description", "")}', level=audit_message_inconsistent_kit.get('audit_level', ''))
 
     if missing_kit:
-        if single_cell_check(system, value, object_type):
+        if single_cell_check(system, value, object_type, include_perturb_seq=True):
             audit_message_missing_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=2)
         else:
             audit_message_missing_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=1)
@@ -698,7 +700,7 @@ def audit_single_cell_read_names(value, system):
     audit_message_unexpected_read_names = get_audit_message(audit_single_cell_read_names, index=1)
     # Check read_names info on SeqFile objects from single cell MeaSet
     # Either sort the errors into missing or unexpected read names
-    if single_cell_check(system, value, 'Measurement set'):
+    if single_cell_check(system, value, 'Measurement set', include_perturb_seq=False):
         if 'files' in value:
             missing_read_names = []
             unexpected_read_names = []
