@@ -280,10 +280,8 @@
                 "type": "string",
                 "enum": [
                     "baseline",
-                    "migration modulated",
                     "reference transduction",
                     "low FACS signal",
-                    "non-migrated",
                     "non-targeting",
                     "unsorted FACS input",
                     "untransfected",
@@ -292,10 +290,8 @@
                 ],
                 "enum_descriptions": {
                     "baseline": "A reference or background measurement for comparison across multiple assays or modalities.",
-                    "migration modulated": "The samples are expected to modulate or influence migration behavior, serving as positive controls.",
                     "reference transduction": "The samples were transduced with a construct that does not perturb the biological system of interest, serving as a reference point for evaluating other experimental transductions.",
                     "low FACS signal": "The samples have minimal fluorescence in Flow Cytometry (FACS), used as a baseline or negative control.",
-                    "non-migrated": "The samples failed to migrate during the assay.",
                     "non-targeting": "The samples have been treated with a construct that does not target any specific gene or region.",
                     "unsorted FACS input": "The samples analyzed by Flow Cytometry (FACS) without any sorting, representing the full, unsorted population.",
                     "untransfected": "The samples have not undergone transfection, used as a baseline or negative control.",

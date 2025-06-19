@@ -2,8 +2,9 @@
 
 ### Schema version 33
 
-* Remove `control_type`.
 * Add `control_types`.
+* Remove `control_type`.
+* Extend `control_type` enum list to include `wildtype`.
 
 ### Schema version 32
 

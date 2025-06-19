@@ -678,9 +678,7 @@
         "preferred_assay_title": "Bisulfite-seq",
         "file_set_type": "experimental data",
         "control_types": [
-            "wildtype",
-            "non-migrated",
-            "migration modulated"
+            "wildtype"
         ]
     }
 ]
