@@ -605,4 +605,4 @@ def file_set_32_33(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2833
     if 'control_type' in value:
         value['control_types'] = list(value['control_type'])
-    del value['control_type']
+        del value['control_type']
