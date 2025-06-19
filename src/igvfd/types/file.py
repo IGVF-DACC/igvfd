@@ -300,7 +300,7 @@ class File(Item):
             'uniqueItems': True,
             'items': {
                 'title': 'Workflow',
-                'type': 'string',
+                'type': ['string', 'object'],
                 'linkTo': 'Workflow',
             },
             'notSubmittable': True,
