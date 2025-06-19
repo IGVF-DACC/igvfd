@@ -486,7 +486,7 @@ class Biosample(Sample):
                 biosample_type in ['primary_cell', 'in_vitro_system', 'tissue']):
             summary_terms = f'virtual {summary_terms}'
 
-        if donors and 'pooled cell specimen' in classifications:
+        if donors and classifications is not None and 'pooled cell specimen' in classifications:
             suffix = 's'
             if len(donors) == 1:
                 suffix = ''
