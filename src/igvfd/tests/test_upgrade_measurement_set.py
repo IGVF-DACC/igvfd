@@ -216,5 +216,5 @@ def test_measurement_set_upgrade_32_33(upgrader, measurement_set_v32):
     control_type = measurement_set_v32['control_type']
     value = upgrader.upgrade('measurement_set', measurement_set_v32, current_version='32', target_version='33')
     assert 'control_type' not in value
-    assert 'control_types' in value and value['control_types'] == [control_type]
+    assert 'control_types' in value and value['control_types'] == list(control_type)
     assert value['schema_version'] == '33'
