@@ -821,7 +821,6 @@ class ConfigurationFile(File):
             [x for x in [predicted, content_type, seqspec_of_formatted, software_version_phrase]
              if x is not None]
         )
-        return f'{content_type}{seqspec_of_formatted}'
 
     @calculated_property(
         schema={

@@ -492,7 +492,8 @@ def test_audit_missing_seqspec_measet(
     configuration_file_seqspec,
     experimental_protocol_document,
     assay_term_scrna,
-    assay_term_starr
+    assay_term_starr,
+    assay_term_crispr_single_cell
 ):
     # Test: sequence file without seqspec config or seqspec doc should trigger Internal action audit
     testapp.patch_json(
@@ -531,6 +532,17 @@ def test_audit_missing_seqspec_measet(
         measurement_set['@id'],
         {
             'assay_term': assay_term_scrna['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_crispr_single_cell['@id']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -661,7 +673,7 @@ def test_audit_unexpected_seqspec_measet(
 
 
 def test_audit_files_associated_with_incorrect_fileset_measet(testapp, measurement_set, measurement_set_one_onlist, sequence_file, configuration_file_seqspec):
-    # Test 1: seqfile file set != seqspec file set when not single cell (no audit)
+    # Test 1: seqfile file set != seqspec file set when not single cell (audit)
     testapp.patch_json(
         configuration_file_seqspec['@id'],
         {
@@ -722,7 +734,8 @@ def test_audit_inconsistent_seqspec_measet(
     configuration_file_seqspec,
     configuration_file_seqspec_2,
     assay_term_scrna,
-    assay_term_starr
+    assay_term_starr,
+    assay_term_crispr_single_cell
 ):
     # Test 1: if the seq files from the SAME SET are linked to different seqspecs when not single cell (audit)
     testapp.patch_json(
@@ -806,11 +819,22 @@ def test_audit_inconsistent_seqspec_measet(
         for error in res.json['audit'].get('ERROR', [])
     )
 
-    # Test 5: seqfiles from different sets have the same seqspecs as STARRseq (no audit)
+    # Test 5: seqfiles from different sets have the same seqspecs as STARRseq and Perturb-seq (no audit)
     testapp.patch_json(
         sequence_file_sequencing_run_2['@id'],
         {
             'sequencing_run': 2
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent sequence specifications'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_crispr_single_cell['@id']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
