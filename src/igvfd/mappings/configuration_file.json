@@ -1,6 +1,6 @@
 {
-    "hash": "174541e06585b534df2408c4fec08191",
-    "index_name": "configuration_file_174541e0",
+    "hash": "e1df2536c9cb5afafd723f789dc6d3c6",
+    "index_name": "configuration_file_e1df2536",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -2451,7 +2451,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -2469,9 +2469,6 @@
                                 "type": "keyword"
                             },
                             "analysis_step_versions": {
-                                "type": "keyword"
-                            },
-                            "analysis_steps": {
                                 "type": "keyword"
                             },
                             "award": {

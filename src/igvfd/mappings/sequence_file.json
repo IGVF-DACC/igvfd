@@ -1,6 +1,6 @@
 {
-    "hash": "cfa6df51c7c7e54e211351d29b95a3a0",
-    "index_name": "sequence_file_cfa6df51",
+    "hash": "d0f0498d175ad1b7e371efc4fd928eab",
+    "index_name": "sequence_file_d0f0498d",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -2589,7 +2589,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -2607,9 +2607,6 @@
                                 "type": "keyword"
                             },
                             "analysis_step_versions": {
-                                "type": "keyword"
-                            },
-                            "analysis_steps": {
                                 "type": "keyword"
                             },
                             "award": {

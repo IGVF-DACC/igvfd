@@ -26,6 +26,19 @@ def base_workflow_2(testapp, award, lab):
 
 
 @pytest.fixture
+def base_workflow_3(testapp, award, lab, analysis_step_version_3):
+    item = {
+        'accession': 'IGVFWF0002WORK',
+        'name': 'Base Workflow 3',
+        'source_url': 'https://github.com/IGVF-DACC/igvfd',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'analysis_step_versions': [analysis_step_version_3['@id']],
+    }
+    return testapp.post_json('/workflow', item).json['@graph'][0]
+
+
+@pytest.fixture
 def workflow_v1(base_workflow):
     item = base_workflow.copy()
     item.update({
