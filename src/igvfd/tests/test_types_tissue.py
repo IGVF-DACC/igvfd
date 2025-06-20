@@ -3,7 +3,7 @@ import pytest
 
 def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor_2, sample_term_brown_adipose_tissue, phenotype_term_alzheimers, treatment_chemical):
     res = testapp.get(tissue['@id'])
-    assert res.json.get('summary') == 'Mus musculus strain1 (male) adrenal gland tissue'
+    assert res.json.get('summary') == 'Mus musculus strain1 (male) adrenal gland tissue/organ'
     testapp.patch_json(
         tissue['@id'],
         {
@@ -13,7 +13,7 @@ def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor
         }
     )
     res = testapp.get(tissue['@id'])
-    assert res.json.get('summary') == 'Mus musculus strain1 (male, 10 months) adrenal gland tissue'
+    assert res.json.get('summary') == 'Mus musculus strain1 (male, 10 months) adrenal gland tissue/organ'
     testapp.patch_json(
         human_donor['@id'],
         {
