@@ -130,6 +130,7 @@
                 "graph structure": "A description of the overall layout and connections within a graph or network.",
                 "neural network architecture": "A representation of the structure of a neural network.",
                 "position weight matrix": "A matrix comprising the probability of each nucleotide occurring at each position in a sequence motif.",
+                "protein language model": "A model trained on amino acid sequences for representation and prediction of protein properties and function.",
                 "SNP effect matrix": "A matrix for estimation of consequence of each single nucleotide mutation in a transcription factor binding site motif."
             },
             "submissionExample": {
