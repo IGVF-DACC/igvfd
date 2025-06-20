@@ -485,8 +485,8 @@ class AnalysisSet(FileSet):
                     elif not input_fileset.startswith('/analysis-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
                     # Collect control types.
-                    if 'control_type' in fileset_object:
-                        control_type_set.add(fileset_object['control_type'])
+                    if 'control_types' in fileset_object:
+                        control_type_set = control_type_set | set(fileset_object['control_types'])
 
         # Collect content_types of files.
         if files:
@@ -1124,7 +1124,7 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, assay_term, preferred_assay_title=None, samples=None, control_type=None, targeted_genes=None, construct_library_sets=None):
+    def summary(self, request, assay_term, preferred_assay_title=None, samples=None, control_types=None, targeted_genes=None, construct_library_sets=None):
         if construct_library_sets is None:
             construct_library_sets = []
         assay = request.embed(assay_term)['term_name']
@@ -1211,10 +1211,13 @@ class MeasurementSet(FileSet):
         if len(cls_set) > 0:
             cls_phrase = f' {get_cls_phrase(cls_set)}'
 
-        if control_type and control_type not in cls_phrase:
-            control_phrase = f'{control_type} '
+        if control_types:
+            non_redundant_control_types = [control_type for control_type in sorted(
+                control_types) if control_type not in cls_phrase]
+            if non_redundant_control_types:
+                control_phrase = f'{", ".join(non_redundant_control_types)} '
         # Special case for Y2H assays if control_type is not specified.
-        if request.embed(assay_term)['term_id'] == 'OBI:0000288' and control_type is None:
+        if request.embed(assay_term)['term_id'] == 'OBI:0000288' and control_types is None:
             control_phrase = 'post-selection '
 
         sentence = ''
@@ -1616,7 +1619,7 @@ class ConstructLibrarySet(FileSet):
     )
     def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, large_scale_gene_list=None, guide_type=None,
                 small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, orf_list=None, associated_phenotypes=None,
-                control_type=None, targeton=None, assay_titles=None, integrated_content_files=None):
+                control_types=None, targeton=None, assay_titles=None, integrated_content_files=None):
         if assay_titles is None:
             assay_titles = []
         if integrated_content_files is None:
@@ -1637,7 +1640,7 @@ class ConstructLibrarySet(FileSet):
                 library_type = 'guide (pgRNA) library'
 
         if scope == 'control':
-            return f'{control_type} {library_type}'
+            return f'{", ".join(sorted(control_types))} {library_type}'
         if scope == 'loci':
             if small_scale_loci_list and len(small_scale_loci_list) > 1:
                 target_phrase = f' {len(small_scale_loci_list)} genomic loci'

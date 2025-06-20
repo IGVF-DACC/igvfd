@@ -482,3 +482,13 @@ def measurement_set_v31(measurement_set):
         'control_type': 'pre-selection'
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v32(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '32',
+        'control_type': 'pre-selection'
+    })
+    return item

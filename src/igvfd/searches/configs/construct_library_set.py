@@ -25,8 +25,8 @@ def construct_library_set():
             'orf_list.gene.symbol': {
                 'title': 'Open Reading Frame Gene'
             },
-            'control_type': {
-                'title': 'Control Type'
+            'control_types': {
+                'title': 'Control Types'
             },
             'tiling_modality': {
                 'title': 'CRISPR Tiling Modality'

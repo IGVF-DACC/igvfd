@@ -1,6 +1,6 @@
 {
-    "hash": "3bad29c1a085c65f4d88e259266d4d12",
-    "index_name": "image_file_3bad29c1",
+    "hash": "7235312428d2882fe14c1522da91e283",
+    "index_name": "image_file_72353124",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -524,7 +524,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -1999,7 +1999,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {

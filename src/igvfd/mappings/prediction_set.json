@@ -1,6 +1,6 @@
 {
-    "hash": "ee4822d8e2eef1fb571c26e39bad9b58",
-    "index_name": "prediction_set_ee4822d8",
+    "hash": "687b14a39bdc65bdd6267a70afd1dcb1",
+    "index_name": "prediction_set_687b14a3",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -544,7 +544,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -1059,7 +1059,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -1316,9 +1316,6 @@
                             }
                         },
                         "type": "object"
-                    },
-                    "control_type": {
-                        "type": "keyword"
                     },
                     "controlled_access": {
                         "store": true,
@@ -2464,7 +2461,7 @@
                                     "control_for": {
                                         "type": "keyword"
                                     },
-                                    "control_type": {
+                                    "control_types": {
                                         "type": "keyword"
                                     },
                                     "controlled_access": {

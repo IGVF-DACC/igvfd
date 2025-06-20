@@ -597,3 +597,12 @@ def measurement_set_31_32(value, system):
             value.pop('control_type')
             notes += f'Control_type enum pre-selection was removed via upgrade.'
             value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '32', '33')
+@upgrade_step('construct_library_set', '11', '12')
+def file_set_32_33(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2833
+    if 'control_type' in value:
+        value['control_types'] = list(value['control_type'])
+        del value['control_type']

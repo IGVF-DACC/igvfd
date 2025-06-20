@@ -255,7 +255,7 @@
                             },
                             {
                                 "required": [
-                                    "control_type"
+                                    "control_types"
                                 ],
                                 "properties": {
                                     "scope": {
@@ -347,7 +347,7 @@
             ]
         },
         "scope": {
-            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list are required, if scope is loci then small_scale_loci_list or large_scale_loci_list are required, if scope is exon then both exon and small_scale_gene_list are required, if scope is interactors then orf_list is required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, small_scale_loci_list, and large_scale_loci_list shouldn't be specified, if scope is alleles then small_scale_gene_list or large_scale_gene_list is required, if scope is targeton then both targeton and small_scale_gene_list are required, if scope is control then control_type is required.",
+            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list are required, if scope is loci then small_scale_loci_list or large_scale_loci_list are required, if scope is exon then both exon and small_scale_gene_list are required, if scope is interactors then orf_list is required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, small_scale_loci_list, and large_scale_loci_list shouldn't be specified, if scope is alleles then small_scale_gene_list or large_scale_gene_list is required, if scope is targeton then both targeton and small_scale_gene_list are required, if scope is control then control_types is required.",
             "oneOf": [
                 {
                     "required": [
@@ -475,7 +475,7 @@
                 },
                 {
                     "required": [
-                        "control_type"
+                        "control_types"
                     ],
                     "properties": {
                         "scope": {
@@ -714,8 +714,8 @@
                 "lower_bound_guide_coverage"
             ]
         },
-        "control_type": {
-            "comment": "Specification of control_type requires that scope is control.",
+        "control_types": {
+            "comment": "Specification of control_types requires that scope is control.",
             "properties": {
                 "scope": {
                     "enum": [
@@ -727,7 +727,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "11"
+            "default": "12"
         },
         "accession": {
             "accessionType": "DS"
@@ -753,22 +753,27 @@
                 "igvf_utils": "guide library"
             }
         },
-        "control_type": {
-            "$merge": "file_set.json#/properties/control_type",
-            "title": "Control Type",
-            "description": "The type of control this file set represents.",
-            "type": "string",
-            "enum": [
-                "reference transduction",
-                "non-targeting"
-            ],
-            "enum_descriptions": {
-                "reference transduction": "This construct library is transduced in the sample to serve as a reference.",
-                "non-targeting": "This construct library does not target any site in the genome."
-            },
-            "submissionExample": {
-                "appscript": "reference transduction",
-                "igvf_utils": "reference transduction"
+        "control_types": {
+            "title": "Control Types",
+            "description": "The types of control this construct library set set represents.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Control Type",
+                "type": "string",
+                "enum": [
+                    "reference transduction",
+                    "non-targeting"
+                ],
+                "enum_descriptions": {
+                    "reference transduction": "This construct library is transduced in the sample to serve as a reference.",
+                    "non-targeting": "This construct library does not target any site in the genome."
+                },
+                "submissionExample": {
+                    "appscript": "reference transduction",
+                    "igvf_utils": "reference transduction"
+                }
             }
         },
         "scope": {

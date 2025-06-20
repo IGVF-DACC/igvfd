@@ -1,6 +1,6 @@
 {
-    "hash": "2adaee9567a6d3bb35b3a33e580b9795",
-    "index_name": "technical_sample_2adaee95",
+    "hash": "5c53f5528440ed72ba08adcbea57749f",
+    "index_name": "technical_sample_5c53f552",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -358,7 +358,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -605,7 +605,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {

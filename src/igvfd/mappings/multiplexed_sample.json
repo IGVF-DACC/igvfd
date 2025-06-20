@@ -1,6 +1,6 @@
 {
-    "hash": "d44189e2f741206e63e324187cd2fa42",
-    "index_name": "multiplexed_sample_d44189e2",
+    "hash": "aff583c19209e26536b545ff953af2c2",
+    "index_name": "multiplexed_sample_aff583c1",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -537,7 +537,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -995,7 +995,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {

@@ -68,7 +68,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "32"
+            "default": "33"
         },
         "samples": {
             "maxItems": 1
@@ -269,31 +269,39 @@
                 "igvf_utils": 2
             }
         },
-        "control_type": {
-            "title": "Control Type",
-            "description": "The type of control this file set represents.",
-            "type": "string",
-            "enum": [
-                "baseline",
-                "reference transduction",
-                "low FACS signal",
-                "non-targeting",
-                "unsorted FACS input",
-                "untransfected",
-                "untreated"
-            ],
-            "enum_descriptions": {
-                "baseline": "A reference or background measurement for comparison across multiple assays or modalities.",
-                "reference transduction": "The samples were transduced with a construct that does not perturb the biological system of interest, serving as a reference point for evaluating other experimental transductions.",
-                "low FACS signal": "The samples have minimal fluorescence in Flow Cytometry (FACS), used as a baseline or negative control.",
-                "non-targeting": "The samples have been treated with a construct that does not target any specific gene or region.",
-                "unsorted FACS input": "The samples analyzed by Flow Cytometry (FACS) without any sorting, representing the full, unsorted population.",
-                "untransfected": "The samples have not undergone transfection, used as a baseline or negative control.",
-                "untreated": "The samples have not been treated with any experimental conditions, used as a baseline or negative control."
-            },
-            "submissionExample": {
-                "appscript": "low FACS signal",
-                "igvf_utils": "low FACS signal"
+        "control_types": {
+            "title": "Control Types",
+            "description": "The types of control this measurement set represents.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Control Type",
+                "type": "string",
+                "enum": [
+                    "baseline",
+                    "reference transduction",
+                    "low FACS signal",
+                    "non-targeting",
+                    "unsorted FACS input",
+                    "untransfected",
+                    "untreated",
+                    "wildtype"
+                ],
+                "enum_descriptions": {
+                    "baseline": "A reference or background measurement for comparison across multiple assays or modalities.",
+                    "reference transduction": "The samples were transduced with a construct that does not perturb the biological system of interest, serving as a reference point for evaluating other experimental transductions.",
+                    "low FACS signal": "The samples have minimal fluorescence in Flow Cytometry (FACS), used as a baseline or negative control.",
+                    "non-targeting": "The samples have been treated with a construct that does not target any specific gene or region.",
+                    "unsorted FACS input": "The samples analyzed by Flow Cytometry (FACS) without any sorting, representing the full, unsorted population.",
+                    "untransfected": "The samples have not undergone transfection, used as a baseline or negative control.",
+                    "untreated": "The samples have not been treated with any experimental conditions, used as a baseline or negative control.",
+                    "wildtype": "The samples are the natural, unaltered form of the organism or cell line, in comparison to genetically modified samples."
+                },
+                "submissionExample": {
+                    "appscript": "low FACS signal",
+                    "igvf_utils": "low FACS signal"
+                }
             }
         },
         "sequencing_library_types": {

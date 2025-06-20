@@ -1,6 +1,6 @@
 {
-    "hash": "6515356ba5904768a1897acca8032951",
-    "index_name": "reference_file_6515356b",
+    "hash": "0cd8856d06353d4bebd710176e540b32",
+    "index_name": "reference_file_0cd8856d",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -545,7 +545,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -2021,7 +2021,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {

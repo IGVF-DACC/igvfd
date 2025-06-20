@@ -1,6 +1,6 @@
 {
-    "hash": "f4c025d8a2b823935ee69c2fc43955b0",
-    "index_name": "measurement_set_f4c025d8",
+    "hash": "885a850cdcf993c3212d20dccdeaee58",
+    "index_name": "measurement_set_885a850c",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -280,9 +280,6 @@
                                 "type": "keyword"
                             },
                             "control_for": {
-                                "type": "keyword"
-                            },
-                            "control_type": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -577,7 +574,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -1191,7 +1188,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -1518,7 +1515,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -1776,7 +1773,7 @@
                         },
                         "type": "object"
                     },
-                    "control_type": {
+                    "control_types": {
                         "type": "keyword"
                     },
                     "controlled_access": {
@@ -2654,7 +2651,7 @@
                             "control_for": {
                                 "type": "keyword"
                             },
-                            "control_type": {
+                            "control_types": {
                                 "type": "keyword"
                             },
                             "controlled_access": {

@@ -756,13 +756,13 @@ def audit_control_for_control_type(value, system):
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_missing_control_type = get_audit_message(audit_control_for_control_type, index=0)
     audit_message_missing_control_for = get_audit_message(audit_control_for_control_type, index=1)
-    if value.get('control_for', '') and not (value.get('control_type', '')):
+    if value.get('control_for', '') and not (value.get('control_types', '')):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has no `control_type`.'
+            f'has no `control_types`.'
         )
         yield AuditFailure(audit_message_missing_control_type.get('audit_category', ''), f'{detail} {audit_message_missing_control_type.get("audit_description", "")}', level=audit_message_missing_control_type.get('audit_level', ''))
-    elif value.get('control_type', '') and not (value.get('control_for', '')):
+    elif value.get('control_types', '') and not (value.get('control_for', '')):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `control_for`. The `control_file_sets` should be patched on '
