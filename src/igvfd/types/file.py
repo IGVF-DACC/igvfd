@@ -680,6 +680,48 @@ class MatrixFile(File):
             [x for x in [predicted, filtered_phrase, content_summary, software_version_phrase] if x is not None]
         )
 
+    @calculated_property(
+        schema={
+            'title': 'Transcriptome Annotation',
+            'type': 'string',
+            'description': 'The annotation and version of the reference resource.',
+            'notSubmittable': True
+        }
+    )
+    def transcriptome_annotation(self, request, reference_files):
+        transcriptome_annotation_set = set()
+        transcriptome_annotation = ''
+        for ref_file in reference_files:
+            ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
+            if ref_file_object['content_type'] == 'transcriptome reference':
+                transcriptome_annotation_set.add(ref_file_object.get('transcriptome_annotation', ''))
+        if len(transcriptome_annotation_set) > 1:
+            transcriptome_annotation = 'mixed'
+        elif len(transcriptome_annotation_set) == 1:
+            transcriptome_annotation = list(transcriptome_annotation_set)[0]
+        return transcriptome_annotation
+
+    @calculated_property(
+        schema={
+            'title': 'Genome Assembly',
+            'type': 'string',
+            'description': 'The assembly associated with the matrix file.',
+            'notSubmittable': True
+        }
+    )
+    def assembly(self, request, reference_files):
+        assembly_set = set()
+        assembly = ''
+        for ref_file in reference_files:
+            ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
+            if ref_file_object['content_type'] == 'genome reference':
+                assembly_set.add(ref_file_object.get('assembly', ''))
+        if len(assembly_set) > 1:
+            assembly = 'mixed'
+        elif len(assembly_set) == 1:
+            assembly = list(assembly_set)[0]
+        return assembly
+
 
 @collection(
     name='signal-files',
