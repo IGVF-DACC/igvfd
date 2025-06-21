@@ -114,6 +114,27 @@ def test_types_matrix_file_content_summary(testapp, matrix_file):
     assert res.json.get('content_summary') == 'variant by treatment by antibody capture in transcriptome annotations'
 
 
+def test_types_matrix_file_transcriptome_annotation(testapp, matrix_file, reference_file, reference_file_with_transcriptome):
+    res = testapp.get(matrix_file['@id'])
+    assert res.json.get('transcriptome_annotation') == ''
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'reference_files': [reference_file_with_transcriptome['@id']]
+        }
+    )
+    res = testapp.get(matrix_file['@id'])
+    assert res.json.get('transcriptome_annotation') == 'GENCODE 43'
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'reference_files': [reference_file['@id'], reference_file_with_transcriptome['@id']]
+        }
+    )
+    res = testapp.get(matrix_file['@id'])
+    assert res.json.get('transcriptome_annotation') == 'mixed'
+
+
 def test_integrated_in(testapp, construct_library_set_genome_wide, base_expression_construct_library_set, tabular_file):
     testapp.patch_json(
         construct_library_set_genome_wide['@id'],
