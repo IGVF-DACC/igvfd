@@ -32,7 +32,7 @@ def test_assay_titles(testapp, primary_cell, base_expression_construct_library_s
         }
     )
     res = testapp.get(base_expression_construct_library_set['@id'])
-    assert set(res.json.get('assay_titles')) == {'MPRA'}
+    assert set(res.json.get('preferred_assay_titles')) == {'MPRA'}
 
 
 def test_summary(testapp, construct_library_set_genome_wide, base_expression_construct_library_set,

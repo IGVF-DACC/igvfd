@@ -8,7 +8,7 @@ def test_audit_missing_multiome_size(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'preferred_assay_title': '10x multiome'
+            'preferred_assay_titles': ['10x multiome']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -19,7 +19,7 @@ def test_audit_missing_multiome_size(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'preferred_assay_title': 'mtscMultiome'
+            'preferred_assay_titles': ['mtscMultiome']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -30,7 +30,7 @@ def test_audit_missing_multiome_size(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'preferred_assay_title': '10x multiome with MULTI-seq'
+            'preferred_assay_titles': ['10x multiome with MULTI-seq']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -52,7 +52,7 @@ def test_audit_missing_multiome_size(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'preferred_assay_title': 'Perturb-seq'
+            'preferred_assay_titles': ['Perturb-seq']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -267,7 +267,7 @@ def test_audit_preferred_assay_title(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent preferred assay title'
+        error['category'] == 'inconsistent preferred assay titles'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -278,7 +278,7 @@ def test_audit_preferred_assay_title(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent preferred assay title'
+        error['category'] != 'inconsistent preferred assay titles'
         for error in res.json['audit'].get('ERROR', [])
     )
 
@@ -1090,7 +1090,7 @@ def test_audit_missing_auxiliary_set_MPRA(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'preferred_assay_title': 'MPRA (scQer)'
+            'preferred_assay_titles': ['MPRA (scQer)']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -1233,7 +1233,7 @@ def test_audit_missing_auxiliary_set_10x_MULTI_seq(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'preferred_assay_title': '10x multiome with MULTI-seq'
+            'preferred_assay_titles': ['10x multiome with MULTI-seq']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -1348,7 +1348,7 @@ def test_audit_missing_construct_library_set(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'preferred_assay_title': 'SGE'
+            'preferred_assay_titles': ['SGE']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -1450,7 +1450,7 @@ def test_audit_onlist(testapp, measurement_set_one_onlist, measurement_set, assa
         measurement_set['@id'],
         {
             'assay_term': assay_term_scrna['@id'],
-            'preferred_assay_title': 'SHARE-seq'
+            'preferred_assay_titles': ['SHARE-seq']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -1547,7 +1547,7 @@ def test_audit_missing_barcode_replacement_file(testapp, measurement_set_one_onl
     testapp.patch_json(
         measurement_set_one_onlist['@id'],
         {
-            'preferred_assay_title': 'Parse SPLiT-seq'
+            'preferred_assay_titles': ['Parse SPLiT-seq']
         }
     )
     res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
@@ -1573,7 +1573,7 @@ def test_audit_missing_barcode_replacement_file(testapp, measurement_set_one_onl
     testapp.patch_json(
         measurement_set_one_onlist['@id'],
         {
-            'preferred_assay_title': 'scRNA-seq'
+            'preferred_assay_titles': ['scRNA-seq']
         }
     )
     res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
@@ -1594,7 +1594,7 @@ def test_audit_unexpected_barcode_replacement_file(
         measurement_set_one_onlist['@id'],
         {
             'barcode_replacement_file': tabular_file['@id'],
-            'preferred_assay_title': 'Parse SPLiT-seq'
+            'preferred_assay_titles': ['Parse SPLiT-seq']
         }
     )
     res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
@@ -1628,7 +1628,7 @@ def test_audit_missing_external_image_url(
     )
     testapp.patch_json(
         measurement_set['@id'],
-        {'preferred_assay_title': 'Cell painting'}
+        {'preferred_assay_titles': ['Cell painting']}
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(

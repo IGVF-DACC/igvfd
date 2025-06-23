@@ -1,6 +1,6 @@
 {
-    "hash": "74e02eaa20a0452d5b4f23262a098c04",
-    "index_name": "reference_file_74e02eaa",
+    "hash": "015abd6f559d72c520f53e3426c5c103",
+    "index_name": "reference_file_015abd6f",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -664,7 +664,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -2090,6 +2090,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
@@ -2357,6 +2360,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preferred_assay_titles": {
+                        "type": "keyword"
                     },
                     "preview_timestamp": {
                         "type": "date"

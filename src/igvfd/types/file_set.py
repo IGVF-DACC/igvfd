@@ -394,7 +394,7 @@ class AnalysisSet(FileSet):
         targeted_genes = set()
         fileset_subclasses = set()
         assay_terms = set()
-        assay_titles = set()
+        preferred_assays = set()
         cls_derived_assay_titles = set()
         crispr_modalities = set()
         multiplexing_methods = set()
@@ -427,6 +427,7 @@ class AnalysisSet(FileSet):
                         'field=@type&field=file_set_type&field=measurement_sets'
                         '&field=input_file_sets&field=targeted_genes.symbol'
                         '&field=assay_term&field=applied_to_samples'
+                        '&field=assay_titles&field=preferred_assay_titles'
                     )
                     # Trace back from Analysis Sets to identify their
                     # input file sets.
@@ -442,29 +443,26 @@ class AnalysisSet(FileSet):
                                 gene_object = request.embed(gene, '@@object?skip_calculated=true')
                                 targeted_genes.add(gene_object['symbol'])
                         assay_terms.add(fileset_object['assay_term'])
-                        if fileset_object['preferred_assay_title'] in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
-                            assay_term_object = request.embed(
-                                fileset_object['assay_term'], '@@object?skip_calculated=true')
-                            assay_term_name = assay_term_object.get('term_name', '')
-                            assay_titles.add(f"{assay_term_name} ({fileset_object['preferred_assay_title']})")
+                        target_assays = ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']
+                        preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
+                        assays_titles = fileset_object.get('assay_titles', [])
+                        if any(title in target_assays for title in preferred_assay_titles):
+                            preferred_assays.add(f"{', '.join(assays_titles)} ({', '.join(preferred_assay_titles)})")
                         else:
-                            assay_titles.add(fileset_object['preferred_assay_title'])
+                            preferred_assays.add(', '.join(preferred_assay_titles))
                     # Retrieve Measurement Sets associated with Auxiliary Sets.
                     elif input_fileset.startswith('/auxiliary-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
                         if 'measurement_sets' in fileset_object:
                             for candidate_fileset in fileset_object.get('measurement_sets'):
-                                measurement_set_object = request.embed(
-                                    candidate_fileset, '@@object?skip_calculated=true')
-                                assay_terms.add(measurement_set_object['assay_term'])
-                                if measurement_set_object['preferred_assay_title'] in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
-                                    assay_term_object = request.embed(
-                                        measurement_set_object['assay_term'], '@@object?skip_calculated=true')
-                                    assay_term_name = assay_term_object.get('term_name', '')
-                                    assay_titles.add(
-                                        f"{assay_term_name} ({measurement_set_object['preferred_assay_title']})")
+                                target_assays = ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']
+                                preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
+                                assays_titles = fileset_object.get('assay_titles', [])
+                                if any(title in target_assays for title in preferred_assay_titles):
+                                    preferred_assays.add(
+                                        f"{', '.join(assays_titles)} ({', '.join(preferred_assay_titles)})")
                                 else:
-                                    assay_titles.add(measurement_set_object['preferred_assay_title'])
+                                    preferred_assays.add(', '.join(preferred_assay_titles))
                                 if candidate_fileset not in inspected_filesets:
                                     filesets_to_inspect.add(candidate_fileset)
                     elif input_fileset.startswith('/construct-library-sets/'):
@@ -473,16 +471,15 @@ class AnalysisSet(FileSet):
                                 sample, '@@object_with_select_calculated_properties?field=file_sets')
                             for file_set in sample_object.get('file_sets', []):
                                 file_set_object = request.embed(
-                                    file_set, '@@object_with_select_calculated_properties?field=preferred_assay_title')
-                                if file_set_object.get('preferred_assay_title'):
-                                    if file_set_object['preferred_assay_title'] in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
-                                        assay_term_object = request.embed(
-                                            file_set_object['assay_term'], '@@object?skip_calculated=true')
-                                        assay_term_name = assay_term_object.get('term_name', '')
-                                        cls_derived_assay_titles.add(
-                                            f"{assay_term_name} ({file_set_object['preferred_assay_title']})")
-                                    else:
-                                        cls_derived_assay_titles.add(file_set_object['preferred_assay_title'])
+                                    file_set, '@@object_with_select_calculated_properties?field=preferred_assay_titles')
+                                target_assays = ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']
+                                preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
+                                assays_titles = file_set_object.get('assay_titles', [])
+                                if any(title in target_assays for title in preferred_assay_titles):
+                                    cls_derived_assay_titles.add(
+                                        f"{', '.join(assays_titles)} ({', '.join(preferred_assay_titles)})")
+                                else:
+                                    cls_derived_assay_titles.add(', '.join(preferred_assay_titles))
                     elif not input_fileset.startswith('/analysis-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
                     # Collect control types.
@@ -528,11 +525,11 @@ class AnalysisSet(FileSet):
 
         # Assay titles if there are input file sets, otherwise unspecified.
         # Only use the CLS derived assay titles if there were no other assay titles.
-        if cls_derived_assay_titles and not assay_titles:
-            assay_titles = cls_derived_assay_titles
+        if cls_derived_assay_titles and not preferred_assays:
+            preferred_assays = cls_derived_assay_titles
         assay_title_phrase = 'Unspecified assay'
-        if assay_titles:
-            assay_title_phrase = ', '.join(sorted(assay_titles))
+        if preferred_assays:
+            assay_title_phrase = ', '.join(sorted(preferred_assays))
         if 'guide library' in cls_type_set:
             if 'CRISPR' not in assay_title_phrase:
                 assay_title_phrase = f'CRISPR {assay_title_phrase}'
@@ -591,13 +588,41 @@ class AnalysisSet(FileSet):
     @calculated_property(
         define=True,
         schema={
-            'title': 'Assay Titles',
-            'description': 'Title(s) of assays that produced data analyzed in the analysis set.',
+            'title': 'Preferred Assay Titles',
+            'description': 'Preferred Assay Title(s) of assays that produced data analyzed in the analysis set.',
             'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Assay Title',
+                'title': 'Preferred Assay Titles',
+                'description': 'Title of assay that produced data analyzed in the analysis set.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def preferred_assay_titles(self, request, input_file_sets=None):
+        if input_file_sets is None:
+            input_file_sets = []
+        preferred_assay_list = set()
+        file_set_objs = get_fileset_objs_from_input_file_sets(request=request, input_file_sets=input_file_sets)
+        for file_set_obj in file_set_objs:
+            if any(item in file_set_obj.get('@type', []) for item in ['MeasurementSet', 'AnalysisSet', 'AuxiliarySet', 'ConstructLibrarySet']):
+                preferred_assay_titles = file_set_obj.get('preferred_assay_titles', [])
+                if preferred_assay_titles:
+                    preferred_assay_list.update(preferred_assay_titles)
+        return list(preferred_assay_list)
+
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Assay Titles',
+            'description': 'Ontology term names from Ontology of Biomedical Investigations (OBI) for assays',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Assay Titles',
                 'description': 'Title of assay that produced data analyzed in the analysis set.',
                 'type': 'string'
             },
@@ -605,38 +630,16 @@ class AnalysisSet(FileSet):
         }
     )
     def assay_titles(self, request, input_file_sets=None):
-        assay_titles = set()
-        if input_file_sets is not None:
-            only_construct_library_sets = False
-            if all(input_file_set.startswith('/construct-library-sets/') for input_file_set in input_file_sets):
-                only_construct_library_sets = True
-            for fileset in input_file_sets:
-                file_set_object = request.embed(fileset, '@@object')
-                if 'MeasurementSet' in file_set_object.get('@type'):
-                    preferred_assay_title = file_set_object.get('preferred_assay_title')
-                    if preferred_assay_title:
-                        assay_titles.add(preferred_assay_title)
-                elif 'AnalysisSet' in file_set_object.get('@type'):
-                    input_analysis_assay_titles = set(file_set_object.get('assay_titles', []))
-                    if input_analysis_assay_titles:
-                        assay_titles = assay_titles | input_analysis_assay_titles
-                elif 'AuxiliarySet' in file_set_object.get('@type'):
-                    for measurement_set in file_set_object.get('measurement_sets'):
-                        measurement_set_object = request.embed(measurement_set, '@@object')
-                        preferred_assay_title = measurement_set_object.get('preferred_assay_title')
-                        if preferred_assay_title:
-                            assay_titles.add(preferred_assay_title)
-                elif 'ConstructLibrarySet' in file_set_object.get('@type') and only_construct_library_sets:
-                    for sample in file_set_object.get('applied_to_samples', []):
-                        sample_object = request.embed(
-                            sample, '@@object_with_select_calculated_properties?field=file_sets')
-                        for file_set in sample_object.get('file_sets', []):
-                            file_set_object = request.embed(
-                                file_set, '@@object_with_select_calculated_properties?field=preferred_assay_title')
-                            preferred_assay_title = file_set_object.get('preferred_assay_title')
-                            if preferred_assay_title:
-                                assay_titles.add(preferred_assay_title)
-            return list(assay_titles)
+        if input_file_sets is None:
+            input_file_sets = []
+        assay_list = set()
+        file_set_objs = get_fileset_objs_from_input_file_sets(request=request, input_file_sets=input_file_sets)
+        for file_set_obj in file_set_objs:
+            if any(item in file_set_obj.get('@type', []) for item in ['MeasurementSet', 'AnalysisSet', 'AuxiliarySet', 'ConstructLibrarySet']):
+                assay_titles = file_set_obj.get('assay_titles', [])
+                if assay_titles:
+                    assay_list.update(assay_titles)
+        return list(assay_list)
 
     @calculated_property(
         condition='input_file_sets',
@@ -1116,6 +1119,26 @@ class MeasurementSet(FileSet):
     set_status_down = FileSet.set_status_down + []
 
     @calculated_property(
+        define=True,
+        schema={
+            'title': 'Assay Titles',
+            'description': 'Ontology term names from Ontology of Biomedical Investigations (OBI) for assays',
+            'type': 'array',
+            'minItems': 1,
+            'items': {
+                'type': 'string'
+            },
+            'notSubmittable': True
+        }
+    )
+    def assay_titles(self, request, assay_term):
+        if assay_term:
+            assay_term_obj = request.embed(assay_term, '@@object')
+            term_name = assay_term_obj.get('term_name')
+            if term_name:
+                return [term_name]
+
+    @calculated_property(
         condition='multiome_size',
         schema={
             'title': 'Related Multiome Datasets',
@@ -1153,10 +1176,9 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, assay_term, preferred_assay_title=None, samples=None, control_types=None, targeted_genes=None, construct_library_sets=None):
+    def summary(self, request, assay_term, assay_titles, preferred_assay_titles=None, samples=None, control_types=None, targeted_genes=None, construct_library_sets=None):
         if construct_library_sets is None:
             construct_library_sets = []
-        assay = request.embed(assay_term)['term_name']
         modality_set = set()
         cls_set = set()
         cls_type_set = set()
@@ -1185,6 +1207,8 @@ class MeasurementSet(FileSet):
                 for method in sample_object['multiplexing_methods']:
                     multiplexing_methods.add(method)
 
+        assay = assay_titles[0] if assay_titles else None
+        preferred_assay_title = preferred_assay_titles[0]
         if preferred_assay_title in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
             assay = f'{assay} ({preferred_assay_title})'
         else:
@@ -1426,6 +1450,58 @@ class AuxiliarySet(FileSet):
         return paths_filtered_by_status(request, measurement_sets)
 
     @calculated_property(
+        condition='measurement_sets',
+        define=True,
+        schema={
+            'title': 'Preferred Assay Titles',
+            'description': 'The preferred assay titles of the measurement sets that used this auxiliary set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Preferred Assay Title',
+                'type': 'string'
+            },
+            'notSubmittable': True
+        })
+    def preferred_assay_titles(self, request, measurement_sets=None):
+        if measurement_sets is None:
+            measurement_sets = []
+        preferred_assay_titles = set()
+        for measurement_set in measurement_sets:
+            preferred_assays = request.embed(
+                measurement_set, '@@object?skip_calculated=true').get('preferred_assay_titles', [])
+            if preferred_assays:
+                preferred_assay_titles.update(preferred_assays)
+        return list(preferred_assay_titles)
+
+    @calculated_property(
+        condition='measurement_sets',
+        define=True,
+        schema={
+            'title': 'Assay Titles',
+            'description': 'Ontology term names from Ontology of Biomedical Investigations (OBI) for assays',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Assay Title',
+                'type': 'string'
+            },
+            'notSubmittable': True
+        })
+    def assay_titles(self, request, measurement_sets=None):
+        if measurement_sets is None:
+            measurement_sets = []
+        assay_titles = set()
+        for measurement_set in measurement_sets:
+            assays = request.embed(
+                measurement_set, '@@object_with_select_calculated_properties?field=assay_titles').get('assay_titles', [])
+            if assays:
+                assay_titles.update(assays)
+        return list(assay_titles)
+
+    @calculated_property(
         schema={
             'title': 'Summary',
             'type': 'string',
@@ -1616,8 +1692,35 @@ class ConstructLibrarySet(FileSet):
         condition='file_sets',
         define=True,
         schema={
+            'title': 'Preferred Assay Titles',
+            'description': 'The preferred assay titles of the file sets that used this construct library set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Preferred Assay Title',
+                'type': 'string'
+            },
+            'notSubmittable': True
+        })
+    def preferred_assay_titles(self, request, file_sets=None):
+        if file_sets is None:
+            file_sets = []
+        preferred_assay_titles = set()
+        for file_set in file_sets:
+            if file_set.startswith('/measurement-sets/'):
+                preferred_assays = request.embed(
+                    file_set, '@@object?skip_calculated=true').get('preferred_assay_titles', [])
+                if preferred_assays:
+                    preferred_assay_titles.update(preferred_assays)
+        return list(preferred_assay_titles)
+
+    @calculated_property(
+        condition='file_sets',
+        define=True,
+        schema={
             'title': 'Assay Titles',
-            'description': 'The assay titles of the file sets that used this construct library set.',
+            'description': 'Ontology term names from Ontology of Biomedical Investigations (OBI) for assays.',
             'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
@@ -1633,10 +1736,10 @@ class ConstructLibrarySet(FileSet):
         assay_titles = set()
         for file_set in file_sets:
             if file_set.startswith('/measurement-sets/'):
-                file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
-                preferred_assay_title = file_set_object.get('preferred_assay_title')
-                if preferred_assay_title:
-                    assay_titles.add(preferred_assay_title)
+                assays = request.embed(
+                    file_set, '@@object_with_select_calculated_properties?field=assay_titles').get('assay_titles', [])
+                if assays:
+                    assay_titles.update(assays)
         return sorted(list(assay_titles))
 
     @calculated_property(
@@ -1648,9 +1751,9 @@ class ConstructLibrarySet(FileSet):
     )
     def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, large_scale_gene_list=None, guide_type=None,
                 small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, orf_list=None, associated_phenotypes=None,
-                control_types=None, targeton=None, assay_titles=None, integrated_content_files=None):
-        if assay_titles is None:
-            assay_titles = []
+                control_types=None, targeton=None, preferred_assay_titles=None, integrated_content_files=None):
+        if preferred_assay_titles is None:
+            preferred_assay_titles = []
         if integrated_content_files is None:
             integrated_content_files = []
         library_type = file_set_type
@@ -1730,7 +1833,7 @@ class ConstructLibrarySet(FileSet):
             else:
                 pheno_phrase = f' associated with {len(pheno_terms)} phenotypes'
 
-        if assay_titles and 'STARR-seq' in assay_titles:
+        if preferred_assay_titles and 'STARR-seq' in preferred_assay_titles:
             thousand_genomes_ids = set()
             for integrated_content_file in integrated_content_files:
                 integrated_content_file_object = request.embed(integrated_content_file, '@@object?skip_calculated=true')

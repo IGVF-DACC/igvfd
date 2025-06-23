@@ -10,8 +10,11 @@ def auxiliary_set():
             'file_set_type': {
                 'title': 'File Set Type'
             },
-            'measurement_sets.preferred_assay_title': {
-                'title': 'Assay',
+            'assay_titles': {
+                'title': 'Assay Titles'
+            },
+            'preferred_assay_titles': {
+                'title': 'Preferred Assay Titles'
             },
             'files.assembly': {
                 'title': 'Assembly',
