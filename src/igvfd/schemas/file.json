@@ -154,7 +154,7 @@
             }
         },
         "transcriptome_annotation": {
-            "comment": "The assembly shoud be consistent with annotation versions of respective species. Annotation version should not be submitted for custom assemblies.",
+            "comment": "The assembly shoud be consistent with annotation versions of respective species. Annotation version should not be submitted for custom assemblies. This dependency is not relevant for matrix files.",
             "allOf": [
                 {
                     "if": {
