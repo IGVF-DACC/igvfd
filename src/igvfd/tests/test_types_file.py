@@ -135,6 +135,27 @@ def test_types_matrix_file_transcriptome_annotation(testapp, matrix_file, refere
     assert res.json.get('transcriptome_annotation') == 'mixed'
 
 
+def test_types_matrix_file_transcriptome_annotation(testapp, matrix_file, reference_file, reference_file_with_assembly):
+    res = testapp.get(matrix_file['@id'])
+    assert res.json.get('assembly') == ''
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'reference_files': [reference_file_with_assembly['@id']]
+        }
+    )
+    res = testapp.get(matrix_file['@id'])
+    assert res.json.get('transcriptome_annotation') == 'GRCh38'
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'reference_files': [reference_file['@id'], reference_file_with_assembly['@id']]
+        }
+    )
+    res = testapp.get(matrix_file['@id'])
+    assert res.json.get('transcriptome_annotation') == 'mixed'
+
+
 def test_integrated_in(testapp, construct_library_set_genome_wide, base_expression_construct_library_set, tabular_file):
     testapp.patch_json(
         construct_library_set_genome_wide['@id'],
