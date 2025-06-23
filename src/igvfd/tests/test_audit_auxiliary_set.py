@@ -326,8 +326,8 @@ def test_audit_missing_barcode_map(
     )
     res = testapp.get(auxiliary_set_cell_hashing['@id'] + '@@audit')
     assert any(
-        error['category'] == 'missing barcode map'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+        error['category'] == 'inconsistent barcode map'
+        for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
         tabular_file['@id'],
@@ -339,4 +339,8 @@ def test_audit_missing_barcode_map(
     assert all(
         error['category'] != 'missing barcode map'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    assert all(
+        error['category'] != 'inconsistent barcode map'
+        for error in res.json['audit'].get('ERROR', [])
     )
