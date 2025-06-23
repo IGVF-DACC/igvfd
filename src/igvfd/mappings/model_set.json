@@ -1,6 +1,6 @@
 {
-    "hash": "42ed8e2cdc90fa31521d477109d46f96",
-    "index_name": "model_set_42ed8e2c",
+    "hash": "f8b9e79f71b6cdcbc8abd575e2d672db",
+    "index_name": "model_set_f8b9e79f",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -659,6 +659,9 @@
                                     "notes": {
                                         "type": "text"
                                     },
+                                    "preferred_assay_titles": {
+                                        "type": "keyword"
+                                    },
                                     "preview_timestamp": {
                                         "type": "date"
                                     },
@@ -774,7 +777,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -1104,7 +1107,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -1581,6 +1584,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
@@ -1883,7 +1889,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {

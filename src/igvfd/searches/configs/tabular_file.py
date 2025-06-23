@@ -39,10 +39,10 @@ def tabular_file():
                 'title': 'File Set Type'
             },
             'assay_titles': {
-                'title': 'Preferred Assay Title'
+                'title': 'Assay Titles'
             },
-            'file_set.assay_term.term_name': {
-                'title': 'Assay'
+            'preferred_assay_titles': {
+                'title': 'Preferred Assay Titles'
             },
             'integrated_in.file_set_type': {
                 'title': 'Library Type'
