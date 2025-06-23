@@ -5,6 +5,7 @@
 * Adjust `content_type` enum list to replace `variant functional predictions` with `variant functions`.
 * Adjust `content_type` enum list to replace `element to gene predictions` with `element to gene interactions`.
 
+
 ### Minor changes since schema version 16
 
 * Extend `content_type` enum list to include `derived barcode mapping`.
