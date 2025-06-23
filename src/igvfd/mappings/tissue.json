@@ -1,6 +1,6 @@
 {
-    "hash": "8cf7252b2f545aeb4d36dd6da7affebe",
-    "index_name": "tissue_8cf7252b",
+    "hash": "c3463ea13cd4530d3ebf85ae6195ba24",
+    "index_name": "tissue_c3463ea1",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -609,6 +609,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
@@ -1180,7 +1183,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {

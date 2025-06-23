@@ -1,6 +1,6 @@
 {
-    "hash": "174541e06585b534df2408c4fec08191",
-    "index_name": "configuration_file_174541e0",
+    "hash": "5036f9fcbd3254aae1747e74db294ef9",
+    "index_name": "configuration_file_5036f9fc",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -640,7 +640,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -2060,6 +2060,9 @@
                                 "type": "text"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {

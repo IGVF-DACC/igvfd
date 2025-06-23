@@ -1,6 +1,6 @@
 {
-    "hash": "eb5018e29a30a87e74c27089c90e9fd1",
-    "index_name": "signal_file_eb5018e2",
+    "hash": "5a4552bba33053875ac36fc8c48ca80e",
+    "index_name": "signal_file_5a4552bb",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -740,7 +740,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -2164,6 +2164,9 @@
                                 "type": "text"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
