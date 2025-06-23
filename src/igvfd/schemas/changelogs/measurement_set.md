@@ -1,5 +1,11 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 36
+
+* Add calculated property `assay_titles`
+* Remove `preferred_assay_title`
+* Add `preferred_assay_titles`
+
 ### Minor changes since schema version 34
 
 * Extend `preferred_assay_title` enum list to include `LABEL-seq`.

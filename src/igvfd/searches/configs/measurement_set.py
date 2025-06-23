@@ -17,8 +17,8 @@ def measurement_set():
                     }
                 ]
             },
-            'preferred_assay_title': {
-                'title': 'Preferred Assay Title'
+            'preferred_assay_titles': {
+                'title': 'Preferred Assay Titles'
             },
             'control_types': {
                 'title': 'Control Types'

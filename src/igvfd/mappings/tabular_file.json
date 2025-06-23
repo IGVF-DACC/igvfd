@@ -886,7 +886,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -2319,6 +2319,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
@@ -2586,6 +2589,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preferred_assay_titles": {
+                        "type": "keyword"
                     },
                     "preview_timestamp": {
                         "type": "date"

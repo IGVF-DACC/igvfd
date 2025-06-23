@@ -16,7 +16,7 @@ def test_audit_missing_files(
     testapp.patch_json(
         measurement_set_no_files['@id'],
         {
-            'preferred_assay_title': 'Cell painting'
+            'preferred_assay_titles': ['Cell painting']
         }
     )
     res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
@@ -30,7 +30,7 @@ def test_audit_missing_files(
     )
     testapp.patch_json(
         measurement_set_no_files['@id'],
-        {'preferred_assay_title': 'CRISPR FlowFISH screen'}
+        {'preferred_assay_titles': ['CRISPR FlowFISH screen']}
     )
     res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
     assert all(

@@ -636,3 +636,11 @@ def measurement_set_33_34(value, system):
 def measurement_set_34_35(value, system):
     # Revert IGVF-2820-unify-assays
     pass
+
+
+@upgrade_step('measurement_set', '35', '36')
+def measurement_set_35_36(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2833
+    if 'preferred_assay_title' in value:
+        value['preferred_assay_titles'] = [(value['preferred_assay_title'])]
+        value.pop('preferred_assay_title')
