@@ -2,10 +2,8 @@
 
 ### Schema version 17
 
-* Extend `content_type` enum list to include `variant functions`.
-* Extend `content_type` enum list to include `element to gene interactions`.
-* Reduce `content_type` enum list to exclude `variant functional predictions`.
-* Reduce `content_type` enum list to exclude `element to gene predictions`.
+* Adjust `content_type` enum list to replace `variant functional predictions` with `variant functions`.
+* Adjust `content_type` enum list to replace `element to gene predictions` with `element to gene interactions`.
 
 ### Minor changes since schema version 16
 
