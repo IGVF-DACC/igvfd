@@ -40,30 +40,48 @@ def audit_related_multiome_datasets(value, system):
     audit_message_no_multiome_size = get_audit_message(audit_related_multiome_datasets, index=0)
     audit_message_unexpected_multiome_size = get_audit_message(audit_related_multiome_datasets, index=1)
     audit_message_inconsistent_multiome = get_audit_message(audit_related_multiome_datasets, index=2)
+
     detail = ''
     related_multiome_datasets = value.get('related_multiome_datasets', [])
     multiome_size = value.get('multiome_size')
-    preferred_assay_title = value.get('preferred_assay_title', '')
-    if preferred_assay_title in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq', 'mtscMultiome']:
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+
+    multiome_assays = ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq', 'mtscMultiome']
+
+    if any(assay in multiome_assays for assay in preferred_assay_titles):
         if not multiome_size:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has no `multiome_size`.'
             )
-            yield AuditFailure(audit_message_no_multiome_size.get('audit_category', ''), f'{detail} {audit_message_no_multiome_size.get("audit_description", "")}', level=audit_message_no_multiome_size.get('audit_level', ''))
+            yield AuditFailure(
+                audit_message_no_multiome_size.get('audit_category', ''),
+                f'{detail} {audit_message_no_multiome_size.get("audit_description", "")}',
+                level=audit_message_no_multiome_size.get('audit_level', '')
+            )
     else:
         if multiome_size:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has `multiome_size`.'
             )
-            yield AuditFailure(audit_message_unexpected_multiome_size.get('audit_category', ''), f'{detail} {audit_message_unexpected_multiome_size.get("audit_description", "")}', level=audit_message_unexpected_multiome_size.get('audit_level', ''))
+            yield AuditFailure(
+                audit_message_unexpected_multiome_size.get('audit_category', ''),
+                f'{detail} {audit_message_unexpected_multiome_size.get("audit_description", "")}',
+                level=audit_message_unexpected_multiome_size.get('audit_level', '')
+            )
+
     if related_multiome_datasets == [] and multiome_size:
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has a `multiome_size` of {multiome_size}, but no `related_multiome_datasets`.'
         )
-        yield AuditFailure(audit_message_inconsistent_multiome.get('audit_category', ''), f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}', level=audit_message_inconsistent_multiome.get('audit_level', ''))
+        yield AuditFailure(
+            audit_message_inconsistent_multiome.get('audit_category', ''),
+            f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}',
+            level=audit_message_inconsistent_multiome.get('audit_level', '')
+        )
+
     elif related_multiome_datasets and multiome_size:
         if len(related_multiome_datasets) != multiome_size - 1:
             detail = (
@@ -71,41 +89,59 @@ def audit_related_multiome_datasets(value, system):
                 f'has a `multiome_size` of {multiome_size}, but {len(related_multiome_datasets)} '
                 f'`related_multiome_datasets` when {multiome_size - 1} are expected.'
             )
-            yield AuditFailure(audit_message_inconsistent_multiome.get('audit_category', ''), f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}', level=audit_message_inconsistent_multiome.get('audit_level', ''))
+            yield AuditFailure(
+                audit_message_inconsistent_multiome.get('audit_category', ''),
+                f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}',
+                level=audit_message_inconsistent_multiome.get('audit_level', '')
+            )
+
         samples = value.get('samples')
         samples_to_link = [audit_link(path_to_text(sample), sample) for sample in samples]
         datasets_with_different_samples = []
         datasets_with_different_multiome_sizes = []
+
         for dataset in related_multiome_datasets:
             dataset_object = system.get('request').embed(dataset, '@@object?skip_calculated=true')
             if set(samples) != set(dataset_object.get('samples')):
-                related_samples_to_link = [audit_link(path_to_text(sample), sample)
-                                           for sample in dataset_object.get('samples')]
+                related_samples_to_link = [
+                    audit_link(path_to_text(sample), sample)
+                    for sample in dataset_object.get('samples')
+                ]
                 datasets_with_different_samples.append(
-                    f"{audit_link(path_to_text(dataset), dataset)} which has associated sample(s): {', '.join(related_samples_to_link)}")
+                    f"{audit_link(path_to_text(dataset), dataset)} which has associated sample(s): {', '.join(related_samples_to_link)}"
+                )
             if dataset_object.get('multiome_size') is None:
                 datasets_with_different_multiome_sizes.append(
-                    f'{audit_link(path_to_text(dataset), dataset)} which does not have a specified `multiome_size`')
-            if multiome_size != dataset_object.get('multiome_size') and dataset_object.get('multiome_size') is not None:
+                    f'{audit_link(path_to_text(dataset), dataset)} which does not have a specified `multiome_size`'
+                )
+            elif multiome_size != dataset_object.get('multiome_size'):
                 datasets_with_different_multiome_sizes.append(
-                    f"{audit_link(path_to_text(dataset), dataset)} which has a `multiome_size` of: {dataset_object.get('multiome_size')}")
-        datasets_with_different_samples = ', '.join(datasets_with_different_samples)
-        datasets_with_different_multiome_sizes = ', '.join(datasets_with_different_multiome_sizes)
-        samples_to_link = ', '.join(samples_to_link)
+                    f"{audit_link(path_to_text(dataset), dataset)} which has a `multiome_size` of: {dataset_object.get('multiome_size')}"
+                )
+
         if datasets_with_different_samples:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has associated `samples`: {samples_to_link} which are not the same associated `samples` '
-                f'of `related_multiome_datasets`: {datasets_with_different_samples}'
+                f'has associated `samples`: {", ".join(samples_to_link)} which are not the same associated `samples` '
+                f'of `related_multiome_datasets`: {", ".join(datasets_with_different_samples)}'
             )
-            yield AuditFailure(audit_message_inconsistent_multiome.get('audit_category', ''), f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}', level=audit_message_inconsistent_multiome.get('audit_level', ''))
+            yield AuditFailure(
+                audit_message_inconsistent_multiome.get('audit_category', ''),
+                f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}',
+                level=audit_message_inconsistent_multiome.get('audit_level', '')
+            )
+
         if datasets_with_different_multiome_sizes:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has a specified `multiome_size` of {multiome_size}, which does not match the '
-                f'`multiome_size` of `related_multiome_datasets`: {datasets_with_different_multiome_sizes}'
+                f'`multiome_size` of `related_multiome_datasets`: {", ".join(datasets_with_different_multiome_sizes)}'
             )
-            yield AuditFailure(audit_message_inconsistent_multiome.get('audit_category', ''), f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}', level=audit_message_inconsistent_multiome.get('audit_level', ''))
+            yield AuditFailure(
+                audit_message_inconsistent_multiome.get('audit_category', ''),
+                f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}',
+                level=audit_message_inconsistent_multiome.get('audit_level', '')
+            )
 
 
 def audit_unspecified_protocol(value, system):
@@ -138,13 +174,12 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
     ]
     '''
     audit_message = get_audit_message(audit_CRISPR_screen_lacking_modifications)
-    assay_term = value.get('assay_term')
-    assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+    assay_titles = value.get('assay_titles', [])
     crispr_assays = ['in vitro CRISPR screen assay',
                      'in vitro CRISPR screen using flow cytometry',
                      'in vitro CRISPR screen using single-cell RNA-seq'
                      ]
-    if assay.get('term_name') in crispr_assays:
+    if any(t in crispr_assays for t in assay_titles):
         samples = value.get('samples', [])
         bad_samples = []
         for sample in samples:
@@ -165,8 +200,8 @@ def audit_preferred_assay_title(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets are expected to specify an appropriate preferred assay title for its respective assay term.",
-            "audit_category": "inconsistent preferred assay title",
+            "audit_description": "Measurement sets are expected to specify an appropriate preferred assay titles for its respective assay titles.",
+            "audit_category": "inconsistent preferred assay titles",
             "audit_level": "ERROR"
         }
     ]
@@ -174,14 +209,21 @@ def audit_preferred_assay_title(value, system):
     audit_message_inconsistent = get_audit_message(audit_preferred_assay_title, index=0)
     assay_term = value.get('assay_term')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-    assay_term_name = assay_object.get('term_name')
-    preferred_assay_title = value.get('preferred_assay_title', '')
-    if preferred_assay_title not in assay_object.get('preferred_assay_titles', []):
+    assay_titles = assay_object.get('assay_titles', [])
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    valid_titles = assay_object.get('preferred_assay_titles', [])
+
+    if preferred_assay_titles and not any(title in valid_titles for title in preferred_assay_titles):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has '
-            f'`assay_term` {assay_term_name}, but `preferred_assay_title` {preferred_assay_title}.'
+            f'`assay_titles` {", ".join(assay_titles)}, but none of its `preferred_assay_titles` values '
+            f'({", ".join(preferred_assay_titles)}) are valid. Expected one of: {", ".join(valid_titles)}.'
         )
-        yield AuditFailure(audit_message_inconsistent.get('audit_category', ''), f'{detail} {audit_message_inconsistent.get("audit_description", "")}', level=audit_message_inconsistent.get('audit_level', ''))
+        yield AuditFailure(
+            audit_message_inconsistent.get('audit_category', ''),
+            f'{detail} {audit_message_inconsistent.get("audit_description", "")}',
+            level=audit_message_inconsistent.get('audit_level', '')
+        )
 
 
 def audit_missing_institutional_certification(value, system):
@@ -388,34 +430,47 @@ def audit_missing_construct_library_set(value, system):
         'protein-protein interaction detection assay': ('expression vector library', audit_message_PPI),
         'imaging assay': ('expression vector library', audit_message_Imaging)
     }
-    # preferred assay title expectations override any overlapping assay term expectation
+    # preferred assay titles expectations override any overlapping assay term expectation
     expected_library_by_preferred_assay_title = {
         'SGE': ('editing template library', audit_message_SGE),
         'VAMP-seq': ('expression vector library', audit_message_VAMP),
         'VAMP-seq (MultiSTEP)': ('expression vector library', audit_message_VAMP)
     }
 
-    assay_term_name = value.get('assay_term').get('term_name')
-    preferred_assay_title = value.get('preferred_assay_title')
+    assay_titles = value.get('assay_titles', [])
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
     construct_library_sets = value.get('construct_library_sets')
 
-    if (assay_term_name in expected_library_by_assay_term or preferred_assay_title in expected_library_by_preferred_assay_title) and not (value.get('control_for')):
+    if value.get('control_for'):
+        return
 
-        if preferred_assay_title in expected_library_by_preferred_assay_title:
-            expected_library_dict_to_check = expected_library_by_preferred_assay_title
-            assay_to_check = preferred_assay_title
-        else:
-            expected_library_dict_to_check = expected_library_by_assay_term
-            assay_to_check = assay_term_name
+    matching_preferred_assays = [
+        preferred_assay_title for preferred_assay_title in preferred_assay_titles if preferred_assay_title in expected_library_by_preferred_assay_title]
+    if matching_preferred_assays:
+        expected_library_dict_to_check = expected_library_by_preferred_assay_title
+        assays_to_check = matching_preferred_assays
+    else:
+        matching_assay_terms = [term for term in assay_titles if term in expected_library_by_assay_term]
+        if not matching_assay_terms:
+            return
+        expected_library_dict_to_check = expected_library_by_assay_term
+        assays_to_check = matching_assay_terms
 
-        expected_library = expected_library_dict_to_check[assay_to_check][0]
-        audit_message = expected_library_dict_to_check[assay_to_check][1]
-        if not (construct_library_sets) or not ([construct_library_set for construct_library_set in construct_library_sets if construct_library_set.get('file_set_type', '') == expected_library]):
+    for assay_to_check in assays_to_check:
+        expected_library, audit_message = expected_library_dict_to_check[assay_to_check]
+
+        if not construct_library_sets or not any(
+            cls.get('file_set_type', '') == expected_library for cls in construct_library_sets
+        ):
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has no `construct_library_sets` of type {expected_library} linked in its `samples`.'
             )
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+            yield AuditFailure(
+                audit_message.get('audit_category', ''),
+                f'{detail} {audit_message.get("audit_description", "")}',
+                level=audit_message.get('audit_level', '')
+            )
 
 
 def audit_missing_auxiliary_set(value, system):
@@ -465,8 +520,8 @@ def audit_missing_auxiliary_set(value, system):
         '10x multiome with MULTI-seq': [('lipid-conjugated oligo sequencing', audit_message_10X_MULTI_seq)]
     }
 
-    assay_term_name = value.get('assay_term').get('term_name')
-    preferred_assay_title = value.get('preferred_assay_title')
+    assay_titles = value.get('assay_titles', [])
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
     auxiliary_sets = value.get('auxiliary_sets')
 
     control_types = value.get('control_types', [])
@@ -474,16 +529,27 @@ def audit_missing_auxiliary_set(value, system):
         'untransfected',
         'unsorted FACS input'
     }
+
     if (
-        (assay_term_name in expected_auxiliary_set_by_assay_term or preferred_assay_title in expected_auxiliary_set_by_preferred_assay_title)
+        (any(title in expected_auxiliary_set_by_assay_term for title in assay_titles) or
+        any(title in expected_auxiliary_set_by_preferred_assay_title for title in preferred_assay_titles))
         and not any(control_type in exempted_control_types for control_type in control_types)
     ):
-        if preferred_assay_title in expected_auxiliary_set_by_preferred_assay_title:
-            expected_auxiliary_dict_to_check = expected_auxiliary_set_by_preferred_assay_title
-            assay_to_check = preferred_assay_title
-        else:
-            expected_auxiliary_dict_to_check = expected_auxiliary_set_by_assay_term
-            assay_to_check = assay_term_name
+        assay_to_check = None
+        expected_auxiliary_dict_to_check = None
+
+        for title in preferred_assay_titles:
+            if title in expected_auxiliary_set_by_preferred_assay_title:
+                expected_auxiliary_dict_to_check = expected_auxiliary_set_by_preferred_assay_title
+                assay_to_check = title
+                break
+
+        if not expected_auxiliary_dict_to_check:
+            for title in assay_titles:
+                if title in expected_auxiliary_set_by_assay_term:
+                    expected_auxiliary_dict_to_check = expected_auxiliary_set_by_assay_term
+                    assay_to_check = title
+                    break
 
         expected_auxiliary_sets = expected_auxiliary_dict_to_check[assay_to_check]
         for expected_auxiliary_set in expected_auxiliary_sets:
@@ -549,15 +615,13 @@ def audit_onlist(value, system):
     audit_message_unwanted_onlist_info = get_audit_message(audit_onlist, index=1)
     onlist_files = value.get('onlist_files')
     onlist_method = value.get('onlist_method')
-    assay_term = value.get('assay_term')
-    assay_term_obj = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-    assay_term_name = assay_term_obj.get('term_name', '')
+    assay_titles = value.get('assay_titles', [])
     single_cell_assay_status = single_cell_check(system, value, 'Measurement set')
     # Check if single cell assays MeaSets are missing both onlist files and methods
     if (single_cell_assay_status) and (not onlist_method) and (not onlist_files):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has an `assay_term` of {assay_term_name} but no `onlist_files` nor `onlist_methods`.'
+            f"has an `assay_titles` of {', '.join(assay_titles)} but no `onlist_files` nor `onlist_methods`."
         )
         yield AuditFailure(audit_message_missing_all_onlist_info.get('audit_category', ''),
                            f'{detail} {audit_message_missing_all_onlist_info.get("audit_description", "")}',
@@ -567,7 +631,7 @@ def audit_onlist(value, system):
     if (not single_cell_assay_status) and (onlist_method) and (onlist_files):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has an `assay_term` of {assay_term_name} but has `onlist_files` and `onlist_method`.'
+            f"has an `assay_titles` of {', '.join(assay_titles)} but has `onlist_files` and `onlist_methods`."
         )
         yield AuditFailure(audit_message_unwanted_onlist_info.get('audit_category', ''),
                            f'{detail} {audit_message_unwanted_onlist_info.get("audit_description", "")}',
@@ -627,12 +691,12 @@ def audit_missing_barcode_replacement_file(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets with `preferred_assay_title` Parse SPLiT-seq are expected to have `barcode_replacement_file`.",
+            "audit_description": "Measurement sets with `preferred_assay_titles` Parse SPLiT-seq are expected to have `barcode_replacement_file`.",
             "audit_category": "missing barcode replacement file",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Measurement sets without `preferred_assay_title` Parse SPLiT-seq are not expected to have `barcode_replacement_file`.",
+            "audit_description": "Measurement sets without `preferred_assay_titles` Parse SPLiT-seq are not expected to have `barcode_replacement_file`.",
             "audit_category": "unexpected barcode replacement file",
             "audit_level": "NOT_COMPLIANT"
         }
@@ -640,9 +704,9 @@ def audit_missing_barcode_replacement_file(value, system):
     '''
     msg_no_replacement_file = get_audit_message(audit_missing_barcode_replacement_file, index=0)
     msg_unexpected_replacement_file = get_audit_message(audit_missing_barcode_replacement_file, index=1)
-    preferred_assay_title = value.get('preferred_assay_title')
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
     barcode_replacement_file = value.get('barcode_replacement_file', None)
-    if preferred_assay_title == 'Parse SPLiT-seq':
+    if 'Parse SPLiT-seq' in preferred_assay_titles:
         # Audit 1: If a Parse MeaSet has no barcode replacement file, audit it.
         if barcode_replacement_file is None:
             detail = (
@@ -656,7 +720,7 @@ def audit_missing_barcode_replacement_file(value, system):
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has unexpected `barcode_replacement_file` {audit_link(path_to_text(barcode_replacement_file), barcode_replacement_file)}. '
-                f'Only measurement sets with `preferred_assay_title` Parse SPLiT-seq are expected to have `barcode_replacement_file`.'
+                f'Only measurement sets with `preferred_assay_titles` Parse SPLiT-seq are expected to have `barcode_replacement_file`.'
             )
             yield AuditFailure(msg_unexpected_replacement_file.get('audit_category', ''), f'{detail} {msg_unexpected_replacement_file.get("audit_description", "")}', level=msg_unexpected_replacement_file.get('audit_level', ''))
 
@@ -665,15 +729,15 @@ def audit_inconsistent_barcode_replacement_file(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets with `preferred_assay_title` Parse SPLiT-seq are expected to have `barcode_replacement_file` that is linked to a Tabular File with `content_type` barcode replacement.",
+            "audit_description": "Measurement sets with `preferred_assay_titles` Parse SPLiT-seq are expected to have `barcode_replacement_file` that is linked to a Tabular File with `content_type` barcode replacement.",
             "audit_category": "inconsistent barcode replacement file",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
     msg_wrong_replacement_file = get_audit_message(audit_inconsistent_barcode_replacement_file, index=0)
-    preferred_assay_title = value.get('preferred_assay_title')
-    if preferred_assay_title == 'Parse SPLiT-seq':
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    if 'Parse SPLiT-seq' in preferred_assay_titles:
         barcode_replacement_file = value.get('barcode_replacement_file', None)
         # Audit 1: If barcode replacement file is a Tabular File with content_type of barcode replacement, audit it
         if barcode_replacement_file is not None:
@@ -698,7 +762,7 @@ def audit_missing_external_image_url(value, system):
         }
     ]
     '''
-    preferred_assay_title = value.get('preferred_assay_title')
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
     painting_assays = [
         'Variant painting via immunostaining',
         'Variant painting via fluorescence',
@@ -706,7 +770,7 @@ def audit_missing_external_image_url(value, system):
     ]
     audit_message = get_audit_message(audit_missing_external_image_url, index=0)
 
-    if not value.get('external_image_url', '') and preferred_assay_title in painting_assays:
+    if not value.get('external_image_url', '') and any(title in painting_assays for title in preferred_assay_titles):
         detail = (
             f'MeasurementSet {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'is missing `external_image_url`.'

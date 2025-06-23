@@ -59,7 +59,7 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
         measurement_set['@id'],
         {
             'samples': [in_vitro_cell_line['@id']],
-            'preferred_assay_title': 'lentiMPRA'
+            'preferred_assay_titles': ['lentiMPRA']
         }
     )
     res = testapp.get(measurement_set['@id'])
@@ -76,7 +76,7 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'preferred_assay_title': '10x multiome with MULTI-seq'
+            'preferred_assay_titles': ['10x multiome with MULTI-seq']
         }
     )
     res = testapp.get(measurement_set['@id'])
@@ -91,7 +91,7 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'preferred_assay_title': 'CRISPR FlowFISH screen'
+            'preferred_assay_titles': ['CRISPR FlowFISH screen']
         }
     )
     res = testapp.get(measurement_set['@id'])
@@ -116,7 +116,7 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
         measurement_set['@id'],
         {
             'assay_term': assay_term_y2h['@id'],
-            'preferred_assay_title': 'Arrayed yN2H'
+            'preferred_assay_titles': ['Arrayed yN2H']
         }
     )
     res = testapp.get(measurement_set['@id'])
@@ -125,8 +125,8 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'preferred_assay_title': 'scCRISPR screen',
-            'control_types': ['reference transduction', 'non-targeting']
+            'control_types': ['reference transduction', 'non-targeting'],
+            'preferred_assay_titles': ['scCRISPR screen'],
         }
     )
     res = testapp.get(measurement_set['@id'])
@@ -165,7 +165,7 @@ def test_summary_targeted_genes(testapp, measurement_set, assay_term_chip, assay
         {
             'assay_term': assay_term_chip['@id'],
             'targeted_genes': [gene_myc_hs['@id']],
-            'preferred_assay_title': 'Histone ChIP-seq'
+            'preferred_assay_titles': ['Histone ChIP-seq']
         }
     )
     res = testapp.get(measurement_set['@id'])
@@ -182,7 +182,7 @@ def test_summary_targeted_genes(testapp, measurement_set, assay_term_chip, assay
         measurement_set['@id'],
         {
             'assay_term': assay_term_CRISPR_sorted['@id'],
-            'preferred_assay_title': 'CRISPR FACS screen'
+            'preferred_assay_titles': ['CRISPR FACS screen']
         }
     )
     res = testapp.get(measurement_set['@id'])

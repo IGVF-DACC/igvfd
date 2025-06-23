@@ -196,43 +196,54 @@ def audit_analysis_set_inconsistent_onlist_info(value, system):
     '''
     audit_msg_inconsistent_onlist_files = get_audit_message(audit_analysis_set_inconsistent_onlist_info, index=0)
     audit_msg_inconsistent_onlist_method = get_audit_message(audit_analysis_set_inconsistent_onlist_info, index=1)
+
     onlist_files_by_assays = {}
     onlist_methods_by_assays = {}
+
     input_file_sets = value.get('input_file_sets', [])
     for input_file_set in input_file_sets:
         if input_file_set.startswith('/measurement-sets/'):
-            input_file_set_object = system.get('request').embed(input_file_set + '@@object?skip_calculated=true')
-            # Only check if single cell
-            single_cell_assay_status = single_cell_check(system, input_file_set_object, 'Measurement set')
-            if single_cell_assay_status:
-                assay_term = input_file_set_object.get('assay_term', '')
-                # Onlist files are lists
-                onlist_files_by_assays.setdefault(assay_term, []).append(input_file_set_object.get('onlist_files', ''))
-                # Onlist methods are str
-                onlist_methods_by_assays.setdefault(assay_term, set()).add(
-                    input_file_set_object.get('onlist_method', ''))
+            input_file_set_object = system.get('request').embed(input_file_set + '@@object')
+            # Skip assay if it's not single cell
+            if not single_cell_check(system, input_file_set_object, 'Measurement set'):
+                continue
 
+            assay_titles = input_file_set_object.get('assay_titles', [])
+            for assay_title in assay_titles:
+                # Onlist files are lists
+                onlist_files_by_assays.setdefault(assay_title, []).append(
+                    input_file_set_object.get('onlist_files', [])
+                )
+                # Onlist methods are str
+                onlist_methods_by_assays.setdefault(assay_title, set()).add(
+                    input_file_set_object.get('onlist_method', '')
+                )
     # If there are multiple onlist methods from the input measurement sets of the same assay type, trigger audit
-    for assay_term, onlist_methods in onlist_methods_by_assays.items():
+
+    for assay_title, onlist_methods in onlist_methods_by_assays.items():
         if len(onlist_methods) > 1:
-            assay_term_obj = system.get('request').embed(assay_term + '@@object?skip_calculated=true')
             detail = (
                 f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has Measurement set(s) with assay term: {assay_term_obj.get("term_name", "")} '
-                f'with inconsistent `onlist_methods`.'
+                f'has Measurement set(s) with assay title "{assay_title}" that have inconsistent `onlist_methods`.'
             )
-            yield AuditFailure(audit_msg_inconsistent_onlist_method.get('audit_category', ''), f'{detail} {audit_msg_inconsistent_onlist_method.get("audit_description", "")}', level=audit_msg_inconsistent_onlist_method.get('audit_level', ''))
+            yield AuditFailure(
+                audit_msg_inconsistent_onlist_method.get('audit_category', ''),
+                f'{detail} {audit_msg_inconsistent_onlist_method.get("audit_description", "")}',
+                level=audit_msg_inconsistent_onlist_method.get('audit_level', '')
+            )
 
     # If the input measurement sets have different onlist files
-    for assay_term, onlist_files in onlist_files_by_assays.items():
-        if not all(set(sublist) == set(onlist_files[0]) for sublist in onlist_files):
-            assay_term_obj = system.get('request').embed(assay_term + '@@object?skip_calculated=true')
+    for assay_title, onlist_files in onlist_files_by_assays.items():
+        if len(onlist_files) > 1 and not all(set(files) == set(onlist_files[0]) for files in onlist_files):
             detail = (
                 f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has Measurement set(s) with assay term: {assay_term_obj.get("term_name", "")} '
-                f'with inconsistent `onlist_files`.'
+                f'has Measurement set(s) with assay title "{assay_title}" that have inconsistent `onlist_files`.'
             )
-            yield AuditFailure(audit_msg_inconsistent_onlist_files.get('audit_category', ''), f'{detail} {audit_msg_inconsistent_onlist_files.get("audit_description", "")}', level=audit_msg_inconsistent_onlist_files.get('audit_level', ''))
+            yield AuditFailure(
+                audit_msg_inconsistent_onlist_files.get('audit_category', ''),
+                f'{detail} {audit_msg_inconsistent_onlist_files.get("audit_description", "")}',
+                level=audit_msg_inconsistent_onlist_files.get('audit_level', '')
+            )
 
 
 def audit_missing_transcriptome(value, system):
@@ -290,8 +301,8 @@ def audit_multiple_barcode_replacement_files_in_input(value, system):
         for file in value.get('input_file_sets'):
             if file.startswith('/measurement-sets/'):
                 input_file_set_object = system.get('request').embed(file + '@@object?skip_calculated=true')
-                assay_term = input_file_set_object.get('preferred_assay_title')
-                if assay_term == 'Parse SPLiT-seq':
+                preferred_assay_titles = input_file_set_object.get('preferred_assay_titles')
+                if 'Parse SPLiT-seq' in preferred_assay_titles:
                     barcode_replacement_file = input_file_set_object.get('barcode_replacement_file', '')
                     # Only append replacement files that are not empty (or else it will result in a None value downstream)
                     if barcode_replacement_file:
@@ -303,7 +314,7 @@ def audit_multiple_barcode_replacement_files_in_input(value, system):
             [audit_link(path_to_text(tab_file), tab_file) for tab_file in barcode_replacement_files])
         detail = (
             f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has `input_file_sets` with `preferred_assay_title` Parse SPLiT-seq that are linked to different `barcode_replacement_file`s: {barcode_replacement_files_links}.'
+            f'has `input_file_sets` with `preferred_assay_titles` Parse SPLiT-seq that are linked to different `barcode_replacement_file`s: {barcode_replacement_files_links}.'
         )
         yield AuditFailure(audit_msg_unexpected_file.get('audit_category', ''), f'{detail} {audit_msg_unexpected_file.get("audit_description", "")}', level=audit_msg_unexpected_file.get('audit_level', ''))
 

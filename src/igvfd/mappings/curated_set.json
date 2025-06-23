@@ -1,6 +1,6 @@
 {
-    "hash": "4a197a0c2ffe75514dc2f7d8332e2f6e",
-    "index_name": "curated_set_4a197a0c",
+    "hash": "dfb95c068c95d82d4e22f05804fbe68a",
+    "index_name": "curated_set_dfb95c06",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -561,6 +561,9 @@
                                     "notes": {
                                         "type": "text"
                                     },
+                                    "preferred_assay_titles": {
+                                        "type": "keyword"
+                                    },
                                     "preview_timestamp": {
                                         "type": "date"
                                     },
@@ -676,7 +679,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -1006,7 +1009,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -1475,6 +1478,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
                             },
                             "preview_timestamp": {
                                 "type": "date"

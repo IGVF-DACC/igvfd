@@ -414,7 +414,7 @@ def test_barcode_map_for(testapp, multiplexed_sample_v7, tabular_file_v10):
 def test_file_assay_titles(
     testapp,
     alignment_file,
-    measurement_set,
+    measurement_set_no_files,
     measurement_set_multiome,
     analysis_set_base,
     base_auxiliary_set
@@ -422,15 +422,16 @@ def test_file_assay_titles(
     testapp.patch_json(
         alignment_file['@id'],
         {
-            'file_set': measurement_set['@id']
+            'file_set': measurement_set_no_files['@id']
         }
     )
     res = testapp.get(alignment_file['@id'])
-    assert set(res.json.get('assay_titles', [])) == {'STARR-seq'}
+    assert set(res.json.get('assay_titles', [])) == {'example-tn-1'}
+    assert set(res.json.get('preferred_assay_titles', [])) == {'CRISPR FlowFISH screen'}
     testapp.patch_json(
         analysis_set_base['@id'],
         {
-            'input_file_sets': [measurement_set['@id'], measurement_set_multiome['@id']]
+            'input_file_sets': [measurement_set_no_files['@id'], measurement_set_multiome['@id']]
         }
     )
     testapp.patch_json(
@@ -440,12 +441,13 @@ def test_file_assay_titles(
         }
     )
     res = testapp.get(alignment_file['@id'])
-    assert set(res.json.get('assay_titles', [])) == {'STARR-seq', '10x multiome'}
+    assert set(res.json.get('assay_titles', [])) == {'example-tn-1', 'ATAC-seq'}
+    assert set(res.json.get('preferred_assay_titles', [])) == {'CRISPR FlowFISH screen', '10x multiome'}
     testapp.patch_json(
         measurement_set_multiome['@id'],
         {
             'auxiliary_sets': [base_auxiliary_set['@id']],
-            'preferred_assay_title': '10x multiome with MULTI-seq'
+            'preferred_assay_titles': ['10x multiome with MULTI-seq']
         }
     )
     testapp.patch_json(
@@ -455,7 +457,8 @@ def test_file_assay_titles(
         }
     )
     res = testapp.get(alignment_file['@id'])
-    assert set(res.json.get('assay_titles', [])) == {'10x multiome with MULTI-seq'}
+    assert set(res.json.get('assay_titles', [])) == {'ATAC-seq'}
+    assert set(res.json.get('preferred_assay_titles', [])) == {'10x multiome with MULTI-seq'}
 
 
 def test_file_workflow(

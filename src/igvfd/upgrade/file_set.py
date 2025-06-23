@@ -630,3 +630,11 @@ def measurement_set_33_34(value, system):
             notes += f' This measurement set previously used {old_assay_title} as a preferred_assay_title, but the preferred_assay_title has been updated to 10x with Scale pre-indexing via an upgrade.'
             value['notes'] = notes.strip()
     return
+
+
+@upgrade_step('measurement_set', '34', '35')
+def measurement_set_34_35(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2833
+    if 'preferred_assay_title' in value:
+        value['preferred_assay_titles'] = [(value['preferred_assay_title'])]
+        value.pop('preferred_assay_title')
