@@ -20,8 +20,8 @@ def measurement_set():
             'preferred_assay_title': {
                 'title': 'Preferred Assay Title'
             },
-            'control_type': {
-                'title': 'Control Type'
+            'control_types': {
+                'title': 'Control Types'
             },
             'functional_assay_mechanisms.term_name': {
                 'title': 'Measured Mechanisms'
