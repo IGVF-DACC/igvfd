@@ -38,7 +38,7 @@ def audit_missing_barcode_map(value, system):
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Cell hashing barcode sequencing auxiliary sets are expected to link to only a barcode to hashtag mapping in the barcode map property.",
+            "audit_description": "Cell hashing barcode sequencing auxiliary sets are expected to link to only link to tabular file with content type of barcode to hashtag mapping.",
             "audit_category": "inconsistent barcode map",
             "audit_level": "ERROR"
         }
