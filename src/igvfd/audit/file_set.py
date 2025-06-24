@@ -2,6 +2,9 @@ from snovault.auditor import (
     AuditFailure,
     audit_checker
 )
+
+from snovault.mapping import watch_for_changes_in
+
 from .formatter import (
     audit_link,
     path_to_text,
@@ -1085,6 +1088,7 @@ function_dispatcher_model_set_object = {
 
 
 @audit_checker('FileSet', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_file_set_object.values()))
 def audit_file_set_object_dispatcher(value, system):
     for function_name in function_dispatcher_file_set_object.keys():
         for failure in function_dispatcher_file_set_object[function_name](value, system):
@@ -1092,6 +1096,7 @@ def audit_file_set_object_dispatcher(value, system):
 
 
 @audit_checker('MeasurementSet', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_measurement_set_object.values()))
 def audit_measurement_set_object_dispatcher(value, system):
     for function_name in function_dispatcher_measurement_set_object.keys():
         for failure in function_dispatcher_measurement_set_object[function_name](value, system):
@@ -1099,6 +1104,7 @@ def audit_measurement_set_object_dispatcher(value, system):
 
 
 @audit_checker('AuxiliarySet', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_auxiliary_set_object.values()))
 def audit_auxiliary_set_object_dispatcher(value, system):
     for function_name in function_dispatcher_auxiliary_set_object.keys():
         for failure in function_dispatcher_auxiliary_set_object[function_name](value, system):
@@ -1106,6 +1112,7 @@ def audit_auxiliary_set_object_dispatcher(value, system):
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_construct_library_set_object.values()))
 def audit_construct_library_set_object_dispatcher(value, system):
     for function_name in function_dispatcher_construct_library_set_object.keys():
         for failure in function_dispatcher_construct_library_set_object[function_name](value, system):
@@ -1113,6 +1120,7 @@ def audit_construct_library_set_object_dispatcher(value, system):
 
 
 @audit_checker('AnalysisSet', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_analysis_set_object.values()))
 def audit_analysis_set_object_dispatcher(value, system):
     for function_name in function_dispatcher_analysis_set_object.keys():
         for failure in function_dispatcher_analysis_set_object[function_name](value, system):
@@ -1120,6 +1128,7 @@ def audit_analysis_set_object_dispatcher(value, system):
 
 
 @audit_checker('PredictionSet', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_prediction_set_object.values()))
 def audit_prediction_set_object_dispatcher(value, system):
     for function_name in function_dispatcher_prediction_set_object.keys():
         for failure in function_dispatcher_prediction_set_object[function_name](value, system):
@@ -1127,6 +1136,7 @@ def audit_prediction_set_object_dispatcher(value, system):
 
 
 @audit_checker('ModelSet', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_model_set_object.values()))
 def audit_model_set_object_dispatcher(value, system):
     for function_name in function_dispatcher_model_set_object.keys():
         for failure in function_dispatcher_model_set_object[function_name](value, system):
