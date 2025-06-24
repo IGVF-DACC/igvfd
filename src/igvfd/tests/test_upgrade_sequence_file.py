@@ -87,3 +87,10 @@ def test_sequence_file_upgrade_14_15(upgrader, sequence_file_v14):
     assert sequence_file_v14['maximum_read_length'] == 101
     assert sequence_file_v14['read_count'] == 23040138
     assert value['schema_version'] == '15'
+
+
+def test_sequence_file_upgrade_16_17(upgrader, sequence_file_v16):
+    value = upgrader.upgrade('sequence_file', sequence_file_v16, current_version='16', target_version='17')
+    assert value['schema_version'] == '17'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

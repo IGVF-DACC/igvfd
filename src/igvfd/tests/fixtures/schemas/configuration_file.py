@@ -81,3 +81,13 @@ def configuration_file_v6(configuration_file_v1):
         'file_format_specifications': []
     })
     return item
+
+
+@pytest.fixture
+def configuration_file_v8(configuration_file_seqspec):
+    item = configuration_file_seqspec.copy()
+    item.update({
+        'schema_version': '8',
+        'status': 'replaced'
+    })
+    return item

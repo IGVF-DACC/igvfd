@@ -245,3 +245,13 @@ def reference_file_v17(reference_file_v6):
         'content_type': 'sequence barcodes'
     })
     return item
+
+
+@pytest.fixture
+def reference_file_v19(reference_file):
+    item = reference_file.copy()
+    item.update({
+        'schema_version': '19',
+        'status': 'replaced'
+    })
+    return item

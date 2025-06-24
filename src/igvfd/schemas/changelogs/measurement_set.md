@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 34
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Schema version 33
 
 * Add `control_types`.

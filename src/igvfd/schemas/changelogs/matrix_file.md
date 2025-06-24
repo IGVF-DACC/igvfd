@@ -1,5 +1,9 @@
 ## Changelog for *`matrix_file.json`*
 
+### Schema version 10
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Schema version 9
 
 * Adjust `derived_manually` to have default value `False`.

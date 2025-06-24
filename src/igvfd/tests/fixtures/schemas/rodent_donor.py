@@ -183,3 +183,13 @@ def rodent_donor_v13(rodent_donor):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def rodent_donor_v14(rodent_donor):
+    item = rodent_donor.copy()
+    item.update({
+        'schema_version': '14',
+        'status': 'replaced'
+    })
+    return item

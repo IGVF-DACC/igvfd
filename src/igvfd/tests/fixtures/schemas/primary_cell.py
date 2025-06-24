@@ -334,3 +334,13 @@ def primary_cell_v21(primary_cell):
         'biosample_qualifiers': ['calcified']
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v23(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '23',
+        'status': 'replaced'
+    })
+    return item

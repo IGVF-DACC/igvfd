@@ -14,3 +14,13 @@ def model_file(testapp, lab, award, principal_analysis_set):
         'controlled_access': False
     }
     return testapp.post_json('/model_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def model_file_v2(model_file):
+    item = model_file.copy()
+    item.update({
+        'schema_version': '2',
+        'status': 'replaced'
+    })
+    return item

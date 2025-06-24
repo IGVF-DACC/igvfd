@@ -99,3 +99,10 @@ def test_alignment_file_upgrade_15_16(upgrader, alignment_file_v15):
                              target_version='16')
     assert value['schema_version'] == '16'
     assert value['redacted'] == False
+
+
+def test_alignment_file_upgrade_16_17(upgrader, alignment_file_v16):
+    value = upgrader.upgrade('alignment_file', alignment_file_v16, current_version='16', target_version='17')
+    assert value['schema_version'] == '17'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

@@ -305,3 +305,13 @@ def whole_organism_v23(whole_organism):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v25(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '25',
+        'status': 'replaced'
+    })
+    return item

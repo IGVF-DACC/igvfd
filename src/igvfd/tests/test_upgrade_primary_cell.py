@@ -165,3 +165,10 @@ def test_primary_cell_upgrade_21_22(upgrader, primary_cell_v21):
     value = upgrader.upgrade('primary_cell', primary_cell_v21, current_version='21', target_version='22')
     assert value['schema_version'] == '22'
     assert value['biosample_qualifiers'] == ['6 days calcified']
+
+
+def test_primary_cell_upgrade_23_24(upgrader, primary_cell_v23):
+    value = upgrader.upgrade('primary_cell', primary_cell_v23, current_version='23', target_version='24')
+    assert value['schema_version'] == '24'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

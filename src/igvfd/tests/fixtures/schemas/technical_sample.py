@@ -148,3 +148,13 @@ def technical_sample_v13(technical_sample):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def technical_sample_v14(technical_sample):
+    item = technical_sample.copy()
+    item.update({
+        'schema_version': '14',
+        'status': 'replaced'
+    })
+    return item

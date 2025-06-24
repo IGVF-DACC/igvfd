@@ -58,7 +58,8 @@
                             "enum": [
                                 "revoked",
                                 "archived",
-                                "released"
+                                "released",
+                                "replaced"
                             ]
                         }
                     }
@@ -69,8 +70,7 @@
                             "enum": [
                                 "in progress",
                                 "preview",
-                                "deleted",
-                                "replaced"
+                                "deleted"
                             ]
                         }
                     }
@@ -87,7 +87,8 @@
                     "enum": [
                         "revoked",
                         "archived",
-                        "released"
+                        "released",
+                        "replaced"
                     ]
                 }
             }

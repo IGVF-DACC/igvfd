@@ -160,3 +160,10 @@ def test_tissue_upgrade_21_22(upgrader, tissue_v21):
     value = upgrader.upgrade('tissue', tissue_v21, current_version='21', target_version='22')
     assert value['schema_version'] == '22'
     assert value['embryonic'] == False
+
+
+def test_tissue_upgrade_22_23(upgrader, tissue_v22):
+    value = upgrader.upgrade('tissue', tissue_v22, current_version='22', target_version='23')
+    assert value['schema_version'] == '23'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

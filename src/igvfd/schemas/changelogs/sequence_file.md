@@ -1,5 +1,9 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 17
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Schema version 16
 
 * Extend `base_modifications` enum list to include `Nm`.

@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 20
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Minor changes since schema version 19
 
 * Extend `transcriptome_annotation` enum list to include `GENCODE 24`.

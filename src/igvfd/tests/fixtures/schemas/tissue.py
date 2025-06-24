@@ -316,3 +316,13 @@ def tissue_v21(tissue):
         'schema_version': '21'
     })
     return item
+
+
+@pytest.fixture
+def tissue_v22(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '22',
+        'status': 'replaced'
+    })
+    return item

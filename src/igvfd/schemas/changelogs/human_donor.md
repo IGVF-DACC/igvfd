@@ -1,5 +1,9 @@
 ## Changelog for *`human_donor.json`*
 
+### Schema version 15
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Minor changes since schema version 14
 
 * Extend `ethnicities` enum list to include `Not Hispanic`.

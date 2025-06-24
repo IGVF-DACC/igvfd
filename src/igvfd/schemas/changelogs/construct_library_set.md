@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Schema version 13
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Schema version 12
 
 * Remove `control_type`.

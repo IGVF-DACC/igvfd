@@ -1,5 +1,9 @@
 ## Changelog for *`curated_set.json`*
 
+### Schema version 9
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Minor changes since schema version 8
 
 * Add `preview_timestamp`.

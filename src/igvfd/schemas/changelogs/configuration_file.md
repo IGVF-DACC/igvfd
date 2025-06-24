@@ -1,5 +1,9 @@
 ## Changelog for *`configuration_file.json`*
 
+### Schema version 9
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Schema version 8
 
 * Adjust `derived_manually` to have default value `False`.

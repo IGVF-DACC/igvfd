@@ -25,3 +25,10 @@ def test_configuration_file_upgrade_6_7(upgrader, configuration_file_v6):
     assert 'derived_from' not in value
     assert 'file_format_specifications' not in value
     assert value['schema_version'] == '7'
+
+
+def test_configuration_file_upgrade_8_9(upgrader, configuration_file_v8):
+    value = upgrader.upgrade('configuration_file', configuration_file_v8, current_version='8', target_version='9')
+    assert value['schema_version'] == '9'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

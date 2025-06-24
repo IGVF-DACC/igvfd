@@ -1,5 +1,9 @@
 ## Changelog for *`model_file.json`*
 
+### Schema version 3
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Schema version 2
 
 * Adjust `derived_manually` to have default value `False`.

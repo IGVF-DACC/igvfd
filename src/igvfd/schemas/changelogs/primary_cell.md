@@ -1,5 +1,9 @@
 ## Changelog for *`primary_cell.json`*
 
+### Schema version 24
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Schema version 23
 
 * Adjust `embryonic` to have default value `False`.

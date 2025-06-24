@@ -151,3 +151,13 @@ def matrix_file_v7(matrix_file):
         'file_format': 'tar'
     })
     return item
+
+
+@pytest.fixture
+def matrix_file_v9(matrix_file):
+    item = matrix_file.copy()
+    item.update({
+        'schema_version': '9',
+        'status': 'replaced'
+    })
+    return item

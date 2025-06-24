@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 29
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Schema version 28
 
 * Adjust `embryonic` to have default value `False`.

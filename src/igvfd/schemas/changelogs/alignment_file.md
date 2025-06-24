@@ -1,5 +1,9 @@
 ## Changelog for *`alignment_file.json`*
 
+### Schema version 17
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Minor changes since schema version 16
 
 * Extend `base_modifications` enum list to include `Nm`.

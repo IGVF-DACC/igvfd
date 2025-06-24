@@ -1,5 +1,9 @@
 ## Changelog for *`signal_file.json`*
 
+### Schema version 13
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Minor changes since schema version 12
 
 * Extend `transcriptome_annotation` enum list to include `GENCODE 24`.

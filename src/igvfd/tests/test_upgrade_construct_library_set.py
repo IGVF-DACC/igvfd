@@ -72,3 +72,11 @@ def test_construct_library_set_upgrade_11_12(upgrader, construct_library_set_v11
     assert 'control_type' not in value
     assert 'control_types' in value and value['control_types'] == list(control_type)
     assert value['schema_version'] == '12'
+
+
+def test_construct_library_set_upgrade_12_13(upgrader, construct_library_set_v12):
+    value = upgrader.upgrade('construct_library_set', construct_library_set_v12,
+                             current_version='12', target_version='13')
+    assert value['schema_version'] == '13'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

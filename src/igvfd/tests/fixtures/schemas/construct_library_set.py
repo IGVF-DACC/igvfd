@@ -268,3 +268,13 @@ def construct_library_set_v11(construct_library_set_reference_transduction):
         'control_type': 'control transduction'
     })
     return item
+
+
+@pytest.fixture
+def construct_library_set_v12(construct_library_set_genome_wide):
+    item = construct_library_set_genome_wide.copy()
+    item.update({
+        'schema_version': '12',
+        'status': 'replaced'
+    })
+    return item

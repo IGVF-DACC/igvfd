@@ -1,5 +1,9 @@
 ## Changelog for *`model_set.json`*
 
+### Schema version 6
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Minor changes since schema version 5
 
 * Add `preview_timestamp`.

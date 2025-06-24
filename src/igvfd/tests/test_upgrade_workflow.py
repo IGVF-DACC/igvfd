@@ -34,3 +34,10 @@ def test_workflow_upgrade_5_6(upgrader, workflow_v5):
     assert value['schema_version'] == '6'
     assert isinstance(value['workflow_version'], str)
     assert value['workflow_version'] == 'v5.0.0'
+
+
+def test_workflow_upgrade_6_7(upgrader, workflow_v6):
+    value = upgrader.upgrade('workflow', workflow_v6, current_version='6', target_version='7')
+    assert value['schema_version'] == '7'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

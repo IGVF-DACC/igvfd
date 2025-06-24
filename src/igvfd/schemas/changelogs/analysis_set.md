@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_set.json`*
 
+### Schema version 11
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Schema version 10
 
 * Rename `demultiplexed_sample` to `demultiplexed_samples`.
