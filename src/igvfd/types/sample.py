@@ -145,7 +145,7 @@ class Sample(Item):
         'uniqueItems': True,
         'items': {
             'title': 'File Set',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'FileSet.samples',
         },
         'notSubmittable': True,
@@ -178,7 +178,7 @@ class Sample(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Multiplexed In',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'MultiplexedSample.multiplexed_samples',
         },
         'notSubmittable': True,
@@ -194,7 +194,7 @@ class Sample(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Sorted Fraction Sample',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'Sample.sorted_from',
         },
         'notSubmittable': True,
@@ -210,7 +210,7 @@ class Sample(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Originated Sample',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'InVitroSystem.originated_from',
         },
         'notSubmittable': True,
@@ -226,7 +226,7 @@ class Sample(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Institutional Certificate',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'InstitutionalCertificate.samples',
         },
         'notSubmittable': True,
@@ -599,7 +599,7 @@ class Biosample(Sample):
         'uniqueItems': True,
         'items': {
             'title': 'Biosample Part',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'Biosample.part_of',
         },
         'notSubmittable': True,
@@ -615,7 +615,7 @@ class Biosample(Sample):
         'uniqueItems': True,
         'items': {
             'title': 'Biosample Pooled In',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'Biosample.pooled_from',
         },
         'notSubmittable': True,
@@ -687,7 +687,7 @@ class InVitroSystem(Biosample):
         'uniqueItems': True,
         'items': {
             'title': 'Demultiplexed To',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'InVitroSystem.demultiplexed_from',
         },
         'notSubmittable': True,
@@ -1161,4 +1161,4 @@ class MultiplexedSample(Sample):
         sample_classfications = collect_multiplexed_samples_prop(
             request, multiplexed_samples, 'classifications', skip_calculated=False)
         self_classification = [self.item_type.replace('_', ' ')]
-        return sample_classfications + self_classification
+        return sorted(sample_classfications + self_classification)

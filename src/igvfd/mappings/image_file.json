@@ -1,6 +1,6 @@
 {
-    "hash": "7235312428d2882fe14c1522da91e283",
-    "index_name": "image_file_72353124",
+    "hash": "4d2da8371aa22d6e7e961864180d91fe",
+    "index_name": "image_file_4d2da837",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -569,6 +569,9 @@
                                 "type": "boolean"
                             },
                             "file_set_type": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
                                 "type": "keyword"
                             },
                             "files": {
@@ -2022,6 +2025,9 @@
                                 "type": "keyword"
                             },
                             "file_set_type": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
                                 "type": "keyword"
                             },
                             "files": {

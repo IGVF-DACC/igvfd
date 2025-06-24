@@ -81,7 +81,7 @@ class Publication(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Sample',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'Sample.publications',
         },
         'notSubmittable': True
@@ -97,7 +97,7 @@ class Publication(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Donor',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'Donor.publications',
         },
         'notSubmittable': True
@@ -113,7 +113,7 @@ class Publication(Item):
         'uniqueItems': True,
         'items': {
             'title': 'File Set',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'FileSet.publications',
         },
         'notSubmittable': True
@@ -129,7 +129,7 @@ class Publication(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Workflow',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'Workflow.publications',
         },
         'notSubmittable': True
@@ -145,7 +145,7 @@ class Publication(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Software',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'Software.publications',
         },
         'notSubmittable': True
@@ -161,7 +161,7 @@ class Publication(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Software Version',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'SoftwareVersion.publications',
         },
         'notSubmittable': True

@@ -1,6 +1,6 @@
 {
-    "hash": "7a50e4657cdfcee71f165f8c8534930b",
-    "index_name": "primary_cell_7a50e465",
+    "hash": "bd53b4f2fb73fd2311898f6434df3c84",
+    "index_name": "primary_cell_bd53b4f2",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -571,6 +571,9 @@
                             "file_set_type": {
                                 "type": "keyword"
                             },
+                            "file_sets": {
+                                "type": "keyword"
+                            },
                             "files": {
                                 "type": "keyword"
                             },
@@ -1053,6 +1056,9 @@
                                 "type": "boolean"
                             },
                             "file_set_type": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
                                 "type": "keyword"
                             },
                             "files": {

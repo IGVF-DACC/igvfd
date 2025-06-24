@@ -48,7 +48,7 @@ class AnalysisStepVersion(Item):
         'uniqueItems': True,
         'items': {
             'title': 'Workflow',
-            'type': ['string', 'object'],
+            'type': 'string',
             'linkFrom': 'Workflow.analysis_step_versions'
         },
         'notSubmittable': True
