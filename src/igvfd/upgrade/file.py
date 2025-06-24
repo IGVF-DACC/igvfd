@@ -506,3 +506,19 @@ def signal_file_11_12(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2744
     if 'normalized' not in value:
         value['normalized'] = False
+
+
+@upgrade_step('tabular_file', '16', '17')
+def tabular_file_16_17(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2733
+    notes = value.get('notes', '')
+    if value['content_type'] == 'variant functional predictions':
+        value['content_type'] = 'variant functions'
+        notes += f' This file\'s content_type was variant functional predictions, but has been upgraded to variant functions.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+    if value['content_type'] == 'element to gene predictions':
+        value['content_type'] = 'element to gene interactions'
+        notes += f' This file\'s content_type was element to gene predictions, but has been upgraded to element to gene interactions.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

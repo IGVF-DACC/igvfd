@@ -61,3 +61,15 @@ def test_tabular_file_upgrade_14_15(upgrader, tabular_file_v14):
     value = upgrader.upgrade('tabular_file', tabular_file_v14, current_version='14', target_version='15')
     assert value['content_type'] == 'barcode onlist'
     assert value['schema_version'] == '15'
+
+
+def test_tabular_file_upgrade_16_17_1(upgrader, tabular_file_v16_1):
+    value = upgrader.upgrade('tabular_file', tabular_file_v16_1, current_version='16', target_version='17')
+    assert value['content_type'] == 'variant functions'
+    assert value['schema_version'] == '17'
+
+
+def test_tabular_file_upgrade_16_17_2(upgrader, tabular_file_v16_2):
+    value = upgrader.upgrade('tabular_file', tabular_file_v16_2, current_version='16', target_version='17')
+    assert value['content_type'] == 'element to gene interactions'
+    assert value['schema_version'] == '17'
