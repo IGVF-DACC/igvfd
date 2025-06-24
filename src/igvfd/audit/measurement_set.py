@@ -2,6 +2,9 @@ from snovault.auditor import (
     AuditFailure,
     audit_checker
 )
+
+from snovault.mapping import watch_for_changes_in
+
 from .formatter import (
     audit_link,
     path_to_text,
@@ -724,6 +727,7 @@ function_dispatcher_measurement_set_embedded = {
 
 
 @audit_checker('MeasurementSet', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_measurement_set_object.values()))
 def audit_measurement_set_object_dispatcher(value, system):
     for function_name in function_dispatcher_measurement_set_object.keys():
         for failure in function_dispatcher_measurement_set_object[function_name](value, system):
@@ -731,6 +735,7 @@ def audit_measurement_set_object_dispatcher(value, system):
 
 
 @audit_checker('MeasurementSet', frame='embedded')
+@watch_for_changes_in(functions=list(function_dispatcher_measurement_set_embedded.values()))
 def audit_measurement_set_embedded_dispatcher(value, system):
     for function_name in function_dispatcher_measurement_set_embedded.keys():
         for failure in function_dispatcher_measurement_set_embedded[function_name](value, system):
