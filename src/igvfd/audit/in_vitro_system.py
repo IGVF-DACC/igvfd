@@ -2,6 +2,9 @@ from snovault.auditor import (
     AuditFailure,
     audit_checker
 )
+
+from snovault.mapping import watch_for_changes_in
+
 from .formatter import (
     audit_link,
     path_to_text,
@@ -65,6 +68,7 @@ function_dispatcher_in_vitro_system_embedded = {
 
 
 @audit_checker('InVitroSystem', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_in_vitro_system_object.values()))
 def audit_in_vitro_system_object_dispatcher(value, system):
     for function_name in function_dispatcher_in_vitro_system_object.keys():
         for failure in function_dispatcher_in_vitro_system_object[function_name](value, system):
@@ -72,6 +76,7 @@ def audit_in_vitro_system_object_dispatcher(value, system):
 
 
 @audit_checker('InVitroSystem', frame='embedded')
+@watch_for_changes_in(functions=list(function_dispatcher_in_vitro_system_embedded.values()))
 def audit_in_vitro_system_embedded_dispatcher(value, system):
     for function_name in function_dispatcher_in_vitro_system_embedded.keys():
         for failure in function_dispatcher_in_vitro_system_embedded[function_name](value, system):
