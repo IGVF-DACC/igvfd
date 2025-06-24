@@ -59,7 +59,7 @@ def audit_missing_barcode_map(value, system):
             if barcode_map_object['content_type'] != 'barcode to hashtag mapping':
                 detail = (
                     f'Auxiliary set {audit_link(path_to_text(value["@id"]), value["@id"])} links '
-                    f'to `barcode_map` {barcode_map} that is not a barcode to hashtag mapping.'
+                    f'to `barcode_map` {audit_link(path_to_text(barcode_map), barcode_map)} that is not a barcode to hashtag mapping.'
                 )
                 yield AuditFailure(audit_message_inconsistent.get('audit_category', ''), f'{detail} {audit_message_inconsistent.get("audit_description", "")}', level=audit_message_inconsistent.get('audit_level', ''))
 
