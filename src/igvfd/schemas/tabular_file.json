@@ -83,7 +83,8 @@
                             "properties": {
                                 "file_format": {
                                     "enum": [
-                                        "bed"
+                                        "bed",
+                                        "bigBed"
                                     ]
                                 }
                             }
@@ -283,6 +284,7 @@
             "enum": [
                 "bed",
                 "bedpe",
+                "bigBed",
                 "csv",
                 "gtf",
                 "tar",
