@@ -393,6 +393,7 @@ class Biosample(Sample):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
         biosample_type = self.item_type
+        biosample_subschemas = ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']
 
         # sample term customization based on biosample type
         if biosample_type == 'primary_cell':
@@ -407,7 +408,7 @@ class Biosample(Sample):
                     summary_terms = term_name
                 elif 'cell' in classifications[0] and 'cell' in term_name:
                     summary_terms = term_name.replace('cell', classifications[0])
-                elif 'tissue' in classifications[0] and 'tissue' in term_name:
+                elif 'tissue/organ' in classifications[0] and ('tissue' in term_name or 'organ' in term_name):
                     summary_terms = term_name.replace('tissue', classifications[0])
                 elif 'gastruloid' in classifications[0]:
                     summary_terms = term_name.replace('gastruloid', '')
@@ -425,8 +426,8 @@ class Biosample(Sample):
                     if 'cell' in term_name:
                         summary_terms = term_name.replace('cell', 'pooled cell specimen')
         elif biosample_type == 'tissue':
-            if 'tissue' not in term_name:
-                summary_terms = f'{term_name} tissue'
+            if 'tissue' not in term_name and 'organ' not in term_name:
+                summary_terms = f'{term_name} tissue/organ'
             else:
                 summary_terms = term_name
         elif biosample_type == 'whole_organism':
@@ -447,7 +448,7 @@ class Biosample(Sample):
         # sex and age are prepended to the start of the summary
         sex_and_age = [None, None]
         if (sex and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in biosample_subschemas):
             if sex != 'unspecified':
                 if sex == 'mixed':
                     sex_and_age[0] = 'mixed sex'
@@ -464,7 +465,7 @@ class Biosample(Sample):
 
         # taxa of the donor(s) is prepended to the start of the summary
         if (donors and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in biosample_subschemas):
             if not taxa or taxa == 'Mus musculus':
                 taxa_set = set()
                 strains_set = set()
@@ -532,14 +533,14 @@ class Biosample(Sample):
 
         # disease terms are appended to the end of the summary
         if (disease_terms and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in biosample_subschemas):
             phenotype_term_names = sorted([request.embed(disease_term).get('term_name')
                                           for disease_term in disease_terms])
             summary_terms += f' associated with {", ".join(phenotype_term_names)},'
 
         # treatment summaries are appended to the end of the summary
         if (treatments and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in biosample_subschemas):
             treatment_objects = [request.embed(treatment) for treatment in treatments]
             depleted_treatment_summaries = sorted([treatment.get('summary')[13:]
                                                   for treatment in treatment_objects if treatment.get('depletion')])
@@ -552,7 +553,7 @@ class Biosample(Sample):
 
         # modification summaries are appended to the end of the summary
         if (modifications and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in biosample_subschemas):
             modification_objects = [request.embed(modification) for modification in modifications]
             modification_summaries = sorted([modification.get('summary') for modification in modification_objects])
             if modification_summaries:
@@ -560,7 +561,7 @@ class Biosample(Sample):
 
         # construct library set overview is appended to the end of the summary
         if (construct_library_sets and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+                biosample_type in biosample_subschemas):
             verb = 'transfected with'
             if time_post_library_delivery:
                 verb = f'{time_post_library_delivery} {time_post_library_delivery_units}(s) after transfection with'
@@ -700,8 +701,8 @@ class InVitroSystem(Biosample):
     name='tissues',
     unique_key='accession',
     properties={
-        'title': 'Tissues',
-        'description': 'Listing of tissues',
+        'title': 'Tissues/Organs',
+        'description': 'Listing of tissues or organs.',
     }
 )
 class Tissue(Biosample):
@@ -727,7 +728,7 @@ class Tissue(Biosample):
         }
     )
     def classifications(self):
-        return [self.item_type.replace('_', ' ')]
+        return ['tissue/organ']
 
 
 @collection(
