@@ -617,3 +617,19 @@ def prediction_set_8_9(value, system):
         notes += f'This object\'s file_set_type was pathogenicity and has been upgraded to functional effect.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_set', '10', '11')
+@upgrade_step('auxiliary_set', '12', '13')
+@upgrade_step('construct_library_set', '12', '13')
+@upgrade_step('curated_set', '8', '9')
+@upgrade_step('measurement_set', '33', '34')
+@upgrade_step('model_set', '5', '6')
+@upgrade_step('prediction_set', '9', '10')
+def fileset_replaced_release_timestamp_dependency(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2834
+    if value.get('status') == 'replaced' and 'release_timestamp' not in value:
+        value['release_timestamp'] = '2025-06-24T12:34:56Z'
+        notes = value.get('notes', '')
+        notes += "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"
+        value['notes'] = notes.strip()

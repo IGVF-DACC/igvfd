@@ -1,5 +1,9 @@
 ## Changelog for *`technical_sample.json`*
 
+### Schema version 15
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Minor changes since schema version 14
 
 * Add `preview_timestamp`.

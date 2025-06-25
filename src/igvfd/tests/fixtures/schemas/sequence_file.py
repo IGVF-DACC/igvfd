@@ -293,3 +293,13 @@ def sequence_file_v14(sequence_file):
         'read_count': 23040138.0,
     })
     return item
+
+
+@pytest.fixture
+def sequence_file_v16(sequence_file):
+    item = sequence_file.copy()
+    item.update({
+        'schema_version': '16',
+        'status': 'replaced'
+    })
+    return item

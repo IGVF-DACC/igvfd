@@ -72,3 +72,10 @@ def test_rodent_donor_upgrade_13_14(upgrader, rodent_donor_v13):
     value = upgrader.upgrade('rodent_donor', rodent_donor_v13, current_version='13', target_version='14')
     assert 'publication_identifiers' not in value
     assert value['schema_version'] == '14'
+
+
+def test_rodent_donor_upgrade_14_15(upgrader, rodent_donor_v14):
+    value = upgrader.upgrade('rodent_donor', rodent_donor_v14, current_version='14', target_version='15')
+    assert value['schema_version'] == '15'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

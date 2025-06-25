@@ -63,3 +63,13 @@ def workflow_v5(base_workflow):
         'workflow_version': 5
     })
     return item
+
+
+@pytest.fixture
+def workflow_v6(base_workflow):
+    item = base_workflow.copy()
+    item.update({
+        'schema_version': '6',
+        'status': 'replaced'
+    })
+    return item

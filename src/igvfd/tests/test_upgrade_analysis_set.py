@@ -53,3 +53,10 @@ def test_analysis_set_upgrade_9_10(upgrader, analysis_set_v9):
     assert 'demultiplexed_sample' not in value
     assert 'demultiplexed_samples' in value
     assert len(value['demultiplexed_samples']) == 1
+
+
+def test_analysis_set_upgrade_10_11(upgrader, analysis_set_v10):
+    value = upgrader.upgrade('analysis_set', analysis_set_v10, current_version='10', target_version='11')
+    assert value['schema_version'] == '11'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

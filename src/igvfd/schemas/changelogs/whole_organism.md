@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 26
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Schema version 25
 
 * Adjust `embryonic` to have default value `False`.

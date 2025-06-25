@@ -522,3 +522,22 @@ def tabular_file_16_17(value, system):
         notes += f' This file\'s content_type was element to gene predictions, but has been upgraded to element to gene interactions.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('alignment_file', '16', '17')
+@upgrade_step('configuration_file', '8', '9')
+@upgrade_step('image_file', '5', '6')
+@upgrade_step('index_file', '2', '3')
+@upgrade_step('matrix_file', '9', '10')
+@upgrade_step('model_file', '2', '3')
+@upgrade_step('reference_file', '19', '20')
+@upgrade_step('sequence_file', '16', '17')
+@upgrade_step('signal_file', '12', '13')
+@upgrade_step('tabular_file', '17', '18')
+def file_replaced_release_timestamp_dependency(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2834
+    if value.get('status') == 'replaced' and 'release_timestamp' not in value:
+        value['release_timestamp'] = '2025-06-24T12:34:56Z'
+        notes = value.get('notes', '')
+        notes += "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"
+        value['notes'] = notes.strip()

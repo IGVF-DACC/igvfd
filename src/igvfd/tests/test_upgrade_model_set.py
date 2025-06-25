@@ -17,3 +17,10 @@ def test_model_set_upgrade_4_5(upgrader, model_set_v4):
     value = upgrader.upgrade('model_set', model_set_v4, current_version='4', target_version='5')
     assert value['schema_version'] == '5'
     assert 'software_version' not in value
+
+
+def test_model_set_upgrade_5_6(upgrader, model_set_v5):
+    value = upgrader.upgrade('model_set', model_set_v5, current_version='5', target_version='6')
+    assert value['schema_version'] == '6'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

@@ -29,3 +29,13 @@ def index_file_bai(testapp, lab, award, principal_analysis_set, alignment_file):
         'derived_from': [alignment_file['@id']]
     }
     return testapp.post_json('/index_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def index_file_v2(index_file_tbi):
+    item = index_file_tbi.copy()
+    item.update({
+        'schema_version': '2',
+        'status': 'replaced'
+    })
+    return item

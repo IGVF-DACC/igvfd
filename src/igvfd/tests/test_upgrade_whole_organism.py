@@ -182,3 +182,10 @@ def test_whole_organism_upgrade_23_24(upgrader, whole_organism_v23):
     value = upgrader.upgrade('whole_organism', whole_organism_v23, current_version='23', target_version='24')
     assert 'publication_identifiers' not in value
     assert value['schema_version'] == '24'
+
+
+def test_whole_organism_upgrade_25_26(upgrader, whole_organism_v25):
+    value = upgrader.upgrade('whole_organism', whole_organism_v25, current_version='25', target_version='26')
+    assert value['schema_version'] == '26'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

@@ -552,3 +552,18 @@ def sample_22_23(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2085
     if 'embryonic' not in value:
         value['embryonic'] = False
+
+
+@upgrade_step('in_vitro_system', '28', '29')
+@upgrade_step('multiplexed_sample', '10', '11')
+@upgrade_step('primary_cell', '23', '24')
+@upgrade_step('technical_sample', '14', '15')
+@upgrade_step('tissue', '22', '23')
+@upgrade_step('whole_organism', '25', '26')
+def sample_replaced_release_timestamp_dependency(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2834
+    if value.get('status') == 'replaced' and 'release_timestamp' not in value:
+        value['release_timestamp'] = '2025-06-24T12:34:56Z'
+        notes = value.get('notes', '')
+        notes += "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"
+        value['notes'] = notes.strip()

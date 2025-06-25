@@ -39,3 +39,10 @@ def test_matrix_file_upgrade_7_8(upgrader, matrix_file_v7):
     value = upgrader.upgrade('matrix_file', matrix_file_v7, current_version='7', target_version='8')
     assert value['schema_version'] == '8'
     assert value['content_type'] == 'kallisto single cell RNAseq output'
+
+
+def test_matrix_file_upgrade_9_10(upgrader, matrix_file_v9):
+    value = upgrader.upgrade('matrix_file', matrix_file_v9, current_version='9', target_version='10')
+    assert value['schema_version'] == '10'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

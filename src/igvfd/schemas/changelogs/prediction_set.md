@@ -1,5 +1,9 @@
 ## Changelog for *`prediction_set.json`*
 
+### Schema version 10
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Schema version 9
 
 * Reduce `file_set_type` enum list to exclude `pathogenicity`.

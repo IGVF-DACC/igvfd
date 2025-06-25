@@ -1,5 +1,9 @@
 ## Changelog for *`tissue/organ.json`*
 
+### Schema version 23
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Schema version 22
 
 * Adjust `embryonic` to have default value `False`.

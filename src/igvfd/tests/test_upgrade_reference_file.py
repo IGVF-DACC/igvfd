@@ -140,3 +140,10 @@ def test_reference_file_upgrade_17_18(upgrader, reference_file_v17):
     value = upgrader.upgrade('reference_file', reference_file_v17, current_version='17', target_version='18')
     assert value['content_type'] == 'genomic_elements_genes'
     assert value['schema_version'] == '18'
+
+
+def test_reference_file_upgrade_19_20(upgrader, reference_file_v19):
+    value = upgrader.upgrade('reference_file', reference_file_v19, current_version='19', target_version='20')
+    assert value['schema_version'] == '20'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

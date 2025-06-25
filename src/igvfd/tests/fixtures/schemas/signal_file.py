@@ -132,3 +132,13 @@ def signal_file_v11(testapp, lab, award, principal_analysis_set, reference_file)
         'filtered': False
     }
     return testapp.post_json('/signal_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def signal_file_v12(signal_file):
+    item = signal_file.copy()
+    item.update({
+        'schema_version': '12',
+        'status': 'replaced'
+    })
+    return item

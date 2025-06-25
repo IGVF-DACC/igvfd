@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 18
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Schema version 17
 
 * Adjust `content_type` enum list to replace `variant functional predictions` with `variant functions`.

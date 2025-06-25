@@ -209,3 +209,13 @@ def alignment_file_v15(alignment_file):
         'schema_version': '15',
     })
     return item
+
+
+@pytest.fixture
+def alignment_file_v16(alignment_file):
+    item = alignment_file.copy()
+    item.update({
+        'schema_version': '16',
+        'status': 'replaced'
+    })
+    return item

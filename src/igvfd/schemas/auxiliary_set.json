@@ -53,7 +53,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "12"
+            "default": "13"
         },
         "file_set_type": {
             "description": "The category that best describes this auxiliary file set.",

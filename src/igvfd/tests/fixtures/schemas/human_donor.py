@@ -242,3 +242,13 @@ def human_donor_v13(human_donor):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def human_donor_v14(human_donor):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '14',
+        'status': 'replaced'
+    })
+    return item

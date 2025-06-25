@@ -1,5 +1,9 @@
 ## Changelog for *`workflow.json`*
 
+### Schema version 7
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Schema version 6
 
 * Change `workflow_version` from an integer to a string.

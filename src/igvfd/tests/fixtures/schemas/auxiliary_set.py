@@ -152,3 +152,13 @@ def auxiliary_set_v11(base_auxiliary_set):
         'file_set_type': 'variant sequencing'
     })
     return item
+
+
+@pytest.fixture
+def auxiliary_set_v12(base_auxiliary_set):
+    item = base_auxiliary_set.copy()
+    item.update({
+        'schema_version': '12',
+        'status': 'replaced'
+    })
+    return item

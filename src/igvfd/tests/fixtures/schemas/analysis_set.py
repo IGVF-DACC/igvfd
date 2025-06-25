@@ -194,3 +194,13 @@ def analysis_set_v9(analysis_set_base, tissue):
         'demultiplexed_sample': tissue['@id']
     })
     return item
+
+
+@pytest.fixture
+def analysis_set_v10(analysis_set_base):
+    item = analysis_set_base.copy()
+    item.update({
+        'schema_version': '10',
+        'status': 'replaced'
+    })
+    return item

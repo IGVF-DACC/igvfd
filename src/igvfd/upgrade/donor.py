@@ -194,3 +194,14 @@ def donor_13_14(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1789
     if 'publication_identifiers' in value:
         del value['publication_identifiers']
+
+
+@upgrade_step('human_donor', '14', '15')
+@upgrade_step('rodent_donor', '14', '15')
+def donor_replaced_release_timestamp_dependency(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2834
+    if value.get('status') == 'replaced' and 'release_timestamp' not in value:
+        value['release_timestamp'] = '2025-06-24T12:34:56Z'
+        notes = value.get('notes', '')
+        notes += "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"
+        value['notes'] = notes.strip()

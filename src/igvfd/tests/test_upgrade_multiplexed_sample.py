@@ -58,3 +58,10 @@ def test_multiplexed_sample_upgrade_9_10(upgrader, multiplexed_sample_v9):
     value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v9, current_version='9', target_version='10')
     assert value['schema_version'] == '10'
     assert value['multiplexing_methods'] == ['barcode based']
+
+
+def test_multiplexed_sample_upgrade_10_11(upgrader, multiplexed_sample_v10):
+    value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v10, current_version='10', target_version='11')
+    assert value['schema_version'] == '11'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

@@ -218,3 +218,10 @@ def test_measurement_set_upgrade_32_33(upgrader, measurement_set_v32):
     assert 'control_type' not in value
     assert 'control_types' in value and value['control_types'] == list(control_type)
     assert value['schema_version'] == '33'
+
+
+def test_measurement_set_upgrade_33_34(upgrader, measurement_set_v33):
+    value = upgrader.upgrade('measurement_set', measurement_set_v33, current_version='33', target_version='34')
+    assert value['schema_version'] == '34'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

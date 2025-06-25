@@ -40,3 +40,13 @@ def workflow_5_6(value, system):
     if 'workflow_version' in value:
         version_old = str(value['workflow_version'])
         value['workflow_version'] = f'v{version_old}.0.0'
+
+
+@upgrade_step('workflow', '6', '7')
+def workflow_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2834
+    if value.get('status') == 'replaced' and 'release_timestamp' not in value:
+        value['release_timestamp'] = '2025-06-24T12:34:56Z'
+        notes = value.get('notes', '')
+        notes += "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"
+        value['notes'] = notes.strip()

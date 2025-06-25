@@ -45,3 +45,10 @@ def test_prediction_set_set_upgrade_8_9(upgrader, prediction_set_v8):
     value = upgrader.upgrade('prediction_set', prediction_set_v8, current_version='8', target_version='9')
     assert value['schema_version'] == '9'
     assert value['file_set_type'] == 'functional effect'
+
+
+def test_prediction_set_upgrade_9_10(upgrader, prediction_set_v9):
+    value = upgrader.upgrade('prediction_set', prediction_set_v9, current_version='9', target_version='10')
+    assert value['schema_version'] == '10'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

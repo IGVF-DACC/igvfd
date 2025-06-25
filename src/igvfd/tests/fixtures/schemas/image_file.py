@@ -24,3 +24,13 @@ def image_file_v3(image_file):
         'file_format_specifications': []
     })
     return item
+
+
+@pytest.fixture
+def image_file_v5(image_file):
+    item = image_file.copy()
+    item.update({
+        'schema_version': '5',
+        'status': 'replaced'
+    })
+    return item

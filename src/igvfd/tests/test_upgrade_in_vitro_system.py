@@ -200,3 +200,10 @@ def test_in_vitro_system_upgrade_25_26(upgrader, in_vitro_system_v25):
 def test_in_vitro_system_upgrade_26_27(upgrader, in_vitro_system_v26):
     value = upgrader.upgrade('in_vitro_system', in_vitro_system_v26, current_version='26', target_version='27')
     assert value['schema_version'] == '27'
+
+
+def test_in_vitro_system_upgrade_28_29(upgrader, in_vitro_system_v28):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v28, current_version='28', target_version='29')
+    assert value['schema_version'] == '29'
+    assert value['release_timestamp'] == '2025-06-24T12:34:56Z'
+    assert value['notes'] == "This object's release_timestamp has been set to 2025-06-24T12:34:56Z"

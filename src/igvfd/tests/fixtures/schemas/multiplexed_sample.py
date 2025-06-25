@@ -150,3 +150,13 @@ def multiplexed_sample_mixed_species(
         'multiplexing_methods': ['barcode based']
     }
     return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def multiplexed_sample_v10(multiplexed_sample):
+    item = multiplexed_sample.copy()
+    item.update({
+        'schema_version': '10',
+        'status': 'replaced'
+    })
+    return item

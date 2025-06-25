@@ -1,5 +1,9 @@
 ## Changelog for *`multiplexed_sample.json`*
 
+### Schema version 11
+
+* Require `release_timestamp` for any objects with `replaced` status.
+
 ### Minor changes since schema version 10
 
 * Add `preview_timestamp`.
