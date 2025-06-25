@@ -1,5 +1,10 @@
 ## Changelog for *`configuration_file.json`*
 
+### Minor changes since schema version 8
+
+* Add calculated property `workflows`.
+* Remove calculated property `workflow`.
+
 ### Schema version 8
 
 * Adjust `derived_manually` to have default value `False`.

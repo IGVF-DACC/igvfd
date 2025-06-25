@@ -1,6 +1,6 @@
 {
-    "hash": "94a9dbd135c4d10037b0df8de0541e9f",
-    "index_name": "configuration_file_94a9dbd1",
+    "hash": "e1680c7bbbcb8709d1fc2c275041a3d5",
+    "index_name": "configuration_file_e1680c7b",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -2457,7 +2457,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"

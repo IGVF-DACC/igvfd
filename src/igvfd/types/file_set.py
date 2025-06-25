@@ -30,12 +30,16 @@ def get_fileset_objs_from_input_file_sets(request, input_file_sets):
     return file_set_objs
 
 
-def get_file_objs_from_files(request, files):
+def get_file_objs_from_files(request, files, skip_calculated=True, select_property=None):
     '''Get file objects from an array of files'''
     file_objs = []
     if files is not None:
         for file in files:
-            file_objs.append(request.embed(file, '@@object?skip_calculated=true'))
+            if skip_calculated:
+                file_objs.append(request.embed(file, '@@object?skip_calculated=true'))
+            else:
+                file_objs.append(request.embed(
+                    file, f'@@object_with_select_calculated_properties?field={select_property}'))
     return file_objs
 
 
@@ -948,22 +952,12 @@ class AnalysisSet(FileSet):
     )
     def workflows(self, request, files=None):
         analysis_set_workflows_set = set()
-        # Get a list of file objects
-        file_objs = get_file_objs_from_files(request, files)
+        # Get a list of file objects (files should have workflow calculated)
+        file_objs = get_file_objs_from_files(request, files, skip_calculated=False, select_property='workflows')
         for file_obj in file_objs:
-            analysis_step_version = file_obj.get('analysis_step_version')
-            if analysis_step_version:
-                # Get analysis step version and request the object
-                analysis_step_version_obj = request.embed(analysis_step_version, '@@object?skip_calculated=true')
-                # Get analysis step and request the object
-                analysis_step = analysis_step_version_obj.get('analysis_step')
-                if analysis_step:
-                    analysis_step_obj = request.embed(analysis_step, '@@object?skip_calculated=true')
-                    # Get workflow and add to the set
-                    workflow = analysis_step_obj.get('workflow')
-                    if workflow:
-                        analysis_set_workflows_set.add(workflow)
-        return sorted(list(analysis_set_workflows_set))
+            if file_obj.get('workflows'):
+                analysis_set_workflows_set.update(file_obj.get('workflows'))
+        return sorted(analysis_set_workflows_set)
 
 
 @collection(

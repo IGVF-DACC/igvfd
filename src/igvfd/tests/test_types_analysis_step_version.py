@@ -19,3 +19,9 @@ def test_audit_calc_workflows(testapp, analysis_step_version, base_workflow, bas
                        )
     res = testapp.get(analysis_step_version['@id'])
     assert sorted(res.json['workflows']) == sorted([base_workflow['@id'], base_workflow_2['@id']])
+
+
+def test_audit_calc_analysis_step(testapp, analysis_step_version, analysis_step):
+    # Test: if an ASV is linked to an analysis step correctly
+    res = testapp.get(analysis_step_version['@id'])
+    assert res.json['analysis_step']['@id'] == analysis_step['@id']

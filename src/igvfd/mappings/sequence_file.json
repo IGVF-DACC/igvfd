@@ -1,6 +1,6 @@
 {
-    "hash": "2a82c869a818fa32158bb670615e29b5",
-    "index_name": "sequence_file_2a82c869",
+    "hash": "c22082fa855ec46228ebf537486b51f3",
+    "index_name": "sequence_file_c22082fa",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -2595,7 +2595,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"

@@ -1,5 +1,10 @@
 ## Changelog for *`sequence_file.json`*
 
+### Minor changes since schema version 16
+
+* Add calculated property `workflows`.
+* Remove calculated property `workflow`.
+
 ### Schema version 16
 
 * Extend `base_modifications` enum list to include `Nm`.

@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 12
 
+* Add calculated property `workflows`.
+* Remove calculated property `workflow`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 24`.
 
 ### Schema version 12

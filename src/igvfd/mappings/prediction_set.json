@@ -1,6 +1,6 @@
 {
-    "hash": "59712bf0764f1723b42538c8410a23b5",
-    "index_name": "prediction_set_59712bf0",
+    "hash": "1c471425e28524822f3da08027ee0a2c",
+    "index_name": "prediction_set_1c471425",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -794,7 +794,7 @@
                                     "validation_error_detail": {
                                         "type": "keyword"
                                     },
-                                    "workflow": {
+                                    "workflows": {
                                         "type": "keyword"
                                     }
                                 },
@@ -1759,7 +1759,7 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
-                            "workflow": {
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },
@@ -2016,7 +2016,7 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
-                            "workflow": {
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },
@@ -2207,7 +2207,7 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
-                            "workflow": {
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

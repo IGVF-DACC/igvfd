@@ -1,5 +1,10 @@
 ## Changelog for *`image_file.json`*
 
+### Minor changes since schema version 5
+
+* Add calculated property `workflows`.
+* Remove calculated property `workflow`.
+
 ### Schema version 5
 
 * Adjust `derived_manually` to have default value `False`.

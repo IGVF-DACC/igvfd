@@ -1,6 +1,6 @@
 {
-    "hash": "4cdc8b24a72ac52c70a87af9d8201e3c",
-    "index_name": "matrix_file_4cdc8b24",
+    "hash": "ea55b6cca82ce657d67344e6bc61936a",
+    "index_name": "matrix_file_ea55b6cc",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -2466,7 +2466,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
