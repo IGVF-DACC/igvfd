@@ -2,6 +2,9 @@ from snovault.auditor import (
     AuditFailure,
     audit_checker
 )
+
+from snovault.mapping import watch_for_changes_in
+
 from .formatter import (
     audit_link,
     path_to_text,
@@ -237,6 +240,7 @@ function_dispatcher_sample_object = {
 
 
 @audit_checker('Sample', frame='object?skip_calculated=true')
+@watch_for_changes_in(functions=list(function_dispatcher_sample_skip_calculated.values()))
 def audit_sample_skip_calculated_dispatcher(value, system):
     for function_name in function_dispatcher_sample_skip_calculated.keys():
         for failure in function_dispatcher_sample_skip_calculated[function_name](value, system):
@@ -244,6 +248,7 @@ def audit_sample_skip_calculated_dispatcher(value, system):
 
 
 @audit_checker('Sample', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_sample_object.values()))
 def audit_sample_object_dispatcher(value, system):
     for function_name in function_dispatcher_sample_object.keys():
         for failure in function_dispatcher_sample_object[function_name](value, system):

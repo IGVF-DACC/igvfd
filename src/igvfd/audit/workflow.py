@@ -2,6 +2,9 @@ from snovault.auditor import (
     AuditFailure,
     audit_checker
 )
+
+from snovault.mapping import watch_for_changes_in
+
 from .formatter import (
     audit_link,
     path_to_text,
@@ -32,6 +35,7 @@ function_dispatcher_workflow_object = {
 
 
 @audit_checker('Workflow', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_workflow_object.values()))
 def audit_workflow_object_dispatcher(value, system):
     for function_name in function_dispatcher_workflow_object.keys():
         for failure in function_dispatcher_workflow_object[function_name](value, system):
