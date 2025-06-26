@@ -693,7 +693,7 @@ class MatrixFile(File):
         transcriptome_annotation = ''
         for ref_file in reference_files:
             ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
-            if ref_file_object['content_type'] == 'transcriptome reference':
+            if ref_file_object['content_type'] == 'transcriptome reference' or ref_file_object['content_type'] == 'transcriptome index':
                 transcriptome_annotation_set.add(ref_file_object.get('transcriptome_annotation', ''))
         if len(transcriptome_annotation_set) > 1:
             transcriptome_annotation = 'mixed'
@@ -714,7 +714,7 @@ class MatrixFile(File):
         assembly = ''
         for ref_file in reference_files:
             ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
-            if ref_file_object['content_type'] == 'genome reference':
+            if ref_file_object['content_type'] == 'genome reference' or ref_file_object['content_type'] == 'genome index':
                 assembly_set.add(ref_file_object.get('assembly', ''))
         if len(assembly_set) > 1:
             assembly = 'mixed'
