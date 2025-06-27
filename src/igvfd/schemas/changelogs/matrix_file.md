@@ -1,6 +1,7 @@
 ## Changelog for *`matrix_file.json`*
 
 ### Minor changes since schema version 9
+
 * Add calculated property `transcriptome_annotation`.
 * Add calculated property `assembly`.
 
