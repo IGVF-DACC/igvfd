@@ -502,4 +502,3 @@ def measurement_set_v33(measurement_set):
         'preferred_assay_title': '10X ATAC with Scale pre-indexing'
     })
     return item
-
