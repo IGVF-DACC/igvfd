@@ -194,8 +194,15 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    print(res.get('summary', ''))
-    assert res.get('summary', '') == 'CRISPR interference ATAC-seq (10x multiome), CRISPR interference FlowFISH screen, MPRA'
+    assert res.get('summary', '') == 'ATAC-seq (10x multiome), CRISPR interference FlowFISH screen, MPRA integrating a guide (sgRNA) library targeting TF binding sites genome-wide'
+    testapp.patch_json(
+        measurement_set_multiome['@id'],
+        {
+            'samples': [primary_cell['@id']],
+        }
+    )
+    res = testapp.get(analysis_set_base['@id']).json
+    assert res.get('summary', '') == 'ATAC-seq (10x multiome), CRISPR interference FlowFISH screen, MPRA integrating a guide (sgRNA) library targeting TF binding sites genome-wide'
     # Preferred_assay_title of MeasurementSet is used instead of assay_term in summary whenever present
     testapp.patch_json(
         measurement_set_mpra['@id'],
@@ -212,7 +219,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'ATAC-seq (10x multiome), STARR-seq, lentiMPRA'
+    assert res.get('summary', '') == 'CRISPR interference ATAC-seq (10x multiome), STARR-seq, lentiMPRA integrating a guide (sgRNA) library targeting TF binding sites genome-wide'
     # Display any targeted_genes from an input Measurement Set.
     testapp.patch_json(
         measurement_set_mpra['@id'],
@@ -221,7 +228,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'ATAC-seq (10x multiome), STARR-seq, lentiMPRA targeting MYC'
+    assert res.get('summary', '') == 'CRISPR interference ATAC-seq (10x multiome), STARR-seq, lentiMPRA targeting MYC integrating a guide (sgRNA) library targeting TF binding sites genome-wide'
     testapp.patch_json(
         measurement_set_mpra['@id'],
         {
@@ -230,7 +237,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'summary', '') == 'ATAC-seq (10x multiome), STARR-seq, lentiMPRA targeting MYC with low FACS signal control'
+        'summary', '') == 'CRISPR interference ATAC-seq (10x multiome), STARR-seq, lentiMPRA targeting MYC integrating a guide (sgRNA) library targeting TF binding sites genome-wide with low FACS signal control'
     testapp.patch_json(
         measurement_set_perturb_seq['@id'],
         {
@@ -248,7 +255,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'summary', '') == 'ATAC-seq (10x multiome), Perturb-seq, STARR-seq, lentiMPRA targeting MYC with low FACS signal, untransfected controls'
+        'summary', '') == 'CRISPR interference ATAC-seq (10x multiome), Perturb-seq, STARR-seq, lentiMPRA targeting MYC integrating a guide (sgRNA) library targeting TF binding sites genome-wide with low FACS signal, untransfected controls'
     # Test inclusion of the multiplexing method.
     testapp.patch_json(
         measurement_set_multiome['@id'],
@@ -258,7 +265,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'summary', '') == 'ATAC-seq (10x multiome), Perturb-seq, STARR-seq, lentiMPRA (barcode based multiplexed) targeting MYC with low FACS signal, untransfected controls'
+        'summary', '') == 'CRISPR interference ATAC-seq (10x multiome), Perturb-seq, STARR-seq, lentiMPRA (barcode based multiplexed) targeting MYC integrating a guide (sgRNA) library targeting TF binding sites genome-wide with low FACS signal, untransfected controls'
     # Analysis Set that has construct_library_sets but the input_file_sets is a Measurement Set.
     testapp.patch_json(
         primary_cell['@id'],
