@@ -371,6 +371,10 @@ def config(instance_type, capacity_config, engine_version, postgres_engine_versi
             'min_scaling_capacity': 1,
             'max_scaling_capacity': 2,
         },
+        waf={
+            'enabled': True,
+            'arn': 'some-waf-arn',
+        },
         tags=[
             ('test', 'tag'),
         ]

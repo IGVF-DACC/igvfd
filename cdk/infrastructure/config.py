@@ -117,6 +117,10 @@ config: Dict[str, Any] = {
                 'min_scaling_capacity': 1,
                 'max_scaling_capacity': 10,
             },
+            'waf': {
+                'enabled': True,
+                'arn': '',
+            },
             'tags': [
                 ('time-to-live-hours', '60'),
                 ('turn-off-on-friday-night', 'yes'),
@@ -183,6 +187,10 @@ config: Dict[str, Any] = {
                 'min_scaling_capacity': 1,
                 'max_scaling_capacity': 10,
             },
+            'waf': {
+                'enabled': True,
+                'arn': '',
+            },
             'tags': [
             ]
         },
@@ -246,6 +254,10 @@ config: Dict[str, Any] = {
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
                 'max_scaling_capacity': 10,
+            },
+            'waf': {
+                'enabled': True,
+                'arn': '',
             },
             'tags': [
             ],
@@ -312,6 +324,10 @@ config: Dict[str, Any] = {
                 'min_scaling_capacity': 1,
                 'max_scaling_capacity': 10,
             },
+            'waf': {
+                'enabled': True,
+                'arn': '',
+            },
             'tags': [
             ],
             'url_prefix': 'api',
@@ -376,6 +392,10 @@ config: Dict[str, Any] = {
                 'min_scaling_capacity': 1,
                 'max_scaling_capacity': 10,
             },
+            'waf': {
+                'enabled': True,
+                'arn': '',
+            },
             'tags': [
             ],
             'url_prefix': 'api',
@@ -402,6 +422,7 @@ class Config:
     backend: Dict[str, Any]
     invalidation_service: Dict[str, Any]
     indexing_service: Dict[str, Any]
+    waf: Dict[str, Any]
     tags: List[Tuple[str, str]]
     url_prefix: Optional[str] = None
     use_subdomain: bool = True

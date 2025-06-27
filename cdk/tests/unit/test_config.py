@@ -25,6 +25,7 @@ def test_config_config_dataclass():
         backend={},
         invalidation_service={},
         indexing_service={},
+        waf={},
         tags=[
             ('abc', '123'),
             ('xyz', '321'),
@@ -38,6 +39,7 @@ def test_config_config_dataclass():
     assert config.backend == {}
     assert config.invalidation_service == {}
     assert config.indexing_service == {}
+    assert config.waf == {}
     assert config.branch == 'xyz-branch'
     assert config.tags == [
         ('abc', '123'),
