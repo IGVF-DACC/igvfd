@@ -119,7 +119,7 @@ config: Dict[str, Any] = {
             },
             'waf': {
                 'enabled': True,
-                'arn': '',
+                'arn': 'arn:aws:wafv2:us-west-2:109189702753:regional/webacl/IgvfApiDemoWaf-7ocdanWWnHMn/8e78b5c1-2dcd-4c7d-85bb-d0e41d147f97',
             },
             'tags': [
                 ('time-to-live-hours', '60'),
@@ -189,7 +189,7 @@ config: Dict[str, Any] = {
             },
             'waf': {
                 'enabled': True,
-                'arn': '',
+                'arn': 'arn:aws:wafv2:us-west-2:109189702753:regional/webacl/IgvfApiDemoWaf-7ocdanWWnHMn/8e78b5c1-2dcd-4c7d-85bb-d0e41d147f97',
             },
             'tags': [
             ]
