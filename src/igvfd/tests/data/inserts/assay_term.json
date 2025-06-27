@@ -53,7 +53,7 @@
         "preferred_assay_titles": [
             "scNT-seq2",
             "scMultiome-NT-seq",
-            "10x multiome with Scale pre-indexing"
+            "10x with Scale pre-indexing"
         ],
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
@@ -75,7 +75,7 @@
         "term_name": "single-cell ATAC-seq",
         "preferred_assay_titles": [
             "mtscMultiome",
-            "10x multiome with Scale pre-indexing",
+            "10x with Scale pre-indexing",
             "scACCESS-ATAC"
         ],
         "status": "released",
