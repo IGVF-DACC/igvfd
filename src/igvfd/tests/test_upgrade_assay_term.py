@@ -115,4 +115,4 @@ def test_assay_term_upgrade_15_16(upgrader, assay_term_v15):
 def test_assay_term_upgrade_16_17(upgrader, assay_term_v16):
     value = upgrader.upgrade('assay_term', assay_term_v16, current_version='16', target_version='17')
     assert value['schema_version'] == '17'
-    assert value.get('preferred_assay_titles') == ['10x multiome with Scale pre-indexing']
+    assert value.get('preferred_assay_titles') == ['10x with Scale pre-indexing']
