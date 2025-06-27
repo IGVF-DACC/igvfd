@@ -469,3 +469,20 @@ def test_workflows(testapp, analysis_set_with_workflow, matrix_file_with_base_wo
     res = testapp.get(analysis_set_with_workflow['@id'])
     assert set([workflow['@id'] for workflow in res.json.get('workflows')]
                ) == {'/workflows/IGVFWF0000WRKF/'}
+
+
+def test_targeted_genes(testapp, measurement_set, analysis_set_base, gene_myc_hs):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'targeted_genes': [gene_myc_hs['@id']]
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert set([gene['@id'] for gene in res.json.get('targeted_genes')]) == {gene_myc_hs['@id']}

@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_set.json`*
 
+### Minor changes since schema version 10
+
+* Add calculated property `targeted_genes`.
+
 ### Schema version 10
 
 * Rename `demultiplexed_sample` to `demultiplexed_samples`.

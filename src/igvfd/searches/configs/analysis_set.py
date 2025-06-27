@@ -46,6 +46,9 @@ def analysis_set():
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
+            'targeted_genes.symbol': {
+                'title': 'Targeted Genes'
+            },
             'files.content_type': {
                 'title': 'File Type',
             },
