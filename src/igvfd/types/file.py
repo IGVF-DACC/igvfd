@@ -682,31 +682,9 @@ class MatrixFile(File):
 
     @calculated_property(
         schema={
-            'title': 'Transcriptome Annotation',
+            '$merge': '../schemas/mixins.json#/transcriptome_annotation/transcriptome_annotation',
             'type': 'string',
-            'description': 'The annotation and version of the reference resource.',
             'enum': [
-                'GENCODE 22',
-                'GENCODE 24',
-                'GENCODE 28',
-                'GENCODE 32',
-                'GENCODE 40',
-                'GENCODE 41',
-                'GENCODE 42',
-                'GENCODE 43',
-                'GENCODE 44',
-                'GENCODE 45',
-                'GENCODE 47',
-                'GENCODE Cast - M32',
-                'GENCODE M17',
-                'GENCODE M25',
-                'GENCODE M30',
-                'GENCODE M31',
-                'GENCODE M32',
-                'GENCODE M33',
-                'GENCODE M34',
-                'GENCODE M36',
-                'GENCODE 32, GENCODE M23',
                 'Mixed transcriptome annotations'
             ],
             'notSubmittable': True
