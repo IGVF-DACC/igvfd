@@ -680,6 +680,60 @@ class MatrixFile(File):
             [x for x in [predicted, filtered_phrase, content_summary, software_version_phrase] if x is not None]
         )
 
+    @calculated_property(
+        schema={
+            '$merge': '../schemas/mixins.json#/transcriptome_annotation/transcriptome_annotation',
+            'type': 'string',
+            'enum': [
+                'Mixed transcriptome annotations'
+            ],
+            'notSubmittable': True
+        }
+    )
+    def transcriptome_annotation(self, request, reference_files):
+        transcriptome_annotation_set = set()
+        transcriptome_annotation = None
+        for ref_file in paths_filtered_by_status(request, reference_files):
+            ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
+            if ref_file_object['content_type'] == 'transcriptome reference' or ref_file_object['content_type'] == 'transcriptome index':
+                transcriptome_annotation_set.add(ref_file_object.get('transcriptome_annotation', None))
+        if len(transcriptome_annotation_set) > 1:
+            transcriptome_annotation = 'Mixed transcriptome annotations'
+        elif len(transcriptome_annotation_set) == 1:
+            transcriptome_annotation = list(transcriptome_annotation_set)[0]
+        return transcriptome_annotation
+
+    @calculated_property(
+        schema={
+            'title': 'Genome Assembly',
+            'type': 'string',
+            'description': 'The assembly associated with the matrix file.',
+            'enum': [
+                'GRCh38',
+                'hg19',
+                'Cast - GRCm39',
+                'GRCm39',
+                'mm10',
+                'GRCh38, mm10',
+                'custom',
+                'Mixed genome assemblies'
+            ],
+            'notSubmittable': True
+        }
+    )
+    def assembly(self, request, reference_files):
+        assembly_set = set()
+        assembly = None
+        for ref_file in paths_filtered_by_status(request, reference_files):
+            ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
+            if ref_file_object['content_type'] == 'genome reference' or ref_file_object['content_type'] == 'genome index':
+                assembly_set.add(ref_file_object.get('assembly', None))
+        if len(assembly_set) > 1:
+            assembly = 'Mixed genome assemblies'
+        elif len(assembly_set) == 1:
+            assembly = list(assembly_set)[0]
+        return assembly
+
 
 @collection(
     name='signal-files',

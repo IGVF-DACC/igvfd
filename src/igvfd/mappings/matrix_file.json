@@ -1,6 +1,6 @@
 {
-    "hash": "4cdc8b24a72ac52c70a87af9d8201e3c",
-    "index_name": "matrix_file_4cdc8b24",
+    "hash": "bf76e0a4b51f74995177b35fcd612293",
+    "index_name": "matrix_file_bf76e0a4",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -163,6 +163,9 @@
                     },
                     "assay_titles": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "assembly": {
                         "type": "keyword"
                     },
                     "award": {
@@ -2451,6 +2454,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "transcriptome_annotation": {
                         "type": "keyword"
                     },
                     "upload_credentials": {
