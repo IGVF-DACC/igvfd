@@ -320,11 +320,10 @@ def audit_targeted_genes(value, system):
                                          '/assay-terms/OBI_0002017/',  # histone modification identification by ChIP-Seq assay
                                          '/assay-terms/OBI_0002019/'  # transcription factor binding site identification by ChIP-Seq assay
                                          ]
-    if not (
-        targeted_genes
+    if (
+        not (targeted_genes)
         and assay_term in expecting_targeted_genes_by_assay
-        and not any(control_type in exempted_control_types for control_type in control_types)
-    ):
+            and not any(control_type in exempted_control_types for control_type in control_types)):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `targeted_genes`.'
