@@ -326,7 +326,7 @@ config: Dict[str, Any] = {
             },
             'waf': {
                 'enabled': True,
-                'arn': '',
+                'arn': 'arn:aws:wafv2:us-west-2:920073238245:regional/webacl/IgvfApiSandboxWaf-HqkY5pB5adOs/4d69f89b-447e-4fc5-aa2f-22103f7a5d7e',
             },
             'tags': [
             ],
