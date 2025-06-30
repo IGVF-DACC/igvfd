@@ -381,7 +381,7 @@ class AnalysisSet(FileSet):
     )
     def summary(self, request, file_set_type, input_file_sets=None, files=None, samples=None, construct_library_sets=None):
         if input_file_sets is None:
-            input_file_set = []
+            input_file_sets = []
         if files is None:
             files = []
         if samples is None:
@@ -983,10 +983,13 @@ class AnalysisSet(FileSet):
         }
     )
     def targeted_genes(self, request, input_file_sets=None):
+        if input_file_sets is None:
+            input_file_sets = []
         analysis_set_targeted_genes = set()
         for input_file_set in input_file_sets:
-            if input_file_set.startswith('/measurement-sets/'):
-                input_file_set_object = request.embed(input_file_set, '@@object?skip_calculated=true')
+            if input_file_set.startswith('/measurement-sets/') or input_file_set.startswith('/analysis-sets/'):
+                input_file_set_object = request.embed(
+                    input_file_set, '@@object_with_select_calculated_properties?field=targeted_genes')
                 if 'targeted_genes' in input_file_set_object:
                     analysis_set_targeted_genes.update(input_file_set_object['targeted_genes'])
         return sorted(list(analysis_set_targeted_genes))
