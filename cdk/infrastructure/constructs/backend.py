@@ -53,6 +53,9 @@ from infrastructure.events.naming import get_event_source_from_config
 
 from infrastructure.multiplexer import Multiplexer
 
+from infrastructure.constructs.waf import WAFProps
+from infrastructure.constructs.waf import WAF
+
 from typing import Any
 from typing import cast
 
@@ -141,6 +144,7 @@ class Backend(Construct):
         self._run_update_mapping_automatically()
         self._add_alarms()
         self._add_dashboard()
+        self._add_waf()
 
     def _define_postgres(self) -> None:
         self.postgres = cast(
@@ -460,5 +464,15 @@ class Backend(Construct):
             props=BackendDashboardProps(
                 config=self.props.config,
                 log_group=log_group
+            )
+        )
+
+    def _add_waf(self) -> None:
+        WAF(
+            self,
+            'WAF',
+            props=WAFProps(
+                **self.props.config.waf,
+                alb=self.fargate_service.load_balancer,
             )
         )

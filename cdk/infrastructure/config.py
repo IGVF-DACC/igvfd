@@ -117,6 +117,10 @@ config: Dict[str, Any] = {
                 'min_scaling_capacity': 1,
                 'max_scaling_capacity': 10,
             },
+            'waf': {
+                'enabled': True,
+                'arn': 'arn:aws:wafv2:us-west-2:109189702753:regional/webacl/IgvfApiDemoWaf-7ocdanWWnHMn/8e78b5c1-2dcd-4c7d-85bb-d0e41d147f97',
+            },
             'tags': [
                 ('time-to-live-hours', '60'),
                 ('turn-off-on-friday-night', 'yes'),
@@ -183,6 +187,10 @@ config: Dict[str, Any] = {
                 'min_scaling_capacity': 1,
                 'max_scaling_capacity': 10,
             },
+            'waf': {
+                'enabled': True,
+                'arn': 'arn:aws:wafv2:us-west-2:109189702753:regional/webacl/IgvfApiDemoWaf-7ocdanWWnHMn/8e78b5c1-2dcd-4c7d-85bb-d0e41d147f97',
+            },
             'tags': [
             ]
         },
@@ -246,6 +254,10 @@ config: Dict[str, Any] = {
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
                 'max_scaling_capacity': 10,
+            },
+            'waf': {
+                'enabled': True,
+                'arn': 'arn:aws:wafv2:us-west-2:920073238245:regional/webacl/IgvfApiStagingWaf-wfMBFqrzliwq/49cc360d-e3ae-4896-af91-4ed49d6884cc',
             },
             'tags': [
             ],
@@ -312,6 +324,10 @@ config: Dict[str, Any] = {
                 'min_scaling_capacity': 1,
                 'max_scaling_capacity': 10,
             },
+            'waf': {
+                'enabled': True,
+                'arn': 'arn:aws:wafv2:us-west-2:920073238245:regional/webacl/IgvfApiSandboxWaf-HqkY5pB5adOs/4d69f89b-447e-4fc5-aa2f-22103f7a5d7e',
+            },
             'tags': [
             ],
             'url_prefix': 'api',
@@ -376,6 +392,10 @@ config: Dict[str, Any] = {
                 'min_scaling_capacity': 1,
                 'max_scaling_capacity': 10,
             },
+            'waf': {
+                'enabled': True,
+                'arn': 'arn:aws:wafv2:us-west-2:035226225042:regional/webacl/IgvfApiProdWaf-VMXaeacWPPbX/f0ecfe7d-32a8-452a-91e5-abe8ba824eb7',
+            },
             'tags': [
             ],
             'url_prefix': 'api',
@@ -402,6 +422,7 @@ class Config:
     backend: Dict[str, Any]
     invalidation_service: Dict[str, Any]
     indexing_service: Dict[str, Any]
+    waf: Dict[str, Any]
     tags: List[Tuple[str, str]]
     url_prefix: Optional[str] = None
     use_subdomain: bool = True

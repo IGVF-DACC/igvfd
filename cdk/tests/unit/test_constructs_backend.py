@@ -942,6 +942,10 @@ def test_constructs_backend_initialize_backend_construct(
         'AWS::AppConfig::Application',
         1
     )
+    template.resource_count_is(
+        'AWS::WAFv2::WebACLAssociation',
+        1
+    )
 
 
 def test_constructs_backend_backend_construct_define_domain_name(
@@ -1056,6 +1060,7 @@ def test_constructs_backend_get_url_prefix():
         invalidation_service={},
         indexing_service={},
         feature_flag_service={},
+        waf={},
         tags=[],
     )
     url_prefix = get_url_prefix(config_without_prefix)
@@ -1069,6 +1074,7 @@ def test_constructs_backend_get_url_prefix():
         invalidation_service={},
         indexing_service={},
         feature_flag_service={},
+        waf={},
         tags=[],
         url_prefix='some-prefix',
     )
