@@ -446,7 +446,7 @@ class AnalysisSet(FileSet):
                             if preferred_assay_title in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
                                 assays = fileset_object.get('assay_titles', [])
                                 for assay in assays:
-                                    assay_titles.add(f'{assay_term_name} ({preferred_assay_title})')
+                                    assay_titles.add(f'{assay} ({preferred_assay_title})')
                             else:
                                 assay_titles.add(preferred_assay_title)
                     # Retrieve Measurement Sets associated with Auxiliary Sets.
@@ -605,11 +605,13 @@ class AnalysisSet(FileSet):
         }
     )
     def preferred_assay_titles(self, request, input_file_sets=None):
+        if input_file_sets is None:
+            input_file_sets = []
         preferred_assay_list = set()
-        if file_set_object.get('@type') in ['MeasurementSet', 'AnalysisSet', 'AuxiliarySet', 'ConstructLibrarySet']:
-            for fileset in input_file_sets:
-                file_set_object = request.embed(fileset, '@@object')
-                preferred_assay_titles = file_set_object.get('preferred_assay_titles')
+        file_set_objs = get_fileset_objs_from_input_file_sets(request=request, input_file_sets=input_file_sets)
+        for file_set_obj in file_set_objs:
+            if any(item in file_set_obj.get('@type', []) for item in ['MeasurementSet', 'AnalysisSet', 'AuxiliarySet', 'ConstructLibrarySet']):
+                preferred_assay_titles = file_set_obj.get('preferred_assay_titles', [])
                 if preferred_assay_titles:
                     for preferred_assay in preferred_assay_titles:
                         preferred_assay_list.add(preferred_assay)
@@ -633,10 +635,10 @@ class AnalysisSet(FileSet):
     )
     def assay_titles(self, request, input_file_sets=None):
         assay_list = set()
-        if file_set_object.get('@type') in ['MeasurementSet', 'AnalysisSet', 'AuxiliarySet', 'ConstructLibrarySet']:
-            for fileset in input_file_sets:
-                file_set_object = request.embed(fileset, '@@object')
-                assay_titles = file_set_object.get('assay_titles')
+        file_set_objs = get_fileset_objs_from_input_file_sets(request=request, input_file_sets=input_file_sets)
+        for file_set_obj in file_set_objs:
+            if any(item in file_set_obj.get('@type', []) for item in ['MeasurementSet', 'AnalysisSet', 'AuxiliarySet', 'ConstructLibrarySet']):
+                assay_titles = file_set_obj.get('assay_titles', [])
                 if assay_titles:
                     for assay in assay_titles:
                         assay_list.add(assay)
@@ -1161,6 +1163,7 @@ class MeasurementSet(FileSet):
         assay_phrase = ''
         target_phrase = ''
 
+        assay = assay_titles[0] if assay_titles else None
         for sample in samples:
             sample_object = request.embed(sample, '@@object')
             if sample_object.get('modifications'):
@@ -1180,9 +1183,8 @@ class MeasurementSet(FileSet):
                 cls_set.add(construct_library_set_object['summary'])
 
         preferred_assay_title = preferred_assay_titles[0]
-        assay_title = assay_titles[0]
         if preferred_assay_title in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
-            assay = f'{assay_title} ({preferred_assay_title})'
+            assay = f'{assay} ({preferred_assay_title})'
         else:
             assay = preferred_assay_title
 
@@ -1438,11 +1440,11 @@ class AuxiliarySet(FileSet):
             measurement_sets = []
         preferred_assay_titles = set()
         for measurement_set in measurement_sets:
-            measurement_set_object = request.embed(measurement_set, '@@object?skip_calculated=true')
-            preferred_assays = measurement_set_object.get('preferred_assay_titles')  # Now expecting a list
+            preferred_assays = request.embed(
+                measurement_set, '@@object?skip_calculated=true').get('preferred_assay_titles', [])
             if preferred_assays:
-                for title in preferred_assays:
-                    preferred_assay_titles.add(title)
+                for prefered_assay in preferred_assays:
+                    preferred_assay_titles.add(prefered_assay)
         return list(preferred_assay_titles)
 
     @calculated_property(
@@ -1465,11 +1467,11 @@ class AuxiliarySet(FileSet):
             measurement_sets = []
         assay_titles = set()
         for measurement_set in measurement_sets:
-            measurement_set_object = request.embed(measurement_set, '@@object?skip_calculated=true')
-            assays = measurement_set_object.get('assay_titles')
+            assays = request.embed(
+                measurement_set, '@@object_with_select_calculated_properties?field=assay_titles').get('assay_titles', [])
             if assays:
-                for title in assays:
-                    assay_titles.add(title)
+                for assay in assays:
+                    assay_titles.add(assay)
         return list(assay_titles)
 
     @calculated_property(
@@ -1680,11 +1682,11 @@ class ConstructLibrarySet(FileSet):
         preferred_assay_titles = set()
         for file_set in file_sets:
             if file_set.startswith('/measurement-sets/'):
-                file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
-                preferred_assays = file_set_object.get('preferred_assay_titles')  # Now expecting a list
+                preferred_assays = request.embed(
+                    file_set, '@@object?skip_calculated=true').get('preferred_assay_titles', [])
                 if preferred_assays:
-                    for title in preferred_assays:
-                        preferred_assay_titles.add(title)
+                    for prefered_assay in preferred_assays:
+                        preferred_assay_titles.add(prefered_assay)
         return list(preferred_assay_titles)
 
     @calculated_property(
@@ -1708,11 +1710,11 @@ class ConstructLibrarySet(FileSet):
         assay_titles = set()
         for file_set in file_sets:
             if file_set.startswith('/measurement-sets/'):
-                file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
-                assays = file_set_object.get('assay_titles')
+                assays = request.embed(
+                    file_set, '@@object_with_select_calculated_properties?field=assay_titles').get('assay_titles', [])
                 if assays:
-                    for title in assays:
-                        assay_titles.add(title)
+                    for assay in assays:
+                        assay_titles.add(assay)
         return list(assay_titles)
 
     @calculated_property(
