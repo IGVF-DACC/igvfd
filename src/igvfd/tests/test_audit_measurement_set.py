@@ -1154,7 +1154,6 @@ def test_audit_missing_cell_sorting_auxiliary_set(
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
-    print(res.json['audit'].get('NOT_COMPLIANT', []))
     assert all(
         error['category'] != 'missing auxiliary set'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
@@ -1287,7 +1286,7 @@ def test_audit_targeted_genes(
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert any(
+    assert all(
         error['category'] != 'missing targeted genes'
         for error in res.json['audit'].get('WARNING', [])
     )
