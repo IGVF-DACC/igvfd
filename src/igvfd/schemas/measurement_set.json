@@ -68,7 +68,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "33"
+            "default": "34"
         },
         "samples": {
             "maxItems": 1
@@ -110,6 +110,7 @@
                 "snRNA-seq",
                 "scNT-seq",
                 "scNT-seq2",
+                "scNT-seq3",
                 "scMultiome-NT-seq",
                 "Parse SPLiT-seq",
                 "ATAC-seq",
@@ -122,8 +123,7 @@
                 "DOGMA-seq",
                 "10x multiome",
                 "10x multiome with MULTI-seq",
-                "10X ATAC with Scale pre-indexing",
-                "10X RNA with Scale pre-indexing",
+                "10x with Scale pre-indexing",
                 "MULTI-seq",
                 "SHARE-seq",
                 "Histone ChIP-seq",
@@ -186,6 +186,7 @@
                 "snRNA-seq": "Single-nucleus RNA sequencing (snRNA-seq) profiles gene expression by sequencing RNA from isolated nuclei.",
                 "scNT-seq": "Single-cell metabolically labeled new RNA tagging sequencing (scNT-seq) enables parallel analysis of newly transcribed and pre-existing mRNAs in single cells.",
                 "scNT-seq2": "An improved version of scNT-seq that employs optimized second-strand synthesis to enhance mapping rate and library complexity.",
+                "scNT-seq3": "An improved version of scNT-seq that employs in situ chemical conversion to enhance throughput and scalability using the 10x Genomics droplet microfluidics platform.",
                 "scMultiome-NT-seq": "Single-cell multiomic sequencing of chromatin state and metabolically labeled new RNA (scMultiome-NT-seq) enables joint analysis of chromatin accessibility, newly transcribed and pre-existing mRNAs in single cells.",
                 "Parse SPLiT-seq": "Parse Split Pool Ligation-based Transcriptome sequencing (Parse SPLiT-seq) is a single-cell RNA-seq method that uses combinatorial barcoding to label the cellular origin of RNA.",
                 "ATAC-seq": "Assay for Transposase-Accessible Chromatin using sequencing (ATAC-seq) measures chromatin accessibility by identifying open chromatin regions.",
@@ -198,6 +199,7 @@
                 "DOGMA-seq": "An adaptation of CITE-seq (Cellular Indexing of Transcriptomes and Epitopes by sequencing) for measuring gene activity across the central dogma of gene regulation.",
                 "10x multiome": "A single-cell assay for simultaneously profiling gene expression (scRNA-seq) and chromatin accessibility (scATAC-seq) from the same sample.",
                 "10x multiome with MULTI-seq": "Combines 10x Multiome with MULTI-seq, enabling simultaneous profiling of gene expression, chromatin accessibility, and sample multiplexing.",
+                "10x with Scale pre-indexing": "10X with Scale pre-indexing is a single-cell ATAC-seq or single-cell RNA-seq method that uses combinatorial barcoding (Tn5-based pre-indexing followed by 10X cell indexing) to label the cellular origin of open chromatin regions. The combinatorial barcoding allows \"superloading\" of 10X lanes increasing the throughput to hundreds of thousand cells per reaction.",
                 "MULTI-seq": "Multiplexing using lipid-tagged indices for single-cell and single-nucleus RNA sequencing (MULTI-seq) is a multiplexing technique used in single-cell RNA sequencing that involves tagging individual samples with barcodes.",
                 "SHARE-seq": "Simultaneous high-throughput ATAC and RNA expression with sequencing (SHARE-seq) is used for the measurement of chromatin accessibility and gene expression in the same single cell.",
                 "Histone ChIP-seq": "Chromatin immunoprecipitation sequencing (ChIP-seq) maps histone modifications to study their genome-wide distribution.",

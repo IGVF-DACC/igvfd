@@ -617,3 +617,16 @@ def prediction_set_8_9(value, system):
         notes += f'This object\'s file_set_type was pathogenicity and has been upgraded to functional effect.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '33', '34')
+def measurement_set_33_34(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2793
+    notes = value.get('notes', '')
+    if 'preferred_assay_title' in value:
+        old_assay_title = value['preferred_assay_title']
+        if old_assay_title in ['10X ATAC with Scale pre-indexing', '10X RNA with Scale pre-indexing']:
+            value['preferred_assay_title'] = '10x with Scale pre-indexing'
+            notes += f' This measurement set previously used {old_assay_title} as a preferred_assay_title, but the preferred_assay_title has been updated to 10x with Scale pre-indexing via an upgrade.'
+            value['notes'] = notes.strip()
+    return
