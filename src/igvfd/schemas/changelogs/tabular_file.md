@@ -1,10 +1,13 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 17
+
+* Extend `file_format` enum list to include `bigBed`.
+
 ### Schema version 17
 
 * Adjust `content_type` enum list to replace `variant functional predictions` with `variant functions`.
 * Adjust `content_type` enum list to replace `element to gene predictions` with `element to gene interactions`.
-
 
 ### Minor changes since schema version 16
 

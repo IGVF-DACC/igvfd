@@ -810,5 +810,27 @@
         "upload_status": "validated",
         "file_set": "igvf:primer_design_curated_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "54e6ab5e-8349-8610-767b-e11ba10f3d58",
+        "accession": "IGVFFI0001BGBD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_bigbed"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "bb242ea863eacda6119297d0a915d806",
+        "file_format": "bigBed",
+        "file_format_type": "bed6+",
+        "content_type": "peaks",
+        "submitted_file_name": "/Users/igvf/igvf_files/peaks_tabular_file.bigBed",
+        "file_size": 738031,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "filtered": true,
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
     }
 ]
