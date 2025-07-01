@@ -30,6 +30,36 @@ def reference_file_two(testapp, lab, award, principal_analysis_set):
 
 
 @pytest.fixture
+def reference_file_with_transcriptome(testapp, lab, award, principal_analysis_set):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'a77ba8fa105a74d2399e57d25fad4db1',
+        'file_format': 'gtf',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'transcriptome reference',
+        'controlled_access': False,
+        'transcriptome_annotation': 'GENCODE 43'
+    }
+    return testapp.post_json('/reference_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def reference_file_with_assembly(testapp, lab, award, principal_analysis_set):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '6a95875a9b8e4fdf37d4e79d3a91b632',
+        'file_format': 'fasta',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'genome reference',
+        'controlled_access': False,
+        'assembly': 'GRCh38'
+    }
+    return testapp.post_json('/reference_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def reference_file_v2(reference_file):
     item = reference_file.copy()
     item.update({
