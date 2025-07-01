@@ -311,11 +311,19 @@ def audit_targeted_genes(value, system):
     audit_message_unexpected = get_audit_message(audit_targeted_genes, index=1)
     assay_term = value.get('assay_term')
     targeted_genes = value.get('targeted_genes', '')
+    control_types = value.get('control_types', [])
+    exempted_control_types = {
+        'untransfected',
+        'unsorted FACS input'
+    }
     expecting_targeted_genes_by_assay = ['/assay-terms/OBI_0003661/',  # in vitro CRISPR screen using flow cytometry
                                          '/assay-terms/OBI_0002017/',  # histone modification identification by ChIP-Seq assay
                                          '/assay-terms/OBI_0002019/'  # transcription factor binding site identification by ChIP-Seq assay
                                          ]
-    if not (targeted_genes) and (assay_term in expecting_targeted_genes_by_assay):
+    if (
+        not (targeted_genes)
+        and assay_term in expecting_targeted_genes_by_assay
+            and not any(control_type in exempted_control_types for control_type in control_types)):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `targeted_genes`.'
@@ -461,8 +469,15 @@ def audit_missing_auxiliary_set(value, system):
     preferred_assay_title = value.get('preferred_assay_title')
     auxiliary_sets = value.get('auxiliary_sets')
 
-    if (assay_term_name in expected_auxiliary_set_by_assay_term or preferred_assay_title in expected_auxiliary_set_by_preferred_assay_title):
-
+    control_types = value.get('control_types', [])
+    exempted_control_types = {
+        'untransfected',
+        'unsorted FACS input'
+    }
+    if (
+        (assay_term_name in expected_auxiliary_set_by_assay_term or preferred_assay_title in expected_auxiliary_set_by_preferred_assay_title)
+        and not any(control_type in exempted_control_types for control_type in control_types)
+    ):
         if preferred_assay_title in expected_auxiliary_set_by_preferred_assay_title:
             expected_auxiliary_dict_to_check = expected_auxiliary_set_by_preferred_assay_title
             assay_to_check = preferred_assay_title

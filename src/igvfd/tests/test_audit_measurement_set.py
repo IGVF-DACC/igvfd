@@ -1127,7 +1127,8 @@ def test_audit_missing_cell_sorting_auxiliary_set(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_crispr['@id']
+            'assay_term': assay_term_crispr['@id'],
+            'control_types': ['wildtype']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -1149,7 +1150,19 @@ def test_audit_missing_cell_sorting_auxiliary_set(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'auxiliary_sets': [auxiliary_set_cell_sorting['@id']]
+            'control_types': ['unsorted FACS input']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [auxiliary_set_cell_sorting['@id']],
+            'control_types': ['wildtype']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -1256,7 +1269,8 @@ def test_audit_targeted_genes(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_chip['@id']
+            'assay_term': assay_term_chip['@id'],
+            'control_types': ['wildtype']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -1267,7 +1281,20 @@ def test_audit_targeted_genes(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'targeted_genes': [gene_myc_hs['@id']]
+            'assay_term': assay_term_chip['@id'],
+            'control_types': ['untransfected']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing targeted genes'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'targeted_genes': [gene_myc_hs['@id']],
+            'control_types': ['wildtype']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
