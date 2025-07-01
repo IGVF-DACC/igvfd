@@ -495,18 +495,6 @@ class AnalysisSet(FileSet):
                 file_object = request.embed(file, '@@object?skip_calculated=true')
                 file_content_types.add(file_object['content_type'])
 
-        # Collect CRISPR modalities and file set type from associated samples.
-        if samples:
-            for sample in samples:
-                sample_object = request.embed(sample, '@@object?skip_calculated=true')
-                if 'modifications' in sample_object:
-                    for modification in sample_object['modifications']:
-                        modification_object = request.embed(modification, '@@object?skip_calculated=true')
-                        crispr_modalities.add(modification_object['modality'])
-                if 'multiplexing_methods' in sample_object:
-                    for method in sample_object['multiplexing_methods']:
-                        multiplexing_methods.add(method)
-
         # Collect construct library set summaries and types
         prop_with_cls = None
         only_cls_input = False
@@ -525,6 +513,18 @@ class AnalysisSet(FileSet):
         cls_phrase = ''
         if len(cls_set) > 0:
             cls_phrase = get_cls_phrase(cls_set, only_cls_input=only_cls_input)
+
+        # Collect CRISPR modalities and file set type from associated samples.
+        if samples:
+            for sample in samples:
+                sample_object = request.embed(sample, '@@object?skip_calculated=true')
+                if 'modifications' in sample_object and 'guide library' in cls_type_set:
+                    for modification in sample_object['modifications']:
+                        modification_object = request.embed(modification, '@@object?skip_calculated=true')
+                        crispr_modalities.add(modification_object['modality'])
+                if 'multiplexing_methods' in sample_object:
+                    for method in sample_object['multiplexing_methods']:
+                        multiplexing_methods.add(method)
 
         # Assay titles if there are input file sets, otherwise unspecified.
         # Only use the CLS derived assay titles if there were no other assay titles.
@@ -1167,9 +1167,16 @@ class MeasurementSet(FileSet):
         assay_phrase = ''
         target_phrase = ''
 
+        if construct_library_sets:
+            for construct_library_set in construct_library_sets:
+                construct_library_set_object = request.embed(
+                    construct_library_set, '@@object_with_select_calculated_properties?field=summary')
+                cls_type_set.add(construct_library_set_object['file_set_type'])
+                cls_set.add(construct_library_set_object['summary'])
+
         for sample in samples:
             sample_object = request.embed(sample, '@@object')
-            if sample_object.get('modifications'):
+            if sample_object.get('modifications') and 'guide library' in cls_type_set:
                 for modification in sample_object.get('modifications'):
                     modality = request.embed(modification).get('modality', '')
                     if modality:
@@ -1177,13 +1184,6 @@ class MeasurementSet(FileSet):
             if 'multiplexing_methods' in sample_object:
                 for method in sample_object['multiplexing_methods']:
                     multiplexing_methods.add(method)
-
-        if construct_library_sets:
-            for construct_library_set in construct_library_sets:
-                construct_library_set_object = request.embed(
-                    construct_library_set, '@@object_with_select_calculated_properties?field=summary')
-                cls_type_set.add(construct_library_set_object['file_set_type'])
-                cls_set.add(construct_library_set_object['summary'])
 
         if preferred_assay_title in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
             assay = f'{assay} ({preferred_assay_title})'
