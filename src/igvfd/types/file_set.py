@@ -365,7 +365,8 @@ class AnalysisSet(FileSet):
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
-        Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline', 'status'])
+        Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline', 'status']),
+        Path('targeted_genes', include=['@id', 'symbol'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
@@ -380,7 +381,7 @@ class AnalysisSet(FileSet):
     )
     def summary(self, request, file_set_type, input_file_sets=None, files=None, samples=None, construct_library_sets=None):
         if input_file_sets is None:
-            input_file_set = []
+            input_file_sets = []
         if files is None:
             files = []
         if samples is None:
@@ -964,6 +965,34 @@ class AnalysisSet(FileSet):
                     if workflow:
                         analysis_set_workflows_set.add(workflow)
         return sorted(list(analysis_set_workflows_set))
+
+    @calculated_property(
+        condition='input_file_sets',
+        schema={
+            'title': 'Targeted Genes',
+            'description': 'A list of genes targeted by the input measurement sets assays.',
+            'type': 'array',
+            'notSubmittable': True,
+            'uniqueItem': True,
+            'minItems': 1,
+            'items': {
+                'title': 'Targeted Gene',
+                'type': 'string',
+                'linkTo': 'Gene'
+            }
+        }
+    )
+    def targeted_genes(self, request, input_file_sets=None):
+        if input_file_sets is None:
+            input_file_sets = []
+        analysis_set_targeted_genes = set()
+        for input_file_set in input_file_sets:
+            if input_file_set.startswith('/measurement-sets/') or input_file_set.startswith('/analysis-sets/'):
+                input_file_set_object = request.embed(
+                    input_file_set, '@@object_with_select_calculated_properties?field=targeted_genes')
+                if 'targeted_genes' in input_file_set_object:
+                    analysis_set_targeted_genes.update(input_file_set_object['targeted_genes'])
+        return sorted(list(analysis_set_targeted_genes))
 
 
 @collection(
