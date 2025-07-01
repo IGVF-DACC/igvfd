@@ -224,7 +224,7 @@ def assay_term_16_17(value, system):
                 new_assay_titles.append('10x with Scale pre-indexing')
             else:
                 new_assay_titles.append(assay_title)
-    if len(new_assay_titles) >= 1:
+    if len(new_assay_titles) >= 1 and '10x with Scale pre-indexing' in new_assay_titles:
         value['preferred_assay_titles'] = list(set(new_assay_titles))
         notes += f' This assay term previously listed {" and ".join(old_assay_titles)} as preferred_assay_titles, but these preferred_assay_titles have been updated to 10x with Scale pre-indexing via an upgrade.'
         value['notes'] = notes.strip()
