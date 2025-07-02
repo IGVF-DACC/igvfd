@@ -532,7 +532,7 @@ def audit_missing_auxiliary_set(value, system):
 
     if (
         (any(title in expected_auxiliary_set_by_assay_term for title in assay_titles) or
-        any(title in expected_auxiliary_set_by_preferred_assay_title for title in preferred_assay_titles))
+         any(title in expected_auxiliary_set_by_preferred_assay_title for title in preferred_assay_titles))
         and not any(control_type in exempted_control_types for control_type in control_types)
     ):
         assay_to_check = None
