@@ -13,6 +13,10 @@ from .base import (
 
 from datetime import datetime
 
+from pyramid.view import view_config
+
+from igvfd.metadata.v2.recurse import find_all_file_sets_and_files
+
 
 def get_donors_from_samples(request, samples):
     donor_objects = []
@@ -349,6 +353,17 @@ class FileSet(Item):
                 return True
             else:
                 return False
+
+
+@view_config(
+    name='all-files',
+    context=FileSet,
+    request_method='GET',
+    permission='view',
+)
+def all_files(context, request):
+    print('in all-files view config *****')
+    return find_all_file_sets_and_files(request, [request.resource_path(context)])
 
 
 @collection(
