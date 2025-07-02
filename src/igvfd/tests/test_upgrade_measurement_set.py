@@ -232,4 +232,4 @@ def test_measurement_set_upgrade_34_35(upgrader, measurement_set_v34):
     value = upgrader.upgrade('measurement_set', measurement_set_v34, current_version='34', target_version='35')
     assert 'preferred_assay_title' not in value
     assert 'preferred_assay_titles' in value and value['preferred_assay_titles'] == [(preferred_assay_title)]
-    assert value['schema_version'] == '34'
+    assert value['schema_version'] == '35'

@@ -628,10 +628,8 @@ def test_metadata_metadata_report_build_header(dummy_request):
         'Fileset accession',
         'Fileset classification',
         'Fileset type',
-        'Measurement set assay term',
-        'Measurement set preferred assay title',
-        'Analysis set assay titles',
-        'Auxiliary set assay titles',
+        'Preferred assay titles',
+        'Assay titles',
         'Donor(s)',
         'Sample(s)',
         'Sample term name',
@@ -679,10 +677,8 @@ def test_metadata_metadata_report_split_column_and_fields_by_experiment_and_file
         'Fileset accession': ['accession'],
         'Fileset classification': ['@type'],
         'Fileset type': ['file_set_type'],
-        'Measurement set assay term': ['assay_term.term_name'],
-        'Measurement set preferred assay title': ['preferred_assay_title'],
-        'Analysis set assay titles': ['assay_titles'],
-        'Auxiliary set assay titles': ['measurement_sets.preferred_assay_title'],
+        'Preferred assay titles': ['preferred_assay_titles'],
+        'Assay titles': ['assay_titles'],
         'Donor(s)': ['donors.accession'],
         'Sample(s)': ['samples.accession'],
         'Sample term name': ['samples.sample_terms.term_name'],
@@ -777,10 +773,8 @@ def test_metadata_metadata_report_add_fields_to_param_list(dummy_request):
         'accession',
         '@type',
         'file_set_type',
-        'assay_term.term_name',
-        'preferred_assay_title',
+        'preferred_assay_titles',
         'assay_titles',
-        'measurement_sets.preferred_assay_title',
         'donors.accession',
         'samples.accession',
         'samples.sample_terms.term_name',
@@ -891,10 +885,8 @@ def test_metadata_metadata_report_get_field_params(dummy_request):
         ('field', 'accession'),
         ('field', '@type'),
         ('field', 'file_set_type'),
-        ('field', 'assay_term.term_name'),
-        ('field', 'preferred_assay_title'),
+        ('field', 'preferred_assay_titles'),
         ('field', 'assay_titles'),
-        ('field', 'measurement_sets.preferred_assay_title'),
         ('field', 'donors.accession'),
         ('field', 'samples.accession'),
         ('field', 'samples.sample_terms.term_name'),
@@ -989,9 +981,9 @@ def test_metadata_metadata_report_initialize_report(dummy_request):
     )
     mr = MetadataReport(dummy_request)
     mr._initialize_report()
-    assert len(mr.header) == 28
+    assert len(mr.header) == 26
     assert len(mr.experiment_column_to_fields_mapping.keys()
-               ) == 12, f'{len(mr.experiment_column_to_fields_mapping.keys())}'
+               ) == 10, f'{len(mr.experiment_column_to_fields_mapping.keys())}'
     assert len(mr.file_column_to_fields_mapping.keys()) == 13, f'{len(mr.file_column_to_fields_mapping.keys())}'
     dummy_request.environ['QUERY_STRING'] = (
         'type=MeasurementSet&files.file_type=bigWig&files.file_type=bam'
@@ -1016,7 +1008,7 @@ def test_metadata_metadata_report_build_params(dummy_request):
     dummy_request.json = {'elements': ['/experiments/ENCSR123ABC/']}
     mr = MetadataReport(dummy_request)
     mr._build_params()
-    assert len(mr.param_list['field']) == 28, f'{len(mr.param_list["field"])} not expected'
+    assert len(mr.param_list['field']) == 26, f'{len(mr.param_list["field"])} not expected'
     assert len(mr.param_list['@id']) == 1
 
 
@@ -1056,10 +1048,8 @@ def test_metadata_metadata_report_build_new_request(dummy_request):
         '&field=accession'
         '&field=%40type'
         '&field=file_set_type'
-        '&field=assay_term.term_name'
-        '&field=preferred_assay_title'
+        '&field=preferred_assay_titles'
         '&field=assay_titles'
-        '&field=measurement_sets.preferred_assay_title'
         '&field=donors.accession'
         '&field=samples.accession'
         '&field=samples.sample_terms.term_name'
@@ -1149,7 +1139,7 @@ def test_metadata_metadata_report_get_experiment_data(dummy_request):
     mr._build_params()
     expected_experiment_data = {
         'Fileset accession': 'ENCSR434TGY',
-        'Measurement set assay term': '',
+        'Assay titles': '',
         'Donor(s)': '',
         'Sample(s)': '',
         'Creation timestamp': '',
