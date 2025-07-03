@@ -11,7 +11,7 @@ def analysis_set():
                 'title': 'Analysis Set Type',
             },
             'assay_titles': {
-                'title': 'Assay Titles'
+                'title': 'Assay'
             },
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles'
@@ -184,7 +184,7 @@ def analysis_set_report_view():
             'title': 'Simplified Sample Summary'
         },
         'assay_titles': {
-            'title': 'Assay Titles'
+            'title': 'Assay'
         },
         'preferred_assay_titles': {
             'title': 'Preferred Assay Titles'
