@@ -2,7 +2,7 @@
 
 ### Schema version 12
 
-* Add calculative property `preferred_assay_titles`
+* Add calculated property `preferred_assay_titles`
 * Remove `control_type`.
 * Add `control_types`.
 
