@@ -35,7 +35,7 @@ def construct_library_set():
                 'title': 'CRISPR Guide Type'
             },
             'assay_titles': {
-                'title': 'Assay Titles'
+                'title': 'Assay'
             },
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles'
