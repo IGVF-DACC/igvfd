@@ -1,5 +1,14 @@
 ## Changelog for *`phenotypic_feature.json`*
 
+### Schema version 4
+
+* Adjust `quality` enum list to replace `2/2` with `E2/E2`.
+* Adjust `quality` enum list to replace `2/3` with `E2/E3`.
+* Adjust `quality` enum list to replace `2/4` with `E2/E4`.
+* Adjust `quality` enum list to replace `3/3` with `E3/E3`.
+* Adjust `quality` enum list to replace `3/4` with `E3/E4`.
+* Adjust `quality` enum list to replace `4/4` with `E4/E4`.
+
 ### Minor changes since schema version 3
 
 * Add `preview_timestamp`.

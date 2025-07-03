@@ -50,7 +50,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "3"
+            "default": "4"
         },
         "feature": {
             "title": "Phenotypic Feature",
@@ -115,12 +115,12 @@
                 "IV",
                 "V",
                 "VI",
-                "2/2",
-                "2/3",
-                "2/4",
-                "3/3",
-                "3/4",
-                "4/4"
+                "E2/E2",
+                "E2/E3",
+                "E2/E4",
+                "E3/E3",
+                "E3/E4",
+                "E4/E4"
             ],
             "submissionExample": {
                 "appscript": "severe",
