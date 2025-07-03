@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Add calculative property `preferred_assay_titles`
 * Add calculated property `targeted_genes`.
 
 ### Schema version 10

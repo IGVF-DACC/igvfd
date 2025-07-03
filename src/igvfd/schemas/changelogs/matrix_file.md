@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Add calculative property `preferred_assay_titles`
 * Add calculated property `transcriptome_annotation`.
 * Add calculated property `assembly`.
 
