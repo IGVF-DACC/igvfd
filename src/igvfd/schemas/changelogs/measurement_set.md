@@ -1,5 +1,12 @@
 ## Changelog for *`measurement_set.json`*
 
+
+### Schema version 35
+
+* Add calculated property `assay_titles`
+* Remove `preferred_assay_title`
+* Add `preferred_assay_titles`
+
 ### Schema version 34
 
 * Extend `preferred_assay_title` enum list to include `scNT-seq3`.
@@ -14,7 +21,7 @@
 
 ### Schema version 32
 
-* Adjust `control_type` enum list to remove `pre-selection`.
+* Reduce `control_type` enum list to exclude `pre-selection`.
 
 ### Minor changes since schema version 31
 
