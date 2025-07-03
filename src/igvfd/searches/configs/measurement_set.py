@@ -151,11 +151,11 @@ def measurement_set():
             'award': {
                 'title': 'Award'
             },
-            'assay_term': {
-                'title': 'Assay Term'
+            'assay_titles': {
+                'title': 'Assay'
             },
-            'preferred_assay_title': {
-                'title': 'Preferred Assay Title'
+            'preferred_assay_titles': {
+                'title': 'Preferred Assay Titles'
             },
             'sequencing_library_types': {
                 'title': 'Sequencing Library Types'
@@ -199,10 +199,10 @@ def measurement_set_report_view():
         'samples.institutional_certificates': {
             'title': 'Sample Institutional Certificates'
         },
-        'preferred_assay_title': {
-            'title': 'Preferred Assay Title'
+        'preferred_assay_titles': {
+            'title': 'Preferred Assay Titles'
         },
-        'assay_term.term_name': {
+        'assay_titles': {
             'title': 'Assay'
         },
         'files.content_type': {

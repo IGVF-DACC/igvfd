@@ -2,7 +2,9 @@
 
 ### Minor changes since schema version 10
 
+<<<<<<< HEAD
 * Add `uniform_pipeline_status`.
+* Add calculated property `preferred_assay_titles`
 * Add calculated property `targeted_genes`.
 
 ### Schema version 10
