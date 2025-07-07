@@ -1,6 +1,6 @@
 {
-    "hash": "04ed005f697ad2ffacdba31f988d410e",
-    "index_name": "construct_library_set_04ed005f",
+    "hash": "df643840e4f35411a3da7299cef83857",
+    "index_name": "construct_library_set_df643840",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1371,7 +1371,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -1711,6 +1711,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
@@ -1957,6 +1960,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
                             },
                             "preview_timestamp": {
                                 "type": "date"
@@ -2209,6 +2215,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
@@ -2399,6 +2408,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
                             },
                             "preview_timestamp": {
                                 "type": "date"
@@ -2654,6 +2666,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "preferred_assay_titles": {
+                        "type": "keyword"
                     },
                     "preview_timestamp": {
                         "type": "date"

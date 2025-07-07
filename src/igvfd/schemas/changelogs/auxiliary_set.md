@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 12
 
+* Add calculated property `assay_titles`
+* Add calculated property `preferred_assay_titles`
 * Add `preview_timestamp`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
 * Update `aliases` regex to add `steven-gazal` as a namespace.

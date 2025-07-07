@@ -225,3 +225,11 @@ def test_measurement_set_upgrade_33_34(upgrader, measurement_set_v33):
     assert value['preferred_assay_title'] == '10x with Scale pre-indexing'
     assert value['schema_version'] == '34'
     assert value['notes'] == 'This measurement set previously used 10X ATAC with Scale pre-indexing as a preferred_assay_title, but the preferred_assay_title has been updated to 10x with Scale pre-indexing via an upgrade.'
+
+
+def test_measurement_set_upgrade_34_35(upgrader, measurement_set_v34):
+    preferred_assay_title = measurement_set_v34['preferred_assay_title']
+    value = upgrader.upgrade('measurement_set', measurement_set_v34, current_version='34', target_version='35')
+    assert 'preferred_assay_title' not in value
+    assert 'preferred_assay_titles' in value and value['preferred_assay_titles'] == [(preferred_assay_title)]
+    assert value['schema_version'] == '35'

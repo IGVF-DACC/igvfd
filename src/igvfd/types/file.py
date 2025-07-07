@@ -274,20 +274,54 @@ class File(Item):
         assay_titles = set()
         file_set_object = request.embed(file_set, '@@object')
         if 'MeasurementSet' in file_set_object.get('@type'):
-            preferred_assay_title = file_set_object.get('preferred_assay_title', '')
-            if preferred_assay_title:
-                assay_titles.add(preferred_assay_title)
+            assay_term_name = file_set_object.get('assay_titles', [])
+            if assay_term_name:
+                assay_titles.update(assay_term_name)
         elif 'AnalysisSet' in file_set_object.get('@type'):
-            analysis_assay_titles = set(file_set_object.get('assay_titles', []))
-            if analysis_assay_titles:
-                assay_titles = assay_titles | analysis_assay_titles
+            analysis_assay_term_name = set(file_set_object.get('assay_titles', []))
+            if analysis_assay_term_name:
+                assay_titles.update(analysis_assay_term_name)
         elif 'AuxiliarySet' in file_set_object.get('@type'):
             for measurement_set in file_set_object.get('measurement_sets'):
                 measurement_set_object = request.embed(measurement_set, '@@object')
-                measurement_set_object_pat = measurement_set_object.get('preferred_assay_title')
+                measurement_set_object_pat = set(measurement_set_object.get('assay_titles', []))
                 if measurement_set_object_pat:
-                    assay_titles.add(measurement_set_object_pat)
+                    assay_titles.update(measurement_set_object_pat)
         return sorted(list(assay_titles))
+
+    @calculated_property(
+        schema={
+            'title': 'Preferred Assay Titles',
+            'description': 'Preferred assay titles from the file set this file belongs to.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Assay Title',
+                'description': 'Preferred assay titles from the file set this file belongs to.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def preferred_assay_titles(self, request, file_set):
+        preferred_assay_titles = set()
+        file_set_object = request.embed(file_set, '@@object')
+        if 'MeasurementSet' in file_set_object.get('@type'):
+            preferred_assays = file_set_object.get('preferred_assay_titles', [])
+            if preferred_assays:
+                preferred_assay_titles.update(preferred_assays)
+        elif 'AnalysisSet' in file_set_object.get('@type'):
+            analysis_preferred_assay = set(file_set_object.get('preferred_assay_titles', []))
+            if analysis_preferred_assay:
+                preferred_assay_titles.update(analysis_preferred_assay)
+        elif 'AuxiliarySet' in file_set_object.get('@type'):
+            for measurement_set in file_set_object.get('measurement_sets'):
+                measurement_set_object = request.embed(measurement_set, '@@object')
+                measurement_set_object_pat = set(measurement_set_object.get('preferred_assay_titles', []))
+                if measurement_set_object_pat:
+                    preferred_assay_titles.update(measurement_set_object_pat)
+        return list(preferred_assay_titles)
 
     @calculated_property(
         condition='analysis_step_version',

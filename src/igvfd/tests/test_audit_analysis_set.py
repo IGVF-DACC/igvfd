@@ -496,7 +496,7 @@ def test_audit_multiple_barcode_replacement_files_in_input_anaset(
         measurement_set['@id'],
         {
             'barcode_replacement_file': tabular_file_barcode_replacement['@id'],
-            'preferred_assay_title': 'Parse SPLiT-seq'
+            'preferred_assay_titles': ['Parse SPLiT-seq']
         }
     )
     testapp.patch_json(
@@ -509,7 +509,7 @@ def test_audit_multiple_barcode_replacement_files_in_input_anaset(
         measurement_set_multiome['@id'],
         {
             'barcode_replacement_file': tabular_file['@id'],
-            'preferred_assay_title': 'Parse SPLiT-seq'
+            'preferred_assay_titles': ['Parse SPLiT-seq']
         }
     )
     testapp.patch_json(

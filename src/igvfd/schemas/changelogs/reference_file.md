@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 19
 
+* Add calculative property `preferred_assay_titles`
 * Extend `transcriptome_annotation` enum list to include `GENCODE 24`.
 * Extend `file_format_type` enum list to include `mpra_element`.
 * Extend `file_format_type` enum list to include `mpra_variant`.
