@@ -237,17 +237,6 @@ def audit_preferred_assay_title(value, system):
             level=audit_message_inconsistent.get('audit_level', '')
         )
 
-    elif not preferred_assay_titles:
-        detail = (
-            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} is missing '
-            f'`preferred_assay_titles`. Expected one of: {", ".join(valid_titles)}.'
-        )
-        yield AuditFailure(
-            audit_message_inconsistent.get('audit_category', ''),
-            f'{detail} {audit_message_inconsistent.get("audit_description", "")}',
-            level=audit_message_inconsistent.get('audit_level', '')
-        )
-
 
 def audit_missing_institutional_certification(value, system):
     '''
