@@ -628,7 +628,7 @@ def audit_onlist(value, system):
     onlist_files = value.get('onlist_files')
     onlist_method = value.get('onlist_method')
     assay_titles = value.get('assay_titles', [])
-    single_cell_assay_status = single_cell_check(system, value, 'Measurement set', include_perturb_seq=True)
+    single_cell_assay_status = single_cell_check(system, value, 'Measurement set')
     # Check if single cell assays MeaSets are missing both onlist files and methods
     if (single_cell_assay_status) and (not onlist_method) and (not onlist_files):
         detail = (

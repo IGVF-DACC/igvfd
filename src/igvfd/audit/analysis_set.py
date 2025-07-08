@@ -205,7 +205,7 @@ def audit_analysis_set_inconsistent_onlist_info(value, system):
         if input_file_set.startswith('/measurement-sets/'):
             input_file_set_object = system.get('request').embed(input_file_set + '@@object')
             # Skip assay if it's not single cell
-            if not single_cell_check(system, input_file_set_object, 'Measurement set', include_perturb_seq=True):
+            if not single_cell_check(system, input_file_set_object, 'Measurement set'):
                 continue
 
             assay_titles = input_file_set_object.get('assay_titles', [])
