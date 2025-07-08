@@ -635,7 +635,4 @@ def measurement_set_33_34(value, system):
 @upgrade_step('measurement_set', '34', '35')
 def measurement_set_34_35(value, system):
     # Revert IGVF-2820-unify-assays
-    if 'preferred_assay_titles' in value:
-        titles = value['preferred_assay_titles']
-        if len(titles) == 1:
-            value['preferred_assay_title'] = titles[0]
+    pass
