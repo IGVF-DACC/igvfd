@@ -102,16 +102,13 @@ def file_():
         'file_size': 3356650,
         's3_uri': 's3://encode-public/2020/07/09/dc068c0a-d1c8-461a-a208-418d35121f3b/ENCFF244PJU.bed.gz',
         'md5sum': '335b6066a184f30f225aec79b376c7e8',
-        'file_type': 'bed idr_ranked_peak',
+        'file_format': 'bed idr_ranked_peak',
         'no_file_available': False,
         'derived_from': [
             '/files/ENCFF895UWM/',
             '/files/ENCFF089RYQ/'
         ],
         'assembly': 'GRCh38',
-        'biological_replicates': [
-            2
-        ],
         'href': '/files/ENCFF244PJU/@@download/ENCFF244PJU.bed.gz',
         'file_format': 'bed',
         'status': 'released',
@@ -135,7 +132,6 @@ def test_metadata_serializers_make_file_cell():
     assert make_file_cell(['assembly'], file_()) == 'GRCh38'
     assert make_file_cell(['dbxrefs'], file_()) == ''
     assert make_file_cell(['technical_replicates'], file_()) == '2_1'
-    assert make_file_cell(['biological_replicates'], file_()) == '2'
     assert make_file_cell(['status'], file_()) == 'released'
     assert make_file_cell(['lab.title'], file_()) == 'ENCODE Processing Pipeline'
     assert make_file_cell(['file_format', 'file_format_type'], file_()) == 'bed idr_ranked_peak'

@@ -2,7 +2,6 @@ from collections import defaultdict
 from collections import OrderedDict
 from igvfd.metadata.constants import METADATA_ALLOWED_TYPES
 from igvfd.metadata.constants import METADATA_COLUMN_TO_FIELDS_MAPPING
-from igvfd.metadata.constants import METADATA_AUDIT_TO_AUDIT_COLUMN_MAPPING
 from igvfd.metadata.csv import CSVGenerator
 from igvfd.metadata.decorators import allowed_types
 from igvfd.metadata.inequalities import map_param_values_to_inequalities
@@ -64,26 +63,12 @@ def file_satisfies_inequality_constraints(file_, positive_file_inequalities):
     return True
 
 
-def group_audits_by_files_and_type(audits):
-    grouped_file_audits = defaultdict(lambda: defaultdict(list))
-    grouped_other_audits = defaultdict(list)
-    for audit_type, audit_column in METADATA_AUDIT_TO_AUDIT_COLUMN_MAPPING:
-        for audit in audits.get(audit_type, []):
-            path = audit.get('path')
-            if '/files/' in path:
-                grouped_file_audits[path][audit_type].append(audit.get('category'))
-            else:
-                grouped_other_audits[audit_type].append(audit.get('category'))
-    return grouped_file_audits, grouped_other_audits
-
-
 class MetadataReport:
 
     SEARCH_PATH = '/search/'
     EXCLUDED_COLUMNS = (
     )
     DEFAULT_PARAMS = [
-        ('field', 'audit'),
         ('field', 'files.@id'),
         ('field', 'files.href'),
         ('field', 'files.file_format'),
@@ -115,8 +100,6 @@ class MetadataReport:
         for column in self._get_column_to_fields_mapping():
             if column not in self.EXCLUDED_COLUMNS:
                 self.header.append(column)
-        for audit, column in METADATA_AUDIT_TO_AUDIT_COLUMN_MAPPING:
-            self.header.append(column)
 
     def _split_column_and_fields_by_experiment_and_file(self):
         for column, fields in self._get_column_to_fields_mapping().items():
@@ -243,16 +226,6 @@ class MetadataReport:
             for column, fields in self.file_column_to_fields_mapping.items()
         }
 
-    def _get_audit_data(self, grouped_audits_for_file, grouped_other_audits):
-        return {
-            audit_column: ', '.join(
-                set(
-                    grouped_audits_for_file.get(audit_type, [])
-                    + grouped_other_audits.get(audit_type, [])
-                )
-            ) for audit_type, audit_column in METADATA_AUDIT_TO_AUDIT_COLUMN_MAPPING
-        }
-
     def _output_sorted_row(self, experiment_data, file_data):
         row = []
         for column in self.header:
@@ -269,19 +242,11 @@ class MetadataReport:
         for experiment in self._get_search_results_generator():
             if not experiment.get('files', []):
                 continue
-            grouped_file_audits, grouped_other_audits = group_audits_by_files_and_type(
-                experiment.get('audit', {})
-            )
             experiment_data = self._get_experiment_data(experiment)
             for file_ in experiment.get('files', []):
                 if self._should_not_report_file(file_):
                     continue
                 file_data = self._get_file_data(file_)
-                audit_data = self._get_audit_data(
-                    grouped_file_audits.get(file_.get('@id'), {}),
-                    grouped_other_audits
-                )
-                file_data.update(audit_data)
                 yield self.csv.writerow(
                     self._output_sorted_row(experiment_data, file_data)
                 )
