@@ -2,7 +2,6 @@ from collections import defaultdict
 from collections import OrderedDict
 from igvfd.metadata.constants import METADATA_ALLOWED_TYPES
 from igvfd.metadata.constants import METADATA_COLUMN_TO_FIELDS_MAPPING
-from igvfd.metadata.constants import METADATA_AUDIT_TO_AUDIT_COLUMN_MAPPING
 from igvfd.metadata.csv import CSVGenerator
 from igvfd.metadata.decorators import allowed_types
 from igvfd.metadata.inequalities import map_param_values_to_inequalities
@@ -64,19 +63,6 @@ def file_satisfies_inequality_constraints(file_, positive_file_inequalities):
     return True
 
 
-def group_audits_by_files_and_type(audits):
-    grouped_file_audits = defaultdict(lambda: defaultdict(list))
-    grouped_other_audits = defaultdict(list)
-    for audit_type, audit_column in METADATA_AUDIT_TO_AUDIT_COLUMN_MAPPING:
-        for audit in audits.get(audit_type, []):
-            path = audit.get('path')
-            if '/files/' in path:
-                grouped_file_audits[path][audit_type].append(audit.get('category'))
-            else:
-                grouped_other_audits[audit_type].append(audit.get('category'))
-    return grouped_file_audits, grouped_other_audits
-
-
 class MetadataReport:
 
     SEARCH_PATH = '/search/'
@@ -115,8 +101,6 @@ class MetadataReport:
         for column in self._get_column_to_fields_mapping():
             if column not in self.EXCLUDED_COLUMNS:
                 self.header.append(column)
-        for audit, column in METADATA_AUDIT_TO_AUDIT_COLUMN_MAPPING:
-            self.header.append(column)
 
     def _split_column_and_fields_by_experiment_and_file(self):
         for column, fields in self._get_column_to_fields_mapping().items():
@@ -241,16 +225,6 @@ class MetadataReport:
         return {
             column: make_file_cell(fields, file_)
             for column, fields in self.file_column_to_fields_mapping.items()
-        }
-
-    def _get_audit_data(self, grouped_audits_for_file, grouped_other_audits):
-        return {
-            audit_column: ', '.join(
-                set(
-                    grouped_audits_for_file.get(audit_type, [])
-                    + grouped_other_audits.get(audit_type, [])
-                )
-            ) for audit_type, audit_column in METADATA_AUDIT_TO_AUDIT_COLUMN_MAPPING
         }
 
     def _output_sorted_row(self, experiment_data, file_data):

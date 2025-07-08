@@ -19,18 +19,18 @@ METADATA_COLUMN_TO_FIELDS_MAPPING = OrderedDict(
         ('File id', ['files.@id']),
         ('File format', ['files.file_format']),
         ('File format type', ['files.file_format_type']),
-        ('File content', ['files.content_type']),
-        ('File content', ['files.summary']),
-        ('Fileset accession', ['accession']),
-        ('Fileset type', ['file_set_type']),
+        ('File content type', ['files.content_type']),
+        ('File summary', ['files.summary']),
+        ('Fileset accession', ['files.file_set.accession']),
+        ('Fileset type', ['file_set.file_set_type']),
         ('Preferred assay titles', ['files.preferred_assay_titles']),
         ('Assay titles', ['files.assay_titles']),
-        ('Donor(s)', ['donors.accession']),
-        ('Sample(s)', ['samples.accession']),
-        ('Sample term name', ['samples.sample_terms.term_name']),
-        ('Creation timestamp', ['creation_timestamp']),
+        ('Donor(s)', ['files.file_set.donors.accession']),
+        ('Sample(s)', ['files.file_set.samples.accession']),
+        ('Sample term name', ['files.file_set.samples.sample_terms.term_name']),
+        ('Creation timestamp', ['files.creation_timestamp']),
         ('File size', ['files.file_size']),
-        ('Fileset lab', ['lab.title']),
+        ('Fileset lab', ['files.file_set.lab.title']),
         ('File download URL', ['files.href']),
         ('File s3_uri', ['files.s3_uri']),
         ('File assembly', ['files.assembly']),
@@ -44,6 +44,7 @@ METADATA_COLUMN_TO_FIELDS_MAPPING = OrderedDict(
         ('File sequencing run', ['files.sequencing_run']),
         ('File flowcell ID', ['files.flowcell_id']),
         ('File lane', ['files.lane']),
+        ('File read names', ['files.read_names']),
         ('File mean read length', ['files.mean_read_length']),
         ('File seqspecs', ['files.seqspecs']),
         ('File seqspec document', ['files.seqspec_document']),
@@ -52,13 +53,6 @@ METADATA_COLUMN_TO_FIELDS_MAPPING = OrderedDict(
         ('File workflow name', ['files.workflow.name'])
     ]
 )
-
-
-METADATA_AUDIT_TO_AUDIT_COLUMN_MAPPING = [
-    ('WARNING', 'Audit WARNING'),
-    ('NOT_COMPLIANT', 'Audit NOT_COMPLIANT'),
-    ('ERROR', 'Audit ERROR'),
-]
 
 
 BATCH_DOWNLOAD_COLUMN_TO_FIELDS_MAPPING = OrderedDict(
