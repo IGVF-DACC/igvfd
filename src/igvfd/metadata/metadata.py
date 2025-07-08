@@ -69,7 +69,6 @@ class MetadataReport:
     EXCLUDED_COLUMNS = (
     )
     DEFAULT_PARAMS = [
-        ('field', 'audit'),
         ('field', 'files.@id'),
         ('field', 'files.href'),
         ('field', 'files.file_format'),
@@ -243,19 +242,11 @@ class MetadataReport:
         for experiment in self._get_search_results_generator():
             if not experiment.get('files', []):
                 continue
-            grouped_file_audits, grouped_other_audits = group_audits_by_files_and_type(
-                experiment.get('audit', {})
-            )
             experiment_data = self._get_experiment_data(experiment)
             for file_ in experiment.get('files', []):
                 if self._should_not_report_file(file_):
                     continue
                 file_data = self._get_file_data(file_)
-                audit_data = self._get_audit_data(
-                    grouped_file_audits.get(file_.get('@id'), {}),
-                    grouped_other_audits
-                )
-                file_data.update(audit_data)
                 yield self.csv.writerow(
                     self._output_sorted_row(experiment_data, file_data)
                 )

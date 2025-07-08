@@ -151,7 +151,7 @@ class File(Item):
         Path('file_set.samples.treatments', include=[
              '@id', 'purpose', 'summary', 'treatment_term_name', 'status']),
         Path('file_set.donors', include=[
-             '@id', 'summary', 'status']),
+             '@id', 'accession', 'summary', 'status']),
         Path('integrated_in.associated_phenotypes', include=[
              '@id', 'summary', 'status', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list', 'applied_to_samples']),
         Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol', 'status']),

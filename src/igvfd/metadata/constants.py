@@ -22,7 +22,7 @@ METADATA_COLUMN_TO_FIELDS_MAPPING = OrderedDict(
         ('File content type', ['files.content_type']),
         ('File summary', ['files.summary']),
         ('Fileset accession', ['files.file_set.accession']),
-        ('Fileset type', ['file_set.file_set_type']),
+        ('Fileset type', ['files.file_set.file_set_type']),
         ('Preferred assay titles', ['files.preferred_assay_titles']),
         ('Assay titles', ['files.assay_titles']),
         ('Donor(s)', ['files.file_set.donors.accession']),
@@ -49,7 +49,7 @@ METADATA_COLUMN_TO_FIELDS_MAPPING = OrderedDict(
         ('File seqspecs', ['files.seqspecs']),
         ('File seqspec document', ['files.seqspec_document']),
         ('File sequencing kit', ['files.sequencing_kit']),
-        ('File sequencing platform', ['files.sequencing_platform'])
+        ('File sequencing platform', ['files.sequencing_platform']),
         ('File workflow name', ['files.workflow.name'])
     ]
 )

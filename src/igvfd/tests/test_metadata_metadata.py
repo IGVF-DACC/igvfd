@@ -115,10 +115,9 @@ def embedded_experiment():
                 'file_size': 642625,
                 's3_uri': 's3://encode-public/2020/07/28/d24b3680-9453-403e-94b8-2393ed02ccb6/ENCFF237ENG.bed.gz',
                 'md5sum': 'c954093c70a9c0f2067dc480a5135936',
-                'file_type': 'bed bed3+',
+                'file_format': 'bed bed3+',
                 'no_file_available': False,
                 'assembly': 'mm10',
-                'biological_replicates': [1],
                 'href': '/files/ENCFF237ENG/@@download/ENCFF237ENG.bed.gz',
                 'read_length': 36,
                 'file_format': 'bed',
@@ -139,9 +138,8 @@ def embedded_experiment():
                 'file_size': 237982153,
                 's3_uri': 's3://encode-public/2011/05/06/7c35d915-aea2-4f20-9f52-b2af18991cab/ENCFF001QIF.fastq.gz',
                 'md5sum': 'cfb4e7dd7dbb0add6efbe0e52ae5618a',
-                'file_type': 'fastq',
+                'file_format': 'fastq',
                 'no_file_available': False,
-                'biological_replicates': [1],
                 'href': '/files/ENCFF001QIF/@@download/ENCFF001QIF.fastq.gz',
                 'read_length': 36,
                 'file_format': 'fastq',
@@ -162,9 +160,8 @@ def embedded_experiment():
                 'file_size': 1338237475,
                 's3_uri': 's3://encode-public/2011/05/06/11f63cfc-6da6-4f23-a9a0-1b1b04744dbd/ENCFF001QIE.fastq.gz',
                 'md5sum': '315ebbab452358fe188024e3637fd965',
-                'file_type': 'fastq',
+                'file_format': 'fastq',
                 'no_file_available': False,
-                'biological_replicates': [1],
                 'href': '/files/ENCFF001QIE/@@download/ENCFF001QIE.fastq.gz',
                 'read_length': 36,
                 'file_format': 'fastq',
@@ -207,16 +204,13 @@ def file_():
         'file_size': 3356650,
         's3_uri': 's3://encode-public/2020/07/09/dc068c0a-d1c8-461a-a208-418d35121f3b/ENCFF244PJU.bed.gz',
         'md5sum': '335b6066a184f30f225aec79b376c7e8',
-        'file_type': 'bed idr_ranked_peak',
+        'file_format': 'bed idr_ranked_peak',
         'no_file_available': False,
         'derived_from': [
             '/files/ENCFF895UWM/',
             '/files/ENCFF089RYQ/'
         ],
         'assembly': 'GRCh38',
-        'biological_replicates': [
-            2
-        ],
         'href': '/files/ENCFF244PJU/@@download/ENCFF244PJU.bed.gz',
         'file_format': 'bed',
         'status': 'released',
@@ -260,8 +254,6 @@ def test_metadata_file_matches_file_params():
     file_param_list = {'derived_from': set(['/files/ENCFF895UWM/', '/files/ENCFF089RYQ/'])}
     assert file_matches_file_params(file_(), file_param_list)
     file_param_list = {'technical_replicates': set(['2_1'])}
-    assert file_matches_file_params(file_(), file_param_list)
-    file_param_list = {'biological_replicates': set([2])}
     assert file_matches_file_params(file_(), file_param_list)
     file_param_list = {'file_size': set([3356650])}
     assert file_matches_file_params(file_(), file_param_list)
@@ -399,14 +391,12 @@ def test_metadata_file_satisfies_inequality_constraints():
     positive_file_inequalities = {
         'file_size':  map_param_values_to_inequalities(['gte:50000']),
         'title':  map_param_values_to_inequalities(['lte:ENCFF244PJU', 'lte:ENCFF300PJU']),
-        'biological_replicates': map_param_values_to_inequalities(['gt:1']),
         'replicate.rbns_protein_concentration': map_param_values_to_inequalities(['gt:10', 'lt:30']),
     }
     assert file_satisfies_inequality_constraints(file_(), positive_file_inequalities)
     positive_file_inequalities = {
         'file_size':  map_param_values_to_inequalities(['gte:50000']),
         'title':  map_param_values_to_inequalities(['lte:ENCFF244PJU', 'lte:ENCFF300PJU']),
-        'biological_replicates': map_param_values_to_inequalities(['gt:1']),
         'replicate.rbns_protein_concentration': map_param_values_to_inequalities(['gt:10', 'lt:15']),
     }
     assert not file_satisfies_inequality_constraints(file_(), positive_file_inequalities)
@@ -454,9 +444,10 @@ def test_metadata_metadata_report_build_header(dummy_request):
         'File accession',
         'File id',
         'File format',
-        'File content',
+        'File format type',
+        'File content type',
+        'File summary',
         'Fileset accession',
-        'Fileset classification',
         'Fileset type',
         'Preferred assay titles',
         'Assay titles',
@@ -471,12 +462,21 @@ def test_metadata_metadata_report_build_header(dummy_request):
         'File assembly',
         'File transcriptome annotation',
         'File controlled access',
+        'File anvil_url',
         'File md5sum',
         'File derived from',
         'File upload status',
-        'Audit WARNING',
-        'Audit NOT_COMPLIANT',
-        'Audit ERROR',
+        'File cell type annotation',
+        'File sequencing run',
+        'File flowcell ID',
+        'File lane',
+        'File read names',
+        'File mean read length',
+        'File seqspecs',
+        'File seqspec document',
+        'File sequencing kit',
+        'File sequencing platform',
+        'File workflow name'
     ]
     assert mr.header == expected_header
 
@@ -492,16 +492,39 @@ def test_metadata_metadata_report_split_column_and_fields_by_experiment_and_file
         'File accession': ['accession'],
         'File id': ['@id'],
         'File format': ['file_format'],
-        'File content': ['content_type'],
+        'File format type': ['file_format_type'],
+        'File content type': ['content_type'],
+        'File summary': ['summary'],
+        'Fileset accession': ['file_set.accession'],
+        'Fileset type': ['file_set.file_set_type'],
+        'Preferred assay titles': ['preferred_assay_titles'],
+        'Assay titles': ['assay_titles'],
+        'Donor(s)': ['file_set.donors.accession'],
+        'Sample(s)': ['file_set.samples.accession'],
+        'Sample term name': ['file_set.samples.sample_terms.term_name'],
+        'Creation timestamp': ['creation_timestamp'],
         'File size': ['file_size'],
+        'Fileset lab': ['file_set.lab.title'],
         'File download URL': ['href'],
         'File s3_uri': ['s3_uri'],
         'File assembly': ['assembly'],
         'File transcriptome annotation': ['transcriptome_annotation'],
         'File controlled access': ['controlled_access'],
+        'File anvil_url': ['anvil_url'],
         'File md5sum': ['md5sum'],
         'File derived from': ['derived_from'],
-        'File upload status': ['upload_status']
+        'File upload status': ['upload_status'],
+        'File cell type annotation': ['cell_type_annotation'],
+        'File sequencing run': ['sequencing_run'],
+        'File flowcell ID': ['flowcell_id'],
+        'File lane': ['lane'],
+        'File read names': ['read_names'],
+        'File mean read length': ['mean_read_length'],
+        'File seqspecs': ['seqspecs'],
+        'File seqspec document': ['seqspec_document'],
+        'File sequencing kit': ['sequencing_kit'],
+        'File sequencing platform': ['sequencing_platform'],
+        'File workflow name': ['workflow.name']
     }
     expected_experiment_column_to_fields_mapping = {
         'Fileset accession': ['accession'],
@@ -524,9 +547,9 @@ def test_metadata_metadata_report_split_column_and_fields_by_experiment_and_file
 def test_metadata_metadata_report_set_positive_file_param_set(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_type=bigWig&files.file_type=bam'
+        'type=Experiment&files.file_format=bigWig&files.file_format=bam'
         '&files.replicate.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
         '&files.file_size=gt:3000&files.file_size=lte:5000000&files.read_count=lt:26'
         '&files.accession=gte:ENCFF000AAA'
     )
@@ -534,9 +557,8 @@ def test_metadata_metadata_report_set_positive_file_param_set(dummy_request):
     mr._set_split_file_filters()
     mr._set_positive_file_param_set()
     expected_positive_file_param_set = {
-        'file_type': set(['bigWig', 'bam']),
-        'replicate.library.size_range': set(['50-100']),
-        'biological_replicates': set([2])
+        'file_format': set(['bigWig', 'bam']),
+        'replicate.library.size_range': set(['50-100'])
     }
     for k, v in mr.positive_file_param_set.items():
         assert tuple(sorted(expected_positive_file_param_set[k])) == tuple(sorted(v))
@@ -545,9 +567,9 @@ def test_metadata_metadata_report_set_positive_file_param_set(dummy_request):
 def test_metadata_metadata_report_set_positive_file_inequalities(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_type=bigWig&files.file_type=bam'
+        'type=Experiment&files.file_format=bigWig&files.file_format=bam'
         '&files.replicate.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
         '&files.file_size=gt:3000&files.file_size=lte:5000000&files.read_count=lt:26'
         '&files.accession=gte:ENCFF000AAA'
     )
@@ -568,19 +590,18 @@ def test_metadata_metadata_report_set_positive_file_inequalities(dummy_request):
 def test_metadata_metadata_report_add_positive_file_filters_as_fields_to_param_list(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_type=bigWig&files.file_type=bam'
+        'type=Experiment&files.file_format=bigWig&files.file_format=bam'
         '&files.replicate.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
         '&files.read_count=123'
     )
     mr = MetadataReport(dummy_request)
     assert mr.param_list.get('field', []) == []
     mr._add_positive_file_filters_as_fields_to_param_list()
     assert mr.param_list.get('field') == [
-        'files.file_type',
-        'files.file_type',
+        'files.file_format',
+        'files.file_format',
         'files.replicate.library.size_range',
-        'files.biological_replicates',
         'files.read_count',
     ]
 
@@ -588,9 +609,9 @@ def test_metadata_metadata_report_add_positive_file_filters_as_fields_to_param_l
 def test_metadata_metadata_report_add_fields_to_param_list(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_type=bigWig&files.file_type=bam'
+        'type=Experiment&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
         '&files.read_count=123'
     )
     mr = MetadataReport(dummy_request)
@@ -599,29 +620,39 @@ def test_metadata_metadata_report_add_fields_to_param_list(dummy_request):
         'files.accession',
         'files.@id',
         'files.file_format',
+        'files.file_format_type',
         'files.content_type',
-        'accession',
-        '@type',
-        'file_set_type',
-        'preferred_assay_titles',
-        'assay_titles',
-        'donors.accession',
-        'samples.accession',
-        'samples.sample_terms.term_name',
-        'creation_timestamp',
+        'files.summary',
+        'files.file_set.accession',
+        'files.file_set.file_set_type',
+        'files.preferred_assay_titles',
+        'files.assay_titles',
+        'files.file_set.donors.accession',
+        'files.file_set.samples.accession',
+        'files.file_set.samples.sample_terms.term_name',
+        'files.creation_timestamp',
         'files.file_size',
-        'lab.title',
+        'files.file_set.lab.title',
         'files.href',
         'files.s3_uri',
         'files.assembly',
         'files.transcriptome_annotation',
         'files.controlled_access',
+        'files.anvil_url',
         'files.md5sum',
         'files.derived_from',
         'files.upload_status',
-        'files.file_type',
-        'files.file_type',
-        'files.biological_replicates',
+        'files.cell_type_annotation',
+        'files.sequencing_run',
+        'files.flowcell_id',
+        'files.lane',
+        'files.read_names',
+        'files.mean_read_length',
+        'files.seqspecs',
+        'files.seqspec_document',
+        'files.sequencing_kit',
+        'files.sequencing_platform',
+        'files.workflow.name',
         'files.read_count'
     ]
     assert set(mr.param_list['field']) == set(expected_fields), f"{set(mr.param_list['field']) - set(expected_fields)}"
@@ -630,17 +661,17 @@ def test_metadata_metadata_report_add_fields_to_param_list(dummy_request):
 def test_metadata_metadata_report_initialize_at_id_param(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_type=bigWig&files.file_type=bam'
+        'type=Experiment&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
     )
     mr = MetadataReport(dummy_request)
     mr._initialize_at_id_param()
     assert mr.param_list['@id'] == []
     dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_type=bigWig&files.file_type=bam'
+        'type=Experiment&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
         '&@id=/experiments/ENCSR123ABC/'
     )
     mr = MetadataReport(dummy_request)
@@ -651,9 +682,9 @@ def test_metadata_metadata_report_initialize_at_id_param(dummy_request):
 def test_metadata_metadata_report_get_json_elements_or_empty_list(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_type=bigWig&files.file_type=bam'
+        'type=Experiment&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
     )
     mr = MetadataReport(dummy_request)
     mr._initialize_at_id_param()
@@ -676,9 +707,9 @@ def test_metadata_metadata_report_get_json_elements_or_empty_list(dummy_request)
 def test_metadata_metadata_report_maybe_add_json_elements_to_param_list(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_type=bigWig&files.file_type=bam'
+        'type=Experiment&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
     )
     mr = MetadataReport(dummy_request)
     mr._initialize_at_id_param()
@@ -701,9 +732,9 @@ def test_metadata_metadata_report_maybe_add_json_elements_to_param_list(dummy_re
 def test_metadata_metadata_report_get_field_params(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_type=bigWig&files.file_type=bam'
+        'type=Experiment&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
     )
     mr = MetadataReport(dummy_request)
     mr._add_fields_to_param_list()
@@ -711,29 +742,39 @@ def test_metadata_metadata_report_get_field_params(dummy_request):
         ('field', 'files.accession'),
         ('field', 'files.@id'),
         ('field', 'files.file_format'),
+        ('field', 'files.file_format_type'),
         ('field', 'files.content_type'),
-        ('field', 'accession'),
-        ('field', '@type'),
-        ('field', 'file_set_type'),
-        ('field', 'preferred_assay_titles'),
-        ('field', 'assay_titles'),
-        ('field', 'donors.accession'),
-        ('field', 'samples.accession'),
-        ('field', 'samples.sample_terms.term_name'),
-        ('field', 'creation_timestamp'),
+        ('field', 'files.summary'),
+        ('field', 'files.file_set.accession'),
+        ('field', 'files.file_set.file_set_type'),
+        ('field', 'files.preferred_assay_titles'),
+        ('field', 'files.assay_titles'),
+        ('field', 'files.file_set.donors.accession'),
+        ('field', 'files.file_set.samples.accession'),
+        ('field', 'files.file_set.samples.sample_terms.term_name'),
+        ('field', 'files.creation_timestamp'),
         ('field', 'files.file_size'),
-        ('field', 'lab.title'),
+        ('field', 'files.file_set.lab.title'),
         ('field', 'files.href'),
         ('field', 'files.s3_uri'),
         ('field', 'files.assembly'),
         ('field', 'files.transcriptome_annotation'),
         ('field', 'files.controlled_access'),
+        ('field', 'files.anvil_url'),
         ('field', 'files.md5sum'),
         ('field', 'files.derived_from'),
         ('field', 'files.upload_status'),
-        ('field', 'files.file_type'),
-        ('field', 'files.file_type'),
-        ('field', 'files.biological_replicates'),
+        ('field', 'files.cell_type_annotation'),
+        ('field', 'files.sequencing_run'),
+        ('field', 'files.flowcell_id'),
+        ('field', 'files.lane'),
+        ('field', 'files.read_names'),
+        ('field', 'files.mean_read_length'),
+        ('field', 'files.seqspecs'),
+        ('field', 'files.seqspec_document'),
+        ('field', 'files.sequencing_kit'),
+        ('field', 'files.sequencing_platform'),
+        ('field', 'files.workflow.name')
     ]
     for param in mr._get_field_params():
         assert param in expected_field_params, f'{param}'
@@ -742,9 +783,9 @@ def test_metadata_metadata_report_get_field_params(dummy_request):
 def test_metadata_metadata_report_get_at_id_params(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_type=bigWig&files.file_type=bam'
+        'type=Experiment&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived2'
     )
     dummy_request.json = {'elements': ['/experiments/ENCSR123ABC/']}
     mr = MetadataReport(dummy_request)
@@ -756,9 +797,9 @@ def test_metadata_metadata_report_get_at_id_params(dummy_request):
 def test_metadata_metadata_report_get_default_params(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_type=bigWig&files.file_type=bam'
+        'type=Experiment&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
     )
     dummy_request.json = {'elements': ['/experiments/ENCSR123ABC/']}
     mr = MetadataReport(dummy_request)
@@ -775,16 +816,16 @@ def test_metadata_metadata_report_get_default_params(dummy_request):
 def test_metadata_metadata_report_build_query_string(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=MeasurementSet&files.file_type=bigWig&files.file_type=bam'
+        'type=MeasurementSet&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
     )
     mr = MetadataReport(dummy_request)
     mr._build_query_string()
     assert str(mr.query_string) == (
-        'type=MeasurementSet&files.file_type=bigWig'
-        '&files.file_type=bam&replicates.library.size_range=50-100'
-        '&files.status%21=archived&files.biological_replicates=2'
+        'type=MeasurementSet&files.file_format=bigWig'
+        '&files.file_format=bam&replicates.library.size_range=50-100'
+        '&files.status%21=archived'
         '&field=files.%40id&field=files.href&field=files.file_format'
         '&field=files.file_format_type&field=files.status&limit=all'
     )
@@ -793,9 +834,9 @@ def test_metadata_metadata_report_build_query_string(dummy_request):
 def test_metadata_metadata_report_get_search_path(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=MeasurementSet&files.file_type=bigWig&files.file_type=bam'
+        'type=MeasurementSet&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
     )
     mr = MetadataReport(dummy_request)
     assert mr._get_search_path() == '/search/'
@@ -804,49 +845,49 @@ def test_metadata_metadata_report_get_search_path(dummy_request):
 def test_metadata_metadata_report_initialize_report(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=MeasurementSet&files.file_type=bigWig&files.file_type=bam'
+        'type=MeasurementSet&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
     )
     mr = MetadataReport(dummy_request)
     mr._initialize_report()
-    assert len(mr.header) == 26
+    assert len(mr.header) == 36
     assert len(mr.experiment_column_to_fields_mapping.keys()
-               ) == 10, f'{len(mr.experiment_column_to_fields_mapping.keys())}'
-    assert len(mr.file_column_to_fields_mapping.keys()) == 13, f'{len(mr.file_column_to_fields_mapping.keys())}'
+               ) == 0, f'{len(mr.experiment_column_to_fields_mapping.keys())}'
+    assert len(mr.file_column_to_fields_mapping.keys()) == 36, f'{len(mr.file_column_to_fields_mapping.keys())}'
     dummy_request.environ['QUERY_STRING'] = (
-        'type=MeasurementSet&files.file_type=bigWig&files.file_type=bam'
+        'type=MeasurementSet&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
         '&files.file_size=gte:3000&files.read_count=lt:500000'
         '&files.file_size!=lt:9999'
     )
     mr = MetadataReport(dummy_request)
     mr._initialize_report()
-    assert len(mr.positive_file_param_set) == 2
+    assert len(mr.positive_file_param_set) == 1
     assert len(mr.positive_file_inequalities) == 2
 
 
 def test_metadata_metadata_report_build_params(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=MeasurementSet&files.file_type=bigWig&files.file_type=bam'
+        'type=MeasurementSet&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
     )
     dummy_request.json = {'elements': ['/experiments/ENCSR123ABC/']}
     mr = MetadataReport(dummy_request)
     mr._build_params()
-    assert len(mr.param_list['field']) == 26, f'{len(mr.param_list["field"])} not expected'
+    assert len(mr.param_list['field']) == 38, f'{len(mr.param_list["field"])} not expected'
     assert len(mr.param_list['@id']) == 1
 
 
 def test_metadata_metadata_report_build_new_request(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=MeasurementSet&files.file_type=bigWig&files.file_type=bam'
+        'type=MeasurementSet&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
         '&files.derived_from=/experiments/ENCSR123ABC/'
         '&files.replicate.library=*'
     )
@@ -858,11 +899,10 @@ def test_metadata_metadata_report_build_new_request(dummy_request):
     assert new_request.registry
     assert str(new_request.query_string) == (
         'type=MeasurementSet'
-        '&files.file_type=bigWig'
-        '&files.file_type=bam'
+        '&files.file_format=bigWig'
+        '&files.file_format=bam'
         '&replicates.library.size_range=50-100'
         '&files.status%21=archived'
-        '&files.biological_replicates=2'
         '&files.derived_from=%2Fexperiments%2FENCSR123ABC%2F'
         '&files.replicate.library=%2A'
         '&field=files.%40id'
@@ -873,26 +913,36 @@ def test_metadata_metadata_report_build_new_request(dummy_request):
         '&limit=all'
         '&field=files.accession'
         '&field=files.content_type'
-        '&field=accession'
-        '&field=%40type'
-        '&field=file_set_type'
-        '&field=preferred_assay_titles'
-        '&field=assay_titles'
-        '&field=donors.accession'
-        '&field=samples.accession'
-        '&field=samples.sample_terms.term_name'
-        '&field=creation_timestamp'
+        '&field=files.summary'
+        '&field=files.file_set.accession'
+        '&field=files.file_set.file_set_type'
+        '&field=files.preferred_assay_titles'
+        '&field=files.assay_titles'
+        '&field=files.file_set.donors.accession'
+        '&field=files.file_set.samples.accession'
+        '&field=files.file_set.samples.sample_terms.term_name'
+        '&field=files.creation_timestamp'
         '&field=files.file_size'
-        '&field=lab.title'
+        '&field=files.file_set.lab.title'
         '&field=files.s3_uri'
         '&field=files.assembly'
         '&field=files.transcriptome_annotation'
         '&field=files.controlled_access'
+        '&field=files.anvil_url'
         '&field=files.md5sum'
         '&field=files.derived_from'
         '&field=files.upload_status'
-        '&field=files.file_type'
-        '&field=files.biological_replicates'
+        '&field=files.cell_type_annotation'
+        '&field=files.sequencing_run'
+        '&field=files.flowcell_id'
+        '&field=files.lane'
+        '&field=files.read_names'
+        '&field=files.mean_read_length'
+        '&field=files.seqspecs'
+        '&field=files.seqspec_document'
+        '&field=files.sequencing_kit'
+        '&field=files.sequencing_platform'
+        '&field=files.workflow.name'
         '&field=files.replicate.library&%40id=%2Fexperiments%2FENCSR123ABC%2F'
     )
     assert new_request.effective_principals == ['system.Everyone']
@@ -901,9 +951,9 @@ def test_metadata_metadata_report_build_new_request(dummy_request):
 def test_metadata_metadata_report_should_not_report_file(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_type=bigWig&files.file_type=bam'
+        'type=Experiment&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
     )
     mr = MetadataReport(dummy_request)
     mr._initialize_report()
@@ -925,7 +975,7 @@ def test_metadata_metadata_report_should_not_report_file(dummy_request):
     assert mr._should_not_report_file(modified_file)
     dummy_request.environ['QUERY_STRING'] = (
         'type=Experiment&files.file_format=bed&files.file_size=gt:50000'
-        '&files.file_size=lte:99999999999&files.biological_replicates=gte:2'
+        '&files.file_size=lte:99999999999'
     )
     mr = MetadataReport(dummy_request)
     mr._initialize_report()
@@ -958,21 +1008,14 @@ def test_metadata_metadata_report_should_not_report_file(dummy_request):
 def test_metadata_metadata_report_get_experiment_data(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_type=bigWig&files.file_type=bam'
+        'type=Experiment&files.file_format=bigWig&files.file_format=bam'
         '&replicates.library.size_range=50-100'
-        '&files.status!=archived&files.biological_replicates=2'
+        '&files.status!=archived'
     )
     mr = MetadataReport(dummy_request)
     mr._initialize_report()
     mr._build_params()
-    expected_experiment_data = {
-        'Fileset accession': 'ENCSR434TGY',
-        'Assay titles': '',
-        'Donor(s)': '',
-        'Sample(s)': '',
-        'Creation timestamp': '',
-        'Fileset lab': ''
-    }
+    expected_experiment_data = {}
     experiment_data = mr._get_experiment_data(embedded_experiment())
     for k, v in expected_experiment_data.items():
         assert experiment_data[k] == v, f'{experiment_data[k]} not equal to {v}'
@@ -989,7 +1032,7 @@ def test_metadata_metadata_report_get_file_data(dummy_request):
     expected_file_data = {
         'File accession': '',
         'File format': 'bed',
-        'File content': '',
+        'File content type': '',
         'File size': 3356650,
         'File download URL': 'http://localhost/files/ENCFF244PJU/@@download/ENCFF244PJU.bed.gz'
     }
