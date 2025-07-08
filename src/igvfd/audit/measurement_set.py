@@ -534,12 +534,12 @@ def audit_onlist(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets to be processed via the single cell uniform pipeline are expected to have onlist files and onlist methods indicated.",
+            "audit_description": "Measurement sets to be processed via the single cell and perturb-seq uniform pipelines are expected to have onlist files and onlist methods indicated.",
             "audit_category": "missing barcode onlist",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Measurement sets not intended for the single cell uniform pipeline are expected not to have onlist files or onlist methods.",
+            "audit_description": "Measurement sets not intended for the single cell and perturb-seq uniform pipelines are expected not to have onlist files or onlist methods.",
             "audit_category": "unexpected barcode onlist",
             "audit_level": "ERROR"
         }
@@ -552,7 +552,7 @@ def audit_onlist(value, system):
     assay_term = value.get('assay_term')
     assay_term_obj = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assay_term_name = assay_term_obj.get('term_name', '')
-    single_cell_assay_status = single_cell_check(system, value, 'Measurement set')
+    single_cell_assay_status = single_cell_check(system, value, 'Measurement set', include_perturb_seq=True)
     # Check if single cell assays MeaSets are missing both onlist files and methods
     if (single_cell_assay_status) and (not onlist_method) and (not onlist_files):
         detail = (

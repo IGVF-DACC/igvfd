@@ -183,12 +183,12 @@ def audit_analysis_set_inconsistent_onlist_info(value, system):
     '''
     [
         {
-            "audit_description": "Analysis sets to be processed by the single cell uniform pipeline runs are expected to have the same onlist files for input measurement sets of the same assay.",
+            "audit_description": "Analysis sets to be processed by the single cell and perturb-seq uniform pipeline runs are expected to have the same onlist files for input measurement sets of the same assay.",
             "audit_category": "inconsistent barcode onlists",
             "audit_level": "WARNING"
         },
         {
-            "audit_description": "Analysis sets to be processed by the single cell uniform pipeline runs are expected to have the same onlist methods for input measurement sets of the same assay.",
+            "audit_description": "Analysis sets to be processed by the single cell and perturb-seq uniform pipeline runs are expected to have the same onlist methods for input measurement sets of the same assay.",
             "audit_category": "inconsistent barcode method",
             "audit_level": "WARNING"
         }
@@ -203,7 +203,8 @@ def audit_analysis_set_inconsistent_onlist_info(value, system):
         if input_file_set.startswith('/measurement-sets/'):
             input_file_set_object = system.get('request').embed(input_file_set + '@@object?skip_calculated=true')
             # Only check if single cell
-            single_cell_assay_status = single_cell_check(system, input_file_set_object, 'Measurement set')
+            single_cell_assay_status = single_cell_check(
+                system, input_file_set_object, 'Measurement set', include_perturb_seq=True)
             if single_cell_assay_status:
                 assay_term = input_file_set_object.get('assay_term', '')
                 # Onlist files are lists
