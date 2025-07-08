@@ -1,9 +1,5 @@
 ## Changelog for *`measurement_set.json`*
 
-### Minor changes since schema version 35
-
-* Extend `preferred_assay_titles` enum list to include `LABEL-seq`.
-* Extend `preferred_assay_titles` enum list to include `Immune-SGE`.
 
 ### Schema version 35
 
