@@ -45,10 +45,6 @@
         "uuid": "0393b224-8f87-5e94-7aeb-faff044f707d",
         "aliases": [
             "igvf:CRISPR"
-        ],
-        "preferred_assay_titles": [
-            "SGE",
-            "Immune-SGE"
         ]
     },
     {
@@ -159,8 +155,7 @@
         "term_id": "OBI:0000916",
         "term_name": "flow cytometry assay",
         "preferred_assay_titles": [
-            "VAMP-seq",
-            "LABEL-seq"
+            "VAMP-seq"
         ],
         "release_timestamp": "2024-07-06T12:34:56Z",
         "status": "released",
