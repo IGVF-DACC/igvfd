@@ -215,7 +215,7 @@ def test_metadata_batch_download_build_params(dummy_request):
     dummy_request.json = {'elements': ['/experiments/ENCSR123ABC/']}
     bd = BatchDownload(dummy_request)
     bd._build_params()
-    assert len(bd.param_list['field']) == 5, f'{len(bd.param_list["field"])} not expected'
+    assert len(bd.param_list['field']) == 4, f'{len(bd.param_list["field"])} not expected'
     assert len(bd.param_list['@id']) == 1
 
 
@@ -233,7 +233,7 @@ def test_metadata_batch_download_build_query_string(dummy_request):
         'type=Experiment&files.file_format=bigWig'
         '&files.file_format=bam&limit=all&field=files.%40id'
         '&field=files.href&field=files.file_format'
-        '&field=files.file_format_type&field=files.file_format'
+        '&field=files.file_format_type'
     )
     dummy_request.environ['QUERY_STRING'] = (
         'type=Experiment&files.file_format=bigWig&files.file_format=bam'
