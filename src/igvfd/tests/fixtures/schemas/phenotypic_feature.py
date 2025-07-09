@@ -24,3 +24,13 @@ def phenotypic_feature_v1(phenotypic_feature_basic):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def phenotypic_feature_v3(phenotypic_feature_basic):
+    item = phenotypic_feature_basic.copy()
+    item.update({
+        'schema_version': '3',
+        'quality': '2/2'
+    })
+    return item
