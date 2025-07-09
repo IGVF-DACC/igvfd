@@ -600,7 +600,7 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "f0cbe3f6-5f98-4db1-9b99-4f6311a924cc",
         "primer_designs": [
-            "/tabular-file/IGVFFI0001PRIM/"
+            "/tabular-files/IGVFFI0001PRIM/"
         ],
         "accession": "IGVFDS4821KJRM",
         "samples": [
