@@ -94,7 +94,7 @@ def audit_no_files(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    preferred_assay_title = value.get('preferred_assay_title', '')
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
 
     # Skip audit for specific Measurement set + assay combinations
     skip_assays = [
@@ -102,7 +102,7 @@ def audit_no_files(value, system):
         'Variant painting via fluorescence',
         'Cell painting'
     ]
-    if object_type == 'Measurement set' and preferred_assay_title in skip_assays:
+    if object_type == 'Measurement set' and any(t in skip_assays for t in preferred_assay_titles):
         return
 
     audit_message_missing_files = get_audit_message(audit_no_files, index=0)
@@ -646,16 +646,11 @@ def audit_MPRA_read_names(value, system):
     unexpected_read_names = []
     assays = set()
     if object_type == 'Measurement set':
-        assay_term = value.get('assay_term')
-        assay_term_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-        assays.add(assay_term_object.get('term_name'))
+        assay_titles = value.get('assay_titles', [])
+        assays.update(assay_titles)
     elif object_type == 'Auxiliary set':
-        measurement_sets = value.get('measurement_sets', [])
-        for measurement_set in measurement_sets:
-            measurement_set_object = system.get('request').embed(measurement_set, '@@object?skip_calculated=true')
-            assay_term = measurement_set_object.get('assay_term')
-            assay_term_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-            assays.add(assay_term_object.get('term_name'))
+        assay_titles = value.get('assay_titles', [])
+        assays.update(assay_titles)
     assays = list(assays)
     if any(assay for assay in assays if assay == 'massively parallel reporter assay'):
         if 'files' in value:

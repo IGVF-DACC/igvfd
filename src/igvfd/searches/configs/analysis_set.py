@@ -11,7 +11,10 @@ def analysis_set():
                 'title': 'Analysis Set Type',
             },
             'assay_titles': {
-                'title': 'Assay'
+                'title': 'Assay Term Names'
+            },
+            'preferred_assay_titles': {
+                'title': 'Preferred Assay Titles'
             },
             'workflows.uniform_pipeline': {
                 'title': 'Uniformly Processed'
@@ -181,7 +184,10 @@ def analysis_set_report_view():
             'title': 'Simplified Sample Summary'
         },
         'assay_titles': {
-            'title': 'Assay'
+            'title': 'Assay Term Names'
+        },
+        'preferred_assay_titles': {
+            'title': 'Preferred Assay Titles'
         },
         'file_set_type': {
             'title': 'File Set Type'

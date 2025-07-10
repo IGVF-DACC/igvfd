@@ -9,7 +9,7 @@ def measurement_set(testapp, lab, award, assay_term_starr, tissue):
         'assay_term': assay_term_starr['@id'],
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_title': 'STARR-seq'
+        'preferred_assay_titles': ['STARR-seq']
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -23,7 +23,7 @@ def measurement_set_multiome(testapp, lab, award, assay_term_atac, tissue):
         'multiome_size': 2,
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_title': '10x multiome'
+        'preferred_assay_titles': ['10x multiome']
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -37,7 +37,7 @@ def measurement_set_multiome_2(testapp, lab, award, assay_term_rna, in_vitro_cel
         'multiome_size': 2,
         'samples': [in_vitro_cell_line['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_title': '10x multiome'
+        'preferred_assay_titles': ['10x multiome']
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -50,7 +50,7 @@ def measurement_set_no_files(testapp, lab, award, assay_term_ntr, in_vitro_diffe
         'assay_term': assay_term_ntr['@id'],
         'samples': [in_vitro_differentiated_cell['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_title': 'CRISPR FlowFISH screen'
+        'preferred_assay_titles': ['CRISPR FlowFISH screen']
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -63,7 +63,7 @@ def measurement_set_mpra(testapp, lab, award, assay_term_mpra, primary_cell):
         'assay_term': assay_term_mpra['@id'],
         'samples': [primary_cell['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_title': 'MPRA'
+        'preferred_assay_titles': ['MPRA']
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -76,7 +76,7 @@ def measurement_set_one_onlist(testapp, lab, award, assay_term_scrna, tissue, ta
         'assay_term': assay_term_scrna['@id'],
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_title': 'scRNA-seq',
+        'preferred_assay_titles': ['scRNA-seq'],
         'onlist_files': [tabular_file_onlist_1['@id']],
         'onlist_method': 'no combination'
     }
@@ -91,7 +91,7 @@ def measurement_set_two_onlists(testapp, lab, award, assay_term_scrna, tissue, t
         'assay_term': assay_term_scrna['@id'],
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_title': 'scRNA-seq',
+        'preferred_assay_titles': ['scRNA-seq'],
         'onlist_files': [tabular_file_onlist_1['@id'], tabular_file_onlist_2['@id']],
         'onlist_method': 'product'
     }
@@ -106,7 +106,7 @@ def measurement_set_one_onlist_atac(testapp, lab, award, assay_term_scatac, tiss
         'assay_term': assay_term_scatac['@id'],
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_title': 'snATAC-seq',
+        'preferred_assay_titles': ['snATAC-seq'],
         'onlist_files': [tabular_file_onlist_1['@id']],
         'onlist_method': 'no combination'
     }
@@ -121,7 +121,7 @@ def measurement_set_two_onlists_atac(testapp, lab, award, assay_term_scatac, tis
         'assay_term': assay_term_scatac['@id'],
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_title': 'snATAC-seq',
+        'preferred_assay_titles': ['snATAC-seq'],
         'onlist_files': [tabular_file_onlist_1['@id'], tabular_file_onlist_2['@id']],
         'onlist_method': 'product'
     }
@@ -136,7 +136,7 @@ def measurement_set_perturb_seq(testapp, lab, award, assay_term_crispr_single_ce
         'assay_term': assay_term_crispr_single_cell['@id'],
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_title': 'Perturb-seq'
+        'preferred_assay_titles': ['Perturb-seq']
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -150,7 +150,7 @@ def measurement_set_with_protocols(testapp, lab, award, assay_term_starr, tissue
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
         'protocols': ['https://www.protocols.io/test-protocols-url-12345'],
-        'preferred_assay_title': 'STARR-seq'
+        'preferred_assay_titles': ['STARR-seq']
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -163,7 +163,7 @@ def measurement_set_with_functional_assay_mechanisms(testapp, lab, award, assay_
         'assay_term': assay_term_starr['@id'],
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_title': 'STARR-seq',
+        'preferred_assay_titles': ['STARR-seq'],
         'functional_assay_mechanisms': [phenotype_term_from_go['@id']]
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
@@ -499,6 +499,16 @@ def measurement_set_v33(measurement_set):
     item = measurement_set.copy()
     item.update({
         'schema_version': '33',
-        'preferred_assay_title': '10X ATAC with Scale pre-indexing'
+        'preferred_assay_title': '10X ATAC with Scale pre-indexing',
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v35(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '35',
+        'preferred_assay_title': 'semi-qY2H'
     })
     return item

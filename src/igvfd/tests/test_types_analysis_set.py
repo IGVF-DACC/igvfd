@@ -67,15 +67,15 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
         }
     )
     res = testapp.get(analysis_set_base['@id'])
-    assert set(res.json.get('assay_titles')) == {'MPRA'}
+    assert set(res.json.get('preferred_assay_titles')) == {'MPRA'}
     testapp.patch_json(
         measurement_set_mpra['@id'],
         {
-            'preferred_assay_title': 'lentiMPRA'
+            'preferred_assay_titles': ['lentiMPRA']
         }
     )
     res = testapp.get(analysis_set_base['@id'])
-    assert set(res.json.get('assay_titles')) == {'lentiMPRA'}
+    assert set(res.json.get('preferred_assay_titles')) == {'lentiMPRA'}
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -84,7 +84,7 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
         }
     )
     res = testapp.get(analysis_set_base['@id'])
-    assert set(res.json.get('assay_titles')) == {'10x multiome', 'lentiMPRA'}
+    assert set(res.json.get('preferred_assay_titles')) == {'10x multiome', 'lentiMPRA'}
     testapp.patch_json(
         principal_analysis_set['@id'],
         {
@@ -92,7 +92,7 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
         }
     )
     res = testapp.get(principal_analysis_set['@id'])
-    assert set(res.json.get('assay_titles')) == {'10x multiome', 'lentiMPRA'}
+    assert set(res.json.get('preferred_assay_titles')) == {'10x multiome', 'lentiMPRA'}
     testapp.patch_json(
         measurement_set_no_files['@id'],
         {
@@ -106,7 +106,7 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
         }
     )
     res = testapp.get(principal_analysis_set['@id'])
-    assert set(res.json.get('assay_titles')) == {'CRISPR FlowFISH screen'}
+    assert set(res.json.get('preferred_assay_titles')) == {'CRISPR FlowFISH screen'}
     testapp.patch_json(
         primary_cell['@id'],
         {
@@ -114,7 +114,7 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
         }
     )
     res = testapp.get(analysis_set_with_CLS_input['@id'])
-    assert set(res.json.get('assay_titles')) == {'lentiMPRA'}
+    assert set(res.json.get('preferred_assay_titles')) == {'lentiMPRA'}
 
 
 def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_no_files, measurement_set_mpra, measurement_set_multiome, measurement_set_perturb_seq, principal_analysis_set, tabular_file, gene_myc_hs, assay_term_atac, assay_term_crispr, primary_cell, crispr_modification, construct_library_set_reporter, analysis_set_with_CLS_input, tissue, base_expression_construct_library_set, construct_library_set_editing_template_library, construct_library_set_editing_template_library_2, construct_library_set_reference_transduction, construct_library_set_non_targeting, multiplexed_sample, construct_library_set_genome_wide):
@@ -147,7 +147,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         measurement_set_no_files['@id'],
         {
             'assay_term': assay_term_atac['@id'],
-            'preferred_assay_title': 'ATAC-seq',
+            'preferred_assay_titles': ['ATAC-seq'],
             'auxiliary_sets': [base_auxiliary_set['@id']]
         }
     )
@@ -165,7 +165,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         measurement_set_no_files['@id'],
         {
             'assay_term': assay_term_crispr['@id'],
-            'preferred_assay_title': 'CRISPR FlowFISH screen',
+            'preferred_assay_titles': ['CRISPR FlowFISH screen'],
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
@@ -207,7 +207,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     testapp.patch_json(
         measurement_set_mpra['@id'],
         {
-            'preferred_assay_title': 'lentiMPRA'
+            'preferred_assay_titles': ['lentiMPRA']
         }
     )
     testapp.patch_json(
