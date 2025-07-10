@@ -505,10 +505,10 @@ def measurement_set_v33(measurement_set):
 
 
 @pytest.fixture
-def measurement_set_v34(measurement_set):
+def measurement_set_v35(measurement_set):
     item = measurement_set.copy()
     item.update({
-        'schema_version': '34',
+        'schema_version': '35',
         'preferred_assay_title': 'semi-qY2H'
     })
     return item

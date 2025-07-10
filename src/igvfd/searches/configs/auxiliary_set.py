@@ -11,7 +11,7 @@ def auxiliary_set():
                 'title': 'File Set Type'
             },
             'assay_titles': {
-                'title': 'Assay'
+                'title': 'Assay Term Names'
             },
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles'

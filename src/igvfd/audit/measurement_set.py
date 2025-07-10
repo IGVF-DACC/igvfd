@@ -200,7 +200,7 @@ def audit_preferred_assay_title(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets are expected to specify an appropriate preferred assay titles for its respective assay titles.",
+            "audit_description": "Measurement sets are expected to specify an appropriate preferred assay titles for its respective assay term name.",
             "audit_category": "inconsistent preferred assay titles",
             "audit_level": "ERROR"
         }

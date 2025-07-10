@@ -21,7 +21,7 @@ def configuration_file():
                 'title': 'File Set Type'
             },
             'assay_titles': {
-                'title': 'Assay Titles'
+                'title': 'Assay Term Names'
             },
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles'

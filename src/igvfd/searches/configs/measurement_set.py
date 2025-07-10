@@ -152,7 +152,7 @@ def measurement_set():
                 'title': 'Award'
             },
             'assay_titles': {
-                'title': 'Assay'
+                'title': 'Assay Term Names'
             },
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles'
@@ -203,7 +203,7 @@ def measurement_set_report_view():
             'title': 'Preferred Assay Titles'
         },
         'assay_titles': {
-            'title': 'Assay'
+            'title': 'Assay Term Names'
         },
         'files.content_type': {
             'title': 'File Content Type'

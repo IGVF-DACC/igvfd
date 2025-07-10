@@ -263,13 +263,13 @@ class File(Item):
 
     @calculated_property(
         schema={
-            'title': 'Assay Titles',
+            'title': 'Assay Term Names',
             'description': 'Title(s) of assay from the file set this file belongs to.',
             'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Assay Title',
+                'title': 'Assay Term Names',
                 'description': 'Title of assay from the file set this file belongs to.',
                 'type': 'string'
             },
