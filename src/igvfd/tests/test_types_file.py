@@ -265,6 +265,7 @@ def test_file_summaries(
     model_file,
     reference_file,
     sequence_file,
+    sequence_file_pod5,
     signal_file,
     tabular_file,
     base_prediction_set,
@@ -279,6 +280,16 @@ def test_file_summaries(
     )
     res = testapp.get(alignment_file['@id'])
     assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 unfiltered redacted alignments'
+    testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'base_modifications': ['5mC', '6mA'],
+            'content_type': 'alignments with modifications'
+        }
+    )
+    res = testapp.get(alignment_file['@id'])
+    assert res.json.get(
+        'summary', '') == 'GRCh38 GENCODE 43 unfiltered redacted alignments with modifications detecting 5mC, 6mA'
 
     res = testapp.get(image_file['@id'])
     assert res.json.get('summary', '') == 'detected tissue'
@@ -328,6 +339,15 @@ def test_file_summaries(
     )
     res_sequence_file = testapp.get(sequence_file['@id'])
     assert res_sequence_file.json.get('summary', '') == 'R2 reads from sequencing run 1'
+    testapp.patch_json(
+        sequence_file_pod5['@id'],
+        {
+            'base_modifications': ['inosine', 'm5C']
+        }
+    )
+    res_sequence_file_pod5 = testapp.get(sequence_file_pod5['@id'])
+    assert res_sequence_file_pod5.json.get(
+        'summary', '') == 'Nanopore reads detecting inosine, m5C from sequencing run 10'
 
     testapp.patch_json(
         configuration_file_seqspec['@id'],
@@ -398,6 +418,16 @@ def test_file_summaries(
     )
     res = testapp.get(tabular_file['@id'])
     assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 predictive filtered peaks (Bowtie2 v2.4.4)'
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'base_modifications': ['Nm'],
+            'content_type': 'plus strand modification state'
+        }
+    )
+    res = testapp.get(tabular_file['@id'])
+    assert res.json.get(
+        'summary', '') == 'GRCh38 GENCODE 43 predictive filtered plus strand modification state detecting Nm (Bowtie2 v2.4.4)'
 
 
 def test_barcode_map_for(testapp, multiplexed_sample_v7, tabular_file_v10):
