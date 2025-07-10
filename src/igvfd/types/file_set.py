@@ -633,10 +633,10 @@ class AnalysisSet(FileSet):
         if input_file_sets is None:
             input_file_sets = []
         assay_list = set()
-        file_set_objs = get_fileset_objs_from_input_file_sets(request=request, input_file_sets=input_file_sets)
-        for file_set_obj in file_set_objs:
-            if any(item in file_set_obj.get('@type', []) for item in ['MeasurementSet', 'AnalysisSet', 'AuxiliarySet', 'ConstructLibrarySet']):
-                assay_titles = file_set_obj.get('assay_titles', [])
+        for fileset in input_file_sets:
+            file_set_object = request.embed(fileset, '@@object')
+            if any(item in file_set_object.get('@type', []) for item in ['MeasurementSet', 'AnalysisSet', 'AuxiliarySet', 'ConstructLibrarySet']):
+                assay_titles = file_set_object.get('assay_titles', [])
                 if assay_titles:
                     assay_list.update(assay_titles)
         return list(assay_list)
