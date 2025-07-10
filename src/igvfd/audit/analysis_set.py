@@ -91,6 +91,27 @@ def check_transcriptome_assay(file, system) -> bool:
         return False
 
 
+def get_object_metadata(object_id, system, skip_calculated: bool = True, specific_calc_prop: str = None) -> dict:
+    '''
+    Get the object metadata from its object_id.
+    Args:
+        object_id (str): The object id of the object to get metadata for.
+        system (dict): The system dictionary containing the request object.
+        skip_calculated (bool, optional): Whether to skip calculated properties. Defaults to True.
+        specific_calc_prop (str, optional): Specific calculated property to include. Defaults to None.
+
+    Returns:
+        dict: The object metadata.
+'''
+    if not specific_calc_prop:
+        object_metadata = system.get('request').embed(
+            object_id + f'@@object?skip_calculated={str(skip_calculated).lower()}')
+    else:
+        object_metadata = system.get('request').embed(
+            object_id + f'@@object_with_select_calculated_properties?field={specific_calc_prop.lower()}')
+    return object_metadata
+
+
 def audit_analysis_set_multiplexed_samples(value, system):
     '''
     [
@@ -309,11 +330,52 @@ def audit_multiple_barcode_replacement_files_in_input(value, system):
         yield AuditFailure(audit_msg_unexpected_file.get('audit_category', ''), f'{detail} {audit_msg_unexpected_file.get("audit_description", "")}', level=audit_msg_unexpected_file.get('audit_level', ''))
 
 
+def audit_uniformly_processed_data_for_terra_clean_up(value, system):
+    '''
+    [
+        {
+            "audit_description": "Analysis sets with validated uniformly processed data for Terra cleanup are expected to have their mirroring files on Terra GCP cloud space deleted.",
+            "audit_category": "Terra cleanup required",
+            "audit_level": "INTERNAL_ACTION"
+        }
+    ]
+    '''
+    audit_message = get_audit_message(audit_uniformly_processed_data_for_terra_clean_up, index=0)
+    # If not intermediate analysis set, return
+    if value.get('file_set_type') != 'intermediate analysis':
+        return
+    # Check if any of the workflows is a uniform pipeline (default is False if uniform_pipeline key is missing)
+    uniform_workflows = [wf_id for wf_id in value.get('workflows', []) if get_object_metadata(
+        wf_id, system).get('uniform_pipeline') is True]
+    if not uniform_workflows:
+        return
+    # Check if any of the input file set is a single cell assay
+    all_input_measet_objs = [get_object_metadata(measet_id, system) for measet_id in value.get(
+        'input_file_sets', []) if measet_id.startswith('/measurement-sets/')]
+    has_single_cell_measet = any([single_cell_check(system, measet_obj, 'Measurement set')
+                                 for measet_obj in all_input_measet_objs])
+    if not has_single_cell_measet:
+        return
+    # Check if any of the files has upload_status validated
+    validated_files = [file_id for file_id in value.get('files', []) if get_object_metadata(
+        file_id, system).get('upload_status') == 'validated']
+    if not validated_files:
+        return
+    # If all conditions are met, trigger audit
+    else:
+        detail = (
+            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has file(s) with `upload_status` validated: {", ".join([audit_link(path_to_text(file), file) for file in validated_files])}.'
+        )
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
 function_dispatcher_analysis_set_object = {
     'audit_analysis_set_multiplexed_samples': audit_analysis_set_multiplexed_samples,
     'audit_analysis_set_inconsistent_onlist_info': audit_analysis_set_inconsistent_onlist_info,
     'audit_missing_transcriptome': audit_missing_transcriptome,
-    'audit_multiple_barcode_replacement_files_in_input': audit_multiple_barcode_replacement_files_in_input
+    'audit_multiple_barcode_replacement_files_in_input': audit_multiple_barcode_replacement_files_in_input,
+    'audit_uniformly_processed_data_for_terra_clean_up': audit_uniformly_processed_data_for_terra_clean_up
 }
 
 

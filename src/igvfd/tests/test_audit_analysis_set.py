@@ -540,3 +540,74 @@ def test_audit_multiple_barcode_replacement_files_in_input_anaset(
         error['category'] != 'unexpected barcode replacement file'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_uniformly_processed_data_for_terra_clean_up(
+    testapp,
+    analysis_set_base,
+    base_workflow,
+    matrix_file,
+    analysis_step_version,
+    measurement_set,
+    assay_term_bulk_rna,
+    assay_term_scrna
+):
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'file_set': analysis_set_base['@id'],
+            'analysis_step_version': analysis_step_version['@id'],
+            'upload_status': 'validated'
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_scrna['@id']  # single-cell RNA-seq
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set['@id']],
+            'file_set_type': 'intermediate analysis'
+        }
+    )
+    # Test 1: Analysis set with validated files from non-uniform single cell pipeline (no audit)
+    testapp.patch_json(
+        base_workflow['@id'],
+        {
+            'uniform_pipeline': False
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'Terra cleanup required'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+
+    # Test 2: Analysis set with validated files from single cell uniform pipeline (audit)
+    testapp.patch_json(
+        base_workflow['@id'],
+        {
+            'uniform_pipeline': True
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'Terra cleanup required'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+
+    # Test 3: Analysis swt with validated files from non-single cell uniform pipeline (no audit)
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_bulk_rna['@id']  # bulk RNA-seq
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'Terra cleanup required'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
