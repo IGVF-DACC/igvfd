@@ -893,6 +893,7 @@ class AnalysisSet(FileSet):
         if cellular_sub_pools:
             cellular_sub_pool_phrase = f'cellular sub pool(s): {", ".join(sorted(cellular_sub_pools))}'
 
+        taxa_phrase = f'{", ".join([x for x in taxa if x != ""])}'
         additional_phrases = [
             differentiation_time_phrase,
             treatments_phrase,
@@ -905,7 +906,7 @@ class AnalysisSet(FileSet):
         additional_phrase_suffix = ''
         if additional_phrases_joined:
             additional_phrase_suffix = f', {additional_phrases_joined}'
-        summary = f"{', '.join(taxa)} {', '.join(all_sample_terms)}{additional_phrase_suffix}"
+        summary = f"{taxa_phrase} {', '.join(all_sample_terms)}{additional_phrase_suffix}"
 
         return summary
 
