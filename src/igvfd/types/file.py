@@ -487,11 +487,14 @@ class SequenceFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_type, sequencing_run, illumina_read_type=None):
+    def summary(self, content_type, sequencing_run, illumina_read_type=None, base_modifications=None):
         prefix = content_type
         if illumina_read_type:
             prefix = f'{illumina_read_type} {content_type}'
-        return f'{prefix} from sequencing run {sequencing_run}'
+        base_modifications_phrase = ''
+        if base_modifications:
+            base_modifications_phrase = f' detecting {", ".join(sorted(base_modifications))}'
+        return f'{prefix}{base_modifications_phrase} from sequencing run {sequencing_run}'
 
 
 @collection(
@@ -599,7 +602,7 @@ class AlignmentFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, content_summary, file_set, assembly=None, transcriptome_annotation=None):
+    def summary(self, request, content_summary, file_set, assembly=None, transcriptome_annotation=None, base_modifications=None):
         file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
@@ -607,8 +610,11 @@ class AlignmentFile(File):
         formatted_assembly = assembly
         if assembly and assembly == 'custom':
             formatted_assembly = f'{assembly} assembly'
+        base_modifications_phrase = None
+        if base_modifications:
+            base_modifications_phrase = f'detecting {", ".join(sorted(base_modifications))}'
         return ' '.join(
-            [x for x in [formatted_assembly, transcriptome_annotation, predicted, content_summary]
+            [x for x in [formatted_assembly, transcriptome_annotation, predicted, content_summary, base_modifications_phrase]
              if x is not None]
         )
 
@@ -965,7 +971,7 @@ class TabularFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None, filtered=None, analysis_step_version=None):
+    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None, filtered=None, analysis_step_version=None, base_modifications=None):
         file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
@@ -978,6 +984,9 @@ class TabularFile(File):
             filtered_phrase = 'filtered'
         elif filtered is False:
             filtered_phrase = 'unfiltered'
+        base_modifications_phrase = None
+        if base_modifications:
+            base_modifications_phrase = f'detecting {", ".join(sorted(base_modifications))}'
         software_version_phrase = None
         if analysis_step_version and predicted is not None:
             software_versions = set()
@@ -988,7 +997,7 @@ class TabularFile(File):
                 software_versions.add(software_version_object['summary'])
             software_version_phrase = f'({", ".join(sorted(software_versions))})'
         return ' '.join(
-            [x for x in [formatted_assembly, transcriptome_annotation, predicted, filtered_phrase, content_type, software_version_phrase]
+            [x for x in [formatted_assembly, transcriptome_annotation, predicted, filtered_phrase, content_type, base_modifications_phrase, software_version_phrase]
              if x is not None]
         )
 
