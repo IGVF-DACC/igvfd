@@ -155,6 +155,8 @@ class File(Item):
              '@id', 'modality', 'summary', 'status']),
         Path('file_set.samples.treatments', include=[
              '@id', 'purpose', 'summary', 'treatment_term_name', 'status']),
+        Path('file_set.donors', include=[
+             '@id', 'accession', 'summary', 'status']),
         Path('integrated_in.associated_phenotypes', include=[
              '@id', 'summary', 'status', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list', 'applied_to_samples']),
         Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol', 'status']),
@@ -163,6 +165,7 @@ class File(Item):
         Path('file_set.assay_term', include=['@id', 'term_name']),
         Path('file_format_specifications', include=['@id', 'description', 'standardized_file_format']),
         Path('analysis_step_version.software_versions', include=['@id', 'summary', 'software_versions'])
+        Path('file_set.lab', include=['@id', 'title'])
     ]
     rev = {
         'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),
