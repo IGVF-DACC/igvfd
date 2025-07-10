@@ -616,13 +616,13 @@ class AnalysisSet(FileSet):
     @calculated_property(
         define=True,
         schema={
-            'title': 'Assay Titles',
+            'title': 'Assay Term Names',
             'description': 'Ontology term names from Ontology of Biomedical Investigations (OBI) for assays',
             'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Assay Titles',
+                'title': 'Assay Term Names',
                 'description': 'Title of assay that produced data analyzed in the analysis set.',
                 'type': 'string'
             },
@@ -1121,7 +1121,7 @@ class MeasurementSet(FileSet):
     @calculated_property(
         define=True,
         schema={
-            'title': 'Assay Titles',
+            'title': 'Assay Term Names',
             'description': 'Ontology term names from Ontology of Biomedical Investigations (OBI) for assays',
             'type': 'array',
             'minItems': 1,
@@ -1479,13 +1479,13 @@ class AuxiliarySet(FileSet):
         condition='measurement_sets',
         define=True,
         schema={
-            'title': 'Assay Titles',
+            'title': 'Assay Term Names',
             'description': 'Ontology term names from Ontology of Biomedical Investigations (OBI) for assays',
             'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Assay Title',
+                'title': 'Assay Term Names',
                 'type': 'string'
             },
             'notSubmittable': True
@@ -1719,13 +1719,13 @@ class ConstructLibrarySet(FileSet):
         condition='file_sets',
         define=True,
         schema={
-            'title': 'Assay Titles',
+            'title': 'Assay Term Names',
             'description': 'Ontology term names from Ontology of Biomedical Investigations (OBI) for assays.',
             'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Assay Title',
+                'title': 'Assay Term Names',
                 'type': 'string'
             },
             'notSubmittable': True
