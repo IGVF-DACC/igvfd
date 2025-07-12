@@ -1,5 +1,9 @@
 ## Changelog for *`tissue/organ.json`*
 
+### Minor changes since schema version 22
+
+* Allow `originated_from` to link to Multiplexed Sample or Technical Sample.
+
 ### Schema version 22
 
 * Adjust `embryonic` to have default value `False`.
