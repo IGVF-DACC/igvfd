@@ -1,5 +1,9 @@
 ## Changelog for *`primary_cell.json`*
 
+### Minor changes since schema version 23
+
+* Allow `originated_from` to link to Multiplexed Sample or Technical Sample.
+
 ### Schema version 23
 
 * Adjust `embryonic` to have default value `False`.

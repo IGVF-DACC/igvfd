@@ -208,7 +208,7 @@
             "title": "Originated From",
             "description": "Links to a biosample that was originated from due to differentiation, dedifferentiation, reprogramming, or the introduction of a genetic modification.",
             "type": "string",
-            "linkTo": "Biosample",
+            "linkTo": "Sample",
             "submissionExample": {
                 "appscript": "TSTSM02881437 or john-doe:tissue01",
                 "igvf_utils": "TSTSM02881437 or john-doe:tissue01"

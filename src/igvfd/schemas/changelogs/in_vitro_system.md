@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Minor changes since schema version 28
+
+* Allow `originated_from` to link to Multiplexed Sample or Technical Sample.
+
 ### Schema version 28
 
 * Adjust `embryonic` to have default value `False`.
