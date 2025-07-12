@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Minor changes since schema version 25
+
+* Allow `originated_from` to link to Multiplexed Sample or Technical Sample.
+
 ### Schema version 25
 
 * Adjust `embryonic` to have default value `False`.
