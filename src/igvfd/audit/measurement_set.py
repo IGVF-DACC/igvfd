@@ -718,6 +718,31 @@ def audit_missing_external_image_url(value, system):
         )
 
 
+def audit_missing_primer_designs(value, system):
+    '''
+    [
+        {
+            "audit_description": "TAP-seq measurement sets are expected to link to primer designs.",
+            "audit_category": "missing primer designs",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    preferred_assay_title = value.get('preferred_assay_title')
+    audit_message = get_audit_message(audit_missing_primer_designs, index=0)
+
+    if not value.get('primer_designs', '') and preferred_assay_title == 'TAP-seqs':
+        detail = (
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'is missing `primer_designs`.'
+        )
+        yield AuditFailure(
+            audit_message.get('audit_category', ''),
+            f'{detail} {audit_message.get("audit_description", "")}',
+            level=audit_message.get('audit_level', '')
+        )
+
+
 function_dispatcher_measurement_set_object = {
     'audit_related_multiome_datasets': audit_related_multiome_datasets,
     'audit_unspecified_protocol': audit_unspecified_protocol,
@@ -732,7 +757,8 @@ function_dispatcher_measurement_set_object = {
     'audit_unexpected_onlist_content': audit_unexpected_onlist_content,
     'audit_missing_barcode_replacement_file': audit_missing_barcode_replacement_file,
     'audit_inconsistent_barcode_replacement_file': audit_inconsistent_barcode_replacement_file,
-    'audit_missing_external_image_url': audit_missing_external_image_url
+    'audit_missing_external_image_url': audit_missing_external_image_url,
+    'audit_missing_primer_designs': audit_missing_primer_designs
 }
 
 function_dispatcher_measurement_set_embedded = {
