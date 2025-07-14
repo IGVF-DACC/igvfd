@@ -74,6 +74,20 @@ def tabular_file_bed(testapp, lab, award, principal_analysis_set):
 
 
 @pytest.fixture
+def tabular_file_primer_designs(testapp, lab, award, principal_analysis_set):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '01b08bb5485ac730df19af55ba4bb09d',
+        'file_format': 'tsv',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'primer sequences',
+        'controlled_access': False
+    }
+    return testapp.post_json('/tabular_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def tabular_file_v1(tabular_file):
     item = tabular_file.copy()
     item.update({

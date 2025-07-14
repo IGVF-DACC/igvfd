@@ -693,7 +693,7 @@ def audit_missing_external_image_url(value, system):
     [
         {
             "audit_description": "Cell Painting and Variant Painting assays are expected to have an `external_image_url`.",
-            "audit_category": "missing external_image_url",
+            "audit_category": "missing external image url",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
@@ -730,8 +730,7 @@ def audit_missing_primer_designs(value, system):
     '''
     preferred_assay_title = value.get('preferred_assay_title')
     audit_message = get_audit_message(audit_missing_primer_designs, index=0)
-
-    if not value.get('primer_designs', '') and preferred_assay_title == 'TAP-seqs':
+    if preferred_assay_title == 'TAP-seq' and not value.get('primer_designs', ''):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'is missing `primer_designs`.'
