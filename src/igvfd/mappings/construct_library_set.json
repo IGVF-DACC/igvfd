@@ -1,6 +1,6 @@
 {
-    "hash": "04ed005f697ad2ffacdba31f988d410e",
-    "index_name": "construct_library_set_04ed005f",
+    "hash": "97e723d5853d8bf076f3083e0a5fdc27",
+    "index_name": "construct_library_set_97e723d5",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1491,6 +1491,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

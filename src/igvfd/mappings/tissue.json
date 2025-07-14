@@ -1,6 +1,6 @@
 {
-    "hash": "1d6a079a4ae0249657904ad2338a31a2",
-    "index_name": "tissue_1d6a079a",
+    "hash": "8c573136edc14e6ee2475f2f8587d044",
+    "index_name": "tissue_8c573136",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1306,6 +1306,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

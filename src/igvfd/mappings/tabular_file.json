@@ -1,6 +1,6 @@
 {
-    "hash": "73525caadef84ff3b3b903ed88dbeac3",
-    "index_name": "tabular_file_73525caa",
+    "hash": "08df7e0f2b15958935444a8545d890ca",
+    "index_name": "tabular_file_08df7e0f",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1605,6 +1605,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

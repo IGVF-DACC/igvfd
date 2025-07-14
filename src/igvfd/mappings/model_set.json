@@ -1,6 +1,6 @@
 {
-    "hash": "6e9af8f28a0126798c13a6bc14400dc0",
-    "index_name": "model_set_6e9af8f2",
+    "hash": "3f6a570513d2ee9418cb40818f0782b5",
+    "index_name": "model_set_3f6a5705",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -896,6 +896,9 @@
                             "transcriptome_annotations": {
                                 "type": "keyword"
                             },
+                            "uniform_pipeline_status": {
+                                "type": "keyword"
+                            },
                             "upper_bound_guide_coverage": {
                                 "store": true,
                                 "type": "long"
@@ -1224,6 +1227,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {
@@ -2003,6 +2009,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

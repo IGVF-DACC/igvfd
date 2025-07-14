@@ -1,6 +1,6 @@
 {
-    "hash": "5b1f87a4968ce26305ab95a3ed4cae25",
-    "index_name": "sequence_file_5b1f87a4",
+    "hash": "54b0b50597339b291bf20fee88ad551e",
+    "index_name": "sequence_file_54b0b505",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1506,6 +1506,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

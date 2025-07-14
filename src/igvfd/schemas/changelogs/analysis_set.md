@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Add `uniform_pipeline_status`.
 * Add calculated property `targeted_genes`.
 
 ### Schema version 10

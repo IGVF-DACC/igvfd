@@ -1,6 +1,6 @@
 {
-    "hash": "0cc6bb90faa5eeb2d9d8c1abe32135f1",
-    "index_name": "prediction_set_0cc6bb90",
+    "hash": "6efee9dcd7e28a59592f0d3d5c3f136c",
+    "index_name": "prediction_set_6efee9dc",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -973,6 +973,9 @@
                             "transcriptome_annotations": {
                                 "type": "keyword"
                             },
+                            "uniform_pipeline_status": {
+                                "type": "keyword"
+                            },
                             "upper_bound_guide_coverage": {
                                 "store": true,
                                 "type": "long"
@@ -1301,6 +1304,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

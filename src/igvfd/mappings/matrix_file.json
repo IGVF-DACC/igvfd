@@ -1,6 +1,6 @@
 {
-    "hash": "ddc87b1bad00d2678b05291b1ee6556b",
-    "index_name": "matrix_file_ddc87b1b",
+    "hash": "05a4738dd1cb221cddf2e9a547019d6d",
+    "index_name": "matrix_file_05a4738d",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1495,6 +1495,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

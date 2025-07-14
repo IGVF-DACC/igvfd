@@ -121,14 +121,17 @@ def test_multitype_report_download_href(workbook, testapp):
     assert full_href in line.split('\t')[1]
 
     res = testapp.get('/multireport.tsv?type=AnalysisSet&field=%40id&field=files.href&donors.taxa=Homo+sapiens')
+    # Line[0] is header, Line[1:] are the results
     lines = res.text.splitlines()
+    # Get the res line for /analysis-sets/IGVFDS5300PRAN/
+    line_anaset_test = next((line for line in lines if line.startswith('/analysis-sets/IGVFDS5300PRAN/')))
     server_url = res.headers['X-Request-URL'].split('/multireport.tsv?')[0]
     full_href = server_url + '/reference-files/IGVFFI7115PAJX/@@download/IGVFFI7115PAJX.tsv.gz'
-    assert full_href in lines[2].split('\t')[1]
+    assert full_href in line_anaset_test.split('\t')[1]
     full_href = server_url + '/reference-files/IGVFFI0001SQBZ/@@download/IGVFFI0001SQBZ.gtf.gz'
-    assert full_href in lines[2].split('\t')[1]
+    assert full_href in line_anaset_test.split('\t')[1]
     full_href = server_url + '/reference-files/IGVFFI0001VARI/@@download/IGVFFI0001VARI.vcf.gz'
-    assert full_href in lines[2].split('\t')[1]
+    assert full_href in line_anaset_test.split('\t')[1]
 
     res = testapp.get('/multireport.tsv?type=Lab&field=href')
     lines = res.text.splitlines()

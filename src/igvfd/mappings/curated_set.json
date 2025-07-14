@@ -1,6 +1,6 @@
 {
-    "hash": "4a197a0c2ffe75514dc2f7d8332e2f6e",
-    "index_name": "curated_set_4a197a0c",
+    "hash": "71a9f3f92326679cfe8f1ed486c0d7a1",
+    "index_name": "curated_set_71a9f3f9",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -798,6 +798,9 @@
                             "transcriptome_annotations": {
                                 "type": "keyword"
                             },
+                            "uniform_pipeline_status": {
+                                "type": "keyword"
+                            },
                             "upper_bound_guide_coverage": {
                                 "store": true,
                                 "type": "long"
@@ -1126,6 +1129,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {
