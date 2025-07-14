@@ -266,7 +266,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "1d374ed2a6bcf601d7bfd4fc3dfd3b5d",
-        "file_format": "Robj",
+        "file_format": "rds",
         "content_type": "sparse peak count matrix",
         "submitted_file_name": "/Users/igvf/igvf_files/matrix_file_rds_1.rds",
         "file_size": 5200010,
