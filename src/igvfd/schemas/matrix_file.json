@@ -181,6 +181,7 @@
                 "hdf5",
                 "mtx",
                 "pkl",
+                "rds",
                 "Robj",
                 "tar",
                 "hic",

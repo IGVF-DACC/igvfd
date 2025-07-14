@@ -95,6 +95,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'png': '.png',
     'pt': '.pt',
     'PWM': '.pwm',
+    'rds': '.rds',
     'Robj': '.Robj',
     'sam': '.sam.gz',
     'sra': '.sra',
