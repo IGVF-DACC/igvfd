@@ -1,6 +1,6 @@
 {
-    "hash": "f4e906151a4634e0cd5c6a47ad631a32",
-    "index_name": "alignment_file_f4e90615",
+    "hash": "76aef4709df4c2b6bb2468d78eb1f896",
+    "index_name": "alignment_file_76aef470",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1506,6 +1506,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

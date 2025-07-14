@@ -114,6 +114,27 @@
                 "appscript": "[\"IGVFSM02881437\", \"john-doe:tissue01\"]",
                 "igvf_utils": "IGVFSM02881437 or john-doe:tissue01"
             }
+        },
+        "uniform_pipeline_status": {
+            "title": "Uniform Pipeline Status",
+            "description": "The status of the single cell or Perturb-seq uniform pipeline processing for this analysis set, if applicable.",
+            "type": "string",
+            "enum": [
+                "preprocessing",
+                "processing",
+                "error",
+                "completed"
+            ],
+            "enum_descriptions": {
+                "preprocessing": "The analysis set has been created with `input_file_sets` and is awaiting processing.",
+                "processing": "The analysis set is currently being processed by the single cell uniform pipeline on Terra.bio.",
+                "error": "An error has occurred during processing of the analysis set by the pipeline.",
+                "completed": "The analysis set has been successfully processed by the pipeline."
+            },
+            "submissionExample": {
+                "appscript": "processing",
+                "igvf_utils": "processing"
+            }
         }
     },
     "fuzzy_searchable_fields": [

@@ -1,6 +1,6 @@
 {
-    "hash": "e6f660ff75ef2f5800e857b356d7e6bf",
-    "index_name": "auxiliary_set_e6f660ff",
+    "hash": "277adaf695bef09868c7ea710c292b20",
+    "index_name": "auxiliary_set_277adaf6",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -797,6 +797,9 @@
                             "transcriptome_annotations": {
                                 "type": "keyword"
                             },
+                            "uniform_pipeline_status": {
+                                "type": "keyword"
+                            },
                             "upper_bound_guide_coverage": {
                                 "store": true,
                                 "type": "long"
@@ -1125,6 +1128,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

@@ -1,6 +1,6 @@
 {
-    "hash": "7e98438c8680f3a2682e1a865240e3db",
-    "index_name": "measurement_set_7e98438c",
+    "hash": "f66f5d5fcf114636b56bffb343b9d914",
+    "index_name": "measurement_set_f66f5d5f",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1102,6 +1102,9 @@
                             "transcriptome_annotations": {
                                 "type": "keyword"
                             },
+                            "uniform_pipeline_status": {
+                                "type": "keyword"
+                            },
                             "upper_bound_guide_coverage": {
                                 "store": true,
                                 "type": "long"
@@ -1432,6 +1435,9 @@
                             "transcriptome_annotations": {
                                 "type": "keyword"
                             },
+                            "uniform_pipeline_status": {
+                                "type": "keyword"
+                            },
                             "upper_bound_guide_coverage": {
                                 "store": true,
                                 "type": "long"
@@ -1760,6 +1766,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

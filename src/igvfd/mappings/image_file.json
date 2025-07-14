@@ -1,6 +1,6 @@
 {
-    "hash": "202ff79de575435c77f094673524aba9",
-    "index_name": "image_file_202ff79d",
+    "hash": "503ec827d2fd237231b280c595a18f3f",
+    "index_name": "image_file_503ec827",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -1489,6 +1489,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {
