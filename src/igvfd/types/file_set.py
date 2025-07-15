@@ -18,16 +18,7 @@ def get_donors_from_samples(request, samples):
     donor_objects = []
     for sample in samples:
         donor_objects += request.embed(sample, '@@object').get('donors', [])
-    return sorted(list(set(donor_objects)))
-
-
-def get_fileset_objs_from_input_file_sets(request, input_file_sets):
-    '''Get file set objects from an array of input file sets'''
-    file_set_objs = []
-    if input_file_sets is not None:
-        for fileset in input_file_sets:
-            file_set_objs.append(request.embed(fileset, '@@object'))
-    return file_set_objs
+    return list(sorted(set(donor_objects)))
 
 
 def get_file_objs_from_files(request, files):
@@ -548,7 +539,7 @@ class AnalysisSet(FileSet):
                 'barcode based': 'barcode based',
                 'genetic': 'genetically'
             }
-            mux_method_list = [method_phrase_map[x] for x in sorted(list(multiplexing_methods))]
+            mux_method_list = [method_phrase_map[x] for x in sorted(multiplexing_methods)]
             mux_method_phrase = f'({", ".join(mux_method_list)} multiplexed)'
             assay_title_phrase = f'{assay_title_phrase} {mux_method_phrase}'
         # Targeted genes.
@@ -606,12 +597,12 @@ class AnalysisSet(FileSet):
             input_file_sets = []
         preferred_assay_list = set()
         for fileset in input_file_sets:
-            file_set_object = request.embed(fileset, '@@object')
+            file_set_object = request.embed(
+                fileset, '@@object_with_select_calculated_properties?field=preferred_assay_titles&field=@type')
             if any(item in file_set_object.get('@type', []) for item in ['MeasurementSet', 'AnalysisSet', 'AuxiliarySet', 'ConstructLibrarySet']):
                 preferred_assay_titles = file_set_object.get('preferred_assay_titles', [])
-                if preferred_assay_titles:
-                    preferred_assay_list.update(preferred_assay_titles)
-        return list(preferred_assay_list)
+                preferred_assay_list.update(preferred_assay_titles)
+        return list(sorted(preferred_assay_list))
 
     @calculated_property(
         define=True,
@@ -634,12 +625,12 @@ class AnalysisSet(FileSet):
             input_file_sets = []
         assay_list = set()
         for fileset in input_file_sets:
-            file_set_object = request.embed(fileset, '@@object')
+            file_set_object = request.embed(
+                fileset, '@@object_with_select_calculated_properties?field=assay_titles&field=@type')
             if any(item in file_set_object.get('@type', []) for item in ['MeasurementSet', 'AnalysisSet', 'AuxiliarySet', 'ConstructLibrarySet']):
                 assay_titles = file_set_object.get('assay_titles', [])
-                if assay_titles:
-                    assay_list.update(assay_titles)
-        return list(assay_list)
+                assay_list.update(assay_titles)
+        return list(sorted(assay_list))
 
     @calculated_property(
         condition='input_file_sets',
@@ -712,13 +703,21 @@ class AnalysisSet(FileSet):
     def protocols(self, request, input_file_sets=None):
         '''Calculate an array of unique protocols for all measurement sets associated with an analysis set.'''
         protocols = set()
-        file_set_objs = get_fileset_objs_from_input_file_sets(request=request, input_file_sets=input_file_sets)
+        file_set_objs = []
+        if input_file_sets is None:
+            input_file_sets = []
+        for fileset in input_file_sets:
+            file_set_objs.append(
+                request.embed(
+                    fileset,
+                    '@@object_with_select_calculated_properties?field=@type&field=protocols'
+                )
+            )
         for file_set_obj in file_set_objs:
             if 'MeasurementSet' in file_set_obj.get('@type'):
                 protocol = file_set_obj.get('protocols', [])
-                if protocol:
-                    protocols.update(protocol)
-        return sorted(list(protocols))
+                protocols.update(protocol)
+        return list(sorted(protocols))
 
     @calculated_property(
         condition='samples',
@@ -930,11 +929,20 @@ class AnalysisSet(FileSet):
     )
     def functional_assay_mechanisms(self, request, input_file_sets=None):
         mechanism_objects = []
-        file_set_objects = get_fileset_objs_from_input_file_sets(request=request, input_file_sets=input_file_sets)
+        file_set_objs = []
+        if input_file_sets is None:
+            input_file_sets = []
+        for fileset in input_file_sets:
+            file_set_objs.append(
+                request.embed(
+                    fileset,
+                    '@@object_with_select_calculated_properties?field=@type&field=functional_assay_mechanisms'
+                )
+            )
         for file_set_object in file_set_objects:
             if 'MeasurementSet' in file_set_object.get('@type') or 'AnalysisSet' in file_set_object.get('@type'):
                 mechanism_objects.extend(file_set_object.get('functional_assay_mechanisms', []))
-        return sorted(list(set(mechanism_objects)))
+        return list(sorted(set(mechanism_objects)))
 
     @calculated_property(
         schema={
@@ -968,7 +976,7 @@ class AnalysisSet(FileSet):
                     workflow = analysis_step_obj.get('workflow')
                     if workflow:
                         analysis_set_workflows_set.add(workflow)
-        return sorted(list(analysis_set_workflows_set))
+        return list(sorted(analysis_set_workflows_set))
 
     @calculated_property(
         condition='input_file_sets',
@@ -996,7 +1004,7 @@ class AnalysisSet(FileSet):
                     input_file_set, '@@object_with_select_calculated_properties?field=targeted_genes')
                 if 'targeted_genes' in input_file_set_object:
                     analysis_set_targeted_genes.update(input_file_set_object['targeted_genes'])
-        return sorted(list(analysis_set_targeted_genes))
+        return list(sorted(analysis_set_targeted_genes))
 
 
 @collection(
@@ -1038,7 +1046,7 @@ class CuratedSet(FileSet):
                 if file_object.get('assembly'):
                     assembly_values.add(file_object.get('assembly'))
             if assembly_values:
-                return sorted(list(assembly_values))
+                return list(sorted(assembly_values))
 
     @calculated_property(
         define=True,
@@ -1063,7 +1071,7 @@ class CuratedSet(FileSet):
                 if file_object.get('transcriptome_annotation'):
                     annotation_values.add(file_object.get('transcriptome_annotation'))
             if annotation_values:
-                return sorted(list(annotation_values))
+                return list(sorted(annotation_values))
 
     @calculated_property(
         schema={
@@ -1134,7 +1142,7 @@ class MeasurementSet(FileSet):
     )
     def assay_titles(self, request, assay_term):
         if assay_term:
-            assay_term_obj = request.embed(assay_term, '@@object')
+            assay_term_obj = request.embed(assay_term, '@@object?skip_calculated=true')
             term_name = assay_term_obj.get('term_name')
             if term_name:
                 return [term_name]
@@ -1258,7 +1266,7 @@ class MeasurementSet(FileSet):
                 'barcode based': 'barcode based',
                 'genetic': 'genetically'
             }
-            mux_method_list = [method_phrase_map[x] for x in sorted(list(multiplexing_methods))]
+            mux_method_list = [method_phrase_map[x] for x in sorted(multiplexing_methods)]
             mux_method_phrase = f'({", ".join(mux_method_list)} multiplexed)'
             assay_phrase = f'{assay_phrase} {mux_method_phrase}'
 
@@ -1411,7 +1419,7 @@ class ModelSet(FileSet):
                         software_versions = software_versions + \
                             analysis_step_version_object.get('software_versions', [])
         if software_versions:
-            return sorted(list(set(software_versions)))
+            return list(sorted(set(software_versions)))
 
 
 @collection(
@@ -1512,7 +1520,7 @@ class AuxiliarySet(FileSet):
     def summary(self, request, file_set_type, measurement_sets=None):
         if not measurement_sets:
             return f'{file_set_type}'
-        measurement_sets_summaries = sorted(list(set(
+        measurement_sets_summaries = list(sorted(set(
             [request.embed(measurement_set, '@@object_with_select_calculated_properties?field=summary').get('summary') for measurement_set in measurement_sets if measurement_set])))
         return f'{file_set_type} for {", ".join(measurement_sets_summaries)}'
 
@@ -1687,7 +1695,7 @@ class ConstructLibrarySet(FileSet):
             for file_set in sample_object.get('file_sets', []):
                 linked_file_sets.add(file_set)
         if linked_file_sets:
-            return sorted(list(linked_file_sets))
+            return list(sorted(linked_file_sets))
 
     @calculated_property(
         condition='file_sets',
@@ -1741,7 +1749,7 @@ class ConstructLibrarySet(FileSet):
                     file_set, '@@object_with_select_calculated_properties?field=assay_titles').get('assay_titles', [])
                 if assays:
                     assay_titles.update(assays)
-        return sorted(list(assay_titles))
+        return list(sorted(assay_titles))
 
     @calculated_property(
         schema={
@@ -1849,7 +1857,7 @@ class ConstructLibrarySet(FileSet):
                             thousand_genomes_id = dbxref.split(':')[1]
                             thousand_genomes_ids.add(thousand_genomes_id)
             if thousand_genomes_ids:
-                thousand_genomes_ids = ', '.join(sorted(list(thousand_genomes_ids)))
+                thousand_genomes_ids = ', '.join(list(sorted(thousand_genomes_ids)))
                 pool_phrase = f' pooled from 1000 Genomes donors: {thousand_genomes_ids}'
 
         if file_set_type == 'expression vector library':
