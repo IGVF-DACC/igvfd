@@ -278,22 +278,21 @@ class File(Item):
     )
     def assay_titles(self, request, file_set):
         assay_titles = set()
-        file_set_object = request.embed(file_set, '@@object')
+        file_set_object = request.embed(
+            file_set, '@@object_with_select_calculated_properties?field=@type&field=assay_titles&field=measurement_sets')
         if 'MeasurementSet' in file_set_object.get('@type'):
             assay_term_name = file_set_object.get('assay_titles', [])
-            if assay_term_name:
-                assay_titles.update(assay_term_name)
+            assay_titles.update(assay_term_name)
         elif 'AnalysisSet' in file_set_object.get('@type'):
             analysis_assay_term_name = set(file_set_object.get('assay_titles', []))
-            if analysis_assay_term_name:
-                assay_titles.update(analysis_assay_term_name)
+            assay_titles.update(analysis_assay_term_name)
         elif 'AuxiliarySet' in file_set_object.get('@type'):
-            for measurement_set in file_set_object.get('measurement_sets'):
-                measurement_set_object = request.embed(measurement_set, '@@object')
+            for measurement_set in file_set_object.get('measurement_sets', []):
+                measurement_set_object = request.embed(
+                    measurement_set, '@@object_with_select_calculated_properties?field=assay_titles')
                 measurement_set_object_pat = set(measurement_set_object.get('assay_titles', []))
-                if measurement_set_object_pat:
-                    assay_titles.update(measurement_set_object_pat)
-        return sorted(list(assay_titles))
+                assay_titles.update(measurement_set_object_pat)
+        return list(sorted(assay_titles))
 
     @calculated_property(
         schema={
@@ -312,22 +311,21 @@ class File(Item):
     )
     def preferred_assay_titles(self, request, file_set):
         preferred_assay_titles = set()
-        file_set_object = request.embed(file_set, '@@object')
+        file_set_object = request.embed(
+            file_set, '@@object_with_select_calculated_properties?field=@type&field=preferred_assay_titles')
         if 'MeasurementSet' in file_set_object.get('@type'):
             preferred_assays = file_set_object.get('preferred_assay_titles', [])
-            if preferred_assays:
-                preferred_assay_titles.update(preferred_assays)
+            preferred_assay_titles.update(preferred_assays)
         elif 'AnalysisSet' in file_set_object.get('@type'):
             analysis_preferred_assay = set(file_set_object.get('preferred_assay_titles', []))
-            if analysis_preferred_assay:
-                preferred_assay_titles.update(analysis_preferred_assay)
+            preferred_assay_titles.update(analysis_preferred_assay)
         elif 'AuxiliarySet' in file_set_object.get('@type'):
-            for measurement_set in file_set_object.get('measurement_sets'):
-                measurement_set_object = request.embed(measurement_set, '@@object')
-                measurement_set_object_pat = set(measurement_set_object.get('preferred_assay_titles', []))
-                if measurement_set_object_pat:
-                    preferred_assay_titles.update(measurement_set_object_pat)
-        return list(preferred_assay_titles)
+            for measurement_set in file_set_object.get('measurement_sets', []):
+                measurement_set_object = request.embed(
+                    measurement_set, '@@object_with_select_calculated_properties?field=preferred_assay_titles')
+                measurement_set_object_pat = measurement_set_object.get('preferred_assay_titles', [])
+                preferred_assay_titles.update(measurement_set_object_pat)
+        return list(sorted(preferred_assay_titles))
 
     @calculated_property(
         condition='analysis_step_version',
