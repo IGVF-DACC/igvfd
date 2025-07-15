@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 16
 
-* Add calculative property `preferred_assay_titles`
+* Add calculated property `preferred_assay_titles`
 * Extend `base_modifications` enum list to include `Nm`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 24`.
 
