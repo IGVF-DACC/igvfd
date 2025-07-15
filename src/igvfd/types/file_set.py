@@ -939,7 +939,7 @@ class AnalysisSet(FileSet):
                     '@@object_with_select_calculated_properties?field=@type&field=functional_assay_mechanisms'
                 )
             )
-        for file_set_object in file_set_objects:
+        for file_set_object in file_set_objs:
             if 'MeasurementSet' in file_set_object.get('@type') or 'AnalysisSet' in file_set_object.get('@type'):
                 mechanism_objects.extend(file_set_object.get('functional_assay_mechanisms', []))
         return list(sorted(set(mechanism_objects)))
