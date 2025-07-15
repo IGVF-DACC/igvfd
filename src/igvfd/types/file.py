@@ -145,8 +145,11 @@ class File(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
+        Path('file_set', include=['donors', 'samples', '@type', 'assay_term', 'file_set_type', 'lab']),
+        Path('file_set.samples', include=['@id', 'accession', 'classifications', '@type', 'data_use_limitation_summaries', 'controlled_access',
+             'status', 'summary', 'disease_terms', 'sample_terms', 'taxa', 'targeted_sample_term', 'modifications', 'treatments']),
         Path('file_set.samples.disease_terms', include=[
-             '@id', 'accession', 'status', 'summary', 'samples', 'donors', 'disease_terms', 'sample_terms', 'assay_term', 'term_name', 'classifications', 'file_set_type', 'taxa', 'targeted_sample_term', 'modifications', 'treatments', '@type', 'data_use_limitation_summaries', 'controlled_access', 'lab']),
+             '@id', 'status', 'term_name', 'summary']),
         Path('file_set.samples.sample_terms', include=[
              '@id', 'term_name', 'status']),
         Path('file_set.samples.targeted_sample_term', include=[
@@ -157,6 +160,8 @@ class File(Item):
              '@id', 'purpose', 'summary', 'treatment_term_name', 'status']),
         Path('file_set.donors', include=[
              '@id', 'accession', 'summary', 'status']),
+        Path('file_set.assay_term', include=['@id', 'term_name']),
+        Path('file_set.lab', include=['@id', 'title']),
         Path('integrated_in.associated_phenotypes', include=[
              '@id', 'summary', 'status', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list', 'applied_to_samples']),
         Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol', 'status']),
@@ -164,7 +169,7 @@ class File(Item):
         Path('workflow', include=['@id', 'uniform_pipeline', 'name']),
         Path('file_set.assay_term', include=['@id', 'term_name']),
         Path('file_format_specifications', include=['@id', 'description', 'standardized_file_format']),
-        Path('analysis_step_version.software_versions', include=['@id', 'summary', 'software_versions'])
+        Path('analysis_step_version.software_versions', include=['@id', 'summary', 'software_versions']),
         Path('file_set.lab', include=['@id', 'title'])
     ]
     rev = {
