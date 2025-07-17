@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 17
 
+* Add `reference_files`.
 * Extend `file_format` enum list to include `bigBed`.
 
 ### Schema version 17

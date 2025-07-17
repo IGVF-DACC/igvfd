@@ -40,6 +40,9 @@
             "$ref": "mixins.json#/filtered"
         },
         {
+            "$ref": "mixins.json#/processed_files"
+        },
+        {
             "$ref": "mixins.json#/transcriptome_annotation"
         },
         {

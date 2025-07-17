@@ -1,6 +1,6 @@
 {
-    "hash": "7e98438c8680f3a2682e1a865240e3db",
-    "index_name": "measurement_set_7e98438c",
+    "hash": "d64264be8267a7c99fb482825475a361",
+    "index_name": "measurement_set_d64264be",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -773,6 +773,9 @@
                                         "type": "keyword"
                                     },
                                     "quality_metrics": {
+                                        "type": "keyword"
+                                    },
+                                    "reference_files": {
                                         "type": "keyword"
                                     },
                                     "release_timestamp": {
