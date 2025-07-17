@@ -1658,7 +1658,7 @@ def test_audit_missing_primer_designs(
     )
     testapp.patch_json(
         measurement_set['@id'],
-        {'preferred_assay_title': 'TAP-seq'}
+        {'preferred_assay_titles': ['TAP-seq']}
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
