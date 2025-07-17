@@ -1,5 +1,10 @@
 ## Changelog for *`alignment_file.json`*
 
+### Schema version 17
+
+* Remove `assembly`.
+* Remove `transcriptome_annotation`.
+
 ### Minor changes since schema version 16
 
 * Add calculated property `preferred_assay_titles`

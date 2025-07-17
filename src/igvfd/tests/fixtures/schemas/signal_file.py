@@ -10,7 +10,6 @@ def signal_file(testapp, lab, award, principal_analysis_set, reference_file):
         'file_format': 'bigWig',
         'file_set': principal_analysis_set['@id'],
         'file_size': 4328491803,
-        'assembly': 'GRCh38',
         'content_type': 'signal of all reads',
         'reference_files': [
             reference_file['@id']
@@ -123,7 +122,6 @@ def signal_file_v11(testapp, lab, award, principal_analysis_set, reference_file)
         'file_format': 'bigWig',
         'file_set': principal_analysis_set['@id'],
         'file_size': 4328491803,
-        'assembly': 'GRCh38',
         'content_type': 'signal of all reads',
         'reference_files': [
             reference_file['@id']
@@ -132,3 +130,14 @@ def signal_file_v11(testapp, lab, award, principal_analysis_set, reference_file)
         'filtered': False
     }
     return testapp.post_json('/signal_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def signal_file_v12(signal_file):
+    item = signal_file.copy()
+    item.update({
+        'schema_version': '12',
+        'assembly': 'GRCh38',
+        'transcriptome_annotation': 'GENCODE 40'
+    })
+    return item
