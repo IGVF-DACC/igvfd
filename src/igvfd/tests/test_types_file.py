@@ -55,7 +55,8 @@ def test_types_file_s3_uri_is_not_present_when_externally_hosted(testapp, sequen
     testapp.patch_json(
         sequence_file['@id'],
         {
-            'externally_hosted': True
+            'externally_hosted': True,
+            'external_host_url': 'https://example.com/file.fastq.gz'
         }
     )
     res = testapp.get(sequence_file['@id'])
@@ -66,7 +67,8 @@ def test_types_file_href_is_not_present_when_externally_hosted(testapp, sequence
     testapp.patch_json(
         sequence_file['@id'],
         {
-            'externally_hosted': True
+            'externally_hosted': True,
+            'external_host_url': 'https://example.com/file.fastq.gz'
         }
     )
     res = testapp.get(sequence_file['@id'])
@@ -576,7 +578,8 @@ def test_upload_credentials_forbidden_when_externally_hosted(testapp, sequence_f
     testapp.patch_json(
         sequence_file['@id'],
         {
-            'externally_hosted': True
+            'externally_hosted': True,
+            'external_host_url': 'https://example.com/file.fastq.gz'
         }
     )
     testapp.post_json(sequence_file['@id'] + '@@upload', {}, status=403)
@@ -642,7 +645,8 @@ def test_download_forbidden_when_externally_hosted(testapp, sequence_file):
     testapp.patch_json(
         sequence_file['@id'],
         {
-            'externally_hosted': True
+            'externally_hosted': True,
+            'external_host_url': 'https://example.com/file.fastq.gz'
         }
     )
     testapp.get(sequence_file['@id'] + '@@download', status=403)
