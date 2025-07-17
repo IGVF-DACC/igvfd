@@ -51,18 +51,10 @@ def test_types_file_s3_uri_is_present(sequence_file):
     assert 's3_uri' in sequence_file
 
 
-def test_types_file_s3_creation_when_externally_hosted(testapp, sequence_file):
-    testapp.patch_json(
-        sequence_file['@id'],
-        {
-            'externally_hosted': True,
-            'external_host_url': 'https://example.com/file.fastq.gz'
-        }
-    )
-    res = testapp.get(sequence_file['@id'])
-    assert 's3_uri' not in res.json
-    assert 'href' not in res.json
-    assert res.json['upload_status'] == 'validation exempted'
+def test_types_file_s3_creation_when_externally_hosted(externally_hosted_sequence_file):
+    assert 's3_uri' not in externally_hosted_sequence_file
+    assert 'href' not in externally_hosted_sequence_file
+    assert externally_hosted_sequence_file['upload_status'] == 'validation exempted'
 
 
 def test_types_file_s3_uri_non_submittable(testapp, principal_analysis_set, award, lab):
@@ -564,15 +556,8 @@ def test_upload_credentials_forbidden_when_status_is_not_in_progress_or_preview(
     testapp.post_json(reference_file['@id'] + '@@upload', {}, status=403)
 
 
-def test_upload_credentials_forbidden_when_externally_hosted(testapp, sequence_file):
-    testapp.patch_json(
-        sequence_file['@id'],
-        {
-            'externally_hosted': True,
-            'external_host_url': 'https://example.com/file.fastq.gz'
-        }
-    )
-    testapp.post_json(sequence_file['@id'] + '@@upload', {}, status=403)
+def test_upload_credentials_forbidden_when_externally_hosted(testapp, externally_hosted_sequence_file):
+    testapp.post_json(externally_hosted_sequence_file['@id'] + '@@upload', {}, status=403)
 
 
 def test_upload_credentials_allowed_when_status_is_in_progress(testapp, reference_file):
@@ -631,12 +616,5 @@ def test_validate_onlist_files(testapp, configuration_file_json, configuration_f
     assert res.json.get('validate_onlist_files', '') is True
 
 
-def test_download_forbidden_when_externally_hosted(testapp, sequence_file):
-    testapp.patch_json(
-        sequence_file['@id'],
-        {
-            'externally_hosted': True,
-            'external_host_url': 'https://example.com/file.fastq.gz'
-        }
-    )
-    testapp.get(sequence_file['@id'] + '@@download', status=403)
+def test_download_forbidden_when_externally_hosted(testapp, externally_hosted_sequence_file):
+    testapp.get(externally_hosted_sequence_file['@id'] + '@@download', status=403)
