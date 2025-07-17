@@ -39,6 +39,7 @@ def externally_hosted_sequence_file(testapp, lab, award, principal_analysis_set,
         'content_type': 'reads',
         'sequencing_run': 1,
         'sequencing_platform': platform_term_HiSeq['@id'],
+        'controlled_access': False,
         'externally_hosted': True,
         'external_host_url': 'https://example.com/file.fastq.gz'
     }
