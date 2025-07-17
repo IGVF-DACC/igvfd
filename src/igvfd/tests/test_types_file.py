@@ -493,7 +493,6 @@ def test_file_assay_titles(
         }
     )
     res = testapp.get(alignment_file['@id'])
-    print(res.json)
     assert set(res.json.get('assay_titles', [])) == {'ATAC-seq'}
     assert set(res.json.get('preferred_assay_titles', [])) == {'10x multiome with MULTI-seq'}
 
