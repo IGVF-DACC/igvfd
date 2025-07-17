@@ -598,10 +598,15 @@ class AnalysisSet(FileSet):
         preferred_assay_list = set()
         for fileset in input_file_sets:
             file_set_object = request.embed(
-                fileset, '@@object_with_select_calculated_properties?field=preferred_assay_titles&field=@type')
-            if any(item in file_set_object.get('@type', []) for item in ['MeasurementSet', 'AnalysisSet', 'AuxiliarySet', 'ConstructLibrarySet']):
-                preferred_assay_titles = file_set_object.get('preferred_assay_titles', [])
-                preferred_assay_list.update(preferred_assay_titles)
+                fileset,
+                '@@object_with_select_calculated_properties?field=preferred_assay_titles'
+            )
+            preferred_assay_list.update(
+                file_set_object.get(
+                    'preferred_assay_titles',
+                    []
+                )
+            )
         return list(sorted(preferred_assay_list))
 
     @calculated_property(
@@ -626,10 +631,15 @@ class AnalysisSet(FileSet):
         assay_list = set()
         for fileset in input_file_sets:
             file_set_object = request.embed(
-                fileset, '@@object_with_select_calculated_properties?field=assay_titles&field=@type')
-            if any(item in file_set_object.get('@type', []) for item in ['MeasurementSet', 'AnalysisSet', 'AuxiliarySet', 'ConstructLibrarySet']):
-                assay_titles = file_set_object.get('assay_titles', [])
-                assay_list.update(assay_titles)
+                fileset,
+                '@@object_with_select_calculated_properties?field=assay_titles&field=@type'
+            )
+            assay_list.update(
+                file_set_object.get(
+                    'assay_titles',
+                    []
+                )
+            )
         return list(sorted(assay_list))
 
     @calculated_property(
