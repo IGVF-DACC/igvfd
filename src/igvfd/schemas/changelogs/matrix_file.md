@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Add calculated property `preferred_assay_titles`
 * Extend `file_format` enum list to include `rds`.
 * Add calculated property `transcriptome_annotation`.
 * Add calculated property `assembly`.

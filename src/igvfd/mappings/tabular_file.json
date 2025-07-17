@@ -1,6 +1,6 @@
 {
-    "hash": "73525caadef84ff3b3b903ed88dbeac3",
-    "index_name": "tabular_file_73525caa",
+    "hash": "01e9e73f021fccc58efb594282bb7298",
+    "index_name": "tabular_file_01e9e73f",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -759,7 +759,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -2189,6 +2189,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
@@ -2456,6 +2459,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preferred_assay_titles": {
+                        "type": "keyword"
                     },
                     "preview_timestamp": {
                         "type": "date"

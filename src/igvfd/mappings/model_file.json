@@ -1,6 +1,6 @@
 {
-    "hash": "46d6e8d49f4a04e9c5f7555a40114ad4",
-    "index_name": "model_file_46d6e8d4",
+    "hash": "cec1d2988a81e2e831db13534b0eb81f",
+    "index_name": "model_file_cec1d298",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -660,7 +660,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -2085,6 +2085,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
@@ -2352,6 +2355,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preferred_assay_titles": {
+                        "type": "keyword"
                     },
                     "preview_timestamp": {
                         "type": "date"

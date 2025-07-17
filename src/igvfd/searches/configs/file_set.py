@@ -10,6 +10,12 @@ def file_set():
             'file_set_type': {
                 'title': 'File Set Type',
             },
+            'assay_titles': {
+                'title': 'Assay Term Names'
+            },
+            'preferred_assay_titles': {
+                'title': 'Preferred Assay Titles'
+            },
             'assembly': {
                 'title': 'Assembly',
             },

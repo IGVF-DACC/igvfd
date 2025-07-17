@@ -2,6 +2,7 @@
 
 ### Schema version 5
 
+* Add calculated property `preferred_assay_titles`
 * Adjust `derived_manually` to have default value `False`.
 
 ### Minor changes since schema version 4
