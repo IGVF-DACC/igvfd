@@ -110,17 +110,21 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
 }
 
 
-def show_upload_credentials(request=None, context=None, upload_status=None):
-    if request is None or upload_status == 'validated':
+def show_upload_credentials(request=None, context=None, upload_status=None, externally_hosted=None):
+    if request is None or upload_status == 'validated' or externally_hosted is True:
         return False
     return request.has_permission('edit', context)
 
 
-def show_href():
+def show_href(externally_hosted=None):
+    if externally_hosted is True:
+        return False
     return True
 
 
-def show_s3uri():
+def show_s3uri(externally_hosted=None):
+    if externally_hosted is True:
+        return False
     return True
 
 
@@ -364,32 +368,35 @@ class File(Item):
     def create(cls, registry, uuid, properties, sheets=None):
         if properties.get('upload_status') == 'pending':
             sheets = {} if sheets is None else sheets.copy()
-            if properties.get('controlled_access') is True:
-                bucket = registry.settings['restricted_file_upload_bucket']
-                sts_client = get_restricted_sts_client(
-                    localstack_endpoint_url=os.environ.get(
-                        'LOCALSTACK_ENDPOINT_URL'
-                    )
-                )
+            if properties.get('externally_hosted') is True:
+                properties['upload_status'] = 'validation exempted'
             else:
-                bucket = registry.settings['file_upload_bucket']
-                sts_client = get_sts_client(
-                    localstack_endpoint_url=os.environ.get(
-                        'LOCALSTACK_ENDPOINT_URL'
+                if properties.get('controlled_access') is True:
+                    bucket = registry.settings['restricted_file_upload_bucket']
+                    sts_client = get_restricted_sts_client(
+                        localstack_endpoint_url=os.environ.get(
+                            'LOCALSTACK_ENDPOINT_URL'
+                        )
                     )
+                else:
+                    bucket = registry.settings['file_upload_bucket']
+                    sts_client = get_sts_client(
+                        localstack_endpoint_url=os.environ.get(
+                            'LOCALSTACK_ENDPOINT_URL'
+                        )
+                    )
+                file_extension = FILE_FORMAT_TO_FILE_EXTENSION[properties['file_format']]
+                date = properties['creation_timestamp'].split('T')[0].replace('-', '/')
+                accession = properties.get('accession')
+                key = f'{date}/{uuid}/{accession}{file_extension}'
+                name = f'up{time.time():.6f}-{accession}'[:32]  # max 32 chars
+                upload_credentials = UploadCredentials(
+                    bucket=bucket,
+                    key=key,
+                    name=name,
+                    sts_client=sts_client,
                 )
-            file_extension = FILE_FORMAT_TO_FILE_EXTENSION[properties['file_format']]
-            date = properties['creation_timestamp'].split('T')[0].replace('-', '/')
-            accession = properties.get('accession')
-            key = f'{date}/{uuid}/{accession}{file_extension}'
-            name = f'up{time.time():.6f}-{accession}'[:32]  # max 32 chars
-            upload_credentials = UploadCredentials(
-                bucket=bucket,
-                key=key,
-                name=name,
-                sts_client=sts_client,
-            )
-            sheets['external'] = upload_credentials.external_creds()
+                sheets['external'] = upload_credentials.external_creds()
         return super(File, cls).create(registry, uuid, properties, sheets)
 
     def _get_external_sheet(self):
@@ -1256,6 +1263,10 @@ def post_upload(context, request):
         raise HTTPForbidden(
             'Unable to issue new credentials when status is not in progress or preview'
         )
+    if properties.get('externally_hosted') is True:
+        raise HTTPForbidden(
+            'Unable to issue new credentials when externally_hosted is True'
+        )
     external = context.propsheets.get(
         'external',
         {}
@@ -1337,6 +1348,10 @@ def download(context, request):
             raise HTTPForbidden(
                 'Downloading controlled-access file not allowed.'
             )
+    if properties.get('externally_hosted') is True:
+        raise HTTPForbidden(
+            'Downloading externally_hosted file not allowed.'
+        )
     file_extension = FILE_FORMAT_TO_FILE_EXTENSION[properties['file_format']]
     accession = properties['accession']
     filename = f'{accession}{file_extension}'
