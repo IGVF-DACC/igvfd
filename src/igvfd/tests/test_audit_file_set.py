@@ -259,3 +259,38 @@ def test_audit_missing_publication(
         error['category'] != 'missing publication'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
+
+
+def test_audit_missing_publication(
+    testapp,
+    analysis_set_base,
+    measurement_set_no_files
+):
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing description'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'file_set_type': 'principal analysis',
+            'input_file_sets': [measurement_set_no_files['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing description'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'description': 'Description of experiment.'
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing description'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
