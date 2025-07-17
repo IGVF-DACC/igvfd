@@ -1,6 +1,6 @@
 {
-    "hash": "9a299c709a40b3f070b47975b164d8a0",
-    "index_name": "prediction_set_9a299c70",
+    "hash": "ad3ea2e7df70f99c4c9b09ee9fd06680",
+    "index_name": "prediction_set_ad3ea2e7",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -746,6 +746,9 @@
                                         "type": "keyword"
                                     },
                                     "quality_metrics": {
+                                        "type": "keyword"
+                                    },
+                                    "reference_files": {
                                         "type": "keyword"
                                     },
                                     "release_timestamp": {
@@ -1982,6 +1985,9 @@
                             "quality_metrics": {
                                 "type": "keyword"
                             },
+                            "reference_files": {
+                                "type": "keyword"
+                            },
                             "release_timestamp": {
                                 "type": "date"
                             },
@@ -2174,6 +2180,9 @@
                                 "type": "keyword"
                             },
                             "quality_metrics": {
+                                "type": "keyword"
+                            },
+                            "reference_files": {
                                 "type": "keyword"
                             },
                             "release_timestamp": {

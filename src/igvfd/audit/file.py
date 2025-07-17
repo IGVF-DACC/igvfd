@@ -112,6 +112,40 @@ def audit_file_no_file_format_specifications(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+def audit_tabular_file_missing_reference_files(value, system):
+    '''
+    [
+        {
+            "audit_description": "Tabular files which contain genomic coordinates or refer to variants are expected to specify reference files.",
+            "audit_category": "missing reference files",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message = get_audit_message(audit_file_no_file_format_specifications, index=0)
+    excluded_content_types = [
+        'barcode onlist',
+        'barcode replacement',
+        'barcode to hashtag mapping',
+        'barcode to sample mapping',
+        'cell hashing barcodes',
+        'derived barcode mapping',
+        'external source data',
+        'pipeline inputs',
+        'primer sequences',
+        'protein to protein interaction score',
+        'sample sort parameters',
+        'tissue positions'
+    ]
+    if value.get('content_type', '') not in excluded_content_types and 'reference_files' not in value:
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has no `reference_files`.'
+        )
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
 function_dispatcher_file_object = {
     'audit_upload_status': audit_upload_status,
     'audit_file_format_specifications': audit_file_format_specifications
@@ -122,7 +156,8 @@ function_dispatcher_matrix_file_object = {
 }
 
 function_dispatcher_tabular_file_object = {
-    'audit_file_no_file_format_specifications': audit_file_no_file_format_specifications
+    'audit_file_no_file_format_specifications': audit_file_no_file_format_specifications,
+    'audit_tabular_file_missing_reference_files': audit_tabular_file_missing_reference_files
 }
 
 function_dispatcher_model_file_object = {
