@@ -804,9 +804,9 @@ def audit_missing_primer_designs(value, system):
         }
     ]
     '''
-    preferred_assay_title = value.get('preferred_assay_title')
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
     audit_message = get_audit_message(audit_missing_primer_designs, index=0)
-    if preferred_assay_title == 'TAP-seq' and not value.get('primer_designs', ''):
+    if 'TAP-seq' in preferred_assay_titles and not value.get('primer_designs', ''):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'is missing `primer_designs`.'
