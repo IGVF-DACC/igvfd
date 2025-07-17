@@ -51,7 +51,7 @@ def test_types_file_s3_uri_is_present(sequence_file):
     assert 's3_uri' in sequence_file
 
 
-def test_types_file_s3_uri_is_not_present_when_externally_hosted(testapp, sequence_file):
+def test_types_file_s3_creation_when_externally_hosted(testapp, sequence_file):
     testapp.patch_json(
         sequence_file['@id'],
         {
@@ -61,18 +61,8 @@ def test_types_file_s3_uri_is_not_present_when_externally_hosted(testapp, sequen
     )
     res = testapp.get(sequence_file['@id'])
     assert 's3_uri' not in res.json
-
-
-def test_types_file_href_is_not_present_when_externally_hosted(testapp, sequence_file):
-    testapp.patch_json(
-        sequence_file['@id'],
-        {
-            'externally_hosted': True,
-            'external_host_url': 'https://example.com/file.fastq.gz'
-        }
-    )
-    res = testapp.get(sequence_file['@id'])
     assert 'href' not in res.json
+    assert res.json['upload_status'] == 'validation exempted'
 
 
 def test_types_file_s3_uri_non_submittable(testapp, principal_analysis_set, award, lab):
