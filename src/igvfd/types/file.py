@@ -277,12 +277,10 @@ class File(Item):
         }
     )
     def assay_titles(self, request, file_set):
-        assay_titles = set()
-        file_set_object = request.embed(
+        return request.embed(
             file_set,
             '@@object_with_select_calculated_properties?field=assay_titles'
-        )
-        return file_set_object.get('assay_titles', [])
+        ).get('assay_titles', [])
 
     @calculated_property(
         schema={
@@ -300,12 +298,10 @@ class File(Item):
         }
     )
     def preferred_assay_titles(self, request, file_set):
-        preferred_assay_titles = set()
-        file_set_object = request.embed(
+        return request.embed(
             file_set,
             '@@object_with_select_calculated_properties?field=preferred_assay_titles'
-        )
-        return file_set_object.get('preferred_assay_titles', [])
+        ).get('preferred_assay_titles', [])
 
     @calculated_property(
         condition='analysis_step_version',
