@@ -51,6 +51,28 @@ def test_types_file_s3_uri_is_present(sequence_file):
     assert 's3_uri' in sequence_file
 
 
+def test_types_file_s3_uri_is_not_present_when_externally_hosted(testapp, sequence_file):
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'externally_hosted': True
+        }
+    )
+    res = testapp.get(sequence_file['@id'])
+    assert 's3_uri' not in res.json
+
+
+def test_types_file_href_is_not_present_when_externally_hosted(testapp, sequence_file):
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'externally_hosted': True
+        }
+    )
+    res = testapp.get(sequence_file['@id'])
+    assert 'href' not in res.json
+
+
 def test_types_file_s3_uri_non_submittable(testapp, principal_analysis_set, award, lab):
     item = {
         'award': award['@id'],
@@ -550,6 +572,16 @@ def test_upload_credentials_forbidden_when_status_is_not_in_progress_or_preview(
     testapp.post_json(reference_file['@id'] + '@@upload', {}, status=403)
 
 
+def test_upload_credentials_forbidden_when_externally_hosted(testapp, sequence_file):
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'externally_hosted': True
+        }
+    )
+    testapp.post_json(sequence_file['@id'] + '@@upload', {}, status=403)
+
+
 def test_upload_credentials_allowed_when_status_is_in_progress(testapp, reference_file):
     testapp.patch_json(
         reference_file['@id'],
@@ -604,3 +636,13 @@ def test_validate_onlist_files(testapp, configuration_file_json, configuration_f
     )
     res = testapp.get(configuration_file_seqspec['@id'])
     assert res.json.get('validate_onlist_files', '') is True
+
+
+def test_download_forbidden_when_externally_hosted(testapp, sequence_file):
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'externally_hosted': True
+        }
+    )
+    testapp.get(sequence_file['@id'] + '@@download', status=403)
