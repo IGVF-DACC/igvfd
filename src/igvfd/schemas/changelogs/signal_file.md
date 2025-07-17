@@ -1,5 +1,10 @@
 ## Changelog for *`signal_file.json`*
 
+### Schema version 13
+
+* Remove `assembly`.
+* Remove `transcriptome_annotation`.
+
 ### Minor changes since schema version 12
 
 * Extend `transcriptome_annotation` enum list to include `GENCODE 24`.

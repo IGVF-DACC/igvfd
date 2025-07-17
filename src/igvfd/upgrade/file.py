@@ -522,3 +522,18 @@ def tabular_file_16_17(value, system):
         notes += f' This file\'s content_type was element to gene predictions, but has been upgraded to element to gene interactions.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('alignment_file', '16', '17')
+@upgrade_step('signal_file', '12', '13')
+def file_16_17(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2885
+    notes = value.get('notes', '')
+    if 'assembly' in value:
+        notes += f'The submitted assembly {value["assembly"]} was removed via upgrade. '
+        del value['assembly']
+    transcriptome_annotation_notes = ''
+    if 'transcriptome_annotation' in value:
+        notes += f'The submitted transcriptome_annotation {value["transcriptome_annotation"]} was removed via upgrade. '
+        del value['transcriptome_annotation']
+    value['notes'] = notes.strip()

@@ -10,7 +10,6 @@ def alignment_file(testapp, lab, award, principal_analysis_set, reference_file):
         'file_format': 'bam',
         'file_set': principal_analysis_set['@id'],
         'file_size': 8491803,
-        'assembly': 'GRCh38',
         'content_type': 'alignments',
         'reference_files': [
             reference_file['@id']
@@ -31,7 +30,6 @@ def controlled_access_alignment_file(testapp, lab, award, principal_analysis_set
         'file_format': 'bam',
         'file_set': principal_analysis_set['@id'],
         'file_size': 9491803,
-        'assembly': 'GRCh38',
         'content_type': 'alignments',
         'reference_files': [
             reference_file['@id']
@@ -207,5 +205,16 @@ def alignment_file_v15(alignment_file):
     item = alignment_file.copy()
     item.update({
         'schema_version': '15',
+    })
+    return item
+
+
+@pytest.fixture
+def alignment_file_v16(alignment_file):
+    item = alignment_file.copy()
+    item.update({
+        'schema_version': '16',
+        'assembly': 'GRCh38',
+        'transcriptome_annotation': 'GENCODE 40'
     })
     return item
