@@ -33,6 +33,9 @@
         }
     ],
     "dependentSchemas": {
+        "$merge": [
+            "shared_dependencies.json#/accession_status"
+        ],
         "derived_manually": {
             "comment": "If derived_manually is true, analysis_step_version is not required.",
             "oneOf": [
@@ -113,21 +116,6 @@
                 "required": [
                     "release_timestamp"
                 ]
-            }
-        },
-        "release_timestamp": {
-            "comment": "Release timestamp is required if status is released, revoked or archived.",
-            "required": [
-                "status"
-            ],
-            "properties": {
-                "status": {
-                    "enum": [
-                        "revoked",
-                        "archived",
-                        "released"
-                    ]
-                }
             }
         },
         "file_format": {
