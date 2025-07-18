@@ -1177,8 +1177,8 @@ class MeasurementSet(FileSet):
             related_datasets = []
             for sample in samples:
                 sample_object = request.embed(sample, '@@object')
-                if sample_object.get('file_sets'):
-                    for file_set_id in sample_object.get('file_sets'):
+                if sample_object.get('file_sets', []):
+                    for file_set_id in sample_object.get('file_sets', []):
                         if '/measurement-sets/' == file_set_id[:18] and \
                             object_id != file_set_id and \
                                 file_set_id not in related_datasets:
