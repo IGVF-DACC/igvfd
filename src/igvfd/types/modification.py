@@ -44,7 +44,7 @@ class Modification(Item):
     @calculated_property(schema={
         'title': 'Biosamples Modified',
         'description': 'The biosamples which have been modified with this modification.',
-        'type': 'array',
+        'type': ['array', 'null'],
         'minItems': 1,
         'uniqueItems': True,
         'items': {

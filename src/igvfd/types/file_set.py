@@ -18,7 +18,7 @@ def get_donors_from_samples(request, samples):
     donor_objects = []
     for sample in samples:
         donor_objects += request.embed(sample, '@@object').get('donors', [])
-    return sorted(list(set(donor_objects)))
+    return sorted(list(set(donor_objects))) if donor_objects else None
 
 
 def get_fileset_objs_from_input_file_sets(request, input_file_sets):
@@ -189,7 +189,7 @@ class FileSet(Item):
 
     @calculated_property(schema={
         'title': 'Files',
-        'type': 'array',
+        'type': ['array', 'null'],
         'description': 'The files associated with this file set.',
         'minItems': 1,
         'uniqueItems': True,
@@ -205,7 +205,7 @@ class FileSet(Item):
 
     @calculated_property(schema={
         'title': 'File Sets Controlled By This File Set',
-        'type': 'array',
+        'type': ['array', 'null'],
         'description': 'The file sets for which this file set is a control.',
         'minItems': 1,
         'uniqueItems': True,
@@ -251,7 +251,7 @@ class FileSet(Item):
     @calculated_property(schema={
         'title': 'Input For',
         'description': 'The file sets that use this file set as an input.',
-        'type': 'array',
+        'type': ['array', 'null'],
         'minItems': 1,
         'uniqueItems': True,
         'items': {
@@ -270,7 +270,7 @@ class FileSet(Item):
         schema={
             'title': 'Construct Library Sets',
             'description': 'The construct library sets associated with the samples of this file set.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -593,7 +593,7 @@ class AnalysisSet(FileSet):
         schema={
             'title': 'Assay Titles',
             'description': 'Title(s) of assays that produced data analyzed in the analysis set.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -636,7 +636,7 @@ class AnalysisSet(FileSet):
                             preferred_assay_title = file_set_object.get('preferred_assay_title')
                             if preferred_assay_title:
                                 assay_titles.add(preferred_assay_title)
-            return list(assay_titles)
+        return list(assay_titles) if assay_titles else None
 
     @calculated_property(
         condition='input_file_sets',
@@ -644,7 +644,7 @@ class AnalysisSet(FileSet):
         schema={
             'title': 'Samples',
             'description': 'Samples associated with this analysis set.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -669,14 +669,14 @@ class AnalysisSet(FileSet):
                 # if the analysis set specifies a demultiplexed sample and all input data is multiplexed return just the demultiplexed_sample
                 if not ([sample for sample in samples if not (sample.startswith('/multiplexed-samples/'))]):
                     return demultiplexed_samples
-            return sorted(samples)
+            return sorted(samples) if samples else None
 
     @calculated_property(
         condition='samples',
         schema={
             'title': 'Donors',
             'description': 'The donors of the samples associated with this analysis set.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -695,7 +695,7 @@ class AnalysisSet(FileSet):
         schema={
             'title': 'Protocols',
             'description': 'Links to the protocol(s) for conducting the assay on Protocols.io.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -715,7 +715,7 @@ class AnalysisSet(FileSet):
                 protocol = file_set_obj.get('protocols', [])
                 if protocol:
                     protocols.update(protocol)
-        return sorted(list(protocols))
+        return sorted(list(protocols)) if protocols else None
 
     @calculated_property(
         condition='samples',
@@ -913,7 +913,7 @@ class AnalysisSet(FileSet):
         schema={
             'title': 'Functional Assay Mechanisms',
             'description': 'The biological processes measured by the functional assays.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -930,13 +930,13 @@ class AnalysisSet(FileSet):
         for file_set_object in file_set_objects:
             if 'MeasurementSet' in file_set_object.get('@type') or 'AnalysisSet' in file_set_object.get('@type'):
                 mechanism_objects.extend(file_set_object.get('functional_assay_mechanisms', []))
-        return sorted(list(set(mechanism_objects)))
+        return sorted(list(set(mechanism_objects))) if mechanism_objects else None
 
     @calculated_property(
         schema={
             'title': 'Workflows',
             'description': 'A workflow for computational analysis of genomic data. A workflow is made up of analysis steps.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'notSubmittable': True,
             'uniqueItem': True,
             'minItems': 1,
@@ -964,14 +964,14 @@ class AnalysisSet(FileSet):
                     workflow = analysis_step_obj.get('workflow')
                     if workflow:
                         analysis_set_workflows_set.add(workflow)
-        return sorted(list(analysis_set_workflows_set))
+        return sorted(list(analysis_set_workflows_set)) if analysis_set_workflows_set else None
 
     @calculated_property(
         condition='input_file_sets',
         schema={
             'title': 'Targeted Genes',
             'description': 'A list of genes targeted by the input measurement sets assays.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'notSubmittable': True,
             'uniqueItem': True,
             'minItems': 1,
@@ -992,7 +992,7 @@ class AnalysisSet(FileSet):
                     input_file_set, '@@object_with_select_calculated_properties?field=targeted_genes')
                 if 'targeted_genes' in input_file_set_object:
                     analysis_set_targeted_genes.update(input_file_set_object['targeted_genes'])
-        return sorted(list(analysis_set_targeted_genes))
+        return sorted(list(analysis_set_targeted_genes)) if analysis_set_targeted_genes else None
 
 
 @collection(
@@ -1016,7 +1016,7 @@ class CuratedSet(FileSet):
         schema={
             'title': 'Assemblies',
             'description': 'The genome assemblies to which the referencing files in the file set are utilizing (e.g., GRCh38).',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -1041,7 +1041,7 @@ class CuratedSet(FileSet):
         schema={
             'title': 'Transcriptome Annotations',
             'description': 'The annotation versions of the reference resource.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -1120,7 +1120,7 @@ class MeasurementSet(FileSet):
         schema={
             'title': 'Related Multiome Datasets',
             'description': 'Related datasets included in the multiome experiment this measurement set is a part of.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -1144,7 +1144,9 @@ class MeasurementSet(FileSet):
                             object_id != file_set_id and \
                                 file_set_id not in related_datasets:
                             related_datasets.append(file_set_id)
-            return sorted(related_datasets)
+            if related_datasets:
+                return sorted(related_datasets)
+        return None
 
     @calculated_property(
         schema={
@@ -1267,7 +1269,7 @@ class MeasurementSet(FileSet):
         schema={
             'title': 'Donors',
             'description': 'The donors of the samples associated with this measurement set.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -1360,7 +1362,7 @@ class ModelSet(FileSet):
         schema={
             'title': 'Software Versions',
             'description': 'The software versions used to produce this predictive model.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -1412,7 +1414,7 @@ class AuxiliarySet(FileSet):
     @calculated_property(schema={
         'title': 'Measurement Sets',
         'description': 'The measurement sets that link to this auxiliary set.',
-        'type': 'array',
+        'type': ['array', 'null'],
         'minItems': 1,
         'uniqueItems': True,
         'items': {
@@ -1444,7 +1446,7 @@ class AuxiliarySet(FileSet):
         schema={
             'title': 'Donors',
             'description': 'The donors of the samples associated with this auxiliary set.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -1573,7 +1575,7 @@ class ConstructLibrarySet(FileSet):
     @calculated_property(schema={
         'title': 'Applied to Samples',
         'description': 'The samples that link to this construct library set.',
-        'type': 'array',
+        'type': ['array', 'null'],
         'minItems': 1,
         'uniqueItems': True,
         'items': {
@@ -1591,7 +1593,7 @@ class ConstructLibrarySet(FileSet):
         schema={
             'title': 'File Sets',
             'description': 'The file sets that used this construct library set.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -1618,7 +1620,7 @@ class ConstructLibrarySet(FileSet):
         schema={
             'title': 'Assay Titles',
             'description': 'The assay titles of the file sets that used this construct library set.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -1637,7 +1639,7 @@ class ConstructLibrarySet(FileSet):
                 preferred_assay_title = file_set_object.get('preferred_assay_title')
                 if preferred_assay_title:
                     assay_titles.add(preferred_assay_title)
-        return sorted(list(assay_titles))
+        return sorted(list(assay_titles)) if assay_titles else None
 
     @calculated_property(
         schema={
