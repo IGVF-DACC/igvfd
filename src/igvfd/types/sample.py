@@ -139,7 +139,7 @@ class Sample(Item):
 
     @calculated_property(schema={
         'title': 'File Sets',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The file sets linked to this sample.',
         'minItems': 1,
         'uniqueItems': True,
@@ -172,7 +172,7 @@ class Sample(Item):
 
     @calculated_property(schema={
         'title': 'Multiplexed In',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The multiplexed samples in which this sample is included.',
         'minItems': 1,
         'uniqueItems': True,
@@ -188,7 +188,7 @@ class Sample(Item):
 
     @calculated_property(schema={
         'title': 'Sorted Fraction Samples',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The fractions into which this sample has been sorted.',
         'minItems': 1,
         'uniqueItems': True,
@@ -204,7 +204,7 @@ class Sample(Item):
 
     @calculated_property(schema={
         'title': 'Origin Sample Of',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The samples which originate from this sample, such as through a process of cell differentiation.',
         'minItems': 1,
         'uniqueItems': True,
@@ -220,7 +220,7 @@ class Sample(Item):
 
     @calculated_property(schema={
         'title': 'Institutional Certificates',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The institutional certificates under which use of this sample is approved.',
         'minItems': 1,
         'uniqueItems': True,
@@ -594,7 +594,7 @@ class Biosample(Sample):
 
     @calculated_property(schema={
         'title': 'Biosample Parts',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The parts into which this sample has been divided.',
         'minItems': 1,
         'uniqueItems': True,
@@ -610,7 +610,7 @@ class Biosample(Sample):
 
     @calculated_property(schema={
         'title': 'Pooled In',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The pooled samples in which this sample is included.',
         'minItems': 1,
         'uniqueItems': True,
@@ -682,7 +682,7 @@ class InVitroSystem(Biosample):
 
     @calculated_property(schema={
         'title': 'Demultiplexed To',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The parts into which this sample has been demultiplexed.',
         'minItems': 1,
         'uniqueItems': True,
@@ -946,7 +946,7 @@ class MultiplexedSample(Sample):
         define=True,
         schema={
             'title': 'Sample Terms',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'The sample terms of the samples included in this multiplexed sample.',
             'minItems': 1,
             'uniqueItems': True,
@@ -993,7 +993,7 @@ class MultiplexedSample(Sample):
     @calculated_property(
         schema={
             'title': 'Disease Terms',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'The disease terms of the samples included in this multiplexed sample.',
             'minItems': 1,
             'uniqueItems': True,
@@ -1011,7 +1011,7 @@ class MultiplexedSample(Sample):
     @calculated_property(
         schema={
             'title': 'Treatments',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'The treatments of the samples included in this multiplexed sample.',
             'minItems': 1,
             'uniqueItems': True,
@@ -1029,7 +1029,7 @@ class MultiplexedSample(Sample):
     @calculated_property(
         schema={
             'title': 'Modifications',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'The modifications of the samples included in this multiplexed sample.',
             'minItems': 1,
             'uniqueItems': True,
@@ -1048,7 +1048,7 @@ class MultiplexedSample(Sample):
         define=True,
         schema={
             'title': 'Donors',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'The donors of the samples included in this multiplexed sample.',
             'minItems': 1,
             'uniqueItems': True,
@@ -1066,7 +1066,7 @@ class MultiplexedSample(Sample):
     @calculated_property(
         schema={
             'title': 'Biomarkers',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'The biomarkers of the samples included in this multiplexed sample.',
             'minItems': 1,
             'uniqueItems': True,
@@ -1084,7 +1084,7 @@ class MultiplexedSample(Sample):
     @calculated_property(
         schema={
             'title': 'Sources',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'The sources of the samples included in this multiplexed sample.',
             'minItems': 1,
             'uniqueItems': True,
@@ -1105,7 +1105,7 @@ class MultiplexedSample(Sample):
     @calculated_property(
         schema={
             'title': 'Construct Library Sets',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'The construct library sets of the samples included in this multiplexed sample.',
             'minItems': 1,
             'uniqueItems': True,
@@ -1128,7 +1128,7 @@ class MultiplexedSample(Sample):
     @calculated_property(
         schema={
             'title': 'Institutional Certificates',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'The institutional certificates of the samples included in this multiplexed sample.',
             'minItems': 1,
             'uniqueItems': True,

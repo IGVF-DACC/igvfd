@@ -57,7 +57,7 @@ class Biomarker(Item):
     @calculated_property(schema={
         'title': 'Biomarker For',
         'description': 'The samples which have been confirmed to have this biomarker.',
-        'type': ['array', 'null'],
+        'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
         'items': {

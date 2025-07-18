@@ -85,7 +85,7 @@ class OntologyTerm(Item):
         condition='term_id',
         schema={
             'title': 'Comments',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'Comment for the term that was recorded in an ontology.',
             'minItems': 1,
             'uniqueItems': True,
@@ -102,7 +102,7 @@ class OntologyTerm(Item):
         condition='term_id',
         schema={
             'title': 'Synonyms',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'Synonyms for the term that have been recorded in an ontology.',
             'minItems': 1,
             'uniqueItems': True,
@@ -120,7 +120,7 @@ class OntologyTerm(Item):
         schema={
             'title': 'Ancestors',
             'description': 'List of term names of ontological terms that precede the given term in the ontological tree. These ancestor terms are typically more general ontological terms under which the term is classified.',
-            'type': ['array', 'null'],
+            'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -179,7 +179,7 @@ class SampleTerm(OntologyTerm):
         condition='term_id',
         schema={
             'title': 'Organ',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'Organs associated with the sample term.',
             'minItems': 1,
             'uniqueItems': True,
@@ -196,7 +196,7 @@ class SampleTerm(OntologyTerm):
         condition='term_id',
         schema={
             'title': 'Cell',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'Cells associated with the sample term.',
             'minItems': 1,
             'uniqueItems': True,
@@ -213,7 +213,7 @@ class SampleTerm(OntologyTerm):
         condition='term_id',
         schema={
             'title': 'Developmental Slims',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'Developmental stages associated with the sample term.',
             'minItems': 1,
             'uniqueItems': True,
@@ -230,7 +230,7 @@ class SampleTerm(OntologyTerm):
         condition='term_id',
         schema={
             'title': 'System Slims',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'Organ systems associated with the sample term.',
             'minItems': 1,
             'uniqueItems': True,
@@ -289,7 +289,7 @@ class AssayTerm(OntologyTerm):
         condition='term_id',
         schema={
             'title': 'Assay Category',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'The type of feature or interaction measured by the assay.',
             'minItems': 1,
             'uniqueItems': True,
@@ -306,7 +306,7 @@ class AssayTerm(OntologyTerm):
         condition='term_id',
         schema={
             'title': 'Assay Objective',
-            'type': ['array', 'null'],
+            'type': 'array',
             'description': 'The purpose of the assay.',
             'minItems': 1,
             'uniqueItems': True,

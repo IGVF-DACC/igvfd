@@ -81,7 +81,7 @@ class User(Item):
     @calculated_property(
         schema={
             'title': 'Access Keys',
-            'type': ['array', 'null'],
+            'type': 'array',
             'items': {
                 'title': 'Access Key',
                 'type': 'string',

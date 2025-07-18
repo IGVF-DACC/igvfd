@@ -42,7 +42,7 @@ class AnalysisStepVersion(Item):
 
     @calculated_property(schema={
         'title': 'Workflows',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The workflows that this analysis step version is a part of.',
         'minItems': 1,
         'uniqueItems': True,
