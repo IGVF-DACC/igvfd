@@ -57,3 +57,13 @@ def test_signal_file_upgrade_11_12(upgrader, signal_file_v11):
                              target_version='12')
     assert value['schema_version'] == '12'
     assert value['normalized'] == False
+
+
+def test_signal_file_upgrade_12_13(upgrader, signal_file_v12):
+    value = upgrader.upgrade('signal_file', signal_file_v12, current_version='12',
+                             target_version='13')
+    assert value['schema_version'] == '13'
+    assert 'assembly' not in value
+    assert 'transcriptome_annotation' not in value
+    assert 'GRCh38 was removed' in value['notes']
+    assert 'GENCODE 40 was removed' in value['notes']

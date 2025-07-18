@@ -4,7 +4,6 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "A file containing alignment data in bam or cram format.",
     "required": [
-        "assembly",
         "award",
         "lab",
         "md5sum",
@@ -50,12 +49,6 @@
             "$ref": "mixins.json#/release_timestamp"
         },
         {
-            "$ref": "mixins.json#/assembly"
-        },
-        {
-            "$ref": "mixins.json#/transcriptome_annotation"
-        },
-        {
             "$ref": "mixins.json#/controlled_access"
         },
         {
@@ -84,7 +77,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "16"
+            "default": "17"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
@@ -130,9 +123,6 @@
         },
         "dbxrefs": {
             "comment": "This file type currently does not support any external resource submission."
-        },
-        "assembly": {
-            "description": "Genome assembly applicable for the annotation data."
         }
     },
     "fuzzy_searchable_fields": [
@@ -151,11 +141,9 @@
     ],
     "exact_searchable_fields": [
         "@type",
-        "assembly",
         "dbxrefs",
         "file_format",
-        "file_set.accession",
-        "transcriptome_annotation"
+        "file_set.accession"
     ],
     "changelog": "/profiles/changelogs/alignment_file.md"
 }

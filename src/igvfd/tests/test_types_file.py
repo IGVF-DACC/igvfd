@@ -274,12 +274,11 @@ def test_file_summaries(
     testapp.patch_json(
         alignment_file['@id'],
         {
-            'transcriptome_annotation': 'GENCODE 43',
             'redacted': True
         }
     )
     res = testapp.get(alignment_file['@id'])
-    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 unfiltered redacted alignments'
+    assert res.json.get('summary', '') == 'unfiltered redacted alignments'
     testapp.patch_json(
         alignment_file['@id'],
         {
@@ -289,7 +288,7 @@ def test_file_summaries(
     )
     res = testapp.get(alignment_file['@id'])
     assert res.json.get(
-        'summary', '') == 'GRCh38 GENCODE 43 unfiltered redacted alignments with modifications detecting 5mC, 6mA'
+        'summary', '') == 'unfiltered redacted alignments with modifications detecting 5mC, 6mA'
 
     res = testapp.get(image_file['@id'])
     assert res.json.get('summary', '') == 'detected tissue'
@@ -373,12 +372,11 @@ def test_file_summaries(
         signal_file['@id'],
         {
             'normalized': True,
-            'filtered': True,
-            'transcriptome_annotation': 'GENCODE 43'
+            'filtered': True
         }
     )
     res = testapp.get(signal_file['@id'])
-    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 filtered normalized plus strand signal of all reads'
+    assert res.json.get('summary', '') == 'filtered normalized plus strand signal of all reads'
     # Predictive signal file with software.
     testapp.patch_json(
         signal_file['@id'],
@@ -389,7 +387,7 @@ def test_file_summaries(
     )
     res = testapp.get(signal_file['@id'])
     assert res.json.get(
-        'summary', '') == 'GRCh38 GENCODE 43 predictive filtered normalized plus strand signal of all reads (Bowtie2 v2.4.4)'
+        'summary', '') == 'predictive filtered normalized plus strand signal of all reads (Bowtie2 v2.4.4)'
 
     testapp.patch_json(
         tabular_file['@id'],
