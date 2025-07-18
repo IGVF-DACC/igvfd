@@ -453,7 +453,7 @@ class AnalysisSet(FileSet):
                     elif input_fileset.startswith('/auxiliary-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
                         if 'measurement_sets' in fileset_object:
-                            for candidate_fileset in fileset_object.get('measurement_sets'):
+                            for candidate_fileset in fileset_object.get('measurement_sets', []):
                                 measurement_set_object = request.embed(
                                     candidate_fileset, '@@object?skip_calculated=true')
                                 assay_terms.add(measurement_set_object['assay_term'])
@@ -621,7 +621,7 @@ class AnalysisSet(FileSet):
                     if input_analysis_assay_titles:
                         assay_titles = assay_titles | input_analysis_assay_titles
                 elif 'AuxiliarySet' in file_set_object.get('@type'):
-                    for measurement_set in file_set_object.get('measurement_sets'):
+                    for measurement_set in file_set_object.get('measurement_sets', []):
                         measurement_set_object = request.embed(measurement_set, '@@object')
                         preferred_assay_title = measurement_set_object.get('preferred_assay_title')
                         if preferred_assay_title:
@@ -1138,8 +1138,8 @@ class MeasurementSet(FileSet):
             related_datasets = []
             for sample in samples:
                 sample_object = request.embed(sample, '@@object')
-                if sample_object.get('file_sets'):
-                    for file_set_id in sample_object.get('file_sets'):
+                if sample_object.get('file_sets', []):
+                    for file_set_id in sample_object.get('file_sets', []):
                         if '/measurement-sets/' == file_set_id[:18] and \
                             object_id != file_set_id and \
                                 file_set_id not in related_datasets:

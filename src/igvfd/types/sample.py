@@ -164,7 +164,7 @@ class Sample(Item):
         for multiplexed_sample in multiplexed_in:
             multiplexed_sample_object = request.embed(
                 multiplexed_sample, '@@object_with_select_calculated_properties?field=file_sets')
-            multiplexed_file_sets = multiplexed_sample_object.get('file_sets')
+            multiplexed_file_sets = multiplexed_sample_object.get('file_sets', [])
             for file_set in multiplexed_file_sets:
                 if file_set not in file_sets:
                     file_sets.append(file_set)
