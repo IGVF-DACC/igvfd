@@ -72,7 +72,7 @@ def test_links_reverse(content, testapp, session):
     # DELETED sources are hidden from the list.
     target = targets[1]
     res = testapp.get('/testing-link-targets/%s/' % target['name'])
-    assert res.json['reverse'] == []
+    assert 'reverse' not in res.json
 
 
 def test_links_quoted_ids(content, testapp, session):

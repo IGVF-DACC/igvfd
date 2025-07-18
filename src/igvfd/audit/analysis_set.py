@@ -161,7 +161,7 @@ def audit_analysis_set_multiplexed_samples(value, system):
         all_samples = []
         for input_file_set in input_file_sets:
             input_file_set_object = system.get('request').embed(input_file_set + '@@object')
-            input_samples = input_file_set_object.get('samples')
+            input_samples = input_file_set_object.get('samples', [])
             for sample in input_samples:
                 all_samples.append(sample)
                 sample_object = system.get('request').embed(sample + '@@object')
@@ -299,7 +299,7 @@ def audit_multiple_barcode_replacement_files_in_input(value, system):
     barcode_replacement_files = set()
     parse_splitseq_file_sets = []
     if value.get('input_file_sets'):
-        for file in value.get('input_file_sets'):
+        for file in value.get('input_file_sets', []):
             if file.startswith('/measurement-sets/'):
                 input_file_set_object = system.get('request').embed(file + '@@object?skip_calculated=true')
                 preferred_assay_titles = input_file_set_object.get('preferred_assay_titles')

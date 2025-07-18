@@ -51,7 +51,7 @@ def single_cell_check(system, value, object_type, single_cell_assay_terms=SINGLE
         assay_term = value.get('assay_term')
         return assay_term in single_cell_assay_terms
     elif object_type == 'Auxiliary set':
-        measurement_sets = value.get('measurement_sets')
+        measurement_sets = value.get('measurement_sets', [])
         for measurement_set in measurement_sets:
             measurement_set_obj = system.get('request').embed(measurement_set, '@@object?skip_calculated=true')
             assay_term = measurement_set_obj.get('assay_term')
@@ -59,11 +59,11 @@ def single_cell_check(system, value, object_type, single_cell_assay_terms=SINGLE
                 return True
         return False
     elif object_type == 'Construct library set':
-        samples = value.get('applied_to_samples')
+        samples = value.get('applied_to_samples', [])
         for sample in samples:
             sample_obj = system.get('request').embed(
                 sample, '@@object_with_select_calculated_properties?field=file_sets')
-            file_sets = sample_obj.get('file_sets')
+            file_sets = sample_obj.get('file_sets', [])
             for file_set in file_sets:
                 if file_set.startswith('/measurement-sets/'):
                     measurement_set_obj = system.get('request').embed(file_set, '@@object?skip_calculated=true')
@@ -530,7 +530,7 @@ def audit_auxiliary_set_construct_library_set_files(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message = get_audit_message(audit_auxiliary_set_construct_library_set_files)
-    non_sequence_files = [file for file in value.get('files') if not (
+    non_sequence_files = [file for file in value.get('files', []) if not (
         file.startswith('/sequence-files/') or file.startswith('/configuration-files/'))]
     if non_sequence_files and value.get('file_set_type', '') != 'cell sorting':
         non_sequence_files = ', '.join(

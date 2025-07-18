@@ -132,7 +132,7 @@ def audit_integrated_content_files(value, system):
         'guide library': ('guide RNA sequences', audit_message_guide, CRISPR_assays),
         'reporter library': ('MPRA sequence designs', audit_message_reporter, MPRA_assays),
     }
-    integrated_content_files = value.get('integrated_content_files', '')
+    integrated_content_files = value.get('integrated_content_files', [])
     library_type = value.get('file_set_type', '')
     if library_type in library_expectation and any(assay_term in library_expectation[library_type][2] for assay_term in assay_terms):
         file_expectation = library_expectation[library_type][0]
@@ -165,7 +165,7 @@ def audit_construct_library_set_orf_gene(value, system):
     orf_genes = set()
     if ('small_scale_gene_list' in value) and ('orf_list' in value):
         library_genes = set(value['small_scale_gene_list'])
-        orf_ids = value.get('orf_list')
+        orf_ids = value.get('orf_list', [])
         for o in orf_ids:
             orf_object = system.get('request').embed(o + '@@object?skip_calculated=true')
             if 'genes' in orf_object:
