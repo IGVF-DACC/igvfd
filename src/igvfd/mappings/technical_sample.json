@@ -1,6 +1,6 @@
 {
-    "hash": "9b23a889d13c763f01111f54627ce000",
-    "index_name": "technical_sample_9b23a889",
+    "hash": "a01a0e7680dd1e230ee6b47f79a1622f",
+    "index_name": "technical_sample_a01a0e76",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -903,6 +903,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

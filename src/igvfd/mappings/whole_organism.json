@@ -1,6 +1,6 @@
 {
-    "hash": "786d8cbefdb8a989ff38de9cf256fe41",
-    "index_name": "whole_organism_786d8cbe",
+    "hash": "fa1a94578f303db99694b7c2d6330245",
+    "index_name": "whole_organism_fa1a9457",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1303,6 +1303,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

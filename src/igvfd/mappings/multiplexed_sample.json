@@ -1,6 +1,6 @@
 {
-    "hash": "29551e0a4c55b1b399305c8511f1aa55",
-    "index_name": "multiplexed_sample_29551e0a",
+    "hash": "5d44634e92050b479644e5f5a4887b8f",
+    "index_name": "multiplexed_sample_5d44634e",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1293,6 +1293,9 @@
                                 "type": "keyword"
                             },
                             "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline_status": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

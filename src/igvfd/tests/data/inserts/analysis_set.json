@@ -98,5 +98,23 @@
         "uuid": "b3d01798-24c5-4e02-b517-90f62a41092b",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set_type": "intermediate analysis"
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_with_pipeline_status"
+        ],
+        "accession": "IGVFDS0101PIPE",
+        "submitter_comment": "Comment for an analysis set.",
+        "description": "An analysis set with pipeline status.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "input_file_sets": [
+            "igvf:basic_measurement_set"
+        ],
+        "status": "released",
+        "uuid": "f9004635-79a8-4619-82cf-1a78f2d2d360",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set_type": "intermediate analysis",
+        "uniform_pipeline_status": "completed"
     }
 ]
