@@ -43,7 +43,7 @@ class Workflow(Item):
 
     @calculated_property(schema={
         'title': 'Analysis Steps',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The analysis steps which are part of this workflow.',
         'minItems': 1,
         'uniqueItems': True,

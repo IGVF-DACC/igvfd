@@ -75,7 +75,7 @@ class Publication(Item):
 
     @calculated_property(schema={
         'title': 'Samples',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The samples associated with this publication.',
         'minItems': 1,
         'uniqueItems': True,
@@ -91,7 +91,7 @@ class Publication(Item):
 
     @calculated_property(schema={
         'title': 'Donors',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The donors associated with this publication.',
         'minItems': 1,
         'uniqueItems': True,
@@ -107,7 +107,7 @@ class Publication(Item):
 
     @calculated_property(schema={
         'title': 'File Sets',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The file sets associated with this publication.',
         'minItems': 1,
         'uniqueItems': True,
@@ -123,7 +123,7 @@ class Publication(Item):
 
     @calculated_property(schema={
         'title': 'Workflows',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The workflows associated with this publication.',
         'minItems': 1,
         'uniqueItems': True,
@@ -139,7 +139,7 @@ class Publication(Item):
 
     @calculated_property(schema={
         'title': 'Software',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The software associated with this publication.',
         'minItems': 1,
         'uniqueItems': True,
@@ -155,7 +155,7 @@ class Publication(Item):
 
     @calculated_property(schema={
         'title': 'Software Versions',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The software versions associated with this publication.',
         'minItems': 1,
         'uniqueItems': True,

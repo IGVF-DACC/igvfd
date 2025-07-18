@@ -180,7 +180,7 @@ class FileSet(Item):
 
     @calculated_property(schema={
         'title': 'Files',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The files associated with this file set.',
         'minItems': 1,
         'uniqueItems': True,
@@ -196,7 +196,7 @@ class FileSet(Item):
 
     @calculated_property(schema={
         'title': 'File Sets Controlled By This File Set',
-        'type': ['array', 'null'],
+        'type': 'array',
         'description': 'The file sets for which this file set is a control.',
         'minItems': 1,
         'uniqueItems': True,
@@ -242,7 +242,7 @@ class FileSet(Item):
     @calculated_property(schema={
         'title': 'Input For',
         'description': 'The file sets that use this file set as an input.',
-        'type': ['array', 'null'],
+        'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
@@ -261,7 +261,7 @@ class FileSet(Item):
         schema={
             'title': 'Construct Library Sets',
             'description': 'The construct library sets associated with the samples of this file set.',
-            'type': ['array', 'null'],
+            'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -645,7 +645,7 @@ class AnalysisSet(FileSet):
         schema={
             'title': 'Samples',
             'description': 'Samples associated with this analysis set.',
-            'type': ['array', 'null'],
+            'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -677,7 +677,7 @@ class AnalysisSet(FileSet):
         schema={
             'title': 'Donors',
             'description': 'The donors of the samples associated with this analysis set.',
-            'type': ['array', 'null'],
+            'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -696,7 +696,7 @@ class AnalysisSet(FileSet):
         schema={
             'title': 'Protocols',
             'description': 'Links to the protocol(s) for conducting the assay on Protocols.io.',
-            'type': ['array', 'null'],
+            'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -923,7 +923,7 @@ class AnalysisSet(FileSet):
         schema={
             'title': 'Functional Assay Mechanisms',
             'description': 'The biological processes measured by the functional assays.',
-            'type': ['array', 'null'],
+            'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -955,7 +955,7 @@ class AnalysisSet(FileSet):
         schema={
             'title': 'Workflows',
             'description': 'A workflow for computational analysis of genomic data. A workflow is made up of analysis steps.',
-            'type': ['array', 'null'],
+            'type': 'array',
             'notSubmittable': True,
             'uniqueItem': True,
             'minItems': 1,
@@ -990,7 +990,7 @@ class AnalysisSet(FileSet):
         schema={
             'title': 'Targeted Genes',
             'description': 'A list of genes targeted by the input measurement sets assays.',
-            'type': ['array', 'null'],
+            'type': 'array',
             'notSubmittable': True,
             'uniqueItem': True,
             'minItems': 1,
@@ -1035,7 +1035,7 @@ class CuratedSet(FileSet):
         schema={
             'title': 'Assemblies',
             'description': 'The genome assemblies to which the referencing files in the file set are utilizing (e.g., GRCh38).',
-            'type': ['array', 'null'],
+            'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -1060,7 +1060,7 @@ class CuratedSet(FileSet):
         schema={
             'title': 'Transcriptome Annotations',
             'description': 'The annotation versions of the reference resource.',
-            'type': ['array', 'null'],
+            'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -1159,7 +1159,7 @@ class MeasurementSet(FileSet):
         schema={
             'title': 'Related Multiome Datasets',
             'description': 'Related datasets included in the multiome experiment this measurement set is a part of.',
-            'type': ['array', 'null'],
+            'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -1309,7 +1309,7 @@ class MeasurementSet(FileSet):
         schema={
             'title': 'Donors',
             'description': 'The donors of the samples associated with this measurement set.',
-            'type': ['array', 'null'],
+            'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -1402,7 +1402,7 @@ class ModelSet(FileSet):
         schema={
             'title': 'Software Versions',
             'description': 'The software versions used to produce this predictive model.',
-            'type': ['array', 'null'],
+            'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -1454,7 +1454,7 @@ class AuxiliarySet(FileSet):
     @calculated_property(schema={
         'title': 'Measurement Sets',
         'description': 'The measurement sets that link to this auxiliary set.',
-        'type': ['array', 'null'],
+        'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
@@ -1538,7 +1538,7 @@ class AuxiliarySet(FileSet):
         schema={
             'title': 'Donors',
             'description': 'The donors of the samples associated with this auxiliary set.',
-            'type': ['array', 'null'],
+            'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -1667,7 +1667,7 @@ class ConstructLibrarySet(FileSet):
     @calculated_property(schema={
         'title': 'Applied to Samples',
         'description': 'The samples that link to this construct library set.',
-        'type': ['array', 'null'],
+        'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
@@ -1685,7 +1685,7 @@ class ConstructLibrarySet(FileSet):
         schema={
             'title': 'File Sets',
             'description': 'The file sets that used this construct library set.',
-            'type': ['array', 'null'],
+            'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
