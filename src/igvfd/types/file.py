@@ -193,7 +193,7 @@ class File(Item):
     @calculated_property(schema={
         'title': 'Integrated In',
         'description': 'Construct library set(s) that this file was used for in insert design.',
-        'type': 'array',
+        'type': ['array', 'null'],
         'minItems': 1,
         'uniqueItems': True,
         'items': {
@@ -209,7 +209,7 @@ class File(Item):
     @calculated_property(schema={
         'title': 'Input File For',
         'description': 'The files which are derived from this file.',
-        'type': 'array',
+        'type': ['array', 'null'],
         'minItems': 1,
         'uniqueItems': True,
         'items': {
@@ -225,7 +225,7 @@ class File(Item):
     @calculated_property(schema={
         'title': 'Gene List For',
         'description': 'File Set(s) that this file is a gene list for.',
-        'type': 'array',
+        'type': ['array', 'null'],
         'minItems': 1,
         'uniqueItems': True,
         'items': {
@@ -241,7 +241,7 @@ class File(Item):
     @calculated_property(schema={
         'title': 'Loci List For',
         'description': 'File Set(s) that this file is a loci list for.',
-        'type': 'array',
+        'type': ['array', 'null'],
         'minItems': 1,
         'uniqueItems': True,
         'items': {
@@ -257,7 +257,7 @@ class File(Item):
     @calculated_property(schema={
         'title': 'Quality Metrics',
         'description': 'The quality metrics that are associated with this file.',
-        'type': 'array',
+        'type': ['array', 'null'],
         'minItems': 1,
         'uniqueItems': True,
         'items': {
@@ -274,7 +274,7 @@ class File(Item):
         schema={
             'title': 'Assay Term Names',
             'description': 'Title(s) of assay from the file set this file belongs to.',
-            'type': 'array',
+            'type': ['array', 'null'],
             'minItems': 1,
             'uniqueItems': True,
             'items': {
@@ -289,7 +289,7 @@ class File(Item):
         return request.embed(
             file_set,
             '@@object_with_select_calculated_properties?field=assay_titles'
-        ).get('assay_titles', [])
+        ).get('assay_titles') or None
 
     @calculated_property(
         schema={
@@ -491,7 +491,7 @@ class SequenceFile(File):
     @calculated_property(schema={
         'title': 'Seqspecs',
         'description': 'Link(s) to the associated seqspec YAML configuration file(s).',
-        'type': 'array',
+        'type': ['array', 'null'],
         'minItems': 1,
         'uniqueItems': True,
         'items': {
@@ -1029,7 +1029,7 @@ class TabularFile(File):
     @calculated_property(schema={
         'title': 'Barcode Map For',
         'description': 'Link(s) to the Multiplexed samples using this file as barcode map.',
-        'type': 'array',
+        'type': ['array', 'null'],
         'minItems': 1,
         'uniqueItems': True,
         'items': {
@@ -1045,7 +1045,7 @@ class TabularFile(File):
     @calculated_property(schema={
         'title': 'Primer Design For',
         'description': 'Link(s) to the MeasurementSets using this file as a primer design.',
-        'type': 'array',
+        'type': ['array', 'null'],
         'minItems': 1,
         'uniqueItems': True,
         'items': {

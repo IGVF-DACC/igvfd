@@ -72,7 +72,7 @@ class AnalysisStep(Item):
     @calculated_property(schema={
         'title': 'Analysis Step Versions',
         'description': 'The analysis step versions associated with this analysis step.',
-        'type': 'array',
+        'type': ['array', 'null'],
         'minItems': 1,
         'uniqueItems': True,
         'items': {
