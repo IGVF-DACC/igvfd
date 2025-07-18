@@ -157,7 +157,8 @@ class File(Item):
         Path('integrated_in.applied_to_samples.sample_terms', include=['@id', 'summary', 'sample_terms', 'term_name']),
         Path('workflow', include=['@id', 'uniform_pipeline', 'name']),
         Path('file_set.assay_term', include=['@id', 'term_name']),
-        Path('file_format_specifications', include=['@id', 'description', 'standardized_file_format'])
+        Path('file_format_specifications', include=['@id', 'description', 'standardized_file_format']),
+        Path('analysis_step_version.software_versions', include=['@id', 'summary', 'software_versions'])
     ]
     rev = {
         'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),
