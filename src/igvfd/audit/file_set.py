@@ -756,13 +756,13 @@ def audit_control_for_control_type(value, system):
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_missing_control_type = get_audit_message(audit_control_for_control_type, index=0)
     audit_message_missing_control_for = get_audit_message(audit_control_for_control_type, index=1)
-    if value.get('control_for', '') and not (value.get('control_types', '')):
+    if value.get('control_for', []) and not (value.get('control_types', [])):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `control_types`.'
         )
         yield AuditFailure(audit_message_missing_control_type.get('audit_category', ''), f'{detail} {audit_message_missing_control_type.get("audit_description", "")}', level=audit_message_missing_control_type.get('audit_level', ''))
-    elif value.get('control_types', '') and not (value.get('control_for', '')):
+    elif value.get('control_types', []) and not (value.get('control_for', [])):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `control_for`. The `control_file_sets` should be patched on '
@@ -882,7 +882,7 @@ def audit_file_set_missing_publication(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message = get_audit_message(audit_file_set_missing_publication, index=0)
-    if value.get('status') in ['released', 'archived'] and not (value.get('publications')):
+    if value.get('status') in ['released', 'archived'] and not (value.get('publications', [])):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `publications`.'
@@ -962,7 +962,7 @@ def audit_input_file_sets_derived_from(value, system):
     audit_message_unexpected_input_file_set = get_audit_message(audit_input_file_sets_derived_from, index=3)
     detail = ''
     input_file_sets = value.get('input_file_sets', [])
-    files = value.get('files', '')
+    files = value.get('files', [])
     files_to_link = []
     derived_from_files_to_link = []
     missing_derived_from_file_sets = []
@@ -971,7 +971,7 @@ def audit_input_file_sets_derived_from(value, system):
     if files:
         for file in files:
             file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
-            derived_from_files = file_object.get('derived_from', '')
+            derived_from_files = file_object.get('derived_from', [])
             if derived_from_files:
                 for derived_from_file in derived_from_files:
                     derived_from_file_object = system.get('request').embed(
