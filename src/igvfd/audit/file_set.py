@@ -450,9 +450,9 @@ def audit_inconsistent_sequencing_kit(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_inconsistent_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=0)
+    file_info = {}
     if 'files' in value:
-        file_info = {}
-        for file in value['files']:
+        for file in value.get('files', []):
             if file.startswith('/sequence-files/'):
                 sequence_file_object = system.get('request').embed(file)
 
@@ -463,7 +463,6 @@ def audit_inconsistent_sequencing_kit(value, system):
                 file_info[file] = {'kit': sequencing_kit, 'run': sequencing_run, 'platform': sequencing_platform}
     if not file_info:
         return
-
     missing_kit = []
     for file in file_info:
         if file_info[file]['kit'] == '':
@@ -842,7 +841,7 @@ def audit_inconsistent_controlled_access(value, system):
     for sample in samples:
         sample_object = system.get('request').embed(
             sample, '@@object_with_select_calculated_properties?field=institutional_certificates&field=@id')
-        for ic in sample_object.get('institutional_certificates'):
+        for ic in sample_object.get('institutional_certificates', []):
             ic_object = system.get('request').embed(ic, '@@object_with_select_calculated_properties?field=@id')
             if any(ic_object.get('controlled_access') != access for access in files_by_access):
                 if ic_object.get('controlled_access') is True:
