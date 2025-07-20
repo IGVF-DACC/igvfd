@@ -283,12 +283,12 @@ class File(Item):
             if analysis_assay_titles:
                 assay_titles = assay_titles | analysis_assay_titles
         elif 'AuxiliarySet' in file_set_object.get('@type'):
-            for measurement_set in file_set_object.get('measurement_sets'):
+            for measurement_set in file_set_object.get('measurement_sets', []):
                 measurement_set_object = request.embed(measurement_set, '@@object')
                 measurement_set_object_pat = measurement_set_object.get('preferred_assay_title')
                 if measurement_set_object_pat:
                     assay_titles.add(measurement_set_object_pat)
-        return sorted(list(assay_titles))
+        return sorted(list(assay_titles)) if assay_titles else None
 
     @calculated_property(
         condition='analysis_step_version',

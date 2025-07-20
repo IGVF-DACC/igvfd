@@ -18,7 +18,7 @@ def get_donors_from_samples(request, samples):
     donor_objects = []
     for sample in samples:
         donor_objects += request.embed(sample, '@@object').get('donors', [])
-    return sorted(list(set(donor_objects)))
+    return sorted(list(set(donor_objects))) if donor_objects else None
 
 
 def get_fileset_objs_from_input_file_sets(request, input_file_sets):
@@ -453,7 +453,7 @@ class AnalysisSet(FileSet):
                     elif input_fileset.startswith('/auxiliary-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
                         if 'measurement_sets' in fileset_object:
-                            for candidate_fileset in fileset_object.get('measurement_sets'):
+                            for candidate_fileset in fileset_object.get('measurement_sets', []):
                                 measurement_set_object = request.embed(
                                     candidate_fileset, '@@object?skip_calculated=true')
                                 assay_terms.add(measurement_set_object['assay_term'])
@@ -621,7 +621,7 @@ class AnalysisSet(FileSet):
                     if input_analysis_assay_titles:
                         assay_titles = assay_titles | input_analysis_assay_titles
                 elif 'AuxiliarySet' in file_set_object.get('@type'):
-                    for measurement_set in file_set_object.get('measurement_sets'):
+                    for measurement_set in file_set_object.get('measurement_sets', []):
                         measurement_set_object = request.embed(measurement_set, '@@object')
                         preferred_assay_title = measurement_set_object.get('preferred_assay_title')
                         if preferred_assay_title:
@@ -636,7 +636,7 @@ class AnalysisSet(FileSet):
                             preferred_assay_title = file_set_object.get('preferred_assay_title')
                             if preferred_assay_title:
                                 assay_titles.add(preferred_assay_title)
-            return list(assay_titles)
+        return list(assay_titles) if assay_titles else None
 
     @calculated_property(
         condition='input_file_sets',
@@ -669,7 +669,7 @@ class AnalysisSet(FileSet):
                 # if the analysis set specifies a demultiplexed sample and all input data is multiplexed return just the demultiplexed_sample
                 if not ([sample for sample in samples if not (sample.startswith('/multiplexed-samples/'))]):
                     return demultiplexed_samples
-            return sorted(samples)
+            return sorted(samples) if samples else None
 
     @calculated_property(
         condition='samples',
@@ -715,7 +715,7 @@ class AnalysisSet(FileSet):
                 protocol = file_set_obj.get('protocols', [])
                 if protocol:
                     protocols.update(protocol)
-        return sorted(list(protocols))
+        return sorted(list(protocols)) if protocols else None
 
     @calculated_property(
         condition='samples',
@@ -930,7 +930,7 @@ class AnalysisSet(FileSet):
         for file_set_object in file_set_objects:
             if 'MeasurementSet' in file_set_object.get('@type') or 'AnalysisSet' in file_set_object.get('@type'):
                 mechanism_objects.extend(file_set_object.get('functional_assay_mechanisms', []))
-        return sorted(list(set(mechanism_objects)))
+        return sorted(list(set(mechanism_objects))) if mechanism_objects else None
 
     @calculated_property(
         schema={
@@ -964,7 +964,7 @@ class AnalysisSet(FileSet):
                     workflow = analysis_step_obj.get('workflow')
                     if workflow:
                         analysis_set_workflows_set.add(workflow)
-        return sorted(list(analysis_set_workflows_set))
+        return sorted(list(analysis_set_workflows_set)) if analysis_set_workflows_set else None
 
     @calculated_property(
         condition='input_file_sets',
@@ -992,7 +992,7 @@ class AnalysisSet(FileSet):
                     input_file_set, '@@object_with_select_calculated_properties?field=targeted_genes')
                 if 'targeted_genes' in input_file_set_object:
                     analysis_set_targeted_genes.update(input_file_set_object['targeted_genes'])
-        return sorted(list(analysis_set_targeted_genes))
+        return sorted(list(analysis_set_targeted_genes)) if analysis_set_targeted_genes else None
 
 
 @collection(
@@ -1138,13 +1138,15 @@ class MeasurementSet(FileSet):
             related_datasets = []
             for sample in samples:
                 sample_object = request.embed(sample, '@@object')
-                if sample_object.get('file_sets'):
-                    for file_set_id in sample_object.get('file_sets'):
+                if sample_object.get('file_sets', []):
+                    for file_set_id in sample_object.get('file_sets', []):
                         if '/measurement-sets/' == file_set_id[:18] and \
                             object_id != file_set_id and \
                                 file_set_id not in related_datasets:
                             related_datasets.append(file_set_id)
-            return sorted(related_datasets)
+            if related_datasets:
+                return sorted(related_datasets)
+        return None
 
     @calculated_property(
         schema={
@@ -1637,7 +1639,7 @@ class ConstructLibrarySet(FileSet):
                 preferred_assay_title = file_set_object.get('preferred_assay_title')
                 if preferred_assay_title:
                     assay_titles.add(preferred_assay_title)
-        return sorted(list(assay_titles))
+        return sorted(list(assay_titles)) if assay_titles else None
 
     @calculated_property(
         schema={

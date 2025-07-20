@@ -111,15 +111,17 @@ STATUS_HIERARCHY = {
 
 def paths_filtered_by_status(request, paths, exclude=('deleted', 'replaced'), include=None):
     if include is not None:
-        return sorted([
+        filtered_paths = sorted([
             path for path in paths
             if traverse(request.root, path)['context'].__json__(request).get('status') in include
         ])
     else:
-        return sorted([
+        filtered_paths = sorted([
             path for path in paths
             if traverse(request.root, path)['context'].__json__(request).get('status') not in exclude
         ])
+
+    return filtered_paths if filtered_paths else None
 
 
 class AbstractCollection(snovault.AbstractCollection):
