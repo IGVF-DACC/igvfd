@@ -68,7 +68,8 @@ class Biomarker(Item):
         'notSubmittable': True
     })
     def biomarker_for(self, request, biomarker_for):
-        return paths_filtered_by_status(request, biomarker_for)
+        biomarker_for = paths_filtered_by_status(request, biomarker_for)
+        return biomarker_for if biomarker_for else None
 
     @calculated_property(
         schema={

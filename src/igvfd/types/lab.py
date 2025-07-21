@@ -6,9 +6,6 @@ from snovault import (
 from snovault.util import Path
 from .base import (
     Item,
-    paths_filtered_by_status,
-    ALLOW_CURRENT,
-    DELETED,
 )
 
 

@@ -55,4 +55,5 @@ class AnalysisStepVersion(Item):
     })
     def workflows(self, request, workflows):
         """Return the workflow that this analysis step version is linked to."""
-        return paths_filtered_by_status(request, workflows)
+        workflows = paths_filtered_by_status(request, workflows)
+        return workflows if workflows else None
