@@ -437,7 +437,7 @@ class AnalysisSet(FileSet):
                         target_assays = ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']
                         preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
                         assays_titles = fileset_object.get('assay_titles', [])
-                        if any(title in target_assays for title in preferred_assay_titles):
+                        if assays_titles:
                             preferred_assays.add(f"{', '.join(assays_titles)} ({', '.join(preferred_assay_titles)})")
                         else:
                             preferred_assays.add(', '.join(preferred_assay_titles))
@@ -449,7 +449,7 @@ class AnalysisSet(FileSet):
                                 target_assays = ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']
                                 preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
                                 assays_titles = fileset_object.get('assay_titles', [])
-                                if any(title in target_assays for title in preferred_assay_titles):
+                                if assays_titles:
                                     preferred_assays.add(
                                         f"{', '.join(assays_titles)} ({', '.join(preferred_assay_titles)})")
                                 else:
@@ -466,7 +466,7 @@ class AnalysisSet(FileSet):
                                 target_assays = ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']
                                 preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
                                 assays_titles = file_set_object.get('assay_titles', [])
-                                if any(title in target_assays for title in preferred_assay_titles):
+                                if assays_titles:
                                     cls_derived_assay_titles.add(
                                         f"{', '.join(assays_titles)} ({', '.join(preferred_assay_titles)})")
                                 else:
