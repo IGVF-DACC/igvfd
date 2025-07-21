@@ -832,5 +832,89 @@
         "filtered": true,
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "a68cc5f8-df69-4a48-8583-75e264a6ef38",
+        "accession": "IGVFFI0001BGBE",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_read_count"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "af6a94f27717b00c1e126a9d2bc41d60",
+        "file_format": "tsv",
+        "content_type": "read count",
+        "submitted_file_name": "/Users/igvf/igvf_files/read_count.tsv",
+        "file_size": 738031,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "filtered": true,
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "a68cc5f8-df69-4a48-8583-75e264a6ef38",
+        "accession": "IGVFFI0001BGBE",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_read_count"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "af6a94f27717b00c1e126a9d2bc41d60",
+        "file_format": "tsv",
+        "content_type": "read count",
+        "submitted_file_name": "/Users/igvf/igvf_files/read_count.tsv",
+        "file_size": 738031,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "filtered": true,
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "fb0ad482-695b-4ac2-b176-8fe620ca6b47",
+        "accession": "IGVFFI0001BGBF",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_fold_change_of_post_selection_and_pre_selection"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "67843c51e7325d03ccde3974dc4373ce",
+        "file_format": "tsv",
+        "content_type": "fold change of post selection and pre selection",
+        "submitted_file_name": "/Users/igvf/igvf_files/tabular_file_fold_change_of_post_selection_and_pre_selection.tsv",
+        "file_size": 738032,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "filtered": true,
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "56203a29-dbe8-442d-8ba1-0382faa9910b",
+        "accession": "IGVFFI0001BGBG",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_functional_impact_score"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "beee1d2ce3e492a6125aade52de15e93",
+        "file_format": "tsv",
+        "content_type": "functional impact score",
+        "submitted_file_name": "/Users/igvf/igvf_files/tabular_file_functional_impact_score.tsv",
+        "file_size": 738032,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "filtered": true,
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
     }
 ]
