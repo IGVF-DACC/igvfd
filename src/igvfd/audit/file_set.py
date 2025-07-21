@@ -353,7 +353,7 @@ def audit_inconsistent_seqspec(value, system):
         for key, file_dict in sequence_to_seqspec.items():
             for file, seqspec in file_dict.items():
                 if seqspec:
-                    seqspec_str_formatted = ':'.join(sorted(list(seqspec)))
+                    seqspec_str_formatted = ':'.join(sorted(seqspec))
                     if seqspec_str_formatted not in seqspec_to_sequence:
                         seqspec_to_sequence[seqspec_str_formatted] = [(key, file)]
                     else:

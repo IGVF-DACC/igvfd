@@ -18,7 +18,7 @@ def get_donors_from_samples(request, samples):
     donor_objects = []
     for sample in samples:
         donor_objects += request.embed(sample, '@@object').get('donors', [])
-    return sorted(list(set(donor_objects))) if donor_objects else None
+    return sorted(set(donor_objects)) if donor_objects else None
 
 
 def get_fileset_objs_from_input_file_sets(request, input_file_sets):
@@ -551,7 +551,7 @@ class AnalysisSet(FileSet):
                 'barcode based': 'barcode based',
                 'genetic': 'genetically'
             }
-            mux_method_list = [method_phrase_map[x] for x in sorted(list(multiplexing_methods))]
+            mux_method_list = [method_phrase_map[x] for x in sorted(multiplexing_methods)]
             mux_method_phrase = f'({", ".join(mux_method_list)} multiplexed)'
             assay_title_phrase = f'{assay_title_phrase} {mux_method_phrase}'
         # Targeted genes.
@@ -715,7 +715,7 @@ class AnalysisSet(FileSet):
                 protocol = file_set_obj.get('protocols', [])
                 if protocol:
                     protocols.update(protocol)
-        return sorted(list(protocols)) if protocols else None
+        return sorted(protocols) if protocols else None
 
     @calculated_property(
         condition='samples',
@@ -930,7 +930,7 @@ class AnalysisSet(FileSet):
         for file_set_object in file_set_objects:
             if 'MeasurementSet' in file_set_object.get('@type') or 'AnalysisSet' in file_set_object.get('@type'):
                 mechanism_objects.extend(file_set_object.get('functional_assay_mechanisms', []))
-        return sorted(list(set(mechanism_objects))) if mechanism_objects else None
+        return sorted(set(mechanism_objects)) if mechanism_objects else None
 
     @calculated_property(
         schema={
@@ -964,7 +964,7 @@ class AnalysisSet(FileSet):
                     workflow = analysis_step_obj.get('workflow')
                     if workflow:
                         analysis_set_workflows_set.add(workflow)
-        return sorted(list(analysis_set_workflows_set)) if analysis_set_workflows_set else None
+        return sorted(analysis_set_workflows_set) if analysis_set_workflows_set else None
 
     @calculated_property(
         condition='input_file_sets',
@@ -992,7 +992,7 @@ class AnalysisSet(FileSet):
                     input_file_set, '@@object_with_select_calculated_properties?field=targeted_genes')
                 if 'targeted_genes' in input_file_set_object:
                     analysis_set_targeted_genes.update(input_file_set_object['targeted_genes'])
-        return sorted(list(analysis_set_targeted_genes)) if analysis_set_targeted_genes else None
+        return sorted(analysis_set_targeted_genes) if analysis_set_targeted_genes else None
 
 
 @collection(
@@ -1034,7 +1034,7 @@ class CuratedSet(FileSet):
                 if file_object.get('assembly'):
                     assembly_values.add(file_object.get('assembly'))
             if assembly_values:
-                return sorted(list(assembly_values))
+                return sorted(assembly_values)
 
     @calculated_property(
         define=True,
@@ -1059,7 +1059,7 @@ class CuratedSet(FileSet):
                 if file_object.get('transcriptome_annotation'):
                     annotation_values.add(file_object.get('transcriptome_annotation'))
             if annotation_values:
-                return sorted(list(annotation_values))
+                return sorted(annotation_values)
 
     @calculated_property(
         schema={
@@ -1235,7 +1235,7 @@ class MeasurementSet(FileSet):
                 'barcode based': 'barcode based',
                 'genetic': 'genetically'
             }
-            mux_method_list = [method_phrase_map[x] for x in sorted(list(multiplexing_methods))]
+            mux_method_list = [method_phrase_map[x] for x in sorted(multiplexing_methods)]
             mux_method_phrase = f'({", ".join(mux_method_list)} multiplexed)'
             assay_phrase = f'{assay_phrase} {mux_method_phrase}'
 
@@ -1388,7 +1388,7 @@ class ModelSet(FileSet):
                         software_versions = software_versions + \
                             analysis_step_version_object.get('software_versions', [])
         if software_versions:
-            return sorted(list(set(software_versions)))
+            return sorted(set(software_versions))
 
 
 @collection(
@@ -1437,8 +1437,8 @@ class AuxiliarySet(FileSet):
     def summary(self, request, file_set_type, measurement_sets=None):
         if not measurement_sets:
             return f'{file_set_type}'
-        measurement_sets_summaries = sorted(list(set(
-            [request.embed(measurement_set, '@@object_with_select_calculated_properties?field=summary').get('summary') for measurement_set in measurement_sets if measurement_set])))
+        measurement_sets_summaries = sorted(set(
+            [request.embed(measurement_set, '@@object_with_select_calculated_properties?field=summary').get('summary') for measurement_set in measurement_sets if measurement_set]))
         return f'{file_set_type} for {", ".join(measurement_sets_summaries)}'
 
     @calculated_property(
@@ -1612,7 +1612,7 @@ class ConstructLibrarySet(FileSet):
             for file_set in sample_object.get('file_sets', []):
                 linked_file_sets.add(file_set)
         if linked_file_sets:
-            return sorted(list(linked_file_sets))
+            return sorted(linked_file_sets)
 
     @calculated_property(
         condition='file_sets',
@@ -1639,7 +1639,7 @@ class ConstructLibrarySet(FileSet):
                 preferred_assay_title = file_set_object.get('preferred_assay_title')
                 if preferred_assay_title:
                     assay_titles.add(preferred_assay_title)
-        return sorted(list(assay_titles)) if assay_titles else None
+        return sorted(assay_titles) if assay_titles else None
 
     @calculated_property(
         schema={
@@ -1747,7 +1747,7 @@ class ConstructLibrarySet(FileSet):
                             thousand_genomes_id = dbxref.split(':')[1]
                             thousand_genomes_ids.add(thousand_genomes_id)
             if thousand_genomes_ids:
-                thousand_genomes_ids = ', '.join(sorted(list(thousand_genomes_ids)))
+                thousand_genomes_ids = ', '.join(sorted(thousand_genomes_ids))
                 pool_phrase = f' pooled from 1000 Genomes donors: {thousand_genomes_ids}'
 
         if file_set_type == 'expression vector library':

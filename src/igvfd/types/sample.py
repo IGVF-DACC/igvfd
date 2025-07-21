@@ -475,7 +475,7 @@ class Biosample(Sample):
                     if donor_object['taxa'] == 'Mus musculus':
                         strains_set.add(donor_object.get('strain', ''))
                 strains = ', '.join(sorted(strains_set))
-                taxa_list = sorted(list(taxa_set))
+                taxa_list = sorted(taxa_set)
                 if 'Mus musculus' in taxa_list:
                     mouse_index = taxa_list.index('Mus musculus')
                     taxa_list[mouse_index] += f' {strains}'

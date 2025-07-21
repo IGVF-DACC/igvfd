@@ -288,7 +288,7 @@ class File(Item):
                 measurement_set_object_pat = measurement_set_object.get('preferred_assay_title')
                 if measurement_set_object_pat:
                     assay_titles.add(measurement_set_object_pat)
-        return sorted(list(assay_titles)) if assay_titles else None
+        return sorted(assay_titles) if assay_titles else None
 
     @calculated_property(
         condition='analysis_step_version',
