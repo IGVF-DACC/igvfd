@@ -87,7 +87,8 @@ class Publication(Item):
         'notSubmittable': True
     })
     def samples(self, request, samples):
-        return paths_filtered_by_status(request, samples)
+        samples = paths_filtered_by_status(request, samples)
+        return samples if samples else None
 
     @calculated_property(schema={
         'title': 'Donors',
@@ -103,7 +104,8 @@ class Publication(Item):
         'notSubmittable': True
     })
     def donors(self, request, donors):
-        return paths_filtered_by_status(request, donors)
+        donors = paths_filtered_by_status(request, donors)
+        return donors if donors else None
 
     @calculated_property(schema={
         'title': 'File Sets',
@@ -119,7 +121,8 @@ class Publication(Item):
         'notSubmittable': True
     })
     def file_sets(self, request, file_sets):
-        return paths_filtered_by_status(request, file_sets)
+        file_sets = paths_filtered_by_status(request, file_sets)
+        return file_sets if file_sets else None
 
     @calculated_property(schema={
         'title': 'Workflows',
@@ -135,7 +138,8 @@ class Publication(Item):
         'notSubmittable': True
     })
     def workflows(self, request, workflows):
-        return paths_filtered_by_status(request, workflows)
+        workflows = paths_filtered_by_status(request, workflows)
+        return workflows if workflows else None
 
     @calculated_property(schema={
         'title': 'Software',
@@ -151,7 +155,8 @@ class Publication(Item):
         'notSubmittable': True
     })
     def software(self, request, software):
-        return paths_filtered_by_status(request, software)
+        software = paths_filtered_by_status(request, software)
+        return software if software else None
 
     @calculated_property(schema={
         'title': 'Software Versions',
@@ -167,4 +172,5 @@ class Publication(Item):
         'notSubmittable': True
     })
     def software_versions(self, request, software_versions):
-        return paths_filtered_by_status(request, software_versions)
+        software_versions = paths_filtered_by_status(request, software_versions)
+        return software_versions if software_versions else None

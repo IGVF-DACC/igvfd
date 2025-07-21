@@ -168,7 +168,8 @@ class Sample(Item):
             for file_set in multiplexed_file_sets:
                 if file_set not in file_sets:
                     file_sets.append(file_set)
-        return paths_filtered_by_status(request, file_sets)
+        file_sets = paths_filtered_by_status(request, file_sets)
+        return file_sets if file_sets else None
 
     @calculated_property(schema={
         'title': 'Multiplexed In',
@@ -184,7 +185,8 @@ class Sample(Item):
         'notSubmittable': True,
     })
     def multiplexed_in(self, request, multiplexed_in):
-        return paths_filtered_by_status(request, multiplexed_in)
+        multiplexed_in = paths_filtered_by_status(request, multiplexed_in)
+        return multiplexed_in if multiplexed_in else None
 
     @calculated_property(schema={
         'title': 'Sorted Fraction Samples',
@@ -200,7 +202,8 @@ class Sample(Item):
         'notSubmittable': True,
     })
     def sorted_fractions(self, request, sorted_fractions):
-        return paths_filtered_by_status(request, sorted_fractions)
+        sorted_fractions = paths_filtered_by_status(request, sorted_fractions)
+        return sorted_fractions if sorted_fractions else None
 
     @calculated_property(schema={
         'title': 'Origin Sample Of',
@@ -216,7 +219,8 @@ class Sample(Item):
         'notSubmittable': True,
     })
     def origin_of(self, request, origin_of):
-        return paths_filtered_by_status(request, origin_of)
+        origin_of = paths_filtered_by_status(request, origin_of)
+        return origin_of if origin_of else None
 
     @calculated_property(schema={
         'title': 'Institutional Certificates',
@@ -232,7 +236,8 @@ class Sample(Item):
         'notSubmittable': True,
     })
     def institutional_certificates(self, request, institutional_certificates):
-        return paths_filtered_by_status(request, institutional_certificates)
+        institutional_certificates = paths_filtered_by_status(request, institutional_certificates)
+        return institutional_certificates if institutional_certificates else None
 
 
 @abstract_collection(
@@ -606,7 +611,8 @@ class Biosample(Sample):
         'notSubmittable': True,
     })
     def parts(self, request, parts):
-        return paths_filtered_by_status(request, parts)
+        parts = paths_filtered_by_status(request, parts)
+        return parts if parts else None
 
     @calculated_property(schema={
         'title': 'Pooled In',
@@ -622,7 +628,8 @@ class Biosample(Sample):
         'notSubmittable': True,
     })
     def pooled_in(self, request, pooled_in):
-        return paths_filtered_by_status(request, pooled_in)
+        pooled_in = paths_filtered_by_status(request, pooled_in)
+        return pooled_in if pooled_in else None
 
 
 @collection(
@@ -694,7 +701,8 @@ class InVitroSystem(Biosample):
         'notSubmittable': True,
     })
     def demultiplexed_to(self, request, demultiplexed_to):
-        return paths_filtered_by_status(request, demultiplexed_to)
+        demultiplexed_to = paths_filtered_by_status(request, demultiplexed_to)
+        return demultiplexed_to if demultiplexed_to else None
 
 
 @collection(

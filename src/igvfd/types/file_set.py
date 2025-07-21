@@ -201,7 +201,8 @@ class FileSet(Item):
         'notSubmittable': True
     })
     def files(self, request, files):
-        return paths_filtered_by_status(request, files)
+        files = paths_filtered_by_status(request, files)
+        return files if files else None
 
     @calculated_property(schema={
         'title': 'File Sets Controlled By This File Set',
@@ -217,7 +218,8 @@ class FileSet(Item):
         'notSubmittable': True
     })
     def control_for(self, request, control_for):
-        return paths_filtered_by_status(request, control_for)
+        control_for = paths_filtered_by_status(request, control_for)
+        return control_for if control_for else None
 
     @calculated_property(schema={
         'title': 'Submitted Files Timestamp',
@@ -262,7 +264,8 @@ class FileSet(Item):
         'notSubmittable': True
     })
     def input_for(self, request, input_for):
-        return paths_filtered_by_status(request, input_for)
+        input_for = paths_filtered_by_status(request, input_for)
+        return input_for if input_for else None
 
     @calculated_property(
         define=True,
@@ -1425,7 +1428,8 @@ class AuxiliarySet(FileSet):
         'notSubmittable': True
     })
     def measurement_sets(self, request, measurement_sets):
-        return paths_filtered_by_status(request, measurement_sets)
+        measurement_sets = paths_filtered_by_status(request, measurement_sets)
+        return measurement_sets if measurement_sets else None
 
     @calculated_property(
         schema={
@@ -1586,7 +1590,8 @@ class ConstructLibrarySet(FileSet):
         'notSubmittable': True
     })
     def applied_to_samples(self, request, applied_to_samples):
-        return paths_filtered_by_status(request, applied_to_samples)
+        applied_to_samples = paths_filtered_by_status(request, applied_to_samples)
+        return applied_to_samples if applied_to_samples else None
 
     @calculated_property(
         define=True,

@@ -71,4 +71,5 @@ class Treatment(Item):
         'notSubmittable': True
     })
     def biosamples_treated(self, request, biosamples_treated):
-        return paths_filtered_by_status(request, biosamples_treated)
+        biosamples_treated = paths_filtered_by_status(request, biosamples_treated)
+        return biosamples_treated if biosamples_treated else None
