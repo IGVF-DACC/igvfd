@@ -261,7 +261,7 @@ def test_audit_missing_publication(
     )
 
 
-def test_audit_missing_publication(
+def test_audit_missing_description(
     testapp,
     analysis_set_base,
     measurement_set_no_files
