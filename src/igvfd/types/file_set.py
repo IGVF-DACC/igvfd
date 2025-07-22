@@ -18,7 +18,7 @@ def get_donors_from_samples(request, samples):
     donor_objects = []
     for sample in samples:
         donor_objects += request.embed(sample, '@@object').get('donors', [])
-    return list(sorted(set(donor_objects)))
+    return sorted(set(donor_objects))
 
 
 def get_file_objs_from_files(request, files):
@@ -282,7 +282,7 @@ class FileSet(Item):
             if sample_object.get('construct_library_sets', []):
                 construct_library_sets = construct_library_sets | set(sample_object.get('construct_library_sets', []))
         if construct_library_sets:
-            return list(construct_library_sets)
+            return sorted(construct_library_sets)
 
     @calculated_property(
         condition='samples',
@@ -312,7 +312,7 @@ class FileSet(Item):
                 if lab in ic_labs:
                     summaries_to_return.append(ic_object.get('data_use_limitation_summary', None))
         if summaries_to_return:
-            return list(set(summaries_to_return))
+            return sorted(set(summaries_to_return))
         else:
             return ['no certificate']
 
@@ -607,7 +607,7 @@ class AnalysisSet(FileSet):
                     []
                 )
             )
-        return list(sorted(preferred_assay_list))
+        return sorted(preferred_assay_list)
 
     @calculated_property(
         define=True,
@@ -640,7 +640,7 @@ class AnalysisSet(FileSet):
                     []
                 )
             )
-        return list(sorted(assay_list))
+        return sorted(assay_list)
 
     @calculated_property(
         condition='input_file_sets',
@@ -727,7 +727,7 @@ class AnalysisSet(FileSet):
             if 'MeasurementSet' in file_set_obj.get('@type'):
                 protocol = file_set_obj.get('protocols', [])
                 protocols.update(protocol)
-        return list(sorted(protocols))
+        return sorted(protocols)
 
     @calculated_property(
         condition='samples',
@@ -952,7 +952,7 @@ class AnalysisSet(FileSet):
         for file_set_object in file_set_objs:
             if 'MeasurementSet' in file_set_object.get('@type') or 'AnalysisSet' in file_set_object.get('@type'):
                 mechanism_objects.extend(file_set_object.get('functional_assay_mechanisms', []))
-        return list(sorted(set(mechanism_objects)))
+        return sorted(set(mechanism_objects))
 
     @calculated_property(
         schema={
@@ -986,7 +986,7 @@ class AnalysisSet(FileSet):
                     workflow = analysis_step_obj.get('workflow')
                     if workflow:
                         analysis_set_workflows_set.add(workflow)
-        return list(sorted(analysis_set_workflows_set))
+        return sorted(analysis_set_workflows_set)
 
     @calculated_property(
         condition='input_file_sets',
@@ -1014,7 +1014,7 @@ class AnalysisSet(FileSet):
                     input_file_set, '@@object_with_select_calculated_properties?field=targeted_genes')
                 if 'targeted_genes' in input_file_set_object:
                     analysis_set_targeted_genes.update(input_file_set_object['targeted_genes'])
-        return list(sorted(analysis_set_targeted_genes))
+        return sorted(analysis_set_targeted_genes)
 
 
 @collection(
@@ -1056,7 +1056,7 @@ class CuratedSet(FileSet):
                 if file_object.get('assembly'):
                     assembly_values.add(file_object.get('assembly'))
             if assembly_values:
-                return list(sorted(assembly_values))
+                return sorted(assembly_values)
 
     @calculated_property(
         define=True,
@@ -1081,7 +1081,7 @@ class CuratedSet(FileSet):
                 if file_object.get('transcriptome_annotation'):
                     annotation_values.add(file_object.get('transcriptome_annotation'))
             if annotation_values:
-                return list(sorted(annotation_values))
+                return sorted(annotation_values)
 
     @calculated_property(
         schema={
@@ -1429,7 +1429,7 @@ class ModelSet(FileSet):
                         software_versions = software_versions + \
                             analysis_step_version_object.get('software_versions', [])
         if software_versions:
-            return list(sorted(set(software_versions)))
+            return sorted(set(software_versions))
 
 
 @collection(
@@ -1492,7 +1492,7 @@ class AuxiliarySet(FileSet):
                 measurement_set, '@@object?skip_calculated=true').get('preferred_assay_titles', [])
             if preferred_assays:
                 preferred_assay_titles.update(preferred_assays)
-        return list(preferred_assay_titles)
+        return sorted(preferred_assay_titles)
 
     @calculated_property(
         condition='measurement_sets',
@@ -1518,7 +1518,7 @@ class AuxiliarySet(FileSet):
                 measurement_set, '@@object_with_select_calculated_properties?field=assay_titles').get('assay_titles', [])
             if assays:
                 assay_titles.update(assays)
-        return list(assay_titles)
+        return sorted(assay_titles)
 
     @calculated_property(
         schema={
@@ -1530,8 +1530,8 @@ class AuxiliarySet(FileSet):
     def summary(self, request, file_set_type, measurement_sets=None):
         if not measurement_sets:
             return f'{file_set_type}'
-        measurement_sets_summaries = list(sorted(set(
-            [request.embed(measurement_set, '@@object_with_select_calculated_properties?field=summary').get('summary') for measurement_set in measurement_sets if measurement_set])))
+        measurement_sets_summaries = sorted(set(
+            [request.embed(measurement_set, '@@object_with_select_calculated_properties?field=summary').get('summary') for measurement_set in measurement_sets if measurement_set]))
         return f'{file_set_type} for {", ".join(measurement_sets_summaries)}'
 
     @calculated_property(
@@ -1705,7 +1705,7 @@ class ConstructLibrarySet(FileSet):
             for file_set in sample_object.get('file_sets', []):
                 linked_file_sets.add(file_set)
         if linked_file_sets:
-            return list(sorted(linked_file_sets))
+            return sorted(linked_file_sets)
 
     @calculated_property(
         condition='file_sets',
@@ -1732,7 +1732,7 @@ class ConstructLibrarySet(FileSet):
                     file_set, '@@object?skip_calculated=true').get('preferred_assay_titles', [])
                 if preferred_assays:
                     preferred_assay_titles.update(preferred_assays)
-        return list(preferred_assay_titles)
+        return sorted(preferred_assay_titles)
 
     @calculated_property(
         condition='file_sets',
@@ -1759,7 +1759,7 @@ class ConstructLibrarySet(FileSet):
                     file_set, '@@object_with_select_calculated_properties?field=assay_titles').get('assay_titles', [])
                 if assays:
                     assay_titles.update(assays)
-        return list(sorted(assay_titles))
+        return sorted(assay_titles)
 
     @calculated_property(
         schema={
@@ -1867,7 +1867,7 @@ class ConstructLibrarySet(FileSet):
                             thousand_genomes_id = dbxref.split(':')[1]
                             thousand_genomes_ids.add(thousand_genomes_id)
             if thousand_genomes_ids:
-                thousand_genomes_ids = ', '.join(list(sorted(thousand_genomes_ids)))
+                thousand_genomes_ids = ', '.join(sorted(thousand_genomes_ids))
                 pool_phrase = f' pooled from 1000 Genomes donors: {thousand_genomes_ids}'
 
         if file_set_type == 'expression vector library':
