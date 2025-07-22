@@ -379,24 +379,33 @@ class AnalysisSet(FileSet):
             samples = []
         if construct_library_sets is None:
             construct_library_sets = []
+
         inspected_filesets = set()
+        fileset_subclasses = set()
+        target_assays = ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']
+
         fileset_types = set()
         file_content_types = set()
         targeted_genes = set()
-        fileset_subclasses = set()
         assay_terms = set()
-        preferred_assays = set()
         cls_derived_assay_titles = set()
-        crispr_modalities = set()
-        multiplexing_methods = set()
+
+        all_assay_summaries = set()
         cls_type_set = set()
         cls_set = set()
         control_type_set = set()
-        unspecified_assay = ''
+        crispr_modalities = set()
+        multiplexing_methods = set()
         crispr_screen_terms = [
             '/assay-terms/OBI_0003659/',
             '/assay-terms/OBI_0003661/'
         ]
+
+        def format_assay(assay_titles, preferred_assay_titles):
+            if any(t in target_assays for t in preferred_assay_titles):
+                return f"{', '.join(assay_titles)} ({', '.join(preferred_assay_titles)})"
+            return ', '.join(preferred_assay_titles or assay_titles)
+
         if input_file_sets:
             # The file_set_types are included based on the subclass
             # of only the directly associated input_file_sets, not
@@ -434,43 +443,25 @@ class AnalysisSet(FileSet):
                                 gene_object = request.embed(gene, '@@object?skip_calculated=true')
                                 targeted_genes.add(gene_object['symbol'])
                         assay_terms.add(fileset_object['assay_term'])
-                        target_assays = ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']
                         preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
                         assays_titles = fileset_object.get('assay_titles', [])
-                        if assays_titles:
-                            preferred_assays.add(f"{', '.join(assays_titles)} ({', '.join(preferred_assay_titles)})")
-                        else:
-                            preferred_assays.add(', '.join(preferred_assay_titles))
-                    # Retrieve Measurement Sets associated with Auxiliary Sets.
+                        summary = format_assay(assays_titles, preferred_assay_titles)
+                        if summary:
+                            all_assay_summaries.add(summary)
                     elif input_fileset.startswith('/auxiliary-sets/'):
-                        fileset_types.add(fileset_object['file_set_type'])
                         if 'measurement_sets' in fileset_object:
                             for candidate_fileset in fileset_object.get('measurement_sets'):
-                                target_assays = ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']
-                                preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
-                                assays_titles = fileset_object.get('assay_titles', [])
-                                if assays_titles:
-                                    preferred_assays.add(
-                                        f"{', '.join(assays_titles)} ({', '.join(preferred_assay_titles)})")
-                                else:
-                                    preferred_assays.add(', '.join(preferred_assay_titles))
+                                measurement_set_object = request.embed(
+                                    candidate_fileset, '@@object?skip_calculated=true')
+                                assay_terms.add(measurement_set_object['assay_term'])
                                 if candidate_fileset not in inspected_filesets:
                                     filesets_to_inspect.add(candidate_fileset)
                     elif input_fileset.startswith('/construct-library-sets/'):
-                        for sample in fileset_object.get('applied_to_samples', []):
-                            sample_object = request.embed(
-                                sample, '@@object_with_select_calculated_properties?field=file_sets')
-                            for file_set in sample_object.get('file_sets', []):
-                                file_set_object = request.embed(
-                                    file_set, '@@object_with_select_calculated_properties?field=preferred_assay_titles')
-                                target_assays = ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']
-                                preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
-                                assays_titles = file_set_object.get('assay_titles', [])
-                                if assays_titles:
-                                    cls_derived_assay_titles.add(
-                                        f"{', '.join(assays_titles)} ({', '.join(preferred_assay_titles)})")
-                                else:
-                                    cls_derived_assay_titles.add(', '.join(preferred_assay_titles))
+                        preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
+                        assays_titles = fileset_object.get('assay_titles', [])
+                        summary = format_assay(assays_titles, preferred_assay_titles)
+                        if summary:
+                            cls_derived_assay_titles.add(summary)
                     elif not input_fileset.startswith('/analysis-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
                     # Collect control types.
@@ -516,11 +507,11 @@ class AnalysisSet(FileSet):
 
         # Assay titles if there are input file sets, otherwise unspecified.
         # Only use the CLS derived assay titles if there were no other assay titles.
-        if cls_derived_assay_titles and not preferred_assays:
-            preferred_assays = cls_derived_assay_titles
+        if cls_derived_assay_titles and not all_assay_summaries:
+            all_assay_summaries = cls_derived_assay_titles
         assay_title_phrase = 'Unspecified assay'
-        if preferred_assays:
-            assay_title_phrase = ', '.join(sorted(preferred_assays))
+        if all_assay_summaries:
+            assay_title_phrase = ', '.join(sorted(all_assay_summaries))
         if 'guide library' in cls_type_set:
             if 'CRISPR' not in assay_title_phrase:
                 assay_title_phrase = f'CRISPR {assay_title_phrase}'
