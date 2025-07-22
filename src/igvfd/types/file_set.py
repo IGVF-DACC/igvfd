@@ -449,8 +449,12 @@ class AnalysisSet(FileSet):
                         if summary:
                             all_assay_summaries.add(summary)
                     elif input_fileset.startswith('/auxiliary-sets/'):
-                        if 'measurement_sets' in fileset_object:
-                            for candidate_fileset in fileset_object.get('measurement_sets'):
+                        measurement_sets = fileset_object.get('measurement_sets', [])
+                        file_set_type = fileset_object.get('file_set_type')
+                        if file_set_type:
+                            fileset_types.add(file_set_type)
+                        if measurement_sets:
+                            for candidate_fileset in measurement_sets:
                                 measurement_set_object = request.embed(
                                     candidate_fileset, '@@object?skip_calculated=true')
                                 assay_terms.add(measurement_set_object['assay_term'])
@@ -541,7 +545,9 @@ class AnalysisSet(FileSet):
         # and the Measurement Sets related to the Auxiliary Sets are not CRISPR screens.
         file_set_type_phrase = ''
         if fileset_types and len(fileset_subclasses) == 1 and ('AuxiliarySet' in fileset_subclasses):
-            if not (assay_terms and all(x in crispr_screen_terms for x in assay_terms)):
+            if not assay_terms:
+                file_set_type_phrase = ', '.join(fileset_types)
+            elif not all(x in crispr_screen_terms for x in assay_terms):
                 file_set_type_phrase = ', '.join(fileset_types)
 
         control_phrase = ''
