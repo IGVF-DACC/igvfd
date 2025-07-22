@@ -24,6 +24,29 @@ def sequence_file(
 
 
 @pytest.fixture
+def externally_hosted_sequence_file(testapp, lab, award, principal_analysis_set, platform_term_HiSeq):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '525c8a6af303ea86bc59c629ff198277',
+        'file_format': 'fastq',
+        'file_set': principal_analysis_set['@id'],
+        'minimum_read_length': 99,
+        'maximum_read_length': 101,
+        'mean_read_length': 100,
+        'read_count': 23040138,
+        'file_size': 5495803,
+        'content_type': 'reads',
+        'sequencing_run': 1,
+        'sequencing_platform': platform_term_HiSeq['@id'],
+        'controlled_access': False,
+        'externally_hosted': True,
+        'external_host_url': 'https://example.com/file.fastq.gz'
+    }
+    return testapp.post_json('/sequence_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def sequence_file_s3_uri(
         testapp, lab, award, principal_analysis_set, platform_term_HiSeq):
     item = {
