@@ -18,7 +18,7 @@ def get_donors_from_samples(request, samples):
     donor_objects = []
     for sample in samples:
         donor_objects += request.embed(sample, '@@object').get('donors', [])
-    return sorted(set(donor_objects)) if donor_objects else None
+    return sorted(set(donor_objects)) or None
 
 
 def get_fileset_objs_from_input_file_sets(request, input_file_sets):
@@ -201,8 +201,7 @@ class FileSet(Item):
         'notSubmittable': True
     })
     def files(self, request, files):
-        files = paths_filtered_by_status(request, files)
-        return files if files else None
+        return paths_filtered_by_status(request, files) or None
 
     @calculated_property(schema={
         'title': 'File Sets Controlled By This File Set',
@@ -218,8 +217,7 @@ class FileSet(Item):
         'notSubmittable': True
     })
     def control_for(self, request, control_for):
-        control_for = paths_filtered_by_status(request, control_for)
-        return control_for if control_for else None
+        return paths_filtered_by_status(request, control_for) or None
 
     @calculated_property(schema={
         'title': 'Submitted Files Timestamp',
@@ -264,8 +262,7 @@ class FileSet(Item):
         'notSubmittable': True
     })
     def input_for(self, request, input_for):
-        input_for = paths_filtered_by_status(request, input_for)
-        return input_for if input_for else None
+        return paths_filtered_by_status(request, input_for) or None
 
     @calculated_property(
         define=True,
@@ -293,8 +290,7 @@ class FileSet(Item):
                                           )
             if sample_object.get('construct_library_sets', []):
                 construct_library_sets = construct_library_sets | set(sample_object.get('construct_library_sets', []))
-        if construct_library_sets:
-            return list(construct_library_sets)
+        return list(construct_library_sets) or None
 
     @calculated_property(
         condition='samples',
@@ -639,7 +635,7 @@ class AnalysisSet(FileSet):
                             preferred_assay_title = file_set_object.get('preferred_assay_title')
                             if preferred_assay_title:
                                 assay_titles.add(preferred_assay_title)
-        return list(assay_titles) if assay_titles else None
+        return list(assay_titles) or None
 
     @calculated_property(
         condition='input_file_sets',
@@ -667,12 +663,11 @@ class AnalysisSet(FileSet):
                 input_file_set_samples = set(input_file_set_object.get('samples', []))
                 if input_file_set_samples:
                     samples = samples | input_file_set_samples
-            samples = list(samples)
             if demultiplexed_samples:
                 # if the analysis set specifies a demultiplexed sample and all input data is multiplexed return just the demultiplexed_sample
                 if not ([sample for sample in samples if not (sample.startswith('/multiplexed-samples/'))]):
                     return demultiplexed_samples
-            return sorted(samples) if samples else None
+            return sorted(samples) or None
 
     @calculated_property(
         condition='samples',
@@ -933,7 +928,7 @@ class AnalysisSet(FileSet):
         for file_set_object in file_set_objects:
             if 'MeasurementSet' in file_set_object.get('@type') or 'AnalysisSet' in file_set_object.get('@type'):
                 mechanism_objects.extend(file_set_object.get('functional_assay_mechanisms', []))
-        return sorted(set(mechanism_objects)) if mechanism_objects else None
+        return sorted(set(mechanism_objects)) or None
 
     @calculated_property(
         schema={
@@ -967,7 +962,7 @@ class AnalysisSet(FileSet):
                     workflow = analysis_step_obj.get('workflow')
                     if workflow:
                         analysis_set_workflows_set.add(workflow)
-        return sorted(analysis_set_workflows_set) if analysis_set_workflows_set else None
+        return sorted(analysis_set_workflows_set) or None
 
     @calculated_property(
         condition='input_file_sets',
@@ -995,7 +990,7 @@ class AnalysisSet(FileSet):
                     input_file_set, '@@object_with_select_calculated_properties?field=targeted_genes')
                 if 'targeted_genes' in input_file_set_object:
                     analysis_set_targeted_genes.update(input_file_set_object['targeted_genes'])
-        return sorted(analysis_set_targeted_genes) if analysis_set_targeted_genes else None
+        return sorted(analysis_set_targeted_genes) or None
 
 
 @collection(
@@ -1036,8 +1031,7 @@ class CuratedSet(FileSet):
                 file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
                 if file_object.get('assembly'):
                     assembly_values.add(file_object.get('assembly'))
-            if assembly_values:
-                return sorted(assembly_values)
+            return sorted(assembly_values) or None
 
     @calculated_property(
         define=True,
@@ -1061,8 +1055,7 @@ class CuratedSet(FileSet):
                 file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
                 if file_object.get('transcriptome_annotation'):
                     annotation_values.add(file_object.get('transcriptome_annotation'))
-            if annotation_values:
-                return sorted(annotation_values)
+            return sorted(annotation_values) or None
 
     @calculated_property(
         schema={
@@ -1147,9 +1140,7 @@ class MeasurementSet(FileSet):
                             object_id != file_set_id and \
                                 file_set_id not in related_datasets:
                             related_datasets.append(file_set_id)
-            if related_datasets:
-                return sorted(related_datasets)
-        return None
+            return sorted(related_datasets) or None
 
     @calculated_property(
         schema={
@@ -1390,8 +1381,7 @@ class ModelSet(FileSet):
                             analysis_step_version, '@@object?skip_calculated=true')
                         software_versions = software_versions + \
                             analysis_step_version_object.get('software_versions', [])
-        if software_versions:
-            return sorted(set(software_versions))
+        return sorted(set(software_versions)) or None
 
 
 @collection(
@@ -1428,8 +1418,7 @@ class AuxiliarySet(FileSet):
         'notSubmittable': True
     })
     def measurement_sets(self, request, measurement_sets):
-        measurement_sets = paths_filtered_by_status(request, measurement_sets)
-        return measurement_sets if measurement_sets else None
+        return paths_filtered_by_status(request, measurement_sets) or None
 
     @calculated_property(
         schema={
@@ -1590,8 +1579,7 @@ class ConstructLibrarySet(FileSet):
         'notSubmittable': True
     })
     def applied_to_samples(self, request, applied_to_samples):
-        applied_to_samples = paths_filtered_by_status(request, applied_to_samples)
-        return applied_to_samples if applied_to_samples else None
+        return paths_filtered_by_status(request, applied_to_samples) or None
 
     @calculated_property(
         define=True,
@@ -1616,8 +1604,7 @@ class ConstructLibrarySet(FileSet):
             sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=file_sets')
             for file_set in sample_object.get('file_sets', []):
                 linked_file_sets.add(file_set)
-        if linked_file_sets:
-            return sorted(linked_file_sets)
+        return sorted(linked_file_sets) or None
 
     @calculated_property(
         condition='file_sets',
@@ -1644,7 +1631,7 @@ class ConstructLibrarySet(FileSet):
                 preferred_assay_title = file_set_object.get('preferred_assay_title')
                 if preferred_assay_title:
                     assay_titles.add(preferred_assay_title)
-        return sorted(assay_titles) if assay_titles else None
+        return sorted(assay_titles) or None
 
     @calculated_property(
         schema={

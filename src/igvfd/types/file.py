@@ -190,8 +190,7 @@ class File(Item):
         'notSubmittable': True
     })
     def integrated_in(self, request, integrated_in):
-        integrated_in = paths_filtered_by_status(request, integrated_in)
-        return integrated_in if integrated_in else None
+        return paths_filtered_by_status(request, integrated_in) or None
 
     @calculated_property(schema={
         'title': 'Input File For',
@@ -207,8 +206,7 @@ class File(Item):
         'notSubmittable': True
     })
     def input_file_for(self, request, input_file_for):
-        input_file_for = paths_filtered_by_status(request, input_file_for)
-        return input_file_for if input_file_for else None
+        return paths_filtered_by_status(request, input_file_for) or None
 
     @calculated_property(schema={
         'title': 'Gene List For',
@@ -224,8 +222,7 @@ class File(Item):
         'notSubmittable': True
     })
     def gene_list_for(self, request, gene_list_for):
-        gene_list_for = paths_filtered_by_status(request, gene_list_for)
-        return gene_list_for if gene_list_for else None
+        return paths_filtered_by_status(request, gene_list_for) or None
 
     @calculated_property(schema={
         'title': 'Loci List For',
@@ -241,8 +238,7 @@ class File(Item):
         'notSubmittable': True
     })
     def loci_list_for(self, request, loci_list_for):
-        loci_list_for = paths_filtered_by_status(request, loci_list_for)
-        return loci_list_for if loci_list_for else None
+        return paths_filtered_by_status(request, loci_list_for) or None
 
     @calculated_property(schema={
         'title': 'Quality Metrics',
@@ -258,8 +254,7 @@ class File(Item):
         'notSubmittable': True
     })
     def quality_metrics(self, request, quality_metrics):
-        quality_metrics = paths_filtered_by_status(request, quality_metrics)
-        return quality_metrics if quality_metrics else None
+        return paths_filtered_by_status(request, quality_metrics) or None
 
     @calculated_property(
         schema={
@@ -293,7 +288,7 @@ class File(Item):
                 measurement_set_object_pat = measurement_set_object.get('preferred_assay_title')
                 if measurement_set_object_pat:
                     assay_titles.add(measurement_set_object_pat)
-        return sorted(assay_titles) if assay_titles else None
+        return sorted(assay_titles) or None
 
     @calculated_property(
         condition='analysis_step_version',
@@ -483,8 +478,7 @@ class SequenceFile(File):
         'notSubmittable': True
     })
     def seqspecs(self, request, seqspecs):
-        seqspecs = paths_filtered_by_status(request, seqspecs)
-        return seqspecs if seqspecs else None
+        return paths_filtered_by_status(request, seqspecs) or None
 
     @calculated_property(
         schema={
@@ -1022,8 +1016,7 @@ class TabularFile(File):
         'notSubmittable': True
     })
     def barcode_map_for(self, request, barcode_map_for):
-        barcode_map_for = paths_filtered_by_status(request, barcode_map_for)
-        return barcode_map_for if barcode_map_for else None
+        return paths_filtered_by_status(request, barcode_map_for) or None
 
     @calculated_property(schema={
         'title': 'Primer Design For',
@@ -1039,8 +1032,7 @@ class TabularFile(File):
         'notSubmittable': True
     })
     def primer_design_for(self, request, primer_design_for):
-        primer_design_for = paths_filtered_by_status(request, primer_design_for)
-        return primer_design_for if primer_design_for else None
+        return paths_filtered_by_status(request, primer_design_for) or None
 
 
 @collection(

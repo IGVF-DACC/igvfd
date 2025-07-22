@@ -28,7 +28,7 @@ def collect_multiplexed_samples_prop(request, multiplexed_samples, property_name
             else:
                 property_set.add(property_contents)
     property_list = sorted(property_set)
-    return property_list if property_list else None
+    return property_list or None
 
 
 def decompose_multiplexed_samples(request, samples, visited_multiplexed_samples=None):
@@ -168,8 +168,7 @@ class Sample(Item):
             for file_set in multiplexed_file_sets:
                 if file_set not in file_sets:
                     file_sets.append(file_set)
-        file_sets = paths_filtered_by_status(request, file_sets)
-        return file_sets if file_sets else None
+        return paths_filtered_by_status(request, file_sets) or None
 
     @calculated_property(schema={
         'title': 'Multiplexed In',
@@ -185,8 +184,7 @@ class Sample(Item):
         'notSubmittable': True,
     })
     def multiplexed_in(self, request, multiplexed_in):
-        multiplexed_in = paths_filtered_by_status(request, multiplexed_in)
-        return multiplexed_in if multiplexed_in else None
+        return paths_filtered_by_status(request, multiplexed_in) or None
 
     @calculated_property(schema={
         'title': 'Sorted Fraction Samples',
@@ -202,8 +200,7 @@ class Sample(Item):
         'notSubmittable': True,
     })
     def sorted_fractions(self, request, sorted_fractions):
-        sorted_fractions = paths_filtered_by_status(request, sorted_fractions)
-        return sorted_fractions if sorted_fractions else None
+        return paths_filtered_by_status(request, sorted_fractions) or None
 
     @calculated_property(schema={
         'title': 'Origin Sample Of',
@@ -219,8 +216,7 @@ class Sample(Item):
         'notSubmittable': True,
     })
     def origin_of(self, request, origin_of):
-        origin_of = paths_filtered_by_status(request, origin_of)
-        return origin_of if origin_of else None
+        return paths_filtered_by_status(request, origin_of) or None
 
     @calculated_property(schema={
         'title': 'Institutional Certificates',
@@ -236,8 +232,7 @@ class Sample(Item):
         'notSubmittable': True,
     })
     def institutional_certificates(self, request, institutional_certificates):
-        institutional_certificates = paths_filtered_by_status(request, institutional_certificates)
-        return institutional_certificates if institutional_certificates else None
+        return paths_filtered_by_status(request, institutional_certificates) or None
 
 
 @abstract_collection(
@@ -611,8 +606,7 @@ class Biosample(Sample):
         'notSubmittable': True,
     })
     def parts(self, request, parts):
-        parts = paths_filtered_by_status(request, parts)
-        return parts if parts else None
+        return paths_filtered_by_status(request, parts) or None
 
     @calculated_property(schema={
         'title': 'Pooled In',
@@ -628,8 +622,7 @@ class Biosample(Sample):
         'notSubmittable': True,
     })
     def pooled_in(self, request, pooled_in):
-        pooled_in = paths_filtered_by_status(request, pooled_in)
-        return pooled_in if pooled_in else None
+        return paths_filtered_by_status(request, pooled_in) or None
 
 
 @collection(
@@ -701,8 +694,7 @@ class InVitroSystem(Biosample):
         'notSubmittable': True,
     })
     def demultiplexed_to(self, request, demultiplexed_to):
-        demultiplexed_to = paths_filtered_by_status(request, demultiplexed_to)
-        return demultiplexed_to if demultiplexed_to else None
+        return paths_filtered_by_status(request, demultiplexed_to) or None
 
 
 @collection(
@@ -1126,12 +1118,8 @@ class MultiplexedSample(Sample):
         }
     )
     def construct_library_sets(self, request, multiplexed_samples):
-        construct_library_sets = collect_multiplexed_samples_prop(
+        return collect_multiplexed_samples_prop(
             request, multiplexed_samples, 'construct_library_sets')
-        if construct_library_sets:
-            return construct_library_sets
-        else:
-            return None
 
     @calculated_property(
         schema={
