@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 37
+
+* Extend `preferred_assay_title` enum list to include `CROP-seq`.
+
 ### Schema version 37
 
 * Adjust `preferred_assay_titles` enum list to replace `Parse Perturb-seq` with `CC-Perturb-seq`.
