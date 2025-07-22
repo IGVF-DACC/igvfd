@@ -17,7 +17,9 @@
             "IGVFSM0000DDDD"
         ],
         "assay_term": "igvf:starr-seq",
-        "preferred_assay_title": "STARR-seq",
+        "preferred_assay_titles": [
+            "STARR-seq"
+        ],
         "protocols": [
             "https://www.protocols.io/test-protocols-url-12345"
         ],
@@ -48,9 +50,11 @@
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
         "multiome_size": 2,
-        "preferred_assay_title": "10x multiome",
         "control_types": [
             "baseline"
+        ],
+        "preferred_assay_titles": [
+            "10x multiome"
         ],
         "file_set_type": "experimental data"
     },
@@ -69,7 +73,9 @@
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
         "multiome_size": 2,
-        "preferred_assay_title": "10x multiome",
+        "preferred_assay_titles": [
+            "10x multiome"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -82,7 +88,9 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "06893264-0d44-4fa8-bb3d-924fcdaed346",
         "assay_term": "/assay-terms/NTR_0000739/",
-        "preferred_assay_title": "SHARE-seq",
+        "preferred_assay_titles": [
+            "SHARE-seq"
+        ],
         "control_file_sets": [
             "igvf:basic_measurement_set"
         ],
@@ -110,7 +118,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002675/",
-        "preferred_assay_title": "lentiMPRA",
+        "preferred_assay_titles": [
+            "lentiMPRA"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -127,7 +137,9 @@
             "igvf:alias2"
         ],
         "assay_term": "/assay-terms/OBI_0000185/",
-        "preferred_assay_title": "Arrayed yN2H",
+        "preferred_assay_titles": [
+            "Arrayed yN2H"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -144,7 +156,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002675/",
-        "preferred_assay_title": "MPRA (scQer)",
+        "preferred_assay_titles": [
+            "MPRA (scQer)"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -161,7 +175,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
-        "preferred_assay_title": "Parse SPLiT-seq",
+        "preferred_assay_titles": [
+            "Parse SPLiT-seq"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -178,7 +194,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
-        "preferred_assay_title": "10x multiome with MULTI-seq",
+        "preferred_assay_titles": [
+            "10x multiome with MULTI-seq"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -195,7 +213,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/NTR_0000744/",
-        "preferred_assay_title": "snMCT-seq",
+        "preferred_assay_titles": [
+            "snMCT-seq"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -212,7 +232,9 @@
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
         "assay_term": "/assay-terms/igvf:starr-seq/",
-        "preferred_assay_title": "STARR-seq",
+        "preferred_assay_titles": [
+            "STARR-seq"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -229,7 +251,9 @@
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
         "assay_term": "/assay-terms/igvf:CRISPR/",
-        "preferred_assay_title": "Perturb-seq",
+        "preferred_assay_titles": [
+            "Perturb-seq"
+        ],
         "strand_specificity": "5 prime to 3 prime",
         "file_set_type": "experimental data"
     },
@@ -247,7 +271,9 @@
             "igvf-dacc:in_vitro_system_cell_line"
         ],
         "assay_term": "/assay-terms/OBI_0003133/",
-        "preferred_assay_title": "Variant-EFFECTS",
+        "preferred_assay_titles": [
+            "Variant-EFFECTS"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -264,7 +290,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/NTR_0000745/",
-        "preferred_assay_title": "snM3C-seq",
+        "preferred_assay_titles": [
+            "snM3C-seq"
+        ],
         "collections": [
             "MPRAbase"
         ],
@@ -284,7 +312,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0003090/",
-        "preferred_assay_title": "RNA-seq",
+        "preferred_assay_titles": [
+            "RNA-seq"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -301,7 +331,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
-        "preferred_assay_title": "electroporated MPRA",
+        "preferred_assay_titles": [
+            "electroporated MPRA"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -318,7 +350,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
-        "preferred_assay_title": "scRNA-seq",
+        "preferred_assay_titles": [
+            "scRNA-seq"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -338,7 +372,9 @@
             "Vista"
         ],
         "assay_term": "/assay-terms/OBI_0002675/",
-        "preferred_assay_title": "MPRA",
+        "preferred_assay_titles": [
+            "MPRA"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -358,7 +394,9 @@
             "Vista"
         ],
         "assay_term": "/assay-terms/OBI_0000185/",
-        "preferred_assay_title": "Cell painting",
+        "preferred_assay_titles": [
+            "Cell painting"
+        ],
         "file_set_type": "experimental data",
         "external_image_url": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/"
     },
@@ -383,7 +421,9 @@
             "untransfected"
         ],
         "assay_term": "/assay-terms/OBI_0002440/",
-        "preferred_assay_title": "Hi-C",
+        "preferred_assay_titles": [
+            "Hi-C"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -403,7 +443,9 @@
             "IGVFSM0003KASP"
         ],
         "assay_term": "/assay-terms/NTR_000761/",
-        "preferred_assay_title": "Spatial transcriptomics",
+        "preferred_assay_titles": [
+            "Spatial transcriptomics"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -423,7 +465,9 @@
             "untreated"
         ],
         "assay_term": "/assay-terms/OBI_0002041/",
-        "preferred_assay_title": "STARR-seq",
+        "preferred_assay_titles": [
+            "STARR-seq"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -440,7 +484,9 @@
             "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_1"
         ],
         "assay_term": "/assay-terms/OBI_0000916/",
-        "preferred_assay_title": "VAMP-seq (MultiSTEP)",
+        "preferred_assay_titles": [
+            "VAMP-seq (MultiSTEP)"
+        ],
         "file_set_type": "experimental data",
         "functional_assay_mechanisms": [
             "/phenotype-terms/GO_0018214/"
@@ -463,7 +509,9 @@
             "non-targeting"
         ],
         "assay_term": "/assay-terms/OBI_0000916/",
-        "preferred_assay_title": "Variant painting via fluorescence",
+        "preferred_assay_titles": [
+            "Variant painting via fluorescence"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -480,7 +528,9 @@
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
         "assay_term": "45f6baf1-fc25-4915-a43a-c3b083ba9f9c/",
-        "preferred_assay_title": "ONT direct WGS",
+        "preferred_assay_titles": [
+            "ONT direct WGS"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -497,7 +547,9 @@
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
         "assay_term": "45f6baf1-fc25-4915-a43a-c3b083ba9f9c",
-        "preferred_assay_title": "ONT Fiber-seq",
+        "preferred_assay_titles": [
+            "ONT Fiber-seq"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -514,7 +566,9 @@
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
         "assay_term": "45f6baf1-fc25-4915-a43a-c3b083ba9f9c",
-        "preferred_assay_title": "ONT dRNA",
+        "preferred_assay_titles": [
+            "ONT dRNA"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -531,7 +585,9 @@
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
         "assay_term": "93b2cefa-9dfc-5e94-aa5e-faff044f46c1",
-        "preferred_assay_title": "scNT-seq2",
+        "preferred_assay_titles": [
+            "scNT-seq2"
+        ],
         "file_set_type": "experimental data",
         "onlist_method": "product",
         "onlist_files": [
@@ -553,7 +609,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0003089/",
-        "preferred_assay_title": "ACCESS-ATAC",
+        "preferred_assay_titles": [
+            "ACCESS-ATAC"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -570,7 +628,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
-        "preferred_assay_title": "scACCESS-ATAC",
+        "preferred_assay_titles": [
+            "scACCESS-ATAC"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -587,7 +647,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
-        "preferred_assay_title": "mtscMultiome",
+        "preferred_assay_titles": [
+            "mtscMultiome"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -607,7 +669,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
-        "preferred_assay_title": "TAP-seq",
+        "preferred_assay_titles": [
+            "TAP-seq"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -624,7 +688,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
-        "preferred_assay_title": "Parse SPLiT-seq",
+        "preferred_assay_titles": [
+            "Parse SPLiT-seq"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -641,7 +707,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
-        "preferred_assay_title": "Parse Perturb-seq",
+        "preferred_assay_titles": [
+            "Parse Perturb-seq"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -658,7 +726,9 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
-        "preferred_assay_title": "CUT&RUN",
+        "preferred_assay_titles": [
+            "CUT&RUN"
+        ],
         "file_set_type": "experimental data"
     },
     {
@@ -675,10 +745,12 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
-        "preferred_assay_title": "Bisulfite-seq",
         "file_set_type": "experimental data",
         "control_types": [
             "wildtype"
+        ],
+        "preferred_assay_titles": [
+            "Bisulfite-seq"
         ]
     }
 ]

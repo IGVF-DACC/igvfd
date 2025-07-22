@@ -263,13 +263,13 @@ class File(Item):
 
     @calculated_property(
         schema={
-            'title': 'Assay Titles',
+            'title': 'Assay Term Names',
             'description': 'Title(s) of assay from the file set this file belongs to.',
             'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Assay Title',
+                'title': 'Assay Term Names',
                 'description': 'Title of assay from the file set this file belongs to.',
                 'type': 'string'
             },
@@ -277,23 +277,31 @@ class File(Item):
         }
     )
     def assay_titles(self, request, file_set):
-        assay_titles = set()
-        file_set_object = request.embed(file_set, '@@object')
-        if 'MeasurementSet' in file_set_object.get('@type'):
-            preferred_assay_title = file_set_object.get('preferred_assay_title', '')
-            if preferred_assay_title:
-                assay_titles.add(preferred_assay_title)
-        elif 'AnalysisSet' in file_set_object.get('@type'):
-            analysis_assay_titles = set(file_set_object.get('assay_titles', []))
-            if analysis_assay_titles:
-                assay_titles = assay_titles | analysis_assay_titles
-        elif 'AuxiliarySet' in file_set_object.get('@type'):
-            for measurement_set in file_set_object.get('measurement_sets'):
-                measurement_set_object = request.embed(measurement_set, '@@object')
-                measurement_set_object_pat = measurement_set_object.get('preferred_assay_title')
-                if measurement_set_object_pat:
-                    assay_titles.add(measurement_set_object_pat)
-        return sorted(list(assay_titles))
+        return request.embed(
+            file_set,
+            '@@object_with_select_calculated_properties?field=assay_titles'
+        ).get('assay_titles', [])
+
+    @calculated_property(
+        schema={
+            'title': 'Preferred Assay Titles',
+            'description': 'Preferred assay titles from the file set this file belongs to.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Assay Title',
+                'description': 'Preferred assay titles from the file set this file belongs to.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def preferred_assay_titles(self, request, file_set):
+        return request.embed(
+            file_set,
+            '@@object_with_select_calculated_properties?field=preferred_assay_titles'
+        ).get('preferred_assay_titles', [])
 
     @calculated_property(
         condition='analysis_step_version',

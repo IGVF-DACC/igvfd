@@ -21,10 +21,10 @@ def configuration_file():
                 'title': 'File Set Type'
             },
             'assay_titles': {
-                'title': 'Preferred Assay Title'
+                'title': 'Assay Term Names'
             },
-            'file_set.assay_term.term_name': {
-                'title': 'Assay'
+            'preferred_assay_titles': {
+                'title': 'Preferred Assay Titles'
             },
             'file_set.samples.taxa': {
                 'title': 'Taxa'

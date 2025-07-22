@@ -1,6 +1,6 @@
 {
-    "hash": "658b8723128e58b87476c02a410c77e7",
-    "index_name": "primary_cell_658b8723",
+    "hash": "02148e09f46dc4724887e15f713dc0ae",
+    "index_name": "primary_cell_02148e09",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -612,6 +612,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
@@ -1186,7 +1189,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {

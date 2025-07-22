@@ -1,6 +1,6 @@
 {
-    "hash": "a01a0e7680dd1e230ee6b47f79a1622f",
-    "index_name": "technical_sample_a01a0e76",
+    "hash": "d75bb8dd7f29ef374545c14f5d2963f3",
+    "index_name": "technical_sample_d75bb8dd",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -424,6 +424,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
@@ -783,7 +786,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {

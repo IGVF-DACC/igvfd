@@ -1,6 +1,6 @@
 {
-    "hash": "f66f5d5fcf114636b56bffb343b9d914",
-    "index_name": "measurement_set_f66f5d5f",
+    "hash": "bf53391b854f7b8f466e33cb69b1255d",
+    "index_name": "measurement_set_bf53391b",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -239,7 +239,6 @@
                                 "type": "keyword"
                             },
                             "term_name": {
-                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {
@@ -247,6 +246,10 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "assay_titles": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
                     },
                     "auxiliary_sets": {
                         "properties": {
@@ -265,6 +268,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_titles": {
                                 "type": "keyword"
                             },
                             "award": {
@@ -321,6 +327,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
                             },
                             "preview_timestamp": {
                                 "type": "date"
@@ -766,6 +775,9 @@
                                     "notes": {
                                         "type": "text"
                                     },
+                                    "preferred_assay_titles": {
+                                        "type": "keyword"
+                                    },
                                     "preview_timestamp": {
                                         "type": "date"
                                     },
@@ -881,7 +893,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -1313,7 +1325,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -1646,7 +1658,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -2128,6 +2140,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
@@ -2476,7 +2491,7 @@
                     "onlist_method": {
                         "type": "keyword"
                     },
-                    "preferred_assay_title": {
+                    "preferred_assay_titles": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
@@ -2648,6 +2663,9 @@
                             "assay_term": {
                                 "type": "keyword"
                             },
+                            "assay_titles": {
+                                "type": "keyword"
+                            },
                             "auxiliary_sets": {
                                 "type": "keyword"
                             },
@@ -2729,7 +2747,7 @@
                             "onlist_method": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 17
 
+* Add calculated property `preferred_assay_titles`
 * Extend `file_format` enum list to include `bigBed`.
 
 ### Schema version 17

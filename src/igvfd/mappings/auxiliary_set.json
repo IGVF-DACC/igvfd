@@ -1,6 +1,6 @@
 {
-    "hash": "277adaf695bef09868c7ea710c292b20",
-    "index_name": "auxiliary_set_277adaf6",
+    "hash": "fb7c34de206e960fe023f2ebc5bbdc8a",
+    "index_name": "auxiliary_set_fb7c34de",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -156,6 +156,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "assay_titles": {
                         "type": "keyword"
                     },
                     "award": {
@@ -560,6 +563,9 @@
                                     "notes": {
                                         "type": "text"
                                     },
+                                    "preferred_assay_titles": {
+                                        "type": "keyword"
+                                    },
                                     "preview_timestamp": {
                                         "type": "date"
                                     },
@@ -675,7 +681,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -1008,7 +1014,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -1481,6 +1487,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
@@ -1680,6 +1689,9 @@
                             "assay_term": {
                                 "type": "keyword"
                             },
+                            "assay_titles": {
+                                "type": "keyword"
+                            },
                             "auxiliary_sets": {
                                 "type": "keyword"
                             },
@@ -1761,7 +1773,7 @@
                             "onlist_method": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -1823,6 +1835,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preferred_assay_titles": {
+                        "type": "keyword"
                     },
                     "preview_timestamp": {
                         "type": "date"

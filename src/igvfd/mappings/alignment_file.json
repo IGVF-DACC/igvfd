@@ -1,6 +1,6 @@
 {
-    "hash": "f450a3ddba4c57181e02fd00ab06361f",
-    "index_name": "alignment_file_f450a3dd",
+    "hash": "5371dfdc35dfffea959a8ea42f6deb08",
+    "index_name": "alignment_file_5371dfdc",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -787,7 +787,7 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
-                            "preferred_assay_title": {
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "preview_timestamp": {
@@ -2219,6 +2219,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
@@ -2486,6 +2489,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preferred_assay_titles": {
+                        "type": "keyword"
                     },
                     "preview_timestamp": {
                         "type": "date"

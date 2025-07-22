@@ -2,6 +2,7 @@
 
 ### Schema version 16
 
+* Add calculated property `preferred_assay_titles`
 * Extend `base_modifications` enum list to include `Nm`.
 * Adjust `derived_manually` to have default value `False`.
 
