@@ -1173,12 +1173,11 @@ class MeasurementSet(FileSet):
             related_datasets = []
             for sample in samples:
                 sample_object = request.embed(sample, '@@object')
-                if sample_object.get('file_sets', []):
-                    for file_set_id in sample_object.get('file_sets', []):
-                        if '/measurement-sets/' == file_set_id[:18] and \
-                            object_id != file_set_id and \
-                                file_set_id not in related_datasets:
-                            related_datasets.append(file_set_id)
+                for file_set_id in sample_object.get('file_sets', []):
+                    if '/measurement-sets/' == file_set_id[:18] and \
+                        object_id != file_set_id and \
+                            file_set_id not in related_datasets:
+                        related_datasets.append(file_set_id)
             return sorted(related_datasets) or None
 
     @calculated_property(
