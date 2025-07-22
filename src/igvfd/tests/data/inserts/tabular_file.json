@@ -835,27 +835,6 @@
     },
     {
         "uuid": "a68cc5f8-df69-4a48-8583-75e264a6ef38",
-        "accession": "IGVFFI0001BGBE",
-        "lab": "j-michael-cherry",
-        "award": "HG012012",
-        "aliases": [
-            "igvf:tabular_file_read_count"
-        ],
-        "status": "released",
-        "release_timestamp": "2024-03-06T12:34:56Z",
-        "md5sum": "af6a94f27717b00c1e126a9d2bc41d60",
-        "file_format": "tsv",
-        "content_type": "read count",
-        "submitted_file_name": "/Users/igvf/igvf_files/read_count.tsv",
-        "file_size": 738031,
-        "upload_status": "validated",
-        "assembly": "GRCh38",
-        "filtered": true,
-        "file_set": "igvf:basic_analysis_set",
-        "controlled_access": false
-    },
-    {
-        "uuid": "a68cc5f8-df69-4a48-8583-75e264a6ef38",
         "accession": "IGVFFI0001BGBF",
         "lab": "j-michael-cherry",
         "award": "HG012012",
@@ -898,7 +877,7 @@
     },
     {
         "uuid": "56203a29-dbe8-442d-8ba1-0382faa9910b",
-        "accession": "IGVFFI0001BGBG",
+        "accession": "IGVFFI0001BGBH",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
