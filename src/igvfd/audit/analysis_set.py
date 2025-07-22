@@ -298,17 +298,16 @@ def audit_multiple_barcode_replacement_files_in_input(value, system):
     audit_msg_unexpected_file = get_audit_message(audit_multiple_barcode_replacement_files_in_input, index=0)
     barcode_replacement_files = set()
     parse_splitseq_file_sets = []
-    if value.get('input_file_sets'):
-        for file in value.get('input_file_sets', []):
-            if file.startswith('/measurement-sets/'):
-                input_file_set_object = system.get('request').embed(file + '@@object?skip_calculated=true')
-                preferred_assay_titles = input_file_set_object.get('preferred_assay_titles')
-                if 'Parse SPLiT-seq' in preferred_assay_titles:
-                    barcode_replacement_file = input_file_set_object.get('barcode_replacement_file', '')
-                    # Only append replacement files that are not empty (or else it will result in a None value downstream)
-                    if barcode_replacement_file:
-                        barcode_replacement_files.add(barcode_replacement_file)
-                        parse_splitseq_file_sets.append(file)
+    for file in value.get('input_file_sets', []):
+        if file.startswith('/measurement-sets/'):
+            input_file_set_object = system.get('request').embed(file + '@@object?skip_calculated=true')
+            preferred_assay_titles = input_file_set_object.get('preferred_assay_titles')
+            if 'Parse SPLiT-seq' in preferred_assay_titles:
+                barcode_replacement_file = input_file_set_object.get('barcode_replacement_file', '')
+                # Only append replacement files that are not empty (or else it will result in a None value downstream)
+                if barcode_replacement_file:
+                    barcode_replacement_files.add(barcode_replacement_file)
+                    parse_splitseq_file_sets.append(file)
     # Audit 1: If all input Parse measurement sets have different barcode replacement files, trigger audit
     if len(barcode_replacement_files) > 1:
         barcode_replacement_files_links = ', '.join(

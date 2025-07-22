@@ -58,10 +58,9 @@ class OntologyTerm(Item):
         if term_id not in registry['ontology']:
             return []
         key = registry['ontology'][term_id].get(slim_key, [])
-        slim_list = sorted(set(
+        return sorted(set(
             slim for slim in key
-        ))
-        return slim_list or None
+        )) or None
 
     @staticmethod
     def _get_ontology_string(registry, term_id, string_key):
