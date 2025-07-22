@@ -451,16 +451,15 @@ def audit_inconsistent_sequencing_kit(value, system):
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_inconsistent_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=0)
     file_info = {}
-    if 'files' in value:
-        for file in value.get('files', []):
-            if file.startswith('/sequence-files/'):
-                sequence_file_object = system.get('request').embed(file)
+    for file in value.get('files', []):
+        if file.startswith('/sequence-files/'):
+            sequence_file_object = system.get('request').embed(file)
 
-                sequencing_run = str(sequence_file_object.get('sequencing_run'))
-                sequencing_kit = sequence_file_object.get('sequencing_kit', '')
-                sequencing_platform = sequence_file_object.get('sequencing_platform', '').get('@id')
+            sequencing_run = str(sequence_file_object.get('sequencing_run'))
+            sequencing_kit = sequence_file_object.get('sequencing_kit', '')
+            sequencing_platform = sequence_file_object.get('sequencing_platform', '').get('@id')
 
-                file_info[file] = {'kit': sequencing_kit, 'run': sequencing_run, 'platform': sequencing_platform}
+            file_info[file] = {'kit': sequencing_kit, 'run': sequencing_run, 'platform': sequencing_platform}
     if not file_info:
         return
     missing_kit = []
