@@ -61,7 +61,7 @@ class OntologyTerm(Item):
         slim_list = sorted(set(
             slim for slim in key
         ))
-        return slim_list if slim_list else None
+        return slim_list or None
 
     @staticmethod
     def _get_ontology_string(registry, term_id, string_key):
