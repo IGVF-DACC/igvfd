@@ -46,7 +46,13 @@ def audit_related_multiome_datasets(value, system):
     multiome_size = value.get('multiome_size')
     preferred_assay_titles = value.get('preferred_assay_titles', [])
 
-    multiome_assays = ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq', 'mtscMultiome']
+    multiome_assays = [
+        '10x multiome',
+        '10x multiome with MULTI-seq',
+        'SHARE-seq',
+        'mtscMultiome',
+        'scMultiome-NT-seq'
+    ]
 
     if any(assay in multiome_assays for assay in preferred_assay_titles):
         if not multiome_size:
