@@ -1420,7 +1420,7 @@ def test_audit_missing_read_names(
     )
 
 
-def test_audit_onlist(testapp, measurement_set_one_onlist, measurement_set, assay_term_scrna, assay_term_mpra):
+def test_audit_onlist(testapp, measurement_set_one_onlist, measurement_set, assay_term_scrna, assay_term_mpra, assay_term_crispr_single_cell):
     # Check if the correct measurement set with onlist info is audit-free
     res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
     assert all(
@@ -1451,6 +1451,18 @@ def test_audit_onlist(testapp, measurement_set_one_onlist, measurement_set, assa
         {
             'assay_term': assay_term_scrna['@id'],
             'preferred_assay_titles': ['SHARE-seq']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing barcode onlist'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_crispr_single_cell['@id'],
+            'preferred_assay_titles': ['Perturb-seq']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
