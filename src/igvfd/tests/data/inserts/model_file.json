@@ -95,5 +95,24 @@
         "catalog_adapters": [
             "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/gencode_adapter.py"
         ]
+    },
+    {
+        "uuid": "12a83306-894e-417c-ab83-c7d79b44f12c",
+        "accession": "IGVFFI0001PMTR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:model_file_cov_matrix"
+        ],
+        "md5sum": "85027ca8-2104-40e1-aebd-cb672e662dcf",
+        "file_format": "tar",
+        "content_type": "covariance matrix",
+        "file_size": 80330,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-05-14T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "externally_hosted": false,
+        "submitted_file_name": "/Users/igvf/igvf_files/model_file_cov_matrix.tar"
     }
 ]
