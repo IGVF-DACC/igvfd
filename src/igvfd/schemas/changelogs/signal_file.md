@@ -1,5 +1,10 @@
 ## Changelog for *`signal_file.json`*
 
+### Schema version 13
+
+* Remove `assembly`.
+* Remove `transcriptome_annotation`.
+
 ### Minor changes since schema version 12
 
 * Add calculated property `preferred_assay_titles`
