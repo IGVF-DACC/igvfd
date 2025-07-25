@@ -97,14 +97,14 @@
         ]
     },
     {
-        "uuid": "12a83306-894e-417c-ab83-c7d79b44f12c",
+        "uuid": "85027ca8-2104-40e1-aebd-cb672e662dcf",
         "accession": "IGVFFI0001PMTR",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
             "igvf:model_file_cov_matrix"
         ],
-        "md5sum": "85027ca8-2104-40e1-aebd-cb672e662dcf",
+        "md5sum": "967e284f5e31c5ee061f3e98826e7337",
         "file_format": "tar",
         "content_type": "covariance matrix",
         "file_size": 80330,
