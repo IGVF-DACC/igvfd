@@ -117,7 +117,7 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
     assert set(res.json.get('preferred_assay_titles')) == {'lentiMPRA'}
 
 
-def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_no_files, measurement_set_mpra, measurement_set_multiome, measurement_set_perturb_seq, principal_analysis_set, tabular_file, gene_myc_hs, assay_term_atac, assay_term_crispr, primary_cell, crispr_modification, construct_library_set_reporter, analysis_set_with_CLS_input, tissue, base_expression_construct_library_set, construct_library_set_editing_template_library, construct_library_set_editing_template_library_2, construct_library_set_reference_transduction, construct_library_set_non_targeting, multiplexed_sample, construct_library_set_genome_wide):
+def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_no_files, measurement_set_mpra, measurement_set_multiome, measurement_set_perturb_seq, principal_analysis_set, tabular_file, gene_myc_hs, assay_term_atac, assay_term_crispr, primary_cell, crispr_modification, construct_library_set_reporter, analysis_set_with_CLS_input, tissue, base_expression_construct_library_set, construct_library_set_editing_template_library, construct_library_set_editing_template_library_2, construct_library_set_reference_transduction, construct_library_set_non_targeting, multiplexed_sample, construct_library_set_genome_wide, curated_set_genome):
     # With no input_file_sets and no files present, summary is based on analysis file_set_type only.
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get('summary', '') == 'Unspecified assay'
@@ -281,11 +281,20 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_with_CLS_input['@id']).json
     assert res.get('summary', '') == 'lentiMPRA targeting MYC integrating a reporter library targeting accessible genome regions genome-wide with low FACS signal control'
-    # Analysis Set with only a CLS in input_file_sets.
+    # Analysis Set with only a CLS (and curated set) in input_file_sets.
     testapp.patch_json(
         analysis_set_base['@id'],
         {
             'input_file_sets': [construct_library_set_reporter['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id']).json
+    assert res.get(
+        'summary', '') == 'lentiMPRA reporter library targeting accessible genome regions genome-wide'
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [construct_library_set_reporter['@id'], curated_set_genome['@id']]
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
