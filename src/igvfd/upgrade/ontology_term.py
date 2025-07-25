@@ -228,3 +228,13 @@ def assay_term_16_17(value, system):
         value['preferred_assay_titles'] = list(set(new_assay_titles))
         notes += f' This assay term previously listed {" and ".join(old_assay_titles)} as preferred_assay_titles, but these preferred_assay_titles have been updated to 10x with Scale pre-indexing via an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('assay_term', '17', '18')
+def assay_term_17_18(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2634
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    if 'Parse Perturb-seq' in preferred_assay_titles:
+        index = preferred_assay_titles.index('Parse Perturb-seq')
+        preferred_assay_titles[index] = 'CC-Perturb-seq'
+        value['preferred_assay_titles'] = preferred_assay_titles
