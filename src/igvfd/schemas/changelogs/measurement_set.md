@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 36
+
+* Extend `preferred_assay_title` enum list to include `CROP-seq`.
+
 ### Schema version 36
 
 * Add calculated property `assay_titles`

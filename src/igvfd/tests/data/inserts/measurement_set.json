@@ -752,5 +752,27 @@
         "preferred_assay_titles": [
             "Bisulfite-seq"
         ]
+    },
+    {
+        "aliases": [
+            "igvf:crop_seq"
+        ],
+        "award": "1UM1HG012053-01",
+        "lab": "/labs/charles-gersbach/",
+        "status": "released",
+        "release_timestamp": "2025-06-06T12:34:56Z",
+        "uuid": "eb64115a-dbc4-470f-a9d5-d151c66682f5",
+        "accession": "IGVFDS0000CROP",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0002631/",
+        "file_set_type": "experimental data",
+        "control_types": [
+            "wildtype"
+        ],
+        "preferred_assay_titles": [
+            "CROP-seq"
+        ]
     }
 ]
