@@ -116,3 +116,9 @@ def test_assay_term_upgrade_16_17(upgrader, assay_term_v16):
     value = upgrader.upgrade('assay_term', assay_term_v16, current_version='16', target_version='17')
     assert value['schema_version'] == '17'
     assert value.get('preferred_assay_titles') == ['10x with Scale pre-indexing']
+
+
+def test_assay_term_upgrade_17_18(upgrader, assay_term_v17):
+    value = upgrader.upgrade('assay_term', assay_term_v17, current_version='17', target_version='18')
+    assert value['schema_version'] == '18'
+    assert value.get('preferred_assay_titles') == ['CC-Perturb-seq']

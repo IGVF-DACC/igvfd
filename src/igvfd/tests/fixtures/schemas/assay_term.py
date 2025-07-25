@@ -285,3 +285,13 @@ def assay_term_v16(assay_term_crispr):
         'preferred_assay_titles': ['10X ATAC with Scale pre-indexing', '10X RNA with Scale pre-indexing']
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v17(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '17',
+        'preferred_assay_titles': ['Parse Perturb-seq']
+    })
+    return item
