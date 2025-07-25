@@ -55,4 +55,4 @@ class Workflow(Item):
         'notSubmittable': True
     })
     def analysis_steps(self, request, analysis_steps):
-        return paths_filtered_by_status(request, analysis_steps) or None
+        return paths_filtered_by_status(request, analysis_steps)

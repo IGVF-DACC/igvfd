@@ -192,7 +192,7 @@ class FileSet(Item):
         'notSubmittable': True
     })
     def files(self, request, files):
-        return paths_filtered_by_status(request, files) or None
+        return paths_filtered_by_status(request, files)
 
     @calculated_property(schema={
         'title': 'File Sets Controlled By This File Set',
@@ -657,8 +657,8 @@ class AnalysisSet(FileSet):
         }
     )
     def samples(self, request, input_file_sets=None, demultiplexed_samples=None):
+        samples = set()
         if input_file_sets is not None:
-            samples = set()
             for fileset in input_file_sets:
                 input_file_set_object = request.embed(fileset, '@@object')
                 input_file_set_samples = set(input_file_set_object.get('samples', []))
@@ -668,7 +668,7 @@ class AnalysisSet(FileSet):
                 # if the analysis set specifies a demultiplexed sample and all input data is multiplexed return just the demultiplexed_sample
                 if not ([sample for sample in samples if not (sample.startswith('/multiplexed-samples/'))]):
                     return demultiplexed_samples
-            return sorted(samples) or None
+        return sorted(samples)
 
     @calculated_property(
         condition='samples',
@@ -1457,7 +1457,7 @@ class AuxiliarySet(FileSet):
         'notSubmittable': True
     })
     def measurement_sets(self, request, measurement_sets):
-        return paths_filtered_by_status(request, measurement_sets) or None
+        return paths_filtered_by_status(request, measurement_sets)
 
     @calculated_property(
         condition='measurement_sets',
@@ -1670,7 +1670,7 @@ class ConstructLibrarySet(FileSet):
         'notSubmittable': True
     })
     def applied_to_samples(self, request, applied_to_samples):
-        return paths_filtered_by_status(request, applied_to_samples) or None
+        return paths_filtered_by_status(request, applied_to_samples)
 
     @calculated_property(
         define=True,
@@ -1695,7 +1695,7 @@ class ConstructLibrarySet(FileSet):
             sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=file_sets')
             for file_set in sample_object.get('file_sets', []):
                 linked_file_sets.add(file_set)
-        return sorted(linked_file_sets) or None
+        return sorted(linked_file_sets)
 
     @calculated_property(
         condition='file_sets',
