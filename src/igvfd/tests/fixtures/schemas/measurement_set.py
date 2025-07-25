@@ -512,3 +512,13 @@ def measurement_set_v35(measurement_set):
         'preferred_assay_title': 'semi-qY2H'
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v36(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '36',
+        'preferred_assay_titles': ['Parse Perturb-seq']
+    })
+    return item

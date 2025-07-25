@@ -644,3 +644,10 @@ def measurement_set_35_36(value, system):
     if 'preferred_assay_title' in value:
         value['preferred_assay_titles'] = [(value['preferred_assay_title'])]
         value.pop('preferred_assay_title')
+
+
+@upgrade_step('measurement_set', '36', '37')
+def measurement_set_36_37(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2910
+    if value.get('preferred_assay_title') == 'Parse Perturb-seq':
+        value['preferred_assay_title'] = 'CC-Perturb-seq'
