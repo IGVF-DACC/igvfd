@@ -83,4 +83,4 @@ class AnalysisStep(Item):
         'notSubmittable': True
     })
     def analysis_step_versions(self, request, analysis_step_versions):
-        return paths_filtered_by_status(request, analysis_step_versions) or None
+        return paths_filtered_by_status(request, analysis_step_versions)

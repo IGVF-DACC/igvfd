@@ -55,7 +55,7 @@ class Modification(Item):
         'notSubmittable': True
     })
     def biosamples_modified(self, request, biosamples_modified):
-        return paths_filtered_by_status(request, biosamples_modified) or None
+        return paths_filtered_by_status(request, biosamples_modified)
 
 
 @collection(
