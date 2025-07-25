@@ -487,7 +487,7 @@
                     "HCR-FlowFISH screen": "A variation of CRISPR FlowFISH that integrates Hybridization Chain Reaction (HCR) for signal amplification, enabling more sensitive and multiplexed detection of RNA expression changes in CRISPR screens analyzed by flow cytometry.",
                     "scCRISPR screen": "A CRISPR-based screen that combines CRISPR perturbations with single-cell RNA sequencing (scRNA-seq) to analyze gene expression changes and cellular phenotypes at the single-cell level.",
                     "Perturb-seq": "A single-cell CRISPR screen that combines CRISPR-based gene perturbation with single-cell RNA sequencing (scRNA-seq).",
-                    "CC-Perturb-seq": "A type of Perturb-seq that uses a plate-based split-pool combinatorial barcoding method to label the cellular origin of transcripts and guides at single cell resolution in a cost-effective way.",
+                    "CC-Perturb-seq": "A type of Perturb-seq that combines a plate-based split-pool combinatorial barcode indexing with circularization-based capture of Pol III gRNA transcripts.",
                     "TAP-seq": "A high-throughput, cost-efficient variant of Perturb-seq that focuses single-cell RNA-seq coverage on specific genes of interest.",
                     "Variant-EFFECTS": "A CRISPR-based screen that combines CRISPR prime editing, RNA fluorescence in situ hybridization (FlowFISH), and cell sorting to quantitatively measure the effects of designed DNA sequence variants on gene expression.",
                     "SGE": "A CRISPR-based assay that systematically introduces and evaluates the functional impact of hundreds to thousands of nucleotide substitutions, insertions, or deletions at a specific genomic locus.",
