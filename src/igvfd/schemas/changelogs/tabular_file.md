@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 17
 
+* Extend `file_format` enum list to include `gvcf`.
 * Add calculated property `preferred_assay_titles`
 * Extend `content_type` enum list to include `read count`.
 * Extend `content_type` enum list to include `fold change of post-selection and pre-selection`.
