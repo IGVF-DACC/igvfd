@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def analysis_step(testapp, base_workflow, other_lab, award):
+def analysis_step(testapp, other_lab, award):
     item = {
         'lab': other_lab['@id'],
         'award': award['@id'],
@@ -10,14 +10,13 @@ def analysis_step(testapp, base_workflow, other_lab, award):
         'title': 'Base Analysis Step',
         'input_content_types': ['reads'],
         'output_content_types': ['alignments'],
-        'analysis_step_types': ['alignment'],
-        'workflow': base_workflow['@id']
+        'analysis_step_types': ['alignment']
     }
     return testapp.post_json('/analysis_step', item).json['@graph'][0]
 
 
 @pytest.fixture
-def analysis_step_2(testapp, base_workflow_2, other_lab, award):
+def analysis_step_2(testapp, other_lab, award):
     item = {
         'lab': other_lab['@id'],
         'award': award['@id'],
@@ -26,7 +25,6 @@ def analysis_step_2(testapp, base_workflow_2, other_lab, award):
         'input_content_types': ['reads'],
         'output_content_types': ['alignments'],
         'analysis_step_types': ['alignment'],
-        'workflow': base_workflow_2['@id']
     }
     return testapp.post_json('/analysis_step', item).json['@graph'][0]
 
