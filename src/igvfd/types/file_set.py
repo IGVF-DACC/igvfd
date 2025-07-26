@@ -486,8 +486,8 @@ class AnalysisSet(FileSet):
             only_cls_input = False
         elif fileset_subclasses.issubset({'ConstructLibrarySet', 'CuratedSet'}):
             prop_with_cls = [
-                fsid for fsid in input_file_sets
-                if 'ConstructLibrarySet' in request.embed(fsid, '@@object_with_select_calculated_properties?field=@type')['@type']
+                input_file_set for input_file_set in input_file_sets
+                if input_file_set.startswith('/construct-library-sets/')
             ]
             only_cls_input = True
         if prop_with_cls:
