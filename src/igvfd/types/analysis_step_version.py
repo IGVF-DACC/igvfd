@@ -53,5 +53,4 @@ class AnalysisStepVersion(Item):
         'notSubmittable': True
     })
     def workflows(self, request, workflows):
-        """Return the workflow that this analysis step version is linked to."""
         return paths_filtered_by_status(request, workflows)
