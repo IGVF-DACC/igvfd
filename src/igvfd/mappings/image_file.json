@@ -1,6 +1,6 @@
 {
-    "hash": "ba829b80dddf83a23cb9032b163f9186",
-    "index_name": "image_file_ba829b80",
+    "hash": "6b1a162cc69ea4a208dfee1917e069bc",
+    "index_name": "image_file_6b1a162c",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -2771,7 +2771,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"

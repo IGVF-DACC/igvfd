@@ -1,6 +1,6 @@
 {
-    "hash": "acb22a167f7ff82bb18d00a4f09043c6",
-    "index_name": "curated_set_acb22a16",
+    "hash": "768bfc44818f182f7691eeb827e3f0fe",
+    "index_name": "curated_set_768bfc44",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -622,7 +622,7 @@
                                     "validation_error_detail": {
                                         "type": "keyword"
                                     },
-                                    "workflow": {
+                                    "workflows": {
                                         "type": "keyword"
                                     }
                                 },
@@ -1596,7 +1596,7 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
-                            "workflow": {
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

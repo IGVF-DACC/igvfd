@@ -1,6 +1,6 @@
 {
-    "hash": "4019c9649b144e5f38b86f21647d017e",
-    "index_name": "construct_library_set_4019c964",
+    "hash": "3b6810e650251453b3d2421eed1fe9c9",
+    "index_name": "construct_library_set_3b6810e6",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1825,7 +1825,7 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
-                            "workflow": {
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },
@@ -2025,7 +2025,7 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
-                            "workflow": {
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },
@@ -2279,7 +2279,7 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
-                            "workflow": {
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },
@@ -2473,7 +2473,7 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
-                            "workflow": {
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

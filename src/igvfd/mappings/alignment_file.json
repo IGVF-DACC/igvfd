@@ -1,6 +1,6 @@
 {
-    "hash": "557e5797bbfa8cf28a6a5101c05171b0",
-    "index_name": "alignment_file_557e5797",
+    "hash": "dd5ec7096f6bd9935458ac75ec4656c5",
+    "index_name": "alignment_file_dd5ec709",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -2807,7 +2807,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
