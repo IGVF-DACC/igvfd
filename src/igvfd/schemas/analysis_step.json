@@ -15,8 +15,7 @@
     ],
     "identifyingProperties": [
         "uuid",
-        "aliases",
-        "name"
+        "aliases"
     ],
     "additionalProperties": false,
     "mixinProperties": [

@@ -1,6 +1,6 @@
 {
-    "hash": "c8f5b401134b16c4026e1fc4016f65d5",
-    "index_name": "model_file_c8f5b401",
+    "hash": "741e2dc691e19404d3d1badbeb57be8a",
+    "index_name": "model_file_741e2dc6",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -2806,9 +2806,6 @@
                                 "type": "keyword"
                             },
                             "analysis_step_versions": {
-                                "type": "keyword"
-                            },
-                            "analysis_steps": {
                                 "type": "keyword"
                             },
                             "award": {
