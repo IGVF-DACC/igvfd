@@ -33,8 +33,7 @@
             "elements reference",
             "genome reference",
             "transcriptome index"
-        ],
-        "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2"
+        ]
     },
     {
         "uuid": "5f762820-7a03-4fdf-8cd6-94c6f055d3d0",
@@ -70,8 +69,7 @@
             "sparse peak count matrix",
             "sparse transcript count matrix",
             "transcriptome annotations"
-        ],
-        "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2"
+        ]
     },
     {
         "uuid": "0e78ac16-703d-486f-809b-8899dffe70aa",
@@ -104,8 +102,7 @@
             "low resolution tissue",
             "high resolution tissue",
             "fiducial alignment"
-        ],
-        "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2"
+        ]
     },
     {
         "uuid": "6d45c843-ae20-47dd-a929-d996e3e7d61c",
@@ -138,8 +135,7 @@
             "MPRA sequence designs",
             "prime editing guide RNA sequences",
             "protein to protein interaction score"
-        ],
-        "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2"
+        ]
     },
     {
         "uuid": "533ec67f-432d-49eb-b45c-0509fb76be83",
@@ -161,8 +157,7 @@
         ],
         "output_content_types": [
             "variant effects"
-        ],
-        "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2"
+        ]
     },
     {
         "uuid": "4fc3d274-9e4a-4ca5-8607-9876c0f092bd",
@@ -193,8 +188,7 @@
             "exclusion list",
             "elements reference",
             "genome reference"
-        ],
-        "workflow": "96fa0630-a88e-4946-bebd-23f417d0da7a"
+        ]
     },
     {
         "uuid": "622280c8-cb7c-4d56-81ce-6ef1eda60a5a",
@@ -228,7 +222,6 @@
             "sparse gene count matrix",
             "sample barcode count matrix",
             "minus strand modification state"
-        ],
-        "workflow": "96fa0630-a88e-4946-bebd-23f417d0da7a"
+        ]
     }
 ]
