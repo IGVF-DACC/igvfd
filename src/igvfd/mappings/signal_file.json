@@ -1,6 +1,6 @@
 {
-    "hash": "64970ce9dacaeeca93b8fb9d3c2581f5",
-    "index_name": "signal_file_64970ce9",
+    "hash": "0093cac65ec630553120aee5c387b71c",
+    "index_name": "signal_file_0093cac6",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -290,6 +290,10 @@
                     },
                     "assay_titles": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "assembly": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "award": {
@@ -2871,6 +2875,10 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
+                    "transcriptome_annotation": {
+                        "copy_to": "_exact",
+                        "type": "keyword"
+                    },
                     "upload_credentials": {
                         "properties": {},
                         "type": "object"
@@ -2902,9 +2910,6 @@
                                 "type": "keyword"
                             },
                             "analysis_step_versions": {
-                                "type": "keyword"
-                            },
-                            "analysis_steps": {
                                 "type": "keyword"
                             },
                             "award": {
