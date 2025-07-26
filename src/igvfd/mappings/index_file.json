@@ -1,6 +1,6 @@
 {
-    "hash": "3ca162e4f464844bd96ded882c4fc5c7",
-    "index_name": "index_file_3ca162e4",
+    "hash": "0c5c4257332b14f14478db3d6d11a7c1",
+    "index_name": "index_file_0c5c4257",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -2812,9 +2812,6 @@
                                 "type": "keyword"
                             },
                             "analysis_step_versions": {
-                                "type": "keyword"
-                            },
-                            "analysis_steps": {
                                 "type": "keyword"
                             },
                             "award": {

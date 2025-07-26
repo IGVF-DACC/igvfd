@@ -1,6 +1,6 @@
 {
-    "hash": "079b30586f87ba628dda4c168884da74",
-    "index_name": "tabular_file_079b3058",
+    "hash": "7e4dda713c51a727ac9fe6e93ddc6a4a",
+    "index_name": "tabular_file_7e4dda71",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -2917,9 +2917,6 @@
                                 "type": "keyword"
                             },
                             "analysis_step_versions": {
-                                "type": "keyword"
-                            },
-                            "analysis_steps": {
                                 "type": "keyword"
                             },
                             "award": {
