@@ -77,3 +77,17 @@ def analysis_step_v6(testapp, base_workflow):
         'output_content_types': ['alignments', 'comprehensive gene count matrix']
     })
     return item
+
+
+@pytest.fixture
+def analysis_step_v8(testapp, base_workflow):
+    item = {
+        'schema_version': '8',
+        'step_label': 'base-analysis-step',
+        'title': 'Base Analysis Step',
+        'input_content_types': ['reads'],
+        'output_content_types': ['alignments'],
+        'analysis_step_types': ['alignment'],
+        'workflow': base_workflow['@id']
+    }
+    return item
