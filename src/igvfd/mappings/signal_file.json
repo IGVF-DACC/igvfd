@@ -1,6 +1,6 @@
 {
-    "hash": "0093cac65ec630553120aee5c387b71c",
-    "index_name": "signal_file_0093cac6",
+    "hash": "04641b0be46bb5af3cfaf1d4eb65c753",
+    "index_name": "signal_file_04641b0b",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -2892,7 +2892,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"

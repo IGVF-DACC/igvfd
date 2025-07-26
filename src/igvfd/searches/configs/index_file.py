@@ -50,10 +50,10 @@ def index_file():
             'file_set.samples.disease_terms.term_name': {
                 'title': 'Sample Phenotype'
             },
-            'workflow.name': {
-                'title': 'Workflow'
+            'workflows.name': {
+                'title': 'Workflows'
             },
-            'workflow.uniform_pipeline': {
+            'workflows.uniform_pipeline': {
                 'title': 'Uniformly Processed'
             },
             'file_format_specifications.standardized_file_format': {
