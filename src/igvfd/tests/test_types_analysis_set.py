@@ -483,7 +483,7 @@ def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set
                ) == {phenotype_term_from_go['@id'], phenotype_term_myocardial_infarction['@id']}
 
 
-def test_workflows(testapp, analysis_set_with_workflow, matrix_file_with_base_workflow):
+def test_types_analysis_set_test_workflows(testapp, analysis_set_with_workflow, matrix_file_with_base_workflow, analysis_step_version):
     '''Test to make sure that workflow is computed correctly.'''
     testapp.patch_json(
         matrix_file_with_base_workflow['@id'],
@@ -492,8 +492,10 @@ def test_workflows(testapp, analysis_set_with_workflow, matrix_file_with_base_wo
         }
     )
     res = testapp.get(analysis_set_with_workflow['@id'])
-    assert set([workflow['@id'] for workflow in res.json.get('workflows')]
-               ) == {'/workflows/IGVFWF0000WRKF/'}
+    assert set(
+        workflow['@id']
+        for workflow in res.json.get('workflows')
+    ) == {'/workflows/IGVFWF0000WRKF/'}
 
 
 def test_targeted_genes(testapp, measurement_set, analysis_set_base, gene_myc_hs):
