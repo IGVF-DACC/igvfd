@@ -30,6 +30,20 @@ def analysis_step_2(testapp, other_lab, award):
 
 
 @pytest.fixture
+def analysis_step_3(testapp, other_lab, award):
+    item = {
+        'lab': other_lab['@id'],
+        'award': award['@id'],
+        'step_label': 'base-three-analysis-step',
+        'title': 'Base Three Analysis Step',
+        'input_content_types': ['reads'],
+        'output_content_types': ['alignments'],
+        'analysis_step_types': ['alignment'],
+    }
+    return testapp.post_json('/analysis_step', item).json['@graph'][0]
+
+
+@pytest.fixture
 def analysis_step_v1(analysis_step):
     item = analysis_step.copy()
     item.update({
