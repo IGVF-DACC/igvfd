@@ -119,7 +119,7 @@
             }
         },
         "file_format": {
-            "comment": "Bed, bedpe, bigBed, bigInteract, tagAlign, and vcf files must have assembly. This dependency is not relevant for alignment, sequence, or signal files.",
+            "comment": "Bam, bed, bedpe, bigBed, bigWig, bigInteract, tagAlign, gvcf, and vcf files must have assembly. This dependency is not relevant for alignment, sequence, or signal files.",
             "if": {
                 "properties": {
                     "file_format": {
@@ -128,6 +128,7 @@
                             "bedpe",
                             "bigBed",
                             "bigInteract",
+                            "gvcf",
                             "vcf"
                         ]
                     }
