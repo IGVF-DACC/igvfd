@@ -123,7 +123,7 @@ def audit_tabular_file_missing_reference_files(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message = get_audit_message(audit_file_no_file_format_specifications, index=0)
+    audit_message = get_audit_message(audit_tabular_file_missing_reference_files, index=0)
     excluded_content_types = [
         'barcode onlist',
         'barcode replacement',
