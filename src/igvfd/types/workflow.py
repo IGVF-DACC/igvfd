@@ -29,6 +29,43 @@ class Workflow(Item):
         Path('submitted_by', include=['@id', 'title']),
         Path('standards_page', include=['@id', 'title', 'status']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
+        Path(
+            'analysis_step_versions',
+            include=[
+                '@id',
+                'status',
+                'software_versions',
+                'analysis_step',
+            ]
+        ),
+        Path(
+            'analysis_step_versions.analysis_step',
+            include=[
+                '@id',
+                'title',
+                'status',
+                'analysis_step_types',
+                'input_content_types',
+                'output_content_types',
+            ]
+        ),
+        Path(
+            'analysis_step_versions.software_versions',
+            include=[
+                '@id',
+                'name',
+                'software',
+            ],
+        ),
+        Path(
+            'analysis_step_versions.software_versions.software',
+            include=[
+                '@id',
+                'title',
+                'name',
+                'status',
+            ]
+        ),
     ]
 
     set_status_up = [
