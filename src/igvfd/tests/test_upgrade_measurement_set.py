@@ -233,3 +233,9 @@ def test_measurement_set_upgrade_35_36(upgrader, measurement_set_v35):
     assert 'preferred_assay_title' not in value
     assert 'preferred_assay_titles' in value and value['preferred_assay_titles'] == [(preferred_assay_title)]
     assert value['schema_version'] == '36'
+
+
+def test_measurement_set_upgrade_36_37(upgrader, measurement_set_v36):
+    value = upgrader.upgrade('measurement_set', measurement_set_v36, current_version='36', target_version='37')
+    assert value['schema_version'] == '37'
+    assert value.get('preferred_assay_titles') == ['CC-Perturb-seq']
