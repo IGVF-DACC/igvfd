@@ -118,7 +118,7 @@ def audit_tabular_file_missing_reference_files(value, system):
         {
             "audit_description": "Tabular files which contain genomic coordinates or refer to variants are expected to specify reference files.",
             "audit_category": "missing reference files",
-            "audit_level": "NOT_COMPLIANT"
+            "audit_level": "INTERNAL_ACTION"
         }
     ]
     '''
