@@ -2,7 +2,7 @@
 
 ### Schema version 37
 
-* Adjust `preferred_assay_title` enum list to replace `Parse Perturb-seq` with `CC-Perturb-seq`.
+* Adjust `preferred_assay_titles` enum list to replace `Parse Perturb-seq` with `CC-Perturb-seq`.
 
 ### Schema version 36
 
