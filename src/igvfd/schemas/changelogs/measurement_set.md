@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 37
+
+* Adjust `preferred_assay_titles` enum list to replace `Parse Perturb-seq` with `CC-Perturb-seq`.
+
 ### Schema version 36
 
 * Add calculated property `assay_titles`

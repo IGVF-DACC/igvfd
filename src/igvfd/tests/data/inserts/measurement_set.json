@@ -695,7 +695,7 @@
     },
     {
         "aliases": [
-            "igvf:parse_perturb_seq"
+            "igvf:cc_perturb_seq"
         ],
         "award": "1UM1HG011972-01",
         "lab": "/labs/jesse-engreitz/",
@@ -708,7 +708,7 @@
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
         "preferred_assay_titles": [
-            "Parse Perturb-seq"
+            "CC-Perturb-seq"
         ],
         "file_set_type": "experimental data"
     },

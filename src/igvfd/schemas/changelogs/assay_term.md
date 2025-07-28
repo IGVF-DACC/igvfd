@@ -1,5 +1,9 @@
 ## Changelog for *`assay_term.json`*
 
+### Schema version 18
+
+* Adjust `preferred_assay_titles` enum list to replace `Parse Perturb-seq` with `CC-Perturb-seq`.
+
 ### Minor changes since schema version 17
 
 * Extend `preferred_assay_titles` enum list to include `Immune-SGE`.
