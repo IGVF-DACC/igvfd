@@ -30,8 +30,21 @@ class AnalysisStep(Item):
         Path('lab', include=['@id', 'title']),
         Path('parents', include=['@id', 'title', 'status']),
         Path('submitted_by', include=['@id', 'title']),
-        Path('analysis_step_versions.software_versions', include=[
-             '@id', 'analysis_step_versions', 'software_versions', 'name'])
+        Path(
+            'analysis_step_versions',
+            include=[
+                '@id',
+                'software_versions',
+            ]
+        ),
+        Path(
+            'analysis_step_versions.software_versions',
+            include=[
+                '@id',
+                'name',
+                'status',
+            ]
+        ),
     ]
 
     rev = {
@@ -41,18 +54,20 @@ class AnalysisStep(Item):
     set_status_up = []
     set_status_down = []
 
-    @calculated_property(schema={
-        'title': 'Analysis Step Versions',
-        'description': 'The analysis step versions associated with this analysis step.',
-        'type': 'array',
-        'minItems': 1,
-        'uniqueItems': True,
-        'items': {
-            'title': 'Analysis Step Version',
-            'type': 'string',
-            'linkFrom': 'AnalysisStepVersion.analysis_step',
-        },
-        'notSubmittable': True
-    })
+    @calculated_property(
+        schema={
+            'title': 'Analysis Step Versions',
+            'description': 'The analysis step versions associated with this analysis step.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Analysis Step Version',
+                'type': 'string',
+                'linkFrom': 'AnalysisStepVersion.analysis_step',
+            },
+            'notSubmittable': True
+        }
+    )
     def analysis_step_versions(self, request, analysis_step_versions):
         return paths_filtered_by_status(request, analysis_step_versions)
