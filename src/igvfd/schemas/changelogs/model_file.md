@@ -1,6 +1,9 @@
 ## Changelog for *`model_file.json`*
 
 ### Minor changes since schema version 2
+
+* Extend `collections` enum list to include `Benchmark`.
+* Extend `collections` enum list to include `TF Perturb-seq Project`.
 * Extend `content_type` enum list to include `covariance matrix`.
 
 ### Schema version 2

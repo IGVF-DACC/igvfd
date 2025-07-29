@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 14
 
+* Extend `collections` enum list to include `Benchmark`.
+* Extend `collections` enum list to include `TF Perturb-seq Project`.
 * Extend `ethnicities` enum list to include `Not Hispanic`.
 * Extend `ethnicities` enum list to include `Sandawe`.
 * Extend `ethnicities` enum list to include `Hadza`.

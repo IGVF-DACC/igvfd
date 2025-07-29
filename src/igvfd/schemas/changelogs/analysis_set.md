@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 10
 
+* Extend `collections` enum list to include `Benchmark`.
+* Extend `collections` enum list to include `TF Perturb-seq Project`.
 * Add `uniform_pipeline_status`.
 * Add calculated property `preferred_assay_titles`
 * Add calculated property `targeted_genes`.

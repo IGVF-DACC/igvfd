@@ -1,5 +1,10 @@
 ## Changelog for *`sequence_file.json`*
 
+### Minor changes since schema version 16
+
+* Extend `collections` enum list to include `Benchmark`.
+* Extend `collections` enum list to include `TF Perturb-seq Project`.
+
 ### Schema version 16
 
 * Add calculated property `preferred_assay_titles`

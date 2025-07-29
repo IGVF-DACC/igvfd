@@ -1,5 +1,10 @@
 ## Changelog for *`prediction_set.json`*
 
+### Minor changes since schema version 9
+
+* Extend `collections` enum list to include `Benchmark`.
+* Extend `collections` enum list to include `TF Perturb-seq Project`.
+
 ### Schema version 9
 
 * Reduce `file_set_type` enum list to exclude `pathogenicity`.

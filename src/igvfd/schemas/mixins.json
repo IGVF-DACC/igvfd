@@ -127,6 +127,7 @@
                 "type": "string",
                 "enum": [
                     "ACMG73",
+                    "Benchmark",
                     "ClinGen",
                     "ENCODE",
                     "GREGoR",
@@ -140,6 +141,7 @@
                     "Morphic",
                     "MPRAbase",
                     "StanfordFCC",
+                    "TF Perturb-seq Project",
                     "TOPMED Freeze 8",
                     "VarChAMP",
                     "Vista",
