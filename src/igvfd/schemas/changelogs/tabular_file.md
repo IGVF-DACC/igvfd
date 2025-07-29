@@ -3,6 +3,8 @@
 ### Minor changes since schema version 17
 
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
+* Add calculated property `workflows`.
+* Remove calculated property `workflow`.
 * Extend `file_format` enum list to include `gvcf`.
 * Extend `collections` enum list to include `Benchmark`.
 * Extend `collections` enum list to include `TF Perturb-seq Project`.
