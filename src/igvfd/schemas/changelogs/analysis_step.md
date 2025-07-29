@@ -1,5 +1,10 @@
 ## Changelog for *`analysis_step.json`*
 
+### Minor changes since schema version 8
+
+* Extend `output_content_types` enum list to include `covariance matrix`.
+* Extend `input_content_types` enum list to include `covariance matrix`.
+
 ### Schema version 8
 
 * Adjust `output_content_types` enum list to replace `variant functional predictions` with `variant functions`.

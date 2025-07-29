@@ -1,5 +1,8 @@
 ## Changelog for *`model_file.json`*
 
+### Minor changes since schema version 2
+* Extend `content_type` enum list to include `covariance matrix`.
+
 ### Schema version 2
 
 * Add calculated property `preferred_assay_titles`
