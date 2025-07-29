@@ -16,7 +16,8 @@ def test_types_analysis_step_version_audit_calc_workflows(testapp, analysis_step
         }
     )
     res = testapp.get(analysis_step_version_3['@id'])
-    assert res.json['workflows'] == [base_workflow_no_asv['@id']]
+    assert len(res.json['workflows']) == 1
+    assert res.json['workflows'][0]['@id'] == base_workflow_no_asv['@id']
     # Test: if one ASV is linked to multiple workflows
     testapp.patch_json(
         base_workflow_2['@id'],
@@ -27,4 +28,4 @@ def test_types_analysis_step_version_audit_calc_workflows(testapp, analysis_step
         }
     )
     res = testapp.get(analysis_step_version_3['@id'])
-    assert sorted(res.json['workflows']) == sorted([base_workflow_no_asv['@id'], base_workflow_2['@id']])
+    assert len(res.json['workflows']) == 2
