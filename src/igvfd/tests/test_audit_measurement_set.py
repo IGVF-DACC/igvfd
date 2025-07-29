@@ -994,6 +994,7 @@ def test_audit_missing_auxiliary_set_link(
     auxiliary_set_cell_sorting,
     tissue
 ):
+    # Test: If an measurement set doesn't have an auxiliary set linked, but one of its samples does, it should trigger an audit error.
     testapp.patch_json(
         base_auxiliary_set['@id'],
         {
@@ -1006,10 +1007,19 @@ def test_audit_missing_auxiliary_set_link(
         error['category'] == 'missing auxiliary set link'
         for error in res.json['audit'].get('ERROR', [])
     )
+    # Test: No auxiliary set audit if assay is CROP-seq even if one of its samples has an auxiliary set linked.
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'auxiliary_sets': [base_auxiliary_set['@id']]
+            'preferred_assay_titles': ['CROP-seq']
+        }
+    )
+    # Test: If Measurement Set has an auxiliary set linked, the audit error should go away.
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id']],
+            'preferred_assay_titles': ['STARR-seq']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -1017,6 +1027,7 @@ def test_audit_missing_auxiliary_set_link(
         error['category'] != 'missing auxiliary set link'
         for error in res.json['audit'].get('ERROR', [])
     )
+    # Test: Test if the same audit will be triggered with an auxiliary set of type 'cell sorting'
     testapp.patch_json(
         auxiliary_set_cell_sorting['@id'],
         {
@@ -1028,6 +1039,7 @@ def test_audit_missing_auxiliary_set_link(
         error['category'] == 'missing auxiliary set link'
         for error in res.json['audit'].get('ERROR', [])
     )
+    # Test: Deleted auxiliary sets should not trigger the audit error even if one of its samples is linked to the measurement set.
     testapp.patch_json(
         auxiliary_set_cell_sorting['@id'],
         {
