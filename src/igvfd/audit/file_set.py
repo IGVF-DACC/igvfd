@@ -59,7 +59,7 @@ def single_cell_check(system, value, object_type, single_cell_assay_terms=SINGLE
                 return True
         return False
     elif object_type == 'Construct library set':
-        samples = value.get('applied_to_samples', [])
+        samples = value.get('samples', [])
         for sample in samples:
             sample_obj = system.get('request').embed(
                 sample, '@@object_with_select_calculated_properties?field=file_sets')
@@ -553,8 +553,6 @@ def audit_unexpected_virtual_samples(value, system):
     samples = []
     if 'samples' in value:
         samples = value.get('samples')
-    if 'applied_to_samples' in value:
-        samples = value.get('applied_to_samples')
     for sample in samples:
         sample_object = system.get('request').embed(sample)
         if sample_object.get('virtual'):

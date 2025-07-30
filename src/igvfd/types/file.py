@@ -165,10 +165,10 @@ class File(Item):
         Path('file_set.assay_term', include=['@id', 'term_name']),
         Path('file_set.lab', include=['@id', 'title']),
         Path('integrated_in.associated_phenotypes', include=[
-             '@id', 'summary', 'status', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list', 'applied_to_samples']),
+             '@id', 'summary', 'status', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list', 'samples']),
         Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol', 'status']),
-        Path('integrated_in.applied_to_samples.sample_terms', include=['@id', 'summary', 'sample_terms', 'term_name']),
-        Path('workflows', include=['@id', 'uniform_pipeline', 'name', 'workflow_version']),
+        Path('integrated_in.samples.sample_terms', include=['@id', 'summary', 'sample_terms', 'term_name']),
+        Path('workflow', include=['@id', 'uniform_pipeline', 'name', 'workflow_version']),
         Path('file_set.assay_term', include=['@id', 'term_name']),
         Path('file_format_specifications', include=['@id', 'description', 'standardized_file_format']),
         Path('analysis_step_version.software_versions', include=['@id', 'summary', 'software_versions']),

@@ -323,7 +323,7 @@
         "file_format_specifications.description",
         "file_set.samples.summary",
         "file_set.summary",
-        "integrated_in.applied_to_samples.summary",
+        "integrated_in.samples.summary",
         "lab.title",
         "submitted_by.title",
         "submitted_file_name",

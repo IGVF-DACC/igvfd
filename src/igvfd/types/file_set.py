@@ -425,7 +425,7 @@ class AnalysisSet(FileSet):
                         '@@object_with_select_calculated_properties?'
                         'field=@type&field=file_set_type&field=measurement_sets'
                         '&field=input_file_sets&field=targeted_genes.symbol'
-                        '&field=assay_term&field=applied_to_samples'
+                        '&field=assay_term&field=samples'
                         '&field=assay_titles&field=preferred_assay_titles'
                     )
                     # Trace back from Analysis Sets to identify their
@@ -1625,14 +1625,14 @@ class ConstructLibrarySet(FileSet):
         Path('control_for', include=['@id', 'accession', 'aliases', 'status']),
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name', 'status']),
         Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
-        Path('applied_to_samples', include=['@id', '@type', 'accession',
+        Path('samples', include=['@id', '@type', 'accession',
              'aliases', 'classifications', 'disease_terms', 'donors', 'sample_terms', 'targeted_sample_term', 'status', 'summary', 'modifications', 'treatments', 'nucleic_acid_delivery']),
-        Path('applied_to_samples.donors', include=['@id', 'taxa', 'status']),
-        Path('applied_to_samples.disease_terms', include=['@id', 'term_name', 'status']),
-        Path('applied_to_samples.sample_terms', include=['@id', 'term_name', 'status']),
-        Path('applied_to_samples.targeted_sample_term', include=['@id', 'term_name', 'status']),
-        Path('applied_to_samples.modifications', include=['@id', 'modality', 'summary', 'status']),
-        Path('applied_to_samples.treatments', include=['@id', 'treatment_term_name', 'summary', 'status']),
+        Path('samples.donors', include=['@id', 'taxa', 'status']),
+        Path('samples.disease_terms', include=['@id', 'term_name', 'status']),
+        Path('samples.sample_terms', include=['@id', 'term_name', 'status']),
+        Path('samples.targeted_sample_term', include=['@id', 'term_name', 'status']),
+        Path('samples.modifications', include=['@id', 'modality', 'summary', 'status']),
+        Path('samples.treatments', include=['@id', 'treatment_term_name', 'summary', 'status']),
         Path('large_scale_gene_list', include=['@id', 'accession', 'aliases', 'status']),
         Path('large_scale_loci_list', include=['@id', 'accession', 'aliases', 'status']),
         Path('orf_list', include=['@id', 'orf_id', 'genes', 'aliases', 'status']),
@@ -1647,26 +1647,26 @@ class ConstructLibrarySet(FileSet):
         'integrated_content_files'
     ]
 
-    rev = FileSet.rev | {'applied_to_samples': ('Sample', 'construct_library_sets')}
+    rev = FileSet.rev | {'samples': ('Sample', 'construct_library_sets')}
 
     set_status_up = FileSet.set_status_up + ['integrated_content_files']
     set_status_down = FileSet.set_status_down + []
 
     @calculated_property(schema={
-        'title': 'Applied to Samples',
+        'title': 'Samples',
         'description': 'The samples that link to this construct library set.',
         'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
-            'title': 'Applied to Sample',
+            'title': 'Sample',
             'type': 'string',
             'linkFrom': 'Sample.construct_library_sets',
         },
         'notSubmittable': True
     })
-    def applied_to_samples(self, request, applied_to_samples):
-        return paths_filtered_by_status(request, applied_to_samples)
+    def samples(self, request, samples):
+        return paths_filtered_by_status(request, samples)
 
     @calculated_property(
         define=True,
@@ -1683,11 +1683,11 @@ class ConstructLibrarySet(FileSet):
             },
             'notSubmittable': True
         })
-    def file_sets(self, request, applied_to_samples=None):
-        if applied_to_samples is None:
-            applied_to_samples = []
+    def file_sets(self, request, samples=None):
+        if samples is None:
+            samples = []
         linked_file_sets = set()
-        for sample in applied_to_samples:
+        for sample in samples:
             sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=file_sets')
             for file_set in sample_object.get('file_sets', []):
                 linked_file_sets.add(file_set)

@@ -43,28 +43,28 @@ def construct_library_set():
             'integrated_content_files.content_type': {
                 'title': 'Integrated Content',
             },
-            'applied_to_samples.donors.taxa': {
+            'samples.donors.taxa': {
                 'title': 'Taxa',
             },
-            'applied_to_samples.classifications': {
+            'samples.classifications': {
                 'title': 'Classification',
             },
-            'applied_to_samples.sample_terms.term_name': {
+            'samples.sample_terms.term_name': {
                 'title': 'Sample',
             },
-            'applied_to_samples.targeted_sample_term.term_name': {
+            'samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
             },
-            'applied_to_samples.disease_terms.term_name': {
+            'samples.disease_terms.term_name': {
                 'title': 'Disease',
             },
-            'applied_to_samples.modifications.modality': {
+            'samples.modifications.modality': {
                 'title': 'Modification',
             },
-            'applied_to_samples.treatments.treatment_term_name': {
+            'samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
-            'applied_to_samples.nucleic_acid_delivery': {
+            'samples.nucleic_acid_delivery': {
                 'title': 'Nucleic Acid Delivery Method'
             },
             'files.content_type': {
