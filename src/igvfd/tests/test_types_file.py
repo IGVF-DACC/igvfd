@@ -120,7 +120,7 @@ def test_types_matrix_file_content_summary(testapp, matrix_file):
     assert res.json.get('content_summary') == 'variant by treatment by antibody capture in transcriptome annotations'
 
 
-def test_types_matrix_file_transcriptome_annotation(testapp, matrix_file, reference_file, reference_file_with_transcriptome):
+def test_types_file_calculated_transcriptome_annotation(testapp, matrix_file, signal_file, alignment_file, reference_file, reference_file_with_transcriptome):
     res = testapp.get(matrix_file['@id'])
     assert res.json.get('transcriptome_annotation') == None
     testapp.patch_json(
@@ -140,8 +140,48 @@ def test_types_matrix_file_transcriptome_annotation(testapp, matrix_file, refere
     res = testapp.get(matrix_file['@id'])
     assert res.json.get('transcriptome_annotation') == 'Mixed transcriptome annotations'
 
+    # Signal file
+    res = testapp.get(signal_file['@id'])
+    assert res.json.get('transcriptome_annotation') == None
+    testapp.patch_json(
+        signal_file['@id'],
+        {
+            'reference_files': [reference_file_with_transcriptome['@id']]
+        }
+    )
+    res = testapp.get(signal_file['@id'])
+    assert res.json.get('transcriptome_annotation') == 'GENCODE 43'
+    testapp.patch_json(
+        signal_file['@id'],
+        {
+            'reference_files': [reference_file['@id'], reference_file_with_transcriptome['@id']]
+        }
+    )
+    res = testapp.get(signal_file['@id'])
+    assert res.json.get('transcriptome_annotation') == 'Mixed transcriptome annotations'
 
-def test_types_matrix_file_assembly(testapp, matrix_file, reference_file, reference_file_with_assembly):
+    # Alignment file
+    res = testapp.get(alignment_file['@id'])
+    assert res.json.get('transcriptome_annotation') == None
+    testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'reference_files': [reference_file_with_transcriptome['@id']]
+        }
+    )
+    res = testapp.get(alignment_file['@id'])
+    assert res.json.get('transcriptome_annotation') == 'GENCODE 43'
+    testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'reference_files': [reference_file['@id'], reference_file_with_transcriptome['@id']]
+        }
+    )
+    res = testapp.get(alignment_file['@id'])
+    assert res.json.get('transcriptome_annotation') == 'Mixed transcriptome annotations'
+
+
+def test_types_file_calculated_assembly(testapp, matrix_file, signal_file, alignment_file, reference_file, reference_file_with_assembly):
     testapp.patch_json(
         reference_file['@id'],
         {
@@ -165,6 +205,46 @@ def test_types_matrix_file_assembly(testapp, matrix_file, reference_file, refere
         }
     )
     res = testapp.get(matrix_file['@id'])
+    assert res.json.get('assembly') == 'Mixed genome assemblies'
+
+    # Signal file
+    res = testapp.get(signal_file['@id'])
+    assert res.json.get('assembly') == None
+    testapp.patch_json(
+        signal_file['@id'],
+        {
+            'reference_files': [reference_file_with_assembly['@id']]
+        }
+    )
+    res = testapp.get(signal_file['@id'])
+    assert res.json.get('assembly') == 'GRCh38'
+    testapp.patch_json(
+        signal_file['@id'],
+        {
+            'reference_files': [reference_file['@id'], reference_file_with_assembly['@id']]
+        }
+    )
+    res = testapp.get(signal_file['@id'])
+    assert res.json.get('assembly') == 'Mixed genome assemblies'
+
+    # Alignment file
+    res = testapp.get(alignment_file['@id'])
+    assert res.json.get('assembly') == None
+    testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'reference_files': [reference_file_with_assembly['@id']]
+        }
+    )
+    res = testapp.get(alignment_file['@id'])
+    assert res.json.get('assembly') == 'GRCh38'
+    testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'reference_files': [reference_file['@id'], reference_file_with_assembly['@id']]
+        }
+    )
+    res = testapp.get(alignment_file['@id'])
     assert res.json.get('assembly') == 'Mixed genome assemblies'
 
 
