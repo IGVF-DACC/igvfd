@@ -537,3 +537,14 @@ def file_16_17(value, system):
         notes += f'The submitted transcriptome_annotation {value["transcriptome_annotation"]} was removed via upgrade. '
         del value['transcriptome_annotation']
     value['notes'] = notes.strip()
+
+
+@upgrade_step('tabular_file', '17', '18')
+def tabular_file_17_18(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2882
+    notes = value.get('notes', '')
+    if value['content_type'] == 'pipeline inputs':
+        value['content_type'] = 'pipeline parameters'
+        notes += f' This file\'s content_type was variant pipeline inputs, but has been upgraded to pipeline parameters.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
