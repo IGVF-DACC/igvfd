@@ -319,11 +319,87 @@ def audit_multiple_barcode_replacement_files_in_input(value, system):
         yield AuditFailure(audit_msg_unexpected_file.get('audit_category', ''), f'{detail} {audit_msg_unexpected_file.get("audit_description", "")}', level=audit_msg_unexpected_file.get('audit_level', ''))
 
 
+def audit_pipeline_parameters(value, system):
+    '''
+    [
+        {
+            "audit_description": "Analysis sets produced from uniform processing pipelines are expected to have pipeline parameters.",
+            "audit_category": "missing pipeline parameters",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Documents or files linked as a pipeline parameter are expected to have document or content type of pipeline parameters.",
+            "audit_category": "inconsistent pipeline parameter",
+            "audit_level": "ERROR"
+        },
+        {
+            "audit_description": "Documents with document type pipeline parameters are expected to be linked through the property pipeline parameters.",
+            "audit_category": "inconsistent documents",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    audit_message_missing_parameters = get_audit_message(audit_pipeline_parameters, index=0)
+    audit_message_inconsistent_parameters = get_audit_message(audit_pipeline_parameters, index=1)
+    audit_message_inconsistent_documents = get_audit_message(audit_pipeline_parameters, index=2)
+
+    pipeline_parameters = value.get('pipeline_parameters', [])
+    workflows = []
+    uniformly_processed = False
+    for workflow in workflows:
+        workflow_object = system.get('request').embed(workflow + '@@object?skip_calculated=true')
+        if workflow_object['uniform_pipeline']:
+            uniformly_processed = True
+    if uniformly_processed and not (pipeline_parameters):
+        detail = (
+            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has processed data from a uniform processing pipeline but no `pipeline_parameters`.'
+        )
+        yield AuditFailure(audit_message_missing_parameters.get('audit_category', ''), f'{detail} {audit_message_missing_parameters.get("audit_description", "")}', level=audit_message_missing_parameters.get('audit_level', ''))
+
+    inconsistent_pipeline_parameters = []
+    if pipeline_parameters:
+        for pipeline_parameter in pipeline_parameters:
+            pipeline_parameter_object = system.get('request').embed(
+                pipeline_parameter + '@@object?skip_calculated=true')
+            if pipeline_parameter.startswith('/documents/'):
+                if pipeline_parameter_object['document_type'] != 'pipeline parameters':
+                    inconsistent_pipeline_parameters.append(pipeline_parameter)
+            else:
+                if pipeline_parameter_object['content_type'] != 'pipeline parameters':
+                    inconsistent_pipeline_parameters.append(pipeline_parameter)
+    if inconsistent_pipeline_parameters:
+        inconsistent_pipeline_parameters = ', '.join(
+            [audit_link(path_to_text(pipeline_parameter), pipeline_parameter) for pipeline_parameter in inconsistent_pipeline_parameters])
+        detail = (
+            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has `pipeline_parameters` with inconsistent `document_type` or `content_type`: {inconsistent_pipeline_parameters}.'
+        )
+        yield AuditFailure(audit_message_inconsistent_parameters.get('audit_category', ''), f'{detail} {audit_message_inconsistent_parameters.get("audit_description", "")}', level=audit_message_inconsistent_parameters.get('audit_level', ''))
+
+    documents = value.get('documents', [])
+    inconsistent_documents = []
+    if documents:
+        for document in documents:
+            document_object = system.get('request').embed(pipeline_parameter + '@@object?skip_calculated=true')
+            if document_object['document_type'] == 'pipeline parameters':
+                inconsistent_documents.append(document)
+    if inconsistent_documents:
+        inconsistent_documents = ', '.join(
+            [audit_link(path_to_text(document), document) for document in inconsistent_documents])
+        detail = (
+            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has `documents`: {inconsistent_documents} with `document_type`: pipeline parameters.'
+        )
+        yield AuditFailure(audit_message_inconsistent_documents.get('audit_category', ''), f'{detail} {audit_message_inconsistent_documents.get("audit_description", "")}', level=audit_message_inconsistent_documents.get('audit_level', ''))
+
+
 function_dispatcher_analysis_set_object = {
     'audit_analysis_set_multiplexed_samples': audit_analysis_set_multiplexed_samples,
     'audit_analysis_set_inconsistent_onlist_info': audit_analysis_set_inconsistent_onlist_info,
     'audit_missing_transcriptome': audit_missing_transcriptome,
-    'audit_multiple_barcode_replacement_files_in_input': audit_multiple_barcode_replacement_files_in_input
+    'audit_multiple_barcode_replacement_files_in_input': audit_multiple_barcode_replacement_files_in_input,
+    'audit_pipeline_parameters': audit_pipeline_parameters
 }
 
 

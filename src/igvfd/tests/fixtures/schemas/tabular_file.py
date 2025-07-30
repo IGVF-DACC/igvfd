@@ -211,3 +211,13 @@ def tabular_file_v16_2(tabular_file):
         'content_type': 'element to gene predictions'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v17(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '17',
+        'content_type': 'pipeline inputs'
+    })
+    return item
