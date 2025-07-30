@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 10
 
+* Extend `collections` enum list to include `Benchmark`.
+* Extend `collections` enum list to include `TF Perturb-seq Project`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 24`.
 * Add `preview_timestamp`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
