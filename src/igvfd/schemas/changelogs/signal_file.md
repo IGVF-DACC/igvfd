@@ -1,5 +1,10 @@
 ## Changelog for *`signal_file.json`*
 
+### Minor changes since schema version 13
+
+* Add calculated property `workflows`.
+* Remove calculated property `workflow`.
+
 ### Schema version 13
 
 * Remove `assembly`.

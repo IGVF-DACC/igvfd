@@ -41,7 +41,7 @@ def matrix_file_hic(testapp, lab, award, measurement_set, reference_file):
 
 
 @pytest.fixture
-def matrix_file_with_base_workflow(testapp, lab, award, analysis_set_with_workflow, reference_file, analysis_step_version):
+def matrix_file_with_base_workflow(testapp, lab, award, analysis_set_with_workflow, reference_file, analysis_step_version, base_workflow):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -61,7 +61,7 @@ def matrix_file_with_base_workflow(testapp, lab, award, analysis_set_with_workfl
 
 
 @pytest.fixture
-def matrix_file_with_base_workflow_2(testapp, lab, award, analysis_set_base, reference_file, analysis_step_version_2):
+def matrix_file_with_base_workflow_2(testapp, lab, award, analysis_set_base, reference_file, analysis_step_version_2, base_workflow_2):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],

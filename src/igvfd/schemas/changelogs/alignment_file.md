@@ -1,5 +1,10 @@
 ## Changelog for *`alignment_file.json`*
 
+### Minor changes since schema version 17
+
+* Add calculated property `workflows`.
+* Remove calculated property `workflow`.
+
 ### Schema version 17
 
 * Remove `assembly`.

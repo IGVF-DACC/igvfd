@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 17
 
+* Add calculated property `workflows`.
+* Remove calculated property `workflow`.
 * Add calculated property `preferred_assay_titles`
 * Extend `content_type` enum list to include `read count`.
 * Extend `content_type` enum list to include `fold change of post-selection and pre-selection`.
