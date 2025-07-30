@@ -44,7 +44,7 @@ def reference_file():
             'integrated_in.small_scale_gene_list.symbol': {
                 'title': 'Construct Target Genes'
             },
-            'integrated_in.applied_to_samples.sample_terms.term_name': {
+            'integrated_in.samples.sample_terms.term_name': {
                 'title': 'Sample Integrated In'
             },
             'assembly': {

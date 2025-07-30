@@ -1,6 +1,6 @@
 {
-    "hash": "cffc39ab8765df0d522fb1517996d8b5",
-    "index_name": "multiplexed_sample_cffc39ab",
+    "hash": "5f967b436a9ae2c1280da8a6997e8cec",
+    "index_name": "multiplexed_sample_5f967b43",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -431,9 +431,6 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
-                            "applied_to_samples": {
-                                "type": "keyword"
-                            },
                             "assay_titles": {
                                 "type": "keyword"
                             },
@@ -619,6 +616,9 @@
                                 "type": "date"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "samples": {
                                 "type": "keyword"
                             },
                             "schema_version": {
@@ -949,9 +949,6 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
-                                "type": "keyword"
-                            },
-                            "applied_to_samples": {
                                 "type": "keyword"
                             },
                             "assay_term": {
