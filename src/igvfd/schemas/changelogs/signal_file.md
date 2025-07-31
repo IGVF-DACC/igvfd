@@ -1,5 +1,10 @@
 ## Changelog for *`signal_file.json`*
 
+### Minor changes since schema version 13
+
+* Extend `collections` enum list to include `Benchmark`.
+* Extend `collections` enum list to include `TF Perturb-seq Project`.
+
 ### Schema version 13
 
 * Remove `assembly`.

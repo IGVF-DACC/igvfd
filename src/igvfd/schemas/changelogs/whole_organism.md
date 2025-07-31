@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 25
 
+* Extend `collections` enum list to include `Benchmark`.
+* Extend `collections` enum list to include `TF Perturb-seq Project`.
 * Allow `originated_from` to link to Multiplexed Sample or Technical Sample.
 
 ### Schema version 25

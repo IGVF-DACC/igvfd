@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 9
 
+* Extend `collections` enum list to include `Benchmark`.
+* Extend `collections` enum list to include `TF Perturb-seq Project`.
 * Add calculated property `preferred_assay_titles`
 * Extend `file_format` enum list to include `rds`.
 * Add calculated property `transcriptome_annotation`.

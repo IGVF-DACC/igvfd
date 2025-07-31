@@ -710,7 +710,11 @@
         "preferred_assay_titles": [
             "CC-Perturb-seq"
         ],
-        "file_set_type": "experimental data"
+        "file_set_type": "experimental data",
+        "collections": [
+            "TF Perturb-seq Project",
+            "Benchmark"
+        ]
     },
     {
         "aliases": [

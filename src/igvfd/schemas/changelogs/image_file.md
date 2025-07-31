@@ -1,5 +1,10 @@
 ## Changelog for *`image_file.json`*
 
+### Minor changes since schema version 5
+
+* Extend `collections` enum list to include `Benchmark`.
+* Extend `collections` enum list to include `TF Perturb-seq Project`.
+
 ### Schema version 5
 
 * Add calculated property `preferred_assay_titles`
