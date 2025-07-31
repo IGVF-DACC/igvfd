@@ -1,6 +1,6 @@
 {
-    "hash": "fb7c34de206e960fe023f2ebc5bbdc8a",
-    "index_name": "auxiliary_set_fb7c34de",
+    "hash": "6fcfcf12ab18850777c147466f43d91e",
+    "index_name": "auxiliary_set_6fcfcf12",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -573,6 +573,9 @@
                                         "type": "keyword"
                                     },
                                     "quality_metrics": {
+                                        "type": "keyword"
+                                    },
+                                    "reference_files": {
                                         "type": "keyword"
                                     },
                                     "release_timestamp": {

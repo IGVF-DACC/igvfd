@@ -1,6 +1,6 @@
 {
-    "hash": "ffcab63fcd9dfec97c964a44d639aac4",
-    "index_name": "analysis_set_ffcab63f",
+    "hash": "9c70fe25f1f0bdbffcb64eaa1fb40d89",
+    "index_name": "analysis_set_9c70fe25",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -571,6 +571,9 @@
                                         "type": "keyword"
                                     },
                                     "quality_metrics": {
+                                        "type": "keyword"
+                                    },
+                                    "reference_files": {
                                         "type": "keyword"
                                     },
                                     "release_timestamp": {
