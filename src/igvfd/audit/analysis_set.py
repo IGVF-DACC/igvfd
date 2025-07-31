@@ -329,7 +329,7 @@ def audit_pipeline_parameters(value, system):
         },
         {
             "audit_description": "Documents or files linked as a pipeline parameter are expected to have document or content type of pipeline parameters.",
-            "audit_category": "inconsistent pipeline parameter",
+            "audit_category": "inconsistent pipeline parameters",
             "audit_level": "ERROR"
         },
         {
@@ -344,10 +344,12 @@ def audit_pipeline_parameters(value, system):
     audit_message_inconsistent_documents = get_audit_message(audit_pipeline_parameters, index=2)
 
     pipeline_parameters = value.get('pipeline_parameters', [])
-    workflows = []
+    workflows = value.get('workflows', [])
     uniformly_processed = False
     for workflow in workflows:
+        print(workflow)
         workflow_object = system.get('request').embed(workflow + '@@object?skip_calculated=true')
+        print(workflow_object['uniform_pipeline'])
         if workflow_object['uniform_pipeline']:
             uniformly_processed = True
     if uniformly_processed and not (pipeline_parameters):
