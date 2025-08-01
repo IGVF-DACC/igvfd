@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Add `pipeline_parameters`.
 * Extend `collections` enum list to include `Benchmark`.
 * Extend `collections` enum list to include `TF Perturb-seq Project`.
 * Add `uniform_pipeline_status`.

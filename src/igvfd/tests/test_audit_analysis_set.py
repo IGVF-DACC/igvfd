@@ -452,7 +452,6 @@ def test_audit_inconsistent_controlled_access_analysis_set(
     testapp,
     principal_analysis_set,
     analysis_set_base,
-    alignment_file,
     controlled_access_alignment_file,
     tissue,
     institutional_certificate
@@ -538,5 +537,55 @@ def test_audit_multiple_barcode_replacement_files_in_input_anaset(
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert all(
         error['category'] != 'unexpected barcode replacement file'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+
+def test_audit_missing_pipeline_parameters(
+    testapp,
+    analysis_set_base,
+    tabular_file,
+    workflow_uniform_pipeline,
+    analysis_step_version,
+    document_pipeline_parameters
+):
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'analysis_step_version': analysis_step_version['@id'],
+            'file_set': analysis_set_base['@id']
+        }
+    )
+    testapp.patch_json(
+        workflow_uniform_pipeline['@id'],
+        {
+            'uniform_pipeline': False
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing pipeline parameters'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        workflow_uniform_pipeline['@id'],
+        {
+            'uniform_pipeline': True
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing pipeline parameters'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'pipeline_parameters': [document_pipeline_parameters['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing pipeline parameters'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )

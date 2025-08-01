@@ -135,6 +135,25 @@
                 "appscript": "processing",
                 "igvf_utils": "processing"
             }
+        },
+        "pipeline_parameters": {
+            "title": "Pipeline Parameters",
+            "description": "The document(s) or file(s) providing necessary configurations for reproducing the analysis.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Pipeline Parameter",
+                "type": "string",
+                "linkTo": [
+                    "TabularFile",
+                    "Document"
+                ]
+            },
+            "submissionExample": {
+                "appscript": "[\"IGVFFI02881437\", \"john-doe:pipeline_paramters\"]",
+                "igvf_utils": "IGVFFI02881437 or john-doe:pipeline_paramters"
+            }
         }
     },
     "fuzzy_searchable_fields": [
