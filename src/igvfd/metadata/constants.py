@@ -1,5 +1,7 @@
 from collections import OrderedDict
 
+from snovault.elasticsearch.searches.configs import search_config
+
 
 METADATA_ALLOWED_TYPES = [
     'FileSet',
@@ -118,7 +120,7 @@ FROM_FILESET_FIELDS = [
 ]
 
 
-FROM_FILESET_FIELDS = [
+FROM_FILE_FIELDS = [
     ('File accession', ['accession']),
     ('File id', ['@id']),
     ('File format', ['file_format']),
@@ -161,3 +163,18 @@ FROM_FILESET_FIELDS = [
     ('Sequencing Platform', ['sequencing_platform']),
     ('Workflow', ['workflow.accession'])
 ]
+
+
+@search_config(
+    name='FromFileFields'
+)
+def from_file_fields():
+    columns = {
+        t[1][0]: {
+            'title': t[0]
+        }
+        for t in FROM_FILE_FIELDS
+    }
+    return {
+        'columns': columns
+    }
