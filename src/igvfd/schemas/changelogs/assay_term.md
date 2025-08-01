@@ -1,5 +1,10 @@
 ## Changelog for *`assay_term.json`*
 
+### Minor changes since schema version 17
+
+* Adjust `preferred_assay_titles` enum list to include `Parse Perturb-seq`.
+* Adjust `preferred_assay_titles` enum list to include `CROP-seq`.
+
 ### Schema version 18
 
 * Adjust `preferred_assay_titles` enum list to replace `Parse Perturb-seq` with `CC-Perturb-seq`.
