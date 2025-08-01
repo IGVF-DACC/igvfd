@@ -713,12 +713,12 @@ def audit_missing_barcode_replacement_file(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets with `preferred_assay_titles` Parse SPLiT-seq are expected to have `barcode_replacement_file`.",
+            "audit_description": "Measurement sets with `preferred_assay_titles` Parse SPLiT-seq, Parse Perturb-seq, or CC-Perturb-seq are expected to have `barcode_replacement_file`.",
             "audit_category": "missing barcode replacement file",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Measurement sets without `preferred_assay_titles` Parse SPLiT-seq are not expected to have `barcode_replacement_file`.",
+            "audit_description": "Measurement sets without `preferred_assay_titles` Parse SPLiT-seq, Parse Perturb-seq, or CC-Perturb-seq are not expected to have `barcode_replacement_file`.",
             "audit_category": "unexpected barcode replacement file",
             "audit_level": "NOT_COMPLIANT"
         }
@@ -728,7 +728,8 @@ def audit_missing_barcode_replacement_file(value, system):
     msg_unexpected_replacement_file = get_audit_message(audit_missing_barcode_replacement_file, index=1)
     preferred_assay_titles = value.get('preferred_assay_titles', [])
     barcode_replacement_file = value.get('barcode_replacement_file', None)
-    if 'Parse SPLiT-seq' in preferred_assay_titles:
+    parse_titles = {'Parse SPLiT-seq', 'Parse Perturb-seq', 'CC-Perturb-seq'}
+    if any(title in parse_titles for title in preferred_assay_titles):
         # Audit 1: If a Parse MeaSet has no barcode replacement file, audit it.
         if barcode_replacement_file is None:
             detail = (
@@ -742,7 +743,7 @@ def audit_missing_barcode_replacement_file(value, system):
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has unexpected `barcode_replacement_file` {audit_link(path_to_text(barcode_replacement_file), barcode_replacement_file)}. '
-                f'Only measurement sets with `preferred_assay_titles` Parse SPLiT-seq are expected to have `barcode_replacement_file`.'
+                f'Only measurement sets with `preferred_assay_titles` `preferred_assay_titles` Parse SPLiT-seq, Parse Perturb-seq, or CC-Perturb-seq are expected to have `barcode_replacement_file`.'
             )
             yield AuditFailure(msg_unexpected_replacement_file.get('audit_category', ''), f'{detail} {msg_unexpected_replacement_file.get("audit_description", "")}', level=msg_unexpected_replacement_file.get('audit_level', ''))
 
