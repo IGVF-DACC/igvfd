@@ -1,6 +1,6 @@
 {
-    "hash": "cb99106496980d6561ae7dc2f74f42aa",
-    "index_name": "alignment_file_cb991064",
+    "hash": "92f87e0c0e771447cd77104b3aa3c62e",
+    "index_name": "alignment_file_92f87e0c",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -295,13 +295,10 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
-<<<<<<< HEAD
-=======
                     "assembly": {
                         "copy_to": "_exact",
                         "type": "keyword"
                     },
->>>>>>> 98864cd04 (Address code review)
                     "award": {
                         "properties": {
                             "@id": {
@@ -2793,13 +2790,10 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
-<<<<<<< HEAD
-=======
                     "transcriptome_annotation": {
                         "copy_to": "_exact",
                         "type": "keyword"
                     },
->>>>>>> 98864cd04 (Address code review)
                     "upload_credentials": {
                         "properties": {},
                         "type": "object"
