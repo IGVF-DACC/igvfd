@@ -462,7 +462,7 @@ def test_file_summaries(
         }
     )
     res = testapp.get(signal_file['@id'])
-    assert res.json.get('summary', '') == 'filtered normalized plus strand signal of all reads'
+    assert res.json.get('summary', '') == 'GENCODE 43 filtered normalized plus strand signal of all reads'
     # Predictive signal file with software.
     testapp.patch_json(
         signal_file['@id'],
@@ -473,7 +473,7 @@ def test_file_summaries(
     )
     res = testapp.get(signal_file['@id'])
     assert res.json.get(
-        'summary', '') == 'predictive filtered normalized plus strand signal of all reads (Bowtie2 v2.4.4)'
+        'summary', '') == 'GENCODE 43 predictive filtered normalized plus strand signal of all reads (Bowtie2 v2.4.4)'
 
     testapp.patch_json(
         tabular_file['@id'],
