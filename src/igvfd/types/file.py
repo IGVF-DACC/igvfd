@@ -645,6 +645,7 @@ class AlignmentFile(File):
         )
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Transcriptome Annotation',
             'type': 'string',
@@ -690,6 +691,7 @@ class AlignmentFile(File):
         return transcriptome_annotation
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Genome Assembly',
             'type': 'string',
@@ -952,6 +954,7 @@ class SignalFile(File):
         )
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Transcriptome Annotation',
             'type': 'string',
@@ -997,6 +1000,7 @@ class SignalFile(File):
         return transcriptome_annotation
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Genome Assembly',
             'type': 'string',
