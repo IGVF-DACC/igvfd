@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Extend `uniform_pipeline_status` enum list to include `release ready`.
 * Extend `collections` enum list to include `Benchmark`.
 * Extend `collections` enum list to include `TF Perturb-seq Project`.
 * Add `uniform_pipeline_status`.

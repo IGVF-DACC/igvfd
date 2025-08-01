@@ -123,13 +123,15 @@
                 "preprocessing",
                 "processing",
                 "error",
-                "completed"
+                "completed",
+                "release ready"
             ],
             "enum_descriptions": {
                 "preprocessing": "The analysis set has been created with `input_file_sets` and is awaiting processing.",
                 "processing": "The analysis set is currently being processed by the single cell uniform pipeline on Terra.bio.",
                 "error": "An error has occurred during processing of the analysis set by the pipeline.",
-                "completed": "The analysis set has been successfully processed by the pipeline."
+                "completed": "The analysis set has been successfully processed by the pipeline.",
+                "release ready": "The analysis set has passed data quality check and is ready for release."
             },
             "submissionExample": {
                 "appscript": "processing",
