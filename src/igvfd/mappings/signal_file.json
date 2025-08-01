@@ -1,6 +1,6 @@
 {
-    "hash": "8d85b4afdabeabaaa0a3dc849ac6ca79",
-    "index_name": "signal_file_8d85b4af",
+    "hash": "14a1ea3b9dadfff3e9702df33a94a1d7",
+    "index_name": "signal_file_14a1ea3b",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -292,6 +292,13 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
+<<<<<<< HEAD
+=======
+                    "assembly": {
+                        "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+>>>>>>> 98864cd04 (Address code review)
                     "award": {
                         "properties": {
                             "@id": {
@@ -2871,6 +2878,13 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
+<<<<<<< HEAD
+=======
+                    "transcriptome_annotation": {
+                        "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+>>>>>>> 98864cd04 (Address code review)
                     "upload_credentials": {
                         "properties": {},
                         "type": "object"
