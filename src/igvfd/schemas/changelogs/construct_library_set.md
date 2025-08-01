@@ -1,5 +1,10 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Minor changes since schema version 12
+
+* Extend `collections` enum list to include `Benchmark`.
+* Extend `collections` enum list to include `TF Perturb-seq Project`.
+
 ### Schema version 12
 
 * Add calculated property `preferred_assay_titles`

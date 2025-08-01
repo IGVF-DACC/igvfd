@@ -78,6 +78,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'gds': '.gds.gz',
     'gff': '.gff.gz',
     'gtf': '.gtf.gz',
+    'gvcf': '.gvcf.gz',
     'idx': '.idx',
     'hic': '.hic',
     'h5ad': '.h5ad',

@@ -537,6 +537,8 @@ def audit_missing_auxiliary_set(value, system):
         'MPRA (scQer)': [('quantification DNA barcode sequencing', audit_message_MPRA), ('circularized RNA barcode detection', audit_message_scQer)],
         '10x multiome with MULTI-seq': [('lipid-conjugated oligo sequencing', audit_message_10X_MULTI_seq)]
     }
+    # exclude certain preferred assay titles that do not have or require auxiliary sets
+    no_expected_auxset_by_preferred_assay_title = ['CROP-seq']
 
     assay_titles = value.get('assay_titles', [])
     preferred_assay_titles = value.get('preferred_assay_titles', [])
@@ -549,14 +551,16 @@ def audit_missing_auxiliary_set(value, system):
     }
 
     if (
-        (any(title in expected_auxiliary_set_by_assay_term for title in assay_titles) or
-         any(title in expected_auxiliary_set_by_preferred_assay_title for title in preferred_assay_titles))
+        (any(title in expected_auxiliary_set_by_assay_term for title in assay_titles)
+         or any(title in expected_auxiliary_set_by_preferred_assay_title for title in preferred_assay_titles))
         and not any(control_type in exempted_control_types for control_type in control_types)
+        and not any(title in no_expected_auxset_by_preferred_assay_title for title in preferred_assay_titles)
     ):
         assay_to_check = None
         expected_auxiliary_dict_to_check = None
 
         for title in preferred_assay_titles:
+            # Continue checking expected auxiliary sets
             if title in expected_auxiliary_set_by_preferred_assay_title:
                 expected_auxiliary_dict_to_check = expected_auxiliary_set_by_preferred_assay_title
                 assay_to_check = title
@@ -634,7 +638,7 @@ def audit_onlist(value, system):
     onlist_files = value.get('onlist_files')
     onlist_method = value.get('onlist_method')
     assay_titles = value.get('assay_titles', [])
-    single_cell_assay_status = single_cell_check(system, value, 'Measurement set')
+    single_cell_assay_status = single_cell_check(system, value, 'Measurement set', include_perturb_seq=True)
     # Check if single cell assays MeaSets are missing both onlist files and methods
     if (single_cell_assay_status) and (not onlist_method) and (not onlist_files):
         detail = (

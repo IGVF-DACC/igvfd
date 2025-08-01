@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 12
 
+* Extend `collections` enum list to include `Benchmark`.
+* Extend `collections` enum list to include `TF Perturb-seq Project`.
 * Add calculated property `assay_titles`
 * Add calculated property `preferred_assay_titles`
 * Add `preview_timestamp`.

@@ -895,5 +895,26 @@
         "filtered": true,
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "24a775b6-dbe8-442d-8ba1-0a103a9982fb",
+        "accession": "IGVFFI0001GVCF",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_gvcf"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-06-06T12:34:56Z",
+        "md5sum": "ee061e284f5e31f39826e7367c5e9837",
+        "file_format": "gvcf",
+        "content_type": "variants",
+        "submitted_file_name": "/Users/igvf/igvf_files/genomic_variants.gvcf.gz",
+        "file_size": 4990121,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "filtered": false,
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
     }
 ]

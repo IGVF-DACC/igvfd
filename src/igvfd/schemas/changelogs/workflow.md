@@ -1,5 +1,10 @@
 ## Changelog for *`workflow.json`*
 
+### Minor changes since schema version 6
+
+* Extend `collections` enum list to include `Benchmark`.
+* Extend `collections` enum list to include `TF Perturb-seq Project`.
+
 ### Schema version 6
 
 * Change `workflow_version` from an integer to a string.
