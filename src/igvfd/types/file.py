@@ -1327,7 +1327,7 @@ class IndexFile(File):
         }
     )
     def assembly(self, request, derived_from):
-        parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
+        parent_file_object = request.embed(derived_from[0], '@@object_with_select_calculated_properties?field=assembly')
         if 'assembly' in parent_file_object:
             return f'{parent_file_object["assembly"]}'
 
@@ -1340,7 +1340,8 @@ class IndexFile(File):
         }
     )
     def transcriptome_annotation(self, request, derived_from):
-        parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
+        parent_file_object = request.embed(
+            derived_from[0], '@@object_with_select_calculated_properties?field=transcriptome_annotation')
         if 'transcriptome_annotation' in parent_file_object:
             return f'{parent_file_object["transcriptome_annotation"]}'
 
