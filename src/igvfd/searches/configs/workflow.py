@@ -74,6 +74,9 @@ def workflow():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'workflow_version': {
+                'title': 'Workflow Version'
             }
         }
     }
