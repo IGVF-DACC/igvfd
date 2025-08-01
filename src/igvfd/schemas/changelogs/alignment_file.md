@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 17
 
+* Add calculated property `transcriptome_annotation`.
+* Add calculated property `assembly`.
 * Extend `collections` enum list to include `Benchmark`.
 * Extend `collections` enum list to include `TF Perturb-seq Project`.
 

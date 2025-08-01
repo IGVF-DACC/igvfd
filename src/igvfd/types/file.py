@@ -644,6 +644,84 @@ class AlignmentFile(File):
              if x is not None]
         )
 
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Transcriptome Annotation',
+            'type': 'string',
+            'description': 'The annotation and version of the reference resource.',
+            'enum': [
+                'GENCODE 22',
+                'GENCODE 24',
+                'GENCODE 28',
+                'GENCODE 32',
+                'GENCODE 40',
+                'GENCODE 41',
+                'GENCODE 42',
+                'GENCODE 43',
+                'GENCODE 44',
+                'GENCODE 45',
+                'GENCODE 47',
+                'GENCODE Cast - M32',
+                'GENCODE M17',
+                'GENCODE M25',
+                'GENCODE M30',
+                'GENCODE M31',
+                'GENCODE M32',
+                'GENCODE M33',
+                'GENCODE M34',
+                'GENCODE M36',
+                'GENCODE 32, GENCODE M23',
+                'Mixed transcriptome annotations'
+            ],
+            'notSubmittable': True
+        }
+    )
+    def transcriptome_annotation(self, request, reference_files):
+        transcriptome_annotation_set = set()
+        transcriptome_annotation = None
+        for ref_file in paths_filtered_by_status(request, reference_files):
+            ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
+            if ref_file_object['content_type'] == 'transcriptome reference' or ref_file_object['content_type'] == 'transcriptome index':
+                transcriptome_annotation_set.add(ref_file_object.get('transcriptome_annotation', None))
+        if len(transcriptome_annotation_set) > 1:
+            transcriptome_annotation = 'Mixed transcriptome annotations'
+        elif len(transcriptome_annotation_set) == 1:
+            transcriptome_annotation = list(transcriptome_annotation_set)[0]
+        return transcriptome_annotation
+
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Genome Assembly',
+            'type': 'string',
+            'description': 'The assembly associated with the alignment file.',
+            'enum': [
+                'GRCh38',
+                'hg19',
+                'Cast - GRCm39',
+                'GRCm39',
+                'mm10',
+                'GRCh38, mm10',
+                'custom',
+                'Mixed genome assemblies'
+            ],
+            'notSubmittable': True
+        }
+    )
+    def assembly(self, request, reference_files):
+        assembly_set = set()
+        assembly = None
+        for ref_file in paths_filtered_by_status(request, reference_files):
+            ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
+            if ref_file_object['content_type'] == 'genome reference' or ref_file_object['content_type'] == 'genome index':
+                assembly_set.add(ref_file_object.get('assembly', None))
+        if len(assembly_set) > 1:
+            assembly = 'Mixed genome assemblies'
+        elif len(assembly_set) == 1:
+            assembly = list(assembly_set)[0]
+        return assembly
+
 
 @collection(
     name='matrix-files',
@@ -874,6 +952,84 @@ class SignalFile(File):
             [x for x in [formatted_assembly, transcriptome_annotation, predicted, content_summary, software_version_phrase]
              if x is not None]
         )
+
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Transcriptome Annotation',
+            'type': 'string',
+            'description': 'The annotation and version of the reference resource.',
+            'enum': [
+                'GENCODE 22',
+                'GENCODE 24',
+                'GENCODE 28',
+                'GENCODE 32',
+                'GENCODE 40',
+                'GENCODE 41',
+                'GENCODE 42',
+                'GENCODE 43',
+                'GENCODE 44',
+                'GENCODE 45',
+                'GENCODE 47',
+                'GENCODE Cast - M32',
+                'GENCODE M17',
+                'GENCODE M25',
+                'GENCODE M30',
+                'GENCODE M31',
+                'GENCODE M32',
+                'GENCODE M33',
+                'GENCODE M34',
+                'GENCODE M36',
+                'GENCODE 32, GENCODE M23',
+                'Mixed transcriptome annotations'
+            ],
+            'notSubmittable': True
+        }
+    )
+    def transcriptome_annotation(self, request, reference_files):
+        transcriptome_annotation_set = set()
+        transcriptome_annotation = None
+        for ref_file in paths_filtered_by_status(request, reference_files):
+            ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
+            if ref_file_object['content_type'] == 'transcriptome reference' or ref_file_object['content_type'] == 'transcriptome index':
+                transcriptome_annotation_set.add(ref_file_object.get('transcriptome_annotation', None))
+        if len(transcriptome_annotation_set) > 1:
+            transcriptome_annotation = 'Mixed transcriptome annotations'
+        elif len(transcriptome_annotation_set) == 1:
+            transcriptome_annotation = list(transcriptome_annotation_set)[0]
+        return transcriptome_annotation
+
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Genome Assembly',
+            'type': 'string',
+            'description': 'The assembly associated with the signal file.',
+            'enum': [
+                'GRCh38',
+                'hg19',
+                'Cast - GRCm39',
+                'GRCm39',
+                'mm10',
+                'GRCh38, mm10',
+                'custom',
+                'Mixed genome assemblies'
+            ],
+            'notSubmittable': True
+        }
+    )
+    def assembly(self, request, reference_files):
+        assembly_set = set()
+        assembly = None
+        for ref_file in paths_filtered_by_status(request, reference_files):
+            ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
+            if ref_file_object['content_type'] == 'genome reference' or ref_file_object['content_type'] == 'genome index':
+                assembly_set.add(ref_file_object.get('assembly', None))
+        if len(assembly_set) > 1:
+            assembly = 'Mixed genome assemblies'
+        elif len(assembly_set) == 1:
+            assembly = list(assembly_set)[0]
+        return assembly
 
 
 @collection(
@@ -1175,7 +1331,7 @@ class IndexFile(File):
         }
     )
     def assembly(self, request, derived_from):
-        parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
+        parent_file_object = request.embed(derived_from[0], '@@object_with_select_calculated_properties?field=assembly')
         if 'assembly' in parent_file_object:
             return f'{parent_file_object["assembly"]}'
 
@@ -1188,7 +1344,8 @@ class IndexFile(File):
         }
     )
     def transcriptome_annotation(self, request, derived_from):
-        parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
+        parent_file_object = request.embed(
+            derived_from[0], '@@object_with_select_calculated_properties?field=transcriptome_annotation')
         if 'transcriptome_annotation' in parent_file_object:
             return f'{parent_file_object["transcriptome_annotation"]}'
 

@@ -622,7 +622,7 @@
         "transcriptome_annotation": {
             "title": "Transcriptome Annotation",
             "description": "The annotation and version of the reference resource.",
-            "comment": "This enum list should be updated simultaneously for matrix file.",
+            "comment": "This enum list should be updated simultaneously for alignment, matrix, and signal file.",
             "type": "string",
             "enum": [
                 "GENCODE 22",
@@ -657,7 +657,7 @@
         "assembly": {
             "title": "Genome Assembly",
             "description": "Genome assembly.",
-            "comment": "This enum list should be updated simultaneously for matrix file.",
+            "comment": "This enum list should be updated simultaneously for alignment, matrix, and signal file.",
             "type": "string",
             "enum": [
                 "GRCh38",

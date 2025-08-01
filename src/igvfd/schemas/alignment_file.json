@@ -143,7 +143,9 @@
         "@type",
         "dbxrefs",
         "file_format",
-        "file_set.accession"
+        "file_set.accession",
+        "assembly",
+        "transcriptome_annotation"
     ],
     "changelog": "/profiles/changelogs/alignment_file.md"
 }
