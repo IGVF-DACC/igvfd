@@ -101,6 +101,7 @@
                                         "bedpe",
                                         "csv",
                                         "gtf",
+                                        "gvcf",
                                         "tar",
                                         "tsv",
                                         "vcf"
@@ -293,6 +294,7 @@
                 "bigBed",
                 "csv",
                 "gtf",
+                "gvcf",
                 "tar",
                 "tsv",
                 "vcf"
