@@ -96,7 +96,7 @@ class User(Item):
             return
         uuids = self.registry[CONNECTION].get_rev_links(self.model, 'user', 'AccessKey')
         objects = (request.embed('/', str(uuid), '@@object') for uuid in uuids)
-        return [obj for obj in objects if obj['status'] not in ('deleted', 'replaced')] or None
+        return [obj for obj in objects if obj['status'] not in ('deleted', 'replaced')]
 
 
 @view_config(
