@@ -51,7 +51,7 @@ def single_cell_check(system, value, object_type, single_cell_assay_terms=SINGLE
         assay_term = value.get('assay_term')
         return assay_term in single_cell_assay_terms
     elif object_type == 'Auxiliary set':
-        measurement_sets = value.get('measurement_sets')
+        measurement_sets = value.get('measurement_sets', [])
         for measurement_set in measurement_sets:
             measurement_set_obj = system.get('request').embed(measurement_set, '@@object?skip_calculated=true')
             assay_term = measurement_set_obj.get('assay_term')
@@ -59,11 +59,11 @@ def single_cell_check(system, value, object_type, single_cell_assay_terms=SINGLE
                 return True
         return False
     elif object_type == 'Construct library set':
-        samples = value.get('applied_to_samples')
+        samples = value.get('applied_to_samples', [])
         for sample in samples:
             sample_obj = system.get('request').embed(
                 sample, '@@object_with_select_calculated_properties?field=file_sets')
-            file_sets = sample_obj.get('file_sets')
+            file_sets = sample_obj.get('file_sets', [])
             for file_set in file_sets:
                 if file_set.startswith('/measurement-sets/'):
                     measurement_set_obj = system.get('request').embed(file_set, '@@object?skip_calculated=true')
@@ -353,7 +353,7 @@ def audit_inconsistent_seqspec(value, system):
         for key, file_dict in sequence_to_seqspec.items():
             for file, seqspec in file_dict.items():
                 if seqspec:
-                    seqspec_str_formatted = ':'.join(sorted(list(seqspec)))
+                    seqspec_str_formatted = ':'.join(sorted(seqspec))
                     if seqspec_str_formatted not in seqspec_to_sequence:
                         seqspec_to_sequence[seqspec_str_formatted] = [(key, file)]
                     else:
@@ -450,20 +450,18 @@ def audit_inconsistent_sequencing_kit(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_inconsistent_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=0)
-    if 'files' in value:
-        file_info = {}
-        for file in value['files']:
-            if file.startswith('/sequence-files/'):
-                sequence_file_object = system.get('request').embed(file)
+    file_info = {}
+    for file in value.get('files', []):
+        if file.startswith('/sequence-files/'):
+            sequence_file_object = system.get('request').embed(file)
 
-                sequencing_run = str(sequence_file_object.get('sequencing_run'))
-                sequencing_kit = sequence_file_object.get('sequencing_kit', '')
-                sequencing_platform = sequence_file_object.get('sequencing_platform', '').get('@id')
+            sequencing_run = str(sequence_file_object.get('sequencing_run'))
+            sequencing_kit = sequence_file_object.get('sequencing_kit', '')
+            sequencing_platform = sequence_file_object.get('sequencing_platform', '').get('@id')
 
-                file_info[file] = {'kit': sequencing_kit, 'run': sequencing_run, 'platform': sequencing_platform}
+            file_info[file] = {'kit': sequencing_kit, 'run': sequencing_run, 'platform': sequencing_platform}
     if not file_info:
         return
-
     missing_kit = []
     for file in file_info:
         if file_info[file]['kit'] == '':
@@ -530,7 +528,7 @@ def audit_auxiliary_set_construct_library_set_files(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message = get_audit_message(audit_auxiliary_set_construct_library_set_files)
-    non_sequence_files = [file for file in value.get('files') if not (
+    non_sequence_files = [file for file in value.get('files', []) if not (
         file.startswith('/sequence-files/') or file.startswith('/configuration-files/'))]
     if non_sequence_files and value.get('file_set_type', '') != 'cell sorting':
         non_sequence_files = ', '.join(
@@ -756,13 +754,13 @@ def audit_control_for_control_type(value, system):
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_missing_control_type = get_audit_message(audit_control_for_control_type, index=0)
     audit_message_missing_control_for = get_audit_message(audit_control_for_control_type, index=1)
-    if value.get('control_for', '') and not (value.get('control_types', '')):
+    if value.get('control_for', []) and not (value.get('control_types', [])):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `control_types`.'
         )
         yield AuditFailure(audit_message_missing_control_type.get('audit_category', ''), f'{detail} {audit_message_missing_control_type.get("audit_description", "")}', level=audit_message_missing_control_type.get('audit_level', ''))
-    elif value.get('control_types', '') and not (value.get('control_for', '')):
+    elif value.get('control_types', []) and not (value.get('control_for', [])):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `control_for`. The `control_file_sets` should be patched on '
@@ -842,7 +840,7 @@ def audit_inconsistent_controlled_access(value, system):
     for sample in samples:
         sample_object = system.get('request').embed(
             sample, '@@object_with_select_calculated_properties?field=institutional_certificates&field=@id')
-        for ic in sample_object.get('institutional_certificates'):
+        for ic in sample_object.get('institutional_certificates', []):
             ic_object = system.get('request').embed(ic, '@@object_with_select_calculated_properties?field=@id')
             if any(ic_object.get('controlled_access') != access for access in files_by_access):
                 if ic_object.get('controlled_access') is True:
@@ -882,7 +880,7 @@ def audit_file_set_missing_publication(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message = get_audit_message(audit_file_set_missing_publication, index=0)
-    if value.get('status') in ['released', 'archived'] and not (value.get('publications')):
+    if value.get('status') in ['released', 'archived'] and not (value.get('publications', [])):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `publications`.'
@@ -962,7 +960,7 @@ def audit_input_file_sets_derived_from(value, system):
     audit_message_unexpected_input_file_set = get_audit_message(audit_input_file_sets_derived_from, index=3)
     detail = ''
     input_file_sets = value.get('input_file_sets', [])
-    files = value.get('files', '')
+    files = value.get('files', [])
     files_to_link = []
     derived_from_files_to_link = []
     missing_derived_from_file_sets = []
@@ -971,7 +969,7 @@ def audit_input_file_sets_derived_from(value, system):
     if files:
         for file in files:
             file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
-            derived_from_files = file_object.get('derived_from', '')
+            derived_from_files = file_object.get('derived_from', [])
             if derived_from_files:
                 for derived_from_file in derived_from_files:
                     derived_from_file_object = system.get('request').embed(

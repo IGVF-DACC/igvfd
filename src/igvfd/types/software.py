@@ -49,7 +49,7 @@ class Software(Item):
         }
     })
     def versions(self, request, versions):
-        return paths_filtered_by_status(request, versions)
+        return paths_filtered_by_status(request, versions) or None
 
     @calculated_property(
         schema={

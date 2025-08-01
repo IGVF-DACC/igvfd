@@ -22,5 +22,5 @@ def checker1(value, system):
 @audit_checker('testing_link_target')
 def testing_link_target_status(value, system):
     if value.get('status') == 'CHECK':
-        if not len(value['reverse']):
+        if not len(value.get('reverse', [])):
             return AuditFailure('status', 'Missing reverse items')

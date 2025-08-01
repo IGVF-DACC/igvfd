@@ -87,7 +87,7 @@ class Publication(Item):
         'notSubmittable': True
     })
     def samples(self, request, samples):
-        return paths_filtered_by_status(request, samples)
+        return paths_filtered_by_status(request, samples) or None
 
     @calculated_property(schema={
         'title': 'Donors',
@@ -103,7 +103,7 @@ class Publication(Item):
         'notSubmittable': True
     })
     def donors(self, request, donors):
-        return paths_filtered_by_status(request, donors)
+        return paths_filtered_by_status(request, donors) or None
 
     @calculated_property(schema={
         'title': 'File Sets',
@@ -119,7 +119,7 @@ class Publication(Item):
         'notSubmittable': True
     })
     def file_sets(self, request, file_sets):
-        return paths_filtered_by_status(request, file_sets)
+        return paths_filtered_by_status(request, file_sets) or None
 
     @calculated_property(schema={
         'title': 'Workflows',
@@ -135,7 +135,7 @@ class Publication(Item):
         'notSubmittable': True
     })
     def workflows(self, request, workflows):
-        return paths_filtered_by_status(request, workflows)
+        return paths_filtered_by_status(request, workflows) or None
 
     @calculated_property(schema={
         'title': 'Software',
@@ -151,7 +151,7 @@ class Publication(Item):
         'notSubmittable': True
     })
     def software(self, request, software):
-        return paths_filtered_by_status(request, software)
+        return paths_filtered_by_status(request, software) or None
 
     @calculated_property(schema={
         'title': 'Software Versions',
@@ -167,4 +167,4 @@ class Publication(Item):
         'notSubmittable': True
     })
     def software_versions(self, request, software_versions):
-        return paths_filtered_by_status(request, software_versions)
+        return paths_filtered_by_status(request, software_versions) or None

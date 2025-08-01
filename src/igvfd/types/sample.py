@@ -28,7 +28,7 @@ def collect_multiplexed_samples_prop(request, multiplexed_samples, property_name
             else:
                 property_set.add(property_contents)
     property_list = sorted(property_set)
-    return property_list
+    return property_list or None
 
 
 def decompose_multiplexed_samples(request, samples, visited_multiplexed_samples=None):
@@ -164,11 +164,11 @@ class Sample(Item):
         for multiplexed_sample in multiplexed_in:
             multiplexed_sample_object = request.embed(
                 multiplexed_sample, '@@object_with_select_calculated_properties?field=file_sets')
-            multiplexed_file_sets = multiplexed_sample_object.get('file_sets')
+            multiplexed_file_sets = multiplexed_sample_object.get('file_sets', [])
             for file_set in multiplexed_file_sets:
                 if file_set not in file_sets:
                     file_sets.append(file_set)
-        return paths_filtered_by_status(request, file_sets)
+        return paths_filtered_by_status(request, file_sets) or None
 
     @calculated_property(schema={
         'title': 'Multiplexed In',
@@ -184,7 +184,7 @@ class Sample(Item):
         'notSubmittable': True,
     })
     def multiplexed_in(self, request, multiplexed_in):
-        return paths_filtered_by_status(request, multiplexed_in)
+        return paths_filtered_by_status(request, multiplexed_in) or None
 
     @calculated_property(schema={
         'title': 'Sorted Fraction Samples',
@@ -200,7 +200,7 @@ class Sample(Item):
         'notSubmittable': True,
     })
     def sorted_fractions(self, request, sorted_fractions):
-        return paths_filtered_by_status(request, sorted_fractions)
+        return paths_filtered_by_status(request, sorted_fractions) or None
 
     @calculated_property(schema={
         'title': 'Origin Sample Of',
@@ -216,7 +216,7 @@ class Sample(Item):
         'notSubmittable': True,
     })
     def origin_of(self, request, origin_of):
-        return paths_filtered_by_status(request, origin_of)
+        return paths_filtered_by_status(request, origin_of) or None
 
     @calculated_property(schema={
         'title': 'Institutional Certificates',
@@ -232,7 +232,7 @@ class Sample(Item):
         'notSubmittable': True,
     })
     def institutional_certificates(self, request, institutional_certificates):
-        return paths_filtered_by_status(request, institutional_certificates)
+        return paths_filtered_by_status(request, institutional_certificates) or None
 
 
 @abstract_collection(
@@ -475,7 +475,7 @@ class Biosample(Sample):
                     if donor_object['taxa'] == 'Mus musculus':
                         strains_set.add(donor_object.get('strain', ''))
                 strains = ', '.join(sorted(strains_set))
-                taxa_list = sorted(list(taxa_set))
+                taxa_list = sorted(taxa_set)
                 if 'Mus musculus' in taxa_list:
                     mouse_index = taxa_list.index('Mus musculus')
                     taxa_list[mouse_index] += f' {strains}'
@@ -606,7 +606,7 @@ class Biosample(Sample):
         'notSubmittable': True,
     })
     def parts(self, request, parts):
-        return paths_filtered_by_status(request, parts)
+        return paths_filtered_by_status(request, parts) or None
 
     @calculated_property(schema={
         'title': 'Pooled In',
@@ -622,7 +622,7 @@ class Biosample(Sample):
         'notSubmittable': True,
     })
     def pooled_in(self, request, pooled_in):
-        return paths_filtered_by_status(request, pooled_in)
+        return paths_filtered_by_status(request, pooled_in) or None
 
 
 @collection(
@@ -694,7 +694,7 @@ class InVitroSystem(Biosample):
         'notSubmittable': True,
     })
     def demultiplexed_to(self, request, demultiplexed_to):
-        return paths_filtered_by_status(request, demultiplexed_to)
+        return paths_filtered_by_status(request, demultiplexed_to) or None
 
 
 @collection(
@@ -1118,12 +1118,8 @@ class MultiplexedSample(Sample):
         }
     )
     def construct_library_sets(self, request, multiplexed_samples):
-        construct_library_sets = collect_multiplexed_samples_prop(
+        return collect_multiplexed_samples_prop(
             request, multiplexed_samples, 'construct_library_sets')
-        if construct_library_sets:
-            return construct_library_sets
-        else:
-            return None
 
     @calculated_property(
         schema={

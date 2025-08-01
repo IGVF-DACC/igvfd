@@ -205,7 +205,7 @@ class File(Item):
         'notSubmittable': True
     })
     def integrated_in(self, request, integrated_in):
-        return paths_filtered_by_status(request, integrated_in)
+        return paths_filtered_by_status(request, integrated_in) or None
 
     @calculated_property(schema={
         'title': 'Input File For',
@@ -221,7 +221,7 @@ class File(Item):
         'notSubmittable': True
     })
     def input_file_for(self, request, input_file_for):
-        return paths_filtered_by_status(request, input_file_for)
+        return paths_filtered_by_status(request, input_file_for) or None
 
     @calculated_property(schema={
         'title': 'Gene List For',
@@ -237,7 +237,7 @@ class File(Item):
         'notSubmittable': True
     })
     def gene_list_for(self, request, gene_list_for):
-        return paths_filtered_by_status(request, gene_list_for)
+        return paths_filtered_by_status(request, gene_list_for) or None
 
     @calculated_property(schema={
         'title': 'Loci List For',
@@ -253,7 +253,7 @@ class File(Item):
         'notSubmittable': True
     })
     def loci_list_for(self, request, loci_list_for):
-        return paths_filtered_by_status(request, loci_list_for)
+        return paths_filtered_by_status(request, loci_list_for) or None
 
     @calculated_property(schema={
         'title': 'Quality Metrics',
@@ -269,7 +269,7 @@ class File(Item):
         'notSubmittable': True
     })
     def quality_metrics(self, request, quality_metrics):
-        return paths_filtered_by_status(request, quality_metrics)
+        return paths_filtered_by_status(request, quality_metrics) or None
 
     @calculated_property(
         schema={
@@ -290,7 +290,7 @@ class File(Item):
         return request.embed(
             file_set,
             '@@object_with_select_calculated_properties?field=assay_titles'
-        ).get('assay_titles', [])
+        ).get('assay_titles') or None
 
     @calculated_property(
         schema={
@@ -503,7 +503,7 @@ class SequenceFile(File):
         'notSubmittable': True
     })
     def seqspecs(self, request, seqspecs):
-        return paths_filtered_by_status(request, seqspecs)
+        return paths_filtered_by_status(request, seqspecs) or None
 
     @calculated_property(
         schema={
@@ -1041,7 +1041,7 @@ class TabularFile(File):
         'notSubmittable': True
     })
     def barcode_map_for(self, request, barcode_map_for):
-        return paths_filtered_by_status(request, barcode_map_for)
+        return paths_filtered_by_status(request, barcode_map_for) or None
 
     @calculated_property(schema={
         'title': 'Primer Design For',
@@ -1057,7 +1057,7 @@ class TabularFile(File):
         'notSubmittable': True
     })
     def primer_design_for(self, request, primer_design_for):
-        return paths_filtered_by_status(request, primer_design_for)
+        return paths_filtered_by_status(request, primer_design_for) or None
 
 
 @collection(

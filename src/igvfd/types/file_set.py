@@ -18,7 +18,7 @@ def get_donors_from_samples(request, samples):
     donor_objects = []
     for sample in samples:
         donor_objects += request.embed(sample, '@@object').get('donors', [])
-    return sorted(set(donor_objects))
+    return sorted(set(donor_objects)) or None
 
 
 def get_file_objs_from_files(request, files):
@@ -208,7 +208,7 @@ class FileSet(Item):
         'notSubmittable': True
     })
     def control_for(self, request, control_for):
-        return paths_filtered_by_status(request, control_for)
+        return paths_filtered_by_status(request, control_for) or None
 
     @calculated_property(schema={
         'title': 'Submitted Files Timestamp',
@@ -253,7 +253,7 @@ class FileSet(Item):
         'notSubmittable': True
     })
     def input_for(self, request, input_for):
-        return paths_filtered_by_status(request, input_for)
+        return paths_filtered_by_status(request, input_for) or None
 
     @calculated_property(
         define=True,
@@ -281,8 +281,7 @@ class FileSet(Item):
                                           )
             if sample_object.get('construct_library_sets', []):
                 construct_library_sets = construct_library_sets | set(sample_object.get('construct_library_sets', []))
-        if construct_library_sets:
-            return sorted(construct_library_sets)
+        return sorted(construct_library_sets) or None
 
     @calculated_property(
         condition='samples',
@@ -640,7 +639,7 @@ class AnalysisSet(FileSet):
                     []
                 )
             )
-        return sorted(assay_list)
+        return sorted(assay_list) or None
 
     @calculated_property(
         condition='input_file_sets',
@@ -661,19 +660,18 @@ class AnalysisSet(FileSet):
         }
     )
     def samples(self, request, input_file_sets=None, demultiplexed_samples=None):
+        samples = set()
         if input_file_sets is not None:
-            samples = set()
             for fileset in input_file_sets:
                 input_file_set_object = request.embed(fileset, '@@object')
                 input_file_set_samples = set(input_file_set_object.get('samples', []))
                 if input_file_set_samples:
                     samples = samples | input_file_set_samples
-            samples = list(samples)
             if demultiplexed_samples:
                 # if the analysis set specifies a demultiplexed sample and all input data is multiplexed return just the demultiplexed_sample
                 if not ([sample for sample in samples if not (sample.startswith('/multiplexed-samples/'))]):
                     return demultiplexed_samples
-            return sorted(samples)
+        return sorted(samples)
 
     @calculated_property(
         condition='samples',
@@ -727,7 +725,7 @@ class AnalysisSet(FileSet):
             if 'MeasurementSet' in file_set_obj.get('@type'):
                 protocol = file_set_obj.get('protocols', [])
                 protocols.update(protocol)
-        return sorted(protocols)
+        return sorted(protocols) or None
 
     @calculated_property(
         condition='samples',
@@ -952,7 +950,7 @@ class AnalysisSet(FileSet):
         for file_set_object in file_set_objs:
             if 'MeasurementSet' in file_set_object.get('@type') or 'AnalysisSet' in file_set_object.get('@type'):
                 mechanism_objects.extend(file_set_object.get('functional_assay_mechanisms', []))
-        return sorted(set(mechanism_objects))
+        return sorted(set(mechanism_objects)) or None
 
     @calculated_property(
         schema={
@@ -1014,7 +1012,7 @@ class AnalysisSet(FileSet):
                     input_file_set, '@@object_with_select_calculated_properties?field=targeted_genes')
                 if 'targeted_genes' in input_file_set_object:
                     analysis_set_targeted_genes.update(input_file_set_object['targeted_genes'])
-        return sorted(analysis_set_targeted_genes)
+        return sorted(analysis_set_targeted_genes) or None
 
 
 @collection(
@@ -1055,8 +1053,7 @@ class CuratedSet(FileSet):
                 file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
                 if file_object.get('assembly'):
                     assembly_values.add(file_object.get('assembly'))
-            if assembly_values:
-                return sorted(assembly_values)
+            return sorted(assembly_values) or None
 
     @calculated_property(
         define=True,
@@ -1080,8 +1077,7 @@ class CuratedSet(FileSet):
                 file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
                 if file_object.get('transcriptome_annotation'):
                     annotation_values.add(file_object.get('transcriptome_annotation'))
-            if annotation_values:
-                return sorted(annotation_values)
+            return sorted(annotation_values) or None
 
     @calculated_property(
         schema={
@@ -1180,13 +1176,12 @@ class MeasurementSet(FileSet):
             related_datasets = []
             for sample in samples:
                 sample_object = request.embed(sample, '@@object')
-                if sample_object.get('file_sets'):
-                    for file_set_id in sample_object.get('file_sets'):
-                        if '/measurement-sets/' == file_set_id[:18] and \
-                            object_id != file_set_id and \
-                                file_set_id not in related_datasets:
-                            related_datasets.append(file_set_id)
-            return sorted(related_datasets)
+                for file_set_id in sample_object.get('file_sets', []):
+                    if '/measurement-sets/' == file_set_id[:18] and \
+                        object_id != file_set_id and \
+                            file_set_id not in related_datasets:
+                        related_datasets.append(file_set_id)
+            return sorted(related_datasets) or None
 
     @calculated_property(
         schema={
@@ -1428,8 +1423,7 @@ class ModelSet(FileSet):
                             analysis_step_version, '@@object?skip_calculated=true')
                         software_versions = software_versions + \
                             analysis_step_version_object.get('software_versions', [])
-        if software_versions:
-            return sorted(set(software_versions))
+        return sorted(set(software_versions)) or None
 
 
 @collection(
@@ -1704,8 +1698,7 @@ class ConstructLibrarySet(FileSet):
             sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=file_sets')
             for file_set in sample_object.get('file_sets', []):
                 linked_file_sets.add(file_set)
-        if linked_file_sets:
-            return sorted(linked_file_sets)
+        return sorted(linked_file_sets)
 
     @calculated_property(
         condition='file_sets',
@@ -1759,7 +1752,7 @@ class ConstructLibrarySet(FileSet):
                     file_set, '@@object_with_select_calculated_properties?field=assay_titles').get('assay_titles', [])
                 if assays:
                     assay_titles.update(assays)
-        return sorted(assay_titles)
+        return sorted(assay_titles) or None
 
     @calculated_property(
         schema={
