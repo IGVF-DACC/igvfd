@@ -82,18 +82,18 @@ FROM_FILESET_FIELDS = [
     ('File type', ['files.files_format_type']),
     ('File content type', ['files.content_type']),
     ('File summary', ['files.summary']),
-    ('Fileset accession', ['accession']),
-    ('Fileset type', ['file_set_type']),
+    ('FileSet accession', ['accession']),
+    ('FileSet type', ['file_set_type']),
     ('Assay titles', ['assay_titles']),
     ('Preferred assay titles', ['preferred_assay_titles']),
-    ('Donors', ['donors']),
-    ('Samples', ['samples /applied to samples']),
+    ('Donors', ['donors.@id']),
+    ('Samples', ['samples.@id']),
     ('Sample term names', ['samples.sample_terms.term_name']),
     ('Sample summaries', ['samples.summary']),
     ('Cell type annotation', ['files.cell_type_annotation']),
     ('Creation timestamp', ['files.creation_timestamp']),
     ('File size', ['files.file_size']),
-    ('Fileset lab', ['lab.title']),
+    ('FileSet lab', ['lab.title']),
     ('File download URL', ['files.href']),
     ('File s3_uri', ['files.s3_uri']),
     ('File assembly', ['files.assembly']),
@@ -116,7 +116,7 @@ FROM_FILESET_FIELDS = [
     ('Seq Spec Document', ['files.seqspec_document.@id']),
     ('Sequencing Kit', ['files.sequencing_kit']),
     ('Sequencing Platform', ['files.sequencing_platform']),
-    ('Workflow', ['files.workflow.accession'])
+    ('Workflows', ['files.workflows.accession'])
 ]
 
 
@@ -127,18 +127,18 @@ FROM_FILE_FIELDS = [
     ('File type', ['file_format_type']),
     ('File content type', ['content_type']),
     ('File summary', ['summary']),
-    ('Fileset accession', ['file_set.accession']),
-    ('Fileset type', ['file_set.file_set_type']),
+    ('FileSet accession', ['file_set.accession']),
+    ('FileSet type', ['file_set.file_set_type']),
     ('Assay titles', ['assay_titles']),
     ('Preferred assay titles', ['preferred_assay_titles']),
-    ('Donors', ['file_sets.donors']),
-    ('Samples', ['file_sets.samples/applied to samples']),
+    ('Donors', ['file_sets.donors.@id']),
+    ('Samples', ['file_sets.samples.@id']),
     ('Sample term names', ['file_sets.samples.sample_terms.term_name']),
     ('Sample summaries', ['file_sets.samples.summary']),
     ('Cell type annotation', ['cell_type_annotation']),
     ('Creation timestamp', ['creation_timestamp']),
     ('File size', ['file_size']),
-    ('Fileset lab', ['file_set.lab.title']),
+    ('FileSet lab', ['file_set.lab.title']),
     ('File download URL', ['href']),
     ('File s3_uri', ['s3_uri']),
     ('File assembly', ['assembly']),
@@ -161,20 +161,5 @@ FROM_FILE_FIELDS = [
     ('Seq Spec Document', ['seqspec_document.@id']),
     ('Sequencing Kit', ['sequencing_kit']),
     ('Sequencing Platform', ['sequencing_platform']),
-    ('Workflow', ['workflow.accession'])
+    ('Workflows', ['workflows.accession'])
 ]
-
-
-@search_config(
-    name='FromFileFields'
-)
-def from_file_fields():
-    columns = {
-        t[1][0]: {
-            'title': t[0]
-        }
-        for t in FROM_FILE_FIELDS
-    }
-    return {
-        'columns': columns
-    }
