@@ -168,7 +168,7 @@ class File(Item):
              '@id', 'summary', 'status', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list', 'applied_to_samples']),
         Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol', 'status']),
         Path('integrated_in.applied_to_samples.sample_terms', include=['@id', 'summary', 'sample_terms', 'term_name']),
-        Path('workflows', include=['@id', 'uniform_pipeline', 'name']),
+        Path('workflows', include=['@id', 'uniform_pipeline', 'name', 'workflow_version']),
         Path('file_set.assay_term', include=['@id', 'term_name']),
         Path('file_format_specifications', include=['@id', 'description', 'standardized_file_format']),
         Path('analysis_step_version.software_versions', include=['@id', 'summary', 'software_versions']),
