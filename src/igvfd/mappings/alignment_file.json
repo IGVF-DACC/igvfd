@@ -1,6 +1,6 @@
 {
-    "hash": "9d2a20a6d8a81f523f76cde6b8f7f63e",
-    "index_name": "alignment_file_9d2a20a6",
+    "hash": "98cb0df91539ff9e195365831e56e795",
+    "index_name": "alignment_file_98cb0df9",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1994,6 +1994,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "donors": {
                                 "type": "keyword"
                             },
                             "exon": {

@@ -1,6 +1,6 @@
 {
-    "hash": "c5385c918a854f7439b1aca3fd287b25",
-    "index_name": "prediction_set_c5385c91",
+    "hash": "737936d7b4b2e46c5854f5881e2884e4",
+    "index_name": "prediction_set_737936d7",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -2502,6 +2502,9 @@
                                         "type": "text"
                                     },
                                     "documents": {
+                                        "type": "keyword"
+                                    },
+                                    "donors": {
                                         "type": "keyword"
                                     },
                                     "exon": {

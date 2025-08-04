@@ -1,6 +1,6 @@
 {
-    "hash": "7b3d87d76d784a319ce9bda81dd33546",
-    "index_name": "configuration_file_7b3d87d7",
+    "hash": "815dcd1a48d1cf59dd79efe7c62b38f5",
+    "index_name": "configuration_file_815dcd1a",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1973,6 +1973,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "donors": {
                                 "type": "keyword"
                             },
                             "exon": {

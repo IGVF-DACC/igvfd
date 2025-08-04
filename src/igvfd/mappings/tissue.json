@@ -1,6 +1,6 @@
 {
-    "hash": "3dbffbfc3002d9d53a0e1bb48b1a75bb",
-    "index_name": "tissue_3dbffbfc",
+    "hash": "e4a92d0d9543d63e0582f0df8aa28825",
+    "index_name": "tissue_e4a92d0d",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -560,6 +560,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "donors": {
                                 "type": "keyword"
                             },
                             "exon": {

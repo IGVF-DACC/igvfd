@@ -1,6 +1,6 @@
 {
-    "hash": "eef7e2113f3f8123dc3661fd5040b764",
-    "index_name": "technical_sample_eef7e211",
+    "hash": "36701211ae03c855f18dbd05cb6c207b",
+    "index_name": "technical_sample_36701211",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -372,6 +372,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "donors": {
                                 "type": "keyword"
                             },
                             "exon": {

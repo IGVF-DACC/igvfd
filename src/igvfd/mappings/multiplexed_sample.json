@@ -1,6 +1,6 @@
 {
-    "hash": "d0109ebf881197254cc3245c07c10182",
-    "index_name": "multiplexed_sample_d0109ebf",
+    "hash": "cada169e9d7673ea1ab726c8610e1253",
+    "index_name": "multiplexed_sample_cada169e",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -551,6 +551,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "donors": {
                                 "type": "keyword"
                             },
                             "exon": {

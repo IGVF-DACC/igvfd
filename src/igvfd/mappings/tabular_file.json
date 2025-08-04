@@ -1,6 +1,6 @@
 {
-    "hash": "9d5a0a0ce8c33a5860d7cb990b7b65b6",
-    "index_name": "tabular_file_9d5a0a0c",
+    "hash": "6164762f76258cad24d323bc0cfebfbe",
+    "index_name": "tabular_file_6164762f",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -2093,6 +2093,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "donors": {
                                 "type": "keyword"
                             },
                             "exon": {

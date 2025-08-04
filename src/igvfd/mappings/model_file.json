@@ -1,6 +1,6 @@
 {
-    "hash": "6901344ee6187f433ad3dca7cf800353",
-    "index_name": "model_file_6901344e",
+    "hash": "6266da277effb1adebe85e59753438b2",
+    "index_name": "model_file_6266da27",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -1990,6 +1990,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "donors": {
                                 "type": "keyword"
                             },
                             "exon": {

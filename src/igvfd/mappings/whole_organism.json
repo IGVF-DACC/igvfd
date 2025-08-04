@@ -1,6 +1,6 @@
 {
-    "hash": "d9789de38b738f8060356c3925b4a39b",
-    "index_name": "whole_organism_d9789de3",
+    "hash": "090e3a640513f2ec9809794e2fec45cd",
+    "index_name": "whole_organism_090e3a64",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -557,6 +557,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "donors": {
                                 "type": "keyword"
                             },
                             "exon": {

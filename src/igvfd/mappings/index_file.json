@@ -1,6 +1,6 @@
 {
-    "hash": "4413a1318e0dfcb55c14747fe32162b9",
-    "index_name": "index_file_4413a131",
+    "hash": "bdc259d3981130b689d4396787f3cf36",
+    "index_name": "index_file_bdc259d3",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -1988,6 +1988,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "donors": {
                                 "type": "keyword"
                             },
                             "exon": {

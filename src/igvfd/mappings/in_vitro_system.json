@@ -1,6 +1,6 @@
 {
-    "hash": "2608d9968e5f3f243acc6a610314bd34",
-    "index_name": "in_vitro_system_2608d996",
+    "hash": "cc21765d9fd9fcd9b6fc8b4944e16f1d",
+    "index_name": "in_vitro_system_cc21765d",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -564,6 +564,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "donors": {
                                 "type": "keyword"
                             },
                             "exon": {

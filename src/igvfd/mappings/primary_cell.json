@@ -1,6 +1,6 @@
 {
-    "hash": "053dd43fd62da3ea041fee0723129b46",
-    "index_name": "primary_cell_053dd43f",
+    "hash": "fbc2a6acba595b5c0cac960d9ac1884c",
+    "index_name": "primary_cell_fbc2a6ac",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -560,6 +560,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "donors": {
                                 "type": "keyword"
                             },
                             "exon": {

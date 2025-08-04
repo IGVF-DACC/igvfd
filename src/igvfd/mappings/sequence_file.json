@@ -1,6 +1,6 @@
 {
-    "hash": "6dddb7d8d1229fac0ee5b61172a05c72",
-    "index_name": "sequence_file_6dddb7d8",
+    "hash": "974ee028401c86d164ec555437eaf41a",
+    "index_name": "sequence_file_974ee028",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1999,6 +1999,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "donors": {
                                 "type": "keyword"
                             },
                             "exon": {
