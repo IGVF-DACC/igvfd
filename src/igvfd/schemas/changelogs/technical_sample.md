@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Extend `collections` enum list to include `Benchmark`.
 * Extend `collections` enum list to include `TF Perturb-seq Project`.
 * Add `preview_timestamp`.

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Add calculated property `transcriptome_annotation`.
 * Add calculated property `assembly`.
 * Extend `collections` enum list to include `Benchmark`.

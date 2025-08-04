@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.0`. (08/06/2025)
 * Extend `collections` enum list to include `Benchmark`. (08/06/2025)
 * Extend `collections` enum list to include `TF Perturb-seq Project`. (08/06/2025)
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace. (04/16/2025)
