@@ -1627,7 +1627,7 @@ class ConstructLibrarySet(FileSet):
         Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('samples', include=['@id', '@type', 'accession',
              'aliases', 'classifications', 'disease_terms', 'donors', 'sample_terms', 'targeted_sample_term', 'status', 'summary', 'modifications', 'treatments', 'nucleic_acid_delivery']),
-        Path('samples.donors', include=['@id', 'taxa', 'status']),
+        Path('donors', include=['@id', 'taxa', 'summary', 'status']),
         Path('samples.disease_terms', include=['@id', 'term_name', 'status']),
         Path('samples.sample_terms', include=['@id', 'term_name', 'status']),
         Path('samples.targeted_sample_term', include=['@id', 'term_name', 'status']),
@@ -1746,6 +1746,26 @@ class ConstructLibrarySet(FileSet):
                 if assays:
                     assay_titles.update(assays)
         return sorted(assay_titles) or None
+
+    @calculated_property(
+        condition='samples',
+        schema={
+            'title': 'Donors',
+            'description': 'The donors of the samples associated with this auxiliary set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Donor',
+                'description': 'Donor of a sample associated with this auxiliary set.',
+                'type': 'string',
+                'linkTo': 'Donor'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def donors(self, request, samples=None):
+        return get_donors_from_samples(request, samples)
 
     @calculated_property(
         schema={
