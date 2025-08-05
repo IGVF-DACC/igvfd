@@ -190,7 +190,8 @@
             "igvf:single_nucleus_RNA_sequencing_assay"
         ],
         "preferred_assay_titles": [
-            "CC-Perturb-seq"
+            "CC-Perturb-seq",
+            "Parse Perturb-seq"
         ]
     },
     {

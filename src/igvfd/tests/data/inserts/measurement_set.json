@@ -718,6 +718,29 @@
     },
     {
         "aliases": [
+            "igvf:parse_perturb_seq"
+        ],
+        "award": "1UM1HG011972-01",
+        "lab": "/labs/jesse-engreitz/",
+        "status": "released",
+        "release_timestamp": "2025-07-06T12:34:56Z",
+        "uuid": "5bdfb3e4-a533-4c97-a5bd-c13f484f3c14",
+        "accession": "IGVFDS0000PARS",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0002631/",
+        "preferred_assay_titles": [
+            "Parse Perturb-seq"
+        ],
+        "file_set_type": "experimental data",
+        "collections": [
+            "TF Perturb-seq Project",
+            "Benchmark"
+        ]
+    },
+    {
+        "aliases": [
             "igvf:cut_and_run"
         ],
         "award": "1UM1HG012053-01",
