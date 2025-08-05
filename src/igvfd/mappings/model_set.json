@@ -1,6 +1,6 @@
 {
-    "hash": "252b3f190e406b48db58260e4b179b6c",
-    "index_name": "model_set_252b3f19",
+    "hash": "c46c84da96a57709a6acade5b5964363",
+    "index_name": "model_set_c46c84da",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -669,6 +669,9 @@
                                         "type": "keyword"
                                     },
                                     "quality_metrics": {
+                                        "type": "keyword"
+                                    },
+                                    "reference_files": {
                                         "type": "keyword"
                                     },
                                     "release_timestamp": {
