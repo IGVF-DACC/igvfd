@@ -1627,7 +1627,7 @@ class ConstructLibrarySet(FileSet):
         Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('samples', include=['@id', '@type', 'accession',
              'aliases', 'classifications', 'disease_terms', 'donors', 'sample_terms', 'targeted_sample_term', 'status', 'summary', 'modifications', 'treatments', 'nucleic_acid_delivery']),
-        Path('donors', include=['@id', 'taxa', 'summary', 'status']),
+        Path('donors', include=['@id', 'taxa', 'aliases', 'sex', 'summary', 'status']),
         Path('samples.disease_terms', include=['@id', 'term_name', 'status']),
         Path('samples.sample_terms', include=['@id', 'term_name', 'status']),
         Path('samples.targeted_sample_term', include=['@id', 'term_name', 'status']),
