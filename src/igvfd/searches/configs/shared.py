@@ -1,7 +1,5 @@
 from snovault.elasticsearch.searches.configs import search_config
 
-from igvfd.metadata.constants import FROM_FILE_FIELDS
-
 
 # MeasurementSets have preferred_assay_title field.
 @search_config(
@@ -79,19 +77,4 @@ def status_facet():
                 'title': 'Status',
             }
         }
-    }
-
-
-@search_config(
-    name='from-file-fields'
-)
-def from_file_fields():
-    columns = {
-        t[1][0]: {
-            'title': t[0]
-        }
-        for t in FROM_FILE_FIELDS
-    }
-    return {
-        'columns': columns
     }
