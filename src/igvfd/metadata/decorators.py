@@ -9,14 +9,11 @@ def allowed_types(types):
         def wrapper(context, request):
             qs = QueryString(request)
             type_filters = qs.get_type_filters()
-            if len(type_filters) != 1:
-                raise HTTPBadRequest(
-                    explanation='URL requires one type parameter.'
-                )
-            if type_filters[0][1] not in types:
-                raise HTTPBadRequest(
-                    explanation=f'{type_filters[0][1]} not a valid type for endpoint.'
-                )
+            for type_ in type_filters:
+                if type_[1] not in types:
+                    raise HTTPBadRequest(
+                        explanation=f'{type_[1]} not a valid type for endpoint.'
+                    )
             return func(context, request)
         return wrapper
     return decorator
