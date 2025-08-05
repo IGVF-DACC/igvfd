@@ -1,8 +1,10 @@
 from collections import defaultdict
 from collections import OrderedDict
 from igvfd.metadata.constants import METADATA_ALLOWED_TYPES
+from igvfd.metadata.constants import FILE_METADATA_ALLOWED_TYPES
 from igvfd.metadata.constants import METADATA_COLUMN_TO_FIELDS_MAPPING
 from igvfd.metadata.constants import METADATA_AUDIT_TO_AUDIT_COLUMN_MAPPING
+from igvfd.metadata.constants import FROM_FILE_FIELDS
 from igvfd.metadata.csv import CSVGenerator
 from igvfd.metadata.decorators import allowed_types
 from igvfd.metadata.inequalities import map_param_values_to_inequalities
@@ -23,6 +25,7 @@ from snovault.util import simple_path_ids
 
 def includeme(config):
     config.add_route('metadata', '/metadata{slash:/?}')
+    config.add_route('file-metadata', '/file-metadata{slash:/?}')
     config.scan(__name__)
 
 
@@ -308,6 +311,59 @@ class MetadataReport:
         )
 
 
+class FileMetadataReport(MetadataReport):
+
+    SEARCH_PATH = '/search/'
+    EXCLUDED_COLUMNS = (
+    )
+    DEFAULT_PARAMS = [
+        ('field', 'audit'),
+        ('field', '@id'),
+        ('field', 'href'),
+        ('field', 'file_format'),
+        ('field', 'files.file_format_type'),
+        ('field', 'status'),
+        ('limit', 'all'),
+    ]
+    CONTENT_TYPE = 'text/tsv'
+    CONTENT_DISPOSITION = 'attachment; filename="file_metadata.tsv"'
+    FILES_PREFIX = '_NaN'
+
+    def _get_column_to_fields_mapping(self):
+        return FROM_FILE_FIELDS
+
+    def _split_column_and_fields_by_experiment_and_file(self):
+        self.file_column_to_fields_mapping = self._get_column_to_fields_mapping()
+
+    def _should_not_report_file(self, file_):
+        conditions = [
+            'href' not in file_,
+        ]
+        return any(conditions)
+
+    def _generate_rows(self):
+        yield self.csv.writerow(self.header)
+        for file_ in self._get_search_results_generator():
+            if self._should_not_report_file(file_):
+                continue
+            grouped_file_audits, grouped_other_audits = group_audits_by_files_and_type(
+                file_.get('audit', {})
+            )
+            file_data = self._get_file_data(file_)
+            audit_data = self._get_audit_data(
+                grouped_file_audits.get(file_.get('@id'), {}),
+                grouped_other_audits
+            )
+            file_data.update(audit_data)
+            yield self.csv.writerow(
+                self._output_sorted_row({}, file_data)
+            )
+
+    def _initialize_report(self):
+        self._build_header()
+        self._split_column_and_fields_by_experiment_and_file()
+
+
 def _get_metadata(context, request):
     metadata_report = MetadataReport(request)
     return metadata_report.generate()
@@ -321,3 +377,10 @@ def metadata_report_factory(context, request):
 @allowed_types(METADATA_ALLOWED_TYPES)
 def metadata_tsv(context, request):
     return metadata_report_factory(context, request)
+
+
+@view_config(route_name='file-metadata', request_method=['GET', 'POST'])
+@allowed_types(FILE_METADATA_ALLOWED_TYPES)
+def file_metadata_tsv(context, request):
+    file_metadata_report = FileMetadataReport(request)
+    return file_metadata_report.generate()
