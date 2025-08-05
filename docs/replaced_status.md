@@ -2,7 +2,7 @@
 Accessioned objects have a special status of replaced that allows them to share identifying properties like md5sum or accession.  This essentially allows us to merge two objects. Here is a [link](https://docs.google.com/presentation/d/1uMDHw0MQBb3mMxOWm88cSq6aRWbn2KpZyHHI5yQMQAE/edit?pli=1&slide=id.g7171591498_0_295#slide=id.g7171591498_0_295) to ENCODE status slides in general.
 
 ## Why do we have a replaced status
-Each schema has a list of identifying properties. These properties can be used in the url to access the object (see examples).  The values in these properties must be unique so that each value resolves to one and only one object.  However, there are many situations where you would want to have more than one object "merge" or all be directed to the same object.  To achieve that, we use the replaced status to release all identifying properties except the uuid.  We use the alternate_accessions property to redirect to the correct object. 
+Each schema has a list of identifying properties. These properties can be used in the url to access the object (see examples).  The values in these properties must be unique so that each value resolves to one and only one object.  However, there are many situations where you would want to have more than one object "merge" or all be directed to the same object.  To achieve that, we use the replaced status to release all identifying properties except the uuid.  We use the alternate_accessions property to redirect to the correct object.
 
 Examples:
 * **accession:** [https://data.igvf.org/sequence-files/IGVFFI0196UOBL/](https://data.igvf.org/sequence-files/IGVFFI0196UOBL/)
@@ -16,7 +16,7 @@ Examples:
 
 ## Steps to use the *replaced* status
 
-1. Note the accession(s) and uuid(s) of the object(s) you are about to replace.  
+1. Note the accession(s) and uuid(s) of the object(s) you are about to replace.
 2. Set "old" object(s) to replaced
 3. Import or Update the new object(s) with “alternate_accession”:[“OLDOBJECTACCESSION”]
 
