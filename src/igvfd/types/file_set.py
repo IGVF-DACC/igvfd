@@ -1654,7 +1654,7 @@ class ConstructLibrarySet(FileSet):
 
     @calculated_property(schema={
         'title': 'Samples',
-        'description': 'The samples that link to this construct library set.',
+        'description': 'The samples this construct library set was applied to.',
         'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
