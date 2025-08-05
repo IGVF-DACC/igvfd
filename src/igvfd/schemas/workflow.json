@@ -142,18 +142,13 @@
     },
     "fuzzy_searchable_fields": [
         "aliases",
-        "analysis_steps.analysis_step_types",
-        "analysis_steps.input_content_types",
-        "analysis_steps.name",
-        "analysis_steps.output_content_types",
         "name",
         "lab.title",
         "submitted_by.title"
     ],
     "exact_searchable_fields": [
         "@type",
-        "publications.publication_identifiers",
-        "analysis_steps.analysis_step_versions.software_versions.software.title"
+        "publications.publication_identifiers"
     ],
     "changelog": "/profiles/changelogs/workflow.md"
 }

@@ -168,7 +168,7 @@ class File(Item):
              '@id', 'summary', 'status', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list', 'applied_to_samples']),
         Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol', 'status']),
         Path('integrated_in.applied_to_samples.sample_terms', include=['@id', 'summary', 'sample_terms', 'term_name']),
-        Path('workflow', include=['@id', 'uniform_pipeline', 'name']),
+        Path('workflows', include=['@id', 'uniform_pipeline', 'name', 'workflow_version']),
         Path('file_set.assay_term', include=['@id', 'term_name']),
         Path('file_format_specifications', include=['@id', 'description', 'standardized_file_format']),
         Path('analysis_step_version.software_versions', include=['@id', 'summary', 'software_versions']),
@@ -316,22 +316,23 @@ class File(Item):
     @calculated_property(
         condition='analysis_step_version',
         schema={
-            'title': 'Workflow',
-            'description': 'The workflow used to produce this file.',
-            'type': 'string',
-            'linkTo': 'Workflow',
+            'title': 'Workflows',
+            'description': 'The workflows associated with the analysis step version used to produce this file.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'linkTo': 'Workflow',
+                'type': 'string'
+            },
             'notSubmittable': True,
         }
     )
-    def workflow(self, request, analysis_step_version):
-        if analysis_step_version:
-            analysis_step_version_object = request.embed(analysis_step_version, '@@object')
-            analysis_step = analysis_step_version_object.get('analysis_step', '')
-            if analysis_step:
-                analysis_step_object = request.embed(analysis_step, '@@object')
-                workflow = analysis_step_object.get('workflow', '')
-                if workflow:
-                    return workflow
+    def workflows(self, request, analysis_step_version):
+        return request.embed(
+            analysis_step_version,
+            '@@object_with_select_calculated_properties?field=workflows'
+        ).get('workflows', []) or None
 
     @calculated_property(
         condition=show_href,

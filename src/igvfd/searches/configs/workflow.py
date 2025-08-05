@@ -10,13 +10,13 @@ def workflow():
             'uniform_pipeline': {
                 'title': 'Uniform Pipeline'
             },
-            'analysis_steps.analysis_step_versions.software_versions.software.title': {
+            'analysis_step_versions.software_versions.software.title': {
                 'title': 'Software',
             },
-            'analysis_steps.analysis_step_types': {
+            'analysis_step_versions.analysis_steps.analysis_step_types': {
                 'title': 'Analysis Step Types',
             },
-            'analysis_steps.output_content_types': {
+            'analysis_step_versions.analysis_steps.output_content_types': {
                 'title': 'Output Types',
             },
             'collections': {
@@ -74,6 +74,9 @@ def workflow():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'workflow_version': {
+                'title': 'Workflow Version'
             }
         }
     }

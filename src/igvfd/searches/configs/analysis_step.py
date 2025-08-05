@@ -51,9 +51,6 @@ def analysis_step():
             'title': {
                 'title': 'Title'
             },
-            'workflow': {
-                'title': 'Workflow'
-            },
             'summary': {
                 'title': 'Summary'
             }

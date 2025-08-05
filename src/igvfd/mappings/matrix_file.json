@@ -1,6 +1,6 @@
 {
-    "hash": "3136762a756918f7bf23f95411ea2884",
-    "index_name": "matrix_file_3136762a",
+    "hash": "7241b5138787f153bb6a7467ef69782d",
+    "index_name": "matrix_file_7241b513",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -2793,7 +2793,7 @@
                     "validation_error_detail": {
                         "type": "keyword"
                     },
-                    "workflow": {
+                    "workflows": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -2811,9 +2811,6 @@
                                 "type": "keyword"
                             },
                             "analysis_step_versions": {
-                                "type": "keyword"
-                            },
-                            "analysis_steps": {
                                 "type": "keyword"
                             },
                             "award": {

@@ -1,6 +1,6 @@
 {
-    "hash": "2231bd52635dd18dd4f387c3e6ed8bf0",
-    "index_name": "measurement_set_2231bd52",
+    "hash": "56327c09774829092520e1d1b15044a0",
+    "index_name": "measurement_set_56327c09",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -836,7 +836,7 @@
                                     "validation_error_detail": {
                                         "type": "keyword"
                                     },
-                                    "workflow": {
+                                    "workflows": {
                                         "type": "keyword"
                                     }
                                 },
@@ -2331,7 +2331,7 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
-                            "workflow": {
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

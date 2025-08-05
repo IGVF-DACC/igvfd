@@ -355,7 +355,7 @@ class AnalysisSet(FileSet):
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
-        Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline', 'status']),
+        Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline', 'status', 'workflow_version']),
         Path('targeted_genes', include=['@id', 'symbol'])
     ]
     audit_inherit = FileSet.audit_inherit
@@ -968,23 +968,16 @@ class AnalysisSet(FileSet):
         }
     )
     def workflows(self, request, files=None):
-        analysis_set_workflows_set = set()
-        # Get a list of file objects
-        file_objs = get_file_objs_from_files(request, files)
-        for file_obj in file_objs:
-            analysis_step_version = file_obj.get('analysis_step_version')
-            if analysis_step_version:
-                # Get analysis step version and request the object
-                analysis_step_version_obj = request.embed(analysis_step_version, '@@object?skip_calculated=true')
-                # Get analysis step and request the object
-                analysis_step = analysis_step_version_obj.get('analysis_step')
-                if analysis_step:
-                    analysis_step_obj = request.embed(analysis_step, '@@object?skip_calculated=true')
-                    # Get workflow and add to the set
-                    workflow = analysis_step_obj.get('workflow')
-                    if workflow:
-                        analysis_set_workflows_set.add(workflow)
-        return sorted(analysis_set_workflows_set)
+        if files is None:
+            files = []
+        unique_workflows = set()
+        for file_ in files:
+            file_workflows = request.embed(
+                file_,
+                '@@object_with_select_calculated_properties?field=workflows',
+            ).get('workflows', [])
+            unique_workflows.update(file_workflows)
+        return sorted(unique_workflows)
 
     @calculated_property(
         condition='input_file_sets',

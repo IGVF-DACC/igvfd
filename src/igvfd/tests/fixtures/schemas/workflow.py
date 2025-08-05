@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def base_workflow(testapp, award, lab):
+def base_workflow_no_asv(testapp, award, lab):
     item = {
         'accession': 'IGVFWF0000WRKF',
         'name': 'Base Workflow',
@@ -14,13 +14,27 @@ def base_workflow(testapp, award, lab):
 
 
 @pytest.fixture
-def base_workflow_2(testapp, award, lab):
+def base_workflow(testapp, award, lab, analysis_step_version):
+    item = {
+        'accession': 'IGVFWF0000WRKF',
+        'name': 'Base Workflow',
+        'source_url': 'https://github.com/IGVF-DACC/igvfd',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'analysis_step_versions': [analysis_step_version['@id']],
+    }
+    return testapp.post_json('/workflow', item).json['@graph'][0]
+
+
+@pytest.fixture
+def base_workflow_2(testapp, award, lab, analysis_step_version_2):
     item = {
         'accession': 'IGVFWF0001WORK',
         'name': 'Base Workflow 2',
         'source_url': 'https://github.com/IGVF-DACC/igvfd',
         'award': award['@id'],
-        'lab': lab['@id']
+        'lab': lab['@id'],
+        'analysis_step_versions': [analysis_step_version_2['@id']],
     }
     return testapp.post_json('/workflow', item).json['@graph'][0]
 

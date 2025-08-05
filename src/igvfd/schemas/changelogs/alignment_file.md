@@ -2,11 +2,15 @@
 
 ### Minor changes since schema version 17
 
+* Add calculated property `workflows`.
+* Remove calculated property `workflow`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Add calculated property `transcriptome_annotation`.
 * Add calculated property `assembly`.
 * Extend `collections` enum list to include `Benchmark`.
 * Extend `collections` enum list to include `TF Perturb-seq Project`.
+* Add calculated property `workflows`.
+* Remove calculated property `workflow`.
 
 ### Schema version 17
 

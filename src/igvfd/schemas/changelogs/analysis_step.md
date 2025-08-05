@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_step.json`*
 
+### Schema version 9
+
+* Remove `workflow`.
+
 ### Minor changes since schema version 8
 
 * Extend `output_content_types` enum list to include `covariance matrix`.
