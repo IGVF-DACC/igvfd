@@ -43,7 +43,7 @@ def construct_library_set():
             'integrated_content_files.content_type': {
                 'title': 'Integrated Content',
             },
-            'samples.donors.taxa': {
+            'donors.taxa': {
                 'title': 'Taxa',
             },
             'samples.classifications': {
