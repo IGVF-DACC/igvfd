@@ -1,6 +1,6 @@
 {
-    "hash": "43d5c410dab9508a990da9bb95a749c7",
-    "index_name": "prediction_set_43d5c410",
+    "hash": "2ad04af8f0db3084c08e1353ffd2150d",
+    "index_name": "prediction_set_2ad04af8",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -494,6 +494,9 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "applied_to_samples": {
+                                "type": "keyword"
+                            },
                             "assay_term": {
                                 "type": "keyword"
                             },
@@ -851,9 +854,6 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
-                            "pipeline_parameters": {
-                                "type": "keyword"
-                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -1021,6 +1021,9 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "applied_to_samples": {
+                                "type": "keyword"
+                            },
                             "assay_term": {
                                 "type": "keyword"
                             },
@@ -1182,9 +1185,6 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
-                                "type": "keyword"
-                            },
-                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {
@@ -1720,7 +1720,87 @@
                                 "type": "keyword"
                             },
                             "sequencing_platform": {
-                                "type": "keyword"
+                                "properties": {
+                                    "@id": {
+                                        "type": "keyword"
+                                    },
+                                    "@type": {
+                                        "type": "keyword"
+                                    },
+                                    "aliases": {
+                                        "type": "keyword"
+                                    },
+                                    "ancestors": {
+                                        "type": "keyword"
+                                    },
+                                    "comments": {
+                                        "type": "keyword"
+                                    },
+                                    "company": {
+                                        "type": "keyword"
+                                    },
+                                    "creation_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
+                                    },
+                                    "deprecated_ntr_terms": {
+                                        "type": "keyword"
+                                    },
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "is_a": {
+                                        "type": "keyword"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
+                                    "notes": {
+                                        "type": "text"
+                                    },
+                                    "ontology": {
+                                        "type": "keyword"
+                                    },
+                                    "preview_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "release_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "sequencing_kits": {
+                                        "type": "keyword"
+                                    },
+                                    "status": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_by": {
+                                        "type": "keyword"
+                                    },
+                                    "submitter_comment": {
+                                        "type": "keyword"
+                                    },
+                                    "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "synonyms": {
+                                        "type": "keyword"
+                                    },
+                                    "term_id": {
+                                        "type": "keyword"
+                                    },
+                                    "term_name": {
+                                        "type": "keyword"
+                                    },
+                                    "uuid": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "sequencing_run": {
                                 "store": true,
@@ -2462,6 +2542,9 @@
                                     "alternate_accessions": {
                                         "type": "keyword"
                                     },
+                                    "applied_to_samples": {
+                                        "type": "keyword"
+                                    },
                                     "assay_titles": {
                                         "type": "keyword"
                                     },
@@ -2508,9 +2591,6 @@
                                         "type": "text"
                                     },
                                     "documents": {
-                                        "type": "keyword"
-                                    },
-                                    "donors": {
                                         "type": "keyword"
                                     },
                                     "exon": {
@@ -2576,9 +2656,6 @@
                                         "type": "date"
                                     },
                                     "revoke_detail": {
-                                        "type": "keyword"
-                                    },
-                                    "samples": {
                                         "type": "keyword"
                                     },
                                     "schema_version": {

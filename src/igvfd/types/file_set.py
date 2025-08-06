@@ -98,6 +98,29 @@ def get_cls_phrase(cls_set, only_cls_input=False):
     return cls_phrase
 
 
+EMBEDDED_FILE_FIELDS = [
+    '@id',
+    'accession',
+    'aliases',
+    'assembly',
+    'content_type',
+    'controlled_access',
+    'derived_from',
+    'file_format',
+    'file_size',
+    'href',
+    'md5sum',
+    's3_uri',
+    'submitted_file_name',
+    'status',
+    'transcriptome_annotation',
+    'creation_timestamp',
+    'sequencing_platform',
+    'upload_status',
+    'submitted_file_name'
+]
+
+
 @abstract_collection(
     name='file-sets',
     unique_key='accession',
@@ -120,30 +143,42 @@ class FileSet(Item):
         Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'title']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
-        Path('files', include=['@id', 'accession', 'aliases', 'assembly', 'content_type', 'controlled_access', 'derived_from',
-             'file_format', 'file_size', 'href', 'md5sum', 's3_uri', 'submitted_file_name', 'status', 'transcriptome_annotation',
-                               'creation_timestamp', 'sequencing_platform', 'upload_status', 'submitted_file_name']),
+        Path(
+            'files',
+            include=EMBEDDED_FILE_FIELDS
+        ),
+        Path(
+            'files.sequencing_platform',
+            include=[
+                '@id',
+                'term_name',
+                'status'
+            ]
+        ),
         Path('control_for', include=['@id', 'accession', 'aliases', 'status']),
         Path('donors', include=['@id', 'accession', 'aliases', 'sex', 'status', 'strain_background', 'taxa']),
-        Path('samples.sample_terms', include=[
-            '@id',
-            '@type',
-            'accession',
-            'aliases',
-            'treatments',
-            'cellular_sub_pool',
-            'classifications',
-            'disease_terms',
-            'modifications',
-            'sample_terms',
-            'status',
-            'summary',
-            'targeted_sample_term',
-            'taxa',
-            'term_name',
-            'treatments',
-            'institutional_certificates',
-        ]),
+        Path(
+            'samples.sample_terms',
+            include=[
+                '@id',
+                '@type',
+                'accession',
+                'aliases',
+                'treatments',
+                'cellular_sub_pool',
+                'classifications',
+                'disease_terms',
+                'modifications',
+                'sample_terms',
+                'status',
+                'summary',
+                'targeted_sample_term',
+                'taxa',
+                'term_name',
+                'treatments',
+                'institutional_certificates',
+            ]
+        ),
         Path('samples.disease_terms', include=['@id', 'term_name', 'status']),
         Path('samples.targeted_sample_term', include=['@id', 'term_name', 'status']),
         Path('samples.modifications', include=['@id', 'modality', 'status']),
@@ -1138,7 +1173,6 @@ class MeasurementSet(FileSet):
         Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
         Path('construct_library_sets.small_scale_gene_list', include=[
              '@id', 'small_scale_gene_list', 'summary', 'geneid', 'symbol', 'name', 'status']),
-        Path('files.sequencing_platform', include=['@id', 'term_name', 'status']),
         Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status'])
     ]
@@ -1647,8 +1681,10 @@ class ConstructLibrarySet(FileSet):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
-        Path('files', include=['@id', 'accession', 'aliases',
-             'content_type', 'href', 'file_format', 'upload_status', 'status']),
+        Path(
+            'files',
+            include=EMBEDDED_FILE_FIELDS
+        ),
         Path('integrated_content_files', include=['@id', 'accession',
              'aliases', 'content_type', 'file_format', 'upload_status', 'status']),
         Path('control_for', include=['@id', 'accession', 'aliases', 'status']),
