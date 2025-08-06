@@ -126,7 +126,7 @@ FROM_FILESET_FIELDS = OrderedDict(
         ('Seq Specs', ['files.seqspecs']),
         ('Seq Spec Document', ['files.seqspec_document.@id']),
         ('Sequencing Kit', ['files.sequencing_kit']),
-        ('Sequencing Platform', ['files.sequencing_platform']),
+        ('Sequencing Platform', ['files.sequencing_platform.term_name']),
         ('Workflows', ['files.workflows.accession']),
     ]
 )
@@ -170,7 +170,7 @@ FROM_FILE_FIELDS = OrderedDict(
         ('Seq Specs', ['seqspecs']),
         ('Seq Spec Document', ['seqspec_document.@id']),
         ('Sequencing Kit', ['sequencing_kit']),
-        ('Sequencing Platform', ['sequencing_platform.@id']),
+        ('Sequencing Platform', ['sequencing_platform.term_name']),
         ('Workflows', ['workflows.accession']),
     ]
 )
