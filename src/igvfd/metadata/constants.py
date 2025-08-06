@@ -1,7 +1,5 @@
 from collections import OrderedDict
 
-from snovault.elasticsearch.searches.configs import search_config
-
 
 METADATA_ALLOWED_TYPES = [
     'FileSet',
