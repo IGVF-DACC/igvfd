@@ -196,7 +196,8 @@ def audit_file_mixed_assembly_transcriptome_annotation(value, system):
             assembly_to_annotation[value.get('assembly', '')]:
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has a `transcriptome_annotation` {value.get("transcriptome_annotation", "")} that is inconsistent with its assembly {value.get("transcriptome_annotation", "")}.'
+            f'has a `transcriptome_annotation` {value.get("transcriptome_annotation", "")} '
+            f'that is inconsistent with its assembly {value.get("transcriptome_annotation", "")}.'
         )
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
