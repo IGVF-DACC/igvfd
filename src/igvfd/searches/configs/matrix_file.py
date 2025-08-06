@@ -13,6 +13,12 @@ def matrix_file():
             'file_format': {
                 'title': 'File Format'
             },
+            'assembly': {
+                'title': 'Assembly'
+            },
+            'transcriptome_annotation': {
+                'title': 'Transcriptome Annotation'
+            },
             'principal_dimension': {
                 'title': 'Principal Dimension'
             },
