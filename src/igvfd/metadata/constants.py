@@ -174,3 +174,27 @@ FROM_FILE_FIELDS = OrderedDict(
         ('Workflows', ['workflows.accession']),
     ]
 )
+
+
+RECURSE_FILE_SET_LINK_FIELDS = [
+    'construct_library_sets',
+    'control_file_sets',
+    'measurement_sets',
+    'control_for',
+    'input_file_sets',
+    'input_for',
+    'auxiliary_sets',
+    'related_multiome_datasets',
+    'file_sets',
+]
+
+
+RECURSE_FILE_FIELDS = [
+    'files',
+    'integrated_content_files',
+    'barcode_replacement_file',
+    'large_scale_gene_list',
+    'large_scale_loci_list',
+    'barcode_map',
+    'onlist_files',
+]
