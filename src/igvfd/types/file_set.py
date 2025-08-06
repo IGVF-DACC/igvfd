@@ -117,7 +117,8 @@ EMBEDDED_FILE_FIELDS = [
     'creation_timestamp',
     'sequencing_platform',
     'upload_status',
-    'submitted_file_name'
+    'submitted_file_name',
+    'summary',
 ]
 
 
