@@ -1,3 +1,5 @@
+import json
+
 from collections import defaultdict
 from collections import OrderedDict
 from igvfd.metadata.constants import METADATA_ALLOWED_TYPES
@@ -15,14 +17,21 @@ from igvfd.metadata.search import BatchedSearchGenerator
 from igvfd.metadata.serializers import make_experiment_cell
 from igvfd.metadata.serializers import make_file_cell
 from igvfd.metadata.serializers import map_strings_to_booleans_and_ints
+from igvfd.metadata.recurse import find_all_file_sets_and_files
+
 from pyramid.httpexceptions import HTTPBadRequest
+from pyramid.httpexceptions import HTTPNotFound
 from pyramid.response import Response
 from pyramid.view import view_config
+from pyramid.settings import asbool
+
 from snosearch.interfaces import EXISTS
 from snosearch.interfaces import MUST
 from snosearch.interfaces import RANGES
 from snosearch.parsers import QueryString
 from snovault.util import simple_path_ids
+
+from igvfd.types.file_set import FileSet
 
 
 def includeme(config):
@@ -401,4 +410,33 @@ def batch_download_v2(context, request):
 @allowed_types_v2(FILE_METADATA_ALLOWED_TYPES)
 def file_batch_download_v2(context, request):
     file_metadata_report = FileMetadataReport(request)
+    return file_metadata_report.generate()
+
+
+@view_config(
+    name='all-files',
+    context=FileSet,
+    request_method='GET',
+    permission='view',
+)
+def all_files(context, request):
+    files_sets_and_files = find_all_file_sets_and_files(
+        request, [
+            request.resource_path(context)
+        ]
+    )
+    if asbool(request.params.get('soft')):
+        return files_sets_and_files
+    if not files_sets_and_files['files']:
+        raise HTTPNotFound()
+    qs = QueryString(request)
+    qs.drop('type')
+    qs.append(('type', 'File'))
+    new_request = qs.get_request_with_new_query_string()
+    new_request.body = json.dumps(
+        {
+            'elements': files_sets_and_files['files']
+        }
+    ).encode('utf-8')
+    file_metadata_report = FileMetadataReport(new_request)
     return file_metadata_report.generate()
