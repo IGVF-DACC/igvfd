@@ -94,7 +94,7 @@ FROM_FILESET_FIELDS = OrderedDict(
         ('File download URL', ['files.href']),
         ('File accession', ['files.accession']),
         ('File format', ['files.file_format']),
-        ('File type', ['files.files_format_type']),
+        ('File type', ['files.file_format_type']),
         ('File content type', ['files.content_type']),
         ('File summary', ['files.summary']),
         ('Fileset accession', ['accession']),
