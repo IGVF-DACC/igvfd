@@ -4,9 +4,11 @@ from igvfd.metadata.constants import METADATA_ALLOWED_TYPES
 from igvfd.metadata.constants import FILE_METADATA_ALLOWED_TYPES
 from igvfd.metadata.constants import METADATA_COLUMN_TO_FIELDS_MAPPING
 from igvfd.metadata.constants import METADATA_AUDIT_TO_AUDIT_COLUMN_MAPPING
+from igvfd.metadata.constants import FROM_FILESET_FIELDS
 from igvfd.metadata.constants import FROM_FILE_FIELDS
 from igvfd.metadata.csv import CSVGenerator
 from igvfd.metadata.decorators import allowed_types
+from igvfd.metadata.decorators import allowed_types_v2
 from igvfd.metadata.inequalities import map_param_values_to_inequalities
 from igvfd.metadata.inequalities import try_to_evaluate_inequality
 from igvfd.metadata.search import BatchedSearchGenerator
@@ -25,7 +27,8 @@ from snovault.util import simple_path_ids
 
 def includeme(config):
     config.add_route('metadata', '/metadata{slash:/?}')
-    config.add_route('file-metadata', '/file-metadata{slash:/?}')
+    config.add_route('file-batch-download-v2', '/file-batch-download-v2{slash:/?}')
+    config.add_route('batch-download-v2', '/batch-download-v2{slash:/?}')
     config.scan(__name__)
 
 
@@ -311,6 +314,14 @@ class MetadataReport:
         )
 
 
+class MetadataReportV2(MetadataReport):
+
+    CONTENT_DISPOSITION = 'attachment; filename="file_metadata.tsv"'
+
+    def _get_column_to_fields_mapping(self):
+        return FROM_FILESET_FIELDS
+
+
 class FileMetadataReport(MetadataReport):
 
     SEARCH_PATH = '/search/'
@@ -321,7 +332,7 @@ class FileMetadataReport(MetadataReport):
         ('field', '@id'),
         ('field', 'href'),
         ('field', 'file_format'),
-        ('field', 'files.file_format_type'),
+        ('field', 'file_format_type'),
         ('field', 'status'),
         ('limit', 'all'),
     ]
@@ -379,8 +390,15 @@ def metadata_tsv(context, request):
     return metadata_report_factory(context, request)
 
 
-@view_config(route_name='file-metadata', request_method=['GET', 'POST'])
-@allowed_types(FILE_METADATA_ALLOWED_TYPES)
-def file_metadata_tsv(context, request):
+@view_config(route_name='batch-download-v2', request_method=['GET', 'POST'])
+@allowed_types_v2(METADATA_ALLOWED_TYPES)
+def batch_download_v2(context, request):
+    metadata_report = MetadataReportV2(request)
+    return metadata_report.generate()
+
+
+@view_config(route_name='file-batch-download-v2', request_method=['GET', 'POST'])
+@allowed_types_v2(FILE_METADATA_ALLOWED_TYPES)
+def file_batch_download_v2(context, request):
     file_metadata_report = FileMetadataReport(request)
     return file_metadata_report.generate()

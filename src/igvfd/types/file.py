@@ -92,7 +92,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'obo': '.obo.gz',
     'owl': '.owl.gz',
     'pairs': '.pairs.gz',
-    'pkl': 'pkl',
+    'pkl': '.pkl',
     'pod5': '.pod5',
     'png': '.png',
     'pt': '.pt',
