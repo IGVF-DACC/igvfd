@@ -1,6 +1,6 @@
 {
-    "hash": "d9789de38b738f8060356c3925b4a39b",
-    "index_name": "whole_organism_d9789de3",
+    "hash": "7fa84426f04bf92d761fed5d110584d8",
+    "index_name": "whole_organism_7fa84426",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -437,9 +437,6 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
-                            "applied_to_samples": {
-                                "type": "keyword"
-                            },
                             "assay_titles": {
                                 "type": "keyword"
                             },
@@ -562,6 +559,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "donors": {
+                                "type": "keyword"
+                            },
                             "exon": {
                                 "type": "keyword"
                             },
@@ -625,6 +625,9 @@
                                 "type": "date"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "samples": {
                                 "type": "keyword"
                             },
                             "schema_version": {
@@ -959,9 +962,6 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
-                                "type": "keyword"
-                            },
-                            "applied_to_samples": {
                                 "type": "keyword"
                             },
                             "assay_term": {

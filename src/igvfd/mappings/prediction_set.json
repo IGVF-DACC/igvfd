@@ -1,6 +1,6 @@
 {
-    "hash": "c5385c918a854f7439b1aca3fd287b25",
-    "index_name": "prediction_set_c5385c91",
+    "hash": "d136a965c6dd17e5cdc8b7a5f58db60f",
+    "index_name": "prediction_set_d136a965",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -492,9 +492,6 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
-                                "type": "keyword"
-                            },
-                            "applied_to_samples": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -1019,9 +1016,6 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
-                                "type": "keyword"
-                            },
-                            "applied_to_samples": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -2462,9 +2456,6 @@
                                     "alternate_accessions": {
                                         "type": "keyword"
                                     },
-                                    "applied_to_samples": {
-                                        "type": "keyword"
-                                    },
                                     "assay_titles": {
                                         "type": "keyword"
                                     },
@@ -2511,6 +2502,9 @@
                                         "type": "text"
                                     },
                                     "documents": {
+                                        "type": "keyword"
+                                    },
+                                    "donors": {
                                         "type": "keyword"
                                     },
                                     "exon": {
@@ -2576,6 +2570,9 @@
                                         "type": "date"
                                     },
                                     "revoke_detail": {
+                                        "type": "keyword"
+                                    },
+                                    "samples": {
                                         "type": "keyword"
                                     },
                                     "schema_version": {

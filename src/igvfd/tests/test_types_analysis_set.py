@@ -290,7 +290,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'summary', '') == 'lentiMPRA reporter library targeting accessible genome regions genome-wide'
+        'summary', '') == 'lentiMPRA integrating a reporter library targeting accessible genome regions genome-wide'
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -299,7 +299,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'summary', '') == 'lentiMPRA reporter library targeting accessible genome regions genome-wide'
+        'summary', '') == 'lentiMPRA integrating a reporter library targeting accessible genome regions genome-wide'
     testapp.patch_json(
         analysis_set_with_CLS_input['@id'],
         {
@@ -307,7 +307,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_with_CLS_input['@id']).json
-    assert res.get('summary', '') == 'ATAC-seq (10x multiome) (barcode based multiplexed)'
+    assert res.get('summary', '') == 'ATAC-seq (10x multiome) (barcode based multiplexed) integrating a reporter library targeting accessible genome regions genome-wide'
     testapp.patch_json(
         tissue['@id'],
         {
@@ -339,7 +339,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_with_CLS_input['@id']).json
     assert res.get(
-        'summary', '') == 'ATAC-seq (10x multiome) (barcode based multiplexed) integrating a reference transduction expression vector library with non-targeting control'
+        'summary', '') == 'ATAC-seq (10x multiome) (barcode based multiplexed) integrating a reference transduction expression vector library and a reporter library targeting accessible genome regions genome-wide with non-targeting control'
     testapp.patch_json(
         tissue['@id'],
         {
@@ -347,7 +347,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_with_CLS_input['@id']).json
-    assert res.get('summary', '') == 'CRISPR ATAC-seq (10x multiome) (barcode based multiplexed) integrating a non-targeting guide (sgRNA) library and a reference transduction expression vector library'
+    assert res.get('summary', '') == 'CRISPR interference ATAC-seq (10x multiome) (barcode based multiplexed) integrating a non-targeting guide (sgRNA) library, a reference transduction expression vector library, and a reporter library targeting accessible genome regions genome-wide'
     # when > 2 editing template libraries: display counts
     testapp.patch_json(
         construct_library_set_reporter['@id'],

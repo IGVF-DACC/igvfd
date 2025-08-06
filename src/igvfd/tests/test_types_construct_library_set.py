@@ -10,7 +10,7 @@ def test_samples_link(testapp, tissue, base_expression_construct_library_set):
         }
     )
     res = testapp.get(base_expression_construct_library_set['@id'])
-    assert set([sample_id['@id'] for sample_id in res.json.get('applied_to_samples')]) == {tissue['@id']}
+    assert set([sample_id['@id'] for sample_id in res.json.get('samples')]) == {tissue['@id']}
 
 
 def test_file_sets(testapp, primary_cell, base_expression_construct_library_set, measurement_set_mpra):

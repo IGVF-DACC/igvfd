@@ -1,6 +1,6 @@
 {
-    "hash": "eef7e2113f3f8123dc3661fd5040b764",
-    "index_name": "technical_sample_eef7e211",
+    "hash": "223379666fb067c5b2c8700a05b9dad6",
+    "index_name": "technical_sample_22337966",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -252,9 +252,6 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
-                            "applied_to_samples": {
-                                "type": "keyword"
-                            },
                             "assay_titles": {
                                 "type": "keyword"
                             },
@@ -377,6 +374,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "donors": {
+                                "type": "keyword"
+                            },
                             "exon": {
                                 "type": "keyword"
                             },
@@ -440,6 +440,9 @@
                                 "type": "date"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "samples": {
                                 "type": "keyword"
                             },
                             "schema_version": {
@@ -559,9 +562,6 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
-                                "type": "keyword"
-                            },
-                            "applied_to_samples": {
                                 "type": "keyword"
                             },
                             "assay_term": {
