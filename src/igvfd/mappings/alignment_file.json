@@ -1,6 +1,6 @@
 {
-    "hash": "48a60ad9c3fb666eac831eaed680d173",
-    "index_name": "alignment_file_48a60ad9",
+    "hash": "00a7e70a1bc43e93764bb929a5335171",
+    "index_name": "alignment_file_00a7e70a",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -964,6 +964,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {

@@ -1,6 +1,6 @@
 {
-    "hash": "4fad49b4b5393c2332784a2859b0f0da",
-    "index_name": "image_file_4fad49b4",
+    "hash": "b0189e22f02f6eed044ff542b653a836",
+    "index_name": "image_file_b0189e22",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -947,6 +947,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {
