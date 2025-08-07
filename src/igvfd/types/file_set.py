@@ -103,22 +103,33 @@ EMBEDDED_FILE_FIELDS = [
     'accession',
     'aliases',
     'assembly',
+    'anvil_url',
     'content_type',
     'controlled_access',
     'creation_timestamp',
     'cell_type_annotation',
     'derived_from',
     'file_format',
+    'file_format_type',
     'file_size',
+    'flowcell_id',
     'href',
+    'illumina_read_type',
+    'lane',
     'md5sum',
+    'mean_read_length',
     's3_uri',
+    'sequencing_run',
+    'sequencing_kit',
     'sequencing_platform',
+    'seqspecs',
+    'seqspec_document',
     'submitted_file_name',
     'status',
     'summary',
     'transcriptome_annotation',
     'upload_status',
+    'workflows',
 ]
 
 
@@ -161,6 +172,13 @@ class FileSet(Item):
             include=[
                 '@id',
                 'term_name'
+            ]
+        ),
+        Path(
+            'files.workflows',
+            include=[
+                '@id',
+                'accession',
             ]
         ),
         Path('control_for', include=['@id', 'accession', 'aliases', 'status']),
