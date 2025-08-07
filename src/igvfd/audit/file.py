@@ -151,7 +151,7 @@ def audit_file_mixed_assembly_transcriptome_annotation(value, system):
     [
         {
             "audit_description": "Files are expected to have a transcriptome annotation consistent with its assembly.",
-            "audit_category": "inconsistent assembly",
+            "audit_category": "inconsistent transcriptome annotation",
             "audit_level": "NOT_COMPLIANT"
         }
     ]

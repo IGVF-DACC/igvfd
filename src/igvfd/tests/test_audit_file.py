@@ -221,7 +221,7 @@ def test_audit_file_mixed_assembly_transcriptome_annotation(testapp, matrix_file
     )
     res = testapp.get(matrix_file['@id'] + '@@audit')
     assert all(
-        audit['category'] != 'inconsistent assembly'
+        audit['category'] != 'inconsistent transcriptome annotation'
         for audit in res.json['audit'].get('NOT_COMPLIANT', {})
     )
     testapp.patch_json(
@@ -232,6 +232,6 @@ def test_audit_file_mixed_assembly_transcriptome_annotation(testapp, matrix_file
     )
     res = testapp.get(matrix_file['@id'] + '@@audit')
     assert any(
-        audit['category'] == 'inconsistent assembly'
+        audit['category'] == 'inconsistent transcriptome annotation'
         for audit in res.json['audit'].get('NOT_COMPLIANT', {})
     )
