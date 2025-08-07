@@ -105,20 +105,20 @@ EMBEDDED_FILE_FIELDS = [
     'assembly',
     'content_type',
     'controlled_access',
+    'creation_timestamp',
+    'cell_type_annotation',
     'derived_from',
     'file_format',
     'file_size',
     'href',
     'md5sum',
     's3_uri',
+    'sequencing_platform',
     'submitted_file_name',
     'status',
-    'transcriptome_annotation',
-    'creation_timestamp',
-    'sequencing_platform',
-    'upload_status',
-    'submitted_file_name',
     'summary',
+    'transcriptome_annotation',
+    'upload_status',
 ]
 
 
@@ -154,6 +154,13 @@ class FileSet(Item):
                 '@id',
                 'term_name',
                 'status'
+            ]
+        ),
+        Path(
+            'files.cell_type_annotation',
+            include=[
+                '@id',
+                'term_name'
             ]
         ),
         Path('control_for', include=['@id', 'accession', 'aliases', 'status']),
