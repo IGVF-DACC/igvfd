@@ -591,7 +591,7 @@ def test_audit_missing_pipeline_parameters(
     )
 
 
-def test_audit_iconsistent_pipeline_parameters(
+def test_audit_inconsistent_pipeline_parameters(
     testapp,
     analysis_set_base,
     experimental_protocol_document,

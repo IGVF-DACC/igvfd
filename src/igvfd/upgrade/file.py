@@ -545,6 +545,6 @@ def tabular_file_17_18(value, system):
     notes = value.get('notes', '')
     if value['content_type'] == 'pipeline inputs':
         value['content_type'] = 'pipeline parameters'
-        notes += f' This file\'s content_type was variant pipeline inputs, but has been upgraded to pipeline parameters.'
+        notes += f' This file\'s content_type was pipeline inputs, but has been upgraded to pipeline parameters.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
