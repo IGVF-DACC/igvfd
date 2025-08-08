@@ -225,6 +225,14 @@ def test_audit_construct_library_set_guide_library_guide_rna_sequences(
     assert all(
         error['category'] != 'missing guide RNA sequences'
         for error in res.json['audit'].get('NOT_COMPLIANT', []))
+    testapp.patch_json(
+        tabular_file['@id'],
+        {'content_type': 'prime editing guide RNA sequences'}
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing guide RNA sequences'
+        for error in res.json['audit'].get('NOT_COMPLIANT', []))
 
 
 def test_audit_construct_library_set_mpra_sequence_designs(
