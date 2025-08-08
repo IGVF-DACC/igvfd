@@ -153,11 +153,24 @@ def audit_file_mixed_assembly_transcriptome_annotation(value, system):
             "audit_description": "Files are expected to have a transcriptome annotation consistent with its assembly.",
             "audit_category": "inconsistent transcriptome annotation",
             "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Files are expected to have only 1 transcriptome annotation.",
+            "audit_category": "mixed transcriptome annotation",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Files are expected to have only 1 assembly.",
+            "audit_category": "mixed assembly",
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message = get_audit_message(audit_file_mixed_assembly_transcriptome_annotation, index=0)
+    audit_message_inconsistent_annotation = get_audit_message(
+        audit_file_mixed_assembly_transcriptome_annotation, index=0)
+    audit_message_mixed_annotation = get_audit_message(audit_file_mixed_assembly_transcriptome_annotation, index=1)
+    audit_message_mixed_assembly = get_audit_message(audit_file_mixed_assembly_transcriptome_annotation, index=2)
     assembly_to_annotation = {
         'GRCm39': [
             'GENCODE M30',
@@ -199,7 +212,21 @@ def audit_file_mixed_assembly_transcriptome_annotation(value, system):
             f'has a `transcriptome_annotation` {value.get("transcriptome_annotation", "")} '
             f'that is inconsistent with its assembly {value.get("transcriptome_annotation", "")}.'
         )
-        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+        yield AuditFailure(audit_message_inconsistent_annotation.get('audit_category', ''), f'{detail} {audit_message_inconsistent_annotation.get("audit_description", "")}', level=audit_message_inconsistent_annotation.get('audit_level', ''))
+
+    if value.get('transcriptome_annotation', '') == 'Mixed transcriptome annotations':
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has mixed transcriptome annotations.'
+        )
+        yield AuditFailure(audit_message_mixed_annotation.get('audit_category', ''), f'{detail} {audit_message_mixed_annotation.get("audit_description", "")}', level=audit_message_mixed_annotation.get('audit_level', ''))
+
+    if value.get('assembly', '') == 'Mixed genome assemblies':
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has mixed assemblies.'
+        )
+        yield AuditFailure(audit_message_mixed_assembly.get('audit_category', ''), f'{detail} {audit_message_mixed_assembly.get("audit_description", "")}', level=audit_message_mixed_assembly.get('audit_level', ''))
 
 
 function_dispatcher_file_object = {

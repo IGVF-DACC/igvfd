@@ -235,3 +235,33 @@ def test_audit_file_mixed_assembly_transcriptome_annotation(testapp, matrix_file
         audit['category'] == 'inconsistent transcriptome annotation'
         for audit in res.json['audit'].get('NOT_COMPLIANT', {})
     )
+    testapp.patch_json(
+        reference_file_with_transcriptome['@id'],
+        {
+            'assembly': 'GRCh38',
+            'content_type': 'genome reference'
+        }
+    )
+    res = testapp.get(matrix_file['@id'] + '@@audit')
+    assert any(
+        audit['category'] == 'mixed assembly'
+        for audit in res.json['audit'].get('NOT_COMPLIANT', {})
+    )
+    testapp.patch_json(
+        reference_file_with_transcriptome['@id'],
+        {
+            'content_type': 'transcriptome reference'
+        }
+    )
+    testapp.patch_json(
+        reference_file_with_assembly['@id'],
+        {
+            'content_type': 'transcriptome reference',
+            'transcriptome_annotation': 'GENCODE M34'
+        }
+    )
+    res = testapp.get(matrix_file['@id'] + '@@audit')
+    assert any(
+        audit['category'] == 'mixed transcriptome annotation'
+        for audit in res.json['audit'].get('NOT_COMPLIANT', {})
+    )
