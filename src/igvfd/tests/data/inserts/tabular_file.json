@@ -919,5 +919,26 @@
         "filtered": false,
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "e5f91a0c-15dc-4bd0-a618-1c6b37bb2087",
+        "accession": "IGVFFI0001DIFF",
+        "lab": "michael-beer",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_differential_guide"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-08-06T12:34:56Z",
+        "md5sum": "2f2f90cb453db049a700b6a41ffe31a9",
+        "file_format": "tsv",
+        "content_type": "differential guide quantifications",
+        "submitted_file_name": "/Users/igvf/igvf_files/differential_guide_quantifications.tsv.gz",
+        "file_size": 4123,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "filtered": false,
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
     }
 ]
