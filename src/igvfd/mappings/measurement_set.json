@@ -1,6 +1,6 @@
 {
-    "hash": "07a953b4531f7f9cefe6f80c79db0576",
-    "index_name": "measurement_set_07a953b4",
+    "hash": "e1c04b3b168ea1e1143287a8fe899d75",
+    "index_name": "measurement_set_e1c04b3b",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -890,6 +890,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "pipeline_parameters": {
+                                "type": "keyword"
+                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -1319,6 +1322,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "pipeline_parameters": {
+                                "type": "keyword"
+                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -1647,6 +1653,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {

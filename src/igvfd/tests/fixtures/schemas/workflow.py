@@ -40,6 +40,20 @@ def base_workflow_2(testapp, award, lab, analysis_step_version_2):
 
 
 @pytest.fixture
+def workflow_uniform_pipeline(testapp, award, lab, analysis_step_version):
+    item = {
+        'accession': 'IGVFWF0000MPRA',
+        'name': 'MPRAsnakeflow',
+        'source_url': 'https://github.com/kircherlab/MPRAsnakeflow/releases/tag/v0.3.0',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'uniform_pipeline': True,
+        'analysis_step_versions': [analysis_step_version['@id']]
+    }
+    return testapp.post_json('/workflow', item).json['@graph'][0]
+
+
+@pytest.fixture
 def workflow_v1(base_workflow):
     item = base_workflow.copy()
     item.update({

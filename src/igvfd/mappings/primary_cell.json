@@ -1,6 +1,6 @@
 {
-    "hash": "c590eb00996b4df0384b871e658cfb8e",
-    "index_name": "primary_cell_c590eb00",
+    "hash": "746088adbbcaf42f60aa3ee140a6bac4",
+    "index_name": "primary_cell_746088ad",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1184,6 +1184,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {

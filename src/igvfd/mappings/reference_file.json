@@ -1,6 +1,6 @@
 {
-    "hash": "f81a9479112d80129f6148f2c985cd4d",
-    "index_name": "reference_file_f81a9479",
+    "hash": "c5295a45775dd0b5369f2ac347523e21",
+    "index_name": "reference_file_c5295a45",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -968,6 +968,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {

@@ -1,6 +1,6 @@
 {
-    "hash": "eb9b94bc695ba192bf040dbe50063dfd",
-    "index_name": "multiplexed_sample_eb9b94bc",
+    "hash": "fd49c2a568685072159c37729ec36f6c",
+    "index_name": "multiplexed_sample_fd49c2a5",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1171,6 +1171,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {

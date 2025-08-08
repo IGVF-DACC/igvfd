@@ -1,6 +1,6 @@
 {
-    "hash": "31905e2bdd3f2253ce712010ffbf8a6a",
-    "index_name": "sequence_file_31905e2b",
+    "hash": "3cec84c474d1812c5d2c1ad07927e1c7",
+    "index_name": "sequence_file_3cec84c4",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -964,6 +964,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {

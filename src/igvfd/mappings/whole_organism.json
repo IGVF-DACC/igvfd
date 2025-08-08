@@ -1,6 +1,6 @@
 {
-    "hash": "7fa84426f04bf92d761fed5d110584d8",
-    "index_name": "whole_organism_7fa84426",
+    "hash": "e6fc47ff80be95e8fc84223da6be349e",
+    "index_name": "whole_organism_e6fc47ff",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1181,6 +1181,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {

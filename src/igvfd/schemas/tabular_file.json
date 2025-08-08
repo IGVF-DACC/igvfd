@@ -131,7 +131,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "17"
+            "default": "18"
         },
         "catalog_adapters": {
             "title": "IGVF Catalog Adapters",
@@ -191,7 +191,7 @@
                 "MPRA sequence designs",
                 "peaks",
                 "peak quantifications",
-                "pipeline inputs",
+                "pipeline parameters",
                 "plus strand modification state",
                 "prime editing guide RNA sequences",
                 "primer sequences",
@@ -257,7 +257,7 @@
                 "MPRA sequence designs": "Sequences designed for an MPRA experiment. Formatting should follow https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/table_schemas/mpra_sequence_designs.json.",
                 "peaks": "Detected genomic regions of relative enrichment in coverage data, such as peaks in ChIP-seq or ATAC-seq indicating protein binding sites or chromatin accessibility.",
                 "peak quantifications": "The quantified levels of peaks detected in ChIP-seq or ATAC-seq assays.",
-                "pipeline inputs": "The input files used in a computational pipeline.",
+                "pipeline parameters": "The input files used in a computational pipeline.",
                 "plus strand modification state": "A file with the bases on the plus strand where a DNA or RNA modification was detected.",
                 "prime editing guide RNA sequences": "The sequences of guide RNAs designed for prime editing CRISPR experiments. Formatting should follow https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/table_schemas/prime_editing_guide_rna_sequences.json.",
                 "primer sequences": "The sequences of primers used in an experiment.",

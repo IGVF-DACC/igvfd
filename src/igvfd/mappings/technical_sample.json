@@ -1,6 +1,6 @@
 {
-    "hash": "223379666fb067c5b2c8700a05b9dad6",
-    "index_name": "technical_sample_22337966",
+    "hash": "5824bc2f14e7fe228c67f0151a914681",
+    "index_name": "technical_sample_5824bc2f",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -781,6 +781,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {

@@ -1,6 +1,6 @@
 {
-    "hash": "5d1ccd65efbc61d39f1ce6b458ab8e76",
-    "index_name": "signal_file_5d1ccd65",
+    "hash": "2635d57d995ec154ec356110b87114d3",
+    "index_name": "signal_file_2635d57d",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -1047,6 +1047,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {

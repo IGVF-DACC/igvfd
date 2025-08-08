@@ -1,6 +1,6 @@
 {
-    "hash": "1a427524fd55f4bf69f8df93ab4496a4",
-    "index_name": "construct_library_set_1a427524",
+    "hash": "60022cdba2e5d6ed84d3699f845e03cd",
+    "index_name": "construct_library_set_60022cdb",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -507,6 +507,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {

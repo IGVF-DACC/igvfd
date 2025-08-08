@@ -1,6 +1,6 @@
 {
-    "hash": "7a1a356e1bced57afda4b61820369e68",
-    "index_name": "model_set_7a1a356e",
+    "hash": "5be9c06b4732e9fd2e9e83b31634d644",
+    "index_name": "model_set_5be9c06b",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -774,6 +774,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "pipeline_parameters": {
+                                "type": "keyword"
+                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -1102,6 +1105,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {
@@ -1884,6 +1890,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {
