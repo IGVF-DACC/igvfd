@@ -589,3 +589,88 @@ def test_audit_missing_pipeline_parameters(
         error['category'] != 'missing pipeline parameters'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_iconsistent_pipeline_parameters(
+    testapp,
+    analysis_set_base,
+    experimental_protocol_document,
+    document_pipeline_parameters,
+    tabular_file
+):
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'pipeline_parameters': [experimental_protocol_document['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent pipeline parameters'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'pipeline_parameters': [document_pipeline_parameters['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent pipeline parameters'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'pipeline_parameters': [document_pipeline_parameters['@id'], tabular_file['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent pipeline parameters'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'content_type': 'pipeline parameters'
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent pipeline parameters'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+
+def test_audit_documents(
+    testapp,
+    analysis_set_base,
+    document_pipeline_parameters,
+    experimental_protocol_document
+):
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'documents': [document_pipeline_parameters['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent documents'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'pipeline_parameters': [document_pipeline_parameters['@id']],
+            'documents': [experimental_protocol_document['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent documents'
+        for error in res.json['audit'].get('ERROR', [])
+    )

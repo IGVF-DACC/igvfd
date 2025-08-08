@@ -347,9 +347,7 @@ def audit_pipeline_parameters(value, system):
     workflows = value.get('workflows', [])
     uniformly_processed = False
     for workflow in workflows:
-        print(workflow)
         workflow_object = system.get('request').embed(workflow + '@@object?skip_calculated=true')
-        print(workflow_object['uniform_pipeline'])
         if workflow_object['uniform_pipeline']:
             uniformly_processed = True
     if uniformly_processed and not (pipeline_parameters):
@@ -383,7 +381,7 @@ def audit_pipeline_parameters(value, system):
     inconsistent_documents = []
     if documents:
         for document in documents:
-            document_object = system.get('request').embed(pipeline_parameter + '@@object?skip_calculated=true')
+            document_object = system.get('request').embed(document + '@@object?skip_calculated=true')
             if document_object['document_type'] == 'pipeline parameters':
                 inconsistent_documents.append(document)
     if inconsistent_documents:
