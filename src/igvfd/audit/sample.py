@@ -46,8 +46,9 @@ def audit_sample_sorted_from_parent_child_check(value, system):
             )
             yield AuditFailure(audit_message_duplicated_parent.get('audit_category', ''), f'{detail} {audit_message_duplicated_parent.get("audit_description", "")}', level=audit_message_duplicated_parent.get('audit_level', ''))
         parent = system.get('request').embed(parent_id + '@@object?skip_calculated=true')
-        skip_keys = ['accession', 'aliases', 'alternate_accessions', 'audit', 'cellular_sub_pool', 'creation_timestamp', 'date_obtained', 'dbxrefs', 'description', 'documents', 'notes', 'originated_from', 'part_of',
-                     'pooled_from', 'release_timestamp', 'revoke_detail', 'schema_version', 'sorted_from', 'sorted_from_detail', 'starting_amount', 'starting_amount_units', 'submitter_comment', 'submitted_by', 'treatments', 'url']
+        skip_keys = ['accession', 'aliases', 'alternate_accessions', 'audit', 'award', 'cellular_sub_pool', 'creation_timestamp', 'date_obtained', 'dbxrefs', 'description', 'documents', 'lab', 'notes', 'originated_from', 'part_of',
+                     'pooled_from', 'preview_timestamp', 'protocols', 'release_timestamp', 'revoke_detail', 'schema_version', 'sorted_from', 'sorted_from_detail', 'starting_amount', 'starting_amount_units', 'submitter_comment',
+                     'submitted_by', 'time_post_library_delivery', 'time_post_library_delivery_units', 'treatments', 'url']
         all_keys = parent.keys() | value.keys()
         keys_to_check = [key for key in all_keys if key not in skip_keys]
         for key in keys_to_check:

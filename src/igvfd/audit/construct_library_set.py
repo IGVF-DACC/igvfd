@@ -140,7 +140,7 @@ def audit_integrated_content_files(value, system):
         if integrated_content_files:
             files = [system.get('request').embed(file, '@@object?skip_calculated=true')
                      for file in integrated_content_files]
-            if not ([file for file in files if file['content_type'] == file_expectation]):
+            if not ([file for file in files if file_expectation in file['content_type']]):
                 detail = (f'Construct library set {audit_link(path_to_text(value["@id"]), value["@id"])} has no '
                           f'linked files in `integrated_content_files` with `content_type` {file_expectation}.')
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
