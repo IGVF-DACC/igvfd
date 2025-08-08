@@ -19,7 +19,6 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set_type": "intermediate analysis",
         "pipeline_parameters": [
-            "IGVFFI0602PRTB",
             "5917c472-ca1e-7849-81c1-e0ae2b20f294"
         ]
     },

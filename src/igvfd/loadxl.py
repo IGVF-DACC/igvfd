@@ -532,6 +532,12 @@ PHASE1_PIPELINES = {
     'user': [
         remove_keys('lab', 'submits_for'),
     ],
+    'analysis_set': [
+        remove_keys('pipeline_parameters'),
+    ],
+    'auxiliary_set': [
+        remove_keys('measurement_sets', 'barcode_map'),
+    ],
     'construct_library_set': [
         remove_keys('integrated_content_files', 'large_scale_gene_list', 'large_scale_loci_list'),
     ],
@@ -578,10 +584,7 @@ PHASE1_PIPELINES = {
     ],
     'measurement_set': [
         remove_keys('auxiliary_sets', 'control_file_sets', 'onlist_files', 'onlist_method', 'primer_designs'),
-    ],
-    'auxiliary_set': [
-        remove_keys('measurement_sets', 'barcode_map'),
-    ],
+    ]
 }
 
 
@@ -595,6 +598,9 @@ PHASE1_PIPELINES = {
 PHASE2_PIPELINES = {
     'user': [
         skip_rows_missing_all_keys('lab', 'submits_for'),
+    ],
+    'analysis_set': [
+        remove_keys('pipeline_parameters'),
     ],
     'auxiliary_set': [
         skip_rows_missing_all_keys('barcode_map'),
