@@ -11,9 +11,9 @@ def preferred_assay_title_summary():
             'y': {
                 'group_by': [
                     'lab.title',
-                    'preferred_assay_title',
+                    'preferred_assay_titles',
                 ],
-                'label': 'Preferred assay title',
+                'label': 'Preferred assay titles',
             },
             'x': {
                 'group_by': 'status',
