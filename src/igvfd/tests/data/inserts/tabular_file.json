@@ -788,7 +788,7 @@
         "release_timestamp": "2025-05-01T21:29:45Z",
         "md5sum": "3fc3f1dc810e639e9a9ec7fa0a6ee5e2",
         "file_format": "tar",
-        "content_type": "pipeline inputs",
+        "content_type": "pipeline parameters",
         "submitted_file_name": "/Users/igvf/igvf_files/primers_table.tsv.gz",
         "file_size": 20090,
         "upload_status": "validated",

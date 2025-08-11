@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 18
+
+* Adjust `content_type` enum list to replace `pipeline inputs` with `pipeline parameters`.
+
 ### Minor changes since schema version 17
 
 * Add `reference_files`.

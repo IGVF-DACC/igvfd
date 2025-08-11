@@ -1,6 +1,6 @@
 {
-    "hash": "d136a965c6dd17e5cdc8b7a5f58db60f",
-    "index_name": "prediction_set_d136a965",
+    "hash": "4d532507bba3058c8e2d1c5b74949f28",
+    "index_name": "prediction_set_4d532507",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -851,6 +851,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "pipeline_parameters": {
+                                "type": "keyword"
+                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -1179,6 +1182,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {

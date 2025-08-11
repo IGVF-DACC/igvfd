@@ -73,3 +73,9 @@ def test_tabular_file_upgrade_16_17_2(upgrader, tabular_file_v16_2):
     value = upgrader.upgrade('tabular_file', tabular_file_v16_2, current_version='16', target_version='17')
     assert value['content_type'] == 'element to gene interactions'
     assert value['schema_version'] == '17'
+
+
+def test_tabular_file_upgrade_17_18(upgrader, tabular_file_v17):
+    value = upgrader.upgrade('tabular_file', tabular_file_v17, current_version='17', target_version='18')
+    assert value['content_type'] == 'pipeline parameters'
+    assert value['schema_version'] == '18'

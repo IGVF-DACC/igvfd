@@ -1,6 +1,6 @@
 {
-    "hash": "4d93e9eab36d6dd72795e248a172b8c5",
-    "index_name": "auxiliary_set_4d93e9ea",
+    "hash": "7330cc4006b48e39539ac35826777319",
+    "index_name": "auxiliary_set_7330cc40",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -678,6 +678,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "pipeline_parameters": {
+                                "type": "keyword"
+                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -1006,6 +1009,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {

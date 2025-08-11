@@ -1,6 +1,6 @@
 {
-    "hash": "62e71fda30a40ee5591b5a7d1ec34f62",
-    "index_name": "in_vitro_system_62e71fda",
+    "hash": "7ed38fcd794686af14be40e4200aeb58",
+    "index_name": "in_vitro_system_7ed38fcd",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1194,6 +1194,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {

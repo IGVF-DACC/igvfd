@@ -1,6 +1,6 @@
 {
-    "hash": "be899143d775f6f6ab810979b723c034",
-    "index_name": "matrix_file_be899143",
+    "hash": "2ef2e3798adc055f09dbd7164d0ff1b2",
+    "index_name": "matrix_file_2ef2e379",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -953,6 +953,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {

@@ -1,6 +1,6 @@
 {
-    "hash": "f94026903a3f88de8146be9d7ba49c06",
-    "index_name": "tabular_file_f9402690",
+    "hash": "d66934e0682fd2fcab6537eb3cc4bf20",
+    "index_name": "tabular_file_d66934e0",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1063,6 +1063,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {
