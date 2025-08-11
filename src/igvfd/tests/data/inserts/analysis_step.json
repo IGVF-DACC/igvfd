@@ -134,7 +134,8 @@
             "guide RNA sequences",
             "MPRA sequence designs",
             "prime editing guide RNA sequences",
-            "protein to protein interaction score"
+            "protein to protein interaction score",
+            "differential guide quantifications"
         ]
     },
     {

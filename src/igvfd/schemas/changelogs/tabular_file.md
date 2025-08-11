@@ -6,6 +6,7 @@
 
 ### Minor changes since schema version 17
 
+* Extend `content_type` enum list to include `differential guide quantifications`.
 * Add `reference_files`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Add calculated property `workflows`.
