@@ -1,6 +1,6 @@
 ## Changelog for *`analysis_step.json`*
 
-### Minor changes since schema version 8
+### Minor changes since schema version 9
 
 * Extend `output_content_types` enum list to include `differential guide quantifications`.
 * Extend `input_content_types` enum list to include `differential guide quantifications`.
