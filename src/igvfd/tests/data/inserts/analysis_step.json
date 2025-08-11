@@ -211,7 +211,8 @@
             "UMI deduplication",
             "matrix generation",
             "modification calling",
-            "modification site annotation"
+            "modification site annotation",
+            "heteroplasmy ratio determination"
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "input_content_types": [

@@ -7,6 +7,9 @@
 
 ### Schema version 9
 
+* Extend `output_content_types` enum list to include `mitochondrial DNA heteroplasmy`.
+* Extend `input_content_types` enum list to include `mitochondrial DNA heteroplasmy`.
+* Extend `analysis_step_types` enum list to include `heteroplasmy ratio determination`.
 * Remove `workflow`.
 
 ### Minor changes since schema version 8

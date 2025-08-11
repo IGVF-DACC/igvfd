@@ -279,5 +279,29 @@
         "secondary_dimensions": [
             "peak"
         ]
+    },
+    {
+        "uuid": "7537619f-1f44-47dd-90a9-90e212ee8cea",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_rds_1"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "22c78095cea2a84690dd927c8ff0cd5e",
+        "file_format": "rds",
+        "content_type": "mitochondrial DNA heteroplasmy",
+        "submitted_file_name": "/Users/igvf/igvf_files/matrix_file_rds_1.rds",
+        "file_size": 520000,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "mitochondrial variants",
+        "secondary_dimensions": [
+            "cell"
+        ]
     }
 ]
