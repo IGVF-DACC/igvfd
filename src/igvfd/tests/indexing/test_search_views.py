@@ -407,7 +407,7 @@ def test_search_views_dataset_summary_agg(workbook, testapp):
     )
     assert 'matrix' in r.json
     assert r.json['matrix']['y']['doc_count'] > 10
-    assert r.json['matrix']['y']['lab.title']['buckets'][0]['preferred_assay_title']['buckets'] is not None
+    assert r.json['matrix']['y']['lab.title']['buckets'][0]['preferred_assay_titles']['buckets'] is not None
     r = testapp.get(
         '/dataset-summary-agg?type=AnalysisSet&config=AssayTitlesSummary',
         status=200,
@@ -478,7 +478,7 @@ def test_search_views_omnimatrix(workbook, testapp):
     )
     assert 'matrix' in r1.json
     assert r1.json['matrix']['y']['doc_count'] > 10
-    assert r1.json['matrix']['y']['lab.title']['buckets'][0]['preferred_assay_title']['buckets'] is not None
+    assert r1.json['matrix']['y']['lab.title']['buckets'][0]['preferred_assay_titles']['buckets'] is not None
     assert r1.json['@type'] == 'Omnimatrix'
     assert r1.json['title'] == 'Omnimatrix'
     assert 'facets' not in r1
