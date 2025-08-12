@@ -146,13 +146,108 @@ def audit_tabular_file_missing_reference_files(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+def audit_file_mixed_assembly_transcriptome_annotation(value, system):
+    '''
+    [
+        {
+            "audit_description": "Files are expected to have a transcriptome annotation consistent with its assembly.",
+            "audit_category": "inconsistent transcriptome annotation",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Files are expected to have only 1 transcriptome annotation.",
+            "audit_category": "mixed transcriptome annotation",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Files are expected to have only 1 assembly.",
+            "audit_category": "mixed assembly",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message_inconsistent_annotation = get_audit_message(
+        audit_file_mixed_assembly_transcriptome_annotation, index=0)
+    audit_message_mixed_annotation = get_audit_message(audit_file_mixed_assembly_transcriptome_annotation, index=1)
+    audit_message_mixed_assembly = get_audit_message(audit_file_mixed_assembly_transcriptome_annotation, index=2)
+    assembly_to_annotation = {
+        'GRCm39': [
+            'GENCODE M30',
+            'GENCODE M31',
+            'GENCODE M32',
+            'GENCODE M33',
+            'GENCODE M34',
+            'GENCODE M36'
+        ],
+        'mm10': [
+            'GENCODE M25',
+            'GENCODE M17'
+        ],
+        'Cast - GRCm39': [
+            'GENCODE Cast - M32'
+        ],
+        'GRCh38': [
+            'GENCODE 22',
+            'GENCODE 24',
+            'GENCODE 28',
+            'GENCODE 32',
+            'GENCODE 40',
+            'GENCODE 41',
+            'GENCODE 42',
+            'GENCODE 43',
+            'GENCODE 44',
+            'GENCODE 45',
+            'GENCODE 47'
+        ],
+        'GRCh38, mm10': [
+            'GENCODE 32, GENCODE M23'
+        ],
+        'Mixed genome assemblies': [],
+        'custom': []
+    }
+    if value.get('transcriptome_annotation', '') and value.get('assembly', '') and \
+            value.get('transcriptome_annotation', '') != 'Mixed transcriptome annotations' and \
+            value.get('assembly', '') != 'Mixed genome assemblies' and \
+            value.get('transcriptome_annotation', '') not in assembly_to_annotation[value.get('assembly', '')]:
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has a `transcriptome_annotation` {value.get("transcriptome_annotation", "")} '
+            f'that is inconsistent with its assembly {value.get("assembly", "")}.'
+        )
+        yield AuditFailure(audit_message_inconsistent_annotation.get('audit_category', ''), f'{detail} {audit_message_inconsistent_annotation.get("audit_description", "")}', level=audit_message_inconsistent_annotation.get('audit_level', ''))
+
+    if value.get('transcriptome_annotation', '') == 'Mixed transcriptome annotations':
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has mixed transcriptome annotations.'
+        )
+        yield AuditFailure(audit_message_mixed_annotation.get('audit_category', ''), f'{detail} {audit_message_mixed_annotation.get("audit_description", "")}', level=audit_message_mixed_annotation.get('audit_level', ''))
+
+    if value.get('assembly', '') == 'Mixed genome assemblies':
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has mixed assemblies.'
+        )
+        yield AuditFailure(audit_message_mixed_assembly.get('audit_category', ''), f'{detail} {audit_message_mixed_assembly.get("audit_description", "")}', level=audit_message_mixed_assembly.get('audit_level', ''))
+
+
 function_dispatcher_file_object = {
     'audit_upload_status': audit_upload_status,
     'audit_file_format_specifications': audit_file_format_specifications
 }
 
+function_dispatcher_alignment_file_object = {
+    'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation
+}
+
 function_dispatcher_matrix_file_object = {
-    'audit_file_no_file_format_specifications': audit_file_no_file_format_specifications
+    'audit_file_no_file_format_specifications': audit_file_no_file_format_specifications,
+    'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation
+}
+
+function_dispatcher_signal_file_object = {
+    'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation
 }
 
 function_dispatcher_tabular_file_object = {
@@ -173,11 +268,27 @@ def audit_file_object_dispatcher(value, system):
             yield failure
 
 
+@audit_checker('AlignmentFile', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_matrix_file_object.values()))
+def audit_alignment_file_object_dispatcher(value, system):
+    for function_name in function_dispatcher_alignment_file_object.keys():
+        for failure in function_dispatcher_alignment_file_object[function_name](value, system):
+            yield failure
+
+
 @audit_checker('MatrixFile', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_matrix_file_object.values()))
 def audit_matrix_file_object_dispatcher(value, system):
     for function_name in function_dispatcher_matrix_file_object.keys():
         for failure in function_dispatcher_matrix_file_object[function_name](value, system):
+            yield failure
+
+
+@audit_checker('SignalFile', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_matrix_file_object.values()))
+def audit_signal_file_object_dispatcher(value, system):
+    for function_name in function_dispatcher_signal_file_object.keys():
+        for failure in function_dispatcher_signal_file_object[function_name](value, system):
             yield failure
 
 
