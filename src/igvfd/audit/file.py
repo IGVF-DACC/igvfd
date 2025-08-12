@@ -203,7 +203,8 @@ def audit_file_mixed_assembly_transcriptome_annotation(value, system):
         'GRCh38, mm10': [
             'GENCODE 32, GENCODE M23'
         ],
-        'Mixed genome assemblies': []
+        'Mixed genome assemblies': [],
+        'custom': []
     }
     if value.get('transcriptome_annotation', '') and value.get('assembly', '') and \
             value.get('transcriptome_annotation', '') != 'Mixed transcriptome annotations' and \
