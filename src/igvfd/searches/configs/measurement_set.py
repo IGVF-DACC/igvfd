@@ -226,7 +226,7 @@ def assay_summary():
                 'label': 'Classifications'
             },
             'y': {
-                'group_by': ['assay_term.assay_slims', 'assay_term.term_name', 'preferred_assay_title'],
+                'group_by': ['assay_term.assay_slims', 'assay_term.term_name', 'preferred_assay_titles'],
                 'label': 'Samples'
             }
         }
