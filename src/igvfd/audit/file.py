@@ -206,8 +206,9 @@ def audit_file_mixed_assembly_transcriptome_annotation(value, system):
         'Mixed genome assemblies': []
     }
     if value.get('transcriptome_annotation', '') and value.get('assembly', '') and \
-            value.get('transcriptome_annotation', '') not in \
-            assembly_to_annotation[value.get('assembly', '')]:
+            value.get('transcriptome_annotation', '') != 'Mixed transcriptome annotations' and \
+            value.get('assembly', '') != 'Mixed genome assemblies' and \
+            value.get('transcriptome_annotation', '') not in assembly_to_annotation[value.get('assembly', '')]:
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has a `transcriptome_annotation` {value.get("transcriptome_annotation", "")} '
