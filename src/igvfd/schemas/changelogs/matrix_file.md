@@ -2,8 +2,8 @@
 
 ### Minor changes since schema version 9
 
-* Extend `principal_dimensions` enum list to include `mitochondrial variants`.
-* Extend `content_types` enum list to include `mitochondrial DNA heteroplasmy`.
+* Extend `principal_dimension` enum list to include `mitochondrial variants`.
+* Extend `content_type` enum list to include `mitochondrial DNA heteroplasmy`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Add calculated property `workflows`.
 * Remove calculated property `workflow`.
