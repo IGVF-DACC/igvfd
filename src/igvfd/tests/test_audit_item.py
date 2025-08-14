@@ -73,7 +73,14 @@ def test_audit_item_mismatched_status(
     )
     testapp.patch_json(
         assay_term_starr['@id'],
-        {'status': 'revoked'}
+        {'status': 'in progress'}
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'status': 'preview',
+            'preview_timestamp': '2025-03-06T12:34:56Z'
+        }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
@@ -83,6 +90,10 @@ def test_audit_item_mismatched_status(
     testapp.patch_json(
         assay_term_starr['@id'],
         {'status': 'archived', 'release_timestamp': '2024-03-06T12:34:56Z'}
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {'status': 'in progress'}
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
