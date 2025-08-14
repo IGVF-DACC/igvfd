@@ -73,7 +73,7 @@ def test_audit_item_mismatched_status(
     )
     testapp.patch_json(
         assay_term_starr['@id'],
-        {'status': 'deleted'}
+        {'status': 'revoked'}
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
