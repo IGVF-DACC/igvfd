@@ -1,6 +1,6 @@
 {
-    "hash": "9e6ff4bcd8716cb988dd53232e234a95",
-    "index_name": "analysis_set_9e6ff4bc",
+    "hash": "c274eb82eb6e658ebb28e57fb097a671",
+    "index_name": "analysis_set_c274eb82",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -317,9 +317,6 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
-                                "type": "keyword"
-                            },
-                            "applied_to_samples": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -679,6 +676,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "pipeline_parameters": {
+                                "type": "keyword"
+                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -846,9 +846,6 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
-                            "applied_to_samples": {
-                                "type": "keyword"
-                            },
                             "assay_term": {
                                 "type": "keyword"
                             },
@@ -1010,6 +1007,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {
@@ -1966,9 +1966,6 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
-                            "applied_to_samples": {
-                                "type": "keyword"
-                            },
                             "assay_term": {
                                 "type": "keyword"
                             },
@@ -2130,6 +2127,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {
@@ -2345,6 +2345,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "pipeline_parameters": {
+                        "type": "keyword"
                     },
                     "preferred_assay_titles": {
                         "type": "keyword"

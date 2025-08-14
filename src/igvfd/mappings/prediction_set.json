@@ -1,6 +1,6 @@
 {
-    "hash": "afdfbc823ffd0f8aff01332695dd181f",
-    "index_name": "prediction_set_afdfbc82",
+    "hash": "afc81e46d9494c30b9b8ea2e503c6e1a",
+    "index_name": "prediction_set_afc81e46",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -494,9 +494,6 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
-                            "applied_to_samples": {
-                                "type": "keyword"
-                            },
                             "assay_term": {
                                 "type": "keyword"
                             },
@@ -854,6 +851,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "pipeline_parameters": {
+                                "type": "keyword"
+                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -1021,9 +1021,6 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
-                            "applied_to_samples": {
-                                "type": "keyword"
-                            },
                             "assay_term": {
                                 "type": "keyword"
                             },
@@ -1185,6 +1182,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {
@@ -2721,9 +2721,6 @@
                                     "alternate_accessions": {
                                         "type": "keyword"
                                     },
-                                    "applied_to_samples": {
-                                        "type": "keyword"
-                                    },
                                     "assay_titles": {
                                         "type": "keyword"
                                     },
@@ -2770,6 +2767,9 @@
                                         "type": "text"
                                     },
                                     "documents": {
+                                        "type": "keyword"
+                                    },
+                                    "donors": {
                                         "type": "keyword"
                                     },
                                     "exon": {
@@ -2835,6 +2835,9 @@
                                         "type": "date"
                                     },
                                     "revoke_detail": {
+                                        "type": "keyword"
+                                    },
+                                    "samples": {
                                         "type": "keyword"
                                     },
                                     "schema_version": {

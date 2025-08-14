@@ -1,6 +1,6 @@
 {
-    "hash": "2876a87fd943208ca5cbf5715d2d144d",
-    "index_name": "auxiliary_set_2876a87f",
+    "hash": "879cd2a4ecbdbfc1f8bbf7d40ef086c2",
+    "index_name": "auxiliary_set_879cd2a4",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -319,9 +319,6 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
-                                "type": "keyword"
-                            },
-                            "applied_to_samples": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -681,6 +678,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "pipeline_parameters": {
+                                "type": "keyword"
+                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -848,9 +848,6 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
-                            "applied_to_samples": {
-                                "type": "keyword"
-                            },
                             "assay_term": {
                                 "type": "keyword"
                             },
@@ -1012,6 +1009,9 @@
                                 "type": "keyword"
                             },
                             "orf_list": {
+                                "type": "keyword"
+                            },
+                            "pipeline_parameters": {
                                 "type": "keyword"
                             },
                             "prediction_objects": {
