@@ -591,6 +591,15 @@ def test_metadata_metadata_report_init(dummy_request):
     assert isinstance(mr, MetadataReport)
 
 
+def test_metadata_file_metadata_report_init(dummy_request):
+    from igvfd.metadata.metadata import FileMetadataReport
+    dummy_request.environ['QUERY_STRING'] = (
+        'type=File'
+    )
+    fmr = FileMetadataReport(dummy_request)
+    assert isinstance(fmr, FileMetadataReport)
+
+
 def test_metadata_metadata_report_query_string_init_and_param_list(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     from snosearch.parsers import QueryString
@@ -649,6 +658,112 @@ def test_metadata_metadata_report_build_header(dummy_request):
         'Audit ERROR',
     ]
     assert mr.header == expected_header
+
+
+def test_metadata_metadata_report_v2_build_header(dummy_request):
+    from igvfd.metadata.metadata import MetadataReportV2
+    dummy_request.environ['QUERY_STRING'] = (
+        'type=FileSet'
+    )
+    mr = MetadataReportV2(dummy_request)
+    mr._build_header()
+    expected_header = [
+        'File ID',
+        'File download URL',
+        'File accession',
+        'File format',
+        'File format type',
+        'File content type',
+        'File summary',
+        'Fileset accession',
+        'Fileset type',
+        'Assay titles',
+        'Preferred assay titles',
+        'Donors',
+        'Samples',
+        'Sample term names',
+        'Sample summaries',
+        'Cell type annotation',
+        'Creation timestamp',
+        'File size',
+        'Fileset lab',
+        'File S3 URI',
+        'File assembly',
+        'File transcriptome annotation',
+        'File controlled access',
+        'File Anvil URL',
+        'File md5sum',
+        'File derived from',
+        'File status',
+        'File upload status',
+        'Flowcell ID',
+        'Lane',
+        'Sequencing run',
+        'Illumina read type',
+        'Mean read length',
+        'Seq specs',
+        'Seq spec document',
+        'Sequencing kit',
+        'Sequencing platform',
+        'Workflows',
+        'Audit WARNING',
+        'Audit NOT_COMPLIANT',
+        'Audit ERROR',
+    ]
+    assert mr.header == expected_header
+
+
+def test_metadata_file_metadata_report_build_header(dummy_request):
+    from igvfd.metadata.metadata import FileMetadataReport
+    dummy_request.environ['QUERY_STRING'] = (
+        'type=File'
+    )
+    fmr = FileMetadataReport(dummy_request)
+    fmr._build_header()
+    expected_header = [
+        'File ID',
+        'File download URL',
+        'File accession',
+        'File format',
+        'File format type',
+        'File content type',
+        'File summary',
+        'Fileset accession',
+        'Fileset type',
+        'Assay titles',
+        'Preferred assay titles',
+        'Donors',
+        'Samples',
+        'Sample term names',
+        'Sample summaries',
+        'Cell type annotation',
+        'Creation timestamp',
+        'File size',
+        'Fileset lab',
+        'File S3 URI',
+        'File assembly',
+        'File transcriptome annotation',
+        'File controlled access',
+        'File Anvil URL',
+        'File md5sum',
+        'File derived from',
+        'File status',
+        'File upload status',
+        'Flowcell ID',
+        'Lane',
+        'Sequencing run',
+        'Illumina read type',
+        'Mean read length',
+        'Seq specs',
+        'Seq spec document',
+        'Sequencing kit',
+        'Sequencing platform',
+        'Workflows',
+        'Audit WARNING',
+        'Audit NOT_COMPLIANT',
+        'Audit ERROR',
+    ]
+    assert fmr.header == expected_header
 
 
 def test_metadata_metadata_report_split_column_and_fields_by_experiment_and_file(dummy_request):

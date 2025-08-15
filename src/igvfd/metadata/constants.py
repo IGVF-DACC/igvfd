@@ -90,7 +90,7 @@ BOOLEAN_MAP = {
 
 FROM_FILESET_FIELDS = OrderedDict(
     [
-        ('File id', ['files.@id']),
+        ('File ID', ['files.@id']),
         ('File download URL', ['files.href']),
         ('File accession', ['files.accession']),
         ('File format', ['files.file_format']),
@@ -109,7 +109,7 @@ FROM_FILESET_FIELDS = OrderedDict(
         ('Creation timestamp', ['files.creation_timestamp']),
         ('File size', ['files.file_size']),
         ('Fileset lab', ['lab.title']),
-        ('File s3_uri', ['files.s3_uri']),
+        ('File S3 URI', ['files.s3_uri']),
         ('File assembly', ['files.assembly']),
         ('File transcriptome annotation', ['files.transcritome_annotation']),
         ('File controlled access', ['files.controlled_access']),
@@ -120,13 +120,13 @@ FROM_FILESET_FIELDS = OrderedDict(
         ('File upload status', ['files.upload_status']),
         ('Flowcell ID', ['files.flowcell_id']),
         ('Lane', ['files.lane']),
-        ('Sequencing Run', ['files.sequencing_run']),
-        ('Illumina Read Type', ['files.illumina_read_type']),
-        ('Mean Read Length', ['files.mean_read_length']),
-        ('Seq Specs', ['files.seqspecs']),
-        ('Seq Spec Document', ['files.seqspec_document']),
-        ('Sequencing Kit', ['files.sequencing_kit']),
-        ('Sequencing Platform', ['files.sequencing_platform.term_name']),
+        ('Sequencing run', ['files.sequencing_run']),
+        ('Illumina read type', ['files.illumina_read_type']),
+        ('Mean read length', ['files.mean_read_length']),
+        ('Seq specs', ['files.seqspecs']),
+        ('Seq spec document', ['files.seqspec_document']),
+        ('Sequencing kit', ['files.sequencing_kit']),
+        ('Sequencing platform', ['files.sequencing_platform.term_name']),
         ('Workflows', ['files.workflows.accession']),
     ]
 )
@@ -134,7 +134,7 @@ FROM_FILESET_FIELDS = OrderedDict(
 
 FROM_FILE_FIELDS = OrderedDict(
     [
-        ('File id', ['@id']),
+        ('File ID', ['@id']),
         ('File download URL', ['href']),
         ('File accession', ['accession']),
         ('File format', ['file_format']),
@@ -153,7 +153,7 @@ FROM_FILE_FIELDS = OrderedDict(
         ('Creation timestamp', ['creation_timestamp']),
         ('File size', ['file_size']),
         ('Fileset lab', ['file_set.lab.title']),
-        ('File s3_uri', ['s3_uri']),
+        ('File S3 URI', ['s3_uri']),
         ('File assembly', ['assembly']),
         ('File transcriptome annotation', ['transcriptome_annotation']),
         ('File controlled access', ['controlled_access']),
@@ -164,13 +164,13 @@ FROM_FILE_FIELDS = OrderedDict(
         ('File upload status', ['upload_status']),
         ('Flowcell ID', ['flowcell_id']),
         ('Lane', ['lane']),
-        ('Sequencing Run', ['sequencing_run']),
-        ('Illumina Read Type', ['illumina_read_type']),
-        ('Mean Read Length', ['mean_read_length']),
-        ('Seq Specs', ['seqspecs']),
-        ('Seq Spec Document', ['seqspec_document']),
-        ('Sequencing Kit', ['sequencing_kit']),
-        ('Sequencing Platform', ['sequencing_platform.term_name']),
+        ('Sequencing run', ['sequencing_run']),
+        ('Illumina read type', ['illumina_read_type']),
+        ('Mean read length', ['mean_read_length']),
+        ('Seq specs', ['seqspecs']),
+        ('Seq spec document', ['seqspec_document']),
+        ('Sequencing kit', ['sequencing_kit']),
+        ('Sequencing platform', ['sequencing_platform.term_name']),
         ('Workflows', ['workflows.accession']),
     ]
 )
