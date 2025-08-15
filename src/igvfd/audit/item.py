@@ -90,6 +90,8 @@ def audit_item_status(value, system):
         linked_level = STATUS_HIERARCHY.get(linked_value['status'], 50)
         if linked_value['status'] in ['archived']:
             linked_level += 30
+        if linked_value['status'] in ['deleted']:
+            linked_level += 100
         if linked_level < level:
             detail = ('{} {} {} has {} subobject {} {}.'.format(
                 value['status'].capitalize(),
