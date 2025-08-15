@@ -940,6 +940,27 @@ def test_metadata_metadata_report_set_positive_file_param_set(dummy_request):
         assert tuple(sorted(expected_positive_file_param_set[k])) == tuple(sorted(v))
 
 
+def test_metadata_metadata_report_v2_set_positive_file_param_set(dummy_request):
+    from igvfd.metadata.metadata import MetadataReportV2
+    dummy_request.environ['QUERY_STRING'] = (
+        'type=Experiment&files.file_type=bigWig&files.file_type=bam'
+        '&files.replicate.library.size_range=50-100'
+        '&files.status!=archived&files.biological_replicates=2'
+        '&files.file_size=gt:3000&files.file_size=lte:5000000&files.read_count=lt:26'
+        '&files.accession=gte:ENCFF000AAA'
+    )
+    mr = MetadataReportV2(dummy_request)
+    mr._set_split_file_filters()
+    mr._set_positive_file_param_set()
+    expected_positive_file_param_set = {
+        'file_type': set(['bigWig', 'bam']),
+        'replicate.library.size_range': set(['50-100']),
+        'biological_replicates': set([2])
+    }
+    for k, v in mr.positive_file_param_set.items():
+        assert tuple(sorted(expected_positive_file_param_set[k])) == tuple(sorted(v))
+
+
 def test_metadata_metadata_report_set_positive_file_inequalities(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
