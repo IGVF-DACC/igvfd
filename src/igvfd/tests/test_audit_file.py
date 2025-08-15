@@ -265,3 +265,34 @@ def test_audit_file_mixed_assembly_transcriptome_annotation(testapp, matrix_file
         audit['category'] == 'mixed transcriptome annotation'
         for audit in res.json['audit'].get('NOT_COMPLIANT', {})
     )
+
+
+def test_audit_file_reference_files_unexpected_type(testapp, matrix_file, reference_file_with_assembly, reference_file_with_transcriptome, principal_analysis_set, measurement_set_one_onlist):
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'reference_files': [reference_file_with_assembly['@id'], reference_file_with_transcriptome['@id']]
+        }
+    )
+    testapp.patch_json(
+        principal_analysis_set['@id'],
+        {
+            'input_file_sets': [measurement_set_one_onlist['@id']]
+        }
+    )
+    res = testapp.get(matrix_file['@id'] + '@@audit')
+    assert all(
+        audit['category'] != 'missing reference files'
+        for audit in res.json['audit'].get('INTERNAL_ACTION', {})
+    )
+    testapp.patch_json(
+        reference_file_with_assembly['@id'],
+        {
+            'content_type': 'exclusion list'
+        }
+    )
+    res = testapp.get(matrix_file['@id'] + '@@audit')
+    assert any(
+        audit['category'] == 'missing reference files'
+        for audit in res.json['audit'].get('INTERNAL_ACTION', {})
+    )
