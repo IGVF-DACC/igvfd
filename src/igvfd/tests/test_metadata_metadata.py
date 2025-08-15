@@ -806,6 +806,119 @@ def test_metadata_metadata_report_split_column_and_fields_by_experiment_and_file
         assert tuple(expected_experiment_column_to_fields_mapping[k]) == tuple(v), f'{k, v} not in expected'
 
 
+def test_metadata_metadata_report_v2_split_column_and_fields_by_experiment_and_file(dummy_request):
+    from igvfd.metadata.metadata import MetadataReportV2
+    dummy_request.environ['QUERY_STRING'] = (
+        'type=FileSet'
+    )
+    mr = MetadataReportV2(dummy_request)
+    mr._split_column_and_fields_by_experiment_and_file()
+    expected_file_column_to_fields_mapping = dict(
+        [
+            ('File ID', ['@id']),
+            ('File download URL', ['href']),
+            ('File accession', ['accession']),
+            ('File format', ['file_format']),
+            ('File format type', ['file_format_type']),
+            ('File content type', ['content_type']),
+            ('File summary', ['summary']),
+            ('Cell type annotation', ['cell_type_annotation.term_name']),
+            ('Creation timestamp', ['creation_timestamp']),
+            ('File size', ['file_size']),
+            ('File S3 URI', ['s3_uri']),
+            ('File assembly', ['assembly']),
+            ('File transcriptome annotation', ['transcritome_annotation']),
+            ('File controlled access', ['controlled_access']),
+            ('File Anvil URL', ['anvil_url']),
+            ('File md5sum', ['md5sum']),
+            ('File derived from', ['derived_from']),
+            ('File status', ['status']),
+            ('File upload status', ['upload_status']),
+            ('Flowcell ID', ['flowcell_id']),
+            ('Lane', ['lane']),
+            ('Sequencing run', ['sequencing_run']),
+            ('Illumina read type', ['illumina_read_type']),
+            ('Mean read length', ['mean_read_length']),
+            ('Seq specs', ['seqspecs']),
+            ('Seq spec document', ['seqspec_document']),
+            ('Sequencing kit', ['sequencing_kit']),
+            ('Sequencing platform', ['sequencing_platform.term_name']),
+            ('Workflows', ['workflows.accession'])
+        ]
+    )
+    expected_experiment_column_to_fields_mapping = dict(
+        [
+            ('Fileset accession', ['accession']),
+            ('Fileset type', ['file_set_type']),
+            ('Assay titles', ['assay_titles']),
+            ('Preferred assay titles', ['preferred_assay_titles']),
+            ('Donors', ['donors.accession']),
+            ('Samples', ['samples.accession']),
+            ('Sample term names', ['samples.sample_terms.term_name']),
+            ('Sample summaries', ['samples.summary']),
+            ('Fileset lab', ['lab.title'])
+        ]
+    )
+    for k, v in mr.file_column_to_fields_mapping.items():
+        assert tuple(expected_file_column_to_fields_mapping[k]) == tuple(v), f'{k, v} not in expected'
+    for k, v in mr.experiment_column_to_fields_mapping.items():
+        assert tuple(expected_experiment_column_to_fields_mapping[k]) == tuple(v), f'{k, v} not in expected'
+
+
+def test_metadata_file_metadata_report_split_column_and_fields_by_experiment_and_file(dummy_request):
+    from igvfd.metadata.metadata import FileMetadataReport
+    dummy_request.environ['QUERY_STRING'] = (
+        'type=File'
+    )
+    fmr = FileMetadataReport(dummy_request)
+    fmr._split_column_and_fields_by_experiment_and_file()
+    expected_file_column_to_fields_mapping = dict(
+        [
+            ('File ID', ['@id']),
+            ('File download URL', ['href']),
+            ('File accession', ['accession']),
+            ('File format', ['file_format']),
+            ('File format type', ['file_format_type']),
+            ('File content type', ['content_type']),
+            ('File summary', ['summary']),
+            ('Fileset accession', ['file_set.accession']),
+            ('Fileset type', ['file_set.file_set_type']),
+            ('Assay titles', ['assay_titles']),
+            ('Preferred assay titles', ['preferred_assay_titles']),
+            ('Donors', ['file_set.donors.accession']),
+            ('Samples', ['file_set.samples.accession']),
+            ('Sample term names', ['file_set.samples.sample_terms.term_name']),
+            ('Sample summaries', ['file_set.samples.summary']),
+            ('Cell type annotation', ['cell_type_annotation.term_name']),
+            ('Creation timestamp', ['creation_timestamp']),
+            ('File size', ['file_size']),
+            ('Fileset lab', ['file_set.lab.title']),
+            ('File S3 URI', ['s3_uri']),
+            ('File assembly', ['assembly']),
+            ('File transcriptome annotation', ['transcriptome_annotation']),
+            ('File controlled access', ['controlled_access']),
+            ('File Anvil URL', ['anvil_url']),
+            ('File md5sum', ['md5sum']),
+            ('File derived from', ['derived_from']),
+            ('File status', ['status']),
+            ('File upload status', ['upload_status']),
+            ('Flowcell ID', ['flowcell_id']),
+            ('Lane', ['lane']),
+            ('Sequencing run', ['sequencing_run']),
+            ('Illumina read type', ['illumina_read_type']),
+            ('Mean read length', ['mean_read_length']),
+            ('Seq specs', ['seqspecs']),
+            ('Seq spec document', ['seqspec_document']),
+            ('Sequencing kit', ['sequencing_kit']),
+            ('Sequencing platform', ['sequencing_platform.term_name']),
+            ('Workflows', ['workflows.accession'])
+        ]
+    )
+    for k, v in fmr.file_column_to_fields_mapping.items():
+        assert tuple(expected_file_column_to_fields_mapping[k]) == tuple(v), f'{k, v} not in expected'
+    assert not fmr.experiment_column_to_fields_mapping.items()
+
+
 def test_metadata_metadata_report_set_positive_file_param_set(dummy_request):
     from igvfd.metadata.metadata import MetadataReport
     dummy_request.environ['QUERY_STRING'] = (
