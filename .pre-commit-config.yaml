@@ -9,6 +9,7 @@ repos:
     hooks:
       - id: double-quote-string-fixer
       - id: trailing-whitespace
+        exclude: ^src/igvfd/tests/data/inserts/expected_.*\.tsv$
       - id: end-of-file-fixer
         exclude: ^(cdk)/tests/unit/snapshots
       - id: pretty-format-json
