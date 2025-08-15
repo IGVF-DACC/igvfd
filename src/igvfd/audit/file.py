@@ -116,14 +116,20 @@ def audit_tabular_file_missing_reference_files(value, system):
     '''
     [
         {
-            "audit_description": "Tabular files which contain genomic coordinates or refer to variants are expected to specify reference files.",
+            "audit_description": "Tabular files which contain genomic coordinates or refer to variants are expected to specify genome reference files.",
+            "audit_category": "missing reference files",
+            "audit_level": "INTERNAL_ACTION"
+        },
+        {
+            "audit_description": "Tabular files which contain gene annotations are expected to specify transcriptome reference files.",
             "audit_category": "missing reference files",
             "audit_level": "INTERNAL_ACTION"
         }
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message = get_audit_message(audit_tabular_file_missing_reference_files, index=0)
+    audit_message_genome = get_audit_message(audit_tabular_file_missing_reference_files, index=0)
+    audit_message_transcriptome = get_audit_message(audit_tabular_file_missing_reference_files, index=0)
     excluded_content_types = [
         'barcode onlist',
         'barcode replacement',
@@ -138,12 +144,67 @@ def audit_tabular_file_missing_reference_files(value, system):
         'sample sort parameters',
         'tissue positions'
     ]
-    if value.get('content_type', '') not in excluded_content_types and 'reference_files' not in value:
-        detail = (
-            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has no `reference_files`.'
-        )
-        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+    # Refer to /igvfd/audit/file_set.py#L25 for this list as assay term IDs.
+    transcript_assay_term_names = [
+        'bulk RNA-seq assay',
+        'single-cell RNA sequencing assay',
+        'single-nucleus RNA sequencing assay',
+        'in vitro CRISPR screen using single-cell RNA-seq',
+        'single-nucleus methylcytosine and transcriptome sequencing assay',
+        'spatial transcriptomics',
+        'single cell nascent transcription sequencing'
+    ]
+    if value.get('content_type', '') not in excluded_content_types:
+        if 'reference_files' not in value:
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has no `reference_files`.'
+            )
+            yield AuditFailure(audit_message_genome.get('audit_category', ''), f'{detail} {audit_message_genome.get("audit_description", "")}', level=audit_message_genome.get('audit_level', ''))
+        else:
+            # If the tabular file is derived from transcriptomic assay data, a transcriptome reference will also be expected.
+            expected_types = [{'content_type': 'genome reference', 'audit': audit_message_genome}]
+            file_set_object = system.get('request').embed(
+                value['file_set'], '@@object_with_select_calculated_properties?field=assay_titles')
+            if any(term in transcript_assay_term_names for term in file_set_object['assay_titles']):
+                expected_types.append({'content_type': 'transcriptome reference', 'audit': audit_message_transcriptome})
+
+            content_types = []
+            for file in value['reference_files']:
+                file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
+                content_types.append(file_object['content_type'])
+            for type_to_check in expected_types:
+                if type_to_check['content_type'] not in content_types:
+                    detail = (
+                        f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                        f'does not link to a {type_to_check["content_type"]} in its `reference_files`.'
+                    )
+                    yield AuditFailure(type_to_check['audit'].get('audit_category', ''), f'{detail} {type_to_check["audit"].get("audit_description", "")}', level=type_to_check['audit'].get('audit_level', ''))
+
+
+def audit_file_reference_files_unexpected_type(value, system):
+    '''
+    [
+        {
+            "audit_description": "Alignment, Signal, and Matrix Files are expected to specify reference files that are genome references.",
+            "audit_category": "missing reference files",
+            "audit_level": "INTERNAL_ACTION"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message = get_audit_message(audit_file_reference_files_unexpected_type, index=0)
+    if 'reference_files' in value:
+        content_types = []
+        for file in value['reference_files']:
+            file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
+            content_types.append(file_object['content_type'])
+        if 'genome reference' not in content_types:
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'does not link to a genome reference in its `reference_files`.'
+            )
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 def audit_file_mixed_assembly_transcriptome_annotation(value, system):
@@ -238,16 +299,19 @@ function_dispatcher_file_object = {
 }
 
 function_dispatcher_alignment_file_object = {
-    'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation
+    'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation,
+    'audit_file_reference_files_unexpected_type': audit_file_reference_files_unexpected_type
 }
 
 function_dispatcher_matrix_file_object = {
     'audit_file_no_file_format_specifications': audit_file_no_file_format_specifications,
-    'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation
+    'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation,
+    'audit_file_reference_files_unexpected_type': audit_file_reference_files_unexpected_type
 }
 
 function_dispatcher_signal_file_object = {
-    'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation
+    'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation,
+    'audit_file_reference_files_unexpected_type': audit_file_reference_files_unexpected_type
 }
 
 function_dispatcher_tabular_file_object = {
