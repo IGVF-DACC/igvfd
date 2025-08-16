@@ -940,5 +940,24 @@
         "filtered": false,
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "ca1d4300-caf1-434a-8c2c-235a6f579087",
+        "accession": "IGVFFI0002SBRC",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_barcode_to_cluster_mapping"
+        ],
+        "md5sum": "fa92521c78d5ed1d7cc1575899ccc0ac",
+        "file_format": "tsv",
+        "content_type": "barcode to cluster mapping",
+        "submitted_file_name": "/Users/igvf/igvf_files/barcode_to_cluster_mapping.tsv.gz",
+        "file_size": 902,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "controlled_access": false
     }
 ]
