@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 9
 
+* Extend `file_format` enum list to include `h5mu`.
+* Extend `content_type` enum list to include `multimodal CRISPR annotations`.
+* Extend `principal_dimension` enum list to include `CRISPR guide capture`.
 * Extend `principal_dimension` enum list to include `mitochondrial variants`.
 * Extend `content_type` enum list to include `mitochondrial DNA heteroplasmy`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
