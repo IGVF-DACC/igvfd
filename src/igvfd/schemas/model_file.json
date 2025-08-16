@@ -121,6 +121,7 @@
                 "feature weights",
                 "graph structure",
                 "neural network architecture",
+                "neural network architecture and edge weights",
                 "position weight matrix",
                 "protein language model",
                 "SNP effect matrix"
@@ -131,6 +132,7 @@
                 "feature weights": "A representation of the weights assigned to the features in a model.",
                 "graph structure": "A description of the overall layout and connections within a graph or network.",
                 "neural network architecture": "A representation of the structure of a neural network.",
+                "neural network architecture and edge weights": "A representation of the structure and edge weights of a neural network e.g. from TensorFlow.",
                 "position weight matrix": "A matrix comprising the probability of each nucleotide occurring at each position in a sequence motif.",
                 "protein language model": "A model trained on amino acid sequences for representation and prediction of protein properties and function.",
                 "SNP effect matrix": "A matrix for estimation of consequence of each single nucleotide mutation in a transcription factor binding site motif."
@@ -147,7 +149,8 @@
                 "pkl",
                 "pt",
                 "tar",
-                "tsv"
+                "tsv",
+                "zip"
             ],
             "submissionExample": {
                 "appscript": "tar",
