@@ -283,8 +283,8 @@
         "aliases": [
             "igvf:pipeline_log"
         ],
-        "description": "Example of pipeline log.",
-        "attachment": "Perturb_seq_pipeline_run.txt",
+        "description": "Example of a pipeline log.",
+        "attachment": "Treg-CRISPRi-GITR-methods.pdf",
         "award": "1U01HG011952-01",
         "document_type": "pipeline log",
         "lab": "charles-gersbach",
