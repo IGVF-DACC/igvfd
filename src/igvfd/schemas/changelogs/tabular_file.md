@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 18
+
+* Extend `content_type` enum list to include `barcode to cluster mapping`.
+
 ### Schema version 18
 
 * Adjust `content_type` enum list to replace `pipeline inputs` with `pipeline parameters`.
