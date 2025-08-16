@@ -303,5 +303,29 @@
         "secondary_dimensions": [
             "cell"
         ]
+    },
+    {
+        "uuid": "26961b14-fd66-40e5-8bd0-0863fb4a09b4",
+        "lab": "charles-gersbach",
+        "award": "1UM1HG012053-01",
+        "aliases": [
+            "igvf:mudata"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-05-06T12:34:56Z",
+        "md5sum": "6a33e20f6cb58f92f8f22644c70f8cef",
+        "file_format": "h5mu",
+        "content_type": "multimodal CRISPR annotations",
+        "submitted_file_name": "/Users/igvf/igvf_files/mudata.h5mu",
+        "file_size": 123411234,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "CRISPR guide capture",
+        "secondary_dimensions": [
+            "gene expression"
+        ]
     }
 ]

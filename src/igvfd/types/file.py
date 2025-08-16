@@ -82,6 +82,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'idx': '.idx',
     'hic': '.hic',
     'h5ad': '.h5ad',
+    'h5mu': '.h5mu',
     'hdf5': '.h5',
     'idat': '.idat',
     'jpg': '.jpg',

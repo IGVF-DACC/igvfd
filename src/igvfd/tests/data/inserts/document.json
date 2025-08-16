@@ -278,5 +278,18 @@
         "uuid": "5917c472-ca1e-7849-81c1-e0ae2b20f294",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z"
+    },
+    {
+        "aliases": [
+            "igvf:pipeline_log"
+        ],
+        "description": "Example of a pipeline log.",
+        "attachment": "Treg-CRISPRi-GITR-methods.pdf",
+        "award": "1U01HG011952-01",
+        "document_type": "pipeline log",
+        "lab": "charles-gersbach",
+        "uuid": "9b184885-9583-4309-9629-c59cac6b162d",
+        "status": "released",
+        "release_timestamp": "2025-05-06T12:34:56Z"
     }
 ]
