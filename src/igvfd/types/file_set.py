@@ -1000,12 +1000,40 @@ class AnalysisSet(FileSet):
             input_file_sets = []
         analysis_set_targeted_genes = set()
         for input_file_set in input_file_sets:
-            if input_file_set.startswith('/measurement-sets/') or input_file_set.startswith('/analysis-sets/'):
+            if input_file_set.startswith('/measurement-sets/', '/analysis-sets/'):
                 input_file_set_object = request.embed(
                     input_file_set, '@@object_with_select_calculated_properties?field=targeted_genes')
                 if 'targeted_genes' in input_file_set_object:
                     analysis_set_targeted_genes.update(input_file_set_object['targeted_genes'])
         return sorted(analysis_set_targeted_genes) or None
+
+    @calculated_property(
+        condition='input_file_sets',
+        schema={
+            'title': 'Primer Designs',
+            'description': 'The primer designs used by the inputs of this analysis set.',
+            'type': 'array',
+            'notSubmittable': True,
+            'uniqueItem': True,
+            'minItems': 1,
+            'items': {
+                'title': 'Primer Design',
+                'type': 'string',
+                'linkTo': 'TabularFile'
+            }
+        }
+    )
+    def primer_designs(self, request, input_file_sets=None):
+        if input_file_sets is None:
+            input_file_sets = []
+        analysis_set_primer_designs = set()
+        for input_file_set in input_file_sets:
+            if input_file_set.startswith('/measurement-sets/') or input_file_set.startswith('/analysis-sets/'):
+                input_file_set_object = request.embed(
+                    input_file_set, '@@object?skip_calculated=true')
+                if 'targeted_genes' in input_file_set_object:
+                    analysis_set_primer_designs.update(input_file_set_object['primer_designs'])
+        return sorted(analysis_set_primer_designs) or None
 
 
 @collection(

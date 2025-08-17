@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Add calculated property `primer_designs`
 * Add `pipeline_parameters`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Extend `collections` enum list to include `Benchmark`.

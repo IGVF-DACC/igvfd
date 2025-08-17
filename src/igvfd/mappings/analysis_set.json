@@ -2096,6 +2096,9 @@
                     "preview_timestamp": {
                         "type": "date"
                     },
+                    "primer_designs": {
+                        "type": "keyword"
+                    },
                     "protocols": {
                         "type": "keyword"
                     },
