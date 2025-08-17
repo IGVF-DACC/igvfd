@@ -1031,7 +1031,7 @@ class AnalysisSet(FileSet):
             if input_file_set.startswith('/measurement-sets/') or input_file_set.startswith('/analysis-sets/'):
                 input_file_set_object = request.embed(
                     input_file_set, '@@object?skip_calculated=true')
-                if 'targeted_genes' in input_file_set_object:
+                if 'primer_designs' in input_file_set_object:
                     analysis_set_primer_designs.update(input_file_set_object['primer_designs'])
         return sorted(analysis_set_primer_designs) or None
 
