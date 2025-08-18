@@ -411,7 +411,7 @@ def audit_missing_construct_library_set(value, system):
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "SGE measurement sets are expected to link to a construct library set of the type editing template library in its samples.",
+            "audit_description": "SGE and Immune-SGE measurement sets are expected to link to a construct library set of the type editing template library in its samples.",
             "audit_category": "missing construct library set",
             "audit_level": "NOT_COMPLIANT"
         },
@@ -434,7 +434,7 @@ def audit_missing_construct_library_set(value, system):
     '''
     audit_message_MPRA = get_audit_message(audit_missing_construct_library_set, index=0)
     audit_message_CRISPR = get_audit_message(audit_missing_construct_library_set, index=1)
-    audit_message_SGE = get_audit_message(audit_missing_construct_library_set, index=2)
+    audit_message_SGEs = get_audit_message(audit_missing_construct_library_set, index=2)
     audit_message_PPI = get_audit_message(audit_missing_construct_library_set, index=3)
     audit_message_VAMP = get_audit_message(audit_missing_construct_library_set, index=4)
     audit_message_Imaging = get_audit_message(audit_missing_construct_library_set, index=5)
@@ -450,7 +450,8 @@ def audit_missing_construct_library_set(value, system):
     }
     # preferred assay titles expectations override any overlapping assay term expectation
     expected_library_by_preferred_assay_title = {
-        'SGE': ('editing template library', audit_message_SGE),
+        'SGE': ('editing template library', audit_message_SGEs),
+        'Immune-SGE': ('editing template library', audit_message_SGEs),
         'VAMP-seq': ('expression vector library', audit_message_VAMP),
         'VAMP-seq (MultiSTEP)': ('expression vector library', audit_message_VAMP)
     }
