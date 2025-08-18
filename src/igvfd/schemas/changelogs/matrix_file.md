@@ -3,7 +3,7 @@
 ### Minor changes since schema version 9
 
 * Extend `file_format` enum list to include `h5mu`.
-* Extend `content_type` enum list to include `annotated multimodal CRISPR features`.
+* Extend `content_type` enum list to include `annotated multimodal CRISPR matrix`.
 * Extend `principal_dimension` enum list to include `CRISPR guide capture`.
 * Extend `principal_dimension` enum list to include `mitochondrial variants`.
 * Extend `content_type` enum list to include `mitochondrial DNA heteroplasmy`.

@@ -100,7 +100,7 @@
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
-                "annotated multimodal CRISPR features",
+                "annotated multimodal CRISPR matrix",
                 "contact matrix",
                 "filtered feature barcode matrix",
                 "kallisto single cell RNAseq output",

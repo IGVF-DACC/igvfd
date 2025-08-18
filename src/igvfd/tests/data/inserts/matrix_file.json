@@ -315,7 +315,7 @@
         "release_timestamp": "2025-05-06T12:34:56Z",
         "md5sum": "6a33e20f6cb58f92f8f22644c70f8cef",
         "file_format": "h5mu",
-        "content_type": "annotated multimodal CRISPR features",
+        "content_type": "annotated multimodal CRISPR matrix",
         "submitted_file_name": "/Users/igvf/igvf_files/mudata.h5mu",
         "file_size": 123411234,
         "upload_status": "validated",
