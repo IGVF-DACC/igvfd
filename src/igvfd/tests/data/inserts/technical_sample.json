@@ -1,6 +1,7 @@
 [
     {
         "uuid": "e89f5237-26f8-40ee-aafc-c28a3c696f5f",
+        "accession": "IGVFSM0470QQER",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -40,6 +41,7 @@
     },
     {
         "uuid": "f12ab44c-bba8-46cc-9f3d-6a192eb09e7e",
+        "accession": "IGVFSM5795HGZQ",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -76,6 +78,7 @@
     },
     {
         "uuid": "f40930eb-5e7b-402a-8941-9920b06d2bc9",
+        "accession": "IGVFSM7651YBEN",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
