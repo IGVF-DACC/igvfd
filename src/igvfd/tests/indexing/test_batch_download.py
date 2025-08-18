@@ -181,8 +181,8 @@ def test_metadata_batch_download_v2_all_files_recursive(workbook, testapp):
             '/tabular-files/IGVFFI0000ELEM/',
             '/tabular-files/IGVFFI0000SBRD/',
             '/tabular-files/IGVFFI0001SBRC/',
-            '/tabular-files/IGVFFI5681ZBMW/',
             '/tabular-files/IGVFFI6621MLMF/',
+            '/tabular-files/IGVFFI6980SRNG/',
             '/tabular-files/IGVFFI7099DPQN/',
             '/tabular-files/IGVFFI8932EGPR/',
             '/tabular-files/IGVFFI9822PRSQ/',
@@ -200,8 +200,8 @@ def test_metadata_batch_download_v2_all_files_recursive(workbook, testapp):
         ]
     }
     r = testapp.get('/analysis-sets/IGVFDS0101PIPE/@@all-files?soft=true')
-    assert sorted(r.json['files']) == sorted(expected['files'])
-    assert sorted(r.json['file_sets']) == sorted(expected['file_sets'])
+    assert sorted(r.json['files']) == sorted(expected['files']), r.json['files']
+    assert sorted(r.json['file_sets']) == sorted(expected['file_sets']), r.json['file_sets']
     from pkg_resources import resource_filename
     r = testapp.get('/analysis-sets/IGVFDS0101PIPE/@@all-files')
     actual = sorted([tuple(x.split('\t')) for x in r.text.strip().split('\n')])

@@ -11,7 +11,7 @@ repos:
       - id: trailing-whitespace
         exclude: ^src/igvfd/tests/data/inserts/expected_.*\.tsv$
       - id: end-of-file-fixer
-        exclude: ^(cdk)/tests/unit/snapshots
+        exclude: ^(cdk)/tests/unit/snapshots|^src/igvfd/tests/data/inserts/expected_.*\.tsv$
       - id: pretty-format-json
         args: ['--autofix', '--no-sort-keys', '--indent=4', '--no-ensure-ascii']
         exclude: ^(cdk)/tests/unit/snapshots
