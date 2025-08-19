@@ -724,10 +724,11 @@ class AnalysisSet(FileSet):
         samples = set()
         if input_file_sets is not None:
             for fileset in input_file_sets:
-                input_file_set_object = request.embed(fileset, '@@object')
-                input_file_set_samples = set(input_file_set_object.get('samples', []))
-                if input_file_set_samples:
-                    samples = samples | input_file_set_samples
+                if not (fileset.startswith('/construct-library-sets/')):
+                    input_file_set_object = request.embed(fileset, '@@object')
+                    input_file_set_samples = set(input_file_set_object.get('samples', []))
+                    if input_file_set_samples:
+                        samples = samples | input_file_set_samples
             if demultiplexed_samples:
                 # if the analysis set specifies a demultiplexed sample and all input data is multiplexed return just the demultiplexed_sample
                 if not ([sample for sample in samples if not (sample.startswith('/multiplexed-samples/'))]):
