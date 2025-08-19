@@ -1028,7 +1028,7 @@ class AnalysisSet(FileSet):
             input_file_sets = []
         analysis_set_primer_designs = set()
         for input_file_set in input_file_sets:
-            if input_file_set.startswith('/measurement-sets/') or input_file_set.startswith('/analysis-sets/'):
+            if input_file_set.startswith('/measurement-sets/', '/analysis-sets/'):
                 input_file_set_object = request.embed(
                     input_file_set, '@@object?skip_calculated=true')
                 if 'primer_designs' in input_file_set_object:
