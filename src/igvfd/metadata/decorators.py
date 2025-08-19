@@ -20,3 +20,19 @@ def allowed_types(types):
             return func(context, request)
         return wrapper
     return decorator
+
+
+def allowed_types_v2(types):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(context, request):
+            qs = QueryString(request)
+            type_filters = qs.get_type_filters()
+            for type_ in type_filters:
+                if type_[1] not in types:
+                    raise HTTPBadRequest(
+                        explanation=f'{type_[1]} not a valid type for endpoint.'
+                    )
+            return func(context, request)
+        return wrapper
+    return decorator

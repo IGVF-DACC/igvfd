@@ -258,6 +258,7 @@
     },
     {
         "uuid": "740c765d-428d-4fd9-b919-60bc94ed4a5c",
+        "accession": "IGVFFI1234KBFK",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -282,6 +283,7 @@
     },
     {
         "uuid": "7537619f-1f44-47dd-90a9-90e212ee8cea",
+        "accession": "IGVFFI1234KBFM",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -306,6 +308,7 @@
     },
     {
         "uuid": "26961b14-fd66-40e5-8bd0-0863fb4a09b4",
+        "accession": "IGVFFI1234KBFF",
         "lab": "charles-gersbach",
         "award": "1UM1HG012053-01",
         "aliases": [

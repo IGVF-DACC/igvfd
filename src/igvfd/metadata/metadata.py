@@ -1,28 +1,43 @@
+import json
+
 from collections import defaultdict
 from collections import OrderedDict
 from igvfd.metadata.constants import METADATA_ALLOWED_TYPES
+from igvfd.metadata.constants import FILE_METADATA_ALLOWED_TYPES
 from igvfd.metadata.constants import METADATA_COLUMN_TO_FIELDS_MAPPING
 from igvfd.metadata.constants import METADATA_AUDIT_TO_AUDIT_COLUMN_MAPPING
+from igvfd.metadata.constants import FROM_FILESET_FIELDS
+from igvfd.metadata.constants import FROM_FILE_FIELDS
 from igvfd.metadata.csv import CSVGenerator
 from igvfd.metadata.decorators import allowed_types
+from igvfd.metadata.decorators import allowed_types_v2
 from igvfd.metadata.inequalities import map_param_values_to_inequalities
 from igvfd.metadata.inequalities import try_to_evaluate_inequality
 from igvfd.metadata.search import BatchedSearchGenerator
 from igvfd.metadata.serializers import make_experiment_cell
 from igvfd.metadata.serializers import make_file_cell
 from igvfd.metadata.serializers import map_strings_to_booleans_and_ints
+from igvfd.metadata.recurse import find_all_file_sets_and_files
+
 from pyramid.httpexceptions import HTTPBadRequest
+from pyramid.httpexceptions import HTTPNotFound
 from pyramid.response import Response
 from pyramid.view import view_config
+from pyramid.settings import asbool
+
 from snosearch.interfaces import EXISTS
 from snosearch.interfaces import MUST
 from snosearch.interfaces import RANGES
 from snosearch.parsers import QueryString
 from snovault.util import simple_path_ids
 
+from igvfd.types.file_set import FileSet
+
 
 def includeme(config):
     config.add_route('metadata', '/metadata{slash:/?}')
+    config.add_route('file-batch-download-v2', '/file-batch-download-v2{slash:/?}')
+    config.add_route('batch-download-v2', '/batch-download-v2{slash:/?}')
     config.scan(__name__)
 
 
@@ -308,6 +323,67 @@ class MetadataReport:
         )
 
 
+class MetadataReportV2(MetadataReport):
+
+    CONTENT_DISPOSITION = 'attachment; filename="file_metadata.tsv"'
+
+    def _get_column_to_fields_mapping(self):
+        return FROM_FILESET_FIELDS
+
+
+class FileMetadataReport(MetadataReport):
+
+    SEARCH_PATH = '/search/'
+    EXCLUDED_COLUMNS = (
+    )
+    DEFAULT_PARAMS = [
+        ('field', 'audit'),
+        ('field', '@id'),
+        ('field', 'href'),
+        ('field', 'file_format'),
+        ('field', 'file_format_type'),
+        ('field', 'status'),
+        ('limit', 'all'),
+    ]
+    CONTENT_TYPE = 'text/tsv'
+    CONTENT_DISPOSITION = 'attachment; filename="file_metadata.tsv"'
+    FILES_PREFIX = '_NaN'
+
+    def _get_column_to_fields_mapping(self):
+        return FROM_FILE_FIELDS
+
+    def _split_column_and_fields_by_experiment_and_file(self):
+        self.file_column_to_fields_mapping = self._get_column_to_fields_mapping()
+
+    def _should_not_report_file(self, file_):
+        conditions = [
+            'href' not in file_,
+        ]
+        return any(conditions)
+
+    def _generate_rows(self):
+        yield self.csv.writerow(self.header)
+        for file_ in self._get_search_results_generator():
+            if self._should_not_report_file(file_):
+                continue
+            grouped_file_audits, grouped_other_audits = group_audits_by_files_and_type(
+                file_.get('audit', {})
+            )
+            file_data = self._get_file_data(file_)
+            audit_data = self._get_audit_data(
+                grouped_file_audits.get(file_.get('@id'), {}),
+                grouped_other_audits
+            )
+            file_data.update(audit_data)
+            yield self.csv.writerow(
+                self._output_sorted_row({}, file_data)
+            )
+
+    def _initialize_report(self):
+        self._build_header()
+        self._split_column_and_fields_by_experiment_and_file()
+
+
 def _get_metadata(context, request):
     metadata_report = MetadataReport(request)
     return metadata_report.generate()
@@ -321,3 +397,46 @@ def metadata_report_factory(context, request):
 @allowed_types(METADATA_ALLOWED_TYPES)
 def metadata_tsv(context, request):
     return metadata_report_factory(context, request)
+
+
+@view_config(route_name='batch-download-v2', request_method=['GET', 'POST'])
+@allowed_types_v2(METADATA_ALLOWED_TYPES)
+def batch_download_v2(context, request):
+    metadata_report = MetadataReportV2(request)
+    return metadata_report.generate()
+
+
+@view_config(route_name='file-batch-download-v2', request_method=['GET', 'POST'])
+@allowed_types_v2(FILE_METADATA_ALLOWED_TYPES)
+def file_batch_download_v2(context, request):
+    file_metadata_report = FileMetadataReport(request)
+    return file_metadata_report.generate()
+
+
+@view_config(
+    name='all-files',
+    context=FileSet,
+    request_method='GET',
+    permission='view',
+)
+def all_files(context, request):
+    files_sets_and_files = find_all_file_sets_and_files(
+        request, [
+            request.resource_path(context)
+        ]
+    )
+    if asbool(request.params.get('soft')):
+        return files_sets_and_files
+    if not files_sets_and_files['files']:
+        raise HTTPNotFound()
+    qs = QueryString(request)
+    qs.drop('type')
+    qs.append(('type', 'File'))
+    new_request = qs.get_request_with_new_query_string()
+    new_request.body = json.dumps(
+        {
+            'elements': files_sets_and_files['files']
+        }
+    ).encode('utf-8')
+    file_metadata_report = FileMetadataReport(new_request)
+    return file_metadata_report.generate()
