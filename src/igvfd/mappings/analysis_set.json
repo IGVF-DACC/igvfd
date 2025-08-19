@@ -1,6 +1,6 @@
 {
-    "hash": "b2f6c3f80c069d15c3dd2fb978dd72c7",
-    "index_name": "analysis_set_b2f6c3f8",
+    "hash": "39c1abd1253142f2e22535258d74b116",
+    "index_name": "analysis_set_39c1abd1",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -2354,6 +2354,9 @@
                     },
                     "preview_timestamp": {
                         "type": "date"
+                    },
+                    "primer_designs": {
+                        "type": "keyword"
                     },
                     "protocols": {
                         "type": "keyword"
