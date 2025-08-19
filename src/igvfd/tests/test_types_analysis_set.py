@@ -513,3 +513,20 @@ def test_targeted_genes(testapp, measurement_set, analysis_set_base, gene_myc_hs
     )
     res = testapp.get(analysis_set_base['@id'])
     assert set([gene['@id'] for gene in res.json.get('targeted_genes')]) == {gene_myc_hs['@id']}
+
+
+def test_primer_designs(testapp, measurement_set, analysis_set_base, tabular_file):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'primer_designs': [tabular_file['@id']]
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert set(res.json.get('primer_designs')) == {tabular_file['@id']}
