@@ -100,6 +100,7 @@
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
+                "annotated multimodal CRISPR matrix",
                 "contact matrix",
                 "filtered feature barcode matrix",
                 "kallisto single cell RNAseq output",
@@ -112,6 +113,7 @@
                 "transcriptome annotations"
             ],
             "enum_descriptions": {
+                "annotated multimodal CRISPR matrix": "An object storing single cell CRISPR screen data, integrating multiple modalities such as raw RNA count matrices, sample-level metadata, gene-level metadata, guide-level data, experiment-level metadata, etc.",
                 "contact matrix": "A matrix used in genomic assays, particularly in chromosome conformation capture techniques like Hi-C, to represent the frequency of physical interactions between different regions of the genome.",
                 "filtered feature barcode matrix": "A matrix output from Cell Ranger, where rows represent features and columns represent barcoded spots or cells. It contains counts of sequencing reads after filtering out low-quality or low-abundance features.",
                 "kallisto single cell RNAseq output": "A tar.gz file containing the output of the kb-python count run directory using the nac mode containing everything except for the h5ad file chosen to be the primary result.",
@@ -134,6 +136,7 @@
             "type": "string",
             "enum": [
                 "cell",
+                "CRISPR guide capture",
                 "fragment",
                 "gene",
                 "mitochondrial variants",
@@ -181,6 +184,7 @@
         "file_format": {
             "enum": [
                 "h5ad",
+                "h5mu",
                 "hdf5",
                 "mtx",
                 "pkl",
