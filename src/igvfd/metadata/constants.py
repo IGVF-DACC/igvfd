@@ -111,7 +111,7 @@ FROM_FILESET_FIELDS = OrderedDict(
         ('Fileset lab', ['lab.title']),
         ('File S3 URI', ['files.s3_uri']),
         ('File assembly', ['files.assembly']),
-        ('File transcriptome annotation', ['files.transcritome_annotation']),
+        ('File transcriptome annotation', ['files.transcriptome_annotation']),
         ('File controlled access', ['files.controlled_access']),
         ('File Anvil URL', ['files.anvil_url']),
         ('File md5sum', ['files.md5sum']),

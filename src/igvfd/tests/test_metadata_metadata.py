@@ -827,7 +827,7 @@ def test_metadata_metadata_report_v2_split_column_and_fields_by_experiment_and_f
             ('File size', ['file_size']),
             ('File S3 URI', ['s3_uri']),
             ('File assembly', ['assembly']),
-            ('File transcriptome annotation', ['transcritome_annotation']),
+            ('File transcriptome annotation', ['transcriptome_annotation']),
             ('File controlled access', ['controlled_access']),
             ('File Anvil URL', ['anvil_url']),
             ('File md5sum', ['md5sum']),
