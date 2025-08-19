@@ -1000,7 +1000,7 @@ class AnalysisSet(FileSet):
             input_file_sets = []
         analysis_set_targeted_genes = set()
         for input_file_set in input_file_sets:
-            if input_file_set.startswith('/measurement-sets/', '/analysis-sets/'):
+            if input_file_set.startswith(('/measurement-sets/', '/analysis-sets/')):
                 input_file_set_object = request.embed(
                     input_file_set, '@@object_with_select_calculated_properties?field=targeted_genes')
                 if 'targeted_genes' in input_file_set_object:
@@ -1028,7 +1028,7 @@ class AnalysisSet(FileSet):
             input_file_sets = []
         analysis_set_primer_designs = set()
         for input_file_set in input_file_sets:
-            if input_file_set.startswith('/measurement-sets/', '/analysis-sets/'):
+            if input_file_set.startswith(('/measurement-sets/', '/analysis-sets/')):
                 input_file_set_object = request.embed(
                     input_file_set, '@@object?skip_calculated=true')
                 if 'primer_designs' in input_file_set_object:
