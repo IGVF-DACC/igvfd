@@ -314,7 +314,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
         'summary', '') == 'lentiMPRA reporter library targeting accessible genome regions genome-wide'
-    # Construct library should should not contribute to the summary unless the samples are transfected with it
+    # Construct library sets should not contribute to the summary unless the samples are transfected with it
     testapp.patch_json(
         analysis_set_with_CLS_input['@id'],
         {
