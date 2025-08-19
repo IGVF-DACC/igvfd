@@ -2,6 +2,10 @@
 
 ### Minor changes since schema version 9
 
+* Extend `output_content_types` enum list to include `neural network architecture and edge weights`.
+* Extend `input_content_types` enum list to include `neural network architecture and edge weights`.
+* Extend `output_content_types` enum list to include `barcode to cluster mapping`.
+* Extend `input_content_types` enum list to include `barcode to cluster mapping`.
 * Extend `output_content_types` enum list to include `annotated multimodal CRISPR matrix`.
 * Extend `input_content_types` enum list to include `annotated multimodal CRISPR matrix`.
 * Extend `output_content_types` enum list to include `differential guide quantifications`.

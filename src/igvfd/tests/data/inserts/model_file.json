@@ -114,5 +114,24 @@
         "file_set": "j-michael-cherry:barcodes_curated_set",
         "externally_hosted": false,
         "submitted_file_name": "/Users/igvf/igvf_files/model_file_cov_matrix.tar"
+    },
+    {
+        "uuid": "4f0bdee1-a74d-4054-8b2d-eaf1fdccc826",
+        "accession": "IGVFFI0002PMTR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:model_file_zip_file"
+        ],
+        "md5sum": "86f273ca48127b0fa517b9a56ce07dc1",
+        "file_format": "zip",
+        "content_type": "neural network architecture and edge weights",
+        "file_size": 1803,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-05-14T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "externally_hosted": false,
+        "submitted_file_name": "/Users/igvf/igvf_files/model_file_zip_file.zip"
     }
 ]

@@ -108,7 +108,8 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'txt': '.txt.gz',
     'vcf': '.vcf.gz',
     'xml': '.xml.gz',
-    'yaml': '.yaml.gz'
+    'yaml': '.yaml.gz',
+    'zip': '.zip'
 }
 
 
