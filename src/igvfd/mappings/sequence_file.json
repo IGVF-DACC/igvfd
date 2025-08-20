@@ -1,6 +1,6 @@
 {
-    "hash": "3adb71750c6015179b9e46c2d3298840",
-    "index_name": "sequence_file_3adb7175",
+    "hash": "fc6b77eb9713fe80a9b7d6af7c1cf5f2",
+    "index_name": "sequence_file_fc6b77eb",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -2963,6 +2963,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
                             },
                             "preview_timestamp": {
                                 "type": "date"

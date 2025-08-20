@@ -19,6 +19,12 @@
         "uniform_pipeline": true,
         "collections": [
             "VarChAMP"
+        ],
+        "preferred_assay_titles": [
+            "Perturb-seq",
+            "scCRISPR screen",
+            "Parse Perturb-seq",
+            "TAP-seq"
         ]
     },
     {
@@ -41,6 +47,25 @@
         "uniform_pipeline": false,
         "collections": [
             "VarChAMP"
+        ]
+    },
+    {
+        "uuid": "3c13804b-b0a8-494c-aa52-455b2e70d893",
+        "accession": "IGVFWF0002WORK",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:parse_biosciences_workflow"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-05-06T12:34:56Z",
+        "name": "Parse Biosciences Pipeline",
+        "source_url": "https://support.parsebiosciences.com/hc/en-us/articles/13629629111828-Pipeline-Older-Versions",
+        "workflow_version": "v1.2.1",
+        "uniform_pipeline": false,
+        "preferred_assay_titles": [
+            "Parse SPLiT-seq",
+            "Parse Perturb-seq"
         ]
     }
 ]

@@ -13,11 +13,14 @@ def workflow():
             'analysis_step_versions.software_versions.software.title': {
                 'title': 'Software',
             },
-            'analysis_step_versions.analysis_steps.analysis_step_types': {
+            'analysis_step_versions.analysis_step.analysis_step_types': {
                 'title': 'Analysis Step Types',
             },
-            'analysis_step_versions.analysis_steps.output_content_types': {
-                'title': 'Output Types',
+            'analysis_step_versions.analysis_step.input_content_types': {
+                'title': 'Input File Types',
+            },
+            'analysis_step_versions.analysis_step.output_content_types': {
+                'title': 'Output File Types',
             },
             'collections': {
                 'title': 'Collections',

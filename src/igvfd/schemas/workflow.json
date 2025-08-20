@@ -41,6 +41,9 @@
         },
         {
             "$ref": "mixins.json#/preview_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/preferred_assay_titles"
         }
     ],
     "dependentSchemas": {
@@ -67,7 +70,7 @@
         },
         "source_url": {
             "description": "An external resource to the code base of the workflow in github.",
-            "pattern": "^https?://github\\.com/(\\S+)$",
+            "pattern": "^https?://(github\\.com/\\S+|support\\.parsebiosciences\\.com/\\S*)$",
             "submissionExample": {
                 "appscript": "https://github.com/ENCODE-DCC/chip-seq-pipeline2",
                 "igvf_utils": "https://github.com/ENCODE-DCC/chip-seq-pipeline2"
@@ -144,7 +147,8 @@
         "aliases",
         "name",
         "lab.title",
-        "submitted_by.title"
+        "submitted_by.title",
+        "preferred_assay_titles"
     ],
     "exact_searchable_fields": [
         "@type",
