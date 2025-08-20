@@ -2855,6 +2855,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
