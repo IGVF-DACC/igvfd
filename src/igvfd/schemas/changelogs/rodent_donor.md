@@ -2,6 +2,40 @@
 
 ### Minor changes since schema version 14
 
+* Extend `strain_background` enum list to include `CC001/Unc`.
+* Extend `strain_background` enum list to include `CC002/Unc`.
+* Extend `strain_background` enum list to include `CC003/Unc`.
+* Extend `strain_background` enum list to include `CC004/TauUnc`.
+* Extend `strain_background` enum list to include `CC005/TauUnc`.
+* Extend `strain_background` enum list to include `CC006/TauUnc`.
+* Extend `strain_background` enum list to include `CC007/Unc`.
+* Extend `strain_background` enum list to include `CC008/GeniUnc`.
+* Extend `strain_background` enum list to include `CC009/Unc`.
+* Extend `strain_background` enum list to include `CC010/GeniUnc`.
+* Extend `strain_background` enum list to include `CC011/Unc`.
+* Extend `strain_background` enum list to include `CC012/GeniUnc`.
+* Extend `strain_background` enum list to include `CC013/GeniUnc`.
+* Extend `strain_background` enum list to include `CC015/Unc`.
+* Extend `strain_background` enum list to include `CC017/Unc`.
+* Extend `strain_background` enum list to include `CC018/Unc`.
+* Extend `strain_background` enum list to include `CC024/GeniUnc`.
+* Extend `strain_background` enum list to include `CC025/GeniUnc`.
+* Extend `strain_background` enum list to include `CC028/GeniUnc`.
+* Extend `strain_background` enum list to include `CC029/Unc`.
+* Extend `strain_background` enum list to include `CC030/GeniUnc`.
+* Extend `strain_background` enum list to include `CC032/GeniUnc`.
+* Extend `strain_background` enum list to include `CC036/Unc`.
+* Extend `strain_background` enum list to include `CC037/TauUnc`.
+* Extend `strain_background` enum list to include `CC038/GeniUnc`.
+* Extend `strain_background` enum list to include `CC041/TauUnc`.
+* Extend `strain_background` enum list to include `CC043/GeniUnc`.
+* Extend `strain_background` enum list to include `CC055/TauUnc`.
+* Extend `strain_background` enum list to include `CC057/Unc`.
+* Extend `strain_background` enum list to include `CC060/Unc`.
+* Extend `strain_background` enum list to include `CC062/Unc`.
+* Extend `strain_background` enum list to include `CC065/Unc`.
+* Extend `strain_background` enum list to include `CC071/TauUnc`.
+* Extend `strain_background` enum list to include `CC074/Unc`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Extend `collections` enum list to include `Benchmark`.
 * Extend `collections` enum list to include `TF Perturb-seq Project`.
