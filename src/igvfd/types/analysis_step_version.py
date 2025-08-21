@@ -55,7 +55,7 @@ class AnalysisStepVersion(Item):
         ),
     ]
 
-    set_status_up = ['software_versions']
+    set_status_up = ['software_versions', 'workflows', 'analysis_step']
     set_status_down = []
 
     @calculated_property(schema={
