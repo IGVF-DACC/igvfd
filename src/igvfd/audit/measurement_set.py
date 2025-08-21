@@ -606,7 +606,7 @@ def audit_missing_strand_specificity(value, system):
     assay_term = value.get('assay_term')    # Assay term should always be present in MeasurementSet
     if not (strand_specificity):
         # Audit 1: Flag if gene expression assays are missing strand specificity
-        if assay_term in TRANSCRIPT_ASSAY_TERMS:
+        if assay_term in list(TRANSCRIPT_ASSAY_TERMS.keys()):
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'is missing required `strand_specificity`.'

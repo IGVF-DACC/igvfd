@@ -12,6 +12,10 @@ from .formatter import (
     space_in_words
 )
 
+from .file_set import (
+    TRANSCRIPT_ASSAY_TERMS
+)
+
 
 def audit_upload_status(value, system):
     '''
@@ -129,7 +133,7 @@ def audit_tabular_file_missing_reference_files(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_genome = get_audit_message(audit_tabular_file_missing_reference_files, index=0)
-    audit_message_transcriptome = get_audit_message(audit_tabular_file_missing_reference_files, index=0)
+    audit_message_transcriptome = get_audit_message(audit_tabular_file_missing_reference_files, index=1)
     excluded_content_types = [
         'barcode onlist',
         'barcode replacement',
@@ -138,22 +142,13 @@ def audit_tabular_file_missing_reference_files(value, system):
         'cell hashing barcodes',
         'derived barcode mapping',
         'external source data',
-        'pipeline inputs',
+        'pipeline parameters',
         'primer sequences',
         'protein to protein interaction score',
         'sample sort parameters',
         'tissue positions'
     ]
-    # Refer to /igvfd/audit/file_set.py#L25 for this list as assay term IDs.
-    transcript_assay_term_names = [
-        'bulk RNA-seq assay',
-        'single-cell RNA sequencing assay',
-        'single-nucleus RNA sequencing assay',
-        'in vitro CRISPR screen using single-cell RNA-seq',
-        'single-nucleus methylcytosine and transcriptome sequencing assay',
-        'spatial transcriptomics',
-        'single cell nascent transcription sequencing'
-    ]
+    transcript_assay_term_names = list(TRANSCRIPT_ASSAY_TERMS.values())
     if value.get('content_type', '') not in excluded_content_types:
         if 'reference_files' not in value:
             detail = (
@@ -182,7 +177,7 @@ def audit_tabular_file_missing_reference_files(value, system):
                     yield AuditFailure(type_to_check['audit'].get('audit_category', ''), f'{detail} {type_to_check["audit"].get("audit_description", "")}', level=type_to_check['audit'].get('audit_level', ''))
 
 
-def audit_file_reference_files_unexpected_type(value, system):
+def audit_alignment_signal_matrix_file_missing_genome_reference(value, system):
     '''
     [
         {
@@ -193,7 +188,7 @@ def audit_file_reference_files_unexpected_type(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message = get_audit_message(audit_file_reference_files_unexpected_type, index=0)
+    audit_message = get_audit_message(audit_alignment_signal_matrix_file_missing_genome_reference, index=0)
     if 'reference_files' in value:
         content_types = []
         for file in value['reference_files']:
@@ -300,18 +295,18 @@ function_dispatcher_file_object = {
 
 function_dispatcher_alignment_file_object = {
     'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation,
-    'audit_file_reference_files_unexpected_type': audit_file_reference_files_unexpected_type
+    'audit_alignment_signal_matrix_file_missing_genome_reference': audit_alignment_signal_matrix_file_missing_genome_reference
 }
 
 function_dispatcher_matrix_file_object = {
     'audit_file_no_file_format_specifications': audit_file_no_file_format_specifications,
     'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation,
-    'audit_file_reference_files_unexpected_type': audit_file_reference_files_unexpected_type
+    'audit_alignment_signal_matrix_file_missing_genome_reference': audit_alignment_signal_matrix_file_missing_genome_reference
 }
 
 function_dispatcher_signal_file_object = {
     'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation,
-    'audit_file_reference_files_unexpected_type': audit_file_reference_files_unexpected_type
+    'audit_alignment_signal_matrix_file_missing_genome_reference': audit_alignment_signal_matrix_file_missing_genome_reference
 }
 
 function_dispatcher_tabular_file_object = {

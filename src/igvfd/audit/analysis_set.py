@@ -86,7 +86,7 @@ def check_transcriptome_assay(file, system) -> bool:
     # assay_term is only on measurement set for now, still spelling it out explicitly
     assay_term = seqfile_fileset_object.get('assay_term', '')
     if assay_term:
-        return assay_term in TRANSCRIPT_ASSAY_TERMS
+        return assay_term in list(TRANSCRIPT_ASSAY_TERMS.keys())
     else:
         return False
 

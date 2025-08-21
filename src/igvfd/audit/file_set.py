@@ -22,14 +22,15 @@ SINGLE_CELL_ASSAY_TERMS = ['/assay-terms/OBI_0002762/',  # single-nucleus ATAC-s
                            ]
 
 # Gene expression assay terms
-TRANSCRIPT_ASSAY_TERMS = ['/assay-terms/OBI_0003090/',  # bulk RNA-seq assay
-                          '/assay-terms/OBI_0002631/',  # single-cell RNA sequencing assay
-                          '/assay-terms/OBI_0003109/',  # single-nucleus RNA sequencing assay
-                          '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
-                          '/assay-terms/OBI_0003662/',  # single-nucleus methylcytosine and transcriptome sequencing assay
-                          '/assay-terms/NTR_0000761/',  # spatial transcriptomics
-                          '/assay-terms/NTR_0000735'   # single cell nascent transcription sequencing
-                          ]
+TRANSCRIPT_ASSAY_TERMS = {
+    '/assay-terms/OBI_0003090/': 'bulk RNA-seq assay',
+    '/assay-terms/OBI_0002631/': 'single-cell RNA sequencing assay',
+    '/assay-terms/OBI_0003109/': 'single-nucleus RNA sequencing assay',
+    '/assay-terms/OBI_0003660/': 'in vitro CRISPR screen using single-cell RNA-seq',
+    '/assay-terms/OBI_0003662/': 'single-nucleus methylcytosine and transcriptome sequencing assay',
+    '/assay-terms/NTR_0000761/': 'spatial transcriptomics',
+    '/assay-terms/NTR_0000735': 'single cell new transcription sequencing'
+}
 
 
 def load_chrom_sizes_file(file_path):
