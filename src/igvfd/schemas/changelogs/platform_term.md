@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Extend `sequencing_kits` enum list to include `UG Solaris Flex`.
 * Add `preview_timestamp`.
 
 ### Schema version 5
