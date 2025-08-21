@@ -1,6 +1,6 @@
 {
-    "hash": "c89ff48926d5ec3a3648a2320e234a56",
-    "index_name": "analysis_step_version_c89ff489",
+    "hash": "1d5382dd68a411aa4f72a29e9cfca36d",
+    "index_name": "analysis_step_version_1d5382dd",
     "item_type": "analysis_step_version",
     "mapping": {
         "dynamic_templates": [
@@ -572,6 +572,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
                             },
                             "preview_timestamp": {
                                 "type": "date"

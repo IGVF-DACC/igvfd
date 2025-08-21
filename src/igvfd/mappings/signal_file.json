@@ -1,6 +1,6 @@
 {
-    "hash": "af3380cb1de37cf12b1d647175cf546e",
-    "index_name": "signal_file_af3380cb",
+    "hash": "57e40efd21ccaf93df5d68dbdafc83bc",
+    "index_name": "signal_file_57e40efd",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -2939,6 +2939,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
                             },
                             "preview_timestamp": {
                                 "type": "date"

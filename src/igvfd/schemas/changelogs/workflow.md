@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 6
 
+* Add `preferred_assay_titles`.
+* Update `source_url` regex to include `https://support.parsebiosciences.com/`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Extend `collections` enum list to include `Benchmark`.
 * Extend `collections` enum list to include `TF Perturb-seq Project`.

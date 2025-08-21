@@ -1,6 +1,6 @@
 {
-    "hash": "3e618418676590f5a14e25d3c1a2ba00",
-    "index_name": "alignment_file_3e618418",
+    "hash": "7b5b1c393f1b0da072a999340fa289ec",
+    "index_name": "alignment_file_7b5b1c39",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -2854,6 +2854,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
                             },
                             "preview_timestamp": {
                                 "type": "date"

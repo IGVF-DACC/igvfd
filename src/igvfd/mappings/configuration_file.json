@@ -1,6 +1,6 @@
 {
-    "hash": "7f36fb6a8b47a3f5f180583d464e3326",
-    "index_name": "configuration_file_7f36fb6a",
+    "hash": "35267897b366f5b64fe05fc713e4a3cf",
+    "index_name": "configuration_file_35267897",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -2825,6 +2825,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
                             },
                             "preview_timestamp": {
                                 "type": "date"

@@ -1,6 +1,6 @@
 {
-    "hash": "e4ee923d00fb6b6f86c199c13e41b68c",
-    "index_name": "matrix_file_e4ee923d",
+    "hash": "18c94d617b45ed500bbdd5bf49d9bb31",
+    "index_name": "matrix_file_18c94d61",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -2840,6 +2840,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
                             },
                             "preview_timestamp": {
                                 "type": "date"
