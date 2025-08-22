@@ -265,12 +265,12 @@ def audit_missing_genome_transcriptome_references(value, system):
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Analysis set files processed from transcript sequence data are expected to link to a transcriptome reference.",
+            "audit_description": "Analysis set tabular files processed from transcript sequence data are expected to link to a transcriptome reference.",
             "audit_category": "missing reference files",
             "audit_level": "INTERNAL_ACTION"
         },
         {
-            "audit_description": "Analysis set files that contain genomic coordinates or refer to variants are expected to link to a genome reference.",
+            "audit_description": "Analysis set tabular files that contain genomic coordinates or refer to variants are expected to link to a genome reference.",
             "audit_category": "missing reference files",
             "audit_level": "INTERNAL_ACTION"
         }
