@@ -1124,7 +1124,8 @@ class ConfigurationFile(File):
         assay_terms = sorted(set([request.embed(
             file_set, '@@object?skip_calculated_properties=true').get('assay_term', '') for file_set in linked_file_sets]))
         # Check if any of the assay terms are single cell assay terms
-        return any([assay_term in SINGLE_CELL_ASSAY_TERMS for assay_term in assay_terms])
+        single_cell_assay_terms = SINGLE_CELL_ASSAY_TERMS + ['/assay-terms/OBI_0003660/']  # include Perturb-seq assays
+        return any([assay_term in single_cell_assay_terms for assay_term in assay_terms])
 
 
 @collection(
