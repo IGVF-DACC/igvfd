@@ -47,7 +47,7 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "44570481bfea520750ffd3631aeb8e0b",
         "file_format": "svg",
-        "content_type": "Uniform Manifold Approximation and Projection plot (UMAP)",
+        "content_type": "Uniform Manifold Approximation and Projection (UMAP) plot",
         "submitted_file_name": "/Users/igvf/igvf_files/umap.svg",
         "file_size": 543663,
         "upload_status": "validated",

@@ -228,7 +228,7 @@
             "sparse gene count matrix",
             "sample barcode count matrix",
             "minus strand modification state",
-            "Uniform Manifold Approximation and Projection plot (UMAP)"
+            "Uniform Manifold Approximation and Projection (UMAP) plot"
         ]
     }
 ]

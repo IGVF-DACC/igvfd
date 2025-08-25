@@ -3,7 +3,7 @@
 ### Minor changes since schema version 5
 
 * Extend `file_format` enum list to include `svg`.
-* Extend `content_type` enum list to include `Uniform Manifold Approximation and Projection plot (UMAP)`.
+* Extend `content_type` enum list to include `Uniform Manifold Approximation and Projection (UMAP) plot`.
 * Add `catalog_collections`.
 * Add calculated property `workflows`.
 * Remove calculated property `workflow`.
