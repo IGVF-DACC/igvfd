@@ -1107,7 +1107,11 @@ class ConfigurationFile(File):
         }
     )
     def validate_onlist_files(self, request, content_type, seqspec_of=None):
-        # Validate onlist files if the file is not linked to a single cell assay measurement set
+        # Validate onlist files if the file is linked to a single cell assay measurement set
+
+        single_cell_assay_term_names = list(SINGLE_CELL_ASSAY_TERMS.values()) + [
+            'in vitro CRISPR screen using single-cell RNA-seq'
+        ]
 
         # If not seqspec, return False
         if content_type != 'seqspec':
@@ -1135,16 +1139,11 @@ class ConfigurationFile(File):
             if title
         })
 
-       # Check if any of the assay terms are single cell assay terms including Perturb-seq
-        single_cell_assay_term_names = list(SINGLE_CELL_ASSAY_TERMS.values()) + [
-            'in vitro CRISPR screen using single-cell RNA-seq'
-        ]
-
         # If any auxiliary set is linked, only validate when it’s Perturb-seq
         if any(file_set.startswith('/auxiliary-sets/') for file_set in linked_file_sets):
             return 'in vitro CRISPR screen using single-cell RNA-seq' in assay_term_names
 
-        # Otherwise, validate if any single-cell assay is present
+        # Otherwise, validate if any single-cell assay, including Perturb-seq is present
         return any(name in single_cell_assay_term_names for name in assay_term_names)
 
 
