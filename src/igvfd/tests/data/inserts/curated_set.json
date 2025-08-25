@@ -151,5 +151,18 @@
             "igvf:curated_set_pipeline_parameters"
         ],
         "description": "A curated set to store pipeline configurations."
+    },
+    {
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "b61cc5c5-e14f-44ea-8729-4a3ca5717a2a",
+        "file_set_type": "QTL",
+        "accession": "IGVFDS0001QTLS",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "aliases": [
+            "igvf:curated_set_qtl_files"
+        ],
+        "description": "A curated set to store QTL data files."
     }
 ]
