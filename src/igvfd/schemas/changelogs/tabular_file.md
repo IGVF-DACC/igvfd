@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 18
 
+* Add `catalog_collections`.
 * Extend `content_type` enum list to include `barcode to cluster mapping`.
 
 ### Schema version 18

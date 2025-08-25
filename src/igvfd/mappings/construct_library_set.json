@@ -1,6 +1,6 @@
 {
-    "hash": "6e2210cea09f521c347f380edac58d31",
-    "index_name": "construct_library_set_6e2210ce",
+    "hash": "e9b16d8e595b9b5793a22a436a44cab7",
+    "index_name": "construct_library_set_e9b16d8e",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -864,6 +864,9 @@
                             "catalog_adapters": {
                                 "type": "keyword"
                             },
+                            "catalog_collections": {
+                                "type": "keyword"
+                            },
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
@@ -1154,6 +1157,9 @@
                             "catalog_adapters": {
                                 "type": "keyword"
                             },
+                            "catalog_collections": {
+                                "type": "keyword"
+                            },
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
@@ -1411,6 +1417,9 @@
                             "catalog_adapters": {
                                 "type": "keyword"
                             },
+                            "catalog_collections": {
+                                "type": "keyword"
+                            },
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
@@ -1606,6 +1615,9 @@
                                 "type": "keyword"
                             },
                             "catalog_adapters": {
+                                "type": "keyword"
+                            },
+                            "catalog_collections": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {

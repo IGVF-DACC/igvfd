@@ -181,7 +181,10 @@
             "IGVF_catalog_beta_v0.4"
         ],
         "controlled_access": false,
-        "external": true
+        "external": true,
+        "catalog_collections": [
+            "variants_proteins"
+        ]
     },
     {
         "uuid": "6d1a1811-2133-474d-b3b1-a07ad1f7e4e1",
@@ -204,7 +207,11 @@
             "IGVF_catalog_beta_v0.4"
         ],
         "controlled_access": false,
-        "external": true
+        "external": true,
+        "catalog_collections": [
+            "genomic_elements",
+            "genomic_elements_genes"
+        ]
     },
     {
         "uuid": "bdb64886-5f1e-46b4-a803-60c519d1ada1",

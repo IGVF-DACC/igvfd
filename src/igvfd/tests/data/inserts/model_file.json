@@ -72,7 +72,11 @@
         "status": "released",
         "release_timestamp": "2024-05-14T12:34:56Z",
         "file_set": "j-michael-cherry:barcodes_curated_set",
-        "externally_hosted": false
+        "externally_hosted": false,
+        "catalog_collections": [
+            "motifs",
+            "motifs_proteins"
+        ]
     },
     {
         "uuid": "12a83306-894e-417c-ab83-c7d79b44f12c",

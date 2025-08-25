@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 19
 
+* Add `catalog_collections`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Add calculated property `workflows`.
 * Remove calculated property `workflow`.
