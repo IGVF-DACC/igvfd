@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 18
 
+* Extend `content_type` enum list to include `spliceQTL`.
+* Extend `content_type` enum list to include `eQTL`.
+* Extend `content_type` enum list to include `caQTL`.
 * Extend `content_type` enum list to include `barcode to cluster mapping`.
 
 ### Schema version 18
