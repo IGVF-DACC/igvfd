@@ -1118,14 +1118,27 @@ class ConfigurationFile(File):
         linked_file_sets = sorted(
             set([request.embed(seqfile, '@@object?skip_calculated_properties=true').get('file_set') for seqfile in seqspec_of]))
         # If none is a measurement set, return False
-        if all([not file_set.startswith('/measurement-sets/') for file_set in linked_file_sets]):
+        if all([not file_set.startswith(('/measurement-sets/', '/auxiliary-sets/')) for file_set in linked_file_sets]):
             return False
         # Get assay terms for all the measurement sets
-        assay_terms = sorted(set([request.embed(
-            file_set, '@@object?skip_calculated_properties=true').get('assay_term', '') for file_set in linked_file_sets]))
+        assay_term_names = sorted({
+            title
+            for file_set in linked_file_sets
+            for title in (request.embed(file_set, '@@object?skip_calculated_properties=true').get('assay_titles') or [])
+            if title
+        })
         # Check if any of the assay terms are single cell assay terms
-        single_cell_assay_terms = SINGLE_CELL_ASSAY_TERMS + ['/assay-terms/OBI_0003660/']  # include Perturb-seq assays
-        return any([assay_term in single_cell_assay_terms for assay_term in assay_terms])
+        single_cell_assay_term_names = list(SINGLE_CELL_ASSAY_TERMS.values(
+        )) + ['in vitro CRISPR screen using single-cell RNA-seq']  # include Perturb-seq assays
+
+        # only check auxiliary set seqspec if they're associated with Perturb-seq assays
+        if any([file_set.startswith(('/auxiliary-sets/')) for file_set in linked_file_sets]):
+            if 'in vitro CRISPR screen using single-cell RNA-seq' in assay_term_names:
+                return True
+            else:
+                return False
+
+        return any([assay_term in single_cell_assay_term_names for assay_term in assay_term_names])
 
 
 @collection(
