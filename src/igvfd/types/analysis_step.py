@@ -35,6 +35,7 @@ class AnalysisStep(Item):
             include=[
                 '@id',
                 'software_versions',
+                'workflows',
             ]
         ),
         Path(
@@ -43,6 +44,15 @@ class AnalysisStep(Item):
                 '@id',
                 'name',
                 'status',
+            ]
+        ),
+        Path(
+            'analysis_step_versions.workflows',
+            include=[
+                '@id',
+                'accession',
+                'name',
+                'status'
             ]
         ),
     ]
