@@ -59,7 +59,7 @@
                 "low resolution tissue",
                 "high resolution tissue",
                 "fiducial alignment",
-                "Uniform Manifold Approximation and Projection plot (UMAP)"
+                "Uniform Manifold Approximation and Projection (UMAP) plot"
             ],
             "enum_descriptions": {
                 "low resolution tissue": "A representation of tissue sections at a lower spatial resolution, typically used for initial alignment and quality control purposes in spatial transcriptomics.",
