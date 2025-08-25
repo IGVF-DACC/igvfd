@@ -2,6 +2,10 @@
 
 ### Minor changes since schema version 18
 
+* Extend `content_type` enum list to include `variant to cluster mapping`.
+* Extend `content_type` enum list to include `individual cells profile`.
+* Extend `content_type` enum list to include `normalized variants profile`.
+* Extend `content_type` enum list to include `selected features from normalized variants profile`.
 * Add `catalog_collections`.
 * Extend `content_type` enum list to include `barcode to cluster mapping`.
 

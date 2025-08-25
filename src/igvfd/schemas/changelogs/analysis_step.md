@@ -2,6 +2,15 @@
 
 ### Minor changes since schema version 9
 
+* Extend `analysis_step_types` enum list to include `Uniform Manifold Approximation and Projection (UMAP)`.
+* Extend `analysis_step_types` enum list to include `cell profiling`.
+* Extend `analysis_step_types` enum list to include `image analysis`.
+* Extend `output_content_types` enum list to include `Uniform Manifold Approximation and Projection (UMAP)`.
+* Extend `input_content_types` enum list to include `Uniform Manifold Approximation and Projection (UMAP)`.
+* Extend `output_content_types` enum list to include `cell profiling`.
+* Extend `input_content_types` enum list to include `cell profiling`.
+* Extend `output_content_types` enum list to include `image analysis`.
+* Extend `input_content_types` enum list to include `image analysis`.
 * Extend `output_content_types` enum list to include `neural network architecture and edge weights`.
 * Extend `input_content_types` enum list to include `neural network architecture and edge weights`.
 * Extend `output_content_types` enum list to include `barcode to cluster mapping`.

@@ -61,13 +61,15 @@
                 "detected tissue",
                 "low resolution tissue",
                 "high resolution tissue",
-                "fiducial alignment"
+                "fiducial alignment",
+                "Uniform Manifold Approximation and Projection plot (UMAP)"
             ],
             "enum_descriptions": {
                 "low resolution tissue": "A representation of tissue sections at a lower spatial resolution, typically used for initial alignment and quality control purposes in spatial transcriptomics.",
                 "high resolution tissue": "A detailed representation of tissue sections at a higher spatial resolution, used for precise mapping and analysis of gene expression patterns within the tissue.",
                 "detected tissue": "The portion of the tissue section that has been identified and analyzed for gene expression, based on the spatial transcriptomics data captured by the Space Ranger pipeline.",
-                "fiducial alignment": "The alignment of tissue sections using fiducial markers which are reference points embedded in the slide that help to accurately map spatial transcriptomics data to the physical location of the tissue on the slide."
+                "fiducial alignment": "The alignment of tissue sections using fiducial markers which are reference points embedded in the slide that help to accurately map spatial transcriptomics data to the physical location of the tissue on the slide.",
+                "Uniform Manifold Approximation and Projection plot (UMAP)": "SVG two-dimensional plot of the dimensionality reduced feature profile using optimized hyperparameters."
             },
             "submissionExample": {
                 "appscript": "detected tissue",
@@ -77,7 +79,8 @@
         "file_format": {
             "enum": [
                 "jpg",
-                "png"
+                "png",
+                "svg"
             ],
             "submissionExample": {
                 "appscript": "jpg",
