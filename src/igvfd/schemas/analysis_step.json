@@ -59,6 +59,7 @@
                     "barcode counting",
                     "barcode mapping generation",
                     "base calling",
+                    "cell profiling",
                     "cell to feature barcode mapping",
                     "computational model prediction",
                     "computational model training",
@@ -72,6 +73,7 @@
                     "fragment generation",
                     "genome index generation",
                     "heteroplasmy ratio determination",
+                    "image analysis",
                     "interaction calling",
                     "matrix generation",
                     "merging",
@@ -86,6 +88,7 @@
                     "transcriptome index generation",
                     "UMI deduplication",
                     "UMI quantification",
+                    "Uniform Manifold Approximation and Projection (UMAP)",
                     "variant annotation"
                 ],
                 "enum_descriptions": {
@@ -95,6 +98,7 @@
                     "barcode counting": "The process of quantifying the occurrence of unique barcodes in sequencing data.",
                     "base calling": "The conversion of raw sequencing signals into nucleotide sequences, determining the identity of each base in the reads.",
                     "cell to feature barcode mapping": "The assignment of feature barcodes (e.g., genes, proteins) to individual cell barcodes.",
+                    "cell profiling": "The process of converting an array of morphological features for each cell into a descriptive profile of the population.",
                     "computational model prediction": "The application of a trained computational model to new data to generate predictions or inferences.",
                     "computational model training": "The process of creating or refining a computational model.",
                     "custom genome assembly": "The process of constructing a genome assembly.",
@@ -107,6 +111,7 @@
                     "fragment generation": "The process of generating fragments based on ATAC reads.",
                     "genome index generation": "The process of generating genome index file.",
                     "heteroplasmy ratio determination": "The process of determining per-cell heteroplasmy ratios by quantifying non-reference allele fractions at mitochondrial variant sites with heteroplasmy ratio = (non-reference allele counts) / (total allele counts at the position).",
+                    "image analysis": "Process and extract morphological measurements from raw images.",
                     "interaction calling": "Identifying and characterizing interactions between genomic elements.",
                     "matrix generation": "The process of generating matrix file.",
                     "merging": "Combining multiple datasets or files into a single dataset.",
@@ -119,6 +124,7 @@
                     "transcriptome index generation": "The process of generating transcriptome index file.",
                     "UMI deduplication": "The process of removing Unique Molecular Identifiers (UMI) duplicates.",
                     "UMI quantification": "The process of detection and measurement of Unique Molecular Identifiers (UMI).",
+                    "Uniform Manifold Approximation and Projection (UMAP)": "Reduces a high-dimensional data set to 2D plot.",
                     "variant annotation": "The process of providing additional information about genomic variants."
                 }
             },
