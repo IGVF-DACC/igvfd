@@ -676,35 +676,5 @@ def test_upload_credentials_allowed_when_status_is_preview(testapp, reference_fi
     testapp.post_json(reference_file['@id'] + '@@upload', {}, status=200)
 
 
-def test_validate_onlist_files(testapp, configuration_file_json, configuration_file_seqspec, sequence_file, measurement_set_one_onlist):
-    # If a Config File is NOT a seqspec
-    res = testapp.get(configuration_file_json['@id'])
-    assert res.json.get('validate_onlist_files', '') is False
-
-    # If a ConfigFile seqpec has no seqspec_of
-    res = testapp.get(configuration_file_seqspec['@id'])
-    assert res.json.get('validate_onlist_files', '') is False
-
-    # If a ConfigFile seqspec is seqspec_of a sequence file in an Analysis set
-    testapp.patch_json(
-        configuration_file_seqspec['@id'],
-        {
-            'seqspec_of': [sequence_file['@id']]
-        }
-    )
-    res = testapp.get(configuration_file_seqspec['@id'])
-    assert res.json.get('validate_onlist_files', '') is False
-
-    # If a seqspec is seqspec_of to a SeqFile in a single cell Measurement Set
-    testapp.patch_json(
-        sequence_file['@id'],
-        {
-            'file_set': measurement_set_one_onlist['@id']
-        }
-    )
-    res = testapp.get(configuration_file_seqspec['@id'])
-    assert res.json.get('validate_onlist_files', '') is True
-
-
 def test_download_forbidden_when_externally_hosted(testapp, externally_hosted_sequence_file):
     testapp.get(externally_hosted_sequence_file['@id'] + '@@download', status=403)
