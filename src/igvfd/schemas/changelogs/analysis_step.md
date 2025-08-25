@@ -2,6 +2,12 @@
 
 ### Minor changes since schema version 9
 
+* Extend `output_content_types` enum list to include `spliceQTL`.
+* Extend `input_content_types` enum list to include `spliceQTL`.
+* Extend `output_content_types` enum list to include `eQTL`.
+* Extend `input_content_types` enum list to include `eQTL`.
+* Extend `output_content_types` enum list to include `caQTL`.
+* Extend `input_content_types` enum list to include `caQTL`.
 * Extend `output_content_types` enum list to include `neural network architecture and edge weights`.
 * Extend `input_content_types` enum list to include `neural network architecture and edge weights`.
 * Extend `output_content_types` enum list to include `barcode to cluster mapping`.
