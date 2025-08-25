@@ -946,5 +946,82 @@
                 "igvf_utils": "5mC"
             }
         }
+    },
+    "catalog_collections": {
+        "catalog_collections": {
+            "title": "Catalog Collections",
+            "description": "The collections in the IGVF catalog that contain the data in this file.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "permission": "admin_only",
+            "items": {
+                "title": "Catalog Collection",
+                "description": "The collection in the IGVF catalog that contains the data in this file.",
+                "type": "string",
+                "enum": [
+                    "coding_variants",
+                    "coding_variants_phenotypes",
+                    "coding_variants_proteins",
+                    "complexes",
+                    "complexes_proteins",
+                    "complexes_terms",
+                    "diseases_genes",
+                    "donors",
+                    "drugs",
+                    "files_filesets",
+                    "gene_products_terms",
+                    "genes",
+                    "genes_biosamples",
+                    "genes_genes",
+                    "genes_mm_genes",
+                    "genes_pathways",
+                    "genes_structure",
+                    "genes_transcripts",
+                    "genomic_elements",
+                    "genomic_elements_biosamples",
+                    "genomic_elements_genes",
+                    "mm_genes",
+                    "mm_genes_mm_genes",
+                    "mm_genes_structure",
+                    "mm_genomic_elements",
+                    "mm_transcripts",
+                    "mm_transcripts_mm_genes_structure",
+                    "mm_variants",
+                    "motifs",
+                    "motifs_proteins",
+                    "ontology_terms",
+                    "ontology_terms_ontology_terms",
+                    "pathways",
+                    "pathways_pathways",
+                    "proteins",
+                    "proteins_proteins",
+                    "studies",
+                    "transcripts",
+                    "transcripts_genes_structure",
+                    "transcripts_proteins",
+                    "variants",
+                    "variants_biosamples",
+                    "variants_coding_variants",
+                    "variants_diseases",
+                    "variants_diseases_genes",
+                    "variants_drugs",
+                    "variants_drugs_genes",
+                    "variants_genes",
+                    "variants_genes_terms",
+                    "variants_genomic_elements",
+                    "variants_phenotypes",
+                    "variants_phenotypes_coding_variants",
+                    "variants_phenotypes_studies",
+                    "variants_proteins",
+                    "variants_proteins_terms",
+                    "variants_variants"
+                ]
+            },
+            "submissionExample": {
+                "appscript": "[\"variants_phenotypes\"]",
+                "igvf_utils": "variants_phenotypes"
+            }
+        }
     }
 }

@@ -311,7 +311,12 @@
         "upload_status": "validated",
         "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
-        "controlled_access": false
+        "controlled_access": false,
+        "catalog_collections": [
+            "coding_variants",
+            "coding_variants_phenotypes",
+            "files_filesets"
+        ]
     },
     {
         "uuid": "3d4e0cba-1df9-4c98-9139-42fbe6e1c3d8",
@@ -898,7 +903,11 @@
         "assembly": "GRCh38",
         "filtered": true,
         "file_set": "igvf:basic_analysis_set",
-        "controlled_access": false
+        "controlled_access": false,
+        "catalog_collections": [
+            "files_filesets",
+            "variants_phenotypes"
+        ]
     },
     {
         "uuid": "24a775b6-dbe8-442d-8ba1-0a103a9982fb",
