@@ -34,5 +34,23 @@
         "file_size": 543662,
         "upload_status": "validated",
         "file_set": "/measurement-sets/igvf:snM3C-seq"
+    },
+    {
+        "uuid": "92e09d2e-598e-4264-a002-0bd9147417c5",
+        "accession": "IGVFFI0002JPEH",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:umap_svg"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "44570481bfea520750ffd3631aeb8e0b",
+        "file_format": "svg",
+        "content_type": "Uniform Manifold Approximation and Projection plot (UMAP)",
+        "submitted_file_name": "/Users/igvf/igvf_files/umap.svg",
+        "file_size": 543663,
+        "upload_status": "validated",
+        "file_set": "/measurement-sets/igvf:snM3C-seq"
     }
 ]

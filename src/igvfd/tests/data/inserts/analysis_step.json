@@ -212,18 +212,23 @@
             "matrix generation",
             "modification calling",
             "modification site annotation",
-            "heteroplasmy ratio determination"
+            "heteroplasmy ratio determination",
+            "image analysis",
+            "cell profiling",
+            "Uniform Manifold Approximation and Projection (UMAP)"
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "input_content_types": [
             "reads",
-            "index"
+            "index",
+            "variant to cluster mapping"
         ],
         "output_content_types": [
             "fragments",
             "sparse gene count matrix",
             "sample barcode count matrix",
-            "minus strand modification state"
+            "minus strand modification state",
+            "Uniform Manifold Approximation and Projection plot (UMAP)"
         ]
     }
 ]
