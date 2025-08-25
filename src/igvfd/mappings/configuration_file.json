@@ -1,6 +1,6 @@
 {
-    "hash": "7f36fb6a8b47a3f5f180583d464e3326",
-    "index_name": "configuration_file_7f36fb6a",
+    "hash": "34691793a6596326b86911c5dec72b20",
+    "index_name": "configuration_file_34691793",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -362,6 +362,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "catalog_collections": {
+                        "type": "keyword"
                     },
                     "checkfiles_version": {
                         "type": "keyword"

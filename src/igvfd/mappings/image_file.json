@@ -1,6 +1,6 @@
 {
-    "hash": "20700758a3a1863b820e5048a48e7c9d",
-    "index_name": "image_file_20700758",
+    "hash": "46254fc73ad693aee6e178a2bb1f1706",
+    "index_name": "image_file_46254fc7",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -362,6 +362,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "catalog_collections": {
+                        "type": "keyword"
                     },
                     "checkfiles_version": {
                         "type": "keyword"
