@@ -1379,6 +1379,30 @@ def test_audit_missing_construct_library_set(
         error['category'] != 'missing construct library set'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+    # If immune-SGE with a tissue linked to a CLS editing template library, NO audit
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'preferred_assay_titles': ['Immune-SGE']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing construct library set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # If immune-SGE with a tissue linked to a CLS genome wide, audit
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'construct_library_sets': [construct_library_set_genome_wide['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing construct library set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
 
 
 def test_audit_missing_read_names(
