@@ -1107,24 +1107,44 @@ class ConfigurationFile(File):
         }
     )
     def validate_onlist_files(self, request, content_type, seqspec_of=None):
-        # Validate onlist files if the file is not linked to a single cell assay measurement set
+        # Validate onlist files if the file is linked to a single cell assay measurement set
+
+        single_cell_assay_term_names = list(SINGLE_CELL_ASSAY_TERMS.values()) + [
+            'in vitro CRISPR screen using single-cell RNA-seq'
+        ]
+
         # If not seqspec, return False
         if content_type != 'seqspec':
             return False
-        # Get the file set object
         if not seqspec_of:
             return False
-        # Get all file sets linked to the seqspec files
-        linked_file_sets = sorted(
-            set([request.embed(seqfile, '@@object?skip_calculated_properties=true').get('file_set') for seqfile in seqspec_of]))
-        # If none is a measurement set, return False
-        if all([not file_set.startswith('/measurement-sets/') for file_set in linked_file_sets]):
+
+        # Build linked_file_sets, filtering out missing values
+        linked_file_sets = sorted({
+            request.embed(seqfile, '@@object?skip_calculated_properties=true').get('file_set')
+            for seqfile in seqspec_of
+        } - {None})
+
+        # If no linked measurement/aux sets, nothing to validate
+        if all(not file_set.startswith(('/measurement-sets/', '/auxiliary-sets/')) for file_set in linked_file_sets):
             return False
-        # Get assay terms for all the measurement sets
-        assay_terms = sorted(set([request.embed(
-            file_set, '@@object?skip_calculated_properties=true').get('assay_term', '') for file_set in linked_file_sets]))
-        # Check if any of the assay terms are single cell assay terms
-        return any([assay_term in SINGLE_CELL_ASSAY_TERMS for assay_term in assay_terms])
+
+        # Collect assay titles across all linked sets
+        assay_term_names = sorted({
+            title
+            for file_set in linked_file_sets
+            for title in (
+                request.embed(file_set, '@@object?skip_calculated_properties=true').get('assay_titles') or []
+            )
+            if title
+        })
+
+        # If any auxiliary set is linked, only validate when it’s Perturb-seq
+        if any(file_set.startswith('/auxiliary-sets/') for file_set in linked_file_sets):
+            return 'in vitro CRISPR screen using single-cell RNA-seq' in assay_term_names
+
+        # Otherwise, validate if any single-cell assay, including Perturb-seq is present
+        return any(name in single_cell_assay_term_names for name in assay_term_names)
 
 
 @collection(
