@@ -46,6 +46,9 @@
         },
         {
             "$ref": "mixins.json#/preview_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/catalog_collections"
         }
     ],
     "dependentSchemas": {

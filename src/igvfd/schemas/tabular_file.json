@@ -65,6 +65,9 @@
         },
         {
             "$ref": "mixins.json#/base_modifications"
+        },
+        {
+            "$ref": "mixins.json#/catalog_collections"
         }
     ],
     "dependentSchemas": {
