@@ -1,6 +1,6 @@
 {
-    "hash": "1d74f73c9f0632c695d6c96972935e5d",
-    "index_name": "model_set_1d74f73c",
+    "hash": "bc144d451833ffcd3db52f7d80a81989",
+    "index_name": "model_set_bc144d45",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1922,6 +1922,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "preferred_assay_titles": {
+                                        "type": "keyword"
                                     },
                                     "preview_timestamp": {
                                         "type": "date"

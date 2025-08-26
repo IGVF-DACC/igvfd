@@ -1,6 +1,6 @@
 {
-    "hash": "c777028c71a3c1cb545e3f780d5def6a",
-    "index_name": "index_file_c777028c",
+    "hash": "c287ecfce22162ba1f1bb6cf4294136a",
+    "index_name": "index_file_c287ecfc",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -2844,6 +2844,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_titles": {
+                                "type": "keyword"
                             },
                             "preview_timestamp": {
                                 "type": "date"

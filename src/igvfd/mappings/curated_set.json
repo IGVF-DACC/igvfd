@@ -1,6 +1,6 @@
 {
-    "hash": "c26c44a476d0420558d035d4ee79e221",
-    "index_name": "curated_set_c26c44a4",
+    "hash": "12fd5e94e7ae023aa6d31d81bd26e7ce",
+    "index_name": "curated_set_12fd5e94",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1817,6 +1817,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "preferred_assay_titles": {
+                                        "type": "keyword"
                                     },
                                     "preview_timestamp": {
                                         "type": "date"
