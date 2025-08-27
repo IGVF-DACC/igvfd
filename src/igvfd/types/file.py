@@ -101,6 +101,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'Robj': '.Robj',
     'sam': '.sam.gz',
     'sra': '.sra',
+    'svg': '.svg',
     'tagAlign': '.tagAlign.gz',
     'tar': '.tar.gz',
     'tbi': '.tbi',
