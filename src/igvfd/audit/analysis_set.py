@@ -293,7 +293,7 @@ def audit_missing_genome_transcriptome_references(value, system):
         'cell hashing barcodes',
         'derived barcode mapping',
         'external source data',
-        'pipeline inputs',
+        'pipeline parameter',
         'primer sequences',
         'protein to protein interaction score',
         'sample sort parameters',
@@ -357,7 +357,7 @@ def audit_missing_genome_transcriptome_references(value, system):
         )
         yield AuditFailure(audit_message_transcriptome_tabular.get('audit_category', ''), f'{detail} {audit_message_transcriptome_tabular.get("audit_description", "")}', level=audit_message_transcriptome_tabular.get('audit_level', ''))
 
-    # Audit 2: if there are genome based analysis files missing genome references
+    # Audit 4: if there are genome based analysis files missing genome references
     if tabular_files_missing_genome:
         tabular_files_missing_genome = join_obj_paths(data_object_paths=tabular_files_missing_genome)
         detail = (
