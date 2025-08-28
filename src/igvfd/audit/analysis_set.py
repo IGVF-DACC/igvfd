@@ -293,7 +293,7 @@ def audit_missing_genome_transcriptome_references(value, system):
         'cell hashing barcodes',
         'derived barcode mapping',
         'external source data',
-        'pipeline parameter',
+        'pipeline parameters',
         'primer sequences',
         'protein to protein interaction score',
         'sample sort parameters',
