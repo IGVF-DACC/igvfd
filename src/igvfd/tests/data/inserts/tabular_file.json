@@ -969,5 +969,62 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "j-michael-cherry:barcodes_curated_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "f56a4285-5802-4406-9283-a81014d3c9b4",
+        "accession": "IGVFFI0001EQTL",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_eqtl"
+        ],
+        "md5sum": "a0134d1662be6066407fe70efa152ce2",
+        "file_format": "tsv",
+        "content_type": "eQTL",
+        "submitted_file_name": "/Users/igvf/igvf_files/eqtl.tsv.gz",
+        "file_size": 902,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "39a51cd4-3abf-4e8b-82af-3cc3b342ad91",
+        "accession": "IGVFFI0002CAQT",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_caqtl"
+        ],
+        "md5sum": "98b8c23451327745ca65d6e2c17c96c7",
+        "file_format": "tsv",
+        "content_type": "caQTL",
+        "submitted_file_name": "/Users/igvf/igvf_files/caqtl.tsv.gz",
+        "file_size": 902,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "215ca1e0-e8c1-4e0b-9948-0a3d4059d533",
+        "accession": "IGVFFI0003SQTL",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_spliceqtl"
+        ],
+        "md5sum": "6436420c2a29787aaa3ecb40e2d7cc39",
+        "file_format": "tsv",
+        "content_type": "spliceQTL",
+        "submitted_file_name": "/Users/igvf/igvf_files/spliceqtl.tsv.gz",
+        "file_size": 902,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "controlled_access": false
     }
 ]
