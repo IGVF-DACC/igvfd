@@ -332,12 +332,14 @@ def test_audit_analysis_set_inconsistent_barcode_onlist(testapp, analysis_set_wi
     )
 
 
-def test_audit_missing_transcriptome(
+def test_audit_missing_genome_or_transcriptome(
     testapp,
     analysis_set_base,
     alignment_file,
     reference_file,
+    reference_file_with_assembly,
     tabular_file_onlist_1,
+    tabular_file_bed,
     measurement_set,
     assay_term_bulk_rna,
     assay_term_scatac,
@@ -408,6 +410,12 @@ def test_audit_missing_transcriptome(
             'content_type': 'transcriptome index'
         }
     )
+    testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'reference_files': [reference_file['@id'], reference_file_with_assembly['@id']]
+        }
+    )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing reference files'
@@ -445,6 +453,20 @@ def test_audit_missing_transcriptome(
     assert any(
         error['category'] == 'missing reference files'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # A tabular file can trigger the same audit, but in the
+    # internal action category.
+    testapp.patch_json(
+        tabular_file_bed['@id'],
+        {
+            'file_set': analysis_set_base['@id'],
+            'derived_from': [sequence_file['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing reference files'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
 
 
