@@ -51,5 +51,16 @@
         "company": "Singular Genomics",
         "release_timestamp": "2024-06-06T12:34:56Z",
         "uuid": "f893546b-70dc-7f34-497c-4caf0eb0fa6c"
+    },
+    {
+        "term_id": "NTR:0000797",
+        "term_name": "UG 100",
+        "status": "released",
+        "sequencing_kits": [
+            "UG Solaris Flex"
+        ],
+        "company": "Ultima Genomics",
+        "release_timestamp": "2025-06-06T12:34:56Z",
+        "uuid": "f835496b-cce6-829e-d181-fed50eb09cb9"
     }
 ]
