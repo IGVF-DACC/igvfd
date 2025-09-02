@@ -200,7 +200,8 @@
         },
         "strand_specificity": {
             "title": "Strand Specificity",
-            "description": "The strand-specificity of the sequencing results within Perturb-seq, scCRISPR screen, TAP-seq, and CERES-seq assays.",
+            "description": "Indicates whether a transcriptomic library is forward, reverse, or unstranded based on the strand-specific protocol used.",
+            "comment": "Only measurement sets from transcriptomic assays should submit this property.",
             "type": "string",
             "enum": [
                 "5 prime to 3 prime",
