@@ -217,8 +217,7 @@ function_dispatcher_signal_file_object = {
 }
 
 function_dispatcher_tabular_file_object = {
-    'audit_file_no_file_format_specifications': audit_file_no_file_format_specifications,
-    'audit_tabular_file_missing_reference_files': audit_tabular_file_missing_reference_files
+    'audit_file_no_file_format_specifications': audit_file_no_file_format_specifications
 }
 
 function_dispatcher_model_file_object = {
