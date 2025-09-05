@@ -148,10 +148,39 @@ class File(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
-        Path('file_set', include=['@id', 'accession', 'donors', 'samples', '@type',
-             'assay_term', 'file_set_type', 'lab', 'data_use_limitation_summaries', 'summary']),
-        Path('file_set.samples', include=['@id', 'accession', 'classifications', '@type', 'controlled_access',
-             'status', 'summary', 'disease_terms', 'sample_terms', 'taxa', 'targeted_sample_term', 'modifications', 'treatments']),
+        Path(
+            'file_set',
+            include=[
+                '@id',
+                '@type',
+                'accession',
+                'donors',
+                'samples',
+                'assay_term',
+                'file_set_type',
+                'lab',
+                'data_use_limitation_summaries',
+                'summary',
+                'controlled_access',
+            ]
+        ),
+        Path(
+            'file_set.samples',
+            include=[
+                '@id',
+                '@type',
+                'accession',
+                'classifications',
+                'status',
+                'summary',
+                'disease_terms',
+                'sample_terms',
+                'taxa',
+                'targeted_sample_term',
+                'modifications',
+                'treatments'
+            ]
+        ),
         Path('file_set.samples.disease_terms', include=[
              '@id', 'status', 'term_name', 'summary']),
         Path('file_set.samples.sample_terms', include=[
