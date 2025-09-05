@@ -1,6 +1,6 @@
 {
-    "hash": "31fd998c6f26077f98e1c25ea83d6a3d",
-    "index_name": "image_file_31fd998c",
+    "hash": "eaec374346c0f2fb0317599cdc370273",
+    "index_name": "image_file_eaec3743",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -288,6 +288,9 @@
                         },
                         "type": "object"
                     },
+                    "anvil_url": {
+                        "type": "keyword"
+                    },
                     "assay_titles": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
@@ -378,6 +381,10 @@
                     "content_type": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
+                    },
+                    "controlled_access": {
+                        "store": true,
+                        "type": "boolean"
                     },
                     "creation_timestamp": {
                         "type": "date"

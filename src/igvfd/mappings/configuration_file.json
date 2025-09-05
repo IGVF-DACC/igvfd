@@ -1,6 +1,6 @@
 {
-    "hash": "f1d8c4ad8cc7d60d5fec57496c2e6e92",
-    "index_name": "configuration_file_f1d8c4ad",
+    "hash": "087e45352ff7c982dc3dfb07fa341ec2",
+    "index_name": "configuration_file_087e4535",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -288,6 +288,9 @@
                         },
                         "type": "object"
                     },
+                    "anvil_url": {
+                        "type": "keyword"
+                    },
                     "assay_titles": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
@@ -378,6 +381,10 @@
                     "content_type": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
+                    },
+                    "controlled_access": {
+                        "store": true,
+                        "type": "boolean"
                     },
                     "creation_timestamp": {
                         "type": "date"
