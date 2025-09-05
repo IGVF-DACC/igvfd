@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 9
 
+* Add `anvil_url`.
+* Add `controlled_access`.
 * Add `catalog_collections`.
 * Extend `file_format` enum list to include `h5mu`.
 * Extend `content_type` enum list to include `annotated multimodal CRISPR matrix`.

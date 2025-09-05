@@ -54,6 +54,9 @@
         },
         {
             "$ref": "mixins.json#/catalog_collections"
+        },
+        {
+            "$ref": "mixins.json#/controlled_access"
         }
     ],
     "dependentSchemas": {
