@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 13
 
+* Add `anvil_url`.
+* Add `controlled_access`.
 * Add `catalog_collections`.
 * Add calculated property `workflows`.
 * Remove calculated property `workflow`.
