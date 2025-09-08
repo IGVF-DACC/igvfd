@@ -43,6 +43,9 @@
         },
         {
             "$ref": "mixins.json#/catalog_collections"
+        },
+        {
+            "$ref": "mixins.json#/anvil_url"
         }
     ],
     "dependentSchemas": {

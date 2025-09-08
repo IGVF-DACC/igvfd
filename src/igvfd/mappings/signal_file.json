@@ -1,6 +1,6 @@
 {
-    "hash": "3e44dad4b42da8169a2a20c077bbe7b7",
-    "index_name": "signal_file_3e44dad4",
+    "hash": "aaf8426b74d12458546322481c01e9ac",
+    "index_name": "signal_file_aaf8426b",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -287,6 +287,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "anvil_url": {
+                        "type": "keyword"
                     },
                     "assay_titles": {
                         "copy_to": "_fuzzy",

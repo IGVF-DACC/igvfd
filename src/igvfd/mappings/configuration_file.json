@@ -1,6 +1,6 @@
 {
-    "hash": "f1d8c4ad8cc7d60d5fec57496c2e6e92",
-    "index_name": "configuration_file_f1d8c4ad",
+    "hash": "1395cc94bbb0305da5639b9d35515150",
+    "index_name": "configuration_file_1395cc94",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -287,6 +287,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "anvil_url": {
+                        "type": "keyword"
                     },
                     "assay_titles": {
                         "copy_to": "_fuzzy",

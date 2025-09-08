@@ -216,7 +216,9 @@
                 "igvf_utils": false
             },
             "requestMethod": "POST"
-        },
+        }
+    },
+    "anvil_url": {
         "anvil_url": {
             "title": "AnVIL URL",
             "description": "URL linking to the controlled access file that has been deposited at AnVIL workspace.",

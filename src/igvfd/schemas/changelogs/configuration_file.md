@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Add `anvil_url`.
 * Add `catalog_collections`.
 * Add calculated property `workflows`.
 * Remove calculated property `workflow`.
