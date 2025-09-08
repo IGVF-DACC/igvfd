@@ -139,7 +139,7 @@ def audit_analysis_set_multiplexed_samples(value, system):
             f'but no `demultiplexed_samples`.'
         )
         yield AuditFailure(audit_message_missing_demultiplexed_from.get('audit_category', ''), f'{detail} {audit_message_missing_demultiplexed_from.get("audit_description", "")}', level=audit_message_missing_demultiplexed_from.get('audit_level', ''))
-    if demultiplexed_samples and non_multiplexed_samples and [demultiplexed_samples] != samples:
+    if demultiplexed_samples and non_multiplexed_samples and demultiplexed_samples != samples:
         detail = (
             f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has `demultiplexed_samples` and non-multiplexed '
