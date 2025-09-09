@@ -1,6 +1,6 @@
 {
-    "hash": "31fd998c6f26077f98e1c25ea83d6a3d",
-    "index_name": "image_file_31fd998c",
+    "hash": "cd5026746e4cc735d46d2c837da189f5",
+    "index_name": "image_file_cd502674",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -287,6 +287,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "anvil_url": {
+                        "type": "keyword"
                     },
                     "assay_titles": {
                         "copy_to": "_fuzzy",
