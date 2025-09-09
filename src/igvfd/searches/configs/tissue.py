@@ -182,7 +182,7 @@ def tissue_homo_sapiens_matrix_config():
     return {
         'matrix': {
             'x': {
-                'group_by': 'file_sets.preferred_assay_title',
+                'group_by': 'file_sets.preferred_assay_titles',
                 'label': 'Assays'
             },
             'y': {
