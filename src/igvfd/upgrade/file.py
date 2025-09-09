@@ -548,3 +548,14 @@ def tabular_file_17_18(value, system):
         notes += f' This file\'s content_type was pipeline inputs, but has been upgraded to pipeline parameters.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('reference_file', '19', '20')
+def reference_file_19_20(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2973
+    notes = value.get('notes', '')
+    if 'external' in value:
+        notes += f' This file was previously marked as `external` as {value["external"]}. The property `external` has been removed during an upgrade. Reference files obtained from external sources are all attributed to External Lab, Community.'
+        del value['external']
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

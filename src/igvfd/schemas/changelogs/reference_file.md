@@ -1,5 +1,11 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema verion 20
+
+* Remove `external`.
+* Add `externally_hosted`.
+* Add `externally_hosted_url`.
+
 ### Minor changes since schema version 19
 
 * Extend `assembly` enum list to include `C57BL_6J_T2T_v1 + GRCm39_X`.

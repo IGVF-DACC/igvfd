@@ -1,6 +1,6 @@
 {
-    "hash": "e9b16d8e595b9b5793a22a436a44cab7",
-    "index_name": "construct_library_set_e9b16d8e",
+    "hash": "79ac31b14c1bd47fd8aeef0af621ddac",
+    "index_name": "construct_library_set_79ac31b1",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -909,10 +909,6 @@
                             "documents": {
                                 "type": "keyword"
                             },
-                            "external": {
-                                "store": true,
-                                "type": "boolean"
-                            },
                             "external_host_url": {
                                 "type": "keyword"
                             },
@@ -1198,7 +1194,10 @@
                             "documents": {
                                 "type": "keyword"
                             },
-                            "external": {
+                            "external_host_url": {
+                                "type": "keyword"
+                            },
+                            "externally_hosted": {
                                 "store": true,
                                 "type": "boolean"
                             },
@@ -1458,7 +1457,10 @@
                             "documents": {
                                 "type": "keyword"
                             },
-                            "external": {
+                            "external_host_url": {
+                                "type": "keyword"
+                            },
+                            "externally_hosted": {
                                 "store": true,
                                 "type": "boolean"
                             },
@@ -1658,7 +1660,10 @@
                             "documents": {
                                 "type": "keyword"
                             },
-                            "external": {
+                            "external_host_url": {
+                                "type": "keyword"
+                            },
+                            "externally_hosted": {
                                 "store": true,
                                 "type": "boolean"
                             },

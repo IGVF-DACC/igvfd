@@ -19,13 +19,14 @@ def audit_external_reference_files(value, system):
         {
             "audit_description": "Reference files uploaded from external resources are expected to have external identifiers in dbxrefs.",
             "audit_category": "missing dbxrefs",
-            "audit_level": "NOT_COMPLIANT"
+            "audit_level": "INTERNAL_ACTION"
         }
     ]
     '''
     audit_message = get_audit_message(audit_external_reference_files)
     object_type = space_in_words(value['@type'][0]).capitalize()
-    if value.get('external'):
+    # The 'external' field is deprecated. Use lab name 'community' to indicate external reference files.
+    if value.get('lab') == '/labs/community/':
         if 'dbxrefs' not in value:
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is an external file, '

@@ -75,7 +75,6 @@ def test_metadata_batch_download_v2_contains_audit_values(workbook, testapp):
         'upload status not validated',
         'missing file format specifications',
         'missing derived from',
-        'missing dbxrefs',
         'missing analysis step version',
         'unexpected input file set',
         'missing input file set',

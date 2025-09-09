@@ -1,6 +1,6 @@
 {
-    "hash": "110d61ac607f338cbbad55b84cff1a1f",
-    "index_name": "prediction_set_110d61ac",
+    "hash": "912ed501850743cbf1922b7852cfc9f7",
+    "index_name": "prediction_set_912ed501",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -688,7 +688,10 @@
                                     "documents": {
                                         "type": "keyword"
                                     },
-                                    "external": {
+                                    "external_host_url": {
+                                        "type": "keyword"
+                                    },
+                                    "externally_hosted": {
                                         "store": true,
                                         "type": "boolean"
                                     },
@@ -1674,10 +1677,6 @@
                             "documents": {
                                 "type": "keyword"
                             },
-                            "external": {
-                                "store": true,
-                                "type": "boolean"
-                            },
                             "external_host_url": {
                                 "type": "keyword"
                             },
@@ -2196,7 +2195,10 @@
                             "documents": {
                                 "type": "keyword"
                             },
-                            "external": {
+                            "external_host_url": {
+                                "type": "keyword"
+                            },
+                            "externally_hosted": {
                                 "store": true,
                                 "type": "boolean"
                             },
@@ -2396,7 +2398,10 @@
                             "documents": {
                                 "type": "keyword"
                             },
-                            "external": {
+                            "external_host_url": {
+                                "type": "keyword"
+                            },
+                            "externally_hosted": {
                                 "store": true,
                                 "type": "boolean"
                             },

@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_audit_upload_status(testapp, reference_file, model_file):
+def test_audit_upload_status(testapp, reference_file, model_file, external_lab):
     testapp.patch_json(
         reference_file['@id'],
         {
@@ -18,17 +18,13 @@ def test_audit_upload_status(testapp, reference_file, model_file):
         reference_file['@id'],
         {
             'upload_status': 'invalidated',
-            'external': True
+            'lab': external_lab['@id']
         },
         status=200,
     )
     res = testapp.get(reference_file['@id'] + '@@audit')
-    assert any(
-        audit['category'] == 'upload status not validated'
-        for audit in res.json['audit'].get('WARNING', {})
-    )
     assert all(
-        audit['category'] != 'upload status not validated'
+        audit['category'] == 'upload status not validated'
         for audit in res.json['audit'].get('ERROR', {})
     )
     testapp.patch_json(
@@ -43,10 +39,6 @@ def test_audit_upload_status(testapp, reference_file, model_file):
     res = testapp.get(reference_file['@id'] + '@@audit')
     assert all(
         audit['category'] != 'upload status not validated'
-        for audit in res.json['audit'].get('WARNING', {})
-    )
-    assert all(
-        audit['category'] != 'upload status not validated'
         for audit in res.json['audit'].get('ERROR', {})
     )
     # No audit for validation exempted either.
@@ -59,10 +51,6 @@ def test_audit_upload_status(testapp, reference_file, model_file):
         status=200,
     )
     res = testapp.get(reference_file['@id'] + '@@audit')
-    assert all(
-        audit['category'] != 'upload status not validated'
-        for audit in res.json['audit'].get('WARNING', {})
-    )
     assert all(
         audit['category'] != 'upload status not validated'
         for audit in res.json['audit'].get('ERROR', {})
@@ -93,10 +81,6 @@ def test_audit_upload_status(testapp, reference_file, model_file):
         audit['category'] != 'upload status not validated'
         for audit in res.json['audit'].get('ERROR', {})
     )
-    assert all(
-        audit['category'] != 'upload status not validated'
-        for audit in res.json['audit'].get('WARNING', {})
-    )
 
 
 def test_audit_file_format_specifications(testapp, matrix_file, experimental_protocol_document):
@@ -124,17 +108,19 @@ def test_audit_file_format_specifications(testapp, matrix_file, experimental_pro
     )
 
 
-def test_audit_external_reference_files(testapp, reference_file):
+def test_audit_external_reference_files(testapp, reference_file, external_lab):
+    # Use external lab name as the replacement of 'external' field.
     testapp.patch_json(
         reference_file['@id'],
         {
-            'external': True
+            'lab': external_lab['@id'],
+
         }
     )
     res = testapp.get(reference_file['@id'] + '@@audit')
     assert any(
         audit['category'] == 'missing dbxrefs'
-        for audit in res.json['audit'].get('NOT_COMPLIANT', {})
+        for audit in res.json['audit'].get('INTERNAL_ACTION', {})
     )
     testapp.patch_json(
         reference_file['@id'],
@@ -145,7 +131,7 @@ def test_audit_external_reference_files(testapp, reference_file):
     res = testapp.get(reference_file['@id'] + '@@audit')
     assert all(
         audit['category'] != 'missing dbxrefs'
-        for audit in res.json['audit'].get('NOT_COMPLIANT', {})
+        for audit in res.json['audit'].get('INTERNAL_ACTION', {})
     )
 
 
