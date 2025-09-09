@@ -182,14 +182,6 @@ class Sample(Item):
                 if input_for.startswith('/analysis-sets/') and input_for not in file_sets:
                     file_sets.append(input_for)
         # file sets associated with a multiplexed sample that a sample was multiplexed in are included
-        # for multiplexed_sample in multiplexed_in:
-        #     multiplexed_sample_object = request.embed(
-        #         multiplexed_sample, '@@object_with_select_calculated_properties?field=file_sets')
-        #     multiplexed_file_sets = multiplexed_sample_object.get('file_sets', [])
-        #     for file_set in multiplexed_file_sets:
-        #         if file_set not in file_sets:
-        #             file_sets.append(file_set)
-        # file sets associated with a multiplexed sample that a sample was multiplexed in are included
         if multiplexed_in:
             file_sets = get_filesets_samples_used_in(multiplexed_in, file_sets, request)
         # file sets associated with a pooled sample that a sample was pooled in are included
