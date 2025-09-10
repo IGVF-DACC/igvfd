@@ -804,6 +804,7 @@ class AnalysisSet(FileSet):
         treatment_purposes = set()
         treatment_summaries = set()
         differentiation_times = set()
+        library_delivery_times = set()
         construct_library_set_types = set()
         modification_summaries = set()
         sorted_from = set()
@@ -891,6 +892,10 @@ class AnalysisSet(FileSet):
                 for construct_library_set in sample_object['construct_library_sets']:
                     cls_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
                     construct_library_set_types.add(cls_object['file_set_type'])
+            if 'time_post_library_delivery' in sample_object:
+                time = sample_object['time_post_library_delivery']
+                time_unit = sample_object['time_post_library_delivery_units']
+                library_delivery_times.add(f'{time} {time_unit}')
             if 'sorted_from' in sample_object:
                 sorted_from.add(True)
                 for file_set in sample_object['file_sets']:
@@ -955,6 +960,8 @@ class AnalysisSet(FileSet):
         construct_library_set_type_phrase = ''
         if construct_library_set_types:
             construct_library_set_type_phrase = f'transfected with a {", ".join(construct_library_set_types)}'
+            if library_delivery_times:
+                construct_library_set_type_phrase = f'{construct_library_set_type_phrase} measured at {", ".join(sorted(library_delivery_times))}(s) post transfection'
         sorted_phrase = ''
         if sorted_from:
             if targeted_genes_for_sorting:
