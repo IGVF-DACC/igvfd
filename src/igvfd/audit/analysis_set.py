@@ -319,7 +319,7 @@ def audit_missing_genome_transcriptome_references(value, system):
             # Check if the data file under the Analysis Set has a transcriptome reference
             has_transcriptome_reference = check_genome_or_transcriptome_reference(file, system, 'transcriptome')
 
-            if not has_genome_reference:
+            if not is_transcriptome_assay and not has_genome_reference:
                 if file.startswith('/tabular-files/'):
                     tabular_files_missing_genome.append(file)
                 else:
