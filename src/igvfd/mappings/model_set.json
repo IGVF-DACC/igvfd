@@ -1,6 +1,6 @@
 {
-    "hash": "bc144d451833ffcd3db52f7d80a81989",
-    "index_name": "model_set_bc144d45",
+    "hash": "8f7683dfd182f7459ca73b32b6fce524",
+    "index_name": "model_set_8f7683df",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -2389,6 +2389,9 @@
                     },
                     "prediction_objects": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "preferred_assay_titles": {
                         "type": "keyword"
                     },
                     "preview_timestamp": {
