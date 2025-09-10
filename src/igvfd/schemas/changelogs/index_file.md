@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 2
 
+* Extend `transcriptome_annotation` enum list to include `GENCODE 38`.
 * Add `catalog_collections`.
 * Add calculated property `workflows`.
 * Remove calculated property `workflow`.
