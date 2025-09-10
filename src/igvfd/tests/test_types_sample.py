@@ -2,7 +2,8 @@ import pytest
 import json
 
 
-def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, curated_set_genome, multiplexed_sample, in_vitro_cell_line):
+def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, curated_set_genome, multiplexed_sample, in_vitro_cell_line, in_vitro_differentiated_cell, primary_cell):
+    # If a tissue is used in a MeaSet, that file set should appear in the tissue's file_sets
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -14,6 +15,8 @@ def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, cur
     for f in res.json.get('file_sets'):
         f_id.append(f['@id'])
     assert f_id == [measurement_set['@id']]
+
+    # If a tissue is used in multiple file sets, all the linked file sets should appear in the tissue's file_sets
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -32,6 +35,8 @@ def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, cur
         f_id.append(f['@id'])
     assert set(f_id) == {
         measurement_set['@id'], analysis_set_base['@id'], curated_set_genome['@id']}
+
+    # If a multiplexed sample is used in a MeaSet, that file set should appear in the sub-sample's file_sets
     testapp.patch_json(
         multiplexed_sample['@id'],
         {
@@ -45,6 +50,33 @@ def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, cur
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
+    assert set([file_set['@id'] for file_set in res.json.get('file_sets')]
+               ) == {measurement_set['@id'], analysis_set_base['@id']}
+
+    # If a pooled sample is used in a MeaSet, that file set should appear in the sub-sample's file_sets
+    # Mock case where in_vitro_differentiated_cell is made by pooling a primary cell and an in vitro cell line
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'pooled_from': [primary_cell['@id'],
+                            in_vitro_cell_line['@id']]
+        }
+    )
+    # MeaSet uses the pooled sample
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [in_vitro_differentiated_cell['@id']]
+        }
+    )
+    # AnalysisSet uses the MeaSet with the pooled sample
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set['@id']]
+        }
+    )
+    res = testapp.get(in_vitro_differentiated_cell['@id'])
     assert set([file_set['@id'] for file_set in res.json.get('file_sets')]
                ) == {measurement_set['@id'], analysis_set_base['@id']}
 

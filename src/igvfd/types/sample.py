@@ -77,6 +77,25 @@ def compose_summary_sample_term_phrase(sample_term_term_names: list, cap_number:
     return sample_term_phrase
 
 
+def get_filesets_samples_used_in(list_of_samples: list, starter_filesets: list, request) -> list:
+    """Get a mapping of fileset to samples used in it.
+
+    Args:
+        list_of_samples (list): A list of sample objects
+
+    Returns:
+        dict: A dictionary mapping fileset @id to a list of sample accessions used in it
+    """
+    for sample in list_of_samples:
+        sample_object = request.embed(
+            sample, '@@object_with_select_calculated_properties?field=file_sets')
+        sample_file_sets = sample_object.get('file_sets', [])
+        for file_set in sample_file_sets:
+            if file_set not in starter_filesets:
+                starter_filesets.append(file_set)
+    return starter_filesets
+
+
 @abstract_collection(
     name='samples',
     unique_key='accession',
@@ -150,9 +169,11 @@ class Sample(Item):
         },
         'notSubmittable': True,
     })
-    def file_sets(self, request, file_sets, multiplexed_in=None):
+    def file_sets(self, request, file_sets, multiplexed_in=None, pooled_in=None):
         if multiplexed_in is None:
             multiplexed_in = []
+        if pooled_in is None:
+            pooled_in = []
         # This is required to get the analysis set reverse links since analysis set calculates samples
         for file_set in file_sets:
             file_set_object = request.embed(
@@ -161,13 +182,11 @@ class Sample(Item):
                 if input_for.startswith('/analysis-sets/') and input_for not in file_sets:
                     file_sets.append(input_for)
         # file sets associated with a multiplexed sample that a sample was multiplexed in are included
-        for multiplexed_sample in multiplexed_in:
-            multiplexed_sample_object = request.embed(
-                multiplexed_sample, '@@object_with_select_calculated_properties?field=file_sets')
-            multiplexed_file_sets = multiplexed_sample_object.get('file_sets', [])
-            for file_set in multiplexed_file_sets:
-                if file_set not in file_sets:
-                    file_sets.append(file_set)
+        if multiplexed_in:
+            file_sets = get_filesets_samples_used_in(multiplexed_in, file_sets, request)
+        # file sets associated with a pooled sample that a sample was pooled in are included
+        if pooled_in:
+            file_sets = get_filesets_samples_used_in(pooled_in, file_sets, request)
         return paths_filtered_by_status(request, file_sets) or None
 
     @calculated_property(schema={
