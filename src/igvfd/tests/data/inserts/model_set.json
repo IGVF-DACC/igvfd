@@ -40,6 +40,10 @@
         "uuid": "2fe7d091-6a28-4909-8abc-7efca5d92ad7",
         "publications": [
             "PMID:22955616"
+        ],
+        "preferred_assay_titles": [
+            "STARR-seq",
+            "10X Multiome"
         ]
     }
 ]
