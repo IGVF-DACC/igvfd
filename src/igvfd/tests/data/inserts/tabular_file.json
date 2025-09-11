@@ -1051,5 +1051,24 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "j-michael-cherry:barcodes_curated_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "3f9dbbe8-910f-434a-8c2c-2a6f57d35425",
+        "accession": "IGVFFI0006BDMP",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_barcode_to_donor_mapping"
+        ],
+        "md5sum": "d524c93fec15bded1fa4678d7cb60ac",
+        "file_format": "tsv",
+        "content_type": "barcode to donor mapping",
+        "submitted_file_name": "/Users/igvf/igvf_files/barcode_to_donor_mapping.tsv.gz",
+        "file_size": 3809,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "controlled_access": false
     }
 ]
