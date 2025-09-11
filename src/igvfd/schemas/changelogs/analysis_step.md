@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 9
 
+* Extend `output_content_types` enum list to include `barcode to donor mapping`.
+* Extend `input_content_types` enum list to include `barcode to donor mapping`.
 * Extend `output_content_types` enum list to include `spliceQTL`.
 * Extend `input_content_types` enum list to include `spliceQTL`.
 * Extend `output_content_types` enum list to include `eQTL`.
