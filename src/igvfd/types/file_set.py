@@ -961,7 +961,7 @@ class AnalysisSet(FileSet):
         if construct_library_set_types:
             construct_library_set_type_phrase = f'transfected with a {", ".join(construct_library_set_types)}'
             if library_delivery_times:
-                construct_library_set_type_phrase = f'{construct_library_set_type_phrase} measured at {", ".join(sorted(library_delivery_times))}(s) post transfection'
+                construct_library_set_type_phrase = f'{construct_library_set_type_phrase} and measured at {", ".join(sorted(library_delivery_times))}(s) post-transfection'
         sorted_phrase = ''
         if sorted_from:
             if targeted_genes_for_sorting:
