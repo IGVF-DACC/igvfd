@@ -163,6 +163,7 @@
                 "barcode onlist",
                 "barcode replacement",
                 "barcode to cluster mapping",
+                "barcode to donor mapping",
                 "barcode to element mapping",
                 "barcode to hashtag mapping",
                 "barcode to sample mapping",
