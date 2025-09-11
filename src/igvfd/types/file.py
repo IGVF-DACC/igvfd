@@ -1005,6 +1005,7 @@ class SignalFile(File):
                 'GENCODE 24',
                 'GENCODE 28',
                 'GENCODE 32',
+                'GENCODE 38',
                 'GENCODE 40',
                 'GENCODE 41',
                 'GENCODE 42',
