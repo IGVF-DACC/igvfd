@@ -43,7 +43,7 @@ jobs:
   cdk-pytest:
     machine:
       image: ubuntu-2004:2023.10.1
-      docker_layer_caching: true
+      docker_layer_caching: false
     resource_class: medium
     working_directory: ~/igvfd/cdk/
     steps:
@@ -102,7 +102,7 @@ jobs:
   igvfd-check-opensearch-mappings:
     machine:
       image: ubuntu-2004:2023.10.1
-      docker_layer_caching: true
+      docker_layer_caching: false
     resource_class: medium
     working_directory: ~/igvfd
     steps:
