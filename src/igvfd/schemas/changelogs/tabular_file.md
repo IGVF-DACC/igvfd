@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 18
 
+* Extend `assembly` enum list to include `C57BL_6J_T2T_v1 + GRCm39_X`.
+* Extend `assembly` enum list to include `CAST_EiJ_T2T_v1`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 38`.
 * Extend `content_type` enum list to include `spliceQTL`.
 * Extend `content_type` enum list to include `eQTL`.
