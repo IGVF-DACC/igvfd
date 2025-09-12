@@ -413,7 +413,7 @@ def test_audit_missing_genome_or_transcriptome(
     testapp.patch_json(
         alignment_file['@id'],
         {
-            'reference_files': [reference_file['@id'], reference_file_with_assembly['@id']]
+            'reference_files': [reference_file['@id']]
         }
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
