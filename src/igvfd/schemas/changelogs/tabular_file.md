@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 18
 
+* Extend `transcriptome_annotation` enum list to include `GENCODE 38`.
 * Extend `content_type` enum list to include `spliceQTL`.
 * Extend `content_type` enum list to include `eQTL`.
 * Extend `content_type` enum list to include `caQTL`.

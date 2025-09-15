@@ -691,30 +691,6 @@ class AlignmentFile(File):
             'title': 'Transcriptome Annotation',
             'type': 'string',
             'description': 'The annotation and version of the reference resource.',
-            'enum': [
-                'GENCODE 22',
-                'GENCODE 24',
-                'GENCODE 28',
-                'GENCODE 32',
-                'GENCODE 40',
-                'GENCODE 41',
-                'GENCODE 42',
-                'GENCODE 43',
-                'GENCODE 44',
-                'GENCODE 45',
-                'GENCODE 47',
-                'GENCODE Cast - M32',
-                'GENCODE M17',
-                'GENCODE M25',
-                'GENCODE M30',
-                'GENCODE M31',
-                'GENCODE M32',
-                'GENCODE M33',
-                'GENCODE M34',
-                'GENCODE M36',
-                'GENCODE 32, GENCODE M23',
-                'Mixed transcriptome annotations'
-            ],
             'notSubmittable': True
         }
     )
@@ -737,16 +713,6 @@ class AlignmentFile(File):
             'title': 'Genome Assembly',
             'type': 'string',
             'description': 'The assembly associated with the alignment file.',
-            'enum': [
-                'GRCh38',
-                'hg19',
-                'Cast - GRCm39',
-                'GRCm39',
-                'mm10',
-                'GRCh38, mm10',
-                'custom',
-                'Mixed genome assemblies'
-            ],
             'notSubmittable': True
         }
     )
@@ -836,30 +802,6 @@ class MatrixFile(File):
             'title': 'Transcriptome Annotation',
             'type': 'string',
             'description': 'The annotation and version of the reference resource.',
-            'enum': [
-                'GENCODE 22',
-                'GENCODE 24',
-                'GENCODE 28',
-                'GENCODE 32',
-                'GENCODE 40',
-                'GENCODE 41',
-                'GENCODE 42',
-                'GENCODE 43',
-                'GENCODE 44',
-                'GENCODE 45',
-                'GENCODE 47',
-                'GENCODE Cast - M32',
-                'GENCODE M17',
-                'GENCODE M25',
-                'GENCODE M30',
-                'GENCODE M31',
-                'GENCODE M32',
-                'GENCODE M33',
-                'GENCODE M34',
-                'GENCODE M36',
-                'GENCODE 32, GENCODE M23',
-                'Mixed transcriptome annotations'
-            ],
             'notSubmittable': True
         }
     )
@@ -881,16 +823,6 @@ class MatrixFile(File):
             'title': 'Genome Assembly',
             'type': 'string',
             'description': 'The assembly associated with the matrix file.',
-            'enum': [
-                'GRCh38',
-                'hg19',
-                'Cast - GRCm39',
-                'GRCm39',
-                'mm10',
-                'GRCh38, mm10',
-                'custom',
-                'Mixed genome assemblies'
-            ],
             'notSubmittable': True
         }
     )
@@ -1000,30 +932,6 @@ class SignalFile(File):
             'title': 'Transcriptome Annotation',
             'type': 'string',
             'description': 'The annotation and version of the reference resource.',
-            'enum': [
-                'GENCODE 22',
-                'GENCODE 24',
-                'GENCODE 28',
-                'GENCODE 32',
-                'GENCODE 40',
-                'GENCODE 41',
-                'GENCODE 42',
-                'GENCODE 43',
-                'GENCODE 44',
-                'GENCODE 45',
-                'GENCODE 47',
-                'GENCODE Cast - M32',
-                'GENCODE M17',
-                'GENCODE M25',
-                'GENCODE M30',
-                'GENCODE M31',
-                'GENCODE M32',
-                'GENCODE M33',
-                'GENCODE M34',
-                'GENCODE M36',
-                'GENCODE 32, GENCODE M23',
-                'Mixed transcriptome annotations'
-            ],
             'notSubmittable': True
         }
     )
@@ -1046,16 +954,6 @@ class SignalFile(File):
             'title': 'Genome Assembly',
             'type': 'string',
             'description': 'The assembly associated with the signal file.',
-            'enum': [
-                'GRCh38',
-                'hg19',
-                'Cast - GRCm39',
-                'GRCm39',
-                'mm10',
-                'GRCh38, mm10',
-                'custom',
-                'Mixed genome assemblies'
-            ],
             'notSubmittable': True
         }
     )
