@@ -49,6 +49,9 @@ def model_set():
             'software_versions.software.title': {
                 'title': 'Software',
             },
+            'preferred_assay_titles': {
+                'title': 'Assay',
+            },
             'construct_library_sets.integrated_content_files.content_type': {
                 'title': 'Construct Library Design'
             },
