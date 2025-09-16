@@ -1,6 +1,6 @@
 {
-    "hash": "33b620e8c29718f90d80eb7a995afc5d",
-    "index_name": "reference_file_33b620e8",
+    "hash": "4739f4fc7ad4d40a4bd97a3defb7fbcd",
+    "index_name": "reference_file_4739f4fc",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -414,7 +414,10 @@
                     "documents": {
                         "type": "keyword"
                     },
-                    "external": {
+                    "external_host_url": {
+                        "type": "keyword"
+                    },
+                    "externally_hosted": {
                         "store": true,
                         "type": "boolean"
                     },
