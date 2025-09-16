@@ -874,3 +874,35 @@ def test_file_update_bucket_as_admin(testapp, dummy_request, signal_file_with_ex
         },
         status=403
     )
+
+
+def test_file_reset_file_upload_bucket_on_upload_credentials(testapp, root, dummy_request, signal_file_with_external_sheet):
+    testapp.patch_json(
+        signal_file_with_external_sheet['@id'],
+        {
+            'status': 'in progress',
+            'upload_status': 'validated',
+        }
+    )
+    res = testapp.patch_json(
+        signal_file_with_external_sheet['@id'] + '@@update_bucket',
+        {
+            'new_bucket': 'igvf-private-local'
+        }
+    )
+    file_item = root.get_by_uuid(signal_file_with_external_sheet['uuid'])
+    external = file_item._get_external_sheet()
+    assert external.get('key') == 'xyz.bigWig'
+    assert external.get('bucket') == 'igvf-private-local'
+    testapp.patch_json(
+        signal_file_with_external_sheet['@id'],
+        {
+            'upload_status': 'pending'
+        }
+    )
+    file_item = root.get_by_uuid(signal_file_with_external_sheet['uuid'])
+    res = testapp.post_json(signal_file_with_external_sheet['@id'] + '@@upload', {})
+    file_item = root.get_by_uuid(signal_file_with_external_sheet['uuid'])
+    external = file_item._get_external_sheet()
+    assert external.get('bucket') == 'igvf-files-local'
+    assert res.json['@graph'][0]['upload_credentials']['upload_url'] == 's3://igvf-files-local/xyz.bigWig'
