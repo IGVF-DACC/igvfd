@@ -1410,6 +1410,13 @@ def post_upload(context, request):
             detail=f'External service {external.get("service")} not expected'
         )
     bucket = external['bucket']
+    file_upload_bucket = request.registry.settings['file_upload_bucket']
+    # Must reset file to point to file_upload_bucket to keep open data in sync. Ignore restricted files.
+    if 'restricted' not in bucket and bucket != file_upload_bucket:
+        request.registry.notify(BeforeModified(context, request))
+        context._set_external_sheet({'bucket': file_upload_bucket})
+        request.registry.notify(AfterModified(context, request))
+        bucket = file_upload_bucket
     key = external['key']
     accession = properties['accession']
     name = f'up{time.time():.6f}-{accession}'[:32]  # max 32 chars
