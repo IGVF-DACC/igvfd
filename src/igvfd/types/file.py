@@ -227,6 +227,8 @@ class File(Item):
         'file_format_specifications'
     ]
     set_status_down = []
+    public_s3_statuses = ['released', 'archived']
+    private_s3_statuses = ['in progress', 'preview', 'replaced', 'deleted', 'revoked']
 
     def __acl__(self):
         return ALLOW_DOWNLOAD_CONTROLLED_ACCESS_FILE + super().__acl__()
@@ -482,6 +484,43 @@ class File(Item):
                 'external': external
             }
         )
+
+    def _file_in_correct_bucket(self, request):
+        return_flag = True
+        try:
+            external = self._get_external_sheet()
+        except HTTPNotFound:
+            # File object doesn't exist, leave it alone.
+            return (return_flag, None, None)
+        properties = self.upgrade_properties()
+        # Restricted and externally_hosted files should not be moved.
+        skip_keys = [
+            'controlled_access',
+            'externally_hosted',
+        ]
+        if any(properties.get(prop_key) for prop_key in skip_keys):
+            return (return_flag, None, None)
+        # Files that aren't validated or validation exempted should not be moved.
+        upload_status = properties.get('upload_status')
+        if upload_status not in ['validated', 'validation exempted']:
+            return (return_flag, None, None)
+        public_bucket = request.registry.settings.get('file_public_bucket')
+        private_bucket = request.registry.settings.get('file_private_bucket')
+        current_bucket = external.get('bucket')
+        current_key = external.get('key')
+        base_uri = 's3://{}/{}'
+        current_path = base_uri.format(current_bucket, current_key)
+        file_status = properties.get('status')
+        if file_status in self.private_s3_statuses:
+            if current_bucket != private_bucket:
+                return_flag = False
+            return (return_flag, current_path, base_uri.format(private_bucket, current_key))
+        if file_status in self.public_s3_statuses:
+            if current_bucket != public_bucket:
+                return_flag = False
+            return (return_flag, current_path, base_uri.format(public_bucket, current_key))
+        # Assume correct bucket for unaccounted file statuses.
+        return (return_flag, current_path, base_uri.format(private_bucket, current_key))
 
 
 @collection(
