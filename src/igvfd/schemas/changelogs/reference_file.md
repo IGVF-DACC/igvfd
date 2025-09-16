@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 19
 
+* Extend `assembly` enum list to include `C57BL_6J_T2T_v1 + GRCm39_X`.
+* Extend `assembly` enum list to include `CAST_EiJ_T2T_v1`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 38`.
 * Add `catalog_collections`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.

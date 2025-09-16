@@ -465,5 +465,30 @@
         ],
         "controlled_access": false,
         "external": false
+    },
+    {
+        "uuid": "3fcfafe0-eb3a-49a3-b245-e11ba8d30959",
+        "accession": "IGVFFI0010MTTT",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:reference_file_with_mouse_t2t_assembly"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "25819105dd17d7eb1869d2c0aed3e156",
+        "file_format": "fasta",
+        "content_type": "genome reference",
+        "submitted_file_name": "/Users/igvf/igvf_files/genome_reference_mouse_t2t.fasta",
+        "file_size": 5898021,
+        "upload_status": "validated",
+        "assembly": "C57BL_6J_T2T_v1 + GRCm39_X",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/964/188/535/GCA_964188535.1_C57BL_6J_T2T_v1/",
+        "file_set": "igvf:basic_analysis_set",
+        "dbxrefs": [
+            "ENSEMBL:ENSG00000101128"
+        ],
+        "controlled_access": false,
+        "external": false
     }
 ]
