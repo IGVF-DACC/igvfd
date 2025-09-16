@@ -189,9 +189,29 @@ def audit_file_mixed_assembly_transcriptome_annotation(value, system):
         yield AuditFailure(audit_message_mixed_assembly.get('audit_category', ''), f'{detail} {audit_message_mixed_assembly.get("audit_description", "")}', level=audit_message_mixed_assembly.get('audit_level', ''))
 
 
+def audit_file_in_correct_bucket(value, system):
+    request = system.get('request')
+    file_item = request.root.get_by_uuid(value['uuid'])
+    result, current_path, destination_path = file_item._file_in_correct_bucket(request)
+    if not result:
+        detail = ('Move {} file {} from {} to {}'.format(
+            value.get('status'),
+            value.get('accession', value.get('uuid')),
+            current_path,
+            destination_path
+        )
+        )
+        yield AuditFailure(
+            'incorrect file bucket',
+            detail,
+            level='INTERNAL_ACTION'
+        )
+
+
 function_dispatcher_file_object = {
     'audit_upload_status': audit_upload_status,
-    'audit_file_format_specifications': audit_file_format_specifications
+    'audit_file_format_specifications': audit_file_format_specifications,
+    'audit_file_in_correct_bucket': audit_file_in_correct_bucket,
 }
 
 function_dispatcher_alignment_file_object = {
