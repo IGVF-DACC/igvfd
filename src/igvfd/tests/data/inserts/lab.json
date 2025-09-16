@@ -640,5 +640,11 @@
         "name": "stephen-yi",
         "uuid": "4d90fc59-cbdb-4af3-81ed-c476802f2454",
         "pi": "8b230044-3dbc-4640-8896-4a9686ec2228"
+    },
+    {
+        "institute_label": "Community",
+        "name": "community",
+        "uuid": "9f3ccbcb-33f9-48eb-80a6-8c80d2d01887",
+        "pi": "273ad438-f963-4327-b37b-26efbb1f8cd7"
     }
 ]

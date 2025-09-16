@@ -41,6 +41,16 @@ def lab(testapp, pi):
 
 
 @pytest.fixture
+def external_lab(testapp, pi):
+    item = {
+        'name': 'community',
+        'institute_label': 'Community',
+        'pi': pi['@id'],
+    }
+    return testapp.post_json('/lab', item).json['@graph'][0]
+
+
+@pytest.fixture
 def lab_v1(lab):
     item = lab.copy()
     item.update({

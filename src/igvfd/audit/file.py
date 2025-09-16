@@ -20,23 +20,14 @@ def audit_upload_status(value, system):
             "audit_description": "Files are expected to be validated or validation exempted.",
             "audit_category": "upload status not validated",
             "audit_level": "ERROR"
-        },
-        {
-            "audit_description": "External files are expected to be validated or validation exempted.",
-            "audit_category": "upload status not validated",
-            "audit_level": "WARNING"
         }
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     upload_status = value.get('upload_status')
     if upload_status not in ['validated', 'validation exempted'] and not (value.get('externally_hosted', False)):
-        if value.get('external'):
-            audit_level = 'WARNING'
-            audit_message = get_audit_message(audit_upload_status, index=1)
-        else:
-            audit_level = 'ERROR'
-            audit_message = get_audit_message(audit_upload_status, index=0)
+        # If a file in validated and not externally hosted, it should be an ERROR.
+        audit_message = get_audit_message(audit_upload_status, index=0)
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has `upload_status` {upload_status}.'
         )
@@ -46,7 +37,7 @@ def audit_upload_status(value, system):
         yield AuditFailure(
             'upload status not validated',
             f'{detail} {audit_message.get("audit_description", "")}',
-            level=audit_level
+            level=audit_message.get('audit_level')
         )
 
 
