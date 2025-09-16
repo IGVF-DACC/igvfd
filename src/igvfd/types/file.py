@@ -27,6 +27,8 @@ from snovault import load_schema
 from snovault import AfterModified
 from snovault import BeforeModified
 
+from snovault.validation import ValidationFailure
+
 from snovault.attachment import InternalRedirect
 
 from snovault.schema_utils import schema_validator

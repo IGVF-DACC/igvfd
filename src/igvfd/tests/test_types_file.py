@@ -823,3 +823,54 @@ def test_file_in_correct_bucket_restricted_or_externally_hosted(testapp, root, d
     assert result is True
     assert current_path is None
     assert destination_path is None
+
+
+def test_file_update_bucket_as_admin(testapp, dummy_request, signal_file_with_external_sheet, submitter_testapp,):
+    testapp.patch_json(
+        signal_file_with_external_sheet['@id'],
+        {
+            'status': 'released',
+            'release_timestamp': '2024-05-31T12:34:56Z',
+            'upload_status': 'validated',
+        }
+    )
+    res = testapp.patch_json(
+        signal_file_with_external_sheet['@id'] + '@@update_bucket',
+        {
+            'new_bucket': 'igvf-public-local',
+        }
+    )
+    assert res.json['old_bucket'] == 'igvf-files-local'
+    assert res.json['new_bucket'] == 'igvf-public-local'
+    # Reset
+    res = testapp.patch_json(
+        signal_file_with_external_sheet['@id'] + '@@update_bucket',
+        {
+            'new_bucket': 'igvf-files-local',
+        }
+    )
+    # Unknown bucket
+    testapp.patch_json(
+        signal_file_with_external_sheet['@id'] + '@@update_bucket',
+        {
+            'new_bucket': 'unknown bucket'
+        },
+        status=422
+    )
+    # With force
+    res = testapp.patch_json(
+        signal_file_with_external_sheet['@id'] + '@@update_bucket?force=true',
+        {
+            'new_bucket': 'unknown bucket'
+        }
+    )
+    assert res.json['old_bucket'] == 'igvf-files-local'
+    assert res.json['new_bucket'] == 'unknown bucket'
+    # As submitter
+    submitter_testapp.patch_json(
+        signal_file_with_external_sheet['@id'] + '@@update_bucket',
+        {
+            'new_bucket': 'unknown bucket'
+        },
+        status=403
+    )
