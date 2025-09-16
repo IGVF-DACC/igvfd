@@ -1532,3 +1532,40 @@ def download(context, request):
         location=location,
         headers=request.response.headers,  # Maintain any CORS headers set.
     )
+
+
+@view_config(
+    context=File,
+    permission='edit_bucket',
+    request_method='PATCH',
+    name='update_bucket'
+)
+def file_update_bucket(context, request):
+    current_bucket = context._get_external_sheet().get('bucket')
+    if 'restricted' in current_bucket:
+        raise HTTPForbidden(
+            f'Forbidden to change restricted bucket {current_bucket}'
+        )
+    new_bucket = request.json_body.get('new_bucket')
+    if not new_bucket:
+        raise ValidationFailure('body', ['bucket'], 'New bucket not specified')
+    force = asbool(request.params.get('force'))
+    known_buckets = [
+        request.registry.settings['file_upload_bucket'],
+        request.registry.settings['file_public_bucket'],
+        request.registry.settings['file_private_bucket'],
+    ]
+    # Try to validate input to a known bucket.
+    if new_bucket not in known_buckets and not force:
+        raise ValidationFailure('body', ['bucket'], 'Unknown bucket and force not specified')
+    # Don't bother setting if already the same.
+    if current_bucket != new_bucket:
+        request.registry.notify(BeforeModified(context, request))
+        context._set_external_sheet({'bucket': new_bucket})
+        request.registry.notify(AfterModified(context, request))
+    return {
+        'status': 'success',
+        '@type': ['result'],
+        'old_bucket': current_bucket,
+        'new_bucket': new_bucket
+    }
