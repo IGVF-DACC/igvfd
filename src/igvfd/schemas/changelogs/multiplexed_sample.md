@@ -5,7 +5,7 @@
 * Restrict `moi` to submission by admins only.
 * Restrict `nucleic_acid_delivery` to submission by admins only.
 * Restrict `time_post_library_delivery` to submission by admins only.
-* * Restrict `time_post_library_delivery_units` to submission by admins only.
+* Restrict `time_post_library_delivery_units` to submission by admins only.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Extend `collections` enum list to include `Benchmark`.
 * Extend `collections` enum list to include `TF Perturb-seq Project`.
