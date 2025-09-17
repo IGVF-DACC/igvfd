@@ -139,20 +139,21 @@
                 "igvf_utils": "john-doe:tabular_file01 or IGVFFI4067OVRI"
             }
         },
-        "construct_library_sets": {
-            "comment": "Do not submit. Construct library sets should only be specified on individual samples contributing to a multiplexed sample object."
-        },
         "moi": {
-            "comment": "Do not submit. MOI should only be specified on individual samples contributing to a multiplexed sample object."
+            "comment": "Do not submit. MOI should only be specified on individual samples contributing to a multiplexed sample object.",
+            "permission": "admin_only"
         },
         "nucleic_acid_delivery": {
-            "comment": "Do not submit. Nucleic acid delivery should only be specified on individual samples contributing to a multiplexed sample object."
+            "comment": "Do not submit. Nucleic acid delivery should only be specified on individual samples contributing to a multiplexed sample object.",
+            "permission": "admin_only"
         },
         "time_post_library_delivery": {
-            "comment": "Do not submit. Time post library delivery should only be specified on individual samples contributing to a multiplexed sample object."
+            "comment": "Do not submit. Time post library delivery should only be specified on individual samples contributing to a multiplexed sample object.",
+            "permission": "admin_only"
         },
         "time_post_library_delivery_units": {
-            "comment": "Do not submit. Time post library delivery units should only be specified on individual samples contributing to a multiplexed sample object."
+            "comment": "Do not submit. Time post library delivery units should only be specified on individual samples contributing to a multiplexed sample object.",
+            "permission": "admin_only"
         }
     },
     "fuzzy_searchable_fields": [
