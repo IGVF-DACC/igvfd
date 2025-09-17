@@ -24,6 +24,23 @@ def sequence_file(
 
 
 @pytest.fixture
+def sequence_file_with_external_sheet(sequence_file, root):
+    file_item = root.get_by_uuid(sequence_file['uuid'])
+    properties = file_item.upgrade_properties()
+    file_item.update(
+        properties,
+        sheets={
+            'external': {
+                'service': 's3',
+                'key': 'xyz.bigWig',
+                'bucket': 'igvf-files-local',
+            }
+        }
+    )
+    return sequence_file
+
+
+@pytest.fixture
 def externally_hosted_sequence_file(testapp, lab, award, principal_analysis_set, platform_term_HiSeq):
     item = {
         'award': award['@id'],
@@ -157,6 +174,23 @@ def controlled_sequence_file_2(testapp, lab, award, principal_analysis_set, plat
         'controlled_access': True
     }
     return testapp.post_json('/sequence_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def controlled_sequence_file_with_external_sheet(controlled_sequence_file_2, root):
+    file_item = root.get_by_uuid(controlled_sequence_file_2['uuid'])
+    properties = file_item.upgrade_properties()
+    file_item.update(
+        properties,
+        sheets={
+            'external': {
+                'service': 's3',
+                'key': 'xyz.bigWig',
+                'bucket': 'igvf-files-local',
+            }
+        }
+    )
+    return controlled_sequence_file_2
 
 
 @pytest.fixture

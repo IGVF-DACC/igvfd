@@ -22,6 +22,23 @@ def signal_file(testapp, lab, award, principal_analysis_set, reference_file):
 
 
 @pytest.fixture
+def signal_file_with_external_sheet(signal_file, root):
+    file_item = root.get_by_uuid(signal_file['uuid'])
+    properties = file_item.upgrade_properties()
+    file_item.update(
+        properties,
+        sheets={
+            'external': {
+                'service': 's3',
+                'key': 'xyz.bigWig',
+                'bucket': 'igvf-files-local',
+            }
+        }
+    )
+    return signal_file
+
+
+@pytest.fixture
 def signal_file_v1(signal_file):
     item = signal_file.copy()
     item.update({

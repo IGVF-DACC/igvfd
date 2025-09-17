@@ -27,6 +27,8 @@ from snovault import load_schema
 from snovault import AfterModified
 from snovault import BeforeModified
 
+from snovault.validation import ValidationFailure
+
 from snovault.attachment import InternalRedirect
 
 from snovault.schema_utils import schema_validator
@@ -227,6 +229,8 @@ class File(Item):
         'file_format_specifications'
     ]
     set_status_down = []
+    public_s3_statuses = ['released', 'archived']
+    private_s3_statuses = ['in progress', 'preview', 'replaced', 'deleted', 'revoked']
 
     def __acl__(self):
         return ALLOW_DOWNLOAD_CONTROLLED_ACCESS_FILE + super().__acl__()
@@ -482,6 +486,43 @@ class File(Item):
                 'external': external
             }
         )
+
+    def _file_in_correct_bucket(self, request):
+        return_flag = True
+        try:
+            external = self._get_external_sheet()
+        except HTTPNotFound:
+            # File object doesn't exist, leave it alone.
+            return (return_flag, None, None)
+        properties = self.upgrade_properties()
+        # Restricted and externally_hosted files should not be moved.
+        skip_keys = [
+            'controlled_access',
+            'externally_hosted',
+        ]
+        if any(properties.get(prop_key) for prop_key in skip_keys):
+            return (return_flag, None, None)
+        # Files that aren't validated or validation exempted should not be moved.
+        upload_status = properties.get('upload_status')
+        if upload_status not in ['validated', 'validation exempted']:
+            return (return_flag, None, None)
+        public_bucket = request.registry.settings.get('file_public_bucket')
+        private_bucket = request.registry.settings.get('file_private_bucket')
+        current_bucket = external.get('bucket')
+        current_key = external.get('key')
+        base_uri = 's3://{}/{}'
+        current_path = base_uri.format(current_bucket, current_key)
+        file_status = properties.get('status')
+        if file_status in self.private_s3_statuses:
+            if current_bucket != private_bucket:
+                return_flag = False
+            return (return_flag, current_path, base_uri.format(private_bucket, current_key))
+        if file_status in self.public_s3_statuses:
+            if current_bucket != public_bucket:
+                return_flag = False
+            return (return_flag, current_path, base_uri.format(public_bucket, current_key))
+        # Assume correct bucket for unaccounted file statuses.
+        return (return_flag, current_path, base_uri.format(private_bucket, current_key))
 
 
 @collection(
@@ -1410,6 +1451,13 @@ def post_upload(context, request):
             detail=f'External service {external.get("service")} not expected'
         )
     bucket = external['bucket']
+    file_upload_bucket = request.registry.settings['file_upload_bucket']
+    # Must reset file to point to file_upload_bucket to keep open data in sync. Ignore restricted files.
+    if 'restricted' not in bucket and bucket != file_upload_bucket:
+        request.registry.notify(BeforeModified(context, request))
+        context._set_external_sheet({'bucket': file_upload_bucket})
+        request.registry.notify(AfterModified(context, request))
+        bucket = file_upload_bucket
     key = external['key']
     accession = properties['accession']
     name = f'up{time.time():.6f}-{accession}'[:32]  # max 32 chars
@@ -1532,3 +1580,40 @@ def download(context, request):
         location=location,
         headers=request.response.headers,  # Maintain any CORS headers set.
     )
+
+
+@view_config(
+    context=File,
+    permission='edit_bucket',
+    request_method='PATCH',
+    name='update_bucket'
+)
+def file_update_bucket(context, request):
+    current_bucket = context._get_external_sheet().get('bucket')
+    if 'restricted' in current_bucket:
+        raise HTTPForbidden(
+            f'Forbidden to change restricted bucket {current_bucket}'
+        )
+    new_bucket = request.json_body.get('new_bucket')
+    if not new_bucket:
+        raise ValidationFailure('body', ['bucket'], 'New bucket not specified')
+    force = asbool(request.params.get('force'))
+    known_buckets = [
+        request.registry.settings['file_upload_bucket'],
+        request.registry.settings['file_public_bucket'],
+        request.registry.settings['file_private_bucket'],
+    ]
+    # Try to validate input to a known bucket.
+    if new_bucket not in known_buckets and not force:
+        raise ValidationFailure('body', ['bucket'], 'Unknown bucket and force not specified')
+    # Don't bother setting if already the same.
+    if current_bucket != new_bucket:
+        request.registry.notify(BeforeModified(context, request))
+        context._set_external_sheet({'bucket': new_bucket})
+        request.registry.notify(AfterModified(context, request))
+    return {
+        'status': 'success',
+        '@type': ['result'],
+        'old_bucket': current_bucket,
+        'new_bucket': new_bucket
+    }

@@ -1,5 +1,7 @@
 import pytest
 
+from igvfd.types.file import File
+
 
 def test_types_file_get_external_sheet(sequence_file, root):
     item = root.get_by_uuid(
@@ -678,3 +680,229 @@ def test_upload_credentials_allowed_when_status_is_preview(testapp, reference_fi
 
 def test_download_forbidden_when_externally_hosted(testapp, externally_hosted_sequence_file):
     testapp.get(externally_hosted_sequence_file['@id'] + '@@download', status=403)
+
+
+@pytest.mark.parametrize(
+    'file_status',
+    [
+        status
+        for status in File.public_s3_statuses
+    ]
+)
+def test_public_file_not_in_correct_bucket(testapp, root, dummy_request, signal_file_with_external_sheet, file_status):
+    testapp.patch_json(
+        signal_file_with_external_sheet['@id'],
+        {
+            'status': file_status,
+            'release_timestamp': '2024-05-31T12:34:56Z',
+            'upload_status': 'validated',
+
+        }
+    )
+    file_item = root.get_by_uuid(signal_file_with_external_sheet['uuid'])
+    external = file_item._get_external_sheet()
+    assert external.get('bucket') == 'igvf-files-local'
+    result, current_path, destination_path = file_item._file_in_correct_bucket(dummy_request)
+    assert result is False
+    assert current_path == 's3://igvf-files-local/xyz.bigWig'
+    assert destination_path == 's3://igvf-public-local/xyz.bigWig'
+    file_item._set_external_sheet({'bucket': 'igvf-public-local'})
+    result, current_path, destination_path = file_item._file_in_correct_bucket(dummy_request)
+    assert result is True
+    assert current_path == 's3://igvf-public-local/xyz.bigWig'
+    assert destination_path == 's3://igvf-public-local/xyz.bigWig'
+
+
+@pytest.mark.parametrize(
+    'file_status',
+    [
+        status
+        for status in File.private_s3_statuses
+    ]
+)
+def test_private_file_not_in_correct_bucket(testapp, root, dummy_request, signal_file_with_external_sheet, file_status):
+    if file_status == 'revoked':
+        testapp.patch_json(
+            signal_file_with_external_sheet['@id'],
+            {
+                'status': file_status,
+                'upload_status': 'validated',
+                'release_timestamp': '2024-05-31T12:34:56Z',
+            }
+        )
+    else:
+        testapp.patch_json(
+            signal_file_with_external_sheet['@id'],
+            {
+                'status': file_status,
+                'upload_status': 'validated',
+            }
+        )
+    file_item = root.get_by_uuid(signal_file_with_external_sheet['uuid'])
+    external = file_item._get_external_sheet()
+    assert external.get('bucket') == 'igvf-files-local'
+    result, current_path, destination_path = file_item._file_in_correct_bucket(dummy_request)
+    assert result is False
+    assert current_path == 's3://igvf-files-local/xyz.bigWig'
+    assert destination_path == 's3://igvf-private-local/xyz.bigWig'
+    file_item._set_external_sheet({'bucket': 'igvf-private-local'})
+    result, current_path, destination_path = file_item._file_in_correct_bucket(dummy_request)
+    assert result is True
+    assert current_path == 's3://igvf-private-local/xyz.bigWig'
+    assert destination_path == 's3://igvf-private-local/xyz.bigWig'
+
+
+def test_file_in_correct_bucket_no_external_sheet(root, dummy_request, signal_file):
+    file_item = root.get_by_uuid(signal_file['uuid'])
+    result, current_path, destination_path = file_item._file_in_correct_bucket(dummy_request)
+    assert result is True
+    assert current_path is None
+    assert destination_path is None
+
+
+def test_file_in_correct_bucket_restricted_or_externally_hosted(testapp, root, dummy_request, sequence_file_with_external_sheet, controlled_sequence_file_with_external_sheet):
+    testapp.patch_json(
+        sequence_file_with_external_sheet['@id'],
+        {
+            'status': 'in progress',
+            'upload_status': 'invalidated',
+        }
+    )
+    file_item = root.get_by_uuid(sequence_file_with_external_sheet['uuid'])
+    result, current_path, destination_path = file_item._file_in_correct_bucket(dummy_request)
+    assert result is True
+    assert current_path is None
+    assert destination_path is None
+    testapp.patch_json(
+        sequence_file_with_external_sheet['@id'],
+        {
+            'status': 'in progress',
+            'upload_status': 'validated',
+        }
+    )
+    file_item = root.get_by_uuid(sequence_file_with_external_sheet['uuid'])
+    result, current_path, destination_path = file_item._file_in_correct_bucket(dummy_request)
+    assert result is False
+    assert current_path == 's3://igvf-files-local/xyz.bigWig'
+    assert destination_path == 's3://igvf-private-local/xyz.bigWig'
+    testapp.patch_json(
+        sequence_file_with_external_sheet['@id'],
+        {
+            'status': 'in progress',
+            'upload_status': 'validation exempted',
+        }
+    )
+    file_item = root.get_by_uuid(sequence_file_with_external_sheet['uuid'])
+    result, current_path, destination_path = file_item._file_in_correct_bucket(dummy_request)
+    assert result is False
+    assert current_path == 's3://igvf-files-local/xyz.bigWig'
+    assert destination_path == 's3://igvf-private-local/xyz.bigWig'
+    testapp.patch_json(
+        sequence_file_with_external_sheet['@id'],
+        {
+            'status': 'in progress',
+            'upload_status': 'validation exempted',
+            'externally_hosted': True,
+            'external_host_url': 'https://example.com/file.fastq.gz',
+        }
+    )
+    file_item = root.get_by_uuid(sequence_file_with_external_sheet['uuid'])
+    result, current_path, destination_path = file_item._file_in_correct_bucket(dummy_request)
+    assert result is True
+    assert current_path is None
+    assert destination_path is None
+    testapp.patch_json(
+        controlled_sequence_file_with_external_sheet['@id'],
+        {
+            'status': 'in progress',
+            'upload_status': 'validation exempted',
+        }
+    )
+    file_item = root.get_by_uuid(controlled_sequence_file_with_external_sheet['uuid'])
+    result, current_path, destination_path = file_item._file_in_correct_bucket(dummy_request)
+    assert result is True
+    assert current_path is None
+    assert destination_path is None
+
+
+def test_file_update_bucket_as_admin(testapp, dummy_request, signal_file_with_external_sheet, submitter_testapp,):
+    testapp.patch_json(
+        signal_file_with_external_sheet['@id'],
+        {
+            'status': 'released',
+            'release_timestamp': '2024-05-31T12:34:56Z',
+            'upload_status': 'validated',
+        }
+    )
+    res = testapp.patch_json(
+        signal_file_with_external_sheet['@id'] + '@@update_bucket',
+        {
+            'new_bucket': 'igvf-public-local',
+        }
+    )
+    assert res.json['old_bucket'] == 'igvf-files-local'
+    assert res.json['new_bucket'] == 'igvf-public-local'
+    # Reset
+    res = testapp.patch_json(
+        signal_file_with_external_sheet['@id'] + '@@update_bucket',
+        {
+            'new_bucket': 'igvf-files-local',
+        }
+    )
+    # Unknown bucket
+    testapp.patch_json(
+        signal_file_with_external_sheet['@id'] + '@@update_bucket',
+        {
+            'new_bucket': 'unknown bucket'
+        },
+        status=422
+    )
+    # With force
+    res = testapp.patch_json(
+        signal_file_with_external_sheet['@id'] + '@@update_bucket?force=true',
+        {
+            'new_bucket': 'unknown bucket'
+        }
+    )
+    assert res.json['old_bucket'] == 'igvf-files-local'
+    assert res.json['new_bucket'] == 'unknown bucket'
+    # As submitter
+    submitter_testapp.patch_json(
+        signal_file_with_external_sheet['@id'] + '@@update_bucket',
+        {
+            'new_bucket': 'unknown bucket'
+        },
+        status=403
+    )
+
+
+def test_file_reset_file_upload_bucket_on_upload_credentials(testapp, root, dummy_request, signal_file_with_external_sheet):
+    testapp.patch_json(
+        signal_file_with_external_sheet['@id'],
+        {
+            'status': 'in progress',
+            'upload_status': 'validated',
+        }
+    )
+    res = testapp.patch_json(
+        signal_file_with_external_sheet['@id'] + '@@update_bucket',
+        {
+            'new_bucket': 'igvf-private-local'
+        }
+    )
+    file_item = root.get_by_uuid(signal_file_with_external_sheet['uuid'])
+    external = file_item._get_external_sheet()
+    assert external.get('key') == 'xyz.bigWig'
+    assert external.get('bucket') == 'igvf-private-local'
+    testapp.patch_json(
+        signal_file_with_external_sheet['@id'],
+        {
+            'upload_status': 'pending'
+        }
+    )
+    file_item = root.get_by_uuid(signal_file_with_external_sheet['uuid'])
+    res = testapp.post_json(signal_file_with_external_sheet['@id'] + '@@upload', {})
+    file_item = root.get_by_uuid(signal_file_with_external_sheet['uuid'])
+    external = file_item._get_external_sheet()
+    assert external.get('bucket') == 'igvf-files-local'
+    assert res.json['@graph'][0]['upload_credentials']['upload_url'] == 's3://igvf-files-local/xyz.bigWig'

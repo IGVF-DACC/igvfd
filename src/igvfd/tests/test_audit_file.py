@@ -251,3 +251,60 @@ def test_audit_file_mixed_assembly_transcriptome_annotation(testapp, matrix_file
         audit['category'] == 'mixed transcriptome annotation'
         for audit in res.json['audit'].get('NOT_COMPLIANT', {})
     )
+
+
+def test_audit_public_file_in_private_bucket(testapp, dummy_request, signal_file_with_external_sheet):
+    testapp.patch_json(
+        signal_file_with_external_sheet['@id'],
+        {
+            'status': 'released',
+            'release_timestamp': '2024-05-31T12:34:56Z',
+            'upload_status': 'validated',
+
+        }
+    )
+    res = testapp.get(signal_file_with_external_sheet['@id'] + '@@index-data')
+    errors = res.json['audit']
+    errors_list = [error for v in errors.values() for error in v if error['category'] == 'incorrect file bucket']
+    assert errors_list
+    assert errors_list[0]['detail'].split('to')[-1].strip() == 's3://igvf-public-local/xyz.bigWig'
+    res = testapp.patch_json(
+        signal_file_with_external_sheet['@id'] + '@@update_bucket',
+        {
+            'new_bucket': 'igvf-public-local',
+        }
+    )
+    res = testapp.get(signal_file_with_external_sheet['@id'] + '@@index-data')
+    errors = res.json['audit']
+    errors_list = [error for v in errors.values() for error in v if error['category'] == 'incorrect file bucket']
+    assert not errors_list
+
+
+def test_audit_private_file_in_public_bucket(testapp, dummy_request, signal_file_with_external_sheet):
+    testapp.patch_json(
+        signal_file_with_external_sheet['@id'],
+        {
+            'status': 'deleted',
+            'upload_status': 'validated',
+        }
+    )
+    res = testapp.get(signal_file_with_external_sheet['@id'] + '@@index-data')
+    errors = res.json['audit']
+    errors_list = [error for v in errors.values() for error in v]
+    assert errors_list
+    assert errors_list[0]['detail'].split('to')[-1].strip() == 's3://igvf-private-local/xyz.bigWig'
+
+
+def test_audit_file_statuses_in_s3_statuses(testapp):
+    # Make sure public_s3_statuses and private_s3_statuses lists in File item include
+    # all statuses in File schema, except upload failed and content error.
+    from igvfd.types.file import File
+    public_s3_statuses = File.public_s3_statuses
+    private_s3_statuses = File.private_s3_statuses
+    assert public_s3_statuses
+    assert private_s3_statuses
+    file_schema = testapp.get('/profiles/sequence_file.json').json
+    file_statuses = file_schema.get('properties', {}).get('status', {}).get('enum')
+    assert file_statuses
+    # If this fails sync public/private_s3_statuses with statuses in file schema.
+    assert not set(file_statuses) - set(public_s3_statuses + private_s3_statuses)
