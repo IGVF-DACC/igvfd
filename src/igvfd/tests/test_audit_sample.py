@@ -139,8 +139,10 @@ def test_audit_parent_sample_singular_children(
 def test_audit_missing_nucleic_acid_delivery(
     testapp,
     in_vitro_cell_line,
+    multiplexed_sample,
     construct_library_set_genome_wide
 ):
+    # Audit: In vitro cell line with construct_library_sets but missing nucleic_acid_delivery
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
@@ -152,6 +154,7 @@ def test_audit_missing_nucleic_acid_delivery(
         error['category'] == 'missing nucleic acid delivery'
         for error in res.json['audit'].get('WARNING', [])
     )
+    # No audit for in vitro cell line with nucleic_acid_delivery added
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
@@ -159,6 +162,12 @@ def test_audit_missing_nucleic_acid_delivery(
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing nucleic acid delivery'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # No audit for multiplexed sample with construct_library_sets but missing nucleic_acid_delivery
+    res = testapp.get(multiplexed_sample['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing nucleic acid delivery'
         for error in res.json['audit'].get('WARNING', [])
