@@ -127,6 +127,7 @@
             "properties": {
                 "content_type": {
                     "enum": [
+                        "modification state",
                         "minus strand modification state",
                         "plus strand modification state"
                     ]
@@ -196,6 +197,7 @@
                 "loci",
                 "machine learning model features",
                 "minus strand modification state",
+                "modification state",
                 "MPRA sequence designs",
                 "peaks",
                 "peak quantifications",
@@ -267,6 +269,7 @@
                 "external source data": "File containing a list of urls used as a source.",
                 "machine learning model features": "The features used in a machine learning model.",
                 "minus strand modification state": "A file with the bases on the minus strand where a DNA or RNA modification was detected.",
+                "modification state": "An unstranded file with the bases where a DNA or RNA modification was detected.",
                 "MPRA sequence designs": "Sequences designed for an MPRA experiment. Formatting should follow https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/table_schemas/mpra_sequence_designs.json.",
                 "peaks": "Detected genomic regions of relative enrichment in coverage data, such as peaks in ChIP-seq or ATAC-seq indicating protein binding sites or chromatin accessibility.",
                 "peak quantifications": "The quantified levels of peaks detected in ChIP-seq or ATAC-seq assays.",
