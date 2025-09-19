@@ -1060,7 +1060,7 @@
         "aliases": [
             "igvf:tabular_file_barcode_to_donor_mapping"
         ],
-        "md5sum": "d524c93fec15bded1fa4678d7cb60ac",
+        "md5sum": "d524c93fdec15bded1fa4678d7cb60ac",
         "file_format": "tsv",
         "content_type": "barcode to donor mapping",
         "submitted_file_name": "/Users/igvf/igvf_files/barcode_to_donor_mapping.tsv.gz",
