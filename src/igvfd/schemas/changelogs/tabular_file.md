@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 18
 
+* Extend `transcriptome_annotation` enum list to include `CAST_EiJ_T2T_v1_TA1`.
+* Extend `transcriptome_annotation` enum list to include `C57BL_6J_T2T_v1_TA1 + M36 X`.
 * Extend `content_type` enum list to include `modification state`.
 * Extend `content_type` enum list to include `barcode to donor mapping`.
 * Extend `assembly` enum list to include `C57BL_6J_T2T_v1 + GRCm39_X`.

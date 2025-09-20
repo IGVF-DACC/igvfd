@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 2
 
+* Extend `transcriptome_annotation` enum list to include `CAST_EiJ_T2T_v1_TA1`.
+* Extend `transcriptome_annotation` enum list to include `C57BL_6J_T2T_v1_TA1 + M36 X`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 38`.
 * Add `catalog_collections`.
 * Add calculated property `workflows`.
