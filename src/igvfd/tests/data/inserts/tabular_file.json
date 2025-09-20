@@ -716,6 +716,31 @@
         ]
     },
     {
+        "uuid": "ad30199b-3bb6-4f41-4624-a6d582d5b5b1",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "accession": "IGVFFI8000MODS",
+        "aliases": [
+            "igvf:unstranded_modification_state"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-05-01T21:29:45Z",
+        "md5sum": "bfb30e65ff96ed7064fb7a7951ee8829",
+        "file_format": "bed",
+        "file_format_type": "bed3",
+        "assembly": "GRCh38",
+        "content_type": "modification state",
+        "submitted_file_name": "/Users/igvf/igvf_files/modification_state.bed.gz",
+        "file_size": 84837,
+        "upload_status": "validated",
+        "file_set": "igvf:parse_split_seq_with_barcode_replacement",
+        "controlled_access": false,
+        "base_modifications": [
+            "m6A",
+            "pseudouridine"
+        ]
+    },
+    {
         "uuid": "348292c2-2fa2-434a-a005-8ff3bf85851f",
         "accession": "IGVFFI5155WZID",
         "lab": "predrag-radivojac",
