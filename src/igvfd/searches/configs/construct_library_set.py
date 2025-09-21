@@ -41,7 +41,7 @@ def construct_library_set():
                 'title': 'Preferred Assay Titles'
             },
             'integrated_content_files.content_type': {
-                'title': 'Integrated Content',
+                'title': 'Construct Library Design',
             },
             'donors.taxa': {
                 'title': 'Taxa',

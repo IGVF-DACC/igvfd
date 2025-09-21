@@ -213,7 +213,7 @@ class FileSet(Item):
         Path('samples.institutional_certificates', include=['@id',
              'certificate_identifier', 'status', 'data_use_limitation', 'data_use_limitation_modifiers', 'controlled_access']),
         Path('construct_library_sets.integrated_content_files', include=[
-             '@id', 'accession', 'file_set_type', 'summary', 'status', 'content_type', 'integrated_content_files']),
+             '@id', 'accession', 'file_set_type', 'summary', 'selection_criteria', 'status', 'content_type', 'integrated_content_files']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
     ]
 
