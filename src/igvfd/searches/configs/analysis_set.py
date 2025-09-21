@@ -25,9 +25,6 @@ def analysis_set():
             'files.transcriptome_annotation': {
                 'title': 'Transcriptome Annotation',
             },
-            'construct_library_sets.file_set_type': {
-                'title': 'Construct Library Data'
-            },
             'donors.taxa': {
                 'title': 'Taxa',
             },
