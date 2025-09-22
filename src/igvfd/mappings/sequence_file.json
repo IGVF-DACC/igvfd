@@ -1,6 +1,6 @@
 {
-    "hash": "d74db559731c68d8d4b578d258a16c2c",
-    "index_name": "sequence_file_d74db559",
+    "hash": "b566c83bcfe7e49418c5d5080e1709f4",
+    "index_name": "sequence_file_b566c83b",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -828,7 +828,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {

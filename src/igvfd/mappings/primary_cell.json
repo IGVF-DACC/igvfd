@@ -1048,7 +1048,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {

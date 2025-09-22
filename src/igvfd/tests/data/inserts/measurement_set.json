@@ -398,7 +398,9 @@
             "Cell painting"
         ],
         "file_set_type": "experimental data",
-        "external_image_url": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/"
+        "external_image_urls": [
+            "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/"
+        ]
     },
     {
         "aliases": [

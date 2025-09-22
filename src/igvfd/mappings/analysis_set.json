@@ -1,6 +1,6 @@
 {
-    "hash": "5b9040878586c21d1f8b87a36a04fbdf",
-    "index_name": "analysis_set_5b904087",
+    "hash": "7b6e3c5da9d79e4142e3612903850397",
+    "index_name": "analysis_set_7b6e3c5d",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -400,7 +400,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {
@@ -933,7 +933,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {
@@ -2055,7 +2055,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {

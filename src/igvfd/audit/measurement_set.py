@@ -781,7 +781,7 @@ def audit_missing_external_image_url(value, system):
     [
         {
             "audit_description": "Cell Painting and Variant Painting assays are expected to have an `external_image_url`.",
-            "audit_category": "missing external image url",
+            "audit_category": "missing external image urls",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
@@ -794,10 +794,12 @@ def audit_missing_external_image_url(value, system):
     ]
     audit_message = get_audit_message(audit_missing_external_image_url, index=0)
 
-    if not value.get('external_image_url', '') and any(title in painting_assays for title in preferred_assay_titles):
+    external_image_urls = value.get('external_image_urls', [])
+
+    if not external_image_urls and any(title in painting_assays for title in preferred_assay_titles):
         detail = (
             f'MeasurementSet {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'is missing `external_image_url`.'
+            f'is missing `external_image_urls`.'
         )
         yield AuditFailure(
             audit_message.get('audit_category', ''),

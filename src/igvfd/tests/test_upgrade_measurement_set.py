@@ -239,3 +239,11 @@ def test_measurement_set_upgrade_36_37(upgrader, measurement_set_v36):
     value = upgrader.upgrade('measurement_set', measurement_set_v36, current_version='36', target_version='37')
     assert value['schema_version'] == '37'
     assert value.get('preferred_assay_titles') == ['CC-Perturb-seq']
+
+
+def test_measurement_set_upgrade_37_38(upgrader, measurement_set_v37):
+    external_image_url = measurement_set_v37['external_image_url']
+    value = upgrader.upgrade('measurement_set', measurement_set_v37, current_version='37', target_version='38')
+    assert 'cexternal_image_url' not in value
+    assert 'external_image_urls' in value and value['external_image_urls'] == list(external_image_url)
+    assert value['schema_version'] == '38'
