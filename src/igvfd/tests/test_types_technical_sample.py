@@ -19,7 +19,6 @@ def test_technical_sample_summary(testapp, technical_sample, construct_library_s
         }
     )
     res = testapp.get(technical_sample['@id'])
-    print(res.json.get('summary'))
     assert res.json.get(
         'summary') == 'virtual synthetic technical sample transfected with a reporter library targeting accessible genome regions genome-wide'
     testapp.patch_json(
