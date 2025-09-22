@@ -486,7 +486,7 @@
         "file_size": 5828021,
         "upload_status": "validated",
         "assembly": "C57BL_6J_T2T_v1 + GRCm39_X",
-        "transcriptome_annotation": "C57BL_6J_T2T_v1_TA1 + M36 X",
+        "transcriptome_annotation": "C57BL_6J_T2T_v1_TA1 + M36_X",
         "source_url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/964/188/535/GCA_964188535.1_C57BL_6J_T2T_v1/",
         "file_set": "igvf:basic_analysis_set",
         "dbxrefs": [
