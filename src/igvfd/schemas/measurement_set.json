@@ -247,11 +247,11 @@
             }
         },
         "external_image_urls": {
-            "title": "External Image URL",
+            "title": "External Image URLs",
             "description": "Links to the external site where images produced by this measurement are stored.",
             "type": "array",
             "items": {
-                "title": "External Image URL",
+                "title": "External Image URLs",
                 "type": "string",
                 "format": "uri",
                 "pattern": "^https://cellpainting-gallery\\.s3\\.amazonaws\\.com(\\S+)$"

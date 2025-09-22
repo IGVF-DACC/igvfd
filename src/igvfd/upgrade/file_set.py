@@ -657,5 +657,5 @@ def measurement_set_36_37(value, system):
 def measurement_set_37_38(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2988
     if 'external_image_url' in value:
-        value['external_image_urls'] = list(value['external_image_url'])
+        value['external_image_urls'] = [(value['external_image_url'])]
         del value['external_image_url']
