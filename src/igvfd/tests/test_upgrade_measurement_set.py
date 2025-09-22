@@ -243,7 +243,7 @@ def test_measurement_set_upgrade_36_37(upgrader, measurement_set_v36):
 
 def test_measurement_set_upgrade_37_38(upgrader, measurement_set_v37):
     value = upgrader.upgrade('measurement_set', measurement_set_v37, current_version='37', target_version='38')
-    assert 'cexternal_image_url' not in value
+    assert 'external_image_url' not in value
     assert 'external_image_urls' in value and value['external_image_urls'] == [
         'https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/']
     assert value['schema_version'] == '38'
