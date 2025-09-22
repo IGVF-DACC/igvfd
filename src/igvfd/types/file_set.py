@@ -417,7 +417,9 @@ class AnalysisSet(FileSet):
         Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
         Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline', 'status', 'workflow_version']),
-        Path('targeted_genes', include=['@id', 'symbol'])
+        Path('targeted_genes', include=['@id', 'symbol']),
+        Path('construct_library_sets.small_scale_gene_list', include=[
+             '@id', 'small_scale_gene_list', 'summary', 'geneid', 'symbol', 'name', 'status']),
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []

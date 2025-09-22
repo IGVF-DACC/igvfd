@@ -46,9 +46,6 @@ def analysis_set():
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
-            'targeted_genes.symbol': {
-                'title': 'Targeted Genes'
-            },
             'construct_library_sets.file_set_type': {
                 'title': 'Construct Library Data'
             },
@@ -58,14 +55,17 @@ def analysis_set():
             'construct_library_sets.integrated_content_files.content_type': {
                 'title': 'Construct Library Design'
             },
+            'construct_library_sets.small_scale_gene_list.symbol': {
+                'title': 'Investigated Gene'
+            },
+            'targeted_genes.symbol': {
+                'title': 'Readout Gene'
+            },
             'files.content_type': {
                 'title': 'File Type',
             },
             'files.file_format': {
                 'title': 'File Format',
-            },
-            'construct_library_sets.integrated_content_files.content_type': {
-                'title': 'Construct Library Design'
             },
             'collections': {
                 'title': 'Collections',

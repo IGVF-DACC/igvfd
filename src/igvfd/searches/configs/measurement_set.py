@@ -42,7 +42,7 @@ def measurement_set():
                 'title': 'Investigated Gene'
             },
             'targeted_genes.symbol': {
-                'title': 'Readout Genes'
+                'title': 'Readout Gene'
             },
             'files.sequencing_platform.term_name': {
                 'title': 'Sequencing Platform'
