@@ -18,6 +18,7 @@ def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor
         human_donor['@id'],
         {
             'sex': 'male',
+            'ethnicities': ['African American', 'African Caribbean']
         }
     )
     testapp.patch_json(
@@ -33,7 +34,8 @@ def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor
         }
     )
     res = testapp.get(tissue['@id'])
-    assert res.json.get('summary') == 'virtual Homo sapiens (male, 50-100 days) embryonic brown adipose tissue'
+    assert res.json.get(
+        'summary') == 'virtual Homo sapiens (male, 50-100 days, African American, African Caribbean) embryonic brown adipose tissue'
     testapp.patch_json(
         rodent_donor['@id'],
         {

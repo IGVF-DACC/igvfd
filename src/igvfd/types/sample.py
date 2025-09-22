@@ -465,22 +465,31 @@ class Biosample(Sample):
             summary_terms = f'embryonic {summary_terms}'
 
         # sex and age are prepended to the start of the summary
-        sex_and_age = [None, None]
+        sex_and_age_ethnicity = [None, None, None]
         if (sex and
                 biosample_type in biosample_subschemas):
             if sex != 'unspecified':
                 if sex == 'mixed':
-                    sex_and_age[0] = 'mixed sex'
+                    sex_and_age_ethnicity[0] = 'mixed sex'
                 else:
-                    sex_and_age[0] = sex
+                    sex_and_age_ethnicity[0] = sex
 
         if (age != 'unknown' and
                 biosample_type in ['primary_cell', 'tissue', 'whole_organism']):
             age = concat_numeric_and_units(age, age_units)
-            sex_and_age[1] = age
+            sex_and_age_ethnicity[1] = age
 
-        if any(x is not None for x in sex_and_age):
-            summary_terms = f'({", ".join([x for x in sex_and_age if x is not None])}) {summary_terms}'
+        if (donors and taxa == 'Homo sapiens'):
+            ethnicity_set = set()
+            for donor in donors:
+                donor_object = request.embed(donor, '@@object?skip_calculated=true')
+                ethnicity_set = ethnicity_set | set(donor_object.get('ethnicities', []))
+            ethnicity_set = ', '.join(sorted(ethnicity_set))
+            if ethnicity_set:
+                sex_and_age_ethnicity[2] = ethnicity_set
+
+        if any(x is not None for x in sex_and_age_ethnicity):
+            summary_terms = f'({", ".join([x for x in sex_and_age_ethnicity if x is not None])}) {summary_terms}'
 
         # taxa of the donor(s) is prepended to the start of the summary
         if (donors and
