@@ -323,7 +323,7 @@
                         "properties": {
                             "transcriptome_annotation": {
                                 "enum": [
-                                    "C57BL_6J_T2T_v1_TA1 + M36 X"
+                                    "C57BL_6J_T2T_v1_TA1 + M36_X"
                                 ]
                             }
                         }
