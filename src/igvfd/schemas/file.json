@@ -312,7 +312,7 @@
                     "if": {
                         "properties": {
                             "assembly": {
-                                "const": "C57BL_6J_T2T_v1"
+                                "const": "C57BL_6J_T2T_v1 + GRCm39_X"
                             }
                         },
                         "required": [
