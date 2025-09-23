@@ -459,6 +459,14 @@ def test_analysis_set_sample_summary(testapp, principal_analysis_set, measuremen
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get('sample_summary', '') == 'Homo sapiens K562 pooled differentiated cell specimen induced to endothelial cell of vascular tree, at 5 minute(s) post change, differentiated with 10 mM lactate for 1 hour, modified with AID system targeting MYC, CRISPRi Sp-dCas9, transfected with a guide library and measured at 5 minute(s) post-transfection, sorted on expression of MYC'
     testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'growth_medium': '1 kPa hydrogel'
+        }
+    )
+    res = testapp.get(principal_analysis_set['@id']).json
+    assert res.get('sample_summary', '') == 'Homo sapiens K562 pooled differentiated cell specimen induced to endothelial cell of vascular tree, at 5 minute(s) post change, grown in 1 kPa hydrogel, differentiated with 10 mM lactate for 1 hour, modified with AID system targeting MYC, CRISPRi Sp-dCas9, transfected with a guide library and measured at 5 minute(s) post-transfection, sorted on expression of MYC'
+    testapp.patch_json(
         measurement_set_mpra['@id'],
         {
             'samples': [multiplexed_sample['@id']]

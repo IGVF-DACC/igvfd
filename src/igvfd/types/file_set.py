@@ -194,6 +194,7 @@ class FileSet(Item):
                 'cellular_sub_pool',
                 'classifications',
                 'disease_terms',
+                'growth_medium',
                 'modifications',
                 'sample_terms',
                 'status',
@@ -806,6 +807,7 @@ class AnalysisSet(FileSet):
         sample_classification_term_target = dict()
         treatment_purposes = set()
         treatment_summaries = set()
+        growth_mediums = set()
         differentiation_times = set()
         library_delivery_times = set()
         construct_library_set_types = set()
@@ -908,6 +910,8 @@ class AnalysisSet(FileSet):
                             for gene in fileset_object['targeted_genes']:
                                 gene_object = request.embed(gene, '@@object?skip_calculated=true')
                                 targeted_genes_for_sorting.add(gene_object['symbol'])
+            if 'growth_medium' in sample_object:
+                growth_mediums.add(sample_object['growth_medium'])
             if 'treatments' in sample_object:
                 for treatment in sample_object['treatments']:
                     treatment_object = request.embed(
@@ -953,9 +957,12 @@ class AnalysisSet(FileSet):
         differentiation_time_phrase = ''
         if differentiation_times:
             differentiation_time_phrase = f'at {", ".join(sorted(differentiation_times))}(s) post change'
+        if growth_mediums:
+            growth_mediums_phrase = f"grown in {', '.join(sorted(growth_mediums))}"
         treatments_phrase = ''
         if treatment_purposes and treatment_summaries:
             treatments_phrase = f"{', '.join(sorted(treatment_purposes))} with {', '.join(sorted(treatment_summaries))}"
+        growth_mediums_phrase = ''
         modification_summary_phrase = ''
         if modification_summaries:
             modification_summaries = sorted(modification_summaries)
@@ -978,6 +985,7 @@ class AnalysisSet(FileSet):
         taxa_phrase = f'{", ".join([x for x in taxa if x != ""])}'
         additional_phrases = [
             differentiation_time_phrase,
+            growth_mediums_phrase,
             treatments_phrase,
             modification_summary_phrase,
             construct_library_set_type_phrase,
