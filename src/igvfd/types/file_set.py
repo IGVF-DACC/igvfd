@@ -217,7 +217,7 @@ class FileSet(Item):
         Path('construct_library_sets.integrated_content_files', include=[
              '@id', 'accession', 'summary', 'status', 'content_type']),
         Path('construct_library_sets.small_scale_gene_list', include=[
-             '@id', 'accession', 'file_set_type', 'summary', 'selection_criteria', 'status', 'content_type']),
+             '@id', 'summary', 'geneid', 'symbol', 'name', 'status']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
     ]
 
