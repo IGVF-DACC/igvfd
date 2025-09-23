@@ -465,22 +465,31 @@ class Biosample(Sample):
             summary_terms = f'embryonic {summary_terms}'
 
         # sex and age are prepended to the start of the summary
-        sex_and_age = [None, None]
+        sex_and_age_ethnicity = [None, None, None]
         if (sex and
                 biosample_type in biosample_subschemas):
             if sex != 'unspecified':
                 if sex == 'mixed':
-                    sex_and_age[0] = 'mixed sex'
+                    sex_and_age_ethnicity[0] = 'mixed sex'
                 else:
-                    sex_and_age[0] = sex
+                    sex_and_age_ethnicity[0] = sex
 
         if (age != 'unknown' and
                 biosample_type in ['primary_cell', 'tissue', 'whole_organism']):
             age = concat_numeric_and_units(age, age_units)
-            sex_and_age[1] = age
+            sex_and_age_ethnicity[1] = age
 
-        if any(x is not None for x in sex_and_age):
-            summary_terms = f'({", ".join([x for x in sex_and_age if x is not None])}) {summary_terms}'
+        if (donors and taxa == 'Homo sapiens'):
+            ethnicity_set = set()
+            for donor in donors:
+                donor_object = request.embed(donor, '@@object?skip_calculated=true')
+                ethnicity_set = ethnicity_set | set(donor_object.get('ethnicities', []))
+            ethnicity_set = ', '.join(sorted(ethnicity_set))
+            if ethnicity_set:
+                sex_and_age_ethnicity[2] = ethnicity_set
+
+        if any(x is not None for x in sex_and_age_ethnicity):
+            summary_terms = f'({", ".join([x for x in sex_and_age_ethnicity if x is not None])}) {summary_terms}'
 
         # taxa of the donor(s) is prepended to the start of the summary
         if (donors and
@@ -519,7 +528,7 @@ class Biosample(Sample):
             if targeted_sample_term:
                 targeted_term_object = request.embed(targeted_sample_term, '@@object?skip_calculated=true')
                 targeted_term_name = targeted_term_object.get('term_name')
-                summary_terms += f' induced to {targeted_term_name} for {time_post_change}'
+                summary_terms += f' induced to {targeted_term_name} for {time_post_change},'
             else:
                 summary_terms += f' induced for {time_post_change}'
 
@@ -584,21 +593,22 @@ class Biosample(Sample):
             verb = 'transfected with'
             if time_post_library_delivery:
                 verb = f'{time_post_library_delivery} {time_post_library_delivery_units}(s) after transfection with'
-            library_types = set()
+            library_summaries = set()
             for construct_library_set in construct_library_sets:
-                construct_library_set_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
-                library_types.add(construct_library_set_object['file_set_type'])
+                construct_library_set_object = request.embed(
+                    construct_library_set, '@@object_with_select_calculated_properties?field=summary')
+                library_summaries.add(construct_library_set_object['summary'])
             if nucleic_acid_delivery:
                 if nucleic_acid_delivery == 'lentiviral transduction':
                     verb = 'transduced (lentivirus) with'
                 elif nucleic_acid_delivery == 'adenoviral transduction':
                     verb = 'transduced (adenovirus) with'
-            if len(library_types) == 1:
-                library_types = ', '.join(library_types)
+            if len(library_summaries) == 1:
+                library_summaries = ', '.join(library_summaries)
                 if moi:
-                    summary_terms += f' {verb} a {library_types} (MOI of {moi}),'
+                    summary_terms += f' {verb} a {library_summaries} (MOI of {moi}),'
                 else:
-                    summary_terms += f' {verb} a {library_types},'
+                    summary_terms += f' {verb} a {library_summaries},'
             else:
                 if moi:
                     summary_terms += f' {verb} multiple libraries (MOI of {moi}),'
@@ -801,18 +811,19 @@ class TechnicalSample(Sample):
 
         if construct_library_sets:
             verb = 'transfected with'
-            library_types = set()
+            library_summaries = set()
             for construct_library_set in construct_library_sets:
-                construct_library_set_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
-                library_types.add(construct_library_set_object['file_set_type'])
+                construct_library_set_object = request.embed(
+                    construct_library_set, '@@object_with_select_calculated_properties?field=summary')
+                library_summaries.add(construct_library_set_object['summary'])
             if nucleic_acid_delivery:
                 if nucleic_acid_delivery == 'lentiviral transduction':
                     verb = 'transduced (lentivirus) with'
                 elif nucleic_acid_delivery == 'adenoviral transduction':
                     verb = 'transduced (adenovirus) with'
-            if len(library_types) == 1:
-                library_types = ', '.join(library_types)
-                summary_terms = f'{summary_terms} {verb} a {library_types}'
+            if len(library_summaries) == 1:
+                library_summaries = ', '.join(library_summaries)
+                summary_terms = f'{summary_terms} {verb} a {library_summaries}'
             else:
                 summary_terms = f'{summary_terms} {verb} multiple libraries'
         if moi:
