@@ -1,6 +1,6 @@
 {
-    "hash": "ab4e041d00c4f410fff9664518a7bed3",
-    "index_name": "model_set_ab4e041d",
+    "hash": "9673d412de5995892c7cc91fe177a57b",
+    "index_name": "model_set_9673d412",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -498,7 +498,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {
@@ -1031,7 +1031,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {
@@ -2077,7 +2077,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {

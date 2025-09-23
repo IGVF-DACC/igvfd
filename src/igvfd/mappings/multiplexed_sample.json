@@ -1,6 +1,6 @@
 {
-    "hash": "a74f9a889908788e801c6acd95e95896",
-    "index_name": "multiplexed_sample_a74f9a88",
+    "hash": "ddca5b76c0d03053f48b9992a7b2c6ce",
+    "index_name": "multiplexed_sample_ddca5b76",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1035,7 +1035,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {

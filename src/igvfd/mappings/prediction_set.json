@@ -1,6 +1,6 @@
 {
-    "hash": "912ed501850743cbf1922b7852cfc9f7",
-    "index_name": "prediction_set_912ed501",
+    "hash": "cc92ef35d902eadd0461a62dd5c33fc6",
+    "index_name": "prediction_set_cc92ef35",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -575,7 +575,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {
@@ -1108,7 +1108,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {

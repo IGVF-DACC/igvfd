@@ -1,6 +1,6 @@
 {
-    "hash": "94625703fc4b7fabaf5afb9aa6726f27",
-    "index_name": "primary_cell_94625703",
+    "hash": "1504166063c478434393408555fde22d",
+    "index_name": "primary_cell_15041660",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1048,7 +1048,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {

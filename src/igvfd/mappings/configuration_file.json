@@ -1,6 +1,6 @@
 {
-    "hash": "1d7abbe91e5ef820491eab20e16dfdb2",
-    "index_name": "configuration_file_1d7abbe9",
+    "hash": "7c903590cb6d316a440e85cc3ce1e1e0",
+    "index_name": "configuration_file_7c903590",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -817,7 +817,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {

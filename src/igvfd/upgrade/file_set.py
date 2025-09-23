@@ -651,3 +651,11 @@ def measurement_set_36_37(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2910
     if value.get('preferred_assay_titles') == ['Parse Perturb-seq']:
         value['preferred_assay_titles'] = ['CC-Perturb-seq']
+
+
+@upgrade_step('measurement_set', '37', '38')
+def measurement_set_37_38(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2988
+    if 'external_image_url' in value:
+        value['external_image_urls'] = [(value['external_image_url'])]
+        del value['external_image_url']

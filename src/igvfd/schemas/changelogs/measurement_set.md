@@ -1,5 +1,10 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 38
+
+* Remove `external_image_url`.
+* Add `external_image_urls`.
+
 ### Minor changes since schema version 37
 
 * Extend `preferred_assay_titles` enum list to include `Parse Perturb-seq`.

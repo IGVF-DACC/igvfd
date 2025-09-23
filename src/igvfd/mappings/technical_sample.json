@@ -1,6 +1,6 @@
 {
-    "hash": "3d83191c6692185005c63c0397f5f20b",
-    "index_name": "technical_sample_3d83191c",
+    "hash": "62c187aaa976142c4855c545ead2ef8c",
+    "index_name": "technical_sample_62c187aa",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -645,7 +645,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {

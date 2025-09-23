@@ -1,6 +1,6 @@
 {
-    "hash": "bb08b3fca53fb3f5b7474077da69c0fc",
-    "index_name": "auxiliary_set_bb08b3fc",
+    "hash": "8f0c4d1840160cbc5d2793e51a9c6de5",
+    "index_name": "auxiliary_set_8f0c4d18",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -402,7 +402,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {
@@ -935,7 +935,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {
@@ -2008,7 +2008,7 @@
                             "donors": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "externally_hosted": {

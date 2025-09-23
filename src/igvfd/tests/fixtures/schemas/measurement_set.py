@@ -522,3 +522,14 @@ def measurement_set_v36(measurement_set):
         'preferred_assay_titles': ['Parse Perturb-seq']
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v37(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '37',
+        'preferred_assay_titles': ['Cell Painting'],
+        'external_image_url': 'https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/'
+    })
+    return item

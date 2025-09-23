@@ -71,7 +71,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "37"
+            "default": "38"
         },
         "samples": {
             "maxItems": 1
@@ -246,15 +246,19 @@
                 "igvf_utils": "experimental data"
             }
         },
-        "external_image_url": {
-            "title": "External Image URL",
+        "external_image_urls": {
+            "title": "External Image URLs",
             "description": "Links to the external site where images produced by this measurement are stored.",
-            "type": "string",
-            "format": "uri",
-            "pattern": "^https://cellpainting-gallery\\.s3\\.amazonaws\\.com(\\S+)$",
+            "type": "array",
+            "items": {
+                "title": "External Image URLs",
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://cellpainting-gallery\\.s3\\.amazonaws\\.com(\\S+)$"
+            },
             "submissionExample": {
-                "appscript": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/",
-                "igvf_utils": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/"
+                "appscript": "[\"https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/\", \"https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch3/images/BR001234/\"]",
+                "igvf_utils": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/, https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch3/images/BR001234/"
             }
         },
         "targeted_genes": {

@@ -1,6 +1,6 @@
 {
-    "hash": "c1e3a0f8094e6ae42d0d7c5ef2ac5e56",
-    "index_name": "measurement_set_c1e3a0f8",
+    "hash": "444a508dd169d6f533bbe01295a53cd4",
+    "index_name": "measurement_set_444a508d",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -614,7 +614,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {
@@ -1246,7 +1246,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {
@@ -1579,7 +1579,7 @@
                             "external_image_data_url": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "external_input_data": {
@@ -1970,7 +1970,7 @@
                         },
                         "type": "object"
                     },
-                    "external_image_url": {
+                    "external_image_urls": {
                         "type": "keyword"
                     },
                     "externally_hosted": {
@@ -2902,7 +2902,7 @@
                             "donors": {
                                 "type": "keyword"
                             },
-                            "external_image_url": {
+                            "external_image_urls": {
                                 "type": "keyword"
                             },
                             "externally_hosted": {
