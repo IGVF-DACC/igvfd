@@ -69,6 +69,7 @@ class Workflow(Item):
     ]
 
     set_status_up = [
+        'documents',
         'standards_page'
     ]
     set_status_down = []
