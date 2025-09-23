@@ -90,3 +90,16 @@ def treatment_8_9(value, system):
     if 'depletion' not in value:
         value['depletion'] = False
     return
+
+
+@upgrade_step('treatment', '9', '10')
+def treatment_9_10(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3018
+    notes = value.get('notes', '')
+    if value['treatment_type'] == 'environmental':
+        value['treatment_type'] = 'protein'
+        value['treatment_term_id'] = 'NTR:0000000'
+        notes += f'This treatment object was previously modeled as an environmental treatment but has been upgraded to protein. Stiffness environmental treatments are now reflected as growth_medium on in vitro system. This object should be deleted.'
+    if notes:
+        value['notes'] = notes.strip()
+    return

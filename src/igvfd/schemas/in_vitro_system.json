@@ -547,7 +547,7 @@
                 "SMBM without serum",
                 "1 kPa hydrogel",
                 "50 kPa hydrogel",
-                "Tissue culture plastic plates (no hydrogel)"
+                "tissue culture plastic plates (no hydrogel)"
             ],
             "submissionExample": {
                 "appscript": "DMEM with serum",
