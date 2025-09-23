@@ -19,12 +19,6 @@ def analysis_set():
             'workflows.uniform_pipeline': {
                 'title': 'Uniformly Processed'
             },
-            'files.assembly': {
-                'title': 'Assembly',
-            },
-            'files.transcriptome_annotation': {
-                'title': 'Transcriptome Annotation',
-            },
             'donors.taxa': {
                 'title': 'Taxa',
             },
@@ -60,6 +54,12 @@ def analysis_set():
             },
             'targeted_genes.symbol': {
                 'title': 'Readout Gene'
+            },
+            'files.assembly': {
+                'title': 'Assembly',
+            },
+            'files.transcriptome_annotation': {
+                'title': 'Transcriptome Annotation',
             },
             'files.content_type': {
                 'title': 'File Type',

@@ -16,12 +16,6 @@ def auxiliary_set():
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles'
             },
-            'files.assembly': {
-                'title': 'Assembly',
-            },
-            'files.transcriptome_annotation': {
-                'title': 'Transcriptome Annotation',
-            },
             'donors.taxa': {
                 'title': 'Taxa'
             },

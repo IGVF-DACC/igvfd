@@ -16,12 +16,6 @@ def prediction_set():
             'associated_phenotypes.term_name': {
                 'title': 'Associated Phenotypes'
             },
-            'files.assembly': {
-                'title': 'Assembly',
-            },
-            'files.transcriptome_annotation': {
-                'title': 'Transcriptome Annotation',
-            },
             'assessed_genes': {
                 'title': 'Assessed Genes',
             },
@@ -54,6 +48,12 @@ def prediction_set():
             },
             'construct_library_sets.integrated_content_files.content_type': {
                 'title': 'Construct Library Design'
+            },
+            'files.assembly': {
+                'title': 'Assembly',
+            },
+            'files.transcriptome_annotation': {
+                'title': 'Transcriptome Annotation',
             },
             'files.content_type': {
                 'title': 'File Type',

@@ -10,12 +10,6 @@ def curated_set():
             'file_set_type': {
                 'title': 'File Set Type'
             },
-            'assemblies': {
-                'title': 'Assemblies'
-            },
-            'transcriptome_annotations': {
-                'title': 'Transcriptome Annotations'
-            },
             'taxa': {
                 'title': 'Taxa'
             },
@@ -36,6 +30,12 @@ def curated_set():
             },
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment',
+            },
+            'assemblies': {
+                'title': 'Assemblies'
+            },
+            'transcriptome_annotations': {
+                'title': 'Transcriptome Annotations'
             },
             'files.content_type': {
                 'title': 'File Type',
