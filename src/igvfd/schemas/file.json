@@ -286,6 +286,48 @@
                             }
                         }
                     }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "CAST_EiJ_T2T_v1"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "CAST_EiJ_T2T_v1_TA1"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "C57BL_6J_T2T_v1 + GRCm39_X"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "C57BL_6J_T2T_v1_TA1 + M36_X"
+                                ]
+                            }
+                        }
+                    }
                 }
             ]
         }

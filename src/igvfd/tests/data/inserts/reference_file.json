@@ -468,5 +468,30 @@
             "ENSEMBL:ENSG00000101128"
         ],
         "controlled_access": false
+    },
+    {
+        "uuid": "e5b0c095-eb3a-08d5-b245-e113e0bf21be",
+        "accession": "IGVFFI0011TATT",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:reference_file_with_mouse_t2t_assembly_transcriptome"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "440562f048b8f618b4bef61216689ac2",
+        "file_format": "gtf",
+        "content_type": "transcriptome reference",
+        "submitted_file_name": "/Users/igvf/igvf_files/transcriptome_reference_mouse_t2t.gtf.gz",
+        "file_size": 5828021,
+        "upload_status": "validated",
+        "assembly": "C57BL_6J_T2T_v1 + GRCm39_X",
+        "transcriptome_annotation": "C57BL_6J_T2T_v1_TA1 + M36_X",
+        "source_url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/964/188/535/GCA_964188535.1_C57BL_6J_T2T_v1/",
+        "file_set": "igvf:basic_analysis_set",
+        "dbxrefs": [
+            "ENSEMBL:ENSG00000101128"
+        ],
+        "controlled_access": false
     }
 ]
