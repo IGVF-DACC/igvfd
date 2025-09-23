@@ -957,12 +957,12 @@ class AnalysisSet(FileSet):
         differentiation_time_phrase = ''
         if differentiation_times:
             differentiation_time_phrase = f'at {", ".join(sorted(differentiation_times))}(s) post change'
+        growth_mediums_phrase = ''
         if growth_mediums:
             growth_mediums_phrase = f"grown in {', '.join(sorted(growth_mediums))}"
         treatments_phrase = ''
         if treatment_purposes and treatment_summaries:
             treatments_phrase = f"{', '.join(sorted(treatment_purposes))} with {', '.join(sorted(treatment_summaries))}"
-        growth_mediums_phrase = ''
         modification_summary_phrase = ''
         if modification_summaries:
             modification_summaries = sorted(modification_summaries)
