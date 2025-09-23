@@ -33,7 +33,8 @@ class Donor(Item):
     ]
 
     set_status_up = [
-        'documents'
+        'documents',
+        'phenotypic_features'
     ]
     set_status_down = []
 

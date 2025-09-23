@@ -226,6 +226,7 @@ class File(Item):
 
     set_status_up = [
         'analysis_step_version',
+        'documents',
         'file_format_specifications'
     ]
     set_status_down = []
@@ -543,6 +544,7 @@ class SequenceFile(File):
         'seqspecs': ('ConfigurationFile', 'seqspec_of')
     }
     set_status_up = File.set_status_up + [
+        'seqspec_document',
         'sequencing_platform'
     ]
     set_status_down = File.set_status_down + []

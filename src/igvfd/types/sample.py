@@ -150,9 +150,12 @@ class Sample(Item):
     ]
 
     set_status_up = [
+        'biomarkers',
         'construct_library_sets',
         'documents',
-        'sorted_from'
+        'modifications',
+        'sorted_from',
+        'treatments'
     ]
     set_status_down = []
 
