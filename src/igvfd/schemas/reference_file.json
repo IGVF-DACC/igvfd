@@ -140,7 +140,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "20"
+            "default": "21"
         },
         "catalog_adapters": {
             "title": "IGVF Catalog Adapters",
@@ -168,6 +168,7 @@
                         "elements reference",
                         "exclusion list",
                         "genome index",
+                        "guide RNA sequences reference",
                         "inclusion list",
                         "spike-ins",
                         "nascent transcriptome index",
@@ -193,7 +194,6 @@
                         "genes_terms",
                         "genes_transcripts",
                         "go_terms_proteins",
-                        "guide RNA sequences",
                         "motifs",
                         "motifs_proteins",
                         "ontology_terms",
@@ -240,6 +240,7 @@
                 "elements reference": "References for the genomic elements studied, including details like genomic coordinates or identifiers.",
                 "exclusion list": "An exclusion list file contains a set of genomic regions or specific sequences that should be ignored or excluded during data analysis.",
                 "genome index": "A reference file consisting of genome index which allows for faster alignment of sequencing reads to the genome.",
+                "guide RNA sequences reference": "A FASTA reference file comprised of concatenated guide RNA sequences intended for use as an alignment or mapping reference. Unlike 'guide RNA sequences' on tabular file, which follow a standardized tabular format with metadata about each guide, this file contains only the raw sequences.",
                 "inclusion list": "An inclusion list file contains a set of specific genomic regions or sequences that should be included or focused on during data analysis.",
                 "spike-ins": "Nucleic acid fragments of known sequence and quantity used for calibration in high-throughput sequencing.",
                 "nascent transcriptome index": "A reference file consisting of nascent transcriptome index which contains both nascent transcripts and cDNAs and therefore can be used for applications where quantifying intron-spanning reads is important, such as single-nucleus RNA-seq or biophysical models that jointly consider spliced and unspliced transcripts.",

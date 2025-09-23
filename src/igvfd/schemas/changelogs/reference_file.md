@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema verion 21
+
+* Adjust `content_type` enum list to replace `guide RNA sequences` with `guide RNA sequences reference`.
+
 ### Minor changes since schema version 20
 
 * Extend `transcriptome_annotation` enum list to include `CAST_EiJ_T2T_v1_TA1`.

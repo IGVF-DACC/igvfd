@@ -285,3 +285,13 @@ def reference_file_v19(reference_file_v6):
         'external': True
     })
     return item
+
+
+@pytest.fixture
+def reference_file_v20(reference_file):
+    item = reference_file.copy()
+    item.update({
+        'schema_version': '20',
+        'content_type': 'guide RNA sequences'
+    })
+    return item

@@ -559,3 +559,14 @@ def reference_file_19_20(value, system):
         del value['external']
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('reference_file', '20', '21')
+def reference_file_20_21(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3024
+    notes = value.get('notes', '')
+    if value['content_type'] == 'guide RNA sequences':
+        value['content_type'] = 'guide RNA sequences reference'
+        notes += f'This file\'s content_type was guide RNA sequences, but has been upgraded to guide RNA sequences reference.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
