@@ -304,24 +304,32 @@
             "title": "Purpose",
             "type": "string",
             "description": "The intended purpose for treating the samples.",
-            "enum": [
-                "activation",
-                "agonist",
-                "antagonist",
-                "control",
-                "differentiation",
-                "de-differentiation",
-                "perturbation",
-                "selection",
-                "stimulation"
+            "comment": "Differentiation, de-differentiation, and reprogramming treatments should be submitted as a document describing the protocol and attached to samples under `cell_fate_change_protocol`.",
+            "oneOf": [
+                {
+                    "enum": [
+                        "activation",
+                        "agonist",
+                        "antagonist",
+                        "control",
+                        "perturbation",
+                        "selection",
+                        "stimulation"
+                    ]
+                },
+                {
+                    "enum": [
+                        "differentiation",
+                        "de-differentiation"
+                    ],
+                    "permission": "admin_only"
+                }
             ],
             "enum_descriptions": {
                 "activation": "The treatment is known to activate a pathway or modification in the biosample.",
                 "agonist": "A substance which is known to initiate a physiological response when combined with a receptor.",
                 "antagonist": "A substance that is known to interfere with or inhibits the physiological action of another.",
                 "control": "A treatment applied to a sample for control purposes.",
-                "differentiation": "A treatment that is applied to convert a less specialized cell to a more specialized cell.",
-                "de-differentiation": "A treatment used to reprogram differentiated cells back to less determined cell states.",
                 "perturbation": "A treatment applied to the sample in order to study the effect of its application.",
                 "selection": "A treatment used to affect biosample in a way that can be used to distinguish cells and select for in the downstream steps.",
                 "stimulation": "A treatment applied to stimulate a cellular pathway."
