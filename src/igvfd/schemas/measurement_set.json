@@ -250,6 +250,7 @@
             "title": "External Image URLs",
             "description": "Links to the external site where images produced by this measurement are stored.",
             "type": "array",
+            "minItem": 1,
             "items": {
                 "title": "External Image URLs",
                 "type": "string",
