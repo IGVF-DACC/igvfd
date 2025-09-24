@@ -2,7 +2,7 @@
 
 ### Schema version 10
 
-* Adjust `treatment_type` to remove `environmental`.
+* Adjust `treatment_type` enum list to remove `environmental`.
 
 ### Minor changes since schema version 9
 
