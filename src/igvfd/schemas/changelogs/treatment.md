@@ -1,6 +1,6 @@
 ## Changelog for *`treatment.json`*
 
-### Minor changes since schema version 8
+### Minor changes since schema version 9
 
 * Adjust `purpose` enum list to restrict usage of `differentiation` to admin users.
 * Adjust `purpose` enum list to restrict usage of `de-differentiation` to admin users.
