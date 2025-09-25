@@ -907,6 +907,7 @@ class MultiplexedSample(Sample):
         'multiplexed_samples'
     ]
     set_status_up = Biosample.set_status_up + [
+        'barcode_map',
         'multiplexed_samples'
     ]
     set_status_down = Biosample.set_status_down + [
