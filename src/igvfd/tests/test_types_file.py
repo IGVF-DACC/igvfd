@@ -906,3 +906,8 @@ def test_file_reset_file_upload_bucket_on_upload_credentials(testapp, root, dumm
     external = file_item._get_external_sheet()
     assert external.get('bucket') == 'igvf-files-local'
     assert res.json['@graph'][0]['upload_credentials']['upload_url'] == 's3://igvf-files-local/xyz.bigWig'
+
+
+def test_types_index_file_reference_files(testapp, index_file_bai, reference_file):
+    res = testapp.get(index_file_bai['@id'])
+    assert set(res.json.get('reference_files')) == {reference_file['@id']}
