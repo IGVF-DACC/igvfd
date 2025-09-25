@@ -1382,7 +1382,7 @@ class IndexFile(File):
     @calculated_property(
         schema={
             'title': 'Reference Files',
-            'description': 'The reference files of files that this index file is derived from.',
+            'description': 'The reference files of the file that this index file is derived from.',
             'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
