@@ -19,15 +19,6 @@ def analysis_set():
             'workflows.uniform_pipeline': {
                 'title': 'Uniformly Processed'
             },
-            'files.assembly': {
-                'title': 'Assembly',
-            },
-            'files.transcriptome_annotation': {
-                'title': 'Transcriptome Annotation',
-            },
-            'construct_library_sets.file_set_type': {
-                'title': 'Construct Library Data'
-            },
             'donors.taxa': {
                 'title': 'Taxa',
             },
@@ -49,17 +40,32 @@ def analysis_set():
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
+            'construct_library_sets.file_set_type': {
+                'title': 'Construct Library Data'
+            },
+            'construct_library_sets.selection_criteria': {
+                'title': 'Construct Library Selection Criteria'
+            },
+            'construct_library_sets.integrated_content_files.content_type': {
+                'title': 'Construct Library Design'
+            },
+            'construct_library_sets.small_scale_gene_list.symbol': {
+                'title': 'Investigated Gene'
+            },
             'targeted_genes.symbol': {
-                'title': 'Targeted Genes'
+                'title': 'Readout Gene'
+            },
+            'files.assembly': {
+                'title': 'Assembly',
+            },
+            'files.transcriptome_annotation': {
+                'title': 'Transcriptome Annotation',
             },
             'files.content_type': {
                 'title': 'File Type',
             },
             'files.file_format': {
                 'title': 'File Format',
-            },
-            'construct_library_sets.integrated_content_files.content_type': {
-                'title': 'Construct Library Design'
             },
             'collections': {
                 'title': 'Collections',

@@ -16,15 +16,6 @@ def auxiliary_set():
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles'
             },
-            'files.assembly': {
-                'title': 'Assembly',
-            },
-            'files.transcriptome_annotation': {
-                'title': 'Transcriptome Annotation',
-            },
-            'construct_library_sets.file_set_type': {
-                'title': 'Construct Library Data'
-            },
             'donors.taxa': {
                 'title': 'Taxa'
             },
@@ -46,6 +37,15 @@ def auxiliary_set():
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment',
             },
+            'construct_library_sets.file_set_type': {
+                'title': 'Construct Library Data'
+            },
+            'construct_library_sets.selection_criteria': {
+                'title': 'Construct Library Selection Criteria'
+            },
+            'construct_library_sets.integrated_content_files.content_type': {
+                'title': 'Construct Library Design'
+            },
             'sequencing_library_types': {
                 'title': 'Library Type',
             },
@@ -54,9 +54,6 @@ def auxiliary_set():
             },
             'files.file_format': {
                 'title': 'File Format',
-            },
-            'construct_library_sets.integrated_content_files.content_type': {
-                'title': 'Construct Library Design'
             },
             'collections': {
                 'title': 'Collections',

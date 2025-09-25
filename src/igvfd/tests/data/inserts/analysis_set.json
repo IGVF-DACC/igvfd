@@ -12,7 +12,8 @@
             "igvf:Antibody_characterization_standards_IGVF"
         ],
         "input_file_sets": [
-            "igvf:mN2H"
+            "igvf:mN2H",
+            "igvf:multiome_scatac_seq"
         ],
         "status": "released",
         "uuid": "609869e7-cbd9-4d06-9569-d3fdb4604ccd",

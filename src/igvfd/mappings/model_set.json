@@ -1,6 +1,6 @@
 {
-    "hash": "9673d412de5995892c7cc91fe177a57b",
-    "index_name": "model_set_9673d412",
+    "hash": "55a37a2b40014e090121cf42cb67ee5c",
+    "index_name": "model_set_55a37a2b",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -832,7 +832,106 @@
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {
-                                "type": "keyword"
+                                "properties": {
+                                    "@id": {
+                                        "type": "keyword"
+                                    },
+                                    "@type": {
+                                        "type": "keyword"
+                                    },
+                                    "aliases": {
+                                        "type": "keyword"
+                                    },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
+                                    "creation_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "dbxrefs": {
+                                        "type": "keyword"
+                                    },
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "geneid": {
+                                        "type": "keyword"
+                                    },
+                                    "geneid_with_version": {
+                                        "type": "keyword"
+                                    },
+                                    "locations": {
+                                        "properties": {
+                                            "assembly": {
+                                                "type": "keyword"
+                                            },
+                                            "chromosome": {
+                                                "type": "keyword"
+                                            },
+                                            "end": {
+                                                "store": true,
+                                                "type": "long"
+                                            },
+                                            "start": {
+                                                "store": true,
+                                                "type": "long"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
+                                    "notes": {
+                                        "type": "text"
+                                    },
+                                    "preview_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "release_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "status": {
+                                        "type": "keyword"
+                                    },
+                                    "study_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_by": {
+                                        "type": "keyword"
+                                    },
+                                    "submitter_comment": {
+                                        "type": "keyword"
+                                    },
+                                    "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "symbol": {
+                                        "type": "keyword"
+                                    },
+                                    "synonyms": {
+                                        "type": "keyword"
+                                    },
+                                    "taxa": {
+                                        "type": "keyword"
+                                    },
+                                    "title": {
+                                        "type": "keyword"
+                                    },
+                                    "transcriptome_annotation": {
+                                        "type": "keyword"
+                                    },
+                                    "uuid": {
+                                        "type": "keyword"
+                                    },
+                                    "version_number": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "small_scale_loci_list": {
                                 "properties": {

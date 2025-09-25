@@ -212,8 +212,12 @@ class FileSet(Item):
              'purpose', 'treatment_type', 'summary', 'status']),
         Path('samples.institutional_certificates', include=['@id',
              'certificate_identifier', 'status', 'data_use_limitation', 'data_use_limitation_modifiers', 'controlled_access']),
+        Path('construct_library_sets', include=[
+             '@id', 'accession', 'file_set_type', 'summary', 'status', 'selection_criteria', 'small_scale_gene_list', 'integrated_content_files', ]),
         Path('construct_library_sets.integrated_content_files', include=[
-             '@id', 'accession', 'file_set_type', 'summary', 'status', 'content_type', 'integrated_content_files']),
+             '@id', 'accession', 'summary', 'status', 'content_type']),
+        Path('construct_library_sets.small_scale_gene_list', include=[
+             '@id', 'summary', 'geneid', 'symbol', 'name', 'status']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
     ]
 
@@ -417,8 +421,7 @@ class AnalysisSet(FileSet):
         Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
         Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline', 'status', 'workflow_version']),
-        Path('targeted_genes', include=['@id', 'symbol'])
-    ]
+        Path('targeted_genes', include=['@id', 'symbol'])]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
     set_status_down = FileSet.set_status_down + []
@@ -1205,8 +1208,6 @@ class MeasurementSet(FileSet):
         Path('control_file_sets', include=['@id', 'accession', 'aliases', 'status']),
         Path('related_multiome_datasets', include=['@id', 'accession', 'status']),
         Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
-        Path('construct_library_sets.small_scale_gene_list', include=[
-             '@id', 'small_scale_gene_list', 'summary', 'geneid', 'symbol', 'name', 'status']),
         Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status'])
     ]

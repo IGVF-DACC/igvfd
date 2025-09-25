@@ -46,7 +46,7 @@
         "uuid": "7dd534f7-4349-4485-bc7a-4b7038a55588",
         "accession": "IGVFDS9003ATAC",
         "samples": [
-            "igvf:alias10"
+            "danwei-huangfu:HUES8_differentiated_definitive_endoderm_12hr"
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
         "multiome_size": 2,

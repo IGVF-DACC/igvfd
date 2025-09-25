@@ -29,15 +29,6 @@ def measurement_set():
             'auxiliary_sets.file_set_type': {
                 'title': 'Auxiliary Data'
             },
-            'construct_library_sets.file_set_type': {
-                'title': 'Construct Library Data'
-            },
-            'construct_library_sets.small_scale_gene_list.symbol': {
-                'title': 'Investigated Gene'
-            },
-            'targeted_genes.symbol': {
-                'title': 'Readout Genes'
-            },
             'files.sequencing_platform.term_name': {
                 'title': 'Sequencing Platform'
             },
@@ -62,6 +53,21 @@ def measurement_set():
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
+            'construct_library_sets.file_set_type': {
+                'title': 'Construct Library Data'
+            },
+            'construct_library_sets.selection_criteria': {
+                'title': 'Construct Library Selection Criteria'
+            },
+            'construct_library_sets.integrated_content_files.content_type': {
+                'title': 'Construct Library Design'
+            },
+            'construct_library_sets.small_scale_gene_list.symbol': {
+                'title': 'Investigated Gene'
+            },
+            'targeted_genes.symbol': {
+                'title': 'Readout Gene'
+            },
             'sequencing_library_types': {
                 'title': 'Library Material'
             },
@@ -70,9 +76,6 @@ def measurement_set():
             },
             'files.file_format': {
                 'title': 'File Format',
-            },
-            'construct_library_sets.integrated_content_files.content_type': {
-                'title': 'Construct Library Design'
             },
             'collections': {
                 'title': 'Collections',

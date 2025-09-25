@@ -16,12 +16,6 @@ def file_set():
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles'
             },
-            'assembly': {
-                'title': 'Assembly',
-            },
-            'transcriptome_annotation': {
-                'title': 'Transcriptome Annotation',
-            },
             'construct_library_sets.file_set_type': {
                 'title': 'Construct Library Data'
             },
@@ -48,6 +42,12 @@ def file_set():
             },
             'sequencing_library_types': {
                 'title': 'Library Type',
+            },
+            'files.assembly': {
+                'title': 'Assembly',
+            },
+            'files.transcriptome_annotation': {
+                'title': 'Transcriptome Annotation',
             },
             'files.content_type': {
                 'title': 'File Type',
