@@ -28,7 +28,7 @@ TRANSCRIPT_ASSAY_TERMS = ['/assay-terms/OBI_0003090/',  # bulk RNA-seq assay
                           '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
                           '/assay-terms/OBI_0003662/',  # single-nucleus methylcytosine and transcriptome sequencing assay
                           '/assay-terms/NTR_0000761/',  # spatial transcriptomics
-                          '/assay-terms/NTR_0000735'   # single cell nascent transcription sequencing
+                          '/assay-terms/NTR_0000735/'   # single cell nascent transcription sequencing
                           ]
 
 
