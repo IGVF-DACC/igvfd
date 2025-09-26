@@ -32,7 +32,9 @@ class Software(Item):
         'versions': ('SoftwareVersion', 'software')
     }
 
-    set_status_up = []
+    set_status_up = [
+        'documents'
+    ]
     set_status_down = []
 
     @calculated_property(schema={

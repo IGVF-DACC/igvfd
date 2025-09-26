@@ -226,7 +226,10 @@ class File(Item):
 
     set_status_up = [
         'analysis_step_version',
-        'file_format_specifications'
+        'documents',
+        'file_format_specifications',
+        'file_set',
+        'quality_metrics'
     ]
     set_status_down = []
     public_s3_statuses = ['released', 'archived']
@@ -543,6 +546,7 @@ class SequenceFile(File):
         'seqspecs': ('ConfigurationFile', 'seqspec_of')
     }
     set_status_up = File.set_status_up + [
+        'seqspec_document',
         'sequencing_platform'
     ]
     set_status_down = File.set_status_down + []
