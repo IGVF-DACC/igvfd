@@ -436,7 +436,8 @@
                     "ONT Fiber-seq",
                     "ONT direct WGS",
                     "Bisulfite-seq",
-                    "WGS"
+                    "WGS",
+                    "DNase-seq"
                 ],
                 "enum_descriptions": {
                     "RNA-seq": "RNA sequencing (RNA-seq) is used to analyze the transcriptome by sequencing RNA.",
@@ -516,7 +517,8 @@
                     "ONT Fiber-seq": "A DNA methylation profiling assay in which chromatin stencils are created by treating nuclei with m6A methyltransferase (MTase) and then sequenced using single-molecule circular consensus sequencing to identify regions of accessible DNA at nucleotide resolution.",
                     "ONT direct WGS": "An assay to determine the entire sequence of an organism's genome. This assay specifically utilizes Oxford Nanopore sequencing platforms.",
                     "Bisulfite-seq": "Bisulfite sequencing (Bisulfite-seq) is used to detect DNA methylation by treating DNA with sodium bisulfite, which converts unmethylated cytosines to uracil, allowing the identification of methylated cytosines at single-base resolution through sequencing.",
-                    "WGS": "Whole Genome Sequencing (WGS) is an assay to determine the entire sequence of an organism's genome."
+                    "WGS": "Whole Genome Sequencing (WGS) is an assay to determine the entire sequence of an organism's genome.",
+                    "DNase-seq": "DNase I hypersensitive sites sequencing is for mapping DNase I hypersensitive sites across the genome to identify regulatory regions like promoters and enhancers."
                 }
             },
             "submissionExample": {

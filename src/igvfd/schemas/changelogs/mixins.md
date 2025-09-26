@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `preferred_assay_titles` enum list to include `DNase-seq`. (09/26/2025)
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`. (08/06/2025)
 * Extend `collections` enum list to include `Benchmark`. (08/06/2025)
 * Extend `collections` enum list to include `TF Perturb-seq Project`. (08/06/2025)
