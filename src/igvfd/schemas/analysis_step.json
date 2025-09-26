@@ -60,6 +60,7 @@
                     "barcode mapping generation",
                     "base calling",
                     "cell to feature barcode mapping",
+                    "cell profiling",
                     "computational model prediction",
                     "computational model training",
                     "counts normalization",
@@ -72,6 +73,7 @@
                     "fragment generation",
                     "genome index generation",
                     "heteroplasmy ratio determination",
+                    "image analysis",
                     "interaction calling",
                     "matrix generation",
                     "merging",
@@ -84,6 +86,7 @@
                     "signal normalization",
                     "spatial feature detection",
                     "transcriptome index generation",
+                    "UMAP embedding",
                     "UMI deduplication",
                     "UMI quantification",
                     "variant annotation"
