@@ -43,7 +43,8 @@
         ],
         "preferred_assay_titles": [
             "STARR-seq",
-            "10x multiome"
+            "10x multiome",
+            "DNase-seq"
         ]
     }
 ]
