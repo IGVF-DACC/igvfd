@@ -228,7 +228,9 @@ class File(Item):
     set_status_up = [
         'analysis_step_version',
         'documents',
-        'file_format_specifications'
+        'file_format_specifications',
+        'file_set',
+        'quality_metrics'
     ]
     set_status_down = []
     public_s3_statuses = ['released', 'archived']
