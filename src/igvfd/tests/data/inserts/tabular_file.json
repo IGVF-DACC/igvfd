@@ -1070,5 +1070,24 @@
         "release_timestamp": "2025-03-06T12:34:56Z",
         "file_set": "j-michael-cherry:barcodes_curated_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "fe5e4ad6-6391-47d6-bbad-adfb49424a24",
+        "accession": "IGVFFI0002SBRD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_individual_cells_profile"
+        ],
+        "md5sum": "b0e52e99d2358eeaf9339310a7fa2b58",
+        "file_format": "tsv",
+        "content_type": "individual cells profile",
+        "submitted_file_name": "/Users/igvf/igvf_files/individual_cells_profile.tsv.gz",
+        "file_size": 903,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "controlled_access": false
     }
 ]
