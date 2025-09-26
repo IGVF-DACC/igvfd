@@ -2,8 +2,9 @@
 
 ### Minor changes since schema version 18
 
-* Adjust `preferred_assay_titles` enum list to include `Parse Perturb-seq`.
-* Adjust `preferred_assay_titles` enum list to include `CROP-seq`.
+* Extend `preferred_assay_titles` enum list to include `DNase-seq`.
+* Extend `preferred_assay_titles` enum list to include `Parse Perturb-seq`.
+* Extend `preferred_assay_titles` enum list to include `CROP-seq`.
 
 ### Schema version 18
 

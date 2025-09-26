@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 6
 
+* Extend `preferred_assay_titles` enum list to include `DNase-seq`.
 * Add `preferred_assay_titles`.
 * Update `source_url` regex to include `https://support.parsebiosciences.com/`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.

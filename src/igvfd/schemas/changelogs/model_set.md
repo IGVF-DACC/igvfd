@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Extend `preferred_assay_titles` enum list to include `DNase-seq`.
 * Add `preferred_assay_titles`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Extend `collections` enum list to include `Benchmark`.
