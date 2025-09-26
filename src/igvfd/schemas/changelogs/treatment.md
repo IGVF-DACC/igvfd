@@ -1,5 +1,9 @@
 ## Changelog for *`treatment.json`*
 
+### Schema version 10
+
+* Adjust `treatment_type` enum list to remove `environmental`.
+
 ### Minor changes since schema version 9
 
 * Adjust `purpose` enum list to restrict usage of `differentiation` to admin users.

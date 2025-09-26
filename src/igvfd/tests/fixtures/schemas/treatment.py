@@ -52,6 +52,22 @@ def depletion_treatment(testapp, lab, award):
 
 
 @pytest.fixture
+def treatment_ntr(testapp, lab, award):
+    item = {
+        'treatment_term_id': 'NTR:100',
+        'treatment_term_name': 'interferon gamma',
+        'treatment_type': 'chemical',
+        'amount': 10,
+        'amount_units': 'mM',
+        'purpose': 'perturbation',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'depletion': False
+    }
+    return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def treatment_v1(treatment_chemical):
     item = treatment_chemical.copy()
     item.update({
@@ -72,22 +88,6 @@ def treatment_v2(treatment_chemical):
         'aliases': []
     })
     return item
-
-
-@pytest.fixture
-def treatment_ntr(testapp, lab, award):
-    item = {
-        'treatment_term_id': 'NTR:100',
-        'treatment_term_name': 'interferon gamma',
-        'treatment_type': 'chemical',
-        'amount': 10,
-        'amount_units': 'mM',
-        'purpose': 'perturbation',
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'depletion': False
-    }
-    return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
 
 
 @pytest.fixture
@@ -160,5 +160,15 @@ def treatment_v8(treatment_chemical):
     item = treatment_chemical.copy()
     item.update({
         'schema_version': '8'
+    })
+    return item
+
+
+@pytest.fixture
+def treatment_v9(treatment_chemical):
+    item = treatment_chemical.copy()
+    item.update({
+        'schema_version': '9',
+        'treatment_type': 'environmental'
     })
     return item

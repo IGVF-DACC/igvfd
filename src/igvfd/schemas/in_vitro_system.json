@@ -544,7 +544,10 @@
                 "DMEM with serum",
                 "DMEM without serum",
                 "SMBM with serum",
-                "SMBM without serum"
+                "SMBM without serum",
+                "1 kPa hydrogel",
+                "50 kPa hydrogel",
+                "tissue culture plastic plates (no hydrogel)"
             ],
             "submissionExample": {
                 "appscript": "DMEM with serum",

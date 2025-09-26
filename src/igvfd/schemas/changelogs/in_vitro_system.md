@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 28
 
+* Extend `growth_medium` enum list to include `1 kPa hydrogel`.
+* Extend `growth_medium` enum list to include `50 kPa hydrogel`.
+* Extend `growth_medium` enum list to include `tissue culture plastic plates (no hydrogel)`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Extend `collections` enum list to include `Benchmark`.
 * Extend `collections` enum list to include `TF Perturb-seq Project`.

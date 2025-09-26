@@ -31,6 +31,9 @@ def auxiliary_set():
             'samples.disease_terms.term_name': {
                 'title': 'Disease',
             },
+            'samples.growth_medium': {
+                'title': 'Growth Medium',
+            },
             'samples.modifications.modality': {
                 'title': 'Modification',
             },

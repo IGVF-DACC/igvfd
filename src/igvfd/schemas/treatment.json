@@ -135,7 +135,7 @@
             ]
         },
         "treatment_type": {
-            "comment": "If treatment_type is protein, only Uniprot ids are allowed while if treatment_type is chemical, only CHEBI ids are allowed. A term id is required in both cases and NTRs are allowed when there is no existing term id. Environmental treatments should not specify a term id.",
+            "comment": "If treatment_type is protein, only Uniprot ids are allowed while if treatment_type is chemical, only CHEBI ids are allowed. A term id is required in both cases and NTRs are allowed when there is no existing term id.",
             "allOf": [
                 {
                     "if": {
@@ -180,54 +180,13 @@
                             "treatment_term_id"
                         ]
                     }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "treatment_type": {
-                                "const": "environmental"
-                            }
-                        },
-                        "required": [
-                            "treatment_type"
-                        ]
-                    },
-                    "then": {
-                        "not": {
-                            "required": [
-                                "treatment_term_id"
-                            ]
-                        }
-                    }
                 }
             ]
-        },
-        "treatment_term_name": {
-            "comment": "Environmental treatments are restricted to term names that include currently only stiffness.",
-            "if": {
-                "properties": {
-                    "treatment_type": {
-                        "const": "environmental"
-                    }
-                },
-                "required": [
-                    "treatment_type"
-                ]
-            },
-            "then": {
-                "properties": {
-                    "treatment_term_name": {
-                        "enum": [
-                            "stiffness"
-                        ]
-                    }
-                }
-            }
         }
     },
     "properties": {
         "schema_version": {
-            "default": "9"
+            "default": "10"
         },
         "documents": {
             "description": "Documents that describe the treatment protocol details.",
@@ -391,13 +350,11 @@
             "description": "The classification of treatment agent that specifies its exact molecular nature. ",
             "enum": [
                 "chemical",
-                "protein",
-                "environmental"
+                "protein"
             ],
             "enum_descriptions": {
                 "chemical": "Refers to (natural or synthetic) organic/inorganic compounds and also includes drugs. Example of chemical type: lactate, ethanol,hydrocortisone, LPS etc.",
-                "protein": "Restricted to active protein biomolecules that are naturally or artifically synthesized via cellular translation mechanism of converting DNA into a protein. Example of protein type: Interferons, interlukin, antibodies, etc.",
-                "environmental": "Environmental type referes to other external conditions that directly influence biological processes or reactions within a given environment. Example of chemical type: stiffness."
+                "protein": "Restricted to active protein biomolecules that are naturally or artifically synthesized via cellular translation mechanism of converting DNA into a protein. Example of protein type: Interferons, interlukin, antibodies, etc."
             },
             "submissionExample": {
                 "appscript": "chemical",
