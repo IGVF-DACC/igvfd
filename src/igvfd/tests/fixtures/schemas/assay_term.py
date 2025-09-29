@@ -295,3 +295,13 @@ def assay_term_v17(assay_term_crispr):
         'preferred_assay_titles': ['Parse Perturb-seq']
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v18(assay_term_scatac):
+    item = assay_term_scatac.copy()
+    item.update({
+        'schema_version': '18',
+        'preferred_assay_titles': ['10x Scale pre-indexing']
+    })
+    return item

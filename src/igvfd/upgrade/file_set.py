@@ -659,3 +659,42 @@ def measurement_set_37_38(value, system):
     if 'external_image_url' in value:
         value['external_image_urls'] = [(value['external_image_url'])]
         del value['external_image_url']
+
+
+@upgrade_step('measurement_set', '38', '39')
+def measurement_set_38_39(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2965
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    notes = value.get('notes', '')
+    assay_term = value.get('assay_term', '')
+    replacement_map = {
+        '/assay-terms/OBI_0002762/': '10x scATAC with Scale pre-indexing',
+        '/assay-terms/OBI_0003109/': 'scRNA with Scale pre-indexing',
+    }
+
+    if '10x with Scale pre-indexing' in preferred_assay_titles and assay_term in replacement_map:
+        index = preferred_assay_titles.index('10x with Scale pre-indexing')
+        old_value = preferred_assay_titles[index]  # save before updating
+        new_value = replacement_map[assay_term]
+
+        preferred_assay_titles[index] = new_value
+        value['preferred_assay_titles'] = preferred_assay_titles
+
+        notes += (
+            f'This measurement set previously used {old_value} as a preferred_assay_titles, '
+            f'but it has been updated to {new_value} via an upgrade.'
+        )
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('model_set', '5', '6')
+def model_set_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2965
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    notes = value.get('notes', '')
+    if '10x with Scale pre-indexing' in preferred_assay_titles:
+        index = preferred_assay_titles.index('10x with Scale pre-indexing')
+        preferred_assay_titles[index] = '10x scATAC with Scale pre-indexing'
+        value['preferred_assay_titles'] = preferred_assay_titles
+        notes += f'This model set previously used 10x with Scale pre-indexing as a preferred_assay_titles, but it has been updated to 10x scATAC with Scale pre-indexing via an upgrade.'
+        value['notes'] = notes.strip()

@@ -40,3 +40,16 @@ def workflow_5_6(value, system):
     if 'workflow_version' in value:
         version_old = str(value['workflow_version'])
         value['workflow_version'] = f'v{version_old}.0.0'
+
+
+@upgrade_step('workflow', '6', '7')
+def workflow_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2965
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    notes = value.get('notes', '')
+    if '10x Scale pre-indexing' in preferred_assay_titles:
+        index = preferred_assay_titles.index('10x Scale pre-indexing')
+        preferred_assay_titles[index] = '10x scATAC with Scale pre-indexing'
+        value['preferred_assay_titles'] = preferred_assay_titles
+        notes += f'This workflow previously used 10x with Scale pre-indexing as a preferred_assay_titles, but it has been updated to 10x scATAC with Scale pre-indexing via an upgrade.'
+        value['notes'] = notes.strip()
