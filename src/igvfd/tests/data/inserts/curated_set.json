@@ -164,5 +164,18 @@
             "igvf:curated_set_qtl_files"
         ],
         "description": "A curated set to store QTL data files."
+    },
+    {
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "3cda8016-79ce-4fa9-b935-7afe22d216fb",
+        "file_set_type": "functional effect",
+        "accession": "IGVFDS9999FUNC",
+        "status": "released",
+        "release_timestamp": "2025-09-06T12:34:56Z",
+        "aliases": [
+            "igvf:curated_set_E2G_functional_effect_data"
+        ],
+        "description": "A curated set to store ENCODE E2G prediction data files."
     }
 ]

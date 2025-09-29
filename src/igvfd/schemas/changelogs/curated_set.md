@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Extend `file_set_type` enum list to include `functional effect`.
 * Extend `file_set_type` enum list to include `QTL`.
 * Extend `file_set_type` enum list to include `pipeline parameters`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
