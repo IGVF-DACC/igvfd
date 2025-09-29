@@ -229,7 +229,6 @@ class File(Item):
         'analysis_step_version',
         'documents',
         'file_format_specifications',
-        'file_set',
         'quality_metrics'
     ]
     set_status_down = []
