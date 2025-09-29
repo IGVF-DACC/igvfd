@@ -34,3 +34,12 @@ def test_workflow_upgrade_5_6(upgrader, workflow_v5):
     assert value['schema_version'] == '6'
     assert isinstance(value['workflow_version'], str)
     assert value['workflow_version'] == 'v5.0.0'
+
+
+def test_workflow_upgrade_6_7(upgrader, workflow_v6):
+    value = upgrader.upgrade(
+        'workflow', workflow_v6,
+        current_version='6', target_version='7')
+    assert value['schema_version'] == '7'
+    assert value.get('preferred_assay_titles') == ['10x scATAC with Scale pre-indexing']
+    assert value.get('notes') == 'This workflow previously used 10x with Scale pre-indexing as a preferred_assay_titles, but it has been updated to 10x scATAC with Scale pre-indexing via an upgrade.'
