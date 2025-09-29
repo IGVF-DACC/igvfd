@@ -14,10 +14,10 @@ def prediction_set():
                 'title': 'Prediction Scope',
             },
             'associated_phenotypes.term_name': {
-                'title': 'Associated Phenotypes'
+                'title': 'Associated Phenotype'
             },
             'assessed_genes.symbol': {
-                'title': 'Assessed Genes',
+                'title': 'Assessed Gene',
             },
             'donors.taxa': {
                 'title': 'Taxa',
