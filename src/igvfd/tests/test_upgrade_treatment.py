@@ -64,3 +64,10 @@ def test_treatment_upgrade_8_9(upgrader, treatment_v8):
     value = upgrader.upgrade('treatment', treatment_v8, current_version='8', target_version='9')
     assert value['schema_version'] == '9'
     assert value['depletion'] == False
+
+
+def test_treatment_upgrade_9_10(upgrader, treatment_v9):
+    value = upgrader.upgrade('treatment', treatment_v9, current_version='9', target_version='10')
+    assert value['schema_version'] == '10'
+    assert value['treatment_type'] == 'protein'
+    assert value['treatment_term_id'] == 'NTR:0000000'
