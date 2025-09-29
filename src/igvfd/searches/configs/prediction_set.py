@@ -16,7 +16,7 @@ def prediction_set():
             'associated_phenotypes.term_name': {
                 'title': 'Associated Phenotypes'
             },
-            'assessed_genes': {
+            'assessed_genes.symbol': {
                 'title': 'Assessed Genes',
             },
             'donors.taxa': {
