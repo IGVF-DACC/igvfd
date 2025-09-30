@@ -302,6 +302,6 @@ def assay_term_v18(assay_term_scatac):
     item = assay_term_scatac.copy()
     item.update({
         'schema_version': '18',
-        'preferred_assay_titles': ['10x Scale pre-indexing']
+        'preferred_assay_titles': ['10x with Scale pre-indexing']
     })
     return item

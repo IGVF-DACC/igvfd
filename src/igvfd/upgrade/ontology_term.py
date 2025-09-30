@@ -247,13 +247,20 @@ def assay_term_18_19(value, system):
     notes = value.get('notes', '')
     term_id = value.get('term_id', '')
     replacement_map = {
-        'OBI:0002762': '10x scATAC with Scale pre-indexing',
-        'OBI:0003109': 'scRNA with Scale pre-indexing',
+        'OBI:0002762': '10x snATAC-seq with Scale pre-indexing',
+        'OBI:0003109': 'snRNA-seq with Scale pre-indexing',
     }
 
-    if '10x Scale pre-indexing' in preferred_assay_titles and term_id in replacement_map:
-        index = preferred_assay_titles.index('10x Scale pre-indexing')
-        preferred_assay_titles[index] = replacement_map[term_id]
+    if '10x with Scale pre-indexing' in preferred_assay_titles and term_id in replacement_map:
+        index = preferred_assay_titles.index('10x with Scale pre-indexing')
+        old_value = preferred_assay_titles[index]
+        new_value = replacement_map[term_id]
+
+        preferred_assay_titles[index] = new_value
         value['preferred_assay_titles'] = preferred_assay_titles
-        notes += f'This assay_term previously used {preferred_assay_titles[index]} as a preferred_assay_titles, but it has been updated to {replacement_map[term_id]} via an upgrade.'
+
+        notes += (
+            f'This assay_term previously used {old_value} as a preferred_assay_titles, '
+            f'but it has been updated to {new_value} via an upgrade.'
+        )
         value['notes'] = notes.strip()

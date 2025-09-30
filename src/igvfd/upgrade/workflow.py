@@ -49,7 +49,7 @@ def workflow_6_7(value, system):
     notes = value.get('notes', '')
     if '10x Scale pre-indexing' in preferred_assay_titles:
         index = preferred_assay_titles.index('10x Scale pre-indexing')
-        preferred_assay_titles[index] = '10x scATAC with Scale pre-indexing'
+        preferred_assay_titles[index] = '10x snATAC-seq with Scale pre-indexing'
         value['preferred_assay_titles'] = preferred_assay_titles
-        notes += f'This workflow previously used 10x with Scale pre-indexing as a preferred_assay_titles, but it has been updated to 10x scATAC with Scale pre-indexing via an upgrade.'
+        notes += f'This workflow previously used 10x with Scale pre-indexing as a preferred_assay_titles, but it has been updated to 10x snATAC-seq with Scale pre-indexing via an upgrade.'
         value['notes'] = notes.strip()

@@ -41,5 +41,5 @@ def test_workflow_upgrade_6_7(upgrader, workflow_v6):
         'workflow', workflow_v6,
         current_version='6', target_version='7')
     assert value['schema_version'] == '7'
-    assert value.get('preferred_assay_titles') == ['10x scATAC with Scale pre-indexing']
-    assert value.get('notes') == 'This workflow previously used 10x with Scale pre-indexing as a preferred_assay_titles, but it has been updated to 10x scATAC with Scale pre-indexing via an upgrade.'
+    assert value.get('preferred_assay_titles') == ['10x snATAC-seq with Scale pre-indexing']
+    assert value.get('notes') == 'This workflow previously used 10x with Scale pre-indexing as a preferred_assay_titles, but it has been updated to 10x snATAC-seq with Scale pre-indexing via an upgrade.'
