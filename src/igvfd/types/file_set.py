@@ -424,7 +424,9 @@ class AnalysisSet(FileSet):
         Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline', 'status', 'workflow_version']),
         Path('targeted_genes', include=['@id', 'symbol'])]
     audit_inherit = FileSet.audit_inherit
-    set_status_up = FileSet.set_status_up + []
+    set_status_up = FileSet.set_status_up + [
+        'pipeline_parameters'
+    ]
     set_status_down = FileSet.set_status_down + []
 
     @calculated_property(
