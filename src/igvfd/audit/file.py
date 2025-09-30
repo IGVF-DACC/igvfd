@@ -190,6 +190,15 @@ def audit_file_mixed_assembly_transcriptome_annotation(value, system):
 
 
 def audit_file_in_correct_bucket(value, system):
+    '''
+    [
+        {
+            "audit_description": "Files are expected to be in the correct S3 bucket.",
+            "audit_category": "incorrect file bucket",
+            "audit_level": "INTERNAL_ACTION"
+        }
+    ]
+    '''
     request = system.get('request')
     file_item = request.root.get_by_uuid(value['uuid'])
     result, current_path, destination_path = file_item._file_in_correct_bucket(request)
