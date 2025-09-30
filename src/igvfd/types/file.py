@@ -1379,6 +1379,27 @@ class IndexFile(File):
         if 'redacted' in parent_file_object:
             return parent_file_object['redacted']
 
+    @calculated_property(
+        schema={
+            'title': 'Reference Files',
+            'description': 'The reference files of the file that this index file is derived from.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'notSubmittable': True,
+            'items': {
+                'type': 'string',
+                'linkTo': 'ReferenceFile'
+            },
+        }
+    )
+    def reference_files(self, request, derived_from):
+        parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
+        if 'reference_files' in parent_file_object:
+            return parent_file_object['reference_files']
+        else:
+            return None
+
 
 @view_config(
     name='upload',

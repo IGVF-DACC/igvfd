@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 38
+
+* Extend `preferred_assay_titles` enum list to include `DNase-seq`.
+
 ### Schema version 38
 
 * Remove `external_image_url`.

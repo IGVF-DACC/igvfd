@@ -1,6 +1,6 @@
 {
-    "hash": "2629766086bc235a6bb84103aefb6d4f",
-    "index_name": "index_file_26297660",
+    "hash": "591e326e6652e15c338547c2729a7ca6",
+    "index_name": "index_file_591e326e",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -2687,6 +2687,9 @@
                     "redacted": {
                         "store": true,
                         "type": "boolean"
+                    },
+                    "reference_files": {
+                        "type": "keyword"
                     },
                     "release_timestamp": {
                         "type": "date"
