@@ -25,7 +25,7 @@
             "scCRISPR screen",
             "Parse Perturb-seq",
             "TAP-seq",
-            "10x scATAC with Scale pre-indexing"
+            "10x snATAC-seq with Scale pre-indexing"
         ]
     },
     {
