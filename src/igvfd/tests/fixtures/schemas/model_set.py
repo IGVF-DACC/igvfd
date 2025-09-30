@@ -47,3 +47,13 @@ def model_set_v4(model_set_no_input, software_version):
         'software_version': software_version['@id']
     })
     return item
+
+
+@pytest.fixture
+def model_set_v5(model_set_no_input):
+    item = model_set_no_input.copy()
+    item.update({
+        'schema_version': '5',
+        'preferred_assay_titles': ['10x with Scale pre-indexing']
+    })
+    return item

@@ -803,5 +803,27 @@
         "preferred_assay_titles": [
             "CROP-seq"
         ]
+    },
+    {
+        "aliases": [
+            "igvf:dual-lipa"
+        ],
+        "award": "1UM1HG012053-01",
+        "lab": "/labs/charles-gersbach/",
+        "status": "released",
+        "release_timestamp": "2025-06-06T12:34:56Z",
+        "uuid": "25c38b99-1714-452a-aa99-102939e043ea",
+        "accession": "IGVFDS0000CROS",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0002631/",
+        "file_set_type": "experimental data",
+        "control_types": [
+            "wildtype"
+        ],
+        "preferred_assay_titles": [
+            "DUAL-IPA"
+        ]
     }
 ]
