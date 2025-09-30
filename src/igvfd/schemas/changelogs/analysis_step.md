@@ -2,6 +2,23 @@
 
 ### Minor changes since schema version 9
 
+* Extend `analysis_step_types` enum list to include `UMAP embedding`.
+* Extend `analysis_step_types` enum list to include `cell profiling`.
+* Extend `analysis_step_types` enum list to include `image analysis`.
+* Extend `output_content_types` enum list to include `UMAP plot`.
+* Extend `input_content_types` enum list to include `UMAP plot`.
+* Extend `output_content_types` enum list to include `DUAL-IPA score`.
+* Extend `input_content_types` enum list to include `DUAL-IPA score`.
+* Extend `output_content_types` enum list to include `protein stability fluorescence score`.
+* Extend `input_content_types` enum list to include `protein stability fluorescence score`.
+* Extend `output_content_types` enum list to include `selected normalized variants profile`.
+* Extend `input_content_types` enum list to include `selected normalized variants profile`.
+* Extend `output_content_types` enum list to include `normalized variants profile`.
+* Extend `input_content_types` enum list to include `normalized variants profile`.
+* Extend `output_content_types` enum list to include `individual cells profile`.
+* Extend `input_content_types` enum list to include `individual cells profile`.
+* Extend `output_content_types` enum list to include `variant to cluster mapping`.
+* Extend `input_content_types` enum list to include `variant to cluster mapping`.
 * Extend `output_content_types` enum list to include `modification state`.
 * Extend `input_content_types` enum list to include `modification state`.
 * Extend `output_content_types` enum list to include `barcode to donor mapping`.
