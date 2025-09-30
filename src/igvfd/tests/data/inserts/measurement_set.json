@@ -823,8 +823,7 @@
             "wildtype"
         ],
         "preferred_assay_titles": [
-            "DUAL-IPA",
-            "snRNA-seq with Scale pre-indexing"
+            "DUAL-IPA"
         ]
     }
 ]
