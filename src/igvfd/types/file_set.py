@@ -1540,6 +1540,7 @@ class AuxiliarySet(FileSet):
     schema = load_schema('igvfd:schemas/auxiliary_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('measurement_sets', include=['@id', 'accession', 'aliases', 'preferred_assay_titles', 'status']),
+        Path('input_for', include=['@id', 'accession', 'aliases', 'status', 'uniform_pipeline_status'])
     ]
     audit_inherit = FileSet.audit_inherit
     rev = FileSet.rev | {'measurement_sets': ('MeasurementSet', 'auxiliary_sets')}
