@@ -832,7 +832,8 @@
                     "sequence variants",
                     "synthetic elements",
                     "transcription start sites",
-                    "TF binding sites"
+                    "TF binding sites",
+                    "TF genes"
                 ]
             },
             "submissionExample": {
