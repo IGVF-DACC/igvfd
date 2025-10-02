@@ -2,8 +2,9 @@
 
 ### Schema version 19
 
-* Extend `preferred_assay_titles` enum list to include `10x scATAC with Scale pre-indexing`.
-* Extend `preferred_assay_titles` enum list to include `scRNA with Scale pre-indexing`.
+* Extend `preferred_assay_titles` enum list to include `DUAL-IPA`.
+* Extend `preferred_assay_titles` enum list to include `10x snATAC with Scale pre-indexing`.
+* Extend `preferred_assay_titles` enum list to include `snRNA with Scale pre-indexing`.
 * Adjust `preferred_assay_titles` enum list to remove `10x Scale pre-indexing`.
 
 ### Minor changes since schema version 18
