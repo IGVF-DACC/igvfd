@@ -10,7 +10,6 @@
         "file_format",
         "file_set",
         "content_type",
-        "reference_files",
         "redacted",
         "filtered",
         "controlled_access"
@@ -75,6 +74,39 @@
                     ]
                 }
             }
+        },
+        "content_type": {
+            "comment": "Only methylated reads do not require reference files.",
+            "oneOf": [
+                {
+                    "required": [
+                        "reference_files"
+                    ],
+                    "properties": {
+                        "content_type": {
+                            "enum": [
+                                "alignments",
+                                "alignments with modifications",
+                                "transcriptome alignments"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "reference_files"
+                        ]
+                    },
+                    "properties": {
+                        "content_type": {
+                            "enum": [
+                                "methylated reads"
+                            ]
+                        }
+                    }
+                }
+            ]
         }
     },
     "type": "object",
