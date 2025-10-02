@@ -739,7 +739,7 @@ class AlignmentFile(File):
             'notSubmittable': True
         }
     )
-    def transcriptome_annotation(self, request, reference_files):
+    def transcriptome_annotation(self, request, reference_files=[]):
         transcriptome_annotation_set = set()
         transcriptome_annotation = None
         for ref_file in paths_filtered_by_status(request, reference_files):
@@ -761,7 +761,7 @@ class AlignmentFile(File):
             'notSubmittable': True
         }
     )
-    def assembly(self, request, reference_files):
+    def assembly(self, request, reference_files=[]):
         assembly_set = set()
         assembly = None
         for ref_file in paths_filtered_by_status(request, reference_files):
