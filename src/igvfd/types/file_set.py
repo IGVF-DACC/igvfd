@@ -1219,7 +1219,8 @@ class MeasurementSet(FileSet):
         Path('related_multiome_datasets', include=['@id', 'accession', 'status']),
         Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
         Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
-        Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status'])
+        Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
+        Path('input_for', include=['@id', 'accession', 'aliases', 'status', 'uniform_pipeline_status'])
     ]
 
     audit_inherit = FileSet.audit_inherit + [
@@ -1539,6 +1540,7 @@ class AuxiliarySet(FileSet):
     schema = load_schema('igvfd:schemas/auxiliary_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('measurement_sets', include=['@id', 'accession', 'aliases', 'preferred_assay_titles', 'status']),
+        Path('input_for', include=['@id', 'accession', 'aliases', 'status', 'uniform_pipeline_status'])
     ]
     audit_inherit = FileSet.audit_inherit
     rev = FileSet.rev | {'measurement_sets': ('MeasurementSet', 'auxiliary_sets')}

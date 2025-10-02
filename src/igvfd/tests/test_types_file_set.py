@@ -99,9 +99,11 @@ def test_input_for(testapp, principal_analysis_set, auxiliary_set_v5, measuremen
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('input_for', []) == [principal_analysis_set['@id']]
+    assert len(res.json.get('input_for', [])) == 1
+    assert res.json.get('input_for', [])[0]['@id'] == principal_analysis_set['@id']
     res = testapp.get(auxiliary_set_v5['@id'])
-    assert res.json.get('input_for', []) == [principal_analysis_set['@id']]
+    assert len(res.json.get('input_for', [])) == 1
+    assert res.json.get('input_for', [])[0]['@id'] == principal_analysis_set['@id']
 
 
 def test_construct_library_sets(testapp, principal_analysis_set, measurement_set, construct_library_set_genome_wide, base_expression_construct_library_set, tissue):
