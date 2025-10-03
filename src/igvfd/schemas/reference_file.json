@@ -165,7 +165,6 @@
                 {
                     "enum": [
                         "genome reference",
-                        "elements reference",
                         "exclusion list",
                         "genome index",
                         "guide RNA sequences reference",
@@ -188,6 +187,7 @@
                         "documentation (readme)",
                         "drugs",
                         "elements_genes",
+                        "elements reference",
                         "genes",
                         "genes_genes",
                         "genes_pathways",
@@ -237,7 +237,6 @@
             ],
             "enum_descriptions": {
                 "genome reference": "A sequence file assembled to represent the reference genome for a specific species.",
-                "elements reference": "References for the genomic elements studied, including details like genomic coordinates or identifiers.",
                 "exclusion list": "An exclusion list file contains a set of genomic regions or specific sequences that should be ignored or excluded during data analysis.",
                 "genome index": "A reference file consisting of genome index which allows for faster alignment of sequencing reads to the genome.",
                 "guide RNA sequences reference": "A reference file comprised of concatenated guide RNA sequences intended for use as an alignment or mapping reference. Unlike 'guide RNA sequences' on tabular file, which follow a standardized tabular format with metadata about each guide, this file contains only the raw sequences.",
