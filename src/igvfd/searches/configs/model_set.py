@@ -13,8 +13,8 @@ def model_set():
             'prediction_objects': {
                 'title': 'Prediction Subject'
             },
-            'assessed_genes': {
-                'title': 'Assessed Gene'
+            'assessed_genes.symbol': {
+                'title': 'Assessed Genes'
             },
             'donors.taxa': {
                 'title': 'Taxa',
@@ -150,7 +150,7 @@ def model_set():
             'summary': {
                 'title': 'Summary'
             },
-            'assessed_genes': {
+            'assessed_genes.symbol': {
                 'title': 'Assessed Genes'
             }
         }
