@@ -24,7 +24,6 @@ def audit_multiplexed_sample_no_barcode_map(value, system):
     '''
     audit_message = get_audit_message(audit_multiplexed_sample_no_barcode_map, index=0)
 
-    allowed_tab_files = ['barcode to donor mapping', 'barcode to sample mapping']
     detail = (
         f'Multiplexed sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
         f'has no `barcode_map`.'
@@ -35,7 +34,7 @@ def audit_multiplexed_sample_no_barcode_map(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
         else:
             barcode_map_obj = system.get('request').embed(barcode_map, '@@object?skip_calculated=true')
-            if barcode_map_obj['content_type'] not in allowed_tab_files:
+            if barcode_map_obj['content_type'] != 'barcode to sample mapping':
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
