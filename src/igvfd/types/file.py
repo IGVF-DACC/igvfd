@@ -742,10 +742,11 @@ class AlignmentFile(File):
     def transcriptome_annotation(self, request, reference_files=None):
         transcriptome_annotation_set = set()
         transcriptome_annotation = None
-        for ref_file in paths_filtered_by_status(request, reference_files):
-            ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
-            if ref_file_object['content_type'] == 'transcriptome reference' or ref_file_object['content_type'] == 'transcriptome index':
-                transcriptome_annotation_set.add(ref_file_object.get('transcriptome_annotation', None))
+        if reference_files is not None:
+            for ref_file in paths_filtered_by_status(request, reference_files):
+                ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
+                if ref_file_object['content_type'] == 'transcriptome reference' or ref_file_object['content_type'] == 'transcriptome index':
+                    transcriptome_annotation_set.add(ref_file_object.get('transcriptome_annotation', None))
         if len(transcriptome_annotation_set) > 1:
             transcriptome_annotation = 'Mixed transcriptome annotations'
         elif len(transcriptome_annotation_set) == 1:
@@ -764,10 +765,11 @@ class AlignmentFile(File):
     def assembly(self, request, reference_files=None):
         assembly_set = set()
         assembly = None
-        for ref_file in paths_filtered_by_status(request, reference_files):
-            ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
-            if ref_file_object['content_type'] == 'genome reference' or ref_file_object['content_type'] == 'genome index':
-                assembly_set.add(ref_file_object.get('assembly', None))
+        if reference_files is not None:
+            for ref_file in paths_filtered_by_status(request, reference_files):
+                ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
+                if ref_file_object['content_type'] == 'genome reference' or ref_file_object['content_type'] == 'genome index':
+                    assembly_set.add(ref_file_object.get('assembly', None))
         if len(assembly_set) > 1:
             assembly = 'Mixed genome assemblies'
         elif len(assembly_set) == 1:
