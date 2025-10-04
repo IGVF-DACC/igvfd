@@ -43,7 +43,8 @@
         "file_set_type": "expression vector library",
         "scope": "genes",
         "selection_criteria": [
-            "accessible genome regions"
+            "accessible genome regions",
+            "TF genes"
         ],
         "small_scale_gene_list": [
             "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
