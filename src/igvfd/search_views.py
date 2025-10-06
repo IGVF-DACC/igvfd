@@ -439,7 +439,7 @@ def dataset_summary(context, request):
             ('field', 'creation_timestamp'),
             ('field', 'release_timestamp'),
             ('field', 'assay_term.term_name'),
-            ('field', 'preferred_assay_title'),
+            ('field', 'preferred_assay_titles'),
             ('field', 'lab.title'),
             ('limit', 'all'),
         ]

@@ -17,8 +17,8 @@ def subfacets():
                     },
                 ]
             },
-            'preferred_assay_title': {
-                'title': 'Preferred Assay Title',
+            'preferred_assay_titles': {
+                'title': 'Preferred Assay Titles',
                 'type': 'hierarchical',
                 'subfacets': [
                     {
@@ -50,8 +50,8 @@ def subfacets():
                         'title': 'Assay',
                     },
                     {
-                        'field': 'preferred_assay_title',
-                        'title': 'Preferred assay title',
+                        'field': 'preferred_assay_titles',
+                        'title': 'Preferred assay titles',
                     },
                 ]
 
