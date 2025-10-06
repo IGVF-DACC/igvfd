@@ -157,9 +157,6 @@
         "content_type": "methylated reads",
         "upload_status": "pending",
         "file_set": "igvf:basic_analysis_set",
-        "reference_files": [
-            "IGVFFI0001GNRF"
-        ],
         "filtered": false,
         "redacted": false,
         "controlled_access": false,
