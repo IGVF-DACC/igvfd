@@ -52,7 +52,7 @@ def sample():
             'file_sets.file_set_type': {
                 'title': 'File Set Type'
             },
-            'file_sets.preferred_assay_title': {
+            'file_sets.preferred_assay_titles': {
                 'title': 'Assay Title'
             },
             'construct_library_sets.file_set_type': {
@@ -147,7 +147,7 @@ def sample_cell_lines():
     return {
         'matrix': {
             'x': {
-                'group_by': 'file_sets.preferred_assay_title',
+                'group_by': 'file_sets.preferred_assay_titles',
                 'label': 'Assays'
             },
             'y': {
@@ -165,7 +165,7 @@ def sample_differentiated_specimens():
     return {
         'matrix': {
             'x': {
-                'group_by': 'file_sets.preferred_assay_title',
+                'group_by': 'file_sets.preferred_assay_titles',
                 'label': 'Assays'
             },
             'y': {

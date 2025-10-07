@@ -46,7 +46,7 @@ def in_vitro_system():
             'file_sets.file_set_type': {
                 'title': 'File Set Type'
             },
-            'file_sets.preferred_assay_title': {
+            'file_sets.preferred_assay_titles': {
                 'title': 'Assay Title'
             },
             'construct_library_sets.file_set_type': {
