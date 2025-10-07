@@ -48,3 +48,17 @@ def test_summary(testapp, base_prediction_set, gene_myc_hs, gene_CRLF2_par_y, ge
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get('summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4'
+
+
+def test_software_versions(testapp, tabular_file, base_prediction_set, analysis_step_version, software_version):
+    res = testapp.get(base_prediction_set['@id'])
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'analysis_step_version': analysis_step_version['@id'],
+            'file_set': base_prediction_set['@id']
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'])
+    assert set([software_version_object['@id']
+               for software_version_object in res.json.get('software_versions')]) == {software_version['@id']}
