@@ -13,6 +13,9 @@ def model_set():
             'prediction_objects': {
                 'title': 'Prediction Subject'
             },
+            'software_versions.software.title': {
+                'title': 'Software',
+            },
             'assessed_genes.symbol': {
                 'title': 'Assessed Genes'
             },
@@ -54,9 +57,6 @@ def model_set():
             },
             'files.file_format': {
                 'title': 'File Format',
-            },
-            'software_versions.software.title': {
-                'title': 'Software',
             },
             'preferred_assay_titles': {
                 'title': 'Assay',
