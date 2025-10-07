@@ -11,9 +11,20 @@ def test_audit_missing_barcode_map(
         error['category'] == 'missing barcode map'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+    # tab file linked in barcode_map with wrong content_type
     testapp.patch_json(
         multiplexed_sample['@id'],
         {'barcode_map': tabular_file['@id']}
+    )
+    res = testapp.get(multiplexed_sample['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing barcode map'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # tab file linked in barcode_map with expected content_type
+    testapp.patch_json(
+        tabular_file['@id'],
+        {'content_type': 'barcode to sample mapping'}
     )
     res = testapp.get(multiplexed_sample['@id'] + '@@audit')
     assert all(
