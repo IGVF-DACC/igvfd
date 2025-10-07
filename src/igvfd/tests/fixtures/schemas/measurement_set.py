@@ -533,3 +533,14 @@ def measurement_set_v37(measurement_set):
         'external_image_url': 'https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/'
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v38(measurement_set, assay_term_v18):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '38',
+        'preferred_assay_titles': ['10x with Scale pre-indexing'],
+        'assay_term': assay_term_v18['@id'],
+    })
+    return item

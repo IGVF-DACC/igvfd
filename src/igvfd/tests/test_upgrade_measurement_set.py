@@ -247,3 +247,10 @@ def test_measurement_set_upgrade_37_38(upgrader, measurement_set_v37):
     assert 'external_image_urls' in value and value['external_image_urls'] == [
         'https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/']
     assert value['schema_version'] == '38'
+
+
+def test_measurement_set_upgrade_38_39(upgrader, measurement_set_v38):
+    value = upgrader.upgrade('measurement_set', measurement_set_v38, current_version='38', target_version='39')
+    assert value['schema_version'] == '39'
+    assert value.get('preferred_assay_titles') == ['10x snATAC-seq with Scale pre-indexing']
+    assert value.get('notes') == 'This measurement set previously used 10x with Scale pre-indexing as a preferred_assay_titles, but it has been updated to 10x snATAC-seq with Scale pre-indexing via an upgrade.'
