@@ -52,6 +52,9 @@ def analysis_set():
             'construct_library_sets.integrated_content_files.content_type': {
                 'title': 'Construct Library Design'
             },
+            'construct_library_sets.associated_phenotypes.term_name': {
+                'title': 'Construct Library Associated Phenotypes'
+            },
             'construct_library_sets.small_scale_gene_list.symbol': {
                 'title': 'Investigated Gene'
             },
