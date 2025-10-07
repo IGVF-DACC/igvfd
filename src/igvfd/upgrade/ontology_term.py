@@ -254,7 +254,7 @@ def assay_term_18_19(value, system):
     if '10x with Scale pre-indexing' in preferred_assay_titles and term_id in replacement_map:
         index = preferred_assay_titles.index('10x with Scale pre-indexing')
         old_value = preferred_assay_titles[index]
-        new_value = replacement_map[term_id]
+        new_value = replacement_map.get(term_id, '10x snATAC-seq with Scale pre-indexing')
 
         preferred_assay_titles[index] = new_value
         value['preferred_assay_titles'] = preferred_assay_titles

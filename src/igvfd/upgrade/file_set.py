@@ -667,21 +667,18 @@ def measurement_set_38_39(value, system):
     preferred_assay_titles = value.get('preferred_assay_titles', [])
     notes = value.get('notes', '')
     assay_term = value.get('assay_term', '')
+
     replacement_map = {
         '/assay-terms/OBI_0002762/': '10x snATAC-seq with Scale pre-indexing',
         '/assay-terms/OBI_0003109/': 'snRNA-seq with Scale pre-indexing',
     }
 
     if '10x with Scale pre-indexing' in preferred_assay_titles and assay_term in replacement_map:
-        index = preferred_assay_titles.index('10x with Scale pre-indexing')
-        old_value = preferred_assay_titles[index]  # save before updating
-        new_value = replacement_map[assay_term]
-
-        preferred_assay_titles[index] = new_value
-        value['preferred_assay_titles'] = preferred_assay_titles
+        new_value = replacement_map.get(assay_term, '10x snATAC-seq with Scale pre-indexing')
+        value['preferred_assay_titles'] = [new_value]
 
         notes += (
-            f'This measurement set previously used {old_value} as a preferred_assay_titles, '
+            f'This measurement set previously used 10x with Scale pre-indexing as a preferred_assay_titles, '
             f'but it has been updated to {new_value} via an upgrade.'
         )
         value['notes'] = notes.strip()
