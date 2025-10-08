@@ -544,3 +544,25 @@ def measurement_set_v38(measurement_set, assay_term_v18):
         'assay_term': assay_term_v18['@id'],
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v38_2(measurement_set, assay_term_starr):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '38',
+        'preferred_assay_titles': ['10x with Scale pre-indexing'],
+        'assay_term': assay_term_starr['@id'],
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v38_3(measurement_set, assay_term_starr):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '38',
+        'preferred_assay_titles': ['Perturb-seq'],
+        'assay_term': assay_term_starr['@id'],
+    })
+    return item
