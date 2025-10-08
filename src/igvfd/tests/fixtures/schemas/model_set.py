@@ -57,3 +57,13 @@ def model_set_v5(model_set_no_input):
         'preferred_assay_titles': ['10x with Scale pre-indexing']
     })
     return item
+
+
+@pytest.fixture
+def model_set_v5_2(model_set_no_input):
+    item = model_set_no_input.copy()
+    item.update({
+        'schema_version': '5',
+        'preferred_assay_titles': ['Perturb-seq']
+    })
+    return item

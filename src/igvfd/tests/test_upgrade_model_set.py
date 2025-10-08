@@ -19,8 +19,11 @@ def test_model_set_upgrade_4_5(upgrader, model_set_v4):
     assert 'software_version' not in value
 
 
-def test_model_set_upgrade_5_6(upgrader, model_set_v5):
+def test_model_set_upgrade_5_6(upgrader, model_set_v5, model_set_v5_2):
     value = upgrader.upgrade('model_set', model_set_v5, current_version='5', target_version='6')
     assert value['schema_version'] == '6'
     assert value.get('preferred_assay_titles') == ['10x snATAC-seq with Scale pre-indexing']
     assert value.get('notes') == 'This model set previously used 10x with Scale pre-indexing as a preferred_assay_titles, but it has been updated to 10x snATAC-seq with Scale pre-indexing via an upgrade.'
+    value = upgrader.upgrade('model_set', model_set_v5_2, current_version='5', target_version='6')
+    assert value['schema_version'] == '6'
+    assert value.get('preferred_assay_titles') == ['Perturb-seq']
