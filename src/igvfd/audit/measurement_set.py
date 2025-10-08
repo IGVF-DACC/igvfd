@@ -77,7 +77,7 @@ def audit_related_multiome_datasets(value, system):
                 level=audit_message_unexpected_multiome_size.get('audit_level', '')
             )
 
-    if related_multiome_datasets == []:
+    if related_multiome_datasets == [] and multiome_size:
         if multiome_size != 1:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
