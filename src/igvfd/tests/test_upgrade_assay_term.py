@@ -124,8 +124,11 @@ def test_assay_term_upgrade_17_18(upgrader, assay_term_v17):
     assert value.get('preferred_assay_titles') == ['CC-Perturb-seq']
 
 
-def test_assay_term_upgrade_18_19(upgrader, assay_term_v18):
+def test_assay_term_upgrade_18_19(upgrader, assay_term_v18, assay_term_v18_2, assay_term_crispr):
     value = upgrader.upgrade('assay_term', assay_term_v18, current_version='18', target_version='19')
     assert value['schema_version'] == '19'
     assert value.get('preferred_assay_titles') == ['10x snATAC-seq with Scale pre-indexing']
     assert value.get('notes') == 'This assay_term previously used 10x with Scale pre-indexing as a preferred_assay_titles, but it has been updated to 10x snATAC-seq with Scale pre-indexing via an upgrade.'
+    value = upgrader.upgrade('assay_term', assay_term_v18_2, current_version='18', target_version='19')
+    assert value['schema_version'] == '19'
+    assert value.get('preferred_assay_titles') == ['Parse Perturb-seq']

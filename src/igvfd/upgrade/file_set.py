@@ -673,7 +673,8 @@ def measurement_set_38_39(value, system):
         '/assay-terms/OBI_0003109/': 'snRNA-seq with Scale pre-indexing',
     }
 
-    if '10x with Scale pre-indexing' in preferred_assay_titles and assay_term in replacement_map:
+    if '10x with Scale pre-indexing' in preferred_assay_titles:
+        # Use the fallback if assay_term is not in the map
         new_value = replacement_map.get(assay_term, '10x snATAC-seq with Scale pre-indexing')
         value['preferred_assay_titles'] = [new_value]
 
