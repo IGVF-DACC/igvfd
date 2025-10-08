@@ -69,7 +69,25 @@ def test_audit_related_multiome_datasets(
     measurement_set_multiome_2,
     measurement_set
 ):
-    # If `multiome_size` is specified, `related_multiome_datasets` should not be empty.
+    # If `multiome_size` equals to 1, `related_multiome_datasets` should be empty.
+    testapp.patch_json(
+        measurement_set_multiome['@id'],
+        {
+            'multiome_size': 1
+        }
+    )
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent multiome datasets'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # If `multiome_size` is specified and not equal to 1, `related_multiome_datasets` should not be empty.
+    testapp.patch_json(
+        measurement_set_multiome['@id'],
+        {
+            'multiome_size': 2
+        }
+    )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent multiome datasets'
