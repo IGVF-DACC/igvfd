@@ -251,7 +251,7 @@ def assay_term_18_19(value, system):
         'OBI:0003109': 'snRNA-seq with Scale pre-indexing',
     }
 
-    if '10x with Scale pre-indexing' in preferred_assay_titles and term_id in replacement_map:
+    if '10x with Scale pre-indexing' in preferred_assay_titles:
         index = preferred_assay_titles.index('10x with Scale pre-indexing')
         old_value = preferred_assay_titles[index]
         new_value = replacement_map.get(term_id, '10x snATAC-seq with Scale pre-indexing')
