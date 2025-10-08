@@ -77,17 +77,17 @@ def audit_related_multiome_datasets(value, system):
                 level=audit_message_unexpected_multiome_size.get('audit_level', '')
             )
 
-    if related_multiome_datasets == [] and multiome_size:
-        detail = (
-            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has a `multiome_size` of {multiome_size}, but no `related_multiome_datasets`.'
-        )
-        yield AuditFailure(
-            audit_message_inconsistent_multiome.get('audit_category', ''),
-            f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}',
-            level=audit_message_inconsistent_multiome.get('audit_level', '')
-        )
-
+    if related_multiome_datasets == []:
+        if multiome_size != 1:
+            detail = (
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has a `multiome_size` of {multiome_size}, but no `related_multiome_datasets`.'
+            )
+            yield AuditFailure(
+                audit_message_inconsistent_multiome.get('audit_category', ''),
+                f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}',
+                level=audit_message_inconsistent_multiome.get('audit_level', '')
+            )
     elif related_multiome_datasets and multiome_size:
         if len(related_multiome_datasets) != multiome_size - 1:
             detail = (
