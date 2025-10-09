@@ -10,6 +10,9 @@ def software():
             'used_by': {
                 'title': 'Used By'
             },
+            'categories': {
+                'title': 'Categories'
+            },
             'lab.title': {
                 'title': 'Lab'
             },

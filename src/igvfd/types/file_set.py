@@ -1453,7 +1453,8 @@ class ModelSet(FileSet):
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('input_file_sets', include=['@id', 'accession', 'aliases', 'status']),
         Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
-        Path('software_versions.software', include=['@id', 'summary', 'title', 'source_url', 'download_id', 'status'])
+        Path('software_versions.software', include=['@id', 'summary',
+             'software', 'title', 'source_url', 'download_id', 'status'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + [
@@ -1669,10 +1670,43 @@ class PredictionSet(FileSet):
         Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name', 'status']),
+        Path('software_versions.software', include=['@id', 'summary',
+             'software', 'title', 'source_url', 'download_id', 'status'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
     set_status_down = FileSet.set_status_down + []
+
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Software Versions',
+            'description': 'The software versions used to produce this prediction.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Software Version',
+                'description': 'A software version used to produce this prediction.',
+                'type': 'string',
+                'linkTo': 'SoftwareVersion',
+            },
+            'notSubmittable': True
+
+        }
+    )
+    def software_versions(self, request, files=None):
+        software_versions = []
+        if files:
+            for file in files:
+                file_object = request.embed(file, '@@object?skip_calculated=true')
+                analysis_step_version = file_object.get('analysis_step_version', '')
+                if analysis_step_version:
+                    analysis_step_version_object = request.embed(
+                        analysis_step_version, '@@object?skip_calculated=true')
+                    software_versions = software_versions + \
+                        analysis_step_version_object.get('software_versions', [])
+        return sorted(set(software_versions)) or None
 
     @calculated_property(
         schema={
@@ -1682,27 +1716,20 @@ class PredictionSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type, assessed_genes=None, scope=None, files=None):
+    def summary(self, request, file_set_type, software_versions=None, assessed_genes=None, scope=None, files=None):
         # Get scope info
         scope_phrase = ''
         if scope:
             scope_phrase = f' on scope of {scope}'
-        software_versions = set()
-        if files is not None:
-            for file in files:
-                file_object = request.embed(file, '@@object?skip_calculated=true')
-                if 'analysis_step_version' in file_object:
-                    asv_object = request.embed(
-                        file_object['analysis_step_version'],
-                        '@@object?skip_calculated=true')
-                    for software_version in asv_object['software_versions']:
-                        software_version_object = request.embed(
-                            software_version,
-                            '@@object_with_select_calculated_properties?field=summary')
-                        software_versions.add(software_version_object['summary'])
         software_version_phrase = None
+        software_version_summaries = set()
         if software_versions:
-            software_version_phrase = f'using {", ".join(sorted(software_versions))}'
+            for software_version in software_versions:
+                software_version_object = request.embed(
+                    software_version, '@@object_with_select_calculated_properties?field=summary')
+                software_version_summaries.add(software_version_object['summary'])
+        if software_version_summaries:
+            software_version_phrase = f'using {", ".join(sorted(list(software_version_summaries)))}'
         # Get assessed genes info
         assessed_genes_phrase = get_assessed_gene_phrase(request, assessed_genes)
         # Final summary

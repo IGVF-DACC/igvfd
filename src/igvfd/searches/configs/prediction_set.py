@@ -13,6 +13,9 @@ def prediction_set():
             'scope': {
                 'title': 'Prediction Scope',
             },
+            'software_versions.software.title': {
+                'title': 'Software',
+            },
             'associated_phenotypes.term_name': {
                 'title': 'Associated Phenotypes'
             },
