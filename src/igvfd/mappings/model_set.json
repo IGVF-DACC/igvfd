@@ -1,6 +1,6 @@
 {
-    "hash": "55a37a2b40014e090121cf42cb67ee5c",
-    "index_name": "model_set_55a37a2b",
+    "hash": "eae6d7590f08cb7faec5b6e2d7213d61",
+    "index_name": "model_set_eae6d759",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -430,7 +430,81 @@
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {
-                                "type": "keyword"
+                                "properties": {
+                                    "@id": {
+                                        "type": "keyword"
+                                    },
+                                    "@type": {
+                                        "type": "keyword"
+                                    },
+                                    "aliases": {
+                                        "type": "keyword"
+                                    },
+                                    "ancestors": {
+                                        "type": "keyword"
+                                    },
+                                    "comments": {
+                                        "type": "keyword"
+                                    },
+                                    "creation_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "definition": {
+                                        "type": "keyword"
+                                    },
+                                    "deprecated_ntr_terms": {
+                                        "type": "keyword"
+                                    },
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "is_a": {
+                                        "type": "keyword"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
+                                    "notes": {
+                                        "type": "text"
+                                    },
+                                    "ontology": {
+                                        "type": "keyword"
+                                    },
+                                    "preview_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "release_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "status": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_by": {
+                                        "type": "keyword"
+                                    },
+                                    "submitter_comment": {
+                                        "type": "keyword"
+                                    },
+                                    "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "synonyms": {
+                                        "type": "keyword"
+                                    },
+                                    "term_id": {
+                                        "type": "keyword"
+                                    },
+                                    "term_name": {
+                                        "type": "keyword"
+                                    },
+                                    "uuid": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "auxiliary_sets": {
                                 "type": "keyword"
