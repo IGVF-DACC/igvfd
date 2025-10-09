@@ -33,9 +33,6 @@
         },
         {
             "$ref": "mixins.json#/anvil_url"
-        },
-        {
-            "$ref": "mixins.json#/supersedes"
         }
     ],
     "dependentSchemas": {
@@ -505,7 +502,11 @@
             "permission": "admin_only"
         },
         "supersedes": {
+            "title": "Supersedes",
             "description": "The file(s) that this file supersedes by virtue of being newer, better, or a fixed version of etc. than the one(s) it supersedes.",
+            "comment": "The linked file(s) are expected to have a revoked or archived status.",
+            "minItems": 1,
+            "uniqueItems": true,
             "type": "array",
             "items": {
                 "title": "Superseded File",

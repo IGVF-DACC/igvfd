@@ -49,9 +49,6 @@
         },
         {
             "$ref": "mixins.json#/preferred_assay_titles"
-        },
-        {
-            "$ref": "mixins.json#/supersedes"
         }
     ],
     "dependentSchemas": {
