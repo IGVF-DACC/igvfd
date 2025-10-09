@@ -1,6 +1,6 @@
 {
-    "hash": "99ef85921184eb34433398a463dda5f1",
-    "index_name": "reference_file_99ef8592",
+    "hash": "cffbe672e4ae9214db9a7216f07540c8",
+    "index_name": "reference_file_cffbe672",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -1494,6 +1494,9 @@
                                         "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "properties": {
                                             "@id": {
@@ -1797,6 +1800,9 @@
                             },
                             "summary": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_genes": {
@@ -2388,6 +2394,9 @@
                                         "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "type": "keyword"
                                     },
@@ -2794,6 +2803,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {

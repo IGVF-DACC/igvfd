@@ -1,6 +1,6 @@
 {
-    "hash": "62c187aaa976142c4855c545ead2ef8c",
-    "index_name": "technical_sample_62c187aa",
+    "hash": "e0b01c1f826ec262c30963cb948aaef4",
+    "index_name": "technical_sample_e0b01c1f",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -880,6 +880,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_genes": {
                                 "type": "keyword"
                             },
@@ -1496,6 +1499,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_sample_term": {
                                 "type": "keyword"
                             },
@@ -1692,6 +1698,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "taxa": {

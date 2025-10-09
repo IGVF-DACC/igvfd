@@ -1,6 +1,6 @@
 {
-    "hash": "f39eef4f5721e94507087ac636eeb7b9",
-    "index_name": "configuration_file_f39eef4f",
+    "hash": "e206d0a2578de1329721b4caadc7f952",
+    "index_name": "configuration_file_e206d0a2",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1473,6 +1473,9 @@
                                         "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "properties": {
                                             "@id": {
@@ -1776,6 +1779,9 @@
                             },
                             "summary": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_genes": {
@@ -2366,6 +2372,9 @@
                                     "summary": {
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "type": "keyword"
                                     },
@@ -2768,6 +2777,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "upload_credentials": {

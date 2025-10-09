@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 13
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Add `anvil_url`.
 * Add `catalog_collections`.
 * Add calculated property `workflows`.

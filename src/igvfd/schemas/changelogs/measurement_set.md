@@ -1,6 +1,11 @@
 ## Changelog for *`measurement_set.json`*
 
 
+### Minor changes since schema version 39
+
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
+
 ### Schema version 39
 
 * Extend `preferred_assay_titles` enum list to include `DUAL-IPA`.

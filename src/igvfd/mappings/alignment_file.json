@@ -1,6 +1,6 @@
 {
-    "hash": "41fe97729a967335b34b46ee178fdd91",
-    "index_name": "alignment_file_41fe9772",
+    "hash": "7e12ad4d0b7529782ba68478690c4572",
+    "index_name": "alignment_file_7e12ad4d",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1484,6 +1484,9 @@
                                         "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "properties": {
                                             "@id": {
@@ -1787,6 +1790,9 @@
                             },
                             "summary": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_genes": {
@@ -2381,6 +2387,9 @@
                                     "summary": {
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "type": "keyword"
                                     },
@@ -2791,6 +2800,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {

@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 2
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Add `catalog_collections`.
 * Extend `content_type` enum list to include `neural network architecture and edge weights`.
 * Extend `file_format` enum list to include `zip`.

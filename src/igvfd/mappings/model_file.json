@@ -1,6 +1,6 @@
 {
-    "hash": "bbc291bae00329f3187308b4e8facc2e",
-    "index_name": "model_file_bbc291ba",
+    "hash": "31ac673fc313606bc8b4866251ed3938",
+    "index_name": "model_file_31ac673f",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -1487,6 +1487,9 @@
                                         "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "properties": {
                                             "@id": {
@@ -1790,6 +1793,9 @@
                             },
                             "summary": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_genes": {
@@ -2380,6 +2386,9 @@
                                     "summary": {
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "type": "keyword"
                                     },
@@ -2779,6 +2788,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "upload_credentials": {

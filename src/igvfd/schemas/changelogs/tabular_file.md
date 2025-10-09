@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 18
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Extend `content_type` enum list to include `variant to cluster mapping`.
 * Extend `content_type` enum list to include `individual cells profile`.
 * Extend `content_type` enum list to include `normalized variants profile`.

@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 9
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Add `anvil_url`.
 * Add `catalog_collections`.
 * Extend `file_format` enum list to include `h5mu`.
