@@ -1,6 +1,6 @@
 {
-    "hash": "7fbf098e03a802be6335d5ae622743de",
-    "index_name": "whole_organism_7fbf098e",
+    "hash": "ce1d14b335a7fe111f3fe26a6a467ad7",
+    "index_name": "whole_organism_ce1d14b3",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1280,6 +1280,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_genes": {
                                 "type": "keyword"
                             },
@@ -1831,6 +1834,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "taxa": {
                                 "type": "keyword"
                             },
@@ -2360,6 +2366,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_sample_term": {
                                 "type": "keyword"
                             },
@@ -2556,6 +2565,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "taxa": {

@@ -1,6 +1,6 @@
 {
-    "hash": "ec5e570f1998ef4269d7131dad6b6cce",
-    "index_name": "tissue_ec5e570f",
+    "hash": "bbf2334a7ed2b2404dcfd7bbf75cd9c1",
+    "index_name": "tissue_bbf2334a",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1283,6 +1283,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_genes": {
                                 "type": "keyword"
                             },
@@ -1834,6 +1837,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "taxa": {
                                 "type": "keyword"
                             },
@@ -2373,6 +2379,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_sample_term": {
                                 "type": "keyword"
                             },
@@ -2569,6 +2578,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "taxa": {

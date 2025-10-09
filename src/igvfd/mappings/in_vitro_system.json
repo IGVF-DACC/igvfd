@@ -1,6 +1,6 @@
 {
-    "hash": "1acea4484c1d53010a89d16da7d7b45b",
-    "index_name": "in_vitro_system_1acea448",
+    "hash": "32f09642a8c6727da73e19efa5626ffc",
+    "index_name": "in_vitro_system_32f09642",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1293,6 +1293,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_genes": {
                                 "type": "keyword"
                             },
@@ -1847,6 +1850,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "taxa": {
                                 "type": "keyword"
                             },
@@ -2105,6 +2111,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {
@@ -2646,6 +2655,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_sample_term": {
                                 "type": "keyword"
                             },
@@ -2842,6 +2854,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "targeted_sample_term": {

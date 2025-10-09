@@ -606,6 +606,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_genes": {
                                 "type": "keyword"
                             },
@@ -1086,6 +1089,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "transcriptome_annotation": {
                                 "type": "keyword"
                             },
@@ -1303,6 +1309,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "transcriptome_annotation": {
@@ -1574,6 +1583,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "transcriptome_annotation": {
                                 "type": "keyword"
                             },
@@ -1781,6 +1793,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "transcriptome_annotation": {
@@ -2629,6 +2644,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {

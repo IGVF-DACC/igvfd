@@ -1,6 +1,6 @@
 {
-    "hash": "45a01964ddc269b141499fb08c9442a7",
-    "index_name": "multiplexed_sample_45a01964",
+    "hash": "3d1dfeb32602c3b8cd82c53c69cff20c",
+    "index_name": "multiplexed_sample_3d1dfeb3",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1270,6 +1270,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_genes": {
                                 "type": "keyword"
                             },
@@ -1807,6 +1810,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -2352,6 +2358,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_sample_term": {
                                 "type": "keyword"
                             },
@@ -2881,6 +2890,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_sample_term": {
                                 "type": "keyword"
                             },
@@ -3077,6 +3089,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "taxa": {

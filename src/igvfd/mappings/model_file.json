@@ -1493,6 +1493,9 @@
                                         "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "properties": {
                                             "@id": {
@@ -1796,6 +1799,9 @@
                             },
                             "summary": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_genes": {
@@ -2386,6 +2392,9 @@
                                     "summary": {
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "type": "keyword"
                                     },
@@ -2785,6 +2794,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "upload_credentials": {
