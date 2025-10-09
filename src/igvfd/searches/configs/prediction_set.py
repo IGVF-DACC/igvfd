@@ -44,7 +44,7 @@ def prediction_set():
                 'title': 'Treatment'
             },
             'construct_library_sets.file_set_type': {
-                'title': 'Construct Library Data'
+                'title': 'Construct Library'
             },
             'construct_library_sets.selection_criteria': {
                 'title': 'Construct Library Selection Criteria'

@@ -16,9 +16,6 @@ def file_set():
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles'
             },
-            'construct_library_sets.file_set_type': {
-                'title': 'Construct Library Data'
-            },
             'donors.taxa': {
                 'title': 'Taxa'
             },
@@ -58,8 +55,23 @@ def file_set():
             'files.file_format': {
                 'title': 'File Format',
             },
+            'construct_library_sets.file_set_type': {
+                'title': 'Construct Library'
+            },
+            'construct_library_sets.selection_criteria': {
+                'title': 'Construct Library Selection Criteria'
+            },
             'construct_library_sets.integrated_content_files.content_type': {
                 'title': 'Construct Library Design'
+            },
+            'construct_library_sets.associated_phenotypes.term_name': {
+                'title': 'Construct Library Associated Phenotypes'
+            },
+            'construct_library_sets.small_scale_gene_list.symbol': {
+                'title': 'Investigated Gene'
+            },
+            'targeted_genes.symbol': {
+                'title': 'Readout Gene'
             },
             'collections': {
                 'title': 'Collections',
