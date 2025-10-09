@@ -33,6 +33,9 @@
         },
         {
             "$ref": "mixins.json#/anvil_url"
+        },
+        {
+            "$ref": "mixins.json#/supersedes"
         }
     ],
     "dependentSchemas": {
@@ -500,6 +503,20 @@
             "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
             "type": "string",
             "permission": "admin_only"
+        },
+        "supersedes": {
+            "description": "The file(s) that this file supersedes by virtue of being newer, better, or a fixed version of etc. than the one(s) it supersedes.",
+            "type": "array",
+            "items": {
+                "title": "Superseded File",
+                "description": "File that this file supersedes by virtue of being newer, better, or a fixed version of etc. than the one it supersedes.",
+                "type": "string",
+                "linkTo": "File"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-done:file01\", \"IGVFFI6665ABCD\"]",
+                "igvf_utils": "john-done:file01, IGVFFI6665ABCD"
+            }
         }
     },
     "changelog": "/profiles/changelogs/file.md"

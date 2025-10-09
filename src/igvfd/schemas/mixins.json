@@ -1036,5 +1036,25 @@
                 "igvf_utils": "variants_phenotypes"
             }
         }
+    },
+    "supersedes": {
+        "supersedes": {
+            "title": "Supersedes",
+            "description": "The item(s) that this item supersedes by virtue of being newer, better, or a fixed version of etc. than the one(s) it supersedes.",
+            "comment": "The linked items are expected to have status revoked or archived.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Superseded Item",
+                "description": "Item that this item supersedes by virtue of being newer, better, or a fixed version of etc. than the one it supersedes.",
+                "type": "string",
+                "linkTo": "Item"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:measurement_set01\", \"TSTDS98084730\"]",
+                "igvf_utils": "john-doe:measurement_set01, TSTDS98084730"
+            }
+        }
     }
 }

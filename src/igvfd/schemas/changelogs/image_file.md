@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 5
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Extend `file_format` enum list to include `svg`.
 * Extend `content_type` enum list to include `UMAP plot`.
 * Add `anvil_url`.

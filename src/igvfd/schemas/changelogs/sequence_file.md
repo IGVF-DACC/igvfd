@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 16
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Extend `sequencing_kit` enum list to include `UG Solaris Flex`.
 * Add calculated property `workflows`.
 * Remove calculated property `workflow`.
