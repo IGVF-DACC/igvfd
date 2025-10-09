@@ -1,6 +1,6 @@
 {
-    "hash": "8bea18ed7f48e84876b8797e5dfbc762",
-    "index_name": "image_file_8bea18ed",
+    "hash": "9e2c6d541deff7cc4fda2e9467563b00",
+    "index_name": "image_file_9e2c6d54",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -1473,6 +1473,9 @@
                                         "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "properties": {
                                             "@id": {
@@ -1776,6 +1779,9 @@
                             },
                             "summary": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_genes": {
@@ -2366,6 +2372,9 @@
                                     "summary": {
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "type": "keyword"
                                     },
@@ -2765,6 +2774,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "upload_credentials": {

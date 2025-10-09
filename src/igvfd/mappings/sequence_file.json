@@ -1,6 +1,6 @@
 {
-    "hash": "c8b9d391d5f0c33b6bba7b33dedc9a2b",
-    "index_name": "sequence_file_c8b9d391",
+    "hash": "eead3e02a9790bc6b99cf316d6c710c5",
+    "index_name": "sequence_file_eead3e02",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1484,6 +1484,9 @@
                                         "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "properties": {
                                             "@id": {
@@ -1787,6 +1790,9 @@
                             },
                             "summary": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_genes": {
@@ -2386,6 +2392,9 @@
                                     "summary": {
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "type": "keyword"
                                     },
@@ -2904,6 +2913,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "upload_credentials": {

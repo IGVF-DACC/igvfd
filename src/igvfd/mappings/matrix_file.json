@@ -1,6 +1,6 @@
 {
-    "hash": "2d6ff1ae1ac818b7722d8b0e4a789cc6",
-    "index_name": "matrix_file_2d6ff1ae",
+    "hash": "79db96dc6e63f5da7f96827dc0e1a9d8",
+    "index_name": "matrix_file_79db96dc",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1479,6 +1479,9 @@
                                         "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "properties": {
                                             "@id": {
@@ -1782,6 +1785,9 @@
                             },
                             "summary": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_genes": {
@@ -2376,6 +2382,9 @@
                                     "summary": {
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "type": "keyword"
                                     },
@@ -2784,6 +2793,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {

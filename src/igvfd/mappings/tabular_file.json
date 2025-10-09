@@ -1,6 +1,6 @@
 {
-    "hash": "369a3f101b958b52d1364e0811f76846",
-    "index_name": "tabular_file_369a3f10",
+    "hash": "8be7abb75fc05b20c6e88cff1e8e21d3",
+    "index_name": "tabular_file_8be7abb7",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1586,6 +1586,9 @@
                                         "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "properties": {
                                             "@id": {
@@ -1889,6 +1892,9 @@
                             },
                             "summary": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_genes": {
@@ -2484,6 +2490,9 @@
                                         "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "type": "keyword"
                                     },
@@ -2889,6 +2898,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {
