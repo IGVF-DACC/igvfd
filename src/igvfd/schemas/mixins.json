@@ -960,10 +960,11 @@
             }
         }
     },
-    "catalog_collections": {
+    "catalog_properties": {
         "catalog_collections": {
             "title": "Catalog Collections",
             "description": "The collections in the IGVF catalog that contain the data in this file.",
+            "comment": "Do not submit. This is set by admins for data loading in the IGVF catalog",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
@@ -1035,6 +1036,46 @@
                 "appscript": "[\"variants_phenotypes\"]",
                 "igvf_utils": "variants_phenotypes"
             }
+        },
+        "catalog_class": {
+            "title": "Catalog Class",
+            "type": "string",
+            "permission": "admin_only",
+            "description": "The class curated in the IGVF catalog that the data in this file belongs to.",
+            "comment": "Do not submit. This is set by admins for data loading in the IGVF catalog",
+            "enum": [
+                "biological relationship",
+                "observed data",
+                "prediction"
+            ],
+            "submissionExample": {
+                "appscript": "observed data",
+                "igvf_utils": "observed data"
+            }
+        },
+        "catalog_label": {
+            "title": "Catalog Label",
+            "type": "string",
+            "permission": "admin_only",
+            "description": "The label explaining the biological interpretation of the data in this file curated in the IGVF catalog",
+            "comment": "Do not submit. This is set by admins for data loading in the IGVF catalog",
+            "enum": [
+                "predicted variant effect on phenotype",
+                "predicted variant effect on regulatory element activity",
+                "variant effect on regulatory element activity"
+            ],
+            "submissionExample": {
+                "appscript": "variant effect on regulatory element activity",
+                "igvf_utils": "variant effect on regulatory element activity"
+            }
+        },
+        "catalog_notes": {
+            "title": "Catalog Notes",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "permission": "admin_only",
+            "description": "DACC notes for data loading in the IGVF catalog",
+            "comment": "Do not submit. This is set by admins for data loading in the IGVF catalog"
         }
     }
 }
