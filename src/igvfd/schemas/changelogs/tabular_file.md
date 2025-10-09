@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 18
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Add `catalog_class`.
 * Add `catalog_notes`.
 * Extend `content_type` enum list to include `variant to cluster mapping`.

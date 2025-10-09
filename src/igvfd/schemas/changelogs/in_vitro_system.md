@@ -6,6 +6,8 @@
 
 ### Minor changes since schema version 28
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Extend `growth_medium` enum list to include `1 kPa hydrogel`.
 * Extend `growth_medium` enum list to include `50 kPa hydrogel`.
 * Extend `growth_medium` enum list to include `tissue culture plastic plates (no hydrogel)`.

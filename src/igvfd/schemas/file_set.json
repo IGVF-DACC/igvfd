@@ -31,6 +31,9 @@
         },
         {
             "$ref": "mixins.json#/preview_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/supersedes"
         }
     ],
     "dependentSchemas": {
@@ -120,6 +123,20 @@
             "submissionExample": {
                 "appscript": "experimental data",
                 "igvf_utils": "experimental data"
+            }
+        },
+        "supersedes": {
+            "description": "The file set(s) that this file set supersedes by virtue of being newer, better, or a fixed version of etc. than the one(s) it supersedes.",
+            "type": "array",
+            "items": {
+                "title": "Superseded File Set",
+                "description": "File set that this file set supersedes by virtue of being newer, better, or a fixed version of etc. than the one it supersedes.",
+                "type": "string",
+                "linkTo": "FileSet"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:measurement_set01\", \"TSTDS98084730\"]",
+                "igvf_utils": "john-doe:measurement_set01, TSTDS98084730"
             }
         }
     }

@@ -1,5 +1,10 @@
 ## Changelog for *`model_set.json`*
 
+### Minor changes since schema version 6
+
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
+
 ### Schema version 6
 
 * Extend `preferred_assay_titles` enum list to include `DUAL-IPA`.

@@ -55,6 +55,9 @@
         },
         {
             "$ref": "mixins.json#/preview_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/supersedes"
         }
     ],
     "dependentSchemas": {

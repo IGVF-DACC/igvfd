@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 17
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Add calculated property `workflows`.
 * Remove calculated property `workflow`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.

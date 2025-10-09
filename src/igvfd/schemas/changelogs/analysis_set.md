@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 10
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Update `protocols` regex to `^https://www\\.protocols\\.io/(private|view)/(\\S+)$`.
 * Add calculated property `primer_designs`.
 * Add `pipeline_parameters`.

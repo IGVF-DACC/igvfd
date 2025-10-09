@@ -6,6 +6,8 @@
 
 ### Minor changes since schema version 10
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Restrict `moi` to submission by admins only.
 * Restrict `nucleic_acid_delivery` to submission by admins only.
 * Restrict `time_post_library_delivery` to submission by admins only.

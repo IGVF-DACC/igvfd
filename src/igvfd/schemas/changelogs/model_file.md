@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 2
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Add `catalog_class`.
 * Add `catalog_notes`.
 * Add `catalog_collections`.

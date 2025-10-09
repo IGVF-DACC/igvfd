@@ -37,6 +37,9 @@
         },
         {
             "$ref": "mixins.json#/preview_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/supersedes"
         }
     ],
     "dependentSchemas": {
@@ -273,6 +276,20 @@
             "submissionExample": {
                 "appscript": "[\"https://www.protocols.io/private/link/to/protocol\",\"https://www.protocols.io/view/link/to/protocol2\"]",
                 "igvf_utils": "https://www.protocols.io/private/link/to/protocol,https://www.protocols.io/view/link/to/protocol2"
+            }
+        },
+        "supersedes": {
+            "description": "The sample(s) that this sample supersedes by virtue of being newer, better, or a fixed version of etc. than the one(s) it supersedes.",
+            "type": "array",
+            "items": {
+                "title": "Superseded Sample",
+                "description": "Sample that this sample supersedes by virtue of being newer, better, or a fixed version of etc. than the one it supersedes.",
+                "type": "string",
+                "linkTo": "Sample"
+            },
+            "submissionExample": {
+                "appscript": "[\"TSTSM02881437\", \"john-doe:tissue01\"]",
+                "igvf_utils": "TSTSM02881437, john-doe:tissue01"
             }
         }
     }
