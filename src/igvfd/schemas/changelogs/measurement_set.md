@@ -1,6 +1,7 @@
 ## Changelog for *`measurement_set.json`*
 
 ### Minor changes since schema version 39
+
 * Adjust `multiome_size` to allow a minimum of 1 item.
 
 ### Schema version 39
