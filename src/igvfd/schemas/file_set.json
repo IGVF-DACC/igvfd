@@ -31,9 +31,6 @@
         },
         {
             "$ref": "mixins.json#/preview_timestamp"
-        },
-        {
-            "$ref": "mixins.json#/supersedes"
         }
     ],
     "dependentSchemas": {
@@ -126,7 +123,11 @@
             }
         },
         "supersedes": {
+            "title": "Supersedes",
             "description": "The file set(s) that this file set supersedes by virtue of being newer, better, or a fixed version of etc. than the one(s) it supersedes.",
+            "comment": "The linked file set(s) are expected to have a revoked or archived status.",
+            "minItems": 1,
+            "uniqueItems": true,
             "type": "array",
             "items": {
                 "title": "Superseded File Set",

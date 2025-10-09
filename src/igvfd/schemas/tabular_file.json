@@ -71,9 +71,6 @@
         },
         {
             "$ref": "mixins.json#/anvil_url"
-        },
-        {
-            "$ref": "mixins.json#/supersedes"
         }
     ],
     "dependentSchemas": {

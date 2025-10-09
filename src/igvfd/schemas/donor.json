@@ -38,9 +38,6 @@
         },
         {
             "$ref": "mixins.json#/preview_timestamp"
-        },
-        {
-            "$ref": "mixins.json#/supersedes"
         }
     ],
     "properties": {
@@ -112,7 +109,11 @@
             }
         },
         "supersedes": {
+            "title": "Supersedes",
             "description": "The donor(s) that this donor supersedes by virtue of being newer, better, or a fixed version of etc. than the one(s) it supersedes.",
+            "comment": "The linked donor(s) are expected to have a revoked or archived status.",
+            "minItems": 1,
+            "uniqueItems": true,
             "type": "array",
             "items": {
                 "title": "Superseded Donor",
