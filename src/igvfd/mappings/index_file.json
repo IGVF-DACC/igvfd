@@ -1,6 +1,6 @@
 {
-    "hash": "40f06ac1ce30abcb7fe56420b75fec77",
-    "index_name": "index_file_40f06ac1",
+    "hash": "d3687787a90a17035b0aa42457b733c3",
+    "index_name": "index_file_d3687787",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -801,6 +801,9 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "supersedes": {
                                         "type": "keyword"
                                     },
                                     "taxa": {

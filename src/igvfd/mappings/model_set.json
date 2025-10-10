@@ -1,6 +1,6 @@
 {
-    "hash": "a4bcfaa6333efc627e0cb530faee9fb2",
-    "index_name": "model_set_a4bcfaa6",
+    "hash": "d0796d52726e28caf64ebbad43ce54f5",
+    "index_name": "model_set_d0796d52",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1509,6 +1509,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "taxa": {

@@ -107,6 +107,24 @@
                 "appscript": false,
                 "igvf_utils": false
             }
+        },
+        "supersedes": {
+            "title": "Supersedes",
+            "description": "The donor(s) that this donor supersedes by virtue of being newer, better, or a fixed version of etc. than the one(s) it supersedes.",
+            "comment": "The linked donor(s) are expected to have a revoked or archived status.",
+            "minItems": 1,
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+                "title": "Superseded Donor",
+                "description": "Donor that this donor supersedes by virtue of being newer, better, or a fixed version of etc. than the one it supersedes.",
+                "type": "string",
+                "linkTo": "Donor"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:donor02\", \"IGVFDO5261UCLF\"]",
+                "igvf_utils": "john-doe:donor02, IGVFDO5261UCLF"
+            }
         }
     }
 }

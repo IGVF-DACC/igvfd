@@ -1,6 +1,6 @@
 {
-    "hash": "6bac0cd9a2c324c7ca8911601b3c9652",
-    "index_name": "measurement_set_6bac0cd9",
+    "hash": "78f982e630adaedae5e5ea613627b2c7",
+    "index_name": "measurement_set_78f982e6",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1967,6 +1967,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "taxa": {

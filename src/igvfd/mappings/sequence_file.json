@@ -1,6 +1,6 @@
 {
-    "hash": "eead3e02a9790bc6b99cf316d6c710c5",
-    "index_name": "sequence_file_eead3e02",
+    "hash": "b5e0607ce965abac0614188524afe27e",
+    "index_name": "sequence_file_b5e0607c",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -804,6 +804,9 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "supersedes": {
                                         "type": "keyword"
                                     },
                                     "taxa": {

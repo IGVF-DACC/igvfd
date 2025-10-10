@@ -1,6 +1,6 @@
 {
-    "hash": "d89d1c9e0caa12b26767629d5fb4d535",
-    "index_name": "curated_set_d89d1c9e",
+    "hash": "23bc5b320ad95c71ae2a7d72b4560352",
+    "index_name": "curated_set_23bc5b32",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1411,6 +1411,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "taxa": {

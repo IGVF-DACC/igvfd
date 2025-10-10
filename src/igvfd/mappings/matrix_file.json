@@ -1,6 +1,6 @@
 {
-    "hash": "79db96dc6e63f5da7f96827dc0e1a9d8",
-    "index_name": "matrix_file_79db96dc",
+    "hash": "00e1bdf99f87077ad226bbb0c145fcaf",
+    "index_name": "matrix_file_00e1bdf9",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -799,6 +799,9 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "supersedes": {
                                         "type": "keyword"
                                     },
                                     "taxa": {

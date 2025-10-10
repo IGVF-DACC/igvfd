@@ -1,6 +1,6 @@
 {
-    "hash": "9a1e45ea1808e3306188dec84f458ec5",
-    "index_name": "analysis_set_9a1e45ea",
+    "hash": "a6d9b208da8e176aae36a9fad4a95a54",
+    "index_name": "analysis_set_a6d9b208",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -1414,6 +1414,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "taxa": {

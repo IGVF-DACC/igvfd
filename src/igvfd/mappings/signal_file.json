@@ -1,6 +1,6 @@
 {
-    "hash": "72b339360d542451c75d42b20d2b88ea",
-    "index_name": "signal_file_72b33936",
+    "hash": "abb8e1320f33e869f58d7bcf6bc7c24b",
+    "index_name": "signal_file_abb8e132",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -893,6 +893,9 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "supersedes": {
                                         "type": "keyword"
                                     },
                                     "taxa": {

@@ -1,6 +1,6 @@
 {
-    "hash": "8be7abb75fc05b20c6e88cff1e8e21d3",
-    "index_name": "tabular_file_8be7abb7",
+    "hash": "bc255c2b02f807d70dc93110666e5569",
+    "index_name": "tabular_file_bc255c2b",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -906,6 +906,9 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "supersedes": {
                                         "type": "keyword"
                                     },
                                     "taxa": {

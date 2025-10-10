@@ -1,6 +1,6 @@
 {
-    "hash": "cffbe672e4ae9214db9a7216f07540c8",
-    "index_name": "reference_file_cffbe672",
+    "hash": "369975e390bc9ea87e4e68fd188abc26",
+    "index_name": "reference_file_369975e3",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -814,6 +814,9 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "supersedes": {
                                         "type": "keyword"
                                     },
                                     "taxa": {

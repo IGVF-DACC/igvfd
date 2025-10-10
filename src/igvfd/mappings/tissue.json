@@ -1,6 +1,6 @@
 {
-    "hash": "bbf2334a7ed2b2404dcfd7bbf75cd9c1",
-    "index_name": "tissue_bbf2334a",
+    "hash": "c43e0cf1f31f1f71a7106e7110475a74",
+    "index_name": "tissue_c43e0cf1",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -928,6 +928,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "taxa": {

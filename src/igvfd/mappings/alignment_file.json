@@ -1,6 +1,6 @@
 {
-    "hash": "7e12ad4d0b7529782ba68478690c4572",
-    "index_name": "alignment_file_7e12ad4d",
+    "hash": "c96e8cd039e44d621221805d2aadb2dd",
+    "index_name": "alignment_file_c96e8cd0",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -804,6 +804,9 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "supersedes": {
                                         "type": "keyword"
                                     },
                                     "taxa": {

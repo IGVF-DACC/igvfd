@@ -1,6 +1,6 @@
 {
-    "hash": "528ef5098765a14447747015dc5be31c",
-    "index_name": "prediction_set_528ef509",
+    "hash": "02ec427bbe2fc13ebf2850b83ebfc836",
+    "index_name": "prediction_set_02ec427b",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1586,6 +1586,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "taxa": {

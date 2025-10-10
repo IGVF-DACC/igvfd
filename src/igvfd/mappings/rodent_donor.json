@@ -1,6 +1,6 @@
 {
-    "hash": "01b3ca971e226563a44424e38189a9be",
-    "index_name": "rodent_donor_01b3ca97",
+    "hash": "37494ff2eba721b2171d07e870b11fda",
+    "index_name": "rodent_donor_37494ff2",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -772,6 +772,9 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "taxa": {

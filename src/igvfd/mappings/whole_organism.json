@@ -1,6 +1,6 @@
 {
-    "hash": "ce1d14b335a7fe111f3fe26a6a467ad7",
-    "index_name": "whole_organism_ce1d14b3",
+    "hash": "420a33927d4f901596e55a9575de371f",
+    "index_name": "whole_organism_420a3392",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -925,6 +925,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "taxa": {
