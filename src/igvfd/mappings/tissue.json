@@ -1,6 +1,6 @@
 {
-    "hash": "ec5e570f1998ef4269d7131dad6b6cce",
-    "index_name": "tissue_ec5e570f",
+    "hash": "d81d2fb99f540a2b9bd5ed86a26892f7",
+    "index_name": "tissue_d81d2fb9",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1145,6 +1145,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {

@@ -1,6 +1,6 @@
 {
-    "hash": "41fe97729a967335b34b46ee178fdd91",
-    "index_name": "alignment_file_41fe9772",
+    "hash": "4ce3d941c776f689db7167a6f8847ce6",
+    "index_name": "alignment_file_4ce3d941",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -925,6 +925,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {

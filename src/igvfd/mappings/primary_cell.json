@@ -1,6 +1,6 @@
 {
-    "hash": "1504166063c478434393408555fde22d",
-    "index_name": "primary_cell_15041660",
+    "hash": "8c83d852e5c173f712a522f85e6fb22b",
+    "index_name": "primary_cell_8c83d852",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1145,6 +1145,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {

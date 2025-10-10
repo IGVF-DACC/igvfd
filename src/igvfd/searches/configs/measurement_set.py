@@ -32,6 +32,9 @@ def measurement_set():
             'files.sequencing_platform.term_name': {
                 'title': 'Sequencing Platform'
             },
+            'library_preparation_kit': {
+                'title': 'Library Preparation Kit'
+            },
             'donors.taxa': {
                 'title': 'Taxa',
             },

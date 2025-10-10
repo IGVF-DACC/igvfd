@@ -1,5 +1,8 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 39
+
+* Add `library_preparation_kit`.
 
 ### Schema version 39
 

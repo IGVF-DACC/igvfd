@@ -340,6 +340,25 @@
                 "appscript": "/tabular-files/IGVFFI1234ABCD/",
                 "igvf_utils": "/tabular-files/IGVFFI1234ABCD/"
             }
+        },
+        "library_preparation_kit": {
+            "title": "Library Preparation Kit",
+            "description": "A kit utilized in the library preparation procedure.",
+            "type": "string",
+            "enum": [
+                "10X Chromium Single Cell 3 prime v1",
+                "10X Chromium Single Cell 3 prime v2",
+                "10X Chromium Single Cell 3 prime v3",
+                "10X Chromium Single Cell 3 prime v3.1",
+                "10X Chromium Single Cell 3 prime v4",
+                "10X Chromium Single Cell 5 prime v1",
+                "10X Chromium Single Cell 5 prime v2",
+                "10X Chromium Single Cell 5 prime v3"
+            ],
+            "submissionExample": {
+                "appscript": "10X Chromium Single Cell 5 prime v3",
+                "igvf_utils": "10X Chromium Single Cell 5 prime v3"
+            }
         }
     },
     "fuzzy_searchable_fields": [
