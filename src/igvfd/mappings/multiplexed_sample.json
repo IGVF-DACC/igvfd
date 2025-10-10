@@ -1,6 +1,6 @@
 {
-    "hash": "45a01964ddc269b141499fb08c9442a7",
-    "index_name": "multiplexed_sample_45a01964",
+    "hash": "ec7a37fb76ce15ddb9035c5f4041be45",
+    "index_name": "multiplexed_sample_ec7a37fb",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1132,6 +1132,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {
