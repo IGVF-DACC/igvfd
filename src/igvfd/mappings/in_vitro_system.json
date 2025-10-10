@@ -1,6 +1,6 @@
 {
-    "hash": "32f09642a8c6727da73e19efa5626ffc",
-    "index_name": "in_vitro_system_32f09642",
+    "hash": "26e369bb46fcbae91321f3cd99bb2e1a",
+    "index_name": "in_vitro_system_26e369bb",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -938,6 +938,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "taxa": {
