@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 9
 
+* Add `catalog_class`.
+* Add `catalog_label`.
+* Add `catalog_notes`.
 * Add `anvil_url`.
 * Add `catalog_collections`.
 * Extend `file_format` enum list to include `h5mu`.

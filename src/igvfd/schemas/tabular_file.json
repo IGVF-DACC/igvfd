@@ -67,7 +67,7 @@
             "$ref": "mixins.json#/base_modifications"
         },
         {
-            "$ref": "mixins.json#/catalog_collections"
+            "$ref": "mixins.json#/catalog_properties"
         },
         {
             "$ref": "mixins.json#/anvil_url"

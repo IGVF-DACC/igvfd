@@ -1,6 +1,6 @@
 {
-    "hash": "9b739797aa227c5d2cea8242e6d35564",
-    "index_name": "prediction_set_9b739797",
+    "hash": "267922e661be738460c16dab7223467d",
+    "index_name": "prediction_set_267922e6",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -647,7 +647,16 @@
                                     "catalog_adapters": {
                                         "type": "keyword"
                                     },
+                                    "catalog_class": {
+                                        "type": "keyword"
+                                    },
                                     "catalog_collections": {
+                                        "type": "keyword"
+                                    },
+                                    "catalog_label": {
+                                        "type": "keyword"
+                                    },
+                                    "catalog_notes": {
                                         "type": "keyword"
                                     },
                                     "cell_type_annotation": {
@@ -1642,7 +1651,16 @@
                             "catalog_adapters": {
                                 "type": "keyword"
                             },
+                            "catalog_class": {
+                                "type": "keyword"
+                            },
                             "catalog_collections": {
+                                "type": "keyword"
+                            },
+                            "catalog_label": {
+                                "type": "keyword"
+                            },
+                            "catalog_notes": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {
@@ -2253,7 +2271,16 @@
                             "catalog_adapters": {
                                 "type": "keyword"
                             },
+                            "catalog_class": {
+                                "type": "keyword"
+                            },
                             "catalog_collections": {
+                                "type": "keyword"
+                            },
+                            "catalog_label": {
+                                "type": "keyword"
+                            },
+                            "catalog_notes": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {
@@ -2456,7 +2483,16 @@
                             "catalog_adapters": {
                                 "type": "keyword"
                             },
+                            "catalog_class": {
+                                "type": "keyword"
+                            },
                             "catalog_collections": {
+                                "type": "keyword"
+                            },
+                            "catalog_label": {
+                                "type": "keyword"
+                            },
+                            "catalog_notes": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {

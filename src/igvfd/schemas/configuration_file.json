@@ -42,7 +42,7 @@
             "$ref": "mixins.json#/preview_timestamp"
         },
         {
-            "$ref": "mixins.json#/catalog_collections"
+            "$ref": "mixins.json#/catalog_properties"
         },
         {
             "$ref": "mixins.json#/anvil_url"
