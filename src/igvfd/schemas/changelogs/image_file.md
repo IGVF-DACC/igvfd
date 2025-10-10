@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 5
 
+* Add `catalog_class`.
+* Add `catalog_label`.
+* Add `catalog_notes`.
 * Extend `file_format` enum list to include `svg`.
 * Extend `content_type` enum list to include `UMAP plot`.
 * Add `anvil_url`.
