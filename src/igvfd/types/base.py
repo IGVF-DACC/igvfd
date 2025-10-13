@@ -83,6 +83,9 @@ ALLOW_SUBMITTER_ADD = [
 # For example, a released or in progress experiment can transition to released.
 # Transitioning to the same status (released -> released) allows for the child objects to be crawled
 # without actually making a patch if the new and current statuses are the same.
+# Note: Replacing/Replaced is special because you need to provide an alternate accession at the time of replacement.
+# Set status can’t do this automatically, since it’s possible for it to descend through a chain of objects.
+# Replacement should be done by one off patching.
 STATUS_TRANSITION_TABLE = {
     'released': ['released', 'in progress', 'preview'],
     'preview': ['preview', 'in progress'],
