@@ -205,3 +205,14 @@ def test_origin_of(testapp, in_vitro_differentiated_cell, tissue, in_vitro_cell_
     )
     res = testapp.get(tissue['@id'])
     assert set(res.json.get('origin_of')) == {in_vitro_cell_line['@id'], in_vitro_differentiated_cell['@id']}
+
+
+def test_superseded_by(testapp, tissue, in_vitro_cell_line):
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'supersedes': [in_vitro_cell_line['@id']]
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'])
+    assert set([sample for sample in res.json.get('superseded_by')]) == {in_vitro_cell_line['@id']}
