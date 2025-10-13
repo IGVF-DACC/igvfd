@@ -184,7 +184,7 @@
             "Sandawe"
         ],
         "virtual": false,
-        "superseded_by": [
+        "supersedes": [
             "IGVFDO5323HUES"
         ]
     }

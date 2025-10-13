@@ -493,8 +493,8 @@
             "ENSEMBL:ENSG00000101128"
         ],
         "controlled_access": false,
-        "superseded_by": [
-            "IGVFFI7677SGCM"
+        "supersedes": [
+            "IGVFFI1234KLJH"
         ]
     }
 ]

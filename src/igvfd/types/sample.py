@@ -115,7 +115,7 @@ class Sample(Item):
         'sorted_fractions': ('Sample', 'sorted_from'),
         'origin_of': ('Sample', 'originated_from'),
         'institutional_certificates': ('InstitutionalCertificate', 'samples'),
-        'superseded_by': ('FileSet', 'supersedes')
+        'superseded_by': ('Sample', 'supersedes')
     }
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),

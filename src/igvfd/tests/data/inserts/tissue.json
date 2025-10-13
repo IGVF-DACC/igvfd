@@ -205,8 +205,8 @@
         "sorted_from": "/tissue/8183c760-0304-11ed-b939-0242ac120002/",
         "sorted_from_detail": "FACS 10% expression of CTCF-GFP 2",
         "virtual": false,
-        "superseded_by": [
-            "IGVFSM0008HUES"
+        "supersedes": [
+            "IGVFSM0005DDDD"
         ]
     }
 ]

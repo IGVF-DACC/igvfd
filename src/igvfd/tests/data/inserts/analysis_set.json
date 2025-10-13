@@ -121,7 +121,7 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set_type": "intermediate analysis",
         "uniform_pipeline_status": "completed",
-        "superseded_by": [
+        "supersedes": [
             "IGVFDS9009ANWK"
         ]
     }
