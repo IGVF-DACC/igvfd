@@ -334,3 +334,33 @@ def primary_cell_v21(primary_cell):
         'biosample_qualifiers': ['calcified']
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v23_1(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '23',
+        'protocols': ['https://www.protocols.io/345/ABC', 'https://www.protocols.io/910/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def primary_cell_v23_2(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '23',
+        'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/view/678/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def primary_cell_v23_3(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '23',
+        'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
+    })
+    return item

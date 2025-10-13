@@ -305,3 +305,33 @@ def whole_organism_v23(whole_organism):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v25_1(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '25',
+        'protocols': ['https://www.protocols.io/345/ABC', 'https://www.protocols.io/910/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def whole_organism_v25_2(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '25',
+        'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/view/678/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def whole_organism_v25_3(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '25',
+        'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
+    })
+    return item

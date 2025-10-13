@@ -217,3 +217,22 @@ def test_gastruloid_dependency(in_vitro_cell_line, experimental_protocol_documen
         in_vitro_cell_line['@id'],
         {'classifications': ['gastruloid'], 'time_post_change': 3, 'time_post_change_units': 'day', 'cell_fate_change_protocol': experimental_protocol_document['@id'], 'targeted_sample_term': sample_term_endothelial_cell['@id']})
     assert res.status_code == 200
+
+
+def test_ivs_protocols_regex(in_vitro_cell_line, testapp):
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'protocols': ['https://www.protocols.io/123/ABC']}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'protocols': ['https://www.protocols.io/123/ABC', 'https://www.protocols.io/private/123/ABC']}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'protocols': ['https://www.protocols.io/private/123/ABC']})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'protocols': ['https://www.protocols.io/view/123/ABC']})
+    assert res.status_code == 200

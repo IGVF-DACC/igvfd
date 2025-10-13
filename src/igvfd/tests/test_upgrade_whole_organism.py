@@ -182,3 +182,19 @@ def test_whole_organism_upgrade_23_24(upgrader, whole_organism_v23):
     value = upgrader.upgrade('whole_organism', whole_organism_v23, current_version='23', target_version='24')
     assert 'publication_identifiers' not in value
     assert value['schema_version'] == '24'
+
+
+def test_whole_organism_upgrade_25_26(upgrader, whole_organism_v25_1, whole_organism_v25_2, whole_organism_v25_3):
+    value = upgrader.upgrade('whole_organism', whole_organism_v25_1, current_version='25', target_version='26')
+    assert value['schema_version'] == '26'
+    assert 'protocols' not in value
+    assert value.get('notes') == 'This protocol(s) https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
+    value = upgrader.upgrade('whole_organism', whole_organism_v25_2, current_version='25', target_version='26')
+    assert value['schema_version'] == '26'
+    assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
+                                      'https://www.protocols.io/view/678/ABC']
+    value = upgrader.upgrade('whole_organism', whole_organism_v25_3, current_version='25', target_version='26')
+    assert value['schema_version'] == '26'
+    assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
+                                      'https://www.protocols.io/view/678/ABC']
+    assert value.get('notes') == 'This protocol(s) https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'

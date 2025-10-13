@@ -113,3 +113,22 @@ def test_sorted_from_detail_dependency(testapp, technical_sample, primary_cell):
         {'sorted_from': primary_cell['@id'],
          'sorted_from_detail': 'I am a sorted fraction detail.'})
     assert res.status_code == 200
+
+
+def test_technical_sample_protocols_regex(technical_sample, testapp):
+    res = testapp.patch_json(
+        technical_sample['@id'],
+        {'protocols': ['https://www.protocols.io/123/ABC']}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        technical_sample['@id'],
+        {'protocols': ['https://www.protocols.io/123/ABC', 'https://www.protocols.io/private/123/ABC']}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        technical_sample['@id'],
+        {'protocols': ['https://www.protocols.io/private/123/ABC']})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        technical_sample['@id'],
+        {'protocols': ['https://www.protocols.io/view/123/ABC']})
+    assert res.status_code == 200

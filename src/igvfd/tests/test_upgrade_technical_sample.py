@@ -92,3 +92,19 @@ def test_technical_sample_upgrade_13_14(upgrader, technical_sample_v13):
     value = upgrader.upgrade('technical_sample', technical_sample_v13, current_version='13', target_version='14')
     assert value['schema_version'] == '14'
     assert 'publication_identifiers' not in value
+
+
+def test_technical_sample_upgrade_14_15(upgrader, technical_sample_v14_1, technical_sample_v14_2, technical_sample_v14_3):
+    value = upgrader.upgrade('technical_sample', technical_sample_v14_1, current_version='14', target_version='15')
+    assert value['schema_version'] == '15'
+    assert 'protocols' not in value
+    assert value.get('notes') == 'This protocol(s) https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
+    value = upgrader.upgrade('technical_sample', technical_sample_v14_2, current_version='14', target_version='15')
+    assert value['schema_version'] == '15'
+    assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
+                                      'https://www.protocols.io/view/678/ABC']
+    value = upgrader.upgrade('technical_sample', technical_sample_v14_3, current_version='14', target_version='15')
+    assert value['schema_version'] == '15'
+    assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
+                                      'https://www.protocols.io/view/678/ABC']
+    assert value.get('notes') == 'This protocol(s) https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'

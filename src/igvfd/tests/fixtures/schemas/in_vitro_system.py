@@ -347,3 +347,33 @@ def in_vitro_system_v26(in_vitro_cell_line):
         'schema_version': '26'
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v28_1(in_vitro_cell_line):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '28',
+        'protocols': ['https://www.protocols.io/345/ABC', 'https://www.protocols.io/910/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def in_vitro_system_v28_2(in_vitro_cell_line):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '28',
+        'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/view/678/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def in_vitro_system_v28_3(in_vitro_cell_line):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '28',
+        'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
+    })
+    return item

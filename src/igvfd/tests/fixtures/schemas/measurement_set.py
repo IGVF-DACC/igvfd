@@ -566,3 +566,33 @@ def measurement_set_v38_3(measurement_set, assay_term_starr):
         'assay_term': assay_term_starr['@id'],
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v39_1(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '39',
+        'protocols': ['https://www.protocols.io/345/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v39_2(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '39',
+        'protocols': ['https://www.protocols.io/private/123/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v39_3(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '39',
+        'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
+    })
+    return item

@@ -150,3 +150,33 @@ def multiplexed_sample_mixed_species(
         'multiplexing_methods': ['barcode based']
     }
     return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def multiplexed_sample_v10_1(multiplexed_sample):
+    item = multiplexed_sample.copy()
+    item.update({
+        'schema_version': '10',
+        'protocols': ['https://www.protocols.io/345/ABC', 'https://www.protocols.io/910/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def multiplexed_sample_v10_2(multiplexed_sample):
+    item = multiplexed_sample.copy()
+    item.update({
+        'schema_version': '10',
+        'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/view/678/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def multiplexed_sample_v10_3(multiplexed_sample):
+    item = multiplexed_sample.copy()
+    item.update({
+        'schema_version': '10',
+        'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
+    })
+    return item
