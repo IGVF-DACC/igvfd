@@ -3,7 +3,6 @@
 ### Minor changes since schema version 18
 
 * Add `catalog_class`.
-* Add `catalog_label`.
 * Add `catalog_notes`.
 * Extend `content_type` enum list to include `variant to cluster mapping`.
 * Extend `content_type` enum list to include `individual cells profile`.

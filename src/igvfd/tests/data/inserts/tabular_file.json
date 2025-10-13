@@ -933,7 +933,6 @@
             "files_filesets",
             "variants_phenotypes"
         ],
-        "catalog_label": "predicted variant effect on phenotype",
         "catalog_notes": "Example notes for catalog loading.",
         "catalog_class": "prediction"
     },
