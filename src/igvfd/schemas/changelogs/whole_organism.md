@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 26
+
+* Update `protocols` regex to `^https://www\\.protocols\\.io/(private|view)/(\\S+)$`.
+
 ### Minor changes since schema version 25
 
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.

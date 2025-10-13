@@ -1,5 +1,9 @@
 ## Changelog for *`multiplexed_sample.json`*
 
+### Schema version 11
+
+* Update `protocols` regex to `^https://www\\.protocols\\.io/(private|view)/(\\S+)$`.
+
 ### Minor changes since schema version 10
 
 * Restrict `moi` to submission by admins only.
