@@ -3,6 +3,7 @@
 ### Minor changes since schema version 13
 
 * Add `catalog_class`.
+* Add `catalog_notes`.
 * Add `anvil_url`.
 * Add `catalog_collections`.
 * Add calculated property `workflows`.
