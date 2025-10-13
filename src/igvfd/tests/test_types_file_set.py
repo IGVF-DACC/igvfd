@@ -141,4 +141,4 @@ def test_superseded_by(testapp, principal_analysis_set, measurement_set):
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert set([file_set for file_set in res.json.get('superseded_by')]) == {measurement_set['@id']}
+    assert set([file_set for file_set in res.json.get('superseded_by')]) == {principal_analysis_set['@id']}

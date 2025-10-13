@@ -9,4 +9,4 @@ def test_superseded_by(testapp, human_donor, rodent_donor):
         }
     )
     res = testapp.get(rodent_donor['@id'])
-    assert set([donor for donor in res.json.get('superseded_by')]) == {rodent_donor['@id']}
+    assert set([donor for donor in res.json.get('superseded_by')]) == {human_donor['@id']}

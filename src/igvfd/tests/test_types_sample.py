@@ -215,4 +215,4 @@ def test_superseded_by(testapp, tissue, in_vitro_cell_line):
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
-    assert set([sample for sample in res.json.get('superseded_by')]) == {in_vitro_cell_line['@id']}
+    assert set([sample for sample in res.json.get('superseded_by')]) == {tissue['@id']}
