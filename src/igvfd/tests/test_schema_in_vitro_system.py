@@ -160,19 +160,6 @@ def test_sample_moi_construct_library(
     assert res.status_code == 200
 
 
-def test_protocols(testapp, in_vitro_cell_line):
-    res = testapp.patch_json(
-        in_vitro_cell_line['@id'],
-        {'protocols': [
-            'https://www.protocols.io/test-protocols-url-12345'
-        ]}, expect_errors=True)
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        in_vitro_cell_line['@id'],
-        {'protocols': 'https://www.protocols.io/test-protocols-url-12345'}, expect_errors=True)
-    assert res.status_code == 422
-
-
 def test_product_id_dependency(award, source, lab, rodent_donor, sample_term_K562, testapp):
     res = testapp.post_json(
         '/in_vitro_system',

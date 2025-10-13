@@ -395,7 +395,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         'summary', '') == 'ATAC-seq (10x multiome) (barcode based multiplexed) integrating editing template libraries targeting sequence variants in 3 targetons of MYC with non-targeting control'
 
 
-def test_protocols(testapp, analysis_set_base, measurement_set_with_protocols):
+def test_analysis_set_protocols(testapp, analysis_set_base, measurement_set_with_protocols):
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -403,7 +403,7 @@ def test_protocols(testapp, analysis_set_base, measurement_set_with_protocols):
         }
     )
     res = testapp.get(analysis_set_base['@id'])
-    assert res.json.get('protocols') == ['https://www.protocols.io/test-protocols-url-12345']
+    assert res.json.get('protocols') == ['https://www.protocols.io/private/test-protocols-url-12345']
 
 
 def test_analysis_set_sample_summary(testapp, principal_analysis_set, measurement_set_mpra, construct_library_set_genome_wide, sample_term_endothelial_cell, gene_myc_hs, treatment_chemical, in_vitro_differentiated_cell, in_vitro_cell_line, multiplexed_sample, crispr_modification, degron_modification, sample_term_lymphoblastoid):
