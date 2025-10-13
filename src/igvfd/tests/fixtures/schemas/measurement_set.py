@@ -149,7 +149,7 @@ def measurement_set_with_protocols(testapp, lab, award, assay_term_starr, tissue
         'assay_term': assay_term_starr['@id'],
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
-        'protocols': ['https://www.protocols.io/test-protocols-url-12345'],
+        'protocols': ['https://www.protocols.io/private/test-protocols-url-12345'],
         'preferred_assay_titles': ['STARR-seq']
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
@@ -564,5 +564,35 @@ def measurement_set_v38_3(measurement_set, assay_term_starr):
         'schema_version': '38',
         'preferred_assay_titles': ['Perturb-seq'],
         'assay_term': assay_term_starr['@id'],
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v39_1(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '39',
+        'protocols': ['https://www.protocols.io/345/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v39_2(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '39',
+        'protocols': ['https://www.protocols.io/private/123/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v39_3(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '39',
+        'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
     })
     return item

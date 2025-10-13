@@ -97,3 +97,22 @@ def test_not_required_properties(testapp, tissue, primary_cell, pooled_from_prim
                          pooled_from_primary_cell['@id']]
          }, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_whole_organism_protocols_regex(whole_organism, testapp):
+    res = testapp.patch_json(
+        whole_organism['@id'],
+        {'protocols': ['https://www.protocols.io/123/ABC']}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        whole_organism['@id'],
+        {'protocols': ['https://www.protocols.io/123/ABC', 'https://www.protocols.io/private/123/ABC']}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        whole_organism['@id'],
+        {'protocols': ['https://www.protocols.io/private/123/ABC']})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        whole_organism['@id'],
+        {'protocols': ['https://www.protocols.io/view/123/ABC']})
+    assert res.status_code == 200

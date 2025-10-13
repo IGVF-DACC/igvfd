@@ -268,11 +268,11 @@
             "items": {
                 "title": "Protocol",
                 "type": "string",
-                "pattern": "^https://www\\.protocols\\.io/(\\S+)$"
+                "pattern": "^https://www\\.protocols\\.io/(private|view)/(\\S+)$"
             },
             "submissionExample": {
-                "appscript": "[\"https://www.protocols.io/link/to/protocol\",\"https://www.protocols.io/link/to/protocol2\"]",
-                "igvf_utils": "https://www.protocols.io/link/to/protocol,https://www.protocols.io/link/to/protocol2"
+                "appscript": "[\"https://www.protocols.io/private/link/to/protocol\",\"https://www.protocols.io/view/link/to/protocol2\"]",
+                "igvf_utils": "https://www.protocols.io/private/link/to/protocol,https://www.protocols.io/view/link/to/protocol2"
             }
         }
     }

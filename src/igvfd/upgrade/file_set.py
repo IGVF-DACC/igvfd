@@ -696,3 +696,36 @@ def model_set_5_6(value, system):
         value['preferred_assay_titles'] = preferred_assay_titles
         notes += f'This model set previously used 10x with Scale pre-indexing as a preferred_assay_titles, but it has been updated to 10x snATAC-seq with Scale pre-indexing via an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '39', '40')
+def measurement_set_39_40(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3067
+    if 'protocols' in value:
+        protocols = value['protocols']
+        valid_prefixes = (
+            'https://www.protocols.io/private/',
+            'https://www.protocols.io/view/',
+        )
+
+        valid_protocols = [p for p in protocols if p.startswith(valid_prefixes)]
+        removed_protocols = [p for p in protocols if not p.startswith(valid_prefixes)]
+
+        if valid_protocols:
+            value['protocols'] = valid_protocols
+        elif protocols:
+            del value['protocols']
+
+        if removed_protocols:
+            notes = value.get('notes', '')
+            removed_list = ', '.join(removed_protocols)
+            protocol_phrase = (
+                f'This protocol {removed_list} does' if len(removed_protocols) == 1
+                else f'These protocols {removed_list} do'
+            )
+            notes += (
+                f'{protocol_phrase} not start with '
+                f'https://www.protocols.io/private/ or https://www.protocols.io/view/ '
+                f'and were removed from the property list.'
+            )
+            value['notes'] = notes.strip()

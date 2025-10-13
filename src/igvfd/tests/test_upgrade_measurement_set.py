@@ -261,3 +261,19 @@ def test_measurement_set_upgrade_38_39(upgrader, measurement_set_v38, measuremen
     value = upgrader.upgrade('measurement_set', measurement_set_v38_3, current_version='38', target_version='39')
     assert value['schema_version'] == '39'
     assert value.get('preferred_assay_titles') == ['Perturb-seq']
+
+
+def test_measurement_set_upgrade_39_40(upgrader, measurement_set_v39_1, measurement_set_v39_2, measurement_set_v39_3):
+    value = upgrader.upgrade('measurement_set', measurement_set_v39_1, current_version='39', target_version='40')
+    assert value['schema_version'] == '40'
+    assert 'protocols' not in value
+    print(value['notes'])
+    assert value.get('notes') == 'This protocol https://www.protocols.io/345/ABC does not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
+    value = upgrader.upgrade('measurement_set', measurement_set_v39_2, current_version='39', target_version='40')
+    assert value['schema_version'] == '40'
+    assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC']
+    value = upgrader.upgrade('measurement_set', measurement_set_v39_3, current_version='39', target_version='40')
+    assert value['schema_version'] == '40'
+    assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
+                                      'https://www.protocols.io/view/678/ABC']
+    assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'

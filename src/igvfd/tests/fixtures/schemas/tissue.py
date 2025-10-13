@@ -316,3 +316,33 @@ def tissue_v21(tissue):
         'schema_version': '21'
     })
     return item
+
+
+@pytest.fixture
+def tissue_v22_1(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '22',
+        'protocols': ['https://www.protocols.io/345/ABC', 'https://www.protocols.io/910/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def tissue_v22_2(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '22',
+        'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/view/678/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def tissue_v22_3(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '22',
+        'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
+    })
+    return item

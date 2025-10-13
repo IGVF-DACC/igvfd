@@ -160,3 +160,19 @@ def test_tissue_upgrade_21_22(upgrader, tissue_v21):
     value = upgrader.upgrade('tissue', tissue_v21, current_version='21', target_version='22')
     assert value['schema_version'] == '22'
     assert value['embryonic'] == False
+
+
+def test_tissue_upgrade_22_23(upgrader, tissue_v22_1, tissue_v22_2, tissue_v22_3):
+    value = upgrader.upgrade('tissue', tissue_v22_1, current_version='22', target_version='23')
+    assert value['schema_version'] == '23'
+    assert 'protocols' not in value
+    assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
+    value = upgrader.upgrade('tissue', tissue_v22_2, current_version='22', target_version='23')
+    assert value['schema_version'] == '23'
+    assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
+                                      'https://www.protocols.io/view/678/ABC']
+    value = upgrader.upgrade('tissue', tissue_v22_3, current_version='22', target_version='23')
+    assert value['schema_version'] == '23'
+    assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
+                                      'https://www.protocols.io/view/678/ABC']
+    assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'

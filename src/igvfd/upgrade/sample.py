@@ -552,3 +552,41 @@ def sample_22_23(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2085
     if 'embryonic' not in value:
         value['embryonic'] = False
+
+
+@upgrade_step('primary_cell', '23', '24')
+@upgrade_step('in_vitro_system', '28', '29')
+@upgrade_step('tissue', '22', '23')
+@upgrade_step('technical_sample', '14', '15')
+@upgrade_step('whole_organism', '25', '26')
+@upgrade_step('multiplexed_sample', '10', '11')
+def sample_23_24(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3067
+    if 'protocols' in value:
+        protocols = value['protocols']
+        valid_prefixes = (
+            'https://www.protocols.io/private/',
+            'https://www.protocols.io/view/',
+        )
+
+        valid_protocols = [p for p in protocols if p.startswith(valid_prefixes)]
+        removed_protocols = [p for p in protocols if not p.startswith(valid_prefixes)]
+
+        if valid_protocols:
+            value['protocols'] = valid_protocols
+        elif protocols:
+            del value['protocols']
+
+        if removed_protocols:
+            notes = value.get('notes', '')
+            removed_list = ', '.join(removed_protocols)
+            protocol_phrase = (
+                f'This protocol {removed_list} does' if len(removed_protocols) == 1
+                else f'These protocols {removed_list} do'
+            )
+            notes += (
+                f'{protocol_phrase} not start with '
+                f'https://www.protocols.io/private/ or https://www.protocols.io/view/ '
+                f'and were removed from the property list.'
+            )
+            value['notes'] = notes.strip()
