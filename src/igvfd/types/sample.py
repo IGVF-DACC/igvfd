@@ -922,7 +922,7 @@ class MultiplexedSample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, multiplexed_samples=None, donors=None, sample_terms=None):
+    def summary(self, request, multiplexed_samples=None, donors=None, sample_terms=None, cellular_sub_pool=None):
         # Generate sample term phrase
         sample_term_phrase = None
         if sample_terms:
@@ -967,12 +967,17 @@ class MultiplexedSample(Sample):
                 cap_number=len(targeted_sample_term_names)
             )
 
+        # Generate a cellular_sub_pool phrase
+        if cellular_sub_pool:
+            sub_pool_phrase = f', cellular sub pool: {(cellular_sub_pool)}'
+
         # Make final phrase
         phrases = [
             sample_term_phrase,
             donors_phrase,
             samples_phrase,
-            f'induced to {targeted_sample_term_phrase}' if targeted_sample_term_phrase else None
+            f'induced to {targeted_sample_term_phrase}' if targeted_sample_term_phrase else None,
+            sub_pool_phrase
         ]
         return f"multiplexed {', '.join([x for x in phrases if x is not None])}"
 
