@@ -1,6 +1,6 @@
 {
-    "hash": "420a33927d4f901596e55a9575de371f",
-    "index_name": "whole_organism_420a3392",
+    "hash": "90591fe6c521ec80c2a4aed1cadb2285",
+    "index_name": "whole_organism_90591fe6",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -679,6 +679,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -925,6 +928,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
                                 "type": "keyword"
                             },
                             "supersedes": {
@@ -1281,6 +1287,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
                                 "type": "keyword"
                             },
                             "supersedes": {
@@ -1837,6 +1846,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
                             "supersedes": {
                                 "type": "keyword"
                             },
@@ -2369,6 +2381,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
                             "supersedes": {
                                 "type": "keyword"
                             },
@@ -2568,6 +2583,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "superseded_by": {
                         "type": "keyword"
                     },
                     "supersedes": {

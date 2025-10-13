@@ -222,7 +222,8 @@ class File(Item):
         'gene_list_for': ('FileSet', 'large_scale_gene_list'),
         'loci_list_for': ('FileSet', 'large_scale_loci_list'),
         'input_file_for': ('File', 'derived_from'),
-        'quality_metrics': ('QualityMetric', 'quality_metric_of')
+        'quality_metrics': ('QualityMetric', 'quality_metric_of'),
+        'superseded_by': ('File', 'supersedes')
     }
 
     set_status_up = [
@@ -317,6 +318,22 @@ class File(Item):
     })
     def quality_metrics(self, request, quality_metrics):
         return paths_filtered_by_status(request, quality_metrics) or None
+
+    @calculated_property(schema={
+        'title': 'Superseded By',
+        'description': 'File(s) this file is superseded by virtue of those file(s) being newer, better, or a fixed version of etc. than this one.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Superseded By',
+            'type': 'string',
+            'linkFrom': 'File.supersedes',
+        },
+        'notSubmittable': True
+    })
+    def superseded_by(self, request, superseded_by):
+        return paths_filtered_by_status(request, superseded_by) or None
 
     @calculated_property(
         schema={

@@ -1,6 +1,6 @@
 {
-    "hash": "e0b01c1f826ec262c30963cb948aaef4",
-    "index_name": "technical_sample_e0b01c1f",
+    "hash": "60ee68ad91ffc5985f7285eb7b5ce713",
+    "index_name": "technical_sample_60ee68ad",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -494,6 +494,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -878,6 +881,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
                                 "type": "keyword"
                             },
                             "supersedes": {
@@ -1499,6 +1505,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
                             "supersedes": {
                                 "type": "keyword"
                             },
@@ -1698,6 +1707,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "superseded_by": {
                         "type": "keyword"
                     },
                     "supersedes": {

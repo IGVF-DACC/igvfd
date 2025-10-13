@@ -149,7 +149,8 @@ class FileSet(Item):
     rev = {
         'files': ('File', 'file_set'),
         'control_for': ('FileSet', 'control_file_sets'),
-        'input_for': ('FileSet', 'input_file_sets')
+        'input_for': ('FileSet', 'input_file_sets'),
+        'superseded_by': ('FileSet', 'supersedes')
     }
     embedded_with_frame = [
         Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'title']),
@@ -275,6 +276,22 @@ class FileSet(Item):
     })
     def control_for(self, request, control_for):
         return paths_filtered_by_status(request, control_for) or None
+
+    @calculated_property(schema={
+        'title': 'Superseded By',
+        'description': 'File set(s) this file set is superseded by virtue of those file set(s) being newer, better, or a fixed version of etc. than this one.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Superseded By',
+            'type': 'string',
+            'linkFrom': 'FileSet.supersedes',
+        },
+        'notSubmittable': True
+    })
+    def superseded_by(self, request, superseded_by):
+        return paths_filtered_by_status(request, superseded_by) or None
 
     @calculated_property(schema={
         'title': 'Submitted Files Timestamp',

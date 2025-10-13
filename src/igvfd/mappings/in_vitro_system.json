@@ -1,6 +1,6 @@
 {
-    "hash": "26e369bb46fcbae91321f3cd99bb2e1a",
-    "index_name": "in_vitro_system_26e369bb",
+    "hash": "0a8e14a2093c23baecdfe899b4898f11",
+    "index_name": "in_vitro_system_0a8e14a2",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -686,6 +686,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -938,6 +941,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
                                 "type": "keyword"
                             },
                             "supersedes": {
@@ -1294,6 +1300,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
                                 "type": "keyword"
                             },
                             "supersedes": {
@@ -1853,6 +1862,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
                             "supersedes": {
                                 "type": "keyword"
                             },
@@ -2114,6 +2126,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
                                 "type": "keyword"
                             },
                             "supersedes": {
@@ -2658,6 +2673,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
                             "supersedes": {
                                 "type": "keyword"
                             },
@@ -2857,6 +2875,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "superseded_by": {
                         "type": "keyword"
                     },
                     "supersedes": {

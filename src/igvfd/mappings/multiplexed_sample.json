@@ -1,6 +1,6 @@
 {
-    "hash": "7bd11e862d2c4f3ce925c89eea1fc420",
-    "index_name": "multiplexed_sample_7bd11e86",
+    "hash": "31b1581e4daffcd19fb4dcf80b4308d5",
+    "index_name": "multiplexed_sample_31b1581e",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -673,6 +673,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -919,6 +922,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
                                 "type": "keyword"
                             },
                             "supersedes": {
@@ -1271,6 +1277,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
                                 "type": "keyword"
                             },
                             "supersedes": {
@@ -1815,6 +1824,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
                             "supersedes": {
                                 "type": "keyword"
                             },
@@ -2114,6 +2126,9 @@
                                     "summary": {
                                         "type": "keyword"
                                     },
+                                    "superseded_by": {
+                                        "type": "keyword"
+                                    },
                                     "supersedes": {
                                         "type": "keyword"
                                     },
@@ -2362,6 +2377,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
                                 "type": "keyword"
                             },
                             "supersedes": {
@@ -2896,6 +2914,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
                             "supersedes": {
                                 "type": "keyword"
                             },
@@ -3095,6 +3116,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "superseded_by": {
                         "type": "keyword"
                     },
                     "supersedes": {

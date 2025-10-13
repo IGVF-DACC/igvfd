@@ -1,6 +1,6 @@
 {
-    "hash": "c96e8cd039e44d621221805d2aadb2dd",
-    "index_name": "alignment_file_c96e8cd0",
+    "hash": "8076681bf147171a0b5015af9f42b984",
+    "index_name": "alignment_file_8076681b",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -806,6 +806,9 @@
                                     "summary": {
                                         "type": "keyword"
                                     },
+                                    "superseded_by": {
+                                        "type": "keyword"
+                                    },
                                     "supersedes": {
                                         "type": "keyword"
                                     },
@@ -1487,6 +1490,9 @@
                                         "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
+                                    "superseded_by": {
+                                        "type": "keyword"
+                                    },
                                     "supersedes": {
                                         "type": "keyword"
                                     },
@@ -1793,6 +1799,9 @@
                             },
                             "summary": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
                                 "type": "keyword"
                             },
                             "supersedes": {
@@ -2390,6 +2399,9 @@
                                     "summary": {
                                         "type": "keyword"
                                     },
+                                    "superseded_by": {
+                                        "type": "keyword"
+                                    },
                                     "supersedes": {
                                         "type": "keyword"
                                     },
@@ -2583,6 +2595,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
                                 "type": "keyword"
                             },
                             "targeton": {
@@ -2803,6 +2818,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "superseded_by": {
                         "type": "keyword"
                     },
                     "supersedes": {

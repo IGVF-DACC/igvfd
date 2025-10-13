@@ -7,6 +7,7 @@ from snovault import (
 from snovault.util import Path
 from .base import (
     Item,
+    paths_filtered_by_status
 )
 
 
@@ -31,6 +32,25 @@ class Donor(Item):
              'term_name', 'quantity', 'quantity_units', 'observation_date', 'status']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
     ]
+    rev = {
+        'superseded_by': ('Donor', 'supersedes')
+    }
+
+    @calculated_property(schema={
+        'title': 'Superseded By',
+        'description': 'Donor(s) this donor is superseded by virtue of those donor(s) being newer, better, or a fixed version of etc. than this one.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Superseded By',
+            'type': 'string',
+            'linkFrom': 'Donor.supersedes',
+        },
+        'notSubmittable': True
+    })
+    def superseded_by(self, request, superseded_by):
+        return paths_filtered_by_status(request, superseded_by) or None
 
     set_status_up = [
         'documents',
