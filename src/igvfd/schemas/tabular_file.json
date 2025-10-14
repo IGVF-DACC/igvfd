@@ -261,7 +261,7 @@
                 "DNA footprint scores": "A file containing DNA footprint scores, which represents the binding sites between DNA and proteins called from assays like ATAC-seq data.",
                 "DUAL-IPA score": "A z-score that quantifies the relative abundance of a protein variant by comparing its GFP expression in HEK293T cells to that of the reference allele, with both signals normalized to mCherry expression as a control.",
                 "editing templates": "The homology-directed DNA repair (HDR) templates containing SNVs in the library of saturation genome editing assays.",
-                "element quantifications": "The quantified levels of specific genomic elements. Formatting should follow https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/table_schemas/element_quant.json.",
+                "element quantifications": "The quantified levels of specific genomic elements.",
                 "element to gene interactions": "A file summarizing the results of an E2G based prediction to identify the linkage between genomic elements and genes.",
                 "elements reference": "References for the genomic elements studied, including details like genomic coordinates or identifiers.",
                 "fold change over control": "The ratio of expression levels or other measurements in an experimental condition relative to a control.",

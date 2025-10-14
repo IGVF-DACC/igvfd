@@ -58,7 +58,7 @@ def audit_curated_set_non_virtual_sample(value, system):
     '''
     [
         {
-            "audit_description": "Curated sets are expected to link to only virtual samples.",
+            "audit_description": "Curated sets that have reference files are expected to be sample agnostic, therefore, should not be linked to non-virtual samples. The `samples` property of the curated sets should be either empty or link to only virtual samples.",
             "audit_category": "inconsistent samples",
             "audit_level": "ERROR"
         }
