@@ -3,6 +3,7 @@
 ### Minor changes since schema version 12
 
 * Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Extend `selection_criteria` enum list to include `TF genes`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Extend `collections` enum list to include `Benchmark`.

@@ -1,6 +1,6 @@
 {
-    "hash": "b9cd58b84202ef2fbf00d75c615740c2",
-    "index_name": "primary_cell_b9cd58b8",
+    "hash": "447ea479180a957a7148b8fd96aedd02",
+    "index_name": "primary_cell_447ea479",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -683,6 +683,9 @@
                                 "type": "keyword"
                             },
                             "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeton": {

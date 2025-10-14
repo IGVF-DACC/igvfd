@@ -1,6 +1,6 @@
 {
-    "hash": "99db6069e009033d0e94b27bf5c0ced3",
-    "index_name": "prediction_set_99db6069",
+    "hash": "75369059f5fc1ee366e0cfc101d56bdd",
+    "index_name": "prediction_set_75369059",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -3075,6 +3075,9 @@
                                         "type": "keyword"
                                     },
                                     "superseded_by": {
+                                        "type": "keyword"
+                                    },
+                                    "supersedes": {
                                         "type": "keyword"
                                     },
                                     "targeton": {

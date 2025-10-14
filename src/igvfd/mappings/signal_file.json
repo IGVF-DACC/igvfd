@@ -1,6 +1,6 @@
 {
-    "hash": "a9a2aff43d71f694bb69e99dcdbc7595",
-    "index_name": "signal_file_a9a2aff4",
+    "hash": "ed9eaf24f7d3b1d1136f3385f39fdc48",
+    "index_name": "signal_file_ed9eaf24",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -2693,6 +2693,9 @@
                                 "type": "keyword"
                             },
                             "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeton": {

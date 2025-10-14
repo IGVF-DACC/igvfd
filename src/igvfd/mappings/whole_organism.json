@@ -1,6 +1,6 @@
 {
-    "hash": "ba13e7b6fa99dccd3c8efa70b76e3176",
-    "index_name": "whole_organism_ba13e7b6",
+    "hash": "a08224df931aef76422cd02ef27f022e",
+    "index_name": "whole_organism_a08224df",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -680,6 +680,9 @@
                                 "type": "keyword"
                             },
                             "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeton": {

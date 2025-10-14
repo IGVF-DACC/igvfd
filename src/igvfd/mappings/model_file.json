@@ -1,6 +1,6 @@
 {
-    "hash": "dde6001f492ee16e9b2553ee1faccb61",
-    "index_name": "model_file_dde6001f",
+    "hash": "4d8880c6232adf373100b343ea3454a0",
+    "index_name": "model_file_4d8880c6",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -2603,6 +2603,9 @@
                                 "type": "keyword"
                             },
                             "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeton": {

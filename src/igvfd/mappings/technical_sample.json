@@ -1,6 +1,6 @@
 {
-    "hash": "129090341454d6aec6bef73e942bbb60",
-    "index_name": "technical_sample_12909034",
+    "hash": "1b463525081e5dbfb8868e7ca848f3fe",
+    "index_name": "technical_sample_1b463525",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -495,6 +495,9 @@
                                 "type": "keyword"
                             },
                             "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeton": {

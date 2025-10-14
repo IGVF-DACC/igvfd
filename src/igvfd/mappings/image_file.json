@@ -1,6 +1,6 @@
 {
-    "hash": "9174fada5ec23c955e87a105d394ec4d",
-    "index_name": "image_file_9174fada",
+    "hash": "887c2a6c70f6ae9aaec3a9f5ccee3095",
+    "index_name": "image_file_887c2a6c",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -2589,6 +2589,9 @@
                                 "type": "keyword"
                             },
                             "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeton": {

@@ -1,6 +1,6 @@
 {
-    "hash": "f224814b3bdd58c35b27a4c7aff1821e",
-    "index_name": "reference_file_f224814b",
+    "hash": "4cc59129a875462a1d2d81a4a06b9dfa",
+    "index_name": "reference_file_4cc59129",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -2611,6 +2611,9 @@
                                 "type": "keyword"
                             },
                             "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeton": {

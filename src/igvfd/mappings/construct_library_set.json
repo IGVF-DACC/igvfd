@@ -1,6 +1,6 @@
 {
-    "hash": "deb381ec1f5036fbf1433404131a52f4",
-    "index_name": "construct_library_set_deb381ec",
+    "hash": "dceed8cfcca7d49d7b5a11900257fb4b",
+    "index_name": "construct_library_set_dceed8cf",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -3136,6 +3136,9 @@
                         "type": "keyword"
                     },
                     "superseded_by": {
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "targeton": {

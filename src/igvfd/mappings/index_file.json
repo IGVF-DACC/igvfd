@@ -1,6 +1,6 @@
 {
-    "hash": "c4f63ca5c6be781dae13fc480953b244",
-    "index_name": "index_file_c4f63ca5",
+    "hash": "6c26a8c2f7d210401f797c70b5567540",
+    "index_name": "index_file_6c26a8c2",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -2601,6 +2601,9 @@
                                 "type": "keyword"
                             },
                             "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeton": {

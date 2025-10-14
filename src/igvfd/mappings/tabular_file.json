@@ -1,6 +1,6 @@
 {
-    "hash": "3dca599eeec9d5929deee47e10f4dccd",
-    "index_name": "tabular_file_3dca599e",
+    "hash": "600955ec8ad33a724a176a56a2c9bde4",
+    "index_name": "tabular_file_600955ec",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -2707,6 +2707,9 @@
                                 "type": "keyword"
                             },
                             "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeton": {
