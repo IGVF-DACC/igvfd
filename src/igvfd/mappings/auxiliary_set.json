@@ -1,6 +1,6 @@
 {
-    "hash": "ed2277c1be6c73a70348611f6ab8a01a",
-    "index_name": "auxiliary_set_ed2277c1",
+    "hash": "9a2a23b2e96d4211b80ba02785f1bf2d",
+    "index_name": "auxiliary_set_9a2a23b2",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -657,6 +657,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "library_preparation_kit": {
+                                "type": "keyword"
+                            },
                             "lot_id": {
                                 "type": "keyword"
                             },
@@ -1093,6 +1096,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {
@@ -2156,6 +2162,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "library_preparation_kit": {
+                                "type": "keyword"
+                            },
                             "lot_id": {
                                 "type": "keyword"
                             },
@@ -2503,6 +2512,9 @@
                                 "type": "keyword"
                             },
                             "lab": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

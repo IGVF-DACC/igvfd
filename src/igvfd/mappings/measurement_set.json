@@ -1,6 +1,6 @@
 {
-    "hash": "d6285cc35ee93fa135a67269d97d980f",
-    "index_name": "measurement_set_d6285cc3",
+    "hash": "62af44853169524e86195d2d92315796",
+    "index_name": "measurement_set_62af4485",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -875,6 +875,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "library_preparation_kit": {
+                                "type": "keyword"
+                            },
                             "lot_id": {
                                 "type": "keyword"
                             },
@@ -1313,6 +1316,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "library_preparation_kit": {
+                                "type": "keyword"
+                            },
                             "lot_id": {
                                 "type": "keyword"
                             },
@@ -1650,6 +1656,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {
@@ -2800,6 +2809,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "library_preparation_kit": {
+                                "type": "keyword"
+                            },
                             "lot_id": {
                                 "type": "keyword"
                             },
@@ -3056,6 +3068,9 @@
                         },
                         "type": "object"
                     },
+                    "library_preparation_kit": {
+                        "type": "keyword"
+                    },
                     "multiome_size": {
                         "store": true,
                         "type": "long"
@@ -3310,6 +3325,9 @@
                                 "type": "keyword"
                             },
                             "lab": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

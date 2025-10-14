@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 40
 
+* Add `library_preparation_kit`.
 * Add calculated property `superseded_by`.
 * Add `supersedes`.
 

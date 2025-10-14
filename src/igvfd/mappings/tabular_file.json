@@ -1,6 +1,6 @@
 {
-    "hash": "600955ec8ad33a724a176a56a2c9bde4",
-    "index_name": "tabular_file_600955ec",
+    "hash": "328e619a385e9dac6214f83c5bd9ab1e",
+    "index_name": "tabular_file_328e619a",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1039,6 +1039,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {

@@ -1,6 +1,6 @@
 {
-    "hash": "510768e5d81ab722e6329b9578d6b6ac",
-    "index_name": "matrix_file_510768e5",
+    "hash": "8555be13e342584798213d3533c7524d",
+    "index_name": "matrix_file_8555be13",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -932,6 +932,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {

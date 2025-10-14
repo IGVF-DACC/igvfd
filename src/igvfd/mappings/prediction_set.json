@@ -1,6 +1,6 @@
 {
-    "hash": "75369059f5fc1ee366e0cfc101d56bdd",
-    "index_name": "prediction_set_75369059",
+    "hash": "52fc75fe6843e440f408ddaf567c9105",
+    "index_name": "prediction_set_52fc75fe",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -830,6 +830,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "library_preparation_kit": {
+                                "type": "keyword"
+                            },
                             "lot_id": {
                                 "type": "keyword"
                             },
@@ -1266,6 +1269,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {

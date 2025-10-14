@@ -1,6 +1,6 @@
 {
-    "hash": "dceed8cfcca7d49d7b5a11900257fb4b",
-    "index_name": "construct_library_set_dceed8cf",
+    "hash": "01ca7dee08584aa4b73363b89b15076d",
+    "index_name": "construct_library_set_01ca7dee",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -468,6 +468,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {

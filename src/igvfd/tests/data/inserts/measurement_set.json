@@ -56,7 +56,8 @@
         "preferred_assay_titles": [
             "10x multiome"
         ],
-        "file_set_type": "experimental data"
+        "file_set_type": "experimental data",
+        "library_preparation_kit": "10X Chromium Single Cell 5 prime v3"
     },
     {
         "aliases": [

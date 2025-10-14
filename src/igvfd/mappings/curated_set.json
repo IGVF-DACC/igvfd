@@ -1,6 +1,6 @@
 {
-    "hash": "f2dbd312259ca5e3162b99d348fa3afb",
-    "index_name": "curated_set_f2dbd312",
+    "hash": "9628d6759e0d21e65511546df03965f5",
+    "index_name": "curated_set_9628d675",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -655,6 +655,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "library_preparation_kit": {
+                                "type": "keyword"
+                            },
                             "lot_id": {
                                 "type": "keyword"
                             },
@@ -1091,6 +1094,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {

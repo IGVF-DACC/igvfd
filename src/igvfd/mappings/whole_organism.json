@@ -1,6 +1,6 @@
 {
-    "hash": "a08224df931aef76422cd02ef27f022e",
-    "index_name": "whole_organism_a08224df",
+    "hash": "83fe190dd92bdcfcf5a8301af02f430a",
+    "index_name": "whole_organism_83fe190d",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1154,6 +1154,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {
