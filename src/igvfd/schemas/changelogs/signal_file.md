@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 13
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Add `catalog_class`.
 * Add `catalog_notes`.
 * Add `anvil_url`.

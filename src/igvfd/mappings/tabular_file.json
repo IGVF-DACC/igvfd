@@ -1,6 +1,6 @@
 {
-    "hash": "01c63e66b851b6918c1e2c1e64d8986f",
-    "index_name": "tabular_file_01c63e66",
+    "hash": "600955ec8ad33a724a176a56a2c9bde4",
+    "index_name": "tabular_file_600955ec",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -914,6 +914,12 @@
                                     "summary": {
                                         "type": "keyword"
                                     },
+                                    "superseded_by": {
+                                        "type": "keyword"
+                                    },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "taxa": {
                                         "type": "keyword"
                                     },
@@ -1592,6 +1598,12 @@
                                         "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
+                                    "superseded_by": {
+                                        "type": "keyword"
+                                    },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "properties": {
                                             "@id": {
@@ -1895,6 +1907,12 @@
                             },
                             "summary": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_genes": {
@@ -2490,6 +2508,12 @@
                                         "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
+                                    "superseded_by": {
+                                        "type": "keyword"
+                                    },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "targeted_sample_term": {
                                         "type": "keyword"
                                     },
@@ -2680,6 +2704,12 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeton": {
@@ -2895,6 +2925,12 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "superseded_by": {
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {

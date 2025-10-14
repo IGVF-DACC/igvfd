@@ -308,3 +308,40 @@ def test_audit_file_statuses_in_s3_statuses(testapp):
     assert file_statuses
     # If this fails sync public/private_s3_statuses with statuses in file schema.
     assert not set(file_statuses) - set(public_s3_statuses + private_s3_statuses)
+
+
+def test_audit_supersedes(testapp, reference_file, tabular_file):
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'supersedes': [tabular_file['@id']]
+
+        }
+    )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'status': 'deleted'
+        }
+    )
+    res = testapp.get(reference_file['@id'] + '@@audit')
+    assert any(
+        audit['category'] == 'inconsistent superseding'
+        for audit in res.json['audit'].get('INTERNAL_ACTION', {})
+    )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'status': 'archived',
+            'release_timestamp': '2024-03-06T12:34:56Z',
+            'upload_status': 'validated',
+            'file_size': 5000,
+            'md5sum': '51ff37ad73d8f3d7c3fa2d7f6fd5073b',
+            'submitted_file_name': 'sometabfile.tsv'
+        }
+    )
+    res = testapp.get(reference_file['@id'] + '@@audit')
+    assert all(
+        audit['category'] != 'inconsistent superseding'
+        for audit in res.json['audit'].get('INTERNAL_ACTION', {})
+    )

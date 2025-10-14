@@ -1,6 +1,6 @@
 {
-    "hash": "b9299e398433121800ce23cbed9c3162",
-    "index_name": "measurement_set_b9299e39",
+    "hash": "d6285cc35ee93fa135a67269d97d980f",
+    "index_name": "measurement_set_d6285cc3",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -362,6 +362,12 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "url": {
@@ -832,6 +838,12 @@
                                     "summary": {
                                         "type": "keyword"
                                     },
+                                    "superseded_by": {
+                                        "type": "keyword"
+                                    },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "transcriptome_annotation": {
                                         "type": "keyword"
                                     },
@@ -1096,6 +1108,12 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_genes": {
@@ -1431,6 +1449,12 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_genes": {
                                 "type": "keyword"
                             },
@@ -1764,6 +1788,12 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_genes": {
                                 "type": "keyword"
                             },
@@ -1958,6 +1988,12 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -2418,6 +2454,12 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "transcriptome_annotation": {
@@ -2894,6 +2936,12 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_genes": {
                                 "type": "keyword"
                             },
@@ -3326,6 +3374,12 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_genes": {
@@ -3908,6 +3962,12 @@
                                 "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_sample_term": {
                                 "properties": {
                                     "@id": {
@@ -4244,6 +4304,12 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "superseded_by": {
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "targeted_genes": {

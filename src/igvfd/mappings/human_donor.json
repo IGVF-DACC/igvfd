@@ -1,6 +1,6 @@
 {
-    "hash": "8e2478c8f4d4d2fbb791ba828f7a7958",
-    "index_name": "human_donor_8e2478c8",
+    "hash": "d34c34f4d473372e8b9bc899b5da8e49",
+    "index_name": "human_donor_d34c34f4",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -695,6 +695,12 @@
                                     "summary": {
                                         "type": "keyword"
                                     },
+                                    "superseded_by": {
+                                        "type": "keyword"
+                                    },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
                                     "taxa": {
                                         "type": "keyword"
                                     },
@@ -805,6 +811,12 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "type": "keyword"
+                    },
+                    "superseded_by": {
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "taxa": {

@@ -121,6 +121,24 @@
                 "appscript": "experimental data",
                 "igvf_utils": "experimental data"
             }
+        },
+        "supersedes": {
+            "title": "Supersedes",
+            "description": "The file set(s) that this file set supersedes by virtue of being newer, better, or a fixed version of etc. than the one(s) it supersedes.",
+            "comment": "The linked file set(s) are expected to have a revoked or archived status.",
+            "minItems": 1,
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+                "title": "Superseded File Set",
+                "description": "File set that this file set supersedes by virtue of being newer, better, or a fixed version of etc. than the one it supersedes.",
+                "type": "string",
+                "linkTo": "FileSet"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:measurement_set01\", \"TSTDS98084730\"]",
+                "igvf_utils": "john-doe:measurement_set01, TSTDS98084730"
+            }
         }
     }
 }

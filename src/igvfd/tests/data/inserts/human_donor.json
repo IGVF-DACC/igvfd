@@ -183,6 +183,9 @@
             "Hadza",
             "Sandawe"
         ],
-        "virtual": false
+        "virtual": false,
+        "supersedes": [
+            "IGVFDO5323HUES"
+        ]
     }
 ]

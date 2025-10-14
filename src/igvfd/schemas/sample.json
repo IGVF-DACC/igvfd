@@ -274,6 +274,24 @@
                 "appscript": "[\"https://www.protocols.io/private/link/to/protocol\",\"https://www.protocols.io/view/link/to/protocol2\"]",
                 "igvf_utils": "https://www.protocols.io/private/link/to/protocol,https://www.protocols.io/view/link/to/protocol2"
             }
+        },
+        "supersedes": {
+            "title": "Supersedes",
+            "description": "The sample(s) that this sample supersedes by virtue of being newer, better, or a fixed version of etc. than the one(s) it supersedes.",
+            "comment": "The linked sample(s) are expected to have a revoked or archived status.",
+            "minItems": 1,
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+                "title": "Superseded Sample",
+                "description": "Sample that this sample supersedes by virtue of being newer, better, or a fixed version of etc. than the one it supersedes.",
+                "type": "string",
+                "linkTo": "Sample"
+            },
+            "submissionExample": {
+                "appscript": "[\"TSTSM02881437\", \"john-doe:tissue01\"]",
+                "igvf_utils": "TSTSM02881437, john-doe:tissue01"
+            }
         }
     }
 }

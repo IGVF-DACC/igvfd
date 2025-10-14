@@ -1,6 +1,6 @@
 {
-    "hash": "62c187aaa976142c4855c545ead2ef8c",
-    "index_name": "technical_sample_62c187aa",
+    "hash": "1b463525081e5dbfb8868e7ca848f3fe",
+    "index_name": "technical_sample_1b463525",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -494,6 +494,12 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -878,6 +884,12 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_genes": {
@@ -1496,6 +1508,12 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_sample_term": {
                                 "type": "keyword"
                             },
@@ -1692,6 +1710,12 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "superseded_by": {
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "taxa": {

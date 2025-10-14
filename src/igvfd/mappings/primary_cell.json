@@ -1,6 +1,6 @@
 {
-    "hash": "1504166063c478434393408555fde22d",
-    "index_name": "primary_cell_15041660",
+    "hash": "447ea479180a957a7148b8fd96aedd02",
+    "index_name": "primary_cell_447ea479",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -682,6 +682,12 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -928,6 +934,12 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -1281,6 +1293,12 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "targeted_genes": {
@@ -1834,6 +1852,12 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "taxa": {
                                 "type": "keyword"
                             },
@@ -2367,6 +2391,12 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
+                                "type": "keyword"
+                            },
                             "targeted_sample_term": {
                                 "type": "keyword"
                             },
@@ -2563,6 +2593,12 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "superseded_by": {
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "taxa": {

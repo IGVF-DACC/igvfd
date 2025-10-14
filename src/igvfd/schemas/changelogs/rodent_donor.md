@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 14
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Extend `strain_background` enum list to include `CC001/Unc`.
 * Extend `strain_background` enum list to include `CC002/Unc`.
 * Extend `strain_background` enum list to include `CC003/Unc`.

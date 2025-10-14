@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 9
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Add calculated property `software_versions`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Extend `collections` enum list to include `Benchmark`.

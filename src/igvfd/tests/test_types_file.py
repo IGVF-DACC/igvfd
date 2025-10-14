@@ -911,3 +911,14 @@ def test_file_reset_file_upload_bucket_on_upload_credentials(testapp, root, dumm
 def test_types_index_file_reference_files(testapp, index_file_bai, reference_file):
     res = testapp.get(index_file_bai['@id'])
     assert set(res.json.get('reference_files')) == {reference_file['@id']}
+
+
+def test_superseded_by(testapp, tabular_file, signal_file):
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'supersedes': [signal_file['@id']]
+        }
+    )
+    res = testapp.get(signal_file['@id'])
+    assert set([file for file in res.json.get('superseded_by')]) == {tabular_file['@id']}

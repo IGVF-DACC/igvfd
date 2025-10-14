@@ -492,6 +492,9 @@
         "dbxrefs": [
             "ENSEMBL:ENSG00000101128"
         ],
-        "controlled_access": false
+        "controlled_access": false,
+        "supersedes": [
+            "IGVFFI1234KLJH"
+        ]
     }
 ]

@@ -115,6 +115,7 @@ class Sample(Item):
         'sorted_fractions': ('Sample', 'sorted_from'),
         'origin_of': ('Sample', 'originated_from'),
         'institutional_certificates': ('InstitutionalCertificate', 'samples'),
+        'superseded_by': ('Sample', 'supersedes')
     }
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
@@ -255,6 +256,22 @@ class Sample(Item):
     })
     def institutional_certificates(self, request, institutional_certificates):
         return paths_filtered_by_status(request, institutional_certificates) or None
+
+    @calculated_property(schema={
+        'title': 'Superseded By',
+        'description': 'Sample(s) this sample is superseded by virtue of those sample(s) being newer, better, or a fixed version of etc. than this one.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Superseded By',
+            'type': 'string',
+            'linkFrom': 'Sample.supersedes',
+        },
+        'notSubmittable': True
+    })
+    def superseded_by(self, request, superseded_by):
+        return paths_filtered_by_status(request, superseded_by) or None
 
 
 @abstract_collection(

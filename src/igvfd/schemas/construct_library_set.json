@@ -1050,6 +1050,9 @@
                 "appscript": "targeton1",
                 "igvf_utils": "targeton1"
             }
+        },
+        "supersedes": {
+            "$merge": "file_set.json#/properties/supersedes"
         }
     },
     "fuzzy_searchable_fields": [

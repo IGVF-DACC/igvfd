@@ -500,6 +500,24 @@
             "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
             "type": "string",
             "permission": "admin_only"
+        },
+        "supersedes": {
+            "title": "Supersedes",
+            "description": "The file(s) that this file supersedes by virtue of being newer, better, or a fixed version of etc. than the one(s) it supersedes.",
+            "comment": "The linked file(s) are expected to have a revoked or archived status.",
+            "minItems": 1,
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+                "title": "Superseded File",
+                "description": "File that this file supersedes by virtue of being newer, better, or a fixed version of etc. than the one it supersedes.",
+                "type": "string",
+                "linkTo": "File"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-done:file01\", \"IGVFFI6665ABCD\"]",
+                "igvf_utils": "john-done:file01, IGVFFI6665ABCD"
+            }
         }
     },
     "changelog": "/profiles/changelogs/file.md"

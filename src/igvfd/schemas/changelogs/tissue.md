@@ -6,6 +6,8 @@
 
 ### Minor changes since schema version 22
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Extend `collections` enum list to include `Benchmark`.
 * Extend `collections` enum list to include `TF Perturb-seq Project`.

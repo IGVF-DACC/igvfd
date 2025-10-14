@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 5
 
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Add `catalog_class`.
 * Add `catalog_notes`.
 * Extend `file_format` enum list to include `svg`.

@@ -103,3 +103,33 @@ def audit_item_status(value, system):
             )
             )
             yield AuditFailure('mismatched status', detail, level='INTERNAL_ACTION')
+
+
+@audit_checker('File', frame='object')
+@audit_checker('Donor', frame='object')
+@audit_checker('Sample', frame='object')
+@audit_checker('FileSet', frame='object')
+def audit_supersedes(value, system):
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    if 'supersedes' not in value:
+        return
+    else:
+        inconsistent_superseded_items = []
+        for superseded_item in value['supersedes']:
+            superseded_item_object = system.get('request').embed(superseded_item + '@@filtered_object?include=status')
+            if superseded_item_object.get('status', '') not in ['archived', 'revoked']:
+                inconsistent_superseded_items.append(superseded_item)
+    if inconsistent_superseded_items:
+        inconsistent_superseded_items = ', '.join([
+            audit_link(path_to_text(item), item)
+            for item in inconsistent_superseded_items
+        ])
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'supersedes item(s): {inconsistent_superseded_items} that are not archived or revoked.'
+        )
+        yield AuditFailure(
+            'inconsistent superseding',
+            f'{detail}',
+            level='INTERNAL_ACTION'
+        )
