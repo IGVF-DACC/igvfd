@@ -1,6 +1,6 @@
 {
-    "hash": "99ef85921184eb34433398a463dda5f1",
-    "index_name": "reference_file_99ef8592",
+    "hash": "738823d820f3b06f2e9d015c71a2cd2f",
+    "index_name": "reference_file_738823d8",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -373,7 +373,13 @@
                     "catalog_adapters": {
                         "type": "keyword"
                     },
+                    "catalog_class": {
+                        "type": "keyword"
+                    },
                     "catalog_collections": {
+                        "type": "keyword"
+                    },
+                    "catalog_notes": {
                         "type": "keyword"
                     },
                     "checkfiles_version": {

@@ -1,6 +1,6 @@
 {
-    "hash": "540838837a77ce2767d8c1faf879906a",
-    "index_name": "auxiliary_set_54083883",
+    "hash": "2d214fed6d7f746f734c5877024bb906",
+    "index_name": "auxiliary_set_2d214fed",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -474,7 +474,13 @@
                                     "catalog_adapters": {
                                         "type": "keyword"
                                     },
+                                    "catalog_class": {
+                                        "type": "keyword"
+                                    },
                                     "catalog_collections": {
+                                        "type": "keyword"
+                                    },
+                                    "catalog_notes": {
                                         "type": "keyword"
                                     },
                                     "cell_type_annotation": {
@@ -1469,7 +1475,13 @@
                             "catalog_adapters": {
                                 "type": "keyword"
                             },
+                            "catalog_class": {
+                                "type": "keyword"
+                            },
                             "catalog_collections": {
+                                "type": "keyword"
+                            },
+                            "catalog_notes": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {

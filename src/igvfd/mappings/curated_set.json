@@ -1,6 +1,6 @@
 {
-    "hash": "b7ebb3def198d3669ada89c7e0790f62",
-    "index_name": "curated_set_b7ebb3de",
+    "hash": "9c9ff8930b67b9af9b28c7e32d860526",
+    "index_name": "curated_set_9c9ff893",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -472,7 +472,13 @@
                                     "catalog_adapters": {
                                         "type": "keyword"
                                     },
+                                    "catalog_class": {
+                                        "type": "keyword"
+                                    },
                                     "catalog_collections": {
+                                        "type": "keyword"
+                                    },
+                                    "catalog_notes": {
                                         "type": "keyword"
                                     },
                                     "cell_type_annotation": {
@@ -1467,7 +1473,13 @@
                             "catalog_adapters": {
                                 "type": "keyword"
                             },
+                            "catalog_class": {
+                                "type": "keyword"
+                            },
                             "catalog_collections": {
+                                "type": "keyword"
+                            },
+                            "catalog_notes": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {

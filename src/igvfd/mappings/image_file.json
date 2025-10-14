@@ -1,6 +1,6 @@
 {
-    "hash": "8bea18ed7f48e84876b8797e5dfbc762",
-    "index_name": "image_file_8bea18ed",
+    "hash": "77cab93465585f31b85ec903bcc517f1",
+    "index_name": "image_file_77cab934",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -366,7 +366,13 @@
                         },
                         "type": "object"
                     },
+                    "catalog_class": {
+                        "type": "keyword"
+                    },
                     "catalog_collections": {
+                        "type": "keyword"
+                    },
+                    "catalog_notes": {
                         "type": "keyword"
                     },
                     "checkfiles_version": {
