@@ -322,7 +322,6 @@ def test_audit_supersedes(testapp, reference_file, tabular_file):
         tabular_file['@id'],
         {
             'status': 'deleted'
-
         }
     )
     res = testapp.get(reference_file['@id'] + '@@audit')
