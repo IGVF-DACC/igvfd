@@ -1,5 +1,9 @@
 ## Changelog for *`tissue/organ.json`*
 
+### Schema version 23
+
+* Update `protocols` regex to `^https://www\\.protocols\\.io/(private|view)/(\\S+)$`.
+
 ### Minor changes since schema version 22
 
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.

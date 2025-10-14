@@ -165,3 +165,19 @@ def test_primary_cell_upgrade_21_22(upgrader, primary_cell_v21):
     value = upgrader.upgrade('primary_cell', primary_cell_v21, current_version='21', target_version='22')
     assert value['schema_version'] == '22'
     assert value['biosample_qualifiers'] == ['6 days calcified']
+
+
+def test_primary_cell_upgrade_23_24(upgrader, primary_cell_v23_1, primary_cell_v23_2, primary_cell_v23_3):
+    value = upgrader.upgrade('primary_cell', primary_cell_v23_1, current_version='23', target_version='24')
+    assert value['schema_version'] == '24'
+    assert 'protocols' not in value
+    assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
+    value = upgrader.upgrade('primary_cell', primary_cell_v23_2, current_version='23', target_version='24')
+    assert value['schema_version'] == '24'
+    assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
+                                      'https://www.protocols.io/view/678/ABC']
+    value = upgrader.upgrade('primary_cell', primary_cell_v23_3, current_version='23', target_version='24')
+    assert value['schema_version'] == '24'
+    assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
+                                      'https://www.protocols.io/view/678/ABC']
+    assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'

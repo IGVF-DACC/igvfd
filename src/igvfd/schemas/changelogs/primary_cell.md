@@ -1,5 +1,9 @@
 ## Changelog for *`primary_cell.json`*
 
+### Schema version 24
+
+* Update `protocols` regex to `^https://www\\.protocols\\.io/(private|view)/(\\S+)$`.
+
 ### Minor changes since schema version 23
 
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.

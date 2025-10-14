@@ -120,3 +120,22 @@ def test_patch_virtual(primary_cell, testapp):
         primary_cell['@id'],
         {'virtual': ''}, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_primary_cell_protocols_regex(primary_cell, testapp):
+    res = testapp.patch_json(
+        primary_cell['@id'],
+        {'protocols': ['https://www.protocols.io/123/ABC']}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        primary_cell['@id'],
+        {'protocols': ['https://www.protocols.io/123/ABC', 'https://www.protocols.io/private/123/ABC']}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        primary_cell['@id'],
+        {'protocols': ['https://www.protocols.io/private/123/ABC']})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        primary_cell['@id'],
+        {'protocols': ['https://www.protocols.io/view/123/ABC']})
+    assert res.status_code == 200

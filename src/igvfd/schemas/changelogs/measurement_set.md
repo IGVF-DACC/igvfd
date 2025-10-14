@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 40
+
+* Update `protocols` regex to `^https://www\\.protocols\\.io/(private|view)/(\\S+)$`.
+
 ### Minor changes since schema version 39
 
 * Adjust `multiome_size` to allow a minimum of 1 item.

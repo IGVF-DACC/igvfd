@@ -58,3 +58,19 @@ def test_multiplexed_sample_upgrade_9_10(upgrader, multiplexed_sample_v9):
     value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v9, current_version='9', target_version='10')
     assert value['schema_version'] == '10'
     assert value['multiplexing_methods'] == ['barcode based']
+
+
+def test_multiplexed_sample_upgrade_10_11(upgrader, multiplexed_sample_v10_1, multiplexed_sample_v10_2, multiplexed_sample_v10_3):
+    value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v10_1, current_version='10', target_version='11')
+    assert value['schema_version'] == '11'
+    assert 'protocols' not in value
+    assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
+    value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v10_2, current_version='10', target_version='11')
+    assert value['schema_version'] == '11'
+    assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
+                                      'https://www.protocols.io/view/678/ABC']
+    value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v10_3, current_version='10', target_version='11')
+    assert value['schema_version'] == '11'
+    assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
+                                      'https://www.protocols.io/view/678/ABC']
+    assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'

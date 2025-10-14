@@ -200,3 +200,19 @@ def test_in_vitro_system_upgrade_25_26(upgrader, in_vitro_system_v25):
 def test_in_vitro_system_upgrade_26_27(upgrader, in_vitro_system_v26):
     value = upgrader.upgrade('in_vitro_system', in_vitro_system_v26, current_version='26', target_version='27')
     assert value['schema_version'] == '27'
+
+
+def test_in_vitro_system_upgrade_28_29(upgrader, in_vitro_system_v28_1, in_vitro_system_v28_2, in_vitro_system_v28_3):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v28_1, current_version='28', target_version='29')
+    assert value['schema_version'] == '29'
+    assert 'protocols' not in value
+    assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v28_2, current_version='28', target_version='29')
+    assert value['schema_version'] == '29'
+    assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
+                                      'https://www.protocols.io/view/678/ABC']
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v28_3, current_version='28', target_version='29')
+    assert value['schema_version'] == '29'
+    assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
+                                      'https://www.protocols.io/view/678/ABC']
+    assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'

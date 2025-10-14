@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 29
+
+* Update `protocols` regex to `^https://www\\.protocols\\.io/(private|view)/(\\S+)$`.
+
 ### Minor changes since schema version 28
 
 * Extend `growth_medium` enum list to include `1 kPa hydrogel`.

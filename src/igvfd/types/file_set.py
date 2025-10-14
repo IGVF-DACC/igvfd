@@ -771,7 +771,7 @@ class AnalysisSet(FileSet):
             'items': {
                 'title': 'Protocol',
                 'type': 'string',
-                'pattern': '^https://www\\.protocols\\.io/(\\S+)$'
+                'pattern': '^https://www\\.protocols\\.io/(private|view)/(\\S+)$'
             },
             'notSubmittable': True
         }
