@@ -1,6 +1,6 @@
 {
-    "hash": "369a3f101b958b52d1364e0811f76846",
-    "index_name": "tabular_file_369a3f10",
+    "hash": "01c63e66b851b6918c1e2c1e64d8986f",
+    "index_name": "tabular_file_01c63e66",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -379,7 +379,13 @@
                     "catalog_adapters": {
                         "type": "keyword"
                     },
+                    "catalog_class": {
+                        "type": "keyword"
+                    },
                     "catalog_collections": {
+                        "type": "keyword"
+                    },
+                    "catalog_notes": {
                         "type": "keyword"
                     },
                     "cell_type_annotation": {

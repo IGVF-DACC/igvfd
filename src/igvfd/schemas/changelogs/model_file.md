@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 2
 
+* Add `catalog_class`.
+* Add `catalog_notes`.
 * Add `catalog_collections`.
 * Extend `content_type` enum list to include `neural network architecture and edge weights`.
 * Extend `file_format` enum list to include `zip`.

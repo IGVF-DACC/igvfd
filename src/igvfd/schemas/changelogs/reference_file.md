@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 21
 
+* Add `catalog_class`.
+* Add `catalog_notes`.
 * Adjust `content_type` enum list to restrict usage of `elements reference` to admin users.
 
 ### Schema version 21

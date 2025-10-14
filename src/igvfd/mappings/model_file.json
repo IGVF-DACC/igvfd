@@ -1,6 +1,6 @@
 {
-    "hash": "bbc291bae00329f3187308b4e8facc2e",
-    "index_name": "model_file_bbc291ba",
+    "hash": "b062610fcebec3367521e073413d405a",
+    "index_name": "model_file_b062610f",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -369,7 +369,13 @@
                     "catalog_adapters": {
                         "type": "keyword"
                     },
+                    "catalog_class": {
+                        "type": "keyword"
+                    },
                     "catalog_collections": {
+                        "type": "keyword"
+                    },
+                    "catalog_notes": {
                         "type": "keyword"
                     },
                     "checkfiles_version": {

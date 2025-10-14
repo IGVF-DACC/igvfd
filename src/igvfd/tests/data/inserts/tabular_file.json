@@ -932,7 +932,9 @@
         "catalog_collections": [
             "files_filesets",
             "variants_phenotypes"
-        ]
+        ],
+        "catalog_notes": "Example notes for catalog loading.",
+        "catalog_class": "prediction"
     },
     {
         "uuid": "24a775b6-dbe8-442d-8ba1-0a103a9982fb",
