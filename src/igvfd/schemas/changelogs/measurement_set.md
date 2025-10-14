@@ -1,13 +1,16 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 40
+
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
+
 ### Schema version 40
 
 * Update `protocols` regex to `^https://www\\.protocols\\.io/(private|view)/(\\S+)$`.
 
 ### Minor changes since schema version 39
 
-* Add calculated property `superseded_by`.
-* Add `supersedes`.
 * Adjust `multiome_size` to allow a minimum of 1 item.
 
 ### Schema version 39
