@@ -6,12 +6,9 @@
 
 ### Minor changes since schema version 39
 
-* Adjust `multiome_size` to allow a minimum of 1 item.
-
-### Minor changes since schema version 39
-
 * Add calculated property `superseded_by`.
 * Add `supersedes`.
+* Adjust `multiome_size` to allow a minimum of 1 item.
 
 ### Schema version 39
 
