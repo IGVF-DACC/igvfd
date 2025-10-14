@@ -1,6 +1,6 @@
 {
-    "hash": "b9a2037522f9e6bdf98974bbc0cbaed7",
-    "index_name": "sequence_file_b9a20375",
+    "hash": "7858e3a09aed82bce105b05eeb2a49ec",
+    "index_name": "sequence_file_7858e3a0",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -931,6 +931,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {

@@ -1,6 +1,6 @@
 {
-    "hash": "ed9eaf24f7d3b1d1136f3385f39fdc48",
-    "index_name": "signal_file_ed9eaf24",
+    "hash": "e57f252df01745dbf01dd3ba6f94df0d",
+    "index_name": "signal_file_e57f252d",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -1026,6 +1026,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {

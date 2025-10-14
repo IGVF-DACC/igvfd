@@ -1,6 +1,6 @@
 {
-    "hash": "ff4871677bea853bf0c5f5abe0517a38",
-    "index_name": "model_set_ff487167",
+    "hash": "e6c244850a11cf0bdceb604d0f72fd57",
+    "index_name": "model_set_e6c24485",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -753,6 +753,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "library_preparation_kit": {
+                                "type": "keyword"
+                            },
                             "lot_id": {
                                 "type": "keyword"
                             },
@@ -1189,6 +1192,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {
@@ -2259,6 +2265,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {

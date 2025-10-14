@@ -1,6 +1,6 @@
 {
-    "hash": "887c2a6c70f6ae9aaec3a9f5ccee3095",
-    "index_name": "image_file_887c2a6c",
+    "hash": "55aa1975cdf13aae0856b6fda7dfee72",
+    "index_name": "image_file_55aa1975",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -926,6 +926,9 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
+                            "library_preparation_kit": {
                                 "type": "keyword"
                             },
                             "lot_id": {
