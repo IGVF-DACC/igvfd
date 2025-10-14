@@ -110,7 +110,7 @@
             "title": "Multiome Size",
             "description": "The number of datasets included in the multiome experiment this measurement set is a part of.",
             "type": "integer",
-            "minimum": 2,
+            "minimum": 1,
             "submissionExample": {
                 "appscript": 2,
                 "igvf_utils": 2
