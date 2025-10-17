@@ -465,7 +465,7 @@ class AnalysisSet(FileSet):
 
         inspected_filesets = set()
         fileset_subclasses = set()
-        target_assays = ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']
+        target_assays = ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq', 'Multiome Perturb-seq']
 
         fileset_types = set()
         file_content_types = set()
@@ -1342,7 +1342,7 @@ class MeasurementSet(FileSet):
 
         assay = assay_titles[0] if assay_titles else None
         preferred_assay_title = preferred_assay_titles[0]
-        if preferred_assay_title in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
+        if preferred_assay_title in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq', 'Multiome Perturb-seq']:
             assay = f'{assay} ({preferred_assay_title})'
         else:
             assay = preferred_assay_title
