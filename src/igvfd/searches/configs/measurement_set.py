@@ -15,115 +15,152 @@ def measurement_set():
                         'field': 'assay_term.term_name',
                         'title': 'Assay type',
                     }
-                ]
+                ],
+                'default': 'True'
             },
             'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles'
+                'title': 'Preferred Assay Titles',
+                'default': 'True'
             },
             'control_types': {
-                'title': 'Control Types'
+                'title': 'Control Types',
+                'default': 'True'
             },
             'functional_assay_mechanisms.term_name': {
-                'title': 'Measured Mechanisms'
+                'title': 'Measured Mechanisms',
+                'default': 'False'
             },
             'auxiliary_sets.file_set_type': {
-                'title': 'Auxiliary Data'
+                'title': 'Auxiliary Data',
+                'default': 'True'
             },
             'files.sequencing_platform.term_name': {
-                'title': 'Sequencing Platform'
+                'title': 'Sequencing Platform',
+                'default': 'True'
             },
             'library_preparation_kit': {
-                'title': 'Library Preparation Kit'
+                'title': 'Library Preparation Kit',
+                'default': 'False'
             },
             'donors.taxa': {
                 'title': 'Taxa',
+                'default': 'True'
             },
             'samples.classifications': {
                 'title': 'Classification',
+                'default': 'True'
             },
             'samples.sample_terms.term_name': {
                 'title': 'Sample',
+                'default': 'True'
             },
             'samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
+                'default': 'True'
             },
             'samples.disease_terms.term_name': {
                 'title': 'Disease',
+                'default': 'True'
             },
             'samples.growth_medium': {
                 'title': 'Growth Medium',
+                'default': 'False'
             },
             'samples.modifications.modality': {
-                'title': 'Modification'
+                'title': 'Modification',
+                'default': 'True'
             },
             'samples.treatments.treatment_term_name': {
-                'title': 'Treatment'
+                'title': 'Treatment',
+                'default': 'True'
             },
             'construct_library_sets.file_set_type': {
-                'title': 'Construct Library Data'
+                'title': 'Construct Library Data',
+                'default': 'False'
             },
             'construct_library_sets.selection_criteria': {
-                'title': 'Construct Library Selection Criteria'
+                'title': 'Construct Library Selection Criteria',
+                'default': 'True'
             },
             'construct_library_sets.integrated_content_files.content_type': {
-                'title': 'Construct Library Design'
+                'title': 'Construct Library Design',
+                'default': 'False'
             },
             'construct_library_sets.small_scale_gene_list.symbol': {
-                'title': 'Investigated Gene'
+                'title': 'Investigated Gene',
+                'default': 'False'
             },
             'targeted_genes.symbol': {
-                'title': 'Readout Gene'
+                'title': 'Readout Gene',
+                'default': 'False'
             },
             'sequencing_library_types': {
-                'title': 'Library Material'
+                'title': 'Library Material',
+                'default': 'False'
             },
             'files.content_type': {
                 'title': 'File Types',
+                'default': 'True'
             },
             'files.file_format': {
                 'title': 'File Format',
+                'default': 'True'
             },
             'collections': {
                 'title': 'Collections',
+                'default': 'False'
             },
             'controlled_access': {
                 'title': 'Controlled Access',
+                'default': 'True'
             },
             'data_use_limitation_summaries': {
                 'title': 'Data Use Limitation',
+                'default': 'False'
             },
             'lab.title': {
-                'title': 'Lab'
+                'title': 'Lab',
+                'default': 'True'
             },
             'award.component': {
-                'title': 'Award'
+                'title': 'Award',
+                'default': 'True'
             },
             'release_timestamp': {
                 'title': 'Release Date',
+                'default': 'True'
             },
             'creation_timestamp': {
                 'title': 'Creation Date',
+                'default': 'False'
             },
             'status': {
-                'title': 'Status'
+                'title': 'Status',
+                'default': 'True'
             },
             'audit.ERROR.category': {
-                'title': 'Audit Category: Error'
+                'title': 'Audit Category: Error',
+                'default': 'True'
             },
             'audit.NOT_COMPLIANT.category': {
-                'title': 'Audit Category: Not Compliant'
+                'title': 'Audit Category: Not Compliant',
+                'default': 'True'
             },
             'audit.WARNING.category': {
-                'title': 'Audit Category: Warning'
+                'title': 'Audit Category: Warning',
+                'default': 'True'
             },
             'audit.INTERNAL_ACTION.category': {
-                'title': 'Audit Category: Internal Action'
+                'title': 'Audit Category: Internal Action',
+                'default': 'True'
             },
             'externally_hosted': {
-                'title': 'Externally Hosted'
+                'title': 'Externally Hosted',
+                'default': 'True'
             },
             'type': {
                 'title': 'Object Type',
+                'default': 'False'
             },
         },
         'columns': {
