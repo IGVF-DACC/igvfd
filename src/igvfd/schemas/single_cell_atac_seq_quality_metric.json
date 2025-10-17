@@ -49,7 +49,7 @@
         },
         "pct_duplicates": {
             "title": "Percent Duplicates",
-            "description": "",
+            "description": "Percentage of reads that are duplicatively mapped to the same genomic region.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
