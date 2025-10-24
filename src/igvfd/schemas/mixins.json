@@ -128,7 +128,9 @@
                 "enum": [
                     "ACMG73",
                     "Benchmark",
+                    "Bridge Sample",
                     "ClinGen",
+                    "E2G Pillar Project",
                     "ENCODE",
                     "GREGoR",
                     "IGVF_catalog_beta_v0.1",

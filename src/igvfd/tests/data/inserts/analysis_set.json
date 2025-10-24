@@ -116,6 +116,9 @@
         "input_file_sets": [
             "igvf:basic_measurement_set"
         ],
+        "collections": [
+            "E2G Pillar Project"
+        ],
         "status": "released",
         "uuid": "f9004635-79a8-4619-82cf-1a78f2d2d360",
         "release_timestamp": "2024-03-06T12:34:56Z",
