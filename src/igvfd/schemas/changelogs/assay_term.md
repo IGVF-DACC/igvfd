@@ -1,8 +1,11 @@
 ## Changelog for *`assay_term.json`*
 
-### Schema version 19
+### Minor changes since schema version 19
 
 * Extend `preferred_assay_titles` enum list to include `Multiome Perturb-seq`.
+
+### Schema version 19
+
 * Extend `preferred_assay_titles` enum list to include `DUAL-IPA`.
 * Extend `preferred_assay_titles` enum list to include `10x snATAC-seq with Scale pre-indexing`.
 * Extend `preferred_assay_titles` enum list to include `snRNA-seq with Scale pre-indexing`.
