@@ -511,7 +511,7 @@ def test_audit_unexpected_seqspec_cls(testapp, sequence_file_pod5, sequence_file
     )
 
 
-def test_audit_missing_seqspec_cls(testapp, sequence_file, sequence_file_sequencing_run_2, experimental_protocol_document, configuration_file_seqspec, base_expression_construct_library_set):
+def test_audit_missing_seqspec_cls(testapp, sequence_file, sequence_file_sequencing_run_2, experimental_protocol_document, configuration_file_seqspec, base_expression_construct_library_set, construct_library_set_genome_wide, controlled_sequence_file_2):
     # Patch: make a seqspec document
     testapp.patch_json(
         experimental_protocol_document['@id'],
@@ -560,6 +560,19 @@ def test_audit_missing_seqspec_cls(testapp, sequence_file, sequence_file_sequenc
         }
     )
     res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Test: Guide library with sequence file with no seqspec ConfigFile (no audit)
+    testapp.patch_json(
+        controlled_sequence_file_2['@id'],
+        {
+            'file_set': construct_library_set_genome_wide['@id']
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing sequence specification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])

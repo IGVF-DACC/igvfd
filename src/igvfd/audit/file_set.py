@@ -135,6 +135,9 @@ def audit_missing_seqspec(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
+    if value['file_set_type'] == 'guide library':
+        # guide construct library set sequence files are not expected to specfiy seqspec
+        return
     if 'files' in value:
         # Check single cell status
         is_single_cell = single_cell_check(system, value, object_type, include_perturb_seq=True)
