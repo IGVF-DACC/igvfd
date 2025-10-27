@@ -291,5 +291,18 @@
         "uuid": "9b184885-9583-4309-9629-c59cac6b162d",
         "status": "released",
         "release_timestamp": "2025-05-06T12:34:56Z"
+    },
+    {
+        "aliases": [
+            "igvf:ontology_term_reference"
+        ],
+        "description": "Example of a ontology term reference doc.",
+        "attachment": "TLand_ontology_term_reference.json",
+        "document_type": "ontology term reference",
+        "award": "1U01HG011952-01",
+        "lab": "alan-boyle",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "b786d648-4cce-4fd8-b66d-7d135eaf1ea5"
     }
 ]
