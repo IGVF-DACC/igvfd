@@ -198,7 +198,7 @@ def audit_sample_missing_publication(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message = get_audit_message(audit_sample_missing_publication, index=0)
-    if value.get('status') in ['released', 'archived'] and not (value.get('publications')):
+    if value.get('status') in ['released', 'archived'] and value.get('file_sets') and not (value.get('publications')):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `publications`.'

@@ -232,7 +232,8 @@ def test_audit_control_for_control_type(
 def test_audit_missing_publication(
     testapp,
     measurement_set_no_files,
-    publication
+    publication,
+    curated_set_genome
 ):
     res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
     assert res.json.get('publications', '') == ''
@@ -255,6 +256,19 @@ def test_audit_missing_publication(
         }
     )
     res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing publication'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    # Curated sets are not expected to link to publications.
+    testapp.patch_json(
+        curated_set_genome['@id'],
+        {
+            'status': 'released',
+            'release_timestamp': '2025-10-06T12:34:56Z'
+        }
+    )
+    res = testapp.get(curated_set_genome['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing publication'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
