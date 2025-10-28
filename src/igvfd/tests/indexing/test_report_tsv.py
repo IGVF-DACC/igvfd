@@ -98,8 +98,6 @@ def test_multitype_report_download_href(workbook, testapp):
     res = testapp.get('/multireport.tsv?type=File&field=href')
     lines = res.text.splitlines()
     server_url = res.headers['X-Request-URL'].split('/multireport.tsv?')[0]
-    print(server_url)
-    print(lines[2])
     assert lines[2].startswith(server_url)
 
     res = testapp.get('/multireport.tsv?type=Image&field=%40id&field=attachment.href')
