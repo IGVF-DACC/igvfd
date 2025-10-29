@@ -177,7 +177,8 @@ def test_audit_missing_nucleic_acid_delivery(
 def test_audit_missing_publication(
     testapp,
     in_vitro_cell_line,
-    publication
+    publication,
+    measurement_set_multiome
 ):
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
     assert res.json.get('publications', '') == ''
@@ -186,6 +187,17 @@ def test_audit_missing_publication(
         {
             'status': 'released',
             'release_timestamp': '2025-03-06T12:34:56Z'
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing publication'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    testapp.patch_json(
+        measurement_set_multiome['@id'],
+        {
+            'samples': [in_vitro_cell_line['@id']]
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
