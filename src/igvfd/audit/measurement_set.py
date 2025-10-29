@@ -51,7 +51,8 @@ def audit_related_multiome_datasets(value, system):
         '10x multiome with MULTI-seq',
         'SHARE-seq',
         'mtscMultiome',
-        'scMultiome-NT-seq'
+        'scMultiome-NT-seq',
+        'Multiome Perturb-seq'
     ]
 
     if any(assay in multiome_assays for assay in preferred_assay_titles):
@@ -183,7 +184,8 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
     assay_titles = value.get('assay_titles', [])
     crispr_assays = ['in vitro CRISPR screen assay',
                      'in vitro CRISPR screen using flow cytometry',
-                     'in vitro CRISPR screen using single-cell RNA-seq'
+                     'in vitro CRISPR screen using single-cell RNA-seq',
+                     'in vitro CRISPR screen using single-cell ATAC-seq'
                      ]
     if any(t in crispr_assays for t in assay_titles):
         samples = value.get('samples', [])
@@ -270,6 +272,7 @@ def audit_missing_institutional_certification(value, system):
         'OBI:0003659',  # in vitro CRISPR screen assay
         'OBI:0003661',  # in vitro CRISPR screen using flow cytometry
         'OBI:0003660',  # in vitro CRISPR screen using single-cell RNA-seq
+        'NTR:0000798',  # in vitro CRISPR screen using single-cell ATAC-seq
         'OBI:0000916',  # flow cytometry assay
         'OBI:0000185',  # imaging assay
         'OBI:0002675',  # massively parallel reporter assay',
@@ -445,6 +448,7 @@ def audit_missing_construct_library_set(value, system):
         'in vitro CRISPR screen assay': ('guide library', audit_message_CRISPR),
         'in vitro CRISPR screen using flow cytometry': ('guide library', audit_message_CRISPR),
         'in vitro CRISPR screen using single-cell RNA-seq': ('guide library', audit_message_CRISPR),
+        'in vitro CRISPR screen using single-cell ATAC-seq': ('guide library', audit_message_CRISPR),
         'protein-protein interaction detection assay': ('expression vector library', audit_message_PPI),
         'imaging assay': ('expression vector library', audit_message_Imaging)
     }
@@ -531,7 +535,8 @@ def audit_missing_auxiliary_set(value, system):
     expected_auxiliary_set_by_assay_term = {
         'massively parallel reporter assay': [('quantification DNA barcode sequencing', audit_message_MPRA)],
         'in vitro CRISPR screen using flow cytometry': [('cell sorting', audit_message_CRISPR_flow)],
-        'in vitro CRISPR screen using single-cell RNA-seq': [('gRNA sequencing', audit_message_scCRISPR_gRNA)]
+        'in vitro CRISPR screen using single-cell RNA-seq': [('gRNA sequencing', audit_message_scCRISPR_gRNA)],
+        'in vitro CRISPR screen using single-cell ATAC-seq': [('gRNA sequencing', audit_message_scCRISPR_gRNA)]
     }
     # preferred assay title expectations override any overlapping assay term expectation
     expected_auxiliary_set_by_preferred_assay_title = {

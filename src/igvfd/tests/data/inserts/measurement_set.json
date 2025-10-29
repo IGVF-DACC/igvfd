@@ -829,5 +829,24 @@
         "preferred_assay_titles": [
             "DUAL-IPA"
         ]
+    },
+    {
+        "aliases": [
+            "igvf:multiome_perturb-seq"
+        ],
+        "award": "1UM1HG012053-01",
+        "lab": "/labs/christina-leslie/",
+        "status": "released",
+        "release_timestamp": "2025-10-06T12:34:56Z",
+        "uuid": "eec4a854-4df9-45ad-a1ad-f8b9e171c165",
+        "accession": "IGVFDS0002MULT",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/igvf:CRISPR/",
+        "file_set_type": "experimental data",
+        "preferred_assay_titles": [
+            "Multiome Perturb-seq"
+        ]
     }
 ]
