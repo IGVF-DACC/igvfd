@@ -215,7 +215,8 @@
             "heteroplasmy ratio determination",
             "image analysis",
             "cell profiling",
-            "UMAP embedding"
+            "UMAP embedding",
+            "logistic regression"
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "input_content_types": [
