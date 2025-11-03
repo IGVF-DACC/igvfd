@@ -26,7 +26,8 @@ jobs:
       - image: cimg/python:3.11
     working_directory: ~/igvfd
     steps:
-      - checkout
+      - checkout:
+          method: blobless
       - run: pip install pre-commit==2.17.0
       - run: pre-commit run --all-files
 
@@ -36,6 +37,7 @@ jobs:
     working_directory: ~/igvfd/cdk/
     steps:
       - checkout:
+          method: blobless
           path: ~/igvfd
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: mypy .
@@ -48,6 +50,7 @@ jobs:
     working_directory: ~/igvfd/cdk/
     steps:
       - checkout:
+          method: blobless
           path: ~/igvfd
       - run: pyenv global 3.11
       - run: pip install -r requirements.txt -r requirements-dev.txt
@@ -61,6 +64,7 @@ jobs:
     working_directory: ~/igvfd/cdk/infrastructure/runtime/lambdas/snapshot/
     steps:
       - checkout:
+          method: blobless
           path: ~/igvfd
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: pytest tests/
@@ -72,7 +76,8 @@ jobs:
     resource_class: medium
     working_directory: ~/igvfd
     steps:
-      - checkout
+      - checkout:
+          method: blobless
       - run:
           name: Build Docker images
           command: |
@@ -106,7 +111,8 @@ jobs:
     resource_class: medium
     working_directory: ~/igvfd
     steps:
-      - checkout
+      - checkout:
+          method: blobless
       - run:
           name: Build Docker images
           command: |
