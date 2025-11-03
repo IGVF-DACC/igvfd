@@ -48,7 +48,7 @@ COPY --chown=igvfd:igvfd src/igvfd/__init__.py src/igvfd/__init__.py
 
 USER igvfd
 
-RUN python -m pip install --upgrade pip setuptools
+RUN python -m pip install pip==23.1.1
 
 RUN pip install -e .[test]
 
