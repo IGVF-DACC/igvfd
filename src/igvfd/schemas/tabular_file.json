@@ -273,7 +273,7 @@
                 "gene programs": "Predicted scores of each gene’s representation in a program (i.e. a latent variable inferred from a factor analysis approach)",
                 "gene program regulators": "Predicted regulators of a gene program.",
                 "gene quantifications": "The quantified levels of genes.",
-                "gene universe": "List of gene Ensembl ID and symbol using official IGVF GENCODE version (V43).",
+                "gene universe": "List of gene Ensembl ID and symbol using official IGVF GENCODE version (V43) used for downstream analysis of gene networks by the Cellular Program Networks WG.",
                 "guide quantifications": "Information and sequencing read counts for each gRNA in a pooled CRISPR screen experiment.",
                 "guide RNA sequences": "The sequences of guide RNAs designed for genome editing using CRISPR. Formatting should follow https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/table_schemas/guide_rna_sequences.json.",
                 "individual cells profile": "CSV file with morphological feature measurements for each imaged cell.",
