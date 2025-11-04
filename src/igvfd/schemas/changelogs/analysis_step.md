@@ -3,6 +3,8 @@
 ### Minor changes since schema version 9
 
 * Extend `analysis_step_types` enum list to include `logistic regression`.
+* Extend `output_content_types` enum list to include `gene universe`.
+* Extend `input_content_types` enum list to include `gene universe`.
 * Extend `analysis_step_types` enum list to include `UMAP embedding`.
 * Extend `analysis_step_types` enum list to include `cell profiling`.
 * Extend `analysis_step_types` enum list to include `image analysis`.
