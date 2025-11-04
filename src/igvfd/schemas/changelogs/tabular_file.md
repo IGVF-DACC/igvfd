@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 18
 
+* Extend `content_type` enum list to include `gene universe`.
 * Add calculated property `superseded_by`.
 * Add `supersedes`.
 * Add `catalog_class`.
