@@ -124,5 +124,20 @@
         "supersedes": [
             "IGVFDS9009ANWK"
         ]
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_with_dbxrefs"
+        ],
+        "accession": "IGVFDS0102PIPE",
+        "award": "HG012009",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "uuid": "804ab9ec-5fbb-4fc9-80c9-da5b66cad564",
+        "release_timestamp": "2024-08-06T12:34:56Z",
+        "file_set_type": "principal analysis",
+        "dbxrefs": [
+            "urn:mavedb:00001250-a-1"
+        ]
     }
 ]
