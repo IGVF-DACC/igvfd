@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 40
 
+* Update `dbxrefs` regex to allow MaveDB score set URNs.
 * Extend `preferred_assay_titles` enum list to include `Multiome Perturb-seq`.
 * Add `library_preparation_kit`.
 * Add calculated property `superseded_by`.

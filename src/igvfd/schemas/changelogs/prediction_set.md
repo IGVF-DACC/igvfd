@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Update `dbxrefs` regex to allow MaveDB score set URNs.
 * Add calculated property `superseded_by`.
 * Add `supersedes`.
 * Add calculated property `software_versions`.

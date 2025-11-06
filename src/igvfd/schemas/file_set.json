@@ -72,7 +72,7 @@
             },
             "submissionExample": {
                 "appscript": "[\"GEO:GSE5169185\", \"GEO:GSE5169186\", \"GEO:GSE5169187\", \"urn:mavedb:00001250-a-1\"]",
-                "igvf_utils": "GEO:GSE5169185, GEO:GSE5169186, GEO:GSE5169187"
+                "igvf_utils": "GEO:GSE5169185, GEO:GSE5169186, GEO:GSE5169187, urn:mavedb:00001250-a-1"
             }
         },
         "samples": {

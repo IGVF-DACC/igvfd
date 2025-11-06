@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Update `dbxrefs` regex to allow MaveDB score set URNs.
 * Add calculated property `superseded_by`.
 * Add `supersedes`.
 * Update `protocols` regex to `^https://www\\.protocols\\.io/(private|view)/(\\S+)$`.
