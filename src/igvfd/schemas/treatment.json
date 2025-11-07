@@ -268,8 +268,8 @@
                 {
                     "enum": [
                         "activation",
-                        "chronic activation",
                         "acute activation",
+                        "chronic activation",
                         "agonist",
                         "antagonist",
                         "control",
