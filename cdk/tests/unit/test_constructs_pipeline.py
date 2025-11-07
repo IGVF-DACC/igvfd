@@ -294,6 +294,13 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
     template.has_resource_properties(
         'AWS::CodePipeline::Pipeline',
         {
+            'ArtifactStore': {
+                'Location': {
+                    'Ref': 'TestContinuousDeploymentPipelineArtifactsBucket40CBE2D1'
+                },
+                'Type': 'S3'
+            },
+            'RestartExecutionOnUpdate': True,
             'RoleArn': {
                 'Fn::GetAtt': [
                     'TestContinuousDeploymentPipelineRole1B892B27',
@@ -345,7 +352,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                 'ProjectName': {
                                     'Ref': 'TestContinuousDeploymentPipelineBuildSynthStepCdkBuildProjectB05B9ED1'
                                 },
-                                'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"ea29d298e64552f5e1f16be5a3027f744255e368f004bae521a835c936a2d0e6\"}]"
+                                'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"575aadf5ed9393a41a381058a7dc30c0a8f908af75fff50472ace87c9c741b91\"}]"
                             },
                             'InputArtifacts': [
                                 {
@@ -420,7 +427,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'DockerAsset1',
+                            'Name': 'Backend_Fargate_TaskDef_nginx_AssetImage',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
@@ -446,7 +453,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'DockerAsset2',
+                            'Name': 'Backend_Fargate_TaskDef_ApplicationContainer_AssetImage',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
@@ -472,7 +479,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'DockerAsset3',
+                            'Name': 'Indexer_InvalidationService_QueueProcessingTaskDef_QueueProcessingContainer_AssetImage',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
@@ -498,7 +505,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'DockerAsset4',
+                            'Name': 'Indexer_DedupIQ_Task_ScheduledTaskDef_ScheduledContainer_AssetImage',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
@@ -524,7 +531,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'FileAsset1',
+                            'Name': 'AWS679f53fac002430cb0da5b7982bd2287_Code',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
@@ -550,7 +557,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'FileAsset2',
+                            'Name': 'FeatureFlags_DeleteAllHostedConfigurationVersionsOnCleanUp_Code',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
@@ -576,7 +583,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'FileAsset3',
+                            'Name': 'FeatureFlags_Provider_framework-onEvent_Code',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
@@ -602,7 +609,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'FileAsset4',
+                            'Name': 'LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a_Code',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
@@ -628,7 +635,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'FileAsset5',
+                            'Name': 'Backend_BatchUpgrade_UpgradeFolder',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
@@ -654,7 +661,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'FileAsset6',
+                            'Name': 'Backend_UpdateMapping_MappingFolder',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
@@ -682,10 +689,10 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Fn::Join': [
                                         '',
                                         [
-                                                'arn:',
-                                                {
-                                                    'Ref': 'AWS::Partition'
-                                                },
+                                            'arn:',
+                                            {
+                                                'Ref': 'AWS::Partition'
+                                            },
                                             ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
                                         ]
                                     ]
@@ -706,9 +713,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                       {
-                                           'Ref': 'AWS::Partition'
-                                       },
+                                        {
+                                            'Ref': 'AWS::Partition'
+                                        },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -733,9 +740,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                       {
-                                           'Ref': 'AWS::Partition'
-                                       },
+                                        {
+                                            'Ref': 'AWS::Partition'
+                                        },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -761,10 +768,10 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Fn::Join': [
                                         '',
                                         [
-                                                'arn:',
-                                                {
-                                                    'Ref': 'AWS::Partition'
-                                                },
+                                            'arn:',
+                                            {
+                                                'Ref': 'AWS::Partition'
+                                            },
                                             ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
                                         ]
                                     ]
@@ -785,9 +792,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                       {
-                                           'Ref': 'AWS::Partition'
-                                       },
+                                        {
+                                            'Ref': 'AWS::Partition'
+                                        },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -808,10 +815,10 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Fn::Join': [
                                         '',
                                         [
-                                                'arn:',
-                                                {
-                                                    'Ref': 'AWS::Partition'
-                                                },
+                                            'arn:',
+                                            {
+                                                'Ref': 'AWS::Partition'
+                                            },
                                             ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
                                         ]
                                     ]
@@ -832,9 +839,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                       {
-                                           'Ref': 'AWS::Partition'
-                                       },
+                                        {
+                                            'Ref': 'AWS::Partition'
+                                        },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -859,9 +866,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                       {
-                                           'Ref': 'AWS::Partition'
-                                       },
+                                        {
+                                            'Ref': 'AWS::Partition'
+                                        },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -886,9 +893,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                       {
-                                           'Ref': 'AWS::Partition'
-                                       },
+                                        {
+                                            'Ref': 'AWS::Partition'
+                                        },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -909,10 +916,10 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Fn::Join': [
                                         '',
                                         [
-                                                'arn:',
-                                                {
-                                                    'Ref': 'AWS::Partition'
-                                                },
+                                            'arn:',
+                                            {
+                                                'Ref': 'AWS::Partition'
+                                            },
                                             ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
                                         ]
                                     ]
@@ -933,9 +940,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                       {
-                                           'Ref': 'AWS::Partition'
-                                       },
+                                        {
+                                            'Ref': 'AWS::Partition'
+                                        },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -960,9 +967,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                       {
-                                           'Ref': 'AWS::Partition'
-                                       },
+                                        {
+                                            'Ref': 'AWS::Partition'
+                                        },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -972,14 +979,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                     ],
                     'Name': 'igvfd-some-branch-DeployDevelopment'
                 }
-            ],
-            'ArtifactStore': {
-                'Location': {
-                    'Ref': 'TestContinuousDeploymentPipelineArtifactsBucket40CBE2D1'
-                },
-                'Type': 'S3'
-            },
-            'RestartExecutionOnUpdate': True
+            ]
         }
     )
     template.resource_count_is(
@@ -1032,6 +1032,22 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
     template.has_resource_properties(
         'AWS::CodePipeline::Pipeline',
         {
+            'ArtifactStore': {
+                'EncryptionKey': {
+                    'Id': {
+                        'Fn::GetAtt': [
+                            'TestProductionDeploymentPipelineArtifactsBucketEncryptionKeyE13B70EA',
+                            'Arn'
+                        ]
+                    },
+                    'Type': 'KMS'
+                },
+                'Location': {
+                    'Ref': 'TestProductionDeploymentPipelineArtifactsBucketE2532ECB'
+                },
+                'Type': 'S3'
+            },
+            'RestartExecutionOnUpdate': True,
             'RoleArn': {
                 'Fn::GetAtt': [
                     'TestProductionDeploymentPipelineRole9747ED35',
@@ -1083,7 +1099,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                 'ProjectName': {
                                     'Ref': 'TestProductionDeploymentPipelineBuildSynthStepCdkBuildProjectF1FF1A53'
                                 },
-                                'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"0ea16dc935b3116d4086e97861af706e29a5aadafbeed8c7085db1436aac8b57\"}]"
+                                'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"b6bb83ca2acdc6cb901671bb8112004a1385cbf35092b7666c5312e78dc2b6bb\"}]"
                             },
                             'InputArtifacts': [
                                 {
@@ -1158,7 +1174,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'DockerAsset1',
+                            'Name': 'Backend_Fargate_TaskDef_nginx_AssetImage',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
@@ -1184,7 +1200,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'DockerAsset2',
+                            'Name': 'Backend_Fargate_TaskDef_ApplicationContainer_AssetImage',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
@@ -1210,7 +1226,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'DockerAsset3',
+                            'Name': 'Indexer_InvalidationService_QueueProcessingTaskDef_QueueProcessingContainer_AssetImage',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
@@ -1236,7 +1252,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'DockerAsset4',
+                            'Name': 'Indexer_DedupIQ_Task_ScheduledTaskDef_ScheduledContainer_AssetImage',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
@@ -1262,7 +1278,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'FileAsset1',
+                            'Name': 'AWS679f53fac002430cb0da5b7982bd2287_Code',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
@@ -1288,7 +1304,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'FileAsset2',
+                            'Name': 'Postgres_LatestSnapshotFromDB_GetLatestRDSSnapshotID_Code',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
@@ -1314,7 +1330,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'FileAsset3',
+                            'Name': 'Postgres_LatestSnapshotFromDB_Provider_framework-onEvent_Code',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
@@ -1340,7 +1356,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'FileAsset4',
+                            'Name': 'LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a_Code',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
@@ -1366,7 +1382,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'FileAsset5',
+                            'Name': 'FeatureFlags_DeleteAllHostedConfigurationVersionsOnCleanUp_Code',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
@@ -1392,7 +1408,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'FileAsset6',
+                            'Name': 'Backend_BatchUpgrade_UpgradeFolder',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
@@ -1418,7 +1434,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                     'Name': 'SynthStep_Output'
                                 }
                             ],
-                            'Name': 'FileAsset7',
+                            'Name': 'Backend_UpdateMapping_MappingFolder',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
@@ -1429,7 +1445,6 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                         }
                     ],
                     'Name': 'Assets'
-
                 },
                 {
                     'Actions': [
@@ -2123,23 +2138,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                     ],
                     'Name': 'ProductionAndSandboxDeployWave'
                 }
-            ],
-            'ArtifactStore': {
-                'EncryptionKey': {
-                    'Id': {
-                        'Fn::GetAtt': [
-                            'TestProductionDeploymentPipelineArtifactsBucketEncryptionKeyE13B70EA',
-                            'Arn'
-                        ]
-                    },
-                    'Type': 'KMS'
-                },
-                'Location': {
-                    'Ref': 'TestProductionDeploymentPipelineArtifactsBucketE2532ECB'
-                },
-                'Type': 'S3'
-            },
-            'RestartExecutionOnUpdate': True
+            ]
         }
     )
     template.resource_count_is(

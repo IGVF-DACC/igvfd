@@ -26,7 +26,7 @@ def test_constructs_opensearch_initialize_opensearch_construct(stack, vpc, insta
             },
             'DomainEndpointOptions': {
                 'EnforceHTTPS': False,
-                'TLSSecurityPolicy': 'Policy-Min-TLS-1-0-2019-07'
+                'TLSSecurityPolicy': 'Policy-Min-TLS-1-2-2019-07'
             },
             'EBSOptions': {
                 'EBSEnabled': True,
@@ -122,7 +122,7 @@ def test_constructs_opensearch_no_logging_opensearch_construct(stack, vpc, insta
             },
             'DomainEndpointOptions': {
                 'EnforceHTTPS': False,
-                'TLSSecurityPolicy': 'Policy-Min-TLS-1-0-2019-07'
+                'TLSSecurityPolicy': 'Policy-Min-TLS-1-2-2019-07'
             },
             'EBSOptions': {
                 'EBSEnabled': True,

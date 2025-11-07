@@ -30,7 +30,7 @@ def test_stacks_opensearch_initialize_opensearch_stack(config):
             },
             'DomainEndpointOptions': {
                 'EnforceHTTPS': False,
-                'TLSSecurityPolicy': 'Policy-Min-TLS-1-0-2019-07'
+                'TLSSecurityPolicy': 'Policy-Min-TLS-1-2-2019-07'
             },
             'EBSOptions': {
                 'EBSEnabled': True,
