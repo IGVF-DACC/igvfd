@@ -1,5 +1,10 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Minor changes since schema version 29
+
+* Extend `collections` enum list to include `E2G Pillar Project`.
+* Extend `collections` enum list to include `Bridge Sample`.
+
 ### Schema version 29
 
 * Update `protocols` regex to `^https://www\\.protocols\\.io/(private|view)/(\\S+)$`.

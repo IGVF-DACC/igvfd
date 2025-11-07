@@ -1,5 +1,10 @@
 ## Changelog for *`primary_cell.json`*
 
+### Minor changes since schema version 24
+
+* Extend `collections` enum list to include `E2G Pillar Project`.
+* Extend `collections` enum list to include `Bridge Sample`.
+
 ### Schema version 24
 
 * Update `protocols` regex to `^https://www\\.protocols\\.io/(private|view)/(\\S+)$`.

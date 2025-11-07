@@ -190,6 +190,9 @@
         ],
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
+        "collections": [
+            "Bridge Sample"
+        ],
         "part_of": "IGVFSM0000KASA",
         "sources": [
             "/labs/j-michael-cherry/"

@@ -1,5 +1,10 @@
 ## Changelog for *`workflow.json`*
 
+### Minor changes since schema version 7
+
+* Extend `collections` enum list to include `E2G Pillar Project`.
+* Extend `collections` enum list to include `Bridge Sample`.
+
 ### Schema version 7
 
 * Extend `preferred_assay_titles` enum list to include `DUAL-IPA`.

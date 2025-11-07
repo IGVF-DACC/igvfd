@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 14
 
+* Extend `collections` enum list to include `E2G Pillar Project`.
+* Extend `collections` enum list to include `Bridge Sample`.
 * Add calculated property `superseded_by`.
 * Add `supersedes`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.

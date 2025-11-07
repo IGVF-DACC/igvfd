@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 10
 
+* Extend `collections` enum list to include `E2G Pillar Project`.
+* Extend `collections` enum list to include `Bridge Sample`.
 * Update `dbxrefs` regex to allow MaveDB score set URNs.
 * Add calculated property `superseded_by`.
 * Add `supersedes`.

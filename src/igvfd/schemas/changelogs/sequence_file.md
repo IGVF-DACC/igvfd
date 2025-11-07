@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 16
 
+* Extend `collections` enum list to include `E2G Pillar Project`.
+* Extend `collections` enum list to include `Bridge Sample`.
 * Add calculated property `superseded_by`.
 * Add `supersedes`.
 * Extend `sequencing_kit` enum list to include `UG Solaris Flex`.
