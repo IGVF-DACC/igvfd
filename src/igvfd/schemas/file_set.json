@@ -68,11 +68,11 @@
                 "title": "External identifier",
                 "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF file sets.",
                 "type": "string",
-                "pattern": "^GEO:GSE\\d+$"
+                "pattern": "^(GEO:GSE\\d+|urn:mavedb:\\d{8}-[0a-z]+-\\d+)$"
             },
             "submissionExample": {
-                "appscript": "[\"GEO:GSE5169185\", \"GEO:GSE5169186\", \"GEO:GSE5169187\"]",
-                "igvf_utils": "GEO:GSE5169185, GEO:GSE5169186, GEO:GSE5169187"
+                "appscript": "[\"GEO:GSE5169185\", \"GEO:GSE5169186\", \"GEO:GSE5169187\", \"urn:mavedb:00001250-a-1\"]",
+                "igvf_utils": "GEO:GSE5169185, GEO:GSE5169186, GEO:GSE5169187, urn:mavedb:00001250-a-1"
             }
         },
         "samples": {

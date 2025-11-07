@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Update `dbxrefs` regex to allow MaveDB score set URNs.
 * Add calculated property `superseded_by`.
 * Add `supersedes`.
 * Extend `file_set_type` enum list to include `functional effect`.
