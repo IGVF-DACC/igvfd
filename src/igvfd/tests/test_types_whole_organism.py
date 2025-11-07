@@ -43,4 +43,4 @@ def test_summary(testapp, whole_organism, rodent_donor, parent_rodent_donor_1, h
     )
     res = testapp.get(whole_organism['@id'])
     assert res.json.get(
-        'summary') == 'Homo sapiens and Mus musculus strain1 (male, 10 months) 2 whole organisms treated with 10 ng/mL G-CSF'
+        'summary') == 'Homo sapiens and Mus musculus strain1 (male, 10 months) 2 whole organisms perturbed with 10 ng/mL G-CSF'

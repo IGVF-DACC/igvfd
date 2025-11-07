@@ -1,5 +1,10 @@
 ## Changelog for *`treatment.json`*
 
+### Minor changes since schema version 10
+
+* Adjust `purpose` enum list to add `chronic activation`.
+* Adjust `purpose` enum list to add `acute activation`.
+
 ### Schema version 10
 
 * Adjust `treatment_type` enum list to remove `environmental`.

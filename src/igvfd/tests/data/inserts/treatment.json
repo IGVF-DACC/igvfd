@@ -75,7 +75,7 @@
     {
         "amount": 0.5,
         "amount_units": "mg/kg",
-        "purpose": "differentiation",
+        "purpose": "acute activation",
         "submitted_by": "mkagda@stanford.edu",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
@@ -88,7 +88,7 @@
         "depletion": false
     },
     {
-        "purpose": "differentiation",
+        "purpose": "chronic activation",
         "submitted_by": "mkagda@stanford.edu",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",

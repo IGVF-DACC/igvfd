@@ -590,14 +590,41 @@ class Biosample(Sample):
         if (treatments and
                 biosample_type in biosample_subschemas):
             treatment_objects = [request.embed(treatment) for treatment in treatments]
-            depleted_treatment_summaries = sorted([treatment.get('summary')[13:]
-                                                  for treatment in treatment_objects if treatment.get('depletion')])
-            perturbation_treatment_summaries = sorted([treatment.get('summary')[13:]
-                                                      for treatment in treatment_objects if not treatment.get('depletion')])
+
+            depleted_treatment_summaries = sorted([
+                treatment.get('summary')[13:]
+                for treatment in treatment_objects
+                if treatment.get('depletion')
+            ])
             if depleted_treatment_summaries:
                 summary_terms += f' depleted of {", ".join(depleted_treatment_summaries)},'
-            if perturbation_treatment_summaries:
-                summary_terms += f' treated with {", ".join(perturbation_treatment_summaries)},'
+
+            purpose_to_verb = {
+                'activation': 'activated with',
+                'acute activation': 'acutely activated with',
+                'chronic activation': 'chronically activated with',
+                'agonist': 'treated with agonist',
+                'antagonist': 'treated with antagonist',
+                'control': 'treated for control with',
+                'perturbation': 'perturbed with',
+                'selection': 'selected with',
+                'stimulation': 'stimulated with',
+                # admin-only, should be removed eventually
+                'differentiation': 'differentiated with',
+                'de-differentiation': 'de-differentiated with',
+            }
+            purpose_to_summaries = {}
+            for treatment in treatment_objects:
+                purpose = treatment['purpose']
+                if purpose not in purpose_to_summaries:
+                    purpose_to_summaries[purpose] = []
+                purpose_to_summaries[purpose].append(treatment['summary'])
+
+            for purpose in sorted(purpose_to_summaries):
+                verb = purpose_to_verb.get(purpose, 'treated with')
+                unique_summaries = sorted(set(purpose_to_summaries[purpose]))
+                payload_str = ', '.join(unique_summaries)
+                summary_terms += f' {verb} {payload_str},'
 
         # modification summaries are appended to the end of the summary
         if (modifications and
