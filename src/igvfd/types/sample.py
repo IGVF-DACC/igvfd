@@ -614,10 +614,11 @@ class Biosample(Sample):
             }
             purpose_to_summaries = {}
             for treatment in treatment_objects:
-                purpose = treatment['purpose']
-                if purpose not in purpose_to_summaries:
-                    purpose_to_summaries[purpose] = []
-                purpose_to_summaries[purpose].append(treatment['summary'])
+                if not (treatment.get('depletion')):
+                    purpose = treatment['purpose']
+                    if purpose not in purpose_to_summaries:
+                        purpose_to_summaries[purpose] = []
+                    purpose_to_summaries[purpose].append(treatment['summary'][13:])
 
             for purpose in sorted(purpose_to_summaries):
                 verb = purpose_to_verb.get(purpose, 'treated with')
