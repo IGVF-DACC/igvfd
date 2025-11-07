@@ -610,19 +610,29 @@ class Biosample(Sample):
         # construct library set overview is appended to the end of the summary
         if (construct_library_sets and
                 biosample_type in biosample_subschemas):
-            verb = 'transfected with'
-            if time_post_library_delivery:
-                verb = f'{time_post_library_delivery} {time_post_library_delivery_units}(s) after transfection with'
+
+            if nucleic_acid_delivery == 'lentiviral transduction':
+                verb = 'transduced (lentivirus) with'
+                noun = 'transduction (lentivirus) with'
+            elif nucleic_acid_delivery == 'adenoviral transduction':
+                verb = 'transduced (adenovirus) with'
+                noun = 'transduction (adenovirus) with'
+            else:
+                verb = 'transfected with'
+                noun = 'transfection with'
+
+            if time_post_library_delivery is not None:
+                verb = (
+                    f'{time_post_library_delivery} '
+                    f'{time_post_library_delivery_units}(s) after {noun}'
+                )
+
             library_summaries = set()
             for construct_library_set in construct_library_sets:
                 construct_library_set_object = request.embed(
                     construct_library_set, '@@object_with_select_calculated_properties?field=summary')
                 library_summaries.add(construct_library_set_object['summary'])
-            if nucleic_acid_delivery:
-                if nucleic_acid_delivery == 'lentiviral transduction':
-                    verb = 'transduced (lentivirus) with'
-                elif nucleic_acid_delivery == 'adenoviral transduction':
-                    verb = 'transduced (adenovirus) with'
+
             if len(library_summaries) == 1:
                 library_summaries = ', '.join(library_summaries)
                 if moi:
