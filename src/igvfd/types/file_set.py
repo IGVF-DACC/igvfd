@@ -357,13 +357,15 @@ class FileSet(Item):
         })
     def construct_library_sets(self, request, samples=None):
         construct_library_sets = set()
-        for sample in samples:
-            sample_object = request.embed(sample,
-                                          '@@object_with_select_calculated_properties?'
-                                          'field=construct_library_sets'
-                                          )
-            if sample_object.get('construct_library_sets', []):
-                construct_library_sets = construct_library_sets | set(sample_object.get('construct_library_sets', []))
+        if 'construct_library_set' != self.item_type:
+            for sample in samples:
+                sample_object = request.embed(sample,
+                                              '@@object_with_select_calculated_properties?'
+                                              'field=construct_library_sets'
+                                              )
+                if sample_object.get('construct_library_sets', []):
+                    construct_library_sets = construct_library_sets | set(
+                        sample_object.get('construct_library_sets', []))
         return sorted(construct_library_sets) or None
 
     @calculated_property(

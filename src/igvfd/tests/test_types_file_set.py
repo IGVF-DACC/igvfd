@@ -131,6 +131,9 @@ def test_construct_library_sets(testapp, principal_analysis_set, measurement_set
     res = testapp.get(principal_analysis_set['@id'])
     assert set([file_set['@id'] for file_set in res.json.get('construct_library_sets', [])]
                ) == {construct_library_set_genome_wide['@id'], base_expression_construct_library_set['@id']}
+    # construct library sets should not calculate construct_library_sets
+    res = testapp.get(construct_library_set_genome_wide['@id'])
+    assert res.json.get('construct_library_sets', None) == None
 
 
 def test_superseded_by(testapp, principal_analysis_set, measurement_set):
