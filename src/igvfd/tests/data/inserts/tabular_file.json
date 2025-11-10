@@ -1110,5 +1110,24 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "j-michael-cherry:barcodes_curated_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "eee4e4ab-25e6-40e3-9c09-9f41fc84e567",
+        "accession": "IGVFFI0003INDX",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_index_plate"
+        ],
+        "md5sum": "d01b782a22aed4758d35e271a9529616",
+        "file_format": "tsv",
+        "content_type": "index plate",
+        "submitted_file_name": "/Users/igvf/igvf_files/Dual_Index_Kit_NT_Set_A.csv.gz",
+        "file_size": 11111111,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-10-31T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "controlled_access": false
     }
 ]
