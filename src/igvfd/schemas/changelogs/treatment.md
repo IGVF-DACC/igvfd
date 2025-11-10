@@ -2,8 +2,8 @@
 
 ### Minor changes since schema version 10
 
-* Adjust `purpose` enum list to add `chronic activation`.
-* Adjust `purpose` enum list to add `acute activation`.
+* Extend `purpose` enum list to include `chronic activation`.
+* Extend `purpose` enum list to include `acute activation`.
 
 ### Schema version 10
 
