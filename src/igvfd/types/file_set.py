@@ -357,7 +357,7 @@ class FileSet(Item):
         })
     def construct_library_sets(self, request, samples=None):
         construct_library_sets = set()
-        if 'construct_library_set' != self.item_type:
+        if self.item_type != 'construct_library_set':  # construct library sets should not calculate construct_library_sets
             for sample in samples:
                 sample_object = request.embed(sample,
                                               '@@object_with_select_calculated_properties?'
