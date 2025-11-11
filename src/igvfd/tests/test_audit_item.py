@@ -59,6 +59,7 @@ def test_audit_item_schema_upgrade_validation_failure(testapp, item_donor):
 def test_audit_item_mismatched_status(
     testapp,
     measurement_set,
+    measurement_set_multiome_2,
     assay_term_starr,
     tissue
 ):
@@ -107,5 +108,19 @@ def test_audit_item_mismatched_status(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'mismatched status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    # exception for supersedes
+    testapp.patch_json(
+        measurement_set['@id'],
+        {'status': 'revoked', 'release_timestamp': '2024-03-06T12:34:56Z'}
+    )
+    testapp.patch_json(
+        measurement_set_multiome_2['@id'],
+        {'status': 'in progress', 'supersedes': [measurement_set['@id']]}
+    )
+    res = testapp.get(measurement_set_multiome_2['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'mismatched status'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
