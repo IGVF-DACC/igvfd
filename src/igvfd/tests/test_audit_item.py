@@ -60,7 +60,8 @@ def test_audit_item_mismatched_status(
     testapp,
     measurement_set,
     assay_term_starr,
-    tissue
+    tissue,
+    measurement_set_multiome
 ):
     testapp.patch_json(
         measurement_set['@id'],
@@ -107,5 +108,18 @@ def test_audit_item_mismatched_status(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'mismatched status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {'status': 'revoked', 'release_timestamp': '2024-03-06T12:34:56Z'}
+    )
+    testapp.patch_json(
+        measurement_set_multiome['@id'],
+        {'supersedes': [measurement_set['@id']]}
+    )
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'mismatched status'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
