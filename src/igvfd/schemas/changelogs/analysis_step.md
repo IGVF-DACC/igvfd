@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 9
 
+* Extend `output_content_types` enum list to include `index plate`.
+* Extend `input_content_types` enum list to include `index plate`.
 * Extend `analysis_step_types` enum list to include `logistic regression`.
 * Extend `output_content_types` enum list to include `gene universe`.
 * Extend `input_content_types` enum list to include `gene universe`.
