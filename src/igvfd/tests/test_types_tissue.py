@@ -59,7 +59,7 @@ def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor
     )
     res = testapp.get(tissue['@id'])
     assert res.json.get(
-        'summary') == f'virtual Mus musculus strain1, strain3 (mixed sex, 50-100 days) embryonic brown adipose tissue (cellular sub pool: PKR-1128) associated with Alzheimer\'s disease, treated with 10 mM lactate for 1 hour'
+        'summary') == f'virtual Mus musculus strain1, strain3 (mixed sex, 50-100 days) embryonic brown adipose tissue (cellular sub pool: PKR-1128) associated with Alzheimer\'s disease, activated with 10 mM lactate for 1 hour'
 
 
 def test_age_in_hours(testapp, tissue):

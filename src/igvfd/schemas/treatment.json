@@ -268,6 +268,8 @@
                 {
                     "enum": [
                         "activation",
+                        "acute activation",
+                        "chronic activation",
                         "agonist",
                         "antagonist",
                         "control",
@@ -286,6 +288,8 @@
             ],
             "enum_descriptions": {
                 "activation": "The treatment is known to activate a pathway or modification in the biosample.",
+                "acute activation": "A short-term treatment that rapidly activates a pathway or modification in the biosample for a limited duration.",
+                "chronic activation": "A prolonged treatment that persistently activates a pathway or modification in the biosample over an extended period of time.",
                 "agonist": "A substance which is known to initiate a physiological response when combined with a receptor.",
                 "antagonist": "A substance that is known to interfere with or inhibits the physiological action of another.",
                 "control": "A treatment applied to a sample for control purposes.",

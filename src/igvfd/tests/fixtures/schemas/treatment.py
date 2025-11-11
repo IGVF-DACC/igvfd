@@ -11,7 +11,7 @@ def treatment_chemical(testapp, lab, award):
         'amount_units': 'mM',
         'duration': 1,
         'duration_units': 'hour',
-        'purpose': 'differentiation',
+        'purpose': 'activation',
         'award': award['@id'],
         'lab': lab['@id'],
         'depletion': False
@@ -27,7 +27,7 @@ def treatment_protein(testapp, lab, award):
         'treatment_type': 'protein',
         'amount': 10,
         'amount_units': 'ng/mL',
-        'purpose': 'differentiation',
+        'purpose': 'perturbation',
         'award': award['@id'],
         'lab': lab['@id'],
         'depletion': False

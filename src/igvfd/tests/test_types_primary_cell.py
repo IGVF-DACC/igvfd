@@ -77,4 +77,4 @@ def test_summary(testapp, primary_cell, pooled_from_primary_cell, human_donor, r
     )
     res = testapp.get(primary_cell['@id'])
     assert res.json.get(
-        'summary') == f'virtual Mus musculus strain1, strain3 (mixed sex, 1 month) embryonic endothelial cell of vascular tree (cellular sub pool: PKR-123) (sorting details: some more details about sorting) characterized by high level of CD243, negative detection of CD243, associated with Alzheimer\'s disease, Myocardial infarction, treated with 10 ng/mL G-CSF'
+        'summary') == f'virtual Mus musculus strain1, strain3 (mixed sex, 1 month) embryonic endothelial cell of vascular tree (cellular sub pool: PKR-123) (sorting details: some more details about sorting) characterized by high level of CD243, negative detection of CD243, associated with Alzheimer\'s disease, Myocardial infarction, perturbed with 10 ng/mL G-CSF'
