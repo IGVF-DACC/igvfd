@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_related_measurement_sets_multiome(testapp, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_multiome, measurement_set_multiome_2, analysis_set_base, curated_set_genome):
+def test_related_measurement_sets_multiome(testapp, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_multiome, measurement_set_multiome_2, curated_set_genome):
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -16,9 +16,14 @@ def test_related_measurement_sets_multiome(testapp, primary_cell, in_vitro_cell_
     )
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('related_measurement_sets') is None
+
     res = testapp.get(measurement_set_multiome['@id'])
-    assert set([file_set_id['@id']
-               for file_set_id in res.json['related_measurement_sets']['measurement_sets'][0]]) == {measurement_set['@id']}
+    related_measurement_sets = res.json['related_measurement_sets']
+    multiome_group = [group for group in related_measurement_sets if group.get('series_type') == 'multiome']
+    related_multiome_datasets = multiome_group[0]['measurement_sets']
+    assert set([related_multiome_dataset['@id']
+               for related_multiome_dataset in related_multiome_datasets]) == {measurement_set['@id']}
+
     testapp.patch_json(
         curated_set_genome['@id'],
         {
@@ -26,8 +31,12 @@ def test_related_measurement_sets_multiome(testapp, primary_cell, in_vitro_cell_
         }
     )
     res = testapp.get(measurement_set_multiome['@id'])
-    assert set([file_set_id['@id']
-               for file_set_id in res.json['related_measurement_sets']['measurement_sets']]) == {measurement_set['@id']}
+    related_measurement_sets = res.json['related_measurement_sets']
+    multiome_group = [group for group in related_measurement_sets if group.get('series_type') == 'multiome']
+    related_multiome_datasets = multiome_group[0]['measurement_sets']
+    assert set([related_multiome_dataset['@id']
+               for related_multiome_dataset in related_multiome_datasets]) == {measurement_set['@id']}
+
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -48,7 +57,10 @@ def test_related_measurement_sets_multiome(testapp, primary_cell, in_vitro_cell_
         }
     )
     res = testapp.get(measurement_set_multiome['@id'])
-    assert set([file_set_id['@id'] for file_set_id in res.json['related_measurement_sets']['measurement_sets']]
+    related_measurement_sets = res.json['related_measurement_sets']
+    multiome_group = [group for group in related_measurement_sets if group.get('series_type') == 'multiome']
+    related_multiome_datasets = multiome_group[0]['measurement_sets']
+    assert set([related_multiome_dataset['@id'] for related_multiome_dataset in related_multiome_datasets]
                ) == {measurement_set['@id'], measurement_set_multiome_2['@id']}
 
 

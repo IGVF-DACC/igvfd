@@ -184,7 +184,7 @@ RECURSE_FILE_SET_LINK_FIELDS = [
     'input_file_sets',
     'input_for',
     'auxiliary_sets',
-    'related_multiome_datasets',
+    'related_measurement_sets',
 ]
 
 

@@ -1320,7 +1320,7 @@ class MeasurementSet(FileSet):
         related_multiome_datasets = set()
 
         for sample in samples:
-            sample_object = request.embed(sample, '@@object')
+            sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=file_sets')
             for file_set_id in sample_object.get('file_sets', []):
                 if (
                     file_set_id.startswith('/measurement-sets/')
