@@ -206,7 +206,12 @@ def audit_analysis_set_inconsistent_onlist_info(value, system):
 
     skip_analysis_set = False
     if 'workflows' in value:
-        if all(x['uniform_pipeline'] is False for x in value['workflows']):
+        workflow_objects = []
+        for workflow in value['workflows']:
+            workflow_object = system.get('request').embed(
+                workflow + '@@object?skip_calculated=true')
+            workflow_objects.append(workflow_object)
+        if all(x['uniform_pipeline'] is False for x in workflow_objects):
             skip_analysis_set = True
     if skip_analysis_set:
         return
