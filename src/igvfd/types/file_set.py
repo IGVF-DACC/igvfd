@@ -1237,7 +1237,7 @@ class MeasurementSet(FileSet):
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('assay_term', include=['@id', 'term_name', 'assay_slims', 'status']),
         Path('control_file_sets', include=['@id', 'accession', 'aliases', 'status']),
-        Path('related_multiome_datasets', include=['@id', 'accession', 'status']),
+        Path('related_measurement_sets.measurement_sets', include=['@id', 'accession', 'status', 'measurement_sets']),
         Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
         Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
@@ -1277,34 +1277,67 @@ class MeasurementSet(FileSet):
                 return [term_name]
 
     @calculated_property(
-        condition='multiome_size',
         schema={
-            'title': 'Related Multiome Datasets',
-            'description': 'Related datasets included in the multiome experiment this measurement set is a part of.',
+            'title': 'Related Measurement Sets',
+            'description': 'Measurement sets related to this one, grouped by relationship type.',
             'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Related Multiome Dataset',
-                'description': 'Related dataset included in the multiome experiment this measurement set is a part of.',
-                'type': 'string',
-                'linkTo': 'MeasurementSet'
+                'title': 'Related Measurement Set Group',
+                'description': 'A group of related measurement sets of a given series type.',
+                'type': 'object',
+                'properties': {
+                    'measurement_sets': {
+                        'title': 'Measurement Sets',
+                        'description': 'Measurement sets related by this relationship.',
+                        'type': 'array',
+                        'items': {
+                            'title': 'Related Measurement Set',
+                            'description': 'Related measurement set.',
+                            'type': 'string',
+                            'linkTo': 'MeasurementSet',
+                        },
+                        'minItems': 1,
+                        'uniqueItems': True,
+                    },
+                    'series_type': {
+                        'title': 'Series Type',
+                        'description': 'Type of relationship between this measurement set and the related measurement sets.',
+                        'type': 'string',
+                        'enum': [
+                            'multiome',
+                        ],
+                    },
+                },
+                'required': ['measurement_sets', 'series_type'],
+                'additionalProperties': False,
             },
             'notSubmittable': True,
-        }
-    )
-    def related_multiome_datasets(self, request, samples=None):
+        })
+    def related_measurement_sets(self, request, samples=None, multiome_size=None):
         object_id = self.jsonld_id(request)
-        if samples:
-            related_datasets = []
-            for sample in samples:
-                sample_object = request.embed(sample, '@@object')
-                for file_set_id in sample_object.get('file_sets', []):
-                    if '/measurement-sets/' == file_set_id[:18] and \
-                        object_id != file_set_id and \
-                            file_set_id not in related_datasets:
-                        related_datasets.append(file_set_id)
-            return sorted(related_datasets) or None
+        related_multiome_datasets = set()
+
+        for sample in samples:
+            sample_object = request.embed(sample, '@@object')
+            for file_set_id in sample_object.get('file_sets', []):
+                if (
+                    file_set_id.startswith('/measurement-sets/')
+                    and file_set_id != object_id
+                    and multiome_size
+                ):
+                    related_multiome_datasets.add(file_set_id)
+
+        result = []
+
+        if related_multiome_datasets:
+            result.append({
+                'series_type': 'multiome',
+                'measurement_sets': sorted(related_multiome_datasets),
+            })
+
+        return result or None
 
     @calculated_property(
         schema={

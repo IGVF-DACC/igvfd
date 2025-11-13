@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_related_multiome_datasets(testapp, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_multiome, measurement_set_multiome_2, analysis_set_base, curated_set_genome):
+def test_related_measurement_sets_multiome(testapp, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_multiome, measurement_set_multiome_2, analysis_set_base, curated_set_genome):
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -15,10 +15,10 @@ def test_related_multiome_datasets(testapp, primary_cell, in_vitro_cell_line, me
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('related_multiome_datasets') is None
+    assert res.json.get('related_measurement_sets') is None
     res = testapp.get(measurement_set_multiome['@id'])
     assert set([file_set_id['@id']
-               for file_set_id in res.json.get('related_multiome_datasets')]) == {measurement_set['@id']}
+               for file_set_id in res.json['related_measurement_sets']['measurement_sets'][0]]) == {measurement_set['@id']}
     testapp.patch_json(
         curated_set_genome['@id'],
         {
@@ -27,7 +27,7 @@ def test_related_multiome_datasets(testapp, primary_cell, in_vitro_cell_line, me
     )
     res = testapp.get(measurement_set_multiome['@id'])
     assert set([file_set_id['@id']
-               for file_set_id in res.json.get('related_multiome_datasets')]) == {measurement_set['@id']}
+               for file_set_id in res.json['related_measurement_sets']['measurement_sets']]) == {measurement_set['@id']}
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -48,7 +48,7 @@ def test_related_multiome_datasets(testapp, primary_cell, in_vitro_cell_line, me
         }
     )
     res = testapp.get(measurement_set_multiome['@id'])
-    assert set([file_set_id['@id'] for file_set_id in res.json.get('related_multiome_datasets')]
+    assert set([file_set_id['@id'] for file_set_id in res.json['related_measurement_sets']['measurement_sets']]
                ) == {measurement_set['@id'], measurement_set_multiome_2['@id']}
 
 

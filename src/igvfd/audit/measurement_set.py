@@ -42,9 +42,14 @@ def audit_related_multiome_datasets(value, system):
     audit_message_inconsistent_multiome = get_audit_message(audit_related_multiome_datasets, index=2)
 
     detail = ''
-    related_multiome_datasets = value.get('related_multiome_datasets', [])
+    related_measurement_sets = value.get('related_measurement_sets', [])
     multiome_size = value.get('multiome_size')
     preferred_assay_titles = value.get('preferred_assay_titles', [])
+    multiome_group = [group for group in related_measurement_sets if group.get('series_type') == 'multiome']
+    if multiome_group:
+        related_multiome_datasets = multiome_group[0]['measurement_sets']
+    else:
+        related_multiome_datasets = []
 
     multiome_assays = [
         '10x multiome',
