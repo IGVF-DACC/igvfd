@@ -78,6 +78,8 @@ def audit_item_status(value, system):
     linked = set()
 
     for schema_path in context.type_info.schema_links:
+        if schema_path == 'supersedes':
+            continue
         linked.update(simple_path_ids(value, schema_path))
 
     for path in linked:
