@@ -84,7 +84,7 @@ config: Dict[str, Any] = {
                                 data_node_instance_type='m6g.xlarge.search',
                                 data_nodes=1,
                             ),
-                            'engine_version': EngineVersion.OPENSEARCH_2_7,
+                            'engine_version': EngineVersion.OPENSEARCH_2_19,
                             'volume_size': 30,
                             'logging': False,
                         }
