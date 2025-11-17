@@ -865,7 +865,7 @@
         "assay_term": "/assay-terms/igvf:CRISPR/",
         "file_set_type": "experimental data",
         "preferred_assay_titles": [
-            "MAVEs"
+            "MAVE"
         ]
     }
 ]
