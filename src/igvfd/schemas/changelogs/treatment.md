@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Extend `treatment_type` enum list to include `thermal`.
 * Extend `purpose` enum list to include `chronic activation`.
 * Extend `purpose` enum list to include `acute activation`.
 

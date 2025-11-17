@@ -1,6 +1,6 @@
 {
-    "hash": "18bde7ef162131d712bd3d8008308e77",
-    "index_name": "model_set_18bde7ef",
+    "hash": "39bb4c97159e96b863413465daf6850d",
+    "index_name": "model_set_39bb4c97",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -2004,6 +2004,10 @@
                             },
                             "supersedes": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "store": true,
+                                "type": "long"
                             },
                             "transcriptome_annotation": {
                                 "type": "keyword"

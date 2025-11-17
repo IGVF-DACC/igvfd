@@ -845,6 +845,7 @@ class TechnicalSample(Sample):
     audit_inherit = Sample.audit_inherit
     set_status_up = Biosample.set_status_up + []
     set_status_down = Biosample.set_status_down + []
+    rev = Sample.rev | {'parts': ('TechnicalSample', 'part_of')}
 
     @calculated_property(
         schema={
@@ -903,6 +904,24 @@ class TechnicalSample(Sample):
     )
     def classifications(self):
         return [self.item_type.replace('_', ' ')]
+
+    @calculated_property(
+        schema={
+            'title': 'Technical Sample Parts',
+            'type': 'array',
+            'description': 'The parts into which this sample has been divided.',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Technical Sample Part',
+                'type': 'string',
+                'linkFrom': 'TechnicalSample.part_of',
+            },
+            'notSubmittable': True,
+        }
+    )
+    def parts(self, request, parts):
+        return paths_filtered_by_status(request, parts) or None
 
 
 @collection(

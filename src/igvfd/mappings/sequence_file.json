@@ -1,6 +1,6 @@
 {
-    "hash": "501212351837a255d7634962c572cbb6",
-    "index_name": "sequence_file_50121235",
+    "hash": "80e0d39f75f962f3ae4229d2d302c40e",
+    "index_name": "sequence_file_80e0d39f",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -2944,6 +2944,10 @@
                     },
                     "supersedes": {
                         "type": "keyword"
+                    },
+                    "tile": {
+                        "store": true,
+                        "type": "long"
                     },
                     "upload_credentials": {
                         "properties": {},

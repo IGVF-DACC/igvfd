@@ -99,5 +99,20 @@
         "award": "/awards/HG012012/",
         "lab": "/labs/j-michael-cherry/",
         "depletion": true
+    },
+    {
+        "purpose": "selection",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "treatment_term_name": "heat shock",
+        "treatment_type": "thermal",
+        "treatment_term_id": "NTR:0001189",
+        "uuid": "ddd1f055-a14d-4069-9e5e-eb37fc81d19a",
+        "award": "/awards/HG012012/",
+        "lab": "/labs/j-michael-cherry/",
+        "aliases": [
+            "j-michael-cherry:thermal_treatment"
+        ],
+        "depletion": true
     }
 ]

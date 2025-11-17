@@ -1,6 +1,6 @@
 {
-    "hash": "1f5f535936f79632eeefb7ecfda33a8f",
-    "index_name": "construct_library_set_1f5f5359",
+    "hash": "c9127f5eaa71c3a222ca8b3ffec26fc1",
+    "index_name": "construct_library_set_c9127f5e",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1106,6 +1106,10 @@
                             },
                             "supersedes": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "store": true,
+                                "type": "long"
                             },
                             "transcriptome_annotation": {
                                 "type": "keyword"

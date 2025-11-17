@@ -110,7 +110,8 @@
                 "plasmid map",
                 "plasmid sequence",
                 "quality control report",
-                "standards"
+                "standards",
+                "tile coordinates"
             ],
             "submissionExample": {
                 "appscript": "plasmid map",

@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 15
 
+* Add `treatments`.
+* Add `part_of`.
+* Add calculated property `parts`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.
 
