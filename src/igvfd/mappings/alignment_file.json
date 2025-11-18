@@ -1,6 +1,6 @@
 {
-    "hash": "d07d0a083bef952ee69ce7607f83e94c",
-    "index_name": "alignment_file_d07d0a08",
+    "hash": "ec7ce4dea296ba918ae58178892ac290",
+    "index_name": "alignment_file_ec7ce4de",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -999,8 +999,16 @@
                             "publications": {
                                 "type": "keyword"
                             },
-                            "related_multiome_datasets": {
-                                "type": "keyword"
+                            "related_measurement_sets": {
+                                "properties": {
+                                    "measurement_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "series_type": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "release_timestamp": {
                                 "type": "date"

@@ -1,6 +1,6 @@
 {
-    "hash": "501212351837a255d7634962c572cbb6",
-    "index_name": "sequence_file_50121235",
+    "hash": "1978c1787022b30db6130f36c12d8ee7",
+    "index_name": "sequence_file_1978c178",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -999,8 +999,16 @@
                             "publications": {
                                 "type": "keyword"
                             },
-                            "related_multiome_datasets": {
-                                "type": "keyword"
+                            "related_measurement_sets": {
+                                "properties": {
+                                    "measurement_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "series_type": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "release_timestamp": {
                                 "type": "date"

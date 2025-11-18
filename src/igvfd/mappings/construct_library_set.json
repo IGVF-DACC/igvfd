@@ -1,6 +1,6 @@
 {
-    "hash": "1f5f535936f79632eeefb7ecfda33a8f",
-    "index_name": "construct_library_set_1f5f5359",
+    "hash": "caf8009682a90a65cb4568b7c0b23da7",
+    "index_name": "construct_library_set_caf80096",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -536,8 +536,16 @@
                             "publications": {
                                 "type": "keyword"
                             },
-                            "related_multiome_datasets": {
-                                "type": "keyword"
+                            "related_measurement_sets": {
+                                "properties": {
+                                    "measurement_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "series_type": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "release_timestamp": {
                                 "type": "date"
