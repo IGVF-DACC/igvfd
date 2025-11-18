@@ -1,6 +1,6 @@
 {
-    "hash": "903d49097052eebd11184e034e0a213a",
-    "index_name": "analysis_set_903d4909",
+    "hash": "8c67a89565be45dc877c19b8a095a9cf",
+    "index_name": "analysis_set_8c67a895",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -1920,6 +1920,10 @@
                             },
                             "supersedes": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "store": true,
+                                "type": "long"
                             },
                             "transcriptome_annotation": {
                                 "type": "keyword"

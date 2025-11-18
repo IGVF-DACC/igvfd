@@ -197,6 +197,16 @@
                 "igvf_utils": 1
             }
         },
+        "tile": {
+            "title": "Tile",
+            "description": "An integer identifying the tile of a gene of interest.",
+            "type": "integer",
+            "minimum": 1,
+            "submissionExample": {
+                "appscript": 1,
+                "igvf_utils": 1
+            }
+        },
         "read_count": {
             "title": "Read Count",
             "description": "Number of reads in a fastq file.",

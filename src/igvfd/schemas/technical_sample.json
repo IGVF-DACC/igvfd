@@ -105,6 +105,33 @@
                 "appscript": "[\"/sample-terms/UBERON_0001388/\"]",
                 "igvf_utils": "/sample-terms/UBERON_0001388/"
             }
+        },
+        "treatments": {
+            "title": "Treatments",
+            "description": "A list of treatments applied to the technical sample with the purpose of perturbation.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Treatment",
+                "comment": "See treatment.json for available identifiers.",
+                "type": "string",
+                "linkTo": "Treatment"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:treatment01\", \"/treatments/ffe525b2-bd67-4021-835e-29748513b560/\"]",
+                "igvf_utils": "john-doe:treatment01, /treatments/ffe525b2-bd67-4021-835e-29748513b560/"
+            }
+        },
+        "part_of": {
+            "title": "Part of sample",
+            "description": "Links to technical sample which represents a larger sample from which this sample was taken.",
+            "type": "string",
+            "linkTo": "TechnicalSample",
+            "submissionExample": {
+                "appscript": "TSTSM02881437 or john-doe:technical_sample01",
+                "igvf_utils": "TSTSM02881437 or john-doe:technical_sample01"
+            }
         }
     },
     "fuzzy_searchable_fields": [

@@ -1,6 +1,6 @@
 {
-    "hash": "cbf0314d80e78adb2058b9ce31769080",
-    "index_name": "technical_sample_cbf0314d",
+    "hash": "0b7a884ff243299c71851096d5d90a6f",
+    "index_name": "technical_sample_0b7a884f",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1039,6 +1039,12 @@
                     "origin_of": {
                         "type": "keyword"
                     },
+                    "part_of": {
+                        "type": "keyword"
+                    },
+                    "parts": {
+                        "type": "keyword"
+                    },
                     "preview_timestamp": {
                         "type": "date"
                     },
@@ -1738,6 +1744,9 @@
                         "type": "float"
                     },
                     "time_post_library_delivery_units": {
+                        "type": "keyword"
+                    },
+                    "treatments": {
                         "type": "keyword"
                     },
                     "url": {

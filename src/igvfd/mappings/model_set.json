@@ -1,6 +1,6 @@
 {
-    "hash": "739b5b2c9b7f196a94b3e0b17d0ec589",
-    "index_name": "model_set_739b5b2c",
+    "hash": "dbb772440166f5422166243161f8cde9",
+    "index_name": "model_set_dbb77244",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -2020,6 +2020,10 @@
                             },
                             "supersedes": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "store": true,
+                                "type": "long"
                             },
                             "transcriptome_annotation": {
                                 "type": "keyword"

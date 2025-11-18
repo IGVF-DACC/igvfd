@@ -1,6 +1,6 @@
 {
-    "hash": "a7626fc3725897ab08e163f0374b1abf",
-    "index_name": "auxiliary_set_a7626fc3",
+    "hash": "1bd35e1df048b7e89ffb9c135c4dc2c5",
+    "index_name": "auxiliary_set_1bd35e1d",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1917,6 +1917,10 @@
                             },
                             "supersedes": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "store": true,
+                                "type": "long"
                             },
                             "transcriptome_annotation": {
                                 "type": "keyword"

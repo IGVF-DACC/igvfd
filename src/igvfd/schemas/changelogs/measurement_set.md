@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 40
 
+* Extend `preferred_assay_titles` enum list to include `MAVE`.
 * Add `related_measurement_sets`.
 * Remove `related_multiome_datasets`.
 * Extend `collections` enum list to include `E2G Pillar Project`.

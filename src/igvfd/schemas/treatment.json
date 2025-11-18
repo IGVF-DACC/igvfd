@@ -180,6 +180,28 @@
                             "treatment_term_id"
                         ]
                     }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "treatment_type": {
+                                "const": "thermal"
+                            }
+                        },
+                        "required": [
+                            "treatment_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "treatment_term_id": {
+                                "pattern": "^((NTR:[0-9]{2,8}))$"
+                            }
+                        },
+                        "required": [
+                            "treatment_term_id"
+                        ]
+                    }
                 }
             ]
         }
@@ -354,11 +376,13 @@
             "description": "The classification of treatment agent that specifies its exact molecular nature. ",
             "enum": [
                 "chemical",
-                "protein"
+                "protein",
+                "thermal"
             ],
             "enum_descriptions": {
                 "chemical": "Refers to (natural or synthetic) organic/inorganic compounds and also includes drugs. Example of chemical type: lactate, ethanol,hydrocortisone, LPS etc.",
-                "protein": "Restricted to active protein biomolecules that are naturally or artifically synthesized via cellular translation mechanism of converting DNA into a protein. Example of protein type: Interferons, interlukin, antibodies, etc."
+                "protein": "Restricted to active protein biomolecules that are naturally or artificially synthesized via cellular translation mechanism of converting DNA into a protein. Example of protein type: Interferons, interleukin, antibodies, etc.",
+                "thermal": "Refers to treatments that involve controlled exposure to heat or cold to induce a biological response. Examples include heat shock, cold shock, or temperature shift incubation."
             },
             "submissionExample": {
                 "appscript": "chemical",

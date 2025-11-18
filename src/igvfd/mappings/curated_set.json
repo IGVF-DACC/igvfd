@@ -1,6 +1,6 @@
 {
-    "hash": "4dd5b0bd567c18e286cae1297197b69c",
-    "index_name": "curated_set_4dd5b0bd",
+    "hash": "6d29fadfa4fe3b3a8ea5cf54422e1f8a",
+    "index_name": "curated_set_6d29fadf",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1915,6 +1915,10 @@
                             },
                             "supersedes": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "store": true,
+                                "type": "long"
                             },
                             "transcriptome_annotation": {
                                 "type": "keyword"

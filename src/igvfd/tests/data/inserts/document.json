@@ -304,5 +304,18 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "b786d648-4cce-4fd8-b66d-7d135eaf1ea5"
+    },
+    {
+        "aliases": [
+            "igvf:tile_coordinates"
+        ],
+        "description": "tile coordinates",
+        "attachment": "tile_coordinates.pdf",
+        "document_type": "tile coordinates",
+        "award": "1U01HG011952-01",
+        "lab": "alan-boyle",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "d6ea798c-8e6e-418e-bda1-a4d516694be3"
     }
 ]

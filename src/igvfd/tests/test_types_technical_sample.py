@@ -40,3 +40,20 @@ def test_technical_sample_summary(testapp, technical_sample, construct_library_s
     res = testapp.get(technical_sample['@id'])
     assert res.json.get(
         'summary') == 'virtual synthetic technical sample transduced (lentivirus) with multiple libraries (MOI of 6)'
+
+
+def test_technical_sample_parts(testapp, technical_sample, technical_sample_organic, technical_sample_inorganic):
+    testapp.patch_json(
+        technical_sample_organic['@id'],
+        {
+            'part_of': technical_sample['@id']
+        }
+    )
+    testapp.patch_json(
+        technical_sample_inorganic['@id'],
+        {
+            'part_of': technical_sample['@id']
+        }
+    )
+    res = testapp.get(technical_sample['@id'])
+    assert set(res.json.get('parts')) == {technical_sample_organic['@id'], technical_sample_inorganic['@id']}

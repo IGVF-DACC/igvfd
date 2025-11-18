@@ -1,6 +1,6 @@
 {
-    "hash": "560b1e1d14defa6f882b8c7e77d1fd29",
-    "index_name": "prediction_set_560b1e1d",
+    "hash": "64e37315ce55123262d72c01e62e9788",
+    "index_name": "prediction_set_64e37315",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -2090,6 +2090,10 @@
                             },
                             "supersedes": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "store": true,
+                                "type": "long"
                             },
                             "transcriptome_annotation": {
                                 "type": "keyword"

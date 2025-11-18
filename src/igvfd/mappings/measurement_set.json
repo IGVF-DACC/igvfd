@@ -1,6 +1,6 @@
 {
-    "hash": "29a58c6780948f07fd395f9710748835",
-    "index_name": "measurement_set_29a58c67",
+    "hash": "bd139096f86c9286d8afee7d06b2bb82",
+    "index_name": "measurement_set_bd139096",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2494,6 +2494,10 @@
                             },
                             "supersedes": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "store": true,
+                                "type": "long"
                             },
                             "transcriptome_annotation": {
                                 "type": "keyword"

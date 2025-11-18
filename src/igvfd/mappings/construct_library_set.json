@@ -1,6 +1,6 @@
 {
-    "hash": "caf8009682a90a65cb4568b7c0b23da7",
-    "index_name": "construct_library_set_caf80096",
+    "hash": "5f234b0e8b45ca4fd7f088cc24fb3822",
+    "index_name": "construct_library_set_5f234b0e",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1114,6 +1114,10 @@
                             },
                             "supersedes": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "store": true,
+                                "type": "long"
                             },
                             "transcriptome_annotation": {
                                 "type": "keyword"

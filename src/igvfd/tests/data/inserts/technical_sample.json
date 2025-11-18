@@ -98,5 +98,32 @@
         ],
         "description": "A yeast technical sample for 2-hybrid assays.",
         "virtual": false
+    },
+    {
+        "uuid": "9d4a0f84-e434-4576-85ba-0f598b0f23d2",
+        "accession": "IGVFSM7651TECH",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:test_part_of"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "notes": "This is a note.",
+        "sample_material": "organic",
+        "taxa": "Saccharomyces cerevisiae",
+        "sample_terms": [
+            "7cd887f0-c065-4380-94f8-e0a9d3b5e1c4"
+        ],
+        "date_obtained": "2022-04-09",
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
+        "description": "A yeast technical sample for 2-hybrid assays.",
+        "virtual": false,
+        "part_of": "IGVFSM7651YBEN",
+        "treatments": [
+            "j-michael-cherry:thermal_treatment"
+        ]
     }
 ]

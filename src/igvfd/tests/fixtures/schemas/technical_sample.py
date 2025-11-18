@@ -14,6 +14,30 @@ def technical_sample(testapp, other_lab, award, source, sample_term_technical_sa
 
 
 @pytest.fixture
+def technical_sample_organic(testapp, other_lab, award, source, sample_term_technical_sample):
+    item = {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'sources': [source['@id']],
+        'sample_material': 'organic',
+        'sample_terms': [sample_term_technical_sample['@id']]
+    }
+    return testapp.post_json('/technical_sample', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def technical_sample_inorganic(testapp, other_lab, award, source, sample_term_technical_sample):
+    item = {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'sources': [source['@id']],
+        'sample_material': 'inorganic',
+        'sample_terms': [sample_term_technical_sample['@id']]
+    }
+    return testapp.post_json('/technical_sample', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def technical_sample_v1(technical_sample):
     item = technical_sample.copy()
     item.update({
