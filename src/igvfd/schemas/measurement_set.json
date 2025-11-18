@@ -385,7 +385,7 @@
         "dbxrefs",
         "files.accession",
         "files.aliases",
-        "related_multiome_datasets.accession",
+        "related_measurement_sets.measurement_sets.accession",
         "control_file_sets.accession",
         "control_file_sets.aliases",
         "control_for.accession",

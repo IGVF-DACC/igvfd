@@ -8,14 +8,29 @@ from pyramid.view import view_config
 def extract_file_sets_and_files(file_set):
     file_sets = set()
     files = set()
+
     for link_field in RECURSE_FILE_SET_LINK_FIELDS:
-        if link_field in file_set:
-            value = file_set[link_field]
-            if value:
-                if isinstance(value, list):
-                    file_sets.update(value)
+        if link_field not in file_set:
+            continue
+
+        # Special handling for grouped related_measurement_sets
+        if link_field == 'related_measurement_sets':
+            related_groups = file_set.get('related_measurement_sets') or []
+            for group in related_groups:
+                measurement_sets = group.get('measurement_sets') or []
+                if isinstance(measurement_sets, list):
+                    file_sets.update(measurement_sets)
                 else:
-                    file_sets.add(value)
+                    file_sets.add(measurement_sets)
+            continue
+
+        value = file_set[link_field]
+        if value:
+            if isinstance(value, list):
+                file_sets.update(value)
+            else:
+                file_sets.add(value)
+
     for field in RECURSE_FILE_FIELDS:
         if field in file_set:
             value = file_set[field]
@@ -24,6 +39,7 @@ def extract_file_sets_and_files(file_set):
                     files.update(value)
                 else:
                     files.add(value)
+
     return {
         'file_sets': file_sets,
         'files': files,

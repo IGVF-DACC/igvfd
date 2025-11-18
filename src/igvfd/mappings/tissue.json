@@ -1,6 +1,6 @@
 {
-    "hash": "daf196503828ac3433ca3914a28aeac8",
-    "index_name": "tissue_daf19650",
+    "hash": "91034f98779d6224431b5e70c7506d16",
+    "index_name": "tissue_91034f98",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1225,8 +1225,16 @@
                             "publications": {
                                 "type": "keyword"
                             },
-                            "related_multiome_datasets": {
-                                "type": "keyword"
+                            "related_measurement_sets": {
+                                "properties": {
+                                    "measurement_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "series_type": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "release_timestamp": {
                                 "type": "date"

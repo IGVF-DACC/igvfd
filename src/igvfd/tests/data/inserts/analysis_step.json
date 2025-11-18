@@ -231,5 +231,27 @@
             "minus strand modification state",
             "UMAP plot"
         ]
+    },
+    {
+        "uuid": "49e29873-74a1-402e-8081-a132a0bdba60",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf-dacc:analysis_step_04"
+        ],
+        "status": "released",
+        "submitter_comment": "The submitter had very little to say.",
+        "title": "Example Analysis Four Step",
+        "step_label": "example-analysis-four-step",
+        "analysis_step_types": [
+            "calibration"
+        ],
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "input_content_types": [
+            "variants"
+        ],
+        "output_content_types": [
+            "calibrated coding variant effects"
+        ]
     }
 ]

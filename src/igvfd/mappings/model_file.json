@@ -1,6 +1,6 @@
 {
-    "hash": "b818daba2867df17666d4cd4cb693f14",
-    "index_name": "model_file_b818daba",
+    "hash": "180331b80aca6fb44ff68ff4a6c79581",
+    "index_name": "model_file_180331b8",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -1008,8 +1008,16 @@
                             "publications": {
                                 "type": "keyword"
                             },
-                            "related_multiome_datasets": {
-                                "type": "keyword"
+                            "related_measurement_sets": {
+                                "properties": {
+                                    "measurement_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "series_type": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "release_timestamp": {
                                 "type": "date"

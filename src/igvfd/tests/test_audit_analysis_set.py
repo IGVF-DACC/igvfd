@@ -272,7 +272,20 @@ def test_audit_analysis_set_demultiplexed_sample(
     )
 
 
-def test_audit_analysis_set_inconsistent_barcode_onlist(testapp, analysis_set_with_scrna_measurement_sets, analysis_set_with_multiome_measurement_sets, measurement_set_one_onlist, measurement_set_two_onlists, measurement_set_one_onlist_atac, measurement_set_two_onlists_atac, tabular_file_onlist_1, tabular_file_onlist_2):
+def test_audit_analysis_set_inconsistent_barcode_onlist(
+    testapp,
+    analysis_set_with_scrna_measurement_sets,
+    analysis_set_with_multiome_measurement_sets,
+    measurement_set_one_onlist,
+    measurement_set_two_onlists,
+    measurement_set_one_onlist_atac,
+    measurement_set_two_onlists_atac,
+    tabular_file_onlist_1,
+    tabular_file_onlist_2,
+    signal_file,
+    analysis_step_version,
+    base_workflow
+):
     # Analysis set with 1 ATAC measurement set and 1 RNA measurement set with different onlist info (no audit)
     res = testapp.get(analysis_set_with_multiome_measurement_sets['@id'] + '@@audit')
     assert all(
@@ -285,7 +298,8 @@ def test_audit_analysis_set_inconsistent_barcode_onlist(testapp, analysis_set_wi
     )
 
     # Analysis set with 2 ATAC measurement set and 2 RNA measurement set
-    # Each assay type has 2 measurement sets with different onlist info (audit)
+    # Each assay type has 2 measurement sets with different onlist info,
+    # but workflow is non-uniform: (no audit)
     testapp.patch_json(
         analysis_set_with_multiome_measurement_sets['@id'],
         {
@@ -294,6 +308,29 @@ def test_audit_analysis_set_inconsistent_barcode_onlist(testapp, analysis_set_wi
                                 measurement_set_one_onlist_atac['@id'],
                                 measurement_set_two_onlists_atac['@id']
                                 ]
+        }
+    )
+    testapp.patch_json(
+        signal_file['@id'],
+        {
+            'file_set': analysis_set_with_multiome_measurement_sets['@id'],
+            'analysis_step_version': analysis_step_version['@id']
+        }
+    )
+    res = testapp.get(analysis_set_with_multiome_measurement_sets['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent barcode onlists'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    assert all(
+        error['category'] != 'inconsistent barcode method'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # Same as above, but workflow is uniform. (audit)
+    testapp.patch_json(
+        base_workflow['@id'],
+        {
+            'uniform_pipeline': True
         }
     )
     res = testapp.get(analysis_set_with_multiome_measurement_sets['@id'] + '@@audit')

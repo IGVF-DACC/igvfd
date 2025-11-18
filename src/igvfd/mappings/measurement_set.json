@@ -941,8 +941,16 @@
                             "publications": {
                                 "type": "keyword"
                             },
-                            "related_multiome_datasets": {
-                                "type": "keyword"
+                            "related_measurement_sets": {
+                                "properties": {
+                                    "measurement_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "series_type": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "release_timestamp": {
                                 "type": "date"
@@ -1382,8 +1390,16 @@
                             "publications": {
                                 "type": "keyword"
                             },
-                            "related_multiome_datasets": {
-                                "type": "keyword"
+                            "related_measurement_sets": {
+                                "properties": {
+                                    "measurement_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "series_type": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "release_timestamp": {
                                 "type": "date"
@@ -1724,8 +1740,16 @@
                             "publications": {
                                 "type": "keyword"
                             },
-                            "related_multiome_datasets": {
-                                "type": "keyword"
+                            "related_measurement_sets": {
+                                "properties": {
+                                    "measurement_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "series_type": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "release_timestamp": {
                                 "type": "date"
@@ -2879,8 +2903,16 @@
                             "publications": {
                                 "type": "keyword"
                             },
-                            "related_multiome_datasets": {
-                                "type": "keyword"
+                            "related_measurement_sets": {
+                                "properties": {
+                                    "measurement_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "series_type": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "release_timestamp": {
                                 "type": "date"
@@ -3239,175 +3271,191 @@
                         },
                         "type": "object"
                     },
-                    "related_multiome_datasets": {
+                    "related_measurement_sets": {
                         "properties": {
-                            "@id": {
-                                "type": "keyword"
+                            "measurement_sets": {
+                                "properties": {
+                                    "@id": {
+                                        "type": "keyword"
+                                    },
+                                    "@type": {
+                                        "type": "keyword"
+                                    },
+                                    "accession": {
+                                        "copy_to": "_exact",
+                                        "type": "keyword"
+                                    },
+                                    "aliases": {
+                                        "type": "keyword"
+                                    },
+                                    "alternate_accessions": {
+                                        "type": "keyword"
+                                    },
+                                    "assay_term": {
+                                        "type": "keyword"
+                                    },
+                                    "assay_titles": {
+                                        "type": "keyword"
+                                    },
+                                    "auxiliary_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "award": {
+                                        "type": "keyword"
+                                    },
+                                    "barcode_replacement_file": {
+                                        "type": "keyword"
+                                    },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
+                                    "construct_library_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "control_file_sets": {
+                                        "type": "keyword"
+                                    },
+                                    "control_for": {
+                                        "type": "keyword"
+                                    },
+                                    "control_types": {
+                                        "type": "keyword"
+                                    },
+                                    "controlled_access": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
+                                    "creation_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "data_use_limitation_summaries": {
+                                        "type": "keyword"
+                                    },
+                                    "dbxrefs": {
+                                        "type": "keyword"
+                                    },
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "documents": {
+                                        "type": "keyword"
+                                    },
+                                    "donors": {
+                                        "type": "keyword"
+                                    },
+                                    "external_image_urls": {
+                                        "type": "keyword"
+                                    },
+                                    "externally_hosted": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
+                                    "file_set_type": {
+                                        "type": "keyword"
+                                    },
+                                    "files": {
+                                        "type": "keyword"
+                                    },
+                                    "functional_assay_mechanisms": {
+                                        "type": "keyword"
+                                    },
+                                    "input_for": {
+                                        "type": "keyword"
+                                    },
+                                    "lab": {
+                                        "type": "keyword"
+                                    },
+                                    "library_preparation_kit": {
+                                        "type": "keyword"
+                                    },
+                                    "multiome_size": {
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "notes": {
+                                        "type": "text"
+                                    },
+                                    "onlist_files": {
+                                        "type": "keyword"
+                                    },
+                                    "onlist_method": {
+                                        "type": "keyword"
+                                    },
+                                    "preferred_assay_titles": {
+                                        "type": "keyword"
+                                    },
+                                    "preview_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "primer_designs": {
+                                        "type": "keyword"
+                                    },
+                                    "protocols": {
+                                        "type": "keyword"
+                                    },
+                                    "publications": {
+                                        "type": "keyword"
+                                    },
+                                    "related_measurement_sets": {
+                                        "properties": {
+                                            "measurement_sets": {
+                                                "type": "keyword"
+                                            },
+                                            "series_type": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "release_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "revoke_detail": {
+                                        "type": "keyword"
+                                    },
+                                    "samples": {
+                                        "type": "keyword"
+                                    },
+                                    "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "sequencing_library_types": {
+                                        "type": "keyword"
+                                    },
+                                    "status": {
+                                        "type": "keyword"
+                                    },
+                                    "strand_specificity": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_by": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_files_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "submitter_comment": {
+                                        "type": "keyword"
+                                    },
+                                    "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "superseded_by": {
+                                        "type": "keyword"
+                                    },
+                                    "supersedes": {
+                                        "type": "keyword"
+                                    },
+                                    "targeted_genes": {
+                                        "type": "keyword"
+                                    },
+                                    "uuid": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
-                            "@type": {
-                                "type": "keyword"
-                            },
-                            "accession": {
-                                "copy_to": "_exact",
-                                "type": "keyword"
-                            },
-                            "aliases": {
-                                "type": "keyword"
-                            },
-                            "alternate_accessions": {
-                                "type": "keyword"
-                            },
-                            "assay_term": {
-                                "type": "keyword"
-                            },
-                            "assay_titles": {
-                                "type": "keyword"
-                            },
-                            "auxiliary_sets": {
-                                "type": "keyword"
-                            },
-                            "award": {
-                                "type": "keyword"
-                            },
-                            "barcode_replacement_file": {
-                                "type": "keyword"
-                            },
-                            "collections": {
-                                "type": "keyword"
-                            },
-                            "construct_library_sets": {
-                                "type": "keyword"
-                            },
-                            "control_file_sets": {
-                                "type": "keyword"
-                            },
-                            "control_for": {
-                                "type": "keyword"
-                            },
-                            "control_types": {
-                                "type": "keyword"
-                            },
-                            "controlled_access": {
-                                "store": true,
-                                "type": "boolean"
-                            },
-                            "creation_timestamp": {
-                                "type": "date"
-                            },
-                            "data_use_limitation_summaries": {
-                                "type": "keyword"
-                            },
-                            "dbxrefs": {
-                                "type": "keyword"
-                            },
-                            "description": {
-                                "type": "text"
-                            },
-                            "documents": {
-                                "type": "keyword"
-                            },
-                            "donors": {
-                                "type": "keyword"
-                            },
-                            "external_image_urls": {
-                                "type": "keyword"
-                            },
-                            "externally_hosted": {
-                                "store": true,
-                                "type": "boolean"
-                            },
-                            "file_set_type": {
-                                "type": "keyword"
-                            },
-                            "files": {
-                                "type": "keyword"
-                            },
-                            "functional_assay_mechanisms": {
-                                "type": "keyword"
-                            },
-                            "input_for": {
-                                "type": "keyword"
-                            },
-                            "lab": {
-                                "type": "keyword"
-                            },
-                            "library_preparation_kit": {
-                                "type": "keyword"
-                            },
-                            "multiome_size": {
-                                "store": true,
-                                "type": "long"
-                            },
-                            "notes": {
-                                "type": "text"
-                            },
-                            "onlist_files": {
-                                "type": "keyword"
-                            },
-                            "onlist_method": {
-                                "type": "keyword"
-                            },
-                            "preferred_assay_titles": {
-                                "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
-                            "primer_designs": {
-                                "type": "keyword"
-                            },
-                            "protocols": {
-                                "type": "keyword"
-                            },
-                            "publications": {
-                                "type": "keyword"
-                            },
-                            "related_multiome_datasets": {
-                                "type": "keyword"
-                            },
-                            "release_timestamp": {
-                                "type": "date"
-                            },
-                            "revoke_detail": {
-                                "type": "keyword"
-                            },
-                            "samples": {
-                                "type": "keyword"
-                            },
-                            "schema_version": {
-                                "type": "keyword"
-                            },
-                            "sequencing_library_types": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "strand_specificity": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitted_files_timestamp": {
-                                "type": "date"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "superseded_by": {
-                                "type": "keyword"
-                            },
-                            "supersedes": {
-                                "type": "keyword"
-                            },
-                            "targeted_genes": {
-                                "type": "keyword"
-                            },
-                            "uuid": {
+                            "series_type": {
                                 "type": "keyword"
                             }
                         },
