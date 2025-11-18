@@ -213,6 +213,7 @@
         "dbxrefs": [
             "SRA:SRR0000015"
         ],
+        "tile": 1,
         "file_set": "igvf:basic_analysis_set",
         "sequencing_run": 13,
         "illumina_read_type": "R1",
