@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 9
 
+* Extend `input_content_types` enum list to include `calibrated coding variant effects`.
+* Extend `output_content_types` enum list to include `calibrated coding variant effects`.
+* Extend `analysis_step_types` enum list to include `calibration`.
 * Extend `output_content_types` enum list to include `index plate`.
 * Extend `input_content_types` enum list to include `index plate`.
 * Extend `analysis_step_types` enum list to include `logistic regression`.
