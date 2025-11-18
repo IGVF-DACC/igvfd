@@ -204,6 +204,18 @@ def audit_analysis_set_inconsistent_onlist_info(value, system):
     onlist_files_by_assays = {}
     onlist_methods_by_assays = {}
 
+    skip_analysis_set = False
+    if 'workflows' in value:
+        if len(value['workflows']) > 0:
+            workflow_objects = []
+            for workflow in value['workflows']:
+                workflow_object = system.get('request').embed(workflow + '@@object?skip_calculated=true')
+                workflow_objects.append(workflow_object)
+            if all(x['uniform_pipeline'] is False for x in workflow_objects):
+                skip_analysis_set = True
+    if skip_analysis_set:
+        return
+
     input_file_sets = value.get('input_file_sets', [])
     for input_file_set in input_file_sets:
         if input_file_set.startswith('/measurement-sets/'):
