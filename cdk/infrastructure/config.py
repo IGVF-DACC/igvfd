@@ -77,14 +77,14 @@ config: Dict[str, Any] = {
             'opensearch': {
                 'clusters': [
                     {
-                        'construct_id': 'Opensearch27',
+                        'construct_id': 'Opensearch219',
                         'on': True,
                         'props': {
                             'capacity': CapacityConfig(
                                 data_node_instance_type='m6g.xlarge.search',
                                 data_nodes=1,
                             ),
-                            'engine_version': EngineVersion.OPENSEARCH_2_7,
+                            'engine_version': EngineVersion.OPENSEARCH_2_19,
                             'volume_size': 30,
                             'logging': False,
                         }
@@ -102,8 +102,8 @@ config: Dict[str, Any] = {
                 'max_capacity': 10,
                 'ini_name': 'demo.ini',
                 'use_postgres_named': 'Postgres',
-                'read_from_opensearch_named': 'Opensearch27',
-                'write_to_opensearch_named': 'Opensearch27',
+                'read_from_opensearch_named': 'Opensearch219',
+                'write_to_opensearch_named': 'Opensearch219',
             },
             'invalidation_service': {
                 'cpu': 256,
@@ -159,6 +159,18 @@ config: Dict[str, Any] = {
                             'volume_size': 30,
                         }
                     },
+                    {
+                        'construct_id': 'Opensearch219',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='m6g.xlarge.search',
+                                data_nodes=1,
+                            ),
+                            'engine_version': EngineVersion.OPENSEARCH_2_19,
+                            'volume_size': 30,
+                        }
+                    },
                 ],
             },
             'feature_flag_service': {
@@ -173,7 +185,7 @@ config: Dict[str, Any] = {
                 'ini_name': 'demo.ini',
                 'use_postgres_named': 'Postgres',
                 'read_from_opensearch_named': 'Opensearch27',
-                'write_to_opensearch_named': 'Opensearch27',
+                'write_to_opensearch_named': 'Opensearch219',
             },
             'invalidation_service': {
                 'cpu': 256,
@@ -227,6 +239,18 @@ config: Dict[str, Any] = {
                             'volume_size': 30,
                         }
                     },
+                    {
+                        'construct_id': 'Opensearch219',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='m6g.xlarge.search',
+                                data_nodes=1,
+                            ),
+                            'engine_version': EngineVersion.OPENSEARCH_2_19,
+                            'volume_size': 30,
+                        }
+                    },
                 ],
             },
             'feature_flag_service': {
@@ -241,7 +265,7 @@ config: Dict[str, Any] = {
                 'ini_name': 'staging.ini',
                 'use_postgres_named': 'Postgres',
                 'read_from_opensearch_named': 'Opensearch27',
-                'write_to_opensearch_named': 'Opensearch27',
+                'write_to_opensearch_named': 'Opensearch219',
             },
             'invalidation_service': {
                 'cpu': 256,
@@ -296,6 +320,18 @@ config: Dict[str, Any] = {
                             'volume_size': 30,
                         }
                     },
+                    {
+                        'construct_id': 'Opensearch219',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='m6g.xlarge.search',
+                                data_nodes=1,
+                            ),
+                            'engine_version': EngineVersion.OPENSEARCH_2_19,
+                            'volume_size': 30,
+                        }
+                    },
                 ],
             },
             'feature_flag_service': {
@@ -310,7 +346,7 @@ config: Dict[str, Any] = {
                 'ini_name': 'sandbox.ini',
                 'use_postgres_named': 'Postgres',
                 'read_from_opensearch_named': 'Opensearch27',
-                'write_to_opensearch_named': 'Opensearch27',
+                'write_to_opensearch_named': 'Opensearch219',
             },
             'invalidation_service': {
                 'cpu': 256,
@@ -364,6 +400,18 @@ config: Dict[str, Any] = {
                             'volume_size': 30,
                         }
                     },
+                    {
+                        'construct_id': 'Opensearch219',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='m6g.xlarge.search',
+                                data_nodes=1,
+                            ),
+                            'engine_version': EngineVersion.OPENSEARCH_2_19,
+                            'volume_size': 30,
+                        }
+                    },
                 ],
             },
             'feature_flag_service': {
@@ -378,7 +426,7 @@ config: Dict[str, Any] = {
                 'ini_name': 'production.ini',
                 'use_postgres_named': 'Postgres',
                 'read_from_opensearch_named': 'Opensearch27',
-                'write_to_opensearch_named': 'Opensearch27',
+                'write_to_opensearch_named': 'Opensearch219',
             },
             'invalidation_service': {
                 'cpu': 256,
@@ -409,7 +457,7 @@ class Common:
     organization_name: str = 'igvf-dacc'
     project_name: str = 'igvfd'
     default_region: str = 'us-west-2'
-    aws_cdk_version: str = '2.151.0'
+    aws_cdk_version: str = '2.1031.2'
 
 
 @dataclass

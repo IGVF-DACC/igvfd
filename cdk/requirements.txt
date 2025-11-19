@@ -1,4 +1,4 @@
-aws-cdk-lib==2.151.0
-aws-cdk.aws-lambda-python-alpha==2.151.0a0
+aws-cdk-lib==2.222.0
+aws-cdk.aws-lambda-python-alpha==2.222.0a0
 constructs>=10.0.0,<11.0.0
 git+https://github.com/IGVF-DACC/shared-infrastructure@IGVF-1682-add-restricted-bucket#egg=shared_infrastructure
