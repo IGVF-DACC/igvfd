@@ -148,18 +148,6 @@ config: Dict[str, Any] = {
             'opensearch': {
                 'clusters': [
                     {
-                        'construct_id': 'Opensearch27',
-                        'on': True,
-                        'props': {
-                            'capacity': CapacityConfig(
-                                data_node_instance_type='m6g.xlarge.search',
-                                data_nodes=1,
-                            ),
-                            'engine_version': EngineVersion.OPENSEARCH_2_7,
-                            'volume_size': 30,
-                        }
-                    },
-                    {
                         'construct_id': 'Opensearch219',
                         'on': True,
                         'props': {
@@ -227,18 +215,6 @@ config: Dict[str, Any] = {
             },
             'opensearch': {
                 'clusters': [
-                    {
-                        'construct_id': 'Opensearch27',
-                        'on': True,
-                        'props': {
-                            'capacity': CapacityConfig(
-                                data_node_instance_type='m6g.xlarge.search',
-                                data_nodes=1,
-                            ),
-                            'engine_version': EngineVersion.OPENSEARCH_2_7,
-                            'volume_size': 30,
-                        }
-                    },
                     {
                         'construct_id': 'Opensearch219',
                         'on': True,
@@ -309,18 +285,6 @@ config: Dict[str, Any] = {
             'opensearch': {
                 'clusters': [
                     {
-                        'construct_id': 'Opensearch27',
-                        'on': True,
-                        'props': {
-                            'capacity': CapacityConfig(
-                                data_node_instance_type='m6g.xlarge.search',
-                                data_nodes=1,
-                            ),
-                            'engine_version': EngineVersion.OPENSEARCH_2_7,
-                            'volume_size': 30,
-                        }
-                    },
-                    {
                         'construct_id': 'Opensearch219',
                         'on': True,
                         'props': {
@@ -388,18 +352,6 @@ config: Dict[str, Any] = {
             },
             'opensearch': {
                 'clusters': [
-                    {
-                        'construct_id': 'Opensearch27',
-                        'on': True,
-                        'props': {
-                            'capacity': CapacityConfig(
-                                data_node_instance_type='m6g.xlarge.search',
-                                data_nodes=1,
-                            ),
-                            'engine_version': EngineVersion.OPENSEARCH_2_7,
-                            'volume_size': 30,
-                        }
-                    },
                     {
                         'construct_id': 'Opensearch219',
                         'on': True,
