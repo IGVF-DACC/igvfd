@@ -1,49 +1,73 @@
 #!/bin/bash
 
-# Copied from https://github.com/opensearch-project/opensearch-build/blob/4597d77956a8d70905e03d135618de0ae912b316/docker/release/config/opensearch/opensearch-docker-entrypoint.sh
+# Copied from https://github.com/opensearch-project/opensearch-build/blob/main/docker/release/config/opensearch/opensearch-docker-entrypoint-2.x.sh
 # to remove performance analyzer
+
+# Copyright OpenSearch Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# This script specify the entrypoint startup actions for opensearch
+# It will start both opensearch and performance analyzer plugin cli
+# If either process failed, the entire docker container will be removed
+# in favor of a newly started container
 
 # Export OpenSearch Home
 export OPENSEARCH_HOME=/usr/share/opensearch
 export OPENSEARCH_PATH_CONF=$OPENSEARCH_HOME/config
 
+# The virtual file /proc/self/cgroup should list the current cgroup
+# membership. For each hierarchy, you can follow the cgroup path from
+# this file to the cgroup filesystem (usually /sys/fs/cgroup/) and
+# introspect the statistics for the cgroup for the given
+# hierarchy. Alas, Docker breaks this by mounting the container
+# statistics at the root while leaving the cgroup paths as the actual
+# paths. Therefore, OpenSearch provides a mechanism to override
+# reading the cgroup path from /proc/self/cgroup and instead uses the
+# cgroup path defined the JVM system property
+# opensearch.cgroups.hierarchy.override. Therefore, we set this value here so
+# that cgroup statistics are available for the container this process
+# will run in.
 export OPENSEARCH_JAVA_OPTS="-Dopensearch.cgroups.hierarchy.override=/ $OPENSEARCH_JAVA_OPTS"
 
-declare OPENSEARCH_PID
-
-##Security Plugin
+# Security Plugin
 function setupSecurityPlugin {
     SECURITY_PLUGIN="opensearch-security"
 
     if [ -d "$OPENSEARCH_HOME/plugins/$SECURITY_PLUGIN" ]; then
-        if [ "$DISABLE_INSTALL_DEMO_CONFIG" = "true" ]; then
-            echo "Disabling execution of install_demo_configuration.sh for OpenSearch Security Plugin"
-        else
-            echo "Enabling execution of install_demo_configuration.sh for OpenSearch Security Plugin"
-            bash $OPENSEARCH_HOME/plugins/$SECURITY_PLUGIN/tools/install_demo_configuration.sh -y -i -s
-        fi
-
         if [ "$DISABLE_SECURITY_PLUGIN" = "true" ]; then
             echo "Disabling OpenSearch Security Plugin"
             opensearch_opt="-Eplugins.security.disabled=true"
             opensearch_opts+=("${opensearch_opt}")
         else
             echo "Enabling OpenSearch Security Plugin"
+            if [ "$DISABLE_INSTALL_DEMO_CONFIG" = "true" ]; then
+                echo "Disabling execution of install_demo_configuration.sh for OpenSearch Security Plugin"
+            else
+                echo -e "Enabling execution of install_demo_configuration.sh for OpenSearch Security Plugin \nOpenSearch 2.12.0 onwards, the OpenSearch Security Plugin a change that requires an initial password for 'admin' user. \nPlease define an environment variable 'OPENSEARCH_INITIAL_ADMIN_PASSWORD' with a strong password string. \nIf a password is not provided, the setup will quit. \n For more details, please visit: https://opensearch.org/docs/latest/install-and-configure/install-opensearch/docker/"
+                bash $OPENSEARCH_HOME/plugins/$SECURITY_PLUGIN/tools/install_demo_configuration.sh -y -i -s || exit 1
+            fi
         fi
+    else
+        echo "OpenSearch Security Plugin does not exist, disable by default"
     fi
 }
 
-# Trap function that is used to terminate opensearch
-# when a relevant signal is caught.
-function terminateProcesses {
-    if kill -0 $OPENSEARCH_PID >& /dev/null; then
-        echo "Killing opensearch process $OPENSEARCH_PID"
-        kill -TERM $OPENSEARCH_PID
-        wait $OPENSEARCH_PID
+# Performance Analyzer Plugin
+function setupPerformanceAnalyzerPlugin {
+    PERFORMANCE_ANALYZER_PLUGIN="opensearch-performance-analyzer"
+    if [ -d "$OPENSEARCH_HOME/plugins/$PERFORMANCE_ANALYZER_PLUGIN" ]; then
+        if [ "$DISABLE_PERFORMANCE_ANALYZER_AGENT_CLI" = "true" ]; then
+            echo "Disabling execution of $OPENSEARCH_HOME/bin/$PERFORMANCE_ANALYZER_PLUGIN/performance-analyzer-agent-cli for OpenSearch Performance Analyzer Plugin"
+        else
+            echo "Enabling execution of OPENSEARCH_HOME/bin/$PERFORMANCE_ANALYZER_PLUGIN/performance-analyzer-agent-cli for OpenSearch Performance Analyzer Plugin"
+            $OPENSEARCH_HOME/bin/opensearch-performance-analyzer/performance-analyzer-agent-cli > $OPENSEARCH_HOME/logs/PerformanceAnalyzer.log 2>&1 & disown
+        fi
+    else
+        echo "OpenSearch Performance Analyzer Plugin does not exist, disable by default"
     fi
 }
 
-# Start up the opensearch
+# Start up the opensearch and performance analyzer agent processes.
 # When either of them halts, this script exits, or we receive a SIGTERM or SIGINT signal then we want to kill both these processes.
 function runOpensearch {
     # Files created by OpenSearch should always be group writable too
@@ -74,20 +98,8 @@ function runOpensearch {
 
     setupSecurityPlugin
 
-    # Enable job control so we receive SIGCHLD when a child process terminates
-    set -m
-
-    # Make sure we terminate the child processes in the event of us received TERM (e.g. "docker container stop"), INT (e.g. ctrl-C), EXIT (this script terminates for an unexpected reason), or CHLD (one of the processes terminated unexpectedly)
-    trap terminateProcesses TERM INT EXIT CHLD
-
     # Start opensearch
-    "$@" "${opensearch_opts[@]}" &
-    OPENSEARCH_PID=$!
-
-    # Wait for the child processes to terminate
-    wait $OPENSEARCH_PID
-    local opensearch_exit_code=$?
-    echo "OpenSearch exited with code ${opensearch_exit_code}"
+    exec "$@" "${opensearch_opts[@]}"
 
 }
 
