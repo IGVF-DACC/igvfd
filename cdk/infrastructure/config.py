@@ -184,7 +184,7 @@ config: Dict[str, Any] = {
                 'max_capacity': 10,
                 'ini_name': 'demo.ini',
                 'use_postgres_named': 'Postgres',
-                'read_from_opensearch_named': 'Opensearch27',
+                'read_from_opensearch_named': 'Opensearch219',
                 'write_to_opensearch_named': 'Opensearch219',
             },
             'invalidation_service': {
@@ -264,7 +264,7 @@ config: Dict[str, Any] = {
                 'max_capacity': 10,
                 'ini_name': 'staging.ini',
                 'use_postgres_named': 'Postgres',
-                'read_from_opensearch_named': 'Opensearch27',
+                'read_from_opensearch_named': 'Opensearch219',
                 'write_to_opensearch_named': 'Opensearch219',
             },
             'invalidation_service': {
@@ -345,7 +345,7 @@ config: Dict[str, Any] = {
                 'max_capacity': 10,
                 'ini_name': 'sandbox.ini',
                 'use_postgres_named': 'Postgres',
-                'read_from_opensearch_named': 'Opensearch27',
+                'read_from_opensearch_named': 'Opensearch219',
                 'write_to_opensearch_named': 'Opensearch219',
             },
             'invalidation_service': {
@@ -425,7 +425,7 @@ config: Dict[str, Any] = {
                 'max_capacity': 10,
                 'ini_name': 'production.ini',
                 'use_postgres_named': 'Postgres',
-                'read_from_opensearch_named': 'Opensearch27',
+                'read_from_opensearch_named': 'Opensearch219',
                 'write_to_opensearch_named': 'Opensearch219',
             },
             'invalidation_service': {
