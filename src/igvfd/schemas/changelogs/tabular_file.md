@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 18
 
+* Extend `content_type` enum list to include `filtered global differential expressions`.
 * Extend `content_type` enum list to include `calibrated coding variant effects`.
 * Extend `content_type` enum list to include `index plate`.
 * Extend `collections` enum list to include `E2G Pillar Project`.

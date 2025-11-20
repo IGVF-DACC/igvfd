@@ -714,6 +714,10 @@
                 "mpra_element",
                 "mpra_variant"
             ],
+            "enum_descriptions": {
+                "mpra_variant": "BED6+13 MPRA variant level standardized file format. Files with this file_format_type should follow the formatting described here: https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/as/reporter_genomic_variant_effects.as",
+                "mpra_element": "BED5+5 MPRA element level standardized file format. Files with this file_format_type should follow the formatting described here: https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/as/reporter_genomic_element_effects.as"
+            },
             "submissionExample": {
                 "appscript": "bed3",
                 "igvf_utils": "bed3"

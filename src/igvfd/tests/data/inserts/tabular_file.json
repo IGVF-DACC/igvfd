@@ -1148,5 +1148,24 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "igvf:prediction_set_5",
         "controlled_access": false
+    },
+    {
+        "uuid": "00dbeaa4-f94e-47c3-9563-65a755aa6e8c",
+        "accession": "IGVFFI0003DIFF",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_filtered_differential_expression"
+        ],
+        "md5sum": "85d68e982987441946768df28b8e9af4",
+        "file_format": "tsv",
+        "content_type": "filtered global differential expressions",
+        "submitted_file_name": "/Users/igvf/igvf_files/filtered_global_differential_expressions.tsv.gz",
+        "file_size": 101,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "igvf:prediction_set_5",
+        "controlled_access": false
     }
 ]
