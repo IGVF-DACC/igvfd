@@ -160,7 +160,7 @@ def test_audit_analysis_set_multiplexed_samples(
     testapp.patch_json(
         analysis_set_base['@id'],
         {
-            'input_file_sets': [measurement_set['@id']]
+            'input_file_sets': [measurement_set['@id']],
             'demultiplexed_samples': [tissue['@id']]
         }
     )
