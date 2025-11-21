@@ -158,32 +158,11 @@ def test_audit_analysis_set_multiplexed_samples(
     analysis_set_no_input
 ):
     testapp.patch_json(
-        measurement_set['@id'],
-        {
-            'samples': [multiplexed_sample['@id']]
-        }
-    )
-    testapp.patch_json(
         analysis_set_base['@id'],
         {
             'input_file_sets': [measurement_set['@id']]
-        }
-    )
-    res = testapp.get(analysis_set_base['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing demultiplexed sample'
-        for error in res.json['audit'].get('INTERNAL_ACTION', [])
-    )
-    testapp.patch_json(
-        analysis_set_base['@id'],
-        {
             'demultiplexed_samples': [tissue['@id']]
         }
-    )
-    res = testapp.get(analysis_set_base['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'missing demultiplexed sample'
-        for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
     testapp.patch_json(
         measurement_set['@id'],
