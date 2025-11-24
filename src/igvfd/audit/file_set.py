@@ -145,7 +145,9 @@ def audit_missing_seqspec(value, system):
         no_seqspec_doc = []  # For Audit 2
         for file in value['files']:
             if file.startswith('/sequence-files/'):
-                sequence_file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
+                sequence_file_object = system.get('request').embed(
+                    file, '@@object_with_select_calculated_properties?field=seqspecs')
+                yield AuditFailure('TEST', str(sequence_file_object), level='WARNING')
                 platform_object = system.get('request').embed(sequence_file_object.get(
                     'sequencing_platform'), '@@object?skip_calculated=true')
                 if sequence_file_object.get('file_format') == 'pod5' or \

@@ -511,7 +511,8 @@ def test_audit_missing_seqspec_measet(
     experimental_protocol_document,
     assay_term_scrna,
     assay_term_starr,
-    assay_term_crispr_single_cell
+    assay_term_crispr_single_cell,
+    platform_term_HiSeq
 ):
     # Test: sequence file without seqspec config or seqspec doc should trigger Internal action audit
     testapp.patch_json(
@@ -538,12 +539,32 @@ def test_audit_missing_seqspec_measet(
         error['category'] != 'missing sequence specification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
-    # Test: if single cell missing seqspec, error is on NOT_COMPLIANT
+
+    # Test: SeqFiles from ONT platform (no audit)
+    testapp.patch_json(
+        platform_term_HiSeq['@id'],
+        {
+            'company': 'Oxford Nanopore Technologies'
+        }
+    )
     testapp.patch_json(
         sequence_file['@id'],
         {
             'file_format': 'fastq',
             'content_type': 'reads'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Test: if single cell missing seqspec, error is on NOT_COMPLIANT
+    testapp.patch_json(
+        platform_term_HiSeq['@id'],
+        {
+            'company': 'Illumina'
         }
     )
     testapp.patch_json(

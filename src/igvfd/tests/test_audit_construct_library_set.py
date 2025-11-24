@@ -511,7 +511,7 @@ def test_audit_unexpected_seqspec_cls(testapp, sequence_file_pod5, sequence_file
     )
 
 
-def test_audit_missing_seqspec_cls(testapp, sequence_file, sequence_file_sequencing_run_2, experimental_protocol_document, configuration_file_seqspec, base_expression_construct_library_set, construct_library_set_genome_wide, controlled_sequence_file_2):
+def test_audit_missing_seqspec_cls(testapp, sequence_file, sequence_file_sequencing_run_2, experimental_protocol_document, configuration_file_seqspec, base_expression_construct_library_set, construct_library_set_genome_wide, controlled_sequence_file_2, platform_term_HiSeq):
     # Patch: make a seqspec document
     testapp.patch_json(
         experimental_protocol_document['@id'],
@@ -532,7 +532,26 @@ def test_audit_missing_seqspec_cls(testapp, sequence_file, sequence_file_sequenc
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
-    # Test: SeqFile with seqspec doc (no audit)
+    # Test: SeqFiles from ONT platform (no audit)
+    testapp.patch_json(
+        platform_term_HiSeq['@id'],
+        {
+            'company': 'Oxford Nanopore Technologies'
+        }
+    )
+    res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Test: Illumina SeqFile with seqspec doc (no audit)
+    testapp.patch_json(
+        platform_term_HiSeq['@id'],
+        {
+            'company': 'Illumina'
+        }
+    )
     testapp.patch_json(
         sequence_file['@id'],
         {
