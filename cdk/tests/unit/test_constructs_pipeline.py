@@ -1684,7 +1684,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                             'Name': 'ProductionDeploymentManualApprovalStep',
                             'RoleArn': {
                                 'Fn::GetAtt': [
-                                    'TestProductionDeploymentPipelineProductionAndSandboxDeployWaveProductionDeploymentManualApprovalStepCodePipelineActionRoleA138A3B5',
+                                    'TestProductionDeploymentPipelineigvfdsomebranchProductionDeployStageProductionDeploymentManualApprovalStepCodePipelineActionRoleA1B76939',
                                     'Arn'
                                 ]
                             },
