@@ -299,14 +299,14 @@ class ProductionDeploymentPipeline(BasicSelfUpdatingPipeline):
             **kwargs,
         )
         self._define_staging_config()
-        #self._define_sandbox_config()
+        # self._define_sandbox_config()
         self._define_production_config()
         self._define_staging_stage()
-        #self._define_sandbox_stage()
+        # self._define_sandbox_stage()
         self._define_production_stage()
         self._add_staging_deploy_stage()
         self._add_production_deploy_wave()
-        #self._add_sandbox_stage_to_production_deploy_wave()
+        # self._add_sandbox_stage_to_production_deploy_wave()
         self._add_production_stage_to_production_deploy_wave()
         self._add_slack_notifications()
 
