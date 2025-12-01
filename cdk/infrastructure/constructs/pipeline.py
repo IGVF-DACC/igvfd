@@ -25,7 +25,6 @@ from infrastructure.stages.ci import CIDeployStage
 from infrastructure.stages.demo import DemoDeployStage
 from infrastructure.stages.dev import DevelopmentDeployStage
 from infrastructure.stages.staging import StagingDeployStage
-from infrastructure.stages.sandbox import SandboxDeployStage
 from infrastructure.stages.production import ProductionDeployStage
 
 from infrastructure.constructs.existing.types import ExistingResources
@@ -280,7 +279,6 @@ class ProductionDeploymentPipeline(BasicSelfUpdatingPipeline):
     sandbox_config: Config
     production_config: Config
     staging_stage: StagingDeployStage
-    sandbox_stage: SandboxDeployStage
     production_stage: ProductionDeployStage
     production_deploy_wave: Wave
 
@@ -299,26 +297,17 @@ class ProductionDeploymentPipeline(BasicSelfUpdatingPipeline):
             **kwargs,
         )
         self._define_staging_config()
-        self._define_sandbox_config()
         self._define_production_config()
         self._define_staging_stage()
-        self._define_sandbox_stage()
         self._define_production_stage()
         self._add_staging_deploy_stage()
         self._add_production_deploy_wave()
-        self._add_sandbox_stage_to_production_deploy_wave()
         self._add_production_stage_to_production_deploy_wave()
         self._add_slack_notifications()
 
     def _define_staging_config(self) -> None:
         self.staging_config = build_config_from_name(
             'staging',
-            branch=self.props.config.branch,
-        )
-
-    def _define_sandbox_config(self) -> None:
-        self.sandbox_config = build_config_from_name(
-            'sandbox',
             branch=self.props.config.branch,
         )
 
@@ -340,18 +329,6 @@ class ProductionDeploymentPipeline(BasicSelfUpdatingPipeline):
             config=self.staging_config,
         )
 
-    def _define_sandbox_stage(self) -> None:
-        self.sandbox_stage = SandboxDeployStage(
-            self,
-            prepend_project_name(
-                prepend_branch_name(
-                    self.props.config.branch,
-                    'SandboxDeployStage',
-                )
-            ),
-            config=self.sandbox_config,
-        )
-
     def _define_production_stage(self) -> None:
         self.production_stage = ProductionDeployStage(
             self,
@@ -371,17 +348,12 @@ class ProductionDeploymentPipeline(BasicSelfUpdatingPipeline):
 
     def _add_production_deploy_wave(self) -> None:
         self.production_deploy_wave = self.code_pipeline.add_wave(
-            'ProductionAndSandboxDeployWave',
+            'ProductionDeployWave',
             pre=[
                 ManualApprovalStep(
                     'ProductionDeploymentManualApprovalStep'
                 )
             ]
-        )
-
-    def _add_sandbox_stage_to_production_deploy_wave(self) -> None:
-        self.production_deploy_wave.add_stage(
-            self.sandbox_stage
         )
 
     def _add_production_stage_to_production_deploy_wave(self) -> None:
