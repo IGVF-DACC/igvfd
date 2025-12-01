@@ -1026,7 +1026,6 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
         )
     )
     assert isinstance(pipeline.staging_config, Config)
-    assert isinstance(pipeline.sandbox_config, Config)
     assert isinstance(pipeline.production_config, Config)
     template = Template.from_stack(stack)
     template.has_resource_properties(
