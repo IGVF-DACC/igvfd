@@ -99,11 +99,6 @@ def audit_analysis_set_multiplexed_samples(value, system):
     '''
     [
         {
-            "audit_description": "Analysis sets with multiplexed samples are expected to specify a demultiplexed sample.",
-            "audit_category": "missing demultiplexed sample",
-            "audit_level": "INTERNAL_ACTION"
-        },
-        {
             "audit_description": "Analysis sets are only expected to specify a demultiplexed sample if it has samples and they are all multiplexed.",
             "audit_category": "unexpected demultiplexed sample",
             "audit_level": "ERROR"
@@ -120,10 +115,10 @@ def audit_analysis_set_multiplexed_samples(value, system):
         }
     ]
     '''
-    audit_message_missing_demultiplexed_from = get_audit_message(audit_analysis_set_multiplexed_samples, index=0)
-    audit_message_unexpected_demultiplexed_from = get_audit_message(audit_analysis_set_multiplexed_samples, index=1)
-    audit_message_unexpected_samples = get_audit_message(audit_analysis_set_multiplexed_samples, index=2)
-    audit_message_inconsistent_demultiplexed_sample = get_audit_message(audit_analysis_set_multiplexed_samples, index=3)
+
+    audit_message_unexpected_demultiplexed_from = get_audit_message(audit_analysis_set_multiplexed_samples, index=0)
+    audit_message_unexpected_samples = get_audit_message(audit_analysis_set_multiplexed_samples, index=1)
+    audit_message_inconsistent_demultiplexed_sample = get_audit_message(audit_analysis_set_multiplexed_samples, index=2)
     samples = value.get('samples', [])
     demultiplexed_samples = value.get('demultiplexed_samples', [])
     multiplexed_samples = [sample for sample in samples if sample.startswith('/multiplexed-samples/')]
@@ -132,13 +127,6 @@ def audit_analysis_set_multiplexed_samples(value, system):
     non_multiplexed_samples = [sample for sample in samples if not (sample.startswith('/multiplexed-samples/'))]
     non_multiplexed_samples = ', '.join([audit_link(path_to_text(sample), sample)
                                         for sample in non_multiplexed_samples])
-    if not (demultiplexed_samples) and multiplexed_samples:
-        detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has `input_file_sets` with multiplexed samples: {multiplexed_samples} '
-            f'but no `demultiplexed_samples`.'
-        )
-        yield AuditFailure(audit_message_missing_demultiplexed_from.get('audit_category', ''), f'{detail} {audit_message_missing_demultiplexed_from.get("audit_description", "")}', level=audit_message_missing_demultiplexed_from.get('audit_level', ''))
     if demultiplexed_samples and non_multiplexed_samples and demultiplexed_samples != samples:
         detail = (
             f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
