@@ -48,6 +48,7 @@ def test_audit_input_file_set_for(
     testapp,
     measurement_set_mpra,
     analysis_set_base,
+    principal_analysis_set,
     sequence_file
 ):
     res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
@@ -75,6 +76,21 @@ def test_audit_input_file_set_for(
     res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing analysis'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    assert any(
+        error['category'] == 'missing principal analysis'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        principal_analysis_set['@id'],
+        {
+            'input_file_sets': [analysis_set_base['@id']]
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing principal analysis'
         for error in res.json['audit'].get('WARNING', [])
     )
 
