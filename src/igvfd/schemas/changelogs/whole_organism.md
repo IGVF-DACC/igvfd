@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 26
 
+* Update `source_url` regex to add `www\\.10xgenomics\\.com/\\S*(\\S+)$` as a pattern.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.
 
