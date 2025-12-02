@@ -83,6 +83,7 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
         'Properties': {
             'DBInstanceClass': 'db.t3.medium',
             'AllocatedStorage': '10',
+            'AllowMajorVersionUpgrade': True,
             'AutoMinorVersionUpgrade': False,
             'CopyTagsToSnapshot': True,
             'DBName': 'igvfd',
