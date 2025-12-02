@@ -157,7 +157,8 @@
             "variant to element mapping"
         ],
         "output_content_types": [
-            "variant effects"
+            "variant effects",
+            "filtered global differential expressions"
         ]
     },
     {
@@ -222,7 +223,8 @@
         "input_content_types": [
             "reads",
             "index",
-            "variant to cluster mapping"
+            "variant to cluster mapping",
+            "filtered global differential expressions"
         ],
         "output_content_types": [
             "fragments",

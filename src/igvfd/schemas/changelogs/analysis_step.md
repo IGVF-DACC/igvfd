@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 9
 
+* Extend `input_content_types` enum list to include `filtered global differential expressions`.
+* Extend `output_content_types` enum list to include `filtered global differential expressions`.
 * Extend `input_content_types` enum list to include `calibrated coding variant effects`.
 * Extend `output_content_types` enum list to include `calibrated coding variant effects`.
 * Extend `analysis_step_types` enum list to include `calibration`.
