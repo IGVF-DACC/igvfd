@@ -299,7 +299,7 @@ class ProductionDeploymentPipeline(BasicSelfUpdatingPipeline):
             **kwargs,
         )
         self._define_staging_config()
-        # self._define_sandbox_config()
+        self._define_sandbox_config()
         self._define_production_config()
         self._define_staging_stage()
         # self._define_sandbox_stage()
