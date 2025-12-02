@@ -145,8 +145,12 @@ def audit_missing_seqspec(value, system):
         no_seqspec_doc = []  # For Audit 2
         for file in value['files']:
             if file.startswith('/sequence-files/'):
-                sequence_file_object = system.get('request').embed(file)
-                if sequence_file_object.get('file_format') == 'pod5':
+                sequence_file_object = system.get('request').embed(
+                    file, '@@object_with_select_calculated_properties?field=seqspecs')
+                platform_object = system.get('request').embed(sequence_file_object.get(
+                    'sequencing_platform'), '@@object?skip_calculated=true')
+                if sequence_file_object.get('file_format') == 'pod5' or \
+                        platform_object.get('company', '') == 'Oxford Nanopore Technologies':
                     continue
                 # Overall audit: if a SeqFile has no seqspec ConfigFile
                 if not sequence_file_object.get('seqspecs'):

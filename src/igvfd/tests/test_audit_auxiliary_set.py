@@ -253,7 +253,7 @@ def test_audit_unexpected_seqspec_auxset(testapp, sequence_file_pod5, sequence_f
     )
 
 
-def test_audit_missing_seqspec_auxset(testapp, sequence_file, sequence_file_sequencing_run_2, experimental_protocol_document, configuration_file_seqspec, base_auxiliary_set):
+def test_audit_missing_seqspec_auxset(testapp, sequence_file, sequence_file_sequencing_run_2, experimental_protocol_document, configuration_file_seqspec, base_auxiliary_set, platform_term_HiSeq):
     # Patch: make a seqspec document
     testapp.patch_json(
         experimental_protocol_document['@id'],
@@ -274,7 +274,26 @@ def test_audit_missing_seqspec_auxset(testapp, sequence_file, sequence_file_sequ
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
-    # Test 2: SeqFile with seqspec doc (no internal action)
+    # Test 2: If ONT platform, no audit.
+    testapp.patch_json(
+        platform_term_HiSeq['@id'],
+        {
+            'company': 'Oxford Nanopore Technologies'
+        }
+    )
+    res = testapp.get(base_auxiliary_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Test 3: Illumina SeqFile with seqspec doc (no internal action)
+    testapp.patch_json(
+        platform_term_HiSeq['@id'],
+        {
+            'company': 'Illumina'
+        }
+    )
     testapp.patch_json(
         sequence_file['@id'],
         {
@@ -287,7 +306,7 @@ def test_audit_missing_seqspec_auxset(testapp, sequence_file, sequence_file_sequ
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
-    # Test 3: SeqFile with seqspec ConfigFile (no internal action)
+    # Test 4: SeqFile with seqspec ConfigFile (no internal action)
     testapp.patch_json(
         sequence_file_sequencing_run_2['@id'],
         {
