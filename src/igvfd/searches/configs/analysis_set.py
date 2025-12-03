@@ -123,6 +123,9 @@ def analysis_set():
             'aliases': {
                 'title': 'Aliases'
             },
+            'description': {
+                'title': 'Description'
+            },
             'status': {
                 'title': 'Status'
             },
