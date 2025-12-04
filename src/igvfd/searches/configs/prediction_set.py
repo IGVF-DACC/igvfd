@@ -10,23 +10,23 @@ def prediction_set():
             'file_set_type': {
                 'title': 'File Set Type',
                 'category': 'Prediction Set Details',
-                'description': 'The category of prediction set.'
+                'description': 'The feature(s) being predicted by the results in the prediction set.'
             },
             'scope': {
                 'title': 'Prediction Scope',
                 'optional': True,
                 'category': 'Prediction Set Details',
-                'description': 'The scope or scale that this prediction set is designed to target.'
+                'description': 'The scope or scale that this prediction set is designed to target, e.g, genome, loci...'
             },
             'software_versions.software.title': {
                 'title': 'Software',
                 'category': 'Prediction Set Details',
-                'description': 'The software used to produce this prediction.'
+                'description': 'The software used to produce this prediction set.'
             },
             'associated_phenotypes.term_name': {
                 'title': 'Associated Phenotypes',
                 'category': 'Prediction Set Details',
-                'description': 'Ontological terms for diseases or phenotypes associated with this prediction set.'
+                'description': 'Diseases or phenotypes associated with this prediction set.'
             },
             'assessed_genes.symbol': {
                 'title': 'Assessed Genes',
@@ -49,19 +49,19 @@ def prediction_set():
             'samples.sample_terms.term_name': {
                 'title': 'Sample',
                 'category': 'Sample',
-                'description': 'The sample term name associated with the prediction set.'
+                'description': 'The sample name associated with the prediction set.'
             },
             'samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
                 'optional': True,
                 'category': 'Sample',
-                'description': 'Ontology term identifying the targeted endpoint sample resulting from differentiation or reprogramming.'
+                'description': 'Biosample name of the endpoint from a differentiation or reprogramming protocol.'
             },
             'samples.disease_terms.term_name': {
                 'title': 'Disease',
                 'optional': True,
                 'category': 'Sample',
-                'description': 'Ontology term of the disease associated with the sample.'
+                'description': 'Disease(s) associated with the sample.'
             },
             'samples.growth_medium': {
                 'title': 'Growth Medium',
@@ -73,7 +73,7 @@ def prediction_set():
                 'title': 'Modification',
                 'optional': True,
                 'category': 'Sample',
-                'description': 'The type of modification applied to the sample.'
+                'description': 'The intended effect of an exogenous or in situ modification of the sample; e.g. activation, inhibition, degradation.'
             },
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment',
@@ -91,24 +91,24 @@ def prediction_set():
                 'title': 'Transcriptome Annotation',
                 'optional': True,
                 'category': 'Prediction Set Details',
-                'description': 'The transcriptome annotation version of the analysis.'
+                'description': 'The transcriptome annotation version of the prediction set.'
             },
             'files.content_type': {
                 'title': 'File Type',
                 'category': 'File',
-                'description': 'The type of files included in the measurement set.'
+                'description': 'The type of files included in the prediction set.'
             },
             'files.file_format': {
                 'title': 'File Format',
                 'optional': True,
                 'category': 'File',
-                'description': 'The file formats included in the measurement set.'
+                'description': 'The file formats included in the prediction set.'
             },
             'collections': {
                 'title': 'Collections',
                 'optional': True,
                 'category': 'Provenance',
-                'description': 'Data collections the measurement set is a part of.'
+                'description': 'Data collections the prediction set is a part of.'
             },
             'lab.title': {
                 'title': 'Lab',
@@ -119,24 +119,24 @@ def prediction_set():
                 'title': 'Award',
                 'optional': True,
                 'category': 'Provenance',
-                'description': 'Grant associated with the data.'
+                'description': 'The project component the award is associated with.'
             },
             'release_timestamp': {
                 'title': 'Release Date',
                 'optional': True,
                 'category': 'Provenance',
-                'description': 'The date the measurement set was publicly released.'
+                'description': 'The date the prediction set was publicly released.'
             },
             'creation_timestamp': {
                 'title': 'Creation Date',
                 'optional': True,
                 'category': 'Provenance',
-                'description': 'The date the measurement set was submitted.'
+                'description': 'The date the prediction set was submitted.'
             },
             'status': {
                 'title': 'Status',
                 'category': 'Prediction Set Details',
-                'description': 'The status of the analysis.'
+                'description': 'The status of the prediction set.'
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error',

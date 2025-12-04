@@ -16,7 +16,7 @@ def analysis_set():
             'assay_titles': {
                 'title': 'Assay Term Names',
                 'category': 'Analysis Set Details',
-                'description': 'Assay term names from Ontology of Biomedical Investigations (OBI) for assays.',
+                'description': 'Assay(s) that is relevant to this analysis sets.',
                 'optional': True
             },
             'preferred_assay_titles': {
@@ -27,13 +27,13 @@ def analysis_set():
             'workflows.uniform_pipeline': {
                 'title': 'Uniformly Processed',
                 'category': 'Analysis Set Details',
-                'description': 'The status of the single cell or Perturb-seq uniform pipeline processing for this analysis set.',
+                'description': 'Indicator that this analysis was processed by an IGVF uniform pipeline.',
                 'optional': True
             },
             'targeted_genes.symbol': {
                 'title': 'Readout Gene',
                 'category': 'Analysis Set Details',
-                'description': 'A list of genes targeted by the input measurement sets assays for binding sites or used for sorting by expression.',
+                'description': 'A list of genes targeted by the assays for binding sites or used for sorting by expression.',
                 'optional': True
             },
             'files.assembly': {
@@ -62,17 +62,17 @@ def analysis_set():
             'samples.sample_terms.term_name': {
                 'title': 'Sample',
                 'category': 'Sample',
-                'description': 'The sample term name associated with the analysis set.'
+                'description': 'The sample name associated with the analysis set.'
             },
             'samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
                 'category': 'Sample',
-                'description': 'Ontology term identifying the targeted endpoint sample resulting from differentation or reprogramming.'
+                'description': 'Biosample name of the endpoint from a differentiation or reprogramming protocol.'
             },
             'samples.disease_terms.term_name': {
                 'title': 'Disease',
                 'category': 'Sample',
-                'description': 'Ontology term of the disease associated with the sample.'
+                'description': 'Disease(s) associated with the sample.'
             },
             'samples.growth_medium': {
                 'title': 'Growth Medium',
@@ -83,7 +83,7 @@ def analysis_set():
             'samples.modifications.modality': {
                 'title': 'Modification',
                 'category': 'Sample',
-                'description': 'The type of modification applied to the sample.',
+                'description': 'The intended effect of an exogenous or in situ modification of the sample; e.g. activation, inhibition, degradation.',
                 'optional': True
             },
             'samples.treatments.treatment_term_name': {
@@ -95,19 +95,23 @@ def analysis_set():
             'construct_library_sets.file_set_type': {
                 'title': 'Construct Library',
                 'category': 'Library',
-                'description': 'The type of the construct library associated with the analysis set.',
+                'description': 'The type of the construct library associated with the analysis set, e.g, guide library, reporter library etc.',
                 'optional': True
             },
             'construct_library_sets.selection_criteria': {
                 'title': 'Construct Library Selection Criteria',
                 'category': 'Library',
-                'description': 'The criteria used to select the sequence material cloned into the library.',
+                'description': 'The selection criteria or type of elements cloned into the library, e.g, variants, accessible elements, tf binding sites etc.',
                 'optional': True
             },
             'construct_library_sets.associated_phenotypes.term_name': {
                 'title': 'Associated Phenotypes',
                 'category': 'Library',
                 'description': 'Ontological terms for diseases or phenotypes associated with this analysis set.',
+            'construct_library_sets.integrated_content_files.content_type': {
+                'title': 'Construct Library Design',
+                'category': 'Library',
+                'description': 'Sequence material of interest either used for insert design or directly cloned into vectors in the library.',
                 'optional': True
             },
             'construct_library_sets.small_scale_gene_list.symbol': {
@@ -154,7 +158,7 @@ def analysis_set():
             'award.component': {
                 'title': 'Award',
                 'category': 'Provenance',
-                'description': 'Grant associated with the data.',
+                'description': 'The project component the award is associated with.',
                 'optional': True
             },
             'release_timestamp': {
@@ -261,6 +265,7 @@ def analysis_set():
             }
         },
     }
+}
 
 
 @search_config(

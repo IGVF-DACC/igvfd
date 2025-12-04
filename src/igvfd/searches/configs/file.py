@@ -77,7 +77,7 @@ def file():
             },
             'workflows.uniform_pipeline': {
                 'title': 'Uniformly Processed',
-                'description': 'The status of the single cell or Perturb-seq uniform pipeline processing for this file.',
+                'description': 'Indicator that this file was produced by an IGVF uniform pipeline.',
                 'optional': True,
                 'category': 'Processing Details'
             },
@@ -89,18 +89,18 @@ def file():
             },
             'assay_titles': {
                 'title': 'Assay',
-                'description': 'High-level assay classification based on OBI assay slim terms.',
+                'description': 'Assay(s) that created this file.',
                 'optional': True,
                 'category': 'File Set Details'
             },
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles',
-                'description': 'Title of assays that generated the measurement set.',
+                'description': 'Preferred title of assay(s) that created this file',
                 'category': 'File Set Details'
             },
             'cell_type_annotation.term_name': {
                 'title': 'Annotated Cell Type',
-                'description': 'The inferred cell type this file is associated with based on single-cell expression profiling.',
+                'description': 'The inferred cell type cluster from single-cell profiling that this file represents.',
                 'optional': True,
                 'category': 'File Set Details'
             },
@@ -117,24 +117,24 @@ def file():
             },
             'file_set.samples.sample_terms.term_name': {
                 'title': 'Sample',
-                'description': 'The sample term name associated with the prediction set.',
+                'description': 'Sample name associated with this file.',
                 'optional': True,
                 'category': 'Sample'
             },
             'file_set.samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
-                'description': 'Ontology term identifying the targeted endpoint sample resulting from differentiation or reprogramming.',
+                'description': 'Biosample name of the endpoint from a differentiation or reprogramming protocol.',
                 'category': 'Sample'
             },
             'file_set.samples.disease_terms.term_name': {
                 'title': 'Disease',
-                'description': 'Ontology term of the disease associated with the sample.',
+                'description': 'Disease(s) associated with this file.',
                 'optional': True,
                 'category': 'Sample'
             },
             'file_set.samples.modifications.modality': {
                 'title': 'Modification',
-                'description': 'The type of modification applied to the sample.',
+                'description': 'The intended effect of an exogenous or in situ modification of the sample; e.g. activation, inhibition, degradation.',
                 'optional': True,
                 'category': 'Sample'
             },
@@ -146,7 +146,7 @@ def file():
             },
             'integrated_in.samples.sample_terms.term_name': {
                 'title': 'Sample Integrated In',
-                'description': 'The type of sample the construct library was integrated in.',
+                'description': 'The type of the construct library associated with the file, e.g, guide library, reporter library etc.',
                 'optional': True,
                 'category': 'Sample'
             },
@@ -158,7 +158,7 @@ def file():
             },
             'integrated_in.associated_phenotypes.term_name': {
                 'title': 'Associated Phenotype',
-                'description': 'Ontological terms for diseases or phenotypes associated with this file.',
+                'description': 'Diseases or phenotypes associated with this file.',
                 'optional': True,
                 'category': 'Library'
             },
@@ -176,7 +176,7 @@ def file():
             },
             'collections': {
                 'title': 'Collections',
-                'description': 'Data collections the measurement set is a part of.',
+                'description': 'Data collections the file is a part of.',
                 'optional': True,
                 'category': 'Provenance'
             },
@@ -187,39 +187,33 @@ def file():
             },
             'award.component': {
                 'title': 'Award',
-                'description': 'Grant associated with the data.',
+                'description': 'The project component the award is associated with.',
                 'optional': True,
                 'category': 'Provenance'
             },
             'release_timestamp': {
                 'title': 'Release Date',
-                'description': 'The date the measurement set was publicly released.',
+                'description': 'The date the file was publicly released.',
                 'optional': True,
                 'category': 'Provenance'
             },
             'creation_timestamp': {
                 'title': 'Creation Date',
-                'description': 'The date the measurement set was submitted.',
+                'description': 'The date the file was created.',
                 'optional': True,
                 'category': 'Provenance'
             },
             'status': {
                 'title': 'Status',
-                'description': 'The date the measurement set was publicly released.',
+                'description': 'The status of the file.',
                 'optional': False,
                 'category': 'File Details'
             },
             'upload_status': {
                 'title': 'Upload Status',
-                'description': 'The date the measurement set was submitted.',
+                'description': 'The upload/validation status of the file.',
                 'optional': True,
                 'category': 'File Details'
-            },
-            'type': {
-                'title': 'Object Type',
-                'description': 'The status of the analysis.',
-                'optional': True,
-                'category': 'Audit'
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error',

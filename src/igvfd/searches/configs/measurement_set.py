@@ -10,7 +10,7 @@ def measurement_set():
             'assay_term.assay_slims': {
                 'title': 'Assay',
                 'category': 'Measurement Set Details',
-                'description': 'High-level assay classification based on OBI assay slim terms.',
+                'description': 'High-level classification of assay type.',
                 'type': 'hierarchical',
                 'subfacets': [
                     {'field': 'assay_term.term_name', 'title': 'Assay type'}
@@ -36,13 +36,13 @@ def measurement_set():
             'auxiliary_sets.file_set_type': {
                 'title': 'Auxiliary Data',
                 'category': 'Measurement Set Details',
-                'description': 'Additional file sets that supplement or support the primary measurement set.',
+                'description': 'Types of additional file sets that supplement or support the primary measurement set.',
                 'optional': True
             },
             'functional_assay_mechanisms.term_name': {
                 'title': 'Measured Mechanisms',
                 'category': 'Measurement Set Details',
-                'description': 'Ontological term that describes the biological processes measured by this functional assay.',
+                'description': 'The biological processes measured by this functional assay. For example, a VAMP-seq (MultiSTEP) assay measures the effects of variants on protein carboxylation and secretion processes.',
                 'optional': True
             },
             'donors.taxa': {
@@ -59,17 +59,17 @@ def measurement_set():
             'samples.sample_terms.term_name': {
                 'title': 'Sample',
                 'category': 'Sample',
-                'description': 'The sample term name associated with the measurement set.'
+                'description': 'The sample name associated with the measurement set.'
             },
             'samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
                 'category': 'Sample',
-                'description': 'Ontology term identifying the targeted endpoint sample resulting from differentation or reprogramming.'
+                'description': 'Biosample name of the endpoint from a differentiation or reprogramming protocol.'
             },
             'samples.disease_terms.term_name': {
                 'title': 'Disease',
                 'category': 'Sample',
-                'description': 'Ontology term of the disease associated with the sample.'
+                'description': 'Disease(s) associated with the sample.'
             },
             'samples.growth_medium': {
                 'title': 'Growth Medium',
@@ -80,7 +80,7 @@ def measurement_set():
             'samples.modifications.modality': {
                 'title': 'Modification',
                 'category': 'Sample',
-                'description': 'The type of modification applied to the sample.',
+                'description': 'The intended effect of an exogenous or in situ modification of the sample; e.g. activation, inhibition, degradation.',
                 'optional': True
             },
             'samples.treatments.treatment_term_name': {
@@ -92,25 +92,25 @@ def measurement_set():
             'library_preparation_kit': {
                 'title': 'Library Preparation Kit',
                 'category': 'Library',
-                'description': 'The reagant kit utilized in the library preparation procedure.',
+                'description': 'The reagent kit utilized in the library preparation procedure.',
                 'optional': True
             },
             'construct_library_sets.file_set_type': {
                 'title': 'Construct Library',
                 'category': 'Library',
-                'description': 'The type of the construct library associated with the measurement set.',
+                'description': 'The type of the construct library associated with the analysis set, e.g, guide library, reporter library etc.',
                 'optional': True
             },
             'construct_library_sets.selection_criteria': {
                 'title': 'Construct Library Selection Criteria',
                 'category': 'Library',
-                'description': 'The criteria used to select the sequence material cloned into the library.',
+                'description': 'The selection criteria or type of elements cloned into the library, e.g, variants, accessible elements, tf binding sites etc.',
                 'optional': True
             },
             'construct_library_sets.associated_phenotypes.term_name': {
                 'title': 'Associated Phenotypes',
                 'category': 'Library',
-                'description': 'Ontological terms for diseases or phenotypes associated with this measurement set.',
+                'description': 'Diseases or phenotypes associated with this measurement set.',
                 'optional': True
             },
             'construct_library_sets.small_scale_gene_list.symbol': {
@@ -122,7 +122,7 @@ def measurement_set():
             'sequencing_library_types': {
                 'title': 'Library Material',
                 'category': 'Library',
-                'description': 'Description of the libraries sequenced in this measurement set.',
+                'description': 'Additional capture or selection steps used in library preparation; e.g., exomes, poly-A RNA, ribo-depleted RNA etc.',
                 'optional': True
             },
             'files.sequencing_platform.term_name': {
@@ -168,7 +168,7 @@ def measurement_set():
             'award.component': {
                 'title': 'Award',
                 'category': 'Provenance',
-                'description': 'Grant associated with the data.',
+                'description': 'The project component the award is associated with.',
                 'optional': True
             },
             'release_timestamp': {
@@ -185,7 +185,7 @@ def measurement_set():
             'status': {
                 'title': 'Status',
                 'category': 'Measurement Set Details',
-                'description': 'The status of the analysis.'
+                'description': 'The status of the measurement set.'
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error',
