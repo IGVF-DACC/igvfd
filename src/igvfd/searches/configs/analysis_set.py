@@ -168,12 +168,6 @@ def analysis_set():
                 'description': 'The date the analysis set was submitted.',
                 'optional': True
             },
-            'type': {
-                'title': 'Object Type',
-                'category': 'Provenance',
-                'description': 'The type of object represented in the database.',
-                'optional': True
-            },
             'status': {
                 'title': 'Status',
                 'category': 'Quality',

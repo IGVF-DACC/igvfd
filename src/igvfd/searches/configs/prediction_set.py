@@ -174,12 +174,6 @@ def prediction_set():
                 'category': 'Quality',
                 'description': 'Audit for internal action: identifies metadata issues requiring DACC staff resolution.'
             },
-            'type': {
-                'title': 'Object Type',
-                'optional': True,
-                'category': 'Quality',
-                'description': 'The object type of the item.'
-            },
         },
         'columns': {
             'accession': {
