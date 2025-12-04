@@ -63,13 +63,13 @@ config: Dict[str, Any] = {
                         'on': True,
                         'props': {
                             'snapshot_source_db_identifier': PROD_DATABASE_IDENTIFIER,
-                            'allocated_storage': 10,
-                            'max_allocated_storage': 20,
+                            'allocated_storage': 20,
+                            'max_allocated_storage': 40,
                             'instance_type': InstanceType.of(
                                 InstanceClass.BURSTABLE3,
                                 InstanceSize.MEDIUM,
                             ),
-                            'engine_version': PostgresEngineVersion.VER_14_19
+                            'engine_version': PostgresEngineVersion.VER_16_10
                         },
                     }
                 ],
