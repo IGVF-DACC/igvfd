@@ -9,122 +9,208 @@ def measurement_set():
         'facets': {
             'assay_term.assay_slims': {
                 'title': 'Assay',
+                'category': 'Measurement Set Details',
+                'description': 'High-level assay classification based on OBI assay slim terms.',
                 'type': 'hierarchical',
                 'subfacets': [
-                    {
-                        'field': 'assay_term.term_name',
-                        'title': 'Assay type',
-                    }
+                    {'field': 'assay_term.term_name', 'title': 'Assay type'}
                 ]
             },
             'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles'
+                'title': 'Preferred Assay Titles',
+                'category': 'Measurement Set Details',
+                'description': 'Title of assays that generated the measurement set.'
             },
             'control_types': {
-                'title': 'Control Types'
+                'title': 'Control Types',
+                'category': 'Measurement Set Details',
+                'description': 'The type of control for the measurement set, if applicable.',
+                'optional': True
             },
-            'functional_assay_mechanisms.term_name': {
-                'title': 'Measured Mechanisms'
+            'targeted_genes.symbol': {
+                'title': 'Readout Gene',
+                'category': 'Measurement Set Details',
+                'description': 'A list of genes targeted for binding sites or used for sorting by expression.',
+                'optional': True
             },
             'auxiliary_sets.file_set_type': {
-                'title': 'Auxiliary Data'
+                'title': 'Auxiliary Data',
+                'category': 'Measurement Set Details',
+                'description': 'Additional file sets that supplement or support the primary measurement set.',
+                'optional': True
             },
-            'files.sequencing_platform.term_name': {
-                'title': 'Sequencing Platform'
-            },
-            'library_preparation_kit': {
-                'title': 'Library Preparation Kit'
+            'functional_assay_mechanisms.term_name': {
+                'title': 'Measured Mechanisms',
+                'category': 'Measurement Set Details',
+                'description': 'Ontological term that describes the biological processes measured by this functional assay.',
+                'optional': True
             },
             'donors.taxa': {
                 'title': 'Taxa',
+                'category': 'Sample',
+                'description': 'The organism or species associated with the donor.'
             },
             'samples.classifications': {
                 'title': 'Classification',
+                'category': 'Sample',
+                'description': 'High-level classification of the sample.',
+                'optional': True
             },
             'samples.sample_terms.term_name': {
                 'title': 'Sample',
+                'category': 'Sample',
+                'description': 'The sample term name associated with the measurement set.'
             },
             'samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
+                'category': 'Sample',
+                'description': 'Ontology term identifying the targeted endpoint sample resulting from differentation or reprogramming.'
             },
             'samples.disease_terms.term_name': {
                 'title': 'Disease',
+                'category': 'Sample',
+                'description': 'Ontology term of the disease associated with the sample.'
             },
             'samples.growth_medium': {
                 'title': 'Growth Medium',
+                'category': 'Sample',
+                'description': 'The growth medium or conditions used to culture the sample.',
+                'optional': True
             },
             'samples.modifications.modality': {
-                'title': 'Modification'
+                'title': 'Modification',
+                'category': 'Sample',
+                'description': 'The type of modification applied to the sample.',
+                'optional': True
             },
             'samples.treatments.treatment_term_name': {
-                'title': 'Treatment'
+                'title': 'Treatment',
+                'category': 'Sample',
+                'description': 'Treatments applied to the sample with the purpose of perturbation.',
+                'optional': True
+            },
+            'library_preparation_kit': {
+                'title': 'Library Preparation Kit',
+                'category': 'Library',
+                'description': 'The reagant kit utilized in the library preparation procedure.',
+                'optional': True
             },
             'construct_library_sets.file_set_type': {
-                'title': 'Construct Library'
+                'title': 'Construct Library',
+                'category': 'Library',
+                'description': 'The type of the construct library associated with the measurement set.',
+                'optional': True
             },
             'construct_library_sets.selection_criteria': {
-                'title': 'Construct Library Selection Criteria'
+                'title': 'Construct Library Selection Criteria',
+                'category': 'Library',
+                'description': 'The criteria used to select the sequence material cloned into the library.',
+                'optional': True
             },
             'construct_library_sets.associated_phenotypes.term_name': {
-                'title': 'Associated Phenotypes'
+                'title': 'Associated Phenotypes',
+                'category': 'Library',
+                'description': 'Ontological terms for diseases or phenotypes associated with this measurement set.',
+                'optional': True
             },
             'construct_library_sets.small_scale_gene_list.symbol': {
-                'title': 'Investigated Gene'
-            },
-            'targeted_genes.symbol': {
-                'title': 'Readout Gene'
+                'title': 'Investigated Gene',
+                'category': 'Library',
+                'description': 'Gene symbols for specific genes the construct library was designed to target.',
+                'optional': True
             },
             'sequencing_library_types': {
-                'title': 'Library Material'
+                'title': 'Library Material',
+                'category': 'Library',
+                'description': 'Description of the libraries sequenced in this measurement set.',
+                'optional': True
+            },
+            'files.sequencing_platform.term_name': {
+                'title': 'Sequencing Platform',
+                'category': 'File',
+                'description': 'The sequencing instrument or platform used to generate raw data.',
+                'optional': True
             },
             'files.content_type': {
                 'title': 'File Types',
+                'category': 'File',
+                'description': 'The type of files included in the measurement set.'
             },
             'files.file_format': {
                 'title': 'File Format',
-            },
-            'collections': {
-                'title': 'Collections',
+                'category': 'File',
+                'description': 'The file formats included in the measurement set.',
+                'optional': True
             },
             'controlled_access': {
                 'title': 'Controlled Access',
+                'category': 'File',
+                'description': 'Boolean value, indicating whether access to the data is restricted or not.',
+                'optional': True
             },
             'data_use_limitation_summaries': {
                 'title': 'Data Use Limitation',
+                'category': 'File',
+                'description': 'Summaries of restrictions or limitations on data usage.',
+                'optional': True
+            },
+            'collections': {
+                'title': 'Collections',
+                'category': 'Provenance',
+                'description': 'Data collections the measurement set is a part of.',
+                'optional': True
             },
             'lab.title': {
-                'title': 'Lab'
+                'title': 'Lab',
+                'category': 'Provenance',
+                'description': 'Lab that generated or submitted the data.'
             },
             'award.component': {
-                'title': 'Award'
+                'title': 'Award',
+                'category': 'Provenance',
+                'description': 'Grant associated with the data.',
+                'optional': True
             },
             'release_timestamp': {
                 'title': 'Release Date',
+                'category': 'Provenance',
+                'description': 'The date the measurement set was publicly released.'
             },
             'creation_timestamp': {
                 'title': 'Creation Date',
+                'category': 'Provenance',
+                'description': 'The date the measurement set was submitted.',
+                'optional': True
             },
             'status': {
-                'title': 'Status'
+                'title': 'Status',
+                'category': 'Quality',
+                'description': 'The status of the analysis.'
             },
             'audit.ERROR.category': {
-                'title': 'Audit Category: Error'
+                'title': 'Audit Category: Error',
+                'category': 'Quality',
+                'description': 'Audit for errors: identifies incorrect or inconsistent metadata. Datasets flagged cannot be released until resolved.',
+                'optional': True
             },
             'audit.NOT_COMPLIANT.category': {
-                'title': 'Audit Category: Not Compliant'
+                'title': 'Audit Category: Not Compliant',
+                'category': 'Quality',
+                'description': 'Audit for non-compliance: identifies data that does not meet compliance standards. Release requires special approval.',
+                'optional': True
             },
             'audit.WARNING.category': {
-                'title': 'Audit Category: Warning'
+                'title': 'Audit Category: Warning',
+                'category': 'Quality',
+                'description': 'Audit for warnings: flags potentially inconsistent metadata. Datasets may be released despite warnings.',
+                'optional': True
             },
             'audit.INTERNAL_ACTION.category': {
-                'title': 'Audit Category: Internal Action'
-            },
-            'externally_hosted': {
-                'title': 'Externally Hosted'
-            },
-            'type': {
-                'title': 'Object Type',
-            },
+                'title': 'Audit Category: Internal Action',
+                'category': 'Quality',
+                'description': 'Audit for internal action: identifies metadata issues that require DACC staff resolution.',
+                'optional': True
+            }
         },
         'columns': {
             'accession': {
