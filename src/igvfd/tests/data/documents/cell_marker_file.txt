@@ -1,0 +1,14 @@
+# Mock cell marker file for demonstration purpose
+#
+# gene_id: ENSEMBL Gene ID
+# gene_name: Common name of the gene
+# Log2FC: log2 fold change of gene score in cell type (NA means gene score not evaluated)
+# FDR: False discovery rate of gene in cell type (NA means gene score not evaluated)
+gene_id	gene_name	Log2FC	FDR
+ENSG00000117114.19	ADGRL2	0.817481677044173	9.19305548065994e-16
+ENSG00000128918.14	ALDH1A2	NA	NA
+ENSG00000145362.17	ANK2	0.772299848693017	2.3274880804409096e-11
+ENSG00000148677.6	ANKRD1	1.12895773799884	3.40017487803348e-08
+ENSG00000162772.16	ATF3	NA	NA
+ENSG00000128272.14	ATF4	NA	NA
+ENSG00000107779.13	BMPR1A	0.727464175500464	3.71605823671403e-05

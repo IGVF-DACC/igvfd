@@ -96,6 +96,7 @@
             "type": "string",
             "enum": [
                 "cell fate change protocol",
+                "cell marker file",
                 "characterization",
                 "computational protocol",
                 "experimental protocol",

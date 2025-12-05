@@ -107,6 +107,8 @@
             "comment": "Content Type describes the content of the file.",
             "enum": [
                 "annotated multimodal CRISPR matrix",
+                "annotated sparse gene count matrix",
+                "annotated sparse peak count matrix",
                 "contact matrix",
                 "filtered feature barcode matrix",
                 "kallisto single cell RNAseq output",
@@ -120,6 +122,8 @@
             ],
             "enum_descriptions": {
                 "annotated multimodal CRISPR matrix": "An object storing single cell CRISPR screen data, integrating multiple modalities such as raw RNA count matrices, sample-level metadata, gene-level metadata, guide-level data, experiment-level metadata, etc.",
+                "annotated sparse gene count matrix": "A matrix where rows represent genes and columns represent samples or cells, containing both counts of sequencing reads that map to each gene and cell annotation data.",
+                "annotated sparse peak count matrix": "A matrix used in assays like ATAC-seq or ChIP-seq, where rows represent genomic regions (peaks) and columns represent samples or cells, containing both counts of sequencing reads that map to each peak and cell annotation data.",
                 "contact matrix": "A matrix used in genomic assays, particularly in chromosome conformation capture techniques like Hi-C, to represent the frequency of physical interactions between different regions of the genome.",
                 "filtered feature barcode matrix": "A matrix output from Cell Ranger, where rows represent features and columns represent barcoded spots or cells. It contains counts of sequencing reads after filtering out low-quality or low-abundance features.",
                 "kallisto single cell RNAseq output": "A tar.gz file containing the output of the kb-python count run directory using the nac mode containing everything except for the h5ad file chosen to be the primary result.",

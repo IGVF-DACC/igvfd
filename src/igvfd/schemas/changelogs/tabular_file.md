@@ -172,6 +172,7 @@
 
 ### Minor changes since schema version 11
 
+* Extend `content_type` enum list to include `cell annotations`.
 * Extend `assembly` enum list to include `Cast - GRCm39`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE Cast - M32`.
 * Extend `content_type` enum list to include `genes`.
