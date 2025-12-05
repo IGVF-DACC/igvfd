@@ -345,3 +345,105 @@ def test_audit_supersedes(testapp, reference_file, tabular_file):
         audit['category'] != 'inconsistent superseding'
         for audit in res.json['audit'].get('INTERNAL_ACTION', {})
     )
+
+
+def test_audit_cell_annotation_without_marker_file(testapp, matrix_file, tabular_file, experimental_protocol_document, document_pipeline_parameters):
+    # Setup: make it into a cell marker file
+    testapp.patch_json(
+        experimental_protocol_document['@id'],
+        {
+            'document_type': 'cell marker file'
+        }
+    )
+
+    # Check native audit on matrix file without cell annotation file
+    res = testapp.get(matrix_file['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing cell marker file'
+        for error in res.json['audit'].get('WARNING', {})
+    )
+
+    # Patch Matrix File content type and check for audit
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'content_type': 'annotated sparse gene count matrix'
+        }
+    )
+    res = testapp.get(matrix_file['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing cell marker file'
+        for error in res.json['audit'].get('WARNING', {})
+    )
+
+    # Patch an unrelated document and check audit still raises missing cell marker file
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'documents': [document_pipeline_parameters['@id']]
+        }
+    )
+    res = testapp.get(matrix_file['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing cell marker file'
+        for error in res.json['audit'].get('WARNING', {})
+    )
+
+    # Patch the cell marker file to Matrix File and check audit clears
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'documents': [experimental_protocol_document['@id']]
+        }
+    )
+    res = testapp.get(matrix_file['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing cell marker file'
+        for error in res.json['audit'].get('WARNING', {})
+    )
+
+    # Check native audit on tabular file without cell annotation file
+    res = testapp.get(tabular_file['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing cell marker file'
+        for error in res.json['audit'].get('WARNING', {})
+    )
+
+    # Patch Tabular File content type and check for audit
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'content_type': 'cell annotations'
+        }
+    )
+    res = testapp.get(tabular_file['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing cell marker file'
+        for error in res.json['audit'].get('WARNING', {})
+    )
+
+    # Patch an unrelated document and check audit still raises missing cell marker file
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'documents': [document_pipeline_parameters['@id']]
+        }
+    )
+    res = testapp.get(tabular_file['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing cell marker file'
+        for error in res.json['audit'].get('WARNING', {})
+    )
+
+    # Patch the cell marker file to Tabular File and check audit clears
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'documents': [experimental_protocol_document['@id']]
+        }
+    )
+    res = testapp.get(tabular_file['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing cell marker file'
+        for error in res.json['audit'].get('WARNING', {})
+    )

@@ -217,6 +217,43 @@ def audit_file_in_correct_bucket(value, system):
         )
 
 
+def audit_cell_annotation_without_marker_file(value, system):
+    '''
+    [
+        {
+            "audit_description": "Cell annotation files are expected to have an associated cell marker file. The cell marker file should be included in the `documents` property with the `document_type` of `cell marker file`.",
+            "audit_category": "missing cell marker file",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    CELL_ANNOTATION_CONTENT_TYPE = ['cell annotations',
+                                    'annotated sparse gene count matrix',
+                                    'annotated sparse peak count matrix']
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_msg_no_marker_file = get_audit_message(audit_cell_annotation_without_marker_file, index=0)
+    if value.get('content_type') in CELL_ANNOTATION_CONTENT_TYPE:
+        documents = value.get('documents', [])
+        # Audit 1: If no documents at all
+        if not documents:
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has no attached documents. A document with the `document_type` of `cell marker file` is expected.'
+            )
+            yield AuditFailure(audit_msg_no_marker_file.get('audit_category', ''), f'{detail} {audit_msg_no_marker_file.get("audit_description", "")}', level=audit_msg_no_marker_file.get('audit_level', ''))
+        # Audit 2: If has documents, but no document with document_type of 'cell marker file'
+        else:
+            doc_objects = [system.get('request').embed(doc + '@@object?skip_calculated=true') for doc in documents]
+            has_marker_file = any(doc_obj.get('document_type') == 'cell marker file' for doc_obj in doc_objects)
+            # Error message handling
+            if not has_marker_file:
+                detail = (
+                    f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                    f'has {len(documents)} documents, none of which has the `document_type` of `cell marker file`.'
+                )
+                yield AuditFailure(audit_msg_no_marker_file.get('audit_category', ''), f'{detail} {audit_msg_no_marker_file.get("audit_description", "")}', level=audit_msg_no_marker_file.get('audit_level', ''))
+
+
 function_dispatcher_file_object = {
     'audit_upload_status': audit_upload_status,
     'audit_file_format_specifications': audit_file_format_specifications,
@@ -229,7 +266,8 @@ function_dispatcher_alignment_file_object = {
 
 function_dispatcher_matrix_file_object = {
     'audit_file_no_file_format_specifications': audit_file_no_file_format_specifications,
-    'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation
+    'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation,
+    'audit_cell_annotation_without_marker_file': audit_cell_annotation_without_marker_file
 }
 
 function_dispatcher_signal_file_object = {
@@ -237,7 +275,8 @@ function_dispatcher_signal_file_object = {
 }
 
 function_dispatcher_tabular_file_object = {
-    'audit_file_no_file_format_specifications': audit_file_no_file_format_specifications
+    'audit_file_no_file_format_specifications': audit_file_no_file_format_specifications,
+    'audit_cell_annotation_without_marker_file': audit_cell_annotation_without_marker_file
 }
 
 function_dispatcher_model_file_object = {

@@ -330,5 +330,63 @@
         "secondary_dimensions": [
             "gene expression"
         ]
+    },
+    {
+        "uuid": "5b6011d7-0e62-45c8-87a3-ca794f4aef77",
+        "accession": "IGVFFI1111ANGC",
+        "lab": "charles-gersbach",
+        "award": "1UM1HG012053-01",
+        "aliases": [
+            "igvf:annot_sparse_gene_count_matrix"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-05-06T12:34:56Z",
+        "md5sum": "bf360ab468226e501f20ca5e067393e2",
+        "file_format": "h5ad",
+        "content_type": "annotated sparse gene count matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/annotated_sparse_gene_count_matrix.h5ad",
+        "file_size": 123411234,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
+            "gene"
+        ],
+        "derived_manually": true,
+        "documents": [
+            "igvf:cell_marker_file"
+        ]
+    },
+    {
+        "uuid": "f3a8abe3-7353-45bb-ad76-7bfcd42fd0f2",
+        "accession": "IGVFFI2222ANPK",
+        "lab": "charles-gersbach",
+        "award": "1UM1HG012053-01",
+        "aliases": [
+            "igvf:annot_sparse_peak_count_matrix"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-05-06T12:34:56Z",
+        "md5sum": "1dcdced880afb766604591991f9d9214",
+        "file_format": "h5ad",
+        "content_type": "annotated sparse gene count matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/annotated_sparse_peak_count_matrix.h5ad",
+        "file_size": 123411234,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
+            "fragment"
+        ],
+        "derived_manually": true,
+        "documents": [
+            "igvf:cell_marker_file"
+        ]
     }
 ]

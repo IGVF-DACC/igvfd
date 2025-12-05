@@ -317,5 +317,18 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "d6ea798c-8e6e-418e-bda1-a4d516694be3"
+    },
+    {
+        "aliases": [
+            "igvf:cell_marker_file"
+        ],
+        "description": "cell marker file",
+        "attachment": "cell_marker_file.txt",
+        "document_type": "cell marker file",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "491937b1-3fbe-4faa-95f3-2fa6ac246d73"
     }
 ]

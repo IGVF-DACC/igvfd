@@ -1205,5 +1205,28 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "igvf:prediction_set_5",
         "controlled_access": false
+    },
+    {
+        "uuid": "5288509d-a773-460a-8e08-8f4c477991b5",
+        "accession": "IGVFFI0009CLAN",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_cell_annotations"
+        ],
+        "md5sum": "de9e0da00efd2b3c1bbfd8878e28f0a2",
+        "file_format": "tsv",
+        "content_type": "cell annotations",
+        "submitted_file_name": "/Users/igvf/igvf_files/cell_annotations.tsv.gz",
+        "file_size": 101,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false,
+        "derived_manually": true,
+        "documents": [
+            "igvf:cell_marker_file"
+        ]
     }
 ]
