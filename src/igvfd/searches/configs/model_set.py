@@ -43,15 +43,6 @@ def model_set():
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
-            'construct_library_sets.file_set_type': {
-                'title': 'Construct Library Data'
-            },
-            'construct_library_sets.selection_criteria': {
-                'title': 'Construct Library Selection Criteria'
-            },
-            'construct_library_sets.integrated_content_files.content_type': {
-                'title': 'Construct Library Design'
-            },
             'files.content_type': {
                 'title': 'File Types',
             },
