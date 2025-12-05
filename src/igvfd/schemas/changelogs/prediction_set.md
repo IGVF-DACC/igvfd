@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Extend `file_set_type` enum list to include `protein-protein interaction`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.
 * Update `dbxrefs` regex to allow MaveDB score set URNs.
