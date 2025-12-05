@@ -575,12 +575,12 @@ def audit_input_for(value, system):
     '''
     [
         {
-            "audit_description": "Raw data sets with files are expected to be associated with at least one analysis set.",
+            "audit_description": "Raw data sets with files are expected to be associated with at least one analysis set of any type.",
             "audit_category": "missing analysis",
             "audit_level": "WARNING"
         },
         {
-            "audit_description": "Raw data sets with files are expected to be associated with at least one analysis set.",
+            "audit_description": "Raw data sets with files are expected to be associated with at least one principal analysis set.",
             "audit_category": "missing principal analysis",
             "audit_level": "WARNING"
         }
