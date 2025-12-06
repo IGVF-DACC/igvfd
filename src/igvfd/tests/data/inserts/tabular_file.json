@@ -1178,7 +1178,7 @@
         ],
         "md5sum": "d896b2d9c2a3ad061ba2f021bd3a2cbe",
         "file_format": "tsv",
-        "content_type": "protein_sequences",
+        "content_type": "protein sequences",
         "submitted_file_name": "/Users/igvf/igvf_files/protein_sequences.tsv.gz",
         "file_size": 200,
         "upload_status": "validated",
