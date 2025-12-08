@@ -598,11 +598,13 @@ def audit_input_for(value, system):
     elif value.get('input_for') and value.get('files'):
         missing_principal_analysis = True
         checking_queue = value.get('input_for', [])
+        previously_checked = []
         # Keep iterating downstream until a principal analysis is hit
         # or there are no more downstream file sets.
         while len(checking_queue) > 0:
             temp_queue = checking_queue
             for current_file_set in temp_queue:
+                previously_checked.append(current_file_set)
                 file_set_object = system.get('request').embed(
                     current_file_set, '@@object_with_select_calculated_properties?field=input_for')
                 if file_set_object.get('file_set_type', '') == 'principal analysis':
@@ -610,7 +612,8 @@ def audit_input_for(value, system):
                     checking_queue = []
                     break
                 for new_file_set in file_set_object.get('input_for', []):
-                    checking_queue.append(new_file_set)
+                    if new_file_set not in previously_checked:
+                        checking_queue.append(new_file_set)
                 checking_queue.remove(current_file_set)
             continue
         if missing_principal_analysis:
