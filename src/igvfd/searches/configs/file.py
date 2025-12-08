@@ -207,43 +207,43 @@ def file():
                 'title': 'Status',
                 'description': 'The date the measurement set was publicly released.',
                 'optional': False,
-                'category': 'Quality'
+                'category': 'File Details'
             },
             'upload_status': {
                 'title': 'Upload Status',
                 'description': 'The date the measurement set was submitted.',
                 'optional': True,
-                'category': 'Quality'
+                'category': 'Audit'
             },
             'type': {
                 'title': 'Object Type',
                 'description': 'The status of the analysis.',
                 'optional': True,
-                'category': 'Quality'
+                'category': 'Audit'
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error',
                 'description': 'Audit for errors: identifies incorrect or inconsistent metadata. Datasets flagged cannot be released until resolved.',
                 'optional': True,
-                'category': 'Quality'
+                'category': 'Audit'
             },
             'audit.NOT_COMPLIANT.category': {
                 'title': 'Audit Category: Not Compliant',
                 'description': 'Audit for non-compliance: identifies data that does not meet compliance standards. Release requires special approval.',
                 'optional': True,
-                'category': 'Quality'
+                'category': 'Audit'
             },
             'audit.WARNING.category': {
                 'title': 'Audit Category: Warning',
                 'description': 'Audit for warnings: flags potentially inconsistent metadata. Datasets may be released despite warnings.',
                 'optional': True,
-                'category': 'Quality'
+                'category': 'Audit'
             },
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action',
                 'description': 'Audit for internal action: identifies metadata issues that require DACC staff resolution.',
                 'optional': True,
-                'category': 'Quality'
+                'category': 'Audit'
             }
         }
     }

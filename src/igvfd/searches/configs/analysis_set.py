@@ -170,30 +170,30 @@ def analysis_set():
             },
             'status': {
                 'title': 'Status',
-                'category': 'Quality',
+                'category': 'Analysis Set Details',
                 'description': 'The status of the analysis.'
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error',
-                'category': 'Quality',
+                'category': 'Audit',
                 'description': 'Audit for errors: identifies incorrect or inconsistent metadata. Datasets flagged cannot be released until resolved.',
                 'optional': True
             },
             'audit.NOT_COMPLIANT.category': {
                 'title': 'Audit Category: Not Compliant',
-                'category': 'Quality',
+                'category': 'Audit',
                 'description': 'Audit for non-compliance: identifies data that does not meet compliance standards. Release requires special approval.',
                 'optional': True
             },
             'audit.WARNING.category': {
                 'title': 'Audit Category: Warning',
-                'category': 'Quality',
+                'category': 'Audit',
                 'description': 'Audit for warnings: flags potentially inconsistent metadata. Datasets may be released despite warnings.',
                 'optional': True
             },
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action',
-                'category': 'Quality',
+                'category': 'Audit',
                 'description': 'Audit for internal action: identifies metadata issues that require DACC staff resolution.',
                 'optional': True
             }
