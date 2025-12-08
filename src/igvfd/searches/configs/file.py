@@ -213,7 +213,7 @@ def file():
                 'title': 'Upload Status',
                 'description': 'The date the measurement set was submitted.',
                 'optional': True,
-                'category': 'Audit'
+                'category': 'File Details'
             },
             'type': {
                 'title': 'Object Type',
