@@ -1167,5 +1167,24 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "igvf:prediction_set_5",
         "controlled_access": false
+    },
+    {
+        "uuid": "844a7db9-2037-4770-8642-a65d6966af42",
+        "accession": "IGVFFI0004DIFF",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_protein_sequences"
+        ],
+        "md5sum": "d896b2d9c2a3ad061ba2f021bd3a2cbe",
+        "file_format": "tsv",
+        "content_type": "protein sequences",
+        "submitted_file_name": "/Users/igvf/igvf_files/protein_sequences.tsv.gz",
+        "file_size": 200,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "igvf:model_set_SEMpl",
+        "controlled_access": false
     }
 ]

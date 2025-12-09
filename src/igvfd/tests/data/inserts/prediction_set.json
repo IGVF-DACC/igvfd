@@ -117,5 +117,20 @@
         "status": "released",
         "release_timestamp": "2024-07-06T12:34:56Z",
         "uuid": "b2f1b93d-fc70-4ee1-84ff-b10034899514"
+    },
+    {
+        "aliases": [
+            "igvf:prediction_set_6"
+        ],
+        "accession": "IGVFDS8896LPQO",
+        "file_set_type": "protein-protein interaction",
+        "donors": [
+            "igvf:alias_human_donor1"
+        ],
+        "award": "1U01HG012064-01",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "release_timestamp": "2024-07-06T12:34:56Z",
+        "uuid": "a51fef5f-916f-4ceb-8162-950d903c9c45"
     }
 ]
