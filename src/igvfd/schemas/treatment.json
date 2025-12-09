@@ -84,29 +84,17 @@
         "amount": {
             "comment": "Specification of amount requires amount_units and depletion is false.",
             "required": [
-                "depletion",
                 "amount_units"
-            ],
-            "properties": {
-                "depletion": {
-                    "const": false
-                }
-            }
+            ]
         },
         "amount_units": {
             "comment": "Specification of amount_units requires amount and depletion is false.",
             "required": [
-                "depletion",
                 "amount"
-            ],
-            "properties": {
-                "depletion": {
-                    "const": false
-                }
-            }
+            ]
         },
         "depletion": {
-            "comment": "Specification of depletion as true is mutually exclusive with specification of amount and amount_units.",
+            "comment": "If depletion=true, no temperature/temperature_units or amount/amount_units may be present. If depletion=false, at least one complete pair must be present.",
             "oneOf": [
                 {
                     "properties": {
@@ -115,9 +103,27 @@
                         }
                     },
                     "not": {
-                        "required": [
-                            "amount",
-                            "amount_units"
+                        "anyOf": [
+                            {
+                                "required": [
+                                    "amount"
+                                ]
+                            },
+                            {
+                                "required": [
+                                    "amount_units"
+                                ]
+                            },
+                            {
+                                "required": [
+                                    "temperature"
+                                ]
+                            },
+                            {
+                                "required": [
+                                    "temperature_units"
+                                ]
+                            }
                         ]
                     }
                 },
@@ -127,9 +133,19 @@
                             "const": false
                         }
                     },
-                    "required": [
-                        "amount",
-                        "amount_units"
+                    "anyOf": [
+                        {
+                            "required": [
+                                "amount",
+                                "amount_units"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "temperature",
+                                "temperature_units"
+                            ]
+                        }
                     ]
                 }
             ]
