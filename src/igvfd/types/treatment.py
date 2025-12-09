@@ -44,13 +44,42 @@ class Treatment(Item):
             'notSubmittable': True,
         }
     )
-    def summary(self, treatment_term_name, amount=None, amount_units=None, duration=None, duration_units=None):
+    def summary(
+        self,
+        treatment_term_name,
+        amount=None,
+        amount_units=None,
+        duration=None,
+        duration_units=None,
+        temperature=None,
+        temperature_units=None,
+    ):
         if duration is not None and duration != 1:
             duration_units = f'{duration_units}s'
-        if amount is not None and duration is not None:
-            text = f'Treatment of {amount} {amount_units} {treatment_term_name} for {duration} {duration_units}'
+        if amount is not None and duration is not None and temperature is not None:
+            text = (
+                f'Treatment of {amount} {amount_units} {treatment_term_name} '
+                f'for {duration} {duration_units} at {temperature} {temperature_units}'
+            )
+        elif amount is not None and duration is not None and temperature is None:
+            text = (
+                f'Treatment of {amount} {amount_units} {treatment_term_name} '
+                f'for {duration} {duration_units}'
+            )
+        elif amount is not None and temperature is not None and duration is None:
+            text = (
+                f'Treatment of {amount} {amount_units} {treatment_term_name} '
+                f'at {temperature} {temperature_units}'
+            )
+        elif amount is None and temperature is not None and duration is not None:
+            text = (
+                f'Treatment of heat exposure at {temperature} {temperature_units} '
+                f'for {duration} {duration_units}'
+            )
         elif amount is not None:
             text = f'Treatment of {amount} {amount_units} {treatment_term_name}'
+        elif temperature is not None:
+            text = f'Treatment of heat exposure at {temperature} {temperature_units}'
         elif duration is not None:
             text = f'Depletion of {treatment_term_name} for {duration} {duration_units}'
         else:
