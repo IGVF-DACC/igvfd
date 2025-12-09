@@ -68,5 +68,23 @@
             "Parse SPLiT-seq",
             "Parse Perturb-seq"
         ]
+    },
+    {
+        "uuid": "988a4262-0481-43d6-82d3-6b5bd40fc6ca",
+        "accession": "IGVFWF0003WORK",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:10x_cell_ranger_workflow"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-05-06T12:34:56Z",
+        "name": "10x genomics cell ranger",
+        "source_url": "https://www.10xgenomics.com/support/software/cell-ranger-arc/downloads/previous-versions",
+        "workflow_version": "v2.0.2",
+        "uniform_pipeline": false,
+        "preferred_assay_titles": [
+            "10x multiome"
+        ]
     }
 ]
