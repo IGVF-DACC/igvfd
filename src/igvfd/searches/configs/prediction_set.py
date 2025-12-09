@@ -104,12 +104,6 @@ def prediction_set():
                 'category': 'File',
                 'description': 'The file formats included in the measurement set.'
             },
-            'data_use_limitation_summaries': {
-                'title': 'Data Use Limitation',
-                'optional': True,
-                'category': 'File',
-                'description': 'Summaries of restrictions or limitations on data usage.'
-            },
             'collections': {
                 'title': 'Collections',
                 'optional': True,
@@ -193,9 +187,6 @@ def prediction_set():
             },
             'summary': {
                 'title': 'Summary'
-            },
-            'data_use_limitation_summaries': {
-                'title': 'Data Use Limitation Summaries'
             },
             'donors': {
                 'title': 'Donors'
