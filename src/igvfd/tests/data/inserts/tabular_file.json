@@ -1186,5 +1186,24 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "igvf:model_set_SEMpl",
         "controlled_access": false
+    },
+    {
+        "uuid": "b3c93e8a-7eaf-4e2a-a7cc-d54a4d43a864",
+        "accession": "IGVFFI0105PATH",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_pathogenicity_validation"
+        ],
+        "md5sum": "6b557c706fc51a943bcf5420b046a548",
+        "file_format": "tsv",
+        "content_type": "pathogenicity validation",
+        "submitted_file_name": "/Users/igvf/igvf_files/pathogenicity_validation.tsv.gz",
+        "file_size": 101,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "igvf:prediction_set_5",
+        "controlled_access": false
     }
 ]
