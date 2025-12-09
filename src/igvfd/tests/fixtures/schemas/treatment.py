@@ -36,6 +36,60 @@ def treatment_protein(testapp, lab, award):
 
 
 @pytest.fixture
+def treatment_thermal(testapp, lab, award):
+    item = {
+        'treatment_term_id': 'NTR:9919',
+        'treatment_term_name': 'G-CSF',
+        'treatment_type': 'thermal',
+        'temperature': 10,
+        'temperature_units': 'Celsius',
+        'purpose': 'perturbation',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'depletion': False
+    }
+    return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def treatment_combo1(testapp, lab, award):
+    item = {
+        'treatment_term_id': 'NTR:9919',
+        'treatment_term_name': 'G-CSF',
+        'amount': 23,
+        'amount_units': 'ng/mL',
+        'treatment_type': 'thermal',
+        'temperature': 10,
+        'temperature_units': 'Celsius',
+        'purpose': 'perturbation',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'depletion': False
+    }
+    return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def treatment_combo2(testapp, lab, award):
+    item = {
+        'treatment_term_id': 'NTR:9919',
+        'treatment_term_name': 'G-CSF',
+        'amount': 23,
+        'amount_units': 'ng/mL',
+        'duration': 15,
+        'duration_units': 'minute',
+        'treatment_type': 'thermal',
+        'temperature': 10,
+        'temperature_units': 'Celsius',
+        'purpose': 'perturbation',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'depletion': False
+    }
+    return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def depletion_treatment(testapp, lab, award):
     item = {
         'treatment_term_id': 'CHEBI:51356',

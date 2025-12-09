@@ -141,6 +141,38 @@ def test_treatment_award_lab_depletion_requirement(testapp, award, lab):
             'treatment_type': 'protein',
             'amount': 10,
             'amount_units': 'ng/mL',
+            'temperature': 10,
+            'temperature_units': 'Celsius',
+            'depletion': False,
+            'purpose': 'differentiation',
+            'award': award['@id'],
+            'lab': lab['@id']
+        })
+    assert res.status_code == 201
+
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_id': 'NTR:9919',
+            'treatment_term_name': 'G-CSF',
+            'treatment_type': 'thermal',
+            'temperature': 10,
+            'temperature_units': 'Celsius',
+            'depletion': False,
+            'purpose': 'differentiation',
+            'award': award['@id'],
+            'lab': lab['@id']
+        })
+    assert res.status_code == 201
+
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_id': 'UniProtKB:P09919',
+            'treatment_term_name': 'G-CSF',
+            'treatment_type': 'protein',
+            'amount': 10,
+            'amount_units': 'ng/mL',
             'purpose': 'differentiation',
             'depletion': False
         }, expect_errors=True)
