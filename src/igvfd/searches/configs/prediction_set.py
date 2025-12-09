@@ -104,12 +104,6 @@ def prediction_set():
                 'category': 'File',
                 'description': 'The file formats included in the measurement set.'
             },
-            'controlled_access': {
-                'title': 'Controlled Access',
-                'optional': True,
-                'category': 'File',
-                'description': 'Boolean value indicating whether access to the data is restricted.'
-            },
             'data_use_limitation_summaries': {
                 'title': 'Data Use Limitation',
                 'optional': True,
@@ -202,9 +196,6 @@ def prediction_set():
             },
             'data_use_limitation_summaries': {
                 'title': 'Data Use Limitation Summaries'
-            },
-            'controlled_access': {
-                'title': 'Controlled Access'
             },
             'donors': {
                 'title': 'Donors'
