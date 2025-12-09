@@ -9,93 +9,158 @@ def prediction_set():
         'facets': {
             'file_set_type': {
                 'title': 'File Set Type',
+                'category': 'Prediction Set Details',
+                'description': 'The category of prediction set.'
             },
             'scope': {
                 'title': 'Prediction Scope',
+                'optional': True,
+                'category': 'Prediction Set Details',
+                'description': 'The scope or scale that this prediction set is designed to target.'
             },
             'software_versions.software.title': {
                 'title': 'Software',
+                'category': 'Prediction Set Details',
+                'description': 'The software used to produce this prediction.'
             },
             'associated_phenotypes.term_name': {
-                'title': 'Associated Phenotypes'
+                'title': 'Associated Phenotypes',
+                'category': 'Prediction Set Details',
+                'description': 'Ontological terms for diseases or phenotypes associated with this prediction set.'
             },
             'assessed_genes.symbol': {
                 'title': 'Assessed Genes',
+                'optional': True,
+                'category': 'Prediction Set Details',
+                'description': 'A list of gene(s) assessed in this prediction set, especially those investigated for functional impacts.'
             },
             'donors.taxa': {
                 'title': 'Taxa',
+                'optional': True,
+                'category': 'Sample',
+                'description': 'The organism or species associated with the donor.'
             },
             'samples.classifications': {
                 'title': 'Classification',
+                'optional': True,
+                'category': 'Sample',
+                'description': 'High-level classification of the sample.'
             },
             'samples.sample_terms.term_name': {
                 'title': 'Sample',
+                'category': 'Sample',
+                'description': 'The sample term name associated with the prediction set.'
             },
             'samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
+                'optional': True,
+                'category': 'Sample',
+                'description': 'Ontology term identifying the targeted endpoint sample resulting from differentiation or reprogramming.'
             },
             'samples.disease_terms.term_name': {
                 'title': 'Disease',
+                'optional': True,
+                'category': 'Sample',
+                'description': 'Ontology term of the disease associated with the sample.'
             },
             'samples.growth_medium': {
                 'title': 'Growth Medium',
+                'optional': True,
+                'category': 'Sample',
+                'description': 'The growth medium or conditions used to culture the sample.'
             },
             'samples.modifications.modality': {
-                'title': 'Modification'
+                'title': 'Modification',
+                'optional': True,
+                'category': 'Sample',
+                'description': 'The type of modification applied to the sample.'
             },
             'samples.treatments.treatment_term_name': {
-                'title': 'Treatment'
+                'title': 'Treatment',
+                'optional': True,
+                'category': 'Sample',
+                'description': 'Treatments applied to the sample with the purpose of perturbation.'
             },
             'files.assembly': {
                 'title': 'Assembly',
+                'optional': True,
+                'category': 'Prediction Set Details',
+                'description': 'The assembly associated with the prediction set.'
             },
             'files.transcriptome_annotation': {
                 'title': 'Transcriptome Annotation',
+                'optional': True,
+                'category': 'Prediction Set Details',
+                'description': 'The transcriptome annotation version of the analysis.'
             },
             'files.content_type': {
                 'title': 'File Type',
+                'category': 'File',
+                'description': 'The type of files included in the measurement set.'
             },
             'files.file_format': {
                 'title': 'File Format',
+                'optional': True,
+                'category': 'File',
+                'description': 'The file formats included in the measurement set.'
             },
             'collections': {
                 'title': 'Collections',
-            },
-            'controlled_access': {
-                'title': 'Controlled Access',
-            },
-            'data_use_limitation_summaries': {
-                'title': 'Data Use Limitation',
+                'optional': True,
+                'category': 'Provenance',
+                'description': 'Data collections the measurement set is a part of.'
             },
             'lab.title': {
-                'title': 'Lab'
+                'title': 'Lab',
+                'category': 'Provenance',
+                'description': 'Lab that generated or submitted the data.'
             },
             'award.component': {
-                'title': 'Award'
+                'title': 'Award',
+                'optional': True,
+                'category': 'Provenance',
+                'description': 'Grant associated with the data.'
             },
             'release_timestamp': {
                 'title': 'Release Date',
+                'optional': True,
+                'category': 'Provenance',
+                'description': 'The date the measurement set was publicly released.'
             },
             'creation_timestamp': {
                 'title': 'Creation Date',
+                'optional': True,
+                'category': 'Provenance',
+                'description': 'The date the measurement set was submitted.'
             },
             'status': {
-                'title': 'Status'
+                'title': 'Status',
+                'category': 'Prediction Set Details',
+                'description': 'The status of the analysis.'
             },
             'audit.ERROR.category': {
-                'title': 'Audit Category: Error'
+                'title': 'Audit Category: Error',
+                'optional': True,
+                'category': 'Audit',
+                'description': 'Audit for errors: identifies incorrect or inconsistent metadata. Datasets flagged cannot be released until resolved.'
             },
             'audit.NOT_COMPLIANT.category': {
-                'title': 'Audit Category: Not Compliant'
+                'title': 'Audit Category: Not Compliant',
+                'optional': True,
+                'category': 'Audit',
+                'description': 'Audit for non-compliance: identifies data that does not meet compliance standards. Release requires special approval.'
             },
             'audit.WARNING.category': {
-                'title': 'Audit Category: Warning'
+                'title': 'Audit Category: Warning',
+                'optional': True,
+                'category': 'Audit',
+                'description': 'Audit for warnings: flags potentially inconsistent metadata. Datasets may be released despite warnings.'
             },
             'audit.INTERNAL_ACTION.category': {
-                'title': 'Audit Category: Internal Action'
-            },
-            'type': {
-                'title': 'Object Type',
+                'title': 'Audit Category: Internal Action',
+                'optional': True,
+                'category': 'Audit',
+                'description': 'Audit for internal action: identifies metadata issues requiring DACC staff resolution.'
             },
         },
         'columns': {
@@ -122,12 +187,6 @@ def prediction_set():
             },
             'summary': {
                 'title': 'Summary'
-            },
-            'data_use_limitation_summaries': {
-                'title': 'Data Use Limitation Summaries'
-            },
-            'controlled_access': {
-                'title': 'Controlled Access'
             },
             'donors': {
                 'title': 'Donors'
