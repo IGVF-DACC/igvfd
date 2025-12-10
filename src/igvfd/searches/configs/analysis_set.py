@@ -93,7 +93,7 @@ def analysis_set():
                 'optional': True
             },
             'construct_library_sets.file_set_type': {
-                'title': 'Construct Library Data',
+                'title': 'Construct Library',
                 'category': 'Library',
                 'description': 'The type of the construct library associated with the analysis set.',
                 'optional': True
@@ -104,10 +104,10 @@ def analysis_set():
                 'description': 'The criteria used to select the sequence material cloned into the library.',
                 'optional': True
             },
-            'construct_library_sets.integrated_content_files.content_type': {
-                'title': 'Construct Library Design',
+            'construct_library_sets.associated_phenotypes.term_name': {
+                'title': 'Associated Phenotypes',
                 'category': 'Library',
-                'description': 'Sequence material of interest either used for insert design or directly cloned into vectors in the library.',
+                'description': 'Ontological terms for diseases or phenotypes associated with this analysis set.',
                 'optional': True
             },
             'construct_library_sets.small_scale_gene_list.symbol': {
