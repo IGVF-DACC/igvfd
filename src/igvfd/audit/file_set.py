@@ -575,20 +575,54 @@ def audit_input_for(value, system):
     '''
     [
         {
-            "audit_description": "Raw data sets with files are expected to be associated with at least one analysis set.",
+            "audit_description": "Raw data sets with files are expected to be associated with at least one analysis set of any type.",
             "audit_category": "missing analysis",
+            "audit_level": "WARNING"
+        },
+        {
+            "audit_description": "Raw data sets with files are expected to be associated with at least one principal analysis set.",
+            "audit_category": "missing principal analysis",
             "audit_level": "WARNING"
         }
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message = get_audit_message(audit_input_for)
+    audit_message_missing_any = get_audit_message(audit_input_for, index=0)
+    audit_message_missing_principal = get_audit_message(audit_input_for, index=1)
     if not value.get('input_for') and value.get('files'):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is a raw data set with files, '
             f'but is not listed in any `input_file_sets` for any analysis sets.'
         )
-        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+        yield AuditFailure(audit_message_missing_any.get('audit_category', ''), f'{detail} {audit_message_missing_any.get("audit_description", "")}', level=audit_message_missing_any.get('audit_level', ''))
+    elif value.get('input_for') and value.get('files'):
+        missing_principal_analysis = True
+        checking_queue = value.get('input_for', [])
+        previously_checked = []
+        # Keep iterating downstream until a principal analysis is hit
+        # or there are no more downstream file sets.
+        while len(checking_queue) > 0:
+            temp_queue = checking_queue
+            for current_file_set in temp_queue:
+                previously_checked.append(current_file_set)
+                file_set_object = system.get('request').embed(
+                    current_file_set, '@@object_with_select_calculated_properties?field=input_for')
+                if file_set_object.get('file_set_type', '') == 'principal analysis':
+                    missing_principal_analysis = False
+                    checking_queue = []
+                    break
+                for new_file_set in file_set_object.get('input_for', []):
+                    if new_file_set not in previously_checked:
+                        checking_queue.append(new_file_set)
+                checking_queue.remove(current_file_set)
+            continue
+        if missing_principal_analysis:
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'is a raw data set with files, but has no downstream file sets '
+                f'which are principal analyses.'
+            )
+            yield AuditFailure(audit_message_missing_principal.get('audit_category', ''), f'{detail} {audit_message_missing_principal.get("audit_description", "")}', level=audit_message_missing_principal.get('audit_level', ''))
 
 
 def audit_inconsistent_location_files(value, system):
