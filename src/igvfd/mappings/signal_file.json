@@ -1,6 +1,6 @@
 {
-    "hash": "160872887e7828b3cf36134df4b87d12",
-    "index_name": "signal_file_16087288",
+    "hash": "0f58609ede2817228bf98ea9afc55178",
+    "index_name": "signal_file_0f58609e",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -833,6 +833,10 @@
                                         "store": true,
                                         "type": "boolean"
                                     },
+                                    "is_on_anvil": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
                                     "lab": {
                                         "type": "keyword"
                                     },
@@ -962,6 +966,10 @@
                             },
                             "integrated_content_files": {
                                 "type": "keyword"
+                            },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "properties": {
@@ -1283,6 +1291,10 @@
                                     },
                                     "institutional_certificates": {
                                         "type": "keyword"
+                                    },
+                                    "is_on_anvil": {
+                                        "store": true,
+                                        "type": "boolean"
                                     },
                                     "lab": {
                                         "type": "keyword"
@@ -2147,6 +2159,10 @@
                             "integrated_content_files": {
                                 "type": "keyword"
                             },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -2286,6 +2302,10 @@
                                     },
                                     "institutional_certificates": {
                                         "type": "keyword"
+                                    },
+                                    "is_on_anvil": {
+                                        "store": true,
+                                        "type": "boolean"
                                     },
                                     "lab": {
                                         "type": "keyword"

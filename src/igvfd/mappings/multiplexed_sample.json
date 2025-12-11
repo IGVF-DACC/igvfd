@@ -1,6 +1,6 @@
 {
-    "hash": "039ecadacb2627f04162083261490964",
-    "index_name": "multiplexed_sample_039ecada",
+    "hash": "a41cbceea7c535be60030d06f8ccd2fa",
+    "index_name": "multiplexed_sample_a41cbcee",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -577,6 +577,10 @@
                             "integrated_content_files": {
                                 "type": "keyword"
                             },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -858,6 +862,10 @@
                                 "store": true,
                                 "type": "boolean"
                             },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -1080,6 +1088,10 @@
                             },
                             "integrated_content_files": {
                                 "type": "keyword"
+                            },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "properties": {
@@ -1434,6 +1446,10 @@
                         },
                         "type": "object"
                     },
+                    "is_on_anvil": {
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -1758,6 +1774,10 @@
                             "institutional_certificates": {
                                 "type": "keyword"
                             },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -2072,6 +2092,10 @@
                                         "store": true,
                                         "type": "boolean"
                                     },
+                                    "is_on_anvil": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
                                     "lab": {
                                         "type": "keyword"
                                     },
@@ -2174,6 +2198,10 @@
                             },
                             "institutional_certificates": {
                                 "type": "keyword"
+                            },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"
@@ -2798,6 +2826,10 @@
                             },
                             "institutional_certificates": {
                                 "type": "keyword"
+                            },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"

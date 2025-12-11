@@ -1,6 +1,6 @@
 {
-    "hash": "16031736b3c2210f7c3837571df1a012",
-    "index_name": "tissue_16031736",
+    "hash": "7fd603cbfb424bb9cc24a7650db63111",
+    "index_name": "tissue_7fd603cb",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -586,6 +586,10 @@
                             "integrated_content_files": {
                                 "type": "keyword"
                             },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -867,6 +871,10 @@
                                 "store": true,
                                 "type": "boolean"
                             },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -1093,6 +1101,10 @@
                             },
                             "integrated_content_files": {
                                 "type": "keyword"
+                            },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "properties": {
@@ -1448,6 +1460,10 @@
                         },
                         "type": "object"
                     },
+                    "is_on_anvil": {
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -1782,6 +1798,10 @@
                             },
                             "institutional_certificates": {
                                 "type": "keyword"
+                            },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"
@@ -2278,6 +2298,10 @@
                             },
                             "institutional_certificates": {
                                 "type": "keyword"
+                            },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"

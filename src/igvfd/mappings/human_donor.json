@@ -1,6 +1,6 @@
 {
-    "hash": "6efcd0e7b64e7ac7d4fbdd5c181ef314",
-    "index_name": "human_donor_6efcd0e7",
+    "hash": "db75aaaf4bc8c7d1ec1c386d1878e4cc",
+    "index_name": "human_donor_db75aaaf",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -252,6 +252,10 @@
                     "human_donor_identifiers": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
+                    },
+                    "is_on_anvil": {
+                        "store": true,
+                        "type": "boolean"
                     },
                     "lab": {
                         "properties": {
@@ -644,6 +648,10 @@
                                     },
                                     "human_donor_identifiers": {
                                         "type": "keyword"
+                                    },
+                                    "is_on_anvil": {
+                                        "store": true,
+                                        "type": "boolean"
                                     },
                                     "lab": {
                                         "type": "keyword"

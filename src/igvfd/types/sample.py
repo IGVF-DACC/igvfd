@@ -273,6 +273,24 @@ class Sample(Item):
     def superseded_by(self, request, superseded_by):
         return paths_filtered_by_status(request, superseded_by) or None
 
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Is On AnVIL',
+            'type': 'boolean',
+            'description': 'Indicates whether the sample has been submitted to AnVIL.',
+            'notSubmittable': True
+        })
+    def is_on_anvil(self, request, file_sets=[]):
+        if not file_sets:
+            return False
+        for file_set in file_sets:
+            file_set_object = request.embed(
+                file_set, '@@object_with_select_calculated_properties?field=is_on_anvil')
+            if file_set_object.get('is_on_anvil', False):
+                return True
+        return False
+
 
 @abstract_collection(
     name='biosamples',
@@ -365,7 +383,7 @@ class Biosample(Sample):
     )
     def upper_bound_age_in_hours(self, upper_bound_age=None, age_units=None):
         conversion_factors = {
-            'minute': 1/60,
+            'minute': 1 / 60,
             'hour': 1,
             'day': 24,
             'week': 168,
@@ -373,7 +391,7 @@ class Biosample(Sample):
             'year': 8760
         }
         if upper_bound_age:
-            return upper_bound_age*conversion_factors[age_units]
+            return upper_bound_age * conversion_factors[age_units]
 
     @calculated_property(
         define=True,
@@ -386,7 +404,7 @@ class Biosample(Sample):
     )
     def lower_bound_age_in_hours(self, lower_bound_age=None, age_units=None):
         conversion_factors = {
-            'minute': 1/60,
+            'minute': 1 / 60,
             'hour': 1,
             'day': 24,
             'week': 168,
@@ -394,7 +412,7 @@ class Biosample(Sample):
             'year': 8760
         }
         if lower_bound_age:
-            return lower_bound_age*conversion_factors[age_units]
+            return lower_bound_age * conversion_factors[age_units]
 
     @calculated_property(
         define=True,
