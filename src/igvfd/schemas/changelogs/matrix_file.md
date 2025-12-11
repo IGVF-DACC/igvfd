@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 9
 
+* Extend `content_type` enum list to include `annotated sparse gene count matrix`.
+* Extend `content_type` enum list to include `annotated sparse peak count matrix`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.
 * Add calculated property `superseded_by`.
