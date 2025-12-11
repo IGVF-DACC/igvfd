@@ -1079,11 +1079,42 @@ def audit_file_set_missing_description(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+def audit_mismatched_anvil_status(value, system):
+    '''
+    [
+        {
+            "audit_description": "All files in file sets that have submitted to AnVIL are expected to have `anvil_url`.",
+            "audit_category": "mismatched AnVIL status",
+            "audit_level": "INTERNAL_ACTION"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message = get_audit_message(audit_mismatched_anvil_status, index=0)
+    # If the fileset is marked as submitted to AnVIL, check that all files have anvil_url
+    fileset_on_anvil = value.get('is_on_anvil', False)
+    no_anvil_link_files = []
+    if fileset_on_anvil:
+        files = value.get('files')      # If there is no file, fileset on anvil will be False
+        for file in files:
+            file_object = system.get('request').embed(file, '@@object_with_select_calculated_properties?field=files')
+            if not file_object.get('anvil_url'):
+                no_anvil_link_files.append(file)
+    if no_anvil_link_files:
+        no_anvil_link_files = ', '.join([audit_link(path_to_text(file), file) for file in no_anvil_link_files])
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has been submitted to AnVIL, '
+            f'but links to file(s) {no_anvil_link_files} that do not have `anvil_url`.'
+        )
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
 function_dispatcher_file_set_object = {
     'audit_no_files': audit_no_files,
     'audit_inconsistent_sequencing_kit': audit_inconsistent_sequencing_kit,
     'audit_control_for_control_type': audit_control_for_control_type,
-    'audit_file_set_missing_publication': audit_file_set_missing_publication
+    'audit_file_set_missing_publication': audit_file_set_missing_publication,
+    'audit_mismatched_anvil_status': audit_mismatched_anvil_status
 }
 
 function_dispatcher_measurement_set_object = {
@@ -1121,11 +1152,16 @@ function_dispatcher_construct_library_set_object = {
     'audit_input_for': audit_input_for
 }
 
+function_dispatcher_curated_set_object = {
+    'audit_mismatched_anvil_status': audit_mismatched_anvil_status
+}
+
 function_dispatcher_analysis_set_object = {
     'audit_inconsistent_controlled_access': audit_inconsistent_controlled_access,
     'audit_input_file_sets_derived_from': audit_input_file_sets_derived_from,
     'audit_file_set_files_missing_analysis_step_version': audit_file_set_files_missing_analysis_step_version,
-    'audit_file_set_missing_description': audit_file_set_missing_description
+    'audit_file_set_missing_description': audit_file_set_missing_description,
+    'audit_mismatched_anvil_status': audit_mismatched_anvil_status
 }
 
 function_dispatcher_prediction_set_object = {
@@ -1170,6 +1206,14 @@ def audit_auxiliary_set_object_dispatcher(value, system):
 @audit_checker('ConstructLibrarySet', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_construct_library_set_object.values()))
 def audit_construct_library_set_object_dispatcher(value, system):
+    for function_name in function_dispatcher_construct_library_set_object.keys():
+        for failure in function_dispatcher_construct_library_set_object[function_name](value, system):
+            yield failure
+
+
+@audit_checker('CuratedSet', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_curated_set_object.values()))
+def audit_curated_set_object_dispatcher(value, system):
     for function_name in function_dispatcher_construct_library_set_object.keys():
         for failure in function_dispatcher_construct_library_set_object[function_name](value, system):
             yield failure

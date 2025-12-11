@@ -324,3 +324,80 @@ def test_audit_missing_description(
         error['category'] != 'missing description'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_mismatched_anvil_status(
+    testapp,
+    measurement_set_no_files,
+    curated_set_empty,
+    sequence_file,
+    sequence_file_sequencing_run_2
+):
+    # No AnVIL dataset linked, no audit
+    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'mismatched AnVIL status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+
+    # Link one file with AnVIL URL to an empty MeaSet, no audit
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_set': measurement_set_no_files['@id'],
+            'anvil_url': 'anvil://dataset_12345'
+        }
+    )
+    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'mismatched AnVIL status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+
+    # Linek second file without AnVIL URL to the MeaSet, audit triggered
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'file_set': measurement_set_no_files['@id']
+        }
+    )
+    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'mismatched AnVIL status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+
+    # Repeat the same test for CuratedSet
+    # No AnVIL dataset linked, no audit
+    res = testapp.get(curated_set_empty['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'mismatched AnVIL status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+
+    # Link one file with AnVIL URL to an empty MeaSet, no audit
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_set': curated_set_empty['@id'],
+            'anvil_url': 'anvil://dataset_12345'
+        }
+    )
+    res = testapp.get(curated_set_empty['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'mismatched AnVIL status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+
+    # Linek second file without AnVIL URL to the MeaSet, audit triggered
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'file_set': curated_set_empty['@id']
+        }
+    )
+    res = testapp.get(curated_set_empty['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'mismatched AnVIL status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
