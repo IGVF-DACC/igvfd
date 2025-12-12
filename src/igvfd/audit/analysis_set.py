@@ -301,6 +301,7 @@ def audit_missing_genome_transcriptome_references(value, system):
         'sample sort parameters',
         'tissue positions'
     ]
+    excluded_content_types_alignment_files = ['methylated reads']
     if files:
         for file in files:
             if not file.startswith(('/alignment-files/', '/matrix-files/', '/signal-files/', '/tabular-files/')):
@@ -309,6 +310,11 @@ def audit_missing_genome_transcriptome_references(value, system):
             if file.startswith('/tabular-files/'):
                 file_obj = system.get('request').embed(file + '@@object?skip_calculated=true')
                 if file_obj['content_type'] in excluded_content_types_tabular_files:
+                    continue
+            # Skip alignment files with certain excluded content_types.
+            if file.startswith('/alignment-files/'):
+                file_obj = system.get('request').embed(file + '@@object?skip_calculated=true')
+                if file_obj['content_type'] in excluded_content_types_alignment_files:
                     continue
             # Get all upstream Seqfiles that eventually lead to data file
             # and check if upstream seqfiles are transcriptome based assays
