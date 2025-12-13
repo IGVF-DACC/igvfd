@@ -1097,7 +1097,7 @@ def audit_mismatched_anvil_status(value, system):
     if fileset_on_anvil:
         files = value.get('files')      # If there is no file, fileset on anvil will be False
         for file in files:
-            file_object = system.get('request').embed(file, '@@object_with_select_calculated_properties?field=files')
+            file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
             if not file_object.get('anvil_url'):
                 no_anvil_link_files.append(file)
     if no_anvil_link_files:
@@ -1152,16 +1152,12 @@ function_dispatcher_construct_library_set_object = {
     'audit_input_for': audit_input_for
 }
 
-function_dispatcher_curated_set_object = {
-    'audit_mismatched_anvil_status': audit_mismatched_anvil_status
-}
 
 function_dispatcher_analysis_set_object = {
     'audit_inconsistent_controlled_access': audit_inconsistent_controlled_access,
     'audit_input_file_sets_derived_from': audit_input_file_sets_derived_from,
     'audit_file_set_files_missing_analysis_step_version': audit_file_set_files_missing_analysis_step_version,
-    'audit_file_set_missing_description': audit_file_set_missing_description,
-    'audit_mismatched_anvil_status': audit_mismatched_anvil_status
+    'audit_file_set_missing_description': audit_file_set_missing_description
 }
 
 function_dispatcher_prediction_set_object = {
@@ -1206,14 +1202,6 @@ def audit_auxiliary_set_object_dispatcher(value, system):
 @audit_checker('ConstructLibrarySet', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_construct_library_set_object.values()))
 def audit_construct_library_set_object_dispatcher(value, system):
-    for function_name in function_dispatcher_construct_library_set_object.keys():
-        for failure in function_dispatcher_construct_library_set_object[function_name](value, system):
-            yield failure
-
-
-@audit_checker('CuratedSet', frame='object')
-@watch_for_changes_in(functions=list(function_dispatcher_curated_set_object.values()))
-def audit_curated_set_object_dispatcher(value, system):
     for function_name in function_dispatcher_construct_library_set_object.keys():
         for failure in function_dispatcher_construct_library_set_object[function_name](value, system):
             yield failure
