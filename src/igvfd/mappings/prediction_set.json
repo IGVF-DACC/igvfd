@@ -1,6 +1,6 @@
 {
-    "hash": "fef546750631f946aa75b49f72b7de6d",
-    "index_name": "prediction_set_fef54675",
+    "hash": "76512e53f1ff8a8e54a88baedc780e72",
+    "index_name": "prediction_set_76512e53",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -895,6 +895,10 @@
                                 },
                                 "type": "object"
                             },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -1344,6 +1348,10 @@
                             "integrated_content_files": {
                                 "type": "keyword"
                             },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -1628,6 +1636,10 @@
                                 "type": "keyword"
                             },
                             "individual_rodent": {
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "is_on_anvil": {
                                 "store": true,
                                 "type": "boolean"
                             },
@@ -2293,6 +2305,10 @@
                     },
                     "input_for": {
                         "type": "keyword"
+                    },
+                    "is_on_anvil": {
+                        "store": true,
+                        "type": "boolean"
                     },
                     "lab": {
                         "properties": {
@@ -3078,6 +3094,10 @@
                                     "integrated_content_files": {
                                         "type": "keyword"
                                     },
+                                    "is_on_anvil": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
                                     "lab": {
                                         "type": "keyword"
                                     },
@@ -3407,6 +3427,10 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"

@@ -125,6 +125,16 @@
                 "appscript": "[\"john-doe:donor02\", \"IGVFDO5261UCLF\"]",
                 "igvf_utils": "john-doe:donor02, IGVFDO5261UCLF"
             }
+        },
+        "is_on_anvil": {
+            "title": "Is on AnVIL",
+            "description": "Indicates whether the donor has been submitted to AnVIL.",
+            "type": "boolean",
+            "permission": "admin_only",
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
         }
     }
 }

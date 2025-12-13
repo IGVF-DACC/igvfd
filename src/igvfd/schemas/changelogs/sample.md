@@ -1,5 +1,6 @@
 ## Changelog for *`sample.json`*
 
+* Add calculated property `is_on_anvil`. (12/17/2025)
 * Add calculated property `superseded_by`. (10/15/2025)
 * Add `supersedes`. (10/15/2025)
 * Add `preview_timestamp`. (05/06/2025)

@@ -145,3 +145,35 @@ def test_superseded_by(testapp, principal_analysis_set, measurement_set):
     )
     res = testapp.get(measurement_set['@id'])
     assert set([file_set for file_set in res.json.get('superseded_by')]) == {principal_analysis_set['@id']}
+
+
+def test_fileset_is_on_anvil(testapp, measurement_set, sequence_file, sequence_file_sequencing_run_2):
+    # Base state, no AnVIL
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('is_on_anvil') is False
+
+    # Link the AnVIL-less files to the fileset
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_set': measurement_set['@id']
+        }
+    )
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'file_set': measurement_set['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('is_on_anvil') is False
+
+    # Now add AnVIL URL to one of the files, should propagate up to fileset
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'anvil_url': 'gs://anvil-some-bucket/some-file.fastq.gz'
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('is_on_anvil') is True
