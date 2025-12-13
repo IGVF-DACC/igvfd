@@ -1083,7 +1083,7 @@ def audit_mismatched_anvil_status(value, system):
     '''
     [
         {
-            "audit_description": "All files in file sets that have submitted to AnVIL are expected to have `anvil_url`.",
+            "audit_description": "All files in a file set which has been submitted to AnVIL are expected to have `anvil_url`.",
             "audit_category": "mismatched AnVIL status",
             "audit_level": "INTERNAL_ACTION"
         }

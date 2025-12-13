@@ -99,7 +99,7 @@ def get_cls_phrase(cls_set, only_cls_input=False):
 
 
 def check_is_on_anvil(file_ids: list, request) -> bool:
-    """Check if a Measurement Set has been submitted to AnVIL by checking its linked files for an AnVIL URL.
+    """Check if a File Set has been submitted to AnVIL by checking its linked files for an AnVIL URL.
     """
     linked_file_objs = [request.embed(file_id, '@@object?skip_calculated=true') for file_id in file_ids]
     return any([file_obj.get('anvil_url', False) for file_obj in linked_file_objs])
