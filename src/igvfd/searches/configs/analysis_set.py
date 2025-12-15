@@ -109,12 +109,6 @@ def analysis_set():
                 'category': 'Library',
                 'description': 'Ontological terms for diseases or phenotypes associated with this analysis set.',
             },
-            'construct_library_sets.integrated_content_files.content_type': {
-                'title': 'Construct Library Design',
-                'category': 'Library',
-                'description': 'Sequence material of interest either used for insert design or directly cloned into vectors in the library.',
-                'optional': True
-            },
             'construct_library_sets.small_scale_gene_list.symbol': {
                 'title': 'Investigated Gene',
                 'category': 'Library',
