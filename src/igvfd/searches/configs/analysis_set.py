@@ -108,6 +108,7 @@ def analysis_set():
                 'title': 'Associated Phenotypes',
                 'category': 'Library',
                 'description': 'Ontological terms for diseases or phenotypes associated with this analysis set.',
+            },
             'construct_library_sets.integrated_content_files.content_type': {
                 'title': 'Construct Library Design',
                 'category': 'Library',
@@ -265,7 +266,6 @@ def analysis_set():
             }
         },
     }
-}
 
 
 @search_config(
