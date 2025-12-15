@@ -819,42 +819,6 @@ def audit_missing_external_image_url(value, system):
         )
 
 
-def audit_missing_library_preparation_kit(value, system):
-    '''
-    [
-        {
-            "audit_description": "Perturb-seq assays are expected to have an `library_preparation_kit`.",
-            "audit_category": "missing library preparation kit",
-            "audit_level": "NOT_COMPLIANT"
-        }
-    ]
-    '''
-    preferred_assay_titles = value.get('preferred_assay_titles', [])
-    perturb_seq_assays = [
-        'Perturb-seq',
-        'TAP-seq',
-        'scCRISPR screen',
-        'CROP-seq',
-        'Multiome Perturb-seq'
-        # CC-Perturb-seq and Parse Perturb-seq are excluded because they are
-        # Parse Biosciences assays which are not currently supported by library_preparation_kit
-    ]
-    audit_message = get_audit_message(audit_missing_external_image_url, index=0)
-
-    library_preparation_kit = value.get('library_preparation_kit', '')
-
-    if not library_preparation_kit and any(title in perturb_seq_assays for title in preferred_assay_titles):
-        detail = (
-            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'is missing `library_preparation_kit`.'
-        )
-        yield AuditFailure(
-            audit_message.get('audit_category', ''),
-            f'{detail} {audit_message.get("audit_description", "")}',
-            level=audit_message.get('audit_level', '')
-        )
-
-
 def audit_missing_primer_designs(value, system):
     '''
     [
@@ -879,6 +843,41 @@ def audit_missing_primer_designs(value, system):
         )
 
 
+def audit_missing_library_preparation_kit(value, system):
+    '''
+    [
+        {
+            "audit_description": "Perturb-seq assays are expected to have an `library_preparation_kit`.",
+            "audit_category": "missing library preparation kit",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    perturb_seq_assays = [
+        'Perturb-seq',
+        'TAP-seq',
+        'scCRISPR screen',
+        'CROP-seq',
+        'Multiome Perturb-seq'
+        # CC-Perturb-seq and Parse Perturb-seq are excluded because they are
+        # Parse Biosciences assays which are not currently supported by library_preparation_kit
+    ]
+    audit_message = get_audit_message(audit_missing_library_preparation_kit, index=0)
+
+    library_preparation_kit = value.get('library_preparation_kit', '')
+    if not library_preparation_kit and any(title in perturb_seq_assays for title in preferred_assay_titles):
+        detail = (
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'is missing `library_preparation_kit`.'
+        )
+        yield AuditFailure(
+            audit_message.get('audit_category', ''),
+            f'{detail} {audit_message.get("audit_description", "")}',
+            level=audit_message.get('audit_level', '')
+        )
+
+
 function_dispatcher_measurement_set_object = {
     'audit_related_multiome_datasets': audit_related_multiome_datasets,
     'audit_unspecified_protocol': audit_unspecified_protocol,
@@ -894,7 +893,8 @@ function_dispatcher_measurement_set_object = {
     'audit_missing_barcode_replacement_file': audit_missing_barcode_replacement_file,
     'audit_inconsistent_barcode_replacement_file': audit_inconsistent_barcode_replacement_file,
     'audit_missing_external_image_url': audit_missing_external_image_url,
-    'audit_missing_primer_designs': audit_missing_primer_designs
+    'audit_missing_primer_designs': audit_missing_primer_designs,
+    'audit_missing_library_preparation_kit': audit_missing_library_preparation_kit
 }
 
 function_dispatcher_measurement_set_embedded = {
