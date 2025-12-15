@@ -1762,3 +1762,32 @@ def test_audit_missing_primer_designs(
         error['category'] != 'missing primer designs'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_missing_library_preparation_kit(
+    testapp,
+    measurement_set
+):
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing library preparation kit'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {'preferred_assay_titles': ['Perturb-seq']}
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing library preparation kit'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {'library_preparation_kit': '10X Chromium Single Cell 3 prime v1'}
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing library preparation kit'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
