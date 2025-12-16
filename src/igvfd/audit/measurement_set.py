@@ -364,12 +364,12 @@ def audit_targeted_genes(value, system):
     '''
     [
         {
-            "audit_description": "ChIP-seq and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
+            "audit_description": "ChIP-seq, CUT&RUN, and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
             "audit_category": "missing targeted genes",
             "audit_level": "WARNING"
         },
         {
-            "audit_description": "Only ChIP-seq and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
+            "audit_description": "Only ChIP-seq, CUT&RUN, and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
             "audit_category": "unexpected targeted genes",
             "audit_level": "ERROR"
         }
@@ -386,7 +386,8 @@ def audit_targeted_genes(value, system):
     }
     expecting_targeted_genes_by_assay = ['/assay-terms/OBI_0003661/',  # in vitro CRISPR screen using flow cytometry
                                          '/assay-terms/OBI_0002017/',  # histone modification identification by ChIP-Seq assay
-                                         '/assay-terms/OBI_0002019/'  # transcription factor binding site identification by ChIP-Seq assay
+                                         '/assay-terms/OBI_0002019/',  # transcription factor binding site identification by ChIP-Seq assay
+                                         '/assay-terms/OBI_0003033/'   # cleavage under targets and release using nuclease assay
                                          ]
     if (
         not (targeted_genes)
