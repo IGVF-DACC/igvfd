@@ -250,10 +250,14 @@
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "input_content_types": [
-            "variants"
+            "variants",
+            "protein-protein interaction edge-perturbation score",
+            "protein-protein interaction edgotyping score"
         ],
         "output_content_types": [
-            "calibrated coding variant effects"
+            "calibrated coding variant effects",
+            "protein-protein interaction edge-perturbation score",
+            "protein-protein interaction edgotyping score"
         ]
     }
 ]

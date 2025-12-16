@@ -10,6 +10,10 @@
 * Extend `output_content_types` enum list to include `annotated sparse gene count matrix`.
 * Extend `input_content_types` enum list to include `pathogenicity validation`.
 * Extend `output_content_types` enum list to include `pathogenicity validation`.
+* Extend `input_content_types` enum list to include `protein-protein interaction edge-perturbation score`.
+* Extend `input_content_types` enum list to include `protein-protein interaction edgotyping score`.
+* Extend `output_content_types` enum list to include `protein-protein interaction edge-perturbation score`.
+* Extend `output_content_types` enum list to include `protein-protein interaction edgotyping score`.
 * Extend `input_content_types` enum list to include `protein sequences`.
 * Extend `output_content_types` enum list to include `protein sequences`.
 * Extend `input_content_types` enum list to include `filtered global differential expressions`.
