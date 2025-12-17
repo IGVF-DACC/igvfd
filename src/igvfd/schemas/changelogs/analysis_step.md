@@ -2,6 +2,10 @@
 
 ### Minor changes since schema version 9
 
+* Extend `input_content_types` enum list to include `protein-protein interaction edge-perturbation score`.
+* Extend `input_content_types` enum list to include `protein-protein interaction edgotyping score`.
+* Extend `output_content_types` enum list to include `protein-protein interaction edge-perturbation score`.
+* Extend `output_content_types` enum list to include `protein-protein interaction edgotyping score`.
 * Extend `input_content_types` enum list to include `cell annotations`.
 * Extend `output_content_types` enum list to include `cell annotations`.
 * Extend `input_content_types` enum list to include `annotated sparse peak count matrix`.

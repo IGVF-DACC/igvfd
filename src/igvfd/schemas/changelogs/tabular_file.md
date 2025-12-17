@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 18
 
+* Extend `content_type` enum list to include `protein-protein interaction edge-perturbation score`.
+* Extend `content_type` enum list to include `protein-protein interaction edgotyping score`.
 * Extend `content_type` enum list to include `cell annotations`.
 * Extend `content_type` enum list to include `pathogenicity validation`.
 * Extend `content_type` enum list to include `protein sequences`.
