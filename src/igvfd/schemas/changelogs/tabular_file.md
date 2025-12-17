@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 18
 
+* Extend `content_type` enum list to include `cell annotations`.
 * Extend `content_type` enum list to include `pathogenicity validation`.
 * Extend `content_type` enum list to include `protein sequences`.
 * Extend `content_type` enum list to include `filtered global differential expressions`.
