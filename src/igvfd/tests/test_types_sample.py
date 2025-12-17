@@ -216,3 +216,48 @@ def test_superseded_by(testapp, tissue, in_vitro_cell_line):
     )
     res = testapp.get(in_vitro_cell_line['@id'])
     assert set([sample for sample in res.json.get('superseded_by')]) == {tissue['@id']}
+
+
+def test_samples_is_on_anvil(testapp, in_vitro_cell_line, measurement_set_with_no_file, measurement_set, sequence_file, sequence_file_sequencing_run_2):
+    # Link measurement_set_with_no_files to in_vitro_cell_line
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_set': measurement_set_with_no_file['@id']
+        }
+    )
+    testapp.patch_json(
+        measurement_set_with_no_file['@id'],
+        {
+            'samples': [in_vitro_cell_line['@id']]
+        }
+    )
+
+    # Make measurement_set have one file without anvil url and with in_vitro_cell_line as sample
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'file_set': measurement_set['@id']
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [in_vitro_cell_line['@id']]
+        }
+    )
+
+    # Check in_vitro_cell_line anvil status (False)
+    res = testapp.get(in_vitro_cell_line['@id'])
+    assert res.json.get('is_on_anvil') is False
+
+    # Patch sequence_file to have anvil_url and to measurement_set_with_no_files
+    # Expect in_vitro_cell_line anvil status to be True
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'anvil_url': 's3://anvil-pdc/somefile1'
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'])
+    assert res.json.get('is_on_anvil') is True

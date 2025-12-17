@@ -1,6 +1,6 @@
 {
-    "hash": "29f7b66a57a4f80ebca8ac7f6baef296",
-    "index_name": "rodent_donor_29f7b66a",
+    "hash": "b33577babb29f87d09854bc093ce1fc7",
+    "index_name": "rodent_donor_b33577ba",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -250,6 +250,10 @@
                         "type": "keyword"
                     },
                     "individual_rodent": {
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "is_on_anvil": {
                         "store": true,
                         "type": "boolean"
                     },
