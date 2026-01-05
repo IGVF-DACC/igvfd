@@ -1,6 +1,6 @@
 {
-    "hash": "b090b61eb1c7c6ae9b4f8f685917f29a",
-    "index_name": "sequence_file_b090b61e",
+    "hash": "65a89d2959b84d87f7c013b2519032e5",
+    "index_name": "sequence_file_65a89d29",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -688,6 +688,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
@@ -2043,6 +2046,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {

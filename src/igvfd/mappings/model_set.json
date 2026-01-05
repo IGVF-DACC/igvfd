@@ -1,6 +1,6 @@
 {
-    "hash": "47193715045df4d821e14d777eefcb63",
-    "index_name": "model_set_47193715",
+    "hash": "7c545c7a2b4339ef8373d533ac6916d7",
+    "index_name": "model_set_7c545c7a",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -561,6 +561,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
@@ -1228,6 +1231,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "doi": {
+                                "type": "keyword"
+                            },
                             "donors": {
                                 "type": "keyword"
                             },
@@ -1510,6 +1516,9 @@
                         "type": "text"
                     },
                     "documents": {
+                        "type": "keyword"
+                    },
+                    "doi": {
                         "type": "keyword"
                     },
                     "donors": {
@@ -2319,6 +2328,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {

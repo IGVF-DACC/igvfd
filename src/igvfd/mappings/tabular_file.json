@@ -1,6 +1,6 @@
 {
-    "hash": "ced2ba6f0319bb7116182d7fbf1084b9",
-    "index_name": "tabular_file_ced2ba6f",
+    "hash": "5382b711c4b53d959c3b1d0cd7e849e1",
+    "index_name": "tabular_file_5382b711",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -796,6 +796,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
@@ -2146,6 +2149,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {

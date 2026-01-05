@@ -1,6 +1,6 @@
 {
-    "hash": "f173d42e06be9fc8c243b088795020d4",
-    "index_name": "signal_file_f173d42e",
+    "hash": "e3a0b17dda6e197555be50ccb992e132",
+    "index_name": "signal_file_e3a0b17d",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -783,6 +783,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
@@ -2133,6 +2136,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {

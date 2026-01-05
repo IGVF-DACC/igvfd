@@ -1,6 +1,6 @@
 {
-    "hash": "8116a93d484c1a89feae6e01b1da08d2",
-    "index_name": "primary_cell_8116a93d",
+    "hash": "2732020bda1fd5a2c0ca4cada82d4688",
+    "index_name": "primary_cell_2732020b",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -562,6 +562,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "doi": {
+                                "type": "keyword"
+                            },
                             "donors": {
                                 "type": "keyword"
                             },
@@ -1057,6 +1060,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {

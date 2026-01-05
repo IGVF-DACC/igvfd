@@ -1,6 +1,6 @@
 {
-    "hash": "7fd603cbfb424bb9cc24a7650db63111",
-    "index_name": "tissue_7fd603cb",
+    "hash": "88d7ec16439fb7030e0cf21936d5f2cd",
+    "index_name": "tissue_88d7ec16",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -562,6 +562,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "doi": {
+                                "type": "keyword"
+                            },
                             "donors": {
                                 "type": "keyword"
                             },
@@ -1057,6 +1060,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {

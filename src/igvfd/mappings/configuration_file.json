@@ -1,6 +1,6 @@
 {
-    "hash": "575452cc1145b1d75f522a827f8d8cf7",
-    "index_name": "configuration_file_575452cc",
+    "hash": "95ba7af43f41bb02dbe879c9253a08df",
+    "index_name": "configuration_file_95ba7af4",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -683,6 +683,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
@@ -2029,6 +2032,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {

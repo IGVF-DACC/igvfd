@@ -1,6 +1,6 @@
 {
-    "hash": "234b5cec16ef6e42dcbcda81f665d246",
-    "index_name": "index_file_234b5cec",
+    "hash": "258802c15fc32231575419f2b4f3bac7",
+    "index_name": "index_file_258802c1",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -691,6 +691,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
@@ -2041,6 +2044,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
