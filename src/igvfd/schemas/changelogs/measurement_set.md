@@ -3,7 +3,7 @@
 ### Minor changes since schema version 40
 
 * Add `doi`.
-* Add calculated property `is_on_anvil`. 
+* Add calculated property `is_on_anvil`.
 * Extend `preferred_assay_titles` enum list to include `MAVE`.
 * Add `related_measurement_sets`.
 * Remove `related_multiome_datasets`.
@@ -347,7 +347,7 @@
 
 ### Schema version 4
 
-* Restrict `protocols` from linking to "https://www.protocols.io/".
+* Restrict `protocols` from linking to "<https://www.protocols.io/>".
 
 ### Minor changes since schema version 3
 
