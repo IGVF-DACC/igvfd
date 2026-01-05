@@ -1266,5 +1266,24 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "igvf:model_set_SEMpl",
         "controlled_access": false
+    },
+    {
+        "uuid": "dfadfbbf-046d-4c03-b5ae-85ca70cb246b",
+        "accession": "IGVFFI1234EXLS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:exclusion_list"
+        ],
+        "md5sum": "5a593f46bf75ebde3f0efec9889caa3c",
+        "file_format": "tsv",
+        "content_type": "exclusion list regions",
+        "submitted_file_name": "/Users/igvf/igvf_files/exclusion_list_regions.tsv.gz",
+        "file_size": 200,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "controlled_access": false
     }
 ]
