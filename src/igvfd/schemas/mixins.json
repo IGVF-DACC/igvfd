@@ -1077,10 +1077,10 @@
             "title": "DOI",
             "description": "The Digital Object Identifier (DOI) associated with this object.",
             "type": "string",
-            "pattern": "^(10\\.\\d{4,9}/IGVFDS\\d{4}[A-Z]{4})$",
+            "pattern": "^(10.65695/IGVFDS\\d{4}[A-Z]{4})$",
             "submissionExample": {
-                "appscript": "10.1038/s41586-020-03134-3",
-                "igvf_utils": "10.1038/s41586-020-03134-3"
+                "appscript": "10.65695/IGVFDS5743OUYJ",
+                "igvf_utils": "10.65695/IGVFDS5743OUYJ"
             }
         }
     }
