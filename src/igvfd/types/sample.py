@@ -855,7 +855,7 @@ class TechnicalSample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, sample_material, virtual=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None):
+    def summary(self, request, sample_terms, sample_material, virtual=None, construct_library_sets=None, treatments=None, moi=None, nucleic_acid_delivery=None):
         if len(sample_terms) > 1:
             summary_terms = 'mixed'
         else:
@@ -866,7 +866,43 @@ class TechnicalSample(Sample):
 
         if virtual:
             summary_terms = f'virtual {summary_terms}'
+        if treatments:
+            treatment_objects = [request.embed(treatment) for treatment in treatments]
 
+            depleted_treatment_summaries = sorted([
+                treatment.get('summary')[13:]
+                for treatment in treatment_objects
+                if treatment.get('depletion')
+            ])
+            if depleted_treatment_summaries:
+                summary_terms += f' depleted of {", ".join(depleted_treatment_summaries)},'
+
+            purpose_to_verb = {
+                'activation': 'activated',
+                'acute activation': 'acutely activated',
+                'chronic activation': 'chronically activated',
+                'agonist': 'agonized',
+                'antagonist': 'antagonized',
+                'control': 'treated with a control',
+                'differentiation': 'differentiated',
+                'de-differentiation': 'de-differentiated',
+                'perturbation': 'perturbed',
+                'selection': 'selected',
+                'stimulation': 'stimulated'
+            }
+            purpose_to_summaries = {}
+            for treatment in treatment_objects:
+                if not (treatment.get('depletion')):
+                    purpose = treatment['purpose']
+                    if purpose not in purpose_to_summaries:
+                        purpose_to_summaries[purpose] = []
+                    purpose_to_summaries[purpose].append(treatment['summary'][13:])
+
+            for purpose in sorted(purpose_to_summaries):
+                verb = purpose_to_verb.get(purpose, 'treated with')
+                unique_summaries = sorted(set(purpose_to_summaries[purpose]))
+                perturbation_summaries = ', '.join(unique_summaries)
+                summary_terms += f' {verb} with {perturbation_summaries},'
         if construct_library_sets:
             verb = 'transfected with'
             library_summaries = set()
