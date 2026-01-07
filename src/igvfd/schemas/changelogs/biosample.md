@@ -1,5 +1,6 @@
 ## Changelog for *`biosample.json`*
 
+* Extend `nucleic_acid_delivery` enum list to include `transformation`. (01/14/2026)
 * Add calculated property `superseded_by`. (10/15/2025)
 * Add `supersedes`. (10/15/2025)
 * Add `preview_timestamp`. (05/06/2025)
