@@ -578,9 +578,6 @@
                                     "const": "alleles"
                                 },
                                 {
-                                    "const": "alleles"
-                                },
-                                {
                                     "const": "interactors"
                                 }
                             ]
