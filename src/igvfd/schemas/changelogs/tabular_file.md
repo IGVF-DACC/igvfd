@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 18
 
+* Extend `content_type` enum list to include `co-localization scores`.
+* Extend `content_type` enum list to include `per cell type enrichment scores`.
 * Extend `content_type` enum list to include `exclusion list regions`.
 * Extend `content_type` enum list to include `protein-protein interaction edge-perturbation score`.
 * Extend `content_type` enum list to include `protein-protein interaction edgotyping score`.
