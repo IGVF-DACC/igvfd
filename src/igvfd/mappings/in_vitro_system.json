@@ -1,6 +1,6 @@
 {
-    "hash": "aa7db6e7609bfdafacff347d1c33ceef",
-    "index_name": "in_vitro_system_aa7db6e7",
+    "hash": "ddf3d30279d8435c98f99f641e8b9f82",
+    "index_name": "in_vitro_system_ddf3d302",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -566,6 +566,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "doi": {
+                                "type": "keyword"
+                            },
                             "donors": {
                                 "type": "keyword"
                             },
@@ -1067,6 +1070,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {

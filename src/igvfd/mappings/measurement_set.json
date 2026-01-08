@@ -1,6 +1,6 @@
 {
-    "hash": "32c01d30bf6151d4f84f5d85f8f95126",
-    "index_name": "measurement_set_32c01d30",
+    "hash": "88b82e8b198b868034d3052afe4d6e2a",
+    "index_name": "measurement_set_88b82e8b",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -305,6 +305,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
@@ -687,6 +690,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
@@ -1354,6 +1360,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "doi": {
+                                "type": "keyword"
+                            },
                             "donors": {
                                 "type": "keyword"
                             },
@@ -1708,6 +1717,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "doi": {
+                                "type": "keyword"
+                            },
                             "donors": {
                                 "type": "keyword"
                             },
@@ -1993,6 +2005,9 @@
                         "type": "text"
                     },
                     "documents": {
+                        "type": "keyword"
+                    },
+                    "doi": {
                         "type": "keyword"
                     },
                     "donors": {
@@ -2879,6 +2894,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "doi": {
+                                "type": "keyword"
+                            },
                             "donors": {
                                 "type": "keyword"
                             },
@@ -3440,6 +3458,9 @@
                                         "type": "text"
                                     },
                                     "documents": {
+                                        "type": "keyword"
+                                    },
+                                    "doi": {
                                         "type": "keyword"
                                     },
                                     "donors": {

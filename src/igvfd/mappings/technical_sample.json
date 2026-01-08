@@ -1,6 +1,6 @@
 {
-    "hash": "bde25d244afe2a063ed2a16a541fdb98",
-    "index_name": "technical_sample_bde25d24",
+    "hash": "15c6d2fc2c4fb0ea4b05d5da79ab583a",
+    "index_name": "technical_sample_15c6d2fc",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -374,6 +374,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "doi": {
+                                "type": "keyword"
+                            },
                             "donors": {
                                 "type": "keyword"
                             },
@@ -644,6 +647,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {

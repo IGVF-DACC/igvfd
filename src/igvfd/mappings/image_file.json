@@ -1,6 +1,6 @@
 {
-    "hash": "12974c9a54a697c0ff81c2d9b8189922",
-    "index_name": "image_file_12974c9a",
+    "hash": "6c1cf42f4ce760f8972da39edc2aad68",
+    "index_name": "image_file_6c1cf42f",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -683,6 +683,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
@@ -2029,6 +2032,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {

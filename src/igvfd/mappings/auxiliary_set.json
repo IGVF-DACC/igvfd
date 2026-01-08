@@ -1,6 +1,6 @@
 {
-    "hash": "5086e6ebc85edcae4f2609b4537b23b7",
-    "index_name": "auxiliary_set_5086e6eb",
+    "hash": "802c0fc47b9ee4f50a3da42a3e76cf5a",
+    "index_name": "auxiliary_set_802c0fc4",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -465,6 +465,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
@@ -1132,6 +1135,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "doi": {
+                                "type": "keyword"
+                            },
                             "donors": {
                                 "type": "keyword"
                             },
@@ -1414,6 +1420,9 @@
                         "type": "text"
                     },
                     "documents": {
+                        "type": "keyword"
+                    },
+                    "doi": {
                         "type": "keyword"
                     },
                     "donors": {
@@ -2216,6 +2225,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "doi": {
+                                "type": "keyword"
+                            },
                             "donors": {
                                 "type": "keyword"
                             },
@@ -2609,6 +2621,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {

@@ -1,6 +1,6 @@
 {
-    "hash": "c643c7764edd58fc9d05bba36ee6a426",
-    "index_name": "reference_file_c643c776",
+    "hash": "9f7726284ead6b92b05b82b6a930e612",
+    "index_name": "reference_file_9f772628",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -704,6 +704,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
@@ -2050,6 +2053,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {

@@ -1,6 +1,6 @@
 {
-    "hash": "76512e53f1ff8a8e54a88baedc780e72",
-    "index_name": "prediction_set_76512e53",
+    "hash": "c207df180fc07975a3484d8748ccc30e",
+    "index_name": "prediction_set_c207df18",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -638,6 +638,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
@@ -1305,6 +1308,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "doi": {
+                                "type": "keyword"
+                            },
                             "donors": {
                                 "type": "keyword"
                             },
@@ -1587,6 +1593,9 @@
                         "type": "text"
                     },
                     "documents": {
+                        "type": "keyword"
+                    },
+                    "doi": {
                         "type": "keyword"
                     },
                     "donors": {
@@ -3068,6 +3077,9 @@
                                         "type": "text"
                                     },
                                     "documents": {
+                                        "type": "keyword"
+                                    },
+                                    "doi": {
                                         "type": "keyword"
                                     },
                                     "donors": {

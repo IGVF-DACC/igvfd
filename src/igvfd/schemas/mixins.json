@@ -1071,5 +1071,18 @@
             "description": "DACC notes for data loading in the IGVF catalog",
             "comment": "Do not submit. This is set by admins for data loading in the IGVF catalog"
         }
+    },
+    "doi": {
+        "doi": {
+            "title": "DOI",
+            "description": "The Digital Object Identifier (DOI) associated with this object.",
+            "type": "string",
+            "pattern": "^(10.65695/IGVFDS\\d{4}[A-Z]{4})$",
+            "permission": "admin_only",
+            "submissionExample": {
+                "appscript": "10.65695/IGVFDS5743OUYJ",
+                "igvf_utils": "10.65695/IGVFDS5743OUYJ"
+            }
+        }
     }
 }

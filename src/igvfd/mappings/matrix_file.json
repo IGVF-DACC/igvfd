@@ -1,6 +1,6 @@
 {
-    "hash": "f91278e4eb73dd5492cd6e8283136a8c",
-    "index_name": "matrix_file_f91278e4",
+    "hash": "f8cfcd6814dfa7e7a99fb4d444f2738d",
+    "index_name": "matrix_file_f8cfcd68",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -689,6 +689,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
@@ -2039,6 +2042,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {

@@ -1,6 +1,6 @@
 {
-    "hash": "fbbe36714983c9c928e58076ef251f4d",
-    "index_name": "curated_set_fbbe3671",
+    "hash": "66259e453f941d3da8eeab0789b4b65e",
+    "index_name": "curated_set_66259e45",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -463,6 +463,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
@@ -1128,6 +1131,9 @@
                                 "type": "text"
                             },
                             "documents": {
+                                "type": "keyword"
+                            },
+                            "doi": {
                                 "type": "keyword"
                             },
                             "donors": {
