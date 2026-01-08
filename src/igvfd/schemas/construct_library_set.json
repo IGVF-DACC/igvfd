@@ -222,6 +222,9 @@
                                             },
                                             {
                                                 "const": "alleles"
+                                            },
+                                            {
+                                                "const": "interactors"
                                             }
                                         ]
                                     }
@@ -441,6 +444,19 @@
                 },
                 {
                     "required": [
+                        "orf_list",
+                        "large_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "interactors"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
                         "small_scale_gene_list"
                     ],
                     "properties": {
@@ -560,6 +576,12 @@
                                 },
                                 {
                                     "const": "alleles"
+                                },
+                                {
+                                    "const": "alleles"
+                                },
+                                {
+                                    "const": "interactors"
                                 }
                             ]
                         }
@@ -570,8 +592,7 @@
                         "required": [
                             "small_scale_gene_list",
                             "exon",
-                            "tile",
-                            "orf_list"
+                            "tile"
                         ]
                     }
                 }
@@ -643,9 +664,18 @@
             }
         },
         "orf_list": {
-            "comment": "Specification of orf_list requires small_scale_gene_list and that scope is interactors.",
-            "required": [
-                "small_scale_gene_list"
+            "comment": "Specification of orf_list requires small_scale_gene_list or large_scale_gene_list that scope is interactors.",
+            "oneOf": [
+                {
+                    "required": [
+                        "small_scale_gene_list"
+                    ]
+                },
+                {
+                    "required": [
+                        "large_scale_gene_list"
+                    ]
+                }
             ],
             "properties": {
                 "scope": {
