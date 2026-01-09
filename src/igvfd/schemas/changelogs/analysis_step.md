@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 9
 
+* Extend `input_content_types` enum list to include `exclusion list regions`.
+* Extend `output_content_types` enum list to include `exclusion list regions`.
 * Extend `input_content_types` enum list to include `protein-protein interaction edge-perturbation score`.
 * Extend `input_content_types` enum list to include `protein-protein interaction edgotyping score`.
 * Extend `output_content_types` enum list to include `protein-protein interaction edge-perturbation score`.
