@@ -304,7 +304,7 @@
                 "pathogenicity validation": "A file containing statistical estimates of the odds ratio for condition occurrence based on variant classifications",
                 "peaks": "Detected genomic regions of relative enrichment in coverage data, such as peaks in ChIP-seq or ATAC-seq indicating protein binding sites or chromatin accessibility.",
                 "peak quantifications": "The quantified levels of peaks detected in ChIP-seq or ATAC-seq assays.",
-                "per cell type enrichment scores": "Enrichment of scJLIM eQTL-GWAS co-localization signals in different cell subtypes",
+                "per cell type enrichment scores": "Enrichment of eQTL-GWAS co-localization signals in different cell subtypes",
                 "pipeline parameters": "The input files used in a computational pipeline.",
                 "plus strand modification state": "A file with the bases on the plus strand where a DNA or RNA modification was detected.",
                 "prime editing guide RNA sequences": "The sequences of guide RNAs designed for prime editing CRISPR experiments. Formatting should follow https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/table_schemas/prime_editing_guide_rna_sequences.json.",
