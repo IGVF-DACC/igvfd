@@ -1844,7 +1844,7 @@ class ConstructLibrarySet(FileSet):
 
     rev = FileSet.rev | {'samples': ('Sample', 'construct_library_sets')}
 
-    set_status_up = FileSet.set_status_up + ['integrated_content_files']
+    set_status_up = FileSet.set_status_up.remove('samples') + ['integrated_content_files']
     set_status_down = FileSet.set_status_down + []
 
     @calculated_property(schema={
