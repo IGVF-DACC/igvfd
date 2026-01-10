@@ -922,7 +922,7 @@ class TechnicalSample(Sample):
                 summary_terms = f'{summary_terms} {verb} multiple libraries'
         if moi:
             summary_terms = f'{summary_terms} (MOI of {moi})'
-        return summary_terms
+        return summary_terms.strip(',')
 
     @calculated_property(
         schema={
