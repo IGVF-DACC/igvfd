@@ -53,5 +53,5 @@ def test_curated_set_upgrade_7_8(upgrader, curated_set_v7):
 
 def test_curated_set_upgrade_8_9(upgrader, curated_set_v8):
     value = upgrader.upgrade('curated_set', curated_set_v8, current_version='8', target_version='9')
-    assert value['schema_version'] == '8'
+    assert value['schema_version'] == '9'
     assert value['file_set_type'] == 'enrichment designs'

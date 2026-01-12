@@ -735,7 +735,7 @@ def measurement_set_39_40(value, system):
 def measurement_set_40_41(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3207
     if 'primer_designs' in value:
-        value['enrichment_designs'] = [(value['primer_designs'])]
+        value['enrichment_designs'] = value['primer_designs']
         del value['primer_designs']
 
 

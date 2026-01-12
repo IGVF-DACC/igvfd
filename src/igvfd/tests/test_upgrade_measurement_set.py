@@ -280,7 +280,7 @@ def test_measurement_set_upgrade_39_40(upgrader, measurement_set_v39_1, measurem
 
 
 def test_measurement_set_upgrade_40_41(upgrader, measurement_set_v40):
-    primer_designs = measurement_set_v40['primer_deisgns']
+    primer_designs = measurement_set_v40['primer_designs']
     value = upgrader.upgrade('measurement_set', measurement_set_v40, current_version='40', target_version='41')
     assert 'primer_designs' not in value
     assert 'enrichment_designs' in value and value['enrichment_designs'] == primer_designs

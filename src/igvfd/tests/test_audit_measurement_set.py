@@ -1741,7 +1741,7 @@ def test_audit_missing_enrichment_designs(
 ):
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'missing primer designs'
+        error['category'] != 'missing enrichment designs'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
@@ -1750,7 +1750,7 @@ def test_audit_missing_enrichment_designs(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'missing primer designs'
+        error['category'] == 'missing enrichment designs'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
@@ -1759,7 +1759,7 @@ def test_audit_missing_enrichment_designs(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'missing primer designs'
+        error['category'] != 'missing enrichment designs'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
