@@ -569,6 +569,9 @@
                             "donors": {
                                 "type": "keyword"
                             },
+                            "enrichment_designs": {
+                                "type": "keyword"
+                            },
                             "exon": {
                                 "type": "keyword"
                             },
@@ -694,6 +697,9 @@
                                     "documents": {
                                         "type": "keyword"
                                     },
+                                    "enrichment_design_for": {
+                                        "type": "keyword"
+                                    },
                                     "external_host_url": {
                                         "type": "keyword"
                                     },
@@ -750,9 +756,6 @@
                                     },
                                     "preview_timestamp": {
                                         "type": "date"
-                                    },
-                                    "primer_design_for": {
-                                        "type": "keyword"
                                     },
                                     "quality_metrics": {
                                         "type": "keyword"
@@ -883,9 +886,6 @@
                             },
                             "preview_timestamp": {
                                 "type": "date"
-                            },
-                            "primer_designs": {
-                                "type": "keyword"
                             },
                             "product_id": {
                                 "type": "keyword"
@@ -1233,6 +1233,9 @@
                             "donors": {
                                 "type": "keyword"
                             },
+                            "enrichment_designs": {
+                                "type": "keyword"
+                            },
                             "exon": {
                                 "type": "keyword"
                             },
@@ -1335,9 +1338,6 @@
                             },
                             "preview_timestamp": {
                                 "type": "date"
-                            },
-                            "primer_designs": {
-                                "type": "keyword"
                             },
                             "product_id": {
                                 "type": "keyword"
@@ -1847,6 +1847,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "enrichment_design_for": {
+                                "type": "keyword"
+                            },
                             "external_host_url": {
                                 "type": "keyword"
                             },
@@ -1932,9 +1935,6 @@
                             },
                             "preview_timestamp": {
                                 "type": "date"
-                            },
-                            "primer_design_for": {
-                                "type": "keyword"
                             },
                             "principal_dimension": {
                                 "type": "keyword"
@@ -2324,6 +2324,9 @@
                             "donors": {
                                 "type": "keyword"
                             },
+                            "enrichment_designs": {
+                                "type": "keyword"
+                            },
                             "exon": {
                                 "type": "keyword"
                             },
@@ -2426,9 +2429,6 @@
                             },
                             "preview_timestamp": {
                                 "type": "date"
-                            },
-                            "primer_designs": {
-                                "type": "keyword"
                             },
                             "product_id": {
                                 "type": "keyword"

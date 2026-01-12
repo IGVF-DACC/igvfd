@@ -547,11 +547,11 @@ def test_targeted_genes(testapp, measurement_set, analysis_set_base, gene_myc_hs
     assert set([gene['@id'] for gene in res.json.get('targeted_genes')]) == {gene_myc_hs['@id']}
 
 
-def test_primer_designs(testapp, measurement_set, analysis_set_base, tabular_file):
+def test_enrichment_designs(testapp, measurement_set, analysis_set_base, tabular_file):
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'primer_designs': [tabular_file['@id']]
+            'enrichment_designs': [tabular_file['@id']]
         }
     )
     testapp.patch_json(
@@ -561,4 +561,4 @@ def test_primer_designs(testapp, measurement_set, analysis_set_base, tabular_fil
         }
     )
     res = testapp.get(analysis_set_base['@id'])
-    assert set(res.json.get('primer_designs')) == {tabular_file['@id']}
+    assert set(res.json.get('enrichment_designs')) == {tabular_file['@id']}

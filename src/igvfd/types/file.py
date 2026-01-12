@@ -1224,20 +1224,20 @@ class TabularFile(File):
         return paths_filtered_by_status(request, barcode_map_for) or None
 
     @calculated_property(schema={
-        'title': 'Primer Design For',
-        'description': 'Link(s) to the MeasurementSets using this file as a primer design.',
+        'title': 'Enrichment Design For',
+        'description': 'Link(s) to the measurement sets using this file as a enrichment design.',
         'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
-            'title': 'Primer Design For',
+            'title': 'Enrichment Design For',
             'type': 'string',
-            'linkFrom': 'MeasurementSet.primer_designs',
+            'linkFrom': 'MeasurementSet.enrichment_designs',
         },
         'notSubmittable': True
     })
-    def primer_design_for(self, request, primer_design_for):
-        return paths_filtered_by_status(request, primer_design_for) or None
+    def enrichment_design_for(self, request, enrichment_design_for):
+        return paths_filtered_by_status(request, enrichment_design_for) or None
 
 
 @collection(

@@ -583,7 +583,7 @@ PHASE1_PIPELINES = {
         remove_keys('derived_from', 'file_format_specifications'),
     ],
     'measurement_set': [
-        remove_keys('auxiliary_sets', 'control_file_sets', 'onlist_files', 'onlist_method', 'primer_designs'),
+        remove_keys('auxiliary_sets', 'control_file_sets', 'onlist_files', 'onlist_method', 'enrichment_designs'),
     ]
 }
 
@@ -651,7 +651,7 @@ PHASE2_PIPELINES = {
     ],
     'measurement_set': [
         skip_rows_missing_all_keys('auxiliary_sets', 'control_file_sets',
-                                   'onlist_files', 'onlist_method', 'primer_designs'),
+                                   'onlist_files', 'onlist_method', 'enrichment_designs'),
     ],
     'auxiliary_set': [
         skip_rows_missing_all_keys('measurement_sets'),

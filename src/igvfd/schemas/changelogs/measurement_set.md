@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 41
+
+* Rename `primer_designs` to `enrichment_designs`.
+
 ### Minor changes since schema version 40
 
 * Add `doi`.

@@ -819,22 +819,22 @@ def audit_missing_external_image_url(value, system):
         )
 
 
-def audit_missing_primer_designs(value, system):
+def audit_missing_enrichment_designs(value, system):
     '''
     [
         {
-            "audit_description": "TAP-seq measurement sets are expected to link to primer designs.",
-            "audit_category": "missing primer designs",
+            "audit_description": "TAP-seq measurement sets are expected to link to enrichment designs.",
+            "audit_category": "missing enrichment designs",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
     preferred_assay_titles = value.get('preferred_assay_titles', [])
-    audit_message = get_audit_message(audit_missing_primer_designs, index=0)
-    if 'TAP-seq' in preferred_assay_titles and not value.get('primer_designs', ''):
+    audit_message = get_audit_message(audit_missing_enrichment_designs, index=0)
+    if 'TAP-seq' in preferred_assay_titles and not value.get('enrichment_designs', ''):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'is missing `primer_designs`.'
+            f'is missing `enrichment_designs`.'
         )
         yield AuditFailure(
             audit_message.get('audit_category', ''),
@@ -893,7 +893,7 @@ function_dispatcher_measurement_set_object = {
     'audit_missing_barcode_replacement_file': audit_missing_barcode_replacement_file,
     'audit_inconsistent_barcode_replacement_file': audit_inconsistent_barcode_replacement_file,
     'audit_missing_external_image_url': audit_missing_external_image_url,
-    'audit_missing_primer_designs': audit_missing_primer_designs,
+    'audit_missing_enrichment_designs': audit_missing_enrichment_designs,
     'audit_missing_library_preparation_kit': audit_missing_library_preparation_kit
 }
 

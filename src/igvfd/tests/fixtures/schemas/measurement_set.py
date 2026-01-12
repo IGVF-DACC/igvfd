@@ -596,3 +596,13 @@ def measurement_set_v39_3(measurement_set):
         'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v40(measurement_set, tabular_file):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '40',
+        'primer_designs': [tabular_file['@id']]
+    })
+    return item

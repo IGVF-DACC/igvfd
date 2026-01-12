@@ -519,6 +519,9 @@
                     "documents": {
                         "type": "keyword"
                     },
+                    "enrichment_design_for": {
+                        "type": "keyword"
+                    },
                     "file_format": {
                         "copy_to": "_exact",
                         "type": "keyword"
@@ -939,6 +942,9 @@
                                 },
                                 "type": "object"
                             },
+                            "enrichment_designs": {
+                                "type": "keyword"
+                            },
                             "exon": {
                                 "type": "keyword"
                             },
@@ -1097,9 +1103,6 @@
                             },
                             "preview_timestamp": {
                                 "type": "date"
-                            },
-                            "primer_designs": {
-                                "type": "keyword"
                             },
                             "product_id": {
                                 "type": "keyword"
@@ -2839,9 +2842,6 @@
                     },
                     "preview_timestamp": {
                         "type": "date"
-                    },
-                    "primer_design_for": {
-                        "type": "keyword"
                     },
                     "quality_metrics": {
                         "type": "keyword"

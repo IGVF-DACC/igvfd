@@ -277,3 +277,11 @@ def test_measurement_set_upgrade_39_40(upgrader, measurement_set_v39_1, measurem
     assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
                                       'https://www.protocols.io/view/678/ABC']
     assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
+
+
+def test_measurement_set_upgrade_40_41(upgrader, measurement_set_v40):
+    primer_designs = measurement_set_v40['primer_deisgns']
+    value = upgrader.upgrade('measurement_set', measurement_set_v40, current_version='40', target_version='41')
+    assert 'primer_designs' not in value
+    assert 'enrichment_designs' in value and value['enrichment_designs'] == primer_designs
+    assert value['schema_version'] == '41'
