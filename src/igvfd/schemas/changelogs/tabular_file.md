@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 18
 
+* Extend `content_type` enum list to include `probes track`.
 * Rename calculated property `primer_design_for` to `enrichment_design_for`.
 * Extend `content_type` enum list to include `co-localization scores`.
 * Extend `content_type` enum list to include `per cell type enrichment scores`.

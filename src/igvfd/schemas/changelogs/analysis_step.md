@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 9
 
+* Extend `input_content_types` enum list to include `probes track`.
+* Extend `output_content_types` enum list to include `probes track`.
 * Extend `input_content_types` enum list to include `co-localization scores`.
 * Extend `input_content_types` enum list to include `per cell type enrichment scores`.
 * Extend `output_content_types` enum list to include `co-localization scores`.

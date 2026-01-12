@@ -737,3 +737,10 @@ def measurement_set_40_41(value, system):
     if 'primer_designs' in value:
         value['enrichment_designs'] = [(value['primer_designs'])]
         del value['primer_designs']
+
+
+@upgrade_step('curated_set', '8', '9')
+def curated_set_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3207
+    if value['file_set_type'] == 'primer design':
+        value['file_set_type'] = 'enrichment designs'

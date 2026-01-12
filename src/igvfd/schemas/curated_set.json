@@ -56,7 +56,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "8"
+            "default": "9"
         },
         "file_set_type": {
             "description": "The category that best describes this curated file set.",
@@ -71,7 +71,7 @@
                 "genes",
                 "guide RNAs",
                 "pipeline parameters",
-                "primer design",
+                "enrichment designs",
                 "QTL",
                 "training data for predictive models",
                 "transcriptome",
@@ -87,7 +87,7 @@
                 "genes": "List(s) of genes.",
                 "guide RNAs": "List(s) of guide RNAs used in CRISPR assays.",
                 "pipeline parameters": "For hosting files describing pipeline parameters for use in an analysis.",
-                "primer design": "For hosting files describing the design of primers.",
+                "enrichment designs": "For hosting files describing the assay-specific enrichment strategy that defines which regions are preferentially sequenced.",
                 "QTL": "For hosting files containing QTL (quantitative trait loci) data files.",
                 "training data for predictive models": "For hosting files describing the training data of predictive models,",
                 "transcriptome": "For hosting transcriptome reference files.",
