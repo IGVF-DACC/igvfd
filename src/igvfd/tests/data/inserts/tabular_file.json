@@ -1285,5 +1285,43 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "j-michael-cherry:barcodes_curated_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "291d6461-c610-4241-9dfa-5612c9c6bd90",
+        "accession": "IGVFFI0005DIFH",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:co_localization_scores"
+        ],
+        "md5sum": "a96398e16a55f38695d5adb23e791777",
+        "file_format": "tsv",
+        "content_type": "co-localization scores",
+        "submitted_file_name": "/Users/igvf/igvf_files/co-localization_scores.tsv.gz",
+        "file_size": 101,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "igvf:prediction_set_5",
+        "controlled_access": false
+    },
+    {
+        "uuid": "c1fc3c09-4aa2-4c14-a05c-154492ed73c9",
+        "accession": "IGVFFI0006DIFH",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:per_cell_type_enrichment_scores"
+        ],
+        "md5sum": "084a704482b1df7313a011ec8bb390eb",
+        "file_format": "tsv",
+        "content_type": "per cell type enrichment scores",
+        "submitted_file_name": "/Users/igvf/igvf_files/per_cell_type_enrichment_scores.tsv.gz",
+        "file_size": 101,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "igvf:prediction_set_5",
+        "controlled_access": false
     }
 ]
