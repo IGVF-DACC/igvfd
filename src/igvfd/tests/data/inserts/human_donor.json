@@ -187,22 +187,5 @@
         "supersedes": [
             "IGVFDO5323HUES"
         ]
-    },
-    {
-        "uuid": "fae83e64-472d-40b8-b7de-d2dcce65f731",
-        "accession": "IGVFDO9920ANVL",
-        "lab": "j-michael-cherry",
-        "award": "HG012012",
-        "sex": "male",
-        "taxa": "Homo sapiens",
-        "aliases": [
-            "igvf:donor_on_AnVIL"
-        ],
-        "ethnicities": [
-            "Hadza",
-            "Sandawe"
-        ],
-        "virtual": false,
-        "is_on_anvil": true
     }
 ]

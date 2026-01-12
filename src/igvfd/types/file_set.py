@@ -98,13 +98,6 @@ def get_cls_phrase(cls_set, only_cls_input=False):
     return cls_phrase
 
 
-def check_is_on_anvil(file_ids: list, request) -> bool:
-    """Check if a File Set has been submitted to AnVIL by checking its linked files for an AnVIL URL.
-    """
-    linked_file_objs = [request.embed(file_id, '@@object?skip_calculated=true') for file_id in file_ids]
-    return any([file_obj.get('anvil_url', False) for file_obj in linked_file_objs])
-
-
 EMBEDDED_FILE_FIELDS = [
     '@id',
     'accession',
@@ -433,18 +426,6 @@ class FileSet(Item):
                 return True
             else:
                 return False
-
-    @calculated_property(
-        define=True,
-        schema={
-            'title': 'Is On AnVIL',
-            'description': 'Indicates whether this file set has been submitted to AnVIL.',
-            'type': 'boolean',
-            'notSubmittable': True
-        }
-    )
-    def is_on_anvil(self, request, files=None):
-        return check_is_on_anvil(files or [], request)
 
 
 @collection(

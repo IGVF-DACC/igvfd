@@ -170,20 +170,6 @@ def measurement_set_with_functional_assay_mechanisms(testapp, lab, award, assay_
 
 
 @pytest.fixture
-def measurement_set_with_no_file(testapp, lab, award, assay_term_starr, tissue):
-    item = {
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'assay_term': assay_term_starr['@id'],
-        'samples': [tissue['@id']],
-        'file_set_type': 'experimental data',
-        'protocols': ['https://www.protocols.io/private/test-protocols-url-12345'],
-        'preferred_assay_titles': ['10x multiome']
-    }
-    return testapp.post_json('/measurement_set', item).json['@graph'][0]
-
-
-@pytest.fixture
 def measurement_set_v1(measurement_set, in_vitro_cell_line, human_donor):
     item = measurement_set.copy()
     item.update({
