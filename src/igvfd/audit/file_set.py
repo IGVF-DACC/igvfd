@@ -993,6 +993,15 @@ def audit_input_file_sets_derived_from(value, system):
         }
     ]
     '''
+    excluded_assay_titles = {
+        'Variant painting via fluorescence',
+        'Cell painting',
+        'Variant painting via immunostaining'
+    }
+    preferred_assay_titles = set(value.get('preferred_assay_titles', []))
+    if preferred_assay_titles & excluded_assay_titles:
+        return
+
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_missing_input_file_set = get_audit_message(audit_input_file_sets_derived_from, index=0)
     audit_message_missing_derived_from_analysis = get_audit_message(audit_input_file_sets_derived_from, index=1)
