@@ -616,7 +616,9 @@ def audit_missing_strand_specificity(value, system):
     audit_msg_no_strand_specificity = get_audit_message(audit_missing_strand_specificity, index=0)
     strand_specificity = value.get('strand_specificity', None)
     assay_term = value.get('assay_term')    # Assay term should always be present in MeasurementSet
-    if not (strand_specificity):
+    sequence_files = [file for file in value.get('files', []) if file.startswith('/sequence-files/')]
+    # Only measurement sets with sequence files should be audited -- spatial transcriptomics assays do not submit sequence files
+    if sequence_files and not (strand_specificity):
         # Audit 1: Flag if gene expression assays are missing strand specificity
         if assay_term in TRANSCRIPT_ASSAY_TERMS:
             detail = (
