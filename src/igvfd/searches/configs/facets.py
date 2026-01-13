@@ -24,10 +24,12 @@ def subfacets():
                     {
                         'field': 'lab.title',
                         'title': 'Lab title',
+                        'description': 'The title of the lab',
                     },
                     {
                         'field': 'status',
                         'title': 'Status',
+                        'description': 'The status of the item',
                     },
                 ]
             },
