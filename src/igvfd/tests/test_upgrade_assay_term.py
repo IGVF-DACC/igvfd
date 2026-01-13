@@ -135,3 +135,18 @@ def test_assay_term_upgrade_18_19(upgrader, assay_term_v18, assay_term_v18_2, as
     value = upgrader.upgrade('assay_term', assay_term_v18_3, current_version='18', target_version='19')
     assert value['schema_version'] == '19'
     assert value.get('preferred_assay_titles') == ['Parse Perturb-seq', '10x snATAC-seq with Scale pre-indexing']
+
+
+def test_assay_term_upgrade_19_20(upgrader, assay_term_v19):
+    value = upgrader.upgrade('assay_term', assay_term_v19, current_version='19', target_version='20')
+    expectation = sorted([
+        'Arrayed semi-qY2H v1',
+        'Arrayed semi-qY2H v2',
+        'Arrayed semi-qY2H v3',
+        'Pooled Y2H',
+        'Arrayed mN2H'
+    ])
+
+    assert value['schema_version'] == '20'
+    assert sorted(value['preferred_assay_titles']) == expectation
+    assert value.get('notes') == 'This assay_term previously used Arrayed Y2H v1, Arrayed Y2H v2, Arrayed Y2H v3, Pooled Y2H v1, Pooled Y2H v2, Pooled Y2H v3 in preferred_assay_titles, but they have been updated to Arrayed semi-qY2H v1, Arrayed semi-qY2H v2, Arrayed semi-qY2H v3, Pooled Y2H via an upgrade.'

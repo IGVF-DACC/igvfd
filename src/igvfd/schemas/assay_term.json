@@ -42,7 +42,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "19"
+            "default": "20"
         },
         "term_id": {
             "@type": "@id",

@@ -325,3 +325,13 @@ def assay_term_v18_3(assay_term_crispr):
         'preferred_assay_titles': ['Parse Perturb-seq', '10x with Scale pre-indexing']
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v19(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '19',
+        'preferred_assay_titles': ['Arrayed mN2H', 'Arrayed Y2H v1', 'Arrayed Y2H v2', 'Arrayed Y2H v3', 'Pooled Y2H v1', 'Pooled Y2H v2', 'Pooled Y2H v3', 'Arrayed semi-qY2H v1']
+    })
+    return item

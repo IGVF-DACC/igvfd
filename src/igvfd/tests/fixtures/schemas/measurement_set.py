@@ -606,3 +606,22 @@ def measurement_set_v40(measurement_set, tabular_file):
         'primer_designs': [tabular_file['@id']]
     })
     return item
+
+
+def measurement_set_v40_2(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '40',
+        'preferred_assay_titles': ['Arrayed Y2H v1'],
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v40_3(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '40',
+        'preferred_assay_titles': ['Pooled Y2H v1'],
+    })
+    return item
