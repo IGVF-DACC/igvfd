@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 18
 
+* Extend `content_type` enum list to include `calibrated coding variant effect thresholds`.
+* Extend `content_type` enum list to include `aggregated calibrated coding variant effects`.
 * Extend `content_type` enum list to include `heritability enrichment`.
 * Extend `content_type` enum list to include `probes track`.
 * Rename calculated property `primer_design_for` to `enrichment_design_for`.
