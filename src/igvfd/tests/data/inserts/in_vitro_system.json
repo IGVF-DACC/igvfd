@@ -197,7 +197,8 @@
         "cellular_sub_pool": "SS-PKR_1",
         "sorted_from": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/",
         "sorted_from_detail": "test insert description",
-        "virtual": false
+        "virtual": false,
+        "nucleic_acid_delivery": "transformation"
     },
     {
         "uuid": "577fbe38-b700-20af-624c-02429a9da2cf",
