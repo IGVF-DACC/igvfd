@@ -3,7 +3,6 @@
 ### Minor changes since schema version 10
 
 * Add `doi`.
-* Add calculated property `is_on_anvil`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.
 * Update `dbxrefs` regex to allow MaveDB score set URNs.

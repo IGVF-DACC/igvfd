@@ -3,7 +3,6 @@
 ### Minor changes since schema version 40
 
 * Add `doi`.
-* Add calculated property `is_on_anvil`.
 * Extend `preferred_assay_titles` enum list to include `MAVE`.
 * Add `related_measurement_sets`.
 * Remove `related_multiome_datasets`.

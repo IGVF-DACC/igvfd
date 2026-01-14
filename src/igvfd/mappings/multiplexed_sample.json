@@ -1,6 +1,6 @@
 {
-    "hash": "98b46a54003c07f5daf65024c76e8f72",
-    "index_name": "multiplexed_sample_98b46a54",
+    "hash": "4ea3de86bf64ddaea31fd1fb086339dc",
+    "index_name": "multiplexed_sample_4ea3de86",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -580,10 +580,6 @@
                             "integrated_content_files": {
                                 "type": "keyword"
                             },
-                            "is_on_anvil": {
-                                "store": true,
-                                "type": "boolean"
-                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -865,10 +861,6 @@
                                 "store": true,
                                 "type": "boolean"
                             },
-                            "is_on_anvil": {
-                                "store": true,
-                                "type": "boolean"
-                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -1094,10 +1086,6 @@
                             },
                             "integrated_content_files": {
                                 "type": "keyword"
-                            },
-                            "is_on_anvil": {
-                                "store": true,
-                                "type": "boolean"
                             },
                             "lab": {
                                 "properties": {
@@ -1452,10 +1440,6 @@
                         },
                         "type": "object"
                     },
-                    "is_on_anvil": {
-                        "store": true,
-                        "type": "boolean"
-                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -1780,10 +1764,6 @@
                             "institutional_certificates": {
                                 "type": "keyword"
                             },
-                            "is_on_anvil": {
-                                "store": true,
-                                "type": "boolean"
-                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -2098,10 +2078,6 @@
                                         "store": true,
                                         "type": "boolean"
                                     },
-                                    "is_on_anvil": {
-                                        "store": true,
-                                        "type": "boolean"
-                                    },
                                     "lab": {
                                         "type": "keyword"
                                     },
@@ -2204,10 +2180,6 @@
                             },
                             "institutional_certificates": {
                                 "type": "keyword"
-                            },
-                            "is_on_anvil": {
-                                "store": true,
-                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"
@@ -2832,10 +2804,6 @@
                             },
                             "institutional_certificates": {
                                 "type": "keyword"
-                            },
-                            "is_on_anvil": {
-                                "store": true,
-                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"

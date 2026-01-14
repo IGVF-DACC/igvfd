@@ -1,6 +1,6 @@
 {
-    "hash": "66259e453f941d3da8eeab0789b4b65e",
-    "index_name": "curated_set_66259e45",
+    "hash": "e22672fb5076a57bd5b1c736a45da069",
+    "index_name": "curated_set_e22672fb",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -723,10 +723,6 @@
                                 },
                                 "type": "object"
                             },
-                            "is_on_anvil": {
-                                "store": true,
-                                "type": "boolean"
-                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -1179,10 +1175,6 @@
                             "integrated_content_files": {
                                 "type": "keyword"
                             },
-                            "is_on_anvil": {
-                                "store": true,
-                                "type": "boolean"
-                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -1467,10 +1459,6 @@
                                 "type": "keyword"
                             },
                             "individual_rodent": {
-                                "store": true,
-                                "type": "boolean"
-                            },
-                            "is_on_anvil": {
                                 "store": true,
                                 "type": "boolean"
                             },
@@ -2134,10 +2122,6 @@
                     "input_for": {
                         "type": "keyword"
                     },
-                    "is_on_anvil": {
-                        "store": true,
-                        "type": "boolean"
-                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -2597,10 +2581,6 @@
                                     }
                                 },
                                 "type": "object"
-                            },
-                            "is_on_anvil": {
-                                "store": true,
-                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"

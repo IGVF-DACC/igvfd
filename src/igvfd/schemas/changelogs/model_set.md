@@ -3,7 +3,6 @@
 ### Minor changes since schema version 6
 
 * Add `doi`.
-* Add calculated property `is_on_anvil`.
 * Extend `preferred_assay_titles` enum list to include `MAVE`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.

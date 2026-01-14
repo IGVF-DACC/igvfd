@@ -3,7 +3,6 @@
 ### Minor changes since schema version 9
 
 * Add `doi`.
-* Add calculated property `is_on_anvil`.
 * Extend `file_set_type` enum list to include `protein-protein interaction`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.

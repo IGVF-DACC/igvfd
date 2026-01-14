@@ -2,7 +2,6 @@
 
 ### Minor changes since schema version 15
 
-* Add calculated property `is_on_anvil`.
 * Add `treatments`.
 * Add `part_of`.
 * Add calculated property `parts`.
