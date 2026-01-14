@@ -13,11 +13,8 @@ from .formatter import (
 )
 
 from .file_set import (
-    single_cell_check,
-    TRANSCRIPT_ASSAY_TERMS
+    single_cell_check
 )
-
-from typing import Iterable
 
 
 def get_assay_terms(value, system):
@@ -27,72 +24,6 @@ def get_assay_terms(value, system):
             input_file_set_object = system.get('request').embed(input_file_set + '@@object?skip_calculated=true')
             assay_terms.add(input_file_set_object.get('assay_term'))
     return list(assay_terms)
-
-
-def yield_all_upstream_seqfiles(file, system) -> Iterable[str]:
-    '''
-    Traverse recursively from Analysis set files upstream via derived_from until sequence files.
-
-    Args:
-        file (_type_): file type+accession, e.g. '/alignment-files/ENCFF123ABC'
-        system (_type_): _description_
-
-    Returns:
-        Iterable[str]: SeqFiles
-
-    Yields:
-        Iterator[Iterable[str]]: SeqFiles
-    '''
-    if file.startswith('/sequence-files/'):
-        yield file
-        return
-    file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
-    for dfile in file_object.get('derived_from', []):
-        yield from yield_all_upstream_seqfiles(dfile, system)
-
-
-def check_genome_or_transcriptome_reference(file, system, reference_type) -> bool:
-    '''Check if the file has a transcriptome reference.
-
-    Args:
-        file (str): file type+accession, e.g. '/alignment-files/ENCFF123ABC'
-        system (_type_): _description_
-
-    Returns:
-        bool: True if transcriptome reference exists, False otherwise.
-    '''
-    if reference_type == 'transcriptome':
-        expected_content_types = ['transcriptome reference', 'transcriptome index']
-    elif reference_type == 'genome':
-        expected_content_types = ['genome reference']
-    file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
-    reference_files = file_object.get('reference_files', [])
-    ref_file_objects = []
-    if reference_files:
-        ref_file_objects = [system.get('request').embed(reference_file + '@@object?skip_calculated=true')
-                            for reference_file in reference_files]
-    return any(ref_file_object.get('content_type') in expected_content_types for ref_file_object in ref_file_objects)
-
-
-def check_transcriptome_assay(file, system) -> bool:
-    '''Check if the sequence file is linked to a Measurement Set of a transcriptome assay.
-
-    Args:
-        file (_type_): file type+accession, e.g. '/sequence-files/ENCFF123ABC'
-        system (_type_): _description_
-
-    Returns:
-        bool: If linked to a transcriptome assay, return True, otherwise False.
-    '''
-    seqfile_object = system.get('request').embed(file + '@@object?skip_calculated=true')
-    seqfile_fileset_object = system.get('request').embed(
-        seqfile_object.get('file_set', '') + '@@object?skip_calculated=true')
-    # assay_term is only on measurement set for now, still spelling it out explicitly
-    assay_term = seqfile_fileset_object.get('assay_term', '')
-    if assay_term:
-        return assay_term in TRANSCRIPT_ASSAY_TERMS
-    else:
-        return False
 
 
 def audit_analysis_set_multiplexed_samples(value, system):
@@ -251,130 +182,6 @@ def audit_analysis_set_inconsistent_onlist_info(value, system):
             )
 
 
-def audit_missing_genome_transcriptome_references(value, system):
-    '''
-    [
-        {
-            "audit_description": "Analysis set files processed from transcript sequence data are expected to link to a transcriptome reference.",
-            "audit_category": "missing reference files",
-            "audit_level": "NOT_COMPLIANT"
-        },
-        {
-            "audit_description": "Analysis set files that contain genomic coordinates or refer to variants are expected to link to a genome reference.",
-            "audit_category": "missing reference files",
-            "audit_level": "NOT_COMPLIANT"
-        },
-        {
-            "audit_description": "Analysis set tabular files processed from transcript sequence data are expected to link to a transcriptome reference.",
-            "audit_category": "missing reference files",
-            "audit_level": "INTERNAL_ACTION"
-        },
-        {
-            "audit_description": "Analysis set tabular files that contain genomic coordinates or refer to variants are expected to link to a genome reference.",
-            "audit_category": "missing reference files",
-            "audit_level": "INTERNAL_ACTION"
-        }
-    ]
-    '''
-    audit_message_transcriptome = get_audit_message(audit_missing_genome_transcriptome_references, index=0)
-    audit_message_genome = get_audit_message(audit_missing_genome_transcriptome_references, index=1)
-    audit_message_transcriptome_tabular = get_audit_message(audit_missing_genome_transcriptome_references, index=2)
-    audit_message_genome_tabular = get_audit_message(audit_missing_genome_transcriptome_references, index=3)
-    files = value.get('files', [])
-    files_missing_genome = []  # List of files missing genome reference
-    files_missing_transcriptome = []   # List of files missing transcriptome reference
-    tabular_files_missing_genome = []  # List of tabular files missing genome reference
-    tabular_files_missing_transcriptome = []   # List of tabular files missing transcriptome reference
-    excluded_content_types_tabular_files = [
-        'barcode onlist',
-        'barcode replacement',
-        'barcode to hashtag mapping',
-        'barcode to sample mapping',
-        'barcode to variant mapping',
-        'cell hashing barcodes',
-        'coding variant effects',
-        'derived barcode mapping',
-        'external source data',
-        'pipeline parameters',
-        'primer sequences',
-        'protein to protein interaction score',
-        'sample sort parameters',
-        'tissue positions'
-    ]
-    excluded_content_types_alignment_files = ['methylated reads']
-    if files:
-        for file in files:
-            if not file.startswith(('/alignment-files/', '/matrix-files/', '/signal-files/', '/tabular-files/')):
-                continue
-            # Skip tabular files with certain excluded content_types.
-            if file.startswith('/tabular-files/'):
-                file_obj = system.get('request').embed(file + '@@object?skip_calculated=true')
-                if file_obj['content_type'] in excluded_content_types_tabular_files:
-                    continue
-            # Skip alignment files with certain excluded content_types.
-            if file.startswith('/alignment-files/'):
-                file_obj = system.get('request').embed(file + '@@object?skip_calculated=true')
-                if file_obj['content_type'] in excluded_content_types_alignment_files:
-                    continue
-            # Get all upstream Seqfiles that eventually lead to data file
-            # and check if upstream seqfiles are transcriptome based assays
-            is_transcriptome_assay = any(
-                check_transcriptome_assay(seq_file, system)
-                for seq_file in yield_all_upstream_seqfiles(file, system)
-            )
-            # Check for genome reference.
-            has_genome_reference = check_genome_or_transcriptome_reference(file, system, 'genome')
-            # Check if the data file under the Analysis Set has a transcriptome reference
-            has_transcriptome_reference = check_genome_or_transcriptome_reference(file, system, 'transcriptome')
-
-            if not is_transcriptome_assay and not has_genome_reference:
-                if file.startswith('/tabular-files/'):
-                    tabular_files_missing_genome.append(file)
-                else:
-                    files_missing_genome.append(file)
-            # If a transcriptome seqfile doesn't have transcriptome reference, add it to the list
-            if is_transcriptome_assay and not has_transcriptome_reference:
-                if file.startswith('/tabular-files/'):
-                    tabular_files_missing_transcriptome.append(file)
-                else:
-                    files_missing_transcriptome.append(file)
-    # Audit 1: if there are transcriptome based analysis files missing transcriptome references
-    if files_missing_transcriptome:
-        files_missing_transcriptome = join_obj_paths(data_object_paths=files_missing_transcriptome)
-        detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has file(s) with no transcriptome `reference_files`: {files_missing_transcriptome}.'
-        )
-        yield AuditFailure(audit_message_transcriptome.get('audit_category', ''), f'{detail} {audit_message_transcriptome.get("audit_description", "")}', level=audit_message_transcriptome.get('audit_level', ''))
-
-    # Audit 2: if there are genome based analysis files missing genome references
-    if files_missing_genome:
-        files_missing_genome = join_obj_paths(data_object_paths=files_missing_genome)
-        detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has file(s) with no genome `reference_files`: {files_missing_genome}.'
-        )
-        yield AuditFailure(audit_message_genome.get('audit_category', ''), f'{detail} {audit_message_genome.get("audit_description", "")}', level=audit_message_genome.get('audit_level', ''))
-
-    # Audit 3: if there are transcriptome based analysis tabular files missing transcriptome references
-    if tabular_files_missing_transcriptome:
-        tabular_files_missing_transcriptome = join_obj_paths(data_object_paths=tabular_files_missing_transcriptome)
-        detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has tabular file(s) with no transcriptome `reference_files`: {tabular_files_missing_transcriptome}.'
-        )
-        yield AuditFailure(audit_message_transcriptome_tabular.get('audit_category', ''), f'{detail} {audit_message_transcriptome_tabular.get("audit_description", "")}', level=audit_message_transcriptome_tabular.get('audit_level', ''))
-
-    # Audit 4: if there are genome based analysis files missing genome references
-    if tabular_files_missing_genome:
-        tabular_files_missing_genome = join_obj_paths(data_object_paths=tabular_files_missing_genome)
-        detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has tabular file(s) with no genome `reference_files`: {tabular_files_missing_genome}.'
-        )
-        yield AuditFailure(audit_message_genome_tabular.get('audit_category', ''), f'{detail} {audit_message_genome_tabular.get("audit_description", "")}', level=audit_message_genome_tabular.get('audit_level', ''))
-
-
 def audit_multiple_barcode_replacement_files_in_input(value, system):
     '''
     [
@@ -487,7 +294,6 @@ def audit_pipeline_parameters(value, system):
 function_dispatcher_analysis_set_object = {
     'audit_analysis_set_multiplexed_samples': audit_analysis_set_multiplexed_samples,
     'audit_analysis_set_inconsistent_onlist_info': audit_analysis_set_inconsistent_onlist_info,
-    'audit_missing_genome_transcriptome_references': audit_missing_genome_transcriptome_references,
     'audit_multiple_barcode_replacement_files_in_input': audit_multiple_barcode_replacement_files_in_input,
     'audit_pipeline_parameters': audit_pipeline_parameters
 }
