@@ -755,6 +755,7 @@ def measurement_set_40_41(value, system):
         notes += f' This measurement set previously used {old_assay_title} as preferred_assay_titles, but it has been updated to {new_assay_title} via an upgrade.'
         value['notes'] = notes.strip()
 
+
 @upgrade_step('curated_set', '8', '9')
 def curated_set_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3207
