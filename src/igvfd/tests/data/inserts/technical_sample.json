@@ -124,6 +124,10 @@
         "part_of": "IGVFSM7651YBEN",
         "treatments": [
             "j-michael-cherry:thermal_treatment"
+        ],
+        "selection_conditions": [
+            "1 mM 3-AT",
+            "transfection of target gene"
         ]
     }
 ]

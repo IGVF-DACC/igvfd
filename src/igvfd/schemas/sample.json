@@ -293,6 +293,36 @@
                 "appscript": "[\"TSTSM02881437\", \"john-doe:tissue01\"]",
                 "igvf_utils": "TSTSM02881437, john-doe:tissue01"
             }
+        },
+        "selection_conditions": {
+            "title": "Selection Conditions",
+            "description": "The conditions used for selecting the sample.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Selection Condition",
+                "description": "The condition used for selecting the sample.",
+                "type": "string",
+                "enum": [
+                    "35 degrees Celsius",
+                    "glycine depletion",
+                    "transfection of target gene",
+                    "top 10% GFP-expressing cells",
+                    "1 mM 3-AT",
+                    "10 mM 3-AT",
+                    "25 mM 3-AT"
+                ],
+                "enum_descriptions": {
+                    "35 degrees Celsius": "Selection at 35 degrees Celsius",
+                    "glycine depletion": "Selection in media lacking glycine",
+                    "transfection of target gene": "Selection after transfection with a plasmid carrying the gene of interest",
+                    "top 10% GFP-expressing cells": "Selection by the highest 10% GFP fluorescence intensity",
+                    "1 mM 3-AT": "Selection using 1 mM 3-amino-1,2,4-triazole",
+                    "10 mM 3-AT": "Selection using 10 mM 3-amino-1,2,4-triazole",
+                    "25 mM 3-AT": "Selection using 25 mM 3-amino-1,2,4-triazole"
+                }
+            }
         }
     }
 }
