@@ -49,6 +49,15 @@ def test_technical_sample_summary(testapp, technical_sample, construct_library_s
     res = testapp.get(technical_sample['@id'])
     assert res.json.get(
         'summary') == 'virtual synthetic technical sample activated with 10 mM lactate for 1 hour, transduced (lentivirus) with multiple libraries (MOI of 6)'
+    testapp.patch_json(
+        technical_sample['@id'],
+        {
+            'selection_conditions': ['35 degrees Celsius', 'glycine depletion']
+        }
+    )
+    res = testapp.get(technical_sample['@id'])
+    assert res.json.get(
+        'summary') == 'virtual synthetic technical sample activated with 10 mM lactate for 1 hour, transduced (lentivirus) with multiple libraries (MOI of 6), selected by 35 degrees Celsius and glycine depletion'
 
 
 def test_technical_sample_parts(testapp, technical_sample, technical_sample_organic, technical_sample_inorganic):
