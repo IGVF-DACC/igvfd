@@ -1,5 +1,6 @@
 ## Changelog for *`sample.json`*
 
+* Add `selection_conditions`. (01/15/2026)
 * Extend `nucleic_acid_delivery` enum list to include `transformation`. (01/14/2026)
 * Add calculated property `superseded_by`. (10/15/2025)
 * Add `supersedes`. (10/15/2025)

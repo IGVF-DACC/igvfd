@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 15
 
+* Add `selection_conditions`.
 * Extend `nucleic_acid_delivery` enum list to include `transformation`.
 * Add `treatments`.
 * Add `part_of`.

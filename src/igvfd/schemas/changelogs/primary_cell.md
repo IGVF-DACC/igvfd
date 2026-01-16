@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 24
 
+* Add `selection_conditions`.
 * Extend `nucleic_acid_delivery` enum list to include `transformation`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.
