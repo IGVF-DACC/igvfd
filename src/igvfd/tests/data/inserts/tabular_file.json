@@ -1323,5 +1323,24 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "igvf:prediction_set_5",
         "controlled_access": false
+    },
+    {
+        "uuid": "48959a6d-3449-4493-a298-8ef4440f0abe",
+        "accession": "IGVFFI0001TLND",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tland_heritability_enrichment"
+        ],
+        "md5sum": "2931874cbc7a9701199b3beebf841ef9",
+        "file_format": "tsv",
+        "content_type": "heritability enrichment",
+        "submitted_file_name": "/Users/igvf/igvf_files/heritability_enrichment.tsv.gz",
+        "file_size": 101,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "igvf:prediction_set_5",
+        "controlled_access": false
     }
 ]
