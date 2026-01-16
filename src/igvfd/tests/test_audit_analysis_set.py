@@ -173,7 +173,7 @@ def test_audit_analysis_set_multiplexed_samples(
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert any(
         error['category'] == 'unexpected demultiplexed sample'
-        for error in res.json['audit'].get('ERROR', [])
+        for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
         measurement_set_no_files['@id'],
@@ -190,7 +190,7 @@ def test_audit_analysis_set_multiplexed_samples(
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert any(
         error['category'] == 'unexpected samples'
-        for error in res.json['audit'].get('ERROR', [])
+        for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
         analysis_set_no_input['@id'],
@@ -201,7 +201,7 @@ def test_audit_analysis_set_multiplexed_samples(
     res = testapp.get(analysis_set_no_input['@id'] + '@@audit')
     assert any(
         error['category'] == 'unexpected demultiplexed sample'
-        for error in res.json['audit'].get('ERROR', [])
+        for error in res.json['audit'].get('WARNING', [])
     )
 
 
