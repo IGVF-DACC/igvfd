@@ -1,6 +1,6 @@
 {
-    "hash": "1a43581de58b357ffde702a676297827",
-    "index_name": "auxiliary_set_1a43581d",
+    "hash": "83d014eb79ecf22d34d6544a42435427",
+    "index_name": "auxiliary_set_83d014eb",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -3400,6 +3400,9 @@
                                 "type": "object"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "selection_conditions": {
                                 "type": "keyword"
                             },
                             "sex": {

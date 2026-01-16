@@ -1,6 +1,6 @@
 {
-    "hash": "e74f0bed0fb4a237838e2c9847a912f6",
-    "index_name": "prediction_set_e74f0bed",
+    "hash": "ae74cc5307018f31b4635cacbc40ec14",
+    "index_name": "prediction_set_ae74cc53",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -3696,6 +3696,9 @@
                                 "type": "object"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "selection_conditions": {
                                 "type": "keyword"
                             },
                             "sex": {

@@ -1,6 +1,6 @@
 {
-    "hash": "2d4cdf6e605c039ae837348a5dc47fa6",
-    "index_name": "measurement_set_2d4cdf6e",
+    "hash": "bc0dc0046d72ff2c73112e64d0341b1c",
+    "index_name": "measurement_set_bc0dc004",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -4090,6 +4090,9 @@
                                 "type": "object"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "selection_conditions": {
                                 "type": "keyword"
                             },
                             "sex": {

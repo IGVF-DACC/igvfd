@@ -147,3 +147,12 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get(
         'summary') == 'virtual Homo sapiens and Mus musculus strain1 (mixed sex) embryoid body pooled differentiated cell specimen (2 donors) induced to gastrula for 5 minutes, (cellular sub pool: PKR-456) (sorting details: some detail about sorting) characterized by high level of CD243, negative detection of CD243, depleted of penicillin for 3 minutes, perturbed with 10 ng/mL G-CSF, modified with CRISPRi Sp-dCas9, transfected with a reporter library targeting accessible genome regions genome-wide'
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'selection_conditions': ['transfection of target gene']
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'])
+    assert res.json.get(
+        'summary') == 'virtual Homo sapiens and Mus musculus strain1 (mixed sex) embryoid body pooled differentiated cell specimen (2 donors) induced to gastrula for 5 minutes, (cellular sub pool: PKR-456) (sorting details: some detail about sorting) characterized by high level of CD243, negative detection of CD243, depleted of penicillin for 3 minutes, perturbed with 10 ng/mL G-CSF, modified with CRISPRi Sp-dCas9, transfected with a reporter library targeting accessible genome regions genome-wide, selected by transfection of target gene'

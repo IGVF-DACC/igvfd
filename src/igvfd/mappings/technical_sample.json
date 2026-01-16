@@ -1,6 +1,6 @@
 {
-    "hash": "a3fdc831425c92ad07c01ab306196554",
-    "index_name": "technical_sample_a3fdc831",
+    "hash": "1c3adfb0f7975d97e1e753f052bb6b59",
+    "index_name": "technical_sample_1c3adfb0",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1303,6 +1303,9 @@
                     "schema_version": {
                         "type": "keyword"
                     },
+                    "selection_conditions": {
+                        "type": "keyword"
+                    },
                     "sorted_fractions": {
                         "type": "keyword"
                     },
@@ -1495,6 +1498,9 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "selection_conditions": {
                                 "type": "keyword"
                             },
                             "sex": {

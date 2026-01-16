@@ -428,7 +428,7 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None, biosample_qualifiers=None, time_post_library_delivery=None, time_post_library_delivery_units=None):
+    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None, biosample_qualifiers=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
         biosample_type = self.item_type
@@ -674,7 +674,16 @@ class Biosample(Sample):
 
         # growth media is appended to the end of the summary
         if (growth_medium and biosample_type in ['in_vitro_system']):
-            summary_terms += f' grown in {growth_medium}'
+            summary_terms += f' grown in {growth_medium},'
+
+        # selection conditions appended to the end of the summary
+        if selection_conditions:
+            if len(selection_conditions) == 1:
+                summary_terms += f' selected by {selection_conditions[0]}'
+            elif len(selection_conditions) == 2:
+                summary_terms += f' selected by {selection_conditions[0]} and {selection_conditions[1]}'
+            else:
+                summary_terms += f' selected by {", ".join(selection_conditions[:-1])} and {selection_conditions[-1]}'
 
         return summary_terms.strip(',')
 
@@ -855,7 +864,7 @@ class TechnicalSample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, sample_material, virtual=None, construct_library_sets=None, treatments=None, moi=None, nucleic_acid_delivery=None):
+    def summary(self, request, sample_terms, sample_material, virtual=None, construct_library_sets=None, treatments=None, moi=None, nucleic_acid_delivery=None, selection_conditions=None):
         if len(sample_terms) > 1:
             summary_terms = 'mixed'
         else:
@@ -921,7 +930,14 @@ class TechnicalSample(Sample):
             else:
                 summary_terms = f'{summary_terms} {verb} multiple libraries'
         if moi:
-            summary_terms = f'{summary_terms} (MOI of {moi})'
+            summary_terms = f'{summary_terms} (MOI of {moi}),'
+        if selection_conditions:
+            if len(selection_conditions) == 1:
+                summary_terms += f' selected by {selection_conditions[0]},'
+            elif len(selection_conditions) == 2:
+                summary_terms += f' selected by {selection_conditions[0]} and {selection_conditions[1]},'
+            else:
+                summary_terms += f' selected by {", ".join(selection_conditions[:-1])} and {selection_conditions[-1]},'
         return summary_terms.strip(',')
 
     @calculated_property(

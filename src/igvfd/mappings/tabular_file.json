@@ -1,6 +1,6 @@
 {
-    "hash": "c7480a2297f878e65a1e5a4c05ca2887",
-    "index_name": "tabular_file_c7480a22",
+    "hash": "1a977bd949bf4429a583e2aa97690374",
+    "index_name": "tabular_file_1a977bd9",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1577,6 +1577,9 @@
                                     "schema_version": {
                                         "type": "keyword"
                                     },
+                                    "selection_conditions": {
+                                        "type": "keyword"
+                                    },
                                     "sex": {
                                         "type": "keyword"
                                     },
@@ -2488,6 +2491,9 @@
                                         "type": "object"
                                     },
                                     "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "selection_conditions": {
                                         "type": "keyword"
                                     },
                                     "sex": {

@@ -1,6 +1,6 @@
 {
-    "hash": "3d6ec07011de6e92b13674f6ea82e366",
-    "index_name": "alignment_file_3d6ec070",
+    "hash": "e9b61b344aee9b46e6c193be6ad460cc",
+    "index_name": "alignment_file_e9b61b34",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1469,6 +1469,9 @@
                                     "schema_version": {
                                         "type": "keyword"
                                     },
+                                    "selection_conditions": {
+                                        "type": "keyword"
+                                    },
                                     "sex": {
                                         "type": "keyword"
                                     },
@@ -2380,6 +2383,9 @@
                                         "type": "object"
                                     },
                                     "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "selection_conditions": {
                                         "type": "keyword"
                                     },
                                     "sex": {
