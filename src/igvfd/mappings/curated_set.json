@@ -1,6 +1,6 @@
 {
-    "hash": "e22672fb5076a57bd5b1c736a45da069",
-    "index_name": "curated_set_e22672fb",
+    "hash": "53a13f022f8e6b24ef27cd4e23d4b808",
+    "index_name": "curated_set_53a13f02",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -2858,6 +2858,9 @@
                                 "type": "object"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "selection_conditions": {
                                 "type": "keyword"
                             },
                             "sex": {
