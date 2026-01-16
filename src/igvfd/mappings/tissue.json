@@ -1,6 +1,6 @@
 {
-    "hash": "84b8e087e99c9509ec9e58f7f4880767",
-    "index_name": "tissue_84b8e087",
+    "hash": "4fe606e267f07e827a5f1bfd620b2024",
+    "index_name": "tissue_4fe606e2",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1060,6 +1060,9 @@
                             "donors": {
                                 "type": "keyword"
                             },
+                            "enrichment_designs": {
+                                "type": "keyword"
+                            },
                             "exon": {
                                 "type": "keyword"
                             },
@@ -1218,9 +1221,6 @@
                             },
                             "preview_timestamp": {
                                 "type": "date"
-                            },
-                            "primer_designs": {
-                                "type": "keyword"
                             },
                             "product_id": {
                                 "type": "keyword"

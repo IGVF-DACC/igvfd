@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Rename calculated property `primer_designs` to `enrichment_designs`.
 * Add `doi`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.

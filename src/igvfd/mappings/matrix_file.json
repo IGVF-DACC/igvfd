@@ -1,6 +1,6 @@
 {
-    "hash": "e2d00984b0e5628d5c14f4f70506f16c",
-    "index_name": "matrix_file_e2d00984",
+    "hash": "cbfdbef0757e859b8cd86f8f5c7740d2",
+    "index_name": "matrix_file_cbfdbef0",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -832,6 +832,9 @@
                                 },
                                 "type": "object"
                             },
+                            "enrichment_designs": {
+                                "type": "keyword"
+                            },
                             "exon": {
                                 "type": "keyword"
                             },
@@ -990,9 +993,6 @@
                             },
                             "preview_timestamp": {
                                 "type": "date"
-                            },
-                            "primer_designs": {
-                                "type": "keyword"
                             },
                             "product_id": {
                                 "type": "keyword"

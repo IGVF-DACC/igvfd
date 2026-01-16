@@ -91,3 +91,13 @@ def curated_set_v7(curated_set_genome):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def curated_set_v8(curated_set_genome):
+    item = curated_set_genome.copy()
+    item.update({
+        'schema_version': '8',
+        'file_set_type': 'primer design'
+    })
+    return item

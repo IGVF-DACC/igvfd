@@ -1734,14 +1734,14 @@ def test_audit_missing_external_image_url(
     )
 
 
-def test_audit_missing_primer_designs(
+def test_audit_missing_enrichment_designs(
     testapp,
     measurement_set,
     tabular_file_primer_designs
 ):
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'missing primer designs'
+        error['category'] != 'missing enrichment designs'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
@@ -1750,16 +1750,16 @@ def test_audit_missing_primer_designs(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'missing primer designs'
+        error['category'] == 'missing enrichment designs'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         measurement_set['@id'],
-        {'primer_designs': [tabular_file_primer_designs['@id']]}
+        {'enrichment_designs': [tabular_file_primer_designs['@id']]}
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'missing primer designs'
+        error['category'] != 'missing enrichment designs'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 

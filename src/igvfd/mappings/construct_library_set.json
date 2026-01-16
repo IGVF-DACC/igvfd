@@ -1,6 +1,6 @@
 {
-    "hash": "268f46fa716f1c3f06246378452175b0",
-    "index_name": "construct_library_set_268f46fa",
+    "hash": "047b98493473ac069f64356800ac4db5",
+    "index_name": "construct_library_set_047b9849",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -424,6 +424,9 @@
                             "donors": {
                                 "type": "keyword"
                             },
+                            "enrichment_designs": {
+                                "type": "keyword"
+                            },
                             "exon": {
                                 "type": "keyword"
                             },
@@ -526,9 +529,6 @@
                             },
                             "preview_timestamp": {
                                 "type": "date"
-                            },
-                            "primer_designs": {
-                                "type": "keyword"
                             },
                             "product_id": {
                                 "type": "keyword"
@@ -944,6 +944,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "enrichment_design_for": {
+                                "type": "keyword"
+                            },
                             "external_host_url": {
                                 "type": "keyword"
                             },
@@ -1029,9 +1032,6 @@
                             },
                             "preview_timestamp": {
                                 "type": "date"
-                            },
-                            "primer_design_for": {
-                                "type": "keyword"
                             },
                             "principal_dimension": {
                                 "type": "keyword"
@@ -1245,6 +1245,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "enrichment_design_for": {
+                                "type": "keyword"
+                            },
                             "external_host_url": {
                                 "type": "keyword"
                             },
@@ -1301,9 +1304,6 @@
                             },
                             "preview_timestamp": {
                                 "type": "date"
-                            },
-                            "primer_design_for": {
-                                "type": "keyword"
                             },
                             "quality_metrics": {
                                 "type": "keyword"
@@ -1520,6 +1520,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "enrichment_design_for": {
+                                "type": "keyword"
+                            },
                             "external_host_url": {
                                 "type": "keyword"
                             },
@@ -1576,9 +1579,6 @@
                             },
                             "preview_timestamp": {
                                 "type": "date"
-                            },
-                            "primer_design_for": {
-                                "type": "keyword"
                             },
                             "quality_metrics": {
                                 "type": "keyword"
@@ -1735,6 +1735,9 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "enrichment_design_for": {
+                                "type": "keyword"
+                            },
                             "external_host_url": {
                                 "type": "keyword"
                             },
@@ -1791,9 +1794,6 @@
                             },
                             "preview_timestamp": {
                                 "type": "date"
-                            },
-                            "primer_design_for": {
-                                "type": "keyword"
                             },
                             "quality_metrics": {
                                 "type": "keyword"

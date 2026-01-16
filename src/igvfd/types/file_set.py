@@ -1115,30 +1115,30 @@ class AnalysisSet(FileSet):
     @calculated_property(
         condition='input_file_sets',
         schema={
-            'title': 'Primer Designs',
-            'description': 'The primer designs used by the inputs of this analysis set.',
+            'title': 'Enrichment Designs',
+            'description': 'The enrichment designs used by the inputs of this analysis set.',
             'type': 'array',
             'notSubmittable': True,
             'uniqueItem': True,
             'minItems': 1,
             'items': {
-                'title': 'Primer Design',
+                'title': 'Enrichment Design',
                 'type': 'string',
                 'linkTo': 'TabularFile'
             }
         }
     )
-    def primer_designs(self, request, input_file_sets=None):
+    def enrichment_designs(self, request, input_file_sets=None):
         if input_file_sets is None:
             input_file_sets = []
-        analysis_set_primer_designs = set()
+        analysis_set_enrichment_designs = set()
         for input_file_set in input_file_sets:
             if input_file_set.startswith(('/measurement-sets/', '/analysis-sets/')):
                 input_file_set_object = request.embed(
                     input_file_set, '@@object?skip_calculated=true')
-                if 'primer_designs' in input_file_set_object:
-                    analysis_set_primer_designs.update(input_file_set_object['primer_designs'])
-        return sorted(analysis_set_primer_designs) or None
+                if 'enrichment_designs' in input_file_set_object:
+                    analysis_set_enrichment_designs.update(input_file_set_object['enrichment_designs'])
+        return sorted(analysis_set_enrichment_designs) or None
 
 
 @collection(
@@ -1254,7 +1254,7 @@ class MeasurementSet(FileSet):
     set_status_up = FileSet.set_status_up + [
         'assay_term',
         'auxiliary_sets',
-        'primer_designs'
+        'enrichment_designs'
     ]
     set_status_down = FileSet.set_status_down + []
 

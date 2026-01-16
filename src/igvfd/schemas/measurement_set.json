@@ -74,7 +74,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "40"
+            "default": "41"
         },
         "samples": {
             "maxItems": 1
@@ -185,14 +185,14 @@
                 "igvf_utils": "direct RNA, exome capture"
             }
         },
-        "primer_designs": {
-            "title": "Primer Designs",
-            "description": "The primer designs used in this measurement set.",
+        "enrichment_designs": {
+            "title": "Enrichment Designs",
+            "description": "Files describing the assay-specific enrichment strategy (e.g., primer designs for PCR-based methods or probe/bait designs for hybrid capture) that define which regions are preferentially sequenced in this measurement set.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "Primer Design",
+                "title": "Enrichment Design",
                 "type": "string",
                 "linkTo": "TabularFile"
             },

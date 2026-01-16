@@ -1,5 +1,9 @@
 ## Changelog for *`curated_set.json`*
 
+### Schema version 9
+
+* Rename `file_set_type` enum `primer design` to `enrichment designs`.
+
 ### Minor changes since schema version 8
 
 * Extend `collections` enum list to include `E2G Pillar Project`.

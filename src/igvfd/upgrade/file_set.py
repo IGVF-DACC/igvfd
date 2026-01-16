@@ -729,3 +729,18 @@ def measurement_set_39_40(value, system):
                 f'and were removed from the property list.'
             )
             value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '40', '41')
+def measurement_set_40_41(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3207
+    if 'primer_designs' in value:
+        value['enrichment_designs'] = value['primer_designs']
+        del value['primer_designs']
+
+
+@upgrade_step('curated_set', '8', '9')
+def curated_set_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3207
+    if value['file_set_type'] == 'primer design':
+        value['file_set_type'] = 'enrichment designs'

@@ -1,6 +1,6 @@
 {
-    "hash": "c0be73059487f47d0451343380c53c38",
-    "index_name": "signal_file_c0be7305",
+    "hash": "bd638a5a3172ef87da71e7f990efc404",
+    "index_name": "signal_file_bd638a5a",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -926,6 +926,9 @@
                                 },
                                 "type": "object"
                             },
+                            "enrichment_designs": {
+                                "type": "keyword"
+                            },
                             "exon": {
                                 "type": "keyword"
                             },
@@ -1084,9 +1087,6 @@
                             },
                             "preview_timestamp": {
                                 "type": "date"
-                            },
-                            "primer_designs": {
-                                "type": "keyword"
                             },
                             "product_id": {
                                 "type": "keyword"
