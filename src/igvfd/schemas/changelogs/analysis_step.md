@@ -2,6 +2,10 @@
 
 ### Minor changes since schema version 9
 
+* Extend `input_content_types` enum list to include `calibrated coding variant effect thresholds`.
+* Extend `output_content_types` enum list to include `calibrated coding variant effect thresholds`.
+* Extend `input_content_types` enum list to include `aggregated calibrated coding variant effects`.
+* Extend `output_content_types` enum list to include `aggregated calibrated coding variant effects`.
 * Extend `input_content_types` enum list to include `heritability enrichment`.
 * Extend `output_content_types` enum list to include `heritability enrichment`.
 * Extend `input_content_types` enum list to include `probes track`.

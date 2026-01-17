@@ -160,6 +160,7 @@
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
+                "aggregated calibrated coding variant effects",
                 "barcode onlist",
                 "barcode replacement",
                 "barcode to cluster mapping",
@@ -171,6 +172,7 @@
                 "barcode to TF overexpression mapping",
                 "bin paired count",
                 "calibrated coding variant effects",
+                "calibrated coding variant effect thresholds",
                 "cell annotations",
                 "cell hashing barcodes",
                 "co-localization scores",
@@ -254,6 +256,7 @@
                 "variant to cluster mapping"
             ],
             "enum_descriptions": {
+                "aggregated calibrated coding variant effects": "A file mapping coding variants to their aggregated experimental and predictive calibrated evidence across functional assays and computational predictors.",
                 "barcode onlist": "A list of all known barcode sequences that have been included in the assay kit and are available during library preparation.",
                 "barcode replacement": "A file containing original barcodes and the new barcodes used to replace the original barcodes. One common application is to use in preprocessing Parse SPLiT-seq data with the single cell uniform pipeline.",
                 "barcode to cluster mapping": "A barcode to cluster mapping file lists the unique sequencing barcodes used in a single-cell experiment and their corresponding cluster label after using a clustering algorithm.",
@@ -264,7 +267,8 @@
                 "barcode to variant mapping": "A file describing the mapping of barcodes to variants.",
                 "barcode to TF overexpression mapping": "A file describing the mapping of barcodes to TF overexpression.",
                 "bin paired count": "Occurrences of contact between chromatin pairs within designated binned intervals.",
-                "calibrated coding variant effects": "A file that maps coding variants to their calibrated, evidence-based pathogenicity classifications.",
+                "calibrated coding variant effects": "A file that maps coding variants to their calibrated ACMG/AMP evidence strengths towards pathogenic or benign evidence.",
+                "calibrated coding variant effect thresholds": "A file contains calibration thresholds for coding variant effects defining score ranges for ACMG/AMP evidence levels (PS3/BS3 Supporting through Very Strong) for all functional assays.",
                 "cell annotations": "A file containing cell classifications and/or labels based on their unique transcriptome and genomic signatures, usually generated from single cell sequencing experiments.",
                 "cell hashing barcodes": "The barcodes used for cell hashing.",
                 "co-localization scores": "eQTL-GWAS co-localization p-values",

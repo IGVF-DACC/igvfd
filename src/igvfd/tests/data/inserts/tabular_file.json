@@ -1342,5 +1342,43 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "igvf:prediction_set_5",
         "controlled_access": false
+    },
+    {
+        "uuid": "e4a60a0c-f8ab-41d5-acd0-4b718a48ab85",
+        "accession": "IGVFFI0023CLBR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:aggregated_calibrated_coding_variant_effects"
+        ],
+        "md5sum": "9a40f4b39e806fbcbb899e40084318a4",
+        "file_format": "tsv",
+        "content_type": "aggregated calibrated coding variant effects",
+        "submitted_file_name": "/Users/igvf/igvf_files/aggregated_calibrated_coding_variant_effects.tsv.gz",
+        "file_size": 101,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "igvf:prediction_set_5",
+        "controlled_access": false
+    },
+    {
+        "uuid": "aa1b143e-0099-4fbd-9e00-9e079c997862",
+        "accession": "IGVFFI0024CLTH",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:calibrated_coding_variant_effect_thresholds"
+        ],
+        "md5sum": "3c1ff3f73f267a0e5e10e4676dfd3e4a",
+        "file_format": "tsv",
+        "content_type": "calibrated coding variant effect thresholds",
+        "submitted_file_name": "/Users/igvf/igvf_files/calibrated_coding_variant_effect_thresholds.tsv.gz",
+        "file_size": 101,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "igvf:prediction_set_5",
+        "controlled_access": false
     }
 ]
