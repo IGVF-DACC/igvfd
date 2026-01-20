@@ -608,6 +608,7 @@ def measurement_set_v40(measurement_set, tabular_file):
     return item
 
 
+@pytest.fixture
 def measurement_set_v40_2(measurement_set):
     item = measurement_set.copy()
     item.update({
