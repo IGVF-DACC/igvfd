@@ -737,6 +737,10 @@ def measurement_set_40_41(value, system):
     if 'primer_designs' in value:
         value['enrichment_designs'] = value['primer_designs']
         del value['primer_designs']
+
+
+@upgrade_step('measurement_set', '41', '42')
+def measurement_set_41_42(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3212
     # Note 'Arrayed Y2H v1/v2/v3' are intended to be removed from this upgrade, replacing them with existing enums here to be safe.
     old_to_new = {

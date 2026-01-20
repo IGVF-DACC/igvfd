@@ -1,6 +1,6 @@
 ## Changelog for *`measurement_set.json`*
 
-### Schema version 41
+### Schema version 42
 
 * Adjust `preferred_assay_titles` enum list to remove `Arrayed Y2H v1`.
 * Adjust `preferred_assay_titles` enum list to remove `Arrayed Y2H v2`.
@@ -9,6 +9,9 @@
 * Adjust `preferred_assay_titles` enum list to replace `Pooled Y2H v1` with `Pooled Y2H`.
 * Adjust `preferred_assay_titles` enum list to replace `Pooled Y2H v2` with `Pooled Y2H`.
 * Adjust `preferred_assay_titles` enum list to replace `Pooled Y2H v3` with `Pooled Y2H`.
+
+### Schema version 41
+
 * Rename `primer_designs` to `enrichment_designs`.
 
 ### Minor changes since schema version 40
