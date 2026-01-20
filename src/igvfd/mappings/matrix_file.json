@@ -1,6 +1,6 @@
 {
-    "hash": "cbfdbef0757e859b8cd86f8f5c7740d2",
-    "index_name": "matrix_file_cbfdbef0",
+    "hash": "200091fc067ce7853dccd9aa29163062",
+    "index_name": "matrix_file_200091fc",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1470,6 +1470,9 @@
                                     "schema_version": {
                                         "type": "keyword"
                                     },
+                                    "selection_conditions": {
+                                        "type": "keyword"
+                                    },
                                     "sex": {
                                         "type": "keyword"
                                     },
@@ -2381,6 +2384,9 @@
                                         "type": "object"
                                     },
                                     "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "selection_conditions": {
                                         "type": "keyword"
                                     },
                                     "sex": {

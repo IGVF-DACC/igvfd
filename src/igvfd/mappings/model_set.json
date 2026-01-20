@@ -1,6 +1,6 @@
 {
-    "hash": "36ff77c1177ecacfed67bd529f1b7959",
-    "index_name": "model_set_36ff77c1",
+    "hash": "6c242b36f32a0067b17e2ae85718c4b1",
+    "index_name": "model_set_6c242b36",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -3336,6 +3336,9 @@
                                 "type": "object"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "selection_conditions": {
                                 "type": "keyword"
                             },
                             "sex": {

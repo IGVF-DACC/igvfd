@@ -1,6 +1,6 @@
 {
-    "hash": "5270b32aa85869379afcc25d30666c55",
-    "index_name": "index_file_5270b32a",
+    "hash": "2f1ace51dda184a89447242f734cad3e",
+    "index_name": "index_file_2f1ace51",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -1472,6 +1472,9 @@
                                     "schema_version": {
                                         "type": "keyword"
                                     },
+                                    "selection_conditions": {
+                                        "type": "keyword"
+                                    },
                                     "sex": {
                                         "type": "keyword"
                                     },
@@ -2383,6 +2386,9 @@
                                         "type": "object"
                                     },
                                     "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "selection_conditions": {
                                         "type": "keyword"
                                     },
                                     "sex": {

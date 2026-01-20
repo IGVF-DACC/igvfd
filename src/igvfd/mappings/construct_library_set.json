@@ -1,6 +1,6 @@
 {
-    "hash": "047b98493473ac069f64356800ac4db5",
-    "index_name": "construct_library_set_047b9849",
+    "hash": "b935f83459cc13c9b70b02e39472cf31",
+    "index_name": "construct_library_set_b935f834",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -2652,6 +2652,9 @@
                                 "type": "object"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "selection_conditions": {
                                 "type": "keyword"
                             },
                             "sex": {
