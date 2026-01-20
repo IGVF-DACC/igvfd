@@ -286,7 +286,7 @@ def test_measurement_set_upgrade_40_41(upgrader, measurement_set_v40):
     assert value['schema_version'] == '41'
 
 
-def test_measurement_set_upgrade_40_41(upgrader, measurement_set_v41_1, measurement_set_v41_2):
+def test_measurement_set_upgrade_41_42(upgrader, measurement_set_v41_1, measurement_set_v41_2):
     value = upgrader.upgrade('measurement_set', measurement_set_v41_1, current_version='41', target_version='42')
     assert value['schema_version'] == '42'
     assert value.get('preferred_assay_titles') == ['Arrayed semi-qY2H v1']
