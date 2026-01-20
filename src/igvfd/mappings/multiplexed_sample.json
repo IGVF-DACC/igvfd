@@ -1,6 +1,6 @@
 {
-    "hash": "c6a7d7c33f40647c8accb42430dca958",
-    "index_name": "multiplexed_sample_c6a7d7c3",
+    "hash": "a6ee5c2e7f88b9974e6cbaecc03c2a81",
+    "index_name": "multiplexed_sample_a6ee5c2e",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1813,6 +1813,9 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
+                            "selection_conditions": {
+                                "type": "keyword"
+                            },
                             "sorted_fractions": {
                                 "type": "keyword"
                             },
@@ -2365,6 +2368,9 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
+                            "selection_conditions": {
+                                "type": "keyword"
+                            },
                             "sex": {
                                 "type": "keyword"
                             },
@@ -2706,6 +2712,9 @@
                     "schema_version": {
                         "type": "keyword"
                     },
+                    "selection_conditions": {
+                        "type": "keyword"
+                    },
                     "sorted_fractions": {
                         "type": "keyword"
                     },
@@ -2898,6 +2907,9 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "selection_conditions": {
                                 "type": "keyword"
                             },
                             "sex": {

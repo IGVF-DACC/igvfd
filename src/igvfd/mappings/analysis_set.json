@@ -1,6 +1,6 @@
 {
-    "hash": "213fed2629f9742d2a372ed58aa28a31",
-    "index_name": "analysis_set_213fed26",
+    "hash": "64df5c34ed8a18a3b9c67fbfb866b7ae",
+    "index_name": "analysis_set_64df5c34",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -3312,6 +3312,9 @@
                                 "type": "object"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "selection_conditions": {
                                 "type": "keyword"
                             },
                             "sex": {

@@ -1,6 +1,6 @@
 {
-    "hash": "18fb755b2f9570c2f216e5aeb75e4f40",
-    "index_name": "sequence_file_18fb755b",
+    "hash": "8d4c3b886e271fb35705b49cc0ba34dd",
+    "index_name": "sequence_file_8d4c3b88",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1469,6 +1469,9 @@
                                     "schema_version": {
                                         "type": "keyword"
                                     },
+                                    "selection_conditions": {
+                                        "type": "keyword"
+                                    },
                                     "sex": {
                                         "type": "keyword"
                                     },
@@ -2385,6 +2388,9 @@
                                         "type": "object"
                                     },
                                     "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "selection_conditions": {
                                         "type": "keyword"
                                     },
                                     "sex": {
