@@ -264,3 +264,33 @@ def assay_term_18_19(value, system):
             f'but it has been updated to {new_value} via an upgrade.'
         )
         value['notes'] = notes.strip()
+
+
+@upgrade_step('assay_term', '19', '20')
+def assay_term_19_20(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3212
+    # Note 'Arrayed Y2H v1/v2/v3' are intended to be removed from this upgrade, replacing them with existing enums here to be safe.
+    new_assay_titles = []
+    old_assay_titles = []
+    replaced_by_assay_titles = []
+    notes = value.get('notes', '')
+    old_to_new = {
+        'Pooled Y2H v1': 'Pooled Y2H',
+        'Pooled Y2H v2': 'Pooled Y2H',
+        'Pooled Y2H v3': 'Pooled Y2H',
+        'Arrayed Y2H v1': 'Arrayed semi-qY2H v1',
+        'Arrayed Y2H v2': 'Arrayed semi-qY2H v2',
+        'Arrayed Y2H v3': 'Arrayed semi-qY2H v3'
+    }
+    if 'preferred_assay_titles' in value:
+        for assay_title in value['preferred_assay_titles']:
+            if assay_title in old_to_new:
+                old_assay_titles.append(assay_title)
+                new_assay_titles.append(old_to_new[assay_title])
+                replaced_by_assay_titles.append(old_to_new[assay_title])
+            else:
+                new_assay_titles.append(assay_title)
+    if old_assay_titles:
+        value['preferred_assay_titles'] = list(set(new_assay_titles))
+        notes += f' This assay_term previously used {", ".join(old_assay_titles)} in preferred_assay_titles, but they have been updated to {", ".join(sorted(list(set(replaced_by_assay_titles))))} via an upgrade.'
+        value['notes'] = notes.strip()

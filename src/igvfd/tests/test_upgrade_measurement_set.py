@@ -267,7 +267,6 @@ def test_measurement_set_upgrade_39_40(upgrader, measurement_set_v39_1, measurem
     value = upgrader.upgrade('measurement_set', measurement_set_v39_1, current_version='39', target_version='40')
     assert value['schema_version'] == '40'
     assert 'protocols' not in value
-    print(value['notes'])
     assert value.get('notes') == 'This protocol https://www.protocols.io/345/ABC does not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
     value = upgrader.upgrade('measurement_set', measurement_set_v39_2, current_version='39', target_version='40')
     assert value['schema_version'] == '40'
@@ -285,3 +284,16 @@ def test_measurement_set_upgrade_40_41(upgrader, measurement_set_v40):
     assert 'primer_designs' not in value
     assert 'enrichment_designs' in value and value['enrichment_designs'] == primer_designs
     assert value['schema_version'] == '41'
+
+
+def test_measurement_set_upgrade_41_42(upgrader, measurement_set_v41_1, measurement_set_v41_2):
+    value = upgrader.upgrade('measurement_set', measurement_set_v41_1, current_version='41', target_version='42')
+    assert value['schema_version'] == '42'
+    assert value.get('preferred_assay_titles') == ['Arrayed semi-qY2H v1']
+    assert value.get(
+        'notes') == 'This measurement set previously used Arrayed Y2H v1 as preferred_assay_titles, but it has been updated to Arrayed semi-qY2H v1 via an upgrade.'
+    value = upgrader.upgrade('measurement_set', measurement_set_v41_2, current_version='41', target_version='42')
+    assert value['schema_version'] == '42'
+    assert value.get('preferred_assay_titles') == ['Pooled Y2H']
+    assert value.get(
+        'notes') == 'This measurement set previously used Pooled Y2H v1 as preferred_assay_titles, but it has been updated to Pooled Y2H via an upgrade.'

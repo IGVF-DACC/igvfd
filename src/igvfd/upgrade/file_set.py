@@ -739,6 +739,27 @@ def measurement_set_40_41(value, system):
         del value['primer_designs']
 
 
+@upgrade_step('measurement_set', '41', '42')
+def measurement_set_41_42(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3212
+    # Note 'Arrayed Y2H v1/v2/v3' are intended to be removed from this upgrade, replacing them with existing enums here to be safe.
+    old_to_new = {
+        'Pooled Y2H v1': 'Pooled Y2H',
+        'Pooled Y2H v2': 'Pooled Y2H',
+        'Pooled Y2H v3': 'Pooled Y2H',
+        'Arrayed Y2H v1': 'Arrayed semi-qY2H v1',
+        'Arrayed Y2H v2': 'Arrayed semi-qY2H v2',
+        'Arrayed Y2H v3': 'Arrayed semi-qY2H v3'
+    }
+    old_assay_title = value['preferred_assay_titles'][0]
+    if old_assay_title in old_to_new:
+        new_assay_title = old_to_new[old_assay_title]
+        value['preferred_assay_titles'] = [new_assay_title]
+        notes = value.get('notes', '')
+        notes += f' This measurement set previously used {old_assay_title} as preferred_assay_titles, but it has been updated to {new_assay_title} via an upgrade.'
+        value['notes'] = notes.strip()
+
+
 @upgrade_step('curated_set', '8', '9')
 def curated_set_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3207
