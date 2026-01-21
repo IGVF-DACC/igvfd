@@ -1185,20 +1185,56 @@ def audit_missing_genome_transcriptome_references(value, system):
     excluded_content_types_tabular_files = [
         'barcode onlist',
         'barcode replacement',
+        'barcode to element mapping',
         'barcode to hashtag mapping',
         'barcode to sample mapping',
         'barcode to variant mapping',
         'cell hashing barcodes',
         'coding variant effects',
+        'coding_variants',
+        'complexes',
         'derived barcode mapping',
+        'diseases_genes',
+        'documentation (readme)',
+        'drugs',
         'external source data',
+        'genes',
+        'genes_genes',
+        'genes_pathways',
+        'genes_terms',
+        'genome index',
+        'genome reference',
+        'genomic_elements',
+        'genomic_elements_genes',
+        'genomic_elements_genomic_elements',
+        'go_terms_proteins',
+        'guide RNA sequences reference',
+        'index plate',
+        'motifs',
+        'motifs_proteins',
+        'ontology_terms',
+        'pathways',
+        'pathways_pathways',
         'pipeline parameters',
         'primer sequences',
         'protein to protein interaction score',
+        'proteins_proteins',
         'sample sort parameters',
-        'tissue positions'
+        'studies_variants_phenotypes',
+        'tissue positions',
+        'transcriptome index',
+        'transcriptome reference',
+        'variants_diseases',
+        'variants_drugs',
+        'variants_genes',
+        'variants_genomic_elements',
+        'variants_proteins',
+        'variants_proteins_terms',
+        'variants_variants'
     ]
     excluded_content_types_alignment_files = ['methylated reads']
+    if value.get('file_set_type', '') == 'external data for catalog':
+        return
     if files:
         for file in files:
             if not file.startswith(('/alignment-files/', '/matrix-files/', '/signal-files/', '/tabular-files/')):
@@ -1276,8 +1312,7 @@ function_dispatcher_file_set_object = {
     'audit_no_files': audit_no_files,
     'audit_inconsistent_sequencing_kit': audit_inconsistent_sequencing_kit,
     'audit_control_for_control_type': audit_control_for_control_type,
-    'audit_file_set_missing_publication': audit_file_set_missing_publication,
-    'audit_missing_genome_transcriptome_references': audit_missing_genome_transcriptome_references
+    'audit_file_set_missing_publication': audit_file_set_missing_publication
 }
 
 function_dispatcher_measurement_set_object = {
@@ -1319,7 +1354,8 @@ function_dispatcher_analysis_set_object = {
     'audit_inconsistent_controlled_access': audit_inconsistent_controlled_access,
     'audit_input_file_sets_derived_from': audit_input_file_sets_derived_from,
     'audit_file_set_files_missing_analysis_step_version': audit_file_set_files_missing_analysis_step_version,
-    'audit_file_set_missing_description': audit_file_set_missing_description
+    'audit_file_set_missing_description': audit_file_set_missing_description,
+    'audit_missing_genome_transcriptome_references': audit_missing_genome_transcriptome_references
 }
 
 function_dispatcher_prediction_set_object = {
@@ -1334,6 +1370,10 @@ function_dispatcher_model_set_object = {
     'audit_input_file_sets_derived_from': audit_input_file_sets_derived_from,
     'audit_file_set_files_missing_analysis_step_version': audit_file_set_files_missing_analysis_step_version,
     'audit_file_set_missing_description': audit_file_set_missing_description
+}
+
+function_dispatcher_curated_set_object = {
+    'audit_missing_genome_transcriptome_references': audit_missing_genome_transcriptome_references
 }
 
 
@@ -1390,4 +1430,12 @@ def audit_prediction_set_object_dispatcher(value, system):
 def audit_model_set_object_dispatcher(value, system):
     for function_name in function_dispatcher_model_set_object.keys():
         for failure in function_dispatcher_model_set_object[function_name](value, system):
+            yield failure
+
+
+@audit_checker('CuratedSet', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_analysis_set_object.values()))
+def audit_analysis_set_object_dispatcher(value, system):
+    for function_name in function_dispatcher_analysis_set_object.keys():
+        for failure in function_dispatcher_analysis_set_object[function_name](value, system):
             yield failure
