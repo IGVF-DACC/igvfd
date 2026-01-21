@@ -101,12 +101,12 @@ def audit_analysis_set_multiplexed_samples(value, system):
         {
             "audit_description": "Analysis sets are only expected to specify a demultiplexed sample if it has samples and they are all multiplexed.",
             "audit_category": "unexpected demultiplexed sample",
-            "audit_level": "ERROR"
+            "audit_level": "WARNING"
         },
         {
             "audit_description": "Analysis sets are expected to specify only multiplexed or non-multiplexed samples, not both.",
             "audit_category": "unexpected samples",
-            "audit_level": "ERROR"
+            "audit_level": "WARNING"
         },
         {
             "audit_description": "Analysis sets are expected to specify a demultiplexed sample that was multiplexed in a multiplexed sample associated with an input file set.",
