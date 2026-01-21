@@ -140,7 +140,7 @@ def assay_term_CRISPR_sorted(testapp):
 def assay_term_LABEL_seq(testapp):
     item = {
         'term_id': 'OBI:0002082',
-        'term_name': 'LABEL-seq'
+        'term_name': 'reporter gene assay'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
 
