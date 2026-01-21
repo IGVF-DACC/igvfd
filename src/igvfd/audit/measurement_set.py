@@ -282,7 +282,8 @@ def audit_missing_institutional_certification(value, system):
         'OBI:0000185',  # imaging assay
         'OBI:0002675',  # massively parallel reporter assay',
         'OBI:0000288',  # protein-protein interaction detection assay',
-        'OBI:0002041'  # self-transcribing active regulatory region sequencing assay
+        'OBI:0002041',  # self-transcribing active regulatory region sequencing assay,
+        'OBI:0002082'   # reporter gene assay (for LABEL-seq)
     ]
     assay_term = value.get('assay_term', '')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
