@@ -98,6 +98,18 @@ def get_cls_phrase(cls_set, only_cls_input=False):
     return cls_phrase
 
 
+def get_file_set_props_for_summary_and_samples(request, file_set):
+    '''Get properties from a file set needed for summary and samples calculation'''
+    return request.embed(
+        file_set,
+        '@@object_with_select_calculated_properties?'
+        'field=@type&field=file_set_type&field=measurement_sets'
+        '&field=input_file_sets&field=targeted_genes.symbol'
+        '&field=assay_term&field=samples'
+        '&field=assay_titles&field=preferred_assay_titles'
+    )
+
+
 EMBEDDED_FILE_FIELDS = [
     '@id',
     'accession',
@@ -508,14 +520,7 @@ class AnalysisSet(FileSet):
                 input_fileset = filesets_to_inspect.pop()
                 if input_fileset not in inspected_filesets:
                     inspected_filesets.add(input_fileset)
-                    fileset_object = request.embed(
-                        input_fileset,
-                        '@@object_with_select_calculated_properties?'
-                        'field=@type&field=file_set_type&field=measurement_sets'
-                        '&field=input_file_sets&field=targeted_genes.symbol'
-                        '&field=assay_term&field=samples'
-                        '&field=assay_titles&field=preferred_assay_titles'
-                    )
+                    fileset_object = get_file_set_props_for_summary_and_samples(request, input_fileset)
                     # Trace back from Analysis Sets to identify their
                     # input file sets.
                     if (input_fileset.startswith('/analysis-sets/') and
@@ -754,12 +759,7 @@ class AnalysisSet(FileSet):
                 if not (fileset.startswith('/construct-library-sets/')):
                     # Change the embed link to match summary() to reduce the amount of data caching.
                     # These two funcs use similary query links that will look up the samples property.
-                    input_file_set_object = request.embed(fileset, '@@object_with_select_calculated_properties?'
-                                                          'field=@type&field=file_set_type&field=measurement_sets'
-                                                          '&field=input_file_sets&field=targeted_genes.symbol'
-                                                          '&field=assay_term&field=samples'
-                                                          '&field=assay_titles&field=preferred_assay_titles'
-                                                          )
+                    input_file_set_object = get_file_set_props_for_summary_and_samples(request, fileset)
                     input_file_set_samples = set(input_file_set_object.get('samples', []))
                     if input_file_set_samples:
                         samples = samples | input_file_set_samples
