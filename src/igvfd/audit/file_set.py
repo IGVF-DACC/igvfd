@@ -1435,7 +1435,7 @@ def audit_model_set_object_dispatcher(value, system):
 
 @audit_checker('CuratedSet', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_analysis_set_object.values()))
-def audit_analysis_set_object_dispatcher(value, system):
+def audit_curated_set_object_dispatcher(value, system):
     for function_name in function_dispatcher_analysis_set_object.keys():
         for failure in function_dispatcher_analysis_set_object[function_name](value, system):
             yield failure
