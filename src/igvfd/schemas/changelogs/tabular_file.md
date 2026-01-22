@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 18
 
+* Extend `content_type` enum list to include `regional constraint`.
 * Extend `content_type` enum list to include `calibrated coding variant effect thresholds`.
 * Extend `content_type` enum list to include `aggregated calibrated coding variant effects`.
 * Extend `content_type` enum list to include `heritability enrichment`.
