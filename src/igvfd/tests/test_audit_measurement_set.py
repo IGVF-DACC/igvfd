@@ -560,11 +560,26 @@ def test_audit_missing_seqspec_measet(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
+    # Test: SeqFiles from Plasmidsaurus (no audit)
+    testapp.patch_json(
+        platform_term_HiSeq['@id'],
+        {
+            'company': 'Illumina',
+            'term_name': 'Illumina (Plasmidsaurus)'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
     # Test: if single cell missing seqspec, error is on NOT_COMPLIANT
     testapp.patch_json(
         platform_term_HiSeq['@id'],
         {
-            'company': 'Illumina'
+            'company': 'Illumina',
+            'term_name': 'Illumina HiSeq 2000'
         }
     )
     testapp.patch_json(
