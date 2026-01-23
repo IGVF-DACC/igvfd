@@ -799,12 +799,12 @@
                 "additionalProperties": false,
                 "properties": {
                     "name": {
-                        "title": "Locus name",
+                        "title": "Locus Name",
                         "description": "A human-readable name or identifier for the locus.",
                         "type": "string"
                     },
                     "assembly": {
-                        "title": "Mapping assembly",
+                        "title": "Mapping Assembly",
                         "description": "The genome assembly to which coordinates relate (e.g., GRCh38).",
                         "type": "string",
                         "enum": [
@@ -833,8 +833,8 @@
                 }
             },
             "submissionExample": {
-                "appscript": "[{\"assembly\": \"GRCh38\", \"chromosome\": \"chr1\", \"start\": 100, \"end\": 200}]",
-                "igvf_utils": "[{\"assembly\": \"GRCh38\", \"chromosome\": \"chr1\", \"start\": 100, \"end\": 200}]"
+                "appscript": "[{\"name\": \"MYH6 R3 enhancer\", \"assembly\": \"GRCh38\", \"chromosome\": \"chr1\", \"start\": 100, \"end\": 200}]",
+                "igvf_utils": "[{\"name\": \"MYH6 R3 enhancer\", \"assembly\": \"GRCh38\", \"chromosome\": \"chr1\", \"start\": 100, \"end\": 200}]"
             }
         },
         "large_scale_loci_list": {
