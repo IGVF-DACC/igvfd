@@ -19,7 +19,8 @@
                 "assembly": "GRCh38",
                 "chromosome": "chr1_KI270712v1_random",
                 "start": 1,
-                "end": 10
+                "end": 10,
+                "name": "MYH6_R3_enhancer"
             }
         ],
         "average_insert_size": 270,

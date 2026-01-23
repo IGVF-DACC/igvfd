@@ -1,6 +1,6 @@
 {
-    "hash": "1ff558ead0b44e2773885133ba967627",
-    "index_name": "primary_cell_1ff558ea",
+    "hash": "265b528f510f2f6ed4c6fcfeb81e2400",
+    "index_name": "primary_cell_265b528f",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -660,6 +660,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -1280,6 +1283,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,

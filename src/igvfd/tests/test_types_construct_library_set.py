@@ -66,7 +66,26 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
                     'assembly': 'GRCh38',
                     'chromosome': 'chr1',
                     'start': 1,
-                    'end': 100
+                    'end': 100,
+                    'name': 'MYH6 R3 enhancer'
+                }
+            ],
+            'associated_phenotypes': [phenotype_term_alzheimers['@id'], phenotype_term_myocardial_infarction['@id']]
+        }
+    )
+    res = testapp.get(construct_library_set_reporter['@id'])
+    assert res.json.get(
+        'summary') == 'reporter library targeting accessible genome regions, phenotype-associated variants in MYH6 R3 enhancer associated with Alzheimer\'s disease and Myocardial infarction'
+    testapp.patch_json(
+        construct_library_set_reporter['@id'],
+        {
+            'small_scale_loci_list': [
+                {
+                    'assembly': 'GRCh38',
+                    'chromosome': 'chr1',
+                    'start': 1,
+                    'end': 100,
+                    'name': 'MYH6 R3 enhancer'
                 },
                 {
                     'assembly': 'GRCh38',

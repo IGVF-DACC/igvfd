@@ -1,6 +1,6 @@
 {
-    "hash": "c2533f3ffd198eb666403000c4a52ff7",
-    "index_name": "prediction_set_c2533f3f",
+    "hash": "80fb33f1feaac01923838052d65244f1",
+    "index_name": "prediction_set_80fb33f1",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1122,6 +1122,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -1474,6 +1477,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,
@@ -3161,6 +3167,9 @@
                                                 "store": true,
                                                 "type": "long"
                                             },
+                                            "name": {
+                                                "type": "keyword"
+                                            },
                                             "start": {
                                                 "store": true,
                                                 "type": "long"
@@ -4108,6 +4117,9 @@
                             "end": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "name": {
+                                "type": "keyword"
                             },
                             "start": {
                                 "store": true,

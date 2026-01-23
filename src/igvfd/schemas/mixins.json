@@ -798,6 +798,11 @@
                 ],
                 "additionalProperties": false,
                 "properties": {
+                    "name": {
+                        "title": "Locus name",
+                        "description": "A human-readable name or identifier for the locus.",
+                        "type": "string"
+                    },
                     "assembly": {
                         "title": "Mapping assembly",
                         "description": "The genome assembly to which coordinates relate (e.g., GRCh38).",

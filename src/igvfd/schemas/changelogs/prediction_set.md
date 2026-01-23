@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Add `name` on `small_scale_loci_list`.
 * Add `doi`.
 * Extend `file_set_type` enum list to include `protein-protein interaction`.
 * Extend `collections` enum list to include `E2G Pillar Project`.

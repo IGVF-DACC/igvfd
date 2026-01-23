@@ -1,6 +1,6 @@
 {
-    "hash": "fc9d6cc43badbf121269abf7abbb522a",
-    "index_name": "auxiliary_set_fc9d6cc4",
+    "hash": "93dc06a5fc0020ee4894eb49a961d860",
+    "index_name": "auxiliary_set_93dc06a5",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -949,6 +949,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -1301,6 +1304,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,
@@ -2383,6 +2389,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,

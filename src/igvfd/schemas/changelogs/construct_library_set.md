@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 12
 
+* Add `name` on `small_scale_loci_list`.
 * Add `doi`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.

@@ -1,6 +1,6 @@
 {
-    "hash": "0fb3ee9660f8c135d30eb42121a2ab28",
-    "index_name": "signal_file_0fb3ee96",
+    "hash": "e8ff4a74385fd6778673e2b678626cb6",
+    "index_name": "signal_file_e8ff4a74",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -1881,6 +1881,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -2689,6 +2692,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,

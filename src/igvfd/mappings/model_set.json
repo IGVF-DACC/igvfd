@@ -1,6 +1,6 @@
 {
-    "hash": "6c242b36f32a0067b17e2ae85718c4b1",
-    "index_name": "model_set_6c242b36",
+    "hash": "751236acbb65bd79958cdac88fdeb5d7",
+    "index_name": "model_set_751236ac",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1045,6 +1045,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -1397,6 +1400,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,
@@ -2488,6 +2494,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,

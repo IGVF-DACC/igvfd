@@ -1,6 +1,6 @@
 {
-    "hash": "6c581d77db28d33b2b7a06875dd470c9",
-    "index_name": "measurement_set_6c581d77",
+    "hash": "0fc7074fa4e0db1a4824368df0892f11",
+    "index_name": "measurement_set_0fc7074f",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1170,6 +1170,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -1523,6 +1526,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -1875,6 +1881,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,
@@ -3047,6 +3056,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,

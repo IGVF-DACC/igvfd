@@ -1,6 +1,6 @@
 {
-    "hash": "200091fc067ce7853dccd9aa29163062",
-    "index_name": "matrix_file_200091fc",
+    "hash": "a67336107398f351f9cca3d71f6d5941",
+    "index_name": "matrix_file_a6733610",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1787,6 +1787,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -2595,6 +2598,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,
