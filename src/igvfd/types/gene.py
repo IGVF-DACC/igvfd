@@ -11,7 +11,7 @@ from snovault.util import Path
 
 @collection(
     name='genes',
-    unique_key='gene:geneid',
+    unique_key='geneid:allele',
     properties={
         'title': 'Genes',
         'description': 'Listing of genes',
@@ -20,13 +20,21 @@ from snovault.util import Path
 class Gene(SharedItem):
     item_type = 'gene'
     schema = load_schema('igvfd:schemas/gene.json')
-    name_key = 'geneid'
+    name_key = 'geneid:allele'
     embedded_with_frame = [
         Path('submitted_by', include=['@id', 'title']),
     ]
 
     set_status_up = []
     set_status_down = []
+
+    def unique_keys(self, properties):
+        keys = super().unique_keys(properties)
+        allele = properties.get('allele', '')
+        geneid = properties.get('geneid', '')
+        value = f'{geneid}:{allele}'
+        keys.setdefault('geneid:allele', []).append(value)
+        return keys
 
     @calculated_property(schema={
         'title': 'Title',
@@ -62,5 +70,8 @@ class Gene(SharedItem):
             'notSubmittable': True,
         }
     )
-    def summary(self, symbol, geneid, taxa):
-        return f'{symbol} - {geneid} ({taxa})'
+    def summary(self, symbol, geneid, taxa, allele=None):
+        if allele:
+            return f'{symbol} {allele} allele - {geneid} - ({taxa})'
+        else:
+            return f'{symbol} - {geneid} ({taxa})'

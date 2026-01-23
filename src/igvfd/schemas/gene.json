@@ -99,8 +99,7 @@
             "description": "ENSEMBL GeneID of official nomenclature approved gene. The GeneID does not include the current version number suffix.",
             "type": "string",
             "pattern": "^ENS[A-Z]*G\\d{11}(_PAR_Y)?$",
-            "permission": "admin_only",
-            "uniqueKey": true
+            "permission": "admin_only"
         },
         "symbol": {
             "title": "Gene Symbol",
@@ -205,6 +204,19 @@
                 }
             },
             "permission": "admin_only"
+        },
+        "allele": {
+            "title": "Allele",
+            "description": "The allele of the gene.",
+            "type": "string",
+            "enum": [
+                "major",
+                "minor"
+            ],
+            "submissionExample": {
+                "appscript": "major",
+                "igvf_utils": "minor"
+            }
         },
         "version_number": {
             "title": "ENSEMBL GeneID Version Number",

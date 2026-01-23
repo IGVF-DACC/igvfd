@@ -350,6 +350,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "6781bacd-d557-41d5-8c64-98322558cb25",
-        "version_number": "2"
+        "version_number": "2",
+        "allele": "minor"
     }
 ]
