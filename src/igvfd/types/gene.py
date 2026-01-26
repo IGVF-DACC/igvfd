@@ -77,7 +77,7 @@ class Gene(SharedItem):
             return f'{symbol} - {geneid} ({taxa})'
 
     @calculated_property(schema={
-        'title': 'GeneID With Allele',
+        'title': 'ENSEMBL GeneID With Allele',
         'type': 'string',
         'description': 'The ENSEMBL GeneID concatenated with its allele info.',
         'notSubmittable': True,
