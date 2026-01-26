@@ -1152,27 +1152,28 @@ def audit_missing_genome_transcriptome_references(value, system):
     '''
     [
         {
-            "audit_description": "Analysis set files processed from transcript sequence data are expected to link to a transcriptome reference.",
+            "audit_description": "Files processed from transcript sequence data are expected to link to a transcriptome reference.",
             "audit_category": "missing reference files",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Analysis set files that contain genomic coordinates or refer to variants are expected to link to a genome reference.",
+            "audit_description": "Files that contain genomic coordinates or refer to variants are expected to link to a genome reference.",
             "audit_category": "missing reference files",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Analysis set tabular files processed from transcript sequence data are expected to link to a transcriptome reference.",
+            "audit_description": "Tabular files processed from transcript sequence data are expected to link to a transcriptome reference.",
             "audit_category": "missing reference files",
             "audit_level": "INTERNAL_ACTION"
         },
         {
-            "audit_description": "Analysis set tabular files that contain genomic coordinates or refer to variants are expected to link to a genome reference.",
+            "audit_description": "Tabular files that contain genomic coordinates or refer to variants are expected to link to a genome reference.",
             "audit_category": "missing reference files",
             "audit_level": "INTERNAL_ACTION"
         }
     ]
     '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_transcriptome = get_audit_message(audit_missing_genome_transcriptome_references, index=0)
     audit_message_genome = get_audit_message(audit_missing_genome_transcriptome_references, index=1)
     audit_message_transcriptome_tabular = get_audit_message(audit_missing_genome_transcriptome_references, index=2)
@@ -1275,7 +1276,7 @@ def audit_missing_genome_transcriptome_references(value, system):
     if files_missing_transcriptome:
         files_missing_transcriptome = join_obj_paths(data_object_paths=files_missing_transcriptome)
         detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has file(s) with no transcriptome `reference_files`: {files_missing_transcriptome}.'
         )
         yield AuditFailure(audit_message_transcriptome.get('audit_category', ''), f'{detail} {audit_message_transcriptome.get("audit_description", "")}', level=audit_message_transcriptome.get('audit_level', ''))
@@ -1284,7 +1285,7 @@ def audit_missing_genome_transcriptome_references(value, system):
     if files_missing_genome:
         files_missing_genome = join_obj_paths(data_object_paths=files_missing_genome)
         detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has file(s) with no genome `reference_files`: {files_missing_genome}.'
         )
         yield AuditFailure(audit_message_genome.get('audit_category', ''), f'{detail} {audit_message_genome.get("audit_description", "")}', level=audit_message_genome.get('audit_level', ''))
@@ -1293,7 +1294,7 @@ def audit_missing_genome_transcriptome_references(value, system):
     if tabular_files_missing_transcriptome:
         tabular_files_missing_transcriptome = join_obj_paths(data_object_paths=tabular_files_missing_transcriptome)
         detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has tabular file(s) with no transcriptome `reference_files`: {tabular_files_missing_transcriptome}.'
         )
         yield AuditFailure(audit_message_transcriptome_tabular.get('audit_category', ''), f'{detail} {audit_message_transcriptome_tabular.get("audit_description", "")}', level=audit_message_transcriptome_tabular.get('audit_level', ''))
@@ -1302,7 +1303,7 @@ def audit_missing_genome_transcriptome_references(value, system):
     if tabular_files_missing_genome:
         tabular_files_missing_genome = join_obj_paths(data_object_paths=tabular_files_missing_genome)
         detail = (
-            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has tabular file(s) with no genome `reference_files`: {tabular_files_missing_genome}.'
         )
         yield AuditFailure(audit_message_genome_tabular.get('audit_category', ''), f'{detail} {audit_message_genome_tabular.get("audit_description", "")}', level=audit_message_genome_tabular.get('audit_level', ''))
