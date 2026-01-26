@@ -90,6 +90,7 @@ class HumanDonor(Donor):
     def summary(self, ethnicities=None, sex=None, human_donor_identifiers=None):
         ethnicities_phrase = ''
         sex_phrase = ''
+        identifiers_phrase = ''
         if ethnicities:
             ethnicities_phrase = ', '.join(ethnicities)
         if sex and sex != 'unspecified':
