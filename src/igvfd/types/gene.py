@@ -20,7 +20,7 @@ from snovault.util import Path
 class Gene(SharedItem):
     item_type = 'gene'
     schema = load_schema('igvfd:schemas/gene.json')
-    name_key = 'geneid:allele'
+    name_key = 'geneid_with_allele'
     embedded_with_frame = [
         Path('submitted_by', include=['@id', 'title']),
     ]
@@ -30,10 +30,11 @@ class Gene(SharedItem):
 
     def unique_keys(self, properties):
         keys = super().unique_keys(properties)
-        allele = properties.get('allele', '')
-        geneid = properties.get('geneid', '')
-        value = f'{geneid}:{allele}'
-        keys.setdefault('geneid:allele', []).append(value)
+        geneid = properties.get('geneid')
+        allele = properties.get('allele')
+        if geneid:
+            geneid_with_allele = f'{geneid}-{allele}' if allele else geneid
+            keys.setdefault('geneid:allele', []).append(geneid_with_allele)
         return keys
 
     @calculated_property(schema={
@@ -72,6 +73,18 @@ class Gene(SharedItem):
     )
     def summary(self, symbol, geneid, taxa, allele=None):
         if allele:
-            return f'{symbol} {allele} allele - {geneid} - ({taxa})'
+            return f'{symbol} {allele} allele - {geneid} ({taxa})'
         else:
             return f'{symbol} - {geneid} ({taxa})'
+
+    @calculated_property(schema={
+        'title': 'ENSEMBL GeneID With Allele',
+        'type': 'string',
+        'description': 'The ENSEMBL GeneID concatenated with its allele info.',
+        'notSubmittable': True,
+    })
+    def geneid_with_allele(self, geneid, allele=None):
+        if allele:
+            return f'{geneid}-{allele}'
+        else:
+            return f'{geneid}'
