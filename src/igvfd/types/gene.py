@@ -20,7 +20,6 @@ from snovault.util import Path
 class Gene(SharedItem):
     item_type = 'gene'
     schema = load_schema('igvfd:schemas/gene.json')
-    name_key = 'geneid_with_allele'
     embedded_with_frame = [
         Path('submitted_by', include=['@id', 'title']),
     ]
@@ -78,13 +77,20 @@ class Gene(SharedItem):
             return f'{symbol} - {geneid} ({taxa})'
 
     @calculated_property(schema={
-        'title': 'ENSEMBL GeneID With Allele',
+        'title': 'GeneID With Allele',
         'type': 'string',
         'description': 'The ENSEMBL GeneID concatenated with its allele info.',
         'notSubmittable': True,
     })
-    def geneid_with_allele(self, geneid, allele=None):
-        if allele:
-            return f'{geneid}-{allele}'
-        else:
-            return f'{geneid}'
+    def geneid_with_allele(self):
+        return self.__name__
+
+    @property
+    def __name__(self):
+        properties = self.upgrade_properties()
+        return self._geneid_with_allele(properties)
+
+    def _geneid_with_allele(self, properties):
+        geneid = properties.get('geneid', '')
+        allele = properties.get('allele', '')
+        return f'{geneid}-{allele}' if allele else geneid
