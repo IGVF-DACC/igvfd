@@ -87,15 +87,18 @@ class HumanDonor(Donor):
             'notSubmittable': True,
         }
     )
-    def summary(self, ethnicities=None, sex=None):
+    def summary(self, ethnicities=None, sex=None, human_donor_identifiers=None):
         ethnicities_phrase = ''
         sex_phrase = ''
         if ethnicities:
             ethnicities_phrase = ', '.join(ethnicities)
         if sex and sex != 'unspecified':
             sex_phrase = sex
+        if human_donor_identifiers:
+            identifiers_phrase = f'({", ".join(human_donor_identifiers)})'
 
-        summary_phrase = ' '.join([x for x in [ethnicities_phrase, sex_phrase] if x != '']).strip()
+        summary_phrase = ' '.join(
+            [x for x in [ethnicities_phrase, sex_phrase, identifiers_phrase] if x != '']).strip()
         if summary_phrase:
             return summary_phrase
         else:
