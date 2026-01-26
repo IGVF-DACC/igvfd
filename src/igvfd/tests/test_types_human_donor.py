@@ -17,7 +17,7 @@ def test_human_donor_summary(testapp, human_donor):
     testapp.patch_json(
         human_donor['@id'],
         {
-            'human_donor_identifers': ['AAA100']
+            'human_donor_identifiers': ['AAA100']
         }
     )
     res = testapp.get(human_donor['@id'])
