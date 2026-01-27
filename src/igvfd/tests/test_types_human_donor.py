@@ -14,3 +14,11 @@ def test_human_donor_summary(testapp, human_donor):
     )
     res = testapp.get(human_donor['@id'])
     assert res.json.get('summary') == 'Japanese male'
+    testapp.patch_json(
+        human_donor['@id'],
+        {
+            'human_donor_identifiers': ['AAA100']
+        }
+    )
+    res = testapp.get(human_donor['@id'])
+    assert res.json.get('summary') == 'Japanese male (AAA100)'
