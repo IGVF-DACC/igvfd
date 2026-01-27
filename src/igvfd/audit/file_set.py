@@ -150,7 +150,8 @@ def audit_missing_seqspec(value, system):
                 platform_object = system.get('request').embed(sequence_file_object.get(
                     'sequencing_platform'), '@@object?skip_calculated=true')
                 if sequence_file_object.get('file_format') == 'pod5' or \
-                        platform_object.get('company', '') == 'Oxford Nanopore Technologies':
+                        platform_object.get('company', '') == 'Oxford Nanopore Technologies' or \
+                        platform_object.get('term_name') == 'Illumina (Plasmidsaurus)':
                     continue
                 # Overall audit: if a SeqFile has no seqspec ConfigFile
                 if not sequence_file_object.get('seqspecs'):
