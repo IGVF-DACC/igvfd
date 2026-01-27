@@ -1,6 +1,6 @@
 {
-    "hash": "29d09cca26c84aefd31ce39b94978991",
-    "index_name": "gene_29d09cca",
+    "hash": "5c8170b31f065823a3968cb0fb829ee6",
+    "index_name": "gene_5c8170b3",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,9 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
+                    "allele": {
+                        "type": "keyword"
+                    },
                     "collections": {
                         "type": "keyword"
                     },
@@ -167,6 +170,9 @@
                     },
                     "geneid": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "geneid_with_allele": {
                         "type": "keyword"
                     },
                     "geneid_with_version": {
