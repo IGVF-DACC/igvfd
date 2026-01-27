@@ -1,6 +1,6 @@
 {
-    "hash": "ad8ca15f774337d20c981e0120aba276",
-    "index_name": "whole_organism_ad8ca15f",
+    "hash": "f42f771c7db11cf827438db4af0eba32",
+    "index_name": "whole_organism_f42f771c",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -657,6 +657,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -1277,6 +1280,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,

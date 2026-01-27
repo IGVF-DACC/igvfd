@@ -1,6 +1,6 @@
 {
-    "hash": "9c2ecf01f88eb9cee3071293ea20a99a",
-    "index_name": "configuration_file_9c2ecf01",
+    "hash": "a7595c95e2d5f34d2cbe7f75b2a8f7e6",
+    "index_name": "configuration_file_a7595c95",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1781,6 +1781,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -2585,6 +2588,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,

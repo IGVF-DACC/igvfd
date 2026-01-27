@@ -1,6 +1,6 @@
 {
-    "hash": "85c65a70b2c831a34ddc30202bef74b6",
-    "index_name": "analysis_set_85c65a70",
+    "hash": "d82488e77125cc47003ec933c8955ea7",
+    "index_name": "analysis_set_d82488e7",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -947,6 +947,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -1299,6 +1302,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,
@@ -2469,6 +2475,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,

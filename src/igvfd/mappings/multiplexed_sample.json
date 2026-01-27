@@ -1,6 +1,6 @@
 {
-    "hash": "a6ee5c2e7f88b9974e6cbaecc03c2a81",
-    "index_name": "multiplexed_sample_a6ee5c2e",
+    "hash": "a42d83fbc848dfb45590cd4cc49b81e7",
+    "index_name": "multiplexed_sample_a42d83fb",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -651,6 +651,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -1267,6 +1270,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,

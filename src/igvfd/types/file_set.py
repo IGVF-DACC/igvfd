@@ -2006,7 +2006,15 @@ class ConstructLibrarySet(FileSet):
             elif large_scale_loci_list:
                 target_phrase = f' many genomic loci'
             else:
-                target_phrase = f' a genomic locus'
+                # small scale loci list is only displayed if there is 1 and it has a name
+                locus_name = ''
+                if small_scale_loci_list and len(small_scale_loci_list) == 1:
+                    locus = small_scale_loci_list[0]
+                    locus_name = locus.get('name', '')
+                if locus_name:
+                    target_phrase = f' {locus_name}'
+                else:
+                    target_phrase = f' a genomic locus'
         if scope == 'genes':
             if small_scale_gene_list and len(small_scale_gene_list) > 1:
                 target_phrase = f' {len(small_scale_gene_list)} genes'

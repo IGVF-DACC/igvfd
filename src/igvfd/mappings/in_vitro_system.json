@@ -1,6 +1,6 @@
 {
-    "hash": "1b664071050fe8d61093d8eb5b70265f",
-    "index_name": "in_vitro_system_1b664071",
+    "hash": "6965943319dad8bbdcd2cb907c73616f",
+    "index_name": "in_vitro_system_69659433",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -664,6 +664,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -1290,6 +1293,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,

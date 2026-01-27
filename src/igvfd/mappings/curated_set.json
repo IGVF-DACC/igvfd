@@ -1,6 +1,6 @@
 {
-    "hash": "8331a4e169d4b4981ea1413497b994c7",
-    "index_name": "curated_set_8331a4e1",
+    "hash": "8e11c45bf1aa9a0a223238c771954e5f",
+    "index_name": "curated_set_8e11c45b",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -947,6 +947,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -1299,6 +1302,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,

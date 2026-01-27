@@ -1,6 +1,6 @@
 {
-    "hash": "2f1ace51dda184a89447242f734cad3e",
-    "index_name": "index_file_2f1ace51",
+    "hash": "be08b18ecbed12516073c76251640873",
+    "index_name": "index_file_be08b18e",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -1789,6 +1789,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
                                     "start": {
                                         "store": true,
                                         "type": "long"
@@ -2597,6 +2600,9 @@
                                     "end": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
                                     },
                                     "start": {
                                         "store": true,
