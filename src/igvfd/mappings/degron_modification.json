@@ -1,6 +1,6 @@
 {
-    "hash": "6fba86e5ada85aad45f5c27418dc6d38",
-    "index_name": "degron_modification_6fba86e5",
+    "hash": "b42d5471ac5fa84b16ff37ba159d1aed",
+    "index_name": "degron_modification_b42d5471",
     "item_type": "degron_modification",
     "mapping": {
         "dynamic_templates": [
@@ -422,6 +422,9 @@
                             "aliases": {
                                 "type": "keyword"
                             },
+                            "allele": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -435,6 +438,9 @@
                                 "type": "text"
                             },
                             "geneid": {
+                                "type": "keyword"
+                            },
+                            "geneid_with_allele": {
                                 "type": "keyword"
                             },
                             "geneid_with_version": {

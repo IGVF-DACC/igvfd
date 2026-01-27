@@ -11,7 +11,7 @@ from snovault.util import Path
 
 @collection(
     name='genes',
-    unique_key='gene:geneid',
+    unique_key='geneid:allele',
     properties={
         'title': 'Genes',
         'description': 'Listing of genes',
@@ -20,13 +20,21 @@ from snovault.util import Path
 class Gene(SharedItem):
     item_type = 'gene'
     schema = load_schema('igvfd:schemas/gene.json')
-    name_key = 'geneid'
     embedded_with_frame = [
         Path('submitted_by', include=['@id', 'title']),
     ]
 
     set_status_up = []
     set_status_down = []
+
+    def unique_keys(self, properties):
+        keys = super().unique_keys(properties)
+        geneid = properties.get('geneid')
+        allele = properties.get('allele')
+        if geneid:
+            geneid_with_allele = f'{geneid}-{allele}' if allele else geneid
+            keys.setdefault('geneid:allele', []).append(geneid_with_allele)
+        return keys
 
     @calculated_property(schema={
         'title': 'Title',
@@ -62,5 +70,27 @@ class Gene(SharedItem):
             'notSubmittable': True,
         }
     )
-    def summary(self, symbol, geneid, taxa):
-        return f'{symbol} - {geneid} ({taxa})'
+    def summary(self, symbol, geneid, taxa, allele=None):
+        if allele:
+            return f'{symbol} {allele} allele - {geneid} ({taxa})'
+        else:
+            return f'{symbol} - {geneid} ({taxa})'
+
+    @calculated_property(schema={
+        'title': 'ENSEMBL GeneID With Allele',
+        'type': 'string',
+        'description': 'The ENSEMBL GeneID concatenated with its allele info.',
+        'notSubmittable': True,
+    })
+    def geneid_with_allele(self):
+        return self.__name__
+
+    @property
+    def __name__(self):
+        properties = self.upgrade_properties()
+        return self._geneid_with_allele(properties)
+
+    def _geneid_with_allele(self, properties):
+        geneid = properties.get('geneid', '')
+        allele = properties.get('allele', '')
+        return f'{geneid}-{allele}' if allele else geneid
