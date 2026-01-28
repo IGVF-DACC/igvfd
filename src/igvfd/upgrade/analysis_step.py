@@ -114,3 +114,73 @@ def analysis_step_8_9(value, system):
         notes += f' This analysis step was previously linked to {workflow}, but the property `workflow` has been removed.'
         value['notes'] = notes.strip()
         del value['workflow']
+
+
+@upgrade_step('analysis_step', '9', '10')
+def analysis_step_9_10(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3252
+    notes = value.get('notes', '')
+    removed_content_types = {
+        'biological_context',
+        'coding_variants',
+        'complexes_complexes',
+        'complexes_proteins',
+        'complexes_terms',
+        'diseases_genes',
+        'elements_genes',
+        'genes_genes',
+        'genes_pathways',
+        'genes_terms',
+        'genes_transcripts',
+        'go_terms_proteins',
+        'motifs_proteins',
+        'ontology_terms_ontology_terms',
+        'pathways_pathways',
+        'proteins_proteins',
+        'genomic_elements',
+        'genomic_elements_genes',
+        'genomic_elements_genes_biosamples',
+        'genomic_elements_genes_biosamples_donors',
+        'genomic_elements_genes_biosamples_treatments_chebi',
+        'genomic_elements_genes_biosamples_treatments_proteins',
+        'genomic_elements_genomic_elements',
+        'studies',
+        'studies_variants',
+        'studies_variants_phenotypes',
+        'transcripts',
+        'transcripts_proteins',
+        'variants_coding_variants',
+        'variants_diseases',
+        'variants_diseases_genes',
+        'variants_drugs',
+        'variants_drugs_genes',
+        'variants_genes',
+        'variants_genes_terms',
+        'variants_phenotypes',
+        'variants_phenotypes_studies',
+        'variants_proteins',
+        'variants_proteins_terms',
+        'variants_proteins_biosamples',
+        'variants_proteins_phenotypes',
+        'variants_genomic_elements',
+        'variants_variants',
+        'vector sequences',
+    }
+
+    for key in ['input_content_types', 'output_content_types']:
+        removed_found = sorted({c for c in value[key] if c in removed_content_types})
+        if removed_found:
+            new_content_list = [
+                ('elements reference' if c in removed_content_types else c)
+                for c in value[key]
+            ]
+            value[key] = sorted(list(set(new_content_list)))
+            notes += (
+                f' {removed_found} were removed from {key}, and have been upgraded to '
+                f"\"elements reference\"; this should be patched with more appropriate "
+                f'content_type values.'
+            )
+            # these are unused on prod database so no need for patching
+
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
