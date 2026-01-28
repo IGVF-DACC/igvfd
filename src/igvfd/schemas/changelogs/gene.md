@@ -2,7 +2,6 @@
 
 ### Minor changes since schema version 10
 
-* Add `allele`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.
 * Extend `locations.assembly` enum list to include `C57BL_6J_T2T_v1 + GRCm39_X`.

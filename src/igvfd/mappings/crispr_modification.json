@@ -1,6 +1,6 @@
 {
-    "hash": "75147962d2be6fc1aaafc7dcd9ed2d69",
-    "index_name": "crispr_modification_75147962",
+    "hash": "8d48bc76bef2b499b013e114259faae9",
+    "index_name": "crispr_modification_8d48bc76",
     "item_type": "crispr_modification",
     "mapping": {
         "dynamic_templates": [
@@ -429,9 +429,6 @@
                             "aliases": {
                                 "type": "keyword"
                             },
-                            "allele": {
-                                "type": "keyword"
-                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -445,9 +442,6 @@
                                 "type": "text"
                             },
                             "geneid": {
-                                "type": "keyword"
-                            },
-                            "geneid_with_allele": {
                                 "type": "keyword"
                             },
                             "geneid_with_version": {

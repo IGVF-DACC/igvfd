@@ -1,6 +1,6 @@
 {
-    "hash": "65e2e87302668ab28975c0989a1f3397",
-    "index_name": "multiplexed_sample_65e2e873",
+    "hash": "a42d83fbc848dfb45590cd4cc49b81e7",
+    "index_name": "multiplexed_sample_a42d83fb",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -269,9 +269,6 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
-                                    "allele": {
-                                        "type": "keyword"
-                                    },
                                     "collections": {
                                         "type": "keyword"
                                     },
@@ -285,9 +282,6 @@
                                         "type": "text"
                                     },
                                     "geneid": {
-                                        "type": "keyword"
-                                    },
-                                    "geneid_with_allele": {
                                         "type": "keyword"
                                     },
                                     "geneid_with_version": {
@@ -1610,9 +1604,6 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
-                                    "allele": {
-                                        "type": "keyword"
-                                    },
                                     "collections": {
                                         "type": "keyword"
                                     },
@@ -1626,9 +1617,6 @@
                                         "type": "text"
                                     },
                                     "geneid": {
-                                        "type": "keyword"
-                                    },
-                                    "geneid_with_allele": {
                                         "type": "keyword"
                                     },
                                     "geneid_with_version": {
