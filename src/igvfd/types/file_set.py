@@ -181,6 +181,14 @@ class FileSet(Item):
             ]
         ),
         Path(
+            'files.imaging_platform',
+            include=[
+                '@id',
+                'term_name',
+                'status'
+            ]
+        ),
+        Path(
             'files.cell_type_annotation',
             include=[
                 '@id',

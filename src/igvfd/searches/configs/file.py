@@ -57,6 +57,12 @@ def file():
                 'description': 'The measurement device used to produce sequencing data.',
                 'category': 'File Details'
             },
+            'imaging_platform.term_name': {
+                'title': 'Imaging Platform',
+                'description': 'The measurement device used to produce imaging data.',
+                'optional': True,
+                'category': 'File Details'
+            },
             'externally_hosted': {
                 'title': 'Externally Hosted',
                 'description': 'Indicates whether the file is externally hosted and not stored on portal.',
