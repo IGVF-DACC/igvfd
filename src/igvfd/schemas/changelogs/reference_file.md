@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 22
+
+
+
 ### Minor changes since schema version 21
 
 * Extend `collections` enum list to include `E2G Pillar Project`.
