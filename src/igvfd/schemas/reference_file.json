@@ -205,7 +205,7 @@
                         "pQTL",
                         "protein protein interactions",
                         "proteins",
-                        "sQTL",
+                        "spliceQTL",
                         "variant disease links",
                         "variant drug annotations",
                         "variants"
@@ -251,7 +251,7 @@
                 "pQTL": "Quantitative trait loci linking genetic variants to protein abundance differences.",
                 "protein protein interactions": "Data describing physical or functional interactions between proteins.",
                 "proteins": "Reference information describing proteins.",
-                "sQTL": "Quantitative trait loci linking genetic variants to splicing differences.",
+                "spliceQTL": "Quantitative trait loci linking genetic variants to splicing differences.",
                 "variant disease links": "Associations between genetic variants and diseases or phenotypes.",
                 "variant drug annotations": "Annotations describing relationships between variants and drug response.",
                 "variants": "Reference information describing genetic variants."
