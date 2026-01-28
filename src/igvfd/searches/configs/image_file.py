@@ -26,6 +26,9 @@ def image_file():
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles'
             },
+            'imaging_platform.term_name': {
+                'title': 'Imaging Platform'
+            },
             'file_set.samples.taxa': {
                 'title': 'Taxa'
             },

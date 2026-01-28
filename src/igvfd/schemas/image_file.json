@@ -93,6 +93,16 @@
         },
         "dbxrefs": {
             "comment": "This file type currently does not support any external resource submission."
+        },
+        "imaging_platform": {
+            "title": "Imaging Platform",
+            "description": "The measurement device used to produce imaging data.",
+            "type": "string",
+            "linkTo": "PlatformTerm",
+            "submissionExample": {
+                "appscript": "/platform-terms/EFO_0022857/",
+                "igvf_utils": "/platform-terms/EFO_0022857/"
+            }
         }
     },
     "fuzzy_searchable_fields": [

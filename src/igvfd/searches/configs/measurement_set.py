@@ -131,6 +131,12 @@ def measurement_set():
                 'description': 'The sequencing instrument or platform used to generate raw data.',
                 'optional': True
             },
+            'files.imaging_platform.term_name': {
+                'title': 'Imaging Platform',
+                'category': 'File',
+                'description': 'The imaging instrument or platform used to generate raw data.',
+                'optional': True
+            },
             'files.content_type': {
                 'title': 'File Types',
                 'category': 'File',
