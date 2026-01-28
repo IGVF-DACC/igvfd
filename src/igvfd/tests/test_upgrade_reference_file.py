@@ -152,3 +152,9 @@ def test_reference_file_upgrade_20_21(upgrader, reference_file_v20):
     value = upgrader.upgrade('reference_file', reference_file_v20, current_version='20', target_version='21')
     assert value['content_type'] == 'guide RNA sequences reference'
     assert value['schema_version'] == '21'
+
+
+def test_reference_file_upgrade_21_22(upgrader, reference_file_v21):
+    value = upgrader.upgrade('reference_file', reference_file_v21, current_version='21', target_version='22')
+    assert value['content_type'] == 'elements reference'
+    assert value['schema_version'] == '22'

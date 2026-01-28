@@ -110,7 +110,7 @@
         "award": "HG012012",
         "md5sum": "08ba1e3f1348f6bd383215ac528321b2",
         "file_format": "xml",
-        "content_type": "diseases_genes",
+        "content_type": "gene disease links",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
@@ -138,7 +138,7 @@
         "award": "HG012012",
         "md5sum": "51b94a9ce0adac0eb6ecb5356cabb47e",
         "file_format": "tsv",
-        "content_type": "variants_proteins_phenotypes",
+        "content_type": "GWAS",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
@@ -161,7 +161,7 @@
         "award": "HG012012",
         "md5sum": "3b57f00cdaa44e0ed1485a1c706af4e9",
         "file_format": "tsv",
-        "content_type": "variants_proteins_biosamples",
+        "content_type": "allele specific binding",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
@@ -182,13 +182,13 @@
         "uuid": "6d1a1811-2133-474d-b3b1-a07ad1f7e4e1",
         "accession": "IGVFFI6791GUEE",
         "aliases": [
-            "igvf:tsv_genomic_elements_genomic_elements"
+            "igvf:tsv_functional conservation mapping"
         ],
         "lab": "community",
         "award": "HG012012",
         "md5sum": "ee570198468d172dc018978a49b7db53",
         "file_format": "tsv",
-        "content_type": "genomic_elements_genomic_elements",
+        "content_type": "functional conservation mapping",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
@@ -214,7 +214,7 @@
         "award": "HG012012",
         "md5sum": "9e9dd49496d15da65e7e7ab93286d21c",
         "file_format": "tsv",
-        "content_type": "coding_variants",
+        "content_type": "coding variants",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
@@ -258,7 +258,7 @@
         "award": "HG012012",
         "md5sum": "97a0a1cbb217c999c6eeff1901e894da",
         "file_format": "tsv",
-        "content_type": "variants_coding_variants",
+        "content_type": "coding variants",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
@@ -280,7 +280,7 @@
         "award": "HG012012",
         "md5sum": "a220b3052fe701ac13c92977369e085c",
         "file_format": "tsv",
-        "content_type": "variants_diseases",
+        "content_type": "variant disease links",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
@@ -302,7 +302,7 @@
         "award": "HG012012",
         "md5sum": "924382b09d7dbf71a4de9f89af72cafa",
         "file_format": "tsv",
-        "content_type": "variants_diseases_genes",
+        "content_type": "variant disease links",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
@@ -324,7 +324,7 @@
         "award": "HG012012",
         "md5sum": "23e49bb912099bd7ff1f58b501f98cb8",
         "file_format": "tsv",
-        "content_type": "variants_phenotypes",
+        "content_type": "variant disease links",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
@@ -346,7 +346,7 @@
         "award": "HG012012",
         "md5sum": "a7394eb7fbd1bab372092e07f86bc9a3",
         "file_format": "tsv",
-        "content_type": "variants_phenotypes_studies",
+        "content_type": "variant disease links",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
