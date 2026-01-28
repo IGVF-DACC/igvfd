@@ -1,6 +1,6 @@
 {
-    "hash": "395ba285b2bbd4ea021c3f310b67e301",
-    "index_name": "matrix_file_395ba285",
+    "hash": "a67336107398f351f9cca3d71f6d5941",
+    "index_name": "matrix_file_a6733610",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -2496,9 +2496,6 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
-                                    "allele": {
-                                        "type": "keyword"
-                                    },
                                     "collections": {
                                         "type": "keyword"
                                     },
@@ -2512,9 +2509,6 @@
                                         "type": "text"
                                     },
                                     "geneid": {
-                                        "type": "keyword"
-                                    },
-                                    "geneid_with_allele": {
                                         "type": "keyword"
                                     },
                                     "geneid_with_version": {
