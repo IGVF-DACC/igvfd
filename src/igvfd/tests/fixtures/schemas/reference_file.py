@@ -298,7 +298,7 @@ def reference_file_v20(reference_file):
 
 
 @pytest.fixture
-def reference_file_v20(reference_file):
+def reference_file_v21(reference_file):
     item = reference_file.copy()
     item.update({
         'schema_version': '21',
