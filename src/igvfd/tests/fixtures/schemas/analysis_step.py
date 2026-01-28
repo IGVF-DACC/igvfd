@@ -105,3 +105,14 @@ def analysis_step_v8(testapp, base_workflow):
         'workflow': base_workflow['@id']
     }
     return item
+
+
+@pytest.fixture
+def analysis_step_v9(testapp, analysis_step):
+    item = analysis_step.copy()
+    item.update({
+        'schema_version': '9',
+        'input_content_types': ['biological_context'],
+        'output_content_types': ['genes_genes', 'variants_genes', 'elements reference']
+    })
+    return item

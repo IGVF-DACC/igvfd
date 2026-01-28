@@ -42,7 +42,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "9"
+            "default": "10"
         },
         "analysis_step_types": {
             "title": "Analysis Step Types",
