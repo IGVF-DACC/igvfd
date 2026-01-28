@@ -295,3 +295,13 @@ def reference_file_v20(reference_file):
         'content_type': 'guide RNA sequences'
     })
     return item
+
+
+@pytest.fixture
+def reference_file_v20(reference_file):
+    item = reference_file.copy()
+    item.update({
+        'schema_version': '21',
+        'content_type': 'biological_context'
+    })
+    return item
