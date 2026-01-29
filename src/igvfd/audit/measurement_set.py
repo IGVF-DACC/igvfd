@@ -881,6 +881,76 @@ def audit_missing_library_preparation_kit(value, system):
         )
 
 
+def audit_inconsistent_onlist_files(value, system):
+    '''
+    [
+        {
+            "audit_description": "Measurement sets with a `library_preparation_kit` are expected to link to the corresponding `onlist_files`.",
+            "audit_category": "inconsistent onlist files",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    KIT_TO_ONLIST = {
+        # Single Cell 3' v1
+        '10X Chromium Single Cell 3 prime v1': {
+            'a1535b7bf880d7c8dbc0382f792d1702': '737K-april-2014_rc.txt.gz'
+        },
+        # Single Cell 3' v2
+        '10X Chromium Single Cell 3 prime v2': {
+            '8dc68aca20f45bd58cd3dc01603cb4a6': '737K-august-2016.txt.gz'
+        },
+        # Single Cell 3' v3
+        '10X Chromium Single Cell 3 prime v3': {
+            'e3d4c9b177b3ef177c90363bca8efd61': '3M-february-2018.txt.gz',
+            'e3306c55b3b932961def0ee570e237e1': '3M-february-2018_TRU.txt.gz'
+        },
+        # Single Cell 3' v3.1
+        '10X Chromium Single Cell 3 prime v3.1': {
+            'e3d4c9b177b3ef177c90363bca8efd61': '3M-february-2018.txt.gz',
+            'e3306c55b3b932961def0ee570e237e1': '3M-february-2018_TRU.txt.gz'
+        },
+        # Single Cell 3' v4
+        '10X Chromium Single Cell 3 prime v4': {
+            '3e6ed2f6b5e82b0edfd4a28e790d6b9b': '3M-3pgex-may-2023.txt.gz',
+            '28ae03308136590bbcc5f90e74cde33f': '3M-3pgex-may-2023_TRU.txt.gz'
+        },
+        # Single Cell 5' v1
+        '10X Chromium Single Cell 5 prime v1': {
+            '8dc68aca20f45bd58cd3dc01603cb4a6': '737K-august-2016.txt.gz'
+        },
+        # Single Cell 5' v2
+        '10X Chromium Single Cell 5 prime v2': {
+            '8dc68aca20f45bd58cd3dc01603cb4a6': '737K-august-2016.txt.gz'
+        },
+        # Single Cell 5' v3
+        '10X Chromium Single Cell 5 prime v3': {
+            '5033d08c9b8d5080d2e5f65a3896b53b': '3M-5pgex-jan-2023.txt.gz'
+        },
+    }
+
+    audit_message = get_audit_message(audit_inconsistent_onlist_files, index=0)
+    library_preparation_kit = value.get('library_preparation_kit', '')
+    if library_preparation_kit in KIT_TO_ONLIST:
+        onlist_files = value.get('onlist_files', [])
+        for onlist_file in onlist_files:
+            file_obj = system.get('request').embed(onlist_file, '@@object?skip_calculated=true')
+            file_md5 = file_obj.get('md5sum', '')
+            if file_md5 not in KIT_TO_ONLIST[library_preparation_kit]:
+                expected_names = ', '.join(KIT_TO_ONLIST[library_preparation_kit].values())
+                detail = (
+                    f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                    f'has an onlist file {audit_link(path_to_text(file_obj["@id"]), file_obj["@id"])} '
+                    f'which is inconsistent with the expected onlist(s) for its `library_preparation_kit` '
+                    f'{library_preparation_kit}. Expected: {expected_names}.'
+                )
+                yield AuditFailure(
+                    audit_message.get('audit_category', ''),
+                    f'{detail} {audit_message.get("audit_description", "")}',
+                    level=audit_message.get('audit_level', '')
+                )
+
+
 function_dispatcher_measurement_set_object = {
     'audit_related_multiome_datasets': audit_related_multiome_datasets,
     'audit_unspecified_protocol': audit_unspecified_protocol,
