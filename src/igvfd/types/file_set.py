@@ -1824,7 +1824,7 @@ class PredictionSet(FileSet):
                 sample_term_phrases = []
                 for sample in samples:
                     sample_object = request.embed(sample, '@@object')
-                    sample_term_phrases.append(sample_object.get('summary', '').replace('virtaul', '').strip())
+                    sample_term_phrases.append(sample_object.get('summary', '').replace('virtual', '').strip())
                 samples_phrase = f'{", ".join([t for t in sample_term_phrases if t!=""])}'
 
         # Final summary
