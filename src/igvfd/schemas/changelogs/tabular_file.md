@@ -1,5 +1,11 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 19
+
+* Adjust `content_type` enum list to replace `filtered global differential expressions` with `global differential expression`.
+* Adjust `content_type` enum list to replace `unfiltered global differential expression` with `global differential expression`.
+* Adjust `content_type` enum list to replace `unfiltered local differential expression` with `local differential expression`.
+
 ### Minor changes since schema version 18
 
 * Add `checkfiles_timestamp`.

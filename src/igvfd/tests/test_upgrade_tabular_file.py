@@ -79,3 +79,18 @@ def test_tabular_file_upgrade_17_18(upgrader, tabular_file_v17):
     value = upgrader.upgrade('tabular_file', tabular_file_v17, current_version='17', target_version='18')
     assert value['content_type'] == 'pipeline parameters'
     assert value['schema_version'] == '18'
+
+
+def test_tabular_file_upgrade_18_19(upgrader, tabular_file_v18a, tabular_file_v18b, tabular_file_v18c):
+    value = upgrader.upgrade('tabular_file', tabular_file_v18a, current_version='18', target_version='19')
+    assert value['content_type'] == 'global differential expression'
+    assert value['filtered'] == True
+    assert value['schema_version'] == '19'
+    value = upgrader.upgrade('tabular_file', tabular_file_v18b, current_version='18', target_version='19')
+    assert value['content_type'] == 'global differential expression'
+    assert value['filtered'] == True
+    assert value['schema_version'] == '19'
+    value = upgrader.upgrade('tabular_file', tabular_file_v18c, current_version='18', target_version='19')
+    assert value['content_type'] == 'local differential expression'
+    assert value['filtered'] == False
+    assert value['schema_version'] == '19'

@@ -138,7 +138,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "18"
+            "default": "19"
         },
         "catalog_adapters": {
             "title": "IGVF Catalog Adapters",
@@ -192,7 +192,6 @@
                 "elements reference",
                 "exclusion list regions",
                 "external source data",
-                "filtered global differential expressions",
                 "fold change over control",
                 "fold change of post-selection and pre-selection",
                 "fragments",
@@ -202,11 +201,13 @@
                 "gene program regulators",
                 "gene quantifications",
                 "gene universe",
+                "global differential expression",
                 "guide quantifications",
                 "guide RNA sequences",
                 "heritability enrichment",
                 "index plate",
                 "individual cells profile",
+                "local differential expression",
                 "loci",
                 "machine learning model features",
                 "minus strand modification state",
@@ -245,8 +246,6 @@
                 "target transcripts",
                 "tissue positions",
                 "transcript quantifications",
-                "unfiltered global differential expression",
-                "unfiltered local differential expression",
                 "variants",
                 "variant binding effects",
                 "variant effects",

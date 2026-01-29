@@ -43,3 +43,11 @@ def test_analysis_step_upgrade_9_10(upgrader, analysis_step_v9):
     assert sorted(value['input_content_types']) == sorted(['elements reference'])
     assert sorted(value['output_content_types']) == sorted(['elements reference'])
     assert value['schema_version'] == '10'
+
+def test_analysis_step_upgrade_10_11(upgrader, analysis_step_v10):
+    value = upgrader.upgrade('analysis_step', analysis_step_v10, current_version='10', target_version='11')
+    assert len(value['input_content_types']) == 2
+    assert set(value['input_content_types']) == {'global differential expression', 'local differential expression'}
+    assert len(value['output_content_types']) == 2
+    assert set(value['output_content_types']) == {'global differential expression', 'local differential expression'}
+    assert value['schema_version'] == '10'

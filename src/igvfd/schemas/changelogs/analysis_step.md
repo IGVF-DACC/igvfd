@@ -1,5 +1,14 @@
 ## Changelog for *`analysis_step.json`*
 
+### Schema version 11
+
+* Adjust `output_content_types` enum list to replace `filtered global differential expressions` with `global differential expression`.
+* Adjust `input_content_types` enum list to replace `filtered global differential expressions` with `global differential expression`.
+* Adjust `output_content_types` enum list to replace `unfiltered global differential expression` with `global differential expression`.
+* Adjust `input_content_types` enum list to replace `unfiltered global differential expression` with `global differential expression`.
+* Adjust `output_content_types` enum list to replace `unfiltered local differential expression` with `local differential expression`.
+* Adjust `input_content_types` enum list to replace `unfiltered local differential expression` with `local differential expression`.
+
 ### Schema version 10
 
 * Extend `input_content_types` enum list to include `allele specific binding`.
