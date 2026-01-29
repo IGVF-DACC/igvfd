@@ -35,6 +35,17 @@ def prediction_set_activity_level(testapp, lab, award, multiplexed_sample):
 
 
 @pytest.fixture
+def prediction_set_donor(testapp, lab, award, human_donor):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'functional effect',
+        'donors': [human_donor['@id']]
+    }
+    return testapp.post_json('/prediction_set', item).json['@graph'][0]
+
+
+@pytest.fixture
 def prediction_set_v1(base_prediction_set):
     item = base_prediction_set.copy()
     item.update({
