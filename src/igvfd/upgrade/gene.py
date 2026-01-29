@@ -101,3 +101,10 @@ def gene_9_10(value, system):
         notes += f'This object\'s transcriptome_annotation was GENCODE 28, GENCODE M17 but has been upgraded to GENCODE 32, GENCODE M23 as requested by the lab.'
         value['notes'] = notes.strip()
     return
+
+
+@upgrade_step('gene', '10', '11')
+def gene_10_11(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3228
+    # updating unique key/name of genes requires a force upgrade
+    pass
