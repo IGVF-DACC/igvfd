@@ -27,6 +27,11 @@ class Gene(SharedItem):
     set_status_up = []
     set_status_down = []
 
+    def unique_keys(self, properties):
+        keys = super(Gene, self).unique_keys(properties)
+        keys.setdefault('gene:geneid_with_allele', []).append(self._geneid_with_allele(properties))
+        return keys
+
     @calculated_property(schema={
         'title': 'Title',
         'type': 'string',
