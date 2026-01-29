@@ -1787,7 +1787,7 @@ class PredictionSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type, software_versions=None, assessed_genes=None, scope=None, files=None):
+    def summary(self, request, file_set_type, software_versions=None, assessed_genes=None, scope=None, files=None, samples=None, donors=None):
         # Get scope info
         scope_phrase = ''
         if scope:
@@ -1803,12 +1803,37 @@ class PredictionSet(FileSet):
             software_version_phrase = f'using {", ".join(sorted(list(software_version_summaries)))}'
         # Get assessed genes info
         assessed_genes_phrase = get_assessed_gene_phrase(request, assessed_genes)
+        # Get sample or donor info
+        taxa = set()
+        samples_phrase = ''
+        if donors:  # for generic human/mouse prediction, only add taxa phrase to summary
+            for donor in donors:
+                donor_object = request.embed(donor, '@@object?skip_calculated=true')
+                taxa.add(donor_object.get('taxa', ''))
+            samples_phrase = f'{", ".join(sorted(taxa))}'
+        else:  # for sample-specific predictions, use sample count in summary if the list is long
+            if len(samples) > 3:
+                for sample in samples:
+                    sample_object = request.embed(sample, '@@object')
+                    taxa.add(sample_object.get('taxa', ''))
+                if len(taxa) > 1:
+                    samples_phrase = f'{len(samples)} mixed species samples'
+                else:
+                    samples_phrase = f'{len(samples)} {list(taxa)[0]} samples'
+            else:  # list out the samples explicitly
+                sample_term_phrases = []
+                for sample in samples:
+                    sample_object = request.embed(sample, '@@object')
+                    sample_term_phrases.append(sample_object.get('summary', '').replace('virtaul', '').strip())
+                samples_phrase = f'{", ".join([t for t in sample_term_phrases if t!=""])}'
+
         # Final summary
         return ' '.join(filter(None, [
             file_set_type,
             f'prediction{scope_phrase}',
             f'for {assessed_genes_phrase}' if assessed_genes else '',
-            software_version_phrase
+            software_version_phrase,
+            f'in {samples_phrase}'
         ]))
 
 
