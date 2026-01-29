@@ -26,10 +26,29 @@ def test_audit_missing_input_file_set(
             'derived_from': [signal_file['@id']]
         }
     )
+    # Test: missing input file set audit is triggered
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing input file set'
         for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'preferred_assay_titles': ['Cell painting']
+        }
+    )
+    # Test: audit is skipped for imaging assay
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] != 'missing input file set'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'preferred_assay_titles': ['STARR-seq']
+        }
     )
     testapp.patch_json(
         signal_file['@id'],
@@ -37,6 +56,7 @@ def test_audit_missing_input_file_set(
             'file_set': analysis_set_base['@id']
         }
     )
+    # Test: audit is resolved for non-imaging assay
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing input file set'
@@ -87,6 +107,7 @@ def test_audit_unexpected_input_file_set(
             'file_set': analysis_set_base['@id']
         }
     )
+    # Test: unexpected input file set audit is triggered
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -97,6 +118,25 @@ def test_audit_unexpected_input_file_set(
     assert any(
         error['category'] == 'unexpected input file set'
         for error in res.json['audit'].get('ERROR', [])
+    )
+    # Test: audit is skipped for imaging assay
+    testapp.patch_json(
+        measurement_set_multiome['@id'],
+        {
+            'preferred_assay_titles': ['Cell painting']
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] != 'unexpected input file set'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Test: audit is resolved for non-imaging assay
+    testapp.patch_json(
+        measurement_set_multiome['@id'],
+        {
+            'preferred_assay_titles': ['STARR-seq']
+        }
     )
     testapp.patch_json(
         matrix_file['@id'],
