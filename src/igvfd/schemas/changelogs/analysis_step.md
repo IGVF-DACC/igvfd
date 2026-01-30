@@ -20,8 +20,8 @@
 * Extend `output_content_types` enum list to include `GO annotation`.
 * Extend `input_content_types` enum list to include `GWAS`.
 * Extend `output_content_types` enum list to include `GWAS`.
-* Extend `input_content_types` enum list to include `linkage disequilibrum`.
-* Extend `output_content_types` enum list to include `linkage disequilibrum`.
+* Extend `input_content_types` enum list to include `linkage disequilibrium`.
+* Extend `output_content_types` enum list to include `linkage disequilibrium`.
 * Extend `input_content_types` enum list to include `motif protein mapping`.
 * Extend `output_content_types` enum list to include `motif protein mapping`.
 * Extend `input_content_types` enum list to include `ontology terms`.
