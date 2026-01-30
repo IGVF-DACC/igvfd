@@ -4,62 +4,42 @@
 
 * Extend `input_content_types` enum list to include `allele specific binding`.
 * Extend `output_content_types` enum list to include `allele specific binding`.
-* Extend `input_content_types` enum list to include `caQTL`.
-* Extend `output_content_types` enum list to include `caQTL`.
 * Extend `input_content_types` enum list to include `coding variants`.
 * Extend `output_content_types` enum list to include `coding variants`.
 * Extend `input_content_types` enum list to include `coexpression`.
 * Extend `output_content_types` enum list to include `coexpression`.
-* Extend `input_content_types` enum list to include `element quantifications`.
-* Extend `output_content_types` enum list to include `element quantifications`.
-* Extend `input_content_types` enum list to include `element to gene interactions`.
-* Extend `output_content_types` enum list to include `element to gene interactions`.
-* Extend `input_content_types` enum list to include `elements reference`.
-* Extend `output_content_types` enum list to include `elements reference`.
-* Extend `input_content_types` enum list to include `eQTL`.
-* Extend `output_content_types` enum list to include `eQTL`.
 * Extend `input_content_types` enum list to include `functional conservation mapping`.
 * Extend `output_content_types` enum list to include `functional conservation mapping`.
 * Extend `input_content_types` enum list to include `gene dependency`.
 * Extend `output_content_types` enum list to include `gene dependency`.
 * Extend `input_content_types` enum list to include `gene disease links`.
 * Extend `output_content_types` enum list to include `gene disease links`.
-* Extend `input_content_types` enum list to include `genes`.
-* Extend `output_content_types` enum list to include `genes`.
 * Extend `input_content_types` enum list to include `genes in pathway`.
 * Extend `output_content_types` enum list to include `genes in pathway`.
 * Extend `input_content_types` enum list to include `GO annotation`.
 * Extend `output_content_types` enum list to include `GO annotation`.
 * Extend `input_content_types` enum list to include `GWAS`.
 * Extend `output_content_types` enum list to include `GWAS`.
-* Extend `input_content_types` enum list to include `linkage disequlibrum`.
-* Extend `output_content_types` enum list to include `linkage disequlibrum`.
+* Extend `input_content_types` enum list to include `linkage disequilibrum`.
+* Extend `output_content_types` enum list to include `linkage disequilibrum`.
 * Extend `input_content_types` enum list to include `motif protein mapping`.
 * Extend `output_content_types` enum list to include `motif protein mapping`.
-* Extend `input_content_types` enum list to include `motifs`.
-* Extend `output_content_types` enum list to include `motifs`.
 * Extend `input_content_types` enum list to include `ontology terms`.
 * Extend `output_content_types` enum list to include `ontology terms`.
 * Extend `input_content_types` enum list to include `orthologs`.
 * Extend `output_content_types` enum list to include `orthologs`.
 * Extend `input_content_types` enum list to include `pathway hierarchy`.
 * Extend `output_content_types` enum list to include `pathway hierarchy`.
-* Extend `input_content_types` enum list to include `pathways`.
-* Extend `output_content_types` enum list to include `pathways`.
 * Extend `input_content_types` enum list to include `pQTL`.
 * Extend `output_content_types` enum list to include `pQTL`.
 * Extend `input_content_types` enum list to include `protein protein interactions`.
 * Extend `output_content_types` enum list to include `protein protein interactions`.
-* Extend `input_content_types` enum list to include `proteins`.
-* Extend `output_content_types` enum list to include `proteins`.
 * Extend `input_content_types` enum list to include `spliceQTL`.
 * Extend `output_content_types` enum list to include `spliceQTL`.
 * Extend `input_content_types` enum list to include `variant disease links`.
 * Extend `output_content_types` enum list to include `variant disease links`.
 * Extend `input_content_types` enum list to include `variant drug annotations`.
 * Extend `output_content_types` enum list to include `variant drug annotations`.
-* Extend `input_content_types` enum list to include `variants`.
-* Extend `output_content_types` enum list to include `variants`.
 * Adjust `input_content_types` enum list to remove `biological_context`.
 * Adjust `output_content_types` enum list to remove `biological_context`.
 * Adjust `input_content_types` enum list to remove `coding_variants`.

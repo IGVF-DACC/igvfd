@@ -626,7 +626,7 @@ def reference_file_21_22(value, system):
     if content_type in removed_content_types:
         value['content_type'] = 'elements reference'
         notes += (
-            f"This file's content_type was {content_type}, which has been removed; "
+            f" This file's content_type was {content_type}, which has been removed; "
             f'it has been upgraded to elements reference and should be patched '
             f'with a more appropriate content_type.'
         )

@@ -15,7 +15,7 @@
 * Adjust `content_type` enum list to include `genes in pathway`.
 * Adjust `content_type` enum list to include `GO annotation`.
 * Adjust `content_type` enum list to include `GWAS`.
-* Adjust `content_type` enum list to include `linkage disequlibrum`.
+* Adjust `content_type` enum list to include `linkage disequilibrum`.
 * Adjust `content_type` enum list to include `motif protein mapping`.
 * Adjust `content_type` enum list to include `ontology terms`.
 * Adjust `content_type` enum list to include `orthologs`.
