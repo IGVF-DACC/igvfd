@@ -34,8 +34,6 @@
 * Extend `output_content_types` enum list to include `pQTL`.
 * Extend `input_content_types` enum list to include `protein protein interactions`.
 * Extend `output_content_types` enum list to include `protein protein interactions`.
-* Extend `input_content_types` enum list to include `spliceQTL`.
-* Extend `output_content_types` enum list to include `spliceQTL`.
 * Extend `input_content_types` enum list to include `variant disease links`.
 * Extend `output_content_types` enum list to include `variant disease links`.
 * Extend `input_content_types` enum list to include `variant drug annotations`.
