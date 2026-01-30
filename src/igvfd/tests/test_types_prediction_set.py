@@ -109,7 +109,7 @@ def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs
 
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 in 4 mixed species virtual samples'
+        'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 in 4 virtual mixed species samples'
 
     # Test Prediction Set summary if donors specified instead of samples
     res = testapp.get(prediction_set_donor['@id'])

@@ -1829,7 +1829,7 @@ class PredictionSet(FileSet):
                     taxa_phrase = 'mixed species '
                 else:
                     taxa_phrase = f'{list(taxa)[0]} '
-                samples_phrase = f'{len(samples)} {taxa_phrase}{virtual_phrase}samples'
+                samples_phrase = f'{len(samples)} {virtual_phrase}{taxa_phrase}samples'
             else:  # list out the samples explicitly, take unique set of sample summaries
                 sample_term_phrases = set()
                 for sample in samples:
