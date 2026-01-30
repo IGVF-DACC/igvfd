@@ -1846,3 +1846,34 @@ def test_audit_missing_library_preparation_kit(
         error['category'] != 'missing library preparation kit'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_inconsistent_onlist(
+    testapp,
+    measurement_set,
+    tabular_file_onlist_1
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'onlist_files': [tabular_file_onlist_1['@id']],
+            'onlist_method': 'no combination',
+            'library_preparation_kit': '10X Chromium Single Cell 5 prime v3'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent onlist files'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        tabular_file_onlist_1['@id'],
+        {
+            'md5sum': '5033d08c9b8d5080d2e5f65a3896b53b'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent onlist files'
+        for error in res.json['audit'].get('ERROR', [])
+    )
