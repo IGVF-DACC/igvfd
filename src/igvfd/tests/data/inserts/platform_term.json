@@ -62,5 +62,13 @@
         "company": "Ultima Genomics",
         "release_timestamp": "2025-06-06T12:34:56Z",
         "uuid": "f835496b-cce6-829e-d181-fed50eb09cb9"
+    },
+    {
+        "term_id": "EFO:0022857",
+        "term_name": "Visium Spatial Gene Expression V1",
+        "status": "released",
+        "company": "10X Genomics",
+        "release_timestamp": "2026-01-06T12:34:56Z",
+        "uuid": "157a0192-c4fe-42d0-862d-e045b4646a7d"
     }
 ]
