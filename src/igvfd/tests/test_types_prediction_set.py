@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, gene_zscan10_mm, tabular_file, analysis_step_version, in_vitro_organoid, in_vitro_cell_line, tissue, whole_organism):
+def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, gene_zscan10_mm, tabular_file, analysis_step_version, in_vitro_organoid, in_vitro_cell_line, tissue, primary_cell, human_donor):
     # Test Prediction Set summary if without assessed genes
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get('summary') == 'functional effect prediction in Mus musculus strain1 (male) K562 cell line'
@@ -62,7 +62,7 @@ def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs
         }
     )
     res = testapp.get(base_prediction_set['@id'])
-    assert res.json.get('summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 in Mus musculus strain1 (male) K562 cell line, Homo sapiens adrenal gland organoid induced to adrenal gland for 10 days'
+    assert res.json.get('summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 in Homo sapiens adrenal gland organoid induced to adrenal gland for 10 days, Mus musculus strain1 (male) K562 cell line'
 
     # Test Prediction Set summary if with 3+ samples, use sample number instead
     testapp.patch_json(
@@ -73,7 +73,7 @@ def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs
                     in_vitro_cell_line['@id'],
                     in_vitro_organoid['@id'],
                     tissue['@id'],
-                    whole_organism['@id']
+                    primary_cell['@id']
                 ]
         }
     )
@@ -81,9 +81,47 @@ def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs
     assert res.json.get(
         'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 in 4 mixed species samples'
 
+    # Test Prediction Set summary if with 3+ virtual samples, use sample number instead
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'virtual': True
+        }
+    )
+    testapp.patch_json(
+        in_vitro_organoid['@id'],
+        {
+            'virtual': True
+        }
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'virtual': True
+        }
+    )
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'virtual': True
+        }
+    )
+
+    res = testapp.get(base_prediction_set['@id'])
+    assert res.json.get(
+        'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 in 4 mixed species virtual samples'
+
     # Test Prediction Set summary if donors specified instead of samples
     res = testapp.get(prediction_set_donor['@id'])
     assert res.json.get('summary') == 'functional effect prediction in Homo sapiens'
+    testapp.patch_json(
+        human_donor['@id'],
+        {
+            'virtual': True
+        }
+    )
+    res = testapp.get(prediction_set_donor['@id'])
+    assert res.json.get('summary') == 'functional effect prediction in virtual Homo sapiens'
 
 
 def test_software_versions(testapp, tabular_file, base_prediction_set, analysis_step_version, software_version):

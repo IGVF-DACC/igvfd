@@ -1807,25 +1807,35 @@ class PredictionSet(FileSet):
         taxa = set()
         samples_phrase = ''
         if donors:  # for generic human/mouse prediction, only add taxa phrase to summary
+            virtual_phrase = 'virtual '
+            # only put 'virtual' in final summary if all donors are virtual
             for donor in donors:
                 donor_object = request.embed(donor, '@@object?skip_calculated=true')
                 taxa.add(donor_object.get('taxa', ''))
-            samples_phrase = f'{", ".join(sorted(taxa))}'
+                if not donor_object.get('virtual'):
+                    virtual_phrase = ''
+            samples_phrase = f'{virtual_phrase}{", ".join(sorted(taxa))}'
         else:  # for sample-specific predictions, use sample count in summary if the list is long
             if len(samples) > 3:
+                virtual_phrase = 'virtual '
+                taxa_phrase = ''
                 for sample in samples:
                     sample_object = request.embed(sample, '@@object')
                     taxa.add(sample_object.get('taxa', ''))
+                    # only put 'virtual' in final summary if all samples are virtual
+                    if 'virtual' not in sample_object.get('summary'):
+                        virtual_phrase = ''
                 if len(taxa) > 1:
-                    samples_phrase = f'{len(samples)} mixed species samples'
+                    taxa_phrase = 'mixed species '
                 else:
-                    samples_phrase = f'{len(samples)} {list(taxa)[0]} samples'
-            else:  # list out the samples explicitly
-                sample_term_phrases = []
+                    taxa_phrase = f'{list(taxa)[0]} '
+                samples_phrase = f'{len(samples)} {taxa_phrase}{virtual_phrase}samples'
+            else:  # list out the samples explicitly, take unique set of sample summaries
+                sample_term_phrases = set()
                 for sample in samples:
                     sample_object = request.embed(sample, '@@object')
-                    sample_term_phrases.append(sample_object.get('summary', '').replace('virtual', '').strip())
-                samples_phrase = f'{", ".join([t for t in sample_term_phrases if t!=""])}'
+                    sample_term_phrases.add(sample_object.get('summary', ''))
+                samples_phrase = f'{", ".join([t for t in sorted(sample_term_phrases) if t!=""])}'
 
         # Final summary
         return ' '.join(filter(None, [
