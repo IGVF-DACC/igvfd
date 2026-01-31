@@ -1,6 +1,6 @@
 {
-    "hash": "6defd7e3207f1d6abbd885710a5e1a78",
-    "index_name": "prediction_set_6defd7e3",
+    "hash": "0619410b1ab8f6e56cc6774e1d1c39da",
+    "index_name": "prediction_set_0619410b",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -3030,6 +3030,9 @@
                                 "type": "keyword"
                             },
                             "volume": {
+                                "type": "keyword"
+                            },
+                            "website_url": {
                                 "type": "keyword"
                             },
                             "workflows": {

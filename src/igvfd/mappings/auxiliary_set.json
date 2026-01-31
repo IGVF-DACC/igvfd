@@ -1,6 +1,6 @@
 {
-    "hash": "ccfc2e55faa891ed5f13eaf1f52686b0",
-    "index_name": "auxiliary_set_ccfc2e55",
+    "hash": "efa4aaabefaaa20d3b67ea99429c7c9a",
+    "index_name": "auxiliary_set_efa4aaab",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -2958,6 +2958,9 @@
                                 "type": "keyword"
                             },
                             "volume": {
+                                "type": "keyword"
+                            },
+                            "website_url": {
                                 "type": "keyword"
                             },
                             "workflows": {

@@ -1,6 +1,6 @@
 {
-    "hash": "f06c94888b85da5e5fd6590aeebef377",
-    "index_name": "primary_cell_f06c9488",
+    "hash": "79273bc2ba7a8518122a2463f6076f41",
+    "index_name": "primary_cell_79273bc2",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -2089,6 +2089,9 @@
                                 "type": "keyword"
                             },
                             "volume": {
+                                "type": "keyword"
+                            },
+                            "website_url": {
                                 "type": "keyword"
                             },
                             "workflows": {

@@ -1,6 +1,6 @@
 {
-    "hash": "10e405bdaa838be04228ea407b6da25b",
-    "index_name": "technical_sample_10e405bd",
+    "hash": "1b3fc3e4ece18ba11563adffc5e04cad",
+    "index_name": "technical_sample_1b3fc3e4",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1196,6 +1196,9 @@
                                 "type": "keyword"
                             },
                             "volume": {
+                                "type": "keyword"
+                            },
+                            "website_url": {
                                 "type": "keyword"
                             },
                             "workflows": {

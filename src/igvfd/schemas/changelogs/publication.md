@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 6
 
+* Add `website_url`.
 * Add `preview_timestamp`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
 * Update `aliases` regex to add `steven-gazal` as a namespace.

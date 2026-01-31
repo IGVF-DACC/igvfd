@@ -1,6 +1,6 @@
 {
-    "hash": "0edd932d4799b8239b97ec697cbcb644",
-    "index_name": "software_0edd932d",
+    "hash": "51719a4c88e88284323d3e8b0caea1a6",
+    "index_name": "software_51719a4c",
     "item_type": "software",
     "mapping": {
         "dynamic_templates": [
@@ -432,6 +432,9 @@
                                 "type": "keyword"
                             },
                             "volume": {
+                                "type": "keyword"
+                            },
+                            "website_url": {
                                 "type": "keyword"
                             },
                             "workflows": {

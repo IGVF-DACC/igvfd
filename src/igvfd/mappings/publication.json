@@ -1,6 +1,6 @@
 {
-    "hash": "fe378f4d1be75726f79007dac4c7f661",
-    "index_name": "publication_fe378f4d",
+    "hash": "334637d6c3ad95bfc37f7f0a0addf415",
+    "index_name": "publication_334637d6",
     "item_type": "publication",
     "mapping": {
         "dynamic_templates": [
@@ -462,6 +462,9 @@
                         "type": "keyword"
                     },
                     "volume": {
+                        "type": "keyword"
+                    },
+                    "website_url": {
                         "type": "keyword"
                     },
                     "workflows": {
