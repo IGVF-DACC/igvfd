@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, gene_zscan10_mm, tabular_file, analysis_step_version, in_vitro_organoid, in_vitro_cell_line, tissue, primary_cell, human_donor):
+def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, gene_zscan10_mm, tabular_file, analysis_step_version, in_vitro_organoid, in_vitro_cell_line, tissue, human_tissue, primary_cell, human_donor):
     # Test Prediction Set summary if without assessed genes
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get('summary') == 'functional effect prediction in Mus musculus strain1 (male) K562 cell line'
@@ -110,6 +110,34 @@ def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
         'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 in 4 virtual mixed species samples'
+
+    # Test Prediction Set summary if with <= 3 samples, list out the unique set of sample summaries
+
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'donors': [human_donor['@id']]
+        }
+    )
+    testapp.patch_json(
+        human_tissue['@id'],
+        {
+            'virtual': True
+        }
+    )
+    testapp.patch_json(
+        base_prediction_set['@id'],
+        {
+            'samples':
+                [
+                    tissue['@id'],
+                    human_tissue['@id']
+                ]
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'])
+    assert res.json.get(
+        'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 in virtual Homo sapiens adrenal gland tissue/organ'
 
     # Test Prediction Set summary if donors specified instead of samples
     res = testapp.get(prediction_set_donor['@id'])
