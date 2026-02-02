@@ -135,7 +135,7 @@
         },
         "originated_from": {
             "title": "Originated From",
-            "description": "Links to a biosample that was originated from due to differentiation, dedifferentiation, reprogramming, or the introduction of a genetic modification.",
+            "description": "Links to a technical sample that was originated from due to the introduction of a genetic modification.",
             "type": "string",
             "linkTo": "TechnicalSample",
             "submissionExample": {
