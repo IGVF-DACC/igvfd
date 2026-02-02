@@ -36,3 +36,10 @@ def test_analysis_step_upgrade_8_9(upgrader, analysis_step_v8):
     value = upgrader.upgrade('analysis_step', analysis_step_v8, current_version='8', target_version='9')
     assert 'workflow' not in value
     assert value['schema_version'] == '9'
+
+
+def test_analysis_step_upgrade_9_10(upgrader, analysis_step_v9):
+    value = upgrader.upgrade('analysis_step', analysis_step_v9, current_version='9', target_version='10')
+    assert sorted(value['input_content_types']) == sorted(['elements reference'])
+    assert sorted(value['output_content_types']) == sorted(['elements reference'])
+    assert value['schema_version'] == '10'

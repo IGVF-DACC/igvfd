@@ -1,5 +1,75 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 22
+
+* Adjust `content_type` enum list to include `allele specific binding`.
+* Adjust `content_type` enum list to include `caQTL`.
+* Adjust `content_type` enum list to include `coding variants`.
+* Adjust `content_type` enum list to include `coexpression`.
+* Adjust `content_type` enum list to include `element quantifications`.
+* Adjust `content_type` enum list to include `element to gene interactions`.
+* Adjust `content_type` enum list to include `eQTL`.
+* Adjust `content_type` enum list to include `functional conservation mapping`.
+* Adjust `content_type` enum list to include `gene dependency`.
+* Adjust `content_type` enum list to include `gene disease links`.
+* Adjust `content_type` enum list to include `genes in pathway`.
+* Adjust `content_type` enum list to include `GO annotation`.
+* Adjust `content_type` enum list to include `GWAS`.
+* Adjust `content_type` enum list to include `linkage disequilibrium`.
+* Adjust `content_type` enum list to include `motif protein mapping`.
+* Adjust `content_type` enum list to include `ontology terms`.
+* Adjust `content_type` enum list to include `orthologs`.
+* Adjust `content_type` enum list to include `pathway hierarchy`.
+* Adjust `content_type` enum list to include `pQTL`.
+* Adjust `content_type` enum list to include `protein protein interactions`.
+* Adjust `content_type` enum list to include `spliceQTL`.
+* Adjust `content_type` enum list to include `variant disease links`.
+* Adjust `content_type` enum list to include `variant drug annotations`.
+* Adjust `content_type` enum list to remove `biological_context`.
+* Adjust `content_type` enum list to remove `coding_variants`.
+* Adjust `content_type` enum list to remove `complexes_complexes`.
+* Adjust `content_type` enum list to remove `complexes_proteins`.
+* Adjust `content_type` enum list to remove `complexes_terms`.
+* Adjust `content_type` enum list to remove `diseases_genes`.
+* Adjust `content_type` enum list to remove `elements_genes`.
+* Adjust `content_type` enum list to remove `genes_genes`.
+* Adjust `content_type` enum list to remove `genes_pathways`.
+* Adjust `content_type` enum list to remove `genes_terms`.
+* Adjust `content_type` enum list to remove `genes_transcripts`.
+* Adjust `content_type` enum list to remove `go_terms_proteins`.
+* Adjust `content_type` enum list to remove `motifs_proteins`.
+* Adjust `content_type` enum list to remove `ontology_terms_ontology_terms`.
+* Adjust `content_type` enum list to remove `pathways_pathways`.
+* Adjust `content_type` enum list to remove `proteins_proteins`.
+* Adjust `content_type` enum list to remove `genomic_elements`.
+* Adjust `content_type` enum list to remove `genomic_elements_genes`.
+* Adjust `content_type` enum list to remove `genomic_elements_genes_biosamples`.
+* Adjust `content_type` enum list to remove `genomic_elements_genes_biosamples_donors`.
+* Adjust `content_type` enum list to remove `genomic_elements_genes_biosamples_treatments_chebi`.
+* Adjust `content_type` enum list to remove `genomic_elements_genes_biosamples_treatments_proteins`.
+* Adjust `content_type` enum list to remove `genomic_elements_genomic_elements`.
+* Adjust `content_type` enum list to remove `studies`.
+* Adjust `content_type` enum list to remove `studies_variants`.
+* Adjust `content_type` enum list to remove `studies_variants_phenotypes`.
+* Adjust `content_type` enum list to remove `transcripts`.
+* Adjust `content_type` enum list to remove `transcripts_proteins`.
+* Adjust `content_type` enum list to remove `variants_coding_variants`.
+* Adjust `content_type` enum list to remove `variants_diseases`.
+* Adjust `content_type` enum list to remove `variants_diseases_genes`.
+* Adjust `content_type` enum list to remove `variants_drugs`.
+* Adjust `content_type` enum list to remove `variants_drugs_genes`.
+* Adjust `content_type` enum list to remove `variants_genes`.
+* Adjust `content_type` enum list to remove `variants_genes_terms`.
+* Adjust `content_type` enum list to remove `variants_phenotypes`.
+* Adjust `content_type` enum list to remove `variants_phenotypes_studies`.
+* Adjust `content_type` enum list to remove `variants_proteins`.
+* Adjust `content_type` enum list to remove `variants_proteins_terms`.
+* Adjust `content_type` enum list to remove `variants_proteins_biosamples`.
+* Adjust `content_type` enum list to remove `variants_proteins_phenotypes`.
+* Adjust `content_type` enum list to remove `variants_genomic_elements`.
+* Adjust `content_type` enum list to remove `variants_variants`.
+* Adjust `content_type` enum list to remove `vector sequences`.
+
 ### Minor changes since schema version 21
 
 * Extend `collections` enum list to include `E2G Pillar Project`.

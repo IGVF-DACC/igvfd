@@ -570,3 +570,65 @@ def reference_file_20_21(value, system):
         notes += f'This file\'s content_type was guide RNA sequences, but has been upgraded to guide RNA sequences reference.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('reference_file', '21', '22')
+def reference_file_21_22(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3252
+    notes = value.get('notes', '')
+    content_type = value['content_type']
+    removed_content_types = {
+        'biological_context',
+        'coding_variants',
+        'complexes_complexes',
+        'complexes_proteins',
+        'complexes_terms',
+        'diseases_genes',
+        'elements_genes',
+        'genes_genes',
+        'genes_pathways',
+        'genes_terms',
+        'genes_transcripts',
+        'go_terms_proteins',
+        'motifs_proteins',
+        'ontology_terms_ontology_terms',
+        'pathways_pathways',
+        'proteins_proteins',
+        'genomic_elements',
+        'genomic_elements_genes',
+        'genomic_elements_genes_biosamples',
+        'genomic_elements_genes_biosamples_donors',
+        'genomic_elements_genes_biosamples_treatments_chebi',
+        'genomic_elements_genes_biosamples_treatments_proteins',
+        'genomic_elements_genomic_elements',
+        'studies',
+        'studies_variants',
+        'studies_variants_phenotypes',
+        'transcripts',
+        'transcripts_proteins',
+        'variants_coding_variants',
+        'variants_diseases',
+        'variants_diseases_genes',
+        'variants_drugs',
+        'variants_drugs_genes',
+        'variants_genes',
+        'variants_genes_terms',
+        'variants_phenotypes',
+        'variants_phenotypes_studies',
+        'variants_proteins',
+        'variants_proteins_terms',
+        'variants_proteins_biosamples',
+        'variants_proteins_phenotypes',
+        'variants_genomic_elements',
+        'variants_variants',
+        'vector sequences',
+    }
+    if content_type in removed_content_types:
+        value['content_type'] = 'elements reference'
+        notes += (
+            f" This file's content_type was {content_type}, which has been removed; "
+            f'it has been upgraded to elements reference and should be patched '
+            f'with a more appropriate content_type.'
+        )
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
