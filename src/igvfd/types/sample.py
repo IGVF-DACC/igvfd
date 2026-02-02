@@ -638,12 +638,39 @@ class Biosample(Sample):
         if (construct_library_sets and
                 biosample_type in biosample_subschemas):
 
-            if nucleic_acid_delivery == 'lentiviral transduction':
-                verb = 'transduced (lentivirus) with'
-                noun = 'transduction (lentivirus) with'
-            elif nucleic_acid_delivery == 'adenoviral transduction':
-                verb = 'transduced (adenovirus) with'
-                noun = 'transduction (adenovirus) with'
+            nucleic_acid_delivery_to_verb_noun = {
+                'adenoviral transduction': {
+                    'verb': 'transduced (adenovirus) with',
+                    'noun': 'transduction (adenovirus) with'
+                },
+                'electroporation': {
+                    'verb': 'electroporated with',
+                    'noun': 'electroporation with'
+                },
+                'lentiviral transduction': {
+                    'verb': 'transduced (lentivirus) with',
+                    'noun': 'transduction (lentivirus) with'
+                },
+                'lipofectamine': {
+                    'verb': 'transfected (lipofectamine) with',
+                    'noun': 'transfection (lipofectamine) with'
+                },
+                'nucleofection': {
+                    'verb': 'nucleofected with',
+                    'noun': 'nucleofection with'
+                },
+                'transfection': {
+                    'verb': 'transfected with',
+                    'noun': 'transfection with'
+                },
+                'transformation': {
+                    'verb': 'transformed with',
+                    'noun': 'transformation with'
+                }
+            }
+            if nucleic_acid_delivery in nucleic_acid_delivery_to_verb_noun:
+                verb = nucleic_acid_delivery_to_verb_noun[nucleic_acid_delivery]['verb']
+                noun = nucleic_acid_delivery_to_verb_noun[nucleic_acid_delivery]['noun']
             else:
                 verb = 'transfected with'
                 noun = 'transfection with'
