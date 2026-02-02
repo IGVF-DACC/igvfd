@@ -66,6 +66,22 @@ def gene_CD1E(testapp):
 
 
 @pytest.fixture
+def gene_myc_hs_with_allele(testapp):
+    item = {
+        'dbxrefs': [
+            'HGNC:7553'
+        ],
+        'geneid': 'ENSG00000136997',
+        'version_number': '7',
+        'transcriptome_annotation': 'GENCODE 42',
+        'symbol': 'MYC',
+        'taxa': 'Homo sapiens',
+        'allele': 'minor'
+    }
+    return testapp.post_json('/gene', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def gene_TAB3_AS1(testapp):
     item = {
         'dbxrefs': [
@@ -182,6 +198,17 @@ def gene_v9(gene_myc_hs):
         {
             'schema_version': '9',
             'transcriptome_annotation': 'GENCODE 28, GENCODE M17'
+        }
+    )
+    return item
+
+
+@pytest.fixture
+def gene_v10(gene_myc_hs):
+    item = gene_myc_hs.copy()
+    item.update(
+        {
+            'schema_version': '10'
         }
     )
     return item

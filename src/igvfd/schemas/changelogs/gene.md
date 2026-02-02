@@ -1,5 +1,9 @@
 ## Changelog for *`gene.json`*
 
+### Schema version 11
+
+* Add `allele`.
+
 ### Minor changes since schema version 10
 
 * Extend `collections` enum list to include `E2G Pillar Project`.

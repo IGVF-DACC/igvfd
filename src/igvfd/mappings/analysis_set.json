@@ -1,6 +1,6 @@
 {
-    "hash": "48e15b592a98f172763ba7c5c666c040",
-    "index_name": "analysis_set_48e15b59",
+    "hash": "64d52091f41248ed80aa12c95a0e07b9",
+    "index_name": "analysis_set_64d52091",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -844,6 +844,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "allele": {
+                                        "type": "keyword"
+                                    },
                                     "collections": {
                                         "type": "keyword"
                                     },
@@ -857,6 +860,9 @@
                                         "type": "text"
                                     },
                                     "geneid": {
+                                        "type": "keyword"
+                                    },
+                                    "geneid_with_allele": {
                                         "type": "keyword"
                                     },
                                     "geneid_with_version": {
@@ -3799,6 +3805,9 @@
                             "aliases": {
                                 "type": "keyword"
                             },
+                            "allele": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -3812,6 +3821,9 @@
                                 "type": "text"
                             },
                             "geneid": {
+                                "type": "keyword"
+                            },
+                            "geneid_with_allele": {
                                 "type": "keyword"
                             },
                             "geneid_with_version": {

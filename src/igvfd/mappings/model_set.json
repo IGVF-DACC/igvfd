@@ -1,6 +1,6 @@
 {
-    "hash": "3c05ec83dadbdeccfe7a2eb3dc2e5131",
-    "index_name": "model_set_3c05ec83",
+    "hash": "a6cf8c9974eea64616b258f7861cc155",
+    "index_name": "model_set_a6cf8c99",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -169,6 +169,9 @@
                             "aliases": {
                                 "type": "keyword"
                             },
+                            "allele": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -182,6 +185,9 @@
                                 "type": "text"
                             },
                             "geneid": {
+                                "type": "keyword"
+                            },
+                            "geneid_with_allele": {
                                 "type": "keyword"
                             },
                             "geneid_with_version": {
@@ -942,6 +948,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "allele": {
+                                        "type": "keyword"
+                                    },
                                     "collections": {
                                         "type": "keyword"
                                     },
@@ -955,6 +964,9 @@
                                         "type": "text"
                                     },
                                     "geneid": {
+                                        "type": "keyword"
+                                    },
+                                    "geneid_with_allele": {
                                         "type": "keyword"
                                     },
                                     "geneid_with_version": {

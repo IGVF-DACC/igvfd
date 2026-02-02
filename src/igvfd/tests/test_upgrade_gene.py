@@ -53,3 +53,8 @@ def test_gene_upgrade_9_10(upgrader, gene_v9):
     value = upgrader.upgrade('gene', gene_v9, current_version='9', target_version='10')
     assert value['schema_version'] == '10'
     assert value.get('transcriptome_annotation') == 'GENCODE 32, GENCODE M23'
+
+
+def test_gene_upgrade_10_11(upgrader, gene_v10):
+    value = upgrader.upgrade('gene', gene_v10, current_version='10', target_version='11')
+    assert value['schema_version'] == '11'
