@@ -1,6 +1,6 @@
 {
-    "hash": "265b528f510f2f6ed4c6fcfeb81e2400",
-    "index_name": "primary_cell_265b528f",
+    "hash": "f06c94888b85da5e5fd6590aeebef377",
+    "index_name": "primary_cell_f06c9488",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -275,6 +275,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "allele": {
+                                        "type": "keyword"
+                                    },
                                     "collections": {
                                         "type": "keyword"
                                     },
@@ -288,6 +291,9 @@
                                         "type": "text"
                                     },
                                     "geneid": {
+                                        "type": "keyword"
+                                    },
+                                    "geneid_with_allele": {
                                         "type": "keyword"
                                     },
                                     "geneid_with_version": {
@@ -1629,6 +1635,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "allele": {
+                                        "type": "keyword"
+                                    },
                                     "collections": {
                                         "type": "keyword"
                                     },
@@ -1642,6 +1651,9 @@
                                         "type": "text"
                                     },
                                     "geneid": {
+                                        "type": "keyword"
+                                    },
+                                    "geneid_with_allele": {
                                         "type": "keyword"
                                     },
                                     "geneid_with_version": {

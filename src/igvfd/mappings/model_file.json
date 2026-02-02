@@ -1,6 +1,6 @@
 {
-    "hash": "56b4121ae731fe2e6255ff1f4930f719",
-    "index_name": "model_file_56b4121a",
+    "hash": "b5caac7c34026d9a930d3a39e1b7430a",
+    "index_name": "model_file_b5caac7c",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -2500,6 +2500,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "allele": {
+                                        "type": "keyword"
+                                    },
                                     "collections": {
                                         "type": "keyword"
                                     },
@@ -2513,6 +2516,9 @@
                                         "type": "text"
                                     },
                                     "geneid": {
+                                        "type": "keyword"
+                                    },
+                                    "geneid_with_allele": {
                                         "type": "keyword"
                                     },
                                     "geneid_with_version": {

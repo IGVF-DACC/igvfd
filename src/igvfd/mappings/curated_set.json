@@ -1,6 +1,6 @@
 {
-    "hash": "76fea08f0cada4b6c84b31c242895fde",
-    "index_name": "curated_set_76fea08f",
+    "hash": "eb4794964c158c1bed2594755235e981",
+    "index_name": "curated_set_eb479496",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -844,6 +844,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "allele": {
+                                        "type": "keyword"
+                                    },
                                     "collections": {
                                         "type": "keyword"
                                     },
@@ -857,6 +860,9 @@
                                         "type": "text"
                                     },
                                     "geneid": {
+                                        "type": "keyword"
+                                    },
+                                    "geneid_with_allele": {
                                         "type": "keyword"
                                     },
                                     "geneid_with_version": {

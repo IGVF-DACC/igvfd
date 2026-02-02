@@ -1,6 +1,6 @@
 {
-    "hash": "708f3994f588a488079735886f890316",
-    "index_name": "construct_library_set_708f3994",
+    "hash": "b4ba545daf443f44f05ce378e9dd681e",
+    "index_name": "construct_library_set_b4ba545d",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1917,6 +1917,9 @@
                                     "aliases": {
                                         "type": "keyword"
                                     },
+                                    "allele": {
+                                        "type": "keyword"
+                                    },
                                     "collections": {
                                         "type": "keyword"
                                     },
@@ -1930,6 +1933,9 @@
                                         "type": "text"
                                     },
                                     "geneid": {
+                                        "type": "keyword"
+                                    },
+                                    "geneid_with_allele": {
                                         "type": "keyword"
                                     },
                                     "geneid_with_version": {
@@ -2970,6 +2976,9 @@
                             "aliases": {
                                 "type": "keyword"
                             },
+                            "allele": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -2983,6 +2992,9 @@
                                 "type": "text"
                             },
                             "geneid": {
+                                "type": "keyword"
+                            },
+                            "geneid_with_allele": {
                                 "type": "keyword"
                             },
                             "geneid_with_version": {
