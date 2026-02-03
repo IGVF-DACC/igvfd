@@ -188,7 +188,7 @@ def analysis_step_9_10(value, system):
 
 @upgrade_step('analysis_step', '10', '11')
 def analysis_step_10_11(value, system):
-# https://igvf.atlassian.net/browse/IGVF-3255
+    # https://igvf.atlassian.net/browse/IGVF-3255
     notes = value.get('notes', '')
     old_input_content_types = value.get('input_content_types', [])
     new_input_content_types = []
