@@ -122,6 +122,7 @@
         "description": "A yeast technical sample for 2-hybrid assays.",
         "virtual": false,
         "part_of": "IGVFSM7651YBEN",
+        "originated_from": "IGVFSM7651YBEN",
         "treatments": [
             "j-michael-cherry:thermal_treatment"
         ],

@@ -132,6 +132,16 @@
                 "appscript": "TSTSM02881437 or john-doe:technical_sample01",
                 "igvf_utils": "TSTSM02881437 or john-doe:technical_sample01"
             }
+        },
+        "originated_from": {
+            "title": "Originated From",
+            "description": "Links to a technical sample that was originated from due to the introduction of a genetic modification.",
+            "type": "string",
+            "linkTo": "TechnicalSample",
+            "submissionExample": {
+                "appscript": "TSTSM02881437 or john-doe:technical_sample01",
+                "igvf_utils": "TSTSM02881437 or john-doe:technical_sample01"
+            }
         }
     },
     "fuzzy_searchable_fields": [
