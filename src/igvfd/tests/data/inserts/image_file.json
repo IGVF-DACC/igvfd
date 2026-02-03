@@ -53,6 +53,6 @@
         "file_size": 543663,
         "upload_status": "validated",
         "file_set": "/measurement-sets/igvf:snM3C-seq",
-        "validated_date": "2026-01-06T12:34:56Z"
+        "validation_timestamp": "2026-01-06T12:34:56Z"
     }
 ]
