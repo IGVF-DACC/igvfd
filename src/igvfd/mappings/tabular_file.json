@@ -1,6 +1,6 @@
 {
-    "hash": "5e241fa93d7fd57bf370f52e124dc7ca",
-    "index_name": "tabular_file_5e241fa9",
+    "hash": "28747c07d8b7dee7e514c71774cd709f",
+    "index_name": "tabular_file_28747c07",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -2984,6 +2984,9 @@
                     },
                     "validation_error_detail": {
                         "type": "keyword"
+                    },
+                    "validation_timestamp": {
+                        "type": "date"
                     },
                     "workflows": {
                         "properties": {

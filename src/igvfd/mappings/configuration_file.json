@@ -1,6 +1,6 @@
 {
-    "hash": "3c42c011724c5e2571f6c65d8e415285",
-    "index_name": "configuration_file_3c42c011",
+    "hash": "437abfdad357ec438b9d8638f4c76c58",
+    "index_name": "configuration_file_437abfda",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -2863,6 +2863,9 @@
                     },
                     "validation_error_detail": {
                         "type": "keyword"
+                    },
+                    "validation_timestamp": {
+                        "type": "date"
                     },
                     "workflows": {
                         "properties": {

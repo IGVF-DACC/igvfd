@@ -1,6 +1,6 @@
 {
-    "hash": "b5caac7c34026d9a930d3a39e1b7430a",
-    "index_name": "model_file_b5caac7c",
+    "hash": "ba7931fab9021554919741c2f1965e6e",
+    "index_name": "model_file_ba7931fa",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -2870,6 +2870,9 @@
                     },
                     "validation_error_detail": {
                         "type": "keyword"
+                    },
+                    "validation_timestamp": {
+                        "type": "date"
                     },
                     "workflows": {
                         "properties": {

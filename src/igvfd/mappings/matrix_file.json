@@ -1,6 +1,6 @@
 {
-    "hash": "395ba285b2bbd4ea021c3f310b67e301",
-    "index_name": "matrix_file_395ba285",
+    "hash": "495b2608049119d804d4721e35000477",
+    "index_name": "matrix_file_495b2608",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -2878,6 +2878,9 @@
                     },
                     "validation_error_detail": {
                         "type": "keyword"
+                    },
+                    "validation_timestamp": {
+                        "type": "date"
                     },
                     "workflows": {
                         "properties": {

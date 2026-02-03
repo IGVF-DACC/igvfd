@@ -943,6 +943,9 @@
                                     "validation_error_detail": {
                                         "type": "keyword"
                                     },
+                                    "validation_timestamp": {
+                                        "type": "date"
+                                    },
                                     "workflows": {
                                         "type": "keyword"
                                     }
@@ -2708,6 +2711,9 @@
                             },
                             "validation_error_detail": {
                                 "type": "keyword"
+                            },
+                            "validation_timestamp": {
+                                "type": "date"
                             },
                             "workflows": {
                                 "properties": {

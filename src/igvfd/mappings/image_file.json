@@ -1,6 +1,6 @@
 {
-    "hash": "c02ef330f890d0b6373bc41927f07d26",
-    "index_name": "image_file_c02ef330",
+    "hash": "db70879fae2623f6d27f6f2f495577be",
+    "index_name": "image_file_db70879f",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -2939,6 +2939,9 @@
                     },
                     "validation_error_detail": {
                         "type": "keyword"
+                    },
+                    "validation_timestamp": {
+                        "type": "date"
                     },
                     "workflows": {
                         "properties": {
