@@ -1,6 +1,6 @@
 {
-    "hash": "a6cf8c9974eea64616b258f7861cc155",
-    "index_name": "model_set_a6cf8c99",
+    "hash": "1dc5c2bae1ed9e6fbe3282a181768ea4",
+    "index_name": "model_set_1dc5c2ba",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -2900,6 +2900,9 @@
                                 "type": "keyword"
                             },
                             "volume": {
+                                "type": "keyword"
+                            },
+                            "website_url": {
                                 "type": "keyword"
                             },
                             "workflows": {

@@ -1,6 +1,6 @@
 {
-    "hash": "64d52091f41248ed80aa12c95a0e07b9",
-    "index_name": "analysis_set_64d52091",
+    "hash": "d3012850b82779fe8fe856ed0d5699b2",
+    "index_name": "analysis_set_d3012850",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -2867,6 +2867,9 @@
                                 "type": "keyword"
                             },
                             "volume": {
+                                "type": "keyword"
+                            },
+                            "website_url": {
                                 "type": "keyword"
                             },
                             "workflows": {

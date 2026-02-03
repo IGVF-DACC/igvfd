@@ -169,6 +169,16 @@
                 "appscript": "[\"IGVF\", \"ENCODE\"]",
                 "igvf_utils": "IGVF, ENCODE"
             }
+        },
+        "website_url": {
+            "title": "Website URL",
+            "description": "A link to an external interactive website hosting data and analytic tools associated with the publication.",
+            "type": "string",
+            "format": "uri",
+            "submissionExample": {
+                "appscript": "https://data.igvf.org",
+                "igvf_utils": "https://data.igvf.org"
+            }
         }
     },
     "fuzzy_searchable_fields": [

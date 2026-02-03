@@ -1,6 +1,6 @@
 {
-    "hash": "b721f3b2bedb742bf0dceb38c16166c2",
-    "index_name": "tissue_b721f3b2",
+    "hash": "66b22bdfe6d0c11b9c943728720b64cd",
+    "index_name": "tissue_66b22bdf",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -2095,6 +2095,9 @@
                                 "type": "keyword"
                             },
                             "volume": {
+                                "type": "keyword"
+                            },
+                            "website_url": {
                                 "type": "keyword"
                             },
                             "workflows": {
