@@ -1075,6 +1075,15 @@ def audit_input_file_sets_derived_from(value, system):
     missing_derived_from_file_sets = []
     missing_derived_from = []
     all_derived_from_file_sets = []
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    exclude_assays = {
+        'Cell painting',
+        'Variant painting via fluorescence',
+        'Variant painting via immunostaining'
+    }
+    # Skip audit if it is an imaging assay
+    if any(assay in exclude_assays for assay in preferred_assay_titles):
+        return
     if files:
         for file in files:
             file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
