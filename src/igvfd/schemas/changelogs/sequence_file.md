@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 16
 
-* Add `validation_timestamp`.
+* Add `checkfiles_timestamp`.
 * Add `tile`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.

@@ -1,6 +1,6 @@
 {
-    "hash": "437abfdad357ec438b9d8638f4c76c58",
-    "index_name": "configuration_file_437abfda",
+    "hash": "deb756302b3b30f2cd9f6817ce664954",
+    "index_name": "configuration_file_deb75630",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -374,6 +374,9 @@
                     },
                     "catalog_notes": {
                         "type": "keyword"
+                    },
+                    "checkfiles_timestamp": {
+                        "type": "date"
                     },
                     "checkfiles_version": {
                         "type": "keyword"
@@ -2863,9 +2866,6 @@
                     },
                     "validation_error_detail": {
                         "type": "keyword"
-                    },
-                    "validation_timestamp": {
-                        "type": "date"
                     },
                     "workflows": {
                         "properties": {

@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 17
 
-* Add `validation_timestamp`.
+* Add `checkfiles_timestamp`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.
 * Add calculated property `superseded_by`.

@@ -1,6 +1,6 @@
 ## Changelog for *`file.json`*
 
-* Add `validation_timestamp`. (02/11/2026)
+* Add `checkfiles_timestamp`. (02/11/2026)
 * Add calculated property `superseded_by`. (10/15/2025)
 * Add `supersedes`. (10/15/2025)
 * Add calculated property `preferred_assay_titles` (06/07/2025)

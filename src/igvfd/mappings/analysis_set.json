@@ -564,6 +564,9 @@
                                     "cell_type_annotation": {
                                         "type": "keyword"
                                     },
+                                    "checkfiles_timestamp": {
+                                        "type": "date"
+                                    },
                                     "checkfiles_version": {
                                         "type": "keyword"
                                     },
@@ -719,9 +722,6 @@
                                     },
                                     "validation_error_detail": {
                                         "type": "keyword"
-                                    },
-                                    "validation_timestamp": {
-                                        "type": "date"
                                     },
                                     "workflows": {
                                         "type": "keyword"
@@ -1726,6 +1726,9 @@
                                 },
                                 "type": "object"
                             },
+                            "checkfiles_timestamp": {
+                                "type": "date"
+                            },
                             "checkfiles_version": {
                                 "type": "keyword"
                             },
@@ -2128,9 +2131,6 @@
                             },
                             "validation_error_detail": {
                                 "type": "keyword"
-                            },
-                            "validation_timestamp": {
-                                "type": "date"
                             },
                             "workflows": {
                                 "properties": {

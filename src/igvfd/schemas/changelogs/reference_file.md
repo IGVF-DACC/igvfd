@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 22
 
-* Add `validation_timestamp`.
+* Add `checkfiles_timestamp`.
 
 ### Schema version 22
 

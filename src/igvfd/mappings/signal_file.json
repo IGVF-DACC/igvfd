@@ -1,6 +1,6 @@
 {
-    "hash": "5555d669cc9aca9ca07a7f166512b13d",
-    "index_name": "signal_file_5555d669",
+    "hash": "d7a9e45e2588d12b70d8da67a74280ea",
+    "index_name": "signal_file_d7a9e45e",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -471,6 +471,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "checkfiles_timestamp": {
+                        "type": "date"
                     },
                     "checkfiles_version": {
                         "type": "keyword"
@@ -2977,9 +2980,6 @@
                     },
                     "validation_error_detail": {
                         "type": "keyword"
-                    },
-                    "validation_timestamp": {
-                        "type": "date"
                     },
                     "workflows": {
                         "properties": {

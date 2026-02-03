@@ -1,6 +1,6 @@
 {
-    "hash": "b4061e1affcaa79b2febaf2bf075207c",
-    "index_name": "alignment_file_b4061e1a",
+    "hash": "38b16da147d05c4390e80d59ec614e0e",
+    "index_name": "alignment_file_38b16da1",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -372,6 +372,9 @@
                     },
                     "base_modifications": {
                         "type": "keyword"
+                    },
+                    "checkfiles_timestamp": {
+                        "type": "date"
                     },
                     "checkfiles_version": {
                         "type": "keyword"
@@ -2880,9 +2883,6 @@
                     },
                     "validation_error_detail": {
                         "type": "keyword"
-                    },
-                    "validation_timestamp": {
-                        "type": "date"
                     },
                     "workflows": {
                         "properties": {
