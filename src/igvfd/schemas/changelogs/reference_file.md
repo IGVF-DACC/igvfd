@@ -38,6 +38,7 @@
 * Adjust `content_type` enum list to remove `genes_transcripts`.
 * Adjust `content_type` enum list to remove `go_terms_proteins`.
 * Adjust `content_type` enum list to remove `motifs_proteins`.
+* Adjust `content_type` enum list to remove `ontology_terms`.
 * Adjust `content_type` enum list to remove `ontology_terms_ontology_terms`.
 * Adjust `content_type` enum list to remove `pathways_pathways`.
 * Adjust `content_type` enum list to remove `proteins_proteins`.
