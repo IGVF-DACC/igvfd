@@ -591,6 +591,7 @@ def reference_file_21_22(value, system):
         'genes_transcripts',
         'go_terms_proteins',
         'motifs_proteins',
+        'ontology_terms',
         'ontology_terms_ontology_terms',
         'pathways_pathways',
         'proteins_proteins',
