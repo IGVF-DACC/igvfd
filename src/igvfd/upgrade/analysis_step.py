@@ -134,6 +134,7 @@ def analysis_step_9_10(value, system):
         'genes_transcripts',
         'go_terms_proteins',
         'motifs_proteins',
+        'ontology_terms',
         'ontology_terms_ontology_terms',
         'pathways_pathways',
         'proteins_proteins',

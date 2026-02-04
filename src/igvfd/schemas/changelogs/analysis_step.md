@@ -64,6 +64,8 @@
 * Adjust `output_content_types` enum list to remove `go_terms_proteins`.
 * Adjust `input_content_types` enum list to remove `motifs_proteins`.
 * Adjust `output_content_types` enum list to remove `motifs_proteins`.
+* Adjust `input_content_types` enum list to remove `ontology_terms`.
+* Adjust `output_content_types` enum list to remove `ontology_terms`.
 * Adjust `input_content_types` enum list to remove `ontology_terms_ontology_terms`.
 * Adjust `output_content_types` enum list to remove `ontology_terms_ontology_terms`.
 * Adjust `input_content_types` enum list to remove `pathways_pathways`.
