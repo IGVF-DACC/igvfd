@@ -318,7 +318,7 @@
             "b4a370ee-18a7-2857-bc2b-b157d05f4458"
         ],
         "growth_medium": "tissue culture plastic plates (no hydrogel)",
-        "time_post_culture": "10",
+        "time_post_culture": 10,
         "time_post_culture_units": "day"
     }
 ]
