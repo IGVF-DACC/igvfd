@@ -1,6 +1,6 @@
 {
-    "hash": "030716d2c261398c24c6c11fdd81a62e",
-    "index_name": "in_vitro_system_030716d2",
+    "hash": "13265bbf6d065bc0d04e1bfec42cea4d",
+    "index_name": "in_vitro_system_13265bbf",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -2191,6 +2191,13 @@
                             "time_post_change_units": {
                                 "type": "keyword"
                             },
+                            "time_post_culture": {
+                                "store": true,
+                                "type": "float"
+                            },
+                            "time_post_culture_units": {
+                                "type": "keyword"
+                            },
                             "time_post_library_delivery": {
                                 "store": true,
                                 "type": "float"
@@ -2745,6 +2752,13 @@
                             "time_post_change_units": {
                                 "type": "keyword"
                             },
+                            "time_post_culture": {
+                                "store": true,
+                                "type": "float"
+                            },
+                            "time_post_culture_units": {
+                                "type": "keyword"
+                            },
                             "time_post_library_delivery": {
                                 "store": true,
                                 "type": "float"
@@ -3037,6 +3051,13 @@
                         "type": "float"
                     },
                     "time_post_change_units": {
+                        "type": "keyword"
+                    },
+                    "time_post_culture": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "time_post_culture_units": {
                         "type": "keyword"
                     },
                     "time_post_library_delivery": {

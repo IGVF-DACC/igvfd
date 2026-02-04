@@ -1618,6 +1618,13 @@
                                     "time_post_change_units": {
                                         "type": "keyword"
                                     },
+                                    "time_post_culture": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "time_post_culture_units": {
+                                        "type": "keyword"
+                                    },
                                     "time_post_library_delivery": {
                                         "store": true,
                                         "type": "float"
@@ -2450,6 +2457,13 @@
                                         "type": "float"
                                     },
                                     "time_post_change_units": {
+                                        "type": "keyword"
+                                    },
+                                    "time_post_culture": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "time_post_culture_units": {
                                         "type": "keyword"
                                     },
                                     "time_post_library_delivery": {
