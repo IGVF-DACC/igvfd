@@ -1332,10 +1332,8 @@ class MeasurementSet(FileSet):
                             'multiome',
                             'biological replicates',
                             'sorting replicates',
-                            'differentiation',
-                            'differentiation time series',
-                            'reprogramming',
-                            'reprogramming time series',
+                            'differentiation series',
+                            'reprogramming series'
                         ],
                     },
                 },
