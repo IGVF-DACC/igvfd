@@ -307,6 +307,103 @@
                     "if": {
                         "properties": {
                             "file_set_type": {
+                                "const": "overexpression vector library"
+                            }
+                        }
+                    },
+                    "then": {
+                        "oneOf": [
+                            {
+                                "required": [
+                                    "small_scale_gene_list"
+                                ],
+                                "properties": {
+                                    "scope": {
+                                        "oneOf": [
+                                            {
+                                                "const": "genes"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "not": {
+                                    "anyOf": [
+                                        {
+                                            "required": [
+                                                "guide_type"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "tiling_modality"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "average_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "lower_bound_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "upper_bound_guide_coverage"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "required": [
+                                    "control_types"
+                                ],
+                                "properties": {
+                                    "scope": {
+                                        "enum": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "not": {
+                                    "anyOf": [
+                                        {
+                                            "required": [
+                                                "guide_type"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "tiling_modality"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "average_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "lower_bound_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "upper_bound_guide_coverage"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "file_set_type": {
                                 "const": "editing template library"
                             }
                         }
@@ -770,12 +867,14 @@
                 "guide library",
                 "reporter library",
                 "expression vector library",
+                "overexpression vector library",
                 "editing template library"
             ],
             "enum_descriptions": {
                 "guide library": "The library of guide RNAs used in CRISPR experiments.",
                 "reporter library": "The library of elements used in a massively parallel reporter assay (MPRA).",
-                "expression vector library": "Used when the content of the vector (a specific allele, gene, exon, or tile of a protein) will be expressed in the target cells.",
+                "expression vector library": "A library of vectors used to express specific alleles, genes, exons, or protein tiles in target cells.",
+                "overexpression vector library": "A library of expression vectors intended to drive overexpression of a gene above its normal level.",
                 "editing template library": "Library of homology-directed DNA repair (HDR) templates containing SNVs are used in Saturation Genome Editing (SGE) assays."
             },
             "submissionExample": {
