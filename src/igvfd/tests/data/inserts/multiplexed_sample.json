@@ -48,6 +48,6 @@
             "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_2"
         ],
         "virtual": false,
-        "part_of": "igvf:multiplex_alias"
+        "part_of": "igvf:multiplex_pool"
     }
 ]
