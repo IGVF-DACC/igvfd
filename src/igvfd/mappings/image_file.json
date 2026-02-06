@@ -1,6 +1,6 @@
 {
-    "hash": "c02ef330f890d0b6373bc41927f07d26",
-    "index_name": "image_file_c02ef330",
+    "hash": "30396f7b3be7cde4f56c9d48bc66ca2b",
+    "index_name": "image_file_30396f7b",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -374,6 +374,9 @@
                     },
                     "catalog_notes": {
                         "type": "keyword"
+                    },
+                    "checkfiles_timestamp": {
+                        "type": "date"
                     },
                     "checkfiles_version": {
                         "type": "keyword"

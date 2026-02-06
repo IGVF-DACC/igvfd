@@ -501,6 +501,14 @@
             "type": "string",
             "permission": "admin_only"
         },
+        "checkfiles_timestamp": {
+            "title": "Checkfiles Timestamp",
+            "description": "The date and time the file object was last checked by the Checkfiles script.",
+            "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
+            "type": "string",
+            "permission": "admin_only",
+            "format": "date-time"
+        },
         "supersedes": {
             "title": "Supersedes",
             "description": "The file(s) that this file supersedes by virtue of being newer, better, or a fixed version of etc. than the one(s) it supersedes.",

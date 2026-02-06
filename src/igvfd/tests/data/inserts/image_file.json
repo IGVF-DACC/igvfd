@@ -52,6 +52,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/umap.svg",
         "file_size": 543663,
         "upload_status": "validated",
-        "file_set": "/measurement-sets/igvf:snM3C-seq"
+        "file_set": "/measurement-sets/igvf:snM3C-seq",
+        "checkfiles_timestamp": "2026-01-06T12:34:56Z"
     }
 ]

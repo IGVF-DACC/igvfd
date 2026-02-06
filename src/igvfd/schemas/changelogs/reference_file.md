@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 22
+
+* Add `checkfiles_timestamp`.
+
 ### Schema version 22
 
 * Adjust `content_type` enum list to include `allele specific binding`.

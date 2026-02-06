@@ -1,6 +1,6 @@
 {
-    "hash": "92895a60437ae137e56625dc2e5178b3",
-    "index_name": "analysis_set_92895a60",
+    "hash": "e14754aa90657abaf97f612451de1603",
+    "index_name": "analysis_set_e14754aa",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -563,6 +563,9 @@
                                     },
                                     "cell_type_annotation": {
                                         "type": "keyword"
+                                    },
+                                    "checkfiles_timestamp": {
+                                        "type": "date"
                                     },
                                     "checkfiles_version": {
                                         "type": "keyword"
@@ -1722,6 +1725,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "checkfiles_timestamp": {
+                                "type": "date"
                             },
                             "checkfiles_version": {
                                 "type": "keyword"

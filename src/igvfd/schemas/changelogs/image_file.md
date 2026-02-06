@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Add `checkfiles_timestamp`.
 * Add `imaging_platform`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.

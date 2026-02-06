@@ -1,6 +1,6 @@
 {
-    "hash": "3c42c011724c5e2571f6c65d8e415285",
-    "index_name": "configuration_file_3c42c011",
+    "hash": "deb756302b3b30f2cd9f6817ce664954",
+    "index_name": "configuration_file_deb75630",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -374,6 +374,9 @@
                     },
                     "catalog_notes": {
                         "type": "keyword"
+                    },
+                    "checkfiles_timestamp": {
+                        "type": "date"
                     },
                     "checkfiles_version": {
                         "type": "keyword"

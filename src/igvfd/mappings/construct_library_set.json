@@ -1,6 +1,6 @@
 {
-    "hash": "16f3355f0dc3ee8371f054b8d130946b",
-    "index_name": "construct_library_set_16f3355f",
+    "hash": "c8ee157439afc6bced047e4c05b3e8f7",
+    "index_name": "construct_library_set_c8ee1574",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -908,6 +908,9 @@
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
+                            "checkfiles_timestamp": {
+                                "type": "date"
+                            },
                             "checkfiles_version": {
                                 "type": "keyword"
                             },
@@ -1216,6 +1219,9 @@
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
+                            "checkfiles_timestamp": {
+                                "type": "date"
+                            },
                             "checkfiles_version": {
                                 "type": "keyword"
                             },
@@ -1491,6 +1497,9 @@
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
+                            "checkfiles_timestamp": {
+                                "type": "date"
+                            },
                             "checkfiles_version": {
                                 "type": "keyword"
                             },
@@ -1705,6 +1714,9 @@
                             },
                             "cell_type_annotation": {
                                 "type": "keyword"
+                            },
+                            "checkfiles_timestamp": {
+                                "type": "date"
                             },
                             "checkfiles_version": {
                                 "type": "keyword"

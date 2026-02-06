@@ -1,6 +1,6 @@
 {
-    "hash": "7c6cca3f5156e455b26717bb1a3a2b09",
-    "index_name": "model_set_7c6cca3f",
+    "hash": "0984a9abddc6a5a06da81f2a814b513e",
+    "index_name": "model_set_0984a9ab",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -667,6 +667,9 @@
                                     },
                                     "cell_type_annotation": {
                                         "type": "keyword"
+                                    },
+                                    "checkfiles_timestamp": {
+                                        "type": "date"
                                     },
                                     "checkfiles_version": {
                                         "type": "keyword"
@@ -1825,6 +1828,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "checkfiles_timestamp": {
+                                "type": "date"
                             },
                             "checkfiles_version": {
                                 "type": "keyword"
