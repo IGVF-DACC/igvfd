@@ -211,7 +211,7 @@ def analysis_step_10_11(value, system):
             notes += f' This analysis step\'s output_content_types included {old_content_type}, but has been upgraded to {upgrade_map[old_content_type]}.'
         else:
             new_output_content_types.append(old_content_type)
-    value['input_content_types'] = list(set(new_input_content_types))
-    value['output_content_types'] = list(set(new_output_content_types))
+    value['input_content_types'] = sorted(set(new_input_content_types))
+    value['output_content_types'] = sorted(set(new_output_content_types))
     if notes.strip() != '':
         value['notes'] = notes.strip()
