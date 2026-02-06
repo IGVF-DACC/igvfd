@@ -846,10 +846,13 @@ class TechnicalSample(Sample):
         Path('file_sets', include=['@id', 'accession', 'summary', 'aliases',
              'lab', 'status', 'preferred_assay_titles', 'file_set_type']),
         Path('file_sets.lab', include=['title']),
+        Path('originated_from', include=['@id', 'accession', 'status']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
         Path('sample_terms', include=['@id', 'term_name', 'status']),
         Path('construct_library_sets.associated_phenotypes', include=[
-             '@id', 'accession', 'file_set_type', 'term_name', 'status'])
+             '@id', 'accession', 'file_set_type', 'term_name', 'status']),
+        Path('treatments', include=['@id', 'purpose', 'treatment_type',
+             'status', 'treatment_term_name', 'depletion'])
     ]
     audit_inherit = Sample.audit_inherit
     set_status_up = Biosample.set_status_up + []
