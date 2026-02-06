@@ -37,7 +37,7 @@ def test_assay_titles(testapp, primary_cell, base_expression_construct_library_s
 
 def test_summary(testapp, construct_library_set_genome_wide, base_expression_construct_library_set,
                  construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction,
-                 gene_zscan10_mm, gene_myc_hs, construct_library_set_y2h, construct_library_set_orf, orf_foxp, orf_zscan10, construct_library_set_reference_transduction, construct_library_set_editing_template_library):
+                 gene_zscan10_mm, gene_myc_hs, gene_myc_hs_with_allele, construct_library_set_y2h, construct_library_set_orf, orf_foxp, orf_zscan10, construct_library_set_reference_transduction, construct_library_set_editing_template_library):
     res = testapp.get(construct_library_set_genome_wide['@id'])
     assert res.json.get('summary') == 'guide (sgRNA) library targeting TF binding sites genome-wide'
     testapp.patch_json(
@@ -154,6 +154,15 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     res = testapp.get(construct_library_set_y2h['@id'])
     assert res.json.get(
         'summary') == 'expression vector library of tile tile1 of MYC (AA 1-96) (protein interactors, phenotype-associated variants) associated with Myocardial infarction'
+    testapp.patch_json(
+        construct_library_set_y2h['@id'],
+        {
+            'small_scale_gene_list': [gene_myc_hs_with_allele['@id']],
+        }
+    )
+    res = testapp.get(construct_library_set_y2h['@id'])
+    assert res.json.get(
+        'summary') == 'expression vector library of tile tile1 of MYC minor allele (AA 1-96) (protein interactors, phenotype-associated variants) associated with Myocardial infarction'
     res = testapp.get(construct_library_set_orf['@id'])
     assert res.json.get(
         'summary') == 'expression vector library of open reading frame CCSBORF1234 of MYC (protein interactors)'

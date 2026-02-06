@@ -1861,7 +1861,7 @@ class ConstructLibrarySet(FileSet):
              'aliases', 'content_type', 'file_format', 'upload_status', 'status']),
         Path('control_for', include=['@id', 'accession', 'aliases', 'status']),
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name', 'status']),
-        Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
+        Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'allele', 'status']),
         Path('samples', include=['@id', '@type', 'accession',
              'aliases', 'classifications', 'disease_terms', 'donors', 'sample_terms', 'targeted_sample_term', 'status', 'summary', 'modifications', 'treatments', 'nucleic_acid_delivery']),
         Path('donors', include=['@id', 'accession', 'taxa', 'aliases', 'sex', 'summary', 'status']),
@@ -2083,8 +2083,10 @@ class ConstructLibrarySet(FileSet):
                 target_phrase = f' tile {tile_id} of multiple genes'
             elif small_scale_gene_list and len(small_scale_gene_list) == 1:
                 gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
-                gene_name = (gene_object.get('symbol'))
-                target_phrase = f' tile {tile_id} of {gene_name} (AA {start}-{end})'
+                gene_name = gene_object.get('symbol', '')
+                gene_allele = gene_object.get('allele', '')
+                allele_suffix = f' {gene_allele} allele' if gene_allele else ''
+                target_phrase = f' tile {tile_id} of {gene_name}{allele_suffix} (AA {start}-{end})'
         if scope == 'genome-wide':
             target_phrase = ' genome-wide'
         if scope == 'targeton':
