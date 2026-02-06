@@ -5,7 +5,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "igvf:multiplex_alias"
+            "igvf:multiplex_pool"
         ],
         "barcode_map": "igvf:tabular_file_04_barcode_to_sample_mapping",
         "multiplexing_methods": [
@@ -26,5 +26,28 @@
             "https://www.protocols.io/private/test-protocols-url-12345"
         ],
         "virtual": false
+    },
+    {
+        "uuid": "da696bfb-82f8-4524-9d6e-205cbb20db1d",
+        "accession": "IGVFSM0001MPXD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:multiplexed_sub_pool"
+        ],
+        "cellular_sub_pool": "subpool_1",
+        "barcode_map": "igvf:tabular_file_04_barcode_to_sample_mapping",
+        "multiplexing_methods": [
+            "genetic",
+            "barcode based"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-02-05T12:34:56Z",
+        "multiplexed_samples": [
+            "igvf-dacc:in_vitro_system_cell_line",
+            "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_2"
+        ],
+        "virtual": false,
+        "part_of": "igvf:multiplex_alias"
     }
 ]

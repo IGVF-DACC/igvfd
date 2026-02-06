@@ -139,6 +139,13 @@
                 "igvf_utils": "john-doe:tabular_file01 or IGVFFI4067OVRI"
             }
         },
+        "part_of": {
+            "linkTo": "MultiplexedSample",
+            "submissionExample": {
+                "appscript": "IGVFSM4667ABCD or john-doe:multiplexed_sample_parent",
+                "igvf_utils": "IGVFSM4667ABCD or john-doe:multiplexed_sample_parent"
+            }
+        },
         "moi": {
             "comment": "Do not submit. MOI should only be specified on individual samples contributing to a multiplexed sample object.",
             "permission": "admin_only"

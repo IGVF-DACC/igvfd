@@ -155,6 +155,17 @@
                 "igvf_utils": "2020-09-20"
             }
         },
+        "part_of": {
+            "title": "Part of Sample",
+            "description": "Links to a sample which represents a larger sample from which this sample was taken regardless of whether it is a tissue taken from an organism or smaller slices of a piece of tissue or aliquots of a cell growth.",
+            "comment": "For differentiation, reprogramming, or introduction of a genetic modification use `originated_from` instead. Sample parts should have identical metadata properties as their parent.",
+            "type": "string",
+            "linkTo": "Sample",
+            "submissionExample": {
+                "appscript": "TSTSM02881437 or john-doe:tissue01",
+                "igvf_utils": "TSTSM02881437 or john-doe:tissue01"
+            }
+        },
         "sorted_from": {
             "title": "Sorted From",
             "description": "Links to a larger sample from which this sample was obtained through sorting.",
