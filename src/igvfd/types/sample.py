@@ -116,7 +116,7 @@ class Sample(Item):
         'origin_of': ('Sample', 'originated_from'),
         'institutional_certificates': ('InstitutionalCertificate', 'samples'),
         'superseded_by': ('Sample', 'supersedes'),
-        'parts': ('Biosample', 'part_of'),
+        'parts': ('Sample', 'part_of'),
     }
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
