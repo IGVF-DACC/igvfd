@@ -115,7 +115,8 @@ class Sample(Item):
         'sorted_fractions': ('Sample', 'sorted_from'),
         'origin_of': ('Sample', 'originated_from'),
         'institutional_certificates': ('InstitutionalCertificate', 'samples'),
-        'superseded_by': ('Sample', 'supersedes')
+        'superseded_by': ('Sample', 'supersedes'),
+        'parts': ('Biosample', 'part_of'),
     }
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
@@ -210,6 +211,22 @@ class Sample(Item):
         return paths_filtered_by_status(request, multiplexed_in) or None
 
     @calculated_property(schema={
+        'title': 'Sample Parts',
+        'type': 'array',
+        'description': 'The parts into which this sample has been divided.',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Sample Part',
+            'type': 'string',
+            'linkFrom': 'Sample.part_of',
+        },
+        'notSubmittable': True,
+    })
+    def parts(self, request, parts):
+        return paths_filtered_by_status(request, parts) or None
+
+    @calculated_property(schema={
         'title': 'Sorted Fraction Samples',
         'type': 'array',
         'description': 'The fractions into which this sample has been sorted.',
@@ -286,9 +303,14 @@ class Biosample(Sample):
     item_type = 'biosample'
     base_types = ['Biosample'] + Sample.base_types
     schema = load_schema('igvfd:schemas/biosample.json')
+<<<<<<< HEAD
     rev = Sample.rev | {'parts': ('Biosample', 'part_of'),
                         'pooled_in': ('Biosample', 'pooled_from')}
     embedded_with_frame = Sample.embedded_with_frame + [Path('originated_from', include=['@id', 'accession', 'status'])]
+=======
+    rev = Sample.rev | {'pooled_in': ('Biosample', 'pooled_from')}
+    embedded_with_frame = Sample.embedded_with_frame
+>>>>>>> 3c1ffbda (updated parts)
 
     audit_inherit = Sample.audit_inherit + [
         'disease_terms',
@@ -720,22 +742,6 @@ class Biosample(Sample):
         return summary_terms.strip(',')
 
     @calculated_property(schema={
-        'title': 'Biosample Parts',
-        'type': 'array',
-        'description': 'The parts into which this sample has been divided.',
-        'minItems': 1,
-        'uniqueItems': True,
-        'items': {
-            'title': 'Biosample Part',
-            'type': 'string',
-            'linkFrom': 'Biosample.part_of',
-        },
-        'notSubmittable': True,
-    })
-    def parts(self, request, parts):
-        return paths_filtered_by_status(request, parts) or None
-
-    @calculated_property(schema={
         'title': 'Pooled In',
         'type': 'array',
         'description': 'The pooled samples in which this sample is included.',
@@ -888,7 +894,7 @@ class TechnicalSample(Sample):
     audit_inherit = Sample.audit_inherit
     set_status_up = Biosample.set_status_up + []
     set_status_down = Biosample.set_status_down + []
-    rev = Sample.rev | {'parts': ('TechnicalSample', 'part_of')}
+    rev = Sample.rev
 
     @calculated_property(
         schema={
@@ -990,24 +996,6 @@ class TechnicalSample(Sample):
     )
     def classifications(self):
         return [self.item_type.replace('_', ' ')]
-
-    @calculated_property(
-        schema={
-            'title': 'Technical Sample Parts',
-            'type': 'array',
-            'description': 'The parts into which this sample has been divided.',
-            'minItems': 1,
-            'uniqueItems': True,
-            'items': {
-                'title': 'Technical Sample Part',
-                'type': 'string',
-                'linkFrom': 'TechnicalSample.part_of',
-            },
-            'notSubmittable': True,
-        }
-    )
-    def parts(self, request, parts):
-        return paths_filtered_by_status(request, parts) or None
 
 
 @collection(

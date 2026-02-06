@@ -1835,6 +1835,9 @@
                             "part_of": {
                                 "type": "keyword"
                             },
+                            "parts": {
+                                "type": "keyword"
+                            },
                             "preview_timestamp": {
                                 "type": "date"
                             },
