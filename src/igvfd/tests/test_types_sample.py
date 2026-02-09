@@ -216,3 +216,20 @@ def test_superseded_by(testapp, tissue, in_vitro_cell_line):
     )
     res = testapp.get(in_vitro_cell_line['@id'])
     assert set([sample for sample in res.json.get('superseded_by')]) == {tissue['@id']}
+
+
+def test_parts(testapp, primary_cell, tissue, in_vitro_cell_line):
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'part_of': tissue['@id']
+        }
+    )
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'part_of': tissue['@id']
+        }
+    )
+    res = testapp.get(tissue['@id'])
+    assert set(res.json.get('parts')) == {in_vitro_cell_line['@id'], primary_cell['@id']}

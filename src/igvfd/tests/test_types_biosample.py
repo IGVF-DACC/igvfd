@@ -77,20 +77,3 @@ def test_pooled_in(testapp, primary_cell, tissue, in_vitro_cell_line, in_vitro_d
     )
     res = testapp.get(tissue['@id'])
     assert set(res.json.get('pooled_in')) == {in_vitro_cell_line['@id'], in_vitro_differentiated_cell['@id']}
-
-
-def test_parts(testapp, primary_cell, tissue, in_vitro_cell_line):
-    testapp.patch_json(
-        primary_cell['@id'],
-        {
-            'part_of': tissue['@id']
-        }
-    )
-    testapp.patch_json(
-        in_vitro_cell_line['@id'],
-        {
-            'part_of': tissue['@id']
-        }
-    )
-    res = testapp.get(tissue['@id'])
-    assert set(res.json.get('parts')) == {in_vitro_cell_line['@id'], primary_cell['@id']}
