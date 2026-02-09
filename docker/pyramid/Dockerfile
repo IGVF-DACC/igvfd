@@ -48,7 +48,7 @@ COPY --chown=igvfd:igvfd src/igvfd/__init__.py src/igvfd/__init__.py
 
 USER igvfd
 
-RUN python -m pip install --upgrade pip==26.0.1
+RUN python -m pip install pip==26.0.1
 
 RUN PIP_BUILD_CONSTRAINT=build-constraint.txt pip --use-feature=build-constraint install -e .[test]
 
