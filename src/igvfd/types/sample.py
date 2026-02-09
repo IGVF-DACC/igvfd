@@ -288,7 +288,7 @@ class Biosample(Sample):
     schema = load_schema('igvfd:schemas/biosample.json')
     rev = Sample.rev | {'parts': ('Biosample', 'part_of'),
                         'pooled_in': ('Biosample', 'pooled_from')}
-    embedded_with_frame = Sample.embedded_with_frame
+    embedded_with_frame = Sample.embedded_with_frame + [Path('originated_from', include=['@id', 'accession', 'status'])]
 
     audit_inherit = Sample.audit_inherit + [
         'disease_terms',
@@ -766,8 +766,7 @@ class InVitroSystem(Biosample):
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
     rev = Biosample.rev | {'demultiplexed_to': ('InVitroSystem', 'demultiplexed_from')}
     embedded_with_frame = Biosample.embedded_with_frame + [
-        Path('targeted_sample_term', include=['@id', 'term_name', 'status']),
-        Path('originated_from', include=['@id', 'accession', 'status']),
+        Path('targeted_sample_term', include=['@id', 'term_name', 'status'])
     ]
     audit_inherit = Biosample.audit_inherit
     set_status_up = Biosample.set_status_up + [
