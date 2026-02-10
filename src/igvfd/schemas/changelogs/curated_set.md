@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Extend `file_set_type` enum list to include `external sequencing data`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 
 ### Schema version 9

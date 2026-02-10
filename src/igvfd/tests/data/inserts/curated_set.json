@@ -177,5 +177,18 @@
             "igvf:curated_set_E2G_functional_effect_data"
         ],
         "description": "A curated set to store ENCODE E2G prediction data files."
+    },
+    {
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "79e2c89d-fda1-433c-b39a-2fa06c47c7d2",
+        "file_set_type": "external sequencing data",
+        "accession": "IGVFDS0000EXSD",
+        "status": "released",
+        "release_timestamp": "2025-09-06T12:34:56Z",
+        "aliases": [
+            "igvf:curated_set_external_sequencing_data"
+        ],
+        "description": "A curated set to store sequencing data from an external source."
     }
 ]
