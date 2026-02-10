@@ -2123,7 +2123,7 @@ class ConstructLibrarySet(FileSet):
                 thousand_genomes_ids = ', '.join(sorted(thousand_genomes_ids))
                 pool_phrase = f' pooled from 1000 Genomes donors: {thousand_genomes_ids}'
 
-        if file_set_type == 'expression vector library':
+        if file_set_type in ['expression vector library', 'overexpression vector library']:
             if 'genes' in criteria:
                 criteria.remove('genes')
             selections = ', '.join(criteria)
