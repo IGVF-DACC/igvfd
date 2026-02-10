@@ -160,7 +160,7 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
         in_vitro_cell_line['@id'],
         {
             'time_post_culture': 5,
-            'time_post_culture_units': 'day'
+            'time_post_culture_units': 'day',
             'nucleic_acid_delivery': 'electroporation'
         }
     )
