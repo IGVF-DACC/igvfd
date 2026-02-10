@@ -1,6 +1,6 @@
 {
-    "hash": "ee0ff7137bafb6c50a3949bfa6a62406",
-    "index_name": "curated_set_ee0ff713",
+    "hash": "95d2973a739ca1296abc8535f73968cd",
+    "index_name": "curated_set_95d2973a",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -3109,6 +3109,13 @@
                                 "type": "float"
                             },
                             "time_post_change_units": {
+                                "type": "keyword"
+                            },
+                            "time_post_culture": {
+                                "store": true,
+                                "type": "float"
+                            },
+                            "time_post_culture_units": {
                                 "type": "keyword"
                             },
                             "time_post_library_delivery": {

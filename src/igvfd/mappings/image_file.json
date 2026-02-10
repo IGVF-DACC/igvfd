@@ -1,6 +1,6 @@
 {
-    "hash": "30396f7b3be7cde4f56c9d48bc66ca2b",
-    "index_name": "image_file_30396f7b",
+    "hash": "8b2fdbf425ce90b440f3ea1d5c412291",
+    "index_name": "image_file_8b2fdbf4",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -1613,6 +1613,13 @@
                                     "time_post_change_units": {
                                         "type": "keyword"
                                     },
+                                    "time_post_culture": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "time_post_culture_units": {
+                                        "type": "keyword"
+                                    },
                                     "time_post_library_delivery": {
                                         "store": true,
                                         "type": "float"
@@ -2519,6 +2526,13 @@
                                         "type": "float"
                                     },
                                     "time_post_change_units": {
+                                        "type": "keyword"
+                                    },
+                                    "time_post_culture": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "time_post_culture_units": {
                                         "type": "keyword"
                                     },
                                     "time_post_library_delivery": {

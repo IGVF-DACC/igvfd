@@ -1,6 +1,6 @@
 {
-    "hash": "435ab51e288ebeb443f689a4f41e01cd",
-    "index_name": "measurement_set_435ab51e",
+    "hash": "eb44b863bac4112479b5fc43dd162732",
+    "index_name": "measurement_set_eb44b863",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -4347,6 +4347,13 @@
                                 "type": "float"
                             },
                             "time_post_change_units": {
+                                "type": "keyword"
+                            },
+                            "time_post_culture": {
+                                "store": true,
+                                "type": "float"
+                            },
+                            "time_post_culture_units": {
                                 "type": "keyword"
                             },
                             "time_post_library_delivery": {

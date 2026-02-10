@@ -1,6 +1,6 @@
 {
-    "hash": "2bdceef58241e998692d89937810af25",
-    "index_name": "tabular_file_2bdceef5",
+    "hash": "53c3b45382eb90e8110ed8823c53fab7",
+    "index_name": "tabular_file_53c3b453",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1729,6 +1729,13 @@
                                     "time_post_change_units": {
                                         "type": "keyword"
                                     },
+                                    "time_post_culture": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "time_post_culture_units": {
+                                        "type": "keyword"
+                                    },
                                     "time_post_library_delivery": {
                                         "store": true,
                                         "type": "float"
@@ -2557,6 +2564,13 @@
                                         "type": "float"
                                     },
                                     "time_post_change_units": {
+                                        "type": "keyword"
+                                    },
+                                    "time_post_culture": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "time_post_culture_units": {
                                         "type": "keyword"
                                     },
                                     "time_post_library_delivery": {

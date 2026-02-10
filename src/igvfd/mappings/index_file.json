@@ -1,6 +1,6 @@
 {
-    "hash": "25a37e1f5b8556b612c81163b514d7f0",
-    "index_name": "index_file_25a37e1f",
+    "hash": "30a518ff5434aeebc26d3386d8ffca0e",
+    "index_name": "index_file_30a518ff",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -1621,6 +1621,13 @@
                                     "time_post_change_units": {
                                         "type": "keyword"
                                     },
+                                    "time_post_culture": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "time_post_culture_units": {
+                                        "type": "keyword"
+                                    },
                                     "time_post_library_delivery": {
                                         "store": true,
                                         "type": "float"
@@ -2448,6 +2455,13 @@
                                         "type": "float"
                                     },
                                     "time_post_change_units": {
+                                        "type": "keyword"
+                                    },
+                                    "time_post_culture": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "time_post_culture_units": {
                                         "type": "keyword"
                                     },
                                     "time_post_library_delivery": {

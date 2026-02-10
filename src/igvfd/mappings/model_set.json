@@ -1,6 +1,6 @@
 {
-    "hash": "0984a9abddc6a5a06da81f2a814b513e",
-    "index_name": "model_set_0984a9ab",
+    "hash": "903f3d6c0dff304d86b31ef548a8dae3",
+    "index_name": "model_set_903f3d6c",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -3596,6 +3596,13 @@
                                 "type": "float"
                             },
                             "time_post_change_units": {
+                                "type": "keyword"
+                            },
+                            "time_post_culture": {
+                                "store": true,
+                                "type": "float"
+                            },
+                            "time_post_culture_units": {
                                 "type": "keyword"
                             },
                             "time_post_library_delivery": {

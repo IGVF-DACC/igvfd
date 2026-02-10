@@ -1,6 +1,6 @@
 {
-    "hash": "1f7f7690e618ac1453682e91e2f471d5",
-    "index_name": "tissue_1f7f7690",
+    "hash": "e30cb84867a01eed32f08fa1b4eca614",
+    "index_name": "tissue_e30cb848",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -2178,6 +2178,13 @@
                             "time_post_change_units": {
                                 "type": "keyword"
                             },
+                            "time_post_culture": {
+                                "store": true,
+                                "type": "float"
+                            },
+                            "time_post_culture_units": {
+                                "type": "keyword"
+                            },
                             "time_post_library_delivery": {
                                 "store": true,
                                 "type": "float"
@@ -2736,6 +2743,13 @@
                                 "type": "float"
                             },
                             "time_post_change_units": {
+                                "type": "keyword"
+                            },
+                            "time_post_culture": {
+                                "store": true,
+                                "type": "float"
+                            },
+                            "time_post_culture_units": {
                                 "type": "keyword"
                             },
                             "time_post_library_delivery": {

@@ -403,6 +403,18 @@
                 "time_post_change_units",
                 "time_post_change"
             ]
+        },
+        "time_post_culture": {
+            "comment": "Specification of time_post_culture requires time_post_culture_units.",
+            "required": [
+                "time_post_culture_units"
+            ]
+        },
+        "time_post_culture_units": {
+            "comment": "Specification of time_post_culture_units requires time_post_culture.",
+            "required": [
+                "time_post_culture"
+            ]
         }
     },
     "properties": {
@@ -573,6 +585,31 @@
             "submissionExample": {
                 "appscript": "[\"exhausted\"]",
                 "igvf_utils": "exhausted"
+            }
+        },
+        "time_post_culture": {
+            "title": "Time Post Culture",
+            "description": "The time that elapsed since the biosample was placed into culture.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 72,
+                "igvf_utils": 72
+            }
+        },
+        "time_post_culture_units": {
+            "title": "Time Post Culture Units",
+            "description": "The units of time that elapsed since the biosample was placed into culture.",
+            "type": "string",
+            "enum": [
+                "minute",
+                "hour",
+                "day",
+                "week",
+                "month"
+            ],
+            "submissionExample": {
+                "appscript": "hour",
+                "igvf_utils": "hour"
             }
         }
     },

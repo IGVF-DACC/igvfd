@@ -1,6 +1,6 @@
 {
-    "hash": "531e32c045cb6eb03a22c8959baad991",
-    "index_name": "reference_file_531e32c0",
+    "hash": "e28b8ed495342082c3ae3f39e2d51aad",
+    "index_name": "reference_file_e28b8ed4",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -1634,6 +1634,13 @@
                                     "time_post_change_units": {
                                         "type": "keyword"
                                     },
+                                    "time_post_culture": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "time_post_culture_units": {
+                                        "type": "keyword"
+                                    },
                                     "time_post_library_delivery": {
                                         "store": true,
                                         "type": "float"
@@ -2458,6 +2465,13 @@
                                         "type": "float"
                                     },
                                     "time_post_change_units": {
+                                        "type": "keyword"
+                                    },
+                                    "time_post_culture": {
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "time_post_culture_units": {
                                         "type": "keyword"
                                     },
                                     "time_post_library_delivery": {

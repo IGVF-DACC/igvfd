@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 29
 
+* Add `time_post_culture`.
+* Add `time_post_culture_units`.
 * Add `selection_conditions`.
 * Extend `nucleic_acid_delivery` enum list to include `transformation`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
