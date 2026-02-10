@@ -1,5 +1,14 @@
 ## Changelog for *`analysis_step.json`*
 
+### Minor changes since schema version 11
+
+* Extend `input_content_types` enum list to include `contacts`.
+* Extend `output_content_types` enum list to include `contacts`.
+* Extend `input_content_types` enum list to include `methylation count`.
+* Extend `output_content_types` enum list to include `methylation count`.
+* Extend `input_content_types` enum list to include `methylation count matrix`.
+* Extend `output_content_types` enum list to include `methylation count matrix`.
+
 ### Schema version 11
 
 * Adjust `output_content_types` enum list to replace `filtered global differential expressions` with `global differential expression`.

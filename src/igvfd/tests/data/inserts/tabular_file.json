@@ -1399,5 +1399,43 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "igvf:prediction_set_5",
         "controlled_access": false
+    },
+    {
+        "uuid": "1afa792b-3490-4a96-b491-b62687766720",
+        "accession": "IGVFFI0009CNTC",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:contacts"
+        ],
+        "md5sum": "c11e4a7921afa7750c6cf5fc03bf752a",
+        "file_format": "tsv",
+        "content_type": "contacts",
+        "submitted_file_name": "/Users/igvf/igvf_files/contacts.tsv.gz",
+        "file_size": 1992000,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "d82246b1-3490-4a96-b491-b62687766720",
+        "accession": "IGVFFI0011MCOT",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:methylation_count"
+        ],
+        "md5sum": "03bf752921aff0a409350ac11e4a75fc",
+        "file_format": "tsv",
+        "content_type": "methylation_count",
+        "submitted_file_name": "/Users/igvf/igvf_files/methylation_count.tsv.gz",
+        "file_size": 1802000,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
     }
 ]

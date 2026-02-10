@@ -388,5 +388,30 @@
         "documents": [
             "igvf:cell_marker_file"
         ]
+    },
+    {
+        "uuid": "1959e3ec-7353-45bb-ad76-7bfc49353a1d",
+        "accession": "IGVFFI3333MTMX",
+        "lab": "chongyuan-luo",
+        "award": "1UM1HG012053-01",
+        "aliases": [
+            "igvf:methylation_count_matrix"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-02-10T12:34:56Z",
+        "md5sum": "b761991f961dcdced8f0a4660459dda4",
+        "file_format": "h5ad",
+        "content_type": "methylation count matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/methylation_count_matrix.h5ad",
+        "file_size": 8900000,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
+            "genomic position"
+        ]
     }
 ]
