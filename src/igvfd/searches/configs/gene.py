@@ -16,6 +16,9 @@ def gene():
             'study_sets': {
                 'title': 'Study Sets'
             },
+            'allele': {
+                'title': 'Allele'
+            },
             'status': {
                 'title': 'Status'
             },
@@ -47,6 +50,9 @@ def gene():
             },
             'synonyms': {
                 'title': 'Synonyms'
+            },
+            'allele': {
+                'title': 'Allele'
             },
             'dbxrefs': {
                 'title': 'External resources'

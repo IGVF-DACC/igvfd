@@ -37,6 +37,15 @@ def technical_sample():
             'nucleic_acid_delivery': {
                 'title': 'Nucleic Acid Delivery Method'
             },
+            'treatments.purpose': {
+                'title': 'Treatment Purpose'
+            },
+            'treatments.treatment_type': {
+                'title': 'Treatment Type'
+            },
+            'treatments.treatment_term_name': {
+                'title': 'Treatment Name'
+            },
             'collections': {
                 'title': 'Collection',
             },
