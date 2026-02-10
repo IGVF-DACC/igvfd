@@ -1422,16 +1422,8 @@ class MeasurementSet(FileSet):
             if 'CRISPR' not in assay:
                 assay = f'CRISPR {assay}'
 
-        if len(modality_set) > 1:
+        if len(modality_set) > 0:
             modality_set = ', '.join(modality_set)
-            if 'CRISPR' in assay:
-                assay_phrase = assay.replace('CRISPR', f'CRISPR {modality_set}')
-            else:
-                modality_phrase = f'{modality_set} '
-                assay_phrase = f'{assay}'
-            assay_phrase = f' {assay}'
-        if len(modality_set) == 1:
-            modality_set = ''.join(modality_set)
             if 'CRISPR' in assay:
                 assay_phrase = assay.replace('CRISPR', f'CRISPR {modality_set}')
             else:
