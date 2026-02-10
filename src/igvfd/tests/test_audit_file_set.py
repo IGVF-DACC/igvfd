@@ -462,3 +462,50 @@ def test_audit_missing_genome_or_transcriptome(
         error['category'] == 'missing reference files'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
+
+
+def test_audit_anvil_file_fileset_mismatch_measet(
+    testapp,
+    sequence_file,
+    sequence_file_pod5,
+    measurement_set
+):
+    # MeaSet not on AnVIL but has an AnVIL file -> audit
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_set': measurement_set['@id'],
+            'anvil_url': 'anvil://mock_url'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent AnVIL status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+
+    # MeaSet on AnVIL with an AnVIL file -> no audit
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'is_on_anvil': True
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent AnVIL status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+
+    # MeaSet on AnVIL with an AnVIL file and an AnVIL file without a file set -> audit
+    testapp.patch_json(
+        sequence_file_pod5['@id'],
+        {
+            'file_set': measurement_set['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent AnVIL status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
