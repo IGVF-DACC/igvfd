@@ -303,14 +303,8 @@ class Biosample(Sample):
     item_type = 'biosample'
     base_types = ['Biosample'] + Sample.base_types
     schema = load_schema('igvfd:schemas/biosample.json')
-<<<<<<< HEAD
-    rev = Sample.rev | {'parts': ('Biosample', 'part_of'),
-                        'pooled_in': ('Biosample', 'pooled_from')}
-    embedded_with_frame = Sample.embedded_with_frame + [Path('originated_from', include=['@id', 'accession', 'status'])]
-=======
     rev = Sample.rev | {'pooled_in': ('Biosample', 'pooled_from')}
-    embedded_with_frame = Sample.embedded_with_frame
->>>>>>> 3c1ffbda (updated parts)
+    embedded_with_frame = Sample.embedded_with_frame + [Path('originated_from', include=['@id', 'accession', 'status'])]
 
     audit_inherit = Sample.audit_inherit + [
         'disease_terms',
