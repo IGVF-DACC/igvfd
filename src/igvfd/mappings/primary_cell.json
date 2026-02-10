@@ -1,6 +1,6 @@
 {
-    "hash": "b0e5332d72be8b6cda81c9598c837d63",
-    "index_name": "primary_cell_b0e5332d",
+    "hash": "27cc4939d993157e653728d7f69f655b",
+    "index_name": "primary_cell_27cc4939",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -2176,6 +2176,13 @@
                                 "type": "float"
                             },
                             "time_post_change_units": {
+                                "type": "keyword"
+                            },
+                            "time_post_culture": {
+                                "store": true,
+                                "type": "float"
+                            },
+                            "time_post_culture_units": {
                                 "type": "keyword"
                             },
                             "time_post_library_delivery": {
