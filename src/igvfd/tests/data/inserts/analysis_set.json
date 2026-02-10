@@ -155,5 +155,18 @@
         "release_timestamp": "2024-08-06T12:34:56Z",
         "file_set_type": "intermediate analysis",
         "doi": "10.65695/IGVFDS1234DOIX"
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_with_anvil"
+        ],
+        "accession": "IGVFDS1234ANVL",
+        "award": "HG012009",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "uuid": "1c62375e-c1b5-4a95-9463-44b49db3b188",
+        "release_timestamp": "2024-08-06T12:34:56Z",
+        "file_set_type": "intermediate analysis",
+        "is_on_anvil": true
     }
 ]

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Add `is_on_anvil`.
 * Add calculated property `parts`.
 * Add `part_of`.
 * Add `selection_conditions`.

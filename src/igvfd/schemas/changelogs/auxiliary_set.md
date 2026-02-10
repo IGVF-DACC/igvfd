@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 12
 
+* Add `is_on_anvil`.
 * Add `doi`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.

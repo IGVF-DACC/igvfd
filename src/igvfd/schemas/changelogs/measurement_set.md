@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 42
+
+* Add `is_on_anvil`.
+
 ### Schema version 42
 
 * Adjust `preferred_assay_titles` enum list to remove `Arrayed Y2H v1`.
