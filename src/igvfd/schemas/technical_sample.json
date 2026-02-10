@@ -124,9 +124,6 @@
             }
         },
         "part_of": {
-            "title": "Part of sample",
-            "description": "Links to technical sample which represents a larger sample from which this sample was taken.",
-            "type": "string",
             "linkTo": "TechnicalSample",
             "submissionExample": {
                 "appscript": "TSTSM02881437 or john-doe:technical_sample01",
