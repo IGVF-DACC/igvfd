@@ -221,3 +221,33 @@ def tabular_file_v17(tabular_file):
         'content_type': 'pipeline inputs'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v18a(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '18',
+        'content_type': 'filtered global differential expressions'
+    })
+    return item
+
+
+@pytest.fixture
+def tabular_file_v18b(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '18',
+        'content_type': 'unfiltered global differential expression'
+    })
+    return item
+
+
+@pytest.fixture
+def tabular_file_v18c(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '18',
+        'content_type': 'unfiltered local differential expression'
+    })
+    return item

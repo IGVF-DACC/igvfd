@@ -633,3 +633,21 @@ def reference_file_21_22(value, system):
         )
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('tabular_file', '18', '19')
+def tabular_file_18_19(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3255
+    notes = value.get('notes', '')
+    old_content_type = value.get('content_type', '')
+    upgrade_map = {
+        'filtered global differential expressions': ('global differential expression', True),
+        'unfiltered global differential expression': ('global differential expression', True),
+        'unfiltered local differential expression': ('local differential expression', False)
+    }
+    if old_content_type in upgrade_map:
+        value['content_type'] = upgrade_map[old_content_type][0]
+        value['filtered'] = upgrade_map[old_content_type][1]
+        notes += f' This file\'s content_type was {old_content_type}, but has been upgraded to {upgrade_map[old_content_type][0]}. The filtered property was also set to {str(upgrade_map[old_content_type][1])}.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

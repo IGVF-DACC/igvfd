@@ -1159,7 +1159,7 @@
         ],
         "md5sum": "85d68e982987441946768df28b8e9af4",
         "file_format": "tsv",
-        "content_type": "filtered global differential expressions",
+        "content_type": "global differential expression",
         "submitted_file_name": "/Users/igvf/igvf_files/filtered_global_differential_expressions.tsv.gz",
         "file_size": 101,
         "upload_status": "validated",

@@ -116,3 +116,17 @@ def analysis_step_v9(testapp, analysis_step):
         'output_content_types': ['genes_genes', 'variants_genes', 'elements reference']
     })
     return item
+
+
+@pytest.fixture
+def analysis_step_v10(testapp, base_workflow):
+    item = {
+        'schema_version': '10',
+        'step_label': 'base-analysis-step',
+        'title': 'Base Analysis Step',
+        'input_content_types': ['filtered global differential expressions', 'unfiltered global differential expression', 'unfiltered local differential expression'],
+        'output_content_types': ['filtered global differential expressions', 'unfiltered global differential expression', 'unfiltered local differential expression'],
+        'analysis_step_types': ['alignment'],
+        'workflow': base_workflow['@id']
+    }
+    return item
