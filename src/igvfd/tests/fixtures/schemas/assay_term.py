@@ -344,3 +344,13 @@ def assay_term_v19(assay_term_crispr):
         'preferred_assay_titles': ['Arrayed mN2H', 'Arrayed Y2H v1', 'Arrayed Y2H v2', 'Arrayed Y2H v3', 'Pooled Y2H v1', 'Pooled Y2H v2', 'Pooled Y2H v3', 'Arrayed semi-qY2H v1']
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v20(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '20',
+        'preferred_assay_titles': ['Arrayed mN2H', 'Pooled Y2H', 'Arrayed semi-qY2H v1', 'DOGMA-seq']
+    })
+    return item
