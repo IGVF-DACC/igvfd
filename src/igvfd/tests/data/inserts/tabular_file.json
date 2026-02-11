@@ -1429,7 +1429,7 @@
         ],
         "md5sum": "03bf752921aff0a409350ac11e4a75fc",
         "file_format": "tsv",
-        "content_type": "methylation_count",
+        "content_type": "methylation count",
         "submitted_file_name": "/Users/igvf/igvf_files/methylation_count.tsv.gz",
         "file_size": 1802000,
         "upload_status": "validated",
