@@ -150,3 +150,12 @@ def test_assay_term_upgrade_19_20(upgrader, assay_term_v19):
     assert value['schema_version'] == '20'
     assert sorted(value['preferred_assay_titles']) == expectation
     assert value.get('notes') == 'This assay_term previously used Arrayed Y2H v1, Arrayed Y2H v2, Arrayed Y2H v3, Pooled Y2H v1, Pooled Y2H v2, Pooled Y2H v3 in preferred_assay_titles, but they have been updated to Arrayed semi-qY2H v1, Arrayed semi-qY2H v2, Arrayed semi-qY2H v3, Pooled Y2H via an upgrade.'
+
+
+def test_assay_term_upgrade_20_21(upgrader, assay_term_v20):
+    value = upgrader.upgrade('assay_term', assay_term_v20, current_version='20', target_version='21')
+    assert value['schema_version'] == '21'
+    assert set(value.get('preferred_assay_titles')) == {
+        'Arrayed mN2H', 'Pooled Y2H', 'Arrayed semi-qY2H v1', 'miDOGMA-seq'}
+    assert value.get(
+        'notes') == 'This assay_term previously used DOGMA-seq as preferred_assay_titles, but it has been updated to miDOGMA-seq via an upgrade.'

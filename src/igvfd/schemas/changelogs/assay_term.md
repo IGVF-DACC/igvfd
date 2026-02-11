@@ -1,5 +1,9 @@
 ## Changelog for *`assay_term.json`*
 
+### Schema version 21
+
+* Adjust `preferred_assay_titles` enum list to replace `DOGMA-seq` with `miDOGMA-seq`.
+
 ### Schema version 20
 
 * Adjust `preferred_assay_titles` enum list to remove `Arrayed Y2H v1`.

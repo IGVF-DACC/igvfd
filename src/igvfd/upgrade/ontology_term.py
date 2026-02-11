@@ -294,3 +294,16 @@ def assay_term_19_20(value, system):
         value['preferred_assay_titles'] = list(set(new_assay_titles))
         notes += f' This assay_term previously used {", ".join(old_assay_titles)} in preferred_assay_titles, but they have been updated to {", ".join(sorted(list(set(replaced_by_assay_titles))))} via an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('assay_term', '20', '21')
+def assay_term_20_21(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3289
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    if 'DOGMA-seq' in preferred_assay_titles:
+        index = preferred_assay_titles.index('DOGMA-seq')
+        preferred_assay_titles[index] = 'miDOGMA-seq'
+        value['preferred_assay_titles'] = preferred_assay_titles
+        notes = value.get('notes', '')
+        notes += ' This assay_term previously used DOGMA-seq as preferred_assay_titles, but it has been updated to miDOGMA-seq via an upgrade.'
+        value['notes'] = notes.strip()
