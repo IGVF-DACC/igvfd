@@ -297,3 +297,11 @@ def test_measurement_set_upgrade_41_42(upgrader, measurement_set_v41_1, measurem
     assert value.get('preferred_assay_titles') == ['Pooled Y2H']
     assert value.get(
         'notes') == 'This measurement set previously used Pooled Y2H v1 as preferred_assay_titles, but it has been updated to Pooled Y2H via an upgrade.'
+
+
+def test_measurement_set_upgrade_42_43(upgrader, measurement_set_v42):
+    value = upgrader.upgrade('measurement_set', measurement_set_v42, current_version='42', target_version='43')
+    assert value['schema_version'] == '43'
+    assert value.get('preferred_assay_titles') == ['miDOGMA-seq']
+    assert value.get(
+        'notes') == 'This measurement set previously used DOGMA-seq as preferred_assay_titles, but it has been updated to miDOGMA-seq via an upgrade.'

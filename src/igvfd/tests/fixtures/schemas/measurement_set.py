@@ -626,3 +626,13 @@ def measurement_set_v41_2(measurement_set):
         'preferred_assay_titles': ['Pooled Y2H v1'],
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v42(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '42',
+        'preferred_assay_titles': ['DOGMA-seq'],
+    })
+    return item

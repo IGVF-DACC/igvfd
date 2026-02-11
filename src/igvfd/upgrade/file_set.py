@@ -760,6 +760,16 @@ def measurement_set_41_42(value, system):
         value['notes'] = notes.strip()
 
 
+@upgrade_step('measurement_set', '42', '43')
+def measurement_set_42_43(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3289
+    if value.get('preferred_assay_titles') == ['DOGMA-seq']:
+        value['preferred_assay_titles'] = ['miDOGMA-seq']
+        notes = value.get('notes', '')
+        notes += ' This measurement set previously used DOGMA-seq as preferred_assay_titles, but it has been updated to miDOGMA-seq via an upgrade.'
+        value['notes'] = notes.strip()
+
+
 @upgrade_step('curated_set', '8', '9')
 def curated_set_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3207
