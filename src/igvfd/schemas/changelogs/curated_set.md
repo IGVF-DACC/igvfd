@@ -1,5 +1,9 @@
 ## Changelog for *`curated_set.json`*
 
+### Minor changes since schema version 9
+
+* Extend `file_set_type` enum list to include `external sequencing data`.
+
 ### Schema version 9
 
 * Rename `file_set_type` enum `primer design` to `enrichment designs`.
