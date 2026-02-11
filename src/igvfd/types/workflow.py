@@ -73,3 +73,17 @@ class Workflow(Item):
         'standards_page'
     ]
     set_status_down = []
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, name, workflow_version=None):
+        summary_parts = [
+            name,
+            workflow_version
+        ]
+        return ' '.join([x for x in summary_parts if x is not None])
