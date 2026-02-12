@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 26
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Add `selection_conditions`.
 * Extend `nucleic_acid_delivery` enum list to include `transformation`.
 * Extend `collections` enum list to include `E2G Pillar Project`.

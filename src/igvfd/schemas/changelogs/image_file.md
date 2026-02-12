@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Add `checkfiles_timestamp`.
 * Add `imaging_platform`.
 * Extend `collections` enum list to include `E2G Pillar Project`.

@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.1`. (02/12/2026)
 * Extend `preferred_assay_titles` enum list to include `MAVE`. (11/19/2025)
 * Extend `collections` enum list to include `E2G Pillar Project`. (11/12/2025)
 * Extend `collections` enum list to include `Bridge Sample`. (11/12/2025)

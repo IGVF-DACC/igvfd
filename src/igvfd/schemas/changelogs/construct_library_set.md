@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 12
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Add `name` on `small_scale_loci_list`.
 * Add `doi`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
@@ -14,7 +15,6 @@
 * Extend `collections` enum list to include `TF Perturb-seq Project`.
 
 ### Schema version 12
-
 * Add calculated property `donors`
 * Add calculated property `preferred_assay_titles`
 * Remove `control_type`.
