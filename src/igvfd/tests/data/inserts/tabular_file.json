@@ -1406,12 +1406,12 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "igvf:contacts"
+            "igvf:chromatin_contact_quantifications"
         ],
         "md5sum": "c11e4a7921afa7750c6cf5fc03bf752a",
         "file_format": "tsv",
-        "content_type": "contacts",
-        "submitted_file_name": "/Users/igvf/igvf_files/contacts.tsv.gz",
+        "content_type": "chromatin contact quantifications",
+        "submitted_file_name": "/Users/igvf/igvf_files/chromatin_contact_quantifications.tsv.gz",
         "file_size": 1992000,
         "upload_status": "validated",
         "status": "released",
