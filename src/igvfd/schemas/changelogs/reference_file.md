@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 22
 
+* Add `catalog_method`.
 * Add `checkfiles_timestamp`.
 
 ### Schema version 22
