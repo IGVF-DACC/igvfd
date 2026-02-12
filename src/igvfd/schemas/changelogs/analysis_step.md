@@ -4,8 +4,8 @@
 
 * Extend `input_content_types` enum list to include `contacts`.
 * Extend `output_content_types` enum list to include `contacts`.
-* Extend `input_content_types` enum list to include `methylation count`.
-* Extend `output_content_types` enum list to include `methylation count`.
+* Extend `input_content_types` enum list to include `methylation counts`.
+* Extend `output_content_types` enum list to include `methylation counts`.
 * Extend `input_content_types` enum list to include `methylation count matrix`.
 * Extend `output_content_types` enum list to include `methylation count matrix`.
 

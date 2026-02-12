@@ -3,7 +3,7 @@
 ### Minor changes since schema version 19
 
 * Extend `content_type` enum list to include `contacts`.
-* Extend `content_type` enum list to include `methylation count`.
+* Extend `content_type` enum list to include `methylation counts`.
 
 ### Schema version 19
 
