@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 19
+
+* Extend `collections` enum list to include `IGVF_catalog_v1.1`.
+
 ### Schema version 19
 
 * Adjust `content_type` enum list to replace `filtered global differential expressions` with `global differential expression`.
