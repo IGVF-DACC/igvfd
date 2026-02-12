@@ -480,7 +480,7 @@ def test_audit_anvil_file_fileset_mismatch_measet(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'Inconsistent AnVIL status'
+        error['category'] == 'inconsistent AnVIL status'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
 
@@ -493,7 +493,7 @@ def test_audit_anvil_file_fileset_mismatch_measet(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'Inconsistent AnVIL status'
+        error['category'] != 'inconsistent AnVIL status'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
 
@@ -506,6 +506,6 @@ def test_audit_anvil_file_fileset_mismatch_measet(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'Inconsistent AnVIL status'
+        error['category'] == 'inconsistent AnVIL status'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )

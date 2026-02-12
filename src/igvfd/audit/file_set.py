@@ -1323,12 +1323,12 @@ def audit_anvil_file_fileset_mismatch(value, system):
     [
         {
             "audit_description": "All files linked to file sets that are previously submitted to AnVIL should have `anvil_url`.",
-            "audit_category": "Inconsistent AnVIL status",
+            "audit_category": "inconsistent AnVIL status",
             "audit_level": "INTERNAL_ACTION"
         },
         {
             "audit_description": "File sets with files having `anvil_url` should have been submitted to AnVIL.",
-            "audit_category": "Inconsistent AnVIL status",
+            "audit_category": "inconsistent AnVIL status",
             "audit_level": "INTERNAL_ACTION"
         }
     ]
