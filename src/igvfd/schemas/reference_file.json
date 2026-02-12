@@ -180,7 +180,7 @@
             },
             "enum_descriptions": {
                 "ADASTRA": "A database of allele-specific transcription factor binding in human tissues.",
-                "coexpression": "A method that describes correlated expression patterns between genes.",
+                "COXPRESdb": "A database of gene coexpression relationships.",
                 "eQTL": "A method that links genetic variants to gene expression differences.",
                 "GWAS": "A method that identifies associations between genetic variants and traits or diseases.",
                 "GVATdb": "Genetic Variants Allelic TF Binding Database (GVATdb) is a database that curates genetic variants associated with allele-specific transcription factor binding.",
