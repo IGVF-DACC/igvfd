@@ -1,6 +1,6 @@
 {
-    "hash": "e28b8ed495342082c3ae3f39e2d51aad",
-    "index_name": "reference_file_e28b8ed4",
+    "hash": "0161c37466b296f356b15729b44b9b84",
+    "index_name": "reference_file_0161c374",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -377,6 +377,9 @@
                         "type": "keyword"
                     },
                     "catalog_collections": {
+                        "type": "keyword"
+                    },
+                    "catalog_method": {
                         "type": "keyword"
                     },
                     "catalog_notes": {
