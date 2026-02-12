@@ -1,6 +1,6 @@
 {
-    "hash": "95d2973a739ca1296abc8535f73968cd",
-    "index_name": "curated_set_95d2973a",
+    "hash": "e132bdd3c0e39aa8fbed00cf5ec36248",
+    "index_name": "curated_set_e132bdd3",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -556,6 +556,9 @@
                                         "type": "keyword"
                                     },
                                     "catalog_collections": {
+                                        "type": "keyword"
+                                    },
+                                    "catalog_method": {
                                         "type": "keyword"
                                     },
                                     "catalog_notes": {
@@ -1618,6 +1621,9 @@
                                 "type": "keyword"
                             },
                             "catalog_collections": {
+                                "type": "keyword"
+                            },
+                            "catalog_method": {
                                 "type": "keyword"
                             },
                             "catalog_notes": {

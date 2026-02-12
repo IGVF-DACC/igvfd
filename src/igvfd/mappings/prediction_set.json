@@ -1,6 +1,6 @@
 {
-    "hash": "1a52c7ea860060f54de7730942829d16",
-    "index_name": "prediction_set_1a52c7ea",
+    "hash": "bb1fb13972c21c37566632b75912f2ee",
+    "index_name": "prediction_set_bb1fb139",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -737,6 +737,9 @@
                                         "type": "keyword"
                                     },
                                     "catalog_collections": {
+                                        "type": "keyword"
+                                    },
+                                    "catalog_method": {
                                         "type": "keyword"
                                     },
                                     "catalog_notes": {
@@ -1804,6 +1807,9 @@
                             "catalog_collections": {
                                 "type": "keyword"
                             },
+                            "catalog_method": {
+                                "type": "keyword"
+                            },
                             "catalog_notes": {
                                 "type": "keyword"
                             },
@@ -2517,6 +2523,9 @@
                             "catalog_collections": {
                                 "type": "keyword"
                             },
+                            "catalog_method": {
+                                "type": "keyword"
+                            },
                             "catalog_notes": {
                                 "type": "keyword"
                             },
@@ -2733,6 +2742,9 @@
                                 "type": "keyword"
                             },
                             "catalog_collections": {
+                                "type": "keyword"
+                            },
+                            "catalog_method": {
                                 "type": "keyword"
                             },
                             "catalog_notes": {
