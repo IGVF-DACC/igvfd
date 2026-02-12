@@ -1,5 +1,9 @@
 ## Changelog for *`curated_set.json`*
 
+### Minor changes since schema version 9
+
+* Add `is_on_anvil`.
+
 ### Schema version 9
 
 * Rename `file_set_type` enum `primer design` to `enrichment designs`.

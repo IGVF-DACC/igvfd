@@ -49,5 +49,29 @@
         ],
         "virtual": false,
         "part_of": "igvf:multiplex_pool"
+    },
+    {
+        "uuid": "4988b626-2794-4724-b525-647c173f7f9d",
+        "accession": "IGVFSM0002ANVL",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:multiplex_alias_with_anvil"
+        ],
+        "barcode_map": "igvf:tabular_file_04_barcode_to_sample_mapping",
+        "multiplexing_methods": [
+            "barcode based"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "multiplexed_samples": [
+            "igvf-dacc:in_vitro_system_cell_line",
+            "igvf-dacc:in_vitro_system_demultiplexed_01"
+        ],
+        "protocols": [
+            "https://www.protocols.io/private/test-protocols-url-12345"
+        ],
+        "virtual": false,
+        "is_on_anvil": true
     }
 ]

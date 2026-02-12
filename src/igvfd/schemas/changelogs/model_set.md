@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 6
 
+* Add `is_on_anvil`.
 * Add `doi`.
 * Extend `preferred_assay_titles` enum list to include `MAVE`.
 * Extend `collections` enum list to include `E2G Pillar Project`.

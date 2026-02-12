@@ -46,6 +46,9 @@
         },
         {
             "$ref": "mixins.json#/doi"
+        },
+        {
+            "$ref": "mixins.json#/is_on_anvil"
         }
     ],
     "dependentSchemas": {

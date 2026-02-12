@@ -1318,11 +1318,62 @@ def audit_missing_genome_transcriptome_references(value, system):
         yield AuditFailure(audit_message_genome_tabular.get('audit_category', ''), f'{detail} {audit_message_genome_tabular.get("audit_description", "")}', level=audit_message_genome_tabular.get('audit_level', ''))
 
 
+def audit_anvil_file_fileset_mismatch(value, system):
+    '''
+    [
+        {
+            "audit_description": "All files linked to file sets that are previously submitted to AnVIL should have `anvil_url`.",
+            "audit_category": "inconsistent AnVIL status",
+            "audit_level": "INTERNAL_ACTION"
+        },
+        {
+            "audit_description": "File sets with files having `anvil_url` should have been submitted to AnVIL.",
+            "audit_category": "inconsistent AnVIL status",
+            "audit_level": "INTERNAL_ACTION"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_msg_missed_files = get_audit_message(audit_anvil_file_fileset_mismatch, index=0)
+    audit_msg_missed_fileset = get_audit_message(audit_anvil_file_fileset_mismatch, index=1)
+    linked_files = value.get('files', [])
+    fileset_on_anvil = value.get('is_on_anvil', False)
+    files_on_anvil = []
+
+    # Compute how many files have ANVIL urls
+    for file in linked_files:
+        file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
+        if file_object.get('anvil_url', ''):
+            files_on_anvil.append(file)
+
+    # If files are on AnVIL but the linked file set is not
+    # Should not happen, but could miss CuratedSet due to how CLS is setup
+    if files_on_anvil and not fileset_on_anvil:
+        files_on_anvil_paths = ', '.join([audit_link(path_to_text(file), file) for file in files_on_anvil])
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'links to file(s) {files_on_anvil_paths} with `anvil_url`, but the file set is not marked as submitted to AnVIL.'
+        )
+        yield AuditFailure(audit_msg_missed_fileset.get('audit_category', ''), f'{detail} {audit_msg_missed_fileset.get("audit_description", "")}', level=audit_msg_missed_fileset.get('audit_level', ''))
+
+    # If file set is on AnVIL but some of its files are not (updates, corrections, etc.)
+    if fileset_on_anvil and linked_files:
+        mismatched_files = list(set(linked_files) - set(files_on_anvil))
+        if mismatched_files:
+            mismatched_files_paths = ', '.join([audit_link(path_to_text(file), file) for file in mismatched_files])
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'is marked as submitted to AnVIL, but linked files {mismatched_files_paths} do not have `anvil_url`.'
+            )
+            yield AuditFailure(audit_msg_missed_files.get('audit_category', ''), f'{detail} {audit_msg_missed_files.get("audit_description", "")}', level=audit_msg_missed_files.get('audit_level', ''))
+
+
 function_dispatcher_file_set_object = {
     'audit_no_files': audit_no_files,
     'audit_inconsistent_sequencing_kit': audit_inconsistent_sequencing_kit,
     'audit_control_for_control_type': audit_control_for_control_type,
-    'audit_file_set_missing_publication': audit_file_set_missing_publication
+    'audit_file_set_missing_publication': audit_file_set_missing_publication,
+    'audit_anvil_file_fileset_mismatch': audit_anvil_file_fileset_mismatch
 }
 
 function_dispatcher_measurement_set_object = {
