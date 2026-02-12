@@ -1,6 +1,6 @@
 {
-    "hash": "62f7ed62bbb76af701f78f92146b9b6d",
-    "index_name": "construct_library_set_62f7ed62",
+    "hash": "d45a2de1ca147db32271ec833f0ca595",
+    "index_name": "construct_library_set_d45a2de1",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -902,6 +902,9 @@
                             "catalog_collections": {
                                 "type": "keyword"
                             },
+                            "catalog_method": {
+                                "type": "keyword"
+                            },
                             "catalog_notes": {
                                 "type": "keyword"
                             },
@@ -1213,6 +1216,9 @@
                             "catalog_collections": {
                                 "type": "keyword"
                             },
+                            "catalog_method": {
+                                "type": "keyword"
+                            },
                             "catalog_notes": {
                                 "type": "keyword"
                             },
@@ -1491,6 +1497,9 @@
                             "catalog_collections": {
                                 "type": "keyword"
                             },
+                            "catalog_method": {
+                                "type": "keyword"
+                            },
                             "catalog_notes": {
                                 "type": "keyword"
                             },
@@ -1707,6 +1716,9 @@
                                 "type": "keyword"
                             },
                             "catalog_collections": {
+                                "type": "keyword"
+                            },
+                            "catalog_method": {
                                 "type": "keyword"
                             },
                             "catalog_notes": {

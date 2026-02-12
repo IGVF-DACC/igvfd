@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 42
+
+* Extend `collections` enum list to include `IGVF_catalog_v1.1`.
+
 ### Schema version 42
 
 * Adjust `preferred_assay_titles` enum list to remove `Arrayed Y2H v1`.

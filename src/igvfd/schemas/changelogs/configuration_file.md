@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Add `checkfiles_timestamp`.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.

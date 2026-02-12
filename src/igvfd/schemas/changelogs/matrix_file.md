@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Add `checkfiles_timestamp`.
 * Extend `content_type` enum list to include `annotated sparse gene count matrix`.
 * Extend `content_type` enum list to include `annotated sparse peak count matrix`.

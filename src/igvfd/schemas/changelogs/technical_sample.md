@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 15
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Add `originated_from`.
 * Add `selection_conditions`.
 * Extend `nucleic_acid_delivery` enum list to include `transformation`.

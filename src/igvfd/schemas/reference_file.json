@@ -159,6 +159,35 @@
                 "igvf_utils": "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/ccre_adapter.py"
             }
         },
+        "catalog_method": {
+            "title": "Catalog Method",
+            "type": "string",
+            "permission": "admin_only",
+            "description": "The method curated in the IGVF catalog that the non-IGVF data in this file processed with",
+            "comment": "Do not submit. This is set by admins for data loading in the IGVF catalog",
+            "enum": [
+                "ADASTRA",
+                "COXPRESdb",
+                "eQTL",
+                "GWAS",
+                "GVATdb",
+                "pQTL",
+                "splice_QTL"
+            ],
+            "submissionExample": {
+                "appscript": "ADASTRA",
+                "igvf_utils": "ADASTRA"
+            },
+            "enum_descriptions": {
+                "ADASTRA": "A database of allele-specific transcription factor binding in human tissues.",
+                "COXPRESdb": "A database of gene coexpression relationships.",
+                "eQTL": "A method that links genetic variants to gene expression differences.",
+                "GWAS": "A method that identifies associations between genetic variants and traits or diseases.",
+                "GVATdb": "Genetic Variants Allelic TF Binding Database (GVATdb) is a database that curates genetic variants associated with allele-specific transcription factor binding.",
+                "pQTL": "A method that links genetic variants to protein abundance differences.",
+                "splice_QTL": "A method that links genetic variants to splicing differences."
+            }
+        },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "oneOf": [
