@@ -8,11 +8,13 @@
 * Extend `collections` enum list to include `Bridge Sample`.
 * Update `dbxrefs` regex to allow MaveDB score set URNs.
 * Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.0`.
 * Extend `collections` enum list to include `Benchmark`.
 * Extend `collections` enum list to include `TF Perturb-seq Project`.
 * Add calculated property `assay_titles`
 * Add calculated property `preferred_assay_titles`
+* Add `preview_timestamp`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.
 * Update `aliases` regex to add `steven-gazal` as a namespace.
 * Update `aliases` regex to add `katie-pollard` as a namespace.

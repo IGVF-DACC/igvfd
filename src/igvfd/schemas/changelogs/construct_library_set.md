@@ -15,6 +15,7 @@
 * Extend `collections` enum list to include `TF Perturb-seq Project`.
 
 ### Schema version 12
+
 * Add calculated property `donors`
 * Add calculated property `preferred_assay_titles`
 * Remove `control_type`.
