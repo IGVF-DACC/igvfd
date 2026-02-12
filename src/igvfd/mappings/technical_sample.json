@@ -1,6 +1,6 @@
 {
-    "hash": "61046aa8bc6c8d87474d5cb70c17de38",
-    "index_name": "technical_sample_61046aa8",
+    "hash": "6591b28db26260a526e116189f5b7ffd",
+    "index_name": "technical_sample_6591b28d",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -980,6 +980,10 @@
                     "institutional_certificates": {
                         "type": "keyword"
                     },
+                    "is_on_anvil": {
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -1108,6 +1112,10 @@
                             },
                             "institutional_certificates": {
                                 "type": "keyword"
+                            },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"
