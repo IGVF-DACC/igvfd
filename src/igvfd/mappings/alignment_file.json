@@ -1,6 +1,6 @@
 {
-    "hash": "058c8253287fade4d668388556afcf91",
-    "index_name": "alignment_file_058c8253",
+    "hash": "e98f37ba63c0eb49e147255e28cf0c9a",
+    "index_name": "alignment_file_e98f37ba",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -654,6 +654,12 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
+                                "type": "keyword"
+                            },
+                            "cell_qualifier": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1819,6 +1825,9 @@
                                 "type": "object"
                             },
                             "software_versions": {
+                                "type": "keyword"
+                            },
+                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

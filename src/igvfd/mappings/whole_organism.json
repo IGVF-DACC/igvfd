@@ -1,6 +1,6 @@
 {
-    "hash": "fc79ceefa8e0558ecf6edfc94c53939d",
-    "index_name": "whole_organism_fc79ceef",
+    "hash": "c43fb280d7164a26f4a00bad7b8ef01d",
+    "index_name": "whole_organism_c43fb280",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1031,6 +1031,12 @@
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
+                            "cell_annotation": {
+                                "type": "keyword"
+                            },
+                            "cell_qualifier": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1310,6 +1316,9 @@
                                 "type": "object"
                             },
                             "software_versions": {
+                                "type": "keyword"
+                            },
+                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

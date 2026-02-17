@@ -1,6 +1,6 @@
 {
-    "hash": "2734a6a49ad13994b2d2933867112844",
-    "index_name": "tabular_file_2734a6a4",
+    "hash": "e28a07af063adc9710b73801b2782a68",
+    "index_name": "tabular_file_e28a07af",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -765,6 +765,12 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
+                                "type": "keyword"
+                            },
+                            "cell_qualifier": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1930,6 +1936,9 @@
                                 "type": "object"
                             },
                             "software_versions": {
+                                "type": "keyword"
+                            },
+                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

@@ -1,6 +1,6 @@
 {
-    "hash": "6d1ed4d264c96a6603705a214c07d9ba",
-    "index_name": "auxiliary_set_6d1ed4d2",
+    "hash": "2f8305952315cf93abfe98815806cff3",
+    "index_name": "auxiliary_set_2f830595",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -428,6 +428,12 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
+                                "type": "keyword"
+                            },
+                            "cell_qualifier": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -978,6 +984,9 @@
                             "software_versions": {
                                 "type": "keyword"
                             },
+                            "source_biosamples": {
+                                "type": "keyword"
+                            },
                             "sources": {
                                 "type": "keyword"
                             },
@@ -1111,6 +1120,12 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
+                                "type": "keyword"
+                            },
+                            "cell_qualifier": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1336,6 +1351,9 @@
                                 "type": "object"
                             },
                             "software_versions": {
+                                "type": "keyword"
+                            },
+                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -2295,6 +2313,12 @@
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
+                            "cell_annotation": {
+                                "type": "keyword"
+                            },
+                            "cell_qualifier": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -2518,6 +2542,9 @@
                                 "type": "object"
                             },
                             "software_versions": {
+                                "type": "keyword"
+                            },
+                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

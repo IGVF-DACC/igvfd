@@ -1,6 +1,6 @@
 {
-    "hash": "999d1cbf90dcc53a2059af723807b09d",
-    "index_name": "curated_set_999d1cbf",
+    "hash": "27344a7d503c3782ce0cbfe77f52428f",
+    "index_name": "curated_set_27344a7d",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -426,6 +426,12 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
+                                "type": "keyword"
+                            },
+                            "cell_qualifier": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -976,6 +982,9 @@
                             "software_versions": {
                                 "type": "keyword"
                             },
+                            "source_biosamples": {
+                                "type": "keyword"
+                            },
                             "sources": {
                                 "type": "keyword"
                             },
@@ -1109,6 +1118,12 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
+                                "type": "keyword"
+                            },
+                            "cell_qualifier": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1334,6 +1349,9 @@
                                 "type": "object"
                             },
                             "software_versions": {
+                                "type": "keyword"
+                            },
+                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

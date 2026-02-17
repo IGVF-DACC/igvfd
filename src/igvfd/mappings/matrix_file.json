@@ -1,6 +1,6 @@
 {
-    "hash": "5453d1c2ed1f59b1672c988f914eb3ec",
-    "index_name": "matrix_file_5453d1c2",
+    "hash": "35a2197efd36b3937f8a2d840571231e",
+    "index_name": "matrix_file_35a2197e",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -655,6 +655,12 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
+                                "type": "keyword"
+                            },
+                            "cell_qualifier": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1820,6 +1826,9 @@
                                 "type": "object"
                             },
                             "software_versions": {
+                                "type": "keyword"
+                            },
+                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

@@ -1,0 +1,145 @@
+{
+    "title": "Pseudobulk Set",
+    "$id": "/profiles/pseudobulk_set.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "file_set_type",
+        "cell_annotation"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "file_set.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/publications"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/input_file_sets"
+        },
+        {
+            "$ref": "mixins.json#/doi"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "shared_dependencies.json#/accession_status",
+            "file_set.json#/dependentSchemas"
+        ]
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "input_file_sets": {
+            "items": {
+                "title": "Input File Set",
+                "description": "A file set that serves as input for this file set.",
+                "type": "string",
+                "linkTo": "AnalysisSet"
+            },
+            "description": "The file set(s) required for this pseudobulking analysis."
+        },
+        "file_set_type": {
+            "description": "The level of this analysis set.",
+            "enum": [
+                "pseudobulk analysis"
+            ],
+            "enum_descriptions": {
+                "pseudobulk analysis": "An analysis using single cell data and cell type annotations as an input to produce pseudobulked outputs."
+            },
+            "submissionExample": {
+                "appscript": "pseudobulk analysis",
+                "igvf_utils": "pseudobulk analysis"
+            }
+        },
+        "cell_annotation": {
+            "title": "Cell Annotation",
+            "description": "The ontology term that describes the cell type of the cells in this pseudobulk.",
+            "type": "string",
+            "linkTo": "SampleTerm",
+            "submissionExample": {
+                "appscript": "[\"/sample-terms/CL_1230000/\"]",
+                "igvf_utils": "/sample-terms/CL_1230000/"
+            }
+        },
+        "source_biosamples": {
+            "title": "Source Biosamples",
+            "description": "The sample(s) from which the cells in this pseudobulk originated from.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Source Biosample",
+                "type": "string",
+                "linkTo": "Biosample"
+            },
+            "submissionExample": {
+                "appscript": "[\"IGVFSM02881437\", \"john-doe:tissue01\"]",
+                "igvf_utils": "IGVFSM02881437 or john-doe:tissue01"
+            }
+        },
+        "cell_qualifier": {
+            "title": "Cell Qualifier",
+            "description": "A qualifier that provides additional detail about the cell type annotation.",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "early",
+                "igvf_utils": "early"
+            }
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "@type",
+        "aliases",
+        "assay_titles",
+        "collections",
+        "description",
+        "lab.title",
+        "files.content_type",
+        "files.submitted_file_name",
+        "samples.summary",
+        "samples.sample_terms.term_name",
+        "samples.targeted_sample_term.term_name",
+        "submitted_by.title",
+        "summary"
+    ],
+    "exact_searchable_fields": [
+        "dbxrefs",
+        "files.accession",
+        "files.aliases",
+        "input_file_sets.accession",
+        "input_file_sets.aliases",
+        "publications.publication_identifiers",
+        "samples.accession",
+        "samples.aliases",
+        "donors.accession",
+        "donors.aliases"
+    ],
+    "changelog": "/profiles/changelogs/pseudobulk_set.md"
+}

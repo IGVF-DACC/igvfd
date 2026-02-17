@@ -1,6 +1,6 @@
 {
-    "hash": "1879a3a4487b2b128c6159af68370ddc",
-    "index_name": "multiplexed_sample_1879a3a4",
+    "hash": "b85d4487f5596077c5fafb3b3534dd5c",
+    "index_name": "multiplexed_sample_b85d4487",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1021,6 +1021,12 @@
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
+                            "cell_annotation": {
+                                "type": "keyword"
+                            },
+                            "cell_qualifier": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1300,6 +1306,9 @@
                                 "type": "object"
                             },
                             "software_versions": {
+                                "type": "keyword"
+                            },
+                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

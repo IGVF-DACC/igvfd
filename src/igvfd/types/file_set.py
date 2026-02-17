@@ -2138,3 +2138,155 @@ class ConstructLibrarySet(FileSet):
             else:
                 preposition = ' in'
             return f'{library_type} targeting {selections}{preposition}{target_phrase}{pheno_phrase}{pool_phrase}'
+
+
+@collection(
+    name='pseudobulk-sets',
+    unique_key='accession',
+    properties={
+        'title': 'Pseudobulk Sets',
+        'description': 'Listing of pseudobulk sets',
+    }
+)
+class PseudobulkSet(FileSet):
+    item_type = 'pseudobulk_set'
+    schema = load_schema('igvfd:schemas/pseudobulk_set.json')
+    embedded_with_frame = FileSet.embedded_with_frame + [
+        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
+        Path('cell_annotation', include=['@id', 'term_name', 'status']),
+        Path(
+            'source_biosamples.sample_terms',
+            include=[
+                '@id',
+                '@type',
+                'accession',
+                'aliases',
+                'treatments',
+                'cellular_sub_pool',
+                'classifications',
+                'disease_terms',
+                'growth_medium',
+                'modifications',
+                'sample_terms',
+                'status',
+                'summary',
+                'targeted_sample_term',
+                'taxa',
+                'term_name',
+                'treatments',
+                'institutional_certificates',
+            ]
+        ),
+        Path('source_biosamples.disease_terms', include=['@id', 'term_name', 'status']),
+        Path('source_biosamples.targeted_sample_term', include=['@id', 'term_name', 'status']),
+        Path('source_biosamples.modifications', include=['@id', 'modality', 'status']),
+        Path('source_biosamples.treatments', include=['@id', 'treatment_term_name',
+             'purpose', 'treatment_type', 'summary', 'status']),
+    ]
+    audit_inherit = FileSet.audit_inherit
+    set_status_up = FileSet.set_status_up + []
+    set_status_down = FileSet.set_status_down + []
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, cell_annotation, source_biosamples=None, cell_qualifier=None):
+
+        return f'Pseudobulk of {cell_annotation.get("term_name","")}'
+
+    @calculated_property(
+        schema={
+            'title': 'Workflows',
+            'description': 'A workflow for computational analysis of genomic data. A workflow is made up of analysis steps.',
+            'type': 'array',
+            'notSubmittable': True,
+            'uniqueItem': True,
+            'minItems': 1,
+            'items': {
+                'title': 'Workflow',
+                'type': 'string',
+                'linkTo': 'Workflow'
+            }
+        }
+    )
+    def workflows(self, request, files=None):
+        if files is None:
+            files = []
+        unique_workflows = set()
+        for file_ in files:
+            file_workflows = request.embed(
+                file_,
+                '@@object_with_select_calculated_properties?field=workflows',
+            ).get('workflows', [])
+            unique_workflows.update(file_workflows)
+        return sorted(unique_workflows)
+
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Preferred Assay Titles',
+            'description': 'Preferred Assay Title(s) of assays that produced data analyzed in the pseudobulk set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Preferred Assay Titles',
+                'description': 'Title of assay that produced data analyzed in the pseudobulk set.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def preferred_assay_titles(self, request, input_file_sets=None):
+        if input_file_sets is None:
+            input_file_sets = []
+        preferred_assay_list = set()
+        for fileset in input_file_sets:
+            file_set_object = request.embed(
+                fileset,
+                '@@object_with_select_calculated_properties?field=preferred_assay_titles'
+            )
+            preferred_assay_list.update(
+                file_set_object.get(
+                    'preferred_assay_titles',
+                    []
+                )
+            )
+        return sorted(preferred_assay_list)
+
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Assay Term Names',
+            'description': 'Ontology term names from Ontology of Biomedical Investigations (OBI) for assays.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Assay Term Names',
+                'description': 'Title of assay that produced data analyzed in the pseudobulk set.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def assay_titles(self, request, input_file_sets=None):
+        if input_file_sets is None:
+            input_file_sets = []
+        assay_list = set()
+        for fileset in input_file_sets:
+            file_set_object = request.embed(
+                fileset,
+                '@@object_with_select_calculated_properties?field=assay_titles&field=@type'
+            )
+            assay_list.update(
+                file_set_object.get(
+                    'assay_titles',
+                    []
+                )
+            )
+        return sorted(assay_list) or None
