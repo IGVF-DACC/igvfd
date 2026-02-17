@@ -1,5 +1,9 @@
 ## Changelog for *`phenotypic_feature.json`*
 
+### Minor changes since schema version 4
+
+* Extend `quantity_units` enum list to include `SLEDAI`.
+
 ### Schema version 4
 
 * Adjust `quality` enum list to replace `2/2` with `E2/E2`.

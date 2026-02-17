@@ -93,5 +93,17 @@
         "notes": "UPDRS 3",
         "lab": "j-michael-cherry",
         "award": "HG012012"
+    },
+    {
+        "feature": "f0aa38a6-fdf2-11ec-7aee-fc96ac1250ce",
+        "quantity": 12,
+        "quantity_units": "SLEDAI",
+        "observation_date": "2022-01-04",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "8b03214b-657c-4baa-bdc2-325d4815858e",
+        "notes": "SLEDAI 12",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
     }
 ]

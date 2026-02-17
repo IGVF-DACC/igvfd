@@ -88,11 +88,13 @@
                 "nanogram per milliliter",
                 "milligram per deciliter",
                 "UPDRS",
-                "MMSE"
+                "MMSE",
+                "SLEDAI"
             ],
             "enum_descriptions": {
                 "UPDRS": "The Unified Parkinson's Disease Rating Scale to measure the severity of motor symptoms.",
-                "MMSE": " The mini mental status exam score with values ranging from 0-30 with 30 being highest performance."
+                "MMSE": " The mini mental status exam score with values ranging from 0-30 with 30 being highest performance.",
+                "SLEDAI": "The SLEDAI (Systemic Lupus Erythematosus Disease Activity Index) score is a weighted tool used to measure lupus disease activity, ranging from 0 to 105."
             },
             "submissionExample": {
                 "appscript": "gram",

@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 43
+
+* Adjust `preferred_assay_titles` enum list to replace `DOGMA-seq` with `miDOGMA-seq`.
+
 ### Minor changes since schema version 42
 
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
