@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Update `source_url` regex to add `www\\.10xgenomics\\.com/\\S*` as a pattern.
 * Extend `collections` enum list to include `E2G Pillar Project`.
 * Extend `collections` enum list to include `Bridge Sample`.

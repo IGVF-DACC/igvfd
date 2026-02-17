@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 29
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Add `time_post_culture`.
 * Add `time_post_culture_units`.
 * Add `selection_conditions`.

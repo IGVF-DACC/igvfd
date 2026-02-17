@@ -149,7 +149,8 @@
             "GREGoR",
             "IGVF_catalog_beta_v0.2"
         ],
-        "controlled_access": false
+        "controlled_access": false,
+        "catalog_method": "GWAS"
     },
     {
         "uuid": "e3ae15b1-beb2-48a1-a42c-21bf5e02fd49",

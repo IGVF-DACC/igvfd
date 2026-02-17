@@ -1,5 +1,9 @@
 ## Changelog for *`gene.json`*
 
+### Minor changes since schema version 11
+
+* Extend `collections` enum list to include `IGVF_catalog_v1.1`.
+
 ### Schema version 11
 
 * Add `allele`.
