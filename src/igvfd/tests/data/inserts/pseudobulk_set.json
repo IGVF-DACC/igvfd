@@ -1,0 +1,159 @@
+[
+    {
+        "aliases": [
+            "igvf:basic_analysis_set"
+        ],
+        "accession": "IGVFDS5575ANST",
+        "submitter_comment": "Comment for an analysis set.",
+        "description": "A basic analysis set.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "documents": [
+            "igvf:Antibody_characterization_standards_IGVF"
+        ],
+        "input_file_sets": [
+            "igvf:mN2H",
+            "igvf:multiome_scatac_seq"
+        ],
+        "status": "released",
+        "uuid": "609869e7-cbd9-4d06-9569-d3fdb4604ccd",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set_type": "intermediate analysis",
+        "pipeline_parameters": [
+            "IGVFFI0602PRTB",
+            "5917c472-ca1e-7849-81c1-e0ae2b20f294"
+        ]
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_with_input"
+        ],
+        "accession": "IGVFDS5300PRAN",
+        "submitter_comment": "Comment for an analysis set.",
+        "description": "An analysis set with an input file set.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "documents": [
+            "igvf:Antibody_characterization_standards_IGVF"
+        ],
+        "status": "released",
+        "uuid": "dd171b83-cbd9-4d06-4aa1-b77ab49569cd",
+        "input_file_sets": [
+            "igvf:basic_measurement_set"
+        ],
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set_type": "principal analysis",
+        "collections": [
+            "MPRAbase"
+        ],
+        "external_image_data_url": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/",
+        "publications": [
+            "/publications/244ec9fc-ddda-4f38-b72d-3430929111e4/"
+        ]
+    },
+    {
+        "aliases": [
+            "leif-ludwig:analysis_set"
+        ],
+        "accession": "IGVFDS8302INAN",
+        "award": "HG012009",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "uuid": "f1149b20-2066-49d8-bbd0-7f77f642cae3",
+        "release_timestamp": "2024-08-06T12:34:56Z",
+        "file_set_type": "intermediate analysis"
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_with_workflow"
+        ],
+        "accession": "IGVFDS4655ALYS",
+        "submitter_comment": "Comment for an analysis set.",
+        "description": "An analysis set with an input file set.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "documents": [
+            "igvf:Antibody_characterization_standards_IGVF"
+        ],
+        "status": "released",
+        "uuid": "35f89ca2-4261-43ad-b315-ca65376451d1",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set_type": "intermediate analysis",
+        "collections": [
+            "MPRAbase"
+        ],
+        "external_image_data_url": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/",
+        "publications": [
+            "/publications/244ec9fc-ddda-4f38-b72d-3430929111e4/"
+        ]
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_with_workflow_2"
+        ],
+        "accession": "IGVFDS9009ANWK",
+        "submitter_comment": "Comment for an analysis set.",
+        "description": "An analysis set with an input file set.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "documents": [
+            "igvf:Antibody_characterization_standards_IGVF"
+        ],
+        "status": "released",
+        "uuid": "b3d01798-24c5-4e02-b517-90f62a41092b",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set_type": "intermediate analysis"
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_with_pipeline_status"
+        ],
+        "accession": "IGVFDS0101PIPE",
+        "submitter_comment": "Comment for an analysis set.",
+        "description": "An analysis set with pipeline status.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "input_file_sets": [
+            "igvf:basic_measurement_set"
+        ],
+        "collections": [
+            "E2G Pillar Project"
+        ],
+        "status": "released",
+        "uuid": "f9004635-79a8-4619-82cf-1a78f2d2d360",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set_type": "intermediate analysis",
+        "uniform_pipeline_status": "completed",
+        "supersedes": [
+            "IGVFDS9009ANWK"
+        ]
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_with_dbxrefs"
+        ],
+        "accession": "IGVFDS0102PIPE",
+        "award": "HG012009",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "uuid": "804ab9ec-5fbb-4fc9-80c9-da5b66cad564",
+        "release_timestamp": "2024-08-06T12:34:56Z",
+        "file_set_type": "intermediate analysis",
+        "dbxrefs": [
+            "urn:mavedb:00001250-a-1"
+        ]
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_with_doi"
+        ],
+        "accession": "IGVFDS1234DOIX",
+        "award": "HG012009",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "uuid": "2190fe36-dc49-4f3d-b473-e24ab8f72d93",
+        "release_timestamp": "2024-08-06T12:34:56Z",
+        "file_set_type": "intermediate analysis",
+        "doi": "10.65695/IGVFDS1234DOIX"
+    }
+]
