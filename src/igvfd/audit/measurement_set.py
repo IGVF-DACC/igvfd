@@ -280,10 +280,11 @@ def audit_missing_institutional_certification(value, system):
         'NTR:0000798',  # in vitro CRISPR screen using single-cell ATAC-seq
         'OBI:0000916',  # flow cytometry assay
         'OBI:0000185',  # imaging assay
-        'OBI:0002675',  # massively parallel reporter assay',
-        'OBI:0000288',  # protein-protein interaction detection assay',
+        'OBI:0002675',  # massively parallel reporter assay,
+        'OBI:0000288',  # protein-protein interaction detection assay,
         'OBI:0002041',  # self-transcribing active regulatory region sequencing assay,
-        'OBI:0002082'   # reporter gene assay (for LABEL-seq)
+        'OBI:0002082',  # reporter gene assay (for LABEL-seq)
+        'NTR:0001094'   # yeast-based functional complementation assay
     ]
     assay_term = value.get('assay_term', '')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
