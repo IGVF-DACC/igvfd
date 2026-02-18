@@ -1080,5 +1080,17 @@
                 "igvf_utils": "10.65695/IGVFDS5743OUYJ"
             }
         }
+    },
+    "is_on_anvil": {
+        "is_on_anvil": {
+            "title": "Is On AnVIL",
+            "description": "Indicates whether the data object has been submitted to AnVIL.",
+            "type": "boolean",
+            "permission": "admin_only",
+            "submissionExample": {
+                "appscript": true,
+                "igvf_utils": true
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Add `is_on_anvil`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Rename calculated property `primer_designs` to `enrichment_designs`.
 * Add `doi`.

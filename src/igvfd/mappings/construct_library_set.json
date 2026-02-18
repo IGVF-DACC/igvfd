@@ -1,6 +1,6 @@
 {
-    "hash": "84a9fd72d18914cccb32c4da7cae1b1b",
-    "index_name": "construct_library_set_84a9fd72",
+    "hash": "b0ad726b3116b30deb4d786b212eac94",
+    "index_name": "construct_library_set_b0ad726b",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -467,6 +467,10 @@
                             "integrated_content_files": {
                                 "type": "keyword"
                             },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -751,6 +755,10 @@
                                 "type": "keyword"
                             },
                             "individual_rodent": {
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "is_on_anvil": {
                                 "store": true,
                                 "type": "boolean"
                             },
@@ -1389,6 +1397,10 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "is_on_anvil": {
+                        "store": true,
+                        "type": "boolean"
                     },
                     "lab": {
                         "properties": {
@@ -2415,6 +2427,10 @@
                             },
                             "institutional_certificates": {
                                 "type": "keyword"
+                            },
+                            "is_on_anvil": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"

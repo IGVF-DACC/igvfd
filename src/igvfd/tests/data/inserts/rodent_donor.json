@@ -132,5 +132,23 @@
             "IMSR_JAX:000005"
         ],
         "virtual": false
+    },
+    {
+        "uuid": "8cf33293-ae37-474d-a226-34d9658e9c3a",
+        "accession": "IGVFDO0001ANVL",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:rodent_donor_with_anvil"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-02-06T12:34:56Z",
+        "sources": [
+            "eadabaf1-d5b6-4b48-8847-e86461f12101"
+        ],
+        "strain": "some strain",
+        "sex": "female",
+        "taxa": "Mus musculus",
+        "is_on_anvil": false
     }
 ]
