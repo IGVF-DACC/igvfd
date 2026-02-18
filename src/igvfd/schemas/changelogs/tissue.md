@@ -1,5 +1,9 @@
 ## Changelog for *`tissue/organ.json`*
 
+### Schema version 24
+
+* Remove `ccf_id`.
+
 ### Minor changes since schema version 23
 
 * Add `is_on_anvil`.
