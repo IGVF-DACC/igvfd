@@ -176,3 +176,11 @@ def test_tissue_upgrade_22_23(upgrader, tissue_v22_1, tissue_v22_2, tissue_v22_3
     assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
                                       'https://www.protocols.io/view/678/ABC']
     assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
+
+
+def test_tissue_upgrade_23_24(upgrader, tissue_v23):
+    value = upgrader.upgrade('tissue', tissue_v23, current_version='23', target_version='24')
+    assert value['schema_version'] == '24'
+    assert 'ccf_id' not in value
+    assert value.get('notes').endswith(
+        'This sample had the ccf_id 78d06f07-f1cb-4d21-b578-b01c7388804f, which has been removed via upgrade.')

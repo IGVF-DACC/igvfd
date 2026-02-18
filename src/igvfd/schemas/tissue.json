@@ -79,7 +79,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "23"
+            "default": "24"
         },
         "pmi": {
             "title": "Post-mortem Interval",
@@ -107,17 +107,6 @@
             "submissionExample": {
                 "appscript": "minute",
                 "igvf_utils": "minute"
-            }
-        },
-        "ccf_id": {
-            "title": "Common Coordinate Framework Identifier",
-            "description": "HubMap Common Coordinate Framework unique identifier corresponding to the organ, biological structure, and spatial location of the tissue specimen within an organ.",
-            "comment": "This identifier will be later linked to: https://portal.hubmapconsortium.org/ccf-eui",
-            "type": "string",
-            "format": "uuid",
-            "submissionExample": {
-                "appscript": "78d06f07-f1cb-4d21-b578-b01c7388804f",
-                "igvf_utils": "78d06f07-f1cb-4d21-b578-b01c7388804f"
             }
         },
         "preservation_method": {
