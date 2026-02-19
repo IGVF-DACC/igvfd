@@ -19,7 +19,6 @@ import igvfd.audit.ontology_term
 import igvfd.audit.reference_file
 import igvfd.audit.sample
 import igvfd.audit.sequence_file
-import igvfd.audit.tissue
 import igvfd.audit.treatment
 import igvfd.audit.whole_organism
 import igvfd.audit.workflow
@@ -50,7 +49,6 @@ AUDIT_MODULES_TO_PROCESS = [
     igvfd.audit.reference_file,
     igvfd.audit.sample,
     igvfd.audit.sequence_file,
-    igvfd.audit.tissue,
     igvfd.audit.treatment,
     igvfd.audit.whole_organism,
     igvfd.audit.workflow
