@@ -1332,8 +1332,6 @@ class MeasurementSet(FileSet):
                             'multiome',
                             'biological replicates',
                             'sorting replicates',
-                            'differentiation series',
-                            'reprogramming series'
                         ],
                     },
                 },
@@ -1347,10 +1345,6 @@ class MeasurementSet(FileSet):
         related_multiome_datasets = set()
         related_part_of_datasets = set()
         related_sorted_from_datasets = set()
-        related_differentiation_datasets = set()
-        related_differentiation_time_series_datasets = set()
-        related_reprogramming_datasets = set()
-        related_reprogramming_time_series_datasets = set()
 
         for sample in samples:
             sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=file_sets')
@@ -1372,14 +1366,15 @@ class MeasurementSet(FileSet):
                     '@@object_with_select_calculated_properties?field=parts'
                 )
                 for sample_part in part_of_sample_object.get('parts', []):
-                    sample_part_object = request.embed(
-                        sample_part,
-                        '@@object_with_select_calculated_properties?field=file_sets'
-                    )
-                    related_part_of_datasets.update(
-                        file_set for file_set in sample_part_object.get('file_sets', [])
-                        if file_set.startswith('/measurement-sets/')
-                    )
+                    if sample_part != sample:
+                        sample_part_object = request.embed(
+                            sample_part,
+                            '@@object_with_select_calculated_properties?field=file_sets'
+                        )
+                        related_part_of_datasets.update(
+                            file_set for file_set in sample_part_object.get('file_sets', [])
+                            if file_set.startswith('/measurement-sets/')
+                        )
 
             # sorting replicates
             sorted_from_sample = sample_object.get('sorted_from', '')
@@ -1389,23 +1384,15 @@ class MeasurementSet(FileSet):
                     '@@object_with_select_calculated_properties?field=sorted_fractions'
                 )
                 for sorted_fraction_sample in sorted_from_sample_object.get('sorted_fractions', []):
-                    sorted_fraction_sample_object = request.embed(
-                        sorted_fraction_sample,
-                        '@@object_with_select_calculated_properties?field=file_sets'
-                    )
-                    related_sorted_from_datasets.update(
-                        file_set for file_set in sorted_fraction_sample_object.get('file_sets', [])
-                        if file_set.startswith('/measurement-sets/')
-                    )
-
-            # cell fate change replicates
-            originated_from_sample = sample_object.get('originated_from', '')
-            if originated_from_sample:
-                originated_from_sample_object = request.embed(
-                    originated_from_sample,
-                    '@@object_with_select_calculated_properties?field=origin_of'
-                )
-                for sorted_fraction_sample in sorted_from_sample_object.get('sorted_fractions', []):
+                    if sorted_fraction_sample != sample:
+                        sorted_fraction_sample_object = request.embed(
+                            sorted_fraction_sample,
+                            '@@object_with_select_calculated_properties?field=file_sets'
+                        )
+                        related_sorted_from_datasets.update(
+                            file_set for file_set in sorted_fraction_sample_object.get('file_sets', [])
+                            if file_set.startswith('/measurement-sets/')
+                        )
 
         result = []
 
@@ -1413,6 +1400,18 @@ class MeasurementSet(FileSet):
             result.append({
                 'series_type': 'multiome',
                 'measurement_sets': sorted(related_multiome_datasets),
+            })
+
+        if related_part_of_datasets:
+            result.append({
+                'series_type': 'biological replicates',
+                'measurement_sets': sorted(related_part_of_datasets),
+            })
+
+        if related_sorted_from_datasets:
+            result.append({
+                'series_type': 'sorting replicates',
+                'measurement_sets': sorted(related_sorted_from_datasets),
             })
 
         return result or None
