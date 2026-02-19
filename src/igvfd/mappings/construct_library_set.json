@@ -1,6 +1,6 @@
 {
-    "hash": "b0ad726b3116b30deb4d786b212eac94",
-    "index_name": "construct_library_set_b0ad726b",
+    "hash": "01f89d8efe39b0fcee0b1772b24219f7",
+    "index_name": "construct_library_set_01f89d8e",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -997,6 +997,9 @@
                             "gene_list_for": {
                                 "type": "keyword"
                             },
+                            "hashtag_map_for": {
+                                "type": "keyword"
+                            },
                             "href": {
                                 "type": "keyword"
                             },
@@ -1304,6 +1307,9 @@
                             "gene_list_for": {
                                 "type": "keyword"
                             },
+                            "hashtag_map_for": {
+                                "type": "keyword"
+                            },
                             "href": {
                                 "type": "keyword"
                             },
@@ -1589,6 +1595,9 @@
                             "gene_list_for": {
                                 "type": "keyword"
                             },
+                            "hashtag_map_for": {
+                                "type": "keyword"
+                            },
                             "href": {
                                 "type": "keyword"
                             },
@@ -1808,6 +1817,9 @@
                                 "type": "boolean"
                             },
                             "gene_list_for": {
+                                "type": "keyword"
+                            },
+                            "hashtag_map_for": {
                                 "type": "keyword"
                             },
                             "href": {
