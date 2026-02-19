@@ -1043,7 +1043,7 @@ def test_audit_inconsistent_sequencing_kit(
 def test_audit_unexpected_virtual_sample(
     testapp,
     measurement_set,
-    tissue,
+    multiplexed_sample,
     in_vitro_system_virtual_demultiplexed,
 ):
     testapp.patch_json(
