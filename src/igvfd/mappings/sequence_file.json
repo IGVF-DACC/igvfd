@@ -1,6 +1,6 @@
 {
-    "hash": "91d98434888c13132a042503c2d465b5",
-    "index_name": "sequence_file_91d98434",
+    "hash": "52d1ce2f68554d4fa16ac67b81c55c40",
+    "index_name": "sequence_file_52d1ce2f",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1069,9 +1069,6 @@
                                         "type": "keyword"
                                     },
                                     "biosample_qualifiers": {
-                                        "type": "keyword"
-                                    },
-                                    "ccf_id": {
                                         "type": "keyword"
                                     },
                                     "cell_fate_change_protocol": {
@@ -2175,9 +2172,6 @@
                                         "type": "keyword"
                                     },
                                     "biosample_qualifiers": {
-                                        "type": "keyword"
-                                    },
-                                    "ccf_id": {
                                         "type": "keyword"
                                     },
                                     "cell_fate_change_protocol": {

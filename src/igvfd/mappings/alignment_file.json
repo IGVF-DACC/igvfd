@@ -1,6 +1,6 @@
 {
-    "hash": "058c8253287fade4d668388556afcf91",
-    "index_name": "alignment_file_058c8253",
+    "hash": "4dbee2738b874361f8abc939c9e1c72c",
+    "index_name": "alignment_file_4dbee273",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1069,9 +1069,6 @@
                                         "type": "keyword"
                                     },
                                     "biosample_qualifiers": {
-                                        "type": "keyword"
-                                    },
-                                    "ccf_id": {
                                         "type": "keyword"
                                     },
                                     "cell_fate_change_protocol": {
@@ -2170,9 +2167,6 @@
                                         "type": "keyword"
                                     },
                                     "biosample_qualifiers": {
-                                        "type": "keyword"
-                                    },
-                                    "ccf_id": {
                                         "type": "keyword"
                                     },
                                     "cell_fate_change_protocol": {

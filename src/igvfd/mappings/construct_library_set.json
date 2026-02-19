@@ -1,6 +1,6 @@
 {
-    "hash": "b0ad726b3116b30deb4d786b212eac94",
-    "index_name": "construct_library_set_b0ad726b",
+    "hash": "7c9293d37071c9758293aa33b3cb991a",
+    "index_name": "construct_library_set_7c9293d3",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -2294,9 +2294,6 @@
                                 "type": "keyword"
                             },
                             "biosample_qualifiers": {
-                                "type": "keyword"
-                            },
-                            "ccf_id": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_protocol": {
