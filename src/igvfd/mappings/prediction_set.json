@@ -1,6 +1,6 @@
 {
-    "hash": "fd1892ee1721590b353242ecfbc5276f",
-    "index_name": "prediction_set_fd1892ee",
+    "hash": "fe6d641256d3838755a35434092992e8",
+    "index_name": "prediction_set_fe6d6412",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -817,6 +817,9 @@
                                         "type": "boolean"
                                     },
                                     "gene_list_for": {
+                                        "type": "keyword"
+                                    },
+                                    "hashtag_map_for": {
                                         "type": "keyword"
                                     },
                                     "href": {
@@ -1995,6 +1998,9 @@
                             "gene_list_for": {
                                 "type": "keyword"
                             },
+                            "hashtag_map_for": {
+                                "type": "keyword"
+                            },
                             "href": {
                                 "type": "keyword"
                             },
@@ -2619,6 +2625,9 @@
                             "gene_list_for": {
                                 "type": "keyword"
                             },
+                            "hashtag_map_for": {
+                                "type": "keyword"
+                            },
                             "href": {
                                 "type": "keyword"
                             },
@@ -2838,6 +2847,9 @@
                                 "type": "boolean"
                             },
                             "gene_list_for": {
+                                "type": "keyword"
+                            },
+                            "hashtag_map_for": {
                                 "type": "keyword"
                             },
                             "href": {

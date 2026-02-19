@@ -1,6 +1,6 @@
 {
-    "hash": "6d1ed4d264c96a6603705a214c07d9ba",
-    "index_name": "auxiliary_set_6d1ed4d2",
+    "hash": "3dbb6e0a9af0d586b8bd3d448f2eb2c5",
+    "index_name": "auxiliary_set_3dbb6e0a",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -638,6 +638,9 @@
                                         "type": "boolean"
                                     },
                                     "gene_list_for": {
+                                        "type": "keyword"
+                                    },
+                                    "hashtag_map_for": {
                                         "type": "keyword"
                                     },
                                     "href": {
@@ -1814,6 +1817,9 @@
                                 "type": "keyword"
                             },
                             "gene_list_for": {
+                                "type": "keyword"
+                            },
+                            "hashtag_map_for": {
                                 "type": "keyword"
                             },
                             "href": {

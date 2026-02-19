@@ -70,3 +70,26 @@ def test_calculated_donors(testapp, base_auxiliary_set, primary_cell, human_dono
     )
     res = testapp.get(base_auxiliary_set['@id'])
     assert set([donor['@id'] for donor in res.json.get('donors')]) == {rodent_donor['@id']}
+
+
+def test_calculated_hashtag_map_for(testapp, base_auxiliary_set, auxiliary_set_cell_sorting, tabular_file):
+    # No hashtag_map_for on TabFile when barcode_map is not set on AuxiliarySet
+    res = testapp.get(tabular_file['@id'])
+    assert 'hashtag_map_for' not in res.json
+
+    # Set barcode_map on AuxiliarySet and check the reverse link on TabularFile
+    testapp.patch_json(
+        base_auxiliary_set['@id'],
+        {
+            'barcode_map': tabular_file['@id']
+        }
+    )
+    testapp.patch_json(
+        auxiliary_set_cell_sorting['@id'],
+        {
+            'barcode_map': tabular_file['@id']
+        }
+    )
+    res = testapp.get(tabular_file['@id'])
+    assert sorted(res.json.get('hashtag_map_for')) == sorted(
+        [base_auxiliary_set['@id'], auxiliary_set_cell_sorting['@id']])

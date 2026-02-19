@@ -1155,7 +1155,8 @@ class TabularFile(File):
     ]
     rev = File.rev | {
         'barcode_map_for': ('MultiplexedSample', 'barcode_map'),
-        'enrichment_design_for': ('MeasurementSet', 'enrichment_designs')
+        'enrichment_design_for': ('MeasurementSet', 'enrichment_designs'),
+        'hashtag_map_for': ('AuxiliarySet', 'barcode_map')
     }
 
     set_status_up = File.set_status_up + []
@@ -1238,6 +1239,22 @@ class TabularFile(File):
     })
     def enrichment_design_for(self, request, enrichment_design_for):
         return paths_filtered_by_status(request, enrichment_design_for) or None
+
+    @calculated_property(schema={
+        'title': 'Hashtag Map For',
+        'description': 'Link(s) to the AuxiliarySet using this file as the barcode map.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Hashtag Map For',
+            'type': 'string',
+            'linkFrom': 'AuxiliarySet.barcode_map',
+        },
+        'notSubmittable': True
+    })
+    def hashtag_map_for(self, request, hashtag_map_for):
+        return paths_filtered_by_status(request, hashtag_map_for) or None
 
 
 @collection(

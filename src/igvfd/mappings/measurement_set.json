@@ -1,6 +1,6 @@
 {
-    "hash": "be6584c684781ef5c6c5037650a402fd",
-    "index_name": "measurement_set_be6584c6",
+    "hash": "9345bfcc9a946556f9b0b1e36a071e3f",
+    "index_name": "measurement_set_9345bfcc",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -863,6 +863,9 @@
                                         "type": "boolean"
                                     },
                                     "gene_list_for": {
+                                        "type": "keyword"
+                                    },
+                                    "hashtag_map_for": {
                                         "type": "keyword"
                                     },
                                     "href": {
@@ -2411,6 +2414,9 @@
                                 "type": "keyword"
                             },
                             "gene_list_for": {
+                                "type": "keyword"
+                            },
+                            "hashtag_map_for": {
                                 "type": "keyword"
                             },
                             "href": {

@@ -1,6 +1,6 @@
 {
-    "hash": "2113a7fe31fae0d350c292f74e5c4e39",
-    "index_name": "model_set_2113a7fe",
+    "hash": "22a4f5499dfe357262b7ac4d0913961a",
+    "index_name": "model_set_22a4f549",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -740,6 +740,9 @@
                                         "type": "boolean"
                                     },
                                     "gene_list_for": {
+                                        "type": "keyword"
+                                    },
+                                    "hashtag_map_for": {
                                         "type": "keyword"
                                     },
                                     "href": {
@@ -1923,6 +1926,9 @@
                                 "type": "keyword"
                             },
                             "gene_list_for": {
+                                "type": "keyword"
+                            },
+                            "hashtag_map_for": {
                                 "type": "keyword"
                             },
                             "href": {
