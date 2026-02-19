@@ -106,6 +106,7 @@
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
+                "allele specific sparse gene count matrix",
                 "annotated multimodal CRISPR matrix",
                 "annotated sparse gene count matrix",
                 "annotated sparse peak count matrix",
@@ -122,6 +123,7 @@
                 "transcriptome annotations"
             ],
             "enum_descriptions": {
+                "allele specific sparse gene count matrix": "A matrix where rows represent genes IDs from two individual strain or donor reference genomes (as described in the file format document) and columns represent samples or cells, containing counts of sequencing reads that map to each gene.",
                 "annotated multimodal CRISPR matrix": "An object storing single cell CRISPR screen data, integrating multiple modalities such as raw RNA count matrices, sample-level metadata, gene-level metadata, guide-level data, experiment-level metadata, etc.",
                 "annotated sparse gene count matrix": "A matrix where rows represent genes and columns represent samples or cells, containing both counts of sequencing reads that map to each gene and cell annotation data.",
                 "annotated sparse peak count matrix": "A matrix used in assays like ATAC-seq or ChIP-seq, where rows represent genomic regions (peaks) and columns represent samples or cells, containing both counts of sequencing reads that map to each peak and cell annotation data.",

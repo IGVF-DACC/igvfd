@@ -413,5 +413,30 @@
         "secondary_dimensions": [
             "genomic position"
         ]
+    },
+    {
+        "uuid": "6aa1f7de-7353-45bb-ad76-93517bfc4e48",
+        "accession": "IGVFFI0022ASMX",
+        "lab": "ali-mortazavi",
+        "award": "1UM1HG012053-01",
+        "aliases": [
+            "igvf:allele_specific_sparse_gene_count_matrix"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-02-11T12:34:56Z",
+        "md5sum": "cdced8f0a4660b1d761991f96452e494",
+        "file_format": "h5ad",
+        "content_type": "allele specific sparse gene count matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/allele_specific_sparse_gene_count_matrix.h5ad",
+        "file_size": 7000000,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
+            "gene"
+        ]
     }
 ]

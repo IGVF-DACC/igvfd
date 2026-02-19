@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Extend `content_type` enum list to include `allele specific sparse gene count matrix`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Extend `content_type` enum list to include `methylation count matrix`.
 * Add `checkfiles_timestamp`.
