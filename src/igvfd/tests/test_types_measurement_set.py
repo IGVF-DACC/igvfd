@@ -64,6 +64,53 @@ def test_related_measurement_sets_multiome(testapp, primary_cell, in_vitro_cell_
                ) == {measurement_set['@id'], measurement_set_multiome_2['@id']}
 
 
+def test_related_measurement_sets_biological_replicates(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra):
+    # Set up: tissue is parent; primary_cell and in_vitro_cell_line are parts (part_of tissue).
+    testapp.patch_json(primary_cell['@id'], {'part_of': tissue['@id']})
+    testapp.patch_json(in_vitro_cell_line['@id'], {'part_of': tissue['@id']})
+    # Measurement set 1 -> primary_cell, measurement set 2 -> in_vitro_cell_line.
+    testapp.patch_json(measurement_set['@id'], {'samples': [primary_cell['@id']]})
+    testapp.patch_json(measurement_set_mpra['@id'], {'samples': [in_vitro_cell_line['@id']]})
+
+    res = testapp.get(measurement_set['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'biological replicates']
+    assert len(bio_group) == 1
+    bio_ids = {ms['@id'] for ms in bio_group[0]['measurement_sets']}
+    assert bio_ids == {measurement_set_mpra['@id']}
+
+    res = testapp.get(measurement_set_mpra['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'biological replicates']
+    assert len(bio_group) == 1
+    bio_ids = {ms['@id'] for ms in bio_group[0]['measurement_sets']}
+    assert bio_ids == {measurement_set['@id']}
+
+
+def test_related_measurement_sets_sorting_replicates(testapp, primary_cell, tissue, in_vitro_cell_line, measurement_set, measurement_set_mpra):
+    # Set up: primary_cell is parent; tissue and in_vitro_cell_line are sorted fractions (sorted_from primary_cell).
+    testapp.patch_json(tissue['@id'], {'sorted_from': primary_cell['@id'], 'sorted_from_detail': 'detail 1'})
+    testapp.patch_json(in_vitro_cell_line['@id'],
+                       {'sorted_from': primary_cell['@id'], 'sorted_from_detail': 'detail 2'})
+    # Measurement set 1 -> tissue, measurement set 2 -> in_vitro_cell_line.
+    testapp.patch_json(measurement_set['@id'], {'samples': [tissue['@id']]})
+    testapp.patch_json(measurement_set_mpra['@id'], {'samples': [in_vitro_cell_line['@id']]})
+
+    res = testapp.get(measurement_set['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    sort_group = [g for g in related_measurement_sets if g.get('series_type') == 'sorting replicates']
+    assert len(sort_group) == 1
+    sort_ids = {ms['@id'] for ms in sort_group[0]['measurement_sets']}
+    assert sort_ids == {measurement_set_mpra['@id']}
+
+    res = testapp.get(measurement_set_mpra['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    sort_group = [g for g in related_measurement_sets if g.get('series_type') == 'sorting replicates']
+    assert len(sort_group) == 1
+    sort_ids = {ms['@id'] for ms in sort_group[0]['measurement_sets']}
+    assert sort_ids == {measurement_set['@id']}
+
+
 def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modification_activation, construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction, construct_library_set_genome_wide, assay_term_y2h, construct_library_set_reference_transduction, multiplexed_sample):
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('summary') == 'STARR-seq'
