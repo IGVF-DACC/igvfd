@@ -236,7 +236,7 @@ def test_calculated_donors(testapp, measurement_set, primary_cell, human_donor, 
     assert set([donor['@id'] for donor in res.json.get('donors')]) == {rodent_donor['@id']}
 
 
-def test_calculated_externally_hosted(testapp, measurement_set, sequence_file):
+def test_calculated_externally_hosted(testapp, measurement_set, measurement_set_no_files, sequence_file):
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('externally_hosted') == False
     testapp.patch_json(
@@ -248,6 +248,15 @@ def test_calculated_externally_hosted(testapp, measurement_set, sequence_file):
         }
     )
     res = testapp.get(measurement_set['@id'])
+    assert res.json.get('externally_hosted') == True
+    testapp.get(measurement_set_no_files['@id'])
+    testapp.patch_json(
+        measurement_set_no_files['@id'],
+        {
+            'preferred_assay_titles': ['Cell painting']
+        }
+    )
+    res = testapp.get(measurement_set_no_files['@id'])
     assert res.json.get('externally_hosted') == True
 
 
