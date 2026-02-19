@@ -14,16 +14,6 @@ def test_post_software_version(testapp, software, lab, award):
     res = testapp.post_json(
         '/software_version',
         {
-            'version': 'v2.0.0',
-            'award': award['@id'],
-            'lab': lab['@id'],
-            'software': software['@id'],
-            'download_id': 'd31294875092e76ebb061eadc7998582'
-        })
-    assert res.status_code == 201
-    res = testapp.post_json(
-        '/software_version',
-        {
             'version': 'v2.4.4',
             'award': award['@id'],
             'lab': lab['@id'],

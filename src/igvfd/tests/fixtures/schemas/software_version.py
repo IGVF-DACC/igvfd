@@ -83,3 +83,12 @@ def software_version_v6(software_version_with_download_id):
         'downloaded_url': 'https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.4.4/'
     })
     return item
+
+
+@pytest.fixture
+def software_version_v7(software_version_with_download_id):
+    item = software_version_with_download_id.copy()
+    item.update({
+        'schema_version': '7',
+    })
+    return item

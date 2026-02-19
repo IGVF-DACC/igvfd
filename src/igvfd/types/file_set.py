@@ -1517,7 +1517,7 @@ class ModelSet(FileSet):
         Path('input_file_sets', include=['@id', 'accession', 'aliases', 'status']),
         Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('software_versions.software', include=['@id', 'summary',
-             'software', 'title', 'source_url', 'download_id', 'status'])
+             'software', 'title', 'source_url', 'status'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + [

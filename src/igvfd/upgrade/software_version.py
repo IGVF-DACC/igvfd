@@ -57,3 +57,15 @@ def software_version_6_7(value, system):
     if 'downloaded_url' in value:
         value['source_url'] = value['downloaded_url']
         del value['downloaded_url']
+
+
+@upgrade_step('software_version', '7', '8')
+def software_version_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3272
+    if 'download_id' in value:
+        if 'source_url' not in value:
+            value['source_url'] = 'https://temp-url.com/' + value['download_id']
+        notes = value.get('notes', '')
+        notes += f' download_id {value["download_id"]} was removed from an upgrade.'
+        value['notes'] = notes.strip()
+        del value['download_id']
