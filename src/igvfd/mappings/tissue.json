@@ -1,6 +1,6 @@
 {
-    "hash": "9db8561daf2edad899771ea8c74c0aec",
-    "index_name": "tissue_9db8561d",
+    "hash": "3632453fdb27e9c96136cec61ca84317",
+    "index_name": "tissue_3632453f",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -416,9 +416,6 @@
                             }
                         },
                         "type": "object"
-                    },
-                    "ccf_id": {
-                        "type": "keyword"
                     },
                     "cellular_sub_pool": {
                         "type": "keyword"
@@ -1995,9 +1992,6 @@
                             "biosample_qualifiers": {
                                 "type": "keyword"
                             },
-                            "ccf_id": {
-                                "type": "keyword"
-                            },
                             "cell_fate_change_protocol": {
                                 "type": "keyword"
                             },
@@ -2564,9 +2558,6 @@
                                 "type": "keyword"
                             },
                             "biosample_qualifiers": {
-                                "type": "keyword"
-                            },
-                            "ccf_id": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_protocol": {

@@ -1,6 +1,6 @@
 {
-    "hash": "9958c19e414b63f5104a4d3b3e4ffd7d",
-    "index_name": "in_vitro_system_9958c19e",
+    "hash": "1a9f7c8b05233a8db58d252378be7eb5",
+    "index_name": "in_vitro_system_1a9f7c8b",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -2008,9 +2008,6 @@
                             "biosample_qualifiers": {
                                 "type": "keyword"
                             },
-                            "ccf_id": {
-                                "type": "keyword"
-                            },
                             "cell_fate_change_protocol": {
                                 "type": "keyword"
                             },
@@ -2571,9 +2568,6 @@
                                 "type": "keyword"
                             },
                             "biosample_qualifiers": {
-                                "type": "keyword"
-                            },
-                            "ccf_id": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_protocol": {

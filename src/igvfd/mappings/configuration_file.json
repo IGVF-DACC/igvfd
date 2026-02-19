@@ -1,6 +1,6 @@
 {
-    "hash": "b87eb6d72f3f63d1ade12cc7b35a3abb",
-    "index_name": "configuration_file_b87eb6d7",
+    "hash": "d40c508c3f8087a9aaecc9e157ad4787",
+    "index_name": "configuration_file_d40c508c",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1064,9 +1064,6 @@
                                         "type": "keyword"
                                     },
                                     "biosample_qualifiers": {
-                                        "type": "keyword"
-                                    },
-                                    "ccf_id": {
                                         "type": "keyword"
                                     },
                                     "cell_fate_change_protocol": {
@@ -2161,9 +2158,6 @@
                                         "type": "keyword"
                                     },
                                     "biosample_qualifiers": {
-                                        "type": "keyword"
-                                    },
-                                    "ccf_id": {
                                         "type": "keyword"
                                     },
                                     "cell_fate_change_protocol": {

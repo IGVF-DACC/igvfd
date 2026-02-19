@@ -1,6 +1,6 @@
 {
-    "hash": "2734a6a49ad13994b2d2933867112844",
-    "index_name": "tabular_file_2734a6a4",
+    "hash": "71bbcb83d5f03205e89d25930fd2a792",
+    "index_name": "tabular_file_71bbcb83",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1182,9 +1182,6 @@
                                     "biosample_qualifiers": {
                                         "type": "keyword"
                                     },
-                                    "ccf_id": {
-                                        "type": "keyword"
-                                    },
                                     "cell_fate_change_protocol": {
                                         "type": "keyword"
                                     },
@@ -2281,9 +2278,6 @@
                                         "type": "keyword"
                                     },
                                     "biosample_qualifiers": {
-                                        "type": "keyword"
-                                    },
-                                    "ccf_id": {
                                         "type": "keyword"
                                     },
                                     "cell_fate_change_protocol": {

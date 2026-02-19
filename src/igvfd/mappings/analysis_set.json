@@ -1,6 +1,6 @@
 {
-    "hash": "83df78fecbc4e79de9f741509140480e",
-    "index_name": "analysis_set_83df78fe",
+    "hash": "02183c27420b803226a47d9a4dfa31a7",
+    "index_name": "analysis_set_02183c27",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -2957,9 +2957,6 @@
                                 "type": "keyword"
                             },
                             "biosample_qualifiers": {
-                                "type": "keyword"
-                            },
-                            "ccf_id": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_protocol": {

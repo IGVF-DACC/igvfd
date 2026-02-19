@@ -1,6 +1,6 @@
 {
-    "hash": "debae8d0d8d6caf20b1cc326bb0fe7d1",
-    "index_name": "signal_file_debae8d0",
+    "hash": "ed339ab28d53ded60827e87fc814cf73",
+    "index_name": "signal_file_ed339ab2",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -1166,9 +1166,6 @@
                                     "biosample_qualifiers": {
                                         "type": "keyword"
                                     },
-                                    "ccf_id": {
-                                        "type": "keyword"
-                                    },
                                     "cell_fate_change_protocol": {
                                         "type": "keyword"
                                     },
@@ -2265,9 +2262,6 @@
                                         "type": "keyword"
                                     },
                                     "biosample_qualifiers": {
-                                        "type": "keyword"
-                                    },
-                                    "ccf_id": {
                                         "type": "keyword"
                                     },
                                     "cell_fate_change_protocol": {
