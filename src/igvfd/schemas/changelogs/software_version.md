@@ -1,5 +1,9 @@
 ## Changelog for *`software_version.json`*
 
+### Schema version 8
+
+* Remove `download_id`.
+
 ### Minor changes since schema version 7
 
 * Add `preview_timestamp`.
