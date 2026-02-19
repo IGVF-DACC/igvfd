@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 12
 
+* Add calculated property `hashtag_map_for`.
 * Add `is_on_anvil`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Add `doi`.
