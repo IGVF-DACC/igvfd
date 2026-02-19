@@ -246,7 +246,9 @@
         "title": "Example Analysis Four Step",
         "step_label": "example-analysis-four-step",
         "analysis_step_types": [
-            "calibration"
+            "calibration",
+            "cell annotation",
+            "variant calling"
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "input_content_types": [
