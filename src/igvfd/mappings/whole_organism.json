@@ -1,6 +1,6 @@
 {
-    "hash": "fc79ceefa8e0558ecf6edfc94c53939d",
-    "index_name": "whole_organism_fc79ceef",
+    "hash": "a45b58c471fb9bc89a343b5ea5a73d14",
+    "index_name": "whole_organism_a45b58c4",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1992,9 +1992,6 @@
                             "biosample_qualifiers": {
                                 "type": "keyword"
                             },
-                            "ccf_id": {
-                                "type": "keyword"
-                            },
                             "cell_fate_change_protocol": {
                                 "type": "keyword"
                             },
@@ -2551,9 +2548,6 @@
                                 "type": "keyword"
                             },
                             "biosample_qualifiers": {
-                                "type": "keyword"
-                            },
-                            "ccf_id": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_protocol": {
