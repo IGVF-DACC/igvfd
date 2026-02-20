@@ -422,7 +422,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "29"
+            "default": "30"
         },
         "classifications": {
             "title": "Classifications",
@@ -522,9 +522,9 @@
         },
         "demultiplexed_from": {
             "title": "Demultiplexed From",
-            "description": "The biosample this in vitro system sample was demultiplexed from using computational methods.",
+            "description": "The multiplexed sample this in vitro system sample was demultiplexed from using computational methods.",
             "type": "string",
-            "linkTo": "InVitroSystem",
+            "linkTo": "MultiplexedSample",
             "submissionExample": {
                 "appscript": "TSTSM08391257 or john-doe:pooled_sample_01",
                 "igvf_utils": "TSTSM08391257 or john-doe:pooled_sample_01"

@@ -239,7 +239,7 @@
             "/labs/j-michael-cherry/"
         ],
         "nucleic_acid_delivery": "lipofectamine",
-        "demultiplexed_from": "IGVFSM0001AAAZ",
+        "demultiplexed_from": "IGVFSM0000MPXD",
         "growth_medium": "DMEM with serum",
         "virtual": false,
         "biomarkers": [
