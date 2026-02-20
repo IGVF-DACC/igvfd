@@ -9,7 +9,7 @@ def test_pseudobulk_set_summary(testapp, pseudobulk_set_base, in_vitro_cell_line
     testapp.patch_json(
         pseudobulk_set_base['@id'],
         {
-            'cell_annotation': in_vitro_cell_line['@id'],
+            'samples': [in_vitro_cell_line['@id']],
             'cell_qualifier': 'exhausted'
         }
     )
