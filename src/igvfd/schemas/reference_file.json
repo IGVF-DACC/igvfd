@@ -167,6 +167,7 @@
             "comment": "Do not submit. This is set by admins for data loading in the IGVF catalog",
             "enum": [
                 "ADASTRA",
+                "caQTL",
                 "COXPRESdb",
                 "eQTL",
                 "GWAS",
@@ -180,6 +181,7 @@
             },
             "enum_descriptions": {
                 "ADASTRA": "A database of allele-specific transcription factor binding in human tissues.",
+                "caQTL": "A method that links genetic variants to chromatin accessibility differences.",
                 "COXPRESdb": "A database of gene coexpression relationships.",
                 "eQTL": "A method that links genetic variants to gene expression differences.",
                 "GWAS": "A method that identifies associations between genetic variants and traits or diseases.",
