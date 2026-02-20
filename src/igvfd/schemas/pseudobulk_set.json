@@ -8,6 +8,7 @@
         "award",
         "lab",
         "file_set_type",
+        "samples",
         "cell_annotation"
     ],
     "identifyingProperties": [
@@ -88,7 +89,7 @@
                 "igvf_utils": "/sample-terms/CL_1230000/"
             }
         },
-        "source_biosamples": {
+        "samples": {
             "title": "Source Biosamples",
             "description": "The sample(s) from which the cells in this pseudobulk originated from.",
             "type": "array",
