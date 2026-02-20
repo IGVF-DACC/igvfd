@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 22
 
+* Extend `catalog_method` enum list to include `caQTL`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Add `catalog_method`.
 * Add `checkfiles_timestamp`.
