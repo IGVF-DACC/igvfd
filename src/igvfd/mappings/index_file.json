@@ -1,6 +1,6 @@
 {
-    "hash": "4311fff37e7edb3a55c019ca2687d018",
-    "index_name": "index_file_4311fff3",
+    "hash": "db4a8c1ce79db0973a94c565305cd543",
+    "index_name": "index_file_db4a8c1c",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -215,9 +215,6 @@
                                     },
                                     "description": {
                                         "type": "text"
-                                    },
-                                    "download_id": {
-                                        "type": "keyword"
                                     },
                                     "lab": {
                                         "type": "keyword"

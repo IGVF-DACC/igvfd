@@ -1,6 +1,6 @@
 {
-    "hash": "4a87a9fc8f0bc875496ed83fd664d3e4",
-    "index_name": "software_version_4a87a9fc",
+    "hash": "280944e312274f98042c70ea7729566f",
+    "index_name": "software_version_280944e3",
     "item_type": "software_version",
     "mapping": {
         "dynamic_templates": [
@@ -228,9 +228,6 @@
                     },
                     "description": {
                         "type": "text"
-                    },
-                    "download_id": {
-                        "type": "keyword"
                     },
                     "lab": {
                         "properties": {

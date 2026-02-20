@@ -1,6 +1,6 @@
 {
-    "hash": "5453d1c2ed1f59b1672c988f914eb3ec",
-    "index_name": "matrix_file_5453d1c2",
+    "hash": "d26fb9e7330706fa5aa295ead9437ba5",
+    "index_name": "matrix_file_d26fb9e7",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -215,9 +215,6 @@
                                     },
                                     "description": {
                                         "type": "text"
-                                    },
-                                    "download_id": {
-                                        "type": "keyword"
                                     },
                                     "lab": {
                                         "type": "keyword"

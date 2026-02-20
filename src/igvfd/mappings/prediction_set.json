@@ -1,6 +1,6 @@
 {
-    "hash": "fd1892ee1721590b353242ecfbc5276f",
-    "index_name": "prediction_set_fd1892ee",
+    "hash": "0a97412a4ca045873ae9e54f184862c6",
+    "index_name": "prediction_set_0a97412a",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -4306,9 +4306,6 @@
                             },
                             "description": {
                                 "type": "text"
-                            },
-                            "download_id": {
-                                "type": "keyword"
                             },
                             "lab": {
                                 "type": "keyword"
