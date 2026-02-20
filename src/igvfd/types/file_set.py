@@ -2155,7 +2155,7 @@ class PseudobulkSet(FileSet):
         Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
         Path('cell_annotation', include=['@id', 'term_name', 'status']),
         Path(
-            'source_biosamples.sample_terms',
+            'samples.sample_terms',
             include=[
                 '@id',
                 '@type',
@@ -2177,10 +2177,10 @@ class PseudobulkSet(FileSet):
                 'institutional_certificates',
             ]
         ),
-        Path('source_biosamples.disease_terms', include=['@id', 'term_name', 'status']),
-        Path('source_biosamples.targeted_sample_term', include=['@id', 'term_name', 'status']),
-        Path('source_biosamples.modifications', include=['@id', 'modality', 'status']),
-        Path('source_biosamples.treatments', include=['@id', 'treatment_term_name',
+        Path('samples.disease_terms', include=['@id', 'term_name', 'status']),
+        Path('samples.targeted_sample_term', include=['@id', 'term_name', 'status']),
+        Path('samples.modifications', include=['@id', 'modality', 'status']),
+        Path('samples.treatments', include=['@id', 'treatment_term_name',
              'purpose', 'treatment_type', 'summary', 'status']),
     ]
     audit_inherit = FileSet.audit_inherit
@@ -2194,9 +2194,25 @@ class PseudobulkSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, cell_annotation, source_biosamples=None, cell_qualifier=None):
-
-        return f'Pseudobulk of {cell_annotation.get("term_name","")}'
+    def summary(self, request, cell_annotation, samples, cell_qualifier=None):
+        source_biosample_classifications = set()
+        source_biosample_terms = set()
+        for sample in samples:
+            classifications = sample.get('classifications', [])
+            for classification in classifications:
+                source_biosample_classifications.add(classification)
+            source_biosample_terms.add(sample.get('sample_terms', [])[0])
+        summary_phrase = ''
+        if len(source_biosample_classifications) == 1 and 'cell line' in source_biosample_classifications:
+            summary_phrase = f'{cell_qualifier} {cell_annotation.get("term_name", "")} derived from {", ".join(source_biosample_terms)}'.strip(
+            )
+        else:
+            summary_phrase = ' '.join(x for x in [
+                ', '.join(source_biosample_terms),
+                cell_qualifier,
+                cell_annotation.get('term_name', '')
+            ] if x is not None)
+        return f'Pseudobulk of {summary_phrase}'
 
     @calculated_property(
         schema={
