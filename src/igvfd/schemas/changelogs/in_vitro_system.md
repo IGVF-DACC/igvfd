@@ -1,5 +1,10 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 30
+
+* Update `demultiplexed_from` to link to MultiplexedSample.
+* Remove `demultiplexed_to`.
+
 ### Minor changes since schema version 29
 
 * Add `is_on_anvil`.

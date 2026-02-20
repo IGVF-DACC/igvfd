@@ -380,7 +380,17 @@ def in_vitro_system_v28_3(in_vitro_cell_line):
 
 
 @pytest.fixture
-def in_vitro_system_virtual_demultiplexed(testapp, lab, award, source, human_donor, sample_term_K562, multiplexed_sample):
+def in_vitro_system_v29(in_vitro_cell_line, in_vitro_differentiated_cell):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '29',
+        'demultiplexed_from': in_vitro_differentiated_cell['@id']
+    })
+    return item
+
+
+@pytest.fixture
+def in_vitro_system_virtual_demultiplexed(testapp, lab, award, source, human_donor, sample_term_K562):
     item = {
         'classifications': ['cell line'],
         'award': award['@id'],

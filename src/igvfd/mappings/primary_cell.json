@@ -1805,6 +1805,9 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
+                            "demultiplexed_to": {
+                                "type": "keyword"
+                            },
                             "description": {
                                 "type": "text"
                             },

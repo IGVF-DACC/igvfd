@@ -796,7 +796,6 @@ class PrimaryCell(Biosample):
 class InVitroSystem(Biosample):
     item_type = 'in_vitro_system'
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
-    rev = Biosample.rev | {'demultiplexed_to': ('InVitroSystem', 'demultiplexed_from')}
     embedded_with_frame = Biosample.embedded_with_frame + [
         Path('targeted_sample_term', include=['@id', 'term_name', 'status'])
     ]
@@ -805,22 +804,6 @@ class InVitroSystem(Biosample):
         'cell_fate_change_protocol'
     ]
     set_status_down = Biosample.set_status_down + []
-
-    @calculated_property(schema={
-        'title': 'Demultiplexed To',
-        'type': 'array',
-        'description': 'The parts into which this sample has been demultiplexed.',
-        'minItems': 1,
-        'uniqueItems': True,
-        'items': {
-            'title': 'Demultiplexed To',
-            'type': 'string',
-            'linkFrom': 'InVitroSystem.demultiplexed_from',
-        },
-        'notSubmittable': True,
-    })
-    def demultiplexed_to(self, request, demultiplexed_to):
-        return paths_filtered_by_status(request, demultiplexed_to) or None
 
 
 @collection(
@@ -1037,6 +1020,7 @@ class WholeOrganism(Biosample):
 class MultiplexedSample(Sample):
     item_type = 'multiplexed_sample'
     schema = load_schema('igvfd:schemas/multiplexed_sample.json')
+    rev = Sample.rev | {'demultiplexed_to': ('InVitroSystem', 'demultiplexed_from')}
     embedded_with_frame = Sample.embedded_with_frame + [
         Path('multiplexed_samples', include=['@id', 'accession', '@type',
              'summary', 'sample_terms', 'construct_library_sets', 'disease_terms', 'donors', 'status']),
@@ -1054,6 +1038,22 @@ class MultiplexedSample(Sample):
     set_status_down = Biosample.set_status_down + [
         'multiplexed_samples'
     ]
+
+    @calculated_property(schema={
+        'title': 'Demultiplexed To',
+        'type': 'array',
+        'description': 'The in vitro system samples this multiplexed sample has been demultiplexed into.',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Demultiplexed To',
+            'type': 'string',
+            'linkFrom': 'InVitroSystem.demultiplexed_from',
+        },
+        'notSubmittable': True,
+    })
+    def demultiplexed_to(self, request, demultiplexed_to):
+        return paths_filtered_by_status(request, demultiplexed_to) or None
 
     @calculated_property(
         schema={
