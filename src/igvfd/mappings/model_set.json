@@ -1,6 +1,6 @@
 {
-    "hash": "2113a7fe31fae0d350c292f74e5c4e39",
-    "index_name": "model_set_2113a7fe",
+    "hash": "c332cee116007d8b5036dad7858e7ad8",
+    "index_name": "model_set_c332cee1",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -3801,9 +3801,6 @@
                             },
                             "description": {
                                 "type": "text"
-                            },
-                            "download_id": {
-                                "type": "keyword"
                             },
                             "lab": {
                                 "type": "keyword"

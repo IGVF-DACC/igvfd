@@ -1,6 +1,6 @@
 {
-    "hash": "b2de02a2b0e1e201bb891176f8e982e2",
-    "index_name": "image_file_b2de02a2",
+    "hash": "6aefe02d966a3393b380016a1803fb88",
+    "index_name": "image_file_6aefe02d",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -215,9 +215,6 @@
                                     },
                                     "description": {
                                         "type": "text"
-                                    },
-                                    "download_id": {
-                                        "type": "keyword"
                                     },
                                     "lab": {
                                         "type": "keyword"

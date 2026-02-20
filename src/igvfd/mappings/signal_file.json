@@ -1,6 +1,6 @@
 {
-    "hash": "debae8d0d8d6caf20b1cc326bb0fe7d1",
-    "index_name": "signal_file_debae8d0",
+    "hash": "ae270b0c0493ebc47d0879291306b969",
+    "index_name": "signal_file_ae270b0c",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -215,9 +215,6 @@
                                     },
                                     "description": {
                                         "type": "text"
-                                    },
-                                    "download_id": {
-                                        "type": "keyword"
                                     },
                                     "lab": {
                                         "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "d77671c06e55ece3e5407450e7b57d08",
-    "index_name": "workflow_d77671c0",
+    "hash": "db5f330d245d5240735ed54fea575634",
+    "index_name": "workflow_db5f330d",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -286,9 +286,6 @@
                                     },
                                     "description": {
                                         "type": "text"
-                                    },
-                                    "download_id": {
-                                        "type": "keyword"
                                     },
                                     "lab": {
                                         "type": "keyword"
