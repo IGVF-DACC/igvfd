@@ -2197,20 +2197,23 @@ class PseudobulkSet(FileSet):
     def summary(self, request, cell_annotation, samples, cell_qualifier=None):
         source_biosample_classifications = set()
         source_biosample_terms = set()
+        cell_annotation_object = request.embed(cell_annotation, '@@object')
         for sample in samples:
-            classifications = sample.get('classifications', [])
+            sample_object = request.embed(sample, '@@object')
+            sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object')
+            classifications = sample_object.get('classifications', [])
             for classification in classifications:
                 source_biosample_classifications.add(classification)
-            source_biosample_terms.add(sample.get('sample_terms', [])[0])
+            source_biosample_terms.add(sample_term_object.get('term_name', ''))
         summary_phrase = ''
         if len(source_biosample_classifications) == 1 and 'cell line' in source_biosample_classifications:
-            summary_phrase = f'{cell_qualifier} {cell_annotation.get("term_name", "")} derived from {", ".join(source_biosample_terms)}'.strip(
+            summary_phrase = f'{cell_qualifier} {cell_annotation_object.get("term_name", "")} derived from {", ".join(source_biosample_terms)}'.strip(
             )
         else:
             summary_phrase = ' '.join(x for x in [
                 ', '.join(source_biosample_terms),
                 cell_qualifier,
-                cell_annotation.get('term_name', '')
+                cell_annotation_object.get('term_name', '')
             ] if x is not None)
         return f'Pseudobulk of {summary_phrase}'
 
