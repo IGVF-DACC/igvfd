@@ -54,6 +54,7 @@ ORDER = [
     'analysis_set',
     'model_set',
     'prediction_set',
+    'pseudobulk_set',
     'reference_file',
     'sequence_file',
     'signal_file',

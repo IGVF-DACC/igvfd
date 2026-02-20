@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_analysis_set_summary(testapp, pseudobulk_set_base, in_vitro_cell_line):
+def test_pseudobulk_set_summary(testapp, pseudobulk_set_base, in_vitro_cell_line):
     # With no input_file_sets and no files present, summary is based on analysis file_set_type only.
     res = testapp.get(pseudobulk_set_base['@id']).json
     assert res.get('summary', '') == 'Pseudobulk of adrenal gland endothelial cell of vascular tree'
