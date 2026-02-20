@@ -1,6 +1,6 @@
 {
-    "hash": "699c3f118afc2648575938c5a79c3e16",
-    "index_name": "reference_file_699c3f11",
+    "hash": "ff34db3921b7f8b9bc5aa150036d1a15",
+    "index_name": "reference_file_ff34db39",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -1844,9 +1844,6 @@
                                 "type": "object"
                             },
                             "software_versions": {
-                                "type": "keyword"
-                            },
-                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

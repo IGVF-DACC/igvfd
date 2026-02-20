@@ -1,6 +1,6 @@
 {
-    "hash": "ccc7e27df771264ea6d2b67273d0ce69",
-    "index_name": "primary_cell_ccc7e27d",
+    "hash": "20e05435912e27d436c673f6bcc1ceb8",
+    "index_name": "primary_cell_20e05435",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1319,9 +1319,6 @@
                                 "type": "object"
                             },
                             "software_versions": {
-                                "type": "keyword"
-                            },
-                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

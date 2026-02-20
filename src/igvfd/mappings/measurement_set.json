@@ -1,6 +1,6 @@
 {
-    "hash": "52bdcfb9846df8db7d6598b1509604ef",
-    "index_name": "measurement_set_52bdcfb9",
+    "hash": "756d96184eeaf8c4980ca219419cde8e",
+    "index_name": "measurement_set_756d9618",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1209,9 +1209,6 @@
                             "software_versions": {
                                 "type": "keyword"
                             },
-                            "source_biosamples": {
-                                "type": "keyword"
-                            },
                             "sources": {
                                 "type": "keyword"
                             },
@@ -1578,9 +1575,6 @@
                             "software_versions": {
                                 "type": "keyword"
                             },
-                            "source_biosamples": {
-                                "type": "keyword"
-                            },
                             "sources": {
                                 "type": "keyword"
                             },
@@ -1945,9 +1939,6 @@
                                 "type": "object"
                             },
                             "software_versions": {
-                                "type": "keyword"
-                            },
-                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -3226,9 +3217,6 @@
                                 "type": "object"
                             },
                             "software_versions": {
-                                "type": "keyword"
-                            },
-                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

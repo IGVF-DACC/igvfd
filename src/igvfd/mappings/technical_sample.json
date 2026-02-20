@@ -1,6 +1,6 @@
 {
-    "hash": "a928595d175a9a87fdc58a5835ab072c",
-    "index_name": "technical_sample_a928595d",
+    "hash": "a8005fd5582edec1d10f0d58199ec0ee",
+    "index_name": "technical_sample_a8005fd5",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -900,9 +900,6 @@
                                 "type": "object"
                             },
                             "software_versions": {
-                                "type": "keyword"
-                            },
-                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

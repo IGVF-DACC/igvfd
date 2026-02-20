@@ -1,6 +1,6 @@
 {
-    "hash": "eb1e9c9745024b918cac6b62033f9f5d",
-    "index_name": "prediction_set_eb1e9c97",
+    "hash": "b12594d66d1f035620f89afe75f85f50",
+    "index_name": "prediction_set_b12594d6",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1163,9 +1163,6 @@
                             "software_versions": {
                                 "type": "keyword"
                             },
-                            "source_biosamples": {
-                                "type": "keyword"
-                            },
                             "sources": {
                                 "type": "keyword"
                             },
@@ -1530,9 +1527,6 @@
                                 "type": "object"
                             },
                             "software_versions": {
-                                "type": "keyword"
-                            },
-                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

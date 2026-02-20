@@ -1,6 +1,6 @@
 {
-    "hash": "c036339a01fe869489a60c5eff6195f0",
-    "index_name": "construct_library_set_c036339a",
+    "hash": "156c7698117496e902f1291620156a8b",
+    "index_name": "construct_library_set_156c7698",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -610,9 +610,6 @@
                                 "type": "object"
                             },
                             "software_versions": {
-                                "type": "keyword"
-                            },
-                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

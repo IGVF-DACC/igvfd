@@ -1,6 +1,6 @@
 {
-    "hash": "dc8a3219ae7b7659e3b80ec375b41991",
-    "index_name": "configuration_file_dc8a3219",
+    "hash": "691473919ffcc66608727c9f5bc678a7",
+    "index_name": "configuration_file_69147391",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1820,9 +1820,6 @@
                                 "type": "object"
                             },
                             "software_versions": {
-                                "type": "keyword"
-                            },
-                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

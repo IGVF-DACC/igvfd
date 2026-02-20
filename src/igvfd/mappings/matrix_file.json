@@ -1,6 +1,6 @@
 {
-    "hash": "35a2197efd36b3937f8a2d840571231e",
-    "index_name": "matrix_file_35a2197e",
+    "hash": "f73b813656e22b1d75f7be19edef9cb9",
+    "index_name": "matrix_file_f73b8136",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1826,9 +1826,6 @@
                                 "type": "object"
                             },
                             "software_versions": {
-                                "type": "keyword"
-                            },
-                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

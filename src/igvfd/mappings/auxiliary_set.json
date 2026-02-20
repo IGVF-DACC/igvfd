@@ -1,6 +1,6 @@
 {
-    "hash": "2f8305952315cf93abfe98815806cff3",
-    "index_name": "auxiliary_set_2f830595",
+    "hash": "88026da09edfe0df3229882f7f95b290",
+    "index_name": "auxiliary_set_88026da0",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -984,9 +984,6 @@
                             "software_versions": {
                                 "type": "keyword"
                             },
-                            "source_biosamples": {
-                                "type": "keyword"
-                            },
                             "sources": {
                                 "type": "keyword"
                             },
@@ -1351,9 +1348,6 @@
                                 "type": "object"
                             },
                             "software_versions": {
-                                "type": "keyword"
-                            },
-                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -2542,9 +2536,6 @@
                                 "type": "object"
                             },
                             "software_versions": {
-                                "type": "keyword"
-                            },
-                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {
