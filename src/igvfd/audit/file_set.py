@@ -619,7 +619,7 @@ def audit_unexpected_virtual_samples(value, system):
     '''
     [
         {
-            "audit_description": "Only curated sets, prediction sets and analysis sets are expected to link to virtual samples.",
+            "audit_description": "Only curated sets, prediction sets and analysis sets are expected to link to virtual samples. Raw data set file sets may also link to virtual samples when the sample is demultiplexed from another sample (demultiplexed_from).",
             "audit_category": "unexpected sample",
             "audit_level": "ERROR"
         }
@@ -632,7 +632,7 @@ def audit_unexpected_virtual_samples(value, system):
         samples = value.get('samples')
     for sample in samples:
         sample_object = system.get('request').embed(sample)
-        if sample_object.get('virtual'):
+        if sample_object.get('virtual') and not sample_object.get('demultiplexed_from'):
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} links to virtual sample '
                 f'{audit_link(path_to_text(sample), sample)} in `samples`.'

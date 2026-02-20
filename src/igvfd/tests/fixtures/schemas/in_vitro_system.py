@@ -377,3 +377,28 @@ def in_vitro_system_v28_3(in_vitro_cell_line):
         'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v29(in_vitro_cell_line, in_vitro_differentiated_cell):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '29',
+        'demultiplexed_from': in_vitro_differentiated_cell['@id']
+    })
+    return item
+
+
+@pytest.fixture
+def in_vitro_system_virtual_demultiplexed(testapp, lab, award, source, human_donor, sample_term_K562, multiplexed_sample):
+    item = {
+        'classifications': ['cell line'],
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'sources': [source['@id']],
+        'donors': [human_donor['@id']],
+        'sample_terms': [sample_term_K562['@id']],
+        'virtual': True,
+        'demultiplexed_from': multiplexed_sample['@id'],
+    }
+    return testapp.post_json('/in_vitro_system', item, status=201).json['@graph'][0]

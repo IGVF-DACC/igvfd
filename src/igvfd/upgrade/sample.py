@@ -590,3 +590,19 @@ def sample_23_24(value, system):
                 f'and were removed from the property list.'
             )
             value['notes'] = notes.strip()
+
+
+@upgrade_step('in_vitro_system', '29', '30')
+def in_vitro_system_29_30(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3311
+    if 'demultiplexed_from' in value:
+        demultiplexed_from = value['demultiplexed_from']
+        notes = value.get('notes', '')
+        if notes:
+            notes += ' '
+        notes += (
+            f'Previously linked to demultiplexed_from: {demultiplexed_from}. '
+            f'This property now only links to MultiplexedSample.'
+        )
+        value['notes'] = notes.strip()
+        del value['demultiplexed_from']
