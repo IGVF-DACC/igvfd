@@ -4,10 +4,8 @@
 
 * Extend `input_content_types` enum list to include `allele specific sparse gene count matrix`.
 * Extend `output_content_types` enum list to include `allele specific sparse gene count matrix`.
-* Extend `input_content_types` enum list to include `cell annotation`.
-* Extend `output_content_types` enum list to include `cell annotation`.
-* Extend `input_content_types` enum list to include `variant calling`.
-* Extend `output_content_types` enum list to include `variant calling`.
+* Extend `analysis_step_types` enum list to include `cell annotation`.
+* Extend `analysis_step_types` enum list to include `variant calling`.
 * Extend `input_content_types` enum list to include `chromatin contact quantifications`.
 * Extend `output_content_types` enum list to include `chromatin contact quantifications`.
 * Extend `input_content_types` enum list to include `methylation counts`.
