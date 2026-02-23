@@ -192,7 +192,7 @@ def biosample_sorted_child(
         'sorted_from_detail': 'FACS bin 0-10% expression of FEN',
         'award': award['@id'],
         'lab': lab['@id'],
-        'ccf_id': '78d06f07-f1cb-4d21-b578-b01c7388804f'
+        'product_id': 'ABC999'
     }
     return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
 
@@ -344,5 +344,15 @@ def tissue_v22_3(tissue):
     item.update({
         'schema_version': '22',
         'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
+    })
+    return item
+
+
+@pytest.fixture
+def tissue_v23(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '23',
+        'ccf_id': '78d06f07-f1cb-4d21-b578-b01c7388804f'
     })
     return item

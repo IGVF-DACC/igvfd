@@ -1,6 +1,6 @@
 {
-    "hash": "4311fff37e7edb3a55c019ca2687d018",
-    "index_name": "index_file_4311fff3",
+    "hash": "9317b12621713a99e988e59cb0e8835b",
+    "index_name": "index_file_9317b126",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -1072,9 +1072,6 @@
                                         "type": "keyword"
                                     },
                                     "biosample_qualifiers": {
-                                        "type": "keyword"
-                                    },
-                                    "ccf_id": {
                                         "type": "keyword"
                                     },
                                     "cell_fate_change_protocol": {
@@ -2173,9 +2170,6 @@
                                         "type": "keyword"
                                     },
                                     "biosample_qualifiers": {
-                                        "type": "keyword"
-                                    },
-                                    "ccf_id": {
                                         "type": "keyword"
                                     },
                                     "cell_fate_change_protocol": {

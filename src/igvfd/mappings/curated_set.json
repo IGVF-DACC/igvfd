@@ -1,6 +1,6 @@
 {
-    "hash": "999d1cbf90dcc53a2059af723807b09d",
-    "index_name": "curated_set_999d1cbf",
+    "hash": "0b3c7725fba6d48c92dfb7eb5e8b24b4",
+    "index_name": "curated_set_0b3c7725",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -2496,9 +2496,6 @@
                                 "type": "keyword"
                             },
                             "biosample_qualifiers": {
-                                "type": "keyword"
-                            },
-                            "ccf_id": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_protocol": {

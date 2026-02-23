@@ -590,3 +590,13 @@ def sample_23_24(value, system):
                 f'and were removed from the property list.'
             )
             value['notes'] = notes.strip()
+
+
+@upgrade_step('tissue', '23', '24')
+def tissue_23_24(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3286
+    if 'ccf_id' in value:
+        notes = value.get('notes', '')
+        notes += f' This sample had the ccf_id {value.get("ccf_id", "")}, which has been removed via upgrade.'
+        value['notes'] = notes.strip()
+        del value['ccf_id']
