@@ -1,6 +1,6 @@
 {
-    "hash": "52d1ce2f68554d4fa16ac67b81c55c40",
-    "index_name": "sequence_file_52d1ce2f",
+    "hash": "307659a0688abcfb2692f3be9aa7488d",
+    "index_name": "sequence_file_307659a0",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -215,9 +215,6 @@
                                     },
                                     "description": {
                                         "type": "text"
-                                    },
-                                    "download_id": {
-                                        "type": "keyword"
                                     },
                                     "lab": {
                                         "type": "keyword"
