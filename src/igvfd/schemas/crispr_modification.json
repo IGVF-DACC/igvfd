@@ -101,6 +101,7 @@
                 "KOX1-KRAB",
                 "M-MLV RT (PE2)",
                 "p300",
+                "p300-2A-PuroR",
                 "TdCBE",
                 "TdCGBE",
                 "TdDE",
@@ -108,7 +109,8 @@
                 "VPH",
                 "VP64",
                 "VP64-p65-Rta (VPR)",
-                "ZIM3-KRAB"
+                "ZIM3-KRAB",
+                "ZNF563KRAB"
             ],
             "submissionExample": {
                 "appscript": "KRAB",
