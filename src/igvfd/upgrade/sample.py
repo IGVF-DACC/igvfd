@@ -590,10 +590,8 @@ def sample_23_24(value, system):
                 f'and were removed from the property list.'
             )
             value['notes'] = notes.strip()
-<<<<<<< HEAD
 
 
-<<<<<<< HEAD
 @upgrade_step('tissue', '23', '24')
 def tissue_23_24(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3286
@@ -602,21 +600,3 @@ def tissue_23_24(value, system):
         notes += f' This sample had the ccf_id {value.get("ccf_id", "")}, which has been removed via upgrade.'
         value['notes'] = notes.strip()
         del value['ccf_id']
-=======
-@upgrade_step('in_vitro_system', '29', '30')
-def in_vitro_system_29_30(value, system):
-    # https://igvf.atlassian.net/browse/IGVF-3311
-    if 'demultiplexed_from' in value:
-        demultiplexed_from = value['demultiplexed_from']
-        notes = value.get('notes', '')
-        if notes:
-            notes += ' '
-        notes += (
-            f'Previously linked to demultiplexed_from: {demultiplexed_from}. '
-            f'This property now only links to MultiplexedSample.'
-        )
-        value['notes'] = notes.strip()
-        del value['demultiplexed_from']
->>>>>>> d138278c (adjusted demultiplexed from)
-=======
->>>>>>> 4a14897c (revert changes)
