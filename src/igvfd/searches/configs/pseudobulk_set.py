@@ -7,21 +7,15 @@ from snovault.elasticsearch.searches.configs import search_config
 def pseudobulk_set():
     return {
         'facets': {
-            'file_set_type': {
-                'title': 'Pseudobulk Set Type',
-                'category': 'Pseudobulk Set Details',
-                'description': '',
-                'optional': True
-            },
             'files.assembly': {
                 'title': 'Assembly',
-                'category': 'Analysis Set Details',
+                'category': 'Pseudobulk Set Details',
                 'description': 'The genome assembly associated with the analysis.',
                 'optional': True
             },
             'files.transcriptome_annotation': {
                 'title': 'Transcriptome Annotation',
-                'category': 'Analysis Set Details',
+                'category': 'Pseudobulk Set Details',
                 'description': 'The transcriptome annotation version of the analysis.',
                 'optional': True
             },
@@ -30,16 +24,21 @@ def pseudobulk_set():
                 'category': 'Sample',
                 'description': 'The organism or species associated with the donor.'
             },
+            'cell_annotation.term_name': {
+                'title': 'Cell Annotation',
+                'category': 'Sample',
+                'description': 'The cell annotation of the pseudobulk.',
+            },
             'samples.classifications': {
                 'title': 'Classification',
                 'category': 'Sample',
-                'description': 'High-level classification of the sample.',
+                'description': 'High-level classification of the source biosample.',
                 'optional': True
             },
             'samples.sample_terms.term_name': {
                 'title': 'Sample',
                 'category': 'Sample',
-                'description': 'The sample name associated with the analysis set.'
+                'description': 'The sample name associated with the pseudobulk set.'
             },
             'samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
@@ -60,13 +59,13 @@ def pseudobulk_set():
             'files.content_type': {
                 'title': 'File Type',
                 'category': 'File',
-                'description': 'The type of files included in the analysis set.',
+                'description': 'The type of files included in the pseudobulk set.',
                 'optional': True
             },
             'files.file_format': {
                 'title': 'File Format',
                 'category': 'File',
-                'description': 'The file formats included in the analysis set.',
+                'description': 'The file formats included in the pseudobulk set.',
                 'optional': True
             },
             'controlled_access': {
@@ -84,7 +83,7 @@ def pseudobulk_set():
             'collections': {
                 'title': 'Collections',
                 'category': 'Provenance',
-                'description': 'Data collections the analysis set is a part of.',
+                'description': 'Data collections the pseudobulk set is a part of.',
                 'optional': True
             },
             'lab.title': {
@@ -101,18 +100,18 @@ def pseudobulk_set():
             'release_timestamp': {
                 'title': 'Release Date',
                 'category': 'Provenance',
-                'description': 'The date the analysis set was publicly released.'
+                'description': 'The date the pseudobulk set was publicly released.'
             },
             'creation_timestamp': {
                 'title': 'Creation Date',
                 'category': 'Provenance',
-                'description': 'The date the analysis set was submitted.',
+                'description': 'The date the pseudobulk set was submitted.',
                 'optional': True
             },
             'status': {
                 'title': 'Status',
-                'category': 'Analysis Set Details',
-                'description': 'The status of the analysis.'
+                'category': 'Pseudobulk Set Details',
+                'description': 'The status of the pseudobulk set.'
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error',
@@ -178,9 +177,6 @@ def pseudobulk_set():
             },
             'input_file_sets': {
                 'title': 'Input File Sets'
-            },
-            'sample_summary': {
-                'title': 'Simplified Sample Summary'
             },
             'summary': {
                 'title': 'Summary'

@@ -91,7 +91,7 @@
         },
         "samples": {
             "title": "Source Biosamples",
-            "description": "The sample(s) from which the cells in this pseudobulk originated from.",
+            "description": "The sample(s) from which the cells in this pseudobulk originated.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
@@ -107,7 +107,7 @@
         },
         "cell_qualifier": {
             "title": "Cell Qualifier",
-            "description": "A qualifier that provides additional detail about the cell type annotation.",
+            "description": "A qualifier that provides additional detail about the cell type annotation or the source biosample.",
             "type": "string",
             "submissionExample": {
                 "appscript": "early",
