@@ -522,7 +522,7 @@
         },
         "demultiplexed_from": {
             "title": "Demultiplexed From",
-            "description": "The sample this in vitro system sample was demultiplexed from using computational methods.",
+            "description": "The biosample this in vitro system sample was demultiplexed from using computational methods.",
             "type": "string",
             "linkTo": [
                 "InVitroSystem",
