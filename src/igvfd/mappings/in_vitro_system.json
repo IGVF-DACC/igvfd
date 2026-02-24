@@ -1,6 +1,6 @@
 {
-    "hash": "1a9f7c8b05233a8db58d252378be7eb5",
-    "index_name": "in_vitro_system_1a9f7c8b",
+    "hash": "d7c6799ab8039cc5a573a1e970b1e1de",
+    "index_name": "in_vitro_system_d7c6799a",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1816,6 +1816,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_to": {
                                 "type": "keyword"
                             },
                             "description": {

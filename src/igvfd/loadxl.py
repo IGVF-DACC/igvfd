@@ -546,7 +546,7 @@ PHASE1_PIPELINES = {
     ],
     'in_vitro_system': [
         remove_keys('pooled_from', 'part_of', 'originated_from', 'construct_library_sets', 'moi',
-                    'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units'),
+                    'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units', 'demultiplexed_from'),
     ],
     'tissue': [
         remove_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi', 'nucleic_acid_delivery',
@@ -613,7 +613,7 @@ PHASE2_PIPELINES = {
     ],
     'in_vitro_system': [
         skip_rows_missing_all_keys('pooled_from', 'part_of', 'originated_from', 'construct_library_sets',
-                                   'moi', 'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units'),
+                                   'moi', 'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units', 'demultiplexed_from'),
     ],
     'tissue': [
         skip_rows_missing_all_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi',

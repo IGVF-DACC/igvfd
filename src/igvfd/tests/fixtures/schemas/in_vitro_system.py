@@ -50,6 +50,21 @@ def in_vitro_organoid(testapp, lab, award, source, human_donor, sample_term_adre
 
 
 @pytest.fixture
+def in_vitro_system_virtual_demultiplexed(testapp, lab, award, source, human_donor, sample_term_K562, multiplexed_sample):
+    item = {
+        'classifications': ['cell line'],
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'sources': [source['@id']],
+        'donors': [human_donor['@id']],
+        'sample_terms': [sample_term_K562['@id']],
+        'virtual': True,
+        'demultiplexed_from': multiplexed_sample['@id'],
+    }
+    return testapp.post_json('/in_vitro_system', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def in_vitro_system_v1(testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
     item = {
         'classification': 'organoid',

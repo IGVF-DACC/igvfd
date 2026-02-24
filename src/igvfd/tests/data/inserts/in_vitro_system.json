@@ -283,7 +283,8 @@
         "nucleic_acid_delivery": "electroporation",
         "modifications": [
             "b4a370ee-18a7-2857-bc2b-b157d05f4458"
-        ]
+        ],
+        "demultiplexed_from": "IGVFSM0000MPXD"
     },
     {
         "uuid": "23dd9597-fc37-4ca9-be1f-15ecf3cf9ed3",

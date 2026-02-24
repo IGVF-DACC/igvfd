@@ -1043,7 +1043,8 @@ def test_audit_inconsistent_sequencing_kit(
 def test_audit_unexpected_virtual_sample(
     testapp,
     measurement_set,
-    tissue
+    tissue,
+    in_vitro_system_virtual_demultiplexed,
 ):
     testapp.patch_json(
         measurement_set['@id'],
@@ -1065,6 +1066,18 @@ def test_audit_unexpected_virtual_sample(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'unexpected sample'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Raw file sets may link to virtual samples when the sample is demultiplexed_from another sample.
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [in_vitro_system_virtual_demultiplexed['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected sample'
         for error in res.json['audit'].get('ERROR', [])
     )
 
