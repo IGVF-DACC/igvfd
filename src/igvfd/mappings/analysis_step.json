@@ -1,6 +1,6 @@
 {
-    "hash": "c77f75b03934617a5d5d87dd783d5b0c",
-    "index_name": "analysis_step_c77f75b0",
+    "hash": "6ed45db09c312f1b1c1353ea4a49a00c",
+    "index_name": "analysis_step_6ed45db0",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -212,9 +212,6 @@
                                     },
                                     "description": {
                                         "type": "text"
-                                    },
-                                    "download_id": {
-                                        "type": "keyword"
                                     },
                                     "lab": {
                                         "type": "keyword"

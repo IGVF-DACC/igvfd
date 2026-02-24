@@ -1,6 +1,6 @@
 {
-    "hash": "77c012814ddec437c8c5f1c537d9bd7b",
-    "index_name": "analysis_step_version_77c01281",
+    "hash": "442a877ed1d91205364a4a71a449591e",
+    "index_name": "analysis_step_version_442a877e",
     "item_type": "analysis_step_version",
     "mapping": {
         "dynamic_templates": [
@@ -395,9 +395,6 @@
                             },
                             "description": {
                                 "type": "text"
-                            },
-                            "download_id": {
-                                "type": "keyword"
                             },
                             "lab": {
                                 "type": "keyword"
