@@ -619,7 +619,7 @@ def audit_unexpected_virtual_samples(value, system):
     '''
     [
         {
-            "audit_description": "Only curated sets, prediction sets and analysis sets are expected to link to virtual samples. Raw data set file sets may also link to virtual samples when the sample is demultiplexed from another sample (demultiplexed_from).",
+            "audit_description": "Only curated sets, prediction sets and analysis sets are expected to link to virtual samples. Raw data set file sets may also link to virtual samples when the sample is demultiplexed from another sample.",
             "audit_category": "unexpected sample",
             "audit_level": "ERROR"
         }

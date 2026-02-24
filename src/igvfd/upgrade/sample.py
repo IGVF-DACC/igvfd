@@ -590,6 +590,7 @@ def sample_23_24(value, system):
                 f'and were removed from the property list.'
             )
             value['notes'] = notes.strip()
+<<<<<<< HEAD
 
 
 <<<<<<< HEAD
@@ -617,3 +618,5 @@ def in_vitro_system_29_30(value, system):
         value['notes'] = notes.strip()
         del value['demultiplexed_from']
 >>>>>>> d138278c (adjusted demultiplexed from)
+=======
+>>>>>>> 4a14897c (revert changes)

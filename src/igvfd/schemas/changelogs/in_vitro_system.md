@@ -1,12 +1,8 @@
 ## Changelog for *`in_vitro_system.json`*
 
-### Schema version 30
-
-* Update `demultiplexed_from` to link to MultiplexedSample.
-* Remove `demultiplexed_to`.
-
 ### Minor changes since schema version 29
 
+* Update `demultiplexed_from` to allow linking to MultiplexedSample.
 * Add `is_on_anvil`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Add `time_post_culture`.
