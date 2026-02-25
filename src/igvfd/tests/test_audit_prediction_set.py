@@ -152,7 +152,19 @@ def test_audit_missing_genome_transcriptome_references(
     tabular_file,
     reference_file
 ):
-    # Test 1: Missing genome reference audit
+    # No audits for missing reference files if content type is not included in audited list
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'content_type': 'calibrated coding variant effect thresholds',
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing reference files'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    # Missing genome reference audit
     testapp.patch_json(
         reference_file['@id'],
         {
@@ -172,31 +184,11 @@ def test_audit_missing_genome_transcriptome_references(
         error['category'] == 'missing reference files'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
-    testapp.patch_json(
-        tabular_file['@id'],
-        {
-            'reference_files': [reference_file['@id']]
-        }
-    )
-    res = testapp.get(base_prediction_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'missing reference files'
-        for error in res.json['audit'].get('INTERNAL_ACTION', [])
-    )
-
-    # Test 2: Missing transcriptome reference audit
-    testapp.patch_json(
-        reference_file['@id'],
-        {
-            'content_type': 'transcriptome reference'
-        }
-    )
-
+    # Missing transcriptome reference audit
     testapp.patch_json(
         tabular_file['@id'],
         {
             'content_type': 'coding variant effects',
-            'reference_files': []
         }
     )
     res = testapp.get(base_prediction_set['@id'] + '@@audit')
@@ -204,6 +196,13 @@ def test_audit_missing_genome_transcriptome_references(
         error['category'] == 'missing reference files'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
+    # fix audits with linking to transcriptome reference file
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'content_type': 'transcriptome reference'
+        }
+    )
     testapp.patch_json(
         tabular_file['@id'],
         {
@@ -215,13 +214,17 @@ def test_audit_missing_genome_transcriptome_references(
         error['category'] != 'missing reference files'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
-
-    # Test 3: Non-reference-requiring content types not audited
+    # fix audits with linking to genome reference file
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'content_type': 'genome reference'
+        }
+    )
     testapp.patch_json(
         tabular_file['@id'],
         {
-            'content_type': 'calibrated coding variant effects thresholds',
-            'reference_files': []
+            'content_type': 'variant effects'
         }
     )
     res = testapp.get(base_prediction_set['@id'] + '@@audit')
