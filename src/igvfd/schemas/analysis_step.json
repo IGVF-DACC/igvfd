@@ -60,6 +60,7 @@
                     "barcode mapping generation",
                     "base calling",
                     "calibration",
+                    "cell annotation",
                     "cell profiling",
                     "cell to feature barcode mapping",
                     "computational model prediction",
@@ -91,7 +92,8 @@
                     "UMAP embedding",
                     "UMI deduplication",
                     "UMI quantification",
-                    "variant annotation"
+                    "variant annotation",
+                    "variant calling"
                 ],
                 "enum_descriptions": {
                     "alignment": "The aligning of reads to a reference genome or transcriptome.",
@@ -100,6 +102,7 @@
                     "barcode counting": "The process of quantifying the occurrence of unique barcodes in sequencing data.",
                     "base calling": "The conversion of raw sequencing signals into nucleotide sequences, determining the identity of each base in the reads.",
                     "calibration": "The process of converting a raw, quantitative data score into a discrete, standardized evidence category so it can be applied to the guidelines for classifying a genetic variant’s pathogenicity.",
+                    "cell annotation": "The process of assigning biological identities or functional states to cell types based on their profiles.",
                     "cell profiling": "Convert an array of morphological features for each cell into a descriptive profile of the population.",
                     "cell to feature barcode mapping": "The assignment of feature barcodes (e.g., genes, proteins) to individual cell barcodes.",
                     "computational model prediction": "The application of a trained computational model to new data to generate predictions or inferences.",
@@ -129,7 +132,8 @@
                     "UMAP embedding": "Reduces a high-dimensional data set to 2D plot.",
                     "UMI deduplication": "The process of removing Unique Molecular Identifiers (UMI) duplicates.",
                     "UMI quantification": "The process of detection and measurement of Unique Molecular Identifiers (UMI).",
-                    "variant annotation": "The process of providing additional information about genomic variants."
+                    "variant annotation": "The process of providing additional information about genomic variants.",
+                    "variant calling": "The process of identifying genetic differences between a sequenced genome and a reference genome using aligned Whole Genome Sequencing data."
                 }
             },
             "submissionExample": {
