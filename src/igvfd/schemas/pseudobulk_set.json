@@ -89,6 +89,16 @@
                 "igvf_utils": "/sample-terms/CL_1230000/"
             }
         },
+        "marker_gene_file": {
+            "title": "Marker Gene File",
+            "description": "The file containing a table of marker genes used to annotate cells in this pseudobulk.",
+            "type": "string",
+            "linkTo": "TabularFile",
+            "submissionExample": {
+                "appscript": "[\"/sample-terms/CL_1230000/\"]",
+                "igvf_utils": "/sample-terms/CL_1230000/"
+            }
+        },
         "samples": {
             "title": "Source Biosamples",
             "description": "The sample(s) from which the cells in this pseudobulk originated.",

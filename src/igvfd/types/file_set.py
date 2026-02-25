@@ -738,7 +738,7 @@ class AnalysisSet(FileSet):
         for fileset in input_file_sets:
             file_set_object = request.embed(
                 fileset,
-                '@@object_with_select_calculated_properties?field=assay_titles&field=@type'
+                '@@object_with_select_calculated_properties?field=assay_titles'
             )
             assay_list.update(
                 file_set_object.get(
@@ -2321,7 +2321,7 @@ class PseudobulkSet(FileSet):
         for fileset in input_file_sets:
             file_set_object = request.embed(
                 fileset,
-                '@@object_with_select_calculated_properties?field=assay_titles&field=@type'
+                '@@object_with_select_calculated_properties?field=assay_titles'
             )
             assay_list.update(
                 file_set_object.get(
