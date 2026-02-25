@@ -18,6 +18,7 @@
         "samples": [
             "IGVFSM0000DDDD"
         ],
-        "cell_annotation": "eea050cd-9e8c-4420-967f-3581b20536ab"
+        "cell_annotation": "eea050cd-9e8c-4420-967f-3581b20536ab",
+        "marker_gene_file": "cfed9981-a18d-47bd-be54-c9ace085a1ab"
     }
 ]

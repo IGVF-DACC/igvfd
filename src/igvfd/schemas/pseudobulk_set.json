@@ -9,7 +9,8 @@
         "lab",
         "file_set_type",
         "samples",
-        "cell_annotation"
+        "cell_annotation",
+        "marker_gene_file"
     ],
     "identifyingProperties": [
         "uuid",
