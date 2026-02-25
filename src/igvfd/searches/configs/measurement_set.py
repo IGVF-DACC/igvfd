@@ -28,7 +28,7 @@ def measurement_set():
                 'optional': True
             },
             'targeted_genes.symbol': {
-                'title': 'Readout Gene',
+                'title': 'Readout Genes',
                 'category': 'Measurement Set Details',
                 'description': 'A list of genes targeted for binding sites or used for sorting by expression.',
                 'optional': True
@@ -262,7 +262,7 @@ def measurement_set():
                 'title': 'Sequencing Library Types'
             },
             'targeted_genes.symbol': {
-                'title': 'Assay Targeted Genes'
+                'title': 'Readout Genes'
             },
             'protocols': {
                 'title': 'Protocols'

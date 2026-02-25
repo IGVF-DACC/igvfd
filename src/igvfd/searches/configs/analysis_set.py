@@ -31,7 +31,7 @@ def analysis_set():
                 'optional': True
             },
             'targeted_genes.symbol': {
-                'title': 'Readout Gene',
+                'title': 'Readout Genes',
                 'category': 'Analysis Set Details',
                 'description': 'A list of genes targeted by the assays for binding sites or used for sorting by expression.',
                 'optional': True
