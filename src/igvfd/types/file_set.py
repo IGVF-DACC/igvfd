@@ -1492,13 +1492,25 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def externally_hosted(self, request, files=None):
+    def externally_hosted(self, request, files=None, preferred_assay_titles=None):
         externally_hosted_value = False
+        external_assays = {
+            'Cell painting',
+            'Variant painting via fluorescence',
+            'Variant painting via immunostaining',
+        }
+        for title in preferred_assay_titles:
+            if title in external_assays:
+                externally_hosted_value = True
         if files:
             for current_file_path in files:
-                file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
+                file_object = request.embed(
+                    current_file_path,
+                    '@@object?skip_calculated=true'
+                )
                 if file_object.get('externally_hosted'):
                     externally_hosted_value = True
+
         return externally_hosted_value
 
 
