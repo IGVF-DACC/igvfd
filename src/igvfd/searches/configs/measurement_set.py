@@ -114,7 +114,7 @@ def measurement_set():
                 'optional': True
             },
             'construct_library_sets.small_scale_gene_list.symbol': {
-                'title': 'Investigated Gene',
+                'title': 'Investigated Genes',
                 'category': 'Library',
                 'description': 'Gene symbols for specific genes the construct library was designed to target.',
                 'optional': True
