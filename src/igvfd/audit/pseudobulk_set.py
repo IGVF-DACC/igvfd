@@ -12,7 +12,7 @@ from .formatter import (
 )
 
 
-def audit_pseudobulk_set_marker_gene_files(value, system, input_file_sets=None):
+def audit_pseudobulk_set_marker_gene_files(value, system):
     '''
     [
         {
@@ -24,14 +24,15 @@ def audit_pseudobulk_set_marker_gene_files(value, system, input_file_sets=None):
     '''
     audit_message = get_audit_message(audit_pseudobulk_set_marker_gene_files, index=0)
     marker_genes_files_in_input_file_set = []
-    if input_file_sets:
-        for input_file_set in input_file_sets:
-            input_file_set_object = system.get('request').embed(input_file_set, '@@object?skip_calculated=true')
+    if value.get('input_file_sets', []):
+        for input_file_set in value.get('input_file_sets', []):
+            input_file_set_object = system.get('request').embed(
+                input_file_set, '@@object_with_select_calculated_properties?field=files')
             files_in_input = input_file_set_object.get('files', [])
-            for tab_file in [x for x in files_in_input if x.startswith('/tabular-file/')]:
+            for tab_file in [x for x in files_in_input if x.startswith('/tabular-files/')]:
                 file_object = system.get('request').embed(tab_file, '@@object?skip_calculated=true')
                 if file_object.get('content_type', '') == 'marker genes':
-                    marker_genes_files_in_input_file_set.append(file_object['@id'])
+                    marker_genes_files_in_input_file_set.append(file_object.get('@id'))
     if not marker_genes_files_in_input_file_set:
         detail = (
             f'Pseudobulk set {audit_link(path_to_text(value["@id"]), value["@id"])} '
