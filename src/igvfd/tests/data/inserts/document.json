@@ -330,5 +330,18 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "491937b1-3fbe-4faa-95f3-2fa6ac246d73"
+    },
+    {
+        "aliases": [
+            "igvf:donor_characteristics"
+        ],
+        "description": "donor characteristics",
+        "attachment": "donor_characteristics.pdf",
+        "document_type": "donor characteristics",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "31f921cd-2a30-4306-a177-7afc2fad87cc"
     }
 ]
