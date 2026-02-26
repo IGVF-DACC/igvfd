@@ -4,8 +4,8 @@ import pytest
 def test_audit_audit_pseudobulk_set_marker_gene_files(
     testapp,
     pseudobulk_set_base,
-    tabular_file,
-    reference_file
+    analysis_set_base,
+    tabular_file
 ):
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
     assert any(
@@ -13,8 +13,15 @@ def test_audit_audit_pseudobulk_set_marker_gene_files(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {'input_file_sets': [analysis_set_base['@id']]}
+    )
+    testapp.patch_json(
         tabular_file['@id'],
-        {'content_type': 'marker genes'}
+        {
+            'file_set': analysis_set_base['@id'],
+            'content_type': 'marker genes'
+        }
     )
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
     assert all(
