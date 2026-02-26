@@ -1181,12 +1181,12 @@ def audit_missing_genome_transcriptome_references(value, system):
             "audit_level": "INTERNAL_ACTION"
         },
         {
-            "audit_description": "Tabular files in prediction sets contain genomic coordinates are expected to link to a genome reference.",
+            "audit_description": "Tabular files in prediction sets that contain genomic coordinates are expected to link to a genome reference.",
             "audit_category": "missing reference files",
             "audit_level": "INTERNAL_ACTION"
         },
         {
-            "audit_description": "Tabular files in prediction sets contain transcript identifiers are expected to link to a transcriptome reference.",
+            "audit_description": "Tabular files in prediction sets that contain transcript identifiers are expected to link to a transcriptome reference.",
             "audit_category": "missing reference files",
             "audit_level": "INTERNAL_ACTION"
         }
