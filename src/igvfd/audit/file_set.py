@@ -1515,6 +1515,12 @@ function_dispatcher_curated_set_object = {
     'audit_missing_genome_transcriptome_references': audit_missing_genome_transcriptome_references
 }
 
+function_dispatcher_pseudobulk_set_object = {
+    'audit_input_file_sets_derived_from': audit_input_file_sets_derived_from,
+    'audit_missing_genome_transcriptome_references': audit_missing_genome_transcriptome_references,
+    'audit_file_set_files_missing_analysis_step_version': audit_file_set_files_missing_analysis_step_version
+}
+
 
 @audit_checker('FileSet', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_file_set_object.values()))
@@ -1577,4 +1583,12 @@ def audit_model_set_object_dispatcher(value, system):
 def audit_curated_set_object_dispatcher(value, system):
     for function_name in function_dispatcher_curated_set_object.keys():
         for failure in function_dispatcher_curated_set_object[function_name](value, system):
+            yield failure
+
+
+@audit_checker('PseudobulkSet', frame='object')
+@watch_for_changes_in(functions=list(function_dispatcher_pseudobulk_set_object.values()))
+def audit_pseudobulk_set_object_dispatcher(value, system):
+    for function_name in function_dispatcher_pseudobulk_set_object.keys():
+        for failure in function_dispatcher_pseudobulk_set_object[function_name](value, system):
             yield failure

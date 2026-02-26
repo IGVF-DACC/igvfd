@@ -9,8 +9,7 @@
         "lab",
         "file_set_type",
         "samples",
-        "cell_annotation",
-        "marker_gene_file"
+        "cell_annotation"
     ],
     "identifyingProperties": [
         "uuid",
@@ -85,16 +84,6 @@
             "description": "The ontology term that describes the cell type of the cells in this pseudobulk.",
             "type": "string",
             "linkTo": "SampleTerm",
-            "submissionExample": {
-                "appscript": "[\"/sample-terms/CL_1230000/\"]",
-                "igvf_utils": "/sample-terms/CL_1230000/"
-            }
-        },
-        "marker_gene_file": {
-            "title": "Marker Gene File",
-            "description": "The file containing a table of marker genes used to annotate cells in this pseudobulk.",
-            "type": "string",
-            "linkTo": "TabularFile",
             "submissionExample": {
                 "appscript": "[\"/sample-terms/CL_1230000/\"]",
                 "igvf_utils": "/sample-terms/CL_1230000/"

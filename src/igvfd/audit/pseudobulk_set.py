@@ -12,30 +12,36 @@ from .formatter import (
 )
 
 
-def audit_pseudobulk_set_marker_gene_files(value, system):
+def audit_pseudobulk_set_marker_gene_files(value, system, input_file_sets=None):
     '''
     [
         {
-            "audit_description": "Pseudobulk sets should link to the marker gene list relevant for the annotated cells.",
+            "audit_description": "Pseudobulk sets require a marker genes file in their input file set(s).",
             "audit_category": "missing marker gene list",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
     audit_message = get_audit_message(audit_pseudobulk_set_marker_gene_files, index=0)
-    marker_gene_file = value.get('marker_gene_file', '')
-    if marker_gene_file:
-        file = system.get('request').embed(marker_gene_file, '@@object?skip_calculated=true')
-        if file.get('content_type', '') != 'marker genes':
-            detail = (
-                f'Pseudobulk set {audit_link(path_to_text(value["@id"]), value["@id"])} has no '
-                f'linked files in `marker_gene_file` with `content_type` marker genes.'
-            )
-            yield AuditFailure(
-                audit_message.get('audit_category', ''),
-                f'{detail} {audit_message.get("audit_description", "")}',
-                level=audit_message.get('audit_level', '')
-            )
+    marker_genes_files_in_input_file_set = []
+    if input_file_sets:
+        for input_file_set in input_file_sets:
+            input_file_set_object = system.get('request').embed(input_file_set, '@@object?skip_calculated=true')
+            files_in_input = input_file_set_object.get('files', [])
+            for tab_file in [x for x in files_in_input if x.startswith('/tabular-file/')]:
+                file_object = system.get('request').embed(tab_file, '@@object?skip_calculated=true')
+                if file_object.get('content_type', '') == 'marker genes':
+                    marker_genes_files_in_input_file_set.append(file_object['@id'])
+    if not marker_genes_files_in_input_file_set:
+        detail = (
+            f'Pseudobulk set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has no input file sets that have marker genes files.'
+        )
+        yield AuditFailure(
+            audit_message.get('audit_category', ''),
+            f'{detail} {audit_message.get("audit_description", "")}',
+            level=audit_message.get('audit_level', '')
+        )
 
 
 function_dispatcher_pseudobulk_set_object = {
