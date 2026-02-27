@@ -1390,7 +1390,7 @@ class MeasurementSet(FileSet):
                 ):
                     related_multiome_datasets.add(file_set_id)
 
-            # biological replicates and treatment time series (both use part_of)
+            # biological replicates and treatment time series (both use part_of); mutually exclusive
             part_of_sample = sample_object.get('part_of', '')
             if part_of_sample:
                 part_of_sample_object = request.embed(
@@ -1406,20 +1406,20 @@ class MeasurementSet(FileSet):
                             sample_part,
                             '@@object_with_select_calculated_properties?field=file_sets'
                         )
-                        related_part_of_datasets.update(
+                        part_measurement_sets = [
                             file_set for file_set in sample_part_object.get('file_sets', [])
                             if file_set.startswith('/measurement-sets/') and file_set != object_id and same_assay_term(request, assay_term, file_set)
-                        )
-                        # treatment time series: same set of treatments, differ by duration
+                        ]
+                        # treatment time series: same set of treatments, differ by duration -> only here
                         if current_treatment_set:
                             part_treatment_set, part_durations = _treatment_set_and_durations(
                                 request, sample_part
                             )
                             if part_treatment_set == current_treatment_set and part_durations != current_durations:
-                                related_treatment_time_series_datasets.update(
-                                    file_set for file_set in sample_part_object.get('file_sets', [])
-                                    if file_set.startswith('/measurement-sets/') and file_set != object_id and same_assay_term(request, assay_term, file_set)
-                                )
+                                related_treatment_time_series_datasets.update(part_measurement_sets)
+                                continue
+                        # otherwise biological replicates
+                        related_part_of_datasets.update(part_measurement_sets)
 
             # sorted fractions
             sorted_from_sample = sample_object.get('sorted_from', '')
