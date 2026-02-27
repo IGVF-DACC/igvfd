@@ -1179,6 +1179,16 @@ def audit_missing_genome_transcriptome_references(value, system):
             "audit_description": "Tabular files that contain genomic coordinates or refer to variants are expected to link to a genome reference.",
             "audit_category": "missing reference files",
             "audit_level": "INTERNAL_ACTION"
+        },
+        {
+            "audit_description": "Tabular files in prediction sets that contain genomic coordinates are expected to link to a genome reference.",
+            "audit_category": "missing reference files",
+            "audit_level": "INTERNAL_ACTION"
+        },
+        {
+            "audit_description": "Tabular files in prediction sets that contain transcript identifiers are expected to link to a transcriptome reference.",
+            "audit_category": "missing reference files",
+            "audit_level": "INTERNAL_ACTION"
         }
     ]
     '''
@@ -1187,11 +1197,36 @@ def audit_missing_genome_transcriptome_references(value, system):
     audit_message_genome = get_audit_message(audit_missing_genome_transcriptome_references, index=1)
     audit_message_transcriptome_tabular = get_audit_message(audit_missing_genome_transcriptome_references, index=2)
     audit_message_genome_tabular = get_audit_message(audit_missing_genome_transcriptome_references, index=3)
+    audit_message_prediction_genome = get_audit_message(audit_missing_genome_transcriptome_references, index=4)
+    audit_message_prediction_transcriptome = get_audit_message(audit_missing_genome_transcriptome_references, index=5)
     files = value.get('files', [])
     files_missing_genome = []  # List of files missing genome reference
     files_missing_transcriptome = []   # List of files missing transcriptome reference
     tabular_files_missing_genome = []  # List of tabular files missing genome reference
     tabular_files_missing_transcriptome = []   # List of tabular files missing transcriptome reference
+
+    # Content types requiring genome reference for prediction sets (all are tabular files so far)
+    prediction_genome_reference_content_types = [
+        'calibrated coding variant effects',
+        'aggregated calibrated coding variant effects',
+        'element to gene interactions',
+        'elements reference',
+        'gene quantifications',
+        'variant binding effects',
+        'variant effects',
+        'variant functions'
+    ]
+
+    # Content types requiring genome reference for prediction sets (all are tabular files so far)
+    prediction_transcriptome_reference_content_types = [
+        'calibrated coding variant effects',
+        'aggregated calibrated coding variant effects',
+        'coding variant effects',
+        'gene quantifications',
+        'machine learning model features',
+        'variant pathogenicity'
+    ]
+
     excluded_content_types_tabular_files = [
         'barcode onlist',
         'barcode replacement',
@@ -1245,6 +1280,48 @@ def audit_missing_genome_transcriptome_references(value, system):
     excluded_content_types_alignment_files = ['methylated reads']
     if value.get('file_set_type', '') == 'external data for catalog':
         return
+
+    # Handle Prediction Set separately
+    if 'PredictionSet' in value.get('@type', []):
+        prediction_tabular_files_missing_genome = []
+        prediction_tabular_files_missing_transcriptome = []
+
+        if files:
+            for file in files:
+                file_obj = system.get('request').embed(file + '@@object?skip_calculated=true')
+                content_type = file_obj.get('content_type', '')
+
+                if content_type in prediction_genome_reference_content_types:
+                    has_genome_reference = check_genome_or_transcriptome_reference(file, system, 'genome')
+                    if not has_genome_reference:
+                        prediction_tabular_files_missing_genome.append(file)
+
+                if content_type in prediction_transcriptome_reference_content_types:
+                    has_transcriptome_reference = check_genome_or_transcriptome_reference(file, system, 'transcriptome')
+                    if not has_transcriptome_reference:
+                        prediction_tabular_files_missing_transcriptome.append(file)
+
+        # Audit for missing genome references in prediction sets
+        if prediction_tabular_files_missing_genome:
+            prediction_tabular_files_missing_genome = join_obj_paths(
+                data_object_paths=prediction_tabular_files_missing_genome)
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has tabular file(s) with no genome `reference_files`: {prediction_tabular_files_missing_genome}.'
+            )
+            yield AuditFailure(audit_message_prediction_genome.get('audit_category', ''), f'{detail} {audit_message_prediction_genome.get("audit_description", "")}', level=audit_message_prediction_genome.get('audit_level', ''))
+
+        # Audit for missing transcriptome references in prediction sets
+        if prediction_tabular_files_missing_transcriptome:
+            prediction_tabular_files_missing_transcriptome = join_obj_paths(
+                data_object_paths=prediction_tabular_files_missing_transcriptome)
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has tabular file(s) with no transcriptome `reference_files`: {prediction_tabular_files_missing_transcriptome}.'
+            )
+            yield AuditFailure(audit_message_prediction_transcriptome.get('audit_category', ''), f'{detail} {audit_message_prediction_transcriptome.get("audit_description", "")}', level=audit_message_prediction_transcriptome.get('audit_level', ''))
+        return
+
     if files:
         for file in files:
             if not file.startswith(('/alignment-files/', '/matrix-files/', '/signal-files/', '/tabular-files/')):
@@ -1423,7 +1500,8 @@ function_dispatcher_prediction_set_object = {
     'audit_loci_valid_chrom_sizes': audit_loci_valid_chrom_sizes,
     'audit_input_file_sets_derived_from': audit_input_file_sets_derived_from,
     'audit_file_set_files_missing_analysis_step_version': audit_file_set_files_missing_analysis_step_version,
-    'audit_file_set_missing_description': audit_file_set_missing_description
+    'audit_file_set_missing_description': audit_file_set_missing_description,
+    'audit_missing_genome_transcriptome_references': audit_missing_genome_transcriptome_references
 }
 
 function_dispatcher_model_set_object = {

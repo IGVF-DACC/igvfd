@@ -144,3 +144,91 @@ def test_audit_unexpected_input_file_set(
     assert all(
         error['category'] != 'unexpected input file set'
         for error in res.json['audit'].get('ERROR', []))
+
+
+def test_audit_missing_genome_transcriptome_references(
+    testapp,
+    base_prediction_set,
+    tabular_file,
+    reference_file
+):
+    # No audits for missing reference files if content type is not included in audited list
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'content_type': 'calibrated coding variant effect thresholds',
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing reference files'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    # Missing genome reference audit
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'content_type': 'genome reference'
+        }
+    )
+
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'file_set': base_prediction_set['@id'],
+            'content_type': 'variant effects'
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing reference files'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    # Missing transcriptome reference audit
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'content_type': 'coding variant effects',
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing reference files'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    # fix audits with linking to transcriptome reference file
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'content_type': 'transcriptome reference'
+        }
+    )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'reference_files': [reference_file['@id']]
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing reference files'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    # fix audits with linking to genome reference file
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'content_type': 'genome reference'
+        }
+    )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'content_type': 'variant effects'
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing reference files'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
