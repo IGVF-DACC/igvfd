@@ -64,13 +64,14 @@ def test_related_measurement_sets_series_type_multiome(testapp, primary_cell, in
                ) == {measurement_set['@id'], measurement_set_multiome_2['@id']}
 
 
-def test_related_measurement_sets_series_type_biological_replicates(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra):
+def test_related_measurement_sets_series_type_biological_replicates(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra, assay_term_starr):
     # Set up: tissue is parent; primary_cell and in_vitro_cell_line are parts (part_of tissue).
     testapp.patch_json(primary_cell['@id'], {'part_of': tissue['@id']})
     testapp.patch_json(in_vitro_cell_line['@id'], {'part_of': tissue['@id']})
-    # Measurement set 1 -> primary_cell, measurement set 2 -> in_vitro_cell_line.
+    # Measurement set 1 -> primary_cell, measurement set 2 -> in_vitro_cell_line. Same assay_term required for non-multiome related sets.
     testapp.patch_json(measurement_set['@id'], {'samples': [primary_cell['@id']]})
-    testapp.patch_json(measurement_set_mpra['@id'], {'samples': [in_vitro_cell_line['@id']]})
+    testapp.patch_json(measurement_set_mpra['@id'], {'samples': [in_vitro_cell_line['@id']],
+                       'assay_term': assay_term_starr['@id'], 'preferred_assay_titles': ['STARR-seq']})
 
     res = testapp.get(measurement_set['@id'])
     related_measurement_sets = res.json.get('related_measurement_sets') or []
@@ -87,14 +88,15 @@ def test_related_measurement_sets_series_type_biological_replicates(testapp, tis
     assert bio_ids == {measurement_set['@id']}
 
 
-def test_related_measurement_sets_series_type_sorted_fractions(testapp, primary_cell, tissue, in_vitro_cell_line, measurement_set, measurement_set_mpra):
+def test_related_measurement_sets_series_type_sorted_fractions(testapp, primary_cell, tissue, in_vitro_cell_line, measurement_set, measurement_set_mpra, assay_term_starr):
     # Set up: primary_cell is parent; tissue and in_vitro_cell_line are sorted fractions (sorted_from primary_cell).
     testapp.patch_json(tissue['@id'], {'sorted_from': primary_cell['@id'], 'sorted_from_detail': 'detail 1'})
     testapp.patch_json(in_vitro_cell_line['@id'],
                        {'sorted_from': primary_cell['@id'], 'sorted_from_detail': 'detail 2'})
-    # Measurement set 1 -> tissue, measurement set 2 -> in_vitro_cell_line.
+    # Measurement set 1 -> tissue, measurement set 2 -> in_vitro_cell_line. Same assay_term required for non-multiome related sets.
     testapp.patch_json(measurement_set['@id'], {'samples': [tissue['@id']]})
-    testapp.patch_json(measurement_set_mpra['@id'], {'samples': [in_vitro_cell_line['@id']]})
+    testapp.patch_json(measurement_set_mpra['@id'], {'samples': [in_vitro_cell_line['@id']],
+                       'assay_term': assay_term_starr['@id'], 'preferred_assay_titles': ['STARR-seq']})
 
     res = testapp.get(measurement_set['@id'])
     related_measurement_sets = res.json.get('related_measurement_sets') or []
@@ -111,7 +113,7 @@ def test_related_measurement_sets_series_type_sorted_fractions(testapp, primary_
     assert sort_ids == {measurement_set['@id']}
 
 
-def test_related_measurement_sets_series_type_treatment_time_series(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra, treatment_chemical, lab, award):
+def test_related_measurement_sets_series_type_treatment_time_series(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra, treatment_chemical, lab, award, assay_term_starr):
     # part_of siblings, same treatment term, different duration -> treatment time series.
     testapp.patch_json(primary_cell['@id'], {'part_of': tissue['@id'], 'treatments': [treatment_chemical['@id']]})
     treatment_24h = testapp.post_json('/treatment', {
@@ -129,7 +131,8 @@ def test_related_measurement_sets_series_type_treatment_time_series(testapp, tis
     }, status=201).json['@graph'][0]
     testapp.patch_json(in_vitro_cell_line['@id'], {'part_of': tissue['@id'], 'treatments': [treatment_24h['@id']]})
     testapp.patch_json(measurement_set['@id'], {'samples': [primary_cell['@id']]})
-    testapp.patch_json(measurement_set_mpra['@id'], {'samples': [in_vitro_cell_line['@id']]})
+    testapp.patch_json(measurement_set_mpra['@id'], {'samples': [in_vitro_cell_line['@id']],
+                       'assay_term': assay_term_starr['@id'], 'preferred_assay_titles': ['STARR-seq']})
 
     res = testapp.get(measurement_set['@id'])
     related_measurement_sets = res.json.get('related_measurement_sets') or []
@@ -157,6 +160,25 @@ def test_related_measurement_sets_series_type_treatment_time_series_different_tr
     related_measurement_sets = res.json.get('related_measurement_sets') or []
     treatment_series_group = [g for g in related_measurement_sets if g.get('series_type') == 'treatment time series']
     assert len(treatment_series_group) == 0
+
+
+def test_related_measurement_sets_excludes_different_assay_term(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra):
+    # part_of siblings (biological replicates) but different assay_terms -> should NOT appear in related_measurement_sets.
+    # measurement_set has assay_term_starr, measurement_set_mpra has assay_term_mpra.
+    testapp.patch_json(primary_cell['@id'], {'part_of': tissue['@id']})
+    testapp.patch_json(in_vitro_cell_line['@id'], {'part_of': tissue['@id']})
+    testapp.patch_json(measurement_set['@id'], {'samples': [primary_cell['@id']]})
+    testapp.patch_json(measurement_set_mpra['@id'], {'samples': [in_vitro_cell_line['@id']]})
+
+    res = testapp.get(measurement_set['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'biological replicates']
+    assert len(bio_group) == 0
+
+    res = testapp.get(measurement_set_mpra['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'biological replicates']
+    assert len(bio_group) == 0
 
 
 def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modification_activation, construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction, construct_library_set_genome_wide, assay_term_y2h, construct_library_set_reference_transduction, multiplexed_sample):

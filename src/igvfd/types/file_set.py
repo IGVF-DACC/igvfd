@@ -46,6 +46,11 @@ def _treatment_set_and_durations(request, sample):
     return frozenset(treatment_set), durations
 
 
+def same_assay_term(request, assay_term, file_set_id):
+    obj = request.embed(file_set_id, '@@object?skip_calculated=true')
+    return obj.get('assay_term') == assay_term
+
+
 def get_file_objs_from_files(request, files):
     '''Get file objects from an array of files'''
     file_objs = []
@@ -1366,7 +1371,7 @@ class MeasurementSet(FileSet):
             },
             'notSubmittable': True,
         })
-    def related_measurement_sets(self, request, samples=None, multiome_size=None):
+    def related_measurement_sets(self, request, samples=None, multiome_size=None, assay_term=None):
         object_id = self.jsonld_id(request)
         related_multiome_datasets = set()
         related_part_of_datasets = set()
@@ -1403,7 +1408,7 @@ class MeasurementSet(FileSet):
                         )
                         related_part_of_datasets.update(
                             file_set for file_set in sample_part_object.get('file_sets', [])
-                            if file_set.startswith('/measurement-sets/')
+                            if file_set.startswith('/measurement-sets/') and file_set != object_id and same_assay_term(request, assay_term, file_set)
                         )
                         # treatment time series: same set of treatments, differ by duration
                         if current_treatment_set:
@@ -1413,7 +1418,7 @@ class MeasurementSet(FileSet):
                             if part_treatment_set == current_treatment_set and part_durations != current_durations:
                                 related_treatment_time_series_datasets.update(
                                     file_set for file_set in sample_part_object.get('file_sets', [])
-                                    if file_set.startswith('/measurement-sets/')
+                                    if file_set.startswith('/measurement-sets/') and file_set != object_id and same_assay_term(request, assay_term, file_set)
                                 )
 
             # sorted fractions
@@ -1431,7 +1436,7 @@ class MeasurementSet(FileSet):
                         )
                         related_sorted_from_datasets.update(
                             file_set for file_set in sorted_fraction_sample_object.get('file_sets', [])
-                            if file_set.startswith('/measurement-sets/')
+                            if file_set.startswith('/measurement-sets/') and file_set != object_id and same_assay_term(request, assay_term, file_set)
                         )
 
         result = []
