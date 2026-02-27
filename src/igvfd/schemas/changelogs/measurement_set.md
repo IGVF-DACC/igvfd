@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 43
+
+* Update `aliases` regex to add `yang-li` as a namespace.
+
 ### Schema version 43
 
 * Adjust `preferred_assay_titles` enum list to replace `DOGMA-seq` with `miDOGMA-seq`.

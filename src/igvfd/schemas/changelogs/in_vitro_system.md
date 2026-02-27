@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 29
 
+* Update `aliases` regex to add `yang-li` as a namespace.
 * Update `demultiplexed_from` to allow linking to MultiplexedSample.
 * Add `is_on_anvil`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.

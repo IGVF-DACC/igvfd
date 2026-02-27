@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 24
 
+* Update `aliases` regex to add `yang-li` as a namespace.
 * Add `is_on_anvil`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Add `selection_conditions`.

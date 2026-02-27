@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Update `aliases` regex to add `yang-li` as a namespace. (02/27/2026)
 * Add `is_on_anvil`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Extend `collections` enum list to include `E2G Pillar Project`.

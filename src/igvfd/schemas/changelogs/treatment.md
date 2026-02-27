@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Update `aliases` regex to add `yang-li` as a namespace.
 * Extend `treatment_type` enum list to include `thermal`.
 * Extend `purpose` enum list to include `chronic activation`.
 * Extend `purpose` enum list to include `acute activation`.

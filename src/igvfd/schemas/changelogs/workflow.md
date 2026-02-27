@@ -16,6 +16,7 @@
 
 ### Minor changes since schema version 6
 
+* Update `aliases` regex to add `yang-li` as a namespace.
 * Extend `preferred_assay_titles` enum list to include `DNase-seq`.
 * Add `preferred_assay_titles`.
 * Update `source_url` regex to include `https://support.parsebiosciences.com/`.
