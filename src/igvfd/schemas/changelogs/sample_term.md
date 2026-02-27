@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 6
 
+* Update `term_id` regex to include `PCL` ontology prefix.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Add `preview_timestamp`.
 

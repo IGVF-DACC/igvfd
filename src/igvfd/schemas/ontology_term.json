@@ -36,7 +36,7 @@
             "description": "An ontology identifier describing a biological sample, assay, trait, or disease.",
             "permission": "admin_only",
             "type": "string",
-            "pattern": "^(UBERON|EFO|CL|CLO|NTR|MONDO|OBA|HP|DOID):[0-9]{2,8}$"
+            "pattern": "^(UBERON|EFO|CL|CLO|NTR|MONDO|OBA|HP|DOID|PCL):[0-9]{2,8}$"
         },
         "term_name": {
             "title": "Term Name",

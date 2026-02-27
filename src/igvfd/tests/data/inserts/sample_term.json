@@ -64,5 +64,12 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "7cd887f0-c065-4380-94f8-e0a9d3b5e1c4"
+    },
+    {
+        "term_id": "PCL:0051091",
+        "term_name": "DLNP_90 near-projecting glutamatergic cortical neuron (Hsap)",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "a1b2c3d4-e5f6-4749-939e-cee38f5c7ab0"
     }
 ]
