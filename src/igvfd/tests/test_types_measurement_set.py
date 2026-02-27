@@ -137,16 +137,20 @@ def test_related_measurement_sets_series_type_treatment_time_series(testapp, tis
     res = testapp.get(measurement_set['@id'])
     related_measurement_sets = res.json.get('related_measurement_sets') or []
     treatment_series_group = [g for g in related_measurement_sets if g.get('series_type') == 'treatment time series']
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'biological replicates']
     assert len(treatment_series_group) == 1
     treatment_series_ids = {ms['@id'] for ms in treatment_series_group[0]['measurement_sets']}
     assert treatment_series_ids == {measurement_set_mpra['@id']}
+    assert len(bio_group) == 0  # mutually exclusive: not in biological replicates
 
     res = testapp.get(measurement_set_mpra['@id'])
     related_measurement_sets = res.json.get('related_measurement_sets') or []
     treatment_series_group = [g for g in related_measurement_sets if g.get('series_type') == 'treatment time series']
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'biological replicates']
     assert len(treatment_series_group) == 1
     treatment_series_ids = {ms['@id'] for ms in treatment_series_group[0]['measurement_sets']}
     assert treatment_series_ids == {measurement_set['@id']}
+    assert len(bio_group) == 0  # mutually exclusive: not in biological replicates
 
 
 def test_related_measurement_sets_series_type_treatment_time_series_different_treatments_excluded(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra, treatment_chemical, treatment_protein, lab, award):
