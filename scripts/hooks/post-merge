@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+# post-merge hook: detects when OpenSearch mapping files were
+# modified during a merge and prompts the user to regenerate them.
+#
+# Install:
+#   cp scripts/hooks/post-merge .git/hooks/post-merge
+#   chmod +x .git/hooks/post-merge
+
+MAPPING_DIR="src/igvfd/mappings"
+
+# Detect mapping changes from either side of the merge.
+# ORIG_HEAD vs HEAD catches our own changes that survived the merge.
+# ORIG_HEAD vs HEAD^2 catches changes from the merged branch that
+# the merge driver may have silently resolved (discarded).
+changed_from_ours=$(git diff --name-only ORIG_HEAD HEAD -- "$MAPPING_DIR" 2>/dev/null)
+changed_from_theirs=$(git diff --name-only ORIG_HEAD HEAD^2 -- "$MAPPING_DIR" 2>/dev/null)
+# Combine and deduplicate.
+changed_mappings=$(printf '%s\n' "$changed_from_ours" "$changed_from_theirs" | sort -u | grep .)
+
+if [ -z "$changed_mappings" ]; then
+    exit 0
+fi
+
+# Source the shared prompt logic.
+HOOK_DIR="$(dirname "$0")"
+. "$HOOK_DIR/prompt-mapping-regen.sh"
