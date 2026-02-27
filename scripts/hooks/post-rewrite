@@ -7,6 +7,11 @@
 #   cp scripts/hooks/post-rewrite .git/hooks/post-rewrite
 #   chmod +x .git/hooks/post-rewrite
 
+# Only act on rebase, not amend.
+if [ "$1" != "rebase" ]; then
+    exit 0
+fi
+
 MAPPING_DIR="src/igvfd/mappings"
 
 # Drain stdin (git provides old/new SHA pairs, we don't need them).
@@ -20,47 +25,6 @@ if [ -z "$changed_mappings" ]; then
     exit 0
 fi
 
-echo ""
-echo "========================================================"
-echo "  OpenSearch mapping files were modified during rebase."
-echo "========================================================"
-echo ""
-echo "Changed files:"
-echo "$changed_mappings" | sed 's/^/  /'
-echo ""
-
-# Check if stdin is a terminal (interactive).
-if [ -t 0 ] || [ -t 1 ]; then
-    read -r -p "Regenerate mappings now? [Y/n] " response < /dev/tty
-    case "$response" in
-        [nN]|[nN][oO])
-            echo ""
-            echo "Skipped. Run manually when ready:"
-            echo "  docker compose run pyramid /scripts/pyramid/generate-opensearch-mappings.sh"
-            echo ""
-            exit 0
-            ;;
-    esac
-
-    echo ""
-    echo "Regenerating OpenSearch mappings..."
-    echo ""
-
-    docker compose run pyramid /scripts/pyramid/generate-opensearch-mappings.sh
-
-    if [ $? -eq 0 ]; then
-        git add "$MAPPING_DIR"/*.json
-        git commit -m "Regenerate OpenSearch mappings after rebase"
-        echo ""
-        echo "Mappings regenerated and committed."
-    else
-        echo ""
-        echo "Mapping generation failed. Please regenerate manually:"
-        echo "  docker compose run pyramid /scripts/pyramid/generate-opensearch-mappings.sh"
-    fi
-else
-    # Non-interactive: just print the warning.
-    echo "Run the following command to regenerate:"
-    echo "  docker compose run pyramid /scripts/pyramid/generate-opensearch-mappings.sh"
-    echo ""
-fi
+# Source the shared prompt logic.
+HOOK_DIR="$(dirname "$0")"
+. "$HOOK_DIR/prompt-mapping-regen.sh"
