@@ -9,20 +9,12 @@
 
 MAPPING_DIR="src/igvfd/mappings"
 
-# Collect all old commit SHAs from stdin (provided by git).
-old_shas=()
-while read -r old_sha new_sha; do
-    old_shas+=("$old_sha")
-done
+# Drain stdin (git provides old/new SHA pairs, we don't need them).
+cat > /dev/null
 
-# Check if any mapping files differ between pre-rebase and current HEAD.
-# The first old SHA's parent approximates the pre-rebase base.
-if [ ${#old_shas[@]} -eq 0 ]; then
-    exit 0
-fi
-
-# Check if any mapping files were changed in the rebase.
-changed_mappings=$(git diff --name-only HEAD@{1} HEAD -- "$MAPPING_DIR" 2>/dev/null)
+# ORIG_HEAD points to where the branch was before the rebase.
+# Compare it against current HEAD to detect mapping changes.
+changed_mappings=$(git diff --name-only ORIG_HEAD HEAD -- "$MAPPING_DIR" 2>/dev/null)
 
 if [ -z "$changed_mappings" ]; then
     exit 0
