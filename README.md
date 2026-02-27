@@ -103,3 +103,18 @@ $ echo '{"index_name": "", "item_type": ""}' > src/igvfd/mappings/new_type.json
 ```
 
 Once the JSON template exists the correct values will be filled in by the `generate-opensearch-mappings.sh` script.
+
+### Automatic mapping conflict resolution during rebase
+
+When rebasing onto `dev`, mapping JSON files often conflict because both branches regenerated mappings. Since these files are fully generated from source code, the conflicts can be resolved automatically.
+
+**One-time setup** (run from the repository root):
+```bash
+# Configure git to auto-resolve mapping file conflicts during rebase.
+git config merge.generated-mappings.driver true
+# Install the post-rewrite hook to prompt for mapping regeneration.
+cp scripts/hooks/post-rewrite .git/hooks/post-rewrite
+chmod +x .git/hooks/post-rewrite
+```
+
+After setup, `git rebase dev` will no longer produce conflicts on mapping files. When the rebase completes, the hook will detect that mappings changed and prompt you to regenerate them automatically.
