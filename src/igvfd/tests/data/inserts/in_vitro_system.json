@@ -198,7 +198,8 @@
         "sorted_from": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/",
         "sorted_from_detail": "test insert description",
         "virtual": false,
-        "nucleic_acid_delivery": "transformation"
+        "nucleic_acid_delivery": "transformation",
+        "growth_medium": "neurotrophic agonist factors"
     },
     {
         "uuid": "577fbe38-b700-20af-624c-02429a9da2cf",
@@ -284,7 +285,8 @@
         "modifications": [
             "b4a370ee-18a7-2857-bc2b-b157d05f4458"
         ],
-        "demultiplexed_from": "IGVFSM0000MPXD"
+        "demultiplexed_from": "IGVFSM0000MPXD",
+        "growth_medium": "laminin mouse protein"
     },
     {
         "uuid": "23dd9597-fc37-4ca9-be1f-15ecf3cf9ed3",

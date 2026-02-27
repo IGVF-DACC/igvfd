@@ -565,7 +565,9 @@
                 "SMBM without serum",
                 "1 kPa hydrogel",
                 "50 kPa hydrogel",
-                "tissue culture plastic plates (no hydrogel)"
+                "tissue culture plastic plates (no hydrogel)",
+                "laminin mouse protein",
+                "neurotrophic agonist factors"
             ],
             "submissionExample": {
                 "appscript": "DMEM with serum",
