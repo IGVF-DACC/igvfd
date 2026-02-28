@@ -2174,7 +2174,7 @@ class PseudobulkSet(FileSet):
     schema = load_schema('igvfd:schemas/pseudobulk_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
-        Path('cell_annotation', include=['@id', 'term_name', 'status']),
+        Path('cell_type', include=['@id', 'term_name', 'status']),
         Path(
             'samples.sample_terms',
             include=[

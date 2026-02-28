@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Extend `analysis_step_types` enum list to include `pseudobulking`.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Extend `input_content_types` enum list to include `allele specific sparse gene count matrix`.
 * Extend `output_content_types` enum list to include `allele specific sparse gene count matrix`.

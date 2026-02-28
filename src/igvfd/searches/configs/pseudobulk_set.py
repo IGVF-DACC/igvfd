@@ -24,7 +24,7 @@ def pseudobulk_set():
                 'category': 'Sample',
                 'description': 'The organism or species associated with the donor.'
             },
-            'cell_annotation.term_name': {
+            'cell_type.term_name': {
                 'title': 'Cell Annotation',
                 'category': 'Sample',
                 'description': 'The cell annotation of the pseudobulk.',

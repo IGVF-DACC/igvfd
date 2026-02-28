@@ -9,7 +9,7 @@
         "lab",
         "file_set_type",
         "samples",
-        "cell_annotation"
+        "cell_type"
     ],
     "identifyingProperties": [
         "uuid",
@@ -79,8 +79,8 @@
                 "igvf_utils": "pseudobulk analysis"
             }
         },
-        "cell_annotation": {
-            "title": "Cell Annotation",
+        "cell_type": {
+            "title": "Cell Type",
             "description": "The ontology term that describes the cell type of the cells in this pseudobulk.",
             "type": "string",
             "linkTo": "SampleTerm",

@@ -14,6 +14,6 @@ def pseudobulk_set_base(
         'lab': lab['@id'],
         'file_set_type': 'pseudobulk analysis',
         'samples': [tissue['@id']],
-        'cell_annotation': sample_term_endothelial_cell['@id']
+        'cell_type': sample_term_endothelial_cell['@id']
     }
     return testapp.post_json('/pseudobulk_set', item, status=201).json['@graph'][0]
