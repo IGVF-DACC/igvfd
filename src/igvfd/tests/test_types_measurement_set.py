@@ -153,12 +153,14 @@ def test_related_measurement_sets_series_type_treatment_time_series(testapp, tis
     assert len(bio_group) == 0  # mutually exclusive: not in biological replicates
 
 
-def test_related_measurement_sets_series_type_treatment_time_series_different_treatments_excluded(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra, treatment_chemical, treatment_protein, lab, award):
+def test_related_measurement_sets_series_type_treatment_time_series_different_treatments_excluded(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra, treatment_chemical, treatment_protein, lab, award, assay_term_starr):
     # part_of siblings, different treatment terms -> no treatment time series.
     testapp.patch_json(primary_cell['@id'], {'part_of': tissue['@id'], 'treatments': [treatment_chemical['@id']]})
     testapp.patch_json(in_vitro_cell_line['@id'], {'part_of': tissue['@id'], 'treatments': [treatment_protein['@id']]})
-    testapp.patch_json(measurement_set['@id'], {'samples': [primary_cell['@id']]})
-    testapp.patch_json(measurement_set_mpra['@id'], {'samples': [in_vitro_cell_line['@id']]})
+    testapp.patch_json(measurement_set['@id'],
+                       {'samples': [primary_cell['@id']], 'assay_term': assay_term_starr['@id']})
+    testapp.patch_json(measurement_set_mpra['@id'],
+                       {'samples': [in_vitro_cell_line['@id']], 'assay_term': assay_term_starr['@id']})
 
     res = testapp.get(measurement_set['@id'])
     related_measurement_sets = res.json.get('related_measurement_sets') or []
