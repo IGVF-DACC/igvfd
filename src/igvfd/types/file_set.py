@@ -1360,7 +1360,7 @@ class MeasurementSet(FileSet):
                         'type': 'string',
                         'enum': [
                             'multiome',
-                            'biological replicates',
+                            'replicates',
                             'sorted fractions',
                             'treatment time series'
                         ],
@@ -1390,7 +1390,7 @@ class MeasurementSet(FileSet):
                 ):
                     related_multiome_datasets.add(file_set_id)
 
-            # biological replicates and treatment time series (both use part_of); mutually exclusive
+            # replicates and treatment time series (both use part_of); mutually exclusive
             part_of_sample = sample_object.get('part_of', '')
             if part_of_sample:
                 part_of_sample_object = request.embed(
@@ -1418,7 +1418,7 @@ class MeasurementSet(FileSet):
                             if part_treatment_set == current_treatment_set and part_durations != current_durations:
                                 related_treatment_time_series_datasets.update(part_measurement_sets)
                                 continue
-                        # otherwise biological replicates
+                        # otherwise replicates
                         related_part_of_datasets.update(part_measurement_sets)
 
             # sorted fractions
@@ -1449,7 +1449,7 @@ class MeasurementSet(FileSet):
 
         if related_part_of_datasets:
             result.append({
-                'series_type': 'biological replicates',
+                'series_type': 'replicates',
                 'measurement_sets': sorted(related_part_of_datasets),
             })
 

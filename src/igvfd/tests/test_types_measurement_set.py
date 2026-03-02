@@ -75,14 +75,14 @@ def test_related_measurement_sets_series_type_biological_replicates(testapp, tis
 
     res = testapp.get(measurement_set['@id'])
     related_measurement_sets = res.json.get('related_measurement_sets') or []
-    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'biological replicates']
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'replicates']
     assert len(bio_group) == 1
     bio_ids = {ms['@id'] for ms in bio_group[0]['measurement_sets']}
     assert bio_ids == {measurement_set_mpra['@id']}
 
     res = testapp.get(measurement_set_mpra['@id'])
     related_measurement_sets = res.json.get('related_measurement_sets') or []
-    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'biological replicates']
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'replicates']
     assert len(bio_group) == 1
     bio_ids = {ms['@id'] for ms in bio_group[0]['measurement_sets']}
     assert bio_ids == {measurement_set['@id']}
@@ -137,20 +137,20 @@ def test_related_measurement_sets_series_type_treatment_time_series(testapp, tis
     res = testapp.get(measurement_set['@id'])
     related_measurement_sets = res.json.get('related_measurement_sets') or []
     treatment_series_group = [g for g in related_measurement_sets if g.get('series_type') == 'treatment time series']
-    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'biological replicates']
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'replicates']
     assert len(treatment_series_group) == 1
     treatment_series_ids = {ms['@id'] for ms in treatment_series_group[0]['measurement_sets']}
     assert treatment_series_ids == {measurement_set_mpra['@id']}
-    assert len(bio_group) == 0  # mutually exclusive: not in biological replicates
+    assert len(bio_group) == 0  # mutually exclusive: not in replicates
 
     res = testapp.get(measurement_set_mpra['@id'])
     related_measurement_sets = res.json.get('related_measurement_sets') or []
     treatment_series_group = [g for g in related_measurement_sets if g.get('series_type') == 'treatment time series']
-    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'biological replicates']
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'replicates']
     assert len(treatment_series_group) == 1
     treatment_series_ids = {ms['@id'] for ms in treatment_series_group[0]['measurement_sets']}
     assert treatment_series_ids == {measurement_set['@id']}
-    assert len(bio_group) == 0  # mutually exclusive: not in biological replicates
+    assert len(bio_group) == 0  # mutually exclusive: not in replicates
 
 
 def test_related_measurement_sets_series_type_treatment_time_series_different_treatments_excluded(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra, treatment_chemical, treatment_protein, lab, award, assay_term_starr):
@@ -169,7 +169,7 @@ def test_related_measurement_sets_series_type_treatment_time_series_different_tr
 
 
 def test_related_measurement_sets_excludes_different_assay_term(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra):
-    # part_of siblings (biological replicates) but different assay_terms -> should NOT appear in related_measurement_sets.
+    # part_of siblings (replicates) but different assay_terms -> should NOT appear in related_measurement_sets.
     # measurement_set has assay_term_starr, measurement_set_mpra has assay_term_mpra.
     testapp.patch_json(primary_cell['@id'], {'part_of': tissue['@id']})
     testapp.patch_json(in_vitro_cell_line['@id'], {'part_of': tissue['@id']})
@@ -178,12 +178,12 @@ def test_related_measurement_sets_excludes_different_assay_term(testapp, tissue,
 
     res = testapp.get(measurement_set['@id'])
     related_measurement_sets = res.json.get('related_measurement_sets') or []
-    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'biological replicates']
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'replicates']
     assert len(bio_group) == 0
 
     res = testapp.get(measurement_set_mpra['@id'])
     related_measurement_sets = res.json.get('related_measurement_sets') or []
-    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'biological replicates']
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'replicates']
     assert len(bio_group) == 0
 
 
