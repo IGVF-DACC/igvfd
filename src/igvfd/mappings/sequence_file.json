@@ -1,6 +1,6 @@
 {
-    "hash": "307659a0688abcfb2692f3be9aa7488d",
-    "index_name": "sequence_file_307659a0",
+    "hash": "bc9ee10a049e6072f71f959da68d4b3d",
+    "index_name": "sequence_file_bc9ee10a",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -653,10 +653,10 @@
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
-                            "cell_annotation": {
+                            "cell_qualifier": {
                                 "type": "keyword"
                             },
-                            "cell_qualifier": {
+                            "cell_type": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1819,9 +1819,6 @@
                                 "type": "object"
                             },
                             "software_versions": {
-                                "type": "keyword"
-                            },
-                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {

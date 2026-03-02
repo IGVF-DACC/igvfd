@@ -1,6 +1,6 @@
 {
-    "hash": "98440186d9568aa662f6f953ce80cfa7",
-    "index_name": "configuration_file_98440186",
+    "hash": "5dd8c91d52a5ef460dc4cf2b36bb05ee",
+    "index_name": "configuration_file_5dd8c91d",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -648,10 +648,10 @@
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
-                            "cell_annotation": {
+                            "cell_qualifier": {
                                 "type": "keyword"
                             },
-                            "cell_qualifier": {
+                            "cell_type": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1814,9 +1814,6 @@
                                 "type": "object"
                             },
                             "software_versions": {
-                                "type": "keyword"
-                            },
-                            "source_biosamples": {
                                 "type": "keyword"
                             },
                             "sources": {
