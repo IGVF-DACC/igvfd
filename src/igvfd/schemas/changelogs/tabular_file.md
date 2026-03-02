@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 19
 
+* Extend `assembly` enum list to include `GRCh38, GRCm39`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE 44, GENCODE M33`.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Extend `content_type` enum list to include `chromatin contact quantifications`.
