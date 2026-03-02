@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 6
 
+* Update `aliases` regex to add `yang-li` as a namespace.
 * Add `website_url`.
 * Add `preview_timestamp`.
 * Update `aliases` regex to add `igvf-dacc-processing-pipeline` as a namespace.

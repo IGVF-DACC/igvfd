@@ -1,5 +1,9 @@
 ## Changelog for *`tissue/organ.json`*
 
+### Minor changes since schema version 24
+
+* Update `aliases` regex to add `yang-li` as a namespace.
+
 ### Schema version 24
 
 * Remove `ccf_id`.

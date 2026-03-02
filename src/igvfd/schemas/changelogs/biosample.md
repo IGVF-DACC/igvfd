@@ -1,5 +1,6 @@
 ## Changelog for *`biosample.json`*
 
+* Update `aliases` regex to add `yang-li` as a namespace. (02/27/2026)
 * Add `is_on_anvil`. (02/18/2026)
 * Add `selection_conditions`. (01/15/2026)
 * Extend `nucleic_acid_delivery` enum list to include `transformation`. (01/14/2026)

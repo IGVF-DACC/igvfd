@@ -1,5 +1,6 @@
 ## Changelog for *`ontology_term.json`*
 
+* Update `aliases` regex to add `yang-li` as a namespace. (02/27/2026)
 * Add `preview_timestamp`. (05/06/2025)
 * Add calculated `comments`. (04/22/2025)
 * Add calculated `definition`. (04/22/2025)

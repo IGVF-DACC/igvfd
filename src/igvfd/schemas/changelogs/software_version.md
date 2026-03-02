@@ -1,5 +1,9 @@
 ## Changelog for *`software_version.json`*
 
+### Minor changes since schema version 8
+
+* Update `aliases` regex to add `yang-li` as a namespace.
+
 ### Schema version 8
 
 * Remove `download_id`.

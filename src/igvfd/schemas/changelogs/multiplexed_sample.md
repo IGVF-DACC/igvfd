@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Update `aliases` regex to add `yang-li` as a namespace.
 * Add calculated property `demultiplexed_to`.
 * Add `is_on_anvil`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.

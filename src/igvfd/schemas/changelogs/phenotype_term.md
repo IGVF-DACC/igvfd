@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Update `aliases` regex to add `yang-li` as a namespace.
 * Add `preview_timestamp`.
 
 ### Schema version 5

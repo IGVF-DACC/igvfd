@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Update `aliases` regex to add `yang-li` as a namespace. (02/27/2026)
 * Add `is_on_anvil`. (02/18/2026)
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`. (02/12/2026)
 * Extend `preferred_assay_titles` enum list to include `MAVE`. (11/19/2025)

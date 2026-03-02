@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 19
 
+* Update `aliases` regex to add `yang-li` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Extend `content_type` enum list to include `chromatin contact quantifications`.
 * Extend `content_type` enum list to include `methylation counts`.

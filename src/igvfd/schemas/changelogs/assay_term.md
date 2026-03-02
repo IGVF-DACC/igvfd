@@ -1,5 +1,9 @@
 ## Changelog for *`assay_term.json`*
 
+### Minor changes since schema version 21
+
+* Update `aliases` regex to add `yang-li` as a namespace.
+
 ### Schema version 21
 
 * Adjust `preferred_assay_titles` enum list to replace `DOGMA-seq` with `miDOGMA-seq`.
