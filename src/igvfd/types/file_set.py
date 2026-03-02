@@ -2218,6 +2218,9 @@ class PseudobulkSet(FileSet):
     def summary(self, request, cell_type, samples, cell_qualifier=None):
         source_biosample_classifications = set()
         source_biosample_terms = set()
+        cell_qualifier_string = ''
+        if cell_qualifier:
+            cell_qualifier_string = cell_qualifier
         cell_type_object = request.embed(cell_type, '@@object')
         for sample in samples:
             sample_object = request.embed(sample, '@@object')
@@ -2228,14 +2231,14 @@ class PseudobulkSet(FileSet):
             source_biosample_terms.add(sample_term_object.get('term_name', ''))
         summary_phrase = ''
         if len(source_biosample_classifications) == 1 and 'cell line' in source_biosample_classifications:
-            summary_phrase = f'{cell_qualifier} {cell_type_object.get("term_name", "")} derived from {", ".join(source_biosample_terms)}'.strip(
+            summary_phrase = f'{cell_qualifier_string} {cell_type_object.get("term_name", "")} derived from {", ".join(source_biosample_terms)}'.strip(
             )
         else:
             summary_phrase = ' '.join(x for x in [
                 ', '.join(source_biosample_terms),
-                cell_qualifier,
+                cell_qualifier_string,
                 cell_type_object.get('term_name', '')
-            ] if x is not None)
+            ] if x not in [None, ''])
         return f'Pseudobulk of {summary_phrase}'
 
     @calculated_property(
