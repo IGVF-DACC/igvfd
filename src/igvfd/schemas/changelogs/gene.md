@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Extend `locations.assembly` enum list to include `GRCh38, GRCm39`.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 
