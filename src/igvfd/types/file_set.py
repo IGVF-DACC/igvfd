@@ -21,6 +21,36 @@ def get_donors_from_samples(request, samples):
     return sorted(set(donor_objects)) or None
 
 
+def _treatment_set_and_durations(request, sample):
+    """Return (frozenset of treatment_term_id, dict of treatment_term_id -> (duration, duration_units)).
+    Same set of treatments is defined by treatment term id, not by treatment @id,
+    so e.g. lactate 1h and lactate 24h count as the same treatment with different duration.
+    """
+    sample_with_treatments = request.embed(
+        sample, '@@object_with_select_calculated_properties?field=treatments'
+    )
+    treatment_ids = sample_with_treatments.get('treatments') or []
+    if not treatment_ids:
+        return frozenset(), {}
+    treatment_set = set()
+    durations = {}
+    for tid in treatment_ids:
+        t_obj = request.embed(tid, '@@object?skip_calculated=true')
+        term_id = t_obj.get('treatment_term_id')
+        if term_id is not None:
+            treatment_set.add(term_id)
+            d = t_obj.get('duration')
+            u = t_obj.get('duration_units')
+            if d is not None and u is not None:
+                durations[term_id] = (d, u)
+    return frozenset(treatment_set), durations
+
+
+def same_assay_term(request, assay_term, file_set_id):
+    obj = request.embed(file_set_id, '@@object?skip_calculated=true')
+    return obj.get('assay_term') == assay_term
+
+
 def get_file_objs_from_files(request, files):
     '''Get file objects from an array of files'''
     file_objs = []
@@ -1324,6 +1354,9 @@ class MeasurementSet(FileSet):
                         'type': 'string',
                         'enum': [
                             'multiome',
+                            'replicates',
+                            'sorted fractions',
+                            'treatment time series'
                         ],
                     },
                 },
@@ -1332,12 +1365,17 @@ class MeasurementSet(FileSet):
             },
             'notSubmittable': True,
         })
-    def related_measurement_sets(self, request, samples=None, multiome_size=None):
+    def related_measurement_sets(self, request, samples=None, multiome_size=None, assay_term=None):
         object_id = self.jsonld_id(request)
         related_multiome_datasets = set()
+        related_part_of_datasets = set()
+        related_sorted_from_datasets = set()
+        related_treatment_time_series_datasets = set()
 
         for sample in samples:
             sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=file_sets')
+
+            # multiome
             for file_set_id in sample_object.get('file_sets', []):
                 if (
                     file_set_id.startswith('/measurement-sets/')
@@ -1346,12 +1384,79 @@ class MeasurementSet(FileSet):
                 ):
                     related_multiome_datasets.add(file_set_id)
 
+            # replicates and treatment time series (both use part_of); mutually exclusive
+            part_of_sample = sample_object.get('part_of', '')
+            if part_of_sample:
+                part_of_sample_object = request.embed(
+                    part_of_sample,
+                    '@@object_with_select_calculated_properties?field=parts'
+                )
+                current_treatment_set, current_durations = _treatment_set_and_durations(
+                    request, sample
+                )
+                for sample_part in part_of_sample_object.get('parts', []):
+                    if sample_part != sample:
+                        sample_part_object = request.embed(
+                            sample_part,
+                            '@@object_with_select_calculated_properties?field=file_sets'
+                        )
+                        part_measurement_sets = [
+                            file_set for file_set in sample_part_object.get('file_sets', [])
+                            if file_set.startswith('/measurement-sets/') and file_set != object_id and same_assay_term(request, assay_term, file_set)
+                        ]
+                        # treatment time series: same set of treatments, differ by duration -> only here
+                        if current_treatment_set:
+                            part_treatment_set, part_durations = _treatment_set_and_durations(
+                                request, sample_part
+                            )
+                            if part_treatment_set == current_treatment_set and part_durations != current_durations:
+                                related_treatment_time_series_datasets.update(part_measurement_sets)
+                                continue
+                        # otherwise replicates
+                        related_part_of_datasets.update(part_measurement_sets)
+
+            # sorted fractions
+            sorted_from_sample = sample_object.get('sorted_from', '')
+            if sorted_from_sample:
+                sorted_from_sample_object = request.embed(
+                    sorted_from_sample,
+                    '@@object_with_select_calculated_properties?field=sorted_fractions'
+                )
+                for sorted_fraction_sample in sorted_from_sample_object.get('sorted_fractions', []):
+                    if sorted_fraction_sample != sample:
+                        sorted_fraction_sample_object = request.embed(
+                            sorted_fraction_sample,
+                            '@@object_with_select_calculated_properties?field=file_sets'
+                        )
+                        related_sorted_from_datasets.update(
+                            file_set for file_set in sorted_fraction_sample_object.get('file_sets', [])
+                            if file_set.startswith('/measurement-sets/') and file_set != object_id and same_assay_term(request, assay_term, file_set)
+                        )
+
         result = []
 
         if related_multiome_datasets:
             result.append({
                 'series_type': 'multiome',
                 'measurement_sets': sorted(related_multiome_datasets),
+            })
+
+        if related_part_of_datasets:
+            result.append({
+                'series_type': 'replicates',
+                'measurement_sets': sorted(related_part_of_datasets),
+            })
+
+        if related_sorted_from_datasets:
+            result.append({
+                'series_type': 'sorted fractions',
+                'measurement_sets': sorted(related_sorted_from_datasets),
+            })
+
+        if related_treatment_time_series_datasets:
+            result.append({
+                'series_type': 'treatment time series',
+                'measurement_sets': sorted(related_treatment_time_series_datasets),
             })
 
         return result or None
