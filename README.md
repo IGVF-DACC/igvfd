@@ -115,4 +115,3 @@ To enable the merge driver run (you only need to do this once):
 ```bash
 $ git config merge.generated-mappings.driver true
 ```
-
