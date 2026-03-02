@@ -31,7 +31,7 @@ def analysis_set():
                 'optional': True
             },
             'targeted_genes.symbol': {
-                'title': 'Readout Gene',
+                'title': 'Readout Genes',
                 'category': 'Analysis Set Details',
                 'description': 'A list of genes targeted by the assays for binding sites or used for sorting by expression.',
                 'optional': True
@@ -110,7 +110,7 @@ def analysis_set():
                 'description': 'Ontological terms for diseases or phenotypes associated with this analysis set.',
             },
             'construct_library_sets.small_scale_gene_list.symbol': {
-                'title': 'Investigated Gene',
+                'title': 'Investigated Genes',
                 'category': 'Library',
                 'description': 'Gene symbols for specific genes the construct library was designed to target.',
                 'optional': True

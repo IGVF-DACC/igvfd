@@ -65,10 +65,10 @@ def file_set():
                 'title': 'Associated Phenotypes'
             },
             'construct_library_sets.small_scale_gene_list.symbol': {
-                'title': 'Investigated Gene'
+                'title': 'Investigated Genes'
             },
             'targeted_genes.symbol': {
-                'title': 'Readout Gene'
+                'title': 'Readout Genes'
             },
             'collections': {
                 'title': 'Collections',

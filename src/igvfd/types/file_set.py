@@ -507,6 +507,7 @@ class AnalysisSet(FileSet):
             '/assay-terms/OBI_0003659/',
             '/assay-terms/OBI_0003661/'
         ]
+        any_sample_sorted_from = False
 
         def format_assay(assay_titles, preferred_assay_titles):
             if any(t in target_assays for t in preferred_assay_titles):
@@ -600,10 +601,12 @@ class AnalysisSet(FileSet):
         if len(cls_set) > 0:
             cls_phrase = get_cls_phrase(cls_set, only_cls_input=only_cls_input)
 
-        # Collect CRISPR modalities and file set type from associated samples.
+        # Collect CRISPR modalities, file set type, and sorted_from from associated samples.
         if samples:
             for sample in samples:
                 sample_object = request.embed(sample, '@@object?skip_calculated=true')
+                if 'sorted_from' in sample_object:
+                    any_sample_sorted_from = True
                 if 'modifications' in sample_object and 'guide library' in cls_type_set:
                     for modification in sample_object['modifications']:
                         modification_object = request.embed(modification, '@@object?skip_calculated=true')
@@ -640,10 +643,13 @@ class AnalysisSet(FileSet):
             mux_method_list = [method_phrase_map[x] for x in sorted(multiplexing_methods)]
             mux_method_phrase = f'({", ".join(mux_method_list)} multiplexed)'
             assay_title_phrase = f'{assay_title_phrase} {mux_method_phrase}'
-        # Targeted genes.
+        # Targeted genes: "sorted on expression of X" when samples have sorted_from (flow cytometry), else "targeting X".
         targeted_genes_phrase = ''
         if targeted_genes:
-            targeted_genes_phrase = f'targeting {", ".join(targeted_genes)}'
+            if any_sample_sorted_from:
+                targeted_genes_phrase = f'sorted on expression of {", ".join(sorted(targeted_genes))}'
+            else:
+                targeted_genes_phrase = f'targeting {", ".join(sorted(targeted_genes))}'
         # The file set types are only shown if the inputs are all Auxiliary Sets
         # and the Measurement Sets related to the Auxiliary Sets are not CRISPR screens.
         file_set_type_phrase = ''
@@ -1383,8 +1389,11 @@ class MeasurementSet(FileSet):
                 cls_type_set.add(construct_library_set_object['file_set_type'])
                 cls_set.add(construct_library_set_object['summary'])
 
+        any_sample_sorted_from = False
         for sample in samples:
             sample_object = request.embed(sample, '@@object')
+            if 'sorted_from' in sample_object:
+                any_sample_sorted_from = True
             if sample_object.get('modifications') and 'guide library' in cls_type_set:
                 for modification in sample_object.get('modifications'):
                     modality = request.embed(modification).get('modality', '')
@@ -1402,9 +1411,9 @@ class MeasurementSet(FileSet):
             assay = preferred_assay_title
 
         if targeted_genes:
-            # Special case for CRISPR screens using flow cytometry
-            if request.embed(assay_term)['term_id'] == 'OBI:0003661':
-                target_phrase = f' sorted on the expression of'
+            # "sorted on expression of" when samples have sorted_from (flow cytometry), else "targeting"
+            if any_sample_sorted_from:
+                target_phrase = f' sorted on expression of'
             else:
                 target_phrase = f' targeting'
             if len(targeted_genes) > 5:
