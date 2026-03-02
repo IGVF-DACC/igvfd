@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 4
 
+* Extend `fused_domain` enum list to include `ZNF563KRAB`.
+* Extend `fused_domain` enum list to include `p300-2A-PuroR`.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Extend `fused_domain` enum list to include `Tet1`.
 * Add `preview_timestamp`.
