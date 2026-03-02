@@ -309,6 +309,7 @@
                 "loci": "A table listing genomic loci.",
                 "external source data": "File containing a list of urls used as a source.",
                 "machine learning model features": "The features used in a machine learning model.",
+                "marker genes": "A list of genes that are relevant to the cell type of a pseudobulked data set based on the gene expression levels.",
                 "methylation counts": "A CpG-level summary of methylation counts and coverage.",
                 "minus strand modification state": "A file with the bases on the minus strand where a DNA or RNA modification was detected.",
                 "modification state": "An unstranded file with the bases where a DNA or RNA modification was detected.",
