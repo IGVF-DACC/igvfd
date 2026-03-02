@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 12
 
+* Extend `file_set_type` enum list to include `full-length DNA sequencing`.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Add `is_on_anvil`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
