@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Extend `document_type` enum list to include `donor characteristics`.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Extend `document_type` enum list to include `cell marker file`.
 * Extend `document_type` enum list to include `tile coordinates`.
