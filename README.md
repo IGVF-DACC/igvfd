@@ -103,3 +103,15 @@ $ echo '{"index_name": "", "item_type": ""}' > src/igvfd/mappings/new_type.json
 ```
 
 Once the JSON template exists the correct values will be filled in by the `generate-opensearch-mappings.sh` script.
+
+### Enable custom merge driver to assist mapping conflict resolution (optional)
+
+When rebasing onto `dev` mapping JSON files often conflict because both branches regenerated mappings. Enabling this will simplify the rebasing process by always keeping the mappings from the base (usually dev) branch. The driver also prints a reminder to regenerate mappings after the rebase. When this is enabled, the rebasing workflow is simply:
+1. Rebase and resolve possible non-mapping related conflicts.
+2. Regenerate mappings (the driver will remind you).
+3. Commit and push.
+
+To enable the merge driver run (you only need to do this once):
+```bash
+$ git config --local include.path ../.gitconfig
+```
