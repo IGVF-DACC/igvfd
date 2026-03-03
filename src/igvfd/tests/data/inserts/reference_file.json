@@ -497,5 +497,26 @@
         "supersedes": [
             "IGVFFI1234KLJH"
         ]
+    },
+    {
+        "uuid": "c8899e0f-7c1d-464e-b1b7-0877194e72cc",
+        "accession": "IGVFFI0038MOUS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:10XGenomics-refdata-gex-GRCh38_and_GRCm39-2024-A"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-03-01T12:34:56Z",
+        "md5sum": "f7cf91eb863c27787f85954434ec1e2e",
+        "file_format": "gtf",
+        "content_type": "transcriptome reference",
+        "submitted_file_name": "/Users/igvf/igvf_files/10XGenomics-refdata-gex-GRCh38_and_GRCm39-2024-A.gtf.gz",
+        "file_size": 55555555555,
+        "upload_status": "validated",
+        "assembly": "GRCh38, GRCm39",
+        "transcriptome_annotation": "GENCODE 44, GENCODE M33",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
     }
 ]
