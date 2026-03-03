@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 43
 
+* Extend `control_types` enum list to include `pre-selection`.
 * Update `aliases` regex to add `yang-li` as a namespace.
 
 ### Schema version 43

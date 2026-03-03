@@ -109,5 +109,21 @@
         "status": "released",
         "release_timestamp": "2024-06-06T12:34:56Z",
         "uuid": "21a472c9-6543-478f-92b9-a50ecd155b7f"
+    },
+    {
+        "aliases": [
+            "igvf:auxiliary_set_test_full_length_dna_seq"
+        ],
+        "accession": "IGVFDS8981LCOT",
+        "file_set_type": "full-length DNA sequencing",
+        "samples": [
+            "igvf:alias3"
+        ],
+        "barcode_map": "/tabular-files/IGVFFI0000SBRD/",
+        "award": "1UM1HG011972-01",
+        "lab": "jesse-engreitz",
+        "status": "released",
+        "release_timestamp": "2024-06-06T12:34:56Z",
+        "uuid": "114fd933-db41-47e4-87d9-0c386b6d0505"
     }
 ]

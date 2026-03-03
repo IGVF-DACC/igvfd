@@ -856,6 +856,9 @@
         "award": "1UM1HG012053-01",
         "lab": "/labs/christina-leslie/",
         "status": "released",
+        "control_types": [
+            "pre-selection"
+        ],
         "release_timestamp": "2025-10-06T12:34:56Z",
         "uuid": "1d140e08-c0d6-4ebe-aef7-9eeef08b104c",
         "accession": "IGVFDS0002MAVE",
