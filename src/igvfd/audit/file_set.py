@@ -1001,7 +1001,7 @@ def audit_file_set_files_missing_analysis_step_version(value, system):
     '''
     [
         {
-            "audit_description": "Analysis set and prediction set files are expected to specify analysis step version.",
+            "audit_description": "Analysis set, prediction set, and pseudobulk set files are expected to specify analysis step version.",
             "audit_category": "missing analysis step version",
             "audit_level": "NOT_COMPLIANT"
         },
@@ -1046,7 +1046,7 @@ def audit_input_file_sets_derived_from(value, system):
             "audit_level": "ERROR"
         },
         {
-            "audit_description": "Files in an analysis set are expected to be derived from other files.",
+            "audit_description": "Files in an analysis set or pseudobulk set are expected to be derived from other files.",
             "audit_category": "missing derived from",
             "audit_level": "NOT_COMPLIANT"
         },
@@ -1115,7 +1115,7 @@ def audit_input_file_sets_derived_from(value, system):
         )
         yield AuditFailure(audit_message_missing_input_file_set.get('audit_category', ''), f'{detail} {audit_message_missing_input_file_set.get("audit_description", "")}', level=audit_message_missing_input_file_set.get('audit_level', ''))
     if missing_derived_from:
-        if object_type == 'Analysis set':
+        if object_type in ['Analysis set', 'Pseudobulk set']:
             audit_message_missing_derived_from = audit_message_missing_derived_from_analysis
         else:
             audit_message_missing_derived_from = audit_message_missing_derived_from_prediction_model
