@@ -1,0 +1,23 @@
+[
+    {
+        "aliases": [
+            "igvf:pseudobulk_set_01"
+        ],
+        "accession": "IGVFDS0000PSBK",
+        "submitter_comment": "Comment for an pseudobulk set.",
+        "description": "A basic pseudobulk set.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "input_file_sets": [
+            "igvf:analysis_set_with_input"
+        ],
+        "status": "released",
+        "uuid": "6a503b13-cbd9-4d06-9569-d3023afdb46e",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set_type": "pseudobulk analysis",
+        "samples": [
+            "IGVFSM0000DDDD"
+        ],
+        "cell_type": "eea050cd-9e8c-4420-967f-3581b20536ab"
+    }
+]

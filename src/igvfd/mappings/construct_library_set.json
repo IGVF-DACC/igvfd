@@ -1,6 +1,6 @@
 {
-    "hash": "3e36d39970e36d4f006d1c060eb74bd7",
-    "index_name": "construct_library_set_3e36d399",
+    "hash": "4eba2b7ca00363a7c85acb5e3b29dc09",
+    "index_name": "construct_library_set_4eba2b7c",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -379,6 +379,12 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_qualifier": {
+                                "type": "keyword"
+                            },
+                            "cell_type": {
                                 "type": "keyword"
                             },
                             "collections": {
