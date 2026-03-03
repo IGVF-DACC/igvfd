@@ -113,5 +113,5 @@ When rebasing onto `dev` mapping JSON files often conflict because both branches
 
 To enable the merge driver run (you only need to do this once):
 ```bash
-$ git config --local include.path .gitconfig
+$ git config --local include.path ../.gitconfig
 ```

@@ -1,4 +1,4 @@
 [merge "generated-mappings"]
     name = Custom driver that will keep the original mappings from base branch
-    driver = echo "Remember to generate mappings"; exit 0;
+    driver = "echo 'Remember to generate mappings' && exit 0"
     recursive = take-ours
