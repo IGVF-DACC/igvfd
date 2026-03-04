@@ -19,5 +19,27 @@
             "IGVFSM0000DDDD"
         ],
         "cell_type": "eea050cd-9e8c-4420-967f-3581b20536ab"
+    },
+    {
+        "aliases": [
+            "igvf:pseudobulk_set_on_anvil"
+        ],
+        "accession": "IGVFDS9999ANVL",
+        "submitter_comment": "Comment for an pseudobulk set on AnVIL.",
+        "description": "A basic pseudobulk set on AnVIL.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "input_file_sets": [
+            "igvf:analysis_set_with_input"
+        ],
+        "status": "released",
+        "uuid": "95783223-1a36-47ac-970a-d2fd7762d05d",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set_type": "pseudobulk analysis",
+        "samples": [
+            "IGVFSM0000DDDD"
+        ],
+        "cell_type": "eea050cd-9e8c-4420-967f-3581b20536ab",
+        "is_on_anvil": true
     }
 ]
