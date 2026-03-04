@@ -164,6 +164,7 @@
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
+            "permission": "admin_only",
             "items": {
                 "title": "Disease Term",
                 "comment": "See phenotype_term.json for available identifiers.",
@@ -293,6 +294,24 @@
             "submissionExample": {
                 "appscript": "subPool_1234",
                 "igvf_utils": "subPool_l1234"
+            }
+        },
+        "phenotypic_features": {
+            "title": "Phenotypic Features",
+            "description": "A list of associated phenotypic features of the sample.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "Phenotypic Feature",
+                "description": "Phenotypic feature",
+                "comment": "See phenotypic_feature.json for available identifiers.",
+                "type": "string",
+                "linkTo": "PhenotypicFeature"
+            },
+            "submissionExample": {
+                "appscript": "[\"/phenotypic-features/e921ef7e-41cd-43d1-bc17-efae8a6eff49/\", \"igvf:rheumatoid_arthritis\"]",
+                "igvf_utils": "/phenotypic-features/e921ef7e-41cd-43d1-bc17-efae8a6eff49/, igvf:rheumatoid_arthritis"
             }
         }
     }
