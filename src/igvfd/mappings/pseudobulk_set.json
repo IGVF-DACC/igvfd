@@ -1,6 +1,6 @@
 {
-    "hash": "a37820383d22685d23a7e8a3b06b49c9",
-    "index_name": "pseudobulk_set_a3782038",
+    "hash": "b108f1864a5c701feaa05dadc448b6fb",
+    "index_name": "pseudobulk_set_b108f186",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -2506,6 +2506,10 @@
                     },
                     "input_for": {
                         "type": "keyword"
+                    },
+                    "is_on_anvil": {
+                        "store": true,
+                        "type": "boolean"
                     },
                     "lab": {
                         "properties": {
