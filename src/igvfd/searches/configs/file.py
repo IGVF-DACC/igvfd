@@ -93,11 +93,14 @@ def file():
                 'optional': True,
                 'category': 'File Set Details'
             },
-            'assay_titles': {
+            'file_set.assay_term.assay_slims': {
                 'title': 'Assay',
-                'description': 'Assay(s) that created this file.',
-                'optional': True,
-                'category': 'File Set Details'
+                'description': 'High-level classification of assay type.',
+                'category': 'File Set Details',
+                'type': 'hierarchical',
+                'subfacets': [
+                    {'field': 'file_set.assay_term.term_name', 'title': 'Assay type'}
+                ]
             },
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles',
