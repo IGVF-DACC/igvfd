@@ -104,6 +104,8 @@ jobs:
           token: COVERALLS_REPO_TOKEN
           coverage_file: test-results/junit.xml
           fail_on_error: false
+      - store_test_results:
+          path: test-results
 
   igvfd-check-opensearch-mappings:
     machine:
