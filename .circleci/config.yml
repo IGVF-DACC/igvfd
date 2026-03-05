@@ -102,7 +102,7 @@ jobs:
           command: mv .test-results test-results
       - coveralls/upload:
           token: COVERALLS_REPO_TOKEN
-          coverage_file: test-results/junit.xml
+          coverage_file: .coverage
           fail_on_error: false
       - store_test_results:
           path: test-results
