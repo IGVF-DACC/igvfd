@@ -1,6 +1,6 @@
 {
-    "hash": "a37820383d22685d23a7e8a3b06b49c9",
-    "index_name": "pseudobulk_set_a3782038",
+    "hash": "a5f1f83c5428f7d89bca9395ef3cb332",
+    "index_name": "pseudobulk_set_a5f1f83c",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -2367,6 +2367,9 @@
                             "assay_titles": {
                                 "type": "keyword"
                             },
+                            "assemblies": {
+                                "type": "keyword"
+                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -2492,7 +2495,16 @@
                             "targeted_genes": {
                                 "type": "keyword"
                             },
+                            "taxa": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotations": {
+                                "type": "keyword"
+                            },
                             "uniform_pipeline_status": {
+                                "type": "keyword"
+                            },
+                            "url": {
                                 "type": "keyword"
                             },
                             "uuid": {
