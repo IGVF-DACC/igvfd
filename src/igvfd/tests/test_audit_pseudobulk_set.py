@@ -30,7 +30,7 @@ def test_audit_pseudobulk_set_marker_gene_files(
     )
 
 
-def testaudit_pseudobulk_set_sample_matches_input(
+def test_audit_pseudobulk_set_sample_matches_input(
     testapp,
     pseudobulk_set_base,
     analysis_set_base,
@@ -40,6 +40,10 @@ def testaudit_pseudobulk_set_sample_matches_input(
     testapp.patch_json(
         analysis_set_base['@id'],
         {'input_file_sets': [measurement_set['@id']]}
+    )
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {'input_file_sets': [analysis_set_base['@id']]}
     )
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
     assert all(
