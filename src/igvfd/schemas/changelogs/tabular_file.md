@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 19
 
+* Extend `content_type` enum list to include `chromatin accessibility marker genes`.
 * Extend `content_type` enum list to include `marker genes`.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
