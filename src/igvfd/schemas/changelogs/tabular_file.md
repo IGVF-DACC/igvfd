@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 19
 
+* Extend `content_type` enum list to include `chromatin accessibility marker genes`.
 * Extend `assembly` enum list to include `GRCh38, GRCm39`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 44, GENCODE M33`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 41, GENCODE M25`.
