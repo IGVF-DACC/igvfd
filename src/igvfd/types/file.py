@@ -196,7 +196,7 @@ class File(Item):
              '@id', 'purpose', 'summary', 'treatment_term_name', 'status']),
         Path('file_set.donors', include=[
              '@id', 'accession', 'summary', 'status']),
-        Path('file_set.assay_term', include=['@id', 'term_name']),
+        Path('file_set.assay_term', include=['@id', 'term_name', 'preferred_assay_titles', 'assay_slims']),
         Path('file_set.lab', include=['@id', 'title']),
         Path('integrated_in.associated_phenotypes', include=[
              '@id', 'summary', 'status', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list', 'samples']),
@@ -212,7 +212,7 @@ class File(Item):
                 'accession',
             ]
         ),
-        Path('file_set.assay_term', include=['@id', 'term_name']),
+        Path('file_set.assay_term', include=['@id', 'term_name', 'assay_slims']),
         Path('file_format_specifications', include=['@id', 'description', 'standardized_file_format']),
         Path('analysis_step_version.software_versions', include=['@id', 'summary', 'software_versions']),
         Path('file_set.lab', include=['@id', 'title'])
