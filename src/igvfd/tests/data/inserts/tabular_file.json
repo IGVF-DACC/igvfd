@@ -1437,5 +1437,24 @@
         "release_timestamp": "2025-03-06T12:34:56Z",
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "e93357c2-4501-5b07-c602-c73798877831",
+        "accession": "IGVFFI0012CAMG",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:chromatin_accessibility_marker_genes"
+        ],
+        "md5sum": "48a436084420ad6d5470c64e1fa2c526",
+        "file_format": "tsv",
+        "content_type": "chromatin accessibility marker genes",
+        "submitted_file_name": "/Users/igvf/igvf_files/chromatin_accessibility_marker_genes.tsv.gz",
+        "file_size": 1456000,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:curated_set_external_sequencing_data",
+        "controlled_access": false
     }
 ]

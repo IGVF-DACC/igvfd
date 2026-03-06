@@ -19,5 +19,25 @@
             "IGVFSM0000DDDD"
         ],
         "cell_type": "eea050cd-9e8c-4420-967f-3581b20536ab"
+    },
+    {
+        "aliases": [
+            "igvf:pseudobulk_set_external_sequencing_data"
+        ],
+        "accession": "IGVFDS0001PSBK",
+        "description": "A pseudobulk set derived from external sequencing data.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "input_file_sets": [
+            "igvf:curated_set_external_sequencing_data"
+        ],
+        "status": "released",
+        "uuid": "7b514c24-dce0-5e17-0670-e4134bfec57f",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set_type": "pseudobulk analysis",
+        "samples": [
+            "IGVFSM0000EEEE"
+        ],
+        "cell_type": "3fc75da8-8f87-4749-939e-cee38f5c7ab0"
     }
 ]
