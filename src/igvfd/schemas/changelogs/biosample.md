@@ -1,5 +1,6 @@
 ## Changelog for *`biosample.json`*
 
+* Add `phenotypic_features`. (03/11/2026)
 * Update `aliases` regex to add `yang-li` as a namespace. (02/27/2026)
 * Add `is_on_anvil`. (02/18/2026)
 * Add `selection_conditions`. (01/15/2026)

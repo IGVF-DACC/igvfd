@@ -1,6 +1,6 @@
 {
-    "hash": "22f5cd42d2b90fce112920bf74e7f725",
-    "index_name": "measurement_set_22f5cd42",
+    "hash": "9978c44208dfb4077ba166331376b99d",
+    "index_name": "measurement_set_9978c442",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -4131,6 +4131,9 @@
                             "passage_number": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "phenotypic_features": {
+                                "type": "keyword"
                             },
                             "pmi": {
                                 "store": true,

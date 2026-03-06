@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 24
 
+* Add `phenotypic_features`.
 * Update `aliases` regex to add `yang-li` as a namespace.
 
 ### Schema version 24

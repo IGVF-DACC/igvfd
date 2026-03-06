@@ -1,6 +1,6 @@
 {
-    "hash": "ebdd9b4ce36c60e5c4203082595a93d2",
-    "index_name": "index_file_ebdd9b4c",
+    "hash": "972ea7552cc7f13391b2d64a9c11fa25",
+    "index_name": "index_file_972ea755",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -1355,6 +1355,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "phenotypic_features": {
+                                        "type": "keyword"
+                                    },
                                     "pmi": {
                                         "store": true,
                                         "type": "long"
@@ -2285,6 +2288,9 @@
                                     "passage_number": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "phenotypic_features": {
+                                        "type": "keyword"
                                     },
                                     "pmi": {
                                         "store": true,

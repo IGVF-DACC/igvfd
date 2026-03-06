@@ -1,6 +1,6 @@
 {
-    "hash": "6318ac363ac7f21f5f2560b11ecd2f3b",
-    "index_name": "in_vitro_system_6318ac36",
+    "hash": "9fad95686d7f3dc251903768502ec8ad",
+    "index_name": "in_vitro_system_9fad9568",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -2128,6 +2128,9 @@
                                 "store": true,
                                 "type": "long"
                             },
+                            "phenotypic_features": {
+                                "type": "keyword"
+                            },
                             "pmi": {
                                 "store": true,
                                 "type": "long"
@@ -2274,6 +2277,9 @@
                     "passage_number": {
                         "store": true,
                         "type": "long"
+                    },
+                    "phenotypic_features": {
+                        "type": "keyword"
                     },
                     "pooled_from": {
                         "type": "keyword"
@@ -2689,6 +2695,9 @@
                             "passage_number": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "phenotypic_features": {
+                                "type": "keyword"
                             },
                             "pmi": {
                                 "store": true,

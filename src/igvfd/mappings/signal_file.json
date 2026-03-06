@@ -1,6 +1,6 @@
 {
-    "hash": "84745fd0f13dfd6bd0b76e94e6b1df3c",
-    "index_name": "signal_file_84745fd0",
+    "hash": "41e554ce39d7e37bc559b3cc79877393",
+    "index_name": "signal_file_41e554ce",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -1447,6 +1447,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "phenotypic_features": {
+                                        "type": "keyword"
+                                    },
                                     "pmi": {
                                         "store": true,
                                         "type": "long"
@@ -2377,6 +2380,9 @@
                                     "passage_number": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "phenotypic_features": {
+                                        "type": "keyword"
                                     },
                                     "pmi": {
                                         "store": true,
