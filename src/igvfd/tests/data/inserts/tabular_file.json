@@ -1446,7 +1446,7 @@
         "aliases": [
             "igvf:chromatin_accessibility_marker_genes"
         ],
-        "md5sum": "14cg863032bgg1c510b461ad22d5b86gd",
+        "md5sum": "48a436084420ad6d5470c64e1fa2c526",
         "file_format": "tsv",
         "content_type": "chromatin accessibility marker genes",
         "submitted_file_name": "/Users/igvf/igvf_files/chromatin_accessibility_marker_genes.tsv.gz",
