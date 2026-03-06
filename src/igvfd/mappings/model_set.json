@@ -1,6 +1,6 @@
 {
-    "hash": "fece9fef3d929431cff3ed3da39dffe5",
-    "index_name": "model_set_fece9fef",
+    "hash": "7c05b49c1725118c7f2930e957e9c712",
+    "index_name": "model_set_7c05b49c",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -3362,6 +3362,9 @@
                             "passage_number": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "phenotypic_features": {
+                                "type": "keyword"
                             },
                             "pmi": {
                                 "store": true,

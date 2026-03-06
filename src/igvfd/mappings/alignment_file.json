@@ -1,6 +1,6 @@
 {
-    "hash": "a7c66d01e911112ff2334aa274755030",
-    "index_name": "alignment_file_a7c66d01",
+    "hash": "aa86ad4bb465086f5d227d17ce377897",
+    "index_name": "alignment_file_aa86ad4b",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1352,6 +1352,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "phenotypic_features": {
+                                        "type": "keyword"
+                                    },
                                     "pmi": {
                                         "store": true,
                                         "type": "long"
@@ -2282,6 +2285,9 @@
                                     "passage_number": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "phenotypic_features": {
+                                        "type": "keyword"
                                     },
                                     "pmi": {
                                         "store": true,
