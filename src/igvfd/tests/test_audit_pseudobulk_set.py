@@ -28,3 +28,34 @@ def test_audit_pseudobulk_set_marker_gene_files(
         error['category'] != 'missing marker gene list'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_pseudobulk_set_sample_matches_input(
+    testapp,
+    pseudobulk_set_base,
+    analysis_set_base,
+    measurement_set,
+    primary_cell
+):
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {'input_file_sets': [measurement_set['@id']]}
+    )
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {'input_file_sets': [analysis_set_base['@id']]}
+    )
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent samples'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {'samples': [primary_cell['@id']]}
+    )
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent samples'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
