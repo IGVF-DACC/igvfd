@@ -1,6 +1,6 @@
 {
-    "hash": "7ccedabacff1c7accec3a90e7c1a02ff",
-    "index_name": "analysis_set_7ccedaba",
+    "hash": "20aa29f8b89a6777608cba9509de6266",
+    "index_name": "analysis_set_20aa29f8",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -3332,6 +3332,9 @@
                             "passage_number": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "phenotypic_features": {
+                                "type": "keyword"
                             },
                             "pmi": {
                                 "store": true,

@@ -1,6 +1,6 @@
 {
-    "hash": "f466362d45e092cca00781786d8d42f6",
-    "index_name": "whole_organism_f466362d",
+    "hash": "ad46d8267abf1e19f3a7e351c1e4a37d",
+    "index_name": "whole_organism_ad46d826",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -2112,6 +2112,9 @@
                                 "store": true,
                                 "type": "long"
                             },
+                            "phenotypic_features": {
+                                "type": "keyword"
+                            },
                             "pmi": {
                                 "store": true,
                                 "type": "long"
@@ -2253,6 +2256,9 @@
                         "type": "keyword"
                     },
                     "parts": {
+                        "type": "keyword"
+                    },
+                    "phenotypic_features": {
                         "type": "keyword"
                     },
                     "pooled_from": {
@@ -2669,6 +2675,9 @@
                             "passage_number": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "phenotypic_features": {
+                                "type": "keyword"
                             },
                             "pmi": {
                                 "store": true,

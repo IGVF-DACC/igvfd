@@ -1,6 +1,6 @@
 {
-    "hash": "52727a402f7a11b22b1cd9fd6fdb18b3",
-    "index_name": "prediction_set_52727a40",
+    "hash": "3c1882dcd44a38409071bb2a78548745",
+    "index_name": "prediction_set_3c1882dc",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -3728,6 +3728,9 @@
                             "passage_number": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "phenotypic_features": {
+                                "type": "keyword"
                             },
                             "pmi": {
                                 "store": true,

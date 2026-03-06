@@ -1,6 +1,6 @@
 {
-    "hash": "2b6bfe50efa37a484e412271ab4803a8",
-    "index_name": "curated_set_2b6bfe50",
+    "hash": "db16596ef694057f317a756da16c18ff",
+    "index_name": "curated_set_db16596e",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -2865,6 +2865,9 @@
                             "passage_number": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "phenotypic_features": {
+                                "type": "keyword"
                             },
                             "pmi": {
                                 "store": true,

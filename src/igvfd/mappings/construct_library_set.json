@@ -1,6 +1,6 @@
 {
-    "hash": "4eba2b7ca00363a7c85acb5e3b29dc09",
-    "index_name": "construct_library_set_4eba2b7c",
+    "hash": "a9ec995b24a949d70b2bf5fe357abb11",
+    "index_name": "construct_library_set_a9ec995b",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -2579,6 +2579,9 @@
                             "passage_number": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "phenotypic_features": {
+                                "type": "keyword"
                             },
                             "pmi": {
                                 "store": true,
