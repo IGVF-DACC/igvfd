@@ -159,7 +159,7 @@ services:
       - "/igvfd/src/igvfd.egg-info"
       - "/igvfd/src/igvfd/static"
     entrypoint: ./docker/wait-for-local-services-entrypoint.sh
-    command: pytest -rf --cov=igvfd -s -o junit_family=legacy --junitxml=./.test-results/junit.xml --cov-append -m 'indexing'
+    command: pytest -rf --cov=igvfd -s -o junit_family=legacy --junitxml=./.test-results/junit.xml --cov-append --cov-report=xml -m 'indexing'
     depends_on:
       - postgres
       - opensearch
