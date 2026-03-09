@@ -1444,12 +1444,12 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "igvf:chromatin_accessibility_marker_genes"
+            "igvf:marker_gene_activity"
         ],
         "md5sum": "48a436084420ad6d5470c64e1fa2c526",
         "file_format": "tsv",
-        "content_type": "chromatin accessibility marker genes",
-        "submitted_file_name": "/Users/igvf/igvf_files/chromatin_accessibility_marker_genes.tsv.gz",
+        "content_type": "marker gene activity",
+        "submitted_file_name": "/Users/igvf/igvf_files/marker_gene_activity.tsv.gz",
         "file_size": 1456000,
         "upload_status": "validated",
         "status": "released",

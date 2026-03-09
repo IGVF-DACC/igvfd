@@ -2,8 +2,8 @@
 
 ### Minor changes since schema version 11
 
-* Extend `input_content_types` enum list to include `chromatin accessibility marker genes`.
-* Extend `output_content_types` enum list to include `chromatin accessibility marker genes`.
+* Extend `input_content_types` enum list to include `marker gene activity`.
+* Extend `output_content_types` enum list to include `marker gene activity`.
 * Extend `input_content_types` enum list to include `marker genes`.
 * Extend `output_content_types` enum list to include `marker genes`.
 * Extend `analysis_step_types` enum list to include `pseudobulking`.
