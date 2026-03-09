@@ -28,7 +28,7 @@ def test_constructs_snapshot_initialize_latest_snapshot_from_db(stack):
         'AWS::Lambda::Function',
         {
             'Handler': 'main.custom_resource_handler',
-            'Runtime': 'python3.14',
+            'Runtime': 'python3.12',
             'Timeout': 60
         }
     )
