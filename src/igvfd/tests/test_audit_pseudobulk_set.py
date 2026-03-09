@@ -48,7 +48,7 @@ def test_audit_pseudobulk_set_sample_matches_input(
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent samples'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
         measurement_set['@id'],
@@ -57,5 +57,5 @@ def test_audit_pseudobulk_set_sample_matches_input(
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent samples'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
