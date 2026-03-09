@@ -51,7 +51,7 @@ def audit_pseudobulk_set_sample_matches_input(value, system):
         {
             "audit_description": "The source biosamples of pseudobulk sets should be one of the samples associated with the input file sets.",
             "audit_category": "inconsistent samples",
-            "audit_level": "NOT_COMPLIANT"
+            "audit_level": "ERROR"
         }
     ]
     '''
