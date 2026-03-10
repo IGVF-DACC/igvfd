@@ -45,8 +45,44 @@ def audit_pseudobulk_set_marker_gene_files(value, system):
         )
 
 
+def audit_pseudobulk_set_sample_matches_input(value, system):
+    '''
+    [
+        {
+            "audit_description": "The source biosamples of pseudobulk sets should be one of the samples associated with the input file sets.",
+            "audit_category": "inconsistent samples",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    audit_message = get_audit_message(audit_pseudobulk_set_sample_matches_input, index=0)
+    input_file_set_samples = []
+    if value.get('input_file_sets', []):
+        for input_file_set in value.get('input_file_sets', []):
+            input_file_set_object = system.get('request').embed(
+                input_file_set, '@@object_with_select_calculated_properties?field=samples')
+            input_file_set_samples.extend([x for x in input_file_set_object.get('samples', [])])
+    if value.get('samples', []):
+        mismatched_samples = []
+        for sample in value.get('samples', []):
+            if sample not in input_file_set_samples:
+                mismatched_samples.append(sample)
+        if mismatched_samples:
+            detail = (
+                f'Pseudobulk set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has source biosample(s) {", ".join([audit_link(path_to_text(sample_id), sample_id) for sample_id in mismatched_samples])} '
+                f'not associated with any of the input file sets.'
+            )
+            yield AuditFailure(
+                audit_message.get('audit_category', ''),
+                f'{detail} {audit_message.get("audit_description", "")}',
+                level=audit_message.get('audit_level', '')
+            )
+
+
 function_dispatcher_pseudobulk_set_object = {
-    'audit_pseudobulk_set_marker_gene_files': audit_pseudobulk_set_marker_gene_files
+    'audit_pseudobulk_set_marker_gene_files': audit_pseudobulk_set_marker_gene_files,
+    'audit_pseudobulk_set_sample_matches_input': audit_pseudobulk_set_sample_matches_input
 }
 
 
