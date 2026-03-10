@@ -4,6 +4,8 @@ from aws_cdk.aws_ec2 import InstanceType
 from aws_cdk.aws_ec2 import InstanceClass
 from aws_cdk.aws_ec2 import InstanceSize
 
+from aws_cdk.aws_logs import RetentionDays
+
 from aws_cdk.aws_opensearchservice import CapacityConfig
 from aws_cdk.aws_opensearchservice import EngineVersion
 
@@ -426,6 +428,7 @@ class Config:
     tags: List[Tuple[str, str]]
     url_prefix: Optional[str] = None
     use_subdomain: bool = True
+    log_retention: RetentionDays = RetentionDays.ONE_MONTH
     common: Common = field(
         default_factory=Common
     )
@@ -440,6 +443,7 @@ class PipelineConfig:
     account_and_region: Environment
     tags: List[Tuple[str, str]]
     cross_account_keys: bool = False
+    log_retention: RetentionDays = RetentionDays.ONE_MONTH
     common: Common = field(
         default_factory=Common
     )

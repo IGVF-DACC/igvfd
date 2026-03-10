@@ -23,6 +23,12 @@ def test_stacks_ci_initialize_ci_stack():
         }
     )
     template.has_resource_properties(
+        'AWS::Logs::LogGroup',
+        {
+            'RetentionInDays': 30
+        }
+    )
+    template.has_resource_properties(
         'AWS::IAM::Policy',
         {
             'PolicyDocument': {
@@ -31,19 +37,9 @@ def test_stacks_ci_initialize_ci_stack():
                         'Action': 'logs:GetLogEvents',
                         'Effect': 'Allow',
                         'Resource': {
-                            'Fn::Join': [
-                                '',
-                                [
-                                    'arn:',
-                                    {
-                                        'Ref': 'AWS::Partition'
-                                    },
-                                    ':logs:us-west-2:109189702753:log-group:/aws/codebuild/',
-                                    {
-                                        'Ref': 'ContinuousIntegrationigvfdContinuousIntegration1CD8EFED'
-                                    },
-                                    ':*'
-                                ]
+                            'Fn::GetAtt': [
+                                'ContinuousIntegrationLogGroupD96DF256',
+                                'Arn'
                             ]
                         }
                     }

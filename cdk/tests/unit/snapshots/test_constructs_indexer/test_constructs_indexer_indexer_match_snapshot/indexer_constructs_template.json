@@ -1257,6 +1257,9 @@
         },
         "IndexerIndexingServiceQueueProcessingTaskDefQueueProcessingContainerLogGroupE85BD506": {
             "DeletionPolicy": "Retain",
+            "Properties": {
+                "RetentionInDays": 30
+            },
             "Type": "AWS::Logs::LogGroup",
             "UpdateReplacePolicy": "Retain"
         },
@@ -1830,6 +1833,9 @@
         },
         "IndexerInvalidationServiceQueueProcessingTaskDefQueueProcessingContainerLogGroup7A19AA4F": {
             "DeletionPolicy": "Retain",
+            "Properties": {
+                "RetentionInDays": 30
+            },
             "Type": "AWS::Logs::LogGroup",
             "UpdateReplacePolicy": "Retain"
         },
