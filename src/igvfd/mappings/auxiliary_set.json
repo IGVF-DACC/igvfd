@@ -1,6 +1,6 @@
 {
-    "hash": "94e759e00445cedb74442b3d55e886d8",
-    "index_name": "auxiliary_set_94e759e0",
+    "hash": "67f2d6d074b1089944971b44ab7b0126",
+    "index_name": "auxiliary_set_67f2d6d0",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -3424,6 +3424,9 @@
                             "passage_number": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "phenotypic_features": {
+                                "type": "keyword"
                             },
                             "pmi": {
                                 "store": true,

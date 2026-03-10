@@ -1,6 +1,6 @@
 {
-    "hash": "3ebdaa056c535e6c27c81ae079696891",
-    "index_name": "technical_sample_3ebdaa05",
+    "hash": "f2b326717df1b4af5030fd08e767d951",
+    "index_name": "technical_sample_f2b32671",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1662,6 +1662,9 @@
                             "passage_number": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "phenotypic_features": {
+                                "type": "keyword"
                             },
                             "pmi": {
                                 "store": true,

@@ -1,6 +1,6 @@
 {
-    "hash": "c3fd466cbbd846eb384d9718cf186f97",
-    "index_name": "tabular_file_c3fd466c",
+    "hash": "292c054c5bff621c0997b737aa61b378",
+    "index_name": "tabular_file_292c054c",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1463,6 +1463,9 @@
                                         "store": true,
                                         "type": "long"
                                     },
+                                    "phenotypic_features": {
+                                        "type": "keyword"
+                                    },
                                     "pmi": {
                                         "store": true,
                                         "type": "long"
@@ -2393,6 +2396,9 @@
                                     "passage_number": {
                                         "store": true,
                                         "type": "long"
+                                    },
+                                    "phenotypic_features": {
+                                        "type": "keyword"
                                     },
                                     "pmi": {
                                         "store": true,

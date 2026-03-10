@@ -32,6 +32,9 @@
         ],
         "protocols": [
             "https://www.protocols.io/private/test-protocols-url-12345"
+        ],
+        "phenotypic_features": [
+            "/phenotypic-features/ae1b4a0b-78e6-af0a-8e6d-c0c9b45905fa/"
         ]
     },
     {

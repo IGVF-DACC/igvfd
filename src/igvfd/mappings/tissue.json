@@ -1,6 +1,6 @@
 {
-    "hash": "90c6824de78cdb0e7f44428dff5d2f7e",
-    "index_name": "tissue_90c6824d",
+    "hash": "f6e8f812d436fada502119377835f81d",
+    "index_name": "tissue_f6e8f812",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -2112,6 +2112,9 @@
                                 "store": true,
                                 "type": "long"
                             },
+                            "phenotypic_features": {
+                                "type": "keyword"
+                            },
                             "pmi": {
                                 "store": true,
                                 "type": "long"
@@ -2253,6 +2256,9 @@
                         "type": "keyword"
                     },
                     "parts": {
+                        "type": "keyword"
+                    },
+                    "phenotypic_features": {
                         "type": "keyword"
                     },
                     "pmi": {
@@ -2679,6 +2685,9 @@
                             "passage_number": {
                                 "store": true,
                                 "type": "long"
+                            },
+                            "phenotypic_features": {
+                                "type": "keyword"
                             },
                             "pmi": {
                                 "store": true,
