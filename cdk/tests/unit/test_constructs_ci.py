@@ -19,6 +19,12 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources
     )
     template = Template.from_stack(stack)
     template.has_resource_properties(
+        'AWS::Logs::LogGroup',
+        {
+            'RetentionInDays': 30
+        }
+    )
+    template.has_resource_properties(
         'AWS::CodeBuild::Project',
         {
             'Artifacts': {
@@ -51,6 +57,14 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources
                 'Type': 'LOCAL'
             },
             'EncryptionKey': 'alias/aws/s3',
+            'LogsConfig': {
+                'CloudWatchLogs': {
+                    'GroupName': {
+                        'Ref': 'TestContinuousIntegrationLogGroupF3C70593'
+                    },
+                    'Status': 'ENABLED'
+                }
+            },
             'ResourceAccessRole': {
                 'Fn::GetAtt': [
                     'TestContinuousIntegrationResourceAccessRole69FFBBDF',
@@ -76,6 +90,19 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources
         {
             'PolicyDocument': {
                 'Statement': [
+                    {
+                        'Action': [
+                            'logs:CreateLogStream',
+                            'logs:PutLogEvents'
+                        ],
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Fn::GetAtt': [
+                                'TestContinuousIntegrationLogGroupF3C70593',
+                                'Arn'
+                            ]
+                        }
+                    },
                     {
                         'Action': [
                             'logs:CreateLogGroup',
@@ -197,27 +224,9 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources
                         'Action': 'logs:GetLogEvents',
                         'Effect': 'Allow',
                         'Resource': {
-                            'Fn::Join': [
-                                '',
-                                [
-                                    'arn:',
-                                    {
-                                        'Ref': 'AWS::Partition'
-                                    },
-                                    ':logs:',
-                                    {
-                                        'Ref': 'AWS::Region'
-                                    },
-                                    ':',
-                                    {
-                                        'Ref': 'AWS::AccountId'
-                                    },
-                                    ':log-group:/aws/codebuild/',
-                                    {
-                                        'Ref': 'TestContinuousIntegrationigvfdContinuousIntegration42002874'
-                                    },
-                                    ':*'
-                                ]
+                            'Fn::GetAtt': [
+                                'TestContinuousIntegrationLogGroupF3C70593',
+                                'Arn'
                             ]
                         }
                     }

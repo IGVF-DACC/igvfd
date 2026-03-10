@@ -28,6 +28,7 @@ class CIDeployStage(cdk.Stage):
             self,
             'ContinuousIntegrationStack',
             existing_resources_class=igvf_dev.Resources,
+            log_retention=config.log_retention,
             env=igvf_dev.US_WEST_2,
         )
         add_tags_to_stack(self.ci_stack, config)
