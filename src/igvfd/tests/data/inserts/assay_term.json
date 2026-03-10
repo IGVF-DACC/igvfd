@@ -48,7 +48,8 @@
         ],
         "preferred_assay_titles": [
             "SGE",
-            "Immune-SGE"
+            "Immune-SGE",
+            "SGE-RNA"
         ]
     },
     {

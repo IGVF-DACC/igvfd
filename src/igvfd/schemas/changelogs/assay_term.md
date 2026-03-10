@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 21
 
+* Extend `preferred_assay_titles` enum list to include `SGE-RNA`.
 * Update `aliases` regex to add `yang-li` as a namespace.
 
 ### Schema version 21
