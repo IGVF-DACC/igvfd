@@ -281,7 +281,8 @@
                         "properties": {
                             "transcriptome_annotation": {
                                 "enum": [
-                                    "GENCODE 32, GENCODE M23"
+                                    "GENCODE 32, GENCODE M23",
+                                    "GENCODE 41, GENCODE M25"
                                 ]
                             }
                         }
@@ -324,6 +325,27 @@
                             "transcriptome_annotation": {
                                 "enum": [
                                     "C57BL_6J_T2T_v1_TA1 + M36_X"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "GRCh38, GRCm39"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "GENCODE 44, GENCODE M33"
                                 ]
                             }
                         }
