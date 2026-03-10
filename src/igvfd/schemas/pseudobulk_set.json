@@ -62,7 +62,10 @@
                 "title": "Input File Set",
                 "description": "A file set that serves as input for this file set.",
                 "type": "string",
-                "linkTo": "AnalysisSet"
+                "linkTo": [
+                    "AnalysisSet",
+                    "CuratedSet"
+                ]
             },
             "description": "The file set(s) required for this pseudobulking analysis."
         },
