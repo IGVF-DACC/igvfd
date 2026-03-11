@@ -36,7 +36,7 @@ class ContinuousIntegrationProps:
     github_repo: str
     build_spec: Dict[str, Any]
     existing_resources: ExistingResources
-    log_retention: RetentionDays = RetentionDays.ONE_WEEK
+    log_retention: RetentionDays
 
 
 class ContinuousIntegration(Construct):
