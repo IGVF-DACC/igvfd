@@ -5,6 +5,7 @@ from aws_cdk.assertions import Template
 
 def test_stacks_ci_initialize_ci_stack():
     from aws_cdk import App
+    from aws_cdk.aws_logs import RetentionDays
     from infrastructure.stacks.ci import ContinuousIntegrationStack
     from infrastructure.constructs.existing import igvf_dev
     app = App()
@@ -12,6 +13,7 @@ def test_stacks_ci_initialize_ci_stack():
         app,
         'TestContinuousIntegrationStack',
         existing_resources_class=igvf_dev.Resources,
+        log_retention=RetentionDays.ONE_WEEK,
         env=igvf_dev.US_WEST_2,
     )
     template = Template.from_stack(ci)

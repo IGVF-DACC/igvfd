@@ -57,7 +57,7 @@ class ContinuousIntegrationStack(cdk.Stack):
             construct_id: str,
             *,
             existing_resources_class: ExistingResourcesClass,
-            log_retention: RetentionDays = RetentionDays.ONE_WEEK,
+            log_retention: RetentionDays,
             **kwargs: Any
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)

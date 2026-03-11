@@ -6,6 +6,7 @@ from aws_cdk.assertions import Template
 def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources):
     from infrastructure.constructs.ci import ContinuousIntegration
     from infrastructure.constructs.ci import ContinuousIntegrationProps
+    from aws_cdk.aws_logs import RetentionDays
     from aws_cdk.aws_secretsmanager import Secret
     ci = ContinuousIntegration(
         stack,
@@ -15,6 +16,7 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources
             github_repo='some-repo',
             build_spec={},
             existing_resources=existing_resources,
+            log_retention=RetentionDays.ONE_WEEK,
         )
     )
     template = Template.from_stack(stack)
