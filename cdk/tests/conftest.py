@@ -277,6 +277,7 @@ def existing_resources(
 @pytest.fixture
 def pipeline_config():
     from infrastructure.config import PipelineConfig
+    from aws_cdk.aws_logs import RetentionDays
     from infrastructure.constructs.existing import igvf_dev
     return PipelineConfig(
         name='demo',
@@ -284,6 +285,7 @@ def pipeline_config():
         pipeline='xyz',
         existing_resources_class=igvf_dev.Resources,
         account_and_region=igvf_dev.US_WEST_2,
+        log_retention=RetentionDays.ONE_WEEK,
         tags=[
             ('test', 'tag'),
         ]
@@ -293,6 +295,7 @@ def pipeline_config():
 @pytest.fixture
 def production_pipeline_config():
     from infrastructure.config import PipelineConfig
+    from aws_cdk.aws_logs import RetentionDays
     from infrastructure.constructs.existing import igvf_dev
     return PipelineConfig(
         name='production',
@@ -301,6 +304,7 @@ def production_pipeline_config():
         existing_resources_class=igvf_dev.Resources,
         account_and_region=igvf_dev.US_WEST_2,
         cross_account_keys=True,
+        log_retention=RetentionDays.INFINITE,
         tags=[
             ('test', 'tag'),
         ]
@@ -315,6 +319,7 @@ def branch():
 @pytest.fixture
 def config(instance_type, capacity_config, engine_version, postgres_engine_version):
     from infrastructure.config import Config
+    from aws_cdk.aws_logs import RetentionDays
     return Config(
         name='demo',
         branch='some-branch',
@@ -375,6 +380,7 @@ def config(instance_type, capacity_config, engine_version, postgres_engine_versi
             'enabled': True,
             'arn': 'some-waf-arn',
         },
+        log_retention=RetentionDays.INFINITE,
         tags=[
             ('test', 'tag'),
         ]
