@@ -1420,7 +1420,7 @@ def audit_anvil_file_fileset_mismatch(value, system):
     # Compute how many ACTIVE files have ANVIL urls
     for file in value.get('files', []):
         file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
-        if file_object.get('status') in ['in progress', 'released', 'preview']:
+        if file_object.get('status') in ['in progress', 'released']:
             linked_active_files.append(file)
             if file_object.get('anvil_url', ''):
                 files_on_anvil.append(file)
