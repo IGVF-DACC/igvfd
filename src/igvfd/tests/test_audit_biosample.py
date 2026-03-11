@@ -109,3 +109,37 @@ def test_audit_annotated_from_virtual(testapp, primary_cell, tissue):
         error['category'] == 'unexpected annotated from'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_biosample_age(testapp, tissue, rodent_donor, parent_rodent_donor_1):
+    # Rodent tissue without age info (yes audit)
+    res = testapp.get(tissue['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing age'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # Patch rodent donor as virtual donor (no audit)
+    testapp.patch_json(
+        rodent_donor['@id'],
+        {'virtual': True}
+    )
+    res = testapp.get(tissue['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing age'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # Check if mixed virtual and non-virtual donors (yes audit)
+    # Unlikely scenario but just to be safe
+    testapp.patch_json(
+        parent_rodent_donor_1['@id'],
+        {'virtual': False}
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {'donors': [rodent_donor['@id'], parent_rodent_donor_1['@id']]}
+    )
+    res = testapp.get(tissue['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing age'
+        for error in res.json['audit'].get('WARNING', [])
+    )
