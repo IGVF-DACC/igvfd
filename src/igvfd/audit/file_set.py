@@ -1413,15 +1413,17 @@ def audit_anvil_file_fileset_mismatch(value, system):
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_msg_missed_files = get_audit_message(audit_anvil_file_fileset_mismatch, index=0)
     audit_msg_missed_fileset = get_audit_message(audit_anvil_file_fileset_mismatch, index=1)
-    linked_files = value.get('files', [])
     fileset_on_anvil = value.get('is_on_anvil', False)
     files_on_anvil = []
+    linked_active_files = []
 
-    # Compute how many files have ANVIL urls
-    for file in linked_files:
+    # Compute how many ACTIVE files have ANVIL urls
+    for file in value.get('files', []):
         file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
-        if file_object.get('anvil_url', ''):
-            files_on_anvil.append(file)
+        if file_object.get('status') in ['in progress', 'released', 'preview']:
+            linked_active_files.append(file)
+            if file_object.get('anvil_url', ''):
+                files_on_anvil.append(file)
 
     # If files are on AnVIL but the linked file set is not
     # Should not happen, but could miss CuratedSet due to how CLS is setup
@@ -1434,8 +1436,8 @@ def audit_anvil_file_fileset_mismatch(value, system):
         yield AuditFailure(audit_msg_missed_fileset.get('audit_category', ''), f'{detail} {audit_msg_missed_fileset.get("audit_description", "")}', level=audit_msg_missed_fileset.get('audit_level', ''))
 
     # If file set is on AnVIL but some of its files are not (updates, corrections, etc.)
-    if fileset_on_anvil and linked_files:
-        mismatched_files = list(set(linked_files) - set(files_on_anvil))
+    if fileset_on_anvil and linked_active_files:
+        mismatched_files = list(set(linked_active_files) - set(files_on_anvil))
         if mismatched_files:
             mismatched_files_paths = ', '.join([audit_link(path_to_text(file), file) for file in mismatched_files])
             detail = (

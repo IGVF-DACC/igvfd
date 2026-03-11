@@ -199,6 +199,15 @@ def controlled_sequence_file_object(testapp, controlled_sequence_file):
 
 
 @pytest.fixture
+def revoked_sequence_file(sequence_file):
+    item = sequence_file.copy()
+    item.update({
+        'status': 'revoked'
+    })
+    return item
+
+
+@pytest.fixture
 def sequence_file_v1(sequence_file):
     item = sequence_file.copy()
     item.update({
