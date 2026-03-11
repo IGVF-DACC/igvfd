@@ -16,6 +16,7 @@ def test_config_common_dataclass():
 
 def test_config_config_dataclass():
     from infrastructure.config import Config
+    from aws_cdk.aws_logs import RetentionDays
     config = Config(
         name='demo',
         branch='xyz-branch',
@@ -26,6 +27,7 @@ def test_config_config_dataclass():
         invalidation_service={},
         indexing_service={},
         waf={},
+        log_retention=RetentionDays.ONE_WEEK,
         tags=[
             ('abc', '123'),
             ('xyz', '321'),
@@ -49,6 +51,7 @@ def test_config_config_dataclass():
 
 def test_config_pipeline_config_dataclass():
     from infrastructure.config import PipelineConfig
+    from aws_cdk.aws_logs import RetentionDays
     from infrastructure.constructs.existing import igvf_dev
     config = PipelineConfig(
         name='demo',
@@ -56,6 +59,7 @@ def test_config_pipeline_config_dataclass():
         pipeline='xyz-pipeline',
         existing_resources_class=igvf_dev.Resources,
         account_and_region=igvf_dev.US_WEST_2,
+        log_retention=RetentionDays.ONE_WEEK,
         tags=[
             ('abc', '123'),
             ('xyz', '321'),
