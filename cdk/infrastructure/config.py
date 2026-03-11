@@ -52,6 +52,7 @@ config: Dict[str, Any] = {
             'cross_account_keys': True,
             'existing_resources_class': igvf_prod.Resources,
             'account_and_region': igvf_prod.US_WEST_2,
+            'log_retention': RetentionDays.SIX_MONTHS,
             'tags': [
             ],
         },
@@ -398,6 +399,7 @@ config: Dict[str, Any] = {
                 'enabled': True,
                 'arn': 'arn:aws:wafv2:us-west-2:035226225042:regional/webacl/IgvfApiProdWaf-VMXaeacWPPbX/f0ecfe7d-32a8-452a-91e5-abe8ba824eb7',
             },
+            'log_retention': RetentionDays.SIX_MONTHS,
             'tags': [
             ],
             'url_prefix': 'api',
@@ -428,7 +430,7 @@ class Config:
     tags: List[Tuple[str, str]]
     url_prefix: Optional[str] = None
     use_subdomain: bool = True
-    log_retention: RetentionDays = RetentionDays.ONE_MONTH
+    log_retention: RetentionDays = RetentionDays.ONE_WEEK
     common: Common = field(
         default_factory=Common
     )
@@ -443,7 +445,7 @@ class PipelineConfig:
     account_and_region: Environment
     tags: List[Tuple[str, str]]
     cross_account_keys: bool = False
-    log_retention: RetentionDays = RetentionDays.ONE_MONTH
+    log_retention: RetentionDays = RetentionDays.ONE_WEEK
     common: Common = field(
         default_factory=Common
     )

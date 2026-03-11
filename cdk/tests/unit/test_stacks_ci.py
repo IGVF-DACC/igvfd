@@ -25,7 +25,7 @@ def test_stacks_ci_initialize_ci_stack():
     template.has_resource_properties(
         'AWS::Logs::LogGroup',
         {
-            'RetentionInDays': 30
+            'RetentionInDays': 7
         }
     )
     template.has_resource_properties(

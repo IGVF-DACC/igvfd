@@ -21,7 +21,7 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources
     template.has_resource_properties(
         'AWS::Logs::LogGroup',
         {
-            'RetentionInDays': 30
+            'RetentionInDays': 7
         }
     )
     template.has_resource_properties(
