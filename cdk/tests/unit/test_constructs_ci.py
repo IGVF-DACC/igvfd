@@ -6,6 +6,7 @@ from aws_cdk.assertions import Template
 def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources):
     from infrastructure.constructs.ci import ContinuousIntegration
     from infrastructure.constructs.ci import ContinuousIntegrationProps
+    from aws_cdk.aws_logs import RetentionDays
     from aws_cdk.aws_secretsmanager import Secret
     ci = ContinuousIntegration(
         stack,
@@ -15,9 +16,16 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources
             github_repo='some-repo',
             build_spec={},
             existing_resources=existing_resources,
+            log_retention=RetentionDays.ONE_WEEK,
         )
     )
     template = Template.from_stack(stack)
+    template.has_resource_properties(
+        'AWS::Logs::LogGroup',
+        {
+            'RetentionInDays': 7
+        }
+    )
     template.has_resource_properties(
         'AWS::CodeBuild::Project',
         {
@@ -51,6 +59,14 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources
                 'Type': 'LOCAL'
             },
             'EncryptionKey': 'alias/aws/s3',
+            'LogsConfig': {
+                'CloudWatchLogs': {
+                    'GroupName': {
+                        'Ref': 'TestContinuousIntegrationLogGroupF3C70593'
+                    },
+                    'Status': 'ENABLED'
+                }
+            },
             'ResourceAccessRole': {
                 'Fn::GetAtt': [
                     'TestContinuousIntegrationResourceAccessRole69FFBBDF',
@@ -76,6 +92,19 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources
         {
             'PolicyDocument': {
                 'Statement': [
+                    {
+                        'Action': [
+                            'logs:CreateLogStream',
+                            'logs:PutLogEvents'
+                        ],
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Fn::GetAtt': [
+                                'TestContinuousIntegrationLogGroupF3C70593',
+                                'Arn'
+                            ]
+                        }
+                    },
                     {
                         'Action': [
                             'logs:CreateLogGroup',
@@ -197,27 +226,9 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources
                         'Action': 'logs:GetLogEvents',
                         'Effect': 'Allow',
                         'Resource': {
-                            'Fn::Join': [
-                                '',
-                                [
-                                    'arn:',
-                                    {
-                                        'Ref': 'AWS::Partition'
-                                    },
-                                    ':logs:',
-                                    {
-                                        'Ref': 'AWS::Region'
-                                    },
-                                    ':',
-                                    {
-                                        'Ref': 'AWS::AccountId'
-                                    },
-                                    ':log-group:/aws/codebuild/',
-                                    {
-                                        'Ref': 'TestContinuousIntegrationigvfdContinuousIntegration42002874'
-                                    },
-                                    ':*'
-                                ]
+                            'Fn::GetAtt': [
+                                'TestContinuousIntegrationLogGroupF3C70593',
+                                'Arn'
                             ]
                         }
                     }

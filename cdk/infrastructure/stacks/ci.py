@@ -2,6 +2,8 @@ import aws_cdk as cdk
 
 from constructs import Construct
 
+from aws_cdk.aws_logs import RetentionDays
+
 from infrastructure.constructs.ci import ContinuousIntegration
 from infrastructure.constructs.ci import ContinuousIntegrationProps
 from infrastructure.constructs.existing.types import ExistingResourcesClass
@@ -55,6 +57,7 @@ class ContinuousIntegrationStack(cdk.Stack):
             construct_id: str,
             *,
             existing_resources_class: ExistingResourcesClass,
+            log_retention: RetentionDays,
             **kwargs: Any
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
@@ -70,5 +73,6 @@ class ContinuousIntegrationStack(cdk.Stack):
                 github_repo='igvfd',
                 build_spec=get_build_spec(),
                 existing_resources=self.existing_resources,
+                log_retention=log_retention,
             )
         )

@@ -4,6 +4,8 @@ from aws_cdk.aws_ec2 import InstanceType
 from aws_cdk.aws_ec2 import InstanceClass
 from aws_cdk.aws_ec2 import InstanceSize
 
+from aws_cdk.aws_logs import RetentionDays
+
 from aws_cdk.aws_opensearchservice import CapacityConfig
 from aws_cdk.aws_opensearchservice import EngineVersion
 
@@ -33,6 +35,7 @@ config: Dict[str, Any] = {
             'pipeline': 'DemoDeploymentPipelineStack',
             'existing_resources_class': igvf_dev.Resources,
             'account_and_region': igvf_dev.US_WEST_2,
+            'log_retention': RetentionDays.ONE_WEEK,
             'tags': [
                 ('time-to-live-hours', '60'),
                 ('turn-off-on-friday-night', 'yes'),
@@ -42,6 +45,7 @@ config: Dict[str, Any] = {
             'pipeline': 'ContinuousDeploymentPipelineStack',
             'existing_resources_class': igvf_dev.Resources,
             'account_and_region': igvf_dev.US_WEST_2,
+            'log_retention': RetentionDays.ONE_WEEK,
             'tags': [
             ],
         },
@@ -50,6 +54,7 @@ config: Dict[str, Any] = {
             'cross_account_keys': True,
             'existing_resources_class': igvf_prod.Resources,
             'account_and_region': igvf_prod.US_WEST_2,
+            'log_retention': RetentionDays.INFINITE,
             'tags': [
             ],
         },
@@ -121,6 +126,7 @@ config: Dict[str, Any] = {
                 'enabled': True,
                 'arn': 'arn:aws:wafv2:us-west-2:109189702753:regional/webacl/IgvfApiDemoWaf-7ocdanWWnHMn/8e78b5c1-2dcd-4c7d-85bb-d0e41d147f97',
             },
+            'log_retention': RetentionDays.ONE_WEEK,
             'tags': [
                 ('time-to-live-hours', '60'),
                 ('turn-off-on-friday-night', 'yes'),
@@ -191,6 +197,7 @@ config: Dict[str, Any] = {
                 'enabled': True,
                 'arn': 'arn:aws:wafv2:us-west-2:109189702753:regional/webacl/IgvfApiDemoWaf-7ocdanWWnHMn/8e78b5c1-2dcd-4c7d-85bb-d0e41d147f97',
             },
+            'log_retention': RetentionDays.ONE_MONTH,
             'tags': [
             ]
         },
@@ -259,6 +266,7 @@ config: Dict[str, Any] = {
                 'enabled': True,
                 'arn': 'arn:aws:wafv2:us-west-2:920073238245:regional/webacl/IgvfApiStagingWaf-wfMBFqrzliwq/49cc360d-e3ae-4896-af91-4ed49d6884cc',
             },
+            'log_retention': RetentionDays.ONE_YEAR,
             'tags': [
             ],
             'url_prefix': 'api',
@@ -328,6 +336,7 @@ config: Dict[str, Any] = {
                 'enabled': True,
                 'arn': 'arn:aws:wafv2:us-west-2:920073238245:regional/webacl/IgvfApiSandboxWaf-HqkY5pB5adOs/4d69f89b-447e-4fc5-aa2f-22103f7a5d7e',
             },
+            'log_retention': RetentionDays.ONE_YEAR,
             'tags': [
             ],
             'url_prefix': 'api',
@@ -396,6 +405,7 @@ config: Dict[str, Any] = {
                 'enabled': True,
                 'arn': 'arn:aws:wafv2:us-west-2:035226225042:regional/webacl/IgvfApiProdWaf-VMXaeacWPPbX/f0ecfe7d-32a8-452a-91e5-abe8ba824eb7',
             },
+            'log_retention': RetentionDays.INFINITE,
             'tags': [
             ],
             'url_prefix': 'api',
@@ -424,6 +434,7 @@ class Config:
     indexing_service: Dict[str, Any]
     waf: Dict[str, Any]
     tags: List[Tuple[str, str]]
+    log_retention: RetentionDays
     url_prefix: Optional[str] = None
     use_subdomain: bool = True
     common: Common = field(
@@ -439,6 +450,7 @@ class PipelineConfig:
     existing_resources_class: ExistingResourcesClass
     account_and_region: Environment
     tags: List[Tuple[str, str]]
+    log_retention: RetentionDays
     cross_account_keys: bool = False
     common: Common = field(
         default_factory=Common

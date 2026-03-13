@@ -184,6 +184,7 @@ class Indexer(Construct):
             log_driver=LogDriver.aws_logs(
                 stream_prefix='invalidation-service',
                 mode=AwsLogDriverMode.NON_BLOCKING,
+                log_retention=self.props.config.log_retention,
             ),
         )
 
@@ -244,6 +245,7 @@ class Indexer(Construct):
             log_driver=LogDriver.aws_logs(
                 stream_prefix='indexing-service',
                 mode=AwsLogDriverMode.NON_BLOCKING,
+                log_retention=self.props.config.log_retention,
             ),
         )
 

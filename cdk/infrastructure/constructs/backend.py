@@ -208,6 +208,7 @@ class Backend(Construct):
                 log_driver=LogDriver.aws_logs(
                     stream_prefix='nginx',
                     mode=AwsLogDriverMode.NON_BLOCKING,
+                    log_retention=self.props.config.log_retention,
                 ),
             ),
             memory_limit_mib=self.props.memory_limit_mib,
@@ -248,6 +249,7 @@ class Backend(Construct):
         self.application_log_driver = LogDriver.aws_logs(
             stream_prefix='pyramid',
             mode=AwsLogDriverMode.NON_BLOCKING,
+            log_retention=self.props.config.log_retention,
         )
 
     def _add_application_container_to_task(self) -> None:

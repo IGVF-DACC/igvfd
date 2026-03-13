@@ -1050,6 +1050,7 @@ def test_constructs_backend_backend_construct_define_domain_name(
 
 def test_constructs_backend_get_url_prefix():
     from infrastructure.config import Config
+    from aws_cdk.aws_logs import RetentionDays
     from infrastructure.constructs.backend import get_url_prefix
     config_without_prefix = Config(
         name='abc',
@@ -1061,6 +1062,7 @@ def test_constructs_backend_get_url_prefix():
         indexing_service={},
         feature_flag_service={},
         waf={},
+        log_retention=RetentionDays.ONE_WEEK,
         tags=[],
     )
     url_prefix = get_url_prefix(config_without_prefix)
@@ -1075,6 +1077,7 @@ def test_constructs_backend_get_url_prefix():
         indexing_service={},
         feature_flag_service={},
         waf={},
+        log_retention=RetentionDays.ONE_WEEK,
         tags=[],
         url_prefix='some-prefix',
     )
