@@ -80,9 +80,39 @@ def audit_pseudobulk_set_sample_matches_input(value, system):
             )
 
 
+def audit_pseudobulk_set_input_file_set_type(value, system):
+    '''
+    [
+        {
+            "audit_description": "The input curated sets of pseudobulk sets should have the `file_set_type` external sequencing data.",
+            "audit_category": "unexpected input file sets",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    audit_message = get_audit_message(audit_pseudobulk_set_input_file_set_type, index=0)
+    if value.get('input_file_sets', []):
+        for input_file_set in value.get('input_file_sets', []):
+            input_file_set_object = system.get('request').embed(
+                input_file_set, '@@object_with_select_calculated_properties?field=@type')
+            if input_file_set_object['@type'][0] == 'CuratedSet':
+                if input_file_set_object.get('file_set_type') != 'external sequencing data':
+                    detail = (
+                        f'Pseudobulk set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                        f'has curated set {audit_link(path_to_text(input_file_set), input_file_set)} in input file sets '
+                        f'but the file_set_type is "{input_file_set_object.get("file_set_type", "")}".'
+                    )
+                    yield AuditFailure(
+                        audit_message.get('audit_category', ''),
+                        f'{detail} {audit_message.get("audit_description", "")}',
+                        level=audit_message.get('audit_level', '')
+                    )
+
+
 function_dispatcher_pseudobulk_set_object = {
     'audit_pseudobulk_set_marker_gene_files': audit_pseudobulk_set_marker_gene_files,
-    'audit_pseudobulk_set_sample_matches_input': audit_pseudobulk_set_sample_matches_input
+    'audit_pseudobulk_set_sample_matches_input': audit_pseudobulk_set_sample_matches_input,
+    'audit_pseudobulk_set_input_file_set_type': audit_pseudobulk_set_input_file_set_type
 }
 
 
