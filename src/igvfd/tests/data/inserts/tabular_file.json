@@ -1456,5 +1456,43 @@
         "release_timestamp": "2025-03-06T12:34:56Z",
         "file_set": "igvf:curated_set_external_sequencing_data",
         "controlled_access": false
+    },
+    {
+        "uuid": "f04468d3-5612-6c18-d713-d84909988942",
+        "accession": "IGVFFI0013DMCN",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:domain_constraint"
+        ],
+        "md5sum": "5c7f6a8d9e0b1c2d3e4f5a6b7c8d9e0f",
+        "file_format": "tsv",
+        "content_type": "domain constraint",
+        "submitted_file_name": "/Users/igvf/igvf_files/domain_constraint.tsv.gz",
+        "file_size": 2048000,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:prediction_set_5",
+        "controlled_access": false
+    },
+    {
+        "uuid": "g15579e4-6723-7d29-e824-e95a10999a53",
+        "accession": "IGVFFI0014EXON",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:exon_constraint"
+        ],
+        "md5sum": "6d8e7b9c0f1a2b3c4d5e6f7a8b9c0d1e",
+        "file_format": "tsv",
+        "content_type": "exon constraint",
+        "submitted_file_name": "/Users/igvf/igvf_files/exon_constraint.tsv.gz",
+        "file_size": 2560000,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:prediction_set_5",
+        "controlled_access": false
     }
 ]
