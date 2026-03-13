@@ -45,6 +45,7 @@ class ContinuousIntegration(Construct):
     github: ISource
     continuous_integration_project: Project
     cfn_project: CfnProject
+    log_group: LogGroup
 
     def __init__(
             self,

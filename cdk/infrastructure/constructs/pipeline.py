@@ -57,6 +57,7 @@ class BasicSelfUpdatingPipeline(Construct):
     underlying_pipeline: Pipeline
     code_pipeline: CodePipeline
     pipeline: Pipeline
+    code_build_log_group: LogGroup
 
     def __init__(
             self,
