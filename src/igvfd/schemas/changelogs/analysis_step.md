@@ -2,6 +2,10 @@
 
 ### Minor changes since schema version 11
 
+* Extend `input_content_types` enum list to include `domain constraint`.
+* Extend `output_content_types` enum list to include `domain constraint`.
+* Extend `input_content_types` enum list to include `exon constraint`.
+* Extend `output_content_types` enum list to include `exon constraint`.
 * Extend `input_content_types` enum list to include `marker gene activity`.
 * Extend `output_content_types` enum list to include `marker gene activity`.
 * Extend `input_content_types` enum list to include `marker genes`.
