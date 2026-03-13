@@ -94,7 +94,7 @@ def audit_pseudobulk_set_input_file_set_type(value, system):
     if value.get('input_file_sets', []):
         for input_file_set in value.get('input_file_sets', []):
             input_file_set_object = system.get('request').embed(
-                input_file_set, '@@object?skip_calculated=true')
+                input_file_set, '@@object_with_select_calculated_properties?field=@type')
             if input_file_set_object['@type'][0] == 'CuratedSet':
                 if input_file_set_object.get('file_set_type') != 'external sequencing data':
                     detail = (
