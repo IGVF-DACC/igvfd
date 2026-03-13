@@ -62,7 +62,7 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources
             'LogsConfig': {
                 'CloudWatchLogs': {
                     'GroupName': {
-                        'Ref': 'TestContinuousIntegrationContinuousIntegrationLogGroup1A269DB2'
+                        'Ref': 'TestContinuousIntegrationLogGroupF3C70593'
                     },
                     'Status': 'ENABLED'
                 }
@@ -100,7 +100,7 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources
                         'Effect': 'Allow',
                         'Resource': {
                             'Fn::GetAtt': [
-                                'TestContinuousIntegrationContinuousIntegrationLogGroup1A269DB2',
+                                'TestContinuousIntegrationLogGroupF3C70593',
                                 'Arn'
                             ]
                         }
@@ -227,7 +227,7 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources
                         'Effect': 'Allow',
                         'Resource': {
                             'Fn::GetAtt': [
-                                'TestContinuousIntegrationContinuousIntegrationLogGroup1A269DB2',
+                                'TestContinuousIntegrationLogGroupF3C70593',
                                 'Arn'
                             ]
                         }

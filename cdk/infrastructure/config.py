@@ -197,7 +197,7 @@ config: Dict[str, Any] = {
                 'enabled': True,
                 'arn': 'arn:aws:wafv2:us-west-2:109189702753:regional/webacl/IgvfApiDemoWaf-7ocdanWWnHMn/8e78b5c1-2dcd-4c7d-85bb-d0e41d147f97',
             },
-            'log_retention': RetentionDays.ONE_WEEK,
+            'log_retention': RetentionDays.ONE_MONTH,
             'tags': [
             ]
         },
@@ -266,7 +266,7 @@ config: Dict[str, Any] = {
                 'enabled': True,
                 'arn': 'arn:aws:wafv2:us-west-2:920073238245:regional/webacl/IgvfApiStagingWaf-wfMBFqrzliwq/49cc360d-e3ae-4896-af91-4ed49d6884cc',
             },
-            'log_retention': RetentionDays.ONE_WEEK,
+            'log_retention': RetentionDays.ONE_YEAR,
             'tags': [
             ],
             'url_prefix': 'api',
@@ -336,7 +336,7 @@ config: Dict[str, Any] = {
                 'enabled': True,
                 'arn': 'arn:aws:wafv2:us-west-2:920073238245:regional/webacl/IgvfApiSandboxWaf-HqkY5pB5adOs/4d69f89b-447e-4fc5-aa2f-22103f7a5d7e',
             },
-            'log_retention': RetentionDays.ONE_WEEK,
+            'log_retention': RetentionDays.ONE_YEAR,
             'tags': [
             ],
             'url_prefix': 'api',
