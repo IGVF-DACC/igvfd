@@ -73,7 +73,7 @@ class ContinuousIntegration(Construct):
     def _define_log_group(self) -> None:
         self.log_group = LogGroup(
             self,
-            'LogGroup',
+            'ContinuousIntegrationLogGroup',
             retention=self.props.log_retention,
         )
 
