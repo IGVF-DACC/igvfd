@@ -45,7 +45,7 @@ class ContinuousIntegration(Construct):
     github: ISource
     continuous_integration_project: Project
     cfn_project: CfnProject
-    log_group: LogGroup
+    continuous_integration_log_group: LogGroup
 
     def __init__(
             self,
@@ -72,7 +72,7 @@ class ContinuousIntegration(Construct):
         )
 
     def _define_log_group(self) -> None:
-        self.log_group = LogGroup(
+        self.continuous_integration_log_group = LogGroup(
             self,
             'ContinuousIntegrationLogGroup',
             retention=self.props.log_retention,
@@ -98,7 +98,7 @@ class ContinuousIntegration(Construct):
             ),
             logging=LoggingOptions(
                 cloud_watch=CloudWatchLoggingOptions(
-                    log_group=self.log_group,
+                    log_group=self.continuous_integration_log_group,
                 ),
             ),
         )
