@@ -59,3 +59,28 @@ def test_audit_pseudobulk_set_sample_matches_input(
         error['category'] == 'inconsistent samples'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_pseudobulk_set_input_file_set_type(
+    testapp,
+    pseudobulk_set_base,
+    curated_set_genome,
+):
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {'input_file_sets': [curated_set_genome['@id']]}
+    )
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected input file set'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        curated_set_genome['@id'],
+        {'file_set_type': 'external sequencing data'}
+    )
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected input file set'
+        for error in res.json['audit'].get('ERROR', [])
+    )
