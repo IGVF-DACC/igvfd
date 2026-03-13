@@ -40,7 +40,7 @@ def test_stacks_ci_initialize_ci_stack():
                         'Effect': 'Allow',
                         'Resource': {
                             'Fn::GetAtt': [
-                                'ContinuousIntegrationContinuousIntegrationLogGroup3FDED672',
+                                'ContinuousIntegrationLogGroupD96DF256',
                                 'Arn'
                             ]
                         }

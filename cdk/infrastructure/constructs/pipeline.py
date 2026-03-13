@@ -57,7 +57,7 @@ class BasicSelfUpdatingPipeline(Construct):
     underlying_pipeline: Pipeline
     code_pipeline: CodePipeline
     pipeline: Pipeline
-    code_build_log_group: LogGroup
+    log_group: LogGroup
 
     def __init__(
             self,
@@ -139,7 +139,7 @@ class BasicSelfUpdatingPipeline(Construct):
         )
 
     def _define_code_build_log_group(self) -> None:
-        self.code_build_log_group = LogGroup(
+        self.log_group = LogGroup(
             self,
             'CodeBuildLogGroup',
             retention=self.props.config.log_retention,
@@ -159,7 +159,7 @@ class BasicSelfUpdatingPipeline(Construct):
             code_build_defaults=CodeBuildOptions(
                 logging=LoggingOptions(
                     cloud_watch=CloudWatchLoggingOptions(
-                        log_group=self.code_build_log_group,
+                        log_group=self.log_group,
                     ),
                 ),
             ),
