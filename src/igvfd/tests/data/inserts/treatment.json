@@ -128,5 +128,19 @@
         "award": "/awards/HG012012/",
         "lab": "/labs/j-michael-cherry/",
         "depletion": false
+    },
+    {
+        "duration": 84,
+        "duration_units": "day",
+        "purpose": "control",
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "treatment_term_name": "Normal Diet",
+        "treatment_type": "diet",
+        "treatment_term_id": "NTR:0001002",
+        "uuid": "b2c3d4e5-f6a7-5b6c-9d0e-1f2a3b4c5d6e",
+        "award": "/awards/HG012012/",
+        "lab": "/labs/j-michael-cherry/",
+        "depletion": false
     }
 ]

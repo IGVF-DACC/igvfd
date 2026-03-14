@@ -224,7 +224,10 @@
                                 "pattern": "^((NTR:[0-9]{2,8}))$"
                             },
                             "treatment_term_name": {
-                                "const": "High Fat Diet"
+                                "enum": [
+                                    "High Fat Diet",
+                                    "Normal Diet"
+                                ]
                             }
                         },
                         "required": [
