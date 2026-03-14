@@ -71,3 +71,12 @@ def test_treatment_upgrade_9_10(upgrader, treatment_v9):
     assert value['schema_version'] == '10'
     assert value['treatment_type'] == 'protein'
     assert value['treatment_term_id'] == 'NTR:0000000'
+
+
+def test_treatment_upgrade_10_11(upgrader, treatment_v10_thermal):
+    value = upgrader.upgrade('treatment', treatment_v10_thermal, current_version='10', target_version='11')
+    assert value['schema_version'] == '11'
+    assert value['treatment_type'] == 'chemical'
+    assert value['temperature'] == 10
+    assert value['temperature_units'] == 'Celsius'
+    assert 'This treatment was previously modeled as thermal' in value['notes']

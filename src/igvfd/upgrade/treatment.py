@@ -103,3 +103,15 @@ def treatment_9_10(value, system):
     if notes:
         value['notes'] = notes.strip()
     return
+
+
+@upgrade_step('treatment', '10', '11')
+def treatment_10_11(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3334
+    notes = value.get('notes', '')
+    if value.get('treatment_type') == 'thermal':
+        value['treatment_type'] = 'chemical'
+        notes += 'This treatment was previously modeled as thermal type but has been upgraded to chemical. Temperature and temperature_units are unchanged.'
+    if notes:
+        value['notes'] = notes.strip()
+    return
