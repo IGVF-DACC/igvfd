@@ -168,6 +168,55 @@ def test_related_measurement_sets_series_type_treatment_time_series_different_tr
     assert len(treatment_series_group) == 0
 
 
+def test_related_measurement_sets_symmetric(testapp, primary_cell, primary_cell_with_part_of_virtual_true, measurement_set, lab, award, assay_term_starr, other_lab, human_donor, sample_term_pluripotent_stem_cell):
+    # If A lists B and C as related, then B must list A and C, and C must list A and B.
+    # A and B related via part_of (sibling primary_cells, same sample type); A and C related via same sample.
+    primary_cell_part_2 = testapp.post_json('/primary_cell', {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'sources': [other_lab['@id']],
+        'donors': [human_donor['@id']],
+        'sample_terms': [sample_term_pluripotent_stem_cell['@id']],
+        'virtual': False,
+        'part_of': primary_cell['@id']
+    }, status=201).json['@graph'][0]
+
+    testapp.patch_json(measurement_set['@id'], {'samples': [primary_cell_with_part_of_virtual_true['@id']]})
+
+    a_id = measurement_set['@id']
+    b = testapp.post_json('/measurement_set', {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_starr['@id'],
+        'samples': [primary_cell_part_2['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_titles': ['STARR-seq']
+    }).json['@graph'][0]
+    c = testapp.post_json('/measurement_set', {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_starr['@id'],
+        'samples': [primary_cell_with_part_of_virtual_true['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_titles': ['STARR-seq']
+    }).json['@graph'][0]
+    b_id, c_id = b['@id'], c['@id']
+
+    res_a = testapp.get(a_id)
+    a_related = {ms['@id'] for g in (res_a.json.get('related_measurement_sets') or [])
+                 for ms in g.get('measurement_sets', [])}
+    res_b = testapp.get(b_id)
+    b_related = {ms['@id'] for g in (res_b.json.get('related_measurement_sets') or [])
+                 for ms in g.get('measurement_sets', [])}
+    res_c = testapp.get(c_id)
+    c_related = {ms['@id'] for g in (res_c.json.get('related_measurement_sets') or [])
+                 for ms in g.get('measurement_sets', [])}
+
+    assert a_related == {b_id, c_id}, f'A should list B and C; got {a_related}'
+    assert b_related == {a_id, c_id}, f'B should list A and C; got {b_related}'
+    assert c_related == {a_id, b_id}, f'C should list A and B; got {c_related}'
+
+
 def test_related_measurement_sets_excludes_different_assay_term(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra):
     # part_of siblings (replicates) but different assay_terms -> should NOT appear in related_measurement_sets.
     # measurement_set has assay_term_starr, measurement_set_mpra has assay_term_mpra.

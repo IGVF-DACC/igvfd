@@ -1374,23 +1374,22 @@ class MeasurementSet(FileSet):
     def related_measurement_sets(self, request, samples=None, multiome_size=None, assay_term=None):
         object_id = self.jsonld_id(request)
         related_multiome_datasets = set()
-        related_part_of_datasets = set()
+        related_replicates_datasets = set()
         related_sorted_from_datasets = set()
         related_treatment_time_series_datasets = set()
 
         for sample in samples:
             sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=file_sets')
 
-            # multiome
+            # multiome (same sample, multiome_size set) or replicates (same sample, same assay, no multiome_size)
             for file_set_id in sample_object.get('file_sets', []):
-                if (
-                    file_set_id.startswith('/measurement-sets/')
-                    and file_set_id != object_id
-                    and multiome_size
-                ):
-                    related_multiome_datasets.add(file_set_id)
+                if file_set_id.startswith('/measurement-sets/') and file_set_id != object_id:
+                    if multiome_size:
+                        related_multiome_datasets.add(file_set_id)
+                    elif same_assay_term(request, assay_term, file_set_id):
+                        related_replicates_datasets.add(file_set_id)
 
-            # replicates and treatment time series (both use part_of); mutually exclusive
+            # replicates via part_of siblings and treatment time series (both use part_of); mutually exclusive
             part_of_sample = sample_object.get('part_of', '')
             if part_of_sample:
                 part_of_sample_object = request.embed(
@@ -1418,8 +1417,8 @@ class MeasurementSet(FileSet):
                             if part_treatment_set == current_treatment_set and part_durations != current_durations:
                                 related_treatment_time_series_datasets.update(part_measurement_sets)
                                 continue
-                        # otherwise replicates
-                        related_part_of_datasets.update(part_measurement_sets)
+                        # otherwise replicates (part_of siblings sharing same assay)
+                        related_replicates_datasets.update(part_measurement_sets)
 
             # sorted fractions
             sorted_from_sample = sample_object.get('sorted_from', '')
@@ -1447,10 +1446,10 @@ class MeasurementSet(FileSet):
                 'measurement_sets': sorted(related_multiome_datasets),
             })
 
-        if related_part_of_datasets:
+        if related_replicates_datasets:
             result.append({
                 'series_type': 'replicates',
-                'measurement_sets': sorted(related_part_of_datasets),
+                'measurement_sets': sorted(related_replicates_datasets),
             })
 
         if related_sorted_from_datasets:
