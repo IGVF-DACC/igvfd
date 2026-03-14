@@ -47,6 +47,7 @@ class Treatment(Item):
     def summary(
         self,
         treatment_term_name,
+        treatment_type=None,
         amount=None,
         amount_units=None,
         duration=None,
@@ -80,6 +81,8 @@ class Treatment(Item):
             text = f'Treatment of {amount} {amount_units} {treatment_term_name}'
         elif temperature is not None:
             text = f'Treatment of heat exposure at {temperature} {temperature_units}'
+        elif treatment_type == 'diet' and duration is not None:
+            text = f'Treatment of {treatment_term_name} for {duration} {duration_units}'
         elif duration is not None:
             text = f'Depletion of {treatment_term_name} for {duration} {duration_units}'
         else:

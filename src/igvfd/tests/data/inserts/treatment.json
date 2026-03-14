@@ -114,5 +114,19 @@
             "j-michael-cherry:thermal_treatment"
         ],
         "depletion": true
+    },
+    {
+        "duration": 84,
+        "duration_units": "day",
+        "purpose": "perturbation",
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "treatment_term_name": "High Fat Diet",
+        "treatment_type": "diet",
+        "treatment_term_id": "NTR:0001001",
+        "uuid": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+        "award": "/awards/HG012012/",
+        "lab": "/labs/j-michael-cherry/",
+        "depletion": false
     }
 ]
