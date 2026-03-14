@@ -438,5 +438,30 @@
         "secondary_dimensions": [
             "gene"
         ]
+    },
+    {
+        "uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "accession": "IGVFFI0099MOLG",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_multiplexing_oligo"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-03-10T12:34:56Z",
+        "md5sum": "a1b2c3d4e5f6789012345678abcdef01",
+        "file_format": "h5ad",
+        "content_type": "sample barcode count matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/matrix_file_multiplexing_oligo.h5ad",
+        "file_size": 3200000,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
+            "multiplexing oligo"
+        ]
     }
 ]

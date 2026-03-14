@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Extend `secondary_dimensions` enum list to include `multiplexing oligo`.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Extend `content_type` enum list to include `allele specific sparse gene count matrix`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
