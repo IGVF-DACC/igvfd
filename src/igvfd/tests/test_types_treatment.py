@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_treatment_summary(treatment_chemical, treatment_protein, depletion_treatment, treatment_thermal, treatment_diet, treatment_combo1, treatment_combo2, testapp):
+def test_treatment_summary(treatment_chemical, treatment_protein, depletion_treatment, treatment_thermal, treatment_diet, treatment_normal_diet, treatment_combo1, treatment_combo2, testapp):
     res = testapp.get(treatment_chemical['@id'])
     assert res.json['summary'] == 'Treatment of 10 mM lactate for 1 hour'
     res = testapp.get(treatment_protein['@id'])
@@ -11,8 +11,9 @@ def test_treatment_summary(treatment_chemical, treatment_protein, depletion_trea
     res = testapp.get(treatment_thermal['@id'])
     assert res.json['summary'] == 'Treatment of heat exposure at 10 Celsius'
     res = testapp.get(treatment_diet['@id'])
-    print(res.json['summary'])
     assert res.json['summary'] == 'Treatment of High Fat Diet for 84 days'
+    res = testapp.get(treatment_normal_diet['@id'])
+    assert res.json['summary'] == 'Treatment of Normal Diet for 84 days'
     res = testapp.get(treatment_combo1['@id'])
     assert res.json['summary'] == 'Treatment of 23 ng/mL G-CSF at 10 Celsius'
     res = testapp.get(treatment_combo2['@id'])
