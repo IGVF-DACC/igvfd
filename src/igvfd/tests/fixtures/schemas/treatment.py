@@ -37,13 +37,46 @@ def treatment_protein(testapp, lab, award):
 
 @pytest.fixture
 def treatment_thermal(testapp, lab, award):
+    """Treatment with temperature only (no amount); uses chemical type."""
     item = {
         'treatment_term_id': 'NTR:9919',
-        'treatment_term_name': 'G-CSF',
-        'treatment_type': 'thermal',
+        'treatment_term_name': 'heat exposure',
+        'treatment_type': 'chemical',
         'temperature': 10,
         'temperature_units': 'Celsius',
         'purpose': 'perturbation',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'depletion': False
+    }
+    return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def treatment_diet(testapp, lab, award):
+    item = {
+        'treatment_term_id': 'NTR:0001001',
+        'treatment_term_name': 'High Fat Diet',
+        'treatment_type': 'diet',
+        'duration': 84,
+        'duration_units': 'day',
+        'purpose': 'perturbation',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'depletion': False
+    }
+    return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def treatment_normal_diet(testapp, lab, award):
+    item = {
+        'treatment_term_id': 'NTR:0001002',
+        'treatment_term_name': 'Normal Diet',
+        'treatment_type': 'diet',
+        'duration': 84,
+        'duration_units': 'day',
+        'purpose': 'control',
         'award': award['@id'],
         'lab': lab['@id'],
         'depletion': False
@@ -58,7 +91,7 @@ def treatment_combo1(testapp, lab, award):
         'treatment_term_name': 'G-CSF',
         'amount': 23,
         'amount_units': 'ng/mL',
-        'treatment_type': 'thermal',
+        'treatment_type': 'chemical',
         'temperature': 10,
         'temperature_units': 'Celsius',
         'purpose': 'perturbation',
@@ -78,7 +111,7 @@ def treatment_combo2(testapp, lab, award):
         'amount_units': 'ng/mL',
         'duration': 15,
         'duration_units': 'minute',
-        'treatment_type': 'thermal',
+        'treatment_type': 'chemical',
         'temperature': 10,
         'temperature_units': 'Celsius',
         'purpose': 'perturbation',
@@ -225,4 +258,13 @@ def treatment_v9(treatment_chemical):
         'schema_version': '9',
         'treatment_type': 'environmental'
     })
+    return item
+
+
+@pytest.fixture
+def treatment_v10_thermal(treatment_thermal):
+    """Treatment with schema_version 10 and treatment_type thermal for upgrade testing."""
+    item = treatment_thermal.copy()
+    item['schema_version'] = '10'
+    item['treatment_type'] = 'thermal'
     return item

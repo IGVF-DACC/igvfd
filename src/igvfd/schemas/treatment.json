@@ -145,6 +145,16 @@
                                 "temperature",
                                 "temperature_units"
                             ]
+                        },
+                        {
+                            "required": [
+                                "treatment_type"
+                            ],
+                            "properties": {
+                                "treatment_type": {
+                                    "const": "diet"
+                                }
+                            }
                         }
                     ]
                 }
@@ -201,7 +211,7 @@
                     "if": {
                         "properties": {
                             "treatment_type": {
-                                "const": "thermal"
+                                "const": "diet"
                             }
                         },
                         "required": [
@@ -212,10 +222,17 @@
                         "properties": {
                             "treatment_term_id": {
                                 "pattern": "^((NTR:[0-9]{2,8}))$"
+                            },
+                            "treatment_term_name": {
+                                "enum": [
+                                    "High Fat Diet",
+                                    "Normal Diet"
+                                ]
                             }
                         },
                         "required": [
-                            "treatment_term_id"
+                            "treatment_term_id",
+                            "treatment_term_name"
                         ]
                     }
                 }
@@ -224,7 +241,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "10"
+            "default": "11"
         },
         "documents": {
             "description": "Documents that describe the treatment protocol details.",
@@ -393,12 +410,12 @@
             "enum": [
                 "chemical",
                 "protein",
-                "thermal"
+                "diet"
             ],
             "enum_descriptions": {
                 "chemical": "Refers to (natural or synthetic) organic/inorganic compounds and also includes drugs. Example of chemical type: lactate, ethanol,hydrocortisone, LPS etc.",
                 "protein": "Restricted to active protein biomolecules that are naturally or artificially synthesized via cellular translation mechanism of converting DNA into a protein. Example of protein type: Interferons, interleukin, antibodies, etc.",
-                "thermal": "Refers to treatments that involve controlled exposure to heat or cold to induce a biological response. Examples include heat shock, cold shock, or temperature shift incubation."
+                "diet": "Diet-based treatment."
             },
             "submissionExample": {
                 "appscript": "chemical",

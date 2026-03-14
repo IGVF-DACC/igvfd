@@ -71,6 +71,26 @@ def test_treatment_type_dependency(treatment_chemical, testapp):
         treatment_chemical['@id'],
         {'treatment_type': 'protein', 'treatment_term_id': 'CHEBI:24996'}, expect_errors=True)
     assert res.status_code == 422
+    res = testapp.patch_json(
+        treatment_chemical['@id'],
+        {'treatment_type': 'diet', 'treatment_term_id': 'NTR:0001001', 'treatment_term_name': 'High Fat Diet'})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        treatment_chemical['@id'],
+        {'treatment_type': 'diet', 'treatment_term_id': 'CHEBI:24996', 'treatment_term_name': 'High Fat Diet'}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        treatment_chemical['@id'],
+        {'treatment_type': 'diet', 'treatment_term_id': 'UniProtKB:P09919', 'treatment_term_name': 'High Fat Diet'}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        treatment_chemical['@id'],
+        {'treatment_type': 'diet', 'treatment_term_id': 'NTR:0001002', 'treatment_term_name': 'Normal Diet'})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        treatment_chemical['@id'],
+        {'treatment_type': 'diet', 'treatment_term_id': 'NTR:0001001', 'treatment_term_name': 'high-fat diet'}, expect_errors=True)
+    assert res.status_code == 422
 
 
 def test_treatment_purpose_requirement(testapp, award, lab):
@@ -154,12 +174,27 @@ def test_treatment_award_lab_depletion_requirement(testapp, award, lab):
         '/treatment',
         {
             'treatment_term_id': 'NTR:9919',
-            'treatment_term_name': 'G-CSF',
-            'treatment_type': 'thermal',
+            'treatment_term_name': 'heat exposure',
+            'treatment_type': 'chemical',
             'temperature': 10,
             'temperature_units': 'Celsius',
             'depletion': False,
-            'purpose': 'differentiation',
+            'purpose': 'perturbation',
+            'award': award['@id'],
+            'lab': lab['@id']
+        })
+    assert res.status_code == 201
+
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_id': 'NTR:0001001',
+            'treatment_term_name': 'High Fat Diet',
+            'treatment_type': 'diet',
+            'duration': 12,
+            'duration_units': 'day',
+            'depletion': False,
+            'purpose': 'perturbation',
             'award': award['@id'],
             'lab': lab['@id']
         })
