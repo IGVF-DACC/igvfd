@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_related_measurement_sets_multiome(testapp, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_multiome, measurement_set_multiome_2, curated_set_genome):
+def test_related_measurement_sets_series_type_multiome(testapp, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_multiome, measurement_set_multiome_2, curated_set_genome):
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -62,6 +62,178 @@ def test_related_measurement_sets_multiome(testapp, primary_cell, in_vitro_cell_
     related_multiome_datasets = multiome_group[0]['measurement_sets']
     assert set([related_multiome_dataset['@id'] for related_multiome_dataset in related_multiome_datasets]
                ) == {measurement_set['@id'], measurement_set_multiome_2['@id']}
+
+
+def test_related_measurement_sets_series_type_biological_replicates(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra, assay_term_starr):
+    # Set up: tissue is parent; primary_cell and in_vitro_cell_line are parts (part_of tissue).
+    testapp.patch_json(primary_cell['@id'], {'part_of': tissue['@id']})
+    testapp.patch_json(in_vitro_cell_line['@id'], {'part_of': tissue['@id']})
+    # Measurement set 1 -> primary_cell, measurement set 2 -> in_vitro_cell_line. Same assay_term required for non-multiome related sets.
+    testapp.patch_json(measurement_set['@id'], {'samples': [primary_cell['@id']]})
+    testapp.patch_json(measurement_set_mpra['@id'], {'samples': [in_vitro_cell_line['@id']],
+                       'assay_term': assay_term_starr['@id'], 'preferred_assay_titles': ['STARR-seq']})
+
+    res = testapp.get(measurement_set['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'replicates']
+    assert len(bio_group) == 1
+    bio_ids = {ms['@id'] for ms in bio_group[0]['measurement_sets']}
+    assert bio_ids == {measurement_set_mpra['@id']}
+
+    res = testapp.get(measurement_set_mpra['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'replicates']
+    assert len(bio_group) == 1
+    bio_ids = {ms['@id'] for ms in bio_group[0]['measurement_sets']}
+    assert bio_ids == {measurement_set['@id']}
+
+
+def test_related_measurement_sets_series_type_sorted_fractions(testapp, primary_cell, tissue, in_vitro_cell_line, measurement_set, measurement_set_mpra, assay_term_starr):
+    # Set up: primary_cell is parent; tissue and in_vitro_cell_line are sorted fractions (sorted_from primary_cell).
+    testapp.patch_json(tissue['@id'], {'sorted_from': primary_cell['@id'], 'sorted_from_detail': 'detail 1'})
+    testapp.patch_json(in_vitro_cell_line['@id'],
+                       {'sorted_from': primary_cell['@id'], 'sorted_from_detail': 'detail 2'})
+    # Measurement set 1 -> tissue, measurement set 2 -> in_vitro_cell_line. Same assay_term required for non-multiome related sets.
+    testapp.patch_json(measurement_set['@id'], {'samples': [tissue['@id']]})
+    testapp.patch_json(measurement_set_mpra['@id'], {'samples': [in_vitro_cell_line['@id']],
+                       'assay_term': assay_term_starr['@id'], 'preferred_assay_titles': ['STARR-seq']})
+
+    res = testapp.get(measurement_set['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    sort_group = [g for g in related_measurement_sets if g.get('series_type') == 'sorted fractions']
+    assert len(sort_group) == 1
+    sort_ids = {ms['@id'] for ms in sort_group[0]['measurement_sets']}
+    assert sort_ids == {measurement_set_mpra['@id']}
+
+    res = testapp.get(measurement_set_mpra['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    sort_group = [g for g in related_measurement_sets if g.get('series_type') == 'sorted fractions']
+    assert len(sort_group) == 1
+    sort_ids = {ms['@id'] for ms in sort_group[0]['measurement_sets']}
+    assert sort_ids == {measurement_set['@id']}
+
+
+def test_related_measurement_sets_series_type_treatment_time_series(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra, treatment_chemical, lab, award, assay_term_starr):
+    # part_of siblings, same treatment term, different duration -> treatment time series.
+    testapp.patch_json(primary_cell['@id'], {'part_of': tissue['@id'], 'treatments': [treatment_chemical['@id']]})
+    treatment_24h = testapp.post_json('/treatment', {
+        'treatment_term_id': 'CHEBI:24996',
+        'treatment_term_name': 'lactate',
+        'treatment_type': 'chemical',
+        'amount': 10,
+        'amount_units': 'mM',
+        'duration': 24,
+        'duration_units': 'hour',
+        'purpose': 'activation',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'depletion': False
+    }, status=201).json['@graph'][0]
+    testapp.patch_json(in_vitro_cell_line['@id'], {'part_of': tissue['@id'], 'treatments': [treatment_24h['@id']]})
+    testapp.patch_json(measurement_set['@id'], {'samples': [primary_cell['@id']]})
+    testapp.patch_json(measurement_set_mpra['@id'], {'samples': [in_vitro_cell_line['@id']],
+                       'assay_term': assay_term_starr['@id'], 'preferred_assay_titles': ['STARR-seq']})
+
+    res = testapp.get(measurement_set['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    treatment_series_group = [g for g in related_measurement_sets if g.get('series_type') == 'treatment time series']
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'replicates']
+    assert len(treatment_series_group) == 1
+    treatment_series_ids = {ms['@id'] for ms in treatment_series_group[0]['measurement_sets']}
+    assert treatment_series_ids == {measurement_set_mpra['@id']}
+    assert len(bio_group) == 0  # mutually exclusive: not in replicates
+
+    res = testapp.get(measurement_set_mpra['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    treatment_series_group = [g for g in related_measurement_sets if g.get('series_type') == 'treatment time series']
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'replicates']
+    assert len(treatment_series_group) == 1
+    treatment_series_ids = {ms['@id'] for ms in treatment_series_group[0]['measurement_sets']}
+    assert treatment_series_ids == {measurement_set['@id']}
+    assert len(bio_group) == 0  # mutually exclusive: not in replicates
+
+
+def test_related_measurement_sets_series_type_treatment_time_series_different_treatments_excluded(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra, treatment_chemical, treatment_protein, lab, award, assay_term_starr):
+    # part_of siblings, different treatment terms -> no treatment time series.
+    testapp.patch_json(primary_cell['@id'], {'part_of': tissue['@id'], 'treatments': [treatment_chemical['@id']]})
+    testapp.patch_json(in_vitro_cell_line['@id'], {'part_of': tissue['@id'], 'treatments': [treatment_protein['@id']]})
+    testapp.patch_json(measurement_set['@id'],
+                       {'samples': [primary_cell['@id']], 'assay_term': assay_term_starr['@id']})
+    testapp.patch_json(measurement_set_mpra['@id'],
+                       {'samples': [in_vitro_cell_line['@id']], 'assay_term': assay_term_starr['@id']})
+
+    res = testapp.get(measurement_set['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    treatment_series_group = [g for g in related_measurement_sets if g.get('series_type') == 'treatment time series']
+    assert len(treatment_series_group) == 0
+
+
+def test_related_measurement_sets_symmetric(testapp, primary_cell, primary_cell_with_part_of_virtual_true, measurement_set, lab, award, assay_term_starr, other_lab, human_donor, sample_term_pluripotent_stem_cell):
+    # If A lists B and C as related, then B must list A and C, and C must list A and B.
+    # A and B related via part_of (sibling primary_cells, same sample type); A and C related via same sample.
+    primary_cell_part_2 = testapp.post_json('/primary_cell', {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'sources': [other_lab['@id']],
+        'donors': [human_donor['@id']],
+        'sample_terms': [sample_term_pluripotent_stem_cell['@id']],
+        'virtual': False,
+        'part_of': primary_cell['@id']
+    }, status=201).json['@graph'][0]
+
+    testapp.patch_json(measurement_set['@id'], {'samples': [primary_cell_with_part_of_virtual_true['@id']]})
+
+    a_id = measurement_set['@id']
+    b = testapp.post_json('/measurement_set', {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_starr['@id'],
+        'samples': [primary_cell_part_2['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_titles': ['STARR-seq']
+    }).json['@graph'][0]
+    c = testapp.post_json('/measurement_set', {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_starr['@id'],
+        'samples': [primary_cell_with_part_of_virtual_true['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_titles': ['STARR-seq']
+    }).json['@graph'][0]
+    b_id, c_id = b['@id'], c['@id']
+
+    res_a = testapp.get(a_id)
+    a_related = {ms['@id'] for g in (res_a.json.get('related_measurement_sets') or [])
+                 for ms in g.get('measurement_sets', [])}
+    res_b = testapp.get(b_id)
+    b_related = {ms['@id'] for g in (res_b.json.get('related_measurement_sets') or [])
+                 for ms in g.get('measurement_sets', [])}
+    res_c = testapp.get(c_id)
+    c_related = {ms['@id'] for g in (res_c.json.get('related_measurement_sets') or [])
+                 for ms in g.get('measurement_sets', [])}
+
+    assert a_related == {b_id, c_id}, f'A should list B and C; got {a_related}'
+    assert b_related == {a_id, c_id}, f'B should list A and C; got {b_related}'
+    assert c_related == {a_id, b_id}, f'C should list A and B; got {c_related}'
+
+
+def test_related_measurement_sets_excludes_different_assay_term(testapp, tissue, primary_cell, in_vitro_cell_line, measurement_set, measurement_set_mpra):
+    # part_of siblings (replicates) but different assay_terms -> should NOT appear in related_measurement_sets.
+    # measurement_set has assay_term_starr, measurement_set_mpra has assay_term_mpra.
+    testapp.patch_json(primary_cell['@id'], {'part_of': tissue['@id']})
+    testapp.patch_json(in_vitro_cell_line['@id'], {'part_of': tissue['@id']})
+    testapp.patch_json(measurement_set['@id'], {'samples': [primary_cell['@id']]})
+    testapp.patch_json(measurement_set_mpra['@id'], {'samples': [in_vitro_cell_line['@id']]})
+
+    res = testapp.get(measurement_set['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'replicates']
+    assert len(bio_group) == 0
+
+    res = testapp.get(measurement_set_mpra['@id'])
+    related_measurement_sets = res.json.get('related_measurement_sets') or []
+    bio_group = [g for g in related_measurement_sets if g.get('series_type') == 'replicates']
+    assert len(bio_group) == 0
 
 
 def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modification_activation, construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction, construct_library_set_genome_wide, assay_term_y2h, construct_library_set_reference_transduction, multiplexed_sample):
