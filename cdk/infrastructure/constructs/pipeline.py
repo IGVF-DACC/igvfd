@@ -2,11 +2,17 @@ from constructs import Construct
 
 from aws_cdk import RemovalPolicy
 
+from aws_cdk.aws_codebuild import CloudWatchLoggingOptions
+from aws_cdk.aws_codebuild import LoggingOptions
+
 from aws_cdk.aws_codepipeline import Pipeline
+
+from aws_cdk.aws_logs import LogGroup
 
 from aws_cdk.aws_s3 import Bucket
 from aws_cdk.aws_s3 import BlockPublicAccess
 
+from aws_cdk.pipelines import CodeBuildOptions
 from aws_cdk.pipelines import CodePipeline
 from aws_cdk.pipelines import CodePipelineSource
 from aws_cdk.pipelines import DockerCredential
@@ -51,6 +57,7 @@ class BasicSelfUpdatingPipeline(Construct):
     underlying_pipeline: Pipeline
     code_pipeline: CodePipeline
     pipeline: Pipeline
+    log_group: LogGroup
 
     def __init__(
             self,
@@ -131,7 +138,15 @@ class BasicSelfUpdatingPipeline(Construct):
             artifact_bucket=self.artifact_bucket,
         )
 
+    def _define_code_build_log_group(self) -> None:
+        self.log_group = LogGroup(
+            self,
+            'LogGroup',
+            retention=self.props.config.log_retention,
+        )
+
     def _make_code_pipeline(self) -> None:
+        self._define_code_build_log_group()
         self.code_pipeline = CodePipeline(
             self,
             'CodePipeline',
@@ -141,6 +156,13 @@ class BasicSelfUpdatingPipeline(Construct):
             ],
             docker_enabled_for_synth=True,
             code_pipeline=self.underlying_pipeline,
+            code_build_defaults=CodeBuildOptions(
+                logging=LoggingOptions(
+                    cloud_watch=CloudWatchLoggingOptions(
+                        log_group=self.log_group,
+                    ),
+                ),
+            ),
         )
 
     def _get_underlying_pipeline(self) -> Pipeline:
