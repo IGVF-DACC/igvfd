@@ -1,5 +1,12 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 20
+
+* Rename `assembly` to `submitted_assembly`.
+* Rename `transcriptome_annotation` to `submitted_transcriptome_annotation`.
+* Add calculated property `assembly`.
+* Add calculated property `transcriptome_annotation`.
+
 ### Minor changes since schema version 19
 
 * Extend `content_type` enum list to include `domain constraint`.

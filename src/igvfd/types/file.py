@@ -1239,6 +1239,52 @@ class TabularFile(File):
     def enrichment_design_for(self, request, enrichment_design_for):
         return paths_filtered_by_status(request, enrichment_design_for) or None
 
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Transcriptome Annotation',
+            'type': 'string',
+            'description': 'The annotation and version of the reference resource.',
+            'notSubmittable': True
+        }
+    )
+    def transcriptome_annotation(self, request, reference_files=None):
+        transcriptome_annotation_set = set()
+        transcriptome_annotation = None
+        if reference_files is not None:
+            for ref_file in paths_filtered_by_status(request, reference_files):
+                ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
+                if ref_file_object['content_type'] == 'transcriptome reference' or ref_file_object['content_type'] == 'transcriptome index':
+                    transcriptome_annotation_set.add(ref_file_object.get('transcriptome_annotation', None))
+        if len(transcriptome_annotation_set) > 1:
+            transcriptome_annotation = 'Mixed transcriptome annotations'
+        elif len(transcriptome_annotation_set) == 1:
+            transcriptome_annotation = list(transcriptome_annotation_set)[0]
+        return transcriptome_annotation
+
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Genome Assembly',
+            'type': 'string',
+            'description': 'The assembly associated with the alignment file.',
+            'notSubmittable': True
+        }
+    )
+    def assembly(self, request, reference_files=None):
+        assembly_set = set()
+        assembly = None
+        if reference_files is not None:
+            for ref_file in paths_filtered_by_status(request, reference_files):
+                ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
+                if ref_file_object['content_type'] == 'genome reference' or ref_file_object['content_type'] == 'genome index':
+                    assembly_set.add(ref_file_object.get('assembly', None))
+        if len(assembly_set) > 1:
+            assembly = 'Mixed genome assemblies'
+        elif len(assembly_set) == 1:
+            assembly = list(assembly_set)[0]
+        return assembly
+
 
 @collection(
     name='image-files',
