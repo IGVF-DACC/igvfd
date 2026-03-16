@@ -46,7 +46,7 @@ def whole_organism():
                 ]
             },
             'file_sets.preferred_assay_titles': {
-                'title': 'Assay Title'
+                'title': 'Preferred Assay Title'
             },
             'construct_library_sets.file_set_type': {
                 'title': 'Library Type'
