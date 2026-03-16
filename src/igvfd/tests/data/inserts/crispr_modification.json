@@ -202,7 +202,7 @@
         "lab": "charles-gersbach",
         "award": "1UM1HG012053-01",
         "aliases": [
-            "igvf:crispr_fused_domain_Tet1"
+            "igvf:crispr_fused_domain_evoCDA"
         ],
         "cas": "dCas9",
         "fused_domain": "evoCDA",
