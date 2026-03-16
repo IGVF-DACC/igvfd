@@ -54,6 +54,9 @@ def in_vitro_system():
                     {'field': 'file_sets.assay_term.term_name', 'title': 'Assay type'}
                 ]
             },
+            'file_sets.preferred_assay_titles': {
+                'title': 'Preferred Assay Title'
+            },
             'construct_library_sets.file_set_type': {
                 'title': 'Library Type'
             },
