@@ -468,6 +468,7 @@ def test_audit_anvil_file_fileset_mismatch_measet(
     testapp,
     sequence_file,
     sequence_file_pod5,
+    revoked_sequence_file,
     measurement_set
 ):
     # MeaSet not on AnVIL but has an AnVIL file -> audit
@@ -507,5 +508,24 @@ def test_audit_anvil_file_fileset_mismatch_measet(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent AnVIL status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+
+    # Test if this audit shows up when file without AnVIL url is deprecated
+    testapp.patch_json(
+        sequence_file_pod5['@id'],
+        {
+            'anvil_url': 'anvil://mock_url_2'
+        }
+    )
+    testapp.patch_json(
+        revoked_sequence_file['@id'],
+        {
+            'file_set': measurement_set['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent AnVIL status'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
