@@ -69,6 +69,20 @@ def treatment_diet(testapp, lab, award):
 
 
 @pytest.fixture
+def treatment_diet_no_duration(testapp, lab, award):
+    item = {
+        'treatment_term_id': 'NTR:0001003',
+        'treatment_term_name': 'High Fat Diet',
+        'treatment_type': 'diet',
+        'purpose': 'control',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'depletion': False
+    }
+    return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def treatment_normal_diet(testapp, lab, award):
     item = {
         'treatment_term_id': 'NTR:0001002',
