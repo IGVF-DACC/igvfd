@@ -35,8 +35,13 @@ def tabular_file():
             'file_set.file_set_type': {
                 'title': 'File Set Type'
             },
-            'assay_titles': {
-                'title': 'Assay Term Names'
+            'file_set.assay_term.assay_slims': {
+                'title': 'Assay',
+                'description': 'High-level classification of assay type.',
+                'type': 'hierarchical',
+                'subfacets': [
+                    {'field': 'file_set.assay_term.term_name', 'title': 'Assay type'}
+                ]
             },
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles'
