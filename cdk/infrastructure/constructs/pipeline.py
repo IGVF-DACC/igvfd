@@ -141,7 +141,7 @@ class BasicSelfUpdatingPipeline(Construct):
     def _define_code_build_log_group(self) -> None:
         self.log_group = LogGroup(
             self,
-            'CodeBuildLogGroup',
+            'LogGroup',
             retention=self.props.config.log_retention,
         )
 

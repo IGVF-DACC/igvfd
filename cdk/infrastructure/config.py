@@ -45,7 +45,7 @@ config: Dict[str, Any] = {
             'pipeline': 'ContinuousDeploymentPipelineStack',
             'existing_resources_class': igvf_dev.Resources,
             'account_and_region': igvf_dev.US_WEST_2,
-            'log_retention': RetentionDays.ONE_WEEK,
+            'log_retention': RetentionDays.ONE_MONTH,
             'tags': [
             ],
         },
