@@ -60,6 +60,16 @@ def audit_biosample_age(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message = get_audit_message(audit_biosample_age)
+    # Exclude biosamples that are only from virtual donors
+    sample_donors = value.get('donors', [])
+    virtual_donors = []
+    if sample_donors:
+        for donor in sample_donors:
+            donor_object = system.get('request').embed(donor + '@@object?skip_calculated=true')
+            if donor_object.get('virtual', False):
+                virtual_donors.append(donor)
+    if len(virtual_donors) == len(sample_donors):
+        return
     if 'lower_bound_age' not in value and 'upper_bound_age' not in value and 'age_units' not in value:
         value_id = system.get('path')
         detail = (
