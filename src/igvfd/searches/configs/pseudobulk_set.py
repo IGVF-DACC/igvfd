@@ -160,6 +160,9 @@ def pseudobulk_set():
             'samples': {
                 'title': 'Samples'
             },
+            'cell_type.term_name': {
+                'title': 'Cell Annotation',
+            },
             'data_use_limitation_summaries': {
                 'title': 'Data Use Limitation Summaries'
             },
@@ -204,7 +207,7 @@ def pseudobulk_set():
     name='PseudobulkSetReportView'
 )
 def pseudobulk_set_report_view():
-    # Copy normal analysis_set config.
+    # Copy normal pseudobulk_set config.
     config = pseudobulk_set()
     # Override columns.
     config['columns'] = {
@@ -219,6 +222,9 @@ def pseudobulk_set_report_view():
         },
         'file_set_type': {
             'title': 'File Set Type'
+        },
+        'cell_type.term_name': {
+            'title': 'Cell Annotation',
         },
         'files.content_type': {
             'title': 'File Content Type'
