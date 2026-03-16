@@ -40,8 +40,16 @@ def primary_cell():
             'file_sets.file_set_type': {
                 'title': 'File Set Type'
             },
+            'file_sets.assay_term.assay_slims': {
+                'title': 'Assay',
+                'description': 'High-level classification of assay type.',
+                'type': 'hierarchical',
+                'subfacets': [
+                    {'field': 'file_sets.assay_term.term_name', 'title': 'Assay type'}
+                ]
+            },
             'file_sets.preferred_assay_titles': {
-                'title': 'Assay Title'
+                'title': 'Preferred Assay Title'
             },
             'construct_library_sets.file_set_type': {
                 'title': 'Library Type'
