@@ -680,3 +680,97 @@ def reference_file_22_23(value, system):
 
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('tabular_file', '19', '20')
+def tabular_file_19_20(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2887
+    notes = value.get('notes', '')
+    if 'reference_files' in value:
+        return
+    if 'assembly' in value:
+        value['submitted_assembly'] = value.get('assembly', '')
+    if 'transcriptome_annotation' in value:
+        value['submitted_transcriptome_annotation'] = value.get('transcriptome_annotation', '')
+    excluded_content_types = [
+        'barcode onlist',
+        'barcode replacement',
+        'barcode to cluster mapping',
+        'barcode to donor mapping',
+        'barcode to element mapping',
+        'barcode to hashtag mapping',
+        'barcode to sample mapping',
+        'barcode to TF overexpression mapping',
+        "barcode to variant mapping',
+        'calibrated coding variant effect thresholds',
+        'cell annotations',
+        'cell hashing barcodes',
+        'coding variant effects',
+        'coding_variants',
+        'complexes',
+        'derived barcode mapping',
+        'diseases_genes',
+        'documentation (readme)',
+        'drugs',
+        'external source data',
+        'genes'
+        'genes_genes
+        'genes_pathways
+        'genes_terms
+        'genome index
+        'genome reference
+        'genomic_elements
+        'genomic_elements_genes
+        genomic_elements_genomic_elements
+        go_terms_proteins
+        heritability enrichment
+        index plate
+        'individual cells profile',
+        'machine learning model features',
+        'marker gene activity',
+        'marker genes',
+        'motifs
+        'motifs_proteins
+        'normalized variants profile
+        'ontology_terms
+        'pathogenicity validation
+        'pathways
+        'pathways_pathways
+        'pipeline parameters
+        'primer sequences
+        'protein sequences
+        'protein stability fluorescence score
+        'protein to protein interaction score
+        proteins_proteins'
+        sample sort parameters'
+        selected normalized variants profile'
+        studies_variants_phenotypes'
+        'tissue positions'
+        'transcriptome index
+        'transcriptome reference
+        'variants_diseases
+        'variants_drugs
+        variants_genes
+        'variants_genomic_elements
+        variants_proteins
+        variants_proteins_terms
+        variants_variants"
+    ]
+    if value['content_type'] in excluded_content_types:
+        return
+    else:
+        if value['status'] == 'deleted':
+            value['reference_files'] = 'IGVFFI0653VCGH'
+        else:
+            if 'submitted_assembly' not in value:
+                value['submitted_assembly'] = 'unknown'
+            if 'submitted_transcriptome_annotation' not in value:
+                value['submitted_transcriptome_annotation'] = 'unknown'
+    notes += f' This file\'s content_type was {old_content_type}, but has been upgraded to {upgrade_map[old_content_type][0]}. The filtered property was also set to {str(upgrade_map[old_content_type][1])}.'
+
+    if old_content_type in upgrade_map:
+        value['content_type'] = upgrade_map[old_content_type][0]
+        value['filtered'] = upgrade_map[old_content_type][1]
+        notes += f' This file\'s content_type was {old_content_type}, but has been upgraded to {upgrade_map[old_content_type][0]}. The filtered property was also set to {str(upgrade_map[old_content_type][1])}.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
