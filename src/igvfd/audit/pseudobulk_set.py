@@ -84,7 +84,7 @@ def audit_pseudobulk_set_input_file_set_type(value, system):
     '''
     [
         {
-            "audit_description": "Pseudobulk Sets are expected to have input Curated Sets with `file_set_type` of external sequencing data only.",
+            "audit_description": "Pseudobulk Sets are expected to have input Curated Sets with `file_set_type` of `external sequencing data` only.",
             "audit_category": "unexpected input file sets",
             "audit_level": "ERROR"
         }
