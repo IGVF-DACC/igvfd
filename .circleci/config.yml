@@ -58,7 +58,7 @@ jobs:
       - run: pyenv global 3.11
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: |
-          nvm use 20
+          nvm use 24
           pytest tests/
 
   cdk-lambda-runtime-pytest:
