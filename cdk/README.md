@@ -1,6 +1,6 @@
 ## Infrastructure
 
-Install Node.js 20 using `nvm` (Node Version Manager):
+Install Node.js 24 using `nvm` (Node Version Manager):
 
 ```
 # Install nvm.
@@ -10,14 +10,14 @@ $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bas
 Then in new terminal:
 
 ```
-# Install and use node 20.
-$ nvm install 20
-$ nvm use 20
+# Install and use node 24.
+$ nvm install 24
+$ nvm use 24
 # Check version.
 $ node --version
 ```
 
-Install CDK toolkit (requires Node.js 18.x):
+Install CDK toolkit:
 
 ```
 $ npm install -g aws-cdk@2.1031.2
