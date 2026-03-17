@@ -105,7 +105,7 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "treatment_term_name": "heat shock",
-        "treatment_type": "thermal",
+        "treatment_type": "chemical",
         "treatment_term_id": "NTR:0001189",
         "uuid": "ddd1f055-a14d-4069-9e5e-eb37fc81d19a",
         "award": "/awards/HG012012/",
@@ -114,5 +114,33 @@
             "j-michael-cherry:thermal_treatment"
         ],
         "depletion": true
+    },
+    {
+        "duration": 84,
+        "duration_units": "day",
+        "purpose": "perturbation",
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "treatment_term_name": "High Fat Diet",
+        "treatment_type": "diet",
+        "treatment_term_id": "NTR:0001001",
+        "uuid": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+        "award": "/awards/HG012012/",
+        "lab": "/labs/j-michael-cherry/",
+        "depletion": false
+    },
+    {
+        "duration": 84,
+        "duration_units": "day",
+        "purpose": "control",
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "treatment_term_name": "Normal Diet",
+        "treatment_type": "diet",
+        "treatment_term_id": "NTR:0001002",
+        "uuid": "b2c3d4e5-f6a7-5b6c-9d0e-1f2a3b4c5d6e",
+        "award": "/awards/HG012012/",
+        "lab": "/labs/j-michael-cherry/",
+        "depletion": false
     }
 ]

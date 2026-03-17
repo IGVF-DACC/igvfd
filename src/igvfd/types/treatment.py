@@ -47,6 +47,8 @@ class Treatment(Item):
     def summary(
         self,
         treatment_term_name,
+        treatment_type=None,
+        depletion=False,
         amount=None,
         amount_units=None,
         duration=None,
@@ -54,37 +56,56 @@ class Treatment(Item):
         temperature=None,
         temperature_units=None,
     ):
-        if duration is not None and duration != 1:
-            duration_units = f'{duration_units}s'
-        if amount is not None and duration is not None and temperature is not None:
-            text = (
+        # Pluralize duration_units when duration != 1 (e.g. "minute" -> "minutes")
+        if duration is not None and duration_units is not None and duration != 1:
+            duration_units_display = f'{duration_units}s'
+        else:
+            duration_units_display = duration_units
+
+        # Depletion treatments: always "Depletion of ..."
+        if depletion:
+            if duration is not None and duration_units_display is not None:
+                return f'Depletion of {treatment_term_name} for {duration} {duration_units_display}'
+            return f'Depletion of {treatment_term_name}'
+
+        # Non-depletion: always "Treatment of ..."
+        # Amount + duration + temperature
+        if amount is not None and amount_units is not None and duration is not None and temperature is not None:
+            return (
                 f'Treatment of {amount} {amount_units} {treatment_term_name} '
-                f'for {duration} {duration_units} at {temperature} {temperature_units}'
+                f'for {duration} {duration_units_display} at {temperature} {temperature_units}'
             )
-        elif amount is not None and duration is not None and temperature is None:
-            text = (
+        # Amount + duration
+        if amount is not None and amount_units is not None and duration is not None:
+            return (
                 f'Treatment of {amount} {amount_units} {treatment_term_name} '
-                f'for {duration} {duration_units}'
+                f'for {duration} {duration_units_display}'
             )
-        elif amount is not None and temperature is not None and duration is None:
-            text = (
+        # Amount + temperature (no duration)
+        if amount is not None and amount_units is not None and temperature is not None:
+            return (
                 f'Treatment of {amount} {amount_units} {treatment_term_name} '
                 f'at {temperature} {temperature_units}'
             )
-        elif amount is None and temperature is not None and duration is not None:
-            text = (
+        # Temperature + duration (heat exposure style)
+        if amount is None and temperature is not None and duration is not None:
+            return (
                 f'Treatment of heat exposure at {temperature} {temperature_units} '
-                f'for {duration} {duration_units}'
+                f'for {duration} {duration_units_display}'
             )
-        elif amount is not None:
-            text = f'Treatment of {amount} {amount_units} {treatment_term_name}'
-        elif temperature is not None:
-            text = f'Treatment of heat exposure at {temperature} {temperature_units}'
-        elif duration is not None:
-            text = f'Depletion of {treatment_term_name} for {duration} {duration_units}'
-        else:
-            text = f'Depletion of {treatment_term_name}'
-        return text
+        # Amount only
+        if amount is not None and amount_units is not None:
+            return f'Treatment of {amount} {amount_units} {treatment_term_name}'
+        # Temperature only (heat exposure)
+        if temperature is not None:
+            return f'Treatment of heat exposure at {temperature} {temperature_units}'
+        # Diet or other duration-only treatment
+        if treatment_type == 'diet' or duration is not None:
+            if duration is not None and duration_units_display is not None:
+                return f'Treatment of {treatment_term_name} for {duration} {duration_units_display}'
+            return f'Treatment of {treatment_term_name}'
+        # Fallback: treatment with only term name
+        return f'Treatment of {treatment_term_name}'
 
     @calculated_property(schema={
         'title': 'Biosamples Treated',
