@@ -13,14 +13,11 @@ def analysis_set():
                 'description': 'The category of analysis set. Intermediate analysis are not final result of an experiment and typically used as input to a principal analysis. Principal analysis are final, core analysis.',
                 'optional': True
             },
-            'input_file_sets.assay_term.assay_slims': {
-                'title': 'Assay',
+            'assay_titles': {
+                'title': 'Assay Term Names',
                 'category': 'Analysis Set Details',
-                'description': 'High-level classification of assay(s) that is relevant to this analysis sets.',
-                'type': 'hierarchical',
-                'subfacets': [
-                    {'field': 'assay_term.term_name', 'title': 'Assay type'}
-                ]
+                'description': 'Assay(s) that is relevant to this analysis sets.',
+                'optional': True
             },
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles',
