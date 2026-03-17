@@ -16,6 +16,7 @@ import igvfd.audit.measurement_set
 import igvfd.audit.model_set
 import igvfd.audit.multiplexed_sample
 import igvfd.audit.ontology_term
+import igvfd.audit.pseudobulk_set
 import igvfd.audit.reference_file
 import igvfd.audit.sample
 import igvfd.audit.sequence_file
@@ -46,6 +47,7 @@ AUDIT_MODULES_TO_PROCESS = [
     igvfd.audit.model_set,
     igvfd.audit.multiplexed_sample,
     igvfd.audit.ontology_term,
+    igvfd.audit.pseudobulk_set,
     igvfd.audit.reference_file,
     igvfd.audit.sample,
     igvfd.audit.sequence_file,
