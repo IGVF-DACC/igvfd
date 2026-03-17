@@ -85,7 +85,7 @@ def audit_pseudobulk_set_input_file_set_type(value, system):
     [
         {
             "audit_description": "Pseudobulk Sets are expected to have input Curated Sets with `file_set_type` of `external sequencing data` only.",
-            "audit_category": "unexpected input file sets",
+            "audit_category": "unexpected input file set type",
             "audit_level": "ERROR"
         }
     ]
@@ -100,7 +100,7 @@ def audit_pseudobulk_set_input_file_set_type(value, system):
                     detail = (
                         f'Pseudobulk set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                         f'has curated set {audit_link(path_to_text(input_file_set), input_file_set)} in input file sets '
-                        f'but the file_set_type is "{input_file_set_object.get("file_set_type", "")}".'
+                        f'but the `file_set_type` is "{input_file_set_object.get("file_set_type", "")}".'
                     )
                     yield AuditFailure(
                         audit_message.get('audit_category', ''),

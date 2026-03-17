@@ -72,7 +72,7 @@ def test_audit_pseudobulk_set_input_file_set_type(
     )
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
     assert any(
-        error['category'] == 'unexpected input file sets'
+        error['category'] == 'unexpected input file set type'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -81,6 +81,6 @@ def test_audit_pseudobulk_set_input_file_set_type(
     )
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
     assert all(
-        error['category'] != 'unexpected input file sets'
+        error['category'] != 'unexpected input file set type'
         for error in res.json['audit'].get('ERROR', [])
     )
