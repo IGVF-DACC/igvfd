@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 43
 
+* Extend `preferred_assay_titles` enum list to include `CRISPR tiling screen guide readout`.
+* Extend `preferred_assay_titles` enum list to include `CRISPR tiling screen allelic readout`.
 * Extend `preferred_assay_titles` enum list to include `SGE-RNA`.
 * Extend `control_types` enum list to include `pre-selection`.
 * Update `aliases` regex to add `yang-li` as a namespace.

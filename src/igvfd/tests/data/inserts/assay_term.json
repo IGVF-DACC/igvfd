@@ -209,5 +209,16 @@
         "status": "released",
         "release_timestamp": "2025-02-06T12:34:56Z",
         "uuid": "3cbe28f9-eb52-4471-85a6-83003ca8fbc8"
+    },
+    {
+        "term_id": "OBI:0003661",
+        "term_name": "in vitro CRISPR screen using flow cytometry",
+        "preferred_assay_titles": [
+            "CRISPR tiling screen guide readout",
+            "CRISPR tiling screen allelic readout"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-01-06T12:34:56Z",
+        "uuid": "388af24a-eb52-58ac-85a6-8300b7749d54"
     }
 ]
