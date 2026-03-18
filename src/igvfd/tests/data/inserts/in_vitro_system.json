@@ -321,5 +321,29 @@
         "growth_medium": "tissue culture plastic plates (no hydrogel)",
         "time_post_culture": 10,
         "time_post_culture_units": "day"
+    },
+    {
+        "uuid": "f2c1a7d8-7b3a-4a9b-9fb0-5b0ad5f0c111",
+        "classifications": [
+            "cell culture"
+        ],
+        "lab": "j-michael-cherry",
+        "accession": "IGVFSM0009AAAZ",
+        "award": "HG012012",
+        "aliases": [
+            "igvf-dacc:in_vitro_system_cell_culture_01"
+        ],
+        "donors": [
+            "igvf:alias_human_donor1"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "sample_terms": [
+            "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"
+        ],
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
+        "virtual": false
     }
 ]
