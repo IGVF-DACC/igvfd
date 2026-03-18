@@ -67,3 +67,15 @@ def test_signal_file_upgrade_12_13(upgrader, signal_file_v12):
     assert 'transcriptome_annotation' not in value
     assert 'GRCh38 was removed' in value['notes']
     assert 'GENCODE 40 was removed' in value['notes']
+
+
+def test_signal_file_upgrade_13_14(upgrader, signal_file_v13, sample_term_K562):
+    value = upgrader.upgrade(
+        'signal_file',
+        signal_file_v13,
+        current_version='13',
+        target_version='14'
+    )
+    assert value['schema_version'] == '14'
+    assert 'cell_type_annotation' not in value
+    assert f'Cell type annotation: {sample_term_K562["@id"]}.' in value['notes']

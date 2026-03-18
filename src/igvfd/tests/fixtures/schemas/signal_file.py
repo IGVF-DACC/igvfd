@@ -158,3 +158,13 @@ def signal_file_v12(signal_file):
         'transcriptome_annotation': 'GENCODE 40'
     })
     return item
+
+
+@pytest.fixture
+def signal_file_v13(signal_file, sample_term_K562):
+    item = signal_file.copy()
+    item.update({
+        'schema_version': '13',
+        'cell_type_annotation': sample_term_K562['@id'],
+    })
+    return item
