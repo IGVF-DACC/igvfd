@@ -239,7 +239,8 @@
         "file_set_type": "overexpression vector library",
         "scope": "genes",
         "selection_criteria": [
-            "genes"
+            "genes",
+            "evolutionary constraint"
         ],
         "small_scale_gene_list": [
             "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
