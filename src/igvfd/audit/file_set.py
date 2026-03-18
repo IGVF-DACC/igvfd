@@ -649,7 +649,7 @@ def audit_input_for(value, system):
             "audit_level": "WARNING"
         },
         {
-            "audit_description": "Raw data sets with files are expected to be associated with at least one principal analysis set.",
+            "audit_description": "Raw data sets and intermediate analysis sets with files are expected to be associated with at least one principal analysis set.",
             "audit_category": "missing principal analysis",
             "audit_level": "WARNING"
         }
@@ -658,12 +658,23 @@ def audit_input_for(value, system):
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_missing_any = get_audit_message(audit_input_for, index=0)
     audit_message_missing_principal = get_audit_message(audit_input_for, index=1)
+    # Skip if file set is a principal analysis
+    if value.get('file_set_type') == 'principal analysis':
+        return
     if not value.get('input_for') and value.get('files'):
-        detail = (
-            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is a raw data set with files, '
-            f'but is not listed in any `input_file_sets` for any analysis sets.'
-        )
-        yield AuditFailure(audit_message_missing_any.get('audit_category', ''), f'{detail} {audit_message_missing_any.get("audit_description", "")}', level=audit_message_missing_any.get('audit_level', ''))
+        # Different categories for raw vs. intermediate analysis sets
+        if value.get('file_set_type') != 'intermediate analysis':
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is a raw data set with files, '
+                f'but is not listed in any `input_file_sets` for any analysis sets.'
+            )
+            yield AuditFailure(audit_message_missing_any.get('audit_category', ''), f'{detail} {audit_message_missing_any.get("audit_description", "")}', level=audit_message_missing_any.get('audit_level', ''))
+        else:
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is an intermediate analysis set with files, '
+                f'but is not listed in any `input_file_sets` for any principal analysis sets.'
+            )
+            yield AuditFailure(audit_message_missing_principal.get('audit_category', ''), f'{detail} {audit_message_missing_principal.get("audit_description", "")}', level=audit_message_missing_principal.get('audit_level', ''))
     elif value.get('input_for') and value.get('files'):
         missing_principal_analysis = True
         checking_queue = value.get('input_for', [])
@@ -688,7 +699,7 @@ def audit_input_for(value, system):
         if missing_principal_analysis:
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'is a raw data set with files, but has no downstream file sets '
+                f'is a raw data set or intermediate analysis set with files, but has no downstream file sets '
                 f'which are principal analyses.'
             )
             yield AuditFailure(audit_message_missing_principal.get('audit_category', ''), f'{detail} {audit_message_missing_principal.get("audit_description", "")}', level=audit_message_missing_principal.get('audit_level', ''))
@@ -1495,7 +1506,8 @@ function_dispatcher_analysis_set_object = {
     'audit_input_file_sets_derived_from': audit_input_file_sets_derived_from,
     'audit_file_set_files_missing_analysis_step_version': audit_file_set_files_missing_analysis_step_version,
     'audit_file_set_missing_description': audit_file_set_missing_description,
-    'audit_missing_genome_transcriptome_references': audit_missing_genome_transcriptome_references
+    'audit_missing_genome_transcriptome_references': audit_missing_genome_transcriptome_references,
+    'audit_input_for': audit_input_for
 }
 
 function_dispatcher_prediction_set_object = {

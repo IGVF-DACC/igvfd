@@ -529,3 +529,110 @@ def test_audit_anvil_file_fileset_mismatch_measet(
         error['category'] != 'inconsistent AnVIL status'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
+
+
+def test_audit_input_for(testapp,
+                         sequence_file_sequencing_run_2,
+                         externally_hosted_sequence_file,
+                         tabular_file_bed,
+                         measurement_set_no_files,
+                         base_auxiliary_set,
+                         construct_library_set_genome_wide,
+                         intermediate_analysis_set,
+                         principal_analysis_set
+                         ):
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'file_set': measurement_set_no_files['@id']
+        }
+    )
+    testapp.patch_json(
+        externally_hosted_sequence_file['@id'],
+        {
+            'file_set': base_auxiliary_set['@id']
+        }
+    )
+    testapp.patch_json(
+        tabular_file_bed['@id'],
+        {
+            'file_set': intermediate_analysis_set['@id']
+        }
+    )
+    # MeaSet, AuxSet, and CLS without any downstream analysis
+    res_measet = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing analysis'
+        for error in res_measet.json['audit'].get('WARNING', [])
+    )
+    res_auxset = testapp.get(base_auxiliary_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing analysis'
+        for error in res_auxset.json['audit'].get('WARNING', [])
+    )
+    # CLS has not file, not audited
+    res_cls = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing analysis'
+        for error in res_cls.json['audit'].get('WARNING', [])
+    )
+    # Patch an intermediate analysis set with the MeaSet and AuxSet as input
+    testapp.patch_json(
+        intermediate_analysis_set['@id'],
+        {
+            'input_file_sets': [
+                measurement_set_no_files['@id'],
+                base_auxiliary_set['@id']
+            ]
+        }
+    )
+    res_measet = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing analysis'
+        for error in res_measet.json['audit'].get('WARNING', [])
+    )
+    assert any(
+        error['category'] == 'missing principal analysis'
+        for error in res_measet.json['audit'].get('WARNING', [])
+    )
+    res_auxset = testapp.get(base_auxiliary_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing analysis'
+        for error in res_auxset.json['audit'].get('WARNING', [])
+    )
+    assert any(
+        error['category'] == 'missing principal analysis'
+        for error in res_auxset.json['audit'].get('WARNING', [])
+    )
+    # Intermediate analysis set without principal analysis set
+    res_intermediate = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing analysis'
+        for error in res_intermediate.json['audit'].get('WARNING', [])
+    )
+    assert any(
+        error['category'] == 'missing principal analysis'
+        for error in res_intermediate.json['audit'].get('WARNING', [])
+    )
+    # Principal analysis set doesn't get audited
+    res_principal = testapp.get(principal_analysis_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing analysis'
+        for error in res_principal.json['audit'].get('WARNING', [])
+    )
+    assert all(
+        error['category'] != 'missing principal analysis'
+        for error in res_principal.json['audit'].get('WARNING', [])
+    )
+    # Clear audit for intermediate analysis set
+    testapp.patch_json(
+        principal_analysis_set['@id'],
+        {
+            'input_file_sets': [intermediate_analysis_set['@id']]
+        }
+    )
+    res_intermediate = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing principal analysis'
+        for error in res_intermediate.json['audit'].get('WARNING', [])
+    )
