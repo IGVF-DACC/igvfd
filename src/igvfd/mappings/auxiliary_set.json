@@ -1,6 +1,6 @@
 {
-    "hash": "8b4c7dc0650496eae6152a3d9a84e4cd",
-    "index_name": "auxiliary_set_8b4c7dc0",
+    "hash": "0c7072be44395c120c4ee4d9bc221057",
+    "index_name": "auxiliary_set_0c7072be",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -570,9 +570,6 @@
                                         "type": "keyword"
                                     },
                                     "catalog_notes": {
-                                        "type": "keyword"
-                                    },
-                                    "cell_type_annotation": {
                                         "type": "keyword"
                                     },
                                     "checkfiles_timestamp": {
@@ -1657,98 +1654,6 @@
                             },
                             "catalog_notes": {
                                 "type": "keyword"
-                            },
-                            "cell_type_annotation": {
-                                "properties": {
-                                    "@id": {
-                                        "type": "keyword"
-                                    },
-                                    "@type": {
-                                        "type": "keyword"
-                                    },
-                                    "aliases": {
-                                        "type": "keyword"
-                                    },
-                                    "ancestors": {
-                                        "type": "keyword"
-                                    },
-                                    "cell_slims": {
-                                        "type": "keyword"
-                                    },
-                                    "comments": {
-                                        "type": "keyword"
-                                    },
-                                    "creation_timestamp": {
-                                        "type": "date"
-                                    },
-                                    "dbxrefs": {
-                                        "type": "keyword"
-                                    },
-                                    "definition": {
-                                        "type": "keyword"
-                                    },
-                                    "deprecated_ntr_terms": {
-                                        "type": "keyword"
-                                    },
-                                    "description": {
-                                        "type": "text"
-                                    },
-                                    "developmental_slims": {
-                                        "type": "keyword"
-                                    },
-                                    "is_a": {
-                                        "type": "keyword"
-                                    },
-                                    "name": {
-                                        "type": "keyword"
-                                    },
-                                    "notes": {
-                                        "type": "text"
-                                    },
-                                    "ontology": {
-                                        "type": "keyword"
-                                    },
-                                    "organ_slims": {
-                                        "type": "keyword"
-                                    },
-                                    "preview_timestamp": {
-                                        "type": "date"
-                                    },
-                                    "release_timestamp": {
-                                        "type": "date"
-                                    },
-                                    "schema_version": {
-                                        "type": "keyword"
-                                    },
-                                    "status": {
-                                        "type": "keyword"
-                                    },
-                                    "submitted_by": {
-                                        "type": "keyword"
-                                    },
-                                    "submitter_comment": {
-                                        "type": "keyword"
-                                    },
-                                    "summary": {
-                                        "type": "keyword"
-                                    },
-                                    "synonyms": {
-                                        "type": "keyword"
-                                    },
-                                    "system_slims": {
-                                        "type": "keyword"
-                                    },
-                                    "term_id": {
-                                        "type": "keyword"
-                                    },
-                                    "term_name": {
-                                        "type": "keyword"
-                                    },
-                                    "uuid": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "type": "object"
                             },
                             "checkfiles_timestamp": {
                                 "type": "date"

@@ -1,6 +1,6 @@
 {
-    "hash": "41e554ce39d7e37bc559b3cc79877393",
-    "index_name": "signal_file_41e554ce",
+    "hash": "42df1d3e1790edf728a18aa4bb4ba67f",
+    "index_name": "signal_file_42df1d3e",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -375,99 +375,6 @@
                     },
                     "catalog_notes": {
                         "type": "keyword"
-                    },
-                    "cell_type_annotation": {
-                        "properties": {
-                            "@id": {
-                                "type": "keyword"
-                            },
-                            "@type": {
-                                "type": "keyword"
-                            },
-                            "aliases": {
-                                "type": "keyword"
-                            },
-                            "ancestors": {
-                                "type": "keyword"
-                            },
-                            "cell_slims": {
-                                "type": "keyword"
-                            },
-                            "comments": {
-                                "type": "keyword"
-                            },
-                            "creation_timestamp": {
-                                "type": "date"
-                            },
-                            "dbxrefs": {
-                                "type": "keyword"
-                            },
-                            "definition": {
-                                "type": "keyword"
-                            },
-                            "deprecated_ntr_terms": {
-                                "type": "keyword"
-                            },
-                            "description": {
-                                "type": "text"
-                            },
-                            "developmental_slims": {
-                                "type": "keyword"
-                            },
-                            "is_a": {
-                                "type": "keyword"
-                            },
-                            "name": {
-                                "type": "keyword"
-                            },
-                            "notes": {
-                                "type": "text"
-                            },
-                            "ontology": {
-                                "type": "keyword"
-                            },
-                            "organ_slims": {
-                                "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
-                            "release_timestamp": {
-                                "type": "date"
-                            },
-                            "schema_version": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "synonyms": {
-                                "type": "keyword"
-                            },
-                            "system_slims": {
-                                "type": "keyword"
-                            },
-                            "term_id": {
-                                "type": "keyword"
-                            },
-                            "term_name": {
-                                "copy_to": "_fuzzy",
-                                "type": "keyword"
-                            },
-                            "uuid": {
-                                "type": "keyword"
-                            }
-                        },
-                        "type": "object"
                     },
                     "checkfiles_timestamp": {
                         "type": "date"
