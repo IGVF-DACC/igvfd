@@ -13,6 +13,7 @@
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Extend `content_type` enum list to include `chromatin contact quantifications`.
 * Extend `content_type` enum list to include `methylation counts`.
+* Remove `cell_type_annotation` from tabular file payloads and store it in `notes` instead.
 
 ### Schema version 19
 

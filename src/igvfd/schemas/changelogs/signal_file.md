@@ -1,5 +1,9 @@
 ## Changelog for *`signal_file.json`*
 
+### Schema version 14
+
+* Remove `cell_type_annotation`.
+
 ### Minor changes since schema version 13
 
 * Update `aliases` regex to add `yang-li` as a namespace.

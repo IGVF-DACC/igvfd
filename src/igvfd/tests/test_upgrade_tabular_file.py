@@ -94,3 +94,10 @@ def test_tabular_file_upgrade_18_19(upgrader, tabular_file_v18a, tabular_file_v1
     assert value['content_type'] == 'local differential expression'
     assert value['filtered'] == False
     assert value['schema_version'] == '19'
+
+
+def test_tabular_file_upgrade_19_20(upgrader, tabular_file_v19, sample_term_K562):
+    value = upgrader.upgrade('tabular_file', tabular_file_v19, current_version='19', target_version='20')
+    assert value['schema_version'] == '20'
+    assert 'cell_type_annotation' not in value
+    assert f'Cell type annotation: {sample_term_K562["@id"]}.' in value['notes']
