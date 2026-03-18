@@ -48,7 +48,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
         parent = system.get('request').embed(parent_id + '@@object?skip_calculated=true')
         skip_keys = [
             'accession', 'aliases', 'alternate_accessions', 'audit', 'award', 'cellular_sub_pool',
-            'creation_timestamp', 'date_obtained', 'dbxrefs', 'description', 'documents', 'lab',
+            'creation_timestamp', 'date_obtained', 'dbxrefs', 'description', 'documents', 'is_on_anvil', 'lab',
             'notes', 'originated_from', 'part_of', 'pooled_from', 'preview_timestamp', 'protocols',
             'release_timestamp', 'revoke_detail', 'schema_version', 'sorted_from', 'sorted_from_detail',
             'starting_amount', 'starting_amount_units', 'status', 'submitter_comment', 'submitted_by',
