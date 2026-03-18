@@ -28,9 +28,6 @@ def signal_file():
             'normalized': {
                 'title': 'Normalized'
             },
-            'cell_type_annotation.term_name': {
-                'title': 'Annotated Cell Type'
-            },
             'file_size': {
                 'title': 'File Size',
                 'type': 'stats'

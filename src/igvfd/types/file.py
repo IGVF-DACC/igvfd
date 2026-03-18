@@ -915,9 +915,7 @@ class MatrixFile(File):
 class SignalFile(File):
     item_type = 'signal_file'
     schema = load_schema('igvfd:schemas/signal_file.json')
-    embedded_with_frame = File.embedded_with_frame + [
-        Path('cell_type_annotation', include=['@id', 'term_name', 'status'])
-    ]
+    embedded_with_frame = File.embedded_with_frame
     set_status_up = File.set_status_up + []
     set_status_down = File.set_status_down + []
 
@@ -1150,9 +1148,7 @@ class ConfigurationFile(File):
 class TabularFile(File):
     item_type = 'tabular_file'
     schema = load_schema('igvfd:schemas/tabular_file.json')
-    embedded_with_frame = File.embedded_with_frame + [
-        Path('cell_type_annotation', include=['@id', 'term_name', 'status'])
-    ]
+    embedded_with_frame = File.embedded_with_frame
     rev = File.rev | {
         'barcode_map_for': ('MultiplexedSample', 'barcode_map'),
         'enrichment_design_for': ('MeasurementSet', 'enrichment_designs')

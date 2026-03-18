@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 20
+
+* Remove `cell_type_annotation`.
+
 ### Minor changes since schema version 19
 
 * Extend `content_type` enum list to include `domain constraint`.
