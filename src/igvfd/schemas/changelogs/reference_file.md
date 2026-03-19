@@ -2,7 +2,7 @@
 
 ### Schema version 23
 
-* * Adjust `content_type` enum list to replace `splice_QTL` with `spliceQTL`.
+* Adjust `catalog_method` enum list to replace `splice_QTL` with `spliceQTL`.
 
 ### Minor changes since schema version 22
 
