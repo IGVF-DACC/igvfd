@@ -665,3 +665,18 @@ def signal_file_13_14_and_tabular_file_19_20(value, system):
         notes += f'Cell type annotation: {cell_type_annotation}.'
         value['notes'] = notes
         del value['cell_type_annotation']
+
+
+@upgrade_step('reference_file', '22', '23')
+def reference_file_22_23(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3402
+    notes = value.get('notes', '')
+    old_enum = 'splice_QTL'
+    new_enum = 'spliceQTL'
+
+    if value.get('catalog_method', '') == old_enum:
+        value['catalog_method'] = new_enum
+        notes += f' This reference file\'s catalog_method was {old_enum}, but has been upgraded to {new_enum}.'
+
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
