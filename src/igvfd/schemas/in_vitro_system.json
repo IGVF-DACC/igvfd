@@ -475,7 +475,7 @@
                     "gastruloid": "A three-dimensional cell culture model that mimics early embryonic development, specifically the formation of the three germ layers (ectoderm, mesoderm, and endoderm).",
                     "embryoid": "A three-dimensional cell culture model that resembles early-stage embryos, typically used to study early embryogenesis and cellular differentiation processes.",
                     "cell culture": "A non-immortalized population of cells maintained in culture for a limited period (e.g., primary cultured cells).",
-                    "cell line": "A population of cells derived from a single cell and maintained in culture that is immortalized.",
+                    "cell line": "A population of immortalized cells derived from a single cell and maintained in culture.",
                     "differentiated cell specimen": "A cell culture consisting of cells that have undergone differentiation.",
                     "reprogrammed cell specimen": "Cells that have been genetically reprogrammed to return to a pluripotent state.",
                     "pooled cell specimen": "A sample consisting of a mixture of cells from different sources or populations."
