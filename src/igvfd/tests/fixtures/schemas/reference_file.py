@@ -305,3 +305,14 @@ def reference_file_v21(reference_file):
         'content_type': 'biological_context'
     })
     return item
+
+
+@pytest.fixture
+def reference_file_v22(reference_file):
+    item = reference_file.copy()
+    item.update({
+        'schema_version': '22',
+        'content_type': 'spliceQTL',
+        'catalog_method': 'splice_QTL'
+    })
+    return item

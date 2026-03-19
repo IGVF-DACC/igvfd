@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 23
+
+* * Adjust `content_type` enum list to replace `splice_QTL` with `spliceQTL`.
+
 ### Minor changes since schema version 22
 
 * Extend `assembly` enum list to include `GRCh38, GRCm39`.
