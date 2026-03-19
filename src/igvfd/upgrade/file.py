@@ -651,3 +651,18 @@ def tabular_file_18_19(value, system):
         notes += f' This file\'s content_type was {old_content_type}, but has been upgraded to {upgrade_map[old_content_type][0]}. The filtered property was also set to {str(upgrade_map[old_content_type][1])}.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('reference_file', '22', '23')
+def reference_file_22_23(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3402
+    notes = value.get('notes', '')
+    old_enum = 'splice_QTL'
+    new_enum = 'spliceQTL'
+
+    if value.get('catalog_method', '') == old_enum:
+        value['catalog_method'] = new_enum
+        notes += f' This reference file\'s catalog_method was {old_enum}, but has been upgraded to {new_enum}.'
+
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
