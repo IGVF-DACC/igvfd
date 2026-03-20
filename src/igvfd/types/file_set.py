@@ -1812,11 +1812,11 @@ class PredictionSet(FileSet):
         phenotypes_phrase = ''
         if associated_phenotypes:
             if len(associated_phenotypes) > 3:
-                phenotypes_phrase = f' associated with {len(associated_phenotypes)} phenotypes'
+                phenotypes_phrase = f'associated with {len(associated_phenotypes)} phenotypes'
             else:
                 phenotype_term_names = sorted([request.embed(phenotype, '@@object?skip_calculated=true').get('term_name')
                                               for phenotype in associated_phenotypes])
-                phenotypes_phrase = f' associated with {", ".join(phenotype_term_names)}'
+                phenotypes_phrase = f'associated with {", ".join(phenotype_term_names)}'
         # Get sample or donor info
         taxa = set()
         samples_phrase = ''
