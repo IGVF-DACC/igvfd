@@ -160,7 +160,7 @@ def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == "functional effect prediction associated with Alzheimer's disease in virtual Homo sapiens adrenal gland tissue/organ"
+        'summary') == "functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with Alzheimer's disease in virtual Homo sapiens adrenal gland tissue/organ"
 
     # Test Prediction Set summary with multiple associated phenotypes
     testapp.patch_json(
@@ -173,8 +173,7 @@ def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs
         }
     )
     res = testapp.get(base_prediction_set['@id'])
-    assert res.json.get(
-        'summary') == "functional effect prediction associated with Alzheimer's disease, Myocardial infarction in virtual Homo sapiens adrenal gland tissue/organ"
+    assert res.json.get('summary') == "functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with Alzheimer's disease, Myocardial infarction in virtual Homo sapiens adrenal gland tissue/organ"
 
     # Test Prediction Set summary with 4+ associated phenotypes, use phenotype count instead
     testapp.patch_json(
@@ -190,7 +189,7 @@ def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'functional effect prediction associated with 4 phenotypes in virtual Homo sapiens adrenal gland tissue/organ'
+        'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with 4 phenotypes in virtual Homo sapiens adrenal gland tissue/organ'
 
 
 def test_software_versions(testapp, tabular_file, base_prediction_set, analysis_step_version, software_version):
