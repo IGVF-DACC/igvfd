@@ -752,18 +752,18 @@ def tabular_file_20_21(value, system):
     notes = value.get('notes', '')
     if 'assembly' in value:
         value['submitted_assembly'] = value.get('assembly', '')
-        notes += f' The submitted assembly {value.get("assembly", '')} was moved to the submitted_assembly property.'
+        notes += f' The submitted assembly {value.get("assembly", "")} was moved to the submitted_assembly property.'
         del value['assembly']
     if 'transcriptome_annotation' in value:
         value['submitted_transcriptome_annotation'] = value.get('transcriptome_annotation', '')
-        notes += f' The submitted transcriptome annotaiton {value.get("transcriptome_annotation", '')} was moved to the submitted_transcriptome_annotation property.'
+        notes += f' The submitted transcriptome annotation {value.get("transcriptome_annotation", "")} was moved to the submitted_transcriptome_annotation property.'
         del value['transcriptome_annotation']
     if 'reference_files' in value or value['content_type'] in excluded_content_types:
         return
     else:
         if value['status'] == 'deleted':
-            value['reference_files'] = 'IGVFFI0653VCGH'
-            notes += f' This deleted file was automatically upgraded to add a link to IGVFFI0653VCGH in reference_files.'
+            value['submitted_assembly'] = 'unknown'
+            notes += f' This deleted file\'s submitted_assembly was automatically set to unknown because the file had no assembly nor reference_files.'
         else:
             if 'submitted_assembly' not in value:
                 value['submitted_assembly'] = 'unknown'

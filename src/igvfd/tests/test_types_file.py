@@ -352,6 +352,7 @@ def test_file_summaries(
     matrix_file,
     model_file,
     reference_file,
+    reference_file_with_assembly,
     sequence_file,
     sequence_file_pod5,
     signal_file,
@@ -489,8 +490,10 @@ def test_file_summaries(
     testapp.patch_json(
         tabular_file['@id'],
         {
-            'assembly': 'GRCh38',
-            'transcriptome_annotation': 'GENCODE 43'
+            'reference_files': [
+                reference_file['@id'],
+                reference_file_with_assembly['@id']
+            ]
         }
     )
     res = testapp.get(tabular_file['@id'])

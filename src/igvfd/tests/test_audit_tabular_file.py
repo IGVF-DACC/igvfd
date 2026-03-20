@@ -13,8 +13,7 @@ def test_audit_missing_file_format_specifications(
     )
     testapp.patch_json(
         tabular_file['@id'],
-        {'file_format': 'vcf',
-         'assembly': 'custom'}
+        {'file_format': 'vcf'}
     )
     res = testapp.get(tabular_file['@id'] + '@@audit')
     assert all(
