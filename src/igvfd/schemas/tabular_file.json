@@ -131,7 +131,7 @@
         "content_type": {
             "oneOf": [
                 {
-                    "oneOf": [
+                    "anyOf": [
                         {
                             "required": [
                                 "reference_files"
@@ -139,12 +139,12 @@
                         },
                         {
                             "required": [
-                                "reference_files"
+                                "submitted_assembly"
                             ]
                         },
                         {
                             "required": [
-                                "reference_files"
+                                "submitted_transcriptome_annotation"
                             ]
                         }
                     ],
@@ -155,6 +155,7 @@
                                 "bin paired count",
                                 "calibrated coding variant effects",
                                 "caQTL",
+                                "chromatin contact quantifications",
                                 "co-localization scores",
                                 "coding variant effects",
                                 "differential chromatin contact quantifications",
@@ -163,6 +164,7 @@
                                 "differential guide quantifications",
                                 "differential peak quantifications",
                                 "differential transcript expression quantifications",
+                                "domain constraint",
                                 "DNA footprint scores",
                                 "DUAL-IPA score",
                                 "editing templates",
@@ -171,16 +173,22 @@
                                 "elements reference",
                                 "eQTL",
                                 "exclusion list regions",
+                                "exon constraint",
+                                "fold change of post-selection and pre-selection",
                                 "fold change over control",
                                 "fragments",
                                 "functional impact score",
                                 "gene quantifications",
+                                "gene programs",
+                                "gene program regulators",
+                                "gene universe",
                                 "global differential expression",
                                 "guide quantifications",
                                 "guide RNA sequences",
                                 "guide RNA sequences reference",
                                 "local differential expression",
                                 "loci",
+                                "methylation counts",
                                 "minus strand modification state",
                                 "modification state",
                                 "MPRA sequence designs",
@@ -195,6 +203,7 @@
                                 "protein-protein interaction edge-perturbation score",
                                 "protein-protein interaction edgotyping score",
                                 "regional constraint",
+                                "read count",
                                 "reporter elements",
                                 "reporter experiment",
                                 "reporter experiment barcode",
@@ -292,7 +301,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "20"
+            "default": "21"
         },
         "catalog_adapters": {
             "title": "IGVF Catalog Adapters",

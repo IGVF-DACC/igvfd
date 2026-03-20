@@ -94,3 +94,33 @@ def test_tabular_file_upgrade_18_19(upgrader, tabular_file_v18a, tabular_file_v1
     assert value['content_type'] == 'local differential expression'
     assert value['filtered'] == False
     assert value['schema_version'] == '19'
+
+
+def test_tabular_file_upgrade_20_21(upgrader, tabular_file_v20a, tabular_file_v20b, tabular_file_v20c, tabular_file_v20d, tabular_file_v20e):
+    # A tabular file with submitted assembly.
+    value = upgrader.upgrade('tabular_file', tabular_file_v20a, current_version='20', target_version='21')
+    assert 'assembly' not in value
+    assert 'submitted_assembly' in value
+    assert value['submitted_assembly'] == 'GRCh38'
+    assert 'The submitted assembly GRCh38 was moved to the submitted_assembly property.' in value['notes']
+    assert value['schema_version'] == '21'
+    # A tabular file with no assembly or reference_files.
+    value = upgrader.upgrade('tabular_file', tabular_file_v20b, current_version='20', target_version='21')
+    assert 'assembly' not in value
+    assert 'submitted_assembly' in value
+    assert value['submitted_assembly'] == 'unknown'
+    assert 'This file\'s submitted_assembly was automatically set to unknown because the file had no assembly nor reference_files.' in value[
+        'notes']
+    assert value['schema_version'] == '21'
+    # An excluded tabular file.
+    value = upgrader.upgrade('tabular_file', tabular_file_v20c, current_version='20', target_version='21')
+    assert value['schema_version'] == '21'
+    # A tabular file with reference_files.
+    value = upgrader.upgrade('tabular_file', tabular_file_v20d, current_version='20', target_version='21')
+    assert value['schema_version'] == '21'
+    # A deleted tabular file with no assembly or reference_files.
+    value = upgrader.upgrade('tabular_file', tabular_file_v20e, current_version='20', target_version='21')
+    assert value['reference_files'] == ['IGVFFI0653VCGH']
+    assert 'This deleted file was automatically upgraded to add a link to IGVFFI0653VCGH in reference_files.' in value[
+        'notes']
+    assert value['schema_version'] == '21'

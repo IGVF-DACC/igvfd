@@ -16,7 +16,6 @@
         "submitted_file_name": "/Users/igvf/igvf_files/peaks_tabular_file.bed.gz",
         "file_size": 738031,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
@@ -39,6 +38,9 @@
         "content_type": "guide RNA sequences",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
+        ],
+        "reference_files": [
+            "IGVFFI0001GNRF"
         ],
         "submitted_file_name": "/Users/igvf/igvf_files/guide_rna_sequence.csv.gz",
         "file_size": 23940,
@@ -98,6 +100,9 @@
         "md5sum": "db0dff0cae05982642b682ffcaa11862",
         "file_format": "tsv",
         "content_type": "elements reference",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/elements_reference.tsv.gz",
         "file_size": 54343,
         "upload_status": "validated",
@@ -121,10 +126,12 @@
         "file_format": "bed",
         "file_format_type": "mpra_starr",
         "content_type": "peaks",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/mpra_starr_results.bed.gz",
         "file_size": 84022,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false,
         "catalog_adapters": [
@@ -147,7 +154,6 @@
         "submitted_file_name": "/Users/igvf/igvf_files/sample_sort_parameters.tsv.gz",
         "file_size": 412315412,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "igvf:auxiliary_set_cell_sorting",
         "controlled_access": false,
         "analysis_step_version": "/analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/"
@@ -165,10 +171,12 @@
         "md5sum": "0ba64a0dea00947916dfb6a66866e1ca",
         "file_format": "tsv",
         "content_type": "prime editing guide RNA sequences",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/prime_editing_guide_rna_sequences.tsv.gz",
         "file_size": 4132,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
     },
@@ -185,10 +193,12 @@
         "md5sum": "9eb19333897169ebf36e45b669c38c2e",
         "file_format": "tsv",
         "content_type": "gene quantifications",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/gene_quantifications.tsv.gz",
         "file_size": 4143132,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
     },
@@ -208,7 +218,6 @@
         "submitted_file_name": "/Users/igvf/igvf_files/barcode_to_hashtag_mapping.tsv.gz",
         "file_size": 5132,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
     },
@@ -228,7 +237,6 @@
         "submitted_file_name": "/Users/igvf/igvf_files/barcode_to_variant_mapping.tsv.gz",
         "file_size": 4132,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
     },
@@ -245,10 +253,12 @@
         "md5sum": "aacc78ce3edf8b550517df324f820a25",
         "file_format": "tsv",
         "content_type": "transcript quantifications",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/transcript_quantifications.tsv.gz",
         "file_size": 3132,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
     },
@@ -265,10 +275,12 @@
         "md5sum": "03f93107a2d62000c5895a9305a05b0d",
         "file_format": "tsv",
         "content_type": "variant localization impacts",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/variant_localization_impacts.tsv.gz",
         "file_size": 3132,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
     },
@@ -280,16 +292,17 @@
         "aliases": [
             "igvf:peak_quantifications"
         ],
-        "transcriptome_annotation": "GENCODE 32",
         "status": "released",
         "release_timestamp": "2024-06-09T12:34:56Z",
         "md5sum": "17d63c7c831bbcf0637516cc15e694c4",
         "file_format": "tsv",
         "content_type": "peak quantifications",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/peak_quantifications.tsv.gz",
         "file_size": 3139,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
     },
@@ -306,10 +319,12 @@
         "md5sum": "75abbe74a52deea46a29e417e8dbf173",
         "file_format": "tsv",
         "content_type": "coding variant effects",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/coding_variant_effects.tsv.gz",
         "file_size": 300,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false,
         "catalog_collections": [
@@ -334,7 +349,6 @@
         "submitted_file_name": "/Users/igvf/igvf_files/barcode_to_TF_overexpression_mapping.tsv.gz",
         "file_size": 300,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
     },
@@ -351,10 +365,12 @@
         "md5sum": "b5916ea8c00f9a2f67d895a499422bc6",
         "file_format": "tsv",
         "content_type": "reporter genomic variant effects",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/reporter_genomic_variant_effects.tsv.gz",
         "file_size": 4000,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "leif-ludwig:analysis_set",
         "controlled_access": false
     },
@@ -371,10 +387,12 @@
         "md5sum": "c1ebb4933e06ce5617483f665e26627c",
         "file_format": "tsv",
         "content_type": "bin paired count",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/bin_paired_count.tsv.gz",
         "file_size": 9999999,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "leif-ludwig:analysis_set",
         "controlled_access": false
     },
@@ -391,10 +409,12 @@
         "md5sum": "c19d4aa4c6d8f1c90831f37c4fca8b91",
         "file_format": "tsv",
         "content_type": "differential chromatin contact quantifications",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/differential_chromatin_contact_quantifications.tsv.gz",
         "file_size": 1453609183,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "leif-ludwig:analysis_set",
         "controlled_access": false
     },
@@ -411,10 +431,12 @@
         "md5sum": "10db69749d3be0459a3031a539cc8470",
         "file_format": "tsv",
         "content_type": "variant functions",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/variant_functional_predictions.tsv.gz",
         "file_size": 1453609183,
         "upload_status": "validation exempted",
-        "assembly": "custom",
         "file_set": "leif-ludwig:analysis_set",
         "controlled_access": false
     },
@@ -429,6 +451,9 @@
         "md5sum": "f4c99133f75b02dc760c87b59cf808a5",
         "file_format": "tsv",
         "content_type": "DNA footprint scores",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/DNA_footprint.tsv.gz",
         "file_size": 16330,
         "upload_status": "validated",
@@ -450,10 +475,12 @@
         "md5sum": "a36c4e3a52348ddb61cbc9262def21d2",
         "file_format": "tsv",
         "content_type": "reporter experiment barcode",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/reporter_experiment_barcode.tsv.gz",
         "file_size": 9999,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "leif-ludwig:analysis_set",
         "controlled_access": false
     },
@@ -508,6 +535,9 @@
         "md5sum": "08dc4cb2eee35c7a2c7cb200cb17282a",
         "file_format": "tsv",
         "content_type": "differential peak quantifications",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/differential_peak_quantifications.tsv.gz",
         "file_size": 145360919,
         "upload_status": "validated",
@@ -527,6 +557,9 @@
         "md5sum": "a7f5d6e4c9b2a1d3e8f7c6b5d4e3a2f1",
         "file_format": "tsv",
         "content_type": "primer sequences",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/differential_peak_quantifications.tsv.gz",
         "file_size": 145360919,
         "upload_status": "validated",
@@ -564,8 +597,10 @@
         "release_timestamp": "2025-02-01T21:29:45Z",
         "md5sum": "482ec315a5e803d8206f88b52e99948b",
         "file_format": "bedpe",
-        "assembly": "GRCh38",
         "content_type": "element to gene interactions",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/element_to_gene_predictions.bedpe.gz",
         "file_size": 145360919,
         "upload_status": "validated",
@@ -585,6 +620,9 @@
         "md5sum": "b4bf7449cc02f3bd0aebe58ebabfd352",
         "file_format": "tsv",
         "content_type": "primer sequences",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/primer_sequences.tsv.gz",
         "file_size": 145360919,
         "upload_status": "validated",
@@ -642,6 +680,9 @@
         "md5sum": "8f2d9b2c0e334fdb854f495ab7b672c2",
         "file_format": "tsv",
         "content_type": "primers table",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/primers_table.tsv.gz",
         "file_size": 20009,
         "upload_status": "validated",
@@ -662,10 +703,12 @@
         "file_format": "bed",
         "file_format_type": "bed6+",
         "content_type": "primers track",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/primers_track.tsv.gz",
         "file_size": 20005,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "filtered": true,
         "file_set": "igvf:parse_split_seq_with_barcode_replacement",
         "controlled_access": false
@@ -683,6 +726,9 @@
         "md5sum": "9a30cb1c1eac4a6492cfe0248b07c1f8",
         "file_format": "gtf",
         "content_type": "target transcripts",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/target_transcripts.tsv.gz",
         "file_size": 20005,
         "upload_status": "validated",
@@ -702,8 +748,10 @@
         "md5sum": "890656887a7951eed706820e65ff4fb9",
         "file_format": "bed",
         "file_format_type": "bed3",
-        "assembly": "GRCh38",
         "content_type": "plus strand modification state",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/plus_strand_modification_state.bed.gz",
         "file_size": 84837,
         "upload_status": "validated",
@@ -728,8 +776,10 @@
         "md5sum": "bfb30e65ff96ed7064fb7a7951ee8829",
         "file_format": "bed",
         "file_format_type": "bed3",
-        "assembly": "GRCh38",
         "content_type": "modification state",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/modification_state.bed.gz",
         "file_size": 84837,
         "upload_status": "validated",
@@ -753,6 +803,9 @@
         "md5sum": "d3a513841a56b8014343a06decab2f9c",
         "file_format": "tsv",
         "content_type": "variant pathogenicity",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/variant_pathogenicity_test.tsv.gz",
         "file_size": 20005000,
         "upload_status": "validated",
@@ -773,10 +826,12 @@
         "file_format": "bed",
         "file_format_type": "mpra_element",
         "content_type": "reporter genomic element effects",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/mpra_reporter_genomic_element_effects.bed.gz",
         "file_size": 111111,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false,
         "catalog_adapters": [
@@ -797,10 +852,12 @@
         "file_format": "bed",
         "file_format_type": "mpra_variant",
         "content_type": "reporter genomic variant effects",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/mpra_reporter_genomic_variant_effects.bed.gz",
         "file_size": 5555555,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false,
         "catalog_adapters": [
@@ -839,6 +896,9 @@
         "md5sum": "3a5d3dfb246ce07025118dc7070348fe",
         "file_format": "tsv",
         "content_type": "gene programs",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/cellular_program_networks/gene_programs.tsv.gz",
         "file_size": 20091,
         "upload_status": "validated",
@@ -859,10 +919,12 @@
         "file_format": "bigBed",
         "file_format_type": "bed6+",
         "content_type": "peaks",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/peaks_tabular_file.bigBed",
         "file_size": 738031,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "filtered": true,
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
@@ -880,10 +942,12 @@
         "md5sum": "af6a94f27717b00c1e126a9d2bc41d60",
         "file_format": "tsv",
         "content_type": "read count",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/read_count.tsv",
         "file_size": 738031,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "filtered": true,
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
@@ -901,10 +965,12 @@
         "md5sum": "67843c51e7325d03ccde3974dc4373ce",
         "file_format": "tsv",
         "content_type": "fold change of post-selection and pre-selection",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/tabular_file_fold_change_of_post_selection_and_pre_selection.tsv",
         "file_size": 738032,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "filtered": true,
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
@@ -922,10 +988,12 @@
         "md5sum": "beee1d2ce3e492a6125aade52de15e93",
         "file_format": "tsv",
         "content_type": "functional impact score",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/tabular_file_functional_impact_score.tsv",
         "file_size": 738032,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "filtered": true,
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false,
@@ -949,10 +1017,12 @@
         "md5sum": "ee061e284f5e31f39826e7367c5e9837",
         "file_format": "gvcf",
         "content_type": "variants",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/genomic_variants.gvcf.gz",
         "file_size": 4990121,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "filtered": false,
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
@@ -970,10 +1040,12 @@
         "md5sum": "2f2f90cb453db049a700b6a41ffe31a9",
         "file_format": "tsv",
         "content_type": "differential guide quantifications",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/differential_guide_quantifications.tsv.gz",
         "file_size": 4123,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "filtered": false,
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
@@ -1008,6 +1080,9 @@
         "md5sum": "a0134d1662be6066407fe70efa152ce2",
         "file_format": "tsv",
         "content_type": "eQTL",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/eqtl.tsv.gz",
         "file_size": 902,
         "upload_status": "validated",
@@ -1027,6 +1102,9 @@
         "md5sum": "98b8c23451327745ca65d6e2c17c96c7",
         "file_format": "tsv",
         "content_type": "caQTL",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/caqtl.tsv.gz",
         "file_size": 902,
         "upload_status": "validated",
@@ -1046,6 +1124,9 @@
         "md5sum": "6436420c2a29787aaa3ecb40e2d7cc39",
         "file_format": "tsv",
         "content_type": "spliceQTL",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/spliceqtl.tsv.gz",
         "file_size": 902,
         "upload_status": "validated",
@@ -1103,6 +1184,9 @@
         "md5sum": "416de250d75def55919d751701516a05",
         "file_format": "tsv",
         "content_type": "gene universe",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/gene_universe.csv.gz",
         "file_size": 903,
         "upload_status": "validated",
@@ -1141,6 +1225,9 @@
         "md5sum": "c48e89b22c592ef8f5133e4de1927952",
         "file_format": "tsv",
         "content_type": "calibrated coding variant effects",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/calibrated_coding_variant_effects.tsv.gz",
         "file_size": 101,
         "upload_status": "validated",
@@ -1160,6 +1247,9 @@
         "md5sum": "85d68e982987441946768df28b8e9af4",
         "file_format": "tsv",
         "content_type": "global differential expression",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/filtered_global_differential_expressions.tsv.gz",
         "file_size": 101,
         "upload_status": "validated",
@@ -1240,6 +1330,9 @@
         "md5sum": "e0cc3f7d4873474a836b8cb02e2c47e6",
         "file_format": "tsv",
         "content_type": "protein-protein interaction edge-perturbation score",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/protein-protein_interaction_edge-perturbation_score.tsv.gz",
         "file_size": 200,
         "upload_status": "validated",
@@ -1259,6 +1352,9 @@
         "md5sum": "a6dabdbf5709990119f54ab7da14779d",
         "file_format": "tsv",
         "content_type": "protein-protein interaction edgotyping score",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/protein-protein_interaction_edgotyping_score.tsv.gz",
         "file_size": 200,
         "upload_status": "validated",
@@ -1278,6 +1374,9 @@
         "md5sum": "5a593f46bf75ebde3f0efec9889caa3c",
         "file_format": "tsv",
         "content_type": "exclusion list regions",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/exclusion_list_regions.tsv.gz",
         "file_size": 200,
         "upload_status": "validated",
@@ -1297,6 +1396,9 @@
         "md5sum": "a96398e16a55f38695d5adb23e791777",
         "file_format": "tsv",
         "content_type": "co-localization scores",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/co-localization_scores.tsv.gz",
         "file_size": 101,
         "upload_status": "validated",
@@ -1316,6 +1418,9 @@
         "md5sum": "084a704482b1df7313a011ec8bb390eb",
         "file_format": "tsv",
         "content_type": "per cell type enrichment scores",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/per_cell_type_enrichment_scores.tsv.gz",
         "file_size": 101,
         "upload_status": "validated",
@@ -1354,6 +1459,9 @@
         "md5sum": "9a40f4b39e806fbcbb899e40084318a4",
         "file_format": "tsv",
         "content_type": "aggregated calibrated coding variant effects",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/aggregated_calibrated_coding_variant_effects.tsv.gz",
         "file_size": 101,
         "upload_status": "validated",
@@ -1392,6 +1500,9 @@
         "md5sum": "7752ac6d21c6cf5fc03bfe4a79211012",
         "file_format": "tsv",
         "content_type": "regional constraint",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/regional_constraint.tsv.gz",
         "file_size": 200,
         "upload_status": "validated",
@@ -1411,6 +1522,9 @@
         "md5sum": "c11e4a7921afa7750c6cf5fc03bf752a",
         "file_format": "tsv",
         "content_type": "chromatin contact quantifications",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/chromatin_contact_quantifications.tsv.gz",
         "file_size": 1992000,
         "upload_status": "validated",
@@ -1430,6 +1544,9 @@
         "md5sum": "03bf752921aff0a409350ac11e4a75fc",
         "file_format": "tsv",
         "content_type": "methylation counts",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/methylation_counts.tsv.gz",
         "file_size": 1802000,
         "upload_status": "validated",
@@ -1468,6 +1585,9 @@
         "md5sum": "5c7f6a8d9e0b1c2d3e4f5a6b7c8d9e0f",
         "file_format": "tsv",
         "content_type": "domain constraint",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/domain_constraint.tsv.gz",
         "file_size": 2048000,
         "upload_status": "validated",
@@ -1487,6 +1607,9 @@
         "md5sum": "6d8e7b9c0f1a2b3c4d5e6f7a8b9c0d1e",
         "file_format": "tsv",
         "content_type": "exon constraint",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/exon_constraint.tsv.gz",
         "file_size": 2560000,
         "upload_status": "validated",
