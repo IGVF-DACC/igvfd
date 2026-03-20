@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def tabular_file(testapp, lab, award, principal_analysis_set):
+def tabular_file(testapp, lab, award, principal_analysis_set, reference_file):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -10,6 +10,7 @@ def tabular_file(testapp, lab, award, principal_analysis_set):
         'file_format': 'tsv',
         'file_set': principal_analysis_set['@id'],
         'content_type': 'peaks',
+        'reference_files': [reference_file['@id']],
         'controlled_access': False
     }
     return testapp.post_json('/tabular_file', item, status=201).json['@graph'][0]
@@ -58,14 +59,14 @@ def tabular_file_barcode_replacement(testapp, lab, award, curated_set_barcode):
 
 
 @pytest.fixture
-def tabular_file_bed(testapp, lab, award, principal_analysis_set):
+def tabular_file_bed(testapp, lab, award, principal_analysis_set, reference_file):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '1897bf4e87141798373aced2a6508c28',
         'file_format_type': 'bed5',
         'file_format': 'bed',
-        'assembly': 'GRCh38',
+        'reference_files': [reference_file['@id']],
         'file_set': principal_analysis_set['@id'],
         'content_type': 'peaks',
         'controlled_access': False
@@ -74,7 +75,7 @@ def tabular_file_bed(testapp, lab, award, principal_analysis_set):
 
 
 @pytest.fixture
-def tabular_file_primer_designs(testapp, lab, award, principal_analysis_set):
+def tabular_file_primer_designs(testapp, lab, award, principal_analysis_set, reference_file):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -82,6 +83,7 @@ def tabular_file_primer_designs(testapp, lab, award, principal_analysis_set):
         'file_format': 'tsv',
         'file_set': principal_analysis_set['@id'],
         'content_type': 'primer sequences',
+        'reference_files': [reference_file['@id']],
         'controlled_access': False
     }
     return testapp.post_json('/tabular_file', item, status=201).json['@graph'][0]
@@ -260,4 +262,80 @@ def tabular_file_v19(tabular_file, sample_term_K562):
         'schema_version': '19',
         'cell_type_annotation': sample_term_K562['@id'],
     })
+    return item
+    
+def tabular_file_v20a(testapp, lab, award, principal_analysis_set):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
+        'file_format': 'tsv',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'peaks',
+        'assembly': 'GRCh38',
+        'controlled_access': False,
+        'schema_version': '20'
+    }
+    return item
+
+
+@pytest.fixture
+def tabular_file_v20b(testapp, lab, award, principal_analysis_set):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
+        'file_format': 'tsv',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'peaks',
+        'controlled_access': False,
+        'schema_version': '20'
+    }
+    return item
+
+
+@pytest.fixture
+def tabular_file_v20c(testapp, lab, award, principal_analysis_set):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
+        'file_format': 'tsv',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'barcode onlist',
+        'controlled_access': False,
+        'schema_version': '20'
+    }
+    return item
+
+
+@pytest.fixture
+def tabular_file_v20d(testapp, lab, award, principal_analysis_set, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
+        'file_format': 'tsv',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'peaks',
+        'controlled_access': False,
+        'reference_files': [reference_file['@id']],
+        'schema_version': '20'
+    }
+    return item
+
+
+@pytest.fixture
+def tabular_file_v20e(testapp, lab, award, principal_analysis_set):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
+        'file_format': 'tsv',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'peaks',
+        'controlled_access': False,
+        'schema_version': '20',
+        'status': 'deleted'
+    }
     return item
