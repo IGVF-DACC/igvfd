@@ -1792,7 +1792,7 @@ class PredictionSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type, software_versions=None, assessed_genes=None, scope=None, files=None, samples=None, donors=None):
+    def summary(self, request, file_set_type, software_versions=None, assessed_genes=None, scope=None, files=None, samples=None, donors=None, associated_phenotypes=None):
         # Get scope info
         scope_phrase = ''
         if scope:
@@ -1808,6 +1808,15 @@ class PredictionSet(FileSet):
             software_version_phrase = f'using {", ".join(sorted(list(software_version_summaries)))}'
         # Get assessed genes info
         assessed_genes_phrase = get_assessed_gene_phrase(request, assessed_genes)
+        # Get associated phenotypes info
+        phenotypes_phrase = ''
+        if associated_phenotypes:
+            if len(associated_phenotypes) > 3:
+                phenotypes_phrase = f' associated with {len(associated_phenotypes)} phenotypes'
+            else:
+                phenotype_term_names = sorted([request.embed(phenotype, '@@object?skip_calculated=true').get('term_name')
+                                              for phenotype in associated_phenotypes])
+                phenotypes_phrase = f' associated with {", ".join(phenotype_term_names)}'
         # Get sample or donor info
         taxa = set()
         samples_phrase = ''
@@ -1848,6 +1857,7 @@ class PredictionSet(FileSet):
             f'prediction{scope_phrase}',
             f'for {assessed_genes_phrase}' if assessed_genes else '',
             software_version_phrase,
+            phenotypes_phrase,
             f'in {samples_phrase}'
         ]))
 

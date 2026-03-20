@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, gene_zscan10_mm, tabular_file, analysis_step_version, in_vitro_organoid, in_vitro_cell_line, tissue, human_tissue, primary_cell, human_donor):
+def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, gene_zscan10_mm, tabular_file, analysis_step_version, in_vitro_organoid, in_vitro_cell_line, tissue, human_tissue, primary_cell, human_donor, phenotype_term_alzheimers, phenotype_term_myocardial_infarction, phenotype_term_ncit_feature, phenotype_term_from_go):
     # Test Prediction Set summary if without assessed genes
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get('summary') == 'functional effect prediction in Mus musculus strain1 (male) K562 cell line'
@@ -150,6 +150,47 @@ def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs
     )
     res = testapp.get(prediction_set_donor['@id'])
     assert res.json.get('summary') == 'functional effect prediction in virtual Homo sapiens'
+
+    # Test Prediction Set summary with single associated phenotype
+    testapp.patch_json(
+        base_prediction_set['@id'],
+        {
+            'associated_phenotypes': [phenotype_term_alzheimers['@id']]
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'])
+    assert res.json.get(
+        'summary') == "functional effect prediction associated with Alzheimer's disease in virtual Homo sapiens adrenal gland tissue/organ"
+
+    # Test Prediction Set summary with multiple associated phenotypes
+    testapp.patch_json(
+        base_prediction_set['@id'],
+        {
+            'associated_phenotypes': [
+                phenotype_term_alzheimers['@id'],
+                phenotype_term_myocardial_infarction['@id']
+            ]
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'])
+    assert res.json.get(
+        'summary') == "functional effect prediction associated with Alzheimer's disease, Myocardial infarction in virtual Homo sapiens adrenal gland tissue/organ"
+
+    # Test Prediction Set summary with 4+ associated phenotypes, use phenotype count instead
+    testapp.patch_json(
+        base_prediction_set['@id'],
+        {
+            'associated_phenotypes': [
+                phenotype_term_alzheimers['@id'],
+                phenotype_term_myocardial_infarction['@id'],
+                phenotype_term_ncit_feature['@id'],
+                phenotype_term_from_go['@id']
+            ]
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'])
+    assert res.json.get(
+        'summary') == 'functional effect prediction associated with 4 phenotypes in virtual Homo sapiens adrenal gland tissue/organ'
 
 
 def test_software_versions(testapp, tabular_file, base_prediction_set, analysis_step_version, software_version):
