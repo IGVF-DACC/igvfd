@@ -120,7 +120,7 @@ def test_tabular_file_upgrade_20_21(upgrader, tabular_file_v20a, tabular_file_v2
     assert value['schema_version'] == '21'
     # A deleted tabular file with no assembly or reference_files.
     value = upgrader.upgrade('tabular_file', tabular_file_v20e, current_version='20', target_version='21')
-    assert value['reference_files'] == ['IGVFFI0653VCGH']
-    assert 'This deleted file was automatically upgraded to add a link to IGVFFI0653VCGH in reference_files.' in value[
+    assert value['submitted_assembly'] == 'unknown'
+    assert 'This deleted file\'s submitted_assembly was automatically set to unknown because the file had no assembly nor reference_files.' in value[
         'notes']
     assert value['schema_version'] == '21'

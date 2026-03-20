@@ -90,6 +90,21 @@ def tabular_file_primer_designs(testapp, lab, award, principal_analysis_set, ref
 
 
 @pytest.fixture
+def tabular_file_submitted_assembly(testapp, lab, award, principal_analysis_set):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
+        'file_format': 'tsv',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'peaks',
+        'submitted_assembly': 'GRCh38',
+        'controlled_access': False
+    }
+    return testapp.post_json('/tabular_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def tabular_file_v1(tabular_file):
     item = tabular_file.copy()
     item.update({
@@ -260,6 +275,7 @@ def tabular_file_v20a(testapp, lab, award, principal_analysis_set):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
+        'status': 'in progress',
         'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
         'file_format': 'tsv',
         'file_set': principal_analysis_set['@id'],
@@ -276,6 +292,7 @@ def tabular_file_v20b(testapp, lab, award, principal_analysis_set):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
+        'status': 'in progress',
         'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
         'file_format': 'tsv',
         'file_set': principal_analysis_set['@id'],
@@ -291,6 +308,7 @@ def tabular_file_v20c(testapp, lab, award, principal_analysis_set):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
+        'status': 'in progress',
         'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
         'file_format': 'tsv',
         'file_set': principal_analysis_set['@id'],
@@ -306,6 +324,7 @@ def tabular_file_v20d(testapp, lab, award, principal_analysis_set, reference_fil
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
+        'status': 'in progress',
         'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
         'file_format': 'tsv',
         'file_set': principal_analysis_set['@id'],
