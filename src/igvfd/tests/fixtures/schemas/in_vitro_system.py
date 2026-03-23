@@ -16,6 +16,20 @@ def in_vitro_cell_line(testapp, other_lab, award, rodent_donor, sample_term_K562
 
 
 @pytest.fixture
+def in_vitro_cell_culture(testapp, other_lab, award, rodent_donor, sample_term_adrenal_gland):
+    item = {
+        'accession': 'IGVFSM2222CCCC',
+        'classifications': ['cell culture'],
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'sources': [other_lab['@id']],
+        'donors': [rodent_donor['@id']],
+        'sample_terms': [sample_term_adrenal_gland['@id']]
+    }
+    return testapp.post_json('/in_vitro_system', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sample_term_K562, experimental_protocol_document, sample_term_brown_adipose_tissue):
     item = {
         'classifications': ['differentiated cell specimen'],

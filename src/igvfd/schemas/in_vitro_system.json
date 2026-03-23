@@ -173,6 +173,30 @@
                                 "classifications": {
                                     "contains": {
                                         "enum": [
+                                            "cell culture"
+                                        ]
+                                    },
+                                    "not": {
+                                        "contains": {
+                                            "enum": [
+                                                "organoid",
+                                                "gastruloid",
+                                                "embryoid",
+                                                "cell line",
+                                                "differentiated cell specimen",
+                                                "reprogrammed cell specimen",
+                                                "pooled cell specimen"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "classifications": {
+                                    "contains": {
+                                        "enum": [
                                             "organoid"
                                         ]
                                     },
@@ -440,6 +464,7 @@
                     "organoid",
                     "gastruloid",
                     "embryoid",
+                    "cell culture",
                     "cell line",
                     "differentiated cell specimen",
                     "reprogrammed cell specimen",
@@ -449,7 +474,8 @@
                     "organoid": "A three-dimensional cell culture derived from stem cells that self-organizes into a structure resembling an organ, capable of mimicking its architecture and function.",
                     "gastruloid": "A three-dimensional cell culture model that mimics early embryonic development, specifically the formation of the three germ layers (ectoderm, mesoderm, and endoderm).",
                     "embryoid": "A three-dimensional cell culture model that resembles early-stage embryos, typically used to study early embryogenesis and cellular differentiation processes.",
-                    "cell line": "A population of cells derived from a single cell and maintained in culture.",
+                    "cell culture": "A non-immortalized population of cells maintained in culture for a limited period (e.g., primary cultured cells).",
+                    "cell line": "A population of immortalized cells derived from a single cell and maintained in culture.",
                     "differentiated cell specimen": "A cell culture consisting of cells that have undergone differentiation.",
                     "reprogrammed cell specimen": "Cells that have been genetically reprogrammed to return to a pluripotent state.",
                     "pooled cell specimen": "A sample consisting of a mixture of cells from different sources or populations."
