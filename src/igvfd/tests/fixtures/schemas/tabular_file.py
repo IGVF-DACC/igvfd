@@ -251,3 +251,13 @@ def tabular_file_v18c(tabular_file):
         'content_type': 'unfiltered local differential expression'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v19(tabular_file, sample_term_K562):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '19',
+        'cell_type_annotation': sample_term_K562['@id'],
+    })
+    return item

@@ -16,9 +16,6 @@ def tabular_file():
             'file_format_type': {
                 'title': 'File Format Type'
             },
-            'cell_type_annotation.term_name': {
-                'title': 'Annotated Cell Type'
-            },
             'assembly': {
                 'title': 'Assembly'
             },

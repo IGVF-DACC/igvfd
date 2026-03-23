@@ -104,12 +104,6 @@ def file():
                 'description': 'Preferred title of assay(s) that created this file',
                 'category': 'File Set Details'
             },
-            'cell_type_annotation.term_name': {
-                'title': 'Annotated Cell Type',
-                'description': 'The inferred cell type cluster from single-cell profiling that this file represents.',
-                'optional': True,
-                'category': 'File Set Details'
-            },
             'file_set.samples.taxa': {
                 'title': 'Taxa',
                 'description': 'The organism or species associated with the donor.',

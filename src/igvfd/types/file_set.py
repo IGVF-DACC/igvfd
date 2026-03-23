@@ -119,7 +119,6 @@ EMBEDDED_FILE_FIELDS = [
     'content_type',
     'controlled_access',
     'creation_timestamp',
-    'cell_type_annotation',
     'derived_from',
     'file_format',
     'file_format_type',
@@ -186,13 +185,6 @@ class FileSet(Item):
                 '@id',
                 'term_name',
                 'status'
-            ]
-        ),
-        Path(
-            'files.cell_type_annotation',
-            include=[
-                '@id',
-                'term_name'
             ]
         ),
         Path(

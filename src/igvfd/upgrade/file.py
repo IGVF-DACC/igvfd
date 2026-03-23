@@ -651,3 +651,17 @@ def tabular_file_18_19(value, system):
         notes += f' This file\'s content_type was {old_content_type}, but has been upgraded to {upgrade_map[old_content_type][0]}. The filtered property was also set to {str(upgrade_map[old_content_type][1])}.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('signal_file', '13', '14')
+@upgrade_step('tabular_file', '19', '20')
+def signal_file_13_14_and_tabular_file_19_20(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3393
+    if 'cell_type_annotation' in value:
+        cell_type_annotation = value['cell_type_annotation']
+        notes = value.get('notes', '').strip()
+        if notes:
+            notes += ' '
+        notes += f'Cell type annotation: {cell_type_annotation}.'
+        value['notes'] = notes
+        del value['cell_type_annotation']
