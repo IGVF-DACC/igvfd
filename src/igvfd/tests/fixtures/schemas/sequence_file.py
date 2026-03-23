@@ -45,7 +45,7 @@ def externally_hosted_sequence_file(testapp, lab, award, principal_analysis_set,
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'md5sum': '525c8a6af303ea86bc59c629ff198277',
+        'md5sum': '884728053c81531ee3b41dcd5f9a23df',
         'file_format': 'fastq',
         'file_set': principal_analysis_set['@id'],
         'minimum_read_length': 99,
