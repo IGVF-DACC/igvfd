@@ -904,7 +904,7 @@ class TechnicalSample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, sample_material, virtual=None, construct_library_sets=None, treatments=None, moi=None, nucleic_acid_delivery=None, selection_conditions=None):
+    def summary(self, request, sample_terms, sample_material, virtual=None, construct_library_sets=None, treatments=None, moi=None, nucleic_acid_delivery=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None):
         if len(sample_terms) > 1:
             summary_terms = 'mixed'
         else:

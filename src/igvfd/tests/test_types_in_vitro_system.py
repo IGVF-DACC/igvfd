@@ -128,7 +128,7 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
-            'nucleic_acid_delivery': 'Adeno-associated virus (AAV)'
+            'nucleic_acid_delivery': 'adeno-associated viral (AAV) transduction'
         }
     )
     res = testapp.get(in_vitro_differentiated_cell['@id'])
