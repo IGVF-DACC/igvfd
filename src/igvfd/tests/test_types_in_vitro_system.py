@@ -126,6 +126,15 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
     assert res.json.get(
         'summary') == 'Homo sapiens exhausted lymphoblastoid differentiated cell specimen line induced to brown adipose tissue for 5 minutes, 7 day(s) after transduction (adenovirus) with a reporter library targeting accessible genome regions genome-wide (MOI of 2), grown in DMEM with serum'
     testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'nucleic_acid_delivery': 'Adeno-associated virus (AAV)'
+        }
+    )
+    res = testapp.get(in_vitro_differentiated_cell['@id'])
+    assert res.json.get(
+        'summary') == 'Homo sapiens exhausted lymphoblastoid differentiated cell specimen line induced to brown adipose tissue for 5 minutes, 7 day(s) after transduction (AAV) with a reporter library targeting accessible genome regions genome-wide (MOI of 2), grown in DMEM with serum'
+    testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
             'classifications': ['gastruloid'],

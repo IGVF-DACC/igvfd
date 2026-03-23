@@ -1,5 +1,6 @@
 ## Changelog for *`sample.json`*
 
+* Extend `nucleic_acid_delivery` enum list to include `adeno-associated viral (AAV) transduction`. (03/25/2026)
 * Update `aliases` regex to add `yang-li` as a namespace. (02/27/2026)
 * Add `is_on_anvil`. (02/18/2026)
 * Add `part_of`. (02/11/2026)
