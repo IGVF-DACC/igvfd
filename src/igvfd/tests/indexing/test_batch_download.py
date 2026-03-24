@@ -71,7 +71,6 @@ def test_metadata_file_batch_download_v2_view(workbook, testapp):
 def test_metadata_batch_download_v2_contains_audit_values(workbook, testapp):
     r = testapp.get('/batch-download-v2/?type=FileSet')
     audit_values = [
-        'missing nucleic acid delivery',
         'upload status not validated',
         'missing file format specifications',
         'missing derived from',

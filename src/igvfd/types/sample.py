@@ -57,6 +57,42 @@ def concat_numeric_and_units(numeric, numeric_units, no_numeric_on_one=False):
         return f'{numeric} {numeric_units}s'
 
 
+NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN = {
+    'adenoviral transduction': {
+        'verb': 'transduced (adenovirus) with',
+        'noun': 'transduction (adenovirus) with'
+    },
+    'adeno-associated viral (AAV) transduction': {
+        'verb': 'transduced (AAV) with',
+        'noun': 'transduction (AAV) with'
+    },
+    'electroporation': {
+        'verb': 'electroporated with',
+        'noun': 'electroporation with'
+    },
+    'lentiviral transduction': {
+        'verb': 'transduced (lentivirus) with',
+        'noun': 'transduction (lentivirus) with'
+    },
+    'lipofectamine': {
+        'verb': 'transfected (lipofectamine) with',
+        'noun': 'transfection (lipofectamine) with'
+    },
+    'nucleofection': {
+        'verb': 'nucleofected with',
+        'noun': 'nucleofection with'
+    },
+    'transfection': {
+        'verb': 'transfected with',
+        'noun': 'transfection with'
+    },
+    'transformation': {
+        'verb': 'transformed with',
+        'noun': 'transformation with'
+    }
+}
+
+
 def compose_summary_sample_term_phrase(sample_term_term_names: list, cap_number: int) -> str:
     """Compose a summary sample term phrase based on the number of terms and a max number of items.
 
@@ -654,39 +690,9 @@ class Biosample(Sample):
         if (construct_library_sets and
                 biosample_type in biosample_subschemas):
 
-            nucleic_acid_delivery_to_verb_noun = {
-                'adenoviral transduction': {
-                    'verb': 'transduced (adenovirus) with',
-                    'noun': 'transduction (adenovirus) with'
-                },
-                'electroporation': {
-                    'verb': 'electroporated with',
-                    'noun': 'electroporation with'
-                },
-                'lentiviral transduction': {
-                    'verb': 'transduced (lentivirus) with',
-                    'noun': 'transduction (lentivirus) with'
-                },
-                'lipofectamine': {
-                    'verb': 'transfected (lipofectamine) with',
-                    'noun': 'transfection (lipofectamine) with'
-                },
-                'nucleofection': {
-                    'verb': 'nucleofected with',
-                    'noun': 'nucleofection with'
-                },
-                'transfection': {
-                    'verb': 'transfected with',
-                    'noun': 'transfection with'
-                },
-                'transformation': {
-                    'verb': 'transformed with',
-                    'noun': 'transformation with'
-                }
-            }
-            if nucleic_acid_delivery in nucleic_acid_delivery_to_verb_noun:
-                verb = nucleic_acid_delivery_to_verb_noun[nucleic_acid_delivery]['verb']
-                noun = nucleic_acid_delivery_to_verb_noun[nucleic_acid_delivery]['noun']
+            if nucleic_acid_delivery in NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN:
+                verb = NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN[nucleic_acid_delivery]['verb']
+                noun = NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN[nucleic_acid_delivery]['noun']
             else:
                 verb = 'transfected with'
                 noun = 'transfection with'
@@ -898,7 +904,7 @@ class TechnicalSample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, sample_material, virtual=None, construct_library_sets=None, treatments=None, moi=None, nucleic_acid_delivery=None, selection_conditions=None):
+    def summary(self, request, sample_terms, sample_material, virtual=None, construct_library_sets=None, treatments=None, moi=None, nucleic_acid_delivery=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None):
         if len(sample_terms) > 1:
             summary_terms = 'mixed'
         else:
@@ -947,24 +953,36 @@ class TechnicalSample(Sample):
                 perturbation_summaries = ', '.join(unique_summaries)
                 summary_terms += f' {verb} with {perturbation_summaries},'
         if construct_library_sets:
-            verb = 'transfected with'
+            if nucleic_acid_delivery in NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN:
+                verb = NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN[nucleic_acid_delivery]['verb']
+                noun = NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN[nucleic_acid_delivery]['noun']
+            else:
+                verb = 'transfected with'
+                noun = 'transfection with'
+
+            if time_post_library_delivery is not None:
+                verb = (
+                    f'{time_post_library_delivery} '
+                    f'{time_post_library_delivery_units}(s) after {noun}'
+                )
+
             library_summaries = set()
             for construct_library_set in construct_library_sets:
                 construct_library_set_object = request.embed(
                     construct_library_set, '@@object_with_select_calculated_properties?field=summary')
                 library_summaries.add(construct_library_set_object['summary'])
-            if nucleic_acid_delivery:
-                if nucleic_acid_delivery == 'lentiviral transduction':
-                    verb = 'transduced (lentivirus) with'
-                elif nucleic_acid_delivery == 'adenoviral transduction':
-                    verb = 'transduced (adenovirus) with'
+
             if len(library_summaries) == 1:
                 library_summaries = ', '.join(library_summaries)
-                summary_terms = f'{summary_terms} {verb} a {library_summaries}'
+                if moi:
+                    summary_terms += f' {verb} a {library_summaries} (MOI of {moi}),'
+                else:
+                    summary_terms += f' {verb} a {library_summaries},'
             else:
-                summary_terms = f'{summary_terms} {verb} multiple libraries'
-        if moi:
-            summary_terms = f'{summary_terms} (MOI of {moi}),'
+                if moi:
+                    summary_terms += f' {verb} multiple libraries (MOI of {moi}),'
+                else:
+                    summary_terms += f' {verb} multiple libraries,'
         if selection_conditions:
             if len(selection_conditions) == 1:
                 summary_terms += f' selected by {selection_conditions[0]},'

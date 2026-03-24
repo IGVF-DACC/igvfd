@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 29
 
+* Extend `nucleic_acid_delivery` enum list to include `adeno-associated viral (AAV) transduction`.
 * Extend `classifications` enum list to include `cell culture`.
 * Add `phenotypic_features`.
 * Update `aliases` regex to add `yang-li` as a namespace.

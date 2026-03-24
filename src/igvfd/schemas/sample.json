@@ -235,6 +235,7 @@
             "type": "string",
             "enum": [
                 "adenoviral transduction",
+                "adeno-associated viral (AAV) transduction",
                 "lipofectamine",
                 "electroporation",
                 "lentiviral transduction",
