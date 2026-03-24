@@ -27,6 +27,16 @@ def test_audit_sample_sorted_from_parent_child_check(
     assert 'inconsistent parent sample' not in (
         error['category'] for error in res.json['audit'].get('ERROR', [])
     )
+    # If parent sample doesn't have anvil status and the child does (no audit)
+    testapp.patch_json(
+        biosample_sorted_child['@id'],
+        {'is_on_anvil': True}
+    )
+    res = testapp.get(biosample_sorted_child['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent parent sample'
+        for error in res.json['audit'].get('ERROR', [])
+    )
 
 
 def test_audit_sample_virtual_donor_check(
