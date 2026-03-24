@@ -452,7 +452,8 @@ class AnalysisSet(FileSet):
     item_type = 'analysis_set'
     schema = load_schema('igvfd:schemas/analysis_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
+        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status', 'assay_term']),
+        Path('input_file_sets.assay_term', include=['@id', 'term_name', 'assay_slims']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
         Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline', 'status', 'workflow_version']),
         Path('targeted_genes', include=['@id', 'symbol'])]
