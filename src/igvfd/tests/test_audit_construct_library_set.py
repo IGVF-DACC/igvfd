@@ -532,6 +532,31 @@ def test_audit_missing_seqspec_cls(testapp, sequence_file, sequence_file_sequenc
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
+    # Test: PacBio subreads and PacBio consensus reads without seqspec (no audit).
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_format': 'bam',
+            'content_type': 'PacBio subreads'
+        }
+    )
+    res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'content_type': 'PacBio consensus reads'
+        }
+    )
+    res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
     # Test: SeqFiles from ONT platform (no audit)
     testapp.patch_json(
         platform_term_HiSeq['@id'],

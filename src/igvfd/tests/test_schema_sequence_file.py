@@ -351,6 +351,13 @@ def test_sequence_file_content_type_file_format(testapp, sequence_file):
     res = testapp.patch_json(
         sequence_file['@id'],
         {
+            'content_type': 'PacBio consensus reads'
+        }
+    )
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
             'file_format': 'pod5',
             'content_type': 'Nanopore reads'
         }
