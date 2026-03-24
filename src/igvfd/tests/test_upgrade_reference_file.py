@@ -158,3 +158,9 @@ def test_reference_file_upgrade_21_22(upgrader, reference_file_v21):
     value = upgrader.upgrade('reference_file', reference_file_v21, current_version='21', target_version='22')
     assert value['content_type'] == 'elements reference'
     assert value['schema_version'] == '22'
+
+
+def test_reference_file_upgrade_22_23(upgrader, reference_file_v22):
+    value = upgrader.upgrade('reference_file', reference_file_v22, current_version='22', target_version='23')
+    assert value['catalog_method'] == 'spliceQTL'
+    assert value['schema_version'] == '23'
