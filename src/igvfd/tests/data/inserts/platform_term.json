@@ -57,7 +57,8 @@
         "term_name": "UG 100",
         "status": "released",
         "sequencing_kits": [
-            "UG Solaris Flex"
+            "UG Solaris Flex",
+            "Revio SMRT cell"
         ],
         "company": "Ultima Genomics",
         "release_timestamp": "2025-06-06T12:34:56Z",
