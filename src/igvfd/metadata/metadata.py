@@ -420,10 +420,15 @@ def file_batch_download_v2(context, request):
     permission='view',
 )
 def all_files(context, request):
+    include_downstream = False
+    if asbool(request.params.get('include_downstream')):
+        include_downstream = True
     files_sets_and_files = find_all_file_sets_and_files(
-        request, [
+        request,
+        [
             request.resource_path(context)
-        ]
+        ],
+        include_downstream,
     )
     if asbool(request.params.get('soft')):
         return files_sets_and_files
