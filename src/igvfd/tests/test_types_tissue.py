@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor_2, sample_term_brown_adipose_tissue, phenotype_term_alzheimers, treatment_chemical):
+def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor_2, sample_term_brown_adipose_tissue, phenotypic_feature_with_quantity, phenotypic_feature_with_quality, phenotypic_feature_01, treatment_chemical):
     res = testapp.get(tissue['@id'])
     assert res.json.get('summary') == 'Mus musculus strain1 (male) adrenal gland tissue/organ'
     testapp.patch_json(
@@ -53,13 +53,13 @@ def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor
         {
             'donors': [rodent_donor['@id'], parent_rodent_donor_2['@id']],
             'treatments': [treatment_chemical['@id']],
-            'disease_terms': [phenotype_term_alzheimers['@id']],
+            'phenotypic_features': [phenotypic_feature_with_quantity['@id'], phenotypic_feature_with_quality['@id'], phenotypic_feature_01['@id']],
             'cellular_sub_pool': 'PKR-1128',
         }
     )
     res = testapp.get(tissue['@id'])
     assert res.json.get(
-        'summary') == f'virtual Mus musculus strain1, strain3 (mixed sex, 50-100 days) embryonic brown adipose tissue (cellular sub pool: PKR-1128) associated with Alzheimer\'s disease, activated with 10 mM lactate for 1 hour'
+        'summary') == f'virtual Mus musculus strain1, strain3 (mixed sex, 50-100 days) embryonic brown adipose tissue (cellular sub pool: PKR-1128) associated with 28 MMSE, Alzheimer\'s disease, neuritic plaque measurement of frequent, activated with 10 mM lactate for 1 hour'
 
 
 def test_age_in_hours(testapp, tissue):

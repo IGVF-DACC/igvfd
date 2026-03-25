@@ -632,20 +632,23 @@ class Biosample(Sample):
                 biomarker_summaries = sorted(biomarker_summaries)
             summary_terms += f' characterized by {", ".join(biomarker_summaries)},'
 
-        # disease terms are appended to the end of the summary
-        if (disease_terms and
-                biosample_type in biosample_subschemas):
-            phenotype_term_names = sorted([request.embed(disease_term).get('term_name')
-                                          for disease_term in disease_terms])
-            summary_terms += f' associated with {", ".join(phenotype_term_names)},'
-
-        # disease terms are appended to the end of the summary
+        # phenotypic features are appended to the end of the summary
         if (phenotypic_features and
                 biosample_type in biosample_subschemas):
             phenotype_term_names = []
             for feature in phenotypic_features:
-                feature_term_name = request.embed(feature).get('term_name')
-                phenotype_term_names.append(feature_term_name)
+                feature_object = request.embed(feature, '@@object?skip_calculated=true')
+                feature_term_name = request.embed(feature_object['feature']).get('term_name', '')
+                feature_quality = feature_object.get('quality', None)
+                feature_quantity = feature_object.get('quantity', None)
+                feature_quantity_units = feature_object.get('quantity_units', None)
+
+                if feature_quality:
+                    phenotype_term_names.append(f'{feature_term_name} of {feature_quality}')
+                elif feature_quantity and feature_quantity_units:
+                    phenotype_term_names.append(f'{feature_quantity} {feature_quantity_units}')
+                else:
+                    phenotype_term_names.append(feature_term_name)
 
             summary_terms += f' associated with {", ".join(sorted(phenotype_term_names))},'
 

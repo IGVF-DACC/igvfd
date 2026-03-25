@@ -20,6 +20,24 @@ def phenotype_term_myocardial_infarction(testapp):
 
 
 @pytest.fixture
+def phenotype_term_neuritic_plaque_measurement(testapp):
+    item = {
+        'term_id': 'EFO:0006798',
+        'term_name': 'neuritic plaque measurement'
+    }
+    return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def phenotype_term_mini_mental_status_exam(testapp):
+    item = {
+        'term_id': 'NCIT:C74982',
+        'term_name': 'Mini-Mental Status Exam'
+    }
+    return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def phenotype_term_incomplete(testapp):
     item = {
         'term_id': 'DOID:10652'
