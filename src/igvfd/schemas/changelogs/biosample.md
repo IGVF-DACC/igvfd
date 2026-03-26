@@ -1,5 +1,6 @@
 ## Changelog for *`biosample.json`*
 
+* Update `aliases` regex to add `hongbo-liu` as a namespace. (03/26/2026)
 * Extend `nucleic_acid_delivery` enum list to include `adeno-associated viral (AAV) transduction`. (03/25/2026)
 * Add `phenotypic_features`. (03/11/2026)
 * Update `aliases` regex to add `yang-li` as a namespace. (02/27/2026)

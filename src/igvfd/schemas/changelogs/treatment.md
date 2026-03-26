@@ -1,5 +1,9 @@
 ## Changelog for *`treatment.json`*
 
+### Minor changes since schema version 11
+
+* Update `aliases` regex to add `hongbo-liu` as a namespace.
+
 ### Schema version 11
 
 * Adjust `treatment_type` enum list to remove `thermal`.

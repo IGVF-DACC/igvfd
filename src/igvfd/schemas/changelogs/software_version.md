@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Update `aliases` regex to add `yang-li` as a namespace.
 
 ### Schema version 8

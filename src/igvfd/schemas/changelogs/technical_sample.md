@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 15
 
+* Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Extend `nucleic_acid_delivery` enum list to include `adeno-associated viral (AAV) transduction`.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Add `is_on_anvil`.

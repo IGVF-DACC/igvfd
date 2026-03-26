@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 12
 
+* Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Extend `selection_criteria` enum list to include `evolutionary constraint`.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Add `is_on_anvil`.

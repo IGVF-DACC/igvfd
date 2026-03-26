@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Extend `input_content_types` enum list to include `domain constraint`.
 * Extend `output_content_types` enum list to include `domain constraint`.
 * Extend `input_content_types` enum list to include `exon constraint`.

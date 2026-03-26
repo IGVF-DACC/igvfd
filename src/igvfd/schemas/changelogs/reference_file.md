@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 23
+
+* Update `aliases` regex to add `hongbo-liu` as a namespace.
+
 ### Schema version 23
 
 * Adjust `catalog_method` enum list to replace `splice_QTL` with `spliceQTL`.
