@@ -1,6 +1,6 @@
 {
-    "hash": "fb5688da100a44e96979bfdd18ed3702",
-    "index_name": "tabular_file_fb5688da",
+    "hash": "4ef1efe14951204697d5fd10ae5e1216",
+    "index_name": "tabular_file_4ef1efe1",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -665,9 +665,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -891,6 +888,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {

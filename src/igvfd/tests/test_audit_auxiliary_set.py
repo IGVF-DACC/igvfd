@@ -359,18 +359,18 @@ def test_audit_missing_barcode_map(
 ):
     res = testapp.get(auxiliary_set_cell_hashing['@id'] + '@@audit')
     assert any(
-        error['category'] == 'missing barcode map'
+        error['category'] == 'missing hashtag barcode map'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         auxiliary_set_cell_hashing['@id'],
         {
-            'barcode_map': tabular_file['@id']
+            'hashtag_barcode_map': tabular_file['@id']
         }
     )
     res = testapp.get(auxiliary_set_cell_hashing['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent barcode map'
+        error['category'] == 'inconsistent hashtag barcode map'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -381,10 +381,10 @@ def test_audit_missing_barcode_map(
     )
     res = testapp.get(auxiliary_set_cell_hashing['@id'] + '@@audit')
     assert all(
-        error['category'] != 'missing barcode map'
+        error['category'] != 'missing hashtag barcode map'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     assert all(
-        error['category'] != 'inconsistent barcode map'
+        error['category'] != 'inconsistent hashtag barcode map'
         for error in res.json['audit'].get('ERROR', [])
     )

@@ -537,7 +537,7 @@ PHASE1_PIPELINES = {
         remove_keys('pipeline_parameters'),
     ],
     'auxiliary_set': [
-        remove_keys('measurement_sets', 'barcode_map'),
+        remove_keys('measurement_sets', 'hashtag_barcode_map'),
     ],
     'construct_library_set': [
         remove_keys('integrated_content_files', 'large_scale_gene_list', 'large_scale_loci_list'),
@@ -604,7 +604,7 @@ PHASE2_PIPELINES = {
         remove_keys('pipeline_parameters'),
     ],
     'auxiliary_set': [
-        skip_rows_missing_all_keys('barcode_map'),
+        skip_rows_missing_all_keys('hashtag_barcode_map'),
     ],
     'construct_library_set': [
         skip_rows_missing_all_keys('integrated_content_files', 'large_scale_gene_list', 'large_scale_loci_list'),

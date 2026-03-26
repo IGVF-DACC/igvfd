@@ -1,5 +1,9 @@
 ## Changelog for *`auxiliary_set.json`*
 
+### Schema version 13
+
+* Rename `barcode_map` to `hashtag_barcode_map`.
+
 ### Minor changes since schema version 12
 
 * Update `aliases` regex to add `hongbo-liu` as a namespace.

@@ -1,6 +1,6 @@
 {
-    "hash": "360e301889f6ed05405f6d363ab2c14a",
-    "index_name": "sequence_file_360e3018",
+    "hash": "d130eab9b61ad00a593659bfde0bf764",
+    "index_name": "sequence_file_d130eab9",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -647,9 +647,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -873,6 +870,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {

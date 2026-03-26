@@ -103,7 +103,7 @@
         "samples": [
             "igvf:alias3"
         ],
-        "barcode_map": "/tabular-files/IGVFFI0000SBRD/",
+        "hashtag_barcode_map": "/tabular-files/IGVFFI0000SBRD/",
         "award": "1UM1HG011972-01",
         "lab": "jesse-engreitz",
         "status": "released",
@@ -119,7 +119,7 @@
         "samples": [
             "igvf:alias3"
         ],
-        "barcode_map": "/tabular-files/IGVFFI0000SBRD/",
+        "hashtag_barcode_map": "/tabular-files/IGVFFI0000SBRD/",
         "award": "1UM1HG011972-01",
         "lab": "jesse-engreitz",
         "status": "released",

@@ -1,6 +1,6 @@
 {
-    "hash": "2fb5763fea57856b697d67962843897f",
-    "index_name": "curated_set_2fb5763f",
+    "hash": "16e2ebb6ab4218c2f10c10ba9ef099ae",
+    "index_name": "curated_set_16e2ebb6",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -422,9 +422,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -509,6 +506,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {
@@ -1108,9 +1108,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -1195,6 +1192,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {
