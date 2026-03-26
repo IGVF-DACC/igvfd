@@ -29,6 +29,16 @@ def pseudobulk_set():
                 'category': 'Sample',
                 'description': 'The cell annotation of the pseudobulk.',
             },
+            'assay_slims': {
+                'title': 'Assay',
+                'description': 'Assay(s) that is relevant to this pseudobulk sets.',
+                'type': 'hierarchical',
+                'category': 'Pseudobulk Set Details',
+                'subfacets': [
+                    {'field': 'assay_titles', 'title': 'Assay type'}
+                ],
+                'optional': True
+            },
             'samples.classifications': {
                 'title': 'Classification',
                 'category': 'Sample',

@@ -742,6 +742,37 @@ class AnalysisSet(FileSet):
         return sorted(assay_list) or None
 
     @calculated_property(
+        define=True,
+        schema={
+            'title': 'Assay Slims',
+            'description': 'A broad categorization of the assay term.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def assay_slims(self, request, input_file_sets=None):
+        if input_file_sets is None:
+            input_file_sets = []
+        assay_type = set()
+        for fileset in input_file_sets:
+            file_set_object = request.embed(
+                fileset,
+                '@@object_with_select_calculated_properties?field=assay_slims'
+            )
+            assay_type.update(
+                file_set_object.get(
+                    'assay_slims',
+                    []
+                )
+            )
+        return sorted(assay_type) or None
+
+    @calculated_property(
         condition='input_file_sets',
         define=True,
         schema={
@@ -1293,6 +1324,27 @@ class MeasurementSet(FileSet):
                 return [term_name]
 
     @calculated_property(
+        define=True,
+        schema={
+            'title': 'Assay Slims',
+            'description': 'A broad categorization of the assay term.',
+            'type': 'array',
+            'uniqueItems': True,
+            'minItems': 1,
+            'items': {
+                'type': 'string'
+            },
+            'notSubmittable': True
+        }
+    )
+    def assay_slims(self, request, assay_term):
+        if assay_term:
+            assay_term_obj = request.embed(assay_term, '@@object_with_select_calculated_properties?field=assay_slims')
+            assay_types = assay_term_obj.get('assay_slims')
+            if assay_types:
+                return assay_types
+
+    @calculated_property(
         schema={
             'title': 'Related Measurement Sets',
             'description': 'Measurement sets related to this one, grouped by relationship type.',
@@ -1696,6 +1748,31 @@ class AuxiliarySet(FileSet):
         return sorted(assay_titles)
 
     @calculated_property(
+        condition='measurement_sets',
+        define=True,
+        schema={
+            'title': 'Assay Slims',
+            'description': 'A broad categorization of the assay term.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'type': 'string'
+            },
+            'notSubmittable': True
+        })
+    def assay_slims(self, request, measurement_sets=None):
+        if measurement_sets is None:
+            measurement_sets = []
+        assay_types = set()
+        for measurement_set in measurement_sets:
+            assays = request.embed(
+                measurement_set, '@@object_with_select_calculated_properties?field=assay_slims').get('assay_slims', [])
+            if assays:
+                assay_types.update(assays)
+        return sorted(assay_types)
+
+    @calculated_property(
         schema={
             'title': 'Summary',
             'type': 'string',
@@ -2008,6 +2085,32 @@ class ConstructLibrarySet(FileSet):
                 if assays:
                     assay_titles.update(assays)
         return sorted(assay_titles) or None
+
+    @calculated_property(
+        condition='file_sets',
+        define=True,
+        schema={
+            'title': 'Assay Slims',
+            'description': 'A broad categorization of the assay term.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'type': 'string'
+            },
+            'notSubmittable': True
+        })
+    def assay_slims(self, request, file_sets=None):
+        if file_sets is None:
+            file_sets = []
+        assay_types = set()
+        for file_set in file_sets:
+            if file_set.startswith('/measurement-sets/'):
+                assays = request.embed(
+                    file_set, '@@object_with_select_calculated_properties?field=assay_slims').get('assay_slims', [])
+                if assays:
+                    assay_types.update(assays)
+        return sorted(assay_types) or None
 
     @calculated_property(
         condition='samples',
@@ -2332,3 +2435,34 @@ class PseudobulkSet(FileSet):
                 )
             )
         return sorted(assay_list) or None
+
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Assay Slims',
+            'description': 'A broad categorization of the assay term.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def assay_slims(self, request, input_file_sets=None):
+        if input_file_sets is None:
+            input_file_sets = []
+        assay_types = set()
+        for fileset in input_file_sets:
+            file_set_object = request.embed(
+                fileset,
+                '@@object_with_select_calculated_properties?field=assay_slims'
+            )
+            assay_types.update(
+                file_set_object.get(
+                    'assay_slims',
+                    []
+                )
+            )
+        return sorted(assay_types) or None

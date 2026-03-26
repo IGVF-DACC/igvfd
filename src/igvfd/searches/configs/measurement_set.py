@@ -7,13 +7,13 @@ from snovault.elasticsearch.searches.configs import search_config
 def measurement_set():
     return {
         'facets': {
-            'assay_term.assay_slims': {
+            'assay_slims': {
                 'title': 'Assay',
                 'category': 'Measurement Set Details',
                 'description': 'High-level classification of assay type.',
                 'type': 'hierarchical',
                 'subfacets': [
-                    {'field': 'assay_term.term_name', 'title': 'Assay type'}
+                    {'field': 'assay_titles', 'title': 'Assay type'}
                 ]
             },
             'preferred_assay_titles': {

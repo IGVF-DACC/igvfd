@@ -34,8 +34,14 @@ def construct_library_set():
             'guide_type': {
                 'title': 'CRISPR Guide Type'
             },
-            'assay_titles': {
-                'title': 'Assay Term Names'
+            'assay_slims': {
+                'title': 'Assay',
+                'description': 'Assay(s) that is relevant to this construct library sets.',
+                'type': 'hierarchical',
+                'subfacets': [
+                    {'field': 'assay_titles', 'title': 'Assay type'}
+                ],
+                'optional': True
             },
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles'
