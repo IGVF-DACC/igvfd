@@ -16,8 +16,7 @@ def auxiliary_set():
                 'type': 'hierarchical',
                 'subfacets': [
                     {'field': 'assay_titles', 'title': 'Assay type'}
-                ],
-                'optional': True
+                ]
             },
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles'

@@ -36,8 +36,7 @@ def pseudobulk_set():
                 'category': 'Pseudobulk Set Details',
                 'subfacets': [
                     {'field': 'assay_titles', 'title': 'Assay type'}
-                ],
-                'optional': True
+                ]
             },
             'samples.classifications': {
                 'title': 'Classification',
