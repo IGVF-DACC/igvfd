@@ -1,6 +1,6 @@
 ## Changelog for *`donor.json`*
 
-* Update `aliases` regex to add `hongbo-liu` as a namespace. (03/26/2026)
+* Update `aliases` regex to add `hongbo-liu` as a namespace. (04/01/2026)
 * Update `aliases` regex to add `yang-li` as a namespace. (02/27/2026)
 * Add `is_on_anvil`. (02/18/2026)
 * Add calculated property `superseded_by`. (10/15/2025)
