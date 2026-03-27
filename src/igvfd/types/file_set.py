@@ -2234,16 +2234,10 @@ class PseudobulkSet(FileSet):
             for classification in classifications:
                 source_biosample_classifications.add(classification)
             source_biosample_terms.add(sample_term_object.get('term_name', ''))
-        summary_phrase = ''
-        if len(source_biosample_classifications) == 1 and 'cell line' in source_biosample_classifications:
-            summary_phrase = f'{cell_qualifier_string} {cell_type_object.get("term_name", "")} derived from {", ".join(source_biosample_terms)}'.strip(
-            )
-        else:
-            summary_phrase = ' '.join(x for x in [
-                ', '.join(source_biosample_terms),
-                cell_qualifier_string,
-                cell_type_object.get('term_name', '')
-            ] if x not in [None, ''])
+        summary_phrase = (
+            f'{cell_qualifier_string} {cell_type_object.get("term_name", "")} '
+            f'derived from {", ".join(source_biosample_terms)}'
+        ).strip()
         return f'Pseudobulk of {summary_phrase}'
 
     @calculated_property(
