@@ -643,9 +643,11 @@ class Biosample(Sample):
                 feature_quantity = feature_object.get('quantity', None)
                 feature_quantity_units = feature_object.get('quantity_units', None)
 
-                if feature_quality:
+                # Quality and quantity should be exclusive. If not, fall back to
+                # displaying only the term name.
+                if feature_quality and not feature_quantity:
                     phenotype_term_names.append(f'{feature_term_name} of {feature_quality}')
-                elif feature_quantity and feature_quantity_units:
+                elif (feature_quantity and feature_quantity_units) and not feature_quality:
                     phenotype_term_names.append(f'{feature_quantity} {feature_quantity_units}')
                 else:
                     phenotype_term_names.append(feature_term_name)
