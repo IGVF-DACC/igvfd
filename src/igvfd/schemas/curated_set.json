@@ -48,6 +48,9 @@
             "$ref": "mixins.json#/preview_timestamp"
         },
         {
+            "$ref": "mixins.json#/preferred_assay_titles"
+        },
+        {
             "$ref": "mixins.json#/is_on_anvil"
         }
     ],
@@ -55,7 +58,27 @@
         "$merge": [
             "shared_dependencies.json#/accession_status",
             "file_set.json#/dependentSchemas"
-        ]
+        ],
+        "preferred_assay_titles": {
+            "comment": "Only external sequencing data curated sets should specify a preferred assay title.",
+            "properties": {
+                "file_set_type": {
+                    "enum": [
+                        "external sequencing data"
+                    ]
+                }
+            }
+        },
+        "assay_term": {
+            "comment": "Only external sequencing data curated sets should specify an assay term.",
+            "properties": {
+                "file_set_type": {
+                    "enum": [
+                        "external sequencing data"
+                    ]
+                }
+            }
+        }
     },
     "properties": {
         "schema_version": {
@@ -102,17 +125,30 @@
                 "appscript": "guide RNAs",
                 "igvf_utils": "guide RNAs"
             }
+        },
+        "assay_term": {
+            "title": "Assay Term",
+            "description": "The assay used to produce data in this curated set.",
+            "comment": "See assay_term.json for available identifiers.",
+            "type": "string",
+            "linkTo": "AssayTerm",
+            "submissionExample": {
+                "appscript": "/assay-terms/OBI_0002762/ or igvf:snATAC-seq",
+                "igvf_utils": "/assay-terms/OBI_0002762/ or igvf:snATAC-seq"
+            }
         }
     },
     "fuzzy_searchable_fields": [
         "@type",
         "aliases",
+        "assay_titles",
         "collections",
         "description",
         "file_set_type",
         "files.content_type",
         "files.submitted_file_name",
         "lab.title",
+        "preferred_assay_titles",
         "summary",
         "samples.summary",
         "samples.sample_terms.term_name",
