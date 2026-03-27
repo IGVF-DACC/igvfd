@@ -640,3 +640,21 @@ def whole_organism_26_27(value, system):
         notes += f' This sample had disease_terms {value.get("disease_terms", "")}, which has been removed via upgrade.'
         value['notes'] = notes.strip()
         del value['disease_terms']
+
+
+@upgrade_step('primary_cell', '25', '26')
+@upgrade_step('tissue', '25', '26')
+@upgrade_step('whole_organism', '27', '28')
+@upgrade_step('in_vitro_system', '30', '31')
+@upgrade_step('technical_sample', '16', '17')
+@upgrade_step('multiplexed_sample', '11', '12')
+def sample_24_25(value, system):
+    if 'nucleic_acid_delivery' not in value:
+        return
+    notes = value.get('notes', '')
+    value['construct_delivery_methods'] = [value['nucleic_acid_delivery']]
+    del value['nucleic_acid_delivery']
+    notes += (
+        ' Property `nucleic_acid_delivery` was renamed to `construct_delivery_methods`. '
+    )
+    value['notes'] = notes.strip()

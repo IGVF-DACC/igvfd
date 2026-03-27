@@ -95,7 +95,7 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
         in_vitro_differentiated_cell['@id'],
         {
             'moi': 2,
-            'nucleic_acid_delivery': 'transfection',
+            'construct_delivery_methods': ['transfection'],
             'construct_library_sets': [construct_library_set_reporter['@id']],
             'targeted_sample_term': sample_term_brown_adipose_tissue['@id'],
             'time_post_change_units': 'minute'
@@ -119,7 +119,7 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
         {
             'time_post_library_delivery': 7,
             'time_post_library_delivery_units': 'day',
-            'nucleic_acid_delivery': 'adenoviral transduction'
+            'construct_delivery_methods': ['adenoviral transduction']
         }
     )
     res = testapp.get(in_vitro_differentiated_cell['@id'])
@@ -128,7 +128,7 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
-            'nucleic_acid_delivery': 'adeno-associated viral (AAV) transduction'
+            'construct_delivery_methods': ['adeno-associated viral (AAV) transduction']
         }
     )
     res = testapp.get(in_vitro_differentiated_cell['@id'])
@@ -170,7 +170,7 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
         {
             'time_post_culture': 5,
             'time_post_culture_units': 'day',
-            'nucleic_acid_delivery': 'electroporation'
+            'construct_delivery_methods': ['electroporation']
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])

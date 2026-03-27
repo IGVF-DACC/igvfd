@@ -1178,6 +1178,9 @@
                                     "collections": {
                                         "type": "keyword"
                                     },
+                                    "construct_delivery_methods": {
+                                        "type": "keyword"
+                                    },
                                     "construct_library_sets": {
                                         "type": "keyword"
                                     },
@@ -1347,9 +1350,6 @@
                                     },
                                     "notes": {
                                         "type": "text"
-                                    },
-                                    "nucleic_acid_delivery": {
-                                        "type": "keyword"
                                     },
                                     "origin_of": {
                                         "type": "keyword"
@@ -2345,6 +2345,9 @@
                                     "collections": {
                                         "type": "keyword"
                                     },
+                                    "construct_delivery_methods": {
+                                        "type": "keyword"
+                                    },
                                     "construct_library_sets": {
                                         "type": "keyword"
                                     },
@@ -2421,9 +2424,6 @@
                                     },
                                     "notes": {
                                         "type": "text"
-                                    },
-                                    "nucleic_acid_delivery": {
-                                        "type": "keyword"
                                     },
                                     "origin_of": {
                                         "type": "keyword"

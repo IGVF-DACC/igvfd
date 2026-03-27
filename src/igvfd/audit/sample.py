@@ -171,23 +171,23 @@ def audit_parent_sample_with_singular_child(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-def audit_missing_nucleic_acid_delivery(value, system):
+def audit_missing_construct_delivery_methods(value, system):
     '''
     [
         {
-            "audit_description": "Samples linked to construct library sets are expected to specify nucleic acid delivery method.",
-            "audit_category": "missing nucleic acid delivery",
-            "audit_level": "WARNING"
+            "audit_description": "Samples linked to construct library sets are expected to specify construct delivery methods.",
+            "audit_category": "missing construct delivery methods",
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message = get_audit_message(audit_missing_nucleic_acid_delivery)
+    audit_message = get_audit_message(audit_missing_construct_delivery_methods)
     if object_type != 'Multiplexed sample':
-        if 'construct_library_sets' in value and 'nucleic_acid_delivery' not in value:
+        if 'construct_library_sets' in value and 'construct_delivery_methods' not in value:
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has `construct_library_sets` but is missing `nucleic_acid_delivery`.'
+                f'has `construct_library_sets` but is missing `construct_delivery_methods`.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
@@ -221,7 +221,7 @@ function_dispatcher_sample_object = {
     'audit_sample_virtual_donor_check': audit_sample_virtual_donor_check,
     'audit_non_virtual_sample_linked_to_virtual_sample': audit_non_virtual_sample_linked_to_virtual_sample,
     'audit_parent_sample_with_singular_child': audit_parent_sample_with_singular_child,
-    'audit_missing_nucleic_acid_delivery': audit_missing_nucleic_acid_delivery,
+    'audit_missing_construct_delivery_methods': audit_missing_construct_delivery_methods,
     'audit_missing_association': audit_missing_association
 }
 

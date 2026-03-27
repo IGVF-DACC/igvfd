@@ -29,7 +29,9 @@
         "construct_library_sets": [
             "igvf:basic_construct_library_set_1"
         ],
-        "nucleic_acid_delivery": "nucleofection"
+        "construct_delivery_methods": [
+            "nucleofection"
+        ]
     },
     {
         "uuid": "d4c46526-0307-11ed-b939-0242ac120002",

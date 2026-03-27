@@ -42,8 +42,8 @@ def technical_sample():
             'construct_library_sets.associated_phenotypes.term_name': {
                 'title': 'Associated Phenotype'
             },
-            'nucleic_acid_delivery': {
-                'title': 'Nucleic Acid Delivery Method'
+            'construct_delivery_methods': {
+                'title': 'Construct Delivery Method'
             },
             'treatments.purpose': {
                 'title': 'Treatment Purpose'

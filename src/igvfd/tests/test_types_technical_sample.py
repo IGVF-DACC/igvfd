@@ -34,7 +34,7 @@ def test_technical_sample_summary(testapp, technical_sample, construct_library_s
         technical_sample['@id'],
         {
             'moi': 6,
-            'nucleic_acid_delivery': 'lentiviral transduction',
+            'construct_delivery_methods': ['lentiviral transduction'],
         }
     )
     res = testapp.get(technical_sample['@id'])
@@ -61,7 +61,7 @@ def test_technical_sample_summary(testapp, technical_sample, construct_library_s
     testapp.patch_json(
         technical_sample['@id'],
         {
-            'nucleic_acid_delivery': 'electroporation'
+            'construct_delivery_methods': ['electroporation']
         }
     )
     res = testapp.get(technical_sample['@id'])
@@ -70,7 +70,7 @@ def test_technical_sample_summary(testapp, technical_sample, construct_library_s
     testapp.patch_json(
         technical_sample['@id'],
         {
-            'nucleic_acid_delivery': 'adeno-associated viral (AAV) transduction'
+            'construct_delivery_methods': ['adeno-associated viral (AAV) transduction']
         }
     )
     res = testapp.get(technical_sample['@id'])
