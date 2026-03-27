@@ -554,6 +554,30 @@ def test_audit_missing_seqspec_measet(
         error['category'] == 'missing sequence specification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+    # Test: PacBio subreads and PacBio consensus reads are exempt from missing seqspec.
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_format': 'bam',
+            'content_type': 'PacBio subreads'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'content_type': 'PacBio consensus reads'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sequence specification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
     # Test: pod5 files should not trigger the missing seqspec audit.
     testapp.patch_json(
         sequence_file['@id'],
