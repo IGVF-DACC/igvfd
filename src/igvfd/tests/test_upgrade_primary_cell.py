@@ -181,3 +181,10 @@ def test_primary_cell_upgrade_23_24(upgrader, primary_cell_v23_1, primary_cell_v
     assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
                                       'https://www.protocols.io/view/678/ABC']
     assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
+
+
+def test_primary_cell_upgrade_24_25(upgrader, primary_cell):
+    value = upgrader.upgrade('primary_cell', item, current_version='24', target_version='25')
+    assert value['schema_version'] == '25'
+    assert value['construct_delivery_methods'] == ['transfection']
+    assert 'nucleic_acid_delivery' not in value

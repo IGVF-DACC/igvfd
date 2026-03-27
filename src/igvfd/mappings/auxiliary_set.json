@@ -1,6 +1,6 @@
 {
-    "hash": "4f25ff790e472175ab1317c6e0e38a4e",
-    "index_name": "auxiliary_set_4f25ff79",
+    "hash": "5f83d92505bd7a0760ae92e1ca0ff057",
+    "index_name": "auxiliary_set_5f83d925",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -2986,6 +2986,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "construct_delivery_methods": {
+                                "type": "keyword"
+                            },
                             "construct_library_sets": {
                                 "type": "keyword"
                             },
@@ -3310,9 +3313,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "nucleic_acid_delivery": {
-                                "type": "keyword"
                             },
                             "origin_of": {
                                 "type": "keyword"
