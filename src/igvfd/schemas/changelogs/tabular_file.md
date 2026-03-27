@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 20
+
+* Update `aliases` regex to add `hongbo-liu` as a namespace.
+
 ### Schema version 20
 
 * Remove `cell_type_annotation`.

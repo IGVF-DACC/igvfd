@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Extend `fused_domain` enum list to include `evoCDA`.
 * Extend `fused_domain` enum list to include `ZNF563KRAB`.
 * Extend `fused_domain` enum list to include `p300-2A-PuroR`.

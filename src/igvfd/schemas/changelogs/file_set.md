@@ -1,5 +1,6 @@
 ## Changelog for *`file_set.json`*
 
+* Update `aliases` regex to add `hongbo-liu` as a namespace. (04/01/2026)
 * Update `aliases` regex to add `yang-li` as a namespace. (02/27/2026)
 * Add calculated property `superseded_by`. (10/15/2025)
 * Add `supersedes`. (10/15/2025)

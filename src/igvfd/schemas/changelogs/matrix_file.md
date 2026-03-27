@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Extend `secondary_dimensions` enum list to include `multiplexing oligo`.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Extend `content_type` enum list to include `allele specific sparse gene count matrix`.

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 21
 
+* Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Extend `preferred_assay_titles` enum list to include `CRISPR tiling screen guide readout`.
 * Extend `preferred_assay_titles` enum list to include `CRISPR tiling screen allelic readout`.
 * Extend `preferred_assay_titles` enum list to include `SGE-RNA`.

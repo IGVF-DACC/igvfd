@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Add `is_on_anvil`.
 * Extend `file_set_type` enum list to include `external sequencing data`.

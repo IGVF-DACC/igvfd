@@ -1,5 +1,9 @@
 ## Changelog for *`signal_file.json`*
 
+### Minor changes since schema version 14
+
+* Update `aliases` regex to add `hongbo-liu` as a namespace.
+
 ### Schema version 14
 
 * Remove `cell_type_annotation`.
