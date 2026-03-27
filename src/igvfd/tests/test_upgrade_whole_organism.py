@@ -198,3 +198,10 @@ def test_whole_organism_upgrade_25_26(upgrader, whole_organism_v25_1, whole_orga
     assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
                                       'https://www.protocols.io/view/678/ABC']
     assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
+
+
+def test_whole_organism_upgrade_26_27(upgrader, whole_organism):
+    value = upgrader.upgrade('whole_organism', whole_organism, current_version='26', target_version='27')
+    assert value['schema_version'] == '27'
+    assert value['construct_delivery_methods'] == ['transfection']
+    assert 'nucleic_acid_delivery' not in value

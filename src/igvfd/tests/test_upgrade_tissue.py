@@ -184,3 +184,10 @@ def test_tissue_upgrade_23_24(upgrader, tissue_v23):
     assert 'ccf_id' not in value
     assert value.get('notes').endswith(
         'This sample had the ccf_id 78d06f07-f1cb-4d21-b578-b01c7388804f, which has been removed via upgrade.')
+
+
+def test_tissue_upgrade_24_25(upgrader, tissue):
+    value = upgrader.upgrade('tissue', item, current_version='24', target_version='25')
+    assert value['schema_version'] == '25'
+    assert value['construct_delivery_methods'] == ['nucleofection']
+    assert 'nucleic_acid_delivery' not in value

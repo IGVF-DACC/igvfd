@@ -1,6 +1,6 @@
 {
-    "hash": "44d51a830d68565568d31cacebcf7e56",
-    "index_name": "technical_sample_44d51a83",
+    "hash": "51c75b838a631870f6f6b2d060cec8e9",
+    "index_name": "technical_sample_51c75b83",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -233,6 +233,9 @@
                         "type": "keyword"
                     },
                     "collections": {
+                        "type": "keyword"
+                    },
+                    "construct_delivery_methods": {
                         "type": "keyword"
                     },
                     "construct_library_sets": {
@@ -1149,9 +1152,6 @@
                     "notes": {
                         "type": "text"
                     },
-                    "nucleic_acid_delivery": {
-                        "type": "keyword"
-                    },
                     "origin_of": {
                         "type": "keyword"
                     },
@@ -1179,6 +1179,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "construct_delivery_methods": {
                                 "type": "keyword"
                             },
                             "construct_library_sets": {
@@ -1224,9 +1227,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "nucleic_acid_delivery": {
-                                "type": "keyword"
                             },
                             "origin_of": {
                                 "type": "keyword"
@@ -1650,6 +1650,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "construct_delivery_methods": {
+                                "type": "keyword"
+                            },
                             "construct_library_sets": {
                                 "type": "keyword"
                             },
@@ -1729,9 +1732,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "nucleic_acid_delivery": {
-                                "type": "keyword"
                             },
                             "origin_of": {
                                 "type": "keyword"

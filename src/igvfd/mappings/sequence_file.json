@@ -1,6 +1,6 @@
 {
-    "hash": "360e301889f6ed05405f6d363ab2c14a",
-    "index_name": "sequence_file_360e3018",
+    "hash": "4d4e3f6394c52c83491357d4a9121e10",
+    "index_name": "sequence_file_4d4e3f63",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1086,6 +1086,9 @@
                                     "collections": {
                                         "type": "keyword"
                                     },
+                                    "construct_delivery_methods": {
+                                        "type": "keyword"
+                                    },
                                     "construct_library_sets": {
                                         "type": "keyword"
                                     },
@@ -1332,9 +1335,6 @@
                                     },
                                     "notes": {
                                         "type": "text"
-                                    },
-                                    "nucleic_acid_delivery": {
-                                        "type": "keyword"
                                     },
                                     "origin_of": {
                                         "type": "keyword"
@@ -2192,6 +2192,9 @@
                                     "collections": {
                                         "type": "keyword"
                                     },
+                                    "construct_delivery_methods": {
+                                        "type": "keyword"
+                                    },
                                     "construct_library_sets": {
                                         "type": "keyword"
                                     },
@@ -2271,9 +2274,6 @@
                                     },
                                     "notes": {
                                         "type": "text"
-                                    },
-                                    "nucleic_acid_delivery": {
-                                        "type": "keyword"
                                     },
                                     "origin_of": {
                                         "type": "keyword"

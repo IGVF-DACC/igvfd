@@ -1,6 +1,6 @@
 {
-    "hash": "fb4ff3c58bef2dd4a2d46b658bdf4604",
-    "index_name": "tissue_fb4ff3c5",
+    "hash": "7557d0dd3aa4f1be5fded119f3b32c8e",
+    "index_name": "tissue_7557d0dd",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -424,6 +424,9 @@
                         "type": "keyword"
                     },
                     "collections": {
+                        "type": "keyword"
+                    },
+                    "construct_delivery_methods": {
                         "type": "keyword"
                     },
                     "construct_library_sets": {
@@ -1882,6 +1885,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "construct_delivery_methods": {
+                                "type": "keyword"
+                            },
                             "construct_library_sets": {
                                 "type": "keyword"
                             },
@@ -1940,9 +1946,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "nucleic_acid_delivery": {
-                                "type": "keyword"
                             },
                             "origin_of": {
                                 "type": "keyword"
@@ -2043,9 +2046,6 @@
                     "notes": {
                         "type": "text"
                     },
-                    "nucleic_acid_delivery": {
-                        "type": "keyword"
-                    },
                     "origin_of": {
                         "type": "keyword"
                     },
@@ -2097,6 +2097,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "construct_delivery_methods": {
                                 "type": "keyword"
                             },
                             "construct_library_sets": {
@@ -2178,9 +2181,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "nucleic_acid_delivery": {
-                                "type": "keyword"
                             },
                             "origin_of": {
                                 "type": "keyword"
@@ -2673,6 +2673,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "construct_delivery_methods": {
+                                "type": "keyword"
+                            },
                             "construct_library_sets": {
                                 "type": "keyword"
                             },
@@ -2752,9 +2755,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "nucleic_acid_delivery": {
-                                "type": "keyword"
                             },
                             "origin_of": {
                                 "type": "keyword"

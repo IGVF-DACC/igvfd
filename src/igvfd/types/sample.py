@@ -57,7 +57,7 @@ def concat_numeric_and_units(numeric, numeric_units, no_numeric_on_one=False):
         return f'{numeric} {numeric_units}s'
 
 
-NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN = {
+CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN = {
     'adenoviral transduction': {
         'verb': 'transduced (adenovirus) with',
         'noun': 'transduction (adenovirus) with'
@@ -481,7 +481,7 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None, biosample_qualifiers=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None, time_post_culture=None, time_post_culture_units=None):
+    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, construct_delivery_methods=None, growth_medium=None, biosample_qualifiers=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None, time_post_culture=None, time_post_culture_units=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
         biosample_type = self.item_type
@@ -691,9 +691,14 @@ class Biosample(Sample):
         if (construct_library_sets and
                 biosample_type in biosample_subschemas):
 
-            if nucleic_acid_delivery in NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN:
-                verb = NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN[nucleic_acid_delivery]['verb']
-                noun = NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN[nucleic_acid_delivery]['noun']
+            if isinstance(construct_delivery_methods, list):
+                selected_delivery = construct_delivery_methods[0] if construct_delivery_methods else None
+            else:
+                selected_delivery = construct_delivery_methods
+
+            if selected_delivery in CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN:
+                verb = CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN[selected_delivery]['verb']
+                noun = CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN[selected_delivery]['noun']
             else:
                 verb = 'transfected with'
                 noun = 'transfection with'
@@ -906,7 +911,7 @@ class TechnicalSample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, sample_material, virtual=None, construct_library_sets=None, treatments=None, moi=None, nucleic_acid_delivery=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None):
+    def summary(self, request, sample_terms, sample_material, virtual=None, construct_library_sets=None, treatments=None, moi=None, construct_delivery_methods=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None):
         if len(sample_terms) > 1:
             summary_terms = 'mixed'
         else:
@@ -955,9 +960,14 @@ class TechnicalSample(Sample):
                 perturbation_summaries = ', '.join(unique_summaries)
                 summary_terms += f' {verb} with {perturbation_summaries},'
         if construct_library_sets:
-            if nucleic_acid_delivery in NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN:
-                verb = NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN[nucleic_acid_delivery]['verb']
-                noun = NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN[nucleic_acid_delivery]['noun']
+            if isinstance(construct_delivery_methods, list):
+                selected_delivery = construct_delivery_methods[0] if construct_delivery_methods else None
+            else:
+                selected_delivery = construct_delivery_methods
+
+            if selected_delivery in CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN:
+                verb = CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN[selected_delivery]['verb']
+                noun = CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN[selected_delivery]['noun']
             else:
                 verb = 'transfected with'
                 noun = 'transfection with'

@@ -1,6 +1,6 @@
 {
-    "hash": "ccced98bece6e58b984da189dd39e5bb",
-    "index_name": "pseudobulk_set_ccced98b",
+    "hash": "0403c0b85eab53476bc2b0069d8846ab",
+    "index_name": "pseudobulk_set_0403c0b8",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -2690,6 +2690,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "construct_delivery_methods": {
+                                "type": "keyword"
+                            },
                             "construct_library_sets": {
                                 "type": "keyword"
                             },
@@ -3008,9 +3011,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "nucleic_acid_delivery": {
-                                "type": "keyword"
                             },
                             "origin_of": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "78c1445978da652f516560c785c36939",
-    "index_name": "matrix_file_78c14459",
+    "hash": "282ded0ef6c23982a48e04aed4e49508",
+    "index_name": "matrix_file_282ded0e",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1087,6 +1087,9 @@
                                     "collections": {
                                         "type": "keyword"
                                     },
+                                    "construct_delivery_methods": {
+                                        "type": "keyword"
+                                    },
                                     "construct_library_sets": {
                                         "type": "keyword"
                                     },
@@ -1333,9 +1336,6 @@
                                     },
                                     "notes": {
                                         "type": "text"
-                                    },
-                                    "nucleic_acid_delivery": {
-                                        "type": "keyword"
                                     },
                                     "origin_of": {
                                         "type": "keyword"
@@ -2188,6 +2188,9 @@
                                     "collections": {
                                         "type": "keyword"
                                     },
+                                    "construct_delivery_methods": {
+                                        "type": "keyword"
+                                    },
                                     "construct_library_sets": {
                                         "type": "keyword"
                                     },
@@ -2267,9 +2270,6 @@
                                     },
                                     "notes": {
                                         "type": "text"
-                                    },
-                                    "nucleic_acid_delivery": {
-                                        "type": "keyword"
                                     },
                                     "origin_of": {
                                         "type": "keyword"

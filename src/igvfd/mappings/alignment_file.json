@@ -1,6 +1,6 @@
 {
-    "hash": "aa86ad4bb465086f5d227d17ce377897",
-    "index_name": "alignment_file_aa86ad4b",
+    "hash": "9d1a73dc79b09dce077a7a271f3b1b2b",
+    "index_name": "alignment_file_9d1a73dc",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1086,6 +1086,9 @@
                                     "collections": {
                                         "type": "keyword"
                                     },
+                                    "construct_delivery_methods": {
+                                        "type": "keyword"
+                                    },
                                     "construct_library_sets": {
                                         "type": "keyword"
                                     },
@@ -1332,9 +1335,6 @@
                                     },
                                     "notes": {
                                         "type": "text"
-                                    },
-                                    "nucleic_acid_delivery": {
-                                        "type": "keyword"
                                     },
                                     "origin_of": {
                                         "type": "keyword"
@@ -2187,6 +2187,9 @@
                                     "collections": {
                                         "type": "keyword"
                                     },
+                                    "construct_delivery_methods": {
+                                        "type": "keyword"
+                                    },
                                     "construct_library_sets": {
                                         "type": "keyword"
                                     },
@@ -2266,9 +2269,6 @@
                                     },
                                     "notes": {
                                         "type": "text"
-                                    },
-                                    "nucleic_acid_delivery": {
-                                        "type": "keyword"
                                     },
                                     "origin_of": {
                                         "type": "keyword"

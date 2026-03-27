@@ -600,3 +600,21 @@ def tissue_23_24(value, system):
         notes += f' This sample had the ccf_id {value.get("ccf_id", "")}, which has been removed via upgrade.'
         value['notes'] = notes.strip()
         del value['ccf_id']
+
+
+@upgrade_step('primary_cell', '24', '25')
+@upgrade_step('tissue', '24', '25')
+@upgrade_step('whole_organism', '26', '27')
+@upgrade_step('in_vitro_system', '29', '30')
+@upgrade_step('technical_sample', '15', '16')
+@upgrade_step('multiplexed_sample', '11', '12')
+def sample_24_25(value, system):
+    if 'nucleic_acid_delivery' not in value:
+        return
+    notes = value.get('notes', '')
+    value['construct_delivery_methods'] = [value['nucleic_acid_delivery']]
+    del value['nucleic_acid_delivery']
+    notes += (
+        ' Property `nucleic_acid_delivery` was renamed to `construct_delivery_methods`. '
+    )
+    value['notes'] = notes.strip()

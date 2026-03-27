@@ -67,8 +67,8 @@ def construct_library_set():
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
-            'samples.nucleic_acid_delivery': {
-                'title': 'Nucleic Acid Delivery Method'
+            'samples.construct_delivery_methods': {
+                'title': 'Construct Delivery Method'
             },
             'files.content_type': {
                 'title': 'File Types',
