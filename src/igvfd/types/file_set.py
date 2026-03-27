@@ -1774,6 +1774,7 @@ class PredictionSet(FileSet):
     )
     def software_versions(self, request, files=None):
         software_versions = []
+        files = paths_filtered_by_status(request, files)
         if files:
             for file in files:
                 file_object = request.embed(file, '@@object?skip_calculated=true')
