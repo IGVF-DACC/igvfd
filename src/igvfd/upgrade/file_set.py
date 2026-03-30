@@ -778,7 +778,7 @@ def curated_set_8_9(value, system):
 
 
 @upgrade_step('auxiliary_set', '12', '13')
-def multiplexed_sample_8_9(value, system):
+def auxiliary_set_12_13(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3335
     if 'barcode_map' in value:
         value['hashtag_barcode_map'] = value['barcode_map']
