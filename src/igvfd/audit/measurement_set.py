@@ -906,7 +906,6 @@ function_dispatcher_measurement_set_object = {
     'audit_related_multiome_datasets': audit_related_multiome_datasets,
     'audit_unspecified_protocol': audit_unspecified_protocol,
     'audit_CRISPR_screen_lacking_modifications': audit_CRISPR_screen_lacking_modifications,
-    'audit_preferred_assay_title': audit_preferred_assay_title,
     'audit_missing_institutional_certification': audit_missing_institutional_certification,
     'audit_missing_auxiliary_set_link': audit_missing_auxiliary_set_link,
     'audit_targeted_genes': audit_targeted_genes,
