@@ -1,6 +1,6 @@
 {
-    "hash": "966c4690d7bcec5dec9d113e63569198",
-    "index_name": "auxiliary_set_966c4690",
+    "hash": "848f2c8bc15fd2d43dfe2ddae5dec6d6",
+    "index_name": "auxiliary_set_848f2c8b",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -297,9 +297,6 @@
                         },
                         "type": "object"
                     },
-                    "barcode_map": {
-                        "type": "keyword"
-                    },
                     "collections": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
@@ -424,9 +421,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -511,6 +505,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {
@@ -1110,9 +1107,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -1197,6 +1191,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {
@@ -2160,6 +2157,9 @@
                         },
                         "type": "object"
                     },
+                    "hashtag_barcode_map": {
+                        "type": "keyword"
+                    },
                     "input_for": {
                         "properties": {
                             "@id": {
@@ -2204,9 +2204,6 @@
                                 "type": "float"
                             },
                             "award": {
-                                "type": "keyword"
-                            },
-                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
@@ -2293,6 +2290,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {
