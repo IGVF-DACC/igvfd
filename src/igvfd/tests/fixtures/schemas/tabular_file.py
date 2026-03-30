@@ -280,6 +280,7 @@ def tabular_file_v19(tabular_file, sample_term_K562):
     return item
 
 
+@pytest.fixture
 def tabular_file_v20a(testapp, lab, award, principal_analysis_set):
     item = {
         'award': award['@id'],
