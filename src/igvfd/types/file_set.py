@@ -1215,7 +1215,7 @@ class CuratedSet(FileSet):
             'notSubmittable': True
         }
     )
-    def assay_titles(self, request, assay_term):
+    def assay_titles(self, request, assay_term=None):
         if assay_term:
             assay_term_obj = request.embed(assay_term, '@@object?skip_calculated=true')
             term_name = assay_term_obj.get('term_name')
