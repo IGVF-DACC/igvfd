@@ -126,6 +126,9 @@
                 "igvf_utils": "guide RNAs"
             }
         },
+        "preferred_assay_titles": {
+            "maxItems": 1
+        },
         "assay_term": {
             "title": "Assay Term",
             "description": "The assay used to produce data in this curated set.",
