@@ -775,3 +775,11 @@ def curated_set_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3207
     if value['file_set_type'] == 'primer design':
         value['file_set_type'] = 'enrichment designs'
+
+
+@upgrade_step('auxiliary_set', '12', '13')
+def auxiliary_set_12_13(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3335
+    if 'barcode_map' in value:
+        value['hashtag_barcode_map'] = value['barcode_map']
+        del value['barcode_map']

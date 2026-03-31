@@ -1,6 +1,6 @@
 {
-    "hash": "a03202b750718d5725298f2f5eded1b9",
-    "index_name": "tissue_a03202b7",
+    "hash": "a59ca8e809847321846b63010707838c",
+    "index_name": "tissue_a59ca8e8",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1111,9 +1111,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -1198,6 +1195,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {

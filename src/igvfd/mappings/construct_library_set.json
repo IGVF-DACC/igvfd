@@ -1,6 +1,6 @@
 {
-    "hash": "3f138c5d0939890772236c532047edb5",
-    "index_name": "construct_library_set_3f138c5d",
+    "hash": "3ee1da752058d6efe2109976e5fadd36",
+    "index_name": "construct_library_set_3ee1da75",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -375,9 +375,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -462,6 +459,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {

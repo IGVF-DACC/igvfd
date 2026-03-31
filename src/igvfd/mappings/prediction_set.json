@@ -1,6 +1,6 @@
 {
-    "hash": "4b2c6b494d3b382c0da4a53834577c51",
-    "index_name": "prediction_set_4b2c6b49",
+    "hash": "5f54c1e1b3a6738516990093cce504d4",
+    "index_name": "prediction_set_5f54c1e1",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -603,9 +603,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -690,6 +687,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {
@@ -1289,9 +1289,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -1376,6 +1373,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {

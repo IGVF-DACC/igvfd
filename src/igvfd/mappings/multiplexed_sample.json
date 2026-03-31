@@ -1,6 +1,6 @@
 {
-    "hash": "e94c6021ec3a7fe9c62597284222cb46",
-    "index_name": "multiplexed_sample_e94c6021",
+    "hash": "0377de407dd70a15e81b428f32cfb892",
+    "index_name": "multiplexed_sample_0377de40",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1104,9 +1104,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -1191,6 +1188,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {

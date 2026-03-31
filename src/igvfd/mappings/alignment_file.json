@@ -1,6 +1,6 @@
 {
-    "hash": "aa86ad4bb465086f5d227d17ce377897",
-    "index_name": "alignment_file_aa86ad4b",
+    "hash": "0eff10082cca78b54e2966b5cb173f3e",
+    "index_name": "alignment_file_0eff1008",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -647,9 +647,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -873,6 +870,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {

@@ -192,6 +192,6 @@ RECURSE_FILE_FIELDS = [
     'barcode_replacement_file',
     'large_scale_gene_list',
     'large_scale_loci_list',
-    'barcode_map',
+    'hashtag_barcode_map',
     'onlist_files',
 ]

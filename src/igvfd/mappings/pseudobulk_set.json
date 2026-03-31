@@ -1,6 +1,6 @@
 {
-    "hash": "c63fd1bb6ba00605bd85a44ebfd21410",
-    "index_name": "pseudobulk_set_c63fd1bb",
+    "hash": "713009d2588b530c5a09588d11d3eac9",
+    "index_name": "pseudobulk_set_713009d2",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -517,9 +517,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -604,6 +601,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {
@@ -1201,9 +1201,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -1288,6 +1285,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {
