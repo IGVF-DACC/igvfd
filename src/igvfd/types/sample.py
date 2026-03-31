@@ -481,7 +481,7 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None, biosample_qualifiers=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None, time_post_culture=None, time_post_culture_units=None):
+    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, phenotypic_features=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None, biosample_qualifiers=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None, time_post_culture=None, time_post_culture_units=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
         biosample_type = self.item_type
@@ -632,12 +632,27 @@ class Biosample(Sample):
                 biomarker_summaries = sorted(biomarker_summaries)
             summary_terms += f' characterized by {", ".join(biomarker_summaries)},'
 
-        # disease terms are appended to the end of the summary
-        if (disease_terms and
+        # phenotypic features are appended to the end of the summary
+        if (phenotypic_features and
                 biosample_type in biosample_subschemas):
-            phenotype_term_names = sorted([request.embed(disease_term).get('term_name')
-                                          for disease_term in disease_terms])
-            summary_terms += f' associated with {", ".join(phenotype_term_names)},'
+            phenotype_term_names = []
+            for feature in phenotypic_features:
+                feature_object = request.embed(feature, '@@object?skip_calculated=true')
+                feature_term_name = request.embed(feature_object['feature']).get('term_name', '')
+                feature_quality = feature_object.get('quality', None)
+                feature_quantity = feature_object.get('quantity', None)
+                feature_quantity_units = feature_object.get('quantity_units', None)
+
+                # Quality and quantity should be exclusive. If not, fall back to
+                # displaying only the term name.
+                if feature_quality and not feature_quantity:
+                    phenotype_term_names.append(f'{feature_term_name} of {feature_quality}')
+                elif (feature_quantity and feature_quantity_units) and not feature_quality:
+                    phenotype_term_names.append(f'{feature_quantity} {feature_quantity_units}')
+                else:
+                    phenotype_term_names.append(feature_term_name)
+
+            summary_terms += f' associated with {", ".join(sorted(phenotype_term_names))},'
 
         # treatment summaries are appended to the end of the summary
         if (treatments and

@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_summary(testapp, primary_cell, pooled_from_primary_cell, human_donor, rodent_donor, parent_rodent_donor_2, biomarker_CD243_absent, biomarker_CD243_high, sample_term_endothelial_cell, treatment_protein, phenotype_term_myocardial_infarction, phenotype_term_alzheimers):
+def test_summary(testapp, primary_cell, pooled_from_primary_cell, human_donor, rodent_donor, parent_rodent_donor_2, biomarker_CD243_absent, biomarker_CD243_high, sample_term_endothelial_cell, treatment_protein, phenotypic_feature_with_quality, phenotypic_feature_01):
     res = testapp.get(primary_cell['@id'])
     assert res.json.get('summary') == 'Homo sapiens pluripotent stem cell'
     testapp.patch_json(
@@ -70,11 +70,11 @@ def test_summary(testapp, primary_cell, pooled_from_primary_cell, human_donor, r
         {
             'donors': [rodent_donor['@id'], parent_rodent_donor_2['@id']],
             'treatments': [treatment_protein['@id']],
-            'disease_terms': [phenotype_term_myocardial_infarction['@id'], phenotype_term_alzheimers['@id']],
+            'phenotypic_features': [phenotypic_feature_with_quality['@id'], phenotypic_feature_01['@id']],
             'sorted_from': pooled_from_primary_cell['@id'],
             'sorted_from_detail': 'some more details about sorting'
         }
     )
     res = testapp.get(primary_cell['@id'])
     assert res.json.get(
-        'summary') == f'virtual Mus musculus strain1, strain3 (mixed sex, 1 month) embryonic endothelial cell of vascular tree (cellular sub pool: PKR-123) (sorting details: some more details about sorting) characterized by high level of CD243, negative detection of CD243, associated with Alzheimer\'s disease, Myocardial infarction, perturbed with 10 ng/mL G-CSF'
+        'summary') == f'virtual Mus musculus strain1, strain3 (mixed sex, 1 month) embryonic endothelial cell of vascular tree (cellular sub pool: PKR-123) (sorting details: some more details about sorting) characterized by high level of CD243, negative detection of CD243, associated with Alzheimer\'s disease, neuritic plaque measurement of frequent, perturbed with 10 ng/mL G-CSF'
