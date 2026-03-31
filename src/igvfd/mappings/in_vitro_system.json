@@ -1,6 +1,6 @@
 {
-    "hash": "0a0af655f9091cf6e3278cbfb8ed0ae2",
-    "index_name": "in_vitro_system_0a0af655",
+    "hash": "fe47ba14d0480545efe299baef5104b7",
+    "index_name": "in_vitro_system_fe47ba14",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1124,9 +1124,6 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_map": {
-                                "type": "keyword"
-                            },
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
@@ -1211,6 +1208,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {
