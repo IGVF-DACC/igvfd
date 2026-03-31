@@ -41,6 +41,10 @@ def test_curated_set_assay_term(award, lab, curated_set_genome, assay_term_starr
     assert res.status_code == 422
     res = testapp.patch_json(
         curated_set_genome['@id'],
+        {'assay_term': assay_term_starr['@id'], 'preferred_assay_titles': ['SHARE-seq']}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        curated_set_genome['@id'],
         {
             'preferred_assay_titles': ['SHARE-seq'],
             'assay_term': assay_term_starr['@id'],
