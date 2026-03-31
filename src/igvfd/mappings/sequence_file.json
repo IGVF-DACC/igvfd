@@ -1,6 +1,6 @@
 {
-    "hash": "d130eab9b61ad00a593659bfde0bf764",
-    "index_name": "sequence_file_d130eab9",
+    "hash": "1cf71f8bdf5f5ad967dcaa8259232eff",
+    "index_name": "sequence_file_1cf71f8b",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -530,6 +530,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -1943,6 +1946,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_titles": {

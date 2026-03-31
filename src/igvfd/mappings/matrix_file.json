@@ -1,6 +1,6 @@
 {
-    "hash": "c5fd30ef800effb07bb6452d43925c8e",
-    "index_name": "matrix_file_c5fd30ef",
+    "hash": "0e0de25c320794cb605f8eff38e90434",
+    "index_name": "matrix_file_0e0de25c",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -531,6 +531,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -1939,6 +1942,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_titles": {

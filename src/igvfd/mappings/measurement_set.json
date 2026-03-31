@@ -1,6 +1,6 @@
 {
-    "hash": "fd2fd5007adc6aa7d068a9f8e973eef0",
-    "index_name": "measurement_set_fd2fd500",
+    "hash": "1bb70f32d58172b0af8cbac43691f47c",
+    "index_name": "measurement_set_1bb70f32",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -158,6 +158,9 @@
                     "alternate_accessions": {
                         "type": "keyword"
                     },
+                    "assay_slims": {
+                        "type": "keyword"
+                    },
                     "assay_term": {
                         "properties": {
                             "@id": {
@@ -268,6 +271,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_titles": {
@@ -544,6 +550,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -1306,6 +1315,9 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "assay_slims": {
+                                "type": "keyword"
+                            },
                             "assay_term": {
                                 "type": "keyword"
                             },
@@ -1670,6 +1682,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -2858,6 +2873,9 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "assay_slims": {
+                                "type": "keyword"
+                            },
                             "assay_term": {
                                 "type": "keyword"
                             },
@@ -3454,6 +3472,9 @@
                                         "type": "keyword"
                                     },
                                     "alternate_accessions": {
+                                        "type": "keyword"
+                                    },
+                                    "assay_slims": {
                                         "type": "keyword"
                                     },
                                     "assay_term": {

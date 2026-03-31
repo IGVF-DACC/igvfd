@@ -1,6 +1,6 @@
 {
-    "hash": "848f2c8bc15fd2d43dfe2ddae5dec6d6",
-    "index_name": "auxiliary_set_848f2c8b",
+    "hash": "9c763ac9298e791d70b11274d72c1332",
+    "index_name": "auxiliary_set_9c763ac9",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -156,6 +156,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "assay_slims": {
                         "type": "keyword"
                     },
                     "assay_titles": {
@@ -316,6 +319,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -1076,6 +1082,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -2177,6 +2186,9 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "assay_slims": {
+                                "type": "keyword"
+                            },
                             "assay_term": {
                                 "type": "keyword"
                             },
@@ -2605,6 +2617,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {

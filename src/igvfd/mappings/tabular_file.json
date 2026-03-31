@@ -1,6 +1,6 @@
 {
-    "hash": "4ef1efe14951204697d5fd10ae5e1216",
-    "index_name": "tabular_file_4ef1efe1",
+    "hash": "dfc60b7c791d5911234f8dfa1ee19a70",
+    "index_name": "tabular_file_dfc60b7c",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -548,6 +548,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -1956,6 +1959,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_titles": {

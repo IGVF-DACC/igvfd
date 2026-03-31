@@ -1,6 +1,6 @@
 {
-    "hash": "3ee1da752058d6efe2109976e5fadd36",
-    "index_name": "construct_library_set_3ee1da75",
+    "hash": "901610893ebefd669d54ca302bf84721",
+    "index_name": "construct_library_set_90161089",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -156,6 +156,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "assay_slims": {
                         "type": "keyword"
                     },
                     "assay_titles": {
@@ -344,6 +347,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {

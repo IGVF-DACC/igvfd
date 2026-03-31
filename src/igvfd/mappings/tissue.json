@@ -1,6 +1,6 @@
 {
-    "hash": "a59ca8e809847321846b63010707838c",
-    "index_name": "tissue_a59ca8e8",
+    "hash": "0efb940e729e54eac77305489e196786",
+    "index_name": "tissue_0efb940e",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -441,6 +441,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_titles": {
@@ -994,6 +997,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {

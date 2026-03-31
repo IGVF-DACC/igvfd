@@ -1,6 +1,6 @@
 {
-    "hash": "713009d2588b530c5a09588d11d3eac9",
-    "index_name": "pseudobulk_set_713009d2",
+    "hash": "3f7624b975dd434e8c24e6109b396b4f",
+    "index_name": "pseudobulk_set_3f7624b9",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -156,6 +156,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "assay_slims": {
                         "type": "keyword"
                     },
                     "assay_titles": {
@@ -412,6 +415,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -1170,6 +1176,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -2267,6 +2276,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_titles": {
