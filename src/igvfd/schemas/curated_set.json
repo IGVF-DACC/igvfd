@@ -59,25 +59,30 @@
             "shared_dependencies.json#/accession_status",
             "file_set.json#/dependentSchemas"
         ],
-        "preferred_assay_titles": {
-            "comment": "Only external sequencing data curated sets should specify a preferred assay title.",
-            "properties": {
-                "file_set_type": {
-                    "enum": [
-                        "external sequencing data"
-                    ]
+        "file_set_type": {
+            "if": {
+                "properties": {
+                    "file_set_type": {
+                        "const": "external sequencing data"
+                    }
                 }
+            },
+            "then": {
+                "required": [
+                    "preferred_assay_titles",
+                    "assay_term"
+                ]
             }
         },
+        "preferred_assay_titles": {
+            "required": [
+                "assay_term"
+            ]
+        },
         "assay_term": {
-            "comment": "Only external sequencing data curated sets should specify an assay term.",
-            "properties": {
-                "file_set_type": {
-                    "enum": [
-                        "external sequencing data"
-                    ]
-                }
-            }
+            "required": [
+                "preferred_assay_titles"
+            ]
         }
     },
     "properties": {
