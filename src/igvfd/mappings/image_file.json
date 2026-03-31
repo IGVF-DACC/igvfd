@@ -1,6 +1,6 @@
 {
-    "hash": "41ff67f02c71ed42b220438cccb917c5",
-    "index_name": "image_file_41ff67f0",
+    "hash": "a6e3f9c8de602508e4f125989274159f",
+    "index_name": "image_file_a6e3f9c8",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -525,6 +525,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -2012,6 +2015,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_titles": {

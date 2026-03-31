@@ -1,6 +1,6 @@
 {
-    "hash": "5f9a9d8335877a253cdfb0028f75a39b",
-    "index_name": "signal_file_5f9a9d83",
+    "hash": "ea20b47b8ef3c963c13894bddc916a71",
+    "index_name": "signal_file_ea20b47b",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -532,6 +532,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -1940,6 +1943,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_titles": {

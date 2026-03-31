@@ -1,6 +1,6 @@
 {
-    "hash": "82bc10dce8342d8b9e9bd15bce4d942e",
-    "index_name": "model_file_82bc10dc",
+    "hash": "b590f529db46312d0d58af9b1d6c1521",
+    "index_name": "model_file_b590f529",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -539,6 +539,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -1943,6 +1946,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_titles": {

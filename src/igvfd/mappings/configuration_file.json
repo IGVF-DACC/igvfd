@@ -1,6 +1,6 @@
 {
-    "hash": "72bad35ba06570e917b27b48eb82bb21",
-    "index_name": "configuration_file_72bad35b",
+    "hash": "8865410953bacaa634e34296bcf5bde3",
+    "index_name": "configuration_file_88654109",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -525,6 +525,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -1929,6 +1932,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_titles": {

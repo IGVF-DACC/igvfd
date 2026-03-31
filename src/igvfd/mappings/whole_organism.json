@@ -1,6 +1,6 @@
 {
-    "hash": "40f06a8abf228d8ae03fead8b62d88f4",
-    "index_name": "whole_organism_40f06a8a",
+    "hash": "e56579bb1312ed139f6693eb8b615e6b",
+    "index_name": "whole_organism_e56579bb",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -441,6 +441,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_titles": {
@@ -994,6 +997,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {

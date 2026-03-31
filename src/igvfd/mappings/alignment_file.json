@@ -1,6 +1,6 @@
 {
-    "hash": "0eff10082cca78b54e2966b5cb173f3e",
-    "index_name": "alignment_file_0eff1008",
+    "hash": "ed30caad70f345088d7426975059df26",
+    "index_name": "alignment_file_ed30caad",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -530,6 +530,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_term": {
@@ -1938,6 +1941,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "assay_slims": {
                                 "type": "keyword"
                             },
                             "assay_titles": {
