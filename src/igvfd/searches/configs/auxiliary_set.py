@@ -11,7 +11,7 @@ def auxiliary_set():
                 'title': 'File Set Type'
             },
             'assay_slims': {
-                'title': 'Assay Term Names',
+                'title': 'Assay',
                 'description': 'Assay(s) that is relevant to this auxiliary sets.',
                 'type': 'hierarchical',
                 'subfacets': [

@@ -14,7 +14,7 @@ def analysis_set():
                 'optional': True
             },
             'assay_slims': {
-                'title': 'Assay Term Names',
+                'title': 'Assay',
                 'category': 'Analysis Set Details',
                 'description': 'Assay(s) that is relevant to this analysis sets.',
                 'type': 'hierarchical',
