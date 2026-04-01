@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Extend `sequencing_kits` enum list to include `Revio SMRT cell`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Extend `company` enum list to include `Ultima Genomics`.

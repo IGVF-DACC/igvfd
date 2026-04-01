@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 16
 
+* Extend `content_type` enum list to include `PacBio consensus reads`.
+* Extend `sequencing_kit` enum list to include `Revio SMRT cell`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
