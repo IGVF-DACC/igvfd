@@ -1,6 +1,6 @@
 {
-    "hash": "5d6aae17192ecd879b1c7c94ffad5c3a",
-    "index_name": "curated_set_5d6aae17",
+    "hash": "09c296e2aca1f674f03ae9b110870468",
+    "index_name": "curated_set_09c296e2",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -642,6 +642,9 @@
                                         "type": "boolean"
                                     },
                                     "gene_list_for": {
+                                        "type": "keyword"
+                                    },
+                                    "hashtag_barcode_map_for": {
                                         "type": "keyword"
                                     },
                                     "href": {
@@ -1732,6 +1735,9 @@
                                 "type": "keyword"
                             },
                             "gene_list_for": {
+                                "type": "keyword"
+                            },
+                            "hashtag_barcode_map_for": {
                                 "type": "keyword"
                             },
                             "href": {
