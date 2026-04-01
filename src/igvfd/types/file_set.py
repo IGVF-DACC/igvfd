@@ -1205,6 +1205,26 @@ class CuratedSet(FileSet):
     @calculated_property(
         define=True,
         schema={
+            'title': 'Assay Term Names',
+            'description': 'Ontology term names from Ontology of Biomedical Investigations (OBI) for assays',
+            'type': 'array',
+            'minItems': 1,
+            'items': {
+                'type': 'string'
+            },
+            'notSubmittable': True
+        }
+    )
+    def assay_titles(self, request, assay_term=None):
+        if assay_term:
+            assay_term_obj = request.embed(assay_term, '@@object?skip_calculated=true')
+            term_name = assay_term_obj.get('term_name')
+            if term_name:
+                return [term_name]
+
+    @calculated_property(
+        define=True,
+        schema={
             'title': 'Assemblies',
             'description': 'The genome assemblies to which the referencing files in the file set are utilizing (e.g., GRCh38).',
             'type': 'array',

@@ -65,6 +65,7 @@ def test_audit_pseudobulk_set_input_file_set_type(
     testapp,
     pseudobulk_set_base,
     curated_set_genome,
+    assay_term_scrna
 ):
     testapp.patch_json(
         pseudobulk_set_base['@id'],
@@ -77,7 +78,11 @@ def test_audit_pseudobulk_set_input_file_set_type(
     )
     testapp.patch_json(
         curated_set_genome['@id'],
-        {'file_set_type': 'external sequencing data'}
+        {
+            'file_set_type': 'external sequencing data',
+            'assay_term': assay_term_scrna['@id'],
+            'preferred_assay_titles': ['10x multiome']
+        }
     )
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
     assert all(
