@@ -72,6 +72,14 @@
                     "preferred_assay_titles",
                     "assay_term"
                 ]
+            },
+            "else": {
+                "not": {
+                    "required": [
+                        "preferred_assay_titles",
+                        "assay_term"
+                    ]
+                }
             }
         },
         "preferred_assay_titles": {
