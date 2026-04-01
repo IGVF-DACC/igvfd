@@ -59,38 +59,25 @@
             "shared_dependencies.json#/accession_status",
             "file_set.json#/dependentSchemas"
         ],
-        "file_set_type": {
-            "if": {
-                "properties": {
-                    "file_set_type": {
-                        "const": "external sequencing data"
-                    }
-                }
-            },
-            "then": {
-                "required": [
-                    "preferred_assay_titles",
-                    "assay_term"
-                ]
-            },
-            "else": {
-                "not": {
-                    "required": [
-                        "preferred_assay_titles",
-                        "assay_term"
-                    ]
-                }
-            }
-        },
         "preferred_assay_titles": {
             "required": [
                 "assay_term"
-            ]
+            ],
+            "properties": {
+                "file_set_type": {
+                    "const": "external sequencing data"
+                }
+            }
         },
         "assay_term": {
             "required": [
                 "preferred_assay_titles"
-            ]
+            ],
+            "properties": {
+                "file_set_type": {
+                    "const": "external sequencing data"
+                }
+            }
         }
     },
     "properties": {
