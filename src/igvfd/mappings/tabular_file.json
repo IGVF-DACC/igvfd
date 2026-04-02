@@ -1,6 +1,6 @@
 {
-    "hash": "dfc60b7c791d5911234f8dfa1ee19a70",
-    "index_name": "tabular_file_dfc60b7c",
+    "hash": "41bf3f3ec7d49d2db83be3e329e286fb",
+    "index_name": "tabular_file_41bf3f3e",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -2835,6 +2835,9 @@
                     "status": {
                         "type": "keyword"
                     },
+                    "submitted_assembly": {
+                        "type": "keyword"
+                    },
                     "submitted_by": {
                         "properties": {
                             "@id": {
@@ -2906,6 +2909,9 @@
                     },
                     "submitted_file_name": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "submitted_transcriptome_annotation": {
                         "type": "keyword"
                     },
                     "submitter_comment": {
