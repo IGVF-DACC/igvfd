@@ -115,3 +115,16 @@ def treatment_10_11(value, system):
     if notes:
         value['notes'] = notes.strip()
     return
+
+
+@upgrade_step('treatment', '11', '12')
+def treatment_11_12(value, system):
+    notes = value.get('notes', '')
+    if value.get('treatment_type') == 'diet':
+        old_id = value.get('treatment_term_id')
+        value['treatment_term_id'] = 'NCIT:C15222'
+        if old_id != 'NCIT:C15222':
+            notes += f' Diet treatment_term_id was upgraded from {old_id} to NCIT:C15222.'
+    if notes:
+        value['notes'] = notes.strip()
+    return

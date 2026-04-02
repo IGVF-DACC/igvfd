@@ -73,8 +73,12 @@ def test_treatment_type_dependency(treatment_chemical, testapp):
     assert res.status_code == 422
     res = testapp.patch_json(
         treatment_chemical['@id'],
-        {'treatment_type': 'diet', 'treatment_term_id': 'NTR:0001001', 'treatment_term_name': 'High Fat Diet'})
+        {'treatment_type': 'diet', 'treatment_term_id': 'NCIT:C15222', 'treatment_term_name': 'High Fat Diet'})
     assert res.status_code == 200
+    res = testapp.patch_json(
+        treatment_chemical['@id'],
+        {'treatment_type': 'diet', 'treatment_term_id': 'NTR:0001001', 'treatment_term_name': 'High Fat Diet'}, expect_errors=True)
+    assert res.status_code == 422
     res = testapp.patch_json(
         treatment_chemical['@id'],
         {'treatment_type': 'diet', 'treatment_term_id': 'CHEBI:24996', 'treatment_term_name': 'High Fat Diet'}, expect_errors=True)
@@ -85,11 +89,11 @@ def test_treatment_type_dependency(treatment_chemical, testapp):
     assert res.status_code == 422
     res = testapp.patch_json(
         treatment_chemical['@id'],
-        {'treatment_type': 'diet', 'treatment_term_id': 'NTR:0001002', 'treatment_term_name': 'Normal Diet'})
+        {'treatment_type': 'diet', 'treatment_term_id': 'NCIT:C15222', 'treatment_term_name': 'Normal Diet'})
     assert res.status_code == 200
     res = testapp.patch_json(
         treatment_chemical['@id'],
-        {'treatment_type': 'diet', 'treatment_term_id': 'NTR:0001001', 'treatment_term_name': 'high-fat diet'}, expect_errors=True)
+        {'treatment_type': 'diet', 'treatment_term_id': 'NCIT:C15222', 'treatment_term_name': 'high-fat diet'}, expect_errors=True)
     assert res.status_code == 422
 
 
@@ -188,7 +192,7 @@ def test_treatment_award_lab_depletion_requirement(testapp, award, lab):
     res = testapp.post_json(
         '/treatment',
         {
-            'treatment_term_id': 'NTR:0001001',
+            'treatment_term_id': 'NCIT:C15222',
             'treatment_term_name': 'High Fat Diet',
             'treatment_type': 'diet',
             'duration': 12,
