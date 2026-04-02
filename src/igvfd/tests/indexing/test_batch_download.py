@@ -117,6 +117,41 @@ def test_metadata_batch_download_v2_all_files_recursive(workbook, testapp):
     expected = {
         'files': [
             '/configuration-files/IGVFFI0000CONF/',
+            '/sequence-files/IGVFFI1165AJSO/',
+            '/sequence-files/IGVFFI5555PODD/'
+        ],
+        'file_sets': [
+            '/analysis-sets/IGVFDS0101PIPE/',
+            '/auxiliary-sets/IGVFDS0001AUXI/',
+            '/construct-library-sets/IGVFDS5436ABCD/',
+            '/measurement-sets/IGVFDS0000MSET/'
+        ]
+    }
+    r = testapp.get('/analysis-sets/IGVFDS0101PIPE/@@all-files?soft=true')
+    for f in expected['files']:
+        assert f in r.json['files']
+    for fs in expected['file_sets']:
+        assert fs in r.json['file_sets']
+    expected = {
+        'files': [
+            '/configuration-files/IGVFFI0000CONF/',
+            '/sequence-files/IGVFFI1165AJSO/',
+            '/sequence-files/IGVFFI5555PODD/'
+        ],
+        'file_sets': [
+            '/auxiliary-sets/IGVFDS0001AUXI/',
+            '/construct-library-sets/IGVFDS5436ABCD/',
+            '/measurement-sets/IGVFDS0000MSET/'
+        ]
+    }
+    r = testapp.get('/measurement-sets/IGVFDS0000MSET/@@all-files?soft=true')
+    for f in expected['files']:
+        assert f in r.json['files']
+    for fs in expected['file_sets']:
+        assert fs in r.json['file_sets']
+    expected = {
+        'files': [
+            '/configuration-files/IGVFFI0000CONF/',
             '/index-files/IGVFFI0001CRAI/',
             '/index-files/IGVFFI0002BAIN/',
             '/reference-files/IGVFFI0001SQBZ/',
@@ -125,6 +160,7 @@ def test_metadata_batch_download_v2_all_files_recursive(workbook, testapp):
             '/reference-files/IGVFFI0836NNBT/',
             '/reference-files/IGVFFI0865ETVT/',
             '/reference-files/IGVFFI0868FSXA/',
+            '/reference-files/IGVFFI1234CCCC/',
             '/reference-files/IGVFFI1234KLJH/',
             '/reference-files/IGVFFI1276BJRG/',
             '/reference-files/IGVFFI1530UZOX/',
@@ -143,7 +179,6 @@ def test_metadata_batch_download_v2_all_files_recursive(workbook, testapp):
             '/tabular-files/IGVFFI0000ELEM/',
             '/tabular-files/IGVFFI0000SBRD/',
             '/tabular-files/IGVFFI0001SBRC/',
-            '/tabular-files/IGVFFI5155WZID/',
             '/tabular-files/IGVFFI6621MLMF/',
             '/tabular-files/IGVFFI7099DPQN/',
             '/tabular-files/IGVFFI8932EGPR/',
@@ -156,12 +191,12 @@ def test_metadata_batch_download_v2_all_files_recursive(workbook, testapp):
             '/auxiliary-sets/IGVFDS0001AUXI/',
             '/construct-library-sets/IGVFDS5436ABCD/',
             '/measurement-sets/IGVFDS0000MSET/',
-            '/measurement-sets/IGVFDS0987SHAR/',
             '/model-sets/IGVFDS4321MODL/',
-            '/prediction-sets/IGVFDS5145PRED/'
+            '/pseudobulk-sets/IGVFDS0000PSBK/',
+            '/pseudobulk-sets/IGVFDS9999ANVL/'
         ]
     }
-    r = testapp.get('/analysis-sets/IGVFDS0101PIPE/@@all-files?soft=true')
+    r = testapp.get('/measurement-sets/IGVFDS0000MSET/@@all-files?soft=true&include_downstream=true')
     for f in expected['files']:
         assert f in r.json['files']
     for fs in expected['file_sets']:
