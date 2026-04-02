@@ -1,6 +1,6 @@
 {
-    "hash": "7621ee4152a6ea25722db94c1e1b41f0",
-    "index_name": "prediction_set_7621ee41",
+    "hash": "eebef6bdbe0e263a71dee27831610bbf",
+    "index_name": "prediction_set_eebef6bd",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -879,10 +879,16 @@
                                     "status": {
                                         "type": "keyword"
                                     },
+                                    "submitted_assembly": {
+                                        "type": "keyword"
+                                    },
                                     "submitted_by": {
                                         "type": "keyword"
                                     },
                                     "submitted_file_name": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_transcriptome_annotation": {
                                         "type": "keyword"
                                     },
                                     "submitter_comment": {
@@ -2203,11 +2209,17 @@
                             "strand_specificity": {
                                 "type": "keyword"
                             },
+                            "submitted_assembly": {
+                                "type": "keyword"
+                            },
                             "submitted_by": {
                                 "type": "keyword"
                             },
                             "submitted_file_name": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "submitted_transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "submitter_comment": {
@@ -2593,10 +2605,16 @@
                             "status": {
                                 "type": "keyword"
                             },
+                            "submitted_assembly": {
+                                "type": "keyword"
+                            },
                             "submitted_by": {
                                 "type": "keyword"
                             },
                             "submitted_file_name": {
+                                "type": "keyword"
+                            },
+                            "submitted_transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "submitter_comment": {
@@ -2811,10 +2829,16 @@
                             "status": {
                                 "type": "keyword"
                             },
+                            "submitted_assembly": {
+                                "type": "keyword"
+                            },
                             "submitted_by": {
                                 "type": "keyword"
                             },
                             "submitted_file_name": {
+                                "type": "keyword"
+                            },
+                            "submitted_transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "submitter_comment": {

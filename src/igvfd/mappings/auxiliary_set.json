@@ -1,6 +1,6 @@
 {
-    "hash": "9c763ac9298e791d70b11274d72c1332",
-    "index_name": "auxiliary_set_9c763ac9",
+    "hash": "a05ce1bb544f14aba27778375925d918",
+    "index_name": "auxiliary_set_a05ce1bb",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -700,10 +700,16 @@
                                     "status": {
                                         "type": "keyword"
                                     },
+                                    "submitted_assembly": {
+                                        "type": "keyword"
+                                    },
                                     "submitted_by": {
                                         "type": "keyword"
                                     },
                                     "submitted_file_name": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_transcriptome_annotation": {
                                         "type": "keyword"
                                     },
                                     "submitter_comment": {
@@ -2024,11 +2030,17 @@
                             "strand_specificity": {
                                 "type": "keyword"
                             },
+                            "submitted_assembly": {
+                                "type": "keyword"
+                            },
                             "submitted_by": {
                                 "type": "keyword"
                             },
                             "submitted_file_name": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "submitted_transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "submitter_comment": {

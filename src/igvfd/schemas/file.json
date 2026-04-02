@@ -138,13 +138,27 @@
                 }
             },
             "then": {
-                "required": [
-                    "assembly"
+                "anyOf": [
+                    {
+                        "required": [
+                            "submitted_assembly"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "reference_files"
+                        ]
+                    }
                 ]
             }
         },
         "transcriptome_annotation": {
-            "comment": "The assembly shoud be consistent with annotation versions of respective species. Annotation version should not be submitted for custom assemblies. This dependency is not relevant for alignment, matrix, or signal files.",
+            "comment": "The assembly shoud be consistent with annotation versions of respective species. Annotation version should not be submitted for custom assemblies. This dependency is not relevant for alignment, matrix, signal, or tabular files.",
             "allOf": [
                 {
                     "if": {

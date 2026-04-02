@@ -101,3 +101,41 @@ def test_tabular_file_upgrade_19_20(upgrader, tabular_file_v19, sample_term_K562
     assert value['schema_version'] == '20'
     assert 'cell_type_annotation' not in value
     assert f'Cell type annotation: {sample_term_K562["@id"]}.' in value['notes']
+
+
+def test_tabular_file_upgrade_20_21(upgrader, tabular_file_v20a, tabular_file_v20b, tabular_file_v20c, tabular_file_v20d, tabular_file_v20e, tabular_file_v20f):
+    # A tabular file with submitted assembly.
+    value = upgrader.upgrade('tabular_file', tabular_file_v20a, current_version='20', target_version='21')
+    assert 'assembly' not in value
+    assert 'submitted_assembly' in value
+    assert value['submitted_assembly'] == 'GRCh38'
+    assert 'The submitted assembly GRCh38 was moved to the submitted_assembly property.' in value['notes']
+    assert value['schema_version'] == '21'
+    # A tabular file with submitted annotation.
+    value = upgrader.upgrade('tabular_file', tabular_file_v20f, current_version='20', target_version='21')
+    assert 'transcriptome_annotation' not in value
+    assert 'submitted_transcriptome_annotation' in value
+    assert value['submitted_transcriptome_annotation'] == 'GENCODE 40'
+    assert 'The submitted transcriptome annotation GENCODE 40 was moved to the submitted_transcriptome_annotation property.' in value[
+        'notes']
+    assert value['schema_version'] == '21'
+    # A tabular file with no assembly or reference_files.
+    value = upgrader.upgrade('tabular_file', tabular_file_v20b, current_version='20', target_version='21')
+    assert 'assembly' not in value
+    assert 'submitted_assembly' in value
+    assert value['submitted_assembly'] == 'unknown'
+    assert 'This file\'s submitted_assembly was automatically set to unknown because the file had no assembly nor reference_files.' in value[
+        'notes']
+    assert value['schema_version'] == '21'
+    # An excluded tabular file.
+    value = upgrader.upgrade('tabular_file', tabular_file_v20c, current_version='20', target_version='21')
+    assert value['schema_version'] == '21'
+    # A tabular file with reference_files.
+    value = upgrader.upgrade('tabular_file', tabular_file_v20d, current_version='20', target_version='21')
+    assert value['schema_version'] == '21'
+    # A deleted tabular file with no assembly or reference_files.
+    value = upgrader.upgrade('tabular_file', tabular_file_v20e, current_version='20', target_version='21')
+    assert value['submitted_assembly'] == 'unknown'
+    assert 'This deleted file\'s submitted_assembly was automatically set to unknown because the file had no assembly nor reference_files.' in value[
+        'notes']
+    assert value['schema_version'] == '21'

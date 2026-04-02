@@ -43,16 +43,10 @@
             "$ref": "mixins.json#/processed_files"
         },
         {
-            "$ref": "mixins.json#/transcriptome_annotation"
-        },
-        {
             "$ref": "mixins.json#/file_format_type"
         },
         {
             "$ref": "mixins.json#/release_timestamp"
-        },
-        {
-            "$ref": "mixins.json#/assembly"
         },
         {
             "$ref": "mixins.json#/controlled_access"
@@ -130,12 +124,180 @@
                     ]
                 }
             }
+        },
+        "content_type": {
+            "oneOf": [
+                {
+                    "anyOf": [
+                        {
+                            "required": [
+                                "reference_files"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "submitted_assembly"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "submitted_transcriptome_annotation"
+                            ]
+                        }
+                    ],
+                    "properties": {
+                        "content_type": {
+                            "enum": [
+                                "aggregated calibrated coding variant effects",
+                                "bin paired count",
+                                "calibrated coding variant effects",
+                                "caQTL",
+                                "chromatin contact quantifications",
+                                "co-localization scores",
+                                "coding variant effects",
+                                "differential chromatin contact quantifications",
+                                "differential element quantifications",
+                                "differential gene expression quantifications",
+                                "differential guide quantifications",
+                                "differential peak quantifications",
+                                "differential transcript expression quantifications",
+                                "domain constraint",
+                                "DNA footprint scores",
+                                "DUAL-IPA score",
+                                "editing templates",
+                                "element quantifications",
+                                "element to gene interactions",
+                                "elements reference",
+                                "eQTL",
+                                "exclusion list regions",
+                                "exon constraint",
+                                "fold change of post-selection and pre-selection",
+                                "fold change over control",
+                                "fragments",
+                                "functional impact score",
+                                "gene quantifications",
+                                "gene programs",
+                                "gene program regulators",
+                                "gene universe",
+                                "global differential expression",
+                                "guide quantifications",
+                                "guide RNA sequences",
+                                "guide RNA sequences reference",
+                                "local differential expression",
+                                "loci",
+                                "methylation counts",
+                                "minus strand modification state",
+                                "modification state",
+                                "MPRA sequence designs",
+                                "peak quantifications",
+                                "peaks",
+                                "per cell type enrichment scores",
+                                "plus strand modification state",
+                                "prime editing guide RNA sequences",
+                                "primers table",
+                                "primers track",
+                                "probes track",
+                                "protein-protein interaction edge-perturbation score",
+                                "protein-protein interaction edgotyping score",
+                                "regional constraint",
+                                "read count",
+                                "reporter elements",
+                                "reporter experiment",
+                                "reporter experiment barcode",
+                                "reporter genomic element effects",
+                                "reporter genomic variant effects",
+                                "reporter variants",
+                                "spliceQTL",
+                                "target transcripts",
+                                "transcript quantifications",
+                                "variant binding effects",
+                                "variant effects",
+                                "variant functions",
+                                "variant localization impacts",
+                                "variant pathogenicity",
+                                "variant to cluster mapping",
+                                "variant to element mapping",
+                                "variants"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "content_type": {
+                            "enum": [
+                                "barcode onlist",
+                                "barcode replacement",
+                                "barcode to cluster mapping",
+                                "barcode to donor mapping",
+                                "barcode to element mapping",
+                                "barcode to hashtag mapping",
+                                "barcode to sample mapping",
+                                "barcode to TF overexpression mapping",
+                                "barcode to variant mapping",
+                                "calibrated coding variant effect thresholds",
+                                "cell annotations",
+                                "cell hashing barcodes",
+                                "coding_variants",
+                                "complexes",
+                                "derived barcode mapping",
+                                "diseases_genes",
+                                "documentation (readme)",
+                                "drugs",
+                                "external source data",
+                                "genes",
+                                "genes_genes",
+                                "genes_pathways",
+                                "genes_terms",
+                                "genome index",
+                                "genome reference",
+                                "genomic_elements",
+                                "genomic_elements_genes",
+                                "genomic_elements_genomic_elements",
+                                "go_terms_proteins",
+                                "heritability enrichment",
+                                "index plate",
+                                "individual cells profile",
+                                "machine learning model features",
+                                "marker gene activity",
+                                "marker genes",
+                                "motifs",
+                                "motifs_proteins",
+                                "normalized variants profile",
+                                "ontology_terms",
+                                "pathogenicity validation",
+                                "pathways",
+                                "pathways_pathways",
+                                "pipeline parameters",
+                                "primer sequences",
+                                "protein sequences",
+                                "protein stability fluorescence score",
+                                "protein to protein interaction score",
+                                "proteins_proteins",
+                                "sample sort parameters",
+                                "selected normalized variants profile",
+                                "studies_variants_phenotypes",
+                                "tissue positions",
+                                "transcriptome index",
+                                "transcriptome reference",
+                                "variants_diseases",
+                                "variants_drugs",
+                                "variants_genes",
+                                "variants_genomic_elements",
+                                "variants_proteins",
+                                "variants_proteins_terms",
+                                "variants_variants"
+                            ]
+                        }
+                    }
+                }
+            ]
         }
     },
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "20"
+            "default": "21"
         },
         "catalog_adapters": {
             "title": "IGVF Catalog Adapters",
@@ -381,8 +543,69 @@
                 "igvf_utils": "tsv"
             }
         },
-        "assembly": {
-            "description": "Genome assembly applicable for the tabular data."
+        "submitted_assembly": {
+            "title": "Submitted Genome Assembly",
+            "description": "Genome assembly for a tabular file.",
+            "comment": "This property is a placeholder for files which had submitted assembly metadata but no reference files.",
+            "permission": "admin_only",
+            "type": "string",
+            "enum": [
+                "GRCh38",
+                "hg19",
+                "Cast - GRCm39",
+                "GRCm39",
+                "mm10",
+                "GRCh38, GRCm39",
+                "GRCh38, mm10",
+                "C57BL_6J_T2T_v1 + GRCm39_X",
+                "CAST_EiJ_T2T_v1",
+                "custom",
+                "unknown"
+            ],
+            "submissionExample": {
+                "appscript": "GRCh38",
+                "igvf_utils": "GRCh38"
+            }
+        },
+        "submitted_transcriptome_annotation": {
+            "title": "Submitted_Transcriptome Annotation",
+            "description": "The annotation and version of the reference resource.",
+            "comment": "This property is a placeholder for files which had submitted transcriptome annotation metadata but no reference files.",
+            "permission": "admin_only",
+            "type": "string",
+            "enum": [
+                "GENCODE 22",
+                "GENCODE 24",
+                "GENCODE 28",
+                "GENCODE 32",
+                "GENCODE 38",
+                "GENCODE 40",
+                "GENCODE 41",
+                "GENCODE 42",
+                "GENCODE 43",
+                "GENCODE 44",
+                "GENCODE 45",
+                "GENCODE 47",
+                "GENCODE Cast - M32",
+                "GENCODE M17",
+                "GENCODE M25",
+                "GENCODE M30",
+                "GENCODE M31",
+                "GENCODE M32",
+                "GENCODE M33",
+                "GENCODE M34",
+                "GENCODE M36",
+                "GENCODE 32, GENCODE M23",
+                "GENCODE 41, GENCODE M25",
+                "GENCODE 44, GENCODE M33",
+                "CAST_EiJ_T2T_v1_TA1",
+                "C57BL_6J_T2T_v1_TA1 + M36_X",
+                "unknown"
+            ],
+            "submissionExample": {
+                "appscript": "GENCODE 40",
+                "igvf_utils": "GENCODE 40"
+            }
         },
         "dbxrefs": {
             "comment": "This file type currently does not support any external resource submission."

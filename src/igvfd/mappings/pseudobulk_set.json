@@ -1,6 +1,6 @@
 {
-    "hash": "3f7624b975dd434e8c24e6109b396b4f",
-    "index_name": "pseudobulk_set_3f7624b9",
+    "hash": "005db94e0b45fb8ad816c20048424f0c",
+    "index_name": "pseudobulk_set_005db94e",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -796,10 +796,16 @@
                                     "status": {
                                         "type": "keyword"
                                     },
+                                    "submitted_assembly": {
+                                        "type": "keyword"
+                                    },
                                     "submitted_by": {
                                         "type": "keyword"
                                     },
                                     "submitted_file_name": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_transcriptome_annotation": {
                                         "type": "keyword"
                                     },
                                     "submitter_comment": {
@@ -2117,11 +2123,17 @@
                             "strand_specificity": {
                                 "type": "keyword"
                             },
+                            "submitted_assembly": {
+                                "type": "keyword"
+                            },
                             "submitted_by": {
                                 "type": "keyword"
                             },
                             "submitted_file_name": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "submitted_transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "submitter_comment": {

@@ -149,12 +149,12 @@ def test_audit_unexpected_input_file_set(
 def test_audit_missing_genome_transcriptome_references(
     testapp,
     base_prediction_set,
-    tabular_file,
+    tabular_file_submitted_assembly,
     reference_file
 ):
     # No audits for missing reference files if content type is not included in audited list
     testapp.patch_json(
-        tabular_file['@id'],
+        tabular_file_submitted_assembly['@id'],
         {
             'content_type': 'calibrated coding variant effect thresholds',
         }
@@ -171,9 +171,8 @@ def test_audit_missing_genome_transcriptome_references(
             'content_type': 'genome reference'
         }
     )
-
     testapp.patch_json(
-        tabular_file['@id'],
+        tabular_file_submitted_assembly['@id'],
         {
             'file_set': base_prediction_set['@id'],
             'content_type': 'variant effects'
@@ -186,7 +185,7 @@ def test_audit_missing_genome_transcriptome_references(
     )
     # Missing transcriptome reference audit
     testapp.patch_json(
-        tabular_file['@id'],
+        tabular_file_submitted_assembly['@id'],
         {
             'content_type': 'coding variant effects',
         }
@@ -204,7 +203,7 @@ def test_audit_missing_genome_transcriptome_references(
         }
     )
     testapp.patch_json(
-        tabular_file['@id'],
+        tabular_file_submitted_assembly['@id'],
         {
             'reference_files': [reference_file['@id']]
         }
@@ -222,7 +221,7 @@ def test_audit_missing_genome_transcriptome_references(
         }
     )
     testapp.patch_json(
-        tabular_file['@id'],
+        tabular_file_submitted_assembly['@id'],
         {
             'content_type': 'variant effects'
         }
