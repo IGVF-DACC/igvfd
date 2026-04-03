@@ -1151,7 +1151,8 @@ class TabularFile(File):
     embedded_with_frame = File.embedded_with_frame
     rev = File.rev | {
         'barcode_map_for': ('MultiplexedSample', 'barcode_map'),
-        'enrichment_design_for': ('MeasurementSet', 'enrichment_designs')
+        'enrichment_design_for': ('MeasurementSet', 'enrichment_designs'),
+        'hashtag_barcode_map_for': ('AuxiliarySet', 'hashtag_barcode_map'),
     }
 
     set_status_up = File.set_status_up + []
@@ -1234,6 +1235,22 @@ class TabularFile(File):
     })
     def enrichment_design_for(self, request, enrichment_design_for):
         return paths_filtered_by_status(request, enrichment_design_for) or None
+
+    @calculated_property(schema={
+        'title': 'Hashtag Barcode Map For',
+        'description': 'Link(s) to the auxiliary sets using this file as a hashtag barcode map.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Hashtag Barcode Map For',
+            'type': 'string',
+            'linkFrom': 'AuxiliarySet.hashtag_barcode_map',
+        },
+        'notSubmittable': True
+    })
+    def hashtag_barcode_map_for(self, request, hashtag_barcode_map_for):
+        return paths_filtered_by_status(request, hashtag_barcode_map_for) or None
 
 
 @collection(
@@ -1606,7 +1623,7 @@ def download(context, request):
             'Key': key,
             'ResponseContentDisposition': 'attachment; filename=' + filename
         },
-        ExpiresIn=36*60*60,
+        ExpiresIn=36 * 60 * 60,
     )
     if asbool(request.params.get('soft')):
         expires = int(parse_qs(urlparse(location).query)['Expires'][0])

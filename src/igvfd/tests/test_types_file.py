@@ -922,3 +922,20 @@ def test_superseded_by(testapp, tabular_file, signal_file):
     )
     res = testapp.get(signal_file['@id'])
     assert set([file for file in res.json.get('superseded_by')]) == {tabular_file['@id']}
+
+
+def test_hashtag_barcode_map_for(testapp, auxiliary_set_cell_hashing, tabular_file_onlist_1):
+    testapp.patch_json(
+        auxiliary_set_cell_hashing['@id'],
+        {
+            'hashtag_barcode_map': tabular_file_onlist_1['@id']
+        }
+    )
+    testapp.patch_json(
+        tabular_file_onlist_1['@id'],
+        {
+            'content_type': 'barcode to hashtag mapping'
+        }
+    )
+    res = testapp.get(tabular_file_onlist_1['@id'])
+    assert res.json.get('hashtag_barcode_map_for', '') == sorted([auxiliary_set_cell_hashing['@id']])
