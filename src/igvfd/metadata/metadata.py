@@ -435,6 +435,7 @@ def all_files(context, request):
     if not files_sets_and_files['files']:
         raise HTTPNotFound()
     qs = QueryString(request)
+    qs.drop('include_downstream')
     qs.drop('type')
     qs.append(('type', 'File'))
     new_request = qs.get_request_with_new_query_string()
