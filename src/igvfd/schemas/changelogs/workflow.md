@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Update `source_url` regex to include `https://developer.illumina.com`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.
 * Update `source_url` regex to add `www\\.10xgenomics\\.com/\\S*` as a pattern.
