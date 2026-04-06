@@ -1471,7 +1471,9 @@ def audit_preferred_assay_title(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_inconsistent = get_audit_message(audit_preferred_assay_title, index=0)
-    assay_term = value.get('assay_term')
+    assay_term = value.get('assay_term', '')
+    if not assay_term:
+        return
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assay_titles = value.get('assay_titles', [])
     preferred_assay_titles = value.get('preferred_assay_titles', [])
