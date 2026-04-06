@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 31
+
+* Rename `nucleic_acid_delivery` to `construct_delivery_methods`.
+
 ### Schema version 30
 
 * Remove `disease_terms`.

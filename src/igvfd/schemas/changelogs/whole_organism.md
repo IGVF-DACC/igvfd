@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 28
+
+* Rename `nucleic_acid_delivery` to `construct_delivery_methods`.
+
 ### Schema version 27
 
 * Remove `disease_terms`.

@@ -1,5 +1,9 @@
 ## Changelog for *`tissue/organ.json`*
 
+### Schema version 26
+
+* Rename `nucleic_acid_delivery` to `construct_delivery_methods`.
+
 ### Schema version 25
 
 * Remove `disease_terms`.

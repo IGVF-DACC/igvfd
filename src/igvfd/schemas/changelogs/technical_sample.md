@@ -1,5 +1,9 @@
 ## Changelog for *`technical_sample.json`*
 
+### Schema version 16
+
+* Rename `nucleic_acid_delivery` to `construct_delivery_methods`.
+
 ### Minor changes since schema version 15
 
 * Update `aliases` regex to add `hongbo-liu` as a namespace.

@@ -1,5 +1,9 @@
 ## Changelog for *`multiplexed_sample.json`*
 
+### Schema version 12
+
+* Rename `nucleic_acid_delivery` to `construct_delivery_methods`.
+
 ### Minor changes since schema version 11
 
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
