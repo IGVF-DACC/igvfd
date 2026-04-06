@@ -374,3 +374,13 @@ def primary_cell_v24(primary_cell, phenotype_term_myocardial_infarction):
         'disease_terms': [phenotype_term_myocardial_infarction['@id']]
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v25(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '25',
+        'nucleic_acid_delivery': 'lentiviral transduction'
+    })
+    return item

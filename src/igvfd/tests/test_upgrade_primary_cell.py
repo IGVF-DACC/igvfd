@@ -183,17 +183,16 @@ def test_primary_cell_upgrade_23_24(upgrader, primary_cell_v23_1, primary_cell_v
     assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
 
 
-<<<<<<< HEAD
 def test_primary_cell_upgrade_24_25(upgrader, primary_cell_v24):
     value = upgrader.upgrade('primary_cell', primary_cell_v24, current_version='24', target_version='25')
     assert value['schema_version'] == '25'
     assert 'disease_terms' not in value
     assert 'This sample had disease_terms [\'/phenotype-terms/HP_0001658/\'], which has been removed via upgrade.' in value.get(
         'notes', '')
-=======
-def test_primary_cell_upgrade_24_25(upgrader, primary_cell):
-    value = upgrader.upgrade('primary_cell', item, current_version='24', target_version='25')
-    assert value['schema_version'] == '25'
-    assert value['construct_delivery_methods'] == ['transfection']
+
+
+def test_primary_cell_upgrade_25_26(upgrader, primary_cell_v25):
+    value = upgrader.upgrade('primary_cell', primary_cell_v25, current_version='25', target_version='26')
+    assert value['schema_version'] == '26'
+    assert value['construct_delivery_methods'] == ['lentiviral transduction']
     assert 'nucleic_acid_delivery' not in value
->>>>>>> 255927e7 (renamed property & upgraded)

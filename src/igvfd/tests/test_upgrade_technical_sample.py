@@ -110,8 +110,8 @@ def test_technical_sample_upgrade_14_15(upgrader, technical_sample_v14_1, techni
     assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
 
 
-def test_technical_sample_upgrade_15_16(upgrader, technical_sample):
-    value = upgrader.upgrade('technical_sample', item, current_version='15', target_version='16')
+def test_technical_sample_upgrade_15_16(upgrader, technical_sample_v15):
+    value = upgrader.upgrade('technical_sample', technical_sample_v15, current_version='15', target_version='16')
     assert value['schema_version'] == '16'
     assert value['construct_delivery_methods'] == ['lentiviral transduction']
     assert 'nucleic_acid_delivery' not in value

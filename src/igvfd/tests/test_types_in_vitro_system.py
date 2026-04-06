@@ -178,6 +178,41 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
         'summary') == 'virtual Homo sapiens and Mus musculus strain1 (mixed sex) embryoid body pooled differentiated cell specimen (2 donors) induced to gastrula for 5 minutes, (cellular sub pool: PKR-456) (sorting details: some detail about sorting) characterized by high level of CD243, negative detection of CD243, depleted of penicillin for 3 minutes, perturbed with 10 ng/mL G-CSF, modified with CRISPRi Sp-dCas9, electroporated with a reporter library targeting accessible genome regions genome-wide, cultured for 5 days, selected by transfection of target gene'
 
 
+def test_multiple_construct_delivery_methods(testapp, in_vitro_differentiated_cell, construct_library_set_reporter, construct_library_set_genome_wide):
+    methods = ['electroporation', 'lentiviral transduction']
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'construct_library_sets': [construct_library_set_reporter['@id']],
+            'construct_delivery_methods': methods,
+        },
+    )
+    res = testapp.get(in_vitro_differentiated_cell['@id'])
+    assert res.json['construct_delivery_methods'] == methods
+    assert res.json['summary'] == (
+        'Homo sapiens K562 differentiated cell specimen induced to brown adipose tissue for 5 minutes, '
+        'delivered using electroporation and lentiviral transduction with a reporter library targeting accessible genome regions genome-wide'
+    )
+
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'construct_library_sets': [
+                construct_library_set_reporter['@id'],
+                construct_library_set_genome_wide['@id'],
+            ],
+            'moi': 2,
+        },
+    )
+    res = testapp.get(in_vitro_differentiated_cell['@id'])
+    assert res.json['construct_delivery_methods'] == methods
+    assert len(res.json['construct_library_sets']) == 2
+    assert res.json['summary'] == (
+        'Homo sapiens K562 differentiated cell specimen induced to brown adipose tissue for 5 minutes, '
+        'delivered using electroporation and lentiviral transduction with multiple libraries (MOI of 2)'
+    )
+
+
 def test_summary_cell_culture(testapp, in_vitro_cell_culture):
     res = testapp.get(in_vitro_cell_culture['@id'])
     assert res.json.get('summary') == 'Mus musculus strain1 (male) adrenal gland cell culture'

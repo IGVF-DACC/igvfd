@@ -93,6 +93,22 @@ CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN = {
 }
 
 
+def _verb_noun_for_construct_delivery(construct_delivery_methods):
+    if isinstance(construct_delivery_methods, list):
+        methods = construct_delivery_methods or []
+    elif construct_delivery_methods:
+        methods = [construct_delivery_methods]
+    else:
+        methods = []
+    if len(methods) > 1:
+        joined = ' and '.join(methods)
+        return f'delivered using {joined} with', f'{joined} with'
+    if len(methods) == 1 and methods[0] in CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN:
+        entry = CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN[methods[0]]
+        return entry['verb'], entry['noun']
+    return 'transfected with', 'transfection with'
+
+
 def compose_summary_sample_term_phrase(sample_term_term_names: list, cap_number: int) -> str:
     """Compose a summary sample term phrase based on the number of terms and a max number of items.
 
@@ -708,17 +724,7 @@ class Biosample(Sample):
         if (construct_library_sets and
                 biosample_type in biosample_subschemas):
 
-            if isinstance(construct_delivery_methods, list):
-                selected_delivery = construct_delivery_methods[0] if construct_delivery_methods else None
-            else:
-                selected_delivery = construct_delivery_methods
-
-            if selected_delivery in CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN:
-                verb = CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN[selected_delivery]['verb']
-                noun = CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN[selected_delivery]['noun']
-            else:
-                verb = 'transfected with'
-                noun = 'transfection with'
+            verb, noun = _verb_noun_for_construct_delivery(construct_delivery_methods)
 
             if time_post_library_delivery is not None:
                 verb = (
@@ -977,17 +983,7 @@ class TechnicalSample(Sample):
                 perturbation_summaries = ', '.join(unique_summaries)
                 summary_terms += f' {verb} with {perturbation_summaries},'
         if construct_library_sets:
-            if isinstance(construct_delivery_methods, list):
-                selected_delivery = construct_delivery_methods[0] if construct_delivery_methods else None
-            else:
-                selected_delivery = construct_delivery_methods
-
-            if selected_delivery in CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN:
-                verb = CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN[selected_delivery]['verb']
-                noun = CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN[selected_delivery]['noun']
-            else:
-                verb = 'transfected with'
-                noun = 'transfection with'
+            verb, noun = _verb_noun_for_construct_delivery(construct_delivery_methods)
 
             if time_post_library_delivery is not None:
                 verb = (

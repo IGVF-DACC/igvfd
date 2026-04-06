@@ -186,17 +186,16 @@ def test_tissue_upgrade_23_24(upgrader, tissue_v23):
         'This sample had the ccf_id 78d06f07-f1cb-4d21-b578-b01c7388804f, which has been removed via upgrade.')
 
 
-<<<<<<< HEAD
 def test_tissue_upgrade_24_25(upgrader, tissue_v24):
     value = upgrader.upgrade('tissue', tissue_v24, current_version='24', target_version='25')
     assert value['schema_version'] == '25'
     assert 'disease_terms' not in value
     assert 'This sample had disease_terms [\'/phenotype-terms/HP_0001658/\'], which has been removed via upgrade.' in value.get(
         'notes', '')
-=======
-def test_tissue_upgrade_24_25(upgrader, tissue):
-    value = upgrader.upgrade('tissue', item, current_version='24', target_version='25')
-    assert value['schema_version'] == '25'
-    assert value['construct_delivery_methods'] == ['nucleofection']
+
+
+def test_tissue_upgrade_25_26(upgrader, tissue_v25):
+    value = upgrader.upgrade('tissue', tissue_v25, current_version='25', target_version='26')
+    assert value['schema_version'] == '26'
+    assert value['construct_delivery_methods'] == ['lentiviral transduction']
     assert 'nucleic_acid_delivery' not in value
->>>>>>> 255927e7 (renamed property & upgraded)
