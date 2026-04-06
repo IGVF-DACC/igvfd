@@ -1513,5 +1513,24 @@
         "release_timestamp": "2025-03-06T12:34:56Z",
         "file_set": "igvf:prediction_set_5",
         "controlled_access": false
+    },
+    {
+        "uuid": "652143d7-c87a-4122-8285-9bfac15f3ce2",
+        "accession": "IGVFFI0000SCRQ",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:barcode_to_well_mapping"
+        ],
+        "md5sum": "c0828e0381730befd1f7a025057c74fb",
+        "file_format": "tsv",
+        "content_type": "barcode to well mapping",
+        "submitted_file_name": "/Users/igvf/igvf_files/barcode_to_well_mapping.tsv.gz",
+        "file_size": 2560000,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:prediction_set_5",
+        "controlled_access": false
     }
 ]
