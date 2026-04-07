@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 30
+
+* Remove `disease_terms`.
+
 ### Minor changes since schema version 29
 
 * Update `aliases` regex to add `hongbo-liu` as a namespace.

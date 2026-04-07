@@ -83,13 +83,13 @@ def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, cur
 
 def test_multiplexed_sample_props(
         testapp, multiplexed_sample, tissue, crispr_modification, in_vitro_cell_line,
-        phenotype_term_myocardial_infarction, biomarker_CD243_absent,
+        phenotypic_feature_basic, phenotype_term_ncit_feature, biomarker_CD243_absent,
         biomarker_CD1e_low, biomarker_IgA_present, construct_library_set_genome_wide,
         base_expression_construct_library_set, construct_library_set_reporter):
     testapp.patch_json(
         tissue['@id'],
         {
-            'disease_terms': [phenotype_term_myocardial_infarction['@id']],
+            'phenotypic_features': [phenotypic_feature_basic['@id']],
             'modifications': [crispr_modification['@id']],
             'biomarkers': [biomarker_CD243_absent['@id'], biomarker_CD1e_low['@id']],
             'construct_library_sets': [construct_library_set_genome_wide['@id'],
@@ -111,10 +111,11 @@ def test_multiplexed_sample_props(
     multiplexed_term_set = set([entry['@id'] for entry in res.json.get('sample_terms', [])])
     assert terms_set == multiplexed_term_set
 
-    diseases_set = set()
-    diseases_set.add(phenotype_term_myocardial_infarction['@id'])
-    multiplexed_diseases_set = set([entry['@id'] for entry in res.json.get('disease_terms', [])])
-    assert diseases_set == multiplexed_diseases_set
+    phenotypic_features_set = set()
+    phenotypic_features_set.add(phenotype_term_ncit_feature['term_name'])
+    multiplexed_phenotypic_features_set = set([entry['feature']['term_name']
+                                              for entry in res.json.get('phenotypic_features', [])])
+    assert phenotypic_features_set == multiplexed_phenotypic_features_set
 
     modifications_set = set()
     modifications_set.add(crispr_modification['@id'])

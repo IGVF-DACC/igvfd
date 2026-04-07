@@ -28,8 +28,8 @@ def file_set():
             'samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
             },
-            'samples.disease_terms.term_name': {
-                'title': 'Disease',
+            'samples.phenotypic_features.feature.term_name': {
+                'title': 'Phenotypic Features'
             },
             'samples.growth_medium': {
                 'title': 'Growth Medium',

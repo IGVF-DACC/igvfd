@@ -356,3 +356,13 @@ def tissue_v23(tissue):
         'ccf_id': '78d06f07-f1cb-4d21-b578-b01c7388804f'
     })
     return item
+
+
+@pytest.fixture
+def tissue_v24(tissue, phenotype_term_myocardial_infarction):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '24',
+        'disease_terms': [phenotype_term_myocardial_infarction['@id']]
+    })
+    return item

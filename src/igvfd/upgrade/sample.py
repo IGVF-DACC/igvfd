@@ -600,3 +600,43 @@ def tissue_23_24(value, system):
         notes += f' This sample had the ccf_id {value.get("ccf_id", "")}, which has been removed via upgrade.'
         value['notes'] = notes.strip()
         del value['ccf_id']
+
+
+@upgrade_step('in_vitro_system', '29', '30')
+def in_vitro_system_29_30(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3326
+    if 'disease_terms' in value:
+        notes = value.get('notes', '')
+        notes += f' This sample had disease_terms {value.get("disease_terms", "")}, which has been removed via upgrade.'
+        value['notes'] = notes.strip()
+        del value['disease_terms']
+
+
+@upgrade_step('primary_cell', '24', '25')
+def primary_cell_24_25(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3327
+    if 'disease_terms' in value:
+        notes = value.get('notes', '')
+        notes += f' This sample had disease_terms {value.get("disease_terms", "")}, which has been removed via upgrade.'
+        value['notes'] = notes.strip()
+        del value['disease_terms']
+
+
+@upgrade_step('tissue', '24', '25')
+def tissue_24_25(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3328
+    if 'disease_terms' in value:
+        notes = value.get('notes', '')
+        notes += f' This sample had disease_terms {value.get("disease_terms", "")}, which has been removed via upgrade.'
+        value['notes'] = notes.strip()
+        del value['disease_terms']
+
+
+@upgrade_step('whole_organism', '26', '27')
+def whole_organism_26_27(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3329
+    if 'disease_terms' in value:
+        notes = value.get('notes', '')
+        notes += f' This sample had disease_terms {value.get("disease_terms", "")}, which has been removed via upgrade.'
+        value['notes'] = notes.strip()
+        del value['disease_terms']

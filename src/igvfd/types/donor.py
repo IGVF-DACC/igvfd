@@ -28,8 +28,6 @@ class Donor(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
-        Path('phenotypic_features.feature', include=['@id', 'feature', 'term_id',
-             'term_name', 'quantity', 'quantity_units', 'observation_date', 'status']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
     ]
     rev = {
@@ -53,8 +51,7 @@ class Donor(Item):
         return paths_filtered_by_status(request, superseded_by) or None
 
     set_status_up = [
-        'documents',
-        'phenotypic_features'
+        'documents'
     ]
     set_status_down = []
 

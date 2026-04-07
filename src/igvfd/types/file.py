@@ -178,7 +178,7 @@ class File(Item):
                 'classifications',
                 'status',
                 'summary',
-                'disease_terms',
+                'phenotypic_features',
                 'sample_terms',
                 'taxa',
                 'targeted_sample_term',
@@ -186,7 +186,7 @@ class File(Item):
                 'treatments'
             ]
         ),
-        Path('file_set.samples.disease_terms', include=[
+        Path('file_set.samples.phenotypic_features.feature', include=[
              '@id', 'status', 'term_name', 'summary']),
         Path('file_set.samples.sample_terms', include=[
              '@id', 'term_name', 'status']),

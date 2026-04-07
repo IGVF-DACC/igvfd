@@ -1,5 +1,6 @@
 ## Changelog for *`donor.json`*
 
+* Remove `phenotypic_features`. (04/15/2026)
 * Update `aliases` regex to add `hongbo-liu` as a namespace. (04/01/2026)
 * Update `aliases` regex to add `yang-li` as a namespace. (02/27/2026)
 * Add `is_on_anvil`. (02/18/2026)

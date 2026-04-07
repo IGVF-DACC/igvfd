@@ -194,3 +194,11 @@ def donor_13_14(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1789
     if 'publication_identifiers' in value:
         del value['publication_identifiers']
+
+
+@upgrade_step('human_donor', '14', '15')
+@upgrade_step('rodent_donor', '14', '15')
+def donor_14_15(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1804
+    if 'phenotypic_features' in value:
+        del value['phenotypic_features']

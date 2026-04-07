@@ -93,15 +93,6 @@ def test_taxa(award, lab, testapp):
     assert res.status_code == 422
 
 
-def test_patch_phenotypic_feature(rodent_donor, phenotypic_feature_basic, testapp):
-    res = testapp.patch_json(
-        rodent_donor['@id'],
-        {'phenotypic_features': [
-            phenotypic_feature_basic['@id']
-        ]})
-    assert res.status_code == 200
-
-
 def test_rodent_identifier_dependency(rodent_donor, award, lab, testapp):
     res = testapp.patch_json(
         rodent_donor['@id'],

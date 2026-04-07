@@ -1,6 +1,6 @@
 {
-    "hash": "3994a0b455a4fa71f5789ecade1800d6",
-    "index_name": "technical_sample_3994a0b4",
+    "hash": "d6795d3c03e550b6990631262b618745",
+    "index_name": "technical_sample_d6795d3c",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1676,9 +1676,6 @@
                             },
                             "description": {
                                 "type": "text"
-                            },
-                            "disease_terms": {
-                                "type": "keyword"
                             },
                             "documents": {
                                 "type": "keyword"

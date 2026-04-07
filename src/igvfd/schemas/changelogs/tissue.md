@@ -1,5 +1,9 @@
 ## Changelog for *`tissue/organ.json`*
 
+### Schema version 25
+
+* Remove `disease_terms`.
+
 ### Minor changes since schema version 24
 
 * Update `aliases` regex to add `hongbo-liu` as a namespace.

@@ -1,6 +1,6 @@
 {
-    "hash": "d24ff96c7a61c7e3c0ed06769bff10bc",
-    "index_name": "image_file_d24ff96c",
+    "hash": "121aa6bfd675bcc9cf9fc59e98f190e8",
+    "index_name": "image_file_121aa6bf",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -844,9 +844,6 @@
                                     "notes": {
                                         "type": "text"
                                     },
-                                    "phenotypic_features": {
-                                        "type": "keyword"
-                                    },
                                     "preview_timestamp": {
                                         "type": "date"
                                     },
@@ -1194,83 +1191,6 @@
                                     "description": {
                                         "type": "text"
                                     },
-                                    "disease_terms": {
-                                        "properties": {
-                                            "@id": {
-                                                "type": "keyword"
-                                            },
-                                            "@type": {
-                                                "type": "keyword"
-                                            },
-                                            "aliases": {
-                                                "type": "keyword"
-                                            },
-                                            "ancestors": {
-                                                "type": "keyword"
-                                            },
-                                            "comments": {
-                                                "type": "keyword"
-                                            },
-                                            "creation_timestamp": {
-                                                "type": "date"
-                                            },
-                                            "definition": {
-                                                "type": "keyword"
-                                            },
-                                            "deprecated_ntr_terms": {
-                                                "type": "keyword"
-                                            },
-                                            "description": {
-                                                "type": "text"
-                                            },
-                                            "is_a": {
-                                                "type": "keyword"
-                                            },
-                                            "name": {
-                                                "type": "keyword"
-                                            },
-                                            "notes": {
-                                                "type": "text"
-                                            },
-                                            "ontology": {
-                                                "type": "keyword"
-                                            },
-                                            "preview_timestamp": {
-                                                "type": "date"
-                                            },
-                                            "release_timestamp": {
-                                                "type": "date"
-                                            },
-                                            "schema_version": {
-                                                "type": "keyword"
-                                            },
-                                            "status": {
-                                                "type": "keyword"
-                                            },
-                                            "submitted_by": {
-                                                "type": "keyword"
-                                            },
-                                            "submitter_comment": {
-                                                "type": "keyword"
-                                            },
-                                            "summary": {
-                                                "type": "keyword"
-                                            },
-                                            "synonyms": {
-                                                "type": "keyword"
-                                            },
-                                            "term_id": {
-                                                "type": "keyword"
-                                            },
-                                            "term_name": {
-                                                "type": "keyword"
-                                            },
-                                            "uuid": {
-                                                "type": "keyword"
-                                            }
-                                        },
-                                        "type": "object"
-                                    },
                                     "documents": {
                                         "type": "keyword"
                                     },
@@ -1440,7 +1360,147 @@
                                         "type": "long"
                                     },
                                     "phenotypic_features": {
-                                        "type": "keyword"
+                                        "properties": {
+                                            "@id": {
+                                                "type": "keyword"
+                                            },
+                                            "@type": {
+                                                "type": "keyword"
+                                            },
+                                            "aliases": {
+                                                "type": "keyword"
+                                            },
+                                            "award": {
+                                                "type": "keyword"
+                                            },
+                                            "creation_timestamp": {
+                                                "type": "date"
+                                            },
+                                            "description": {
+                                                "type": "text"
+                                            },
+                                            "feature": {
+                                                "properties": {
+                                                    "@id": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "@type": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "aliases": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "ancestors": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "comments": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "creation_timestamp": {
+                                                        "type": "date"
+                                                    },
+                                                    "definition": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "deprecated_ntr_terms": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "description": {
+                                                        "type": "text"
+                                                    },
+                                                    "is_a": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "name": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "notes": {
+                                                        "type": "text"
+                                                    },
+                                                    "ontology": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "preview_timestamp": {
+                                                        "type": "date"
+                                                    },
+                                                    "release_timestamp": {
+                                                        "type": "date"
+                                                    },
+                                                    "schema_version": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "status": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "submitted_by": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "submitter_comment": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "summary": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "synonyms": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "term_id": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "term_name": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "uuid": {
+                                                        "type": "keyword"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "lab": {
+                                                "type": "keyword"
+                                            },
+                                            "notes": {
+                                                "type": "text"
+                                            },
+                                            "observation_date": {
+                                                "type": "keyword"
+                                            },
+                                            "preview_timestamp": {
+                                                "type": "date"
+                                            },
+                                            "quality": {
+                                                "type": "keyword"
+                                            },
+                                            "quantity": {
+                                                "store": true,
+                                                "type": "float"
+                                            },
+                                            "quantity_units": {
+                                                "type": "keyword"
+                                            },
+                                            "release_timestamp": {
+                                                "type": "date"
+                                            },
+                                            "schema_version": {
+                                                "type": "keyword"
+                                            },
+                                            "status": {
+                                                "type": "keyword"
+                                            },
+                                            "submitted_by": {
+                                                "type": "keyword"
+                                            },
+                                            "submitter_comment": {
+                                                "type": "keyword"
+                                            },
+                                            "summary": {
+                                                "type": "keyword"
+                                            },
+                                            "uuid": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "type": "object"
                                     },
                                     "pmi": {
                                         "store": true,
@@ -2376,9 +2436,6 @@
                                     },
                                     "description": {
                                         "type": "text"
-                                    },
-                                    "disease_terms": {
-                                        "type": "keyword"
                                     },
                                     "documents": {
                                         "type": "keyword"

@@ -198,3 +198,11 @@ def test_whole_organism_upgrade_25_26(upgrader, whole_organism_v25_1, whole_orga
     assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
                                       'https://www.protocols.io/view/678/ABC']
     assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
+
+
+def test_whole_organism_upgrade_26_27(upgrader, whole_organism_v26):
+    value = upgrader.upgrade('whole_organism', whole_organism_v26, current_version='26', target_version='27')
+    assert value['schema_version'] == '27'
+    assert 'disease_terms' not in value
+    assert 'This sample had disease_terms [\'/phenotype-terms/HP_0001658/\'], which has been removed via upgrade.' in value.get(
+        'notes', '')

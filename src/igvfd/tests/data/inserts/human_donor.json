@@ -17,9 +17,6 @@
         ],
         "sex": "male",
         "taxa": "Homo sapiens",
-        "phenotypic_features": [
-            "/phenotypic-features/ae1b4a0b-78e6-af0a-8e6d-c0c9b45905fa/"
-        ],
         "collections": [
             "ENCODE"
         ],
@@ -52,9 +49,6 @@
         ],
         "sex": "female",
         "taxa": "Homo sapiens",
-        "phenotypic_features": [
-            "/phenotypic-features/2eb275d6-8fb3-11ed-a1eb-0242ac120002/"
-        ],
         "collections": [
             "ENCODE"
         ],

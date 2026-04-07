@@ -19,8 +19,8 @@ def biosample():
             'sample_terms.term_name': {
                 'title': 'Sample'
             },
-            'disease_terms.term_name': {
-                'title': 'Disease'
+            'phenotypic_features.feature.term_name': {
+                'title': 'Phenotypic Features'
             },
             'biosample_qualifiers': {
                 'title': 'Biosample Qualifier',
