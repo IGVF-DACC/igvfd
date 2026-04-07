@@ -29,3 +29,9 @@ def test_software_upgrade_5_6(upgrader, software_v5):
     value = upgrader.upgrade('software', software_v5, current_version='5', target_version='6')
     assert value['schema_version'] == '6'
     assert 'publication_identifiers' not in value
+
+
+def test_software_upgrade_6_7(upgrader, software_v6):
+    value = upgrader.upgrade('software', software_v6, current_version='6', target_version='7')
+    assert value['schema_version'] == '7'
+    assert value['name'] == 'test_@software_with_space_in_name_.'
