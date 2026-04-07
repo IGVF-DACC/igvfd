@@ -1459,6 +1459,51 @@ def audit_anvil_file_fileset_mismatch(value, system):
             yield AuditFailure(audit_msg_missed_files.get('audit_category', ''), f'{detail} {audit_msg_missed_files.get("audit_description", "")}', level=audit_msg_missed_files.get('audit_level', ''))
 
 
+def audit_preferred_assay_title(value, system):
+    '''
+    [
+        {
+            "audit_description": "File sets are expected to specify an appropriate preferred assay titles for its respective assay term name.",
+            "audit_category": "inconsistent preferred assay titles",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message_inconsistent = get_audit_message(audit_preferred_assay_title, index=0)
+    assay_term = value.get('assay_term', '')
+    if not assay_term:
+        return
+    assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+    assay_titles = value.get('assay_titles', [])
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    valid_titles = assay_object.get('preferred_assay_titles', [])
+
+    if preferred_assay_titles and not valid_titles:
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has '
+            f'`preferred_assay_titles` ({", ".join(preferred_assay_titles)}), but the associated `assay_term`'
+            f'has no `preferred_assay_titles` to validate against.'
+        )
+        yield AuditFailure(
+            audit_message_inconsistent.get('audit_category', ''),
+            f'{detail} {audit_message_inconsistent.get("audit_description", "")}',
+            level=audit_message_inconsistent.get('audit_level', '')
+        )
+
+    elif preferred_assay_titles and not any(title in valid_titles for title in preferred_assay_titles):
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has '
+            f'`assay_titles` {", ".join(assay_titles)}, but none of its `preferred_assay_titles` values '
+            f'({", ".join(preferred_assay_titles)}) are valid. Expected one of: {", ".join(valid_titles)}.'
+        )
+        yield AuditFailure(
+            audit_message_inconsistent.get('audit_category', ''),
+            f'{detail} {audit_message_inconsistent.get("audit_description", "")}',
+            level=audit_message_inconsistent.get('audit_level', '')
+        )
+
+
 function_dispatcher_file_set_object = {
     'audit_no_files': audit_no_files,
     'audit_inconsistent_sequencing_kit': audit_inconsistent_sequencing_kit,
@@ -1477,7 +1522,8 @@ function_dispatcher_measurement_set_object = {
     'audit_inconsistent_location_files': audit_inconsistent_location_files,
     'audit_MPRA_read_names': audit_MPRA_read_names,
     'audit_single_cell_read_names': audit_single_cell_read_names,
-    'audit_inconsistent_controlled_access': audit_inconsistent_controlled_access
+    'audit_inconsistent_controlled_access': audit_inconsistent_controlled_access,
+    'audit_preferred_assay_title': audit_preferred_assay_title
 }
 
 function_dispatcher_auxiliary_set_object = {
@@ -1527,7 +1573,8 @@ function_dispatcher_model_set_object = {
 }
 
 function_dispatcher_curated_set_object = {
-    'audit_missing_genome_transcriptome_references': audit_missing_genome_transcriptome_references
+    'audit_missing_genome_transcriptome_references': audit_missing_genome_transcriptome_references,
+    'audit_preferred_assay_title': audit_preferred_assay_title
 }
 
 function_dispatcher_pseudobulk_set_object = {

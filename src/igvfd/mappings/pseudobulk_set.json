@@ -1,6 +1,6 @@
 {
-    "hash": "d038f8f2dc7a1fdd4f4a14a11d49b728",
-    "index_name": "pseudobulk_set_d038f8f2",
+    "hash": "5cb1fda3e4e0c364c7673ae1696937f8",
+    "index_name": "pseudobulk_set_5cb1fda3",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -2285,6 +2285,9 @@
                                 "type": "keyword"
                             },
                             "assay_slims": {
+                                "type": "keyword"
+                            },
+                            "assay_term": {
                                 "type": "keyword"
                             },
                             "assay_titles": {
