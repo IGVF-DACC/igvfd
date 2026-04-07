@@ -165,6 +165,8 @@ class File(Item):
                 'data_use_limitation_summaries',
                 'summary',
                 'controlled_access',
+                'cell_type',
+                'cell_qualifier'
             ]
         ),
         Path(
@@ -215,7 +217,8 @@ class File(Item):
         Path('file_set.assay_term', include=['@id', 'term_name', 'assay_slims']),
         Path('file_format_specifications', include=['@id', 'description', 'standardized_file_format']),
         Path('analysis_step_version.software_versions', include=['@id', 'summary', 'software_versions']),
-        Path('file_set.lab', include=['@id', 'title'])
+        Path('file_set.lab', include=['@id', 'title']),
+        Path('file_set.cell_type', include=['@id', 'term_name', 'status'])
     ]
     rev = {
         'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),
