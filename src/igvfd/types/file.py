@@ -1259,7 +1259,7 @@ class TabularFile(File):
     })
     def hashtag_barcode_map_for(self, request, hashtag_barcode_map_for):
         return paths_filtered_by_status(request, hashtag_barcode_map_for) or None
-    
+
     @calculated_property(
         define=True,
         schema={
