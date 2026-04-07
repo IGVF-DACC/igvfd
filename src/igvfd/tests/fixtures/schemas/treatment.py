@@ -55,7 +55,7 @@ def treatment_thermal(testapp, lab, award):
 @pytest.fixture
 def treatment_diet(testapp, lab, award):
     item = {
-        'treatment_term_id': 'NTR:0001001',
+        'treatment_term_id': 'NCIT:C15222',
         'treatment_term_name': 'High Fat Diet',
         'treatment_type': 'diet',
         'duration': 84,
@@ -71,7 +71,7 @@ def treatment_diet(testapp, lab, award):
 @pytest.fixture
 def treatment_diet_no_duration(testapp, lab, award):
     item = {
-        'treatment_term_id': 'NTR:0001003',
+        'treatment_term_id': 'NCIT:C15222',
         'treatment_term_name': 'High Fat Diet',
         'treatment_type': 'diet',
         'purpose': 'control',
@@ -85,7 +85,7 @@ def treatment_diet_no_duration(testapp, lab, award):
 @pytest.fixture
 def treatment_normal_diet(testapp, lab, award):
     item = {
-        'treatment_term_id': 'NTR:0001002',
+        'treatment_term_id': 'NCIT:C15222',
         'treatment_term_name': 'Normal Diet',
         'treatment_type': 'diet',
         'duration': 84,
@@ -282,3 +282,19 @@ def treatment_v10_thermal(treatment_thermal):
     item['schema_version'] = '10'
     item['treatment_type'] = 'thermal'
     return item
+
+
+@pytest.fixture
+def treatment_v11(lab, award):
+    return {
+        'treatment_term_id': 'NTR:0001001',
+        'treatment_term_name': 'High Fat Diet',
+        'treatment_type': 'diet',
+        'duration': 84,
+        'duration_units': 'day',
+        'purpose': 'perturbation',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'depletion': False,
+        'schema_version': '11',
+    }

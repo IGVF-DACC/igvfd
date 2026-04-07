@@ -1,5 +1,9 @@
 ## Changelog for *`treatment.json`*
 
+### Schema version 12
+
+* Diet treatments require `treatment_term_id` `NCIT:C15222`.
+
 ### Minor changes since schema version 11
 
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
