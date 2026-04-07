@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 20
 
+* Extend `content_type` enum list to include `barcode to well mapping`.
 * Add calculated property `hashtag_barcode_map_for`.
 * Extend `content_type` enum list to include `predicted gene regulatory networks`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
