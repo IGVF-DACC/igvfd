@@ -1,6 +1,6 @@
 ## Changelog for *`sample.json`*
 
-* Rename `nucleic_acid_delivery` to `construct_delivery_methods`. (04/08/2026)
+* Rename `nucleic_acid_delivery` to `construct_delivery_methods`. (04/15/2026)
 * Update `aliases` regex to add `hongbo-liu` as a namespace. (04/01/2026)
 * Extend `nucleic_acid_delivery` enum list to include `adeno-associated viral (AAV) transduction`. (03/25/2026)
 * Update `aliases` regex to add `yang-li` as a namespace. (02/27/2026)
