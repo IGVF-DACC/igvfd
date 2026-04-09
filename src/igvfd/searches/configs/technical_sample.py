@@ -43,7 +43,7 @@ def technical_sample():
                 'title': 'Associated Phenotype'
             },
             'construct_delivery_methods': {
-                'title': 'Construct Delivery Method'
+                'title': 'Construct Delivery Methods'
             },
             'treatments.purpose': {
                 'title': 'Treatment Purpose'

@@ -55,7 +55,7 @@ def whole_organism():
                 'title': 'Associated Phenotype'
             },
             'construct_delivery_methods': {
-                'title': 'Construct Delivery Method'
+                'title': 'Construct Delivery Methods'
             },
             'biomarkers.name_quantification': {
                 'title': 'Biomarker'
