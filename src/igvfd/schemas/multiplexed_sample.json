@@ -153,10 +153,6 @@
             "comment": "Do not submit. MOI should only be specified on individual samples contributing to a multiplexed sample object.",
             "permission": "admin_only"
         },
-        "construct_delivery_methods": {
-            "comment": "Do not submit. Construct delivery methods should only be specified on individual samples contributing to a multiplexed sample object.",
-            "permission": "admin_only"
-        },
         "time_post_library_delivery": {
             "comment": "Do not submit. Time post library delivery should only be specified on individual samples contributing to a multiplexed sample object.",
             "permission": "admin_only"

@@ -2,7 +2,7 @@
 
 ### Schema version 12
 
-* Rename `nucleic_acid_delivery` to `construct_delivery_methods`.
+* Add calculated property `construct_delivery_methods`.
 
 ### Minor changes since schema version 11
 

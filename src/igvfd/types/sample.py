@@ -1365,6 +1365,24 @@ class MultiplexedSample(Sample):
 
     @calculated_property(
         schema={
+            'title': 'Construct Delivery Methods',
+            'type': 'array',
+            'description': 'The construct delivery methods of the samples included in this multiplexed sample.',
+            'minItems': 1,
+            'uniqueItems': True,
+            'notSubmittable': True,
+            'items': {
+                'title': 'Construct Delivery Method',
+                'type': 'string'
+            }
+        }
+    )
+    def construct_delivery_methods(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(
+            request, multiplexed_samples, 'construct_delivery_methods')
+
+    @calculated_property(
+        schema={
             'title': 'Institutional Certificates',
             'type': 'array',
             'description': 'The institutional certificates of the samples included in this multiplexed sample.',
