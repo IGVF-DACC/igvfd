@@ -14,29 +14,26 @@ def extract_related_file_sets_and_files(full_file_set, can_downstream):
         if link_field not in full_file_set:
             continue
         value = full_file_set[link_field]
-        if value:
-            if isinstance(value, list):
-                related_file_sets.update((v, False) for v in value)
-            else:
-                related_file_sets.add((value, False))
+        if isinstance(value, list):
+            related_file_sets.update((v, False) for v in value)
+        else:
+            related_file_sets.add((value, False))
     if can_downstream:
         for link_field in RECURSE_FILE_SET_DOWNSTREAM_FIELDS.get(file_set_type, []):
             if link_field not in full_file_set:
                 continue
             value = full_file_set[link_field]
-            if value:
-                if isinstance(value, list):
-                    related_file_sets.update((v, True) for v in value)
+            if isinstance(value, list):
+                related_file_sets.update((v, True) for v in value)
             else:
                 related_file_sets.add((value, True))
     for field in RECURSE_FILE_FIELDS:
         if field in full_file_set:
             value = full_file_set[field]
-            if value:
-                if isinstance(value, list):
-                    files.update(value)
-                else:
-                    files.add(value)
+            if isinstance(value, list):
+                files.update(value)
+            else:
+                files.add(value)
     return {
         'related_file_sets': related_file_sets,
         'files': files,
