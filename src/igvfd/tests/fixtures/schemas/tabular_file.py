@@ -351,22 +351,6 @@ def tabular_file_v20e(testapp, lab, award, principal_analysis_set):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
-        'file_format': 'tsv',
-        'file_set': principal_analysis_set['@id'],
-        'content_type': 'peaks',
-        'controlled_access': False,
-        'schema_version': '20',
-        'status': 'deleted'
-    }
-    return item
-
-
-@pytest.fixture
-def tabular_file_v20f(testapp, lab, award, principal_analysis_set):
-    item = {
-        'award': award['@id'],
-        'lab': lab['@id'],
         'status': 'in progress',
         'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
         'file_format': 'tsv',

@@ -1,6 +1,72 @@
 from snovault import upgrade_step
 
 
+excluded_content_types = [
+    'barcode onlist',
+    'barcode replacement',
+    'barcode to cluster mapping',
+    'barcode to donor mapping',
+    'barcode to element mapping',
+    'barcode to hashtag mapping',
+    'barcode to sample mapping',
+    'barcode to TF overexpression mapping',
+    'barcode to variant mapping',
+    'calibrated coding variant effect thresholds',
+    'cell annotations',
+    'cell hashing barcodes',
+    'coding variant effects',
+    'coding_variants',
+    'complexes',
+    'derived barcode mapping',
+    'diseases_genes',
+    'documentation (readme)',
+    'drugs',
+    'external source data',
+    'genes',
+    'genes_genes',
+    'genes_pathways',
+    'genes_terms',
+    'genome index',
+    'genome reference',
+    'genomic_elements',
+    'genomic_elements_genes',
+    'genomic_elements_genomic_elements',
+    'go_terms_proteins',
+    'heritability enrichment',
+    'index plate',
+    'individual cells profile',
+    'machine learning model features',
+    'marker gene activity',
+    'marker genes',
+    'motifs',
+    'motifs_proteins',
+    'normalized variants profile',
+    'ontology_terms',
+    'pathogenicity validation',
+    'pathways',
+    'pathways_pathways',
+    'pipeline parameters',
+    'primer sequences',
+    'protein sequences',
+    'protein stability fluorescence score',
+    'protein to protein interaction score',
+    'proteins_proteins',
+    'sample sort parameters',
+    'selected normalized variants profile',
+    'studies_variants_phenotypes',
+    'tissue positions',
+    'transcriptome index',
+    'transcriptome reference',
+    'variants_diseases',
+    'variants_drugs',
+    'variants_genes',
+    'variants_genomic_elements',
+    'variants_proteins',
+    'variants_proteins_terms',
+    'variants_variants'
+]
+
+
 @upgrade_step('sequence_file', '2', '3')
 def file_2b_3(value, system):
     # https://igvf.atlassian.net/browse/IGVF-615
@@ -683,72 +749,8 @@ def reference_file_22_23(value, system):
 
 
 @upgrade_step('tabular_file', '20', '21')
-def tabular_file_20_21(value, system):
+def tabular_file_20_21(value, system, excluded_content_types):
     # https://igvf.atlassian.net/browse/IGVF-2887
-    excluded_content_types = [
-        'barcode onlist',
-        'barcode replacement',
-        'barcode to cluster mapping',
-        'barcode to donor mapping',
-        'barcode to element mapping',
-        'barcode to hashtag mapping',
-        'barcode to sample mapping',
-        'barcode to TF overexpression mapping',
-        'barcode to variant mapping',
-        'calibrated coding variant effect thresholds',
-        'cell annotations',
-        'cell hashing barcodes',
-        'coding variant effects',
-        'coding_variants',
-        'complexes',
-        'derived barcode mapping',
-        'diseases_genes',
-        'documentation (readme)',
-        'drugs',
-        'external source data',
-        'genes',
-        'genes_genes',
-        'genes_pathways',
-        'genes_terms',
-        'genome index',
-        'genome reference',
-        'genomic_elements',
-        'genomic_elements_genes',
-        'genomic_elements_genomic_elements',
-        'go_terms_proteins',
-        'heritability enrichment',
-        'index plate',
-        'individual cells profile',
-        'machine learning model features',
-        'marker gene activity',
-        'marker genes',
-        'motifs',
-        'motifs_proteins',
-        'normalized variants profile',
-        'ontology_terms',
-        'pathogenicity validation',
-        'pathways',
-        'pathways_pathways',
-        'pipeline parameters',
-        'primer sequences',
-        'protein sequences',
-        'protein stability fluorescence score',
-        'protein to protein interaction score',
-        'proteins_proteins',
-        'sample sort parameters',
-        'selected normalized variants profile',
-        'studies_variants_phenotypes',
-        'tissue positions',
-        'transcriptome index',
-        'transcriptome reference',
-        'variants_diseases',
-        'variants_drugs',
-        'variants_genes',
-        'variants_genomic_elements',
-        'variants_proteins',
-        'variants_proteins_terms',
-        'variants_variants'
-    ]
     notes = value.get('notes', '')
     if 'assembly' in value:
         value['submitted_assembly'] = value.get('assembly', '')
@@ -761,15 +763,11 @@ def tabular_file_20_21(value, system):
     if 'reference_files' in value or value['content_type'] in excluded_content_types:
         return
     else:
-        if value['status'] == 'deleted':
+        if 'submitted_assembly' not in value:
             value['submitted_assembly'] = 'unknown'
-            notes += f' This deleted file\'s submitted_assembly was automatically set to unknown because the file had no assembly nor reference_files.'
-        else:
-            if 'submitted_assembly' not in value:
-                value['submitted_assembly'] = 'unknown'
-                notes += f' This file\'s submitted_assembly was automatically set to unknown because the file had no assembly nor reference_files.'
-            if 'submitted_transcriptome_annotation' not in value:
-                value['submitted_transcriptome_annotation'] = 'unknown'
-                notes += f' This file\'s submitted_transcriptome_annotation was automatically set to unknown because the file had no transcriptome_annotation nor reference_files.'
+            notes += f' This file\'s submitted_assembly was automatically set to unknown because the file had no assembly nor reference_files.'
+        if 'submitted_transcriptome_annotation' not in value:
+            value['submitted_transcriptome_annotation'] = 'unknown'
+            notes += f' This file\'s submitted_transcriptome_annotation was automatically set to unknown because the file had no transcriptome_annotation nor reference_files.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
