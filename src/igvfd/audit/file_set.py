@@ -28,6 +28,7 @@ TRANSCRIPT_ASSAY_TERMS = ['/assay-terms/OBI_0003090/',  # bulk RNA-seq assay
                           '/assay-terms/OBI_0002631/',  # single-cell RNA sequencing assay
                           '/assay-terms/OBI_0003109/',  # single-nucleus RNA sequencing assay
                           '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
+                          '/assay-terms/NTR_0001101/',  # in vivo CRISPR screen using single cell RNA-seq
                           '/assay-terms/OBI_0003662/',  # single-nucleus methylcytosine and transcriptome sequencing assay
                           '/assay-terms/NTR_0000761/',  # spatial transcriptomics
                           '/assay-terms/NTR_0000735/'   # single cell nascent transcription sequencing
@@ -48,8 +49,10 @@ def load_chrom_sizes_file(file_path):
 def single_cell_check(system, value, object_type, single_cell_assay_terms=list(SINGLE_CELL_ASSAY_TERMS.keys()), include_perturb_seq=False):
     if include_perturb_seq:
         # in vitro CRISPR screen using single-cell RNA-seq: '/assay-terms/OBI_0003660/'
+        # in vivo CRISPR screen using single cell RNA-seq: '/assay-terms/NTR_0001101/'
         # in vitro CRISPR screen using single-cell ATAC-seq: '/assay-terms/NTR_0000798/'
-        single_cell_assay_terms = single_cell_assay_terms + ['/assay-terms/OBI_0003660/', '/assay-terms/NTR_0000798/']
+        single_cell_assay_terms = single_cell_assay_terms + \
+            ['/assay-terms/OBI_0003660/', '/assay-terms/NTR_0000798/', '/assay-terms/NTR_0001101/']
     if object_type == 'Measurement set':
         assay_term = value.get('assay_term')
         return assay_term in single_cell_assay_terms

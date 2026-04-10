@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 7
 
+* Extend `preferred_assay_titles` enum list to include `in vivo MPRA`.
+* Extend `preferred_assay_titles` enum list to include `in vivo Perturb-seq`.
 * Update `source_url` regex to include `https://developer.illumina.com`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.1`.

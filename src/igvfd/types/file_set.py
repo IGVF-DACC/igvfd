@@ -498,7 +498,10 @@ class AnalysisSet(FileSet):
         multiplexing_methods = set()
         crispr_screen_terms = [
             '/assay-terms/OBI_0003659/',
-            '/assay-terms/OBI_0003661/'
+            '/assay-terms/OBI_0003661/',
+            '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
+            '/assay-terms/NTR_0000798/',  # in vitro CRISPR screen using single-cell ATAC-seq
+            '/assay-terms/NTR_0001101/',  # in vivo CRISPR screen using single cell RNA-seq
         ]
         any_sample_sorted_from = False
 

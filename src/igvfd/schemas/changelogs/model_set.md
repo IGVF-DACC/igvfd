@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 6
 
+* Extend `preferred_assay_titles` enum list to include `in vivo MPRA`.
+* Extend `preferred_assay_titles` enum list to include `in vivo Perturb-seq`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Add `is_on_anvil`.
