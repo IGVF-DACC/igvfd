@@ -181,10 +181,12 @@ def test_audit_preferred_assay_title_model_set(
     assay_term_starr,
     assay_term_atac
 ):
+
     testapp.patch_json(
         model_set_no_input['@id'],
         {
-            'assay_terms': [assay_term_starr['@id'], assay_term_atac['@id']]
+            'assay_terms': [assay_term_starr['@id'], assay_term_atac['@id']],
+            'preferred_assay_titles': ['RNA-seq']
         }
     )
     res = testapp.get(model_set_no_input['@id'] + '@@audit')
