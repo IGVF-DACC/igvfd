@@ -685,7 +685,9 @@ def reference_file_22_23(value, system):
 @upgrade_step('tabular_file', '20', '21')
 def tabular_file_20_21(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2887
-    excluded_content_types = [
+    # This list of excluded content types is only relevant to v20 of Tabular File.
+    # It may not be applicable to any future versions of the schema.
+    excluded_content_types_v20 = [
         'barcode onlist',
         'barcode replacement',
         'barcode to cluster mapping',
@@ -758,7 +760,7 @@ def tabular_file_20_21(value, system):
         value['submitted_transcriptome_annotation'] = value.get('transcriptome_annotation', '')
         notes += f' The submitted transcriptome annotation {value.get("transcriptome_annotation", "")} was moved to the submitted_transcriptome_annotation property.'
         del value['transcriptome_annotation']
-    if 'reference_files' in value or value['content_type'] in excluded_content_types:
+    if 'reference_files' in value or value['content_type'] in excluded_content_types_v20:
         return
     else:
         if 'submitted_assembly' not in value:
