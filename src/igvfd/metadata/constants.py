@@ -174,16 +174,37 @@ FROM_FILE_FIELDS = OrderedDict(
 )
 
 
-RECURSE_FILE_SET_LINK_FIELDS = [
-    'construct_library_sets',
-    'control_file_sets',
-    'measurement_sets',
-    'control_for',
-    'input_file_sets',
-    'input_for',
-    'auxiliary_sets',
-    'related_measurement_sets',
-]
+RECURSE_FILE_SET_FIELDS = {
+    'MeasurementSet': [
+        'auxiliary_sets',
+        'control_file_sets',
+        'construct_library_sets',
+    ],
+    'AnalysisSet': [
+        'input_file_sets',
+    ],
+    'AuxiliarySet': [
+        'measurement_sets',
+    ],
+    'ConstructLibrarySet': [],
+    'CuratedSet': [],
+    'ModelSet': [
+        'input_file_sets',
+    ],
+    'PredictionSet': [
+        'input_file_sets',
+    ],
+}
+
+
+RECURSE_FILE_SET_DOWNSTREAM_FIELDS = {
+    'MeasurementSet': [
+        'input_for'
+    ],
+    'AnalysisSet': [
+        'input_for'
+    ],
+}
 
 
 RECURSE_FILE_FIELDS = [
