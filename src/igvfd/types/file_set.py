@@ -1648,14 +1648,14 @@ class ModelSet(FileSet):
         }
     )
     def assay_titles(self, request, assay_terms=None):
+        assay_list = set()
         if assay_terms:
-            assay_titles = []
             for assay_term in assay_terms:
                 assay_term_obj = request.embed(assay_term, '@@object?skip_calculated=true')
                 term_name = assay_term_obj.get('term_name')
                 if term_name:
-                    assay_titles.append(term_name)
-            return assay_titles if assay_titles else None
+                    assay_list.add(term_name)
+        return sorted(assay_list) if assay_list else None
 
     @calculated_property(
         schema={
