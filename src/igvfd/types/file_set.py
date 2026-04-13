@@ -2282,7 +2282,7 @@ class PseudobulkSet(FileSet):
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
         Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline', 'status', 'workflow_version']),
-        Path('cell_type', include=['@id', 'term_name', 'status']),
+        Path('cell_type', include=['@id', 'term_name', 'term_id', 'status', 'definition']),
         Path(
             'samples.sample_terms',
             include=[
