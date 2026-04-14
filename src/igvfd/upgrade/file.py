@@ -759,9 +759,7 @@ def tabular_file_20_21(value, system):
         value['submitted_transcriptome_annotation'] = value.get('transcriptome_annotation', '')
         notes += f' The submitted transcriptome annotation {value.get("transcriptome_annotation", "")} was moved to the submitted_transcriptome_annotation property.'
         del value['transcriptome_annotation']
-    if 'reference_files' in value or value['content_type'] in excluded_content_types_v20:
-        return
-    else:
+    if not ('reference_files' in value or value['content_type'] in excluded_content_types_v20):
         if 'submitted_assembly' not in value:
             value['submitted_assembly'] = 'unknown'
             notes += f' This file\'s submitted_assembly was automatically set to unknown because the file had no assembly nor reference_files.'
