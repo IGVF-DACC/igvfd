@@ -172,6 +172,9 @@ def pseudobulk_set():
             'cell_type.term_name': {
                 'title': 'Cell Annotation',
             },
+            'cell_qualifier': {
+                'title': 'Cell Qualifier',
+            },
             'data_use_limitation_summaries': {
                 'title': 'Data Use Limitation Summaries'
             },
@@ -207,6 +210,9 @@ def pseudobulk_set():
             },
             'files.content_type': {
                 'title': 'File Content Type'
+            },
+            'workflows': {
+                'title': 'Workflows'
             }
         },
     }
@@ -233,7 +239,10 @@ def pseudobulk_set_report_view():
             'title': 'File Set Type'
         },
         'cell_type.term_name': {
-            'title': 'Cell Annotation',
+            'title': 'Cell Type',
+        },
+        'cell_qualifier': {
+            'title': 'Cell Qualifier',
         },
         'files.content_type': {
             'title': 'File Content Type'
