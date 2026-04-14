@@ -646,7 +646,7 @@ def whole_organism_26_27(value, system):
 @upgrade_step('tissue', '25', '26')
 @upgrade_step('whole_organism', '27', '28')
 @upgrade_step('in_vitro_system', '30', '31')
-@upgrade_step('technical_sample', '16', '17')
+@upgrade_step('technical_sample', '15', '16')
 @upgrade_step('multiplexed_sample', '11', '12')
 def sample_24_25(value, system):
     if 'nucleic_acid_delivery' not in value:
