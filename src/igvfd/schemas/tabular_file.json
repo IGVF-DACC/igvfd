@@ -574,7 +574,7 @@
             }
         },
         "submitted_transcriptome_annotation": {
-            "title": "Submitted_Transcriptome Annotation",
+            "title": "Submitted Transcriptome Annotation",
             "description": "The annotation and version of the reference resource.",
             "comment": "This property is a placeholder for files which had submitted transcriptome annotation metadata but no reference files.",
             "permission": "admin_only",
