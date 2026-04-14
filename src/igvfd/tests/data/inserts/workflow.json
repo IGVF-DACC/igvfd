@@ -86,5 +86,23 @@
         "preferred_assay_titles": [
             "10x multiome"
         ]
+    },
+    {
+        "uuid": "c2fd839c-841f-4f7e-acaf-c19f1a737a74",
+        "accession": "IGVFWF0024DRGN",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:illumina_dragen_workflow"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "name": "Illumina DRAGEN Pipeline",
+        "source_url": "https://developer.illumina.com/dragen",
+        "workflow_version": "v1.34.0",
+        "uniform_pipeline": false,
+        "preferred_assay_titles": [
+            "WGS"
+        ]
     }
 ]
