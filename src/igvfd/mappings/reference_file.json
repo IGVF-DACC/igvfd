@@ -1,6 +1,6 @@
 {
-    "hash": "4f89ada3cd1b49779c310724df48f94d",
-    "index_name": "reference_file_4f89ada3",
+    "hash": "0c8f1dd7f825251e2135816800df6589",
+    "index_name": "reference_file_0c8f1dd7",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -642,6 +642,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "assay_terms": {
+                                "type": "keyword"
                             },
                             "assay_titles": {
                                 "type": "keyword"
