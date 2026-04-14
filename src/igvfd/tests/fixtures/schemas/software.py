@@ -53,3 +53,13 @@ def software_v5(software):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def software_v6(software):
+    item = software.copy()
+    item.update({
+        'schema_version': '6',
+        'name': 'test @software with space in name . '
+    })
+    return item

@@ -1,5 +1,9 @@
 ## Changelog for *`software.json`*
 
+### Schema version 7
+
+* Update `name` regex to `^[a-z0-9\\-_@.]+$`.
+
 ### Minor changes since schema version 6
 
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
