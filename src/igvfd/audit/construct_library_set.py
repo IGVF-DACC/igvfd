@@ -123,7 +123,8 @@ def audit_integrated_content_files(value, system):
     CRISPR_assays = [
         '/assay-terms/OBI_0003659/',  # in vitro CRISPR screen assay
         '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
-        '/assay-terms/OBI_0003661/'  # in vitro CRISPR screen using flow cytometry
+        '/assay-terms/OBI_0003661/',  # in vitro CRISPR screen using flow cytometry
+        '/assay-terms/NTR_0001101/',  # in vivo CRISPR screen using single cell RNA-seq
     ]
     MPRA_assays = [
         '/assay-terms/OBI_0002675/'  # massively parallel reporter assay

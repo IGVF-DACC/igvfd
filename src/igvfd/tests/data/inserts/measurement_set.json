@@ -889,5 +889,45 @@
         "preferred_assay_titles": [
             "SGE-RNA"
         ]
+    },
+    {
+        "aliases": [
+            "igvf:in_vivo_perturb-seq"
+        ],
+        "award": "1UM1HG012053-01",
+        "lab": "/labs/tim-reddy/",
+        "status": "released",
+        "release_timestamp": "2026-04-06T12:34:56Z",
+        "uuid": "4e958230-b466-4da8-bae7-9a6f3c5ee291",
+        "accession": "IGVFDS0003IVPS",
+        "samples": [
+            "/multiplexed-samples/IGVFSM0000MPXD/"
+        ],
+        "assay_term": "/assay-terms/NTR_0001101/",
+        "preferred_assay_titles": [
+            "in vivo Perturb-seq"
+        ],
+        "strand_specificity": "5 prime to 3 prime",
+        "library_preparation_kit": "10X Chromium Single Cell 5 prime v3",
+        "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:in_vivo_mpra"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "release_timestamp": "2026-04-06T12:34:56Z",
+        "uuid": "667c36d8-b67d-42b7-9a34-77f075e9a59c",
+        "accession": "IGVFDS0003IVMP",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0002675/",
+        "preferred_assay_titles": [
+            "in vivo MPRA"
+        ],
+        "file_set_type": "experimental data"
     }
 ]

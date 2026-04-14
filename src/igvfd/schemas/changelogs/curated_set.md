@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 9
 
+* Extend `preferred_assay_titles` enum list to include `in vivo MPRA`.
+* Extend `preferred_assay_titles` enum list to include `in vivo Perturb-seq`.
 * Add `assay_term`.
 * Add `preferred_assay_titles`.
 * Add calculated property `assay_titles`.

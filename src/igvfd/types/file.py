@@ -1103,7 +1103,8 @@ class ConfigurationFile(File):
 
         single_cell_assay_term_names = list(SINGLE_CELL_ASSAY_TERMS.values()) + [
             'in vitro CRISPR screen using single-cell RNA-seq',
-            'in vitro CRISPR screen using single-cell ATAC-seq'
+            'in vitro CRISPR screen using single-cell ATAC-seq',
+            'in vivo CRISPR screen using single cell RNA-seq',
         ]
 
         # If not seqspec, return False
@@ -1134,7 +1135,11 @@ class ConfigurationFile(File):
 
         # If any auxiliary set is linked, only validate when it’s Perturb-seq
         if any(file_set.startswith('/auxiliary-sets/') for file_set in linked_file_sets):
-            return ('in vitro CRISPR screen using single-cell RNA-seq' in assay_term_names or 'in vitro CRISPR screen using single-cell ATAC-seq' in assay_term_names)
+            return (
+                'in vitro CRISPR screen using single-cell RNA-seq' in assay_term_names
+                or 'in vivo CRISPR screen using single cell RNA-seq' in assay_term_names
+                or 'in vitro CRISPR screen using single-cell ATAC-seq' in assay_term_names
+            )
 
         # Otherwise, validate if any single-cell assay, including Perturb-seq is present
         return any(name in single_cell_assay_term_names for name in assay_term_names)
