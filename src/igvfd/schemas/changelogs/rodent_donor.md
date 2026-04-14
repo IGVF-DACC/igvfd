@@ -1,5 +1,9 @@
 ## Changelog for *`rodent_donor.json`*
 
+### Schema version 15
+
+* Remove `phenotypic_features`.
+
 ### Minor changes since schema version 14
 
 * Update `aliases` regex to add `hongbo-liu` as a namespace.

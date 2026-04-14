@@ -19,8 +19,8 @@ def tissue():
             'sample_terms.term_name': {
                 'title': 'Sample'
             },
-            'disease_terms.term_name': {
-                'title': 'Disease'
+            'phenotypic_features.feature.term_name': {
+                'title': 'Phenotypic Features'
             },
             'preservation_method': {
                 'title': 'Preservation Method',

@@ -167,7 +167,9 @@ class Sample(Item):
         Path('multiplexed_in', include=['@id', 'accession', 'status']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
         Path('sample_terms', include=['@id', 'term_name', 'status']),
-        Path('disease_terms', include=['@id', 'term_name', 'status']),
+        Path('phenotypic_features', include=['@id', 'feature', 'term_name',
+             'status', 'quantity', 'quantity_units', 'quality', 'observation_date']),
+        Path('phenotypic_features.feature', include=['@id', 'term_id', 'term_name', 'status']),
         Path('treatments', include=['@id', 'purpose', 'treatment_type',
              'status', 'treatment_term_name', 'depletion']),
         Path('biomarkers.gene', include=['@id', 'name_quantification', 'classification', 'gene', 'symbol', 'status']),
@@ -344,7 +346,7 @@ class Biosample(Sample):
     embedded_with_frame = Sample.embedded_with_frame + [Path('originated_from', include=['@id', 'accession', 'status'])]
 
     audit_inherit = Sample.audit_inherit + [
-        'disease_terms',
+        'phenotypic_features',
         'treatments',
         'modifications',
     ]
@@ -418,7 +420,7 @@ class Biosample(Sample):
     )
     def upper_bound_age_in_hours(self, upper_bound_age=None, age_units=None):
         conversion_factors = {
-            'minute': 1/60,
+            'minute': 1 / 60,
             'hour': 1,
             'day': 24,
             'week': 168,
@@ -426,7 +428,7 @@ class Biosample(Sample):
             'year': 8760
         }
         if upper_bound_age:
-            return upper_bound_age*conversion_factors[age_units]
+            return upper_bound_age * conversion_factors[age_units]
 
     @calculated_property(
         define=True,
@@ -439,7 +441,7 @@ class Biosample(Sample):
     )
     def lower_bound_age_in_hours(self, lower_bound_age=None, age_units=None):
         conversion_factors = {
-            'minute': 1/60,
+            'minute': 1 / 60,
             'hour': 1,
             'day': 24,
             'week': 168,
@@ -447,7 +449,7 @@ class Biosample(Sample):
             'year': 8760
         }
         if lower_bound_age:
-            return lower_bound_age*conversion_factors[age_units]
+            return lower_bound_age * conversion_factors[age_units]
 
     @calculated_property(
         define=True,
@@ -481,7 +483,7 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, phenotypic_features=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None, biosample_qualifiers=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None, time_post_culture=None, time_post_culture_units=None):
+    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, phenotypic_features=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None, biosample_qualifiers=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None, time_post_culture=None, time_post_culture_units=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
         biosample_type = self.item_type
@@ -1075,9 +1077,11 @@ class MultiplexedSample(Sample):
     rev = Sample.rev | {'demultiplexed_to': ('InVitroSystem', 'demultiplexed_from')}
     embedded_with_frame = Sample.embedded_with_frame + [
         Path('multiplexed_samples', include=['@id', 'accession', '@type',
-             'summary', 'sample_terms', 'construct_library_sets', 'disease_terms', 'donors', 'status']),
+             'summary', 'sample_terms', 'construct_library_sets', 'phenotypic_features', 'donors', 'status']),
         Path('multiplexed_samples.sample_terms', include=['@id', 'term_name', 'status']),
-        Path('multiplexed_samples.disease_terms', include=['@id', 'term_name', 'status']),
+        Path('multiplexed_samples.phenotypic_features', include=[
+             '@id', 'feature', 'observation_date', 'quality', 'quantity', 'quantity_units', 'status']),
+        Path('multiplexed_samples.phenotypic_features.feature', include=['@id', 'term_id', 'term_name', 'status']),
         Path('multiplexed_samples.donors', include=['@id', 'accession', 'status']),
     ]
     audit_inherit = Biosample.audit_inherit + [
@@ -1224,21 +1228,21 @@ class MultiplexedSample(Sample):
 
     @calculated_property(
         schema={
-            'title': 'Disease Terms',
+            'title': 'Phenotypic Features',
             'type': 'array',
-            'description': 'The disease terms of the samples included in this multiplexed sample.',
+            'description': 'The phenotypic features of the samples included in this multiplexed sample.',
             'minItems': 1,
             'uniqueItems': True,
             'notSubmittable': True,
             'items': {
-                'title': 'Disease Term',
+                'title': 'Phenotypic Feature',
                 'type': 'string',
-                'linkTo': 'PhenotypeTerm'
+                'linkTo': 'PhenotypicFeature'
             }
         }
     )
-    def disease_terms(self, request, multiplexed_samples):
-        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'disease_terms')
+    def phenotypic_features(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'phenotypic_features')
 
     @calculated_property(
         schema={

@@ -129,9 +129,9 @@ def file():
                 'description': 'Biosample name of the endpoint from a differentiation or reprogramming protocol.',
                 'category': 'Sample'
             },
-            'file_set.samples.disease_terms.term_name': {
-                'title': 'Disease',
-                'description': 'Disease(s) associated with this file.',
+            'file_set.samples.phenotypic_features.feature.term_name': {
+                'title': 'Phenotypic Features',
+                'description': 'Phenotypic features associated with this file.',
                 'optional': True,
                 'category': 'Sample'
             },

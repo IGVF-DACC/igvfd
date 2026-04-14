@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 27
+
+* Remove `disease_terms`.
+
 ### Minor changes since schema version 26
 
 * Update `aliases` regex to add `hongbo-liu` as a namespace.

@@ -335,3 +335,13 @@ def whole_organism_v25_3(whole_organism):
         'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v26(whole_organism, phenotype_term_myocardial_infarction):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '26',
+        'disease_terms': [phenotype_term_myocardial_infarction['@id']]
+    })
+    return item

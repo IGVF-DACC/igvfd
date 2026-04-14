@@ -52,8 +52,8 @@ def index_file():
             'file_set.samples.classifications': {
                 'title': 'Sample Classification'
             },
-            'file_set.samples.disease_terms.term_name': {
-                'title': 'Sample Phenotype'
+            'file_set.samples.phenotypic_features.feature.term_name': {
+                'title': 'Phenotypic Features'
             },
             'workflows.name': {
                 'title': 'Workflows'

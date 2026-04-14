@@ -79,7 +79,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "24"
+            "default": "25"
         },
         "pmi": {
             "title": "Post-mortem Interval",

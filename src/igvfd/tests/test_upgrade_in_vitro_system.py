@@ -216,3 +216,11 @@ def test_in_vitro_system_upgrade_28_29(upgrader, in_vitro_system_v28_1, in_vitro
     assert value.get('protocols') == ['https://www.protocols.io/private/123/ABC',
                                       'https://www.protocols.io/view/678/ABC']
     assert value.get('notes') == 'These protocols https://www.protocols.io/345/ABC, https://www.protocols.io/910/ABC do not start with https://www.protocols.io/private/ or https://www.protocols.io/view/ and were removed from the property list.'
+
+
+def test_in_vitro_system_upgrade_29_30(upgrader, in_vitro_system_v29):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v29, current_version='29', target_version='30')
+    assert value['schema_version'] == '30'
+    assert 'disease_terms' not in value
+    assert 'This sample had disease_terms [\'/phenotype-terms/HP_0001658/\'], which has been removed via upgrade.' in value.get(
+        'notes', '')

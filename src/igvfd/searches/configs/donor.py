@@ -81,9 +81,6 @@ def donor():
             'collections': {
                 'title': 'Collections'
             },
-            'phenotypic_features': {
-                'title': 'Phenotypic Features'
-            },
             'virtual': {
                 'title': 'Virtual'
             }

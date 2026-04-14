@@ -184,3 +184,11 @@ def test_tissue_upgrade_23_24(upgrader, tissue_v23):
     assert 'ccf_id' not in value
     assert value.get('notes').endswith(
         'This sample had the ccf_id 78d06f07-f1cb-4d21-b578-b01c7388804f, which has been removed via upgrade.')
+
+
+def test_tissue_upgrade_24_25(upgrader, tissue_v24):
+    value = upgrader.upgrade('tissue', tissue_v24, current_version='24', target_version='25')
+    assert value['schema_version'] == '25'
+    assert 'disease_terms' not in value
+    assert 'This sample had disease_terms [\'/phenotype-terms/HP_0001658/\'], which has been removed via upgrade.' in value.get(
+        'notes', '')

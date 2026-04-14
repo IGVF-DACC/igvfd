@@ -82,24 +82,6 @@
                 "igvf_utils": "unspecified"
             }
         },
-        "phenotypic_features": {
-            "title": "Phenotypic Features",
-            "description": "A list of associated phenotypic features of the donor.",
-            "type": "array",
-            "uniqueItems": true,
-            "minItems": 1,
-            "items": {
-                "title": "Phenotypic Feature",
-                "description": "Phenotypic feature",
-                "comment": "See phenotypic_feature.json for available identifiers.",
-                "type": "string",
-                "linkTo": "PhenotypicFeature"
-            },
-            "submissionExample": {
-                "appscript": "[\"/phenotypic-features/e921ef7e-41cd-43d1-bc17-efae8a6eff49/\", \"igvf:rheumatoid_arthritis\"]",
-                "igvf_utils": "/phenotypic-features/e921ef7e-41cd-43d1-bc17-efae8a6eff49/, igvf:rheumatoid_arthritis"
-            }
-        },
         "virtual": {
             "title": "Virtual",
             "description": "Virtual donors are not representing actual human or model organism donors, samples coming from which were used in experiments, but rather capturing metadata about hypothetical donors that the reported analysis results are relevant for.",

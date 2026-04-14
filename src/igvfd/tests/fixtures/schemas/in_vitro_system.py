@@ -406,3 +406,13 @@ def in_vitro_system_v28_3(in_vitro_cell_line):
         'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v29(in_vitro_cell_line, phenotype_term_myocardial_infarction):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '29',
+        'disease_terms': [phenotype_term_myocardial_infarction['@id']]
+    })
+    return item

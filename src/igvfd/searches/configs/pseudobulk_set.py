@@ -54,10 +54,10 @@ def pseudobulk_set():
                 'category': 'Sample',
                 'description': 'Biosample name of the endpoint from a differentiation or reprogramming protocol.'
             },
-            'samples.disease_terms.term_name': {
-                'title': 'Disease',
+            'samples.phenotypic_features.feature.term_name': {
+                'title': 'Phenotypic Features',
                 'category': 'Sample',
-                'description': 'Disease(s) associated with the sample.'
+                'description': 'Phenotypic features associated with the sample.'
             },
             'samples.growth_medium': {
                 'title': 'Growth Medium',

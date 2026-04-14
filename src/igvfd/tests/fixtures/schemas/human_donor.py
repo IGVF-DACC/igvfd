@@ -242,3 +242,15 @@ def human_donor_v13(human_donor):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def human_donor_v14(human_donor, phenotypic_feature_basic):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '14',
+        'phenotypic_features': [
+            phenotypic_feature_basic['@id']
+        ]
+    })
+    return item

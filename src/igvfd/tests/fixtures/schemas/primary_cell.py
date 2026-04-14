@@ -364,3 +364,13 @@ def primary_cell_v23_3(primary_cell):
         'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v24(primary_cell, phenotype_term_myocardial_infarction):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '24',
+        'disease_terms': [phenotype_term_myocardial_infarction['@id']]
+    })
+    return item
