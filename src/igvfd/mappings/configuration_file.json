@@ -1,6 +1,6 @@
 {
-    "hash": "3590e1fdb9a5cb9472b576d4ef8a2f5f",
-    "index_name": "configuration_file_3590e1fd",
+    "hash": "ac986eefac1d5a5dbdf886e78437c4e6",
+    "index_name": "configuration_file_ac986eef",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1170,6 +1170,9 @@
                                     "collections": {
                                         "type": "keyword"
                                     },
+                                    "construct_delivery_methods": {
+                                        "type": "keyword"
+                                    },
                                     "construct_library_sets": {
                                         "type": "keyword"
                                     },
@@ -1339,9 +1342,6 @@
                                     },
                                     "notes": {
                                         "type": "text"
-                                    },
-                                    "nucleic_acid_delivery": {
-                                        "type": "keyword"
                                     },
                                     "origin_of": {
                                         "type": "keyword"
@@ -2333,6 +2333,9 @@
                                     "collections": {
                                         "type": "keyword"
                                     },
+                                    "construct_delivery_methods": {
+                                        "type": "keyword"
+                                    },
                                     "construct_library_sets": {
                                         "type": "keyword"
                                     },
@@ -2409,9 +2412,6 @@
                                     },
                                     "notes": {
                                         "type": "text"
-                                    },
-                                    "nucleic_acid_delivery": {
-                                        "type": "keyword"
                                     },
                                     "origin_of": {
                                         "type": "keyword"

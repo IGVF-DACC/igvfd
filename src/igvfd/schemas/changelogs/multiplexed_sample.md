@@ -1,5 +1,10 @@
 ## Changelog for *`multiplexed_sample.json`*
 
+### Schema version 12
+
+* Add calculated property `construct_delivery_methods`.
+* Remove `nucleic_acid_delivery`.
+
 ### Minor changes since schema version 11
 
 * Update `aliases` regex to add `hongbo-liu` as a namespace.

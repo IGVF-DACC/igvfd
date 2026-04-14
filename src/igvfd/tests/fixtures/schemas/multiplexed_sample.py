@@ -180,3 +180,13 @@ def multiplexed_sample_v10_3(multiplexed_sample):
         'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
     })
     return item
+
+
+@pytest.fixture
+def multiplexed_sample_v11(multiplexed_sample):
+    item = multiplexed_sample.copy()
+    item.update({
+        'schema_version': '11',
+        'nucleic_acid_delivery': 'lentiviral transduction'
+    })
+    return item

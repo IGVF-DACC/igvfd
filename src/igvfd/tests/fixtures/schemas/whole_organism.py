@@ -345,3 +345,13 @@ def whole_organism_v26(whole_organism, phenotype_term_myocardial_infarction):
         'disease_terms': [phenotype_term_myocardial_infarction['@id']]
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v27(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '27',
+        'nucleic_acid_delivery': 'lentiviral transduction'
+    })
+    return item

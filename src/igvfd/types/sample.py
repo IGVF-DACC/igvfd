@@ -57,7 +57,7 @@ def concat_numeric_and_units(numeric, numeric_units, no_numeric_on_one=False):
         return f'{numeric} {numeric_units}s'
 
 
-NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN = {
+CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN = {
     'adenoviral transduction': {
         'verb': 'transduced (adenovirus) with',
         'noun': 'transduction (adenovirus) with'
@@ -91,6 +91,22 @@ NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN = {
         'noun': 'transformation with'
     }
 }
+
+
+def _verb_noun_for_construct_delivery(construct_delivery_methods):
+    if isinstance(construct_delivery_methods, list):
+        methods = construct_delivery_methods or []
+    elif construct_delivery_methods:
+        methods = [construct_delivery_methods]
+    else:
+        methods = []
+    if len(methods) > 1:
+        joined = ' and '.join(methods)
+        return f'delivered using {joined} with', f'{joined} with'
+    if len(methods) == 1 and methods[0] in CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN:
+        entry = CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN[methods[0]]
+        return entry['verb'], entry['noun']
+    return 'transfected with', 'transfection with'
 
 
 def compose_summary_sample_term_phrase(sample_term_term_names: list, cap_number: int) -> str:
@@ -483,7 +499,7 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, phenotypic_features=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None, biosample_qualifiers=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None, time_post_culture=None, time_post_culture_units=None):
+    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, phenotypic_features=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, construct_delivery_methods=None, growth_medium=None, biosample_qualifiers=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None, time_post_culture=None, time_post_culture_units=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
         biosample_type = self.item_type
@@ -708,12 +724,7 @@ class Biosample(Sample):
         if (construct_library_sets and
                 biosample_type in biosample_subschemas):
 
-            if nucleic_acid_delivery in NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN:
-                verb = NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN[nucleic_acid_delivery]['verb']
-                noun = NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN[nucleic_acid_delivery]['noun']
-            else:
-                verb = 'transfected with'
-                noun = 'transfection with'
+            verb, noun = _verb_noun_for_construct_delivery(construct_delivery_methods)
 
             if time_post_library_delivery is not None:
                 verb = (
@@ -923,7 +934,7 @@ class TechnicalSample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, sample_material, virtual=None, construct_library_sets=None, treatments=None, moi=None, nucleic_acid_delivery=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None):
+    def summary(self, request, sample_terms, sample_material, virtual=None, construct_library_sets=None, treatments=None, moi=None, construct_delivery_methods=None, time_post_library_delivery=None, time_post_library_delivery_units=None, selection_conditions=None):
         if len(sample_terms) > 1:
             summary_terms = 'mixed'
         else:
@@ -972,12 +983,7 @@ class TechnicalSample(Sample):
                 perturbation_summaries = ', '.join(unique_summaries)
                 summary_terms += f' {verb} with {perturbation_summaries},'
         if construct_library_sets:
-            if nucleic_acid_delivery in NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN:
-                verb = NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN[nucleic_acid_delivery]['verb']
-                noun = NUCLEIC_ACID_DELIVERY_TO_VERB_NOUN[nucleic_acid_delivery]['noun']
-            else:
-                verb = 'transfected with'
-                noun = 'transfection with'
+            verb, noun = _verb_noun_for_construct_delivery(construct_delivery_methods)
 
             if time_post_library_delivery is not None:
                 verb = (
@@ -1356,6 +1362,24 @@ class MultiplexedSample(Sample):
     def construct_library_sets(self, request, multiplexed_samples):
         return collect_multiplexed_samples_prop(
             request, multiplexed_samples, 'construct_library_sets')
+
+    @calculated_property(
+        schema={
+            'title': 'Construct Delivery Methods',
+            'type': 'array',
+            'description': 'The construct delivery methods of the samples included in this multiplexed sample.',
+            'minItems': 1,
+            'uniqueItems': True,
+            'notSubmittable': True,
+            'items': {
+                'title': 'Construct Delivery Method',
+                'type': 'string'
+            }
+        }
+    )
+    def construct_delivery_methods(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(
+            request, multiplexed_samples, 'construct_delivery_methods')
 
     @calculated_property(
         schema={

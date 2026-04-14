@@ -11,7 +11,7 @@
         "multiplexing_methods"
     ],
     "not": {
-        "comment": "Multiplexed samples should not specify construct_library_sets, moi, nucleic_acid_delivery, or time_post_library_delivery/time_post_library_delivery_units.",
+        "comment": "Multiplexed samples should not specify construct_library_sets, moi, construct_delivery_methods, or time_post_library_delivery/time_post_library_delivery_units.",
         "anyOf": [
             {
                 "required": [
@@ -25,7 +25,7 @@
             },
             {
                 "required": [
-                    "nucleic_acid_delivery"
+                    "construct_delivery_methods"
                 ]
             },
             {
@@ -86,7 +86,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "11"
+            "default": "12"
         },
         "multiplexed_samples": {
             "title": "Multiplexed Samples",
@@ -151,10 +151,6 @@
         },
         "moi": {
             "comment": "Do not submit. MOI should only be specified on individual samples contributing to a multiplexed sample object.",
-            "permission": "admin_only"
-        },
-        "nucleic_acid_delivery": {
-            "comment": "Do not submit. Nucleic acid delivery should only be specified on individual samples contributing to a multiplexed sample object.",
             "permission": "admin_only"
         },
         "time_post_library_delivery": {

@@ -1,6 +1,6 @@
 {
-    "hash": "ac49847e8167e6e9ff99f9c7c3aa8209",
-    "index_name": "model_set_ac49847e",
+    "hash": "2ec6065c63954f84cd13b43665dcfd95",
+    "index_name": "model_set_2ec6065c",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -2936,6 +2936,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "construct_delivery_methods": {
+                                "type": "keyword"
+                            },
                             "construct_library_sets": {
                                 "type": "keyword"
                             },
@@ -3183,9 +3186,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "nucleic_acid_delivery": {
-                                "type": "keyword"
                             },
                             "origin_of": {
                                 "type": "keyword"

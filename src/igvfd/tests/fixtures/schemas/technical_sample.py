@@ -202,3 +202,13 @@ def technical_sample_v14_3(technical_sample):
         'protocols': ['https://www.protocols.io/private/123/ABC', 'https://www.protocols.io/345/ABC', 'https://www.protocols.io/view/678/ABC', 'https://www.protocols.io/910/ABC']
     })
     return item
+
+
+@pytest.fixture
+def technical_sample_v15(technical_sample):
+    item = technical_sample.copy()
+    item.update({
+        'schema_version': '15',
+        'nucleic_acid_delivery': 'lentiviral transduction'
+    })
+    return item

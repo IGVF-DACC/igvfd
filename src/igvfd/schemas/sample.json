@@ -229,22 +229,28 @@
                 "igvf_utils": 2
             }
         },
-        "nucleic_acid_delivery": {
-            "title": "Nucleic Acid Delivery",
-            "description": "Method of introduction of nucleic acid into the cell.",
-            "type": "string",
-            "enum": [
-                "adenoviral transduction",
-                "adeno-associated viral (AAV) transduction",
-                "lipofectamine",
-                "electroporation",
-                "lentiviral transduction",
-                "transfection",
-                "transformation",
-                "nucleofection"
-            ],
+        "construct_delivery_methods": {
+            "title": "Construct Delivery Methods",
+            "description": "Methods used to deliver construct libraries into the sample.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Construct Delivery Method",
+                "type": "string",
+                "enum": [
+                    "adenoviral transduction",
+                    "adeno-associated viral (AAV) transduction",
+                    "lipofectamine",
+                    "electroporation",
+                    "lentiviral transduction",
+                    "transfection",
+                    "transformation",
+                    "nucleofection"
+                ]
+            },
             "submissionExample": {
-                "appscript": "transfection",
+                "appscript": "[\"transfection\"]",
                 "igvf_utils": "transfection"
             }
         },

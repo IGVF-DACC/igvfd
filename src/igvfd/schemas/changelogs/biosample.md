@@ -1,6 +1,7 @@
 ## Changelog for *`biosample.json`*
 
 * Remove `disease_terms`. (04/15/2026)
+* Rename `nucleic_acid_delivery` to `construct_delivery_methods`. (04/15/2026)
 * Update `aliases` regex to add `hongbo-liu` as a namespace. (04/01/2026)
 * Extend `nucleic_acid_delivery` enum list to include `adeno-associated viral (AAV) transduction`. (03/25/2026)
 * Add `phenotypic_features`. (03/11/2026)

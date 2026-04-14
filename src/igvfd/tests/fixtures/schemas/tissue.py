@@ -366,3 +366,13 @@ def tissue_v24(tissue, phenotype_term_myocardial_infarction):
         'disease_terms': [phenotype_term_myocardial_infarction['@id']]
     })
     return item
+
+
+@pytest.fixture
+def tissue_v25(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '25',
+        'nucleic_acid_delivery': 'lentiviral transduction'
+    })
+    return item

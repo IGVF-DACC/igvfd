@@ -416,3 +416,13 @@ def in_vitro_system_v29(in_vitro_cell_line, phenotype_term_myocardial_infarction
         'disease_terms': [phenotype_term_myocardial_infarction['@id']]
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v30(in_vitro_cell_line):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '30',
+        'nucleic_acid_delivery': 'lentiviral transduction'
+    })
+    return item

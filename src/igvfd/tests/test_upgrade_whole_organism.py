@@ -206,3 +206,10 @@ def test_whole_organism_upgrade_26_27(upgrader, whole_organism_v26):
     assert 'disease_terms' not in value
     assert 'This sample had disease_terms [\'/phenotype-terms/HP_0001658/\'], which has been removed via upgrade.' in value.get(
         'notes', '')
+
+
+def test_whole_organism_upgrade_27_28(upgrader, whole_organism_v27):
+    value = upgrader.upgrade('whole_organism', whole_organism_v27, current_version='27', target_version='28')
+    assert value['schema_version'] == '28'
+    assert value['construct_delivery_methods'] == ['lentiviral transduction']
+    assert 'nucleic_acid_delivery' not in value

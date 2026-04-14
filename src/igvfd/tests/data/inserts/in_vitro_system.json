@@ -86,7 +86,9 @@
             "igvf:basic_construct_library_set_1"
         ],
         "moi": 1,
-        "nucleic_acid_delivery": "transfection",
+        "construct_delivery_methods": [
+            "transfection"
+        ],
         "modifications": [
             "b4a370ee-18a7-2857-bc2b-b157d05f4458"
         ]
@@ -189,7 +191,9 @@
         "sorted_from": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/",
         "sorted_from_detail": "test insert description",
         "virtual": false,
-        "nucleic_acid_delivery": "transformation"
+        "construct_delivery_methods": [
+            "transformation"
+        ]
     },
     {
         "uuid": "577fbe38-b700-20af-624c-02429a9da2cf",
@@ -229,7 +233,9 @@
         "sources": [
             "/labs/j-michael-cherry/"
         ],
-        "nucleic_acid_delivery": "lipofectamine",
+        "construct_delivery_methods": [
+            "lipofectamine"
+        ],
         "demultiplexed_from": "IGVFSM0001AAAZ",
         "growth_medium": "DMEM with serum",
         "virtual": false,
@@ -271,7 +277,9 @@
         "biosample_qualifiers": [
             "6 days calcified"
         ],
-        "nucleic_acid_delivery": "electroporation",
+        "construct_delivery_methods": [
+            "electroporation"
+        ],
         "modifications": [
             "b4a370ee-18a7-2857-bc2b-b157d05f4458"
         ],
@@ -305,7 +313,9 @@
             "igvf:basic_construct_library_set_1"
         ],
         "moi": 1,
-        "nucleic_acid_delivery": "transfection",
+        "construct_delivery_methods": [
+            "transfection"
+        ],
         "modifications": [
             "b4a370ee-18a7-2857-bc2b-b157d05f4458"
         ],

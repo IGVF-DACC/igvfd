@@ -547,22 +547,22 @@ PHASE1_PIPELINES = {
     ],
     'in_vitro_system': [
         remove_keys('pooled_from', 'part_of', 'originated_from', 'construct_library_sets', 'moi',
-                    'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units', 'demultiplexed_from'),
+                    'construct_delivery_methods', 'time_post_library_delivery', 'time_post_library_delivery_units', 'demultiplexed_from'),
     ],
     'tissue': [
-        remove_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi', 'nucleic_acid_delivery',
+        remove_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi', 'construct_delivery_methods',
                     'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'primary_cell': [
-        remove_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi', 'nucleic_acid_delivery',
+        remove_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi', 'construct_delivery_methods',
                     'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'whole_organism': [
-        remove_keys('construct_library_sets', 'moi', 'nucleic_acid_delivery',
+        remove_keys('construct_library_sets', 'moi', 'construct_delivery_methods',
                     'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'technical_sample': [
-        remove_keys('construct_library_sets', 'moi', 'nucleic_acid_delivery',
+        remove_keys('construct_library_sets', 'moi', 'construct_delivery_methods',
                     'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'multiplexed_sample': [
@@ -614,22 +614,22 @@ PHASE2_PIPELINES = {
     ],
     'in_vitro_system': [
         skip_rows_missing_all_keys('pooled_from', 'part_of', 'originated_from', 'construct_library_sets',
-                                   'moi', 'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units', 'demultiplexed_from'),
+                                   'moi', 'construct_delivery_methods', 'time_post_library_delivery', 'time_post_library_delivery_units', 'demultiplexed_from'),
     ],
     'tissue': [
         skip_rows_missing_all_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi',
-                                   'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units'),
+                                   'construct_delivery_methods', 'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'primary_cell': [
         skip_rows_missing_all_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi',
-                                   'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units'),
+                                   'construct_delivery_methods', 'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'whole_organism': [
-        skip_rows_missing_all_keys('construct_library_sets', 'moi', 'nucleic_acid_delivery',
+        skip_rows_missing_all_keys('construct_library_sets', 'moi', 'construct_delivery_methods',
                                    'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'technical_sample': [
-        skip_rows_missing_all_keys('construct_library_sets', 'moi', 'nucleic_acid_delivery',
+        skip_rows_missing_all_keys('construct_library_sets', 'moi', 'construct_delivery_methods',
                                    'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'multiplexed_sample': [
