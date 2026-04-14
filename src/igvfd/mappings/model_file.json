@@ -1,6 +1,6 @@
 {
-    "hash": "cbcfdcf22b54391ef4323de662dd1e17",
-    "index_name": "model_file_cbcfdcf2",
+    "hash": "8c3154f6b82070ed3d0b172d54108a2c",
+    "index_name": "model_file_8c3154f6",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -632,6 +632,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "assay_terms": {
+                                "type": "keyword"
                             },
                             "assay_titles": {
                                 "type": "keyword"

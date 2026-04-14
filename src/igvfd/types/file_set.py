@@ -1604,6 +1604,7 @@ class ModelSet(FileSet):
     schema = load_schema('igvfd:schemas/model_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('input_file_sets', include=['@id', 'accession', 'aliases', 'status']),
+        Path('assay_terms', include=['@id', 'term_name', 'status']),
         Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('software_versions.software', include=['@id', 'summary',
              'software', 'title', 'source_url', 'status'])
@@ -1632,6 +1633,29 @@ class ModelSet(FileSet):
             'predicting',
             ', '.join(prediction_objects)
         ]))
+
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Assay Term Names',
+            'description': 'Ontology term names from Ontology of Biomedical Investigations (OBI) for assays',
+            'type': 'array',
+            'minItems': 1,
+            'items': {
+                'type': 'string'
+            },
+            'notSubmittable': True
+        }
+    )
+    def assay_titles(self, request, assay_terms=None):
+        assay_list = set()
+        if assay_terms:
+            for assay_term in assay_terms:
+                assay_term_obj = request.embed(assay_term, '@@object?skip_calculated=true')
+                term_name = assay_term_obj.get('term_name')
+                if term_name:
+                    assay_list.add(term_name)
+        return sorted(assay_list) if assay_list else None
 
     @calculated_property(
         schema={
