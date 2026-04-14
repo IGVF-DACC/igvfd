@@ -700,7 +700,6 @@ def tabular_file_20_21(value, system):
         'calibrated coding variant effect thresholds',
         'cell annotations',
         'cell hashing barcodes',
-        'coding variant effects',
         'coding_variants',
         'complexes',
         'derived barcode mapping',
