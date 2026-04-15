@@ -1,6 +1,6 @@
 {
-    "hash": "b7332d963988b73878ea9ffb86cd5e45",
-    "index_name": "whole_organism_b7332d96",
+    "hash": "1f7164d29efabff5d89452e8080c4f20",
+    "index_name": "whole_organism_1f7164d2",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1013,9 +1013,6 @@
                                     }
                                 },
                                 "type": "object"
-                            },
-                            "assay_terms": {
-                                "type": "keyword"
                             },
                             "assay_titles": {
                                 "type": "keyword"

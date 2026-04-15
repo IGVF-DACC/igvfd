@@ -2,8 +2,6 @@
 
 ### Minor changes since schema version 6
 
-* Add `assay_terms`.
-* Add calculated property `assay_titles`.
 * Extend `preferred_assay_titles` enum list to include `in vivo MPRA`.
 * Extend `preferred_assay_titles` enum list to include `in vivo Perturb-seq`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.

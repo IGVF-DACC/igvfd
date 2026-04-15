@@ -1466,7 +1466,7 @@ def audit_preferred_assay_title(value, system):
     '''
     [
         {
-            "audit_description": "File sets are expected to specify appropriate preferred assay titles for their respective assay term(s).",
+            "audit_description": "File sets are expected to specify an appropriate preferred assay titles for its respective assay term name.",
             "audit_category": "inconsistent preferred assay titles",
             "audit_level": "ERROR"
         }
@@ -1474,45 +1474,31 @@ def audit_preferred_assay_title(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_inconsistent = get_audit_message(audit_preferred_assay_title, index=0)
-
-    # Handle both single assay_term and multiple assay_terms (ModelSet)
     assay_term = value.get('assay_term', '')
-    assay_terms = value.get('assay_terms', [])
-
-    if not assay_term and not assay_terms:
+    if not assay_term:
         return
-
-    all_valid_titles = set()
-    if assay_term:
-        # CuratedSet case: single assay_term
-        assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-        all_valid_titles = set(assay_object.get('preferred_assay_titles', []))
-    else:
-        # ModelSet case: multiple assay_terms
-        for assay_term in assay_terms:
-            assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-            all_valid_titles.update(assay_object.get('preferred_assay_titles', []))
-
+    assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assay_titles = value.get('assay_titles', [])
     preferred_assay_titles = value.get('preferred_assay_titles', [])
+    valid_titles = assay_object.get('preferred_assay_titles', [])
 
-    if preferred_assay_titles and not all_valid_titles:
-        assay_desc = '`assay_term`' if assay_term else '`assay_terms`'
+    if preferred_assay_titles and not valid_titles:
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has '
-            f'`preferred_assay_titles` ({", ".join(preferred_assay_titles)}), but the associated {assay_desc} '
-            f'{"has" if assay_term else "have"} no `preferred_assay_titles` to validate against.'
+            f'`preferred_assay_titles` ({", ".join(preferred_assay_titles)}), but the associated `assay_term`'
+            f'has no `preferred_assay_titles` to validate against.'
         )
         yield AuditFailure(
             audit_message_inconsistent.get('audit_category', ''),
             f'{detail} {audit_message_inconsistent.get("audit_description", "")}',
             level=audit_message_inconsistent.get('audit_level', '')
         )
-    elif preferred_assay_titles and not any(title in all_valid_titles for title in preferred_assay_titles):
+
+    elif preferred_assay_titles and not any(title in valid_titles for title in preferred_assay_titles):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has '
             f'`assay_titles` {", ".join(assay_titles)}, but none of its `preferred_assay_titles` values '
-            f'({", ".join(preferred_assay_titles)}) are valid. Expected one of: {", ".join(sorted(all_valid_titles))}.'
+            f'({", ".join(preferred_assay_titles)}) are valid. Expected one of: {", ".join(valid_titles)}.'
         )
         yield AuditFailure(
             audit_message_inconsistent.get('audit_category', ''),
@@ -1586,8 +1572,7 @@ function_dispatcher_model_set_object = {
     'audit_inconsistent_location_files': audit_inconsistent_location_files,
     'audit_input_file_sets_derived_from': audit_input_file_sets_derived_from,
     'audit_file_set_files_missing_analysis_step_version': audit_file_set_files_missing_analysis_step_version,
-    'audit_file_set_missing_description': audit_file_set_missing_description,
-    'audit_preferred_assay_title': audit_preferred_assay_title
+    'audit_file_set_missing_description': audit_file_set_missing_description
 }
 
 function_dispatcher_curated_set_object = {
