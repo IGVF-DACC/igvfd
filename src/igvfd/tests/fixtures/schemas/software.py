@@ -60,6 +60,15 @@ def software_v6(software):
     item = software.copy()
     item.update({
         'schema_version': '6',
-        'name': 'test @software with space in name . '
+        'name': 'Test @software with Space in name . '
+    })
+    return item
+
+
+@pytest.fixture
+def software_v6_nochange(software):
+    item = software.copy()
+    item.update({
+        'schema_version': '6'
     })
     return item
