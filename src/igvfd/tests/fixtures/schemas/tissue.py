@@ -15,6 +15,19 @@ def tissue(testapp, lab, source, award, rodent_donor, sample_term_adrenal_gland)
 
 
 @pytest.fixture
+def tissue_adipose(testapp, lab, source, award, parent_rodent_donor_1, sample_term_brown_adipose_tissue):
+    item = {
+        'accession': 'IGVFSM1111BBBB',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'sources': [source['@id']],
+        'donors': [parent_rodent_donor_1['@id']],
+        'sample_terms': [sample_term_brown_adipose_tissue['@id']]
+    }
+    return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def tissue_v1(tissue):
     item = tissue.copy()
     item.update({

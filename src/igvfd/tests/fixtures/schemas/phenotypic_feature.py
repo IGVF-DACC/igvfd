@@ -65,6 +65,36 @@ def phenotypic_feature_with_quantity(
 
 
 @pytest.fixture
+def phenotypic_feature_myocardial_infarction(
+    testapp,
+    phenotype_term_myocardial_infarction,
+    award,
+    lab
+):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'feature': phenotype_term_myocardial_infarction['@id']
+    }
+    return testapp.post_json('/phenotypic_feature', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def phenotypic_feature_digeorge_syndrome(
+    testapp,
+    phenotype_term_digeorge_syndrome,
+    award,
+    lab
+):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'feature': phenotype_term_digeorge_syndrome['@id']
+    }
+    return testapp.post_json('/phenotypic_feature', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def phenotypic_feature_v1(phenotypic_feature_basic):
     item = phenotypic_feature_basic.copy()
     item.update({
