@@ -34,12 +34,12 @@ def test_software_upgrade_5_6(upgrader, software_v5):
 def test_software_upgrade_6_7(upgrader, software_v6, software_v6_nochange):
     value = upgrader.upgrade('software', software_v6, current_version='6', target_version='7')
     assert value['schema_version'] == '7'
-    assert value['name'] == 'test_@software_with_space_in_name_.'
-    assert 'Whitespace in the Software name field has been replaced with underscores and everything has been converted to lowercase.' in value[
+    assert value['name'] == 'Test_@software_with_Space_in_name_.'
+    assert 'Whitespace in the Software name field has been replaced with underscores.' in value[
         'notes']
 
     value_nochange = upgrader.upgrade('software', software_v6_nochange, current_version='6', target_version='7')
     assert value_nochange['schema_version'] == '7'
     assert value_nochange['name'] == 'bowtie2'
-    assert 'Whitespace in the Software name field has been replaced with underscores and everything has been converted to lowercase.' not in value_nochange.get(
+    assert 'Whitespace in the Software name field has been replaced with underscores.' not in value_nochange.get(
         'notes', '')

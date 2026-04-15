@@ -2,7 +2,7 @@
 
 ### Schema version 7
 
-* Update `name` regex to `^[a-z0-9\\-_@.]+$`.
+* Update `name` regex to `^[A-Za-z0-9\\-_@.]+$`.
 
 ### Minor changes since schema version 6
 
