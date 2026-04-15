@@ -45,9 +45,13 @@ def software_5_6(value, system):
 @upgrade_step('software', '6', '7')
 def software_6_7(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3419
-    # name is a required property, but doing a check regardless
-    if 'name' in value:
-        value['name'] = value['name'].strip().replace(' ', '_')
-        notes = value.get('notes', '')
-        notes += 'Whitespace in the Software name field has been replaced with underscores.'
-        value['notes'] = notes.strip()
+    # name is a required property
+    name = value['name']
+    new_name = name.strip().replace(' ', '_')
+    if new_name == name:
+        return
+
+    value['name'] = new_name
+    notes = value.get('notes', '')
+    notes += ' Whitespace in the Software name field has been replaced with underscores.'
+    value['notes'] = notes.strip()
