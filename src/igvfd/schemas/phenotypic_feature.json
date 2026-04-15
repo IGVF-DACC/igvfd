@@ -89,7 +89,8 @@
                 "milligram per deciliter",
                 "UPDRS",
                 "MMSE",
-                "SLEDAI"
+                "SLEDAI",
+                "ZT"
             ],
             "enum_descriptions": {
                 "UPDRS": "The Unified Parkinson's Disease Rating Scale to measure the severity of motor symptoms.",

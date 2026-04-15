@@ -105,5 +105,16 @@
         "notes": "SLEDAI 12",
         "lab": "j-michael-cherry",
         "award": "HG012012"
+    },
+    {
+        "feature": "f0aa38a6-fdf2-11ec-7aee-fc96ac1250ce",
+        "quantity": 8,
+        "quantity_units": "ZT",
+        "observation_date": "2025-06-04",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "uuid": "7084d954-657c-4baa-bdc2-481585325d8e",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
     }
 ]
