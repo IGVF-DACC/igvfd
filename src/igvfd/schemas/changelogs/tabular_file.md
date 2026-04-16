@@ -9,6 +9,7 @@
 
 ### Minor changes since schema version 20
 
+* Add calculated property `preferred_assay_slims`.
 * Extend `content_type` enum list to include `barcode to well mapping`.
 * Add calculated property `hashtag_barcode_map_for`.
 * Extend `content_type` enum list to include `predicted gene regulatory networks`.

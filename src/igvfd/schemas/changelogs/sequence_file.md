@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 16
 
+* Add calculated property `preferred_assay_slims`.
 * Extend `content_type` enum list to include `PacBio consensus reads`.
 * Extend `sequencing_kit` enum list to include `Revio SMRT cell`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.

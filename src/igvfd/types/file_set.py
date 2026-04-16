@@ -110,6 +110,90 @@ def get_file_set_props_for_summary_and_samples(request, file_set):
     )
 
 
+def get_preferred_assay_slim_from_title(title):
+    title_to_slims = {
+        'RNA-seq': ['gene expression'],
+        'scRNA-seq': ['gene expression	single cell'],
+        'snRNA-seq': ['gene expression', 'single cell'],
+        'scNT-seq': ['gene expression', 'single-cell'],
+        'scNT-seq2': ['gene expression', 'single-cell'],
+        'scNT-seq3': ['gene expression', 'single-cell'],
+        'scMultiome-NT-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
+        'Parse SPLiT-seq': ['gene expression', 'single cell'],
+        'ATAC-seq': ['chromatin accessibility'],
+        'varACCESS': ['chromatin accessibility'],
+        'ACCESS-ATAC': ['chromatin accessibility'],
+        'scATAC-seq': ['chromatin accessibility', 'single cell'],
+        'scACCESS-ATAC': ['chromatin accessibility'],
+        'snATAC-seq': ['chromatin accessibility', 'single cell'],
+        'mtscMultiome': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
+        'miDOGMA-seq': ['gene expression', 'chromatin accessibility', 'protein expression', 'single cell', 'multiome'],
+        'DUAL-IPA': ['protein expression'],
+        '10x multiome': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
+        '10x multiome with MULTI-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
+        '10x snATAC-seq with Scale pre-indexing': ['chromatin accessibility', 'single cell'],
+        'snRNA-seq with Scale pre-indexing': ['gene expression', 'single cell'],
+        'SHARE-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
+        'Histone ChIP-seq': ['DNA binding'],
+        'TF ChIP-seq': ['DNA binding'],
+        'CUT&RUN': ['DNA binding'],
+        'MPRA': ['reporter assay'],
+        'MPRA (scQer)': ['reporter assay', 'single cell'],
+        'electroporated MPRA': ['reporter assay'],
+        'AAV-MPRA (in vivo MPRA)': ['reporter assay'],
+        'lentiMPRA': ['reporter assay'],
+        'STARR-seq': ['reporter assay'],
+        'Cell painting': ['protein expression', 'imaging'],
+        'Variant painting via fluorescence': ['protein expression', 'imaging'],
+        'Variant painting via immunostaining': ['protein expression', 'imaging'],
+        'Pooled Y2H': ['protein interaction'],
+        'Arrayed semi-qY2H v1': ['protein interaction'],
+        'Arrayed semi-qY2H v2': ['protein interaction'],
+        'Arrayed semi-qY2H v3': ['protein interaction'],
+        'Arrayed yN2H': ['protein interaction'],
+        'Arrayed mN2H': ['protein interaction'],
+        'CRISPR tiling screen guide readout': ['CRISPR screen'],
+        'CRISPR tiling screen allelic readout': ['CRISPR screen'],
+        'Proliferation CRISPR screen': ['CRISPR screen'],
+        'Migration CRISPR screen': ['CRISPR screen'],
+        'CRISPR FlowFISH screen': ['CRISPR screen'],
+        'CRISPR FACS screen': ['CRISPR screen'],
+        'CRISPR MACS screen': ['CRISPR screen'],
+        'CRISPR mCherry screen': ['CRISPR screen'],
+        'HCR-FlowFISH screen': ['CRISPR screen'],
+        'Variant-EFFECTS': ['CRISPR screen'],
+        'scCRISPR screen': ['CRISPR screen', 'single cell'],
+        'Perturb-seq': ['CRISPR screen', 'single cell'],
+        'Parse Perturb-seq': ['CRISPR screen', 'single cell'],
+        'CC-Perturb-seq':	['CRISPR screen	single cell'],
+        'TAP-seq': ['CRISPR screen', 'single cell'],
+        'CROP-seq': ['CRISPR screen', 'single cell'],
+        'Multiome Perturb-seq': ['CRISPR screen', 'single cell', 'multiome'],
+        'SGE': ['protein scanning'],
+        'SGE-RNA': ['protein scanning'],
+        'Immune-SGE': ['protein scanning'],
+        'MAVE': ['protein scanning'],
+        'snMCT-seq': ['gene expression', 'methylation', 'single cell', 'multiome'],
+        'snM3C-seq': ['methylation', '3D chromatin structure', 'single cell', 'multiome'],
+        'VAMP-seq':	['protein scanning'],
+        'VAMP-seq (MultiSTEP)':	['protein scanning'],
+        'LABEL-seq': ['protein scanning'],
+        'Hi-C': ['3D chromatin structure'],
+        'HiCAR': ['3D chromatin structure', 'chromatin accessibility'],
+        'Spatial transcriptomics': ['spatial transcriptomics'],
+        'ONT dRNA': ['gene expression', 'long read'],
+        'ONT Fiber-seq': ['gene expression', 'long read'],
+        'ONT direct WGS': ['gene expression', 'long read'],
+        'Bisulfite-seq': ['DNA methylation'],
+        'WGS': ['genetic profiling'],
+        'DNase-seq': ['chromatin accessibility']
+    }
+    if title in title_to_slims:
+        return title_to_slims[title]
+    else:
+        return []
+
+
 EMBEDDED_FILE_FIELDS = [
     '@id',
     'accession',
@@ -712,6 +796,29 @@ class AnalysisSet(FileSet):
         return sorted(preferred_assay_list)
 
     @calculated_property(
+        schema={
+            'title': 'Preferred Assay Slims',
+            'description': 'Preferred Assay Slim(s) of assays that produced data analyzed in the analysis set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Preferred Assay Slims',
+                'description': 'Category of assay that produced data analyzed in the analysis set.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def preferred_assay_slims(self, request, preferred_assay_titles=None):
+        slims = []
+        if preferred_assay_titles:
+            for title in preferred_assay_titles:
+                slims.extend(get_preferred_assay_slim_from_title(title))
+        if slims:
+            return sorted(list(set(slims)))
+
+    @calculated_property(
         define=True,
         schema={
             'title': 'Assay Term Names',
@@ -1293,6 +1400,29 @@ class CuratedSet(FileSet):
         summary_message += file_set_type
         return summary_message
 
+    @calculated_property(
+        schema={
+            'title': 'Preferred Assay Slims',
+            'description': 'Preferred Assay Slim(s) of assays that produced data analyzed in the analysis set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Preferred Assay Slims',
+                'description': 'Category of assay that produced data analyzed in the analysis set.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def preferred_assay_slims(self, request, preferred_assay_titles=None):
+        slims = []
+        if preferred_assay_titles:
+            for title in preferred_assay_titles:
+                slims.extend(get_preferred_assay_slim_from_title(title))
+        if slims:
+            return sorted(list(set(slims)))
+
 
 @collection(
     name='measurement-sets',
@@ -1590,6 +1720,29 @@ class MeasurementSet(FileSet):
 
         return externally_hosted_value
 
+    @calculated_property(
+        schema={
+            'title': 'Preferred Assay Slims',
+            'description': 'Preferred Assay Slim(s) of assays that produced data analyzed in the analysis set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Preferred Assay Slims',
+                'description': 'Category of assay that produced data analyzed in the analysis set.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def preferred_assay_slims(self, request, preferred_assay_titles=None):
+        slims = []
+        if preferred_assay_titles:
+            for title in preferred_assay_titles:
+                slims.extend(get_preferred_assay_slim_from_title(title))
+        if slims:
+            return sorted(list(set(slims)))
+
 
 @collection(
     name='model-sets',
@@ -1704,6 +1857,29 @@ class ModelSet(FileSet):
                             analysis_step_version_object.get('software_versions', [])
         return sorted(set(software_versions)) or None
 
+    @calculated_property(
+        schema={
+            'title': 'Preferred Assay Slims',
+            'description': 'Preferred Assay Slim(s) of assays that produced data analyzed in the analysis set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Preferred Assay Slims',
+                'description': 'Category of assay that produced data analyzed in the analysis set.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def preferred_assay_slims(self, request, preferred_assay_titles=None):
+        slims = []
+        if preferred_assay_titles:
+            for title in preferred_assay_titles:
+                slims.extend(get_preferred_assay_slim_from_title(title))
+        if slims:
+            return sorted(list(set(slims)))
+
 
 @collection(
     name='auxiliary-sets',
@@ -1767,6 +1943,29 @@ class AuxiliarySet(FileSet):
             if preferred_assays:
                 preferred_assay_titles.update(preferred_assays)
         return sorted(preferred_assay_titles)
+
+    @calculated_property(
+        schema={
+            'title': 'Preferred Assay Slims',
+            'description': 'Preferred Assay Slim(s) of assays that produced data analyzed in the analysis set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Preferred Assay Slims',
+                'description': 'Category of assay that produced data analyzed in the analysis set.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def preferred_assay_slims(self, request, preferred_assay_titles=None):
+        slims = []
+        if preferred_assay_titles:
+            for title in preferred_assay_titles:
+                slims.extend(get_preferred_assay_slim_from_title(title))
+        if slims:
+            return sorted(list(set(slims)))
 
     @calculated_property(
         condition='measurement_sets',
@@ -2106,6 +2305,29 @@ class ConstructLibrarySet(FileSet):
                 if preferred_assays:
                     preferred_assay_titles.update(preferred_assays)
         return sorted(preferred_assay_titles)
+
+    @calculated_property(
+        schema={
+            'title': 'Preferred Assay Slims',
+            'description': 'Preferred Assay Slim(s) of assays that produced data analyzed in the analysis set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Preferred Assay Slims',
+                'description': 'Category of assay that produced data analyzed in the analysis set.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def preferred_assay_slims(self, request, preferred_assay_titles=None):
+        slims = []
+        if preferred_assay_titles:
+            for title in preferred_assay_titles:
+                slims.extend(get_preferred_assay_slim_from_title(title))
+        if slims:
+            return sorted(list(set(slims)))
 
     @calculated_property(
         condition='file_sets',
@@ -2451,6 +2673,29 @@ class PseudobulkSet(FileSet):
                 )
             )
         return sorted(preferred_assay_list)
+
+    @calculated_property(
+        schema={
+            'title': 'Preferred Assay Slims',
+            'description': 'Preferred Assay Slim(s) of assays that produced data analyzed in the analysis set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Preferred Assay Slims',
+                'description': 'Category of assay that produced data analyzed in the analysis set.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def preferred_assay_slims(self, request, preferred_assay_titles=None):
+        slims = []
+        if preferred_assay_titles:
+            for title in preferred_assay_titles:
+                slims.extend(get_preferred_assay_slim_from_title(title))
+        if slims:
+            return sorted(list(set(slims)))
 
     @calculated_property(
         define=True,

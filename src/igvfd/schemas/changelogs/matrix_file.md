@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Add calculated property `preferred_assay_slims`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Extend `secondary_dimensions` enum list to include `multiplexing oligo`.
 * Update `aliases` regex to add `yang-li` as a namespace.
