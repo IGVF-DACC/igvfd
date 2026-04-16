@@ -792,3 +792,4 @@ def model_set_6_7(value, system):
         value['assay_terms'] = ['/assay-terms/OBI_0002041/']
         notes = value.get('notes', '')
         notes += f' This model set assay_terms was defaulted to /assay-terms/OBI_0002041/ via an upgrade, update with appropriate assay_terms if needed.'
+        value['notes'] = notes.strip()
