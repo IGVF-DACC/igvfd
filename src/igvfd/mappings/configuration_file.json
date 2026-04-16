@@ -1,6 +1,6 @@
 {
-    "hash": "3ab84640efaf7c9392a49753080ce72e",
-    "index_name": "configuration_file_3ab84640",
+    "hash": "915d41f1c3a14e625ea337ce592416ba",
+    "index_name": "configuration_file_915d41f1",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -618,9 +618,6 @@
                                     }
                                 },
                                 "type": "object"
-                            },
-                            "assay_terms": {
-                                "type": "keyword"
                             },
                             "assay_titles": {
                                 "type": "keyword"

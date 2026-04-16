@@ -1,6 +1,6 @@
 {
-    "hash": "47a1f47c32ae912ab77f6edfa7a8d7b0",
-    "index_name": "model_set_47a1f47c",
+    "hash": "2ec6065c63954f84cd13b43665dcfd95",
+    "index_name": "model_set_2ec6065c",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -156,99 +156,6 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
-                        "type": "keyword"
-                    },
-                    "assay_terms": {
-                        "properties": {
-                            "@id": {
-                                "type": "keyword"
-                            },
-                            "@type": {
-                                "type": "keyword"
-                            },
-                            "aliases": {
-                                "type": "keyword"
-                            },
-                            "ancestors": {
-                                "type": "keyword"
-                            },
-                            "assay_slims": {
-                                "type": "keyword"
-                            },
-                            "category_slims": {
-                                "type": "keyword"
-                            },
-                            "comments": {
-                                "type": "keyword"
-                            },
-                            "creation_timestamp": {
-                                "type": "date"
-                            },
-                            "definition": {
-                                "type": "keyword"
-                            },
-                            "deprecated_ntr_terms": {
-                                "type": "keyword"
-                            },
-                            "description": {
-                                "type": "text"
-                            },
-                            "is_a": {
-                                "type": "keyword"
-                            },
-                            "name": {
-                                "type": "keyword"
-                            },
-                            "notes": {
-                                "type": "text"
-                            },
-                            "objective_slims": {
-                                "type": "keyword"
-                            },
-                            "ontology": {
-                                "type": "keyword"
-                            },
-                            "preferred_assay_titles": {
-                                "type": "keyword"
-                            },
-                            "preview_timestamp": {
-                                "type": "date"
-                            },
-                            "release_timestamp": {
-                                "type": "date"
-                            },
-                            "schema_version": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "synonyms": {
-                                "type": "keyword"
-                            },
-                            "term_id": {
-                                "type": "keyword"
-                            },
-                            "term_name": {
-                                "type": "keyword"
-                            },
-                            "uuid": {
-                                "type": "keyword"
-                            }
-                        },
-                        "type": "object"
-                    },
-                    "assay_titles": {
-                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "assessed_genes": {
@@ -520,9 +427,6 @@
                                 "type": "keyword"
                             },
                             "assay_term": {
-                                "type": "keyword"
-                            },
-                            "assay_terms": {
                                 "type": "keyword"
                             },
                             "assay_titles": {
@@ -1289,9 +1193,6 @@
                                 "type": "keyword"
                             },
                             "assay_term": {
-                                "type": "keyword"
-                            },
-                            "assay_terms": {
                                 "type": "keyword"
                             },
                             "assay_titles": {
@@ -2400,9 +2301,6 @@
                                 "type": "keyword"
                             },
                             "assay_term": {
-                                "type": "keyword"
-                            },
-                            "assay_terms": {
                                 "type": "keyword"
                             },
                             "assay_titles": {
