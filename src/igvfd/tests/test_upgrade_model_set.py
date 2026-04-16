@@ -27,3 +27,11 @@ def test_model_set_upgrade_5_6(upgrader, model_set_v5, model_set_v5_2):
     value = upgrader.upgrade('model_set', model_set_v5_2, current_version='5', target_version='6')
     assert value['schema_version'] == '6'
     assert value.get('preferred_assay_titles') == ['Perturb-seq']
+
+
+def test_model_set_upgrade_6_7(upgrader, model_set_v6):
+    value = upgrader.upgrade('model_set', model_set_v6, current_version='6', target_version='7')
+    assert value['schema_version'] == '7'
+    assert value.get('assay_terms') == ['/assay-terms/OBI_0002041/']
+    assert 'This model set assay_terms was defaulted to /assay-terms/OBI_0002041/ via an upgrade, update with appropriate assay_terms if needed.' in value.get(
+        'notes', '')

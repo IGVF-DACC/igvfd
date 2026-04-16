@@ -1,9 +1,12 @@
 ## Changelog for *`model_set.json`*
 
-### Minor changes since schema version 6
+### Schema version 7
 
 * Add `assay_terms`.
 * Add calculated property `assay_titles`.
+
+### Minor changes since schema version 6
+
 * Extend `preferred_assay_titles` enum list to include `in vivo MPRA`.
 * Extend `preferred_assay_titles` enum list to include `in vivo Perturb-seq`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.

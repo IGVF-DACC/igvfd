@@ -77,7 +77,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "6"
+            "default": "7"
         },
         "model_name": {
             "title": "Model Name",
