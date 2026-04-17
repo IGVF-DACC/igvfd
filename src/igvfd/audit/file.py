@@ -286,7 +286,8 @@ function_dispatcher_signal_file_object = {
 
 function_dispatcher_tabular_file_object = {
     'audit_file_no_file_format_specifications': audit_file_no_file_format_specifications,
-    'audit_cell_annotation_without_marker_file': audit_cell_annotation_without_marker_file
+    'audit_cell_annotation_without_marker_file': audit_cell_annotation_without_marker_file,
+    'audit_file_mixed_assembly_transcriptome_annotation': audit_file_mixed_assembly_transcriptome_annotation
 }
 
 function_dispatcher_model_file_object = {
