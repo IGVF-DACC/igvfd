@@ -44,6 +44,7 @@ TOP_HITS_ITEM_TYPES = [
     'ModelSet',
     'AuxiliarySet',
     'PredictionSet',
+    'PseudobulkSet',
     'Gene',
     'OpenReadingFrame',
     'Image',
