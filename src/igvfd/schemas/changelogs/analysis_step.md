@@ -2,6 +2,13 @@
 
 ### Minor changes since schema version 11
 
+* Extend `analysis_step_types` enum list to include `cis-trans classification`.
+* Extend `input_content_types` enum list to include `cis-trans regulatory differences`.
+* Extend `output_content_types` enum list to include `cis-trans regulatory differences`.
+* Extend `input_content_types` enum list to include `allele specific RNA pseudobulk counts`.
+* Extend `output_content_types` enum list to include `allele specific RNA pseudobulk counts`.
+* Extend `input_content_types` enum list to include `pseudobulk annotations`.
+* Extend `output_content_types` enum list to include `pseudobulk annotations`.
 * Extend `input_content_types` enum list to include `barcode to well mapping`.
 * Extend `output_content_types` enum list to include `barcode to well mapping`.
 * Extend `input_content_types` enum list to include `predicted gene regulatory networks`.
