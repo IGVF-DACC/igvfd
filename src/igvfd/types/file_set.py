@@ -110,7 +110,7 @@ def get_file_set_props_for_summary_and_samples(request, file_set):
     )
 
 
-def get_preferred_assay_slim_from_title(title):
+def get_preferred_assay_slims(preferred_assay_titles):
     title_to_slims = {
         'RNA-seq': ['gene expression'],
         'scRNA-seq': ['gene expression	single cell'],
@@ -188,10 +188,14 @@ def get_preferred_assay_slim_from_title(title):
         'WGS': ['genetic profiling'],
         'DNase-seq': ['chromatin accessibility']
     }
-    if title in title_to_slims:
-        return title_to_slims[title]
-    else:
-        return []
+    slims = []
+    if preferred_assay_titles:
+        for title in preferred_assay_titles:
+            if title in title_to_slims:
+                slims.extend(title_to_slims[title])
+            else:
+                slims.extend(['other'])
+    return slims
 
 
 EMBEDDED_FILE_FIELDS = [
@@ -803,7 +807,7 @@ class AnalysisSet(FileSet):
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Preferred Assay Slims',
+                'title': 'Preferred Assay Slim',
                 'description': 'Category of assay that produced data analyzed in the analysis set.',
                 'type': 'string'
             },
@@ -811,12 +815,7 @@ class AnalysisSet(FileSet):
         }
     )
     def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        slims = []
-        if preferred_assay_titles:
-            for title in preferred_assay_titles:
-                slims.extend(get_preferred_assay_slim_from_title(title))
-        if slims:
-            return sorted(list(set(slims)))
+        return get_preferred_assay_slims(preferred_assay_titles)
 
     @calculated_property(
         define=True,
@@ -1408,7 +1407,7 @@ class CuratedSet(FileSet):
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Preferred Assay Slims',
+                'title': 'Preferred Assay Slim',
                 'description': 'Category of assay that produced data analyzed in the analysis set.',
                 'type': 'string'
             },
@@ -1416,12 +1415,7 @@ class CuratedSet(FileSet):
         }
     )
     def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        slims = []
-        if preferred_assay_titles:
-            for title in preferred_assay_titles:
-                slims.extend(get_preferred_assay_slim_from_title(title))
-        if slims:
-            return sorted(list(set(slims)))
+        return get_preferred_assay_slims(preferred_assay_titles)
 
 
 @collection(
@@ -1728,7 +1722,7 @@ class MeasurementSet(FileSet):
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Preferred Assay Slims',
+                'title': 'Preferred Assay Slim',
                 'description': 'Category of assay that produced data analyzed in the analysis set.',
                 'type': 'string'
             },
@@ -1736,12 +1730,7 @@ class MeasurementSet(FileSet):
         }
     )
     def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        slims = []
-        if preferred_assay_titles:
-            for title in preferred_assay_titles:
-                slims.extend(get_preferred_assay_slim_from_title(title))
-        if slims:
-            return sorted(list(set(slims)))
+        return get_preferred_assay_slims(preferred_assay_titles)
 
 
 @collection(
@@ -1865,7 +1854,7 @@ class ModelSet(FileSet):
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Preferred Assay Slims',
+                'title': 'Preferred Assay Slim',
                 'description': 'Category of assay that produced data analyzed in the analysis set.',
                 'type': 'string'
             },
@@ -1873,12 +1862,7 @@ class ModelSet(FileSet):
         }
     )
     def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        slims = []
-        if preferred_assay_titles:
-            for title in preferred_assay_titles:
-                slims.extend(get_preferred_assay_slim_from_title(title))
-        if slims:
-            return sorted(list(set(slims)))
+        return get_preferred_assay_slims(preferred_assay_titles)
 
 
 @collection(
@@ -1952,7 +1936,7 @@ class AuxiliarySet(FileSet):
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Preferred Assay Slims',
+                'title': 'Preferred Assay Slim',
                 'description': 'Category of assay that produced data analyzed in the analysis set.',
                 'type': 'string'
             },
@@ -1960,12 +1944,7 @@ class AuxiliarySet(FileSet):
         }
     )
     def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        slims = []
-        if preferred_assay_titles:
-            for title in preferred_assay_titles:
-                slims.extend(get_preferred_assay_slim_from_title(title))
-        if slims:
-            return sorted(list(set(slims)))
+        return get_preferred_assay_slims(preferred_assay_titles)
 
     @calculated_property(
         condition='measurement_sets',
@@ -2314,7 +2293,7 @@ class ConstructLibrarySet(FileSet):
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Preferred Assay Slims',
+                'title': 'Preferred Assay Slim',
                 'description': 'Category of assay that produced data analyzed in the analysis set.',
                 'type': 'string'
             },
@@ -2322,12 +2301,7 @@ class ConstructLibrarySet(FileSet):
         }
     )
     def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        slims = []
-        if preferred_assay_titles:
-            for title in preferred_assay_titles:
-                slims.extend(get_preferred_assay_slim_from_title(title))
-        if slims:
-            return sorted(list(set(slims)))
+        return get_preferred_assay_slims(preferred_assay_titles)
 
     @calculated_property(
         condition='file_sets',
@@ -2682,7 +2656,7 @@ class PseudobulkSet(FileSet):
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Preferred Assay Slims',
+                'title': 'Preferred Assay Slim',
                 'description': 'Category of assay that produced data analyzed in the analysis set.',
                 'type': 'string'
             },
@@ -2690,12 +2664,7 @@ class PseudobulkSet(FileSet):
         }
     )
     def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        slims = []
-        if preferred_assay_titles:
-            for title in preferred_assay_titles:
-                slims.extend(get_preferred_assay_slim_from_title(title))
-        if slims:
-            return sorted(list(set(slims)))
+        return get_preferred_assay_slims(preferred_assay_titles)
 
     @calculated_property(
         define=True,

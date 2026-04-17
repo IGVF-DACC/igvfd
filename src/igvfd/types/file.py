@@ -388,7 +388,7 @@ class File(Item):
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Assay Slim',
+                'title': 'Preferred Assay Slim',
                 'description': 'Preferred assay slim from the file set this file belongs to.',
                 'type': 'string'
             },
