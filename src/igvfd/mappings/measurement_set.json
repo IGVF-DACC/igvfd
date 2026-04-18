@@ -1,6 +1,6 @@
 {
-    "hash": "29c5432e348e6439a20abd1a21c3e81e",
-    "index_name": "measurement_set_29c5432e",
+    "hash": "d303cc0c42738ddeeb8c6b94a80d13b2",
+    "index_name": "measurement_set_d303cc0c",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -934,10 +934,16 @@
                                     "status": {
                                         "type": "keyword"
                                     },
+                                    "submitted_assembly": {
+                                        "type": "keyword"
+                                    },
                                     "submitted_by": {
                                         "type": "keyword"
                                     },
                                     "submitted_file_name": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_transcriptome_annotation": {
                                         "type": "keyword"
                                     },
                                     "submitter_comment": {
@@ -2639,11 +2645,17 @@
                             "strand_specificity": {
                                 "type": "keyword"
                             },
+                            "submitted_assembly": {
+                                "type": "keyword"
+                            },
                             "submitted_by": {
                                 "type": "keyword"
                             },
                             "submitted_file_name": {
                                 "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "submitted_transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "submitter_comment": {

@@ -680,3 +680,91 @@ def reference_file_22_23(value, system):
 
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('tabular_file', '20', '21')
+def tabular_file_20_21(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2887
+    # This list of excluded content types is only relevant to v20 of Tabular File.
+    # It may not be applicable to any future versions of the schema.
+    excluded_content_types_v20 = [
+        'barcode onlist',
+        'barcode replacement',
+        'barcode to cluster mapping',
+        'barcode to donor mapping',
+        'barcode to element mapping',
+        'barcode to hashtag mapping',
+        'barcode to sample mapping',
+        'barcode to TF overexpression mapping',
+        'barcode to variant mapping',
+        'calibrated coding variant effect thresholds',
+        'cell annotations',
+        'cell hashing barcodes',
+        'coding_variants',
+        'complexes',
+        'derived barcode mapping',
+        'diseases_genes',
+        'documentation (readme)',
+        'drugs',
+        'external source data',
+        'genes',
+        'genes_genes',
+        'genes_pathways',
+        'genes_terms',
+        'genome index',
+        'genome reference',
+        'genomic_elements',
+        'genomic_elements_genes',
+        'genomic_elements_genomic_elements',
+        'go_terms_proteins',
+        'heritability enrichment',
+        'index plate',
+        'individual cells profile',
+        'machine learning model features',
+        'marker gene activity',
+        'marker genes',
+        'motifs',
+        'motifs_proteins',
+        'normalized variants profile',
+        'ontology_terms',
+        'pathogenicity validation',
+        'pathways',
+        'pathways_pathways',
+        'pipeline parameters',
+        'primer sequences',
+        'protein sequences',
+        'protein stability fluorescence score',
+        'protein to protein interaction score',
+        'proteins_proteins',
+        'sample sort parameters',
+        'selected normalized variants profile',
+        'studies_variants_phenotypes',
+        'tissue positions',
+        'transcriptome index',
+        'transcriptome reference',
+        'variants_diseases',
+        'variants_drugs',
+        'variants_genes',
+        'variants_genomic_elements',
+        'variants_proteins',
+        'variants_proteins_terms',
+        'variants_variants'
+    ]
+    notes = value.get('notes', '')
+    if 'assembly' in value:
+        value['submitted_assembly'] = value.get('assembly', '')
+        notes += f' The submitted assembly {value.get("assembly", "")} was moved to the submitted_assembly property.'
+        del value['assembly']
+    if 'transcriptome_annotation' in value:
+        value['submitted_transcriptome_annotation'] = value.get('transcriptome_annotation', '')
+        notes += f' The submitted transcriptome annotation {value.get("transcriptome_annotation", "")} was moved to the submitted_transcriptome_annotation property.'
+        del value['transcriptome_annotation']
+    if not ('reference_files' in value or value['content_type'] in excluded_content_types_v20):
+        if 'submitted_assembly' not in value:
+            value['submitted_assembly'] = 'unknown'
+            notes += f' This file\'s submitted_assembly was automatically set to unknown because the file had no assembly nor reference_files.'
+        if 'submitted_transcriptome_annotation' not in value:
+            value['submitted_transcriptome_annotation'] = 'unknown'
+            notes += f' This file\'s submitted_transcriptome_annotation was automatically set to unknown because the file had no transcriptome_annotation nor reference_files.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

@@ -1,5 +1,12 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 21
+
+* Rename `assembly` to `submitted_assembly`.
+* Rename `transcriptome_annotation` to `submitted_transcriptome_annotation`.
+* Add calculated property `assembly`.
+* Add calculated property `transcriptome_annotation`.
+
 ### Minor changes since schema version 20
 
 * Extend `content_type` enum list to include `barcode to well mapping`.
