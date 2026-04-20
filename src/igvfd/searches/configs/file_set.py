@@ -35,7 +35,7 @@ def file_set():
                 'title': 'Growth Medium',
             },
             'samples.modifications.modality': {
-                'title': 'Modification',
+                'title': 'Perturbation Method',
             },
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment',
