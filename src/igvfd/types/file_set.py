@@ -120,7 +120,8 @@ def _sample_summary_get_term_name(request, term_path):
     return request.embed(term_path, '@@object?skip_calculated=true').get('term_name', '')
 
 
-def _sample_summary_get_disease_terms(request, sample_object, disease_prefixes):
+def _sample_summary_get_disease_terms(request, sample_object):
+    disease_prefixes = ('DOID:', 'EFO:', 'HP:', 'MONDO:')
     disease_terms = []
     for phenotypic_feature in sample_object.get('phenotypic_features', []):
         feature_obj = request.embed(phenotypic_feature, '@@object?skip_calculated=true')
@@ -145,8 +146,8 @@ def _sample_summary_format_disease_phrase(disease_terms):
     return f'{disease_terms[0]} and {len(disease_terms) - 1} other phenotypes'
 
 
-def _sample_summary_get_disease_phrase(request, sample_object, disease_prefixes):
-    disease_terms = _sample_summary_get_disease_terms(request, sample_object, disease_prefixes)
+def _sample_summary_get_disease_phrase(request, sample_object):
+    disease_terms = _sample_summary_get_disease_terms(request, sample_object)
     return _sample_summary_format_disease_phrase(disease_terms)
 
 
@@ -182,7 +183,12 @@ def _sample_summary_get_donor_data(request, sample_object):
     }
 
 
-def _sample_summary_normalize_taxa(taxa_values, taxa_to_label):
+def _sample_summary_normalize_taxa(taxa_values):
+    taxa_to_label = {
+        'Homo sapiens': 'Human',
+        'Mus musculus': 'Mouse',
+        'Saccharomyces cerevisiae': 'Yeast'
+    }
     if not taxa_values:
         return ''
 
@@ -240,7 +246,7 @@ def _sample_summary_get_slim_for_sample_term(request, term_path):
     return ''
 
 
-def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects, disease_prefixes):
+def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects):
     def _format_tissue_phrase(term_name):
         if term_name.endswith(' tissue') or term_name.endswith(' tissues'):
             return term_name
@@ -259,7 +265,7 @@ def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects, di
         sample_term_phrase = _sample_summary_join_with_and(
             _sample_summary_get_sample_term_names(request, sample_obj)
         )
-        disease_phrase = _sample_summary_get_disease_phrase(request, sample_obj, disease_prefixes)
+        disease_phrase = _sample_summary_get_disease_phrase(request, sample_obj)
         if disease_phrase:
             return f'{disease_phrase} {_format_tissue_phrase(sample_term_phrase)}'.strip()
         else:
@@ -270,7 +276,7 @@ def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects, di
         parts = [_format_tissue_phrase(name) for name in sorted(all_term_names)]
         tissue_phrase = _sample_summary_join_with_and(parts)
         samples_disease_terms = [
-            _sample_summary_get_disease_terms(request, sample_obj, disease_prefixes)
+            _sample_summary_get_disease_terms(request, sample_obj)
             for sample_obj in tissue_sample_objects
         ]
         # Only elevate disease phrase when every tissue sample has disease terms.
@@ -291,7 +297,7 @@ def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects, di
         sample_term_phrase = _sample_summary_join_with_and(
             _sample_summary_get_sample_term_names(request, sample_obj)
         )
-        disease_phrase = _sample_summary_get_disease_phrase(request, sample_obj, disease_prefixes)
+        disease_phrase = _sample_summary_get_disease_phrase(request, sample_obj)
         if disease_phrase:
             tissue_phrases_with_disease.add(
                 f'{disease_phrase} {_format_tissue_phrase(sample_term_phrase)}'.strip()
@@ -327,12 +333,12 @@ def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects, di
     return _sample_summary_join_with_and(parts)
 
 
-def _sample_summary_build_single_sample_phrase(request, sample_object, disease_prefixes):
+def _sample_summary_build_single_sample_phrase(request, sample_object):
     sample_classifications = set(sample_object.get('classifications', []))
     sample_terms = _sample_summary_get_sample_term_names(request, sample_object)
     sample_term_phrase = _sample_summary_join_with_and(sample_terms)
     targeted_sample_term_phrase = _sample_summary_get_targeted_sample_term_name(request, sample_object)
-    disease_phrase = _sample_summary_get_disease_phrase(request, sample_object, disease_prefixes)
+    disease_phrase = _sample_summary_get_disease_phrase(request, sample_object)
 
     pooled_prefix = 'pooled ' if 'pooled cell specimen' in sample_classifications else ''
     primary_prefix = 'primary ' if 'primary cell' in sample_classifications else ''
@@ -1150,13 +1156,6 @@ class AnalysisSet(FileSet):
         if not samples:
             return None
 
-        disease_term_prefixes = ('DOID:', 'EFO:', 'HP:', 'MONDO:')
-        taxa_to_label = {
-            'Homo sapiens': 'Human',
-            'Mus musculus': 'Mouse',
-            'Saccharomyces cerevisiae': 'Yeast'
-        }
-
         sample_objects = [request.embed(sample, '@@object') for sample in samples]
         all_classifications = set()
         taxa_values = ''
@@ -1173,7 +1172,7 @@ class AnalysisSet(FileSet):
 
         if has_mixed_taxa:
             taxa_values = 'Mixed species'
-        taxa_phrase = _sample_summary_normalize_taxa(taxa_values, taxa_to_label)
+        taxa_phrase = _sample_summary_normalize_taxa(taxa_values)
 
         if 'multiplexed sample' in all_classifications:
             mux_sample_term_names = set()
@@ -1210,13 +1209,12 @@ class AnalysisSet(FileSet):
 
             if mux_has_mixed_taxa:
                 mux_taxa_values = 'Mixed species'
-            taxa_phrase = _sample_summary_normalize_taxa(mux_taxa_values, taxa_to_label)
+            taxa_phrase = _sample_summary_normalize_taxa(mux_taxa_values)
             mux_all_phrases = list(mux_sample_term_names)
             if mux_tissue_sample_objs:
                 tissue_phrase = _sample_summary_build_tissue_group_phrase(
                     request,
                     mux_tissue_sample_objs,
-                    disease_term_prefixes,
                 )
                 if tissue_phrase:
                     mux_all_phrases.append(tissue_phrase)
@@ -1271,7 +1269,6 @@ class AnalysisSet(FileSet):
             sample_phrase_data = _sample_summary_build_single_sample_phrase(
                 request,
                 sample_object,
-                disease_term_prefixes,
             )
             key = sample_phrase_data['comparison_key']
             if key not in candidates_by_key:
@@ -1284,7 +1281,6 @@ class AnalysisSet(FileSet):
             tissue_phrase = _sample_summary_build_tissue_group_phrase(
                 request,
                 tissue_sample_objs,
-                disease_term_prefixes,
             )
             if tissue_phrase:
                 all_phrases.append(tissue_phrase)
