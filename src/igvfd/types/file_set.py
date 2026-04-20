@@ -366,13 +366,7 @@ def _sample_summary_build_single_sample_phrase(request, sample_object):
         if organoid_type:
             phrase = f'{organoid_sample_term} {organoid_type}'.strip()
         elif 'primary cell' in sample_classifications:
-            if targeted_sample_term_phrase:
-                phrase = (
-                    f'{disease_prefix}primary {sample_term_phrase} '
-                    f'reprogrammed to {targeted_sample_term_phrase}'
-                ).strip()
-            else:
-                phrase = f'{disease_prefix}primary {sample_term_phrase}'.strip()
+            phrase = f'{disease_prefix}primary {sample_term_phrase}'.strip()
         else:
             phrase = f'{disease_prefix}{sample_term_phrase}'.strip()
 
