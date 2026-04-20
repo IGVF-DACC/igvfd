@@ -636,3 +636,13 @@ def measurement_set_v42(measurement_set):
         'preferred_assay_titles': ['DOGMA-seq'],
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v43(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '43',
+        'preferred_assay_titles': ['MERFISH'],
+    })
+    return item

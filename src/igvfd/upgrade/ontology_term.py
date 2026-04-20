@@ -307,3 +307,23 @@ def assay_term_20_21(value, system):
         notes = value.get('notes', '')
         notes += ' This assay_term previously used DOGMA-seq as preferred_assay_titles, but it has been updated to miDOGMA-seq via an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('assay_term', '21', '22')
+def assay_term_21_22(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3436
+    deleted_assay_titles = ['MULTI-seq', 'smFISH', 'MERFISH', 'HCR-FlowFISH screen', 'MIAA', 'snmC-Seq2', 'HT-recruit']
+    if value.get('preferred_assay_titles'):
+        removed_assay_titles = []
+        remained_assay_titles = []
+        for assay_title in value['preferred_assay_titles']:
+            if assay_title in deleted_assay_titles:
+                removed_assay_titles.append(assay_title)
+            else:
+                remained_assay_titles.append(assay_title)
+        if removed_assay_titles:
+            notes = value.get('notes', '')
+            removed_list = ', '.join(sorted(removed_assay_titles))
+            notes += f' This assay_term previously used {removed_list} as preferred_assay_titles, but they have been removed via an upgrade.'
+            value['notes'] = notes.strip()
+            value['preferred_assay_titles'] = sorted(remained_assay_titles) if remained_assay_titles else None

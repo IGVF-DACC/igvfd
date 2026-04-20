@@ -159,3 +159,12 @@ def test_assay_term_upgrade_20_21(upgrader, assay_term_v20):
         'Arrayed mN2H', 'Pooled Y2H', 'Arrayed semi-qY2H v1', 'miDOGMA-seq'}
     assert value.get(
         'notes') == 'This assay_term previously used DOGMA-seq as preferred_assay_titles, but it has been updated to miDOGMA-seq via an upgrade.'
+
+
+def test_assay_term_upgrade_21_22(upgrader, assay_term_v21):
+    value = upgrader.upgrade('assay_term', assay_term_v21, current_version='21', target_version='22')
+    assert value['schema_version'] == '22'
+    assert set(value.get('preferred_assay_titles')) == {
+        'RNA-seq', 'scRNA-seq'}
+    assert value.get(
+        'notes') == 'This assay_term previously used RNA-seq, scRNA-seq as preferred_assay_titles, but they have been removed via an upgrade.'

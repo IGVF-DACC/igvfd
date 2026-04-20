@@ -793,3 +793,37 @@ def model_set_6_7(value, system):
         notes = value.get('notes', '')
         notes += f' This model set assay_terms was defaulted to /assay-terms/OBI_0002041/ via an upgrade, update with appropriate assay_terms if needed.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '43', '44')
+def measurement_set_43_44(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3436
+    deleted_assay_titles = ['MULTI-seq', 'smFISH', 'MERFISH', 'HCR-FlowFISH screen', 'MIAA', 'snmC-Seq2', 'HT-recruit']
+    if value.get('preferred_assay_titles'):
+        for assay_title in value['preferred_assay_titles']:
+            if assay_title in deleted_assay_titles:
+                notes = value.get('notes', '')
+                notes += f' This measurement set previously used {assay_title} as preferred_assay_titles, but it has been removed and defaulted to RNA-seq via an upgrade.'
+                # preferred_assay_titles is required under measurement_set
+                value['preferred_assay_titles'] = ['RNA-seq']
+                value['notes'] = notes.strip()
+
+
+@upgrade_step('model_set', '7', '8')
+def model_set_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3436
+    deleted_assay_titles = ['MULTI-seq', 'smFISH', 'MERFISH', 'HCR-FlowFISH screen', 'MIAA', 'snmC-Seq2', 'HT-recruit']
+    if value.get('preferred_assay_titles'):
+        removed_assay_titles = []
+        remained_assay_titles = []
+        for assay_title in value['preferred_assay_titles']:
+            if assay_title in deleted_assay_titles:
+                removed_assay_titles.append(assay_title)
+            else:
+                remained_assay_titles.append(assay_title)
+        if removed_assay_titles:
+            notes = value.get('notes', '')
+            removed_list = ', '.join(sorted(removed_assay_titles))
+            notes += f' This model set previously used {removed_list} as preferred_assay_titles, but they have been removed via an upgrade.'
+            value['notes'] = notes.strip()
+            value['preferred_assay_titles'] = sorted(remained_assay_titles) if remained_assay_titles else None
