@@ -1159,15 +1159,20 @@ class AnalysisSet(FileSet):
 
         sample_objects = [request.embed(sample, '@@object') for sample in samples]
         all_classifications = set()
-        taxa_values = []
+        taxa_values = ''
+        has_mixed_taxa = False
         for sample_object in sample_objects:
             all_classifications.update(sample_object.get('classifications', []))
             sample_taxa = sample_object.get('taxa', '')
-            if isinstance(sample_taxa, (list, tuple, set)):
-                taxa_values.extend(sample_taxa)
-            elif sample_taxa:
-                taxa_values.append(sample_taxa)
+            if not sample_taxa:
+                continue
+            if not taxa_values:
+                taxa_values = sample_taxa
+            elif taxa_values != sample_taxa:
+                has_mixed_taxa = True
 
+        if has_mixed_taxa:
+            taxa_values = 'Mixed species'
         taxa_phrase = _sample_summary_normalize_taxa(taxa_values, taxa_to_label)
 
         if 'multiplexed sample' in all_classifications:
@@ -1176,7 +1181,8 @@ class AnalysisSet(FileSet):
             mux_donor_accessions = set()
             mux_donor_strains = set()
             mux_donor_taxa = set()
-            mux_taxa_values = []
+            mux_taxa_values = ''
+            mux_has_mixed_taxa = False
             for sample_object in sample_objects:
                 multiplexed_samples = sample_object.get('multiplexed_samples', [])
                 for multiplexed_sample in multiplexed_samples:
@@ -1188,10 +1194,11 @@ class AnalysisSet(FileSet):
                     mux_donor_strains.update(mux_donor_data['strains'])
                     mux_donor_taxa.update(mux_donor_data['taxa'])
                     sample_taxa = multiplexed_sample_obj.get('taxa', '')
-                    if isinstance(sample_taxa, (list, tuple, set)):
-                        mux_taxa_values.extend(sample_taxa)
-                    elif sample_taxa:
-                        mux_taxa_values.append(sample_taxa)
+                    if sample_taxa:
+                        if not mux_taxa_values:
+                            mux_taxa_values = sample_taxa
+                        elif mux_taxa_values != sample_taxa:
+                            mux_has_mixed_taxa = True
                     mux_classifications = set(multiplexed_sample_obj.get('classifications', []))
                     if 'tissue/organ' in mux_classifications:
                         mux_tissue_sample_objs.append(multiplexed_sample_obj)
@@ -1201,6 +1208,8 @@ class AnalysisSet(FileSet):
                             if term_name:
                                 mux_sample_term_names.add(term_name)
 
+            if mux_has_mixed_taxa:
+                mux_taxa_values = 'Mixed species'
             taxa_phrase = _sample_summary_normalize_taxa(mux_taxa_values, taxa_to_label)
             mux_all_phrases = list(mux_sample_term_names)
             if mux_tissue_sample_objs:
