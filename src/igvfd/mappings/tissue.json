@@ -1,6 +1,6 @@
 {
-    "hash": "72814f5dcd4830de64dc08462d69f71f",
-    "index_name": "tissue_72814f5d",
+    "hash": "2f38b7df8cb37ecdb4aa2aa2c4358539",
+    "index_name": "tissue_2f38b7df",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1013,6 +1013,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "assay_terms": {
+                                "type": "keyword"
                             },
                             "assay_titles": {
                                 "type": "keyword"

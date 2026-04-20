@@ -1,6 +1,6 @@
 {
-    "hash": "d52ca28f54e5d88a8c1befd050ee6e9f",
-    "index_name": "tabular_file_d52ca28f",
+    "hash": "befe08785ebf5fcbd52420925718fd24",
+    "index_name": "tabular_file_befe0878",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -641,6 +641,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "assay_terms": {
+                                "type": "keyword"
                             },
                             "assay_titles": {
                                 "type": "keyword"

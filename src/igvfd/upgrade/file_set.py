@@ -783,3 +783,13 @@ def auxiliary_set_12_13(value, system):
     if 'barcode_map' in value:
         value['hashtag_barcode_map'] = value['barcode_map']
         del value['barcode_map']
+
+
+@upgrade_step('model_set', '6', '7')
+def model_set_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3421
+    if 'preferred_assay_titles' in value:
+        value['assay_terms'] = ['/assay-terms/OBI_0002041/']
+        notes = value.get('notes', '')
+        notes += f' This model set assay_terms was defaulted to /assay-terms/OBI_0002041/ via an upgrade, update with appropriate assay_terms if needed.'
+        value['notes'] = notes.strip()

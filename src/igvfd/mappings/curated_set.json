@@ -1,6 +1,6 @@
 {
-    "hash": "3022886bfaac6a3bc14a393c4479c11a",
-    "index_name": "curated_set_3022886b",
+    "hash": "5b545b29f9acab235dfb79b1071932a0",
+    "index_name": "curated_set_5b545b29",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -330,6 +330,9 @@
                                 "type": "keyword"
                             },
                             "assay_term": {
+                                "type": "keyword"
+                            },
+                            "assay_terms": {
                                 "type": "keyword"
                             },
                             "assay_titles": {
@@ -1102,6 +1105,9 @@
                                 "type": "keyword"
                             },
                             "assay_term": {
+                                "type": "keyword"
+                            },
+                            "assay_terms": {
                                 "type": "keyword"
                             },
                             "assay_titles": {

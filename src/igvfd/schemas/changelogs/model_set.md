@@ -1,5 +1,10 @@
 ## Changelog for *`model_set.json`*
 
+### Schema version 7
+
+* Add `assay_terms`.
+* Add calculated property `assay_titles`.
+
 ### Minor changes since schema version 6
 
 * Extend `preferred_assay_titles` enum list to include `in vivo MPRA`.

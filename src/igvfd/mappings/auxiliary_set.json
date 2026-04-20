@@ -1,6 +1,6 @@
 {
-    "hash": "4a39cabcb48002a639ad3d5c615197be",
-    "index_name": "auxiliary_set_4a39cabc",
+    "hash": "9f610144e490b3e34355c11d8128a81b",
+    "index_name": "auxiliary_set_9f610144",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -325,6 +325,9 @@
                                 "type": "keyword"
                             },
                             "assay_term": {
+                                "type": "keyword"
+                            },
+                            "assay_terms": {
                                 "type": "keyword"
                             },
                             "assay_titles": {
@@ -1097,6 +1100,9 @@
                                 "type": "keyword"
                             },
                             "assay_term": {
+                                "type": "keyword"
+                            },
+                            "assay_terms": {
                                 "type": "keyword"
                             },
                             "assay_titles": {
@@ -2205,6 +2211,9 @@
                                 "type": "keyword"
                             },
                             "assay_term": {
+                                "type": "keyword"
+                            },
+                            "assay_terms": {
                                 "type": "keyword"
                             },
                             "assay_titles": {

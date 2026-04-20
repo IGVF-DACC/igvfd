@@ -63,11 +63,21 @@
     "dependentSchemas": {
         "$merge": [
             "shared_dependencies.json#/accession_status"
-        ]
+        ],
+        "preferred_assay_titles": {
+            "required": [
+                "assay_terms"
+            ]
+        },
+        "assay_terms": {
+            "required": [
+                "preferred_assay_titles"
+            ]
+        }
     },
     "properties": {
         "schema_version": {
-            "default": "6"
+            "default": "7"
         },
         "model_name": {
             "title": "Model Name",
@@ -140,6 +150,24 @@
         "preferred_assay_titles": {
             "description": "The assay(s) that served as input tranining data for the derivation of this model set."
         },
+        "assay_terms": {
+            "title": "Assay Terms",
+            "description": "The assay terms used to produce data in this model set.",
+            "comment": "See assay_term.json for available identifiers.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Assay Term",
+                "description": "An assay term used to produce data in this model set.",
+                "type": "string",
+                "linkTo": "AssayTerm"
+            },
+            "submissionExample": {
+                "appscript": "[\"/assay-terms/OBI_0002762/\", \"igvf:snATAC-seq\"]",
+                "igvf_utils": "/assay-terms/OBI_0002762/, igvf:snATAC-seq"
+            }
+        },
         "model_zoo_location": {
             "title": "Model Zoo Location",
             "description": "The link to the model on the Kipoi repository.",
@@ -182,6 +210,7 @@
     "fuzzy_searchable_fields": [
         "@type",
         "aliases",
+        "assay_titles",
         "collections",
         "dbxrefs",
         "description",

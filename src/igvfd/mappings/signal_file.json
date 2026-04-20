@@ -1,6 +1,6 @@
 {
-    "hash": "641cc5d4c4d49c3da5b3852c57f04e1c",
-    "index_name": "signal_file_641cc5d4",
+    "hash": "6d2b50f470b7a2badd1e5f58f54b2bca",
+    "index_name": "signal_file_6d2b50f4",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -625,6 +625,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "assay_terms": {
+                                "type": "keyword"
                             },
                             "assay_titles": {
                                 "type": "keyword"
