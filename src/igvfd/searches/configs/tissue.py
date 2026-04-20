@@ -91,7 +91,7 @@ def tissue():
                 'title': 'Fused Domain'
             },
             'modifications.modality': {
-                'title': 'Perturbation Method'
+                'title': 'Perturbation'
             },
             'modifications.degron_system': {
                 'title': 'Degron System'

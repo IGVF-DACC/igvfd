@@ -26,7 +26,7 @@ def curated_set():
                 'title': 'Phenotypic Features'
             },
             'samples.modifications.modality': {
-                'title': 'Perturbation Method',
+                'title': 'Perturbation',
             },
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment',

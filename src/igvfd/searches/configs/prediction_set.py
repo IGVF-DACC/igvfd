@@ -70,7 +70,7 @@ def prediction_set():
                 'description': 'The growth medium or conditions used to culture the sample.'
             },
             'samples.modifications.modality': {
-                'title': 'Perturbation Method',
+                'title': 'Perturbation',
                 'optional': True,
                 'category': 'Sample',
                 'description': 'The intended effect of an exogenous or in situ modification of the sample; e.g. activation, inhibition, degradation.'

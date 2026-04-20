@@ -38,7 +38,7 @@ def model_set():
                 'title': 'Growth Medium',
             },
             'samples.modifications.modality': {
-                'title': 'Perturbation Method'
+                'title': 'Perturbation'
             },
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
