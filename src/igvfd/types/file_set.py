@@ -1148,7 +1148,7 @@ class AnalysisSet(FileSet):
     )
     def sample_summary(self, request, samples=None):
         if not samples:
-            return ''
+            return None
 
         disease_term_prefixes = ('DOID:', 'EFO:', 'HP:', 'MONDO:')
         taxa_to_label = {
