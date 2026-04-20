@@ -248,7 +248,7 @@ def _sample_summary_get_slim_for_sample_term(request, term_path):
 
 def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects):
     def _format_tissue_phrase(term_name):
-        if term_name.endswith(' tissue') or term_name.endswith(' tissues'):
+        if term_name.endswith((' tissue', 'tissues')):
             return term_name
         return f'{term_name} tissue'
 
@@ -1240,7 +1240,7 @@ class AnalysisSet(FileSet):
         is_all_mouse_donors = donor_taxa and donor_taxa == {'Mus musculus'}
         if is_all_mouse_donors and donor_strains:
             if len(donor_strains) == 1:
-                donor_phrase = f' from {sorted(donor_strains)[0]} mouse'
+                donor_phrase = f' from {sorted(donor_strains)[0]}'
             else:
                 donor_phrase = f' from {len(donor_accessions)} mice of {len(donor_strains)} strains'
         else:

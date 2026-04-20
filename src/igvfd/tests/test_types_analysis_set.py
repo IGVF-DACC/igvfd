@@ -530,7 +530,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get(
-        'sample_summary') == 'Mouse adrenal gland tissue from strain1 mouse'
+        'sample_summary') == 'Mouse adrenal gland tissue from strain1'
 
     # Tissue with disease phenotypic feature
     testapp.patch_json(
@@ -542,7 +542,7 @@ def test_analysis_set_sample_summary(
     res = testapp.get(principal_analysis_set['@id']).json
     curr_strain = testapp.get(rodent_donor['@id']).json.get('strain')
     assert res.get(
-        'sample_summary') == f'Mouse Alzheimer\'s disease adrenal gland tissue from {curr_strain} mouse'
+        'sample_summary') == f'Mouse Alzheimer\'s disease adrenal gland tissue from {curr_strain}'
 
     # Tissue with multiple disease phenotypic features
     testapp.patch_json(
@@ -557,7 +557,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get(
-        'sample_summary') == f'Mouse Alzheimer\'s disease and 2 other phenotypes adrenal gland tissue from {curr_strain} mouse'
+        'sample_summary') == f'Mouse Alzheimer\'s disease and 2 other phenotypes adrenal gland tissue from {curr_strain}'
 
     # Primary cell
     testapp.patch_json(
