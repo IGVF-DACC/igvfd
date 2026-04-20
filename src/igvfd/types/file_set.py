@@ -1162,7 +1162,7 @@ class AnalysisSet(FileSet):
         taxa_values = []
         for sample_object in sample_objects:
             all_classifications.update(sample_object.get('classifications', []))
-            sample_taxa = sample_object.get('taxa', [])
+            sample_taxa = sample_object.get('taxa', '')
             if isinstance(sample_taxa, (list, tuple, set)):
                 taxa_values.extend(sample_taxa)
             elif sample_taxa:
@@ -1187,7 +1187,7 @@ class AnalysisSet(FileSet):
                     mux_donor_data = _sample_summary_get_donor_data(request, multiplexed_sample_obj)
                     mux_donor_strains.update(mux_donor_data['strains'])
                     mux_donor_taxa.update(mux_donor_data['taxa'])
-                    sample_taxa = multiplexed_sample_obj.get('taxa', [])
+                    sample_taxa = multiplexed_sample_obj.get('taxa', '')
                     if isinstance(sample_taxa, (list, tuple, set)):
                         mux_taxa_values.extend(sample_taxa)
                     elif sample_taxa:
