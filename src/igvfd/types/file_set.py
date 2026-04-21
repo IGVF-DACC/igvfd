@@ -195,7 +195,10 @@ def get_preferred_assay_slims(preferred_assay_titles):
                 slims.extend(title_to_slims[title])
             else:
                 slims.extend(['other'])
-    return slims
+    if slims:
+        return slims
+    else:
+        return None
 
 
 EMBEDDED_FILE_FIELDS = [
@@ -2646,7 +2649,10 @@ class PseudobulkSet(FileSet):
                     []
                 )
             )
-        return sorted(preferred_assay_list)
+        if preferred_assay_list:
+            return sorted(preferred_assay_list)
+        else:
+            return None
 
     @calculated_property(
         schema={
