@@ -378,7 +378,7 @@ class File(Item):
         return request.embed(
             file_set,
             '@@object_with_select_calculated_properties?field=preferred_assay_titles'
-        ).get('preferred_assay_titles', [])
+        ).get('preferred_assay_titles', None)
 
     @calculated_property(
         schema={
@@ -399,7 +399,7 @@ class File(Item):
         return request.embed(
             file_set,
             '@@object_with_select_calculated_properties?field=preferred_assay_slims'
-        ).get('preferred_assay_slims', [])
+        ).get('preferred_assay_slims', None)
 
     @calculated_property(
         condition='analysis_step_version',
