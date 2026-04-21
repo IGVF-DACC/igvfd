@@ -98,6 +98,10 @@ def get_cls_phrase(cls_set, only_cls_input=False):
     return cls_phrase
 
 
+def get_first_matching_classification(classifications, candidates):
+    return next((candidate for candidate in candidates if candidate in classifications), None)
+
+
 def get_file_set_props_for_summary_and_samples(request, file_set):
     '''Get properties from a file set needed for summary and samples calculation'''
     return request.embed(
@@ -108,6 +112,309 @@ def get_file_set_props_for_summary_and_samples(request, file_set):
         '&field=assay_term&field=samples'
         '&field=assay_titles&field=preferred_assay_titles'
     )
+
+
+def _sample_summary_get_disease_terms(request, sample_object):
+    '''Get disease terms from phenotypic features.'''
+    disease_prefixes = ('DOID:', 'EFO:', 'HP:', 'MONDO:')
+    disease_terms = []
+    for phenotypic_feature in sample_object.get('phenotypic_features', []):
+        feature_obj = request.embed(phenotypic_feature, '@@object?skip_calculated=true')
+        # Disease-only features have no quality/quantity annotations.
+        if 'quality' in feature_obj or 'quantity' in feature_obj:
+            continue
+        feature_id = feature_obj.get('feature')
+        if not feature_id:
+            continue
+        feature_term_obj = request.embed(feature_id, '@@object?skip_calculated=true')
+        # Check against term_id prefix to futher filter out non-disease ones
+        term_id = feature_term_obj.get('term_id', '')
+        term_name = feature_term_obj.get('term_name', '')
+        if term_name and any(term_id.startswith(prefix) for prefix in disease_prefixes):
+            disease_terms.append(term_name)
+    return sorted(set(disease_terms))
+
+
+def _sample_summary_format_disease_phrase(disease_terms):
+    '''Format disease phrase based on number of disease terms.'''
+    if not disease_terms:
+        return ''
+    if len(disease_terms) == 1:
+        return disease_terms[0]
+    if len(disease_terms) == 2:
+        return f'{disease_terms[0]} and 1 other phenotype'
+    return f'{disease_terms[0]} and {len(disease_terms) - 1} other phenotypes'
+
+
+def _sample_summary_get_disease_phrase(request, sample_object):
+    '''Get disease phrase for a sample object based on its phenotypic features.'''
+    disease_terms = _sample_summary_get_disease_terms(request, sample_object)
+    return _sample_summary_format_disease_phrase(disease_terms)
+
+
+def _sample_summary_get_donor_data(request, sample_object):
+    '''Get donor data from a sample object.'''
+    donor_accessions = set()
+    donor_strains = set()
+    donor_taxa = set()
+    for donor in sample_object.get('donors', []):
+        donor_obj = request.embed(donor, '@@object?skip_calculated=true')
+        accession = donor_obj.get('accession')
+        if accession:
+            donor_accessions.add(accession)
+        strain = donor_obj.get('strain')
+        if strain:
+            donor_strains.add(strain)
+        taxa = donor_obj.get('taxa')
+        if taxa:
+            donor_taxa.add(taxa)
+    return {
+        'accessions': donor_accessions,
+        'strains': donor_strains,
+        'taxa': donor_taxa,
+    }
+
+
+def _sample_summary_get_taxa(sample_object):
+    '''Get taxa info and rephrase'''
+    taxa_to_label = {
+        'Homo sapiens': 'Human',
+        'Mus musculus': 'Mouse',
+        'Saccharomyces cerevisiae': 'Yeast'
+    }
+    taxa_value = sample_object.get('taxa', '')
+
+    if not taxa_value:
+        return ''
+
+    if taxa_value == 'Mixed species':
+        return 'Mixed species'
+    return taxa_to_label.get(taxa_value, taxa_value)
+
+
+def _get_sample_summary_taxa_phrase(taxa_values):
+    '''Summarize a list of taxa values.'''
+    if len(taxa_values) > 1:
+        return 'Mixed species'
+    return list(taxa_values)[0] if taxa_values else ''
+
+
+def _sample_summary_join_with_and(values):
+    '''Helper func for phrasing with different nums of elements.'''
+    values = [value for value in sorted(set(values)) if value]
+    if not values:
+        return ''
+    if len(values) == 1:
+        return values[0]
+    if len(values) == 2:
+        return f'{values[0]}, {values[1]}'
+    return ', '.join(values[:-1]) + f', and {values[-1]}'
+
+
+def _sample_summary_get_term_name(request, term_path):
+    '''Get term name from a term path.'''
+    if not term_path:
+        return ''
+    return request.embed(term_path, '@@object?skip_calculated=true').get('term_name', '')
+
+
+def _sample_summary_get_sample_term_names(request, sample_object):
+    '''Get sample term names from a sample object.'''
+    sample_term_names = []
+    for term in sample_object.get('sample_terms', []):
+        term_name = _sample_summary_get_term_name(request, term)
+        if term_name:
+            sample_term_names.append(term_name)
+    return sorted(set(sample_term_names))
+
+
+def _sample_summary_get_targeted_sample_term_name(request, sample_object):
+    '''Get targeted sample term name from a sample object.'''
+    if 'targeted_sample_term' in sample_object:
+        targeted_sample_term = sample_object.get('targeted_sample_term')
+        if not targeted_sample_term:
+            return ''
+        return _sample_summary_get_term_name(request, targeted_sample_term)
+
+
+def _sample_summary_get_slim_for_sample_term(request, term_path):
+    '''Especially for multiple tissues, summarize by system or organ slims.'''
+    term_obj = request.embed(
+        term_path,
+        '@@object_with_select_calculated_properties?field=system_slims&field=organ_slims'
+    )
+    system_slims = sorted(term_obj.get('system_slims', []))
+    if system_slims:
+        return system_slims[0]
+    organ_slims = sorted(term_obj.get('organ_slims', []))
+    if organ_slims:
+        return organ_slims[0]
+    return ''
+
+
+def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects):
+    def _format_tissue_phrase(term_name):
+        if term_name.endswith((' tissue', 'tissues')):
+            return term_name
+        return f'{term_name} tissue'
+
+    # Get all sample terms
+    all_term_names = set()
+    for sample_obj in tissue_sample_objects:
+        for term_path in sample_obj.get('sample_terms', []):
+            term_name = _sample_summary_get_term_name(request, term_path)
+            if term_name:
+                all_term_names.add(term_name)
+
+    # For single tissue, include disease if present
+    if len(tissue_sample_objects) == 1:
+        sample_obj = tissue_sample_objects[0]
+        sample_term_phrase = _sample_summary_join_with_and(
+            _sample_summary_get_sample_term_names(request, sample_obj)
+        )
+        disease_phrase = _sample_summary_get_disease_phrase(request, sample_obj)
+        if disease_phrase:
+            return f'{disease_phrase} {_format_tissue_phrase(sample_term_phrase)}'.strip()
+        else:
+            return _format_tissue_phrase(sample_term_phrase).strip()
+
+    # For multiple tissues with 2 unique tissue terms, list all tissue terms without disease emphasis
+    if len(all_term_names) == 2:
+        parts = [_format_tissue_phrase(name) for name in sorted(all_term_names)]
+        tissue_phrase = _sample_summary_join_with_and(parts)
+        samples_disease_terms = [
+            _sample_summary_get_disease_terms(request, sample_obj)
+            for sample_obj in tissue_sample_objects
+        ]
+        # Elevate disease phrase when at least one tissue sample has disease terms.
+        if any(samples_disease_terms):
+            group_disease_terms = sorted(set(
+                term
+                for disease_terms in samples_disease_terms
+                for term in disease_terms
+            ))
+            disease_phrase = _sample_summary_format_disease_phrase(group_disease_terms)
+            if disease_phrase:
+                return f'{disease_phrase} {tissue_phrase}'.strip()
+        return tissue_phrase
+
+    # Helper to build slim group phrase (reused below)
+    def _build_tissue_slim_group_phrase():
+        slim_groups = {}
+        no_slim_term_names = set()
+        for sample_obj in tissue_sample_objects:
+            slim = ''
+            for term_path in sample_obj.get('sample_terms', []):
+                slim = _sample_summary_get_slim_for_sample_term(request, term_path)
+                if slim:
+                    break
+            if slim:
+                slim_groups[slim] = slim_groups.get(slim, 0) + 1
+            else:
+                for term_path in sample_obj.get('sample_terms', []):
+                    term_name = _sample_summary_get_term_name(request, term_path)
+                    if term_name:
+                        no_slim_term_names.add(term_name)
+        parts = []
+        for slim in slim_groups:
+            count = slim_groups[slim]
+            if count == 1:
+                parts.append(f'{slim} tissue')
+            else:
+                parts.append(f'{count} {slim} tissues')
+        for term_name in no_slim_term_names:
+            parts.append(_format_tissue_phrase(term_name))
+        return _sample_summary_join_with_and(sorted(parts))
+
+    # For >2 unique tissue terms where any sample has multiple disease terms,
+    # aggregate all diseases and group by slim: "disease X in Y slim tissues"
+    samples_disease_terms = [
+        _sample_summary_get_disease_terms(request, sample_obj)
+        for sample_obj in tissue_sample_objects
+    ]
+    if len(all_term_names) > 2 and any(len(dt) > 1 for dt in samples_disease_terms):
+        group_disease_terms = sorted(set(
+            term
+            for dt in samples_disease_terms
+            for term in dt
+        ))
+        disease_phrase = _sample_summary_format_disease_phrase(group_disease_terms)
+        if disease_phrase:
+            slim_phrase = _build_tissue_slim_group_phrase()
+            if slim_phrase:
+                return f'{disease_phrase} in {slim_phrase}'.strip()
+
+    # For >2 unique tissue terms, flatten disease and tissue terms together
+    tissue_phrases_with_disease = set()
+    for sample_obj in tissue_sample_objects:
+        sample_term_phrase = _sample_summary_join_with_and(
+            _sample_summary_get_sample_term_names(request, sample_obj)
+        )
+        disease_phrase = _sample_summary_get_disease_phrase(request, sample_obj)
+        if disease_phrase:
+            tissue_phrases_with_disease.add(
+                f'{disease_phrase} {_format_tissue_phrase(sample_term_phrase)}'.strip()
+            )
+
+    if tissue_phrases_with_disease:
+        return _sample_summary_join_with_and(tissue_phrases_with_disease)
+
+    # Only use slim grouping when there are more than 2 unique tissue terms.
+    if len(all_term_names) <= 2:
+        parts = [_format_tissue_phrase(name) for name in sorted(all_term_names)]
+        return _sample_summary_join_with_and(parts)
+
+    return _build_tissue_slim_group_phrase()
+
+
+def _sample_summary_build_single_sample_phrase(request, sample_object):
+    sample_classifications = set(sample_object.get('classifications', []))
+    sample_terms = _sample_summary_get_sample_term_names(request, sample_object)
+    sample_term_phrase = _sample_summary_join_with_and(sample_terms)
+    targeted_sample_term_phrase = _sample_summary_get_targeted_sample_term_name(request, sample_object)
+    disease_phrase = _sample_summary_get_disease_phrase(request, sample_object)
+
+    pooled_prefix = 'pooled ' if 'pooled cell specimen' in sample_classifications else ''
+    primary_prefix = 'primary ' if 'primary cell' in sample_classifications else ''
+    embryonic_prefix = 'embryonic ' if sample_object.get('embryonic', False) else ''
+    disease_prefix = f'{disease_phrase} ' if disease_phrase else ''
+    organoid_sample_term = f'{embryonic_prefix}{sample_term_phrase}' if embryonic_prefix else sample_term_phrase
+
+    if 'reprogrammed cell specimen' in sample_classifications:
+        phrase = (
+            f'{pooled_prefix}{disease_prefix}{primary_prefix}{sample_term_phrase} '
+            f'reprogrammed to {targeted_sample_term_phrase}'
+        ).strip()
+    elif 'differentiated cell specimen' in sample_classifications:
+        phrase = (
+            f'{pooled_prefix}{disease_prefix}{primary_prefix}{sample_term_phrase} '
+            f'differentiated to {targeted_sample_term_phrase}'
+        ).strip()
+    elif 'tissue/organ' in sample_classifications:
+        phrase = f'{disease_prefix}{sample_term_phrase} tissue'.strip()
+    else:
+        organoid_type = get_first_matching_classification(
+            sample_classifications,
+            ['gastruloid', 'embryoid', 'organoid']
+        )
+        if organoid_type:
+            phrase = f'{organoid_sample_term} {organoid_type}'.strip()
+        elif 'primary cell' in sample_classifications:
+            phrase = f'{disease_prefix}primary {sample_term_phrase}'.strip()
+        else:
+            phrase = f'{disease_prefix}{sample_term_phrase}'.strip()
+
+    comparison_key = (
+        tuple(sample_terms),
+        tuple(sorted(sample_classifications)),
+        disease_phrase,
+        bool(sample_object.get('embryonic', False)),
+    )
+    return {
+        'phrase': phrase,
+        'comparison_key': comparison_key,
+        'has_targeted_term': bool(targeted_sample_term_phrase),
+    }
 
 
 EMBEDDED_FILE_FIELDS = [
@@ -874,204 +1181,122 @@ class AnalysisSet(FileSet):
         }
     )
     def sample_summary(self, request, samples=None):
-        taxa = set()
-        sample_classification_term_target = dict()
-        treatment_purposes = set()
-        treatment_summaries = set()
-        growth_mediums = set()
-        differentiation_times = set()
-        library_delivery_times = set()
-        construct_library_set_types = set()
-        modification_summaries = set()
-        sorted_from = set()
-        targeted_genes_for_sorting = set()
-        cellular_sub_pools = set()
+        if not samples:
+            return None
 
-        treatment_purpose_to_adjective = {
-            'activation': 'activated',
-            'acute activation': 'acutely activated',
-            'chronic activation': 'chronically activated',
-            'agonist': 'agonized',
-            'antagonist': 'antagonized',
-            'control': 'treated with a control',
-            'differentiation': 'differentiated',
-            'de-differentiation': 'de-differentiated',
-            'perturbation': 'perturbed',
-            'selection': 'selected',
-            'stimulation': 'stimulated'
-        }
+        sample_objects = [request.embed(sample, '@@object') for sample in samples]
+        all_classifications = set()
+        taxa_values = set()
+        for sample_object in sample_objects:
+            all_classifications.update(sample_object.get('classifications', []))
+            taxa_values.add(_sample_summary_get_taxa(sample_object))
+        taxa_phrase = _get_sample_summary_taxa_phrase(taxa_values)
 
-        two_classification_cases = {
-            'differentiated cell specimen, pooled cell specimen': ['pooled differentiated cell specimen'],
-            'pooled cell specimen, reprogrammed cell specimen': ['pooled reprogrammed cell specimen'],
-            'cell line, pooled cell specimen': ['pooled cell specimen']
-        }
+        if 'multiplexed sample' in all_classifications:
+            mux_sample_term_names = set()
+            mux_tissue_sample_objs = []
+            mux_donor_accessions = set()
+            mux_donor_strains = set()
+            mux_donor_taxa = set()
+            mux_taxa_values = set()
+            mux_has_mixed_taxa = False
+            for sample_object in sample_objects:
+                multiplexed_samples = sample_object.get('multiplexed_samples', [])
+                for multiplexed_sample in multiplexed_samples:
+                    multiplexed_sample_obj = request.embed(multiplexed_sample, '@@object')
+                    mux_donor_data = _sample_summary_get_donor_data(request, multiplexed_sample_obj)
+                    mux_donor_accessions.update(mux_donor_data['accessions'])
+                    mux_donor_strains.update(mux_donor_data['strains'])
+                    mux_donor_taxa.update(mux_donor_data['taxa'])
+                    mux_taxa_values.add(_sample_summary_get_taxa(multiplexed_sample_obj))
+                    mux_classifications = set(multiplexed_sample_obj.get('classifications', []))
+                    if 'tissue/organ' in mux_classifications:
+                        mux_tissue_sample_objs.append(multiplexed_sample_obj)
+                    else:
+                        for sample_term in multiplexed_sample_obj.get('sample_terms', []):
+                            term_name = _sample_summary_get_term_name(request, sample_term)
+                            if term_name:
+                                mux_sample_term_names.add(term_name)
 
-        classification_to_prefix = {
-            'differentiated cell specimen': 'differentiated',
-            'reprogrammed cell specimen': 'reprogrammed',
-            'pooled differentiated cell specimen': 'pooled differentiated',
-            'pooled reprogrammed cell specimen': 'pooled reprogrammed'
-        }
-
-        for sample in samples:
-            sample_object = request.embed(sample, '@@object')
-
-            taxa.add(sample_object.get('taxa', ''))
-
-            # Group sample and targeted sample terms according to classification.
-            # Other metadata such as treatment info are lumped together.
-            mux_prefix = ''
-            sample_classifications = sorted(sample_object['classifications'])
-            if 'multiplexed sample' in sample_object['classifications']:
-                sample_classifications.remove('multiplexed sample')
-                mux_prefix = 'multiplexed sample of '
-            if ', '.join(sorted(sample_classifications)) in two_classification_cases:
-                sample_classifications = two_classification_cases[', '.join(sorted(sample_classifications))]
-            # The variable "classification" can potentially be very long for
-            # a Multiplexed Sample, but it will be entirely dropped for
-            # Multiplexed Sample in the end - so it is ok.
-            classification = f"{mux_prefix}{' and '.join(sample_classifications)}"
-            if classification not in sample_classification_term_target:
-                sample_classification_term_target[classification] = set()
-
-            for term in sample_object['sample_terms']:
-                sample_term_object = request.embed(term, '@@object?skip_calculated=true')
-                sample_phrase = f"{sample_term_object['term_name']}"
-                # Avoid redundancy of classification and term name
-                # e.g. "HFF-1 cell cell line"
-                if not classification.startswith('multiplexed sample of'):
-                    if sample_phrase.endswith('cell') and 'cell' in classification:
-                        sample_phrase = sample_phrase.replace('cell', classification)
-                    elif sample_phrase.endswith(' gastruloid') and 'gastruloid' in classification:
-                        sample_phrase = sample_phrase.replace(' gastruloid', '')
-                    elif 'cell' in sample_phrase and classification in classification_to_prefix:
-                        sample_phrase = f'{classification_to_prefix[classification]} {sample_phrase}'
-
-                targeted_sample_suffix = ''
-                if 'targeted_sample_term' in sample_object:
-                    targeted_sample_term_object = request.embed(
-                        sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
-                    targeted_sample_suffix = f"induced to {targeted_sample_term_object['term_name']}"
-                if targeted_sample_suffix:
-                    sample_phrase = f'{sample_phrase} {targeted_sample_suffix}'
-                sample_classification_term_target[classification].add(sample_phrase)
-
-            if 'time_post_change' in sample_object:
-                time = sample_object['time_post_change']
-                time_unit = sample_object['time_post_change_units']
-                differentiation_times.add(f'{time} {time_unit}')
-            if 'modifications' in sample_object:
-                for modification in sample_object['modifications']:
-                    modification_object = request.embed(
-                        modification, '@@object_with_select_calculated_properties?field=summary')
-                    modification_summaries.add(modification_object['summary'])
-            if 'construct_library_sets' in sample_object:
-                for construct_library_set in sample_object['construct_library_sets']:
-                    cls_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
-                    construct_library_set_types.add(cls_object['file_set_type'])
-            if 'time_post_library_delivery' in sample_object:
-                time = sample_object['time_post_library_delivery']
-                time_unit = sample_object['time_post_library_delivery_units']
-                library_delivery_times.add(f'{time} {time_unit}')
-            if 'sorted_from' in sample_object:
-                sorted_from.add(True)
-                for file_set in sample_object['file_sets']:
-                    if file_set.startswith('/measurement-sets/'):
-                        fileset_object = request.embed(file_set, '@@object?skip_calculated=true')
-                        if 'targeted_genes' in fileset_object:
-                            for gene in fileset_object['targeted_genes']:
-                                gene_object = request.embed(gene, '@@object?skip_calculated=true')
-                                targeted_genes_for_sorting.add(gene_object['symbol'])
-            if 'growth_medium' in sample_object:
-                growth_mediums.add(sample_object['growth_medium'])
-            if 'treatments' in sample_object:
-                for treatment in sample_object['treatments']:
-                    treatment_object = request.embed(
-                        treatment, '@@object_with_select_calculated_properties?field=summary')
-                    treatment_purposes.add(treatment_purpose_to_adjective.get(treatment_object['purpose'], ''))
-                    truncated_summary = treatment_object['summary'].split(' of ')[1]
-                    treatment_summaries.add(truncated_summary)
-            if 'cellular_sub_pool' in sample_object:
-                cellular_sub_pools.add(sample_object['cellular_sub_pool'])
-
-        all_sample_terms = []
-        for classification in sorted(sample_classification_term_target.keys()):
-            terms_by_classification = f"{', '.join(sorted(sample_classification_term_target[classification]))}"
-            # Put the terms after the "multiplexed sample of" and drop
-            # the underlying classifications
-            if 'multiplexed sample of' in classification:
-                terms_by_classification = f'multiplexed sample of {terms_by_classification}'
-            # Differentiated, reprogrammed, pooled cell specimen can be merged
-            # into the terms_by_classification before this. Therefore we don't
-            # want to append it to the terms_by_classification a second time.
-            elif not any(x in terms_by_classification for x in [
-                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen', 'primary cell']
-            ):
-                # Insert the classification before the targeted_sample_term if it exists.
-                if 'induced to' in terms_by_classification:
-                    terms_by_classification = terms_by_classification.replace(
-                        'induced to', f'{classification} induced to'
-                    )
+            # taxa phrase
+            mux_taxa_phrase = _get_sample_summary_taxa_phrase(mux_taxa_values)
+            mux_all_phrases = list(mux_sample_term_names)
+            if mux_tissue_sample_objs:
+                tissue_phrase = _sample_summary_build_tissue_group_phrase(
+                    request,
+                    mux_tissue_sample_objs,
+                )
+                if tissue_phrase:
+                    mux_all_phrases.append(tissue_phrase)
+            sample_term_phrase = _sample_summary_join_with_and(mux_all_phrases) if mux_all_phrases else ''
+            donor_phrase = ''
+            is_all_mouse_donors = mux_donor_taxa and mux_donor_taxa == {'Mus musculus'}
+            if is_all_mouse_donors and mux_donor_strains:
+                if len(mux_donor_strains) == 1:
+                    donor_phrase = f'from {sorted(mux_donor_strains)[0]} mouse'
                 else:
-                    terms_by_classification = f'{terms_by_classification} {classification}'
-            elif any(x in terms_by_classification for x in [
-                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen', 'primary cell']
-            ):
-                # Don't add anything when the classification was already in
-                # the terms_by_classification.
-                terms_by_classification = f'{terms_by_classification}'
-            # Failsafe case.
+                    donor_phrase = f'from {len(mux_donor_accessions)} mice of {len(mux_donor_strains)} strains'
             else:
-                terms_by_classification = f'{terms_by_classification} {classification}'
+                donor_count = len(mux_donor_accessions)
+                donor_phrase = f'from {donor_count} donors'
+                if donor_count == 1:
+                    donor_phrase = f'from donor {sorted(mux_donor_accessions)[0]}'
+            return f'{mux_taxa_phrase} multiplexed sample of {sample_term_phrase} {donor_phrase}'.strip()
 
-            all_sample_terms.append(terms_by_classification)
+        donor_accessions = set()
+        donor_strains = set()
+        donor_taxa = set()
+        for sample_object in sample_objects:
+            donor_data = _sample_summary_get_donor_data(request, sample_object)
+            donor_accessions.update(donor_data['accessions'])
+            donor_strains.update(donor_data['strains'])
+            donor_taxa.update(donor_data['taxa'])
 
-        differentiation_time_phrase = ''
-        if differentiation_times:
-            differentiation_time_phrase = f'at {", ".join(sorted(differentiation_times))}(s) post change'
-        growth_mediums_phrase = ''
-        if growth_mediums:
-            growth_mediums_phrase = f"grown in {', '.join(sorted(growth_mediums))}"
-        treatments_phrase = ''
-        if treatment_purposes and treatment_summaries:
-            treatments_phrase = f"{', '.join(sorted(treatment_purposes))} with {', '.join(sorted(treatment_summaries))}"
-        modification_summary_phrase = ''
-        if modification_summaries:
-            modification_summaries = sorted(modification_summaries)
-            modification_summary_phrase = f'modified with {", ".join(modification_summaries)}'
-        construct_library_set_type_phrase = ''
-        if construct_library_set_types:
-            construct_library_set_type_phrase = f'transfected with a {", ".join(construct_library_set_types)}'
-            if library_delivery_times:
-                construct_library_set_type_phrase = f'{construct_library_set_type_phrase} and measured at {", ".join(sorted(library_delivery_times))}(s) post-transfection'
-        sorted_phrase = ''
-        if sorted_from:
-            if targeted_genes_for_sorting:
-                sorted_phrase = f'sorted on expression of {", ".join(targeted_genes_for_sorting)}'
+        donor_phrase = ''
+        is_all_mouse_donors = donor_taxa and donor_taxa == {'Mus musculus'}
+        if is_all_mouse_donors and donor_strains:
+            if len(donor_strains) == 1:
+                donor_phrase = f' from {sorted(donor_strains)[0]}'
             else:
-                sorted_phrase = f'sorted into bins'
-        cellular_sub_pool_phrase = ''
-        if cellular_sub_pools:
-            cellular_sub_pool_phrase = f'cellular sub pool(s): {", ".join(sorted(cellular_sub_pools))}'
+                donor_phrase = f' from {len(donor_accessions)} mice of {len(donor_strains)} strains'
+        else:
+            if len(donor_accessions) == 1:
+                donor_phrase = f' from donor {sorted(donor_accessions)[0]}'
+            elif len(donor_accessions) > 1:
+                donor_phrase = f' from {len(donor_accessions)} donors'
 
-        taxa_phrase = f'{", ".join([x for x in taxa if x != ""])}'
-        additional_phrases = [
-            differentiation_time_phrase,
-            growth_mediums_phrase,
-            treatments_phrase,
-            modification_summary_phrase,
-            construct_library_set_type_phrase,
-            sorted_phrase,
-            cellular_sub_pool_phrase
+        tissue_sample_objs = [
+            s for s in sample_objects
+            if 'tissue/organ' in set(s.get('classifications', []))
         ]
-        additional_phrases_joined = ', '.join([x for x in additional_phrases if x != ''])
-        additional_phrase_suffix = ''
-        if additional_phrases_joined:
-            additional_phrase_suffix = f', {additional_phrases_joined}'
-        summary = f"{taxa_phrase} {', '.join(all_sample_terms)}{additional_phrase_suffix}".strip()
+        non_tissue_sample_objs = [
+            s for s in sample_objects
+            if 'tissue/organ' not in set(s.get('classifications', []))
+        ]
 
-        return summary
+        candidates_by_key = {}
+        for sample_object in non_tissue_sample_objs:
+            sample_phrase_data = _sample_summary_build_single_sample_phrase(
+                request,
+                sample_object,
+            )
+            key = sample_phrase_data['comparison_key']
+            if key not in candidates_by_key:
+                candidates_by_key[key] = sample_phrase_data
+            elif sample_phrase_data['has_targeted_term'] and not candidates_by_key[key]['has_targeted_term']:
+                candidates_by_key[key] = sample_phrase_data
+
+        all_phrases = [d['phrase'] for d in candidates_by_key.values()]
+        if tissue_sample_objs:
+            tissue_phrase = _sample_summary_build_tissue_group_phrase(
+                request,
+                tissue_sample_objs,
+            )
+            if tissue_phrase:
+                all_phrases.append(tissue_phrase)
+
+        sample_phrase = _sample_summary_join_with_and(all_phrases)
+        return f'{taxa_phrase} {sample_phrase}{donor_phrase}'.strip()
 
     @calculated_property(
         schema={

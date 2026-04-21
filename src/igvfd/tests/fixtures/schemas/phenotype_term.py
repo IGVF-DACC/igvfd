@@ -46,6 +46,15 @@ def phenotype_term_incomplete(testapp):
 
 
 @pytest.fixture
+def phenotype_term_digeorge_syndrome(testapp):
+    item = {
+        'term_id': 'MONDO:0008564',
+        'term_name': 'DiGeorge syndrome'
+    }
+    return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def phenotype_term_v1(phenotype_term_alzheimers):
     item = phenotype_term_alzheimers.copy()
     item.update({
