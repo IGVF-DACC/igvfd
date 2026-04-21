@@ -120,11 +120,12 @@ def _sample_summary_get_disease_terms(request, sample_object):
     disease_terms = []
     for phenotypic_feature in sample_object.get('phenotypic_features', []):
         feature_obj = request.embed(phenotypic_feature, '@@object?skip_calculated=true')
-        # Disease only ones have no quality or quantity
-        if 'quality' not in feature_obj and 'quantity' not in feature_obj:
-            feature_id = feature_obj.get('feature')
-            if not feature_id:
-                continue
+        # Disease-only features have no quality/quantity annotations.
+        if 'quality' in feature_obj or 'quantity' in feature_obj:
+            continue
+        feature_id = feature_obj.get('feature')
+        if not feature_id:
+            continue
         feature_term_obj = request.embed(feature_id, '@@object?skip_calculated=true')
         # Check against term_id prefix to futher filter out non-disease ones
         term_id = feature_term_obj.get('term_id', '')
