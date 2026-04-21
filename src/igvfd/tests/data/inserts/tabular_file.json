@@ -1655,5 +1655,68 @@
         "release_timestamp": "2025-03-06T12:34:56Z",
         "file_set": "igvf:prediction_set_5",
         "controlled_access": false
+    },
+    {
+        "uuid": "feb716d5-3490-4a96-b491-b626877619db",
+        "accession": "IGVFFI0077CTRD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:cis-trans_regulatory_differences"
+        ],
+        "md5sum": "e6cf5fc03b211e2c07fe4a79c21c6012",
+        "file_format": "tsv",
+        "content_type": "cis-trans regulatory differences",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/cis-trans_regulatory_differences.tsv.gz",
+        "file_size": 301955,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "file_set": "igvf:prediction_set_5",
+        "controlled_access": false
+    },
+    {
+        "uuid": "d38fe94e-3490-4a96-b491-b6268776c4aa",
+        "accession": "IGVFFI0222ASPC",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:allele_specific_RNA_pseudobulk_counts"
+        ],
+        "md5sum": "7cf5fc03b52ac6d21c6d6bfe4a9d7b6b",
+        "file_format": "tsv",
+        "content_type": "allele specific RNA pseudobulk counts",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/allele_specific_RNA_pseudobulk_counts.tsv.gz",
+        "file_size": 8201130,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "file_set": "igvf:prediction_set_5",
+        "controlled_access": false
+    },
+    {
+        "uuid": "6496cea5-3490-4a96-b491-b61992687768",
+        "accession": "IGVFFI0222PSAN",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:pseudobulk_annotations"
+        ],
+        "md5sum": "19d35fc03bfe6cf110124a792e6c321c",
+        "file_format": "tsv",
+        "content_type": "pseudobulk annotations",
+        "submitted_file_name": "/Users/igvf/igvf_files/pseudobulk_annotations.tsv.gz",
+        "file_size": 290130,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "file_set": "igvf:prediction_set_5",
+        "controlled_access": false
     }
 ]

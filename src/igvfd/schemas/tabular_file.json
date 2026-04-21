@@ -149,10 +149,12 @@
                         "content_type": {
                             "enum": [
                                 "aggregated calibrated coding variant effects",
+                                "allele specific RNA pseudobulk counts",
                                 "bin paired count",
                                 "calibrated coding variant effects",
                                 "caQTL",
                                 "chromatin contact quantifications",
+                                "cis-trans regulatory differences",
                                 "co-localization scores",
                                 "coding variant effects",
                                 "differential chromatin contact quantifications",
@@ -276,6 +278,7 @@
                                 "protein stability fluorescence score",
                                 "protein to protein interaction score",
                                 "proteins_proteins",
+                                "pseudobulk annotations",
                                 "sample sort parameters",
                                 "selected normalized variants profile",
                                 "studies_variants_phenotypes",

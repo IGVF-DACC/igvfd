@@ -248,7 +248,8 @@
         "analysis_step_types": [
             "calibration",
             "cell annotation",
-            "variant calling"
+            "variant calling",
+            "cis-trans classification"
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "input_content_types": [
