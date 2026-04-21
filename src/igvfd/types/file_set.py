@@ -174,26 +174,28 @@ def _sample_summary_get_donor_data(request, sample_object):
     }
 
 
-def _sample_summary_normalize_taxa(taxa_values):
+def _sample_summary_get_taxa(sample_object):
+    '''Get taxa info and rephrase'''
     taxa_to_label = {
         'Homo sapiens': 'Human',
         'Mus musculus': 'Mouse',
         'Saccharomyces cerevisiae': 'Yeast'
     }
-    if not taxa_values:
+    taxa_value = sample_object.get('taxa', '')
+
+    if not taxa_value:
         return ''
 
-    if not isinstance(taxa_values, (list, tuple, set)):
-        taxa_values = [taxa_values]
-
-    unique_taxa = sorted(set([taxa for taxa in taxa_values if taxa]))
-    if not unique_taxa:
-        return ''
-
-    if len(unique_taxa) > 1:
+    if taxa_value == 'Mixed species':
         return 'Mixed species'
+    return taxa_to_label.get(taxa_value, taxa_value)
 
-    return taxa_to_label.get(unique_taxa[0], unique_taxa[0])
+
+def _get_sample_summary_taxa_phrase(taxa_values):
+    '''Summarize a list of taxa values.'''
+    if len(taxa_values) > 1:
+        return 'Mixed species'
+    return list(taxa_values)[0] if taxa_values else ''
 
 
 def _sample_summary_join_with_and(values):
@@ -1149,21 +1151,11 @@ class AnalysisSet(FileSet):
 
         sample_objects = [request.embed(sample, '@@object') for sample in samples]
         all_classifications = set()
-        taxa_values = ''
-        has_mixed_taxa = False
+        taxa_values = set()
         for sample_object in sample_objects:
             all_classifications.update(sample_object.get('classifications', []))
-            sample_taxa = sample_object.get('taxa', '')
-            if not sample_taxa:
-                continue
-            if not taxa_values:
-                taxa_values = sample_taxa
-            elif taxa_values != sample_taxa:
-                has_mixed_taxa = True
-
-        if has_mixed_taxa:
-            taxa_values = 'Mixed species'
-        taxa_phrase = _sample_summary_normalize_taxa(taxa_values)
+            taxa_values.add(_sample_summary_get_taxa(sample_object))
+        taxa_phrase = _get_sample_summary_taxa_phrase(taxa_values)
 
         if 'multiplexed sample' in all_classifications:
             mux_sample_term_names = set()
@@ -1171,7 +1163,7 @@ class AnalysisSet(FileSet):
             mux_donor_accessions = set()
             mux_donor_strains = set()
             mux_donor_taxa = set()
-            mux_taxa_values = ''
+            mux_taxa_values = set()
             mux_has_mixed_taxa = False
             for sample_object in sample_objects:
                 multiplexed_samples = sample_object.get('multiplexed_samples', [])
@@ -1181,12 +1173,7 @@ class AnalysisSet(FileSet):
                     mux_donor_accessions.update(mux_donor_data['accessions'])
                     mux_donor_strains.update(mux_donor_data['strains'])
                     mux_donor_taxa.update(mux_donor_data['taxa'])
-                    sample_taxa = multiplexed_sample_obj.get('taxa', '')
-                    if sample_taxa:
-                        if not mux_taxa_values:
-                            mux_taxa_values = sample_taxa
-                        elif mux_taxa_values != sample_taxa:
-                            mux_has_mixed_taxa = True
+                    mux_taxa_values.add(_sample_summary_get_taxa(multiplexed_sample_obj))
                     mux_classifications = set(multiplexed_sample_obj.get('classifications', []))
                     if 'tissue/organ' in mux_classifications:
                         mux_tissue_sample_objs.append(multiplexed_sample_obj)
@@ -1196,9 +1183,8 @@ class AnalysisSet(FileSet):
                             if term_name:
                                 mux_sample_term_names.add(term_name)
 
-            if mux_has_mixed_taxa:
-                mux_taxa_values = 'Mixed species'
-            taxa_phrase = _sample_summary_normalize_taxa(mux_taxa_values)
+            # taxa phrase
+            mux_taxa_phrase = _get_sample_summary_taxa_phrase(mux_taxa_values)
             mux_all_phrases = list(mux_sample_term_names)
             if mux_tissue_sample_objs:
                 tissue_phrase = _sample_summary_build_tissue_group_phrase(
@@ -1220,7 +1206,7 @@ class AnalysisSet(FileSet):
                 donor_phrase = f'from {donor_count} donors'
                 if donor_count == 1:
                     donor_phrase = f'from donor {sorted(mux_donor_accessions)[0]}'
-            return f'{taxa_phrase} multiplexed sample of {sample_term_phrase} {donor_phrase}'.strip()
+            return f'{mux_taxa_phrase} multiplexed sample of {sample_term_phrase} {donor_phrase}'.strip()
 
         donor_accessions = set()
         donor_strains = set()
