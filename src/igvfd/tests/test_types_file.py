@@ -55,7 +55,6 @@ def test_types_file_s3_uri_is_present(sequence_file):
 
 def test_types_file_s3_creation_when_externally_hosted(externally_hosted_sequence_file):
     assert 's3_uri' not in externally_hosted_sequence_file
-    assert 'href' not in externally_hosted_sequence_file
     assert externally_hosted_sequence_file['upload_status'] == 'validation exempted'
 
 
@@ -726,8 +725,8 @@ def test_upload_credentials_allowed_when_status_is_preview(testapp, reference_fi
     testapp.post_json(reference_file['@id'] + '@@upload', {}, status=200)
 
 
-def test_download_forbidden_when_externally_hosted(testapp, externally_hosted_sequence_file):
-    testapp.get(externally_hosted_sequence_file['@id'] + '@@download', status=403)
+def test_download_allowed_when_externally_hosted(testapp, externally_hosted_sequence_file):
+    testapp.get(externally_hosted_sequence_file['@id'] + '@@download', status=307)
 
 
 @pytest.mark.parametrize(
