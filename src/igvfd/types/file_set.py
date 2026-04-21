@@ -297,7 +297,7 @@ def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects):
                 return f'{disease_phrase} {tissue_phrase}'.strip()
         return tissue_phrase
 
-    # For >2 unique tissue terms, use disease-based grouping
+    # For >2 unique tissue terms, flatten disease and tissue terms together
     tissue_phrases_with_disease = set()
     for sample_obj in tissue_sample_objects:
         sample_term_phrase = _sample_summary_join_with_and(
@@ -312,16 +312,25 @@ def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects):
     if tissue_phrases_with_disease:
         return _sample_summary_join_with_and(tissue_phrases_with_disease)
 
+    # Only use slim grouping when there are more than 2 unique tissue terms.
+    if len(all_term_names) <= 2:
+        parts = [_format_tissue_phrase(name) for name in sorted(all_term_names)]
+        return _sample_summary_join_with_and(parts)
+
+    # tissue slim grouping
     slim_groups = {}
     no_slim_term_names = set()
     for sample_obj in tissue_sample_objects:
         slim = ''
         for term_path in sample_obj.get('sample_terms', []):
+            # quick check on if there is any slim
             slim = _sample_summary_get_slim_for_sample_term(request, term_path)
             if slim:
                 break
+        # count total unique slims
         if slim:
             slim_groups[slim] = slim_groups.get(slim, 0) + 1
+        # if no slim, keep track of term names to include in summary
         else:
             for term_path in sample_obj.get('sample_terms', []):
                 term_name = _sample_summary_get_term_name(request, term_path)
