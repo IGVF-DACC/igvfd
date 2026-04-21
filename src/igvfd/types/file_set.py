@@ -151,17 +151,8 @@ def _sample_summary_get_disease_phrase(request, sample_object):
     return _sample_summary_format_disease_phrase(disease_terms)
 
 
-def _sample_summary_get_donor_accessions(request, sample_object):
-    donor_accessions = []
-    for donor in sample_object.get('donors', []):
-        donor_obj = request.embed(donor, '@@object?skip_calculated=true')
-        accession = donor_obj.get('accession')
-        if accession:
-            donor_accessions.append(accession)
-    return sorted(set(donor_accessions))
-
-
 def _sample_summary_get_donor_data(request, sample_object):
+    '''Get donor data from a sample object.'''
     donor_accessions = set()
     donor_strains = set()
     donor_taxa = set()
@@ -1186,10 +1177,8 @@ class AnalysisSet(FileSet):
                 multiplexed_samples = sample_object.get('multiplexed_samples', [])
                 for multiplexed_sample in multiplexed_samples:
                     multiplexed_sample_obj = request.embed(multiplexed_sample, '@@object')
-                    mux_donor_accessions.update(
-                        _sample_summary_get_donor_accessions(request, multiplexed_sample_obj)
-                    )
                     mux_donor_data = _sample_summary_get_donor_data(request, multiplexed_sample_obj)
+                    mux_donor_accessions.update(mux_donor_data['accessions'])
                     mux_donor_strains.update(mux_donor_data['strains'])
                     mux_donor_taxa.update(mux_donor_data['taxa'])
                     sample_taxa = multiplexed_sample_obj.get('taxa', '')
