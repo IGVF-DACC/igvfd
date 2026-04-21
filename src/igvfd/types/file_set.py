@@ -199,6 +199,7 @@ def _get_sample_summary_taxa_phrase(taxa_values):
 
 
 def _sample_summary_join_with_and(values):
+    '''Helper func for phrasing with different nums of elements.'''
     values = [value for value in sorted(set(values)) if value]
     if not values:
         return ''
@@ -210,12 +211,14 @@ def _sample_summary_join_with_and(values):
 
 
 def _sample_summary_get_term_name(request, term_path):
+    '''Get term name from a term path.'''
     if not term_path:
         return ''
     return request.embed(term_path, '@@object?skip_calculated=true').get('term_name', '')
 
 
 def _sample_summary_get_sample_term_names(request, sample_object):
+    '''Get sample term names from a sample object.'''
     sample_term_names = []
     for term in sample_object.get('sample_terms', []):
         term_name = _sample_summary_get_term_name(request, term)
@@ -225,13 +228,16 @@ def _sample_summary_get_sample_term_names(request, sample_object):
 
 
 def _sample_summary_get_targeted_sample_term_name(request, sample_object):
-    targeted_sample_term = sample_object.get('targeted_sample_term')
-    if not targeted_sample_term:
-        return ''
-    return _sample_summary_get_term_name(request, targeted_sample_term)
+    '''Get targeted sample term name from a sample object.'''
+    if 'targeted_sample_term' in sample_object:
+        targeted_sample_term = sample_object.get('targeted_sample_term')
+        if not targeted_sample_term:
+            return ''
+        return _sample_summary_get_term_name(request, targeted_sample_term)
 
 
 def _sample_summary_get_slim_for_sample_term(request, term_path):
+    '''Especially for multiple tissues, summarize by system or organ slims.'''
     term_obj = request.embed(
         term_path,
         '@@object_with_select_calculated_properties?field=system_slims&field=organ_slims'
@@ -251,6 +257,7 @@ def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects):
             return term_name
         return f'{term_name} tissue'
 
+    # Get all sample terms
     all_term_names = set()
     for sample_obj in tissue_sample_objects:
         for term_path in sample_obj.get('sample_terms', []):
