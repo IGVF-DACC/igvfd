@@ -277,16 +277,16 @@ def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects):
         else:
             return _format_tissue_phrase(sample_term_phrase).strip()
 
-    # For multiple tissues with <=2 unique tissue terms, list all tissue terms without disease emphasis
-    if len(all_term_names) <= 2:
+    # For multiple tissues with 2 unique tissue terms, list all tissue terms without disease emphasis
+    if len(all_term_names) == 2:
         parts = [_format_tissue_phrase(name) for name in sorted(all_term_names)]
         tissue_phrase = _sample_summary_join_with_and(parts)
         samples_disease_terms = [
             _sample_summary_get_disease_terms(request, sample_obj)
             for sample_obj in tissue_sample_objects
         ]
-        # Only elevate disease phrase when every tissue sample has disease terms.
-        if all(samples_disease_terms):
+        # Elevate disease phrase when at least one tissue sample has disease terms.
+        if any(samples_disease_terms):
             group_disease_terms = sorted(set(
                 term
                 for disease_terms in samples_disease_terms

@@ -624,8 +624,9 @@ def test_analysis_set_sample_summary(
         testapp.get(tissue_adipose['@id']).json.get('donors')
     curr_tissue_strains = {testapp.get(donor['@id']).json.get('strain') for donor in curr_tissue_donors}
     res = testapp.get(principal_analysis_set['@id']).json
+    # tissue has AZD and adipose does not, so summary should reflect that
     assert res.get(
-        'sample_summary', '') == f'Mouse adrenal gland tissue, brown adipose tissue from {len(curr_tissue_donors)} mice of {len(curr_tissue_strains)} strains'
+        'sample_summary', '') == f'Mouse Alzheimer\'s disease adrenal gland tissue, brown adipose tissue from {len(curr_tissue_donors)} mice of {len(curr_tissue_strains)} strains'
 
     # Multiplexed sample
     testapp.patch_json(
