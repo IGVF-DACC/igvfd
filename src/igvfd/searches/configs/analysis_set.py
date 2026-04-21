@@ -85,7 +85,7 @@ def analysis_set():
                 'optional': True
             },
             'samples.modifications.modality': {
-                'title': 'Modification',
+                'title': 'Perturbation',
                 'category': 'Sample',
                 'description': 'The intended effect of an exogenous or in situ modification of the sample; e.g. activation, inhibition, degradation.',
                 'optional': True
