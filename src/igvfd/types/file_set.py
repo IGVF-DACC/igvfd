@@ -242,10 +242,10 @@ def _sample_summary_get_slim_for_sample_term(request, term_path):
         term_path,
         '@@object_with_select_calculated_properties?field=system_slims&field=organ_slims'
     )
-    system_slims = term_obj.get('system_slims', [])
+    system_slims = sorted(term_obj.get('system_slims', []))
     if system_slims:
         return system_slims[0]
-    organ_slims = term_obj.get('organ_slims', [])
+    organ_slims = sorted(term_obj.get('organ_slims', []))
     if organ_slims:
         return organ_slims[0]
     return ''
@@ -315,15 +315,15 @@ def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects):
                     if term_name:
                         no_slim_term_names.add(term_name)
         parts = []
-        for slim in sorted(slim_groups):
+        for slim in slim_groups:
             count = slim_groups[slim]
             if count == 1:
-                parts.append(f'1 {slim} tissue')
+                parts.append(f'{slim} tissue')
             else:
                 parts.append(f'{count} {slim} tissues')
-        for term_name in sorted(no_slim_term_names):
+        for term_name in no_slim_term_names:
             parts.append(_format_tissue_phrase(term_name))
-        return _sample_summary_join_with_and(parts)
+        return _sample_summary_join_with_and(sorted(parts))
 
     # For >2 unique tissue terms where any sample has multiple disease terms,
     # aggregate all diseases and group by slim: "disease X in Y slim tissues"
