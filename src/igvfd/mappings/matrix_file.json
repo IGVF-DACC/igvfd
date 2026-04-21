@@ -1,6 +1,6 @@
 {
-    "hash": "12d01f8c2278f9350905965c7b5b8b65",
-    "index_name": "matrix_file_12d01f8c",
+    "hash": "07cee234ddc17c9f865f4245df5a7062",
+    "index_name": "matrix_file_07cee234",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1092,6 +1092,9 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
+                                "type": "keyword"
+                            },
+                            "preferred_assay_slims": {
                                 "type": "keyword"
                             },
                             "preferred_assay_titles": {
@@ -2278,6 +2281,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
+                            },
                             "preferred_assay_titles": {
                                 "type": "keyword"
                             },
@@ -2938,6 +2944,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preferred_assay_slims": {
+                        "type": "keyword"
                     },
                     "preferred_assay_titles": {
                         "type": "keyword"

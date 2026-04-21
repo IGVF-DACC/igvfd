@@ -1,6 +1,6 @@
 {
-    "hash": "5b545b29f9acab235dfb79b1071932a0",
-    "index_name": "curated_set_5b545b29",
+    "hash": "dd6132d14560e125de237463999cf03d",
+    "index_name": "curated_set_dd6132d1",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -678,6 +678,9 @@
                                     "notes": {
                                         "type": "text"
                                     },
+                                    "preferred_assay_slims": {
+                                        "type": "keyword"
+                                    },
                                     "preferred_assay_titles": {
                                         "type": "keyword"
                                     },
@@ -816,6 +819,9 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
+                                "type": "keyword"
+                            },
+                            "preferred_assay_slims": {
                                 "type": "keyword"
                             },
                             "preferred_assay_titles": {
@@ -1293,6 +1299,9 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
+                                "type": "keyword"
+                            },
+                            "preferred_assay_slims": {
                                 "type": "keyword"
                             },
                             "preferred_assay_titles": {
@@ -1886,6 +1895,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
+                            },
                             "preferred_assay_titles": {
                                 "type": "keyword"
                             },
@@ -2258,6 +2270,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preferred_assay_slims": {
+                        "type": "keyword"
                     },
                     "preferred_assay_titles": {
                         "copy_to": "_fuzzy",

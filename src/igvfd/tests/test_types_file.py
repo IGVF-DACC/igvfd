@@ -596,6 +596,7 @@ def test_file_assay_titles(
     res = testapp.get(alignment_file['@id'])
     assert set(res.json.get('assay_titles', [])) == {'example-tn-1'}
     assert set(res.json.get('preferred_assay_titles', [])) == {'CRISPR FlowFISH screen'}
+    assert set(res.json.get('preferred_assay_slims', [])) == {'CRISPR screen'}
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -611,6 +612,8 @@ def test_file_assay_titles(
     res = testapp.get(alignment_file['@id'])
     assert set(res.json.get('assay_titles', [])) == {'example-tn-1', 'ATAC-seq'}
     assert set(res.json.get('preferred_assay_titles', [])) == {'CRISPR FlowFISH screen', '10x multiome'}
+    assert set(res.json.get('preferred_assay_slims', [])) == {
+        'CRISPR screen', 'gene expression', 'chromatin accessibility', 'single cell', 'multiome'}
     testapp.patch_json(
         measurement_set_multiome['@id'],
         {
@@ -627,6 +630,8 @@ def test_file_assay_titles(
     res = testapp.get(alignment_file['@id'])
     assert set(res.json.get('assay_titles', [])) == {'ATAC-seq'}
     assert set(res.json.get('preferred_assay_titles', [])) == {'10x multiome with MULTI-seq'}
+    assert set(res.json.get('preferred_assay_slims', [])) == {
+        'gene expression', 'chromatin accessibility', 'single cell', 'multiome'}
 
 
 def test_types_file_file_workflows(

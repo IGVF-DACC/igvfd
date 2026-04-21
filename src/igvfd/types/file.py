@@ -378,7 +378,28 @@ class File(Item):
         return request.embed(
             file_set,
             '@@object_with_select_calculated_properties?field=preferred_assay_titles'
-        ).get('preferred_assay_titles', [])
+        ).get('preferred_assay_titles', None)
+
+    @calculated_property(
+        schema={
+            'title': 'Preferred Assay Slims',
+            'description': 'Preferred assay slims from the file set this file belongs to.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Preferred Assay Slim',
+                'description': 'Preferred assay slim from the file set this file belongs to.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def preferred_assay_slims(self, request, file_set):
+        return request.embed(
+            file_set,
+            '@@object_with_select_calculated_properties?field=preferred_assay_slims'
+        ).get('preferred_assay_slims', None)
 
     @calculated_property(
         condition='analysis_step_version',

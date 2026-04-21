@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Add calculated property `preferred_assay_slims`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
 
 ### Schema version 14

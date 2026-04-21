@@ -1,6 +1,6 @@
 {
-    "hash": "befe08785ebf5fcbd52420925718fd24",
-    "index_name": "tabular_file_befe0878",
+    "hash": "70382daaa0af4751e65c09644cf30093",
+    "index_name": "tabular_file_70382daa",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1109,6 +1109,9 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
+                                "type": "keyword"
+                            },
+                            "preferred_assay_slims": {
                                 "type": "keyword"
                             },
                             "preferred_assay_titles": {
@@ -2298,6 +2301,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
+                            },
                             "preferred_assay_titles": {
                                 "type": "keyword"
                             },
@@ -2959,6 +2965,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preferred_assay_slims": {
+                        "type": "keyword"
                     },
                     "preferred_assay_titles": {
                         "type": "keyword"

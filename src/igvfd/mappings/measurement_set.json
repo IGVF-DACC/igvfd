@@ -1,6 +1,6 @@
 {
-    "hash": "fc3e968c300141f98c52d7635db8d67c",
-    "index_name": "measurement_set_fc3e968c",
+    "hash": "a4842da4188c06b953e55705513f6bd8",
+    "index_name": "measurement_set_a4842da4",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -340,6 +340,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
                             },
                             "preferred_assay_titles": {
                                 "type": "keyword"
@@ -904,6 +907,9 @@
                                     "notes": {
                                         "type": "text"
                                     },
+                                    "preferred_assay_slims": {
+                                        "type": "keyword"
+                                    },
                                     "preferred_assay_titles": {
                                         "type": "keyword"
                                     },
@@ -1042,6 +1048,9 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
+                                "type": "keyword"
+                            },
+                            "preferred_assay_slims": {
                                 "type": "keyword"
                             },
                             "preferred_assay_titles": {
@@ -1521,6 +1530,9 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
+                            },
                             "preferred_assay_titles": {
                                 "type": "keyword"
                             },
@@ -1891,6 +1903,9 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
+                                "type": "keyword"
+                            },
+                            "preferred_assay_slims": {
                                 "type": "keyword"
                             },
                             "preferred_assay_titles": {
@@ -2499,6 +2514,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
+                            },
                             "preferred_assay_titles": {
                                 "type": "keyword"
                             },
@@ -3091,6 +3109,9 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
+                            },
                             "preferred_assay_titles": {
                                 "type": "keyword"
                             },
@@ -3328,6 +3349,9 @@
                         "type": "keyword"
                     },
                     "onlist_method": {
+                        "type": "keyword"
+                    },
+                    "preferred_assay_slims": {
                         "type": "keyword"
                     },
                     "preferred_assay_titles": {
@@ -3602,6 +3626,9 @@
                                         "type": "keyword"
                                     },
                                     "onlist_method": {
+                                        "type": "keyword"
+                                    },
+                                    "preferred_assay_slims": {
                                         "type": "keyword"
                                     },
                                     "preferred_assay_titles": {

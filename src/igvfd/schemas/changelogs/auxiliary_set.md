@@ -1,5 +1,9 @@
 ## Changelog for *`auxiliary_set.json`*
 
+### Minor changes since schema version 13
+
+* Add calculated property `preferred_assay_slims`.
+
 ### Schema version 13
 
 * Rename `barcode_map` to `hashtag_barcode_map`.

@@ -145,3 +145,61 @@ def test_superseded_by(testapp, principal_analysis_set, measurement_set):
     )
     res = testapp.get(measurement_set['@id'])
     assert set([file_set for file_set in res.json.get('superseded_by')]) == {principal_analysis_set['@id']}
+
+
+def test_preferred_assay_slims(testapp, principal_analysis_set, measurement_set, pseudobulk_set_base, construct_library_set_genome_wide, base_auxiliary_set, curated_set_genome, model_set_no_input, assay_term_scrna, tissue):
+    # Measurement Set
+    res = testapp.get(measurement_set['@id'])
+    assert set(res.json.get('preferred_assay_slims', [])) == {'reporter assay'}
+    # Analysis Set
+    res = testapp.get(principal_analysis_set['@id'])
+    assert set(res.json.get('preferred_assay_slims', [])) == {'reporter assay'}
+    # Pseudobulk Set
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {
+            'input_file_sets': [principal_analysis_set['@id']]
+        }
+    )
+    res = testapp.get(pseudobulk_set_base['@id'])
+    assert set(res.json.get('preferred_assay_slims', [])) == {'reporter assay'}
+    # Auxiliary Set
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id']]
+        }
+    )
+    res = testapp.get(base_auxiliary_set['@id'])
+    assert set(res.json.get('preferred_assay_slims', [])) == {'reporter assay'}
+    # Construct Library Set
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'construct_library_sets': [construct_library_set_genome_wide['@id']]
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'])
+    assert set(res.json.get('preferred_assay_slims', [])) == {'reporter assay'}
+    # Curated Set
+    testapp.patch_json(
+        curated_set_genome['@id'],
+        {
+            'file_set_type': 'external sequencing data',
+            'assay_term': assay_term_scrna['@id'],
+            'preferred_assay_titles': ['SHARE-seq']
+        }
+    )
+    res = testapp.get(curated_set_genome['@id'])
+    assert set(res.json.get('preferred_assay_slims', [])) == {
+        'gene expression', 'chromatin accessibility', 'single cell', 'multiome'}
+    # Model Set
+    testapp.patch_json(
+        model_set_no_input['@id'],
+        {
+            'assay_terms': [assay_term_scrna['@id']],
+            'preferred_assay_titles': ['Perturb-seq']
+        }
+    )
+    res = testapp.get(model_set_no_input['@id'])
+    assert set(res.json.get('preferred_assay_slims', [])) == {'CRISPR screen', 'single cell'}

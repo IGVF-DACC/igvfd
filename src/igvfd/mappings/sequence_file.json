@@ -1,6 +1,6 @@
 {
-    "hash": "22d8c212db16af017f79e1c64c0bdb03",
-    "index_name": "sequence_file_22d8c212",
+    "hash": "b8dca5f941c443a82d6c5eb1964429bb",
+    "index_name": "sequence_file_b8dca5f9",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1091,6 +1091,9 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
+                                "type": "keyword"
+                            },
+                            "preferred_assay_slims": {
                                 "type": "keyword"
                             },
                             "preferred_assay_titles": {
@@ -2282,6 +2285,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
+                            },
                             "preferred_assay_titles": {
                                 "type": "keyword"
                             },
@@ -2958,6 +2964,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preferred_assay_slims": {
+                        "type": "keyword"
                     },
                     "preferred_assay_titles": {
                         "type": "keyword"

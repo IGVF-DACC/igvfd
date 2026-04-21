@@ -1,6 +1,6 @@
 {
-    "hash": "292777de58c4907010ab812e2cf09f5f",
-    "index_name": "image_file_292777de",
+    "hash": "32a3d3aab61938727f85799de437e73b",
+    "index_name": "image_file_32a3d3aa",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -1086,6 +1086,9 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
+                                "type": "keyword"
+                            },
+                            "preferred_assay_slims": {
                                 "type": "keyword"
                             },
                             "preferred_assay_titles": {
@@ -2351,6 +2354,9 @@
                             "orf_list": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
+                            },
                             "preferred_assay_titles": {
                                 "type": "keyword"
                             },
@@ -3011,6 +3017,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preferred_assay_slims": {
+                        "type": "keyword"
                     },
                     "preferred_assay_titles": {
                         "type": "keyword"
