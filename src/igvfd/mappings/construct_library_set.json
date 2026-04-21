@@ -1,6 +1,6 @@
 {
-    "hash": "dd4ac7df7346885e8eb00bb10477d951",
-    "index_name": "construct_library_set_dd4ac7df",
+    "hash": "602f3b571b457bef6da5f6a1c1b950a5",
+    "index_name": "construct_library_set_602f3b57",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -543,6 +543,9 @@
                             "prediction_objects": {
                                 "type": "keyword"
                             },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
+                            },
                             "preferred_assay_titles": {
                                 "type": "keyword"
                             },
@@ -1059,6 +1062,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
+                            },
                             "preferred_assay_titles": {
                                 "type": "keyword"
                             },
@@ -1342,6 +1348,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
                             },
                             "preferred_assay_titles": {
                                 "type": "keyword"
@@ -1634,6 +1643,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
+                            },
                             "preferred_assay_titles": {
                                 "type": "keyword"
                             },
@@ -1860,6 +1872,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
                             },
                             "preferred_assay_titles": {
                                 "type": "keyword"
@@ -2136,6 +2151,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "preferred_assay_slims": {
+                        "type": "keyword"
                     },
                     "preferred_assay_titles": {
                         "type": "keyword"
