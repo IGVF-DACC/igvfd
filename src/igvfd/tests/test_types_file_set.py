@@ -197,6 +197,7 @@ def test_preferred_assay_slims(testapp, principal_analysis_set, measurement_set,
     testapp.patch_json(
         model_set_no_input['@id'],
         {
+            'assay_term': assay_term_scrna['@id'],
             'preferred_assay_titles': ['Perturb-seq']
         }
     )
