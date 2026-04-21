@@ -297,6 +297,52 @@ def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects):
                 return f'{disease_phrase} {tissue_phrase}'.strip()
         return tissue_phrase
 
+    # Helper to build slim group phrase (reused below)
+    def _build_tissue_slim_group_phrase():
+        slim_groups = {}
+        no_slim_term_names = set()
+        for sample_obj in tissue_sample_objects:
+            slim = ''
+            for term_path in sample_obj.get('sample_terms', []):
+                slim = _sample_summary_get_slim_for_sample_term(request, term_path)
+                if slim:
+                    break
+            if slim:
+                slim_groups[slim] = slim_groups.get(slim, 0) + 1
+            else:
+                for term_path in sample_obj.get('sample_terms', []):
+                    term_name = _sample_summary_get_term_name(request, term_path)
+                    if term_name:
+                        no_slim_term_names.add(term_name)
+        parts = []
+        for slim in sorted(slim_groups):
+            count = slim_groups[slim]
+            if count == 1:
+                parts.append(f'1 {slim} tissue')
+            else:
+                parts.append(f'{count} {slim} tissues')
+        for term_name in sorted(no_slim_term_names):
+            parts.append(_format_tissue_phrase(term_name))
+        return _sample_summary_join_with_and(parts)
+
+    # For >2 unique tissue terms where any sample has multiple disease terms,
+    # aggregate all diseases and group by slim: "disease X in Y slim tissues"
+    samples_disease_terms = [
+        _sample_summary_get_disease_terms(request, sample_obj)
+        for sample_obj in tissue_sample_objects
+    ]
+    if len(all_term_names) > 2 and any(len(dt) > 1 for dt in samples_disease_terms):
+        group_disease_terms = sorted(set(
+            term
+            for dt in samples_disease_terms
+            for term in dt
+        ))
+        disease_phrase = _sample_summary_format_disease_phrase(group_disease_terms)
+        if disease_phrase:
+            slim_phrase = _build_tissue_slim_group_phrase()
+            if slim_phrase:
+                return f'{disease_phrase} in {slim_phrase}'.strip()
+
     # For >2 unique tissue terms, flatten disease and tissue terms together
     tissue_phrases_with_disease = set()
     for sample_obj in tissue_sample_objects:
@@ -317,35 +363,7 @@ def _sample_summary_build_tissue_group_phrase(request, tissue_sample_objects):
         parts = [_format_tissue_phrase(name) for name in sorted(all_term_names)]
         return _sample_summary_join_with_and(parts)
 
-    # tissue slim grouping
-    slim_groups = {}
-    no_slim_term_names = set()
-    for sample_obj in tissue_sample_objects:
-        slim = ''
-        for term_path in sample_obj.get('sample_terms', []):
-            # quick check on if there is any slim
-            slim = _sample_summary_get_slim_for_sample_term(request, term_path)
-            if slim:
-                break
-        # count total unique slims
-        if slim:
-            slim_groups[slim] = slim_groups.get(slim, 0) + 1
-        # if no slim, keep track of term names to include in summary
-        else:
-            for term_path in sample_obj.get('sample_terms', []):
-                term_name = _sample_summary_get_term_name(request, term_path)
-                if term_name:
-                    no_slim_term_names.add(term_name)
-    parts = []
-    for slim in sorted(slim_groups):
-        count = slim_groups[slim]
-        if count == 1:
-            parts.append(f'{slim} tissue')
-        else:
-            parts.append(f'{count} {slim} tissues')
-    for term_name in sorted(no_slim_term_names):
-        parts.append(_format_tissue_phrase(term_name))
-    return _sample_summary_join_with_and(parts)
+    return _build_tissue_slim_group_phrase()
 
 
 def _sample_summary_build_single_sample_phrase(request, sample_object):
