@@ -115,14 +115,18 @@ def get_file_set_props_for_summary_and_samples(request, file_set):
 
 
 def _sample_summary_get_disease_terms(request, sample_object):
+    '''Get disease terms from phenotypic features.'''
     disease_prefixes = ('DOID:', 'EFO:', 'HP:', 'MONDO:')
     disease_terms = []
     for phenotypic_feature in sample_object.get('phenotypic_features', []):
         feature_obj = request.embed(phenotypic_feature, '@@object?skip_calculated=true')
-        feature_id = feature_obj.get('feature')
-        if not feature_id:
-            continue
+        # Disease only ones have no quality or quantity
+        if 'quality' not in feature_obj and 'quantity' not in feature_obj:
+            feature_id = feature_obj.get('feature')
+            if not feature_id:
+                continue
         feature_term_obj = request.embed(feature_id, '@@object?skip_calculated=true')
+        # Check against term_id prefix to futher filter out non-disease ones
         term_id = feature_term_obj.get('term_id', '')
         term_name = feature_term_obj.get('term_name', '')
         if term_name and any(term_id.startswith(prefix) for prefix in disease_prefixes):
@@ -131,6 +135,7 @@ def _sample_summary_get_disease_terms(request, sample_object):
 
 
 def _sample_summary_format_disease_phrase(disease_terms):
+    '''Format disease phrase based on number of disease terms.'''
     if not disease_terms:
         return ''
     if len(disease_terms) == 1:
@@ -141,6 +146,7 @@ def _sample_summary_format_disease_phrase(disease_terms):
 
 
 def _sample_summary_get_disease_phrase(request, sample_object):
+    '''Get disease phrase for a sample object based on its phenotypic features.'''
     disease_terms = _sample_summary_get_disease_terms(request, sample_object)
     return _sample_summary_format_disease_phrase(disease_terms)
 
