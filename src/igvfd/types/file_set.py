@@ -114,12 +114,6 @@ def get_file_set_props_for_summary_and_samples(request, file_set):
     )
 
 
-def _sample_summary_get_term_name(request, term_path):
-    if not term_path:
-        return ''
-    return request.embed(term_path, '@@object?skip_calculated=true').get('term_name', '')
-
-
 def _sample_summary_get_disease_terms(request, sample_object):
     disease_prefixes = ('DOID:', 'EFO:', 'HP:', 'MONDO:')
     disease_terms = []
@@ -214,6 +208,12 @@ def _sample_summary_join_with_and(values):
     if len(values) == 2:
         return f'{values[0]}, {values[1]}'
     return ', '.join(values[:-1]) + f', and {values[-1]}'
+
+
+def _sample_summary_get_term_name(request, term_path):
+    if not term_path:
+        return ''
+    return request.embed(term_path, '@@object?skip_calculated=true').get('term_name', '')
 
 
 def _sample_summary_get_sample_term_names(request, sample_object):
