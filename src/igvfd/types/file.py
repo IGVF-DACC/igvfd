@@ -1665,7 +1665,7 @@ def download(context, request):
             )
     if properties.get('externally_hosted') is True:
         raise HTTPTemporaryRedirect(
-            location=properties.get('externally_hosted_url'),
+            location=properties['external_host_url'],
             headers=request.response.headers,  # Maintain any CORS headers set.
         )
     file_extension = FILE_FORMAT_TO_FILE_EXTENSION[properties['file_format']]
