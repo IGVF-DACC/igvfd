@@ -5,8 +5,7 @@ import pytest
 def model_set_no_input(
     testapp,
     award,
-    lab,
-    software_version
+    lab
 ):
     item = {
         'award': award['@id'],
@@ -84,6 +83,6 @@ def model_set_v7(model_set_no_input):
     item = model_set_no_input.copy()
     item.update({
         'schema_version': '7',
-        'preferred_assay_titles': ['Perturb-seq']
+        'preferred_assay_titles': ['MULTI-seq', 'smFISH', 'MERFISH']
     })
     return item
