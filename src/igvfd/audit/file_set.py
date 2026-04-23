@@ -1159,17 +1159,36 @@ def audit_file_set_missing_description(value, system):
             "audit_description": "Principal analysis sets, prediction sets, and model sets are expected to have descriptions summarizing the experiment or predictive model they are associated with.",
             "audit_category": "missing description",
             "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Construct library sets that are either reporter library or guide library are expected to have descriptions summarizing the experiment or predictive model they are associated with.",
+            "audit_category": "missing description",
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message = get_audit_message(audit_file_set_missing_description, index=0)
-    if value.get('file_set_type') != 'intermediate analysis' and not (value.get('description')):
+    audit_message_general = get_audit_message(audit_file_set_missing_description, index=0)
+    audit_message_cls = get_audit_message(audit_file_set_missing_description, index=1)
+    file_set_type = value.get('file_set_type')
+
+    if value.get('description'):
+        return
+
+    if value.get('@type')[0] == 'ConstructLibrarySet':
+        if file_set_type not in ['reporter library', 'guide library']:
+            return
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is a {file_set_type}'
+            f' and has no `description`.'
+        )
+        yield AuditFailure(audit_message_cls.get('audit_category', ''), f'{detail} {audit_message_cls.get("audit_description", "")}', level=audit_message_cls.get('audit_level', ''))
+    elif file_set_type != 'intermediate analysis':
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `description`.'
         )
-        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+        yield AuditFailure(audit_message_general.get('audit_category', ''), f'{detail} {audit_message_general.get("audit_description", "")}', level=audit_message_general.get('audit_level', ''))
 
 
 def audit_missing_genome_transcriptome_references(value, system):
@@ -1562,7 +1581,8 @@ function_dispatcher_construct_library_set_object = {
     'audit_loci_valid_chrom_sizes': audit_loci_valid_chrom_sizes,
     'audit_auxiliary_set_construct_library_set_files': audit_auxiliary_set_construct_library_set_files,
     'audit_unexpected_virtual_samples': audit_unexpected_virtual_samples,
-    'audit_input_for': audit_input_for
+    'audit_input_for': audit_input_for,
+    'audit_file_set_missing_description': audit_file_set_missing_description
 }
 
 function_dispatcher_analysis_set_object = {
