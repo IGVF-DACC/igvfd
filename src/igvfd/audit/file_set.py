@@ -1161,7 +1161,7 @@ def audit_file_set_missing_description(value, system):
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Construct library sets that are either reporter library or guide library are expected to have descriptions summarizing the experiment or predictive model they are associated with.",
+            "audit_description": "Construct library sets that are either reporter library or guide library are expected to have descriptions summarizing the experiment they are associated with.",
             "audit_category": "missing description",
             "audit_level": "NOT_COMPLIANT"
         }
