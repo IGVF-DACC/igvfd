@@ -1,5 +1,11 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 21
+
+* Extend `content_type` enum list to include `cis-trans regulatory differences`.
+* Extend `content_type` enum list to include `allele specific RNA pseudobulk counts`.
+* Extend `content_type` enum list to include `pseudobulk annotations`.
+
 ### Schema version 21
 
 * Rename `assembly` to `submitted_assembly`.
