@@ -294,7 +294,9 @@ def test_audit_missing_publication(
 def test_audit_missing_description(
     testapp,
     analysis_set_base,
-    measurement_set_no_files
+    measurement_set_no_files,
+    base_expression_construct_library_set,
+    construct_library_set_genome_wide
 ):
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert all(
@@ -320,6 +322,30 @@ def test_audit_missing_description(
         }
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing description'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # If CLS isn't of the auditted type
+    res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing description'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # If CLS is of the auditted type but has no description
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing description'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # If CLS is of the auditted type and has description
+    testapp.patch_json(
+        construct_library_set_genome_wide['@id'],
+        {
+            'description': 'Description of this CLS'
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing description'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
