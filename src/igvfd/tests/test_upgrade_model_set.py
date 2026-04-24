@@ -42,4 +42,4 @@ def test_model_set_upgrade_7_8(upgrader, model_set_v7):
     assert value['schema_version'] == '8'
     assert 'preferred_assay_titles' not in value
     assert value.get(
-        'notes') == 'This model set previously used HCR-FlowFISH screen, MERFISH, and MIAA as preferred_assay_titles, but they have been removed via an upgrade.'
+        'notes') == 'This model set previously used MERFISH, MULTI-seq, smFISH as preferred_assay_titles, but they have been removed via an upgrade.'

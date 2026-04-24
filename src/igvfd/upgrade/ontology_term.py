@@ -326,4 +326,8 @@ def assay_term_21_22(value, system):
             removed_list = ', '.join(sorted(removed_assay_titles))
             notes += f' This assay_term previously used {removed_list} as preferred_assay_titles, but they have been removed via an upgrade.'
             value['notes'] = notes.strip()
-            value['preferred_assay_titles'] = sorted(remained_assay_titles) if remained_assay_titles else None
+            print(value['notes'])
+            if remained_assay_titles:
+                value['preferred_assay_titles'] = sorted(remained_assay_titles)
+            else:
+                del value['preferred_assay_titles']

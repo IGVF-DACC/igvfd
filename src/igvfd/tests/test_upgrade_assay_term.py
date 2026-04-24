@@ -167,4 +167,4 @@ def test_assay_term_upgrade_21_22(upgrader, assay_term_v21):
     assert set(value.get('preferred_assay_titles')) == {
         'RNA-seq', 'scRNA-seq'}
     assert value.get(
-        'notes') == 'This assay_term previously used RNA-seq, scRNA-seq as preferred_assay_titles, but they have been removed via an upgrade.'
+        'notes') == 'This assay_term previously used HCR-FlowFISH screen, MERFISH as preferred_assay_titles, but they have been removed via an upgrade.'
