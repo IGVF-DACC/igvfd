@@ -1,5 +1,15 @@
 ## Changelog for *`model_set.json`*
 
+### Schema version 8
+
+* Adjust `preferred_assay_titles` enum list to remove `MULTI-seq`.
+* Adjust `preferred_assay_titles` enum list to remove `smFISH`.
+* Adjust `preferred_assay_titles` enum list to remove `MERFISH`.
+* Adjust `preferred_assay_titles` enum list to remove `HCR-FlowFISH screen`.
+* Adjust `preferred_assay_titles` enum list to remove `MIAA`.
+* Adjust `preferred_assay_titles` enum list to remove `snmC-Seq2`.
+* Adjust `preferred_assay_titles` enum list to remove `HT-recruit`.
+
 ### Schema version 7
 
 * Add `assay_terms`.
