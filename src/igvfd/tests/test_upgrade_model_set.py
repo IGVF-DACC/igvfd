@@ -35,3 +35,11 @@ def test_model_set_upgrade_6_7(upgrader, model_set_v6):
     assert value.get('assay_terms') == ['/assay-terms/OBI_0002041/']
     assert 'This model set assay_terms was defaulted to /assay-terms/OBI_0002041/ via an upgrade, update with appropriate assay_terms if needed.' in value.get(
         'notes', '')
+
+
+def test_model_set_upgrade_7_8(upgrader, model_set_v7):
+    value = upgrader.upgrade('model_set', model_set_v7, current_version='7', target_version='8')
+    assert value['schema_version'] == '8'
+    assert 'preferred_assay_titles' not in value
+    assert value.get(
+        'notes') == 'This model set previously used MERFISH, MULTI-seq, smFISH as preferred_assay_titles, but they have been removed via an upgrade.'

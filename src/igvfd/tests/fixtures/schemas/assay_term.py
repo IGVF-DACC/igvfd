@@ -354,3 +354,13 @@ def assay_term_v20(assay_term_crispr):
         'preferred_assay_titles': ['Arrayed mN2H', 'Pooled Y2H', 'Arrayed semi-qY2H v1', 'DOGMA-seq']
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v21(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '21',
+        'preferred_assay_titles': ['HCR-FlowFISH screen', 'MERFISH', 'scRNA-seq', 'RNA-seq']
+    })
+    return item

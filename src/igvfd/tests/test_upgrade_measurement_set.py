@@ -305,3 +305,12 @@ def test_measurement_set_upgrade_42_43(upgrader, measurement_set_v42):
     assert value.get('preferred_assay_titles') == ['miDOGMA-seq']
     assert value.get(
         'notes') == 'This measurement set previously used DOGMA-seq as preferred_assay_titles, but it has been updated to miDOGMA-seq via an upgrade.'
+
+
+def test_measurement_set_upgrade_43_44(upgrader, measurement_set_v43):
+    value = upgrader.upgrade('measurement_set', measurement_set_v43, current_version='43', target_version='44')
+    assert value['schema_version'] == '44'
+    assert set(value.get('preferred_assay_titles')) == {
+        'RNA-seq'}
+    assert value.get(
+        'notes') == 'This measurement set previously used MERFISH as preferred_assay_titles, but it has been removed and defaulted to RNA-seq via an upgrade.'

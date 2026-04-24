@@ -1,5 +1,15 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 44
+
+* Adjust `preferred_assay_titles` enum list to remove `MULTI-seq`.
+* Adjust `preferred_assay_titles` enum list to remove `smFISH`.
+* Adjust `preferred_assay_titles` enum list to remove `MERFISH`.
+* Adjust `preferred_assay_titles` enum list to remove `HCR-FlowFISH screen`.
+* Adjust `preferred_assay_titles` enum list to remove `MIAA`.
+* Adjust `preferred_assay_titles` enum list to remove `snmC-Seq2`.
+* Adjust `preferred_assay_titles` enum list to remove `HT-recruit`.
+
 ### Minor changes since schema version 43
 
 * Add calculated property `preferred_assay_slims`.
