@@ -1,5 +1,9 @@
 ## Changelog for *`model_set.json`*
 
+### Minor changes since schema version 8
+
+* Extend `preferred_assay_titles` enum list to include `CRISPR tiling screen reporter readout`.
+
 ### Schema version 8
 
 * Adjust `preferred_assay_titles` enum list to remove `MULTI-seq`.
