@@ -122,9 +122,7 @@ def show_upload_credentials(request=None, context=None, upload_status=None, exte
     return request.has_permission('edit', context)
 
 
-def show_href(externally_hosted=None):
-    if externally_hosted is True:
-        return False
+def show_href():
     return True
 
 
@@ -1666,8 +1664,9 @@ def download(context, request):
                 'Downloading controlled-access file not allowed.'
             )
     if properties.get('externally_hosted') is True:
-        raise HTTPForbidden(
-            'Downloading externally_hosted file not allowed.'
+        raise HTTPTemporaryRedirect(
+            location=properties['external_host_url'],
+            headers=request.response.headers,  # Maintain any CORS headers set.
         )
     file_extension = FILE_FORMAT_TO_FILE_EXTENSION[properties['file_format']]
     accession = properties['accession']
