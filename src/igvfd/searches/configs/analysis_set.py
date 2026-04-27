@@ -292,6 +292,12 @@ def analysis_set_report_view():
         'preferred_assay_titles': {
             'title': 'Preferred Assay Titles'
         },
+        'workflows.name': {
+            'title': 'Workflow Name'
+        },
+        'workflows.uniform_pipeline': {
+            'title': 'Uniformly Processed'
+        },
         'file_set_type': {
             'title': 'File Set Type'
         },
