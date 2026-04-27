@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 44
+
+* Extend `preferred_assay_titles` enum list to include `CRISPR tiling screen reporter readout`.
+
 ### Schema version 44
 
 * Adjust `preferred_assay_titles` enum list to remove `MULTI-seq`.
