@@ -929,5 +929,24 @@
             "in vivo MPRA"
         ],
         "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:CRISPR_reporter_readout"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "release_timestamp": "2026-04-26T12:34:56Z",
+        "uuid": "0eab2b49-efa6-4891-a087-ce7987bf4f85",
+        "accession": "IGVFDS0005REPO",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0003661/",
+        "preferred_assay_titles": [
+            "CRISPR tiling screen reporter readout"
+        ],
+        "file_set_type": "experimental data"
     }
 ]

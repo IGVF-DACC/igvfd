@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Extend `preferred_assay_titles` enum list to include `CRISPR tiling screen reporter readout`.
 * Add calculated property `preferred_assay_slims`.
 * Extend `preferred_assay_titles` enum list to include `in vivo MPRA`.
 * Extend `preferred_assay_titles` enum list to include `in vivo Perturb-seq`.

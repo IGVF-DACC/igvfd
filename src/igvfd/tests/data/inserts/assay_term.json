@@ -216,7 +216,8 @@
         "term_name": "in vitro CRISPR screen using flow cytometry",
         "preferred_assay_titles": [
             "CRISPR tiling screen guide readout",
-            "CRISPR tiling screen allelic readout"
+            "CRISPR tiling screen allelic readout",
+            "CRISPR tiling screen reporter readout"
         ],
         "status": "released",
         "release_timestamp": "2026-01-06T12:34:56Z",
