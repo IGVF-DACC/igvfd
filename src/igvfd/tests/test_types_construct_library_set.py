@@ -256,3 +256,45 @@ def test_integrated_content_files_dependency(testapp, app, submitter, lab, award
         cls['@id'],
         {'integrated_content_files': [signal_file['@id'], tabular_file['@id']]}, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_donors_cls(testapp, construct_library_set_genome_wide, in_vitro_cell_line, in_vitro_differentiated_cell, human_donor, rodent_donor, parent_rodent_donor_1):
+    # Calc donors on CLS, if all active samples
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'construct_library_sets': [construct_library_set_genome_wide['@id']],
+            'donors': [rodent_donor['@id'],
+                       parent_rodent_donor_1['@id']]
+        }
+    )
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'construct_library_sets': [construct_library_set_genome_wide['@id']]
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'])
+    assert set([donor_id['@id'] for donor_id in res.json.get('donors')]
+               ) == {human_donor['@id'], rodent_donor['@id'], parent_rodent_donor_1['@id']}
+
+    # If the human sample is deleted while the donors are OK
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'status': 'deleted'
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'])
+    assert set([donor_id['@id'] for donor_id in res.json.get('donors')]
+               ) == {rodent_donor['@id'], parent_rodent_donor_1['@id']}
+
+    # If a donor is deleted while the sample is OK
+    testapp.patch_json(
+        parent_rodent_donor_1['@id'],
+        {
+            'status': 'deleted'
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'])
+    assert set([donor_id['@id'] for donor_id in res.json.get('donors')]) == {rodent_donor['@id']}
