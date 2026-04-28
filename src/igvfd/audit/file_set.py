@@ -786,14 +786,14 @@ def audit_MPRA_read_names(value, system):
                 else:
                     missing_read_names.append(file)
     if missing_read_names:
-        missing_read_names = ','.join([audit_link(path_to_text(file), file) for file in missing_read_names])
+        missing_read_names = ', '.join([audit_link(path_to_text(file), file) for file in missing_read_names])
         detail = (
             f'MPRA {object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} links to sequence files: '
             f'{missing_read_names} that do not specify `read_names`.'
         )
         yield AuditFailure(audit_message_missing.get('audit_category', ''), f'{detail} {audit_message_missing.get("audit_description", "")}', level=audit_message_missing.get('audit_level', ''))
     if unexpected_read_names:
-        unexpected_read_names = ','.join([audit_link(path_to_text(file), file) for file in unexpected_read_names])
+        unexpected_read_names = ', '.join([audit_link(path_to_text(file), file) for file in unexpected_read_names])
         detail = (
             f'MPRA {object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} links to sequence files: '
             f'{unexpected_read_names} with `read_names` not associated with the MPRA uniform processing pipeline.'
