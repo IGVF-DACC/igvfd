@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 9
 
+* Extend `collections` enum list to include `PD single cell multiomics`.
+* Extend `collections` enum list to include `IGVF_catalog_v1.2`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Add `is_on_anvil`.

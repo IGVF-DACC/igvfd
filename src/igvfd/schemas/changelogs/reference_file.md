@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 23
 
+* Extend `collections` enum list to include `PD single cell multiomics`.
+* Extend `collections` enum list to include `IGVF_catalog_v1.2`.
 * Add calculated property `preferred_assay_slims`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
 

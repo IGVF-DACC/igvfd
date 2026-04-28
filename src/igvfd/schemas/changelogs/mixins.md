@@ -1,5 +1,7 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `collections` enum list to include `PD single cell multiomics`. (05/06/2026)
+* Extend `collections` enum list to include `IGVF_catalog_v1.2`. (05/06/2026)
 * Extend `preferred_assay_titles` enum list to include `CRISPR tiling screen reporter readout`. (04/29/2026)
 * Update `aliases` regex to add `hongbo-liu` as a namespace. (04/01/2026)
 * Extend `preferred_assay_titles` enum list to include `SGE-RNA`. (03/11/2026)
