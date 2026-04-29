@@ -1353,7 +1353,8 @@ class CuratedSet(FileSet):
         if files:
             assembly_values = set()
             for current_file_path in files:
-                file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
+                file_object = request.embed(
+                    current_file_path, '@@object_with_select_calculated_properties?field=assembly')
                 if file_object.get('assembly'):
                     assembly_values.add(file_object.get('assembly'))
             return sorted(assembly_values) or None
