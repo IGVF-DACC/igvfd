@@ -354,7 +354,6 @@
             "description": "A kit utilized in the library preparation procedure.",
             "type": "string",
             "enum": [
-                "10X Chromium Single Cell Multiome ATAC + Gene Expression",
                 "10X Chromium Single Cell 3 prime v1",
                 "10X Chromium Single Cell 3 prime v2",
                 "10X Chromium Single Cell 3 prime v3",
@@ -362,7 +361,8 @@
                 "10X Chromium Single Cell 3 prime v4",
                 "10X Chromium Single Cell 5 prime v1",
                 "10X Chromium Single Cell 5 prime v2",
-                "10X Chromium Single Cell 5 prime v3"
+                "10X Chromium Single Cell 5 prime v3",
+                "10X Chromium Single Cell Multiome ATAC + Gene Expression"
             ],
             "submissionExample": {
                 "appscript": "10X Chromium Single Cell 5 prime v3",
