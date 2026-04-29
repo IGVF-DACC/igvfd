@@ -1939,3 +1939,26 @@ def test_audit_inconsistent_onlist(
         error['category'] != 'inconsistent onlist files'
         for error in res.json['audit'].get('ERROR', [])
     )
+    # multiome kit should expect 3M-february-2018 onlist.
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'library_preparation_kit': '10X Chromium Single Cell Multiome ATAC + Gene Expression'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent onlist files'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        tabular_file_onlist_1['@id'],
+        {
+            'md5sum': 'e3d4c9b177b3ef177c90363bca8efd61'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent onlist files'
+        for error in res.json['audit'].get('ERROR', [])
+    )

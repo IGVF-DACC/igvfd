@@ -847,7 +847,8 @@
         "file_set_type": "experimental data",
         "preferred_assay_titles": [
             "Multiome Perturb-seq"
-        ]
+        ],
+        "library_preparation_kit": "10X Chromium Single Cell Multiome ATAC + Gene Expression"
     },
     {
         "aliases": [
