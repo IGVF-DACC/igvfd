@@ -1378,7 +1378,8 @@ class CuratedSet(FileSet):
         if files:
             annotation_values = set()
             for current_file_path in files:
-                file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
+                file_object = request.embed(
+                    current_file_path, '@@object_with_select_calculated_properties?field=transcriptome_annotation')
                 if file_object.get('transcriptome_annotation'):
                     annotation_values.add(file_object.get('transcriptome_annotation'))
             return sorted(annotation_values) or None
