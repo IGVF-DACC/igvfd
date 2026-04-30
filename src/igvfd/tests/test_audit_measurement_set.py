@@ -231,15 +231,26 @@ def test_audit_missing_modification(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
-        in_vitro_cell_line['@id'],
+        tissue['@id'],
         {
             'modifications': [crispr_modification_activation['@id']]
         }
     )
     testapp.patch_json(
-        tissue['@id'],
+        measurement_set['@id'],
         {
-            'modifications': [crispr_modification_activation['@id']]
+            'samples': [tissue['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing modification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        multiplexed_sample['@id'],
+        {
+            'multiplexed_samples': [in_vitro_cell_line['@id'], tissue['@id']]
         }
     )
     testapp.patch_json(
