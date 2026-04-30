@@ -214,6 +214,8 @@ def test_audit_missing_modification(
     measurement_set,
     assay_term_crispr,
     tissue,
+    in_vitro_cell_line,
+    multiplexed_sample,
     crispr_modification_activation
 ):
     # CRISPR screens must also have modifications on all their samples
@@ -229,9 +231,21 @@ def test_audit_missing_modification(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'modifications': [crispr_modification_activation['@id']]
+        }
+    )
+    testapp.patch_json(
         tissue['@id'],
         {
             'modifications': [crispr_modification_activation['@id']]
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [multiplexed_sample['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')

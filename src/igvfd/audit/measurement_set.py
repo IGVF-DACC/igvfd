@@ -197,7 +197,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
         samples = value.get('samples', [])
         bad_samples = []
         for sample in samples:
-            sample_object = system.get('request').embed(sample, '@@object?skip_calculated=true')
+            sample_object = system.get('request').embed(sample, '@@object')
             if 'modifications' not in sample_object:
                 bad_samples.append(sample)
         if bad_samples != []:
