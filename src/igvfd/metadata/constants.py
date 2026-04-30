@@ -10,6 +10,7 @@ METADATA_ALLOWED_TYPES = [
     'CuratedSet',
     'ModelSet',
     'PredictionSet',
+    'PseudobulkSet',
 ]
 
 
@@ -194,6 +195,9 @@ RECURSE_FILE_SET_FIELDS = {
     'PredictionSet': [
         'input_file_sets',
     ],
+    'PseudobulkSet': [
+        'input_file_sets',
+    ],
 }
 
 
@@ -202,6 +206,9 @@ RECURSE_FILE_SET_DOWNSTREAM_FIELDS = {
         'input_for'
     ],
     'AnalysisSet': [
+        'input_for'
+    ],
+    'PseudobulkSet': [
         'input_for'
     ],
 }
