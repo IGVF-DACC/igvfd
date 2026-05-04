@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 22
 
+* Extend `preferred_assay_titles` enum list to include `perturb-SHARE-seq`.
 * Extend `preferred_assay_titles` enum list to include `CRISPR tiling screen reporter readout`.
 
 ### Schema version 22
