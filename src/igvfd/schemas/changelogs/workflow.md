@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Update `workflow_version` regex to `^v(?!0\\.0\\.0$)([0-9]+[a-zA-Z0-9]*(\\.[0-9]+[a-zA-Z0-9]*){0,3})$`.
 * Extend `preferred_assay_titles` enum list to include `CRISPR tiling screen reporter readout`.
 * Extend `preferred_assay_titles` enum list to include `in vivo MPRA`.
 * Extend `preferred_assay_titles` enum list to include `in vivo Perturb-seq`.

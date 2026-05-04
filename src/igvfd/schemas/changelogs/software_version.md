@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Update `version` regex to `^v(?!0\\.0\\.0$)([a-zA-Z0-9]+(\\.[a-zA-Z0-9]+){0,3})$`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Update `aliases` regex to add `yang-li` as a namespace.
 
