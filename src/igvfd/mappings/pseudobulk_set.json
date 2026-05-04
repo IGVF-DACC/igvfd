@@ -1,6 +1,6 @@
 {
-    "hash": "fd822f1d0ba0412a1ff825dd57030f74",
-    "index_name": "pseudobulk_set_fd822f1d",
+    "hash": "b6fce5ca68543f01f47ade0474643c54",
+    "index_name": "pseudobulk_set_b6fce5ca",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -2455,6 +2455,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "taxa": {

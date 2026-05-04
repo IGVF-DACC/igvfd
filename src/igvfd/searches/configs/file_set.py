@@ -70,6 +70,9 @@ def file_set():
             'targeted_genes.symbol': {
                 'title': 'Readout Genes'
             },
+            'targeted_proteins': {
+                'title': 'Targeted Proteins'
+            },
             'collections': {
                 'title': 'Collections',
             },

@@ -1,6 +1,6 @@
 {
-    "hash": "129c4f82a7d5573ef9c79f2f6b259403",
-    "index_name": "analysis_set_129c4f82",
+    "hash": "2a2d6804e6a3706762c8696f8ed58cbf",
+    "index_name": "analysis_set_2a2d6804",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -4082,6 +4082,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "targeted_proteins": {
+                        "type": "keyword"
                     },
                     "uniform_pipeline_status": {
                         "type": "keyword"

@@ -547,6 +547,99 @@ def test_targeted_genes(testapp, measurement_set, analysis_set_base, gene_myc_hs
     assert set([gene['@id'] for gene in res.json.get('targeted_genes')]) == {gene_myc_hs['@id']}
 
 
+def test_analysis_set_targeted_proteins(testapp, measurement_set, analysis_set_base, assay_term_chip, lab, award, tissue):
+    '''
+    Calculated `targeted_proteins`, `summary` targeting phrase, union across measurement sets,
+    and propagation when an analysis set is the input of another analysis set.
+    '''
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_chip['@id'],
+            'targeted_proteins': ['H3K4me3'],
+            'preferred_assay_titles': ['Histone ChIP-seq']
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert res.json.get('targeted_proteins') == ['H3K4me3']
+    assert res.json.get('summary') == 'Histone ChIP-seq targeting H3K4me3'
+
+    ms_a = testapp.post_json(
+        '/measurement_set',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'assay_term': assay_term_chip['@id'],
+            'samples': [tissue['@id']],
+            'file_set_type': 'experimental data',
+            'preferred_assay_titles': ['Histone ChIP-seq'],
+            'targeted_proteins': ['H3K27ac'],
+        },
+        status=201,
+    ).json['@graph'][0]
+    ms_b = testapp.post_json(
+        '/measurement_set',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'assay_term': assay_term_chip['@id'],
+            'samples': [tissue['@id']],
+            'file_set_type': 'experimental data',
+            'preferred_assay_titles': ['Histone ChIP-seq'],
+            'targeted_proteins': ['H3K4me3', 'IgG'],
+        },
+        status=201,
+    ).json['@graph'][0]
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [ms_a['@id'], ms_b['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert res.json.get('targeted_proteins') == ['H3K27ac', 'H3K4me3', 'IgG']
+    assert res.json.get('summary') == 'Histone ChIP-seq targeting H3K27ac, H3K4me3, IgG'
+
+    ms_nested = testapp.post_json(
+        '/measurement_set',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'assay_term': assay_term_chip['@id'],
+            'samples': [tissue['@id']],
+            'file_set_type': 'experimental data',
+            'preferred_assay_titles': ['Histone ChIP-seq'],
+            'targeted_proteins': ['IgG'],
+        },
+        status=201,
+    ).json['@graph'][0]
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [ms_nested['@id']]
+        }
+    )
+    principal_analysis_set = testapp.post_json(
+        '/analysis_set',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'file_set_type': 'principal analysis',
+            'input_file_sets': [analysis_set_base['@id']],
+        },
+        status=201,
+    ).json['@graph'][0]
+    res = testapp.get(principal_analysis_set['@id'])
+    assert res.json.get('targeted_proteins') == ['IgG']
+    assert res.json.get('summary') == 'Histone ChIP-seq targeting IgG'
+
+
 def test_enrichment_designs(testapp, measurement_set, analysis_set_base, tabular_file):
     testapp.patch_json(
         measurement_set['@id'],

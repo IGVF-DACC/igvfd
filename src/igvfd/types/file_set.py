@@ -104,7 +104,7 @@ def get_file_set_props_for_summary_and_samples(request, file_set):
         file_set,
         '@@object_with_select_calculated_properties?'
         'field=@type&field=file_set_type&field=measurement_sets'
-        '&field=input_file_sets&field=targeted_genes.symbol'
+        '&field=input_file_sets&field=targeted_genes.symbol&field=targeted_proteins'
         '&field=assay_term&field=samples'
         '&field=assay_titles&field=preferred_assay_titles'
     )
@@ -578,6 +578,7 @@ class AnalysisSet(FileSet):
         fileset_types = set()
         file_content_types = set()
         targeted_genes = set()
+        targeted_proteins = set()
         assay_terms = set()
         cls_derived_assay_titles = set()
 
@@ -630,6 +631,8 @@ class AnalysisSet(FileSet):
                             for gene in fileset_object['targeted_genes']:
                                 gene_object = request.embed(gene, '@@object?skip_calculated=true')
                                 targeted_genes.add(gene_object['symbol'])
+                        if 'targeted_proteins' in fileset_object:
+                            targeted_proteins.update(fileset_object['targeted_proteins'])
                         assay_terms.add(fileset_object['assay_term'])
                         preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
                         assays_titles = fileset_object.get('assay_titles', [])
@@ -737,6 +740,9 @@ class AnalysisSet(FileSet):
                 targeted_genes_phrase = f'sorted on expression of {", ".join(sorted(targeted_genes))}'
             else:
                 targeted_genes_phrase = f'targeting {", ".join(sorted(targeted_genes))}'
+        targeted_proteins_phrase = ''
+        if targeted_proteins:
+            targeted_proteins_phrase = f'targeting {", ".join(sorted(targeted_proteins))}'
         # The file set types are only shown if the inputs are all Auxiliary Sets
         # and the Measurement Sets related to the Auxiliary Sets are not CRISPR screens.
         file_set_type_phrase = ''
@@ -758,6 +764,7 @@ class AnalysisSet(FileSet):
         all_phrases = [
             assay_title_phrase,
             targeted_genes_phrase,
+            targeted_proteins_phrase,
             cls_phrase,
             file_set_type_phrase,
             control_phrase
@@ -1157,7 +1164,7 @@ class AnalysisSet(FileSet):
         sorted_phrase = ''
         if sorted_from:
             if targeted_genes_for_sorting:
-                sorted_phrase = f'sorted on expression of {", ".join(targeted_genes_for_sorting)}'
+                sorted_phrase = f'sorted on expression of {", ".join(sorted(targeted_genes_for_sorting))}'
             else:
                 sorted_phrase = f'sorted into bins'
         cellular_sub_pool_phrase = ''
@@ -1268,6 +1275,39 @@ class AnalysisSet(FileSet):
                 if 'targeted_genes' in input_file_set_object:
                     analysis_set_targeted_genes.update(input_file_set_object['targeted_genes'])
         return sorted(analysis_set_targeted_genes) or None
+
+    @calculated_property(
+        condition='input_file_sets',
+        schema={
+            'title': 'Targeted Proteins',
+            'description': 'Immunoprecipitated protein targets or controls aggregated from the input measurement sets and analysis sets.',
+            'type': 'array',
+            'notSubmittable': True,
+            'uniqueItems': True,
+            'minItems': 1,
+            'items': {
+                'title': 'Targeted Protein',
+                'type': 'string',
+                'enum': [
+                    'H3K4me3',
+                    'H3K27ac',
+                    'H3K27me',
+                    'IgG'
+                ]
+            }
+        }
+    )
+    def targeted_proteins(self, request, input_file_sets=None):
+        if input_file_sets is None:
+            input_file_sets = []
+        analysis_set_targeted_proteins = set()
+        for input_file_set in input_file_sets:
+            if input_file_set.startswith(('/measurement-sets/', '/analysis-sets/')):
+                input_file_set_object = request.embed(
+                    input_file_set, '@@object_with_select_calculated_properties?field=targeted_proteins')
+                if 'targeted_proteins' in input_file_set_object:
+                    analysis_set_targeted_proteins.update(input_file_set_object['targeted_proteins'])
+        return sorted(analysis_set_targeted_proteins) or None
 
     @calculated_property(
         condition='input_file_sets',
@@ -1564,7 +1604,7 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, assay_term, assay_titles, preferred_assay_titles=None, samples=None, control_types=None, targeted_genes=None, construct_library_sets=None):
+    def summary(self, request, assay_term, assay_titles, preferred_assay_titles=None, samples=None, control_types=None, targeted_genes=None, targeted_proteins=None, construct_library_sets=None):
         if construct_library_sets is None:
             construct_library_sets = []
         modality_set = set()
@@ -1608,11 +1648,11 @@ class MeasurementSet(FileSet):
         if targeted_genes:
             # "sorted on expression of" when samples have sorted_from (flow cytometry), else "targeting"
             if any_sample_sorted_from:
-                target_phrase = f' sorted on expression of'
+                gene_segment = f' sorted on expression of'
             else:
-                target_phrase = f' targeting'
+                gene_segment = f' targeting'
             if len(targeted_genes) > 5:
-                target_phrase = f'{target_phrase} {len(targeted_genes)} genes'
+                gene_segment = f'{gene_segment} {len(targeted_genes)} genes'
             elif len(targeted_genes) <= 5:
                 genes = []
                 for targeted_gene in targeted_genes:
@@ -1620,7 +1660,15 @@ class MeasurementSet(FileSet):
                     gene_name = (gene_object.get('symbol'))
                     genes.append(gene_name)
                 genes = sorted(genes)
-                target_phrase = f'{target_phrase} {", ".join(genes)}'
+                gene_segment = f'{gene_segment} {", ".join(genes)}'
+            target_phrase += gene_segment
+        if targeted_proteins:
+            protein_segment = f' targeting'
+            if len(targeted_proteins) > 5:
+                protein_segment = f'{protein_segment} {len(targeted_proteins)} proteins'
+            elif len(targeted_proteins) <= 5:
+                protein_segment = f'{protein_segment} {", ".join(sorted(targeted_proteins))}'
+            target_phrase += protein_segment
 
         if 'guide library' in cls_type_set:
             if 'CRISPR' not in assay:
