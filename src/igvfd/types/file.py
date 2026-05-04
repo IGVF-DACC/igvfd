@@ -132,6 +132,36 @@ def show_s3uri(externally_hosted=None):
     return True
 
 
+def get_transcriptome_annotation_from_reference_files(request, reference_files):
+    if not reference_files:
+        return None
+    transcriptome_annotation_set = set()
+    for ref_file in paths_filtered_by_status(request, reference_files):
+        ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
+        if ref_file_object['content_type'] in ('transcriptome reference', 'transcriptome index'):
+            transcriptome_annotation_set.add(ref_file_object.get('transcriptome_annotation', None))
+    if len(transcriptome_annotation_set) > 1:
+        return 'Mixed transcriptome annotations'
+    elif len(transcriptome_annotation_set) == 1:
+        return list(transcriptome_annotation_set)[0]
+    return None
+
+
+def get_assembly_from_reference_files(request, reference_files):
+    if not reference_files:
+        return None
+    assembly_set = set()
+    for ref_file in paths_filtered_by_status(request, reference_files):
+        ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
+        if ref_file_object['content_type'] in ('genome reference', 'genome index'):
+            assembly_set.add(ref_file_object.get('assembly', None))
+    if len(assembly_set) > 1:
+        return 'Mixed genome assemblies'
+    elif len(assembly_set) == 1:
+        return list(assembly_set)[0]
+    return None
+
+
 @abstract_collection(
     name='files',
     unique_key='accession',
@@ -779,18 +809,7 @@ class AlignmentFile(File):
         }
     )
     def transcriptome_annotation(self, request, reference_files=None):
-        transcriptome_annotation_set = set()
-        transcriptome_annotation = None
-        if reference_files is not None:
-            for ref_file in paths_filtered_by_status(request, reference_files):
-                ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
-                if ref_file_object['content_type'] == 'transcriptome reference' or ref_file_object['content_type'] == 'transcriptome index':
-                    transcriptome_annotation_set.add(ref_file_object.get('transcriptome_annotation', None))
-        if len(transcriptome_annotation_set) > 1:
-            transcriptome_annotation = 'Mixed transcriptome annotations'
-        elif len(transcriptome_annotation_set) == 1:
-            transcriptome_annotation = list(transcriptome_annotation_set)[0]
-        return transcriptome_annotation
+        return get_transcriptome_annotation_from_reference_files(request, reference_files)
 
     @calculated_property(
         define=True,
@@ -802,18 +821,7 @@ class AlignmentFile(File):
         }
     )
     def assembly(self, request, reference_files=None):
-        assembly_set = set()
-        assembly = None
-        if reference_files is not None:
-            for ref_file in paths_filtered_by_status(request, reference_files):
-                ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
-                if ref_file_object['content_type'] == 'genome reference' or ref_file_object['content_type'] == 'genome index':
-                    assembly_set.add(ref_file_object.get('assembly', None))
-        if len(assembly_set) > 1:
-            assembly = 'Mixed genome assemblies'
-        elif len(assembly_set) == 1:
-            assembly = list(assembly_set)[0]
-        return assembly
+        return get_assembly_from_reference_files(request, reference_files)
 
 
 @collection(
@@ -892,17 +900,7 @@ class MatrixFile(File):
         }
     )
     def transcriptome_annotation(self, request, reference_files):
-        transcriptome_annotation_set = set()
-        transcriptome_annotation = None
-        for ref_file in paths_filtered_by_status(request, reference_files):
-            ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
-            if ref_file_object['content_type'] == 'transcriptome reference' or ref_file_object['content_type'] == 'transcriptome index':
-                transcriptome_annotation_set.add(ref_file_object.get('transcriptome_annotation', None))
-        if len(transcriptome_annotation_set) > 1:
-            transcriptome_annotation = 'Mixed transcriptome annotations'
-        elif len(transcriptome_annotation_set) == 1:
-            transcriptome_annotation = list(transcriptome_annotation_set)[0]
-        return transcriptome_annotation
+        return get_transcriptome_annotation_from_reference_files(request, reference_files)
 
     @calculated_property(
         schema={
@@ -913,17 +911,7 @@ class MatrixFile(File):
         }
     )
     def assembly(self, request, reference_files):
-        assembly_set = set()
-        assembly = None
-        for ref_file in paths_filtered_by_status(request, reference_files):
-            ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
-            if ref_file_object['content_type'] == 'genome reference' or ref_file_object['content_type'] == 'genome index':
-                assembly_set.add(ref_file_object.get('assembly', None))
-        if len(assembly_set) > 1:
-            assembly = 'Mixed genome assemblies'
-        elif len(assembly_set) == 1:
-            assembly = list(assembly_set)[0]
-        return assembly
+        return get_assembly_from_reference_files(request, reference_files)
 
 
 @collection(
@@ -1020,17 +1008,7 @@ class SignalFile(File):
         }
     )
     def transcriptome_annotation(self, request, reference_files):
-        transcriptome_annotation_set = set()
-        transcriptome_annotation = None
-        for ref_file in paths_filtered_by_status(request, reference_files):
-            ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
-            if ref_file_object['content_type'] == 'transcriptome reference' or ref_file_object['content_type'] == 'transcriptome index':
-                transcriptome_annotation_set.add(ref_file_object.get('transcriptome_annotation', None))
-        if len(transcriptome_annotation_set) > 1:
-            transcriptome_annotation = 'Mixed transcriptome annotations'
-        elif len(transcriptome_annotation_set) == 1:
-            transcriptome_annotation = list(transcriptome_annotation_set)[0]
-        return transcriptome_annotation
+        return get_transcriptome_annotation_from_reference_files(request, reference_files)
 
     @calculated_property(
         define=True,
@@ -1042,17 +1020,7 @@ class SignalFile(File):
         }
     )
     def assembly(self, request, reference_files):
-        assembly_set = set()
-        assembly = None
-        for ref_file in paths_filtered_by_status(request, reference_files):
-            ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
-            if ref_file_object['content_type'] == 'genome reference' or ref_file_object['content_type'] == 'genome index':
-                assembly_set.add(ref_file_object.get('assembly', None))
-        if len(assembly_set) > 1:
-            assembly = 'Mixed genome assemblies'
-        elif len(assembly_set) == 1:
-            assembly = list(assembly_set)[0]
-        return assembly
+        return get_assembly_from_reference_files(request, reference_files)
 
 
 @collection(
@@ -1201,14 +1169,18 @@ class TabularFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None, filtered=None, analysis_step_version=None, base_modifications=None):
+    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None, filtered=None, analysis_step_version=None, base_modifications=None, submitted_assembly=None, submitted_transcriptome_annotation=None):
         file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
+        if assembly is None and submitted_assembly != 'unknown':
+            assembly = submitted_assembly
         formatted_assembly = assembly
         if assembly and assembly == 'custom':
             formatted_assembly = f'{assembly} assembly'
+        if transcriptome_annotation is None and submitted_transcriptome_annotation != 'unknown':
+            transcriptome_annotation = submitted_transcriptome_annotation
         filtered_phrase = None
         if filtered is True:
             filtered_phrase = 'filtered'
@@ -1289,41 +1261,19 @@ class TabularFile(File):
         }
     )
     def transcriptome_annotation(self, request, reference_files=None):
-        transcriptome_annotation_set = set()
-        transcriptome_annotation = None
-        if reference_files is not None:
-            for ref_file in paths_filtered_by_status(request, reference_files):
-                ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
-                if ref_file_object['content_type'] == 'transcriptome reference' or ref_file_object['content_type'] == 'transcriptome index':
-                    transcriptome_annotation_set.add(ref_file_object.get('transcriptome_annotation', None))
-        if len(transcriptome_annotation_set) > 1:
-            transcriptome_annotation = 'Mixed transcriptome annotations'
-        elif len(transcriptome_annotation_set) == 1:
-            transcriptome_annotation = list(transcriptome_annotation_set)[0]
-        return transcriptome_annotation
+        return get_transcriptome_annotation_from_reference_files(request, reference_files)
 
     @calculated_property(
         define=True,
         schema={
             'title': 'Genome Assembly',
             'type': 'string',
-            'description': 'The assembly associated with the alignment file.',
+            'description': 'The assembly associated with the tabular file.',
             'notSubmittable': True
         }
     )
     def assembly(self, request, reference_files=None):
-        assembly_set = set()
-        assembly = None
-        if reference_files is not None:
-            for ref_file in paths_filtered_by_status(request, reference_files):
-                ref_file_object = request.embed(ref_file, '@@object?skip_calculated=true')
-                if ref_file_object['content_type'] == 'genome reference' or ref_file_object['content_type'] == 'genome index':
-                    assembly_set.add(ref_file_object.get('assembly', None))
-        if len(assembly_set) > 1:
-            assembly = 'Mixed genome assemblies'
-        elif len(assembly_set) == 1:
-            assembly = list(assembly_set)[0]
-        return assembly
+        return get_assembly_from_reference_files(request, reference_files)
 
 
 @collection(

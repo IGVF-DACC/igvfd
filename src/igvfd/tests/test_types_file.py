@@ -526,6 +526,34 @@ def test_file_summaries(
         'summary', '') == 'GENCODE 43 predictive filtered normalized plus strand signal of all reads (Bowtie2 v2.4.4)'
 
     # Tabular File
+    # submitted_assembly is used when no genome reference files
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'submitted_assembly': 'GRCh38'
+        }
+    )
+    res = testapp.get(tabular_file['@id'])
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 peaks'
+    # submitted_transcriptome_annotation is used when no transcriptome reference files
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'reference_files': [reference_file_with_assembly['@id']],
+            'submitted_transcriptome_annotation': 'GENCODE 40'
+        }
+    )
+    res = testapp.get(tabular_file['@id'])
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 40 peaks'
+    # 'unknown' submitted values are excluded from the summary.
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'submitted_transcriptome_annotation': 'unknown'
+        }
+    )
+    res = testapp.get(tabular_file['@id'])
+    assert res.json.get('summary', '') == 'GRCh38 peaks'
     testapp.patch_json(
         tabular_file['@id'],
         {
