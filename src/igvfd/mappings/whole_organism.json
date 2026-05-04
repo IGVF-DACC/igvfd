@@ -1,6 +1,6 @@
 {
-    "hash": "bbdb774ffcd1e52de555da07e47123df",
-    "index_name": "whole_organism_bbdb774f",
+    "hash": "3a6c6dbdb8a562edcf13eb7f1e91148c",
+    "index_name": "whole_organism_3a6c6dbd",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1370,6 +1370,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {

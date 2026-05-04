@@ -1266,6 +1266,9 @@
                             "targeted_genes": {
                                 "type": "keyword"
                             },
+                            "targeted_proteins": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -1641,6 +1644,9 @@
                             "targeted_genes": {
                                 "type": "keyword"
                             },
+                            "targeted_proteins": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -2014,6 +2020,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {
@@ -3220,6 +3229,9 @@
                             "targeted_genes": {
                                 "type": "keyword"
                             },
+                            "targeted_proteins": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -3694,6 +3706,9 @@
                                         "type": "keyword"
                                     },
                                     "targeted_genes": {
+                                        "type": "keyword"
+                                    },
+                                    "targeted_proteins": {
                                         "type": "keyword"
                                     },
                                     "uuid": {
@@ -4813,6 +4828,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "targeted_proteins": {
+                        "type": "keyword"
                     },
                     "uuid": {
                         "type": "keyword"

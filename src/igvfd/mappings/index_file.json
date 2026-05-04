@@ -1,6 +1,6 @@
 {
-    "hash": "cc2fb27553936fe0ef267cdf1572a5cb",
-    "index_name": "index_file_cc2fb275",
+    "hash": "c8c528d802775059cebaeec25b3b17f1",
+    "index_name": "index_file_c8c528d8",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -2014,6 +2014,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {

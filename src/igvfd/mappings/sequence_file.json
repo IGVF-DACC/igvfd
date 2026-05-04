@@ -1,6 +1,6 @@
 {
-    "hash": "b8dca5f941c443a82d6c5eb1964429bb",
-    "index_name": "sequence_file_b8dca5f9",
+    "hash": "ee7ed3e8a371627db95f2113634fdebb",
+    "index_name": "sequence_file_ee7ed3e8",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -2011,6 +2011,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {

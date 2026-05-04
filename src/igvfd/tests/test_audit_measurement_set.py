@@ -1419,13 +1419,13 @@ def test_audit_missing_auxiliary_set_10x_MULTI_seq(
 def test_audit_targeted_genes(
     testapp,
     measurement_set,
-    assay_term_chip,
+    assay_term_tf_chip,
     gene_myc_hs
 ):
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_chip['@id'],
+            'assay_term': assay_term_tf_chip['@id'],
             'control_types': ['wildtype']
         }
     )
@@ -1437,7 +1437,7 @@ def test_audit_targeted_genes(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_chip['@id'],
+            'assay_term': assay_term_tf_chip['@id'],
             'control_types': ['untransfected']
         }
     )
@@ -1459,7 +1459,7 @@ def test_audit_targeted_genes(
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
-        assay_term_chip['@id'],
+        assay_term_tf_chip['@id'],
         {
             'term_id': 'OBI:0002018'
         }
@@ -1468,6 +1468,36 @@ def test_audit_targeted_genes(
     assert any(
         error['category'] == 'unexpected targeted genes'
         for error in res.json['audit'].get('ERROR', [])
+    )
+
+
+def test_audit_targeted_proteins(
+    testapp,
+    measurement_set,
+    assay_term_chip,
+    assay_term_cut_run
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_chip['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing targeted proteins'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'targeted_proteins': ['H3K4me3']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing targeted proteins'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
 
