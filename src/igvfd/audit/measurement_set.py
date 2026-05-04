@@ -326,12 +326,12 @@ def audit_targeted_genes(value, system):
     '''
     [
         {
-            "audit_description": "ChIP-seq, CUT&RUN, and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
+            "audit_description": "Transcription factor ChIP-seq and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
             "audit_category": "missing targeted genes",
             "audit_level": "WARNING"
         },
         {
-            "audit_description": "Only ChIP-seq, CUT&RUN, and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
+            "audit_description": "Only transcription factor ChIP-seq and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
             "audit_category": "unexpected targeted genes",
             "audit_level": "ERROR"
         }
@@ -347,9 +347,7 @@ def audit_targeted_genes(value, system):
         'unsorted FACS input'
     }
     expecting_targeted_genes_by_assay = ['/assay-terms/OBI_0003661/',  # in vitro CRISPR screen using flow cytometry
-                                         '/assay-terms/OBI_0002017/',  # histone modification identification by ChIP-Seq assay
                                          '/assay-terms/OBI_0002019/',  # transcription factor binding site identification by ChIP-Seq assay
-                                         '/assay-terms/OBI_0003033/'   # cleavage under targets and release using nuclease assay
                                          ]
     if (
         not (targeted_genes)
@@ -364,6 +362,44 @@ def audit_targeted_genes(value, system):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has `targeted_genes`.'
+        )
+        yield AuditFailure(audit_message_unexpected.get('audit_category', ''), f'{detail} {audit_message_unexpected.get("audit_description", "")}', level=audit_message_unexpected.get('audit_level', ''))
+
+
+def audit_targeted_proteins(value, system):
+    '''
+    [
+        {
+            "audit_description": "Histone ChIP-seq and CUT&RUN assays are expected to specify targeted protein(s).",
+            "audit_category": "missing targeted proteins",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Only Histone ChIP-seq and CUT&RUN assays are expected to specify targeted protein(s).",
+            "audit_category": "unexpected targeted proteins",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    audit_message_missing = get_audit_message(audit_targeted_proteins, index=0)
+    audit_message_unexpected = get_audit_message(audit_targeted_proteins, index=1)
+    assay_term = value.get('assay_term')
+    targeted_proteins = value.get('targeted_proteins', '')
+    expecting_targeted_proteins_by_assay = ['/assay-terms/OBI_0002017/',  # histone modification identification by ChIP-Seq assay
+                                            '/assay-terms/OBI_0003033/'   # cleavage under targets and release using nuclease assay
+                                            ]
+    if (
+            not (targeted_proteins)
+            and assay_term in expecting_targeted_proteins_by_assay):
+        detail = (
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has no `targeted_proteins`.'
+        )
+        yield AuditFailure(audit_message_missing.get('audit_category', ''), f'{detail} {audit_message_missing.get("audit_description", "")}', level=audit_message_missing.get('audit_level', ''))
+    if targeted_proteins and (assay_term not in expecting_targeted_proteins_by_assay):
+        detail = (
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has `targeted_proteins`.'
         )
         yield AuditFailure(audit_message_unexpected.get('audit_category', ''), f'{detail} {audit_message_unexpected.get("audit_description", "")}', level=audit_message_unexpected.get('audit_level', ''))
 
@@ -917,6 +953,7 @@ function_dispatcher_measurement_set_object = {
     'audit_missing_institutional_certification': audit_missing_institutional_certification,
     'audit_missing_auxiliary_set_link': audit_missing_auxiliary_set_link,
     'audit_targeted_genes': audit_targeted_genes,
+    'audit_targeted_proteins': audit_targeted_proteins,
     'audit_missing_strand_specificity': audit_missing_strand_specificity,
     'audit_onlist': audit_onlist,
     'audit_inconsistent_onlist_info': audit_inconsistent_onlist_info,

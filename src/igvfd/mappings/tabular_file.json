@@ -1,6 +1,6 @@
 {
-    "hash": "a3b5b55aab4ecfe75c401c5ffda9e84b",
-    "index_name": "tabular_file_a3b5b55a",
+    "hash": "c323ab7e3b74d0c037c49a80242ec6c3",
+    "index_name": "tabular_file_c323ab7e",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -2029,6 +2029,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {

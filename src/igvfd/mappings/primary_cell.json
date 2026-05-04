@@ -1,6 +1,6 @@
 {
-    "hash": "f6fac6ff6640ddfd92a52033c0249e45",
-    "index_name": "primary_cell_f6fac6ff",
+    "hash": "0656825955f0aa489580670665ef1afc",
+    "index_name": "primary_cell_06568259",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1373,6 +1373,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {

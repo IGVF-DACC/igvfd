@@ -1,6 +1,6 @@
 {
-    "hash": "4c15b1c3f755d2ec7dccf483fdf87eb4",
-    "index_name": "analysis_set_4c15b1c3",
+    "hash": "2a2d6804e6a3706762c8696f8ed58cbf",
+    "index_name": "analysis_set_2a2d6804",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -1033,6 +1033,9 @@
                             "targeted_genes": {
                                 "type": "keyword"
                             },
+                            "targeted_proteins": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -1406,6 +1409,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {
@@ -2694,6 +2700,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {
@@ -4073,6 +4082,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "targeted_proteins": {
+                        "type": "keyword"
                     },
                     "uniform_pipeline_status": {
                         "type": "keyword"

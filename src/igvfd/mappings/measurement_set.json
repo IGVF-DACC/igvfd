@@ -1,6 +1,6 @@
 {
-    "hash": "56667e3d77c914aa24f7939ed633af9e",
-    "index_name": "measurement_set_56667e3d",
+    "hash": "d61026b928c3391fcd1fc5512d6d2af0",
+    "index_name": "measurement_set_d61026b9",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1266,6 +1266,9 @@
                             "targeted_genes": {
                                 "type": "keyword"
                             },
+                            "targeted_proteins": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -1641,6 +1644,9 @@
                             "targeted_genes": {
                                 "type": "keyword"
                             },
+                            "targeted_proteins": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -2014,6 +2020,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {
@@ -3220,6 +3229,9 @@
                             "targeted_genes": {
                                 "type": "keyword"
                             },
+                            "targeted_proteins": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -3694,6 +3706,9 @@
                                         "type": "keyword"
                                     },
                                     "targeted_genes": {
+                                        "type": "keyword"
+                                    },
+                                    "targeted_proteins": {
                                         "type": "keyword"
                                     },
                                     "uuid": {
@@ -4813,6 +4828,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "targeted_proteins": {
+                        "type": "keyword"
                     },
                     "uuid": {
                         "type": "keyword"
