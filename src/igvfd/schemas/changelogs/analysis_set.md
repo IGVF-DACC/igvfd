@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 10
 
+* Add calculated property `targeted_proteins`.
+* Extend calculated property `summary` to describe targeted proteins aggregated from inputs (mirroring targeted genes).
 * Extend `collections` enum list to include `PD single cell multiomics`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.2`.
 * Add calculated property `preferred_assay_slims`.

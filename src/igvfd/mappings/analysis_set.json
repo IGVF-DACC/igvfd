@@ -4083,6 +4083,9 @@
                         },
                         "type": "object"
                     },
+                    "targeted_proteins": {
+                        "type": "keyword"
+                    },
                     "uniform_pipeline_status": {
                         "type": "keyword"
                     },
