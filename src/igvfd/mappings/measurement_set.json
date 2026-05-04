@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-    "hash": "56667e3d77c914aa24f7939ed633af9e",
-    "index_name": "measurement_set_56667e3d",
-=======
-    "hash": "a93640b1580c7fc977d4ec8cc2c0796f",
-    "index_name": "measurement_set_a93640b1",
->>>>>>> 01883620 (summary + test + property on as)
+    "hash": "d61026b928c3391fcd1fc5512d6d2af0",
+    "index_name": "measurement_set_d61026b9",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
