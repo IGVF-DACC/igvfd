@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 21
 
+* Extend `collections` enum list to include `PD single cell multiomics`.
+* Extend `collections` enum list to include `IGVF_catalog_v1.2`.
 * Extend `content_type` enum list to include `cis-trans regulatory differences`.
 * Extend `content_type` enum list to include `allele specific RNA pseudobulk counts`.
 * Extend `content_type` enum list to include `pseudobulk annotations`.

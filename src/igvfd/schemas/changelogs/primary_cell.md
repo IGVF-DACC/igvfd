@@ -1,5 +1,10 @@
 ## Changelog for *`primary_cell.json`*
 
+### Minor changes since schema version 26
+
+* Extend `collections` enum list to include `PD single cell multiomics`.
+* Extend `collections` enum list to include `IGVF_catalog_v1.2`.
+
 ### Schema version 26
 
 * Rename `nucleic_acid_delivery` to `construct_delivery_methods`.

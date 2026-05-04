@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 44
 
+* Extend `collections` enum list to include `PD single cell multiomics`.
+* Extend `collections` enum list to include `IGVF_catalog_v1.2`.
 * Extend `preferred_assay_titles` enum list to include `CRISPR tiling screen reporter readout`.
 
 ### Schema version 44

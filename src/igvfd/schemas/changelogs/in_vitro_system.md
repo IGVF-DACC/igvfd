@@ -1,5 +1,10 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Minor changes since schema version 31
+
+* Extend `collections` enum list to include `PD single cell multiomics`.
+* Extend `collections` enum list to include `IGVF_catalog_v1.2`.
+
 ### Schema version 31
 
 * Rename `nucleic_acid_delivery` to `construct_delivery_methods`.

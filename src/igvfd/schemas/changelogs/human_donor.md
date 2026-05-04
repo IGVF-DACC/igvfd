@@ -1,5 +1,10 @@
 ## Changelog for *`human_donor.json`*
 
+### Minor changes since schema version 15
+
+* Extend `collections` enum list to include `PD single cell multiomics`.
+* Extend `collections` enum list to include `IGVF_catalog_v1.2`.
+
 ### Schema verion 15
 
 * Remove `phenotypic_features`.
