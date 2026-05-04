@@ -1,6 +1,6 @@
 {
-    "hash": "dd6132d14560e125de237463999cf03d",
-    "index_name": "curated_set_dd6132d1",
+    "hash": "52babf3b9681a095acb1a38c15cc7f3f",
+    "index_name": "curated_set_52babf3b",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1037,6 +1037,9 @@
                             "targeted_genes": {
                                 "type": "keyword"
                             },
+                            "targeted_proteins": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -1410,6 +1413,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {

@@ -1,6 +1,6 @@
 {
-    "hash": "63065b42376697b422ce5f3f0ccc6785",
-    "index_name": "construct_library_set_63065b42",
+    "hash": "0f477ab1fa83d9b950d9825b88146727",
+    "index_name": "construct_library_set_0f477ab1",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -652,6 +652,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {

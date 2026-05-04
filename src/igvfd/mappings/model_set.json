@@ -1,6 +1,6 @@
 {
-    "hash": "85a7d1c5c9c3880b3fa2bb89f3538a43",
-    "index_name": "model_set_85a7d1c5",
+    "hash": "60754c2a77014ae1710011841f017945",
+    "index_name": "model_set_60754c2a",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1227,6 +1227,9 @@
                             "targeted_genes": {
                                 "type": "keyword"
                             },
+                            "targeted_proteins": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -1600,6 +1603,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {
@@ -2723,6 +2729,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {

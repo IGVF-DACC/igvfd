@@ -20,6 +20,24 @@ def assay_term_chip(testapp):
 
 
 @pytest.fixture
+def assay_term_tf_chip(testapp):
+    item = {
+        'term_id': 'OBI:0002019',
+        'term_name': 'transcription factor binding site identification by ChIP-Seq assay'
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def assay_term_cut_run(testapp):
+    item = {
+        'term_id': 'OBI:0003033',
+        'term_name': 'cleavage under targets and release using nuclease assay'
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def assay_term_dnase(testapp):
     item = {
         'term_id': 'OBI:0001853',

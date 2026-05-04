@@ -1,6 +1,6 @@
 {
-    "hash": "26f6cf5a9e33a989b1ff43b32728681f",
-    "index_name": "signal_file_26f6cf5a",
+    "hash": "f489d46be4b1b12c8a21226d164d9df8",
+    "index_name": "signal_file_f489d46b",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -2013,6 +2013,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {

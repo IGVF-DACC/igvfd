@@ -1,6 +1,6 @@
 {
-    "hash": "b34aab45c2e18782ebed6197ee39874b",
-    "index_name": "tissue_b34aab45",
+    "hash": "452b6984cb7036edd52e404805aaae96",
+    "index_name": "tissue_452b6984",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1370,6 +1370,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {

@@ -1,6 +1,6 @@
 {
-    "hash": "6b9255432cb59a493b5043a799ef51e5",
-    "index_name": "multiplexed_sample_6b925543",
+    "hash": "28a5256d1a17db8eb2a81b982344291d",
+    "index_name": "multiplexed_sample_28a5256d",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1363,6 +1363,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {
