@@ -186,7 +186,7 @@ def audit_multiple_barcode_replacement_files_in_input(value, system):
     '''
     [
         {
-            "audit_description": "All input Parse SPLiT-seq measurement sets linked to the same analysis set are expected to have the same barcode replacement file.",
+            "audit_description": "All input Parse SPLiT-seq measurement sets linked to the same intermediate analysis set are expected to have the same barcode replacement file.",
             "audit_category": "unexpected barcode replacement file",
             "audit_level": "NOT_COMPLIANT"
         }
@@ -195,6 +195,8 @@ def audit_multiple_barcode_replacement_files_in_input(value, system):
     audit_msg_unexpected_file = get_audit_message(audit_multiple_barcode_replacement_files_in_input, index=0)
     barcode_replacement_files = set()
     parse_splitseq_file_sets = []
+    if value.get('file_set_type') == 'principal analysis':
+        return
     for file in value.get('input_file_sets', []):
         if file.startswith('/measurement-sets/'):
             input_file_set_object = system.get('request').embed(file + '@@object?skip_calculated=true')
