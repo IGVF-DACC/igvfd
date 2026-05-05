@@ -4,6 +4,7 @@ import pytest
 def test_audit_missing_files(
     testapp,
     construct_library_set_reporter,
+    base_expression_construct_library_set,
     measurement_set_no_files,
     reference_file
 ):
@@ -38,6 +39,11 @@ def test_audit_missing_files(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     res = testapp.get(construct_library_set_reporter['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing files'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing files'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])

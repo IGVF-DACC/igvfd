@@ -178,7 +178,9 @@ def audit_no_files(value, system):
         return
 
     audit_message_missing_files = get_audit_message(audit_no_files, index=0)
-    if not value.get('files', '') and object_type != 'Construct library set':
+    if not value.get('files', '') and (
+        object_type != 'Construct library set' or value.get('file_set_type') == 'reporter library'
+    ):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `files`.'
