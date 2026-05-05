@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_curated_set_assembly(testapp, reference_file, reference_file_two, curated_set_genome):
+def test_curated_set_assembly(testapp, reference_file, reference_file_two, tabular_file, curated_set_genome):
     testapp.patch_json(
         reference_file['@id'],
         {
@@ -12,15 +12,22 @@ def test_curated_set_assembly(testapp, reference_file, reference_file_two, curat
     testapp.patch_json(
         reference_file_two['@id'],
         {
-            'file_set': curated_set_genome['@id'],
+            'content_type': 'genome reference',
             'assembly': 'hg19'
+        }
+    )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'file_set': curated_set_genome['@id'],
+            'reference_files': [reference_file_two['@id']]
         }
     )
     curated_set_result = testapp.get(curated_set_genome['@id']).json
     assert {'GRCh38', 'hg19'} == set(curated_set_result.get('assemblies', []))
 
 
-def test_curated_set_transcriptome_annotation(testapp, reference_file, reference_file_two, curated_set_genome):
+def test_curated_set_transcriptome_annotation(testapp, reference_file, reference_file_two, tabular_file, curated_set_genome):
     testapp.patch_json(
         reference_file['@id'],
         {
@@ -31,8 +38,14 @@ def test_curated_set_transcriptome_annotation(testapp, reference_file, reference
     testapp.patch_json(
         reference_file_two['@id'],
         {
-            'file_set': curated_set_genome['@id'],
             'transcriptome_annotation': 'GENCODE 41'
+        }
+    )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'file_set': curated_set_genome['@id'],
+            'reference_files': [reference_file_two['@id']]
         }
     )
     curated_set_result = testapp.get(curated_set_genome['@id']).json
