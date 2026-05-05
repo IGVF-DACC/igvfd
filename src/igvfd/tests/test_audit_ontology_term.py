@@ -15,6 +15,7 @@ def test_audit_missing_ontology_reference(testapp, assay_term_starr):
         {'term_id': 'OBI:99999999'},
         status=200,
     )
+    # Changing term_id updates the accession path; use the returned @id.
     updated_id = patch_res.json['@graph'][0]['@id']
     res = testapp.get(updated_id + '@@audit')
     assert any(
