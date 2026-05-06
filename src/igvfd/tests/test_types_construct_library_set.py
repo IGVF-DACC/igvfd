@@ -259,6 +259,10 @@ def test_integrated_content_files_dependency(testapp, app, submitter, lab, award
 
 
 def test_donors_cls(testapp, construct_library_set_genome_wide, in_vitro_cell_line, in_vitro_differentiated_cell, human_donor, rodent_donor, parent_rodent_donor_1):
+    # CLS without any linked samples (donor excluded)
+    res = testapp.get(construct_library_set_genome_wide['@id'])
+    assert res.json.get('donors') is None
+
     # Calc donors on CLS, if all active samples (donor included)
     testapp.patch_json(
         in_vitro_cell_line['@id'],
@@ -298,3 +302,26 @@ def test_donors_cls(testapp, construct_library_set_genome_wide, in_vitro_cell_li
     )
     res = testapp.get(construct_library_set_genome_wide['@id'])
     assert set([donor_id['@id'] for donor_id in res.json.get('donors')]) == {rodent_donor['@id']}
+
+    # If all linked donors are deleted (donor excluded)
+    # Revive the deleted sample and delete all donors
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'status': 'in progress'
+        }
+    )
+    testapp.patch_json(
+        rodent_donor['@id'],
+        {
+            'status': 'deleted'
+        }
+    )
+    testapp.patch_json(
+        human_donor['@id'],
+        {
+            'status': 'deleted'
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'])
+    assert res.json.get('donors') is None
