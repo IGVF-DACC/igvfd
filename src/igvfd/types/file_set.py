@@ -2379,10 +2379,10 @@ class ConstructLibrarySet(FileSet):
         }
     )
     def donors(self, request, samples=None):
-        # Filter once for non-deprecated samples
-        non_deprecated_samples = paths_filtered_by_status(request, samples)
-        # Filter again for non-deprecated donors
-        return paths_filtered_by_status(request, get_donors_from_samples(request, non_deprecated_samples))
+        filtered_samples = paths_filtered_by_status(request, samples)
+        unfiltered_donors = get_donors_from_samples(request, filtered_samples)
+        if unfiltered_donors:
+            return paths_filtered_by_status(request, unfiltered_donors) or None
 
     @calculated_property(
         schema={
