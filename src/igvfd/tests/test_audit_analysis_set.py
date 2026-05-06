@@ -466,8 +466,26 @@ def test_audit_multiple_barcode_replacement_files_in_input_anaset(
         error['category'] == 'unexpected barcode replacement file'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+    # Test 2: No audit for principal analyses
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'file_set_type': 'principal analysis'
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected barcode replacement file'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
 
-    # Test 2: 2 Parse input filesets with 1 barcode replacement file (audit)
+    # Test 3: 2 Parse input filesets with 1 barcode replacement file (audit)
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'file_set_type': 'intermediate analysis'
+        }
+    )
     testapp.patch_json(
         measurement_set_multiome['@id'],
         {
