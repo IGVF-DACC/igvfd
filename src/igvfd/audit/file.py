@@ -141,8 +141,27 @@ def audit_file_mixed_assembly_transcriptome_annotation(value, system):
             'GENCODE M25',
             'GENCODE M17'
         ],
-        'Cast - GRCm39': [
-            'GENCODE Cast - M32'
+        '129S1/SvImJ - GRCm39': [
+            'GENCODE M36'
+        ],
+        'A/J - GRCm39': [
+            'GENCODE M36'
+        ],
+        'Cast/EiJ - GRCm39': [
+            'GENCODE Cast - M32',
+            'GENCODE M36'
+        ],
+        'NOD/ShiLtJ - GRCm39': [
+            'GENCODE M36'
+        ],
+        'NZO/H1LtJ - GRCm39': [
+            'GENCODE M36'
+        ],
+        'PWK/PhJ - GRCm39': [
+            'GENCODE M36'
+        ],
+        'WSB/EiJ - GRCm39': [
+            'GENCODE M36'
         ],
         'GRCh38': [
             'GENCODE 22',

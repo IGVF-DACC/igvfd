@@ -54,7 +54,7 @@
             "igvf:file_format_specification_insert"
         ],
         "file_set": "igvf:analysis_set_with_input",
-        "assembly": "Cast - GRCm39",
+        "assembly": "Cast/EiJ - GRCm39",
         "transcriptome_annotation": "GENCODE Cast - M32",
         "dbxrefs": [
             "GENCODE:Release 40"
@@ -517,6 +517,22 @@
         "assembly": "GRCh38, GRCm39",
         "transcriptome_annotation": "GENCODE 44, GENCODE M33",
         "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "48da5f72-1483-4ece-8826-130cc97430ed",
+        "accession": "IGVFFI3344PWKG",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "93e4bfb7c357bb9187256a40ba3641d7",
+        "file_format": "gtf",
+        "content_type": "transcriptome reference",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "PWK/PhJ - GRCm39",
+        "transcriptome_annotation": "GENCODE M36",
         "controlled_access": false
     }
 ]

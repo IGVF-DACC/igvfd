@@ -212,7 +212,7 @@
                     "if": {
                         "properties": {
                             "assembly": {
-                                "const": "Cast - GRCm39"
+                                "const": "129S1/SvImJ - GRCm39"
                             }
                         },
                         "required": [
@@ -223,7 +223,134 @@
                         "properties": {
                             "transcriptome_annotation": {
                                 "enum": [
-                                    "GENCODE Cast - M32"
+                                    "GENCODE M36"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "A/J - GRCm39"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "GENCODE M36"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "Cast/EiJ - GRCm39"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "GENCODE Cast - M32",
+                                    "GENCODE M36"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "NOD/ShiLtJ - GRCm39"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "GENCODE M36"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "NZO/H1LtJ - GRCm39"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "GENCODE M36"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "PWK/PhJ - GRCm39"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "GENCODE M36"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "WSB/EiJ - GRCm39"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "GENCODE M36"
                                 ]
                             }
                         }

@@ -768,3 +768,14 @@ def tabular_file_20_21(value, system):
             notes += f' This file\'s submitted_transcriptome_annotation was automatically set to unknown because the file had no transcriptome_annotation nor reference_files.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('reference_file', '23', '24')
+def reference_file_23_24(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3477
+    notes = value.get('notes', '')
+    if value.get('assembly', '') == 'Cast - GRCm39':
+        value['assembly'] = 'Cast/EiJ - GRCm39'
+        notes += f' This reference file\'s assembly was Cast - GRCm39, but has been upgraded to Cast/EiJ - GRCm39.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

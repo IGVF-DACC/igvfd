@@ -108,3 +108,19 @@ def gene_10_11(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3228
     # updating unique key/name of genes requires a force upgrade
     pass
+
+
+@upgrade_step('gene', '11', '12')
+def gene_11_12(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3477
+    notes = value.get('notes', '')
+    revised_locations = []
+    for location in value.get('locations', []):
+        if location.get('assembly') == 'Cast - GRCm39':
+            location['assembly'] = 'Cast/EiJ - GRCm39'
+            notes += f'This gene include a location located on the Cast - GRCm39 assembly, which has been upgraded to the Cast/EiJ - GRCm39 assembly.'
+            revised_locations.append(location)
+        else:
+            revised_locations.append(location)
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

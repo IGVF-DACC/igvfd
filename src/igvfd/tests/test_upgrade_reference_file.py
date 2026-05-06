@@ -164,3 +164,9 @@ def test_reference_file_upgrade_22_23(upgrader, reference_file_v22):
     value = upgrader.upgrade('reference_file', reference_file_v22, current_version='22', target_version='23')
     assert value['catalog_method'] == 'spliceQTL'
     assert value['schema_version'] == '23'
+
+
+def test_reference_file_upgrade_23_24(upgrader, reference_file_v23):
+    value = upgrader.upgrade('reference_file', reference_file_v23, current_version='23', target_version='24')
+    assert value['assembly'] == 'Cast/EiJ - GRCm39'
+    assert value['schema_version'] == '24'

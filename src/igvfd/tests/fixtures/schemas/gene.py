@@ -212,3 +212,21 @@ def gene_v10(gene_myc_hs):
         }
     )
     return item
+
+
+@pytest.fixture
+def gene_v11(gene_myc_hs):
+    item = gene_myc_hs.copy()
+    item.update(
+        {
+            'schema_version': '11',
+            'locations': [
+                {
+                    'assembly': 'Cast - GRCm39',
+                    'chromosome': 'chr3',
+                    'start': 1000000,
+                    'end': 1005000
+                }]
+        }
+    )
+    return item
