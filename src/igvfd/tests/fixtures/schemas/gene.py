@@ -226,7 +226,14 @@ def gene_v11(gene_myc_hs):
                     'chromosome': 'chr3',
                     'start': 1000000,
                     'end': 1005000
-                }]
+                },
+                {
+                    'assembly': 'GRCm39',
+                    'chromosome': 'chr3',
+                    'start': 1000000,
+                    'end': 1005000
+                }
+            ]
         }
     )
     return item

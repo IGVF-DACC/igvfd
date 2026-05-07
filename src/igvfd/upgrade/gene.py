@@ -118,9 +118,10 @@ def gene_11_12(value, system):
     for location in value.get('locations', []):
         if location.get('assembly') == 'Cast - GRCm39':
             location['assembly'] = 'Cast/EiJ - GRCm39'
-            notes += f'This gene include a location located on the Cast - GRCm39 assembly, which has been upgraded to the Cast/EiJ - GRCm39 assembly.'
+            notes += f'This gene includes a coordinate located on the Cast - GRCm39 assembly, which has been upgraded to the Cast/EiJ - GRCm39 assembly.'
             revised_locations.append(location)
         else:
             revised_locations.append(location)
+    value['locations'] = revised_locations
     if notes.strip() != '':
         value['notes'] = notes.strip()

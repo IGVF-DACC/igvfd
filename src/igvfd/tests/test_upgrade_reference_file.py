@@ -170,3 +170,5 @@ def test_reference_file_upgrade_23_24(upgrader, reference_file_v23):
     value = upgrader.upgrade('reference_file', reference_file_v23, current_version='23', target_version='24')
     assert value['assembly'] == 'Cast/EiJ - GRCm39'
     assert value['schema_version'] == '24'
+    assert value['notes'].endswith(
+        'This reference file\'s assembly was Cast - GRCm39, but has been upgraded to Cast/EiJ - GRCm39.')
