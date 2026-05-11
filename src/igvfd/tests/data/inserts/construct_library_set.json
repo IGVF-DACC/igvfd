@@ -251,5 +251,29 @@
         "product_id": "addgene:81225",
         "status": "released",
         "release_timestamp": "2026-02-06T12:34:56Z"
+    },
+    {
+        "accession": "IGVFDS0000OVES",
+        "aliases": [
+            "igvf:over_expression_vector2"
+        ],
+        "award": "/awards/HG012012/",
+        "creation_timestamp": "2026-05-11T06:24:17.872209+00:00",
+        "documents": [
+            "/documents/ad1f4c5e-27bf-4e37-8b4d-7933eb1ba89e/"
+        ],
+        "uuid": "f41c0c33-4030-467b-a2c5-7c592f4bea61",
+        "file_set_type": "overexpression vector library",
+        "lab": "/labs/j-michael-cherry/",
+        "large_scale_gene_list": "/tabular-files/IGVFFI0077CTRD/",
+        "product_id": "addgene:81225",
+        "release_timestamp": "2026-02-06T12:34:56Z",
+        "schema_version": "12",
+        "scope": "genes",
+        "selection_criteria": [
+            "genes",
+            "evolutionary constraint"
+        ],
+        "status": "released"
     }
 ]
