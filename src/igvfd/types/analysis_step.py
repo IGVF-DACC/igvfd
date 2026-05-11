@@ -52,7 +52,8 @@ class AnalysisStep(Item):
                 '@id',
                 'accession',
                 'name',
-                'status'
+                'status',
+                'summary'
             ]
         ),
     ]
