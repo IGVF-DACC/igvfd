@@ -251,20 +251,5 @@
         "product_id": "addgene:81225",
         "status": "released",
         "release_timestamp": "2026-02-06T12:34:56Z"
-    },
-    {
-        "aliases": [
-            "igvf:over_expression_vector2"
-        ],
-        "accession": "IGVFDS0000OVES",
-        "scope": "genes",
-        "award": "HG012012",
-        "lab": "charles-gersbach",
-        "uuid": "f41c0c33-4030-467b-a2c5-7c592f4bea61",
-        "file_set_type": "overexpression vector library",
-        "selection_criteria": [
-            "genes"
-        ],
-        "large_scale_gene_list": "/tabular-files/IGVFFI0077CTRD/"
     }
 ]
