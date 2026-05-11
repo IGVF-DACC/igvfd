@@ -1,5 +1,15 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema change 24
+
+* Extend `assembly` enum list to include `129S1/SvImJ - GRCm39`.
+* Extend `assembly` enum list to include `A/J - GRCm39`.
+* Extend `assembly` enum list to include `NOD/ShiLtJ - GRCm39`.
+* Extend `assembly` enum list to include `NZO/H1LtJ - GRCm39`.
+* Extend `assembly` enum list to include `PWK/PhJ - GRCm39`.
+* Extend `assembly` enum list to include `WSB/EiJ - GRCm39`.
+* Adjust `assembly` enum list to replace `Cast - GRCm39` with `Cast/EiJ - GRCm39`.
+
 ### Minor changes since schema version 23
 
 * Extend `collections` enum list to include `PD single cell multiomics`.

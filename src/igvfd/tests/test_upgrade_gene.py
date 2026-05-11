@@ -58,3 +58,12 @@ def test_gene_upgrade_9_10(upgrader, gene_v9):
 def test_gene_upgrade_10_11(upgrader, gene_v10):
     value = upgrader.upgrade('gene', gene_v10, current_version='10', target_version='11')
     assert value['schema_version'] == '11'
+
+
+def test_gene_upgrade_11_12(upgrader, gene_v11):
+    value = upgrader.upgrade('gene', gene_v11, current_version='11', target_version='12')
+    assert value['schema_version'] == '12'
+    assert value['locations'][0]['assembly'] == 'Cast/EiJ - GRCm39'
+    assert value['locations'][1]['assembly'] == 'GRCm39'
+    assert value['notes'].endswith(
+        'This gene includes a coordinate located on the Cast - GRCm39 assembly, which has been upgraded to the Cast/EiJ - GRCm39 assembly.')

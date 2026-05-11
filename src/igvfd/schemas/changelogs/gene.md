@@ -1,5 +1,15 @@
 ## Changelog for *`gene.json`*
 
+### Schema version 12
+
+* Extend `locations.assembly` enum list to include `129S1/SvImJ - GRCm39`.
+* Extend `locations.assembly` enum list to include `A/J - GRCm39`.
+* Extend `locations.assembly` enum list to include `NOD/ShiLtJ - GRCm39`.
+* Extend `locations.assembly` enum list to include `NZO/H1LtJ - GRCm39`.
+* Extend `locations.assembly` enum list to include `PWK/PhJ - GRCm39`.
+* Extend `locations.assembly` enum list to include `WSB/EiJ - GRCm39`.
+* Adjust `locations.assembly` enum list to replace `Cast - GRCm39` with `Cast/EiJ - GRCm39`.
+
 ### Minor changes since schema version 11
 
 * Extend `collections` enum list to include `PD single cell multiomics`.

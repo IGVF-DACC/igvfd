@@ -316,3 +316,13 @@ def reference_file_v22(reference_file):
         'catalog_method': 'splice_QTL'
     })
     return item
+
+
+@pytest.fixture
+def reference_file_v23(reference_file):
+    item = reference_file.copy()
+    item.update({
+        'schema_version': '23',
+        'assembly': 'Cast - GRCm39'
+    })
+    return item

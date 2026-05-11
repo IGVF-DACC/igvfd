@@ -1,5 +1,12 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `assembly` enum list to include `129S1/SvImJ - GRCm39`. (05/13/2026)
+* Extend `assembly` enum list to include `A/J - GRCm39`. (05/13/2026)
+* Extend `assembly` enum list to include `NOD/ShiLtJ - GRCm39`. (05/13/2026)
+* Extend `assembly` enum list to include `NZO/H1LtJ - GRCm39`. (05/13/2026)
+* Extend `assembly` enum list to include `PWK/PhJ - GRCm39`. (05/13/2026)
+* Extend `assembly` enum list to include `WSB/EiJ - GRCm39`. (05/13/2026)
+* Adjust `assembly` enum list to replace `Cast - GRCm39` with `Cast/EiJ - GRCm39`. (05/13/2026)
 * Extend `preferred_assay_titles` enum list to include `perturb-SHARE-seq`. (05/06/2026)
 * Extend `collections` enum list to include `PD single cell multiomics`. (05/06/2026)
 * Extend `collections` enum list to include `IGVF_catalog_v1.2`. (05/06/2026)
