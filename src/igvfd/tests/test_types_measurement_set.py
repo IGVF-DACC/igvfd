@@ -171,17 +171,17 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
         'summary') == 'scCRISPR screen (barcode based multiplexed) integrating a non-targeting, reference transduction expression vector library'
 
 
-def test_summary_targeted_genes(testapp, measurement_set, assay_term_chip, assay_term_CRISPR_sorted, gene_myc_hs, gene_zscan10_mm, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, biosample_sorted_child):
+def test_summary_targeted_genes(testapp, measurement_set, assay_term_tf_chip, assay_term_CRISPR_sorted, gene_myc_hs, gene_zscan10_mm, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, biosample_sorted_child):
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_chip['@id'],
+            'assay_term': assay_term_tf_chip['@id'],
             'targeted_genes': [gene_myc_hs['@id']],
-            'preferred_assay_titles': ['Histone ChIP-seq']
+            'preferred_assay_titles': ['TF ChIP-seq']
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('summary') == 'Histone ChIP-seq targeting MYC'
+    assert res.json.get('summary') == 'TF ChIP-seq targeting MYC'
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -189,7 +189,7 @@ def test_summary_targeted_genes(testapp, measurement_set, assay_term_chip, assay
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('summary') == 'Histone ChIP-seq targeting CRLF2, MYC, Zcan10'
+    assert res.json.get('summary') == 'TF ChIP-seq targeting CRLF2, MYC, Zcan10'
     # Use sample with sorted_from so summary says "sorted on expression of" (same logic as file set/sample summaries)
     testapp.patch_json(
         measurement_set['@id'],
@@ -209,6 +209,28 @@ def test_summary_targeted_genes(testapp, measurement_set, assay_term_chip, assay
     )
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('summary') == 'CRISPR FACS screen sorted on expression of 6 genes'
+
+
+def test_summary_targeted_proteins(testapp, measurement_set, assay_term_chip, biosample_sorted_child):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_chip['@id'],
+            'targeted_proteins': ['H3K27ac', 'H3K4me3'],
+            'preferred_assay_titles': ['Histone ChIP-seq']
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('summary') == 'Histone ChIP-seq targeting H3K27ac, H3K4me3'
+    # Targeted proteins always use "targeting …", even when samples have sorted_from (unlike targeted_genes).
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [biosample_sorted_child['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('summary') == 'Histone ChIP-seq targeting H3K27ac, H3K4me3'
 
 
 def test_calculated_donors(testapp, measurement_set, primary_cell, human_donor, in_vitro_cell_line, rodent_donor):

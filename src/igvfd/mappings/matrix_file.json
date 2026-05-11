@@ -1,6 +1,6 @@
 {
-    "hash": "2b999eb3e5a6fdb43ba0c43be53d913c",
-    "index_name": "matrix_file_2b999eb3",
+    "hash": "73fd34b5a1786a28ed4da032ab6634aa",
+    "index_name": "matrix_file_73fd34b5",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -2012,6 +2012,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {

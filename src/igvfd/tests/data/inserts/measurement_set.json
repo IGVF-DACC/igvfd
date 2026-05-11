@@ -759,6 +759,9 @@
         "preferred_assay_titles": [
             "CUT&RUN"
         ],
+        "targeted_proteins": [
+            "H3K4me3"
+        ],
         "file_set_type": "experimental data"
     },
     {

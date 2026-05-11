@@ -1,6 +1,6 @@
 {
-    "hash": "b99918de6de31acb3083f03d33637390",
-    "index_name": "pseudobulk_set_b99918de",
+    "hash": "5417e994aaba62ccb1ea255067297d7f",
+    "index_name": "pseudobulk_set_5417e994",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -1128,6 +1128,9 @@
                             "targeted_genes": {
                                 "type": "keyword"
                             },
+                            "targeted_proteins": {
+                                "type": "keyword"
+                            },
                             "targeton": {
                                 "type": "keyword"
                             },
@@ -1499,6 +1502,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "targeton": {
@@ -2449,6 +2455,9 @@
                                 "type": "keyword"
                             },
                             "targeted_genes": {
+                                "type": "keyword"
+                            },
+                            "targeted_proteins": {
                                 "type": "keyword"
                             },
                             "taxa": {

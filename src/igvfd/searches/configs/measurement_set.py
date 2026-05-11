@@ -33,6 +33,12 @@ def measurement_set():
                 'description': 'A list of genes targeted for binding sites or used for sorting by expression.',
                 'optional': True
             },
+            'targeted_proteins': {
+                'title': 'Targeted Proteins',
+                'category': 'Measurement Set Details',
+                'description': 'Histone marks or controls immunoprecipitated in chromatin binding assays.',
+                'optional': True
+            },
             'auxiliary_sets.file_set_type': {
                 'title': 'Auxiliary Data',
                 'category': 'Measurement Set Details',
@@ -263,6 +269,9 @@ def measurement_set():
             },
             'targeted_genes.symbol': {
                 'title': 'Readout Genes'
+            },
+            'targeted_proteins': {
+                'title': 'Targeted Proteins'
             },
             'protocols': {
                 'title': 'Protocols'

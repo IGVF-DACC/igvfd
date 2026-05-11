@@ -40,6 +40,12 @@ def analysis_set():
                 'description': 'A list of genes targeted by the assays for binding sites or used for sorting by expression.',
                 'optional': True
             },
+            'targeted_proteins': {
+                'title': 'Targeted Proteins',
+                'category': 'Analysis Set Details',
+                'description': 'Histone marks or controls immunoprecipitated in chromatin binding assays from input measurement sets.',
+                'optional': True
+            },
             'files.assembly': {
                 'title': 'Assembly',
                 'category': 'Analysis Set Details',
