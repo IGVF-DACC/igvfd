@@ -19,7 +19,11 @@ def measurement_set():
             'preferred_assay_titles': {
                 'title': 'Preferred Assay Titles',
                 'category': 'Measurement Set Details',
-                'description': 'Title of assays that generated the measurement set.'
+                'description': 'Title of assays that generated the measurement set.',
+                'type': 'hierarchical',
+                'subfacets': [
+                    {'field': 'preferred_assay_slims', 'title': 'Preferred Assay Slims'}
+                ]
             },
             'control_types': {
                 'title': 'Control Types',
