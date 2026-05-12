@@ -165,3 +165,38 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
             'small_scale_gene_list': [gene_myc_hs['@id']]
         })
     assert res.status_code == 201
+    # control_types, small_scale_gene_list or large_scale_gene_list is accepted when file_set_type=overexpression vector library
+    res = testapp.post_json(
+        '/construct_library_set',
+        {
+            'lab': lab['@id'],
+            'award': award['@id'],
+            'file_set_type': 'overexpression vector library',
+            'scope': 'genes',
+            'selection_criteria': ['transcription start sites'],
+            'large_scale_gene_list': tabular_file['@id']
+        })
+    assert res.status_code == 201
+    res = testapp.post_json(
+        '/construct_library_set',
+        {
+            'lab': lab['@id'],
+            'award': award['@id'],
+            'file_set_type': 'overexpression vector library',
+            'scope': 'genes',
+            'selection_criteria': ['transcription start sites'],
+            'small_scale_gene_list': [gene_myc_hs['@id']]
+        })
+    assert res.status_code == 201
+    res = testapp.post_json(
+        '/construct_library_set',
+        {
+            'lab': lab['@id'],
+            'award': award['@id'],
+            'file_set_type': 'overexpression vector library',
+            'scope': 'control',
+            'control_types': ['reference transduction'],
+            'selection_criteria': ['TF binding sites'],
+            'control_file_sets': [base_expression_construct_library_set['@id']]
+        })
+    assert res.status_code == 201
