@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Adjust `file_format_type` enum list to remove `mpra_starr`. (05/20/2026)
 * Extend `assembly` enum list to include `129S1/SvImJ - GRCm39`. (05/13/2026)
 * Extend `assembly` enum list to include `A/J - GRCm39`. (05/13/2026)
 * Extend `assembly` enum list to include `NOD/ShiLtJ - GRCm39`. (05/13/2026)
