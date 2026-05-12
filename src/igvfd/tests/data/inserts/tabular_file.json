@@ -124,7 +124,7 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "242582c86920afe675a0e7a0f861058b",
         "file_format": "bed",
-        "file_format_type": "mpra_starr",
+        "file_format_type": "mpra_element",
         "content_type": "peaks",
         "reference_files": [
             "IGVFFI0001GNRF"

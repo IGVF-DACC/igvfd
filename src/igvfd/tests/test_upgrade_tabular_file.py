@@ -133,3 +133,10 @@ def test_tabular_file_upgrade_20_21(upgrader, tabular_file_v20a, tabular_file_v2
     # A tabular file with reference_files.
     value = upgrader.upgrade('tabular_file', tabular_file_v20d, current_version='20', target_version='21')
     assert value['schema_version'] == '21'
+
+
+def test_tabular_file_upgrade_21_22(upgrader, tabular_file_v21):
+    value = upgrader.upgrade('tabular_file', tabular_file_v21, current_version='21', target_version='22')
+    assert value['file_format_type'] == 'mpra_element'
+    assert value['schema_version'] == '22'
+    assert 'The file_format_type of this file was mpra_starr, but has been upgraded to mpra_element.' in value['notes']

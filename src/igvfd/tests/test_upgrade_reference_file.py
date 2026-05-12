@@ -172,3 +172,10 @@ def test_reference_file_upgrade_23_24(upgrader, reference_file_v23):
     assert value['schema_version'] == '24'
     assert value['notes'].endswith(
         'This reference file\'s assembly was Cast - GRCm39, but has been upgraded to Cast/EiJ - GRCm39.')
+
+
+def test_reference_file_upgrade_24_25(upgrader, reference_file_v24):
+    value = upgrader.upgrade('reference_file', reference_file_v24, current_version='24', target_version='25')
+    assert value['file_format_type'] == 'mpra_element'
+    assert value['schema_version'] == '25'
+    assert 'The file_format_type of this file was mpra_starr, but has been upgraded to mpra_element.' in value['notes']

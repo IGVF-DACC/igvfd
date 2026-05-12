@@ -326,3 +326,14 @@ def reference_file_v23(reference_file):
         'assembly': 'Cast - GRCm39'
     })
     return item
+
+
+@pytest.fixture
+def reference_file_v24(reference_file):
+    item = reference_file.copy()
+    item.update({
+        'schema_version': '24',
+        'file_format': 'bed',
+        'file_format_type': 'mpra_starr'
+    })
+    return item
