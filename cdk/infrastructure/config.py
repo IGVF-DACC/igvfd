@@ -37,7 +37,7 @@ config: Dict[str, Any] = {
             'account_and_region': igvf_dev.US_WEST_2,
             'log_retention': RetentionDays.ONE_WEEK,
             'tags': [
-                ('time-to-live-hours', '60'),
+                ('time-to-live-hours', '120'),
                 ('turn-off-on-friday-night', 'yes'),
             ],
         },
@@ -67,7 +67,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
-                            'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
+                            'snapshot_source_db_identifier': PROD_DATABASE_IDENTIFIER,
                             'allocated_storage': 20,
                             'max_allocated_storage': 40,
                             'instance_type': InstanceType.of(
@@ -128,7 +128,7 @@ config: Dict[str, Any] = {
             },
             'log_retention': RetentionDays.ONE_WEEK,
             'tags': [
-                ('time-to-live-hours', '60'),
+                ('time-to-live-hours', '120'),
                 ('turn-off-on-friday-night', 'yes'),
             ],
         },

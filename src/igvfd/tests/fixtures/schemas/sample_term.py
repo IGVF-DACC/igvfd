@@ -85,6 +85,15 @@ def sample_term_lymphoblastoid(testapp):
 
 
 @pytest.fixture
+def sample_term_gyrus(testapp):
+    item = {
+        'term_id': 'UBERON:0002771',
+        'term_name': 'middle temporal gyrus'
+    }
+    return testapp.post_json('/sample_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def sample_term_v1(sample_term_K562):
     item = sample_term_K562.copy()
     item.update({
