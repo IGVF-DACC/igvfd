@@ -992,30 +992,6 @@ class AnalysisSet(FileSet):
     def sample_summary(self, request, samples=None):
         taxa = set()
         sample_classification_term_target = dict()
-        treatment_purposes = set()
-        treatment_summaries = set()
-        growth_mediums = set()
-        differentiation_times = set()
-        library_delivery_times = set()
-        construct_library_set_types = set()
-        modification_summaries = set()
-        sorted_from = set()
-        targeted_genes_for_sorting = set()
-        cellular_sub_pools = set()
-
-        treatment_purpose_to_adjective = {
-            'activation': 'activated',
-            'acute activation': 'acutely activated',
-            'chronic activation': 'chronically activated',
-            'agonist': 'agonized',
-            'antagonist': 'antagonized',
-            'control': 'treated with a control',
-            'differentiation': 'differentiated',
-            'de-differentiation': 'de-differentiated',
-            'perturbation': 'perturbed',
-            'selection': 'selected',
-            'stimulation': 'stimulated'
-        }
 
         two_classification_cases = {
             'differentiated cell specimen, pooled cell specimen': ['pooled differentiated cell specimen'],
@@ -1073,44 +1049,6 @@ class AnalysisSet(FileSet):
                     sample_phrase = f'{sample_phrase} {targeted_sample_suffix}'
                 sample_classification_term_target[classification].add(sample_phrase)
 
-            if 'time_post_change' in sample_object:
-                time = sample_object['time_post_change']
-                time_unit = sample_object['time_post_change_units']
-                differentiation_times.add(f'{time} {time_unit}')
-            if 'modifications' in sample_object:
-                for modification in sample_object['modifications']:
-                    modification_object = request.embed(
-                        modification, '@@object_with_select_calculated_properties?field=summary')
-                    modification_summaries.add(modification_object['summary'])
-            if 'construct_library_sets' in sample_object:
-                for construct_library_set in sample_object['construct_library_sets']:
-                    cls_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
-                    construct_library_set_types.add(cls_object['file_set_type'])
-            if 'time_post_library_delivery' in sample_object:
-                time = sample_object['time_post_library_delivery']
-                time_unit = sample_object['time_post_library_delivery_units']
-                library_delivery_times.add(f'{time} {time_unit}')
-            if 'sorted_from' in sample_object:
-                sorted_from.add(True)
-                for file_set in sample_object['file_sets']:
-                    if file_set.startswith('/measurement-sets/'):
-                        fileset_object = request.embed(file_set, '@@object?skip_calculated=true')
-                        if 'targeted_genes' in fileset_object:
-                            for gene in fileset_object['targeted_genes']:
-                                gene_object = request.embed(gene, '@@object?skip_calculated=true')
-                                targeted_genes_for_sorting.add(gene_object['symbol'])
-            if 'growth_medium' in sample_object:
-                growth_mediums.add(sample_object['growth_medium'])
-            if 'treatments' in sample_object:
-                for treatment in sample_object['treatments']:
-                    treatment_object = request.embed(
-                        treatment, '@@object_with_select_calculated_properties?field=summary')
-                    treatment_purposes.add(treatment_purpose_to_adjective.get(treatment_object['purpose'], ''))
-                    truncated_summary = treatment_object['summary'].split(' of ')[1]
-                    treatment_summaries.add(truncated_summary)
-            if 'cellular_sub_pool' in sample_object:
-                cellular_sub_pools.add(sample_object['cellular_sub_pool'])
-
         all_sample_terms = []
         for classification in sorted(sample_classification_term_target.keys()):
             terms_by_classification = f"{', '.join(sorted(sample_classification_term_target[classification]))}"
@@ -1143,49 +1081,8 @@ class AnalysisSet(FileSet):
 
             all_sample_terms.append(terms_by_classification)
 
-        differentiation_time_phrase = ''
-        if differentiation_times:
-            differentiation_time_phrase = f'at {", ".join(sorted(differentiation_times))}(s) post change'
-        growth_mediums_phrase = ''
-        if growth_mediums:
-            growth_mediums_phrase = f"grown in {', '.join(sorted(growth_mediums))}"
-        treatments_phrase = ''
-        if treatment_purposes and treatment_summaries:
-            treatments_phrase = f"{', '.join(sorted(treatment_purposes))} with {', '.join(sorted(treatment_summaries))}"
-        modification_summary_phrase = ''
-        if modification_summaries:
-            modification_summaries = sorted(modification_summaries)
-            modification_summary_phrase = f'modified with {", ".join(modification_summaries)}'
-        construct_library_set_type_phrase = ''
-        if construct_library_set_types:
-            construct_library_set_type_phrase = f'transfected with a {", ".join(construct_library_set_types)}'
-            if library_delivery_times:
-                construct_library_set_type_phrase = f'{construct_library_set_type_phrase} and measured at {", ".join(sorted(library_delivery_times))}(s) post-transfection'
-        sorted_phrase = ''
-        if sorted_from:
-            if targeted_genes_for_sorting:
-                sorted_phrase = f'sorted on expression of {", ".join(sorted(targeted_genes_for_sorting))}'
-            else:
-                sorted_phrase = f'sorted into bins'
-        cellular_sub_pool_phrase = ''
-        if cellular_sub_pools:
-            cellular_sub_pool_phrase = f'cellular sub pool(s): {", ".join(sorted(cellular_sub_pools))}'
-
         taxa_phrase = f'{", ".join([x for x in taxa if x != ""])}'
-        additional_phrases = [
-            differentiation_time_phrase,
-            growth_mediums_phrase,
-            treatments_phrase,
-            modification_summary_phrase,
-            construct_library_set_type_phrase,
-            sorted_phrase,
-            cellular_sub_pool_phrase
-        ]
-        additional_phrases_joined = ', '.join([x for x in additional_phrases if x != ''])
-        additional_phrase_suffix = ''
-        if additional_phrases_joined:
-            additional_phrase_suffix = f', {additional_phrases_joined}'
-        summary = f"{taxa_phrase} {', '.join(all_sample_terms)}{additional_phrase_suffix}".strip()
+        summary = f"{taxa_phrase} {', '.join(all_sample_terms)}".strip()
 
         return summary
 
