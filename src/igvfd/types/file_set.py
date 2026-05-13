@@ -239,6 +239,47 @@ def get_disease_terms_from_phenotypic_features(request, sample_object, is_pd_col
         return 'Parkinson\'s disease'
 
 
+def get_donors_info_for_sample_summary(request, donors):
+    taxa_rename_map = {
+        'Homo sapiens': 'human',
+        'Mus musculus': 'mouse',
+        'Saccharomyces cerevisiae': 'yeast'
+    }
+    donor_metadata = {}
+    for donor in donors:
+        donor_object = request.embed(donor, '@@object?skip_calculated=true')
+        accession = donor_object.get('accession')
+        taxa = donor_object.get('taxa')
+        donor_metadata.setdefault(taxa, {}).setdefault('accessions', set()).add(accession)
+        if taxa == 'Mus musculus':
+            strain = donor_object.get('strain', '')
+            if strain:
+                donor_metadata[taxa].setdefault('strains', set()).add(strain)
+    if len(donor_metadata) > 1:
+        mixed_donor_count = {taxa: len(metadata.get('accessions', [])) for taxa, metadata in donor_metadata.items()}
+        mixed_donor_phrase = ', '.join(
+            [f'{count} {taxa_rename_map.get(taxa, taxa)} donor(s)' for taxa, count in sorted(mixed_donor_count.items())])
+        return f'from {mixed_donor_phrase}'
+    for taxa, metadata in donor_metadata.items():
+        accessions = sorted(metadata.get('accessions', []))
+        if len(accessions) <= 2:
+            accession_phrase = ' and '.join(accessions)
+        else:
+            accession_phrase = f'{", ".join(accessions[:2])} and {len(accessions) - 2} more'
+        if taxa == 'Mixed species':
+            return f'from mixed species donors {accession_phrase}'
+        if taxa != 'Mus musculus':
+            return f'from donor(s) {accession_phrase}'
+        # Treat mouse
+        strains = sorted(metadata.get('strains', []))
+        if strains:
+            if len(strains) <= 2:
+                strain_phrase = ' and '.join(strains)
+            else:
+                strain_phrase = f'{", ".join(strains[:2])} and {len(strains) - 2} more'
+        return f'from {accession_phrase} mice of {strain_phrase} strain(s)'
+
+
 EMBEDDED_FILE_FIELDS = [
     '@id',
     'accession',
@@ -966,6 +1007,7 @@ class AnalysisSet(FileSet):
 
     @calculated_property(
         condition='samples',
+        define=True,
         schema={
             'title': 'Donors',
             'description': 'The donors of the samples associated with this analysis set.',
@@ -1027,7 +1069,7 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def sample_summary(self, request, samples=None, collections=None):
+    def sample_summary(self, request, samples=None, donors=None, collections=None):
         taxa = set()
         sample_classification_term_target = dict()
 
@@ -1177,8 +1219,15 @@ class AnalysisSet(FileSet):
 
             all_sample_terms.append(terms_by_classification)
 
+        # Donor phrase
+        donor_phrase = ''
+        donor_phrase = get_donors_info_for_sample_summary(request, donors)
+
+        # Taxa phrase
         taxa_phrase = f'{", ".join([x for x in taxa if x != ""])}'
-        summary = f"{taxa_phrase} {', '.join(all_sample_terms)}".strip()
+
+        # Merge all phrases
+        summary = f"{taxa_phrase} {', '.join(all_sample_terms)} {donor_phrase}".strip()
 
         return summary
 

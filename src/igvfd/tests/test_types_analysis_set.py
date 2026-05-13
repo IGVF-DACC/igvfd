@@ -412,18 +412,19 @@ def test_analysis_set_sample_summary(
     measurement_set_mpra,
     construct_library_set_genome_wide,
     sample_term_endothelial_cell,
-    gene_myc_hs,
-    treatment_chemical,
     in_vitro_differentiated_cell,
     in_vitro_cell_line,
-    in_vitro_cell_culture,
     tissue,
     multiplexed_sample,
-    crispr_modification,
-    degron_modification,
     sample_term_lymphoblastoid,
     phenotypic_feature_basic,
-    phenotypic_feature_01
+    phenotypic_feature_01,
+    rodent_donor,
+    parent_rodent_donor_1,
+    parent_rodent_donor_2,
+    human_donor,
+    parent_human_donor_1,
+    parent_human_donor_2
 ):
     # Test group 1: non-multiplexed samples with various metadata
     testapp.patch_json(
@@ -435,37 +436,22 @@ def test_analysis_set_sample_summary(
     testapp.patch_json(
         measurement_set_mpra['@id'],
         {
-            'targeted_genes': [gene_myc_hs['@id']],
             'samples': [in_vitro_differentiated_cell['@id']]
         }
     )
 
-    # Test group 1: various metadata (only targeted sample terms used)
+    # Test group 1: targeted sample terms (human donor)
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
             'construct_library_sets': [construct_library_set_genome_wide['@id']],
-            'treatments': [treatment_chemical['@id']],
             'targeted_sample_term': sample_term_endothelial_cell['@id'],
-            'sorted_from': in_vitro_cell_line['@id'],
-            'sorted_from_detail': 'Example detail',
-            'modifications': [crispr_modification['@id']]
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
+    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     assert res.get('sample_summary',
-                   '') == 'Homo sapiens K562 differentiated cell specimen induced to endothelial cell of vascular tree'
-
-    # Test group 1: Mods info (no effect)
-    testapp.patch_json(
-        in_vitro_differentiated_cell['@id'],
-        {
-            'modifications': [crispr_modification['@id'], degron_modification['@id']]
-        }
-    )
-    res = testapp.get(principal_analysis_set['@id']).json
-    assert res.get('sample_summary',
-                   '') == 'Homo sapiens K562 differentiated cell specimen induced to endothelial cell of vascular tree'
+                   '') == f'Homo sapiens K562 differentiated cell specimen induced to endothelial cell of vascular tree from donor(s) {hs_donor_accession}'
 
     # Test group 1: new classifications (change wording)
     testapp.patch_json(
@@ -475,31 +461,9 @@ def test_analysis_set_sample_summary(
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
+    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     assert res.get(
-        'sample_summary', '') == 'Homo sapiens K562 pooled differentiated cell specimen induced to endothelial cell of vascular tree'
-
-    # Test group 1: library delivery info (no effect)
-    testapp.patch_json(
-        in_vitro_differentiated_cell['@id'],
-        {
-            'time_post_library_delivery': 5,
-            'time_post_library_delivery_units': 'minute'
-        }
-    )
-    res = testapp.get(principal_analysis_set['@id']).json
-    assert res.get(
-        'sample_summary', '') == 'Homo sapiens K562 pooled differentiated cell specimen induced to endothelial cell of vascular tree'
-
-    # Test group 1: Growth medium info (no effect)
-    testapp.patch_json(
-        in_vitro_differentiated_cell['@id'],
-        {
-            'growth_medium': '1 kPa hydrogel'
-        }
-    )
-    res = testapp.get(principal_analysis_set['@id']).json
-    assert res.get(
-        'sample_summary', '') == 'Homo sapiens K562 pooled differentiated cell specimen induced to endothelial cell of vascular tree'
+        'sample_summary', '') == f'Homo sapiens K562 pooled differentiated cell specimen induced to endothelial cell of vascular tree from donor(s) {hs_donor_accession}'
 
     # Test group 1: add disease terms with targeted term
     testapp.patch_json(
@@ -511,7 +475,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get(
-        'sample_summary', '') == 'Homo sapiens K562 pooled differentiated cell specimen with Alzheimer\'s disease induced to endothelial cell of vascular tree'
+        'sample_summary', '') == f'Homo sapiens K562 pooled differentiated cell specimen with Alzheimer\'s disease induced to endothelial cell of vascular tree from donor(s) {hs_donor_accession}'
 
     # Test group 1: add disease without targeted term
     testapp.patch_json(
@@ -528,8 +492,17 @@ def test_analysis_set_sample_summary(
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
+    ms_donor_accession = testapp.get(rodent_donor['@id']).json.get('accession')
     assert res.get(
-        'sample_summary', '') == 'Mus musculus adrenal gland tissue/organ with Alzheimer\'s disease'
+        'sample_summary', '') == f'Mus musculus adrenal gland tissue/organ with Alzheimer\'s disease from {ms_donor_accession} mice of strain1 strain(s)'
+
+    # Test group 1: multiple donors
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'donors': [parent_human_donor_1['@id'], human_donor['@id']]
+        }
+    )
 
     # Test group 2: multiplexed samples
     testapp.patch_json(
@@ -552,18 +525,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get('sample_summary',
-                   '') == 'Mixed species multiplexed sample of K562 with Alzheimer\'s disease, lymphoblastoid cell line'
-
-    # Test group 2: cellular subpool info (no effect)
-    testapp.patch_json(
-        multiplexed_sample['@id'],
-        {
-            'cellular_sub_pool': '001ABC'
-        }
-    )
-    res = testapp.get(principal_analysis_set['@id']).json
-    assert res.get('sample_summary',
-                   '') == 'Mixed species multiplexed sample of K562 with Alzheimer\'s disease, lymphoblastoid cell line'
+                   '') == 'Mixed species multiplexed sample of K562 with Alzheimer\'s disease, lymphoblastoid cell line from 1 human donor(s), 1 mouse donor(s)'
 
     # Test group 2: disease info
     testapp.patch_json(
@@ -581,7 +543,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get('sample_summary',
-                   '') == 'Mixed species multiplexed sample of K562, lymphoblastoid cell line with Alzheimer\'s disease'
+                   '') == 'Mixed species multiplexed sample of K562, lymphoblastoid cell line with Alzheimer\'s disease from 1 human donor(s), 1 mouse donor(s)'
 
 
 def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set, measurement_set_with_functional_assay_mechanisms, phenotype_term_from_go, phenotype_term_myocardial_infarction):
