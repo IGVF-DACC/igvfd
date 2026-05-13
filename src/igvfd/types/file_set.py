@@ -266,8 +266,6 @@ def get_donors_info_for_sample_summary(request, donors):
             accession_phrase = ' and '.join(accessions)
         else:
             accession_phrase = f'{", ".join(accessions[:2])} and {len(accessions) - 2} more'
-        if taxa == 'Mixed species':
-            return f'from mixed species donors {accession_phrase}'
         if taxa != 'Mus musculus':
             return f'from donor(s) {accession_phrase}'
         # Treat mouse
@@ -276,7 +274,7 @@ def get_donors_info_for_sample_summary(request, donors):
             if len(strains) <= 2:
                 strain_phrase = ' and '.join(strains)
             else:
-                strain_phrase = f'{", ".join(strains[:2])} and {len(strains) - 2} more'
+                strain_phrase = f'{", ".join(strains[:2])}, and {len(strains) - 2} more'
         return f'from {accession_phrase} mice of {strain_phrase} strain(s)'
 
 

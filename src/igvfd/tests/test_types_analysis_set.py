@@ -496,13 +496,35 @@ def test_analysis_set_sample_summary(
     assert res.get(
         'sample_summary', '') == f'Mus musculus adrenal gland tissue/organ with Alzheimer\'s disease from {ms_donor_accession} mice of strain1 strain(s)'
 
-    # Test group 1: multiple donors
+    # Test group 1: multiple human donors
     testapp.patch_json(
         tissue['@id'],
         {
-            'donors': [parent_human_donor_1['@id'], human_donor['@id']]
+            'donors': [parent_human_donor_1['@id'], human_donor['@id'], parent_human_donor_2['@id']]
         }
     )
+    hs_donor_accession_1 = testapp.get(parent_human_donor_1['@id']).json.get('accession')
+    hs_donor_accession_2 = testapp.get(parent_human_donor_2['@id']).json.get('accession')
+    hs_donor_accessions = testapp.get(human_donor['@id']).json.get('accession')
+    sorted_hs_donors = sorted([hs_donor_accession_1, hs_donor_accession_2, hs_donor_accessions])
+    res = testapp.get(principal_analysis_set['@id']).json
+    assert res.get(
+        'sample_summary', '') == f'Homo sapiens adrenal gland tissue/organ with Alzheimer\'s disease from donor(s) {sorted_hs_donors[0]}, {sorted_hs_donors[1]} and 1 more'
+
+    # Test group 1: multiple human donors
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'donors': [rodent_donor['@id'], parent_rodent_donor_1['@id'], parent_rodent_donor_2['@id']]
+        }
+    )
+    ms_donor_accession_1 = testapp.get(parent_rodent_donor_1['@id']).json.get('accession')
+    ms_donor_accession_2 = testapp.get(parent_rodent_donor_2['@id']).json.get('accession')
+    ms_donor_accessions = testapp.get(rodent_donor['@id']).json.get('accession')
+    sorted_ms_donors = sorted([ms_donor_accession_1, ms_donor_accession_2, ms_donor_accessions])
+    res = testapp.get(principal_analysis_set['@id']).json
+    assert res.get(
+        'sample_summary', '') == f'Mus musculus adrenal gland tissue/organ with Alzheimer\'s disease from {sorted_ms_donors[0]}, {sorted_ms_donors[1]} and 1 more mice of strain1, strain2, and 1 more strain(s)'
 
     # Test group 2: multiplexed samples
     testapp.patch_json(
