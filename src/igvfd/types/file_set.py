@@ -165,7 +165,7 @@ def get_preferred_assay_slims(preferred_assay_titles):
         'scCRISPR screen': ['CRISPR screen', 'single cell'],
         'Perturb-seq': ['CRISPR screen', 'single cell'],
         'Parse Perturb-seq': ['CRISPR screen', 'single cell'],
-        'CC-Perturb-seq':	['CRISPR screen	single cell'],
+        'CC-Perturb-seq': ['CRISPR screen single cell'],
         'TAP-seq': ['CRISPR screen', 'single cell'],
         'CROP-seq': ['CRISPR screen', 'single cell'],
         'Multiome Perturb-seq': ['CRISPR screen', 'single cell', 'multiome'],
@@ -175,8 +175,8 @@ def get_preferred_assay_slims(preferred_assay_titles):
         'MAVE': ['protein scanning'],
         'snMCT-seq': ['gene expression', 'methylation', 'single cell', 'multiome'],
         'snM3C-seq': ['methylation', '3D chromatin structure', 'single cell', 'multiome'],
-        'VAMP-seq':	['protein scanning'],
-        'VAMP-seq (MultiSTEP)':	['protein scanning'],
+        'VAMP-seq': ['protein scanning'],
+        'VAMP-seq (MultiSTEP)': ['protein scanning'],
         'LABEL-seq': ['protein scanning'],
         'Hi-C': ['3D chromatin structure'],
         'HiCAR': ['3D chromatin structure', 'chromatin accessibility'],
@@ -199,6 +199,44 @@ def get_preferred_assay_slims(preferred_assay_titles):
         return slims
     else:
         return None
+
+
+def join_multiple_terms(term_lists):
+    '''Format disease phrase based on number of disease terms.'''
+    if not term_lists:
+        return ''
+    if len(term_lists) == 1:
+        return term_lists[0]
+    if len(term_lists) == 2:
+        return f'{term_lists[0]} and 1 other phenotype'
+    return f'{term_lists[0]} and {len(term_lists) - 1} more'
+
+
+def get_disease_terms_from_phenotypic_features(request, sample_object, is_pd_collection=False):
+    '''Get disease terms from phenotypic features.'''
+    disease_prefixes = ('DOID:', 'EFO:', 'HP:', 'MONDO:')
+    disease_terms = []
+    for phenotypic_feature in sample_object.get('phenotypic_features', []):
+        feature_obj = request.embed(phenotypic_feature, '@@object?skip_calculated=true')
+        # Disease-only features have no quality/quantity annotations.
+        if 'quality' in feature_obj or 'quantity' in feature_obj:
+            continue
+        feature_id = feature_obj.get('feature')
+        if not feature_id:
+            continue
+        feature_term_obj = request.embed(feature_id, '@@object?skip_calculated=true')
+        # Check against term_id prefix to futher filter out non-disease ones
+        term_id = feature_term_obj.get('term_id', '')
+        term_name = feature_term_obj.get('term_name', '')
+        if term_name and any(term_id.startswith(prefix) for prefix in disease_prefixes):
+            disease_terms.append(term_name)
+    unique_disease_terms = sorted(set(disease_terms))
+    if not is_pd_collection:
+        return join_multiple_terms(unique_disease_terms)
+    if 'Parkinson\'s disease' not in unique_disease_terms:
+        return 'Non-Parkinson\'s disease'
+    else:
+        return 'Parkinson\'s disease'
 
 
 EMBEDDED_FILE_FIELDS = [
@@ -989,9 +1027,16 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def sample_summary(self, request, samples=None):
+    def sample_summary(self, request, samples=None, collections=None):
         taxa = set()
         sample_classification_term_target = dict()
+
+        # Is it PD collection
+        if collections:
+            is_pd_collection = any(collection for collection in collections if collection ==
+                                   'PD single cell multiomics')
+        else:
+            is_pd_collection = False
 
         two_classification_cases = {
             'differentiated cell specimen, pooled cell specimen': ['pooled differentiated cell specimen'],
@@ -1027,6 +1072,34 @@ class AnalysisSet(FileSet):
             if classification not in sample_classification_term_target:
                 sample_classification_term_target[classification] = set()
 
+            # Add disease terms to the sample phrase
+            disease_phrase = ''
+            disease_terms_by_sample_term = {}
+            if sample_object.get('multiplexed_samples'):
+                for multiplexed_sample in sample_object['multiplexed_samples']:
+                    multiplexed_sample_object = request.embed(
+                        multiplexed_sample, '@@object?skip_calculated=true'
+                    )
+                    diseased_phenotypic_features = get_disease_terms_from_phenotypic_features(
+                        request, multiplexed_sample_object, is_pd_collection
+                    )
+                    if not diseased_phenotypic_features:
+                        continue
+                    for sample_term in multiplexed_sample_object.get('sample_terms', []):
+                        sample_term_object = request.embed(sample_term, '@@object?skip_calculated=true')
+                        term_name = sample_term_object.get('term_name')
+                        if not term_name:
+                            continue
+                        if term_name not in disease_terms_by_sample_term:
+                            disease_terms_by_sample_term[term_name] = set()
+                        disease_terms_by_sample_term[term_name].add(diseased_phenotypic_features)
+            else:
+                diseased_phenotypic_features = get_disease_terms_from_phenotypic_features(
+                    request, sample_object, is_pd_collection)
+                if diseased_phenotypic_features:
+                    disease_phrase = f' with {diseased_phenotypic_features}'
+
+            # Compute sample term and targeted sample terms, with diseases added
             for term in sample_object['sample_terms']:
                 sample_term_object = request.embed(term, '@@object?skip_calculated=true')
                 sample_phrase = f"{sample_term_object['term_name']}"
@@ -1045,8 +1118,21 @@ class AnalysisSet(FileSet):
                     targeted_sample_term_object = request.embed(
                         sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
                     targeted_sample_suffix = f"induced to {targeted_sample_term_object['term_name']}"
+
+                term_disease_phrase = ''
+                if sample_object.get('multiplexed_samples'):
+                    sample_term_diseases = sorted(
+                        disease_terms_by_sample_term.get(sample_term_object.get('term_name'), set())
+                    )
+                    if sample_term_diseases:
+                        term_disease_phrase = f' with {join_multiple_terms(sample_term_diseases)}'
+                else:
+                    term_disease_phrase = disease_phrase
+
                 if targeted_sample_suffix:
-                    sample_phrase = f'{sample_phrase} {targeted_sample_suffix}'
+                    sample_phrase = f'{sample_phrase}{term_disease_phrase} {targeted_sample_suffix}'
+                else:
+                    sample_phrase = f'{sample_phrase}{term_disease_phrase}'
                 sample_classification_term_target[classification].add(sample_phrase)
 
         all_sample_terms = []
@@ -1064,11 +1150,21 @@ class AnalysisSet(FileSet):
             ):
                 # Insert the classification before the targeted_sample_term if it exists.
                 if 'induced to' in terms_by_classification:
-                    terms_by_classification = terms_by_classification.replace(
-                        'induced to', f'{classification} induced to'
-                    )
+                    if ' with ' in terms_by_classification:
+                        terms_by_classification = terms_by_classification.replace(
+                            ' with ', f' {classification} with ', 1
+                        )
+                    else:
+                        terms_by_classification = terms_by_classification.replace(
+                            'induced to', f'{classification} induced to'
+                        )
                 else:
-                    terms_by_classification = f'{terms_by_classification} {classification}'
+                    if ' with ' in terms_by_classification:
+                        terms_by_classification = terms_by_classification.replace(
+                            ' with ', f' {classification} with ', 1
+                        )
+                    else:
+                        terms_by_classification = f'{terms_by_classification} {classification}'
             elif any(x in terms_by_classification for x in [
                     'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen', 'primary cell']
             ):

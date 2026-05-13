@@ -406,7 +406,25 @@ def test_analysis_set_protocols(testapp, analysis_set_base, measurement_set_with
     assert res.json.get('protocols') == ['https://www.protocols.io/private/test-protocols-url-12345']
 
 
-def test_analysis_set_sample_summary(testapp, principal_analysis_set, measurement_set_mpra, construct_library_set_genome_wide, sample_term_endothelial_cell, gene_myc_hs, treatment_chemical, in_vitro_differentiated_cell, in_vitro_cell_line, multiplexed_sample, crispr_modification, degron_modification, sample_term_lymphoblastoid):
+def test_analysis_set_sample_summary(
+    testapp,
+    principal_analysis_set,
+    measurement_set_mpra,
+    construct_library_set_genome_wide,
+    sample_term_endothelial_cell,
+    gene_myc_hs,
+    treatment_chemical,
+    in_vitro_differentiated_cell,
+    in_vitro_cell_line,
+    in_vitro_cell_culture,
+    tissue,
+    multiplexed_sample,
+    crispr_modification,
+    degron_modification,
+    sample_term_lymphoblastoid,
+    phenotypic_feature_basic,
+    phenotypic_feature_01
+):
     # Test group 1: non-multiplexed samples with various metadata
     testapp.patch_json(
         principal_analysis_set['@id'],
@@ -483,6 +501,36 @@ def test_analysis_set_sample_summary(testapp, principal_analysis_set, measuremen
     assert res.get(
         'sample_summary', '') == 'Homo sapiens K562 pooled differentiated cell specimen induced to endothelial cell of vascular tree'
 
+    # Test group 1: add disease terms with targeted term
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'phenotypic_features': [phenotypic_feature_basic['@id'],
+                                    phenotypic_feature_01['@id']]
+        }
+    )
+    res = testapp.get(principal_analysis_set['@id']).json
+    assert res.get(
+        'sample_summary', '') == 'Homo sapiens K562 pooled differentiated cell specimen with Alzheimer\'s disease induced to endothelial cell of vascular tree'
+
+    # Test group 1: add disease without targeted term
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'samples': [tissue['@id']]
+        }
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'phenotypic_features': [phenotypic_feature_basic['@id'],
+                                    phenotypic_feature_01['@id']]
+        }
+    )
+    res = testapp.get(principal_analysis_set['@id']).json
+    assert res.get(
+        'sample_summary', '') == 'Mus musculus adrenal gland tissue/organ with Alzheimer\'s disease'
+
     # Test group 2: multiplexed samples
     testapp.patch_json(
         measurement_set_mpra['@id'],
@@ -503,7 +551,8 @@ def test_analysis_set_sample_summary(testapp, principal_analysis_set, measuremen
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
-    assert res.get('sample_summary', '') == 'Mixed species multiplexed sample of K562, lymphoblastoid cell line'
+    assert res.get('sample_summary',
+                   '') == 'Mixed species multiplexed sample of K562 with Alzheimer\'s disease, lymphoblastoid cell line'
 
     # Test group 2: cellular subpool info (no effect)
     testapp.patch_json(
@@ -513,7 +562,26 @@ def test_analysis_set_sample_summary(testapp, principal_analysis_set, measuremen
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
-    assert res.get('sample_summary', '') == 'Mixed species multiplexed sample of K562, lymphoblastoid cell line'
+    assert res.get('sample_summary',
+                   '') == 'Mixed species multiplexed sample of K562 with Alzheimer\'s disease, lymphoblastoid cell line'
+
+    # Test group 2: disease info
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'phenotypic_features': [phenotypic_feature_basic['@id']]
+        }
+    )
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'phenotypic_features': [phenotypic_feature_basic['@id'],
+                                    phenotypic_feature_01['@id']]
+        }
+    )
+    res = testapp.get(principal_analysis_set['@id']).json
+    assert res.get('sample_summary',
+                   '') == 'Mixed species multiplexed sample of K562, lymphoblastoid cell line with Alzheimer\'s disease'
 
 
 def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set, measurement_set_with_functional_assay_mechanisms, phenotype_term_from_go, phenotype_term_myocardial_infarction):
