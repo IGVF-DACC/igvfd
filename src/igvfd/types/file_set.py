@@ -234,17 +234,12 @@ def get_disease_terms_from_phenotypic_features(request, sample_object, is_pd_col
     if not is_pd_collection:
         return join_multiple_terms(unique_disease_terms)
     if 'Parkinson\'s disease' not in unique_disease_terms:
-        return 'Non-Parkinson\'s disease'
+        return 'no Parkinson\'s'
     else:
-        return 'Parkinson\'s disease'
+        return 'Parkinson\'s'
 
 
 def get_donors_info_for_sample_summary(request, donors):
-    taxa_rename_map = {
-        'Homo sapiens': 'human',
-        'Mus musculus': 'mouse',
-        'Saccharomyces cerevisiae': 'yeast'
-    }
     donor_metadata = {}
     for donor in donors:
         donor_object = request.embed(donor, '@@object?skip_calculated=true')
@@ -258,7 +253,7 @@ def get_donors_info_for_sample_summary(request, donors):
     if len(donor_metadata) > 1:
         mixed_donor_count = {taxa: len(metadata.get('accessions', [])) for taxa, metadata in donor_metadata.items()}
         mixed_donor_phrase = ', '.join(
-            [f'{count} {taxa_rename_map.get(taxa, taxa)} donor(s)' for taxa, count in sorted(mixed_donor_count.items())])
+            [f'{count} {taxa} donor(s)' for taxa, count in sorted(mixed_donor_count.items())])
         return f'from {mixed_donor_phrase}'
     for taxa, metadata in donor_metadata.items():
         accessions = sorted(metadata.get('accessions', []))
@@ -1085,13 +1080,14 @@ class AnalysisSet(FileSet):
         }
     )
     def sample_summary(self, request, samples=None, donors=None, construct_library_sets=None, collections=None):
+        corces_special_collection = 'PD single cell multiomics'
         taxa = set()
         sample_classification_term_target = dict()
 
         # Is it PD collection
         if collections:
-            is_pd_collection = any(collection for collection in collections if collection ==
-                                   'PD single cell multiomics')
+            is_pd_collection = any(collection for collection in collections
+                                   if collection == corces_special_collection)
         else:
             is_pd_collection = False
 
@@ -1249,6 +1245,22 @@ class AnalysisSet(FileSet):
         summary = ' '.join(filter(None, [taxa_phrase, ', '.join(all_sample_terms), donor_phrase])).strip()
         if overexpression_phrase:
             summary = f'{summary}, {overexpression_phrase}'
+
+        # If Corces PD collection
+        if is_pd_collection:
+            summary = f'Parkinson\'s collection of {summary}'
+
+        # Rename species names
+        taxa_rename_map = {
+            'Homo sapiens': 'human',
+            'Mus musculus': 'mouse',
+            'Saccharomyces cerevisiae': 'yeast'
+        }
+        for taxa_name, renamed_taxa in taxa_rename_map.items():
+            summary = summary.replace(taxa_name, renamed_taxa)
+
+        if summary:
+            summary = f'{summary[0].upper()}{summary[1:]}'
 
         return summary
 
