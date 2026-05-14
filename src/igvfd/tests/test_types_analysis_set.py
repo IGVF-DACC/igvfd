@@ -410,7 +410,6 @@ def test_analysis_set_sample_summary(
     testapp,
     principal_analysis_set,
     measurement_set_mpra,
-    construct_library_set_genome_wide,
     sample_term_endothelial_cell,
     in_vitro_differentiated_cell,
     in_vitro_cell_line,
@@ -424,7 +423,8 @@ def test_analysis_set_sample_summary(
     parent_rodent_donor_2,
     human_donor,
     parent_human_donor_1,
-    parent_human_donor_2
+    parent_human_donor_2,
+    construct_library_set_overexpression
 ):
     # Test group 1: non-multiplexed samples with various metadata
     testapp.patch_json(
@@ -444,7 +444,6 @@ def test_analysis_set_sample_summary(
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
-            'construct_library_sets': [construct_library_set_genome_wide['@id']],
             'targeted_sample_term': sample_term_endothelial_cell['@id'],
         }
     )
@@ -476,6 +475,18 @@ def test_analysis_set_sample_summary(
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get(
         'sample_summary', '') == f'Homo sapiens K562 pooled differentiated cell specimen with Alzheimer\'s disease induced to endothelial cell of vascular tree from donor(s) {hs_donor_accession}'
+
+    # Test group 1: add overexpression CLS
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'construct_library_sets': [construct_library_set_overexpression['@id']]
+        }
+    )
+    res = testapp.get(principal_analysis_set['@id']).json
+    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
+    assert res.get('sample_summary',
+                   '') == f'Homo sapiens K562 pooled differentiated cell specimen with Alzheimer\'s disease induced to endothelial cell of vascular tree from donor(s) {hs_donor_accession}, overexpressing MYC'
 
     # Test group 1: add disease without targeted term
     testapp.patch_json(
@@ -547,7 +558,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get('sample_summary',
-                   '') == 'Mixed species multiplexed sample of K562 with Alzheimer\'s disease, lymphoblastoid cell line from 1 human donor(s), 1 mouse donor(s)'
+                   '') == 'Mixed species multiplexed sample of K562 with Alzheimer\'s disease, lymphoblastoid cell line from 1 human donor(s), 1 mouse donor(s), overexpressing MYC'
 
     # Test group 2: disease info
     testapp.patch_json(
@@ -565,7 +576,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get('sample_summary',
-                   '') == 'Mixed species multiplexed sample of K562, lymphoblastoid cell line with Alzheimer\'s disease from 1 human donor(s), 1 mouse donor(s)'
+                   '') == 'Mixed species multiplexed sample of K562, lymphoblastoid cell line with Alzheimer\'s disease from 1 human donor(s), 1 mouse donor(s), overexpressing MYC'
 
 
 def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set, measurement_set_with_functional_assay_mechanisms, phenotype_term_from_go, phenotype_term_myocardial_infarction):

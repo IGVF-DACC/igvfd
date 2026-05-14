@@ -278,6 +278,23 @@ def get_donors_info_for_sample_summary(request, donors):
         return f'from {accession_phrase} mice of {strain_phrase} strain(s)'
 
 
+def get_oexpr_from_cls_for_samp_summary(request, construct_library_sets):
+    '''Get overexpression gene symbols from construct library sets.'''
+    if not construct_library_sets:
+        return ''
+    oexpr_genes = set()
+    for cls_set in construct_library_sets:
+        cls_object = request.embed(cls_set, '@@object?skip_calculated=true')
+        if cls_object.get('file_set_type') == 'overexpression vector library' and cls_object.get('scope') == 'genes':
+            small_gene_list = cls_object.get('small_scale_gene_list', [])
+            if small_gene_list:
+                for gene in small_gene_list:
+                    gene_object = request.embed(gene, '@@object?skip_calculated=true')
+                    oexpr_genes.add(gene_object.get('symbol', ''))
+    oexpr_genes = sorted(list(oexpr_genes))
+    return f'overexpressing {join_multiple_terms(oexpr_genes)}' if oexpr_genes else ''
+
+
 EMBEDDED_FILE_FIELDS = [
     '@id',
     'accession',
@@ -1067,7 +1084,7 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def sample_summary(self, request, samples=None, donors=None, collections=None):
+    def sample_summary(self, request, samples=None, donors=None, construct_library_sets=None, collections=None):
         taxa = set()
         sample_classification_term_target = dict()
 
@@ -1224,8 +1241,14 @@ class AnalysisSet(FileSet):
         # Taxa phrase
         taxa_phrase = f'{", ".join([x for x in taxa if x != ""])}'
 
-        # Merge all phrases
-        summary = f"{taxa_phrase} {', '.join(all_sample_terms)} {donor_phrase}".strip()
+        # Overexpression phrase
+        overexpression_phrase = ''
+        overexpression_phrase = get_oexpr_from_cls_for_samp_summary(request, construct_library_sets)
+
+        # Constructing the final summary, putting ovexpr last
+        summary = ' '.join(filter(None, [taxa_phrase, ', '.join(all_sample_terms), donor_phrase])).strip()
+        if overexpression_phrase:
+            summary = f'{summary}, {overexpression_phrase}'
 
         return summary
 
