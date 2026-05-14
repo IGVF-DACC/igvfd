@@ -811,3 +811,60 @@ def reference_file_25_26(value, system):
             notes += ' This reference file lacked `transcriptome_annotation`, and has been automatically assigned `transcriptome_annotation` as `GENCODE 43` as a placeholder.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('matrix_file', '9', '10')
+def matrix_file_9_10(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3471
+    notes = value.get('notes', '')
+
+    principal_dimension = value.get('principal_dimension', '')
+    secondary_dimensions = ', '.join(sorted(value.get('secondary_dimensions', [])))
+    content_type = value.get('content_type', '')
+    filtered = value.get('filtered', None)
+
+    map = {
+        ('cell', 'gene', 'annotated sparse gene count matrix'): ('annotated cell by gene matrix', False),
+        ('cell', 'gene', 'allele specific sparse gene count matrix'): ('allele specific cell by gene matrix', False),
+        ('cell', 'gene', 'filtered feature barcode matrix'): ('cell by gene matrix', True),
+        ('cell', 'gene', 'kallisto single cell RNAseq output'): ('kallisto cell by gene matrix', False),
+        ('cell', 'gene', 'methylation count matrix'): ('cell by bin methylation count matrix', False),
+        ('cell', 'gene', 'raw feature barcode matrix'): ('cell by gene matrix', False),
+        ('cell', 'gene', 'sparse gene count matrix'): ('cell by gene matrix', False),
+        ('cell', 'CRISPR guide capture', 'raw feature barcode matrix'): ('cell by guide matrix', False),
+        ('cell', 'CRISPR guide capture, gene expression', 'filtered feature barcode matrix'): ('cell by gene and guide matrix', True),
+        ('cell', 'CRISPR guide capture, gene expression', 'raw feature barcode matrix'): ('cell by gene and guide matrix', False),
+        ('cell', 'CRISPR guide capture, gene expression', 'sparse gene count matrix'): ('cell by gene and guide matrix', False),
+        ('cell', 'CRISPR guide capture, gene expression', 'annotated sparse gene count matrix'): ('annotated cell by gene and guide matrix', False),
+        ('cell', 'antibody capture, gene expression', 'filtered feature barcode matrix'): ('cell by gene and multiplexing oligo matrix', True),
+        ('cell', 'antibody capture, gene expression', 'sparse gene count matrix'): ('cell by gene and multiplexing oligo matrix', True),
+        ('cell', 'CRISPR guide capture, gene expression, multiplexing oligo', 'filtered feature barcode matrix'): ('cell by gene and guide and multiplexing oligo matrix', True),
+        ('cell', 'gene expression', 'annotated sparse gene count matrix'): ('annotated cell by gene matrix', False),
+        ('cell', 'gene expression', 'raw feature barcode matrix'): ('cell by gene matrix', False),
+        ('cell', 'gene expression', 'sparse gene count matrix'): ('cell by gene matrix', False),
+        ('cell', 'gene expression, peak', 'filtered feature barcode matrix'): ('cell by gene and peak matrix', True),
+        ('cell', 'genomic position', 'contact matrix'): ('cell by bin contact matrix', False),
+        ('cell', 'genomic position', 'methylation count matrix'): ('cell by position methylation count matrix', False),
+        ('cell', 'peak', 'annotated sparse peak count matrix'): ('annotated cell by peak matrix', False),
+        ('cell', 'peak', 'sparse peak count matrix'): ('cell by peak matrix', False),
+        ('cell', 'UMI count', 'filtered feature barcode matrix'): ('cell by UMI count matrix', True),
+        ('genomic position', 'genomic position', 'contact matrix'): ('contact matrix', False),
+        ('mitochondrial variants', 'cell', 'mitochondrial DNA heteroplasmy'): ('mitochondrial variants by cell heteroplasmy matrix', False),
+        ('spot barcode', 'gene expression', 'filtered feature barcode matrix'): ('spot by gene matrix', True),
+        ('spot barcode', 'gene expression', 'raw feature barcode matrix'): ('spot by gene matrix', False),
+    }
+    if all((principal_dimension, secondary_dimensions, content_type) != key for key in map):
+        value['content_type'] = 'spot by gene matrix'
+        notes += f' This {principal_dimension} by {secondary_dimensions} {content_type} file did not match any combination in the upgrade logic and has been upgraded to spot by gene matrix as a placeholder.'
+    else:
+        for key in map:
+            if (principal_dimension, secondary_dimensions, content_type) == key:
+                value['content_type'] = map[key][0]
+                if filtered is None:
+                    value['filtered'] = map[key][1]
+                else:
+                    value['filtered'] = filtered
+                filtered_string = 'filtered ' if (map[key][1] or filtered) else ''
+                notes += f' This {principal_dimension} by {secondary_dimensions} {content_type} file was upgraded to {filtered_string}{map[key][0]}.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

@@ -106,21 +106,6 @@ def test_types_signal_file_content_summary(testapp, signal_file):
     assert res.json.get('content_summary') == 'filtered normalized unstranded signal of all reads'
 
 
-def test_types_matrix_file_content_summary(testapp, matrix_file):
-    res = testapp.get(matrix_file['@id'])
-    assert res.json.get('content_summary') == 'cell by gene in sparse gene count matrix'
-    testapp.patch_json(
-        matrix_file['@id'],
-        {
-            'principal_dimension': 'variant',
-            'secondary_dimensions': ['treatment', 'antibody capture'],
-            'content_type': 'transcriptome annotations'
-        }
-    )
-    res = testapp.get(matrix_file['@id'])
-    assert res.json.get('content_summary') == 'variant by treatment by antibody capture in transcriptome annotations'
-
-
 def test_types_file_calculated_transcriptome_annotation(testapp, matrix_file, signal_file, alignment_file, reference_file, reference_file_with_transcriptome, tabular_file):
     res = testapp.get(matrix_file['@id'])
     assert res.json.get('transcriptome_annotation') == 'GENCODE 47'
@@ -463,7 +448,7 @@ def test_file_summaries(
 
     # Matrix File
     res = testapp.get(matrix_file['@id'])
-    assert res.json.get('summary', '') == 'cell by gene in sparse gene count matrix'
+    assert res.json.get('summary', '') == 'cell by gene matrix'
 
     # Predictive matrix file with software.
     testapp.patch_json(
@@ -476,7 +461,7 @@ def test_file_summaries(
     )
     res = testapp.get(matrix_file['@id'])
     assert res.json.get(
-        'summary', '') == 'predictive unfiltered cell by gene in sparse gene count matrix (Bowtie2 v2.4.4)'
+        'summary', '') == 'predictive unfiltered cell by gene matrix (Bowtie2 v2.4.4)'
 
     # Model File
     res = testapp.get(model_file['@id'])

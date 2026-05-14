@@ -10,9 +10,7 @@
         "file_format",
         "file_set",
         "content_type",
-        "reference_files",
-        "principal_dimension",
-        "secondary_dimensions"
+        "reference_files"
     ],
     "identifyingProperties": [
         "uuid",
@@ -60,84 +58,57 @@
     "dependentSchemas": {
         "$merge": [
             "file.json#/dependentSchemas"
-        ],
-        "file_format": {
-            "comment": "Matrix files with file format hic should only specify genomic position dimensions.",
-            "allOf": [
-                {
-                    "$merge": "file.json#/dependentSchemas/file_format"
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "file_format": {
-                                "const": "hic"
-                            }
-                        },
-                        "required": [
-                            "file_format"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "principal_dimension": {
-                                "enum": [
-                                    "genomic position"
-                                ]
-                            },
-                            "secondary_dimensions": {
-                                "items": {
-                                    "enum": [
-                                        "genomic position"
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            ]
-        }
+        ]
     },
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "9"
+            "default": "10"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
-                "allele specific sparse gene count matrix",
-                "annotated multimodal CRISPR matrix",
-                "annotated sparse gene count matrix",
-                "annotated sparse peak count matrix",
+                "allele specific cell by gene matrix",
+                "annotated cell by gene matrix",
+                "annotated cell by gene and guide matrix",
+                "annotated cell by guide matrix",
+                "annotated cell by peak matrix",
+                "cell by bin contact matrix",
+                "cell by bin methylation count matrix",
+                "cell by gene matrix",
+                "cell by gene and guide matrix",
+                "cell by gene and guide and multiplexing oligo matrix",
+                "cell by gene and multiplexing oligo matrix",
+                "cell by gene and peak matrix",
+                "cell by guide matrix",
+                "cell by peak matrix",
+                "cell by position methylation count matrix",
+                "cell by UMI count matrix",
                 "contact matrix",
-                "filtered feature barcode matrix",
-                "kallisto single cell RNAseq output",
-                "methylation count matrix",
-                "mitochondrial DNA heteroplasmy",
-                "raw feature barcode matrix",
-                "sample barcode count matrix",
-                "sparse gene count matrix",
-                "sparse peak count matrix",
-                "sparse transcript count matrix",
-                "transcriptome annotations"
+                "kallisto cell by gene matrix",
+                "mitochondrial variants by cell heteroplasmy matrix",
+                "spot by gene matrix"
             ],
             "enum_descriptions": {
-                "allele specific sparse gene count matrix": "A matrix where rows represent genes IDs from two individual strain or donor reference genomes (as described in the file format document) and columns represent samples or cells, containing counts of sequencing reads that map to each gene.",
-                "annotated multimodal CRISPR matrix": "An object storing single cell CRISPR screen data, integrating multiple modalities such as raw RNA count matrices, sample-level metadata, gene-level metadata, guide-level data, experiment-level metadata, etc.",
-                "annotated sparse gene count matrix": "A matrix where rows represent genes and columns represent samples or cells, containing both counts of sequencing reads that map to each gene and cell annotation data.",
-                "annotated sparse peak count matrix": "A matrix used in assays like ATAC-seq or ChIP-seq, where rows represent genomic regions (peaks) and columns represent samples or cells, containing both counts of sequencing reads that map to each peak and cell annotation data.",
+                "annotated cell by gene matrix": "A matrix where rows represent genes and columns represent samples or cells, containing both counts of sequencing reads that map to each gene and cell annotation data.",
+                "annotated cell by gene and guide matrix": "A feature barcode matrix output from Cell Ranger, where rows represent genes and guides and columns represent cells, containing both counts of sequencing reads that map to each gene and cell annotation data.",
+                "annotated cell by guide matrix": "A feature barcode matrix output from Cell Ranger, where rows represent guides and columns represent cells, containing both counts of sequencing reads that map to each gene and cell annotation data.",
+                "annotated cell by peak matrix": "A matrix used in assays like ATAC-seq or ChIP-seq, where rows represent genomic regions (peaks) and columns represent samples or cells, containing both counts of sequencing reads that map to each peak and cell annotation data.",
+                "cell by bin contact matrix": "A matrix used in genomic assays, particularly in chromosome conformation capture techniques like Hi-C, to represent the frequency of physical interactions between different binned regions of the genome.",
+                "cell by bin methylation count matrix": "A h5ad object containing CpG-level methylation counts/coverage per cell per bin.",
+                "cell by gene matrix": "A matrix where rows represent genes and columns represent samples or cells, containing counts of sequencing reads that map to each gene.",
+                "cell by gene and guide matrix": "A feature barcode matrix output from Cell Ranger, where rows represent genes and guides and columns represent cells.",
+                "cell by gene and guide and multiplexing oligo matrix": "A feature barcode matrix output from Cell Ranger, where rows represent genes, guides, and multiplexing oligos and columns represent cells.",
+                "cell by gene and multiplexing oligo matrix": "A feature barcode matrix output from Cell Ranger, where rows represent genes and multiplexing oligos and columns represent cells.",
+                "cell by gene and peak matrix": "A feature barcode matrix output from Cell Ranger, where rows represent genes and peaks and guides and columns represent cells.",
+                "cell by guide matrix": "A feature barcode matrix output from Cell Ranger, where rows represent guides and columns represent cells.",
+                "cell by peak matrix": "A matrix used in assays like ATAC-seq or ChIP-seq, where rows represent genomic regions (peaks) and columns represent samples or cells.",
+                "cell by position methylation count matrix": "A h5ad object containing CpG-level methylation counts/coverage per cell per base pair.",
+                "cell by UMI count matrix": "A feature barcode matrix output from Cell Ranger, where rows represent UMI counts and columns represent cells. It contains counts of sequencing reads after filtering out low-quality or low-abundance features.",
                 "contact matrix": "A matrix used in genomic assays, particularly in chromosome conformation capture techniques like Hi-C, to represent the frequency of physical interactions between different regions of the genome.",
-                "filtered feature barcode matrix": "A matrix output from Cell Ranger, where rows represent features and columns represent barcoded spots or cells. It contains counts of sequencing reads after filtering out low-quality or low-abundance features.",
-                "kallisto single cell RNAseq output": "A tar.gz file containing the output of the kb-python count run directory using the nac mode containing everything except for the h5ad file chosen to be the primary result.",
-                "methylation count matrix": "A h5ad object containing CpG-level methylation counts/coverage per cell.",
-                "mitochondrial DNA heteroplasmy": "A .rds file generated by the mgatk tool, containing mitochondrial genome sequencing metrics derived from single-cell data.",
-                "raw feature barcode matrix": "A matrix output from Cell Ranger, where rows represent features and columns represent barcoded spots or cells. It contains raw counts of sequencing reads before any filtering or normalization.",
-                "sample barcode count matrix": "A matrix of cells (rows) by MULTI-seq sample barcode (columns) count.",
-                "sparse gene count matrix": "A matrix where rows represent genes and columns represent samples or cells, containing counts of sequencing reads that map to each gene.",
-                "sparse peak count matrix": "A matrix used in assays like ATAC-seq or ChIP-seq, where rows represent genomic regions (peaks) and columns represent samples or cells.",
-                "sparse transcript count matrix": "A matrix where rows represent transcripts and columns represent samples or cells, containing counts of sequencing reads that map to each transcript.",
-                "transcriptome annotations": "Detailed information about the transcripts detected in a genomic assay, including their genomic coordinates, gene names, and other relevant annotations."
+                "kallisto cell by gene matrix": "A tar.gz file containing the output of the kb-python count run directory using the nac mode containing everything except for the h5ad file chosen to be the primary result.",
+                "mitochondrial variants by cell heteroplasmy matrix": "A matrix output from mgatk, where rows are mitochondrial genome positions, and columns are individual cells.",
+                "spot by gene matrix": "A feature barcode matrix output from Space Ranger, where rows represent genes and columns represent barcoded spots."
             },
             "submissionExample": {
                 "appscript": "contact matrix",
@@ -148,6 +119,7 @@
             "title": "Principal Dimension",
             "description": "The principal dimension of the matrix.",
             "type": "string",
+            "permission": "admin_only",
             "enum": [
                 "cell",
                 "CRISPR guide capture",
@@ -171,6 +143,7 @@
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,
+            "permission": "admin_only",
             "items": {
                 "title": "Secondary Dimensions",
                 "type": "string",
