@@ -128,3 +128,20 @@ def treatment_11_12(value, system):
     if notes:
         value['notes'] = notes.strip()
     return
+
+
+@upgrade_step('treatment', '12', '13')
+def treatment_12_13(value, system):
+    notes = value.get('notes', '')
+    purpose_renames = {
+        'acute activation': 'acute stimulation',
+        'chronic activation': 'chronic stimulation',
+    }
+    old_purpose = value.get('purpose')
+    if old_purpose in purpose_renames:
+        new_purpose = purpose_renames[old_purpose]
+        value['purpose'] = new_purpose
+        notes += f' Purpose was renamed from `{old_purpose}` to `{new_purpose}`.'
+    if notes:
+        value['notes'] = notes.strip()
+    return

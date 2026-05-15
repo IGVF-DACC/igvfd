@@ -1005,8 +1005,8 @@ class AnalysisSet(FileSet):
 
         treatment_purpose_to_adjective = {
             'activation': 'activated',
-            'acute activation': 'acutely activated',
-            'chronic activation': 'chronically activated',
+            'acute stimulation': 'acutely stimulated',
+            'chronic stimulation': 'chronically stimulated',
             'agonist': 'agonized',
             'antagonist': 'antagonized',
             'control': 'treated with a control',
