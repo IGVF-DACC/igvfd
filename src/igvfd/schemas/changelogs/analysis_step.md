@@ -1,5 +1,74 @@
 ## Changelog for *`analysis_step.json`*
 
+### Schema version 12
+
+* Extend `input_content_types` enum list to include `allele specific cell by gene matrix`.
+* Extend `input_content_types` enum list to include `annotated cell by gene matrix`.
+* Extend `input_content_types` enum list to include `annotated cell by gene and guide matrix`.
+* Extend `input_content_types` enum list to include `annotated cell by guide matrix`.
+* Extend `input_content_types` enum list to include `annotated cell by peak matrix`.
+* Extend `input_content_types` enum list to include `cell by bin contact matrix`.
+* Extend `input_content_types` enum list to include `cell by bin methylation count matrix`.
+* Extend `input_content_types` enum list to include `cell by gene matrix`.
+* Extend `input_content_types` enum list to include `cell by gene and guide matrix`.
+* Extend `input_content_types` enum list to include `cell by gene and guide and multiplexing oligo matrix`.
+* Extend `input_content_types` enum list to include `cell by gene and multiplexing oligo matrix`.
+* Extend `input_content_types` enum list to include `cell by gene and peak matrix`.
+* Extend `input_content_types` enum list to include `cell by guide matrix`.
+* Extend `input_content_types` enum list to include `cell by peak matrix`.
+* Extend `input_content_types` enum list to include `cell by position methylation count matrix`.
+* Extend `input_content_types` enum list to include `cell by UMI count matrix`.
+* Extend `input_content_types` enum list to include `kallisto cell by gene matrix`.
+* Extend `input_content_types` enum list to include `mitochondrial variants by cell heteroplasmy matrix`.
+* Extend `input_content_types` enum list to include `spot by gene matrix`.
+* Adjust `input_content_types` enum list to remove `allele specific sparse gene count matrix`.
+* Adjust `input_content_types` enum list to remove `annotated multimodal CRISPR matrix`.
+* Adjust `input_content_types` enum list to remove `annotated sparse gene count matrix`.
+* Adjust `input_content_types` enum list to remove `annotated sparse peak count matrix`.
+* Adjust `input_content_types` enum list to remove `filtered feature barcode matrix`.
+* Adjust `input_content_types` enum list to remove `kallisto single cell RNAseq output`.
+* Adjust `input_content_types` enum list to remove `methylation count matrix`.
+* Adjust `input_content_types` enum list to remove `mitochondrial DNA heteroplasmy`.
+* Adjust `input_content_types` enum list to remove `raw feature barcode matrix`.
+* Adjust `input_content_types` enum list to remove `sample barcode count matrix`.
+* Adjust `input_content_types` enum list to remove `sparse gene count matrix`.
+* Adjust `input_content_types` enum list to remove `sparse peak count matrix`.
+* Adjust `input_content_types` enum list to remove `sparse transcript count matrix`.
+* Adjust `input_content_types` enum list to remove `transcriptome annotations`.
+* Extend `output_content_types` enum list to include `allele specific cell by gene matrix`.
+* Extend `output_content_types` enum list to include `annotated cell by gene matrix`.
+* Extend `output_content_types` enum list to include `annotated cell by gene and guide matrix`.
+* Extend `output_content_types` enum list to include `annotated cell by guide matrix`.
+* Extend `output_content_types` enum list to include `annotated cell by peak matrix`.
+* Extend `output_content_types` enum list to include `cell by bin contact matrix`.
+* Extend `output_content_types` enum list to include `cell by bin methylation count matrix`.
+* Extend `output_content_types` enum list to include `cell by gene matrix`.
+* Extend `output_content_types` enum list to include `cell by gene and guide matrix`.
+* Extend `output_content_types` enum list to include `cell by gene and guide and multiplexing oligo matrix`.
+* Extend `output_content_types` enum list to include `cell by gene and multiplexing oligo matrix`.
+* Extend `output_content_types` enum list to include `cell by gene and peak matrix`.
+* Extend `output_content_types` enum list to include `cell by guide matrix`.
+* Extend `output_content_types` enum list to include `cell by peak matrix`.
+* Extend `output_content_types` enum list to include `cell by position methylation count matrix`.
+* Extend `output_content_types` enum list to include `cell by UMI count matrix`.
+* Extend `output_content_types` enum list to include `kallisto cell by gene matrix`.
+* Extend `output_content_types` enum list to include `mitochondrial variants by cell heteroplasmy matrix`.
+* Extend `output_content_types` enum list to include `spot by gene matrix`.
+* Adjust `output_content_types` enum list to remove `allele specific sparse gene count matrix`.
+* Adjust `output_content_types` enum list to remove `annotated multimodal CRISPR matrix`.
+* Adjust `output_content_types` enum list to remove `annotated sparse gene count matrix`.
+* Adjust `output_content_types` enum list to remove `annotated sparse peak count matrix`.
+* Adjust `output_content_types` enum list to remove `filtered feature barcode matrix`.
+* Adjust `output_content_types` enum list to remove `kallisto single cell RNAseq output`.
+* Adjust `output_content_types` enum list to remove `methylation count matrix`.
+* Adjust `output_content_types` enum list to remove `mitochondrial DNA heteroplasmy`.
+* Adjust `output_content_types` enum list to remove `raw feature barcode matrix`.
+* Adjust `output_content_types` enum list to remove `sample barcode count matrix`.
+* Adjust `output_content_types` enum list to remove `sparse gene count matrix`.
+* Adjust `output_content_types` enum list to remove `sparse peak count matrix`.
+* Adjust `output_content_types` enum list to remove `sparse transcript count matrix`.
+* Adjust `output_content_types` enum list to remove `transcriptome annotations`.
+
 ### Minor changes since schema version 11
 
 * Extend `analysis_step_types` enum list to include `cis-trans classification`.

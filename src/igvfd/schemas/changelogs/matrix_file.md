@@ -3,6 +3,7 @@
 ### Schema version 10
 
 * Remove calculated property `content_summary`.
+* Extend `content_type` enum list to include `allele specific cell by gene matrix`.
 * Extend `content_type` enum list to include `annotated cell by gene matrix`.
 * Extend `content_type` enum list to include `annotated cell by gene and guide matrix`.
 * Extend `content_type` enum list to include `annotated cell by guide matrix`.

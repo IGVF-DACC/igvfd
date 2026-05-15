@@ -215,3 +215,45 @@ def analysis_step_10_11(value, system):
     value['output_content_types'] = sorted(set(new_output_content_types))
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_step', '11', '12')
+def analysis_step_11_12(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3471
+    notes = value.get('notes', '')
+    old_input_content_types = value.get('input_content_types', [])
+    new_input_content_types = []
+    old_output_content_types = value.get('output_content_types', [])
+    new_output_content_types = []
+    upgrade_map = {
+        'allele specific sparse gene count matrix': 'allele specific cell by gene matrix',
+        'annotated multimodal CRISPR matrix': 'cell by gene matrix',
+        'annotated sparse gene count matrix': 'annotated cell by gene matrix',
+        'annotated sparse peak count matrix': 'annotated cell by peak matrix',
+        'filtered feature barcode matrix': 'cell by gene matrix',
+        'kallisto single cell RNAseq output': 'kallisto cell by gene matrix',
+        'methylation count matrix': 'cell by position methylation count matrix',
+        'mitochondrial DNA heteroplasmy': 'mitochondrial variants by cell heteroplasmy matrix',
+        'raw feature barcode matrix': 'cell by gene matrix',
+        'sample barcode count matrix': 'cell by gene matrix',
+        'sparse gene count matrix': 'cell by gene matrix',
+        'sparse peak count matrix': 'cell by peak matrix',
+        'sparse transcript count matrix': 'cell by gene matrix',
+        'transcriptome annotations': 'cell by gene matrix',
+    }
+    for old_content_type in old_input_content_types:
+        if old_content_type in upgrade_map:
+            new_input_content_types.append(upgrade_map[old_content_type])
+            notes += f' This analysis step\'s input_content_types included {old_content_type}, but has been upgraded to {upgrade_map[old_content_type]}.'
+        else:
+            new_input_content_types.append(old_content_type)
+    for old_content_type in old_output_content_types:
+        if old_content_type in upgrade_map:
+            new_output_content_types.append(upgrade_map[old_content_type])
+            notes += f' This analysis step\'s output_content_types included {old_content_type}, but has been upgraded to {upgrade_map[old_content_type]}.'
+        else:
+            new_output_content_types.append(old_content_type)
+    value['input_content_types'] = sorted(set(new_input_content_types))
+    value['output_content_types'] = sorted(set(new_output_content_types))
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

@@ -26,7 +26,6 @@
         ],
         "output_content_types": [
             "alignments",
-            "transcriptome annotations",
             "spike-ins",
             "inclusion list",
             "exclusion list",
@@ -63,12 +62,9 @@
         ],
         "output_content_types": [
             "contact matrix",
-            "filtered feature barcode matrix",
-            "raw feature barcode matrix",
-            "sparse gene count matrix",
-            "sparse peak count matrix",
-            "sparse transcript count matrix",
-            "transcriptome annotations"
+            "cell by gene matrix",
+            "cell by gene and guide matrix",
+            "cell by peak matrix"
         ]
     },
     {
@@ -184,7 +180,6 @@
         ],
         "output_content_types": [
             "alignments",
-            "transcriptome annotations",
             "spike-ins",
             "inclusion list",
             "exclusion list",
@@ -228,8 +223,8 @@
         ],
         "output_content_types": [
             "fragments",
-            "sparse gene count matrix",
-            "sample barcode count matrix",
+            "cell by gene matrix",
+            "spot by gene matrix",
             "minus strand modification state",
             "UMAP plot"
         ]

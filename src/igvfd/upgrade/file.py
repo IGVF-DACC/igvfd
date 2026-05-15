@@ -848,6 +848,7 @@ def matrix_file_9_10(value, system):
         ('cell', 'peak', 'annotated sparse peak count matrix'): ('annotated cell by peak matrix', False),
         ('cell', 'peak', 'sparse peak count matrix'): ('cell by peak matrix', False),
         ('cell', 'UMI count', 'filtered feature barcode matrix'): ('cell by UMI count matrix', True),
+        ('gene', 'CRISPR guide capture, gene expression', 'filtered feature barcode matrix'): ('cell by gene and guide matrix', True),
         ('genomic position', 'genomic position', 'contact matrix'): ('contact matrix', False),
         ('mitochondrial variants', 'cell', 'mitochondrial DNA heteroplasmy'): ('mitochondrial variants by cell heteroplasmy matrix', False),
         ('spot barcode', 'gene expression', 'filtered feature barcode matrix'): ('spot by gene matrix', True),
