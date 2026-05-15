@@ -2240,6 +2240,7 @@ class ConstructLibrarySet(FileSet):
         Path('integrated_content_files', include=['@id', 'accession',
              'aliases', 'content_type', 'file_format', 'upload_status', 'status']),
         Path('control_for', include=['@id', 'accession', 'aliases', 'status']),
+        Path('control_file_sets', include=['@id', 'accession', 'aliases', 'status']),
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name', 'status']),
         Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'allele', 'status']),
         Path('samples', include=['@id', '@type', 'accession',
