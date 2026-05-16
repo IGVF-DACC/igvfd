@@ -790,3 +790,24 @@ def file_mpra_starr_to_mpra_element(value, system):
         notes = value.get('notes', '')
         notes += ' The file_format_type of this file was mpra_starr, but has been upgraded to mpra_element.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('reference_file', '24', '25')
+def reference_file_24_25(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3480
+    files_needing_assembly = ['genome reference', 'genome index', 'transcriptome reference', 'transcriptome index']
+    files_needing_transcriptome_annotation = ['transcriptome reference', 'transcriptome index']
+
+    notes = value.get('notes', '')
+    # assembly upgrade
+    if value.get('content_type', '') in files_needing_assembly:
+        if 'assembly' not in value:
+            value['assembly'] = 'unknown'
+            notes += ' This reference file lacked `assembly`, and has been automatically assigned `assembly` as `unknown`.'
+    # transcriptome annotation upgrade
+    if value.get('content_type', '') in files_needing_transcriptome_annotation:
+        if 'transcriptome_annotation' not in value:
+            value['transcriptome_annotation'] = 'unknown'
+            notes += ' This reference file lacked `transcriptome_annotation`, and has been automatically assigned `transcriptome_annotation` as `unknown`.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

@@ -1,7 +1,8 @@
 import pytest
 
 
-def test_transcriptome_annotation_dependency(testapp, reference_file, reference_file_two):
+def test_transcriptome_annotation_dependency(testapp, reference_file, reference_file_two, reference_file_with_assembly):
+    # tests assembly and transcriptome annotation version matching dependency
     res = testapp.patch_json(
         reference_file['@id'],
         {
@@ -41,8 +42,9 @@ def test_transcriptome_annotation_dependency(testapp, reference_file, reference_
         }, expect_errors=True
     )
     assert res.status_code == 422
+    # cannot patch custom assembly on transcriptome ref with transcriptome annotation
     res = testapp.patch_json(
-        reference_file_two['@id'],
+        reference_file_with_assembly['@id'],
         {
             'assembly': 'custom'
         }
@@ -134,3 +136,43 @@ def test_schema_reference_file_regenerating_upload_credentials_on_invalid_file_c
     # Then upload_status is pending and validation_error_details are removed:
     assert r.json['@graph'][0]['upload_status'] == 'pending'
     assert 'validation_error_detail' not in r.json['@graph'][0]
+
+
+def test_requiring_assembly_and_transcriptome_annotation(testapp, reference_file_with_guide_rna_sequences):
+    # tests genome ref files and transcriptome ref files requring assembly and transcriptome annotation metadata
+    res = testapp.patch_json(
+        reference_file_with_guide_rna_sequences['@id'],
+        {
+            'content_type': 'genome reference'
+        }, expect_errors=True)
+    assert res.status_code == 422
+
+    res = testapp.patch_json(
+        reference_file_with_guide_rna_sequences['@id'],
+        {
+            'assembly': 'GRCh38'
+        })
+    assert res.status_code == 200
+
+    res = testapp.patch_json(
+        reference_file_with_guide_rna_sequences['@id'],
+        {
+            'content_type': 'transcriptome reference'
+        }, expect_errors=True)
+    assert res.status_code == 422
+
+    res = testapp.patch_json(
+        reference_file_with_guide_rna_sequences['@id'],
+        {
+            'content_type': 'transcriptome reference',
+            'transcriptome_annotation': 'GENCODE 43'
+        })
+    assert res.status_code == 200
+
+    # Check if other content types are accidentally forbidden
+    res = testapp.patch_json(
+        reference_file_with_guide_rna_sequences['@id'],
+        {
+            'content_type': 'guide RNA sequences reference'
+        })
+    assert res.status_code == 200

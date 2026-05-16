@@ -123,15 +123,7 @@ def test_types_matrix_file_content_summary(testapp, matrix_file):
 
 def test_types_file_calculated_transcriptome_annotation(testapp, matrix_file, signal_file, alignment_file, reference_file, reference_file_with_transcriptome, tabular_file):
     res = testapp.get(matrix_file['@id'])
-    assert res.json.get('transcriptome_annotation') == None
-    testapp.patch_json(
-        matrix_file['@id'],
-        {
-            'reference_files': [reference_file_with_transcriptome['@id']]
-        }
-    )
-    res = testapp.get(matrix_file['@id'])
-    assert res.json.get('transcriptome_annotation') == 'GENCODE 43'
+    assert res.json.get('transcriptome_annotation') == 'GENCODE 47'
     testapp.patch_json(
         matrix_file['@id'],
         {
@@ -143,7 +135,7 @@ def test_types_file_calculated_transcriptome_annotation(testapp, matrix_file, si
 
     # Signal file
     res = testapp.get(signal_file['@id'])
-    assert res.json.get('transcriptome_annotation') == None
+    assert res.json.get('transcriptome_annotation') == 'GENCODE 47'
     testapp.patch_json(
         signal_file['@id'],
         {
@@ -163,7 +155,7 @@ def test_types_file_calculated_transcriptome_annotation(testapp, matrix_file, si
 
     # Alignment file
     res = testapp.get(alignment_file['@id'])
-    assert res.json.get('transcriptome_annotation') == None
+    assert res.json.get('transcriptome_annotation') == 'GENCODE 47'
     testapp.patch_json(
         alignment_file['@id'],
         {
@@ -183,7 +175,7 @@ def test_types_file_calculated_transcriptome_annotation(testapp, matrix_file, si
 
     # Tabular file
     res = testapp.get(tabular_file['@id'])
-    assert res.json.get('transcriptome_annotation') == None
+    assert res.json.get('transcriptome_annotation') == 'GENCODE 47'
     testapp.patch_json(
         tabular_file['@id'],
         {
@@ -210,7 +202,7 @@ def test_types_file_calculated_assembly(testapp, matrix_file, signal_file, align
         }
     )
     res = testapp.get(matrix_file['@id'])
-    assert res.json.get('assembly') == None
+    assert res.json.get('assembly') == 'GRCh38'
     testapp.patch_json(
         matrix_file['@id'],
         {
@@ -226,11 +218,11 @@ def test_types_file_calculated_assembly(testapp, matrix_file, signal_file, align
         }
     )
     res = testapp.get(matrix_file['@id'])
-    assert res.json.get('assembly') == 'Mixed genome assemblies'
+    assert res.json.get('assembly') == 'GRCh38'
 
     # Signal file
     res = testapp.get(signal_file['@id'])
-    assert res.json.get('assembly') == None
+    assert res.json.get('assembly') == 'GRCh38'
     testapp.patch_json(
         signal_file['@id'],
         {
@@ -243,14 +235,28 @@ def test_types_file_calculated_assembly(testapp, matrix_file, signal_file, align
         signal_file['@id'],
         {
             'reference_files': [reference_file['@id'], reference_file_with_assembly['@id']]
+        }
+    )
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'assembly': 'GRCm39',
+            'transcriptome_annotation': 'GENCODE M36'
         }
     )
     res = testapp.get(signal_file['@id'])
     assert res.json.get('assembly') == 'Mixed genome assemblies'
 
     # Alignment file
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'assembly': 'GRCh38',
+            'transcriptome_annotation': 'GENCODE 47'
+        }
+    )
     res = testapp.get(alignment_file['@id'])
-    assert res.json.get('assembly') == None
+    assert res.json.get('assembly') == 'GRCh38'
     testapp.patch_json(
         alignment_file['@id'],
         {
@@ -263,6 +269,13 @@ def test_types_file_calculated_assembly(testapp, matrix_file, signal_file, align
         alignment_file['@id'],
         {
             'reference_files': [reference_file['@id'], reference_file_with_assembly['@id']]
+        }
+    )
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'assembly': 'GRCm39',
+            'transcriptome_annotation': 'GENCODE M36'
         }
     )
     res = testapp.get(alignment_file['@id'])
@@ -270,7 +283,7 @@ def test_types_file_calculated_assembly(testapp, matrix_file, signal_file, align
 
     # Tabular file
     res = testapp.get(tabular_file['@id'])
-    assert res.json.get('assembly') == None
+    assert res.json.get('assembly') == 'GRCm39'
     testapp.patch_json(
         tabular_file['@id'],
         {
@@ -347,7 +360,7 @@ def test_types_file_no_download_controlled_access_with_anvil_url(testapp, contro
         controlled_access_alignment_file['@id'],
         {
             'status': 'released',
-            'release_timestamp':  '2024-03-06T12:34:56Z',
+            'release_timestamp': '2024-03-06T12:34:56Z',
             'upload_status': 'validated',
         },
         status=200
@@ -356,7 +369,7 @@ def test_types_file_no_download_controlled_access_with_anvil_url(testapp, contro
         controlled_access_alignment_file['@id'],
         {
             'status': 'released',
-            'release_timestamp':  '2024-03-06T12:34:56Z',
+            'release_timestamp': '2024-03-06T12:34:56Z',
             'upload_status': 'validated',
             'anvil_url': 'https://abc.123',
         },
@@ -392,6 +405,7 @@ def test_file_summaries(
     model_file,
     reference_file,
     reference_file_with_assembly,
+    reference_file_with_guide_rna_sequences,
     sequence_file,
     sequence_file_pod5,
     signal_file,
@@ -399,15 +413,20 @@ def test_file_summaries(
     base_prediction_set,
     analysis_step_version
 ):
-    # Reference File
+    # Reference File special case
+    # transcriptome ref needs assembly and annotation version
+    # but custom assembly forbids annotation version
     testapp.patch_json(
-        reference_file['@id'],
+        reference_file_with_guide_rna_sequences['@id'],
         {
-            'assembly': 'custom'
+            'assembly': 'custom',
+            'content_type': 'genome reference'
         }
     )
-    res = testapp.get(reference_file['@id'])
-    assert res.json.get('summary', '') == 'custom assembly transcriptome reference'
+    res = testapp.get(reference_file_with_guide_rna_sequences['@id'])
+    assert res.json.get('summary', '') == 'custom assembly genome reference'
+
+    # Additional Reference File
     testapp.patch_json(
         reference_file['@id'],
         {
