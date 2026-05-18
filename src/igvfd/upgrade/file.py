@@ -838,6 +838,7 @@ def matrix_file_9_10(value, system):
         ('cell', 'CRISPR guide capture, gene expression', 'annotated sparse gene count matrix'): ('annotated cell by gene and guide matrix', False),
         ('cell', 'antibody capture, gene expression', 'filtered feature barcode matrix'): ('cell by gene and multiplexing oligo matrix', True),
         ('cell', 'antibody capture, gene expression', 'sparse gene count matrix'): ('cell by gene and multiplexing oligo matrix', True),
+        ('cell', 'CRISPR guide capture, antibody capture, gene expression', 'filtered feature barcode matrix'): ('cell by gene and guide and multiplexing oligo matrix', True),
         ('cell', 'CRISPR guide capture, gene expression, multiplexing oligo', 'filtered feature barcode matrix'): ('cell by gene and guide and multiplexing oligo matrix', True),
         ('cell', 'gene expression', 'annotated sparse gene count matrix'): ('annotated cell by gene matrix', False),
         ('cell', 'gene expression', 'raw feature barcode matrix'): ('cell by gene matrix', False),
