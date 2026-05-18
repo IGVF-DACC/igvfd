@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 25
+
+* Adjust `file_format_type` enum list to remove `mpra_starr`.
+
 ### Schema change 24
 
 * Extend `assembly` enum list to include `129S1/SvImJ - GRCm39`.

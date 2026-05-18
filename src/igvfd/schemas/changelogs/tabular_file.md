@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 22
+
+* Adjust `file_format_type` enum list to remove `mpra_starr`.
+
 ### Minor changes since schema version 21
 
 * Extend `collections` enum list to include `PD single cell multiomics`.

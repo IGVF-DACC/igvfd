@@ -779,3 +779,14 @@ def reference_file_23_24(value, system):
         notes += f' This reference file\'s assembly was Cast - GRCm39, but has been upgraded to Cast/EiJ - GRCm39.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('reference_file', '24', '25')
+@upgrade_step('tabular_file', '21', '22')
+def file_mpra_starr_to_mpra_element(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3467
+    if value.get('file_format_type') == 'mpra_starr':
+        value['file_format_type'] = 'mpra_element'
+        notes = value.get('notes', '')
+        notes += ' The file_format_type of this file was mpra_starr, but has been upgraded to mpra_element.'
+        value['notes'] = notes.strip()
