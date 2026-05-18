@@ -33,7 +33,7 @@ def test_item_summary_property(testapp, content, root):
     assert igvf_item_accession == igvf_item_summary
 
 
-def test_preview_and_release_timestamp(testapp, analysis_step_version):
+def test_preview_and_release_timestamp(testapp, analysis_step_version, base_workflow):
     # Patch to preview (use analysis_step_version because it require other metadata to have status update)
     testapp.patch_json(analysis_step_version['@id'], {'status': 'in progress'})
     testapp.patch_json(analysis_step_version['@id'] + '@@set_status?update=true', {'status': 'preview'}, status=200)
