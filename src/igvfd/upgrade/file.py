@@ -792,8 +792,8 @@ def file_mpra_starr_to_mpra_element(value, system):
         value['notes'] = notes.strip()
 
 
-@upgrade_step('reference_file', '24', '25')
-def reference_file_24_25(value, system):
+@upgrade_step('reference_file', '25', '26')
+def reference_file_25_26(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3480
     files_needing_assembly = ['genome reference', 'genome index', 'transcriptome reference', 'transcriptome index']
     files_needing_transcriptome_annotation = ['transcriptome reference', 'transcriptome index']
@@ -802,12 +802,12 @@ def reference_file_24_25(value, system):
     # assembly upgrade
     if value.get('content_type', '') in files_needing_assembly:
         if 'assembly' not in value:
-            value['assembly'] = 'unknown'
-            notes += ' This reference file lacked `assembly`, and has been automatically assigned `assembly` as `unknown`.'
-    # transcriptome annotation upgrade
+            value['assembly'] = 'custom'
+            notes += ' This reference file lacked `assembly`, and has been automatically assigned `assembly` as `custom`.'
+    # transcriptome annotation upgrade (GENCODE 43 as a placeholder, should have no effect on prod)
     if value.get('content_type', '') in files_needing_transcriptome_annotation:
         if 'transcriptome_annotation' not in value:
-            value['transcriptome_annotation'] = 'unknown'
-            notes += ' This reference file lacked `transcriptome_annotation`, and has been automatically assigned `transcriptome_annotation` as `unknown`.'
+            value['transcriptome_annotation'] = 'GENCODE 43'
+            notes += ' This reference file lacked `transcriptome_annotation`, and has been automatically assigned `transcriptome_annotation` as `GENCODE 43` as a placeholder.'
     if notes.strip() != '':
         value['notes'] = notes.strip()

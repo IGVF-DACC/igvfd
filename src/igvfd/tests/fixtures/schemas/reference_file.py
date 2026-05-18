@@ -359,7 +359,7 @@ def reference_file_v24(reference_file):
 
 
 @pytest.fixture
-def reference_file_v24_genome(award, lab, curated_set_genome):
+def reference_file_v25_genome(award, lab, curated_set_genome):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -373,7 +373,7 @@ def reference_file_v24_genome(award, lab, curated_set_genome):
 
 
 @pytest.fixture
-def reference_file_v24_genome_2(award, lab, curated_set_genome):
+def reference_file_v25_genome_2(award, lab, curated_set_genome):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -388,7 +388,7 @@ def reference_file_v24_genome_2(award, lab, curated_set_genome):
 
 
 @pytest.fixture
-def reference_file_v24_transcriptome(award, lab, curated_set_transcriptome):
+def reference_file_v25_transcriptome(award, lab, curated_set_transcriptome):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -403,7 +403,7 @@ def reference_file_v24_transcriptome(award, lab, curated_set_transcriptome):
 
 
 @pytest.fixture
-def reference_file_v24_transcriptome_2(award, lab, curated_set_transcriptome):
+def reference_file_v25_transcriptome_2(award, lab, curated_set_transcriptome):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],

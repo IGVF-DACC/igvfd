@@ -181,30 +181,30 @@ def test_reference_file_upgrade_24_25(upgrader, reference_file_v24):
     assert 'The file_format_type of this file was mpra_starr, but has been upgraded to mpra_element.' in value['notes']
 
 
-def test_reference_file_upgrade_24_25(upgrader, reference_file_v24_genome, reference_file_v24_genome_2, reference_file_v24_transcriptome, reference_file_v24_transcriptome_2):
+def test_reference_file_upgrade_25_26(upgrader, reference_file_v25_genome, reference_file_v25_genome_2, reference_file_v25_transcriptome, reference_file_v25_transcriptome_2):
     # Genome reference file upgrade
-    value = upgrader.upgrade('reference_file', reference_file_v24_genome, current_version='24', target_version='25')
-    assert value['assembly'] == 'unknown'
-    assert value['schema_version'] == '25'
+    value = upgrader.upgrade('reference_file', reference_file_v25_genome, current_version='25', target_version='26')
+    assert value['assembly'] == 'custom'
+    assert value['schema_version'] == '26'
     assert value['notes'].endswith(
-        'This reference file lacked `assembly`, and has been automatically assigned `assembly` as `unknown`.')
+        'This reference file lacked `assembly`, and has been automatically assigned `assembly` as `custom`.')
 
-    value = upgrader.upgrade('reference_file', reference_file_v24_genome_2, current_version='24', target_version='25')
+    value = upgrader.upgrade('reference_file', reference_file_v25_genome_2, current_version='25', target_version='26')
     assert value['assembly'] == 'GRCh38'
-    assert value['schema_version'] == '25'
+    assert value['schema_version'] == '26'
     assert 'This reference file lacked `assembly`' not in value.get('notes', '')
 
     # Transcriptome reference file upgrade
-    value = upgrader.upgrade('reference_file', reference_file_v24_transcriptome,
-                             current_version='24', target_version='25')
+    value = upgrader.upgrade('reference_file', reference_file_v25_transcriptome,
+                             current_version='25', target_version='26')
     assert value['assembly'] == 'GRCh38'
-    assert value['schema_version'] == '25'
+    assert value['schema_version'] == '26'
     assert value['notes'].endswith(
-        'This reference file lacked `transcriptome_annotation`, and has been automatically assigned `transcriptome_annotation` as `unknown`.')
+        'This reference file lacked `transcriptome_annotation`, and has been automatically assigned `transcriptome_annotation` as `GENCODE 43` as a placeholder.')
 
-    value = upgrader.upgrade('reference_file', reference_file_v24_transcriptome_2,
-                             current_version='24', target_version='25')
+    value = upgrader.upgrade('reference_file', reference_file_v25_transcriptome_2,
+                             current_version='25', target_version='26')
     assert value['assembly'] == 'GRCh38'
     assert value['transcriptome_annotation'] == 'GENCODE 43'
-    assert value['schema_version'] == '25'
+    assert value['schema_version'] == '26'
     assert 'This reference file lacked `transcriptome_annotation`' not in value.get('notes', '')
