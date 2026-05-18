@@ -19,7 +19,6 @@
 * Extend `content_type` enum list to include `cell by peak matrix`.
 * Extend `content_type` enum list to include `cell by position methylation count matrix`.
 * Extend `content_type` enum list to include `cell by UMI count matrix`.
-* Extend `content_type` enum list to include `contact matrix`.
 * Extend `content_type` enum list to include `kallisto cell by gene matrix`.
 * Extend `content_type` enum list to include `mitochondrial variants by cell heteroplasmy matrix`.
 * Extend `content_type` enum list to include `spot by gene matrix`.

@@ -823,7 +823,7 @@ def matrix_file_9_10(value, system):
     content_type = value.get('content_type', '')
     filtered = value.get('filtered', None)
 
-    map = {
+    upgrade_map = {
         ('cell', 'gene', 'annotated sparse gene count matrix'): ('annotated cell by gene matrix', False),
         ('cell', 'gene', 'allele specific sparse gene count matrix'): ('allele specific cell by gene matrix', False),
         ('cell', 'gene', 'filtered feature barcode matrix'): ('cell by gene matrix', True),
@@ -855,18 +855,18 @@ def matrix_file_9_10(value, system):
         ('spot barcode', 'gene expression', 'filtered feature barcode matrix'): ('spot by gene matrix', True),
         ('spot barcode', 'gene expression', 'raw feature barcode matrix'): ('spot by gene matrix', False),
     }
-    if all((principal_dimension, secondary_dimensions, content_type) != key for key in map):
+    if all((principal_dimension, secondary_dimensions, content_type) != key for key in upgrade_map):
         value['content_type'] = 'spot by gene matrix'
         notes += f' This {principal_dimension} by {secondary_dimensions} {content_type} file did not match any combination in the upgrade logic and has been upgraded to spot by gene matrix as a placeholder.'
     else:
-        for key in map:
+        for key in upgrade_map:
             if (principal_dimension, secondary_dimensions, content_type) == key:
-                value['content_type'] = map[key][0]
+                value['content_type'] = upgrade_map[key][0]
                 if filtered is None:
-                    value['filtered'] = map[key][1]
+                    value['filtered'] = upgrade_map[key][1]
                 else:
                     value['filtered'] = filtered
-                filtered_string = 'filtered ' if (map[key][1] or filtered) else ''
-                notes += f' This {principal_dimension} by {secondary_dimensions} {content_type} file was upgraded to {filtered_string}{map[key][0]}.'
+                filtered_string = 'filtered ' if (upgrade_map[key][1] or filtered) else ''
+                notes += f' This {principal_dimension} by {secondary_dimensions} {content_type} file was upgraded to {filtered_string}{upgrade_map[key][0]}.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
