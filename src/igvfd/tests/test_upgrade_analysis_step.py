@@ -52,3 +52,27 @@ def test_analysis_step_upgrade_10_11(upgrader, analysis_step_v10):
     assert len(value['output_content_types']) == 2
     assert set(value['output_content_types']) == {'global differential expression', 'local differential expression'}
     assert value['schema_version'] == '11'
+
+
+def test_analysis_step_upgrade_11_12(upgrader, analysis_step_v11):
+    value = upgrader.upgrade('analysis_step', analysis_step_v11, current_version='11', target_version='12')
+    assert len(value['input_content_types']) == 2
+    assert set(value['input_content_types']) == {'cell by gene matrix', 'kallisto cell by gene matrix'}
+    assert len(value['output_content_types']) == 3
+    assert set(value['output_content_types']) == {'annotated cell by peak matrix',
+                                                  'cell by gene matrix', 'mitochondrial variants by cell heteroplasmy matrix'}
+    assert ('This analysis step\'s input_content_types included annotated multimodal CRISPR matrix, '
+            'but has been upgraded to cell by gene matrix.') in value['notes']
+    assert ('This analysis step\'s input_content_types included kallisto single cell RNAseq output, '
+            'but has been upgraded to kallisto cell by gene matrix.') in value['notes']
+    assert ('This analysis step\'s input_content_types included raw feature barcode matrix, '
+            'but has been upgraded to cell by gene matrix.') in value['notes']
+    assert ('This analysis step\'s output_content_types included mitochondrial DNA heteroplasmy, '
+            'but has been upgraded to mitochondrial variants by cell heteroplasmy matrix.') in value['notes']
+    assert ('This analysis step\'s output_content_types included annotated sparse peak count matrix, '
+            'but has been upgraded to annotated cell by peak matrix.') in value['notes']
+    assert ('This analysis step\'s output_content_types included sparse transcript count matrix, '
+            'but has been upgraded to cell by gene matrix.') in value['notes']
+    assert ('This analysis step\'s output_content_types included filtered feature barcode matrix, '
+            'but has been upgraded to cell by gene matrix.') in value['notes']
+    assert value['schema_version'] == '12'

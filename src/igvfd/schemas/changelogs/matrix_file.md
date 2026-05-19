@@ -1,5 +1,42 @@
 ## Changelog for *`matrix_file.json`*
 
+### Schema version 10
+
+* Remove calculated property `content_summary`.
+* Extend `content_type` enum list to include `allele specific cell by gene matrix`.
+* Extend `content_type` enum list to include `annotated cell by gene matrix`.
+* Extend `content_type` enum list to include `annotated cell by gene and guide matrix`.
+* Extend `content_type` enum list to include `annotated cell by guide matrix`.
+* Extend `content_type` enum list to include `annotated cell by peak matrix`.
+* Extend `content_type` enum list to include `cell by bin contact matrix`.
+* Extend `content_type` enum list to include `cell by bin methylation count matrix`.
+* Extend `content_type` enum list to include `cell by gene matrix`.
+* Extend `content_type` enum list to include `cell by gene and guide matrix`.
+* Extend `content_type` enum list to include `cell by gene and guide and multiplexing oligo matrix`.
+* Extend `content_type` enum list to include `cell by gene and multiplexing oligo matrix`.
+* Extend `content_type` enum list to include `cell by gene and peak matrix`.
+* Extend `content_type` enum list to include `cell by guide matrix`.
+* Extend `content_type` enum list to include `cell by peak matrix`.
+* Extend `content_type` enum list to include `cell by position methylation count matrix`.
+* Extend `content_type` enum list to include `cell by UMI count matrix`.
+* Extend `content_type` enum list to include `kallisto cell by gene matrix`.
+* Extend `content_type` enum list to include `mitochondrial variants by cell heteroplasmy matrix`.
+* Extend `content_type` enum list to include `spot by gene matrix`.
+* Adjust `content_type` enum list to remove `allele specific sparse gene count matrix`.
+* Adjust `content_type` enum list to remove `annotated multimodal CRISPR matrix`.
+* Adjust `content_type` enum list to remove `annotated sparse gene count matrix`.
+* Adjust `content_type` enum list to remove `annotated sparse peak count matrix`.
+* Adjust `content_type` enum list to remove `filtered feature barcode matrix`.
+* Adjust `content_type` enum list to remove `kallisto single cell RNAseq output`.
+* Adjust `content_type` enum list to remove `methylation count matrix`.
+* Adjust `content_type` enum list to remove `mitochondrial DNA heteroplasmy`.
+* Adjust `content_type` enum list to remove `raw feature barcode matrix`.
+* Adjust `content_type` enum list to remove `sample barcode count matrix`.
+* Adjust `content_type` enum list to remove `sparse gene count matrix`.
+* Adjust `content_type` enum list to remove `sparse peak count matrix`.
+* Adjust `content_type` enum list to remove `sparse transcript count matrix`.
+* Adjust `content_type` enum list to remove `transcriptome annotations`.
+
 ### Minor changes since schema version 9
 
 * Extend `collections` enum list to include `PD single cell multiomics`.
