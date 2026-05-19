@@ -807,7 +807,7 @@ class AnalysisSet(FileSet):
                     []
                 )
             )
-        return sorted(preferred_assay_list)
+        return sorted(preferred_assay_list) or None
 
     @calculated_property(
         schema={
@@ -1979,7 +1979,7 @@ class AuxiliarySet(FileSet):
                 measurement_set, '@@object?skip_calculated=true').get('preferred_assay_titles', [])
             if preferred_assays:
                 preferred_assay_titles.update(preferred_assays)
-        return sorted(preferred_assay_titles)
+        return sorted(preferred_assay_titles) or None
 
     @calculated_property(
         schema={
@@ -2337,7 +2337,7 @@ class ConstructLibrarySet(FileSet):
                     file_set, '@@object?skip_calculated=true').get('preferred_assay_titles', [])
                 if preferred_assays:
                     preferred_assay_titles.update(preferred_assays)
-        return sorted(preferred_assay_titles)
+        return sorted(preferred_assay_titles) or None
 
     @calculated_property(
         schema={
