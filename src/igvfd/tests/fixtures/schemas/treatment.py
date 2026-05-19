@@ -298,3 +298,17 @@ def treatment_v11(lab, award):
         'depletion': False,
         'schema_version': '11',
     }
+
+
+@pytest.fixture
+def treatment_v12(lab, award):
+    return {
+        'treatment_term_id': 'CHEBI:24996',
+        'treatment_term_name': 'lactate',
+        'treatment_type': 'chemical',
+        'purpose': 'acute activation',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'depletion': False,
+        'schema_version': '12',
+    }

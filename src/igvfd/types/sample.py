@@ -687,8 +687,8 @@ class Biosample(Sample):
 
             purpose_to_verb = {
                 'activation': 'activated',
-                'acute activation': 'acutely activated',
-                'chronic activation': 'chronically activated',
+                'acute stimulation': 'acutely stimulated',
+                'chronic stimulation': 'chronically stimulated',
                 'agonist': 'agonized',
                 'antagonist': 'antagonized',
                 'control': 'treated with a control',
@@ -958,8 +958,8 @@ class TechnicalSample(Sample):
 
             purpose_to_verb = {
                 'activation': 'activated',
-                'acute activation': 'acutely activated',
-                'chronic activation': 'chronically activated',
+                'acute stimulation': 'acutely stimulated',
+                'chronic stimulation': 'chronically stimulated',
                 'agonist': 'agonized',
                 'antagonist': 'antagonized',
                 'control': 'treated with a control',
