@@ -389,6 +389,7 @@
         "content_type": "transcriptome index",
         "file_set": "igvf-dacc:GRCh38.p14_assembly",
         "assembly": "GRCh38",
+        "transcriptome_annotation": "GENCODE 43",
         "controlled_access": false,
         "analysis_step_version": "igvf-dacc:analysis_step_version_01"
     },

@@ -1,5 +1,10 @@
 ## Changelog for *`treatment.json`*
 
+### Schema version 13
+
+* Adjust `purpose` enum list to rename `acute activation` to `acute stimulation`.
+* Adjust `purpose` enum list to rename `chronic activation` to `chronic stimulation`.
+
 ### Schema version 12
 
 * Diet treatments require `treatment_term_id` `NCIT:C15222`.

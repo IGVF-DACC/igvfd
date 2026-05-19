@@ -130,3 +130,17 @@ def analysis_step_v10(testapp, base_workflow):
         'workflow': base_workflow['@id']
     }
     return item
+
+
+@pytest.fixture
+def analysis_step_v11(testapp, base_workflow):
+    item = {
+        'schema_version': '11',
+        'step_label': 'base-analysis-step',
+        'title': 'Base Analysis Step',
+        'input_content_types': ['annotated multimodal CRISPR matrix', 'kallisto single cell RNAseq output', 'raw feature barcode matrix'],
+        'output_content_types': ['mitochondrial DNA heteroplasmy', 'annotated sparse peak count matrix', 'sparse transcript count matrix', 'filtered feature barcode matrix'],
+        'analysis_step_types': ['matrix generation'],
+        'workflow': base_workflow['@id']
+    }
+    return item

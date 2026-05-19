@@ -302,7 +302,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "21"
+            "default": "22"
         },
         "catalog_adapters": {
             "title": "IGVF Catalog Adapters",

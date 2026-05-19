@@ -10,7 +10,7 @@ def matrix_file(testapp, lab, award, principal_analysis_set, reference_file):
         'file_format': 'hdf5',
         'file_set': principal_analysis_set['@id'],
         'file_size': 8491803,
-        'content_type': 'sparse gene count matrix',
+        'content_type': 'cell by gene matrix',
         'reference_files': [
             reference_file['@id']
         ],
@@ -49,7 +49,7 @@ def matrix_file_with_base_workflow(testapp, lab, award, analysis_set_with_workfl
         'file_format': 'hdf5',
         'file_set': analysis_set_with_workflow['@id'],
         'file_size': 7491803,
-        'content_type': 'sparse gene count matrix',
+        'content_type': 'cell by gene matrix',
         'reference_files': [
             reference_file['@id']
         ],
@@ -69,7 +69,7 @@ def matrix_file_with_base_workflow_2(testapp, lab, award, analysis_set_base, ref
         'file_format': 'hdf5',
         'file_set': analysis_set_base['@id'],
         'file_size': 8491803,
-        'content_type': 'sparse gene count matrix',
+        'content_type': 'cell by gene matrix',
         'reference_files': [
             reference_file['@id']
         ],
@@ -150,4 +150,85 @@ def matrix_file_v7(matrix_file):
         'content_type': 'comprehensive gene count matrix',
         'file_format': 'tar'
     })
+    return item
+
+
+@pytest.fixture
+def matrix_file_v9a(testapp, lab, award, measurement_set, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '7ed8af950235c0be16849c41ecc5c7c5',
+        'file_format': 'h5ad',
+        'file_set': measurement_set['@id'],
+        'file_size': 512355134,
+        'content_type': 'sparse gene count matrix',
+        'reference_files': [
+            reference_file['@id']
+        ],
+        'principal_dimension': 'cell',
+        'secondary_dimensions': ['gene'],
+        'schema_version': '9'
+    }
+    return item
+
+
+@pytest.fixture
+def matrix_file_v9b(testapp, lab, award, measurement_set, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '7ed8af950235c0be16849c41ecc5c7c5',
+        'file_format': 'h5ad',
+        'file_set': measurement_set['@id'],
+        'file_size': 512355134,
+        'content_type': 'sparse gene count matrix',
+        'reference_files': [
+            reference_file['@id']
+        ],
+        'filtered': True,
+        'principal_dimension': 'cell',
+        'secondary_dimensions': ['gene'],
+        'schema_version': '9'
+    }
+    return item
+
+
+@pytest.fixture
+def matrix_file_v9c(testapp, lab, award, measurement_set, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '5c7ed8af95c4ce16649c41ebb02358c7',
+        'file_format': 'h5ad',
+        'file_set': measurement_set['@id'],
+        'file_size': 512355134,
+        'content_type': 'filtered feature barcode matrix',
+        'reference_files': [
+            reference_file['@id']
+        ],
+        'principal_dimension': 'cell',
+        'secondary_dimensions': ['gene expression', 'peak'],
+        'schema_version': '9',
+    }
+    return item
+
+
+@pytest.fixture
+def matrix_file_v9d(testapp, lab, award, measurement_set, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'cc5c7ed8af98a5dbc9be16849c41e880',
+        'file_format': 'h5ad',
+        'file_set': measurement_set['@id'],
+        'file_size': 512355134,
+        'content_type': 'contact matrix',
+        'reference_files': [
+            reference_file['@id']
+        ],
+        'principal_dimension': 'time',
+        'secondary_dimensions': ['peak'],
+        'schema_version': '9'
+    }
     return item

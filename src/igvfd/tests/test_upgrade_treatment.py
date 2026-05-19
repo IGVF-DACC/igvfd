@@ -87,3 +87,10 @@ def test_treatment_upgrade_11_12(upgrader, treatment_v11):
     assert value['schema_version'] == '12'
     assert value['treatment_term_id'] == 'NCIT:C15222'
     assert 'Diet treatment_term_id was upgraded from NTR:0001001 to NCIT:C15222.' in value['notes']
+
+
+def test_treatment_upgrade_12_13(upgrader, treatment_v12):
+    value = upgrader.upgrade('treatment', treatment_v12, current_version='12', target_version='13')
+    assert value['schema_version'] == '13'
+    assert value['purpose'] == 'acute stimulation'
+    assert 'Purpose was renamed from `acute activation` to `acute stimulation`.' in value['notes']

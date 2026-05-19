@@ -241,7 +241,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "12"
+            "default": "13"
         },
         "documents": {
             "description": "Documents that describe the treatment protocol details.",
@@ -323,8 +323,8 @@
                 {
                     "enum": [
                         "activation",
-                        "acute activation",
-                        "chronic activation",
+                        "acute stimulation",
+                        "chronic stimulation",
                         "agonist",
                         "antagonist",
                         "control",
@@ -343,8 +343,8 @@
             ],
             "enum_descriptions": {
                 "activation": "The treatment is known to activate a pathway or modification in the biosample.",
-                "acute activation": "A short-term treatment that rapidly activates a pathway or modification in the biosample for a limited duration.",
-                "chronic activation": "A prolonged treatment that persistently activates a pathway or modification in the biosample over an extended period of time.",
+                "acute stimulation": "A short-term treatment that rapidly stimulates a pathway or modification in the biosample for a limited duration.",
+                "chronic stimulation": "A prolonged treatment that persistently stimulates a pathway or modification in the biosample over an extended period of time.",
                 "agonist": "A substance which is known to initiate a physiological response when combined with a receptor.",
                 "antagonist": "A substance that is known to interfere with or inhibits the physiological action of another.",
                 "control": "A treatment applied to a sample for control purposes.",

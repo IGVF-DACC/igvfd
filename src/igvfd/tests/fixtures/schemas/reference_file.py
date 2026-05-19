@@ -10,7 +10,9 @@ def reference_file(testapp, lab, award, principal_analysis_set):
         'file_format': 'gtf',
         'file_set': principal_analysis_set['@id'],
         'content_type': 'transcriptome reference',
-        'controlled_access': False
+        'controlled_access': False,
+        'assembly': 'GRCh38',
+        'transcriptome_annotation': 'GENCODE 47'
     }
     return testapp.post_json('/reference_file', item, status=201).json['@graph'][0]
 
@@ -24,7 +26,9 @@ def reference_file_two(testapp, lab, award, principal_analysis_set):
         'file_format': 'gtf',
         'file_set': principal_analysis_set['@id'],
         'content_type': 'transcriptome reference',
-        'controlled_access': False
+        'controlled_access': False,
+        'assembly': 'GRCh38',
+        'transcriptome_annotation': 'GENCODE 43'
     }
     return testapp.post_json('/reference_file', item, status=201).json['@graph'][0]
 
@@ -39,7 +43,8 @@ def reference_file_with_transcriptome(testapp, lab, award, principal_analysis_se
         'file_set': principal_analysis_set['@id'],
         'content_type': 'transcriptome reference',
         'controlled_access': False,
-        'transcriptome_annotation': 'GENCODE 43'
+        'transcriptome_annotation': 'GENCODE 43',
+        'assembly': 'GRCh38'
     }
     return testapp.post_json('/reference_file', item, status=201).json['@graph'][0]
 
@@ -55,6 +60,20 @@ def reference_file_with_assembly(testapp, lab, award, principal_analysis_set):
         'content_type': 'genome reference',
         'controlled_access': False,
         'assembly': 'GRCh38'
+    }
+    return testapp.post_json('/reference_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def reference_file_with_guide_rna_sequences(testapp, lab, award, principal_analysis_set):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '1cedee7489b33214e2b93a54ca9db7be',
+        'file_format': 'tsv',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'exclusion list',
+        'controlled_access': False
     }
     return testapp.post_json('/reference_file', item, status=201).json['@graph'][0]
 
@@ -325,4 +344,75 @@ def reference_file_v23(reference_file):
         'schema_version': '23',
         'assembly': 'Cast - GRCm39'
     })
+    return item
+
+
+@pytest.fixture
+def reference_file_v24(reference_file):
+    item = reference_file.copy()
+    item.update({
+        'schema_version': '24',
+        'file_format': 'bed',
+        'file_format_type': 'mpra_starr'
+    })
+    return item
+
+
+@pytest.fixture
+def reference_file_v25_genome(award, lab, curated_set_genome):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'ea8ad11ba4451b933754b38cf3ab8515',
+        'file_format': 'fasta',
+        'file_set': curated_set_genome['@id'],
+        'content_type': 'genome reference',
+        'controlled_access': False
+    }
+    return item
+
+
+@pytest.fixture
+def reference_file_v25_genome_2(award, lab, curated_set_genome):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'ea8ad11ba4451b933754b38cf3ab8515',
+        'file_format': 'fasta',
+        'file_set': curated_set_genome['@id'],
+        'content_type': 'genome index',
+        'controlled_access': False,
+        'assembly': 'GRCh38'
+    }
+    return item
+
+
+@pytest.fixture
+def reference_file_v25_transcriptome(award, lab, curated_set_transcriptome):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '8c60208cf65df50ac4513202286fba4b',
+        'file_format': 'gtf',
+        'file_set': curated_set_transcriptome['@id'],
+        'content_type': 'transcriptome reference',
+        'controlled_access': False,
+        'assembly': 'GRCh38'
+    }
+    return item
+
+
+@pytest.fixture
+def reference_file_v25_transcriptome_2(award, lab, curated_set_transcriptome):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '8c60208cf65df50ac4513202286fba4b',
+        'file_format': 'gtf',
+        'file_set': curated_set_transcriptome['@id'],
+        'content_type': 'transcriptome index',
+        'controlled_access': False,
+        'assembly': 'GRCh38',
+        'transcriptome_annotation': 'GENCODE 43'
+    }
     return item

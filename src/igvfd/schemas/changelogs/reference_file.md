@@ -1,5 +1,14 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema change 26
+
+* Require `assembly` if `content_type` is `genome reference` or `genome index`.
+* Require `assembly` and `transcriptome_annotation` if `content_type` is `transcriptome reference` or `transcriptome index`.
+
+### Schema version 25
+
+* Adjust `file_format_type` enum list to remove `mpra_starr`.
+
 ### Schema change 24
 
 * Extend `assembly` enum list to include `129S1/SvImJ - GRCm39`.

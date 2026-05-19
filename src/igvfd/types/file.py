@@ -848,19 +848,6 @@ class MatrixFile(File):
         return keys
 
     @calculated_property(
-        define=True,
-        schema={
-            'title': 'Content Summary',
-            'type': 'string',
-            'description': 'A summary of the data in the matrix file.',
-            'notSubmittable': True
-        }
-    )
-    def content_summary(self, principal_dimension, secondary_dimensions, content_type):
-        secondary_dimensions_str = f'{" by ".join(secondary_dimensions)}'
-        return f'{principal_dimension} by {secondary_dimensions_str} in {content_type}'
-
-    @calculated_property(
         schema={
             'title': 'Summary',
             'type': 'string',
@@ -868,7 +855,7 @@ class MatrixFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, content_summary, file_set, filtered=None, analysis_step_version=None):
+    def summary(self, request, content_type, file_set, filtered=None, analysis_step_version=None):
         file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
@@ -888,7 +875,7 @@ class MatrixFile(File):
         elif filtered is False:
             filtered_phrase = 'unfiltered'
         return ' '.join(
-            [x for x in [predicted, filtered_phrase, content_summary, software_version_phrase] if x is not None]
+            [x for x in [predicted, filtered_phrase, content_type, software_version_phrase] if x is not None]
         )
 
     @calculated_property(

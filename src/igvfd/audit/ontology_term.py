@@ -12,6 +12,12 @@ from .formatter import (
     space_in_words,
 )
 
+# term_id -> term_name values accepted even when they differ from ontology.json "name".
+TERM_NAME_ONTOLOGY_MISMATCH_ALLOWLIST = {
+    'UBERON:0002346': frozenset({'neuroectoderm'}),
+    'EFO:0009747': frozenset({'GM25256 (WTC-11)'}),
+}
+
 
 def audit_ntr_term_id(value, system):
     '''
@@ -82,6 +88,9 @@ def audit_inconsistent_ontology_term(value, system):
     ontology_entry = ontology[term_id]
     ontology_term_name = ontology_entry.get('name')
     if ontology_term_name == term_name:
+        return
+    allowed = TERM_NAME_ONTOLOGY_MISMATCH_ALLOWLIST.get(term_id)
+    if allowed is not None and term_name in allowed:
         return
 
     audit_message = get_audit_message(audit_inconsistent_ontology_term)

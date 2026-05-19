@@ -361,3 +361,20 @@ def tabular_file_v20e(testapp, lab, award, principal_analysis_set):
         'schema_version': '20'
     }
     return item
+
+
+@pytest.fixture
+def tabular_file_v21(lab, award, principal_analysis_set):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'status': 'in progress',
+        'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
+        'file_format': 'bed',
+        'file_format_type': 'mpra_starr',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'peaks',
+        'controlled_access': False,
+        'schema_version': '21'
+    }
+    return item
