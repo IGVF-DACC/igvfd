@@ -62,3 +62,49 @@ def test_audit_ntr_skips_inconsistent_ontology_term(testapp, assay_term_ntr):
     assert not any(
         error['category'] == 'inconsistent ontology term' for error in errors
     )
+
+
+def test_audit_inconsistent_ontology_term_skipped_for_allowlisted_neuroectoderm(testapp):
+    res = testapp.post_json(
+        '/sample_term',
+        {'term_id': 'UBERON:0002346', 'term_name': 'neuroectoderm'},
+        status=201,
+    ).json['@graph'][0]
+    audit = testapp.get(res['@id'] + '@@audit').json['audit']
+    assert not any(
+        error['category'] == 'inconsistent ontology term'
+        for error in audit.get('ERROR', [])
+    )
+
+
+def test_audit_inconsistent_ontology_term_skipped_for_allowlisted_gm25256_wtc11(testapp):
+    res = testapp.post_json(
+        '/sample_term',
+        {'term_id': 'EFO:0009747', 'term_name': 'GM25256 (WTC-11)'},
+        status=201,
+    ).json['@graph'][0]
+    audit = testapp.get(res['@id'] + '@@audit').json['audit']
+    assert not any(
+        error['category'] == 'inconsistent ontology term'
+        for error in audit.get('ERROR', [])
+    )
+
+
+def test_audit_inconsistent_ontology_term_still_triggered_for_non_allowlisted_uberon_2346(
+    testapp,
+):
+    res = testapp.post_json(
+        '/sample_term',
+        {'term_id': 'UBERON:0002346', 'term_name': 'neuroectoderm'},
+        status=201,
+    ).json['@graph'][0]
+    testapp.patch_json(
+        res['@id'],
+        {'term_name': 'ontology term name does not match reference'},
+        status=200,
+    )
+    audit = testapp.get(res['@id'] + '@@audit').json['audit']
+    assert any(
+        error['category'] == 'inconsistent ontology term'
+        for error in audit.get('ERROR', [])
+    )
