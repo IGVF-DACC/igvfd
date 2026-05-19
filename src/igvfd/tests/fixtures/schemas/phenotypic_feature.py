@@ -65,6 +65,21 @@ def phenotypic_feature_with_quantity(
 
 
 @pytest.fixture
+def phenotypic_feature_parkinsons(
+    testapp,
+    phenotype_term_parkinsons,
+    award,
+    lab
+):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'feature': phenotype_term_parkinsons['@id']
+    }
+    return testapp.post_json('/phenotypic_feature', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def phenotypic_feature_v1(phenotypic_feature_basic):
     item = phenotypic_feature_basic.copy()
     item.update({

@@ -165,7 +165,7 @@ def get_preferred_assay_slims(preferred_assay_titles):
         'scCRISPR screen': ['CRISPR screen', 'single cell'],
         'Perturb-seq': ['CRISPR screen', 'single cell'],
         'Parse Perturb-seq': ['CRISPR screen', 'single cell'],
-        'CC-Perturb-seq':	['CRISPR screen	single cell'],
+        'CC-Perturb-seq': ['CRISPR screen single cell'],
         'TAP-seq': ['CRISPR screen', 'single cell'],
         'CROP-seq': ['CRISPR screen', 'single cell'],
         'Multiome Perturb-seq': ['CRISPR screen', 'single cell', 'multiome'],
@@ -175,8 +175,8 @@ def get_preferred_assay_slims(preferred_assay_titles):
         'MAVE': ['protein scanning'],
         'snMCT-seq': ['gene expression', 'methylation', 'single cell', 'multiome'],
         'snM3C-seq': ['methylation', '3D chromatin structure', 'single cell', 'multiome'],
-        'VAMP-seq':	['protein scanning'],
-        'VAMP-seq (MultiSTEP)':	['protein scanning'],
+        'VAMP-seq': ['protein scanning'],
+        'VAMP-seq (MultiSTEP)': ['protein scanning'],
         'LABEL-seq': ['protein scanning'],
         'Hi-C': ['3D chromatin structure'],
         'HiCAR': ['3D chromatin structure', 'chromatin accessibility'],
@@ -199,6 +199,95 @@ def get_preferred_assay_slims(preferred_assay_titles):
         return slims
     else:
         return None
+
+
+def join_multiple_terms(term_lists):
+    '''Format disease phrase based on number of disease terms.'''
+    if not term_lists:
+        return ''
+    if len(term_lists) == 1:
+        return term_lists[0]
+    if len(term_lists) == 2:
+        return f'{term_lists[0]} and 1 other phenotype'
+    return f'{term_lists[0]} and {len(term_lists) - 1} more'
+
+
+def get_disease_terms_from_phenotypic_features(request, sample_object, is_pd_collection=False):
+    '''Get disease terms from phenotypic features.'''
+    disease_prefixes = ('DOID:', 'EFO:', 'HP:', 'MONDO:')
+    disease_terms = []
+    for phenotypic_feature in sample_object.get('phenotypic_features', []):
+        feature_obj = request.embed(phenotypic_feature, '@@object?skip_calculated=true')
+        # Disease-only features have no quality/quantity annotations.
+        if 'quality' in feature_obj or 'quantity' in feature_obj:
+            continue
+        feature_id = feature_obj.get('feature')
+        if not feature_id:
+            continue
+        feature_term_obj = request.embed(feature_id, '@@object?skip_calculated=true')
+        # Check against term_id prefix to futher filter out non-disease ones
+        term_id = feature_term_obj.get('term_id', '')
+        term_name = feature_term_obj.get('term_name', '')
+        if term_name and any(term_id.startswith(prefix) for prefix in disease_prefixes):
+            disease_terms.append(term_name)
+    unique_disease_terms = sorted(set(disease_terms))
+    if not is_pd_collection:
+        return join_multiple_terms(unique_disease_terms)
+    if 'Parkinson\'s disease' not in unique_disease_terms:
+        return 'no Parkinson\'s'
+    else:
+        return 'Parkinson\'s'
+
+
+def get_donors_info_for_sample_summary(request, donors):
+    donor_metadata = {}
+    for donor in donors:
+        donor_object = request.embed(donor, '@@object?skip_calculated=true')
+        accession = donor_object.get('accession')
+        taxa = donor_object.get('taxa')
+        donor_metadata.setdefault(taxa, {}).setdefault('accessions', set()).add(accession)
+        if taxa == 'Mus musculus':
+            strain = donor_object.get('strain', '')
+            if strain:
+                donor_metadata[taxa].setdefault('strains', set()).add(strain)
+    if len(donor_metadata) > 1:
+        mixed_donor_count = {taxa: len(metadata.get('accessions', [])) for taxa, metadata in donor_metadata.items()}
+        mixed_donor_phrase = ', '.join(
+            [f'{count} {taxa} donor(s)' for taxa, count in sorted(mixed_donor_count.items())])
+        return f'from {mixed_donor_phrase}'
+    for taxa, metadata in donor_metadata.items():
+        accessions = sorted(metadata.get('accessions', []))
+        if len(accessions) <= 2:
+            accession_phrase = ' and '.join(accessions)
+        else:
+            accession_phrase = f'{", ".join(accessions[:2])} and {len(accessions) - 2} more'
+        if taxa != 'Mus musculus':
+            return f'from donor(s) {accession_phrase}'
+        # Treat mouse
+        strains = sorted(metadata.get('strains', []))
+        if strains:
+            if len(strains) <= 2:
+                strain_phrase = ' and '.join(strains)
+            else:
+                strain_phrase = f'{", ".join(strains[:2])}, and {len(strains) - 2} more'
+        return f'from {accession_phrase} mice of {strain_phrase} strain(s)'
+
+
+def get_oexpr_from_cls_for_samp_summary(request, construct_library_sets):
+    '''Get overexpression gene symbols from construct library sets.'''
+    if not construct_library_sets:
+        return ''
+    oexpr_genes = set()
+    for cls_set in construct_library_sets:
+        cls_object = request.embed(cls_set, '@@object?skip_calculated=true')
+        if cls_object.get('file_set_type') == 'overexpression vector library' and cls_object.get('scope') == 'genes':
+            small_gene_list = cls_object.get('small_scale_gene_list', [])
+            if small_gene_list:
+                for gene in small_gene_list:
+                    gene_object = request.embed(gene, '@@object?skip_calculated=true')
+                    oexpr_genes.add(gene_object.get('symbol', ''))
+    oexpr_genes = sorted(list(oexpr_genes))
+    return f'overexpressing {join_multiple_terms(oexpr_genes)}' if oexpr_genes else ''
 
 
 EMBEDDED_FILE_FIELDS = [
@@ -928,6 +1017,7 @@ class AnalysisSet(FileSet):
 
     @calculated_property(
         condition='samples',
+        define=True,
         schema={
             'title': 'Donors',
             'description': 'The donors of the samples associated with this analysis set.',
@@ -989,33 +1079,17 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def sample_summary(self, request, samples=None):
+    def sample_summary(self, request, samples=None, donors=None, construct_library_sets=None, collections=None):
+        corces_special_collection = 'PD single cell multiomics'
         taxa = set()
         sample_classification_term_target = dict()
-        treatment_purposes = set()
-        treatment_summaries = set()
-        growth_mediums = set()
-        differentiation_times = set()
-        library_delivery_times = set()
-        construct_library_set_types = set()
-        modification_summaries = set()
-        sorted_from = set()
-        targeted_genes_for_sorting = set()
-        cellular_sub_pools = set()
 
-        treatment_purpose_to_adjective = {
-            'activation': 'activated',
-            'acute activation': 'acutely activated',
-            'chronic activation': 'chronically activated',
-            'agonist': 'agonized',
-            'antagonist': 'antagonized',
-            'control': 'treated with a control',
-            'differentiation': 'differentiated',
-            'de-differentiation': 'de-differentiated',
-            'perturbation': 'perturbed',
-            'selection': 'selected',
-            'stimulation': 'stimulated'
-        }
+        # Is it PD collection
+        if collections:
+            is_pd_collection = any(collection for collection in collections
+                                   if collection == corces_special_collection)
+        else:
+            is_pd_collection = False
 
         two_classification_cases = {
             'differentiated cell specimen, pooled cell specimen': ['pooled differentiated cell specimen'],
@@ -1051,6 +1125,34 @@ class AnalysisSet(FileSet):
             if classification not in sample_classification_term_target:
                 sample_classification_term_target[classification] = set()
 
+            # Add disease terms to the sample phrase
+            disease_phrase = ''
+            disease_terms_by_sample_term = {}
+            if sample_object.get('multiplexed_samples'):
+                for multiplexed_sample in sample_object['multiplexed_samples']:
+                    multiplexed_sample_object = request.embed(
+                        multiplexed_sample, '@@object?skip_calculated=true'
+                    )
+                    diseased_phenotypic_features = get_disease_terms_from_phenotypic_features(
+                        request, multiplexed_sample_object, is_pd_collection
+                    )
+                    if not diseased_phenotypic_features:
+                        continue
+                    for sample_term in multiplexed_sample_object.get('sample_terms', []):
+                        sample_term_object = request.embed(sample_term, '@@object?skip_calculated=true')
+                        term_name = sample_term_object.get('term_name')
+                        if not term_name:
+                            continue
+                        if term_name not in disease_terms_by_sample_term:
+                            disease_terms_by_sample_term[term_name] = set()
+                        disease_terms_by_sample_term[term_name].add(diseased_phenotypic_features)
+            else:
+                diseased_phenotypic_features = get_disease_terms_from_phenotypic_features(
+                    request, sample_object, is_pd_collection)
+                if diseased_phenotypic_features:
+                    disease_phrase = f' with {diseased_phenotypic_features}'
+
+            # Compute sample term and targeted sample terms, with diseases added
             for term in sample_object['sample_terms']:
                 sample_term_object = request.embed(term, '@@object?skip_calculated=true')
                 sample_phrase = f"{sample_term_object['term_name']}"
@@ -1069,47 +1171,22 @@ class AnalysisSet(FileSet):
                     targeted_sample_term_object = request.embed(
                         sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
                     targeted_sample_suffix = f"induced to {targeted_sample_term_object['term_name']}"
-                if targeted_sample_suffix:
-                    sample_phrase = f'{sample_phrase} {targeted_sample_suffix}'
-                sample_classification_term_target[classification].add(sample_phrase)
 
-            if 'time_post_change' in sample_object:
-                time = sample_object['time_post_change']
-                time_unit = sample_object['time_post_change_units']
-                differentiation_times.add(f'{time} {time_unit}')
-            if 'modifications' in sample_object:
-                for modification in sample_object['modifications']:
-                    modification_object = request.embed(
-                        modification, '@@object_with_select_calculated_properties?field=summary')
-                    modification_summaries.add(modification_object['summary'])
-            if 'construct_library_sets' in sample_object:
-                for construct_library_set in sample_object['construct_library_sets']:
-                    cls_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
-                    construct_library_set_types.add(cls_object['file_set_type'])
-            if 'time_post_library_delivery' in sample_object:
-                time = sample_object['time_post_library_delivery']
-                time_unit = sample_object['time_post_library_delivery_units']
-                library_delivery_times.add(f'{time} {time_unit}')
-            if 'sorted_from' in sample_object:
-                sorted_from.add(True)
-                for file_set in sample_object['file_sets']:
-                    if file_set.startswith('/measurement-sets/'):
-                        fileset_object = request.embed(file_set, '@@object?skip_calculated=true')
-                        if 'targeted_genes' in fileset_object:
-                            for gene in fileset_object['targeted_genes']:
-                                gene_object = request.embed(gene, '@@object?skip_calculated=true')
-                                targeted_genes_for_sorting.add(gene_object['symbol'])
-            if 'growth_medium' in sample_object:
-                growth_mediums.add(sample_object['growth_medium'])
-            if 'treatments' in sample_object:
-                for treatment in sample_object['treatments']:
-                    treatment_object = request.embed(
-                        treatment, '@@object_with_select_calculated_properties?field=summary')
-                    treatment_purposes.add(treatment_purpose_to_adjective.get(treatment_object['purpose'], ''))
-                    truncated_summary = treatment_object['summary'].split(' of ')[1]
-                    treatment_summaries.add(truncated_summary)
-            if 'cellular_sub_pool' in sample_object:
-                cellular_sub_pools.add(sample_object['cellular_sub_pool'])
+                term_disease_phrase = ''
+                if sample_object.get('multiplexed_samples'):
+                    sample_term_diseases = sorted(
+                        disease_terms_by_sample_term.get(sample_term_object.get('term_name'), set())
+                    )
+                    if sample_term_diseases:
+                        term_disease_phrase = f' with {join_multiple_terms(sample_term_diseases)}'
+                else:
+                    term_disease_phrase = disease_phrase
+
+                if targeted_sample_suffix:
+                    sample_phrase = f'{sample_phrase}{term_disease_phrase} {targeted_sample_suffix}'
+                else:
+                    sample_phrase = f'{sample_phrase}{term_disease_phrase}'
+                sample_classification_term_target[classification].add(sample_phrase)
 
         all_sample_terms = []
         for classification in sorted(sample_classification_term_target.keys()):
@@ -1126,11 +1203,21 @@ class AnalysisSet(FileSet):
             ):
                 # Insert the classification before the targeted_sample_term if it exists.
                 if 'induced to' in terms_by_classification:
-                    terms_by_classification = terms_by_classification.replace(
-                        'induced to', f'{classification} induced to'
-                    )
+                    if ' with ' in terms_by_classification:
+                        terms_by_classification = terms_by_classification.replace(
+                            ' with ', f' {classification} with ', 1
+                        )
+                    else:
+                        terms_by_classification = terms_by_classification.replace(
+                            'induced to', f'{classification} induced to'
+                        )
                 else:
-                    terms_by_classification = f'{terms_by_classification} {classification}'
+                    if ' with ' in terms_by_classification:
+                        terms_by_classification = terms_by_classification.replace(
+                            ' with ', f' {classification} with ', 1
+                        )
+                    else:
+                        terms_by_classification = f'{terms_by_classification} {classification}'
             elif any(x in terms_by_classification for x in [
                     'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen', 'primary cell']
             ):
@@ -1143,49 +1230,37 @@ class AnalysisSet(FileSet):
 
             all_sample_terms.append(terms_by_classification)
 
-        differentiation_time_phrase = ''
-        if differentiation_times:
-            differentiation_time_phrase = f'at {", ".join(sorted(differentiation_times))}(s) post change'
-        growth_mediums_phrase = ''
-        if growth_mediums:
-            growth_mediums_phrase = f"grown in {', '.join(sorted(growth_mediums))}"
-        treatments_phrase = ''
-        if treatment_purposes and treatment_summaries:
-            treatments_phrase = f"{', '.join(sorted(treatment_purposes))} with {', '.join(sorted(treatment_summaries))}"
-        modification_summary_phrase = ''
-        if modification_summaries:
-            modification_summaries = sorted(modification_summaries)
-            modification_summary_phrase = f'modified with {", ".join(modification_summaries)}'
-        construct_library_set_type_phrase = ''
-        if construct_library_set_types:
-            construct_library_set_type_phrase = f'transfected with a {", ".join(construct_library_set_types)}'
-            if library_delivery_times:
-                construct_library_set_type_phrase = f'{construct_library_set_type_phrase} and measured at {", ".join(sorted(library_delivery_times))}(s) post-transfection'
-        sorted_phrase = ''
-        if sorted_from:
-            if targeted_genes_for_sorting:
-                sorted_phrase = f'sorted on expression of {", ".join(sorted(targeted_genes_for_sorting))}'
-            else:
-                sorted_phrase = f'sorted into bins'
-        cellular_sub_pool_phrase = ''
-        if cellular_sub_pools:
-            cellular_sub_pool_phrase = f'cellular sub pool(s): {", ".join(sorted(cellular_sub_pools))}'
+        # Donor phrase
+        donor_phrase = ''
+        donor_phrase = get_donors_info_for_sample_summary(request, donors)
 
+        # Taxa phrase
         taxa_phrase = f'{", ".join([x for x in taxa if x != ""])}'
-        additional_phrases = [
-            differentiation_time_phrase,
-            growth_mediums_phrase,
-            treatments_phrase,
-            modification_summary_phrase,
-            construct_library_set_type_phrase,
-            sorted_phrase,
-            cellular_sub_pool_phrase
-        ]
-        additional_phrases_joined = ', '.join([x for x in additional_phrases if x != ''])
-        additional_phrase_suffix = ''
-        if additional_phrases_joined:
-            additional_phrase_suffix = f', {additional_phrases_joined}'
-        summary = f"{taxa_phrase} {', '.join(all_sample_terms)}{additional_phrase_suffix}".strip()
+
+        # Overexpression phrase
+        overexpression_phrase = ''
+        overexpression_phrase = get_oexpr_from_cls_for_samp_summary(request, construct_library_sets)
+
+        # Constructing the final summary, putting ovexpr last
+        summary = ' '.join(filter(None, [taxa_phrase, ', '.join(all_sample_terms), donor_phrase])).strip()
+        if overexpression_phrase:
+            summary = f'{summary}, {overexpression_phrase}'
+
+        # If Corces PD collection
+        if is_pd_collection:
+            summary = f'Parkinson\'s collection of {summary}'
+
+        # Rename species names
+        taxa_rename_map = {
+            'Homo sapiens': 'human',
+            'Mus musculus': 'mouse',
+            'Saccharomyces cerevisiae': 'yeast'
+        }
+        for taxa_name, renamed_taxa in taxa_rename_map.items():
+            summary = summary.replace(taxa_name, renamed_taxa)
+
+        if summary:
+            summary = f'{summary[0].upper()}{summary[1:]}'
 
         return summary
 
