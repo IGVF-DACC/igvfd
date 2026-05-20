@@ -410,6 +410,9 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
+                            "crispr_readout": {
+                                "type": "keyword"
+                            },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"
                             },
@@ -787,6 +790,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"

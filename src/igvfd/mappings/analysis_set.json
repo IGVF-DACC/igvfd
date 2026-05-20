@@ -462,6 +462,9 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
+                            "crispr_readout": {
+                                "type": "keyword"
+                            },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"
                             },
@@ -1165,15 +1168,15 @@
                             "control_types": {
                                 "type": "keyword"
                             },
-                            "crispr_readout": {
-                                "type": "keyword"
-                            },
                             "controlled_access": {
                                 "store": true,
                                 "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"
@@ -2459,15 +2462,15 @@
                             "control_types": {
                                 "type": "keyword"
                             },
-                            "crispr_readout": {
-                                "type": "keyword"
-                            },
                             "controlled_access": {
                                 "store": true,
                                 "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"

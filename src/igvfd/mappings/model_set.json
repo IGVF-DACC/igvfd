@@ -1,6 +1,6 @@
 {
-    "hash": "63c28b7d8d7b589919002b9c7bd86051",
-    "index_name": "model_set_63c28b7d",
+    "hash": "a8451e61fca3a629d6d3b9dac16095e3",
+    "index_name": "model_set_a8451e61",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -655,6 +655,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"
@@ -1365,6 +1368,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"
@@ -2491,6 +2497,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"

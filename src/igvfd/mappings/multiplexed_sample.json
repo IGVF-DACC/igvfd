@@ -1,6 +1,6 @@
 {
-    "hash": "28a5256d1a17db8eb2a81b982344291d",
-    "index_name": "multiplexed_sample_28a5256d",
+    "hash": "593c22e241b912bda488919c35fcc330",
+    "index_name": "multiplexed_sample_593c22e2",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1069,6 +1069,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"

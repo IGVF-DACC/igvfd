@@ -1,6 +1,6 @@
 {
-    "hash": "e35c4757a104dcf44470e8c9511aad84",
-    "index_name": "tissue_e35c4757",
+    "hash": "33a9eeb590e15ebb47a58ac8994b5257",
+    "index_name": "tissue_33a9eeb5",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1076,6 +1076,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"

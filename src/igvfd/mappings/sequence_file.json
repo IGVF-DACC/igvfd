@@ -1,6 +1,6 @@
 {
-    "hash": "ee7ed3e8a371627db95f2113634fdebb",
-    "index_name": "sequence_file_ee7ed3e8",
+    "hash": "d37a09f1739e60a01f6a77853a6b168d",
+    "index_name": "sequence_file_d37a09f1",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -772,6 +772,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"

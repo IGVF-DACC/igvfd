@@ -1,6 +1,6 @@
 {
-    "hash": "0c4bdd66d9da59b4f90770aeed60d6c4",
-    "index_name": "signal_file_0c4bdd66",
+    "hash": "b6df67321613fa71b7b4b7af283c0795",
+    "index_name": "signal_file_b6df6732",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -774,6 +774,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"

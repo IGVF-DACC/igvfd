@@ -1,6 +1,6 @@
 {
-    "hash": "337fca8a897b58d44e367f0266af7083",
-    "index_name": "measurement_set_337fca8a",
+    "hash": "264b842b6f0d96b1fa089fbb7634faac",
+    "index_name": "measurement_set_264b842b",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -297,6 +297,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"
@@ -694,6 +697,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"
@@ -1405,6 +1411,9 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
+                            "crispr_readout": {
+                                "type": "keyword"
+                            },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"
                             },
@@ -1783,6 +1792,9 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
+                            "crispr_readout": {
+                                "type": "keyword"
+                            },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"
                             },
@@ -2085,6 +2097,10 @@
                     },
                     "creation_timestamp": {
                         "type": "date"
+                    },
+                    "crispr_readout": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
                     },
                     "data_use_limitation_summaries": {
                         "type": "keyword"
@@ -2990,6 +3006,9 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
+                            "crispr_readout": {
+                                "type": "keyword"
+                            },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"
                             },
@@ -3576,6 +3595,9 @@
                                     },
                                     "creation_timestamp": {
                                         "type": "date"
+                                    },
+                                    "crispr_readout": {
+                                        "type": "keyword"
                                     },
                                     "data_use_limitation_summaries": {
                                         "type": "keyword"

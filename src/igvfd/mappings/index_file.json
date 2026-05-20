@@ -1,6 +1,6 @@
 {
-    "hash": "c8c528d802775059cebaeec25b3b17f1",
-    "index_name": "index_file_c8c528d8",
+    "hash": "2489ae5a837125c3a118fdaf25fdad4f",
+    "index_name": "index_file_2489ae5a",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -775,6 +775,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"
