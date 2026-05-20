@@ -6,6 +6,10 @@
 
 ### Minor changes since schema version 21
 
+* Extend `content_type` enum list to include `post-segmentation transcript and cell locations`.
+* Extend `content_type` enum list to include `spatial transcriptomics cell metadata`.
+* Extend `content_type` enum list to include `spatial transcriptomics slide-level transcripts`.
+* Extend `content_type` enum list to include `spatial transcriptomics slide-level cell coordinates`.
 * Extend `collections` enum list to include `PD single cell multiomics`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.2`.
 * Extend `content_type` enum list to include `cis-trans regulatory differences`.

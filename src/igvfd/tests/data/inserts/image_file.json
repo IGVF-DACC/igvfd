@@ -54,5 +54,23 @@
         "upload_status": "validated",
         "file_set": "/measurement-sets/igvf:snM3C-seq",
         "checkfiles_timestamp": "2026-01-06T12:34:56Z"
+    },
+    {
+        "uuid": "688d6e68-b4b9-44e3-c420-fd6c13194c86",
+        "accession": "IGVFFI0005FOVS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:raw_field_of_view_images"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "md5sum": "7342e3e802a387ca58b20e2a425766ec",
+        "file_format": "tar",
+        "content_type": "raw field of view images",
+        "submitted_file_name": "/Users/igvf/igvf_files/raw_field_of_view_images.jpg",
+        "file_size": 6000000,
+        "upload_status": "validated",
+        "file_set": "/measurement-sets/igvf:snM3C-seq"
     }
 ]

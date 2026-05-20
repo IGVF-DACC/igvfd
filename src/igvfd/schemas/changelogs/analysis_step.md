@@ -71,6 +71,16 @@
 
 ### Minor changes since schema version 11
 
+* Extend `input_content_types` enum list to include `raw field of view images`.
+* Extend `output_content_types` enum list to include `raw field of view images`.
+* Extend `input_content_types` enum list to include `post-segmentation transcript and cell locations`.
+* Extend `output_content_types` enum list to include `post-segmentation transcript and cell locations`.
+* Extend `input_content_types` enum list to include `spatial transcriptomics cell metadata`.
+* Extend `output_content_types` enum list to include `spatial transcriptomics cell metadata`.
+* Extend `input_content_types` enum list to include `spatial transcriptomics slide-level transcripts`.
+* Extend `output_content_types` enum list to include `spatial transcriptomics slide-level transcripts`.
+* Extend `input_content_types` enum list to include `spatial transcriptomics slide-level cell coordinates`.
+* Extend `output_content_types` enum list to include `spatial transcriptomics slide-level cell coordinates`.
 * Extend `analysis_step_types` enum list to include `cis-trans classification`.
 * Extend `input_content_types` enum list to include `cis-trans regulatory differences`.
 * Extend `output_content_types` enum list to include `cis-trans regulatory differences`.
