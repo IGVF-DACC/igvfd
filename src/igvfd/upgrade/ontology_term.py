@@ -330,3 +330,29 @@ def assay_term_21_22(value, system):
                 value['preferred_assay_titles'] = sorted(remained_assay_titles)
             else:
                 del value['preferred_assay_titles']
+
+
+REMOVED_CRISPR_TILING_PREFERRED_ASSAY_TITLES = [
+    'CRISPR tiling screen guide readout',
+    'CRISPR tiling screen allelic readout',
+    'CRISPR tiling screen reporter readout',
+]
+
+
+@upgrade_step('assay_term', '22', '23')
+def assay_term_22_23(value, system):
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    if not preferred_assay_titles:
+        return
+    if any(title in REMOVED_CRISPR_TILING_PREFERRED_ASSAY_TITLES for title in preferred_assay_titles):
+        notes = value.get('notes', '')
+        removed_list = ', '.join(
+            title for title in preferred_assay_titles
+            if title in REMOVED_CRISPR_TILING_PREFERRED_ASSAY_TITLES
+        )
+        value['preferred_assay_titles'] = ['CRISPR FACS screen']
+        notes += (
+            f' This assay_term previously used {removed_list} as preferred_assay_titles,'
+            f' but they have been removed and replaced with CRISPR FACS screen via an upgrade.'
+        )
+        value['notes'] = notes.strip()

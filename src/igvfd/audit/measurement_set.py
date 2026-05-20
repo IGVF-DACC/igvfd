@@ -16,6 +16,29 @@ from .file_set import (
     TRANSCRIPT_ASSAY_TERMS
 )
 
+CRISPR_SCREEN_PREFERRED_ASSAY_TITLES = {
+    'Proliferation CRISPR screen',
+    'Migration CRISPR screen',
+    'CRISPR FlowFISH screen',
+    'CRISPR FACS screen',
+    'CRISPR MACS screen',
+    'CRISPR mCherry screen',
+    'Variant-EFFECTS',
+    'scCRISPR screen',
+    'Perturb-seq',
+    'Parse Perturb-seq',
+    'CC-Perturb-seq',
+    'TAP-seq',
+    'CROP-seq',
+    'Multiome Perturb-seq',
+    'in vivo Perturb-seq',
+}
+
+
+def is_crispr_screen_measurement_set(value):
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    return any(title in CRISPR_SCREEN_PREFERRED_ASSAY_TITLES for title in preferred_assay_titles)
+
 
 def audit_related_multiome_datasets(value, system):
     '''
@@ -175,6 +198,47 @@ def audit_unspecified_protocol(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+def audit_missing_crispr_readout(value, system):
+    '''
+    [
+        {
+            "audit_description": "Measurement sets from CRISPR screen assays are expected to specify `crispr_readout`.",
+            "audit_category": "missing crispr readout",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Only measurement sets from CRISPR screen assays are expected to specify `crispr_readout`.",
+            "audit_category": "unexpected crispr readout",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    audit_message_missing = get_audit_message(audit_missing_crispr_readout, index=0)
+    audit_message_unexpected = get_audit_message(audit_missing_crispr_readout, index=1)
+    crispr_readout = value.get('crispr_readout')
+    if is_crispr_screen_measurement_set(value):
+        if not crispr_readout:
+            detail = (
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has no `crispr_readout`.'
+            )
+            yield AuditFailure(
+                audit_message_missing.get('audit_category', ''),
+                f'{detail} {audit_message_missing.get("audit_description", "")}',
+                level=audit_message_missing.get('audit_level', '')
+            )
+    elif crispr_readout:
+        detail = (
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has `crispr_readout`.'
+        )
+        yield AuditFailure(
+            audit_message_unexpected.get('audit_category', ''),
+            f'{detail} {audit_message_unexpected.get("audit_description", "")}',
+            level=audit_message_unexpected.get('audit_level', '')
+        )
+
+
 def audit_CRISPR_screen_lacking_modifications(value, system):
     '''
     [
@@ -186,28 +250,22 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
     ]
     '''
     audit_message = get_audit_message(audit_CRISPR_screen_lacking_modifications)
-    assay_titles = value.get('assay_titles', [])
-    crispr_assays = ['in vitro CRISPR screen assay',
-                     'in vitro CRISPR screen using flow cytometry',
-                     'in vitro CRISPR screen using single-cell RNA-seq',
-                     'in vitro CRISPR screen using single-cell ATAC-seq',
-                     'in vivo CRISPR screen using single cell RNA-seq',
-                     ]
-    if any(t in crispr_assays for t in assay_titles):
-        samples = value.get('samples', [])
-        bad_samples = []
-        for sample in samples:
-            sample_object = system.get('request').embed(sample, '@@object')
-            if 'modifications' not in sample_object:
-                bad_samples.append(sample)
-        if bad_samples != []:
-            samples_to_link = [audit_link(path_to_text(bad_sample), bad_sample) for bad_sample in bad_samples]
-            sample_detail = samples_to_link = ', '.join(samples_to_link)
-            detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} is '
-                f'a CRISPR screen assay but has no specified `modifications` on its `samples`: {sample_detail}.'
-            )
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+    if not is_crispr_screen_measurement_set(value):
+        return
+    samples = value.get('samples', [])
+    bad_samples = []
+    for sample in samples:
+        sample_object = system.get('request').embed(sample, '@@object')
+        if 'modifications' not in sample_object:
+            bad_samples.append(sample)
+    if bad_samples != []:
+        samples_to_link = [audit_link(path_to_text(bad_sample), bad_sample) for bad_sample in bad_samples]
+        sample_detail = ', '.join(samples_to_link)
+        detail = (
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} is '
+            f'a CRISPR screen assay but has no specified `modifications` on its `samples`: {sample_detail}.'
+        )
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 def audit_missing_institutional_certification(value, system):
@@ -949,6 +1007,7 @@ def audit_inconsistent_onlist_files(value, system):
 function_dispatcher_measurement_set_object = {
     'audit_related_multiome_datasets': audit_related_multiome_datasets,
     'audit_unspecified_protocol': audit_unspecified_protocol,
+    'audit_missing_crispr_readout': audit_missing_crispr_readout,
     'audit_CRISPR_screen_lacking_modifications': audit_CRISPR_screen_lacking_modifications,
     'audit_missing_institutional_certification': audit_missing_institutional_certification,
     'audit_missing_auxiliary_set_link': audit_missing_auxiliary_set_link,

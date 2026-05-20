@@ -1,5 +1,12 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 45
+
+* Add `crispr_readout`.
+* Adjust `preferred_assay_titles` enum list to remove `CRISPR tiling screen guide readout`.
+* Adjust `preferred_assay_titles` enum list to remove `CRISPR tiling screen allelic readout`.
+* Adjust `preferred_assay_titles` enum list to remove `CRISPR tiling screen reporter readout`.
+
 ### Minor changes since schema version 44
 
 * Add `targeted_proteins`.

@@ -1165,6 +1165,9 @@
                             "control_types": {
                                 "type": "keyword"
                             },
+                            "crispr_readout": {
+                                "type": "keyword"
+                            },
                             "controlled_access": {
                                 "store": true,
                                 "type": "boolean"
@@ -2454,6 +2457,9 @@
                                 "type": "keyword"
                             },
                             "control_types": {
+                                "type": "keyword"
+                            },
+                            "crispr_readout": {
                                 "type": "keyword"
                             },
                             "controlled_access": {

@@ -382,3 +382,17 @@ def assay_term_v21(assay_term_crispr):
         'preferred_assay_titles': ['HCR-FlowFISH screen', 'MERFISH', 'scRNA-seq', 'RNA-seq']
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v22(assay_term_CRISPR_sorted):
+    item = assay_term_CRISPR_sorted.copy()
+    item.update({
+        'schema_version': '22',
+        'preferred_assay_titles': [
+            'CRISPR tiling screen guide readout',
+            'CRISPR tiling screen allelic readout',
+            'CRISPR tiling screen reporter readout',
+        ],
+    })
+    return item

@@ -45,6 +45,9 @@ def auxiliary_set():
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment',
             },
+            'crispr_readout': {
+                'title': 'CRISPR Readout'
+            },
             'construct_library_sets.file_set_type': {
                 'title': 'Construct Library'
             },

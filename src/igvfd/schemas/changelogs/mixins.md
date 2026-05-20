@@ -1,5 +1,8 @@
 ## Changelog for *`mixins.json`*
 
+* Adjust `preferred_assay_titles` enum list to remove `CRISPR tiling screen guide readout`. (05/27/2026)
+* Adjust `preferred_assay_titles` enum list to remove `CRISPR tiling screen allelic readout`. (05/27/2026)
+* Adjust `preferred_assay_titles` enum list to remove `CRISPR tiling screen reporter readout`. (05/27/2026)
 * Adjust `file_format_type` enum list to remove `mpra_starr`. (05/20/2026)
 * Extend `assembly` enum list to include `129S1/SvImJ - GRCm39`. (05/13/2026)
 * Extend `assembly` enum list to include `A/J - GRCm39`. (05/13/2026)

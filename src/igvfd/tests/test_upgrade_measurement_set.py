@@ -314,3 +314,68 @@ def test_measurement_set_upgrade_43_44(upgrader, measurement_set_v43):
         'RNA-seq'}
     assert value.get(
         'notes') == 'This measurement set previously used MERFISH as preferred_assay_titles, but it has been removed and defaulted to RNA-seq via an upgrade.'
+
+
+def test_measurement_set_upgrade_44_45(
+    upgrader,
+    measurement_set_v44_tiling_guide,
+    measurement_set_v44_variant_effects,
+    measurement_set_v44_perturb_seq,
+    measurement_set_v44_crispr_flowfish,
+    measurement_set_v44_multiome_perturb_scrna,
+    measurement_set_v44_multiome_perturb_scatac,
+):
+    value = upgrader.upgrade(
+        'measurement_set',
+        measurement_set_v44_tiling_guide,
+        current_version='44',
+        target_version='45',
+    )
+    assert value['schema_version'] == '45'
+    assert value['preferred_assay_titles'] == ['CRISPR FACS screen']
+    assert value['crispr_readout'] == 'gRNA sequencing'
+
+    value = upgrader.upgrade(
+        'measurement_set',
+        measurement_set_v44_variant_effects,
+        current_version='44',
+        target_version='45',
+    )
+    assert value['preferred_assay_titles'] == ['Variant-EFFECTS']
+    assert value['crispr_readout'] == 'endogenous allelic sequencing'
+
+    value = upgrader.upgrade(
+        'measurement_set',
+        measurement_set_v44_perturb_seq,
+        current_version='44',
+        target_version='45',
+    )
+    assert value['preferred_assay_titles'] == ['Perturb-seq']
+    assert value['crispr_readout'] == 'scRNA-seq'
+
+    value = upgrader.upgrade(
+        'measurement_set',
+        measurement_set_v44_crispr_flowfish,
+        current_version='44',
+        target_version='45',
+    )
+    assert value['preferred_assay_titles'] == ['CRISPR FlowFISH screen']
+    assert value['crispr_readout'] == 'gRNA sequencing'
+
+    value = upgrader.upgrade(
+        'measurement_set',
+        measurement_set_v44_multiome_perturb_scrna,
+        current_version='44',
+        target_version='45',
+    )
+    assert value['preferred_assay_titles'] == ['Multiome Perturb-seq']
+    assert value['crispr_readout'] == 'scRNA-seq'
+
+    value = upgrader.upgrade(
+        'measurement_set',
+        measurement_set_v44_multiome_perturb_scatac,
+        current_version='44',
+        target_version='45',
+    )
+    assert value['preferred_assay_titles'] == ['Multiome Perturb-seq']
+    assert value['crispr_readout'] == 'scATAC-seq'

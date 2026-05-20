@@ -1,5 +1,11 @@
 ## Changelog for *`assay_term.json`*
 
+### Schema version 23
+
+* Adjust `preferred_assay_titles` enum list to remove `CRISPR tiling screen guide readout`.
+* Adjust `preferred_assay_titles` enum list to remove `CRISPR tiling screen allelic readout`.
+* Adjust `preferred_assay_titles` enum list to remove `CRISPR tiling screen reporter readout`.
+
 ### Minor changes since schema version 22
 
 * Extend `preferred_assay_titles` enum list to include `perturb-SHARE-seq`.

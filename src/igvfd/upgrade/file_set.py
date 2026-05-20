@@ -830,3 +830,65 @@ def model_set_7_8(value, system):
                 value['preferred_assay_titles'] = sorted(remained_assay_titles)
             else:
                 del value['preferred_assay_titles']
+
+
+@upgrade_step('measurement_set', '44', '45')
+def measurement_set_44_45(value, system):
+    MULTIOME_PERTURB_SEQ_CRISPR_READOUT_BY_ASSAY_TERM = {
+        '/assay-terms/OBI_0003660/': 'scRNA-seq',
+        '/assay-terms/NTR_0000798/': 'scATAC-seq'
+    }
+    CRISPR_READOUT_BY_PREFERRED_ASSAY_TITLE = {
+        'CRISPR tiling screen guide readout': (['CRISPR FACS screen'], 'gRNA sequencing'),
+        'CRISPR tiling screen allelic readout': (['CRISPR FACS screen'], 'endogenous allelic sequencing'),
+        'CRISPR tiling screen reporter readout': (['CRISPR FACS screen'], 'exogenous allelic sequencing'),
+        'Variant-EFFECTS': (None, 'endogenous allelic sequencing'),
+        'Perturb-seq': (None, 'scRNA-seq'),
+        'Parse Perturb-seq': (None, 'scRNA-seq'),
+        'CC-Perturb-seq': (None, 'scRNA-seq'),
+        'in vivo Perturb-seq': (None, 'scRNA-seq'),
+        'TAP-seq': (None, 'scRNA-seq'),
+        'CROP-seq': (None, 'scRNA-seq with guide capture'),
+    }
+
+    BULK_CRISPR_SCREEN_PREFERRED_ASSAY_TITLES = [
+        'Proliferation CRISPR screen',
+        'Migration CRISPR screen',
+        'CRISPR FlowFISH screen',
+        'CRISPR FACS screen',
+        'CRISPR MACS screen',
+        'CRISPR mCherry screen',
+        'scCRISPR screen',
+    ]
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    if not preferred_assay_titles:
+        return
+    preferred_assay_title = preferred_assay_titles[0]
+    notes = value.get('notes', '')
+    if preferred_assay_title == 'Multiome Perturb-seq':
+        assay_term = value.get('assay_term', '')
+        crispr_readout = MULTIOME_PERTURB_SEQ_CRISPR_READOUT_BY_ASSAY_TERM.get(assay_term)
+        if crispr_readout:
+            value['crispr_readout'] = crispr_readout
+            notes += (
+                f' This measurement set uses Multiome Perturb-seq and was assigned'
+                f' crispr_readout {crispr_readout} based on assay_term via an upgrade.'
+            )
+        else:
+            notes += (
+                f' This measurement set uses Multiome Perturb-seq but could not be assigned'
+                f' crispr_readout automatically from assay_term {assay_term} via an upgrade.'
+            )
+    elif preferred_assay_title in CRISPR_READOUT_BY_PREFERRED_ASSAY_TITLE:
+        new_titles, crispr_readout = CRISPR_READOUT_BY_PREFERRED_ASSAY_TITLE[preferred_assay_title]
+        if new_titles:
+            value['preferred_assay_titles'] = new_titles
+            notes += (
+                f' This measurement set previously used {preferred_assay_title} as preferred_assay_titles,'
+                f' but it has been updated to {new_titles[0]} via an upgrade.'
+            )
+        value['crispr_readout'] = crispr_readout
+    elif preferred_assay_title in BULK_CRISPR_SCREEN_PREFERRED_ASSAY_TITLES:
+        value['crispr_readout'] = 'gRNA sequencing'
+    if notes.strip() != value.get('notes', '').strip():
+        value['notes'] = notes.strip()

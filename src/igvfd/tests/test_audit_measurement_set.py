@@ -209,6 +209,68 @@ def test_audit_protocol(
     )
 
 
+def test_audit_missing_crispr_readout(
+    testapp,
+    lab,
+    award,
+    assay_term_ntr,
+    in_vitro_differentiated_cell,
+    measurement_set,
+):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_ntr['@id'],
+        'samples': [in_vitro_differentiated_cell['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_titles': ['CRISPR FlowFISH screen'],
+    }
+    crispr_measurement_set = testapp.post_json('/measurement_set', item, status=201).json['@graph'][0]
+    res = testapp.get(crispr_measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing crispr readout'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        crispr_measurement_set['@id'],
+        {
+            'crispr_readout': 'gRNA sequencing'
+        },
+    )
+    res = testapp.get(crispr_measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing crispr readout'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected crispr readout'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'crispr_readout': 'gRNA sequencing'
+        },
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected crispr readout'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'preferred_assay_titles': ['CRISPR FlowFISH screen'],
+        },
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected crispr readout'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+
 def test_audit_missing_modification(
     testapp,
     measurement_set,
@@ -222,7 +284,8 @@ def test_audit_missing_modification(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_crispr['@id']
+            'assay_term': assay_term_crispr['@id'],
+            'preferred_assay_titles': ['CRISPR FlowFISH screen'],
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')

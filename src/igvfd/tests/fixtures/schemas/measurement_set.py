@@ -50,7 +50,8 @@ def measurement_set_no_files(testapp, lab, award, assay_term_ntr, in_vitro_diffe
         'assay_term': assay_term_ntr['@id'],
         'samples': [in_vitro_differentiated_cell['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_titles': ['CRISPR FlowFISH screen']
+        'preferred_assay_titles': ['CRISPR FlowFISH screen'],
+        'crispr_readout': 'gRNA sequencing'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -136,7 +137,8 @@ def measurement_set_perturb_seq(testapp, lab, award, assay_term_crispr_single_ce
         'assay_term': assay_term_crispr_single_cell['@id'],
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
-        'preferred_assay_titles': ['Perturb-seq']
+        'preferred_assay_titles': ['Perturb-seq'],
+        'crispr_readout': 'scRNA-seq'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -563,6 +565,7 @@ def measurement_set_v38_3(measurement_set, assay_term_starr):
     item.update({
         'schema_version': '38',
         'preferred_assay_titles': ['Perturb-seq'],
+        'crispr_readout': 'scRNA-seq',
         'assay_term': assay_term_starr['@id'],
     })
     return item
@@ -644,5 +647,67 @@ def measurement_set_v43(measurement_set):
     item.update({
         'schema_version': '43',
         'preferred_assay_titles': ['MERFISH'],
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v44_tiling_guide(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '44',
+        'preferred_assay_titles': ['CRISPR tiling screen guide readout'],
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v44_variant_effects(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '44',
+        'preferred_assay_titles': ['Variant-EFFECTS'],
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v44_perturb_seq(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '44',
+        'preferred_assay_titles': ['Perturb-seq'],
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v44_crispr_flowfish(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '44',
+        'preferred_assay_titles': ['CRISPR FlowFISH screen'],
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v44_multiome_perturb_scrna(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '44',
+        'preferred_assay_titles': ['Multiome Perturb-seq'],
+        'assay_term': '/assay-terms/OBI_0003660/',
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v44_multiome_perturb_scatac(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '44',
+        'preferred_assay_titles': ['Multiome Perturb-seq'],
+        'assay_term': '/assay-terms/NTR_0000798/',
     })
     return item
