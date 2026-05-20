@@ -213,14 +213,15 @@ def test_audit_missing_crispr_readout(
     testapp,
     lab,
     award,
-    assay_term_ntr,
+    assay_term_CRISPR_sorted,
     in_vitro_differentiated_cell,
     measurement_set,
+    assay_term_crispr,
 ):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'assay_term': assay_term_ntr['@id'],
+        'assay_term': assay_term_CRISPR_sorted['@id'],
         'samples': [in_vitro_differentiated_cell['@id']],
         'file_set_type': 'experimental data',
         'preferred_assay_titles': ['CRISPR FlowFISH screen'],
@@ -261,7 +262,7 @@ def test_audit_missing_crispr_readout(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'preferred_assay_titles': ['CRISPR FlowFISH screen'],
+            'assay_term': assay_term_crispr['@id'],
         },
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -284,8 +285,7 @@ def test_audit_missing_modification(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_crispr['@id'],
-            'preferred_assay_titles': ['CRISPR FlowFISH screen'],
+            'assay_term': assay_term_crispr['@id']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')

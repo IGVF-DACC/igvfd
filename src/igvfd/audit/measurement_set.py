@@ -16,28 +16,17 @@ from .file_set import (
     TRANSCRIPT_ASSAY_TERMS
 )
 
-CRISPR_SCREEN_PREFERRED_ASSAY_TITLES = {
-    'Proliferation CRISPR screen',
-    'Migration CRISPR screen',
-    'CRISPR FlowFISH screen',
-    'CRISPR FACS screen',
-    'CRISPR MACS screen',
-    'CRISPR mCherry screen',
-    'Variant-EFFECTS',
-    'scCRISPR screen',
-    'Perturb-seq',
-    'Parse Perturb-seq',
-    'CC-Perturb-seq',
-    'TAP-seq',
-    'CROP-seq',
-    'Multiome Perturb-seq',
-    'in vivo Perturb-seq',
+CRISPR_SCREEN_ASSAY_TERMS = {
+    '/assay-terms/OBI_0003659/',  # in vitro CRISPR screen assay
+    '/assay-terms/OBI_0003661/',  # in vitro CRISPR screen using flow cytometry
+    '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
+    '/assay-terms/NTR_0000798/',  # in vitro CRISPR screen using single-cell ATAC-seq
+    '/assay-terms/NTR_0001101/',  # in vivo CRISPR screen using single cell RNA-seq
 }
 
 
 def is_crispr_screen_measurement_set(value):
-    preferred_assay_titles = value.get('preferred_assay_titles', [])
-    return any(title in CRISPR_SCREEN_PREFERRED_ASSAY_TITLES for title in preferred_assay_titles)
+    return value.get('assay_term') in CRISPR_SCREEN_ASSAY_TERMS
 
 
 def audit_related_multiome_datasets(value, system):
