@@ -396,3 +396,16 @@ def assay_term_v22(assay_term_CRISPR_sorted):
         ],
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v22_mixed_tiling(assay_term_CRISPR_sorted):
+    item = assay_term_CRISPR_sorted.copy()
+    item.update({
+        'schema_version': '22',
+        'preferred_assay_titles': [
+            'CRISPR tiling screen guide readout',
+            'Perturb-seq',
+        ],
+    })
+    return item

@@ -346,13 +346,21 @@ def assay_term_22_23(value, system):
         return
     if any(title in REMOVED_CRISPR_TILING_PREFERRED_ASSAY_TITLES for title in preferred_assay_titles):
         notes = value.get('notes', '')
-        removed_list = ', '.join(
+        removed_titles = [
             title for title in preferred_assay_titles
             if title in REMOVED_CRISPR_TILING_PREFERRED_ASSAY_TITLES
-        )
-        value['preferred_assay_titles'] = ['CRISPR FACS screen']
+        ]
+        remained_titles = [
+            title for title in preferred_assay_titles
+            if title not in REMOVED_CRISPR_TILING_PREFERRED_ASSAY_TITLES
+        ]
+        new_titles = list(remained_titles)
+        if 'CRISPR FACS screen' not in new_titles:
+            new_titles.append('CRISPR FACS screen')
+        value['preferred_assay_titles'] = sorted(new_titles)
+        removed_list = ', '.join(removed_titles)
         notes += (
             f' This assay_term previously used {removed_list} as preferred_assay_titles,'
-            f' but they have been removed and replaced with CRISPR FACS screen via an upgrade.'
+            f' but they have been removed and CRISPR FACS screen has been added via an upgrade.'
         )
         value['notes'] = notes.strip()
