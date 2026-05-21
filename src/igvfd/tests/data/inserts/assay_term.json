@@ -162,7 +162,8 @@
         "term_name": "flow cytometry assay",
         "preferred_assay_titles": [
             "VAMP-seq",
-            "LABEL-seq"
+            "LABEL-seq",
+            "MORF screen"
         ],
         "release_timestamp": "2024-07-06T12:34:56Z",
         "status": "released",
