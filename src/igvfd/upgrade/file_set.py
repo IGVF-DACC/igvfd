@@ -844,6 +844,7 @@ def measurement_set_44_45(value, system):
         'CRISPR tiling screen reporter readout': (['CRISPR FACS screen'], 'exogenous allelic sequencing'),
         'Variant-EFFECTS': (None, 'endogenous allelic sequencing'),
         'Perturb-seq': (None, 'scRNA-seq'),
+        'scCRISPR screen': (None, 'scRNA-seq'),
         'Parse Perturb-seq': (None, 'scRNA-seq'),
         'CC-Perturb-seq': (None, 'scRNA-seq'),
         'in vivo Perturb-seq': (None, 'scRNA-seq'),
@@ -858,7 +859,6 @@ def measurement_set_44_45(value, system):
         'CRISPR FACS screen',
         'CRISPR MACS screen',
         'CRISPR mCherry screen',
-        'scCRISPR screen',
     ]
     preferred_assay_titles = value.get('preferred_assay_titles', [])
     if not preferred_assay_titles:
