@@ -162,7 +162,8 @@
         "sex": "male",
         "taxa": "Homo sapiens",
         "dbxrefs": [
-            "GEO:SAMN05897796"
+            "GEO:SAMN05897796",
+            "DepMap:ACH-000007"
         ],
         "human_donor_identifiers": [
             "ENC-QWZ",

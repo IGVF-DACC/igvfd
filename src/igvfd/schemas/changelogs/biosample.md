@@ -1,5 +1,6 @@
 ## Changelog for *`biosample.json`*
 
+* Update `dbxrefs` regex to allow DepMap ID accessions.
 * Remove `disease_terms`. (04/15/2026)
 * Rename `nucleic_acid_delivery` to `construct_delivery_methods`. (04/15/2026)
 * Update `aliases` regex to add `hongbo-liu` as a namespace. (04/01/2026)
