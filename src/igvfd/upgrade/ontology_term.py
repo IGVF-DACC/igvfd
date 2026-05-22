@@ -332,15 +332,13 @@ def assay_term_21_22(value, system):
                 del value['preferred_assay_titles']
 
 
-REMOVED_CRISPR_TILING_PREFERRED_ASSAY_TITLES = [
-    'CRISPR tiling screen guide readout',
-    'CRISPR tiling screen allelic readout',
-    'CRISPR tiling screen reporter readout',
-]
-
-
 @upgrade_step('assay_term', '22', '23')
 def assay_term_22_23(value, system):
+    REMOVED_CRISPR_TILING_PREFERRED_ASSAY_TITLES = [
+        'CRISPR tiling screen guide readout',
+        'CRISPR tiling screen allelic readout',
+        'CRISPR tiling screen reporter readout',
+    ]
     preferred_assay_titles = value.get('preferred_assay_titles', [])
     if not preferred_assay_titles:
         return
