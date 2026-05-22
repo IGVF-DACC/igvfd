@@ -463,5 +463,30 @@
         "secondary_dimensions": [
             "multiplexing oligo"
         ]
+    },
+    {
+        "uuid": "a6a020c3-b392-435a-b452-6ecd017ffd31",
+        "accession": "IGVFFI0099MOLH",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_donor_gene"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-03-10T12:34:56Z",
+        "md5sum": "691c4cf5d7b9c126fdf9e66e431f8ae4",
+        "file_format": "h5ad",
+        "content_type": "donor by gene matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/matrix_file_donor_gene.h5ad",
+        "file_size": 3200000,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
+            "multiplexing oligo"
+        ]
     }
 ]

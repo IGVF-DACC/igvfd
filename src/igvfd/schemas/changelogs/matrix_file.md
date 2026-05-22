@@ -2,6 +2,7 @@
 
 ### Schema version 10
 
+* Extend `content_type` enum list to include `donor by gene matrix`.
 * Remove calculated property `content_summary`.
 * Extend `content_type` enum list to include `allele specific cell by gene matrix`.
 * Extend `content_type` enum list to include `annotated cell by gene matrix`.
