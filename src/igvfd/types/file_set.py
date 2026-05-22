@@ -14,6 +14,15 @@ from .base import (
 from datetime import datetime
 
 
+CRISPR_SCREEN_ASSAY_TERMS = {
+    '/assay-terms/OBI_0003659/',  # in vitro CRISPR screen assay
+    '/assay-terms/OBI_0003661/',  # in vitro CRISPR screen using flow cytometry
+    '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
+    '/assay-terms/NTR_0000798/',  # in vitro CRISPR screen using single-cell ATAC-seq
+    '/assay-terms/NTR_0001101/',  # in vivo CRISPR screen using single cell RNA-seq
+}
+
+
 def get_donors_from_samples(request, samples):
     donor_objects = []
     for sample in samples:
@@ -587,13 +596,6 @@ class AnalysisSet(FileSet):
         control_type_set = set()
         crispr_modalities = set()
         multiplexing_methods = set()
-        crispr_screen_terms = [
-            '/assay-terms/OBI_0003659/',  # in vitro CRISPR screen assay
-            '/assay-terms/OBI_0003661/',  # in vitro CRISPR screen using flow cytometry
-            '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
-            '/assay-terms/NTR_0000798/',  # in vitro CRISPR screen using single-cell ATAC-seq
-            '/assay-terms/NTR_0001101/',  # in vivo CRISPR screen using single cell RNA-seq
-        ]
         any_sample_sorted_from = False
 
         def format_assay(assay_titles, preferred_assay_titles):
@@ -748,7 +750,7 @@ class AnalysisSet(FileSet):
         if fileset_types and len(fileset_subclasses) == 1 and ('AuxiliarySet' in fileset_subclasses):
             if not assay_terms:
                 file_set_type_phrase = ', '.join(fileset_types)
-            elif not all(x in crispr_screen_terms for x in assay_terms):
+            elif not all(x in CRISPR_SCREEN_ASSAY_TERMS for x in assay_terms):
                 file_set_type_phrase = ', '.join(fileset_types)
 
         control_phrase = ''
@@ -2006,7 +2008,7 @@ class AuxiliarySet(FileSet):
         define=True,
         schema={
             'title': 'CRISPR Readout',
-            'description': 'For auxiliary sets linked to CRISPR screen measurement sets, equivalent to file_set_type.',
+            'description': 'For auxiliary sets linked to CRISPR screen measurement sets, equivalent to file set type.',
             'type': 'string',
             'notSubmittable': True
         }
@@ -2015,11 +2017,11 @@ class AuxiliarySet(FileSet):
         if not measurement_sets or not file_set_type:
             return
         for measurement_set in measurement_sets:
-            preferred_assay_slims = request.embed(
+            measurement_set_object = request.embed(
                 measurement_set,
-                '@@object_with_select_calculated_properties?field=preferred_assay_slims'
-            ).get('preferred_assay_slims', [])
-            if preferred_assay_slims and 'CRISPR screen' in preferred_assay_slims:
+                '@@object_with_select_calculated_properties?field=assay_term'
+            )
+            if measurement_set_object.get('assay_term') in CRISPR_SCREEN_ASSAY_TERMS:
                 return file_set_type
 
     @calculated_property(

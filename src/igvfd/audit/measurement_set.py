@@ -11,18 +11,12 @@ from .formatter import (
     get_audit_message
 )
 
+from igvfd.types.file_set import CRISPR_SCREEN_ASSAY_TERMS
+
 from .file_set import (
     single_cell_check,
     TRANSCRIPT_ASSAY_TERMS
 )
-
-CRISPR_SCREEN_ASSAY_TERMS = {
-    '/assay-terms/OBI_0003659/',  # in vitro CRISPR screen assay
-    '/assay-terms/OBI_0003661/',  # in vitro CRISPR screen using flow cytometry
-    '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
-    '/assay-terms/NTR_0000798/',  # in vitro CRISPR screen using single-cell ATAC-seq
-    '/assay-terms/NTR_0001101/',  # in vivo CRISPR screen using single cell RNA-seq
-}
 
 
 def is_crispr_screen_measurement_set(value):
