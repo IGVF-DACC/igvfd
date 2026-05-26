@@ -9,6 +9,7 @@
 
 ### Minor changes since schema version 44
 
+* Extend `preferred_assay_titles` enum list to include `MORF screen`.
 * Add `targeted_proteins`.
 * Extend `preferred_assay_titles` enum list to include `perturb-SHARE-seq`.
 * Extend `library_preparation_kit` enum list to include `10X Chromium Single Cell Multiome ATAC + Gene Expression`.

@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `preferred_assay_titles` enum list to include `MORF screen`. (05/27/2026)
 * Adjust `preferred_assay_titles` enum list to remove `CRISPR tiling screen guide readout`. (05/27/2026)
 * Adjust `preferred_assay_titles` enum list to remove `CRISPR tiling screen allelic readout`. (05/27/2026)
 * Adjust `preferred_assay_titles` enum list to remove `CRISPR tiling screen reporter readout`. (05/27/2026)

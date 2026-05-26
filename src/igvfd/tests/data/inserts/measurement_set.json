@@ -958,5 +958,24 @@
         ],
         "crispr_readout": "exogenous allelic sequencing",
         "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:morf_screen"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "release_timestamp": "2026-05-20T12:34:56Z",
+        "uuid": "31002c7e-78d1-49d2-a273-1685d45db2be",
+        "accession": "IGVFDS0006MORF",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0003661/",
+        "preferred_assay_titles": [
+            "MORF screen"
+        ],
+        "file_set_type": "experimental data"
     }
 ]
