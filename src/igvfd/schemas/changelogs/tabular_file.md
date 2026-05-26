@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 22
 
+* Extend `content_type` enum list to include `motif-overlapping differential guide quantifications`.
+* Extend `content_type` enum list to include `differential TF enrichment quantifications`.
 * Extend `content_type` enum list to include `post-segmentation transcript and cell locations`.
 * Extend `content_type` enum list to include `spatial transcriptomics cell metadata`.
 * Extend `content_type` enum list to include `spatial transcriptomics slide-level transcripts`.
@@ -13,8 +15,6 @@
 
 ### Minor changes since schema version 21
 
-* Extend `content_type` enum list to include `motif-overlapping differential guide quantifications`.
-* Extend `content_type` enum list to include `differential TF enrichment quantifications`.
 * Extend `collections` enum list to include `PD single cell multiomics`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.2`.
 * Extend `content_type` enum list to include `cis-trans regulatory differences`.
