@@ -334,6 +334,9 @@
         "aliases": [
             "igvf-dacc:in_vitro_system_cell_culture_01"
         ],
+        "dbxrefs": [
+            "DepMap:ACH-001321"
+        ],
         "donors": [
             "igvf:alias_human_donor1"
         ],

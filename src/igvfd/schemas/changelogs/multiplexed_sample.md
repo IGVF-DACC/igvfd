@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 12
 
+* Update `dbxrefs` regex to allow DepMap ID accessions.
 * Extend `collections` enum list to include `PD single cell multiomics`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.2`.
 
