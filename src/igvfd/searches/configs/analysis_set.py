@@ -34,6 +34,12 @@ def analysis_set():
                 'description': 'Indicator that this analysis was processed by an IGVF uniform pipeline.',
                 'optional': True
             },
+            'input_file_sets.crispr_readout': {
+                'title': 'CRISPR Readout',
+                'category': 'Analysis Set Details',
+                'description': 'The CRISPR screen readout(s) associated with the input file sets.',
+                'optional': True
+            },
             'targeted_genes.symbol': {
                 'title': 'Readout Genes',
                 'category': 'Analysis Set Details',

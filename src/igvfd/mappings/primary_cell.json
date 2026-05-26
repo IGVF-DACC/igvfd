@@ -1,6 +1,6 @@
 {
-    "hash": "a11a2f3c8f0e80653f7020d99d13a860",
-    "index_name": "primary_cell_a11a2f3c",
+    "hash": "1d50b984fdd7d43c89bb17b2d273f195",
+    "index_name": "primary_cell_1d50b984",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1079,6 +1079,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "7d84e32efeb167e4088f934780bc7212",
-    "index_name": "configuration_file_7d84e32e",
+    "hash": "f0d8f8519f13102bc268818c04f72599",
+    "index_name": "configuration_file_f0d8f851",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -767,6 +767,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"

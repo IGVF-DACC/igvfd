@@ -1,6 +1,6 @@
 {
-    "hash": "6a389b937ddc886cb731f4940a2db07e",
-    "index_name": "technical_sample_6a389b93",
+    "hash": "03c34d421fcb23034646b3d902cc7754",
+    "index_name": "technical_sample_03c34d42",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -740,6 +740,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"

@@ -14,6 +14,15 @@ from .base import (
 from datetime import datetime
 
 
+CRISPR_SCREEN_ASSAY_TERMS = {
+    '/assay-terms/OBI_0003659/',  # in vitro CRISPR screen assay
+    '/assay-terms/OBI_0003661/',  # in vitro CRISPR screen using flow cytometry
+    '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
+    '/assay-terms/NTR_0000798/',  # in vitro CRISPR screen using single-cell ATAC-seq
+    '/assay-terms/NTR_0001101/',  # in vivo CRISPR screen using single cell RNA-seq
+}
+
+
 def get_donors_from_samples(request, samples):
     donor_objects = []
     for sample in samples:
@@ -152,8 +161,6 @@ def get_preferred_assay_slims(preferred_assay_titles):
         'Arrayed semi-qY2H v3': ['protein interaction'],
         'Arrayed yN2H': ['protein interaction'],
         'Arrayed mN2H': ['protein interaction'],
-        'CRISPR tiling screen guide readout': ['CRISPR screen'],
-        'CRISPR tiling screen allelic readout': ['CRISPR screen'],
         'Proliferation CRISPR screen': ['CRISPR screen'],
         'Migration CRISPR screen': ['CRISPR screen'],
         'CRISPR FlowFISH screen': ['CRISPR screen'],
@@ -543,7 +550,8 @@ class AnalysisSet(FileSet):
     item_type = 'analysis_set'
     schema = load_schema('igvfd:schemas/analysis_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status', 'assay_term']),
+        Path('input_file_sets', include=['@id', 'accession', 'aliases',
+             'file_set_type', 'status', 'assay_term', 'crispr_readout']),
         Path('input_file_sets.assay_term', include=['@id', 'term_name', 'assay_slims']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
         Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline', 'status', 'workflow_version']),
@@ -588,13 +596,6 @@ class AnalysisSet(FileSet):
         control_type_set = set()
         crispr_modalities = set()
         multiplexing_methods = set()
-        crispr_screen_terms = [
-            '/assay-terms/OBI_0003659/',
-            '/assay-terms/OBI_0003661/',
-            '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
-            '/assay-terms/NTR_0000798/',  # in vitro CRISPR screen using single-cell ATAC-seq
-            '/assay-terms/NTR_0001101/',  # in vivo CRISPR screen using single cell RNA-seq
-        ]
         any_sample_sorted_from = False
 
         def format_assay(assay_titles, preferred_assay_titles):
@@ -749,7 +750,7 @@ class AnalysisSet(FileSet):
         if fileset_types and len(fileset_subclasses) == 1 and ('AuxiliarySet' in fileset_subclasses):
             if not assay_terms:
                 file_set_type_phrase = ', '.join(fileset_types)
-            elif not all(x in crispr_screen_terms for x in assay_terms):
+            elif not all(x in CRISPR_SCREEN_ASSAY_TERMS for x in assay_terms):
                 file_set_type_phrase = ', '.join(fileset_types)
 
         control_phrase = ''
@@ -1477,7 +1478,7 @@ class MeasurementSet(FileSet):
         Path('assay_term', include=['@id', 'term_name', 'assay_slims', 'status']),
         Path('control_file_sets', include=['@id', 'accession', 'aliases', 'status']),
         Path('related_measurement_sets.measurement_sets', include=['@id', 'accession', 'status', 'measurement_sets']),
-        Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
+        Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'crispr_readout', 'status']),
         Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
         Path('input_for', include=['@id', 'accession', 'aliases', 'status', 'uniform_pipeline_status'])
@@ -1606,7 +1607,7 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, assay_term, assay_titles, preferred_assay_titles=None, samples=None, control_types=None, targeted_genes=None, targeted_proteins=None, construct_library_sets=None):
+    def summary(self, request, assay_term, assay_titles, preferred_assay_titles=None, samples=None, control_types=None, targeted_genes=None, targeted_proteins=None, construct_library_sets=None, crispr_readout=None):
         if construct_library_sets is None:
             construct_library_sets = []
         modality_set = set()
@@ -1693,6 +1694,9 @@ class MeasurementSet(FileSet):
             mux_method_list = [method_phrase_map[x] for x in sorted(multiplexing_methods)]
             mux_method_phrase = f'({", ".join(mux_method_list)} multiplexed)'
             assay_phrase = f'{assay_phrase} {mux_method_phrase}'
+
+        if crispr_readout:
+            assay_phrase = f'{assay_phrase} with {crispr_readout} readout'
 
         if len(cls_set) > 0:
             cls_phrase = f' {get_cls_phrase(cls_set)}'
@@ -1998,6 +2002,27 @@ class AuxiliarySet(FileSet):
     )
     def preferred_assay_slims(self, request, preferred_assay_titles=None):
         return get_preferred_assay_slims(preferred_assay_titles)
+
+    @calculated_property(
+        condition='measurement_sets',
+        define=True,
+        schema={
+            'title': 'CRISPR Readout',
+            'description': 'For auxiliary sets linked to CRISPR screen measurement sets, equivalent to file set type.',
+            'type': 'string',
+            'notSubmittable': True
+        }
+    )
+    def crispr_readout(self, request, measurement_sets=None, file_set_type=None):
+        if not measurement_sets or not file_set_type:
+            return
+        for measurement_set in measurement_sets:
+            measurement_set_object = request.embed(
+                measurement_set,
+                '@@object_with_select_calculated_properties?field=assay_term'
+            )
+            if measurement_set_object.get('assay_term') in CRISPR_SCREEN_ASSAY_TERMS:
+                return file_set_type
 
     @calculated_property(
         condition='measurement_sets',

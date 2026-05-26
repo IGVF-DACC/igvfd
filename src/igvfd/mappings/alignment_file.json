@@ -1,6 +1,6 @@
 {
-    "hash": "95e141917c39621dcb196c051275752b",
-    "index_name": "alignment_file_95e14191",
+    "hash": "23e1192f56b373dfcf88e75a831a3ec2",
+    "index_name": "alignment_file_23e1192f",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -772,6 +772,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"

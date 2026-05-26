@@ -1,6 +1,6 @@
 {
-    "hash": "8fa6508a135793243e33c87a2f7a235a",
-    "index_name": "in_vitro_system_8fa6508a",
+    "hash": "bf9d5b196be9dcad3e0145b63408f8d0",
+    "index_name": "in_vitro_system_bf9d5b19",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1089,6 +1089,9 @@
                             },
                             "creation_timestamp": {
                                 "type": "date"
+                            },
+                            "crispr_readout": {
+                                "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
                                 "type": "keyword"

@@ -168,3 +168,16 @@ def test_assay_term_upgrade_21_22(upgrader, assay_term_v21):
         'RNA-seq', 'scRNA-seq'}
     assert value.get(
         'notes') == 'This assay_term previously used HCR-FlowFISH screen, MERFISH as preferred_assay_titles, but they have been removed via an upgrade.'
+
+
+def test_assay_term_upgrade_22_23(upgrader, assay_term_v22, assay_term_v22_mixed_tiling):
+    value = upgrader.upgrade('assay_term', assay_term_v22, current_version='22', target_version='23')
+    assert value['schema_version'] == '23'
+    assert value['preferred_assay_titles'] == ['CRISPR FACS screen']
+    assert 'CRISPR tiling screen guide readout' in value['notes']
+
+    value = upgrader.upgrade(
+        'assay_term', assay_term_v22_mixed_tiling, current_version='22', target_version='23'
+    )
+    assert value['preferred_assay_titles'] == ['CRISPR FACS screen', 'Perturb-seq']
+    assert 'CRISPR tiling screen guide readout' in value['notes']

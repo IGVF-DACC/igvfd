@@ -171,6 +171,11 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
         'summary') == 'scCRISPR screen (barcode based multiplexed) integrating a non-targeting, reference transduction expression vector library'
 
 
+def test_summary_crispr_readout(testapp, measurement_set_no_files):
+    res = testapp.get(measurement_set_no_files['@id'])
+    assert res.json.get('summary') == 'CRISPR FlowFISH screen with gRNA sequencing readout'
+
+
 def test_summary_targeted_genes(testapp, measurement_set, assay_term_tf_chip, assay_term_CRISPR_sorted, gene_myc_hs, gene_zscan10_mm, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, biosample_sorted_child):
     testapp.patch_json(
         measurement_set['@id'],
@@ -196,11 +201,13 @@ def test_summary_targeted_genes(testapp, measurement_set, assay_term_tf_chip, as
         {
             'assay_term': assay_term_CRISPR_sorted['@id'],
             'preferred_assay_titles': ['CRISPR FACS screen'],
+            'crispr_readout': 'endogenous allelic sequencing',
             'samples': [biosample_sorted_child['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('summary') == 'CRISPR FACS screen sorted on expression of CRLF2, MYC, Zcan10'
+    assert res.json.get(
+        'summary') == 'CRISPR FACS screen with endogenous allelic sequencing readout sorted on expression of CRLF2, MYC, Zcan10'
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -208,7 +215,8 @@ def test_summary_targeted_genes(testapp, measurement_set, assay_term_tf_chip, as
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('summary') == 'CRISPR FACS screen sorted on expression of 6 genes'
+    assert res.json.get(
+        'summary') == 'CRISPR FACS screen with endogenous allelic sequencing readout sorted on expression of 6 genes'
 
 
 def test_summary_targeted_proteins(testapp, measurement_set, assay_term_chip, biosample_sorted_child):

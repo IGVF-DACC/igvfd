@@ -21,6 +21,12 @@ def measurement_set():
                 'category': 'Measurement Set Details',
                 'description': 'Title of assays that generated the measurement set.'
             },
+            'crispr_readout': {
+                'title': 'CRISPR Readout',
+                'category': 'Measurement Set Details',
+                'description': 'The readout produced by this CRISPR screen measurement set.',
+                'optional': True
+            },
             'control_types': {
                 'title': 'Control Types',
                 'category': 'Measurement Set Details',
