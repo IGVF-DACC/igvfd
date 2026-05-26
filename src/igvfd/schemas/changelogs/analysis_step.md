@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 12
 
+* Extend `input_content_types` enum list to include `donor by gene matrix`.
+* Extend `output_content_types` enum list to include `donor by gene matrix`.
 * Extend `input_content_types` enum list to include `differential TF enrichment quantifications`.
 * Extend `output_content_types` enum list to include `differential TF enrichment quantifications`.
 * Extend `input_content_types` enum list to include `motif-overlapping differential guide quantifications`.
