@@ -1817,5 +1817,28 @@
         "filtered": false,
         "file_set": "igvf:morf_screen",
         "controlled_access": false
+    },
+    {
+        "uuid": "6e1ad22d-9dc7-4751-8f93-5fa8f6db4d12",
+        "accession": "IGVFFI0009MOTF",
+        "lab": "michael-beer",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_motif_overlapping_differential_guide"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-26T12:34:56Z",
+        "md5sum": "6b6a16496f0f4ee0df909bbf0d0c4c68",
+        "file_format": "tsv",
+        "content_type": "motif-overlapping differential guide quantifications",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/motif_overlapping_differential_guide_quantifications.tsv.gz",
+        "file_size": 4210,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:morf_screen",
+        "controlled_access": false
     }
 ]
