@@ -11,7 +11,6 @@ import igvfd.audit.formatter
 import igvfd.audit.human_donor
 import igvfd.audit.in_vitro_system
 import igvfd.audit.index_file
-import igvfd.audit.matrix_file
 import igvfd.audit.measurement_set
 import igvfd.audit.model_set
 import igvfd.audit.multiplexed_sample
@@ -42,7 +41,6 @@ AUDIT_MODULES_TO_PROCESS = [
     igvfd.audit.human_donor,
     igvfd.audit.in_vitro_system,
     igvfd.audit.index_file,
-    igvfd.audit.matrix_file,
     igvfd.audit.measurement_set,
     igvfd.audit.model_set,
     igvfd.audit.multiplexed_sample,

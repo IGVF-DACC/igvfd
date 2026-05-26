@@ -19,12 +19,6 @@ def matrix_file():
             'transcriptome_annotation': {
                 'title': 'Transcriptome Annotation'
             },
-            'principal_dimension': {
-                'title': 'Principal Dimension'
-            },
-            'secondary_dimensions': {
-                'title': 'Secondary Dimensions'
-            },
             'file_size': {
                 'title': 'File Size',
                 'type': 'stats'

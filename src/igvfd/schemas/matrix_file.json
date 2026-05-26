@@ -117,60 +117,6 @@
                 "igvf_utils": "contact matrix"
             }
         },
-        "principal_dimension": {
-            "title": "Principal Dimension",
-            "description": "The principal dimension of the matrix.",
-            "type": "string",
-            "permission": "admin_only",
-            "enum": [
-                "cell",
-                "CRISPR guide capture",
-                "fragment",
-                "gene",
-                "mitochondrial variants",
-                "time",
-                "treatment",
-                "variant",
-                "genomic position",
-                "spot barcode"
-            ],
-            "submissionExample": {
-                "appscript": "cell",
-                "igvf_utils": "cell"
-            }
-        },
-        "secondary_dimensions": {
-            "title": "Secondary Dimensions",
-            "description": "The secondary, tertiary....n levels of dimensions of the matrix.",
-            "type": "array",
-            "uniqueItems": true,
-            "minItems": 1,
-            "permission": "admin_only",
-            "items": {
-                "title": "Secondary Dimensions",
-                "type": "string",
-                "enum": [
-                    "antibody capture",
-                    "barcode count",
-                    "cell",
-                    "CRISPR guide capture",
-                    "fragment",
-                    "gene",
-                    "gene expression",
-                    "genomic position",
-                    "multiplexing oligo",
-                    "peak",
-                    "time",
-                    "treatment",
-                    "UMI count",
-                    "variant"
-                ]
-            },
-            "submissionExample": {
-                "appscript": "[\"gene expression\", \"CRISPR guide capture\"]",
-                "igvf_utils": "gene expression, CRISPR guide capture"
-            }
-        },
         "file_format": {
             "enum": [
                 "h5ad",
