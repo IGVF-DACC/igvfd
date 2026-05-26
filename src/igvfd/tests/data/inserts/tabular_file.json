@@ -1718,5 +1718,81 @@
         "release_timestamp": "2026-03-06T12:34:56Z",
         "file_set": "igvf:prediction_set_5",
         "controlled_access": false
+    },
+    {
+        "uuid": "7f077e7c-d38f-4a96-b491-7766b6268720",
+        "accession": "IGVFFI0022PTCL",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:post_segmentation_transcript_and_cell_locations"
+        ],
+        "md5sum": "9452e5c45c977cad38978d19b3365772",
+        "file_format": "csv",
+        "content_type": "post-segmentation transcript and cell locations",
+        "submitted_file_name": "/Users/igvf/igvf_files/post_segmentation_transcript_and_cell_locations.csv.gz",
+        "file_size": 8388029,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "b682a338-94e2-4a96-b491-8776672b6260",
+        "accession": "IGVFFI7700STCM",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:spatial_transcriptomics_cell_metadata"
+        ],
+        "md5sum": "15004c228fa09151cacb1196a5d82ba2",
+        "file_format": "tsv",
+        "content_type": "spatial transcriptomics cell metadata",
+        "submitted_file_name": "/Users/igvf/igvf_files/spatial_transcriptomics_cell_metadata.tsv.gz",
+        "file_size": 1802000,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "9b6c3776-e0a3-4a96-b491-2676685120b6",
+        "accession": "IGVFFI9900SLTR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:spatial_transcriptomics_slide_level_transcripts"
+        ],
+        "md5sum": "fa4aea7e507e6d3458c3353dea1ea80e",
+        "file_format": "tsv",
+        "content_type": "spatial transcriptomics slide-level transcripts",
+        "submitted_file_name": "/Users/igvf/igvf_files/spatial_transcriptomics_slide_level_transcripts.tsv.gz",
+        "file_size": 1802000,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "f6087f0d-5ee0-4a96-b491-b62673089164",
+        "accession": "IGVFFI9900SLCC",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:spatial_transcriptomics_slide_level_cell_coordinates"
+        ],
+        "md5sum": "c8ee737c75e11dc36d49bc27c7115c21",
+        "file_format": "tsv",
+        "content_type": "spatial transcriptomics slide-level cell coordinates",
+        "submitted_file_name": "/Users/igvf/igvf_files/spatial_transcriptomics_slide_level_cell_coordinates.tsv.gz",
+        "file_size": 2300999,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
     }
 ]

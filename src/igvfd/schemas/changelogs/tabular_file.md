@@ -1,5 +1,12 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 22
+
+* Extend `content_type` enum list to include `post-segmentation transcript and cell locations`.
+* Extend `content_type` enum list to include `spatial transcriptomics cell metadata`.
+* Extend `content_type` enum list to include `spatial transcriptomics slide-level transcripts`.
+* Extend `content_type` enum list to include `spatial transcriptomics slide-level cell coordinates`.
+
 ### Schema version 22
 
 * Adjust `file_format_type` enum list to remove `mpra_starr`.

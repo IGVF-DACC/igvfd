@@ -65,6 +65,7 @@
                 "low resolution tissue",
                 "high resolution tissue",
                 "fiducial alignment",
+                "raw field of view images",
                 "UMAP plot"
             ],
             "enum_descriptions": {
@@ -72,6 +73,7 @@
                 "high resolution tissue": "A detailed representation of tissue sections at a higher spatial resolution, used for precise mapping and analysis of gene expression patterns within the tissue.",
                 "detected tissue": "The portion of the tissue section that has been identified and analyzed for gene expression, based on the spatial transcriptomics data captured by the Space Ranger pipeline.",
                 "fiducial alignment": "The alignment of tissue sections using fiducial markers which are reference points embedded in the slide that help to accurately map spatial transcriptomics data to the physical location of the tissue on the slide.",
+                "raw field of view images": "A tar file containing individual folders of field of view level images and metadata.",
                 "UMAP plot": "Uniform Manifold Approximation and Projection plot SVG two-dimensional plot of the dimensionality reduced feature profile using optimized hyperparameters (Xia et al, Nature Comms, 2024)"
             },
             "submissionExample": {
@@ -83,7 +85,8 @@
             "enum": [
                 "jpg",
                 "png",
-                "svg"
+                "svg",
+                "tar"
             ],
             "submissionExample": {
                 "appscript": "jpg",
