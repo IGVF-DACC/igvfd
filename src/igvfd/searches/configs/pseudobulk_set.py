@@ -33,6 +33,7 @@ def pseudobulk_set():
                 'title': 'Cell Type',
                 'category': 'Sample',
                 'description': 'The ontology term of the pseudobulk.',
+                'optional': True
             },
             'cell_qualifier': {
                 'title': 'Cell Qualifier',
@@ -58,8 +59,7 @@ def pseudobulk_set():
             'samples.sample_terms.term_name': {
                 'title': 'Parent Sample',
                 'category': 'Sample',
-                'description': 'The sample name associated with the pseudobulk set.',
-                'optional': True
+                'description': 'The sample name associated with the pseudobulk set.'
             },
             'samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
