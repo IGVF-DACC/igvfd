@@ -1840,5 +1840,97 @@
         "filtered": false,
         "file_set": "igvf:morf_screen",
         "controlled_access": false
+    },
+    {
+        "uuid": "d2d5b9c8-3e7f-4b2d-938f-2a7f2a4d0ac1",
+        "accession": "IGVFFI0010CISG",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_cis_differential_expression_per_guide"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-27T12:34:56Z",
+        "md5sum": "4f4f16496f0f4ee0df909bbf0d0c4c69",
+        "file_format": "tsv",
+        "content_type": "cis differential expression quantifications per guide",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/cis_differential_expression_quantifications_per_guide.tsv.gz",
+        "file_size": 5310,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:morf_screen",
+        "controlled_access": false
+    },
+    {
+        "uuid": "9c42be70-eefa-4ed7-b6ea-9de45b2ea77f",
+        "accession": "IGVFFI0011TRSG",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_trans_differential_expression_per_guide"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-27T12:34:56Z",
+        "md5sum": "5a5f16496f0f4ee0df909bbf0d0c4c70",
+        "file_format": "tsv",
+        "content_type": "trans differential expression quantifications per guide",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/trans_differential_expression_quantifications_per_guide.tsv.gz",
+        "file_size": 6520,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:morf_screen",
+        "controlled_access": false
+    },
+    {
+        "uuid": "14fbe9cc-3ec8-4f15-9089-fae9a44e7459",
+        "accession": "IGVFFI0012CISE",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_cis_differential_expression_per_element"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-27T12:34:56Z",
+        "md5sum": "6b6f16496f0f4ee0df909bbf0d0c4c71",
+        "file_format": "tsv",
+        "content_type": "cis differential expression quantifications per element",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/cis_differential_expression_quantifications_per_element.tsv.gz",
+        "file_size": 7180,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:morf_screen",
+        "controlled_access": false
+    },
+    {
+        "uuid": "67a9ab61-f7f8-499a-a499-eb5d44a4ea86",
+        "accession": "IGVFFI0013TRSE",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_trans_differential_expression_per_element"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-27T12:34:56Z",
+        "md5sum": "7c7f16496f0f4ee0df909bbf0d0c4c72",
+        "file_format": "tsv",
+        "content_type": "trans differential expression quantifications per element",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/trans_differential_expression_quantifications_per_element.tsv.gz",
+        "file_size": 7395,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:morf_screen",
+        "controlled_access": false
     }
 ]
