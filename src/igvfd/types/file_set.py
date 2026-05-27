@@ -2822,6 +2822,48 @@ class PseudobulkSet(FileSet):
 
     @calculated_property(
         schema={
+            'title': 'Cell Annotation',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def cell_annotation(self, request, cell_type, samples, cell_qualifier=None):
+        source_biosample_classifications = set()
+        source_biosample_terms = set()
+        cell_qualifier_string = None
+        if cell_qualifier:
+            cell_qualifier_string = cell_qualifier
+        cell_type_object = request.embed(cell_type, '@@object')
+        cell_type_name = cell_type_object.get('term_name', '')
+        for sample in samples:
+            sample_object = request.embed(sample, '@@object')
+            sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object')
+            classifications = sample_object.get('classifications', [])
+            for classification in classifications:
+                source_biosample_classifications.add(classification)
+            source_biosample_terms.add(sample_term_object.get('term_name', ''))
+
+        if len(samples) == 1 and 'tissue/organ' in source_biosample_classifications:
+            phrase = ' '.join([x for x in [
+                ', '.join(source_biosample_terms),
+                cell_qualifier_string,
+                cell_type_name
+            ] if x is not None])
+        elif len(samples) == 1 and 'cell line' in source_biosample_classifications and len(source_biosample_terms) == 1 and list(source_biosample_terms)[0] != cell_type_name:
+            phrase = ' '.join([x for x in [
+                cell_qualifier_string,
+                cell_type_name,
+                'derived from',
+                ', '.join(source_biosample_terms)
+            ] if x is not None])
+        else:
+            phrase = (
+                f'{cell_qualifier_string} {cell_type_name}'
+            ).strip()
+        return phrase
+
+    @calculated_property(
+        schema={
             'title': 'Workflows',
             'description': 'A workflow for computational analysis of genomic data. A workflow is made up of analysis steps.',
             'type': 'array',
