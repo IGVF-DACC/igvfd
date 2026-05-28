@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IGVF File Schema Comparison</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #232636;
+    --border: #2e3248;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --text: #e2e8f0;
+    --muted: #8892a4;
+    --tag-bg: #252840;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.6; }
+
+  /* Layout */
+  .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+  header { background: linear-gradient(135deg, #0f1117 0%, #1a1030 100%); border-bottom: 1px solid var(--border); padding: 40px 24px 32px; }
+  header h1 { font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #6c63ff, #00d4aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  header p { color: var(--muted); margin-top: 8px; font-size: 15px; }
+
+  /* Nav tabs */
+  .tabs { display: flex; gap: 4px; background: var(--surface); padding: 6px; border-radius: 12px; margin: 24px 0 0; flex-wrap: wrap; }
+  .tab { padding: 8px 18px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; color: var(--muted); border: none; background: transparent; transition: all 0.15s; }
+  .tab:hover { color: var(--text); background: var(--surface2); }
+  .tab.active { background: var(--accent); color: #fff; }
+
+  /* Sections */
+  section { padding: 32px 0; display: none; }
+  section.active { display: block; }
+
+  h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+  .section-desc { color: var(--muted); margin-bottom: 24px; font-size: 13px; }
+
+  /* Schema cards */
+  .schema-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .schema-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: border-color 0.2s, transform 0.1s; cursor: default; }
+  .schema-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .schema-card .title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .schema-card .desc { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+  .schema-card .version { display: inline-block; background: var(--tag-bg); color: var(--accent); font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-bottom: 12px; }
+  .formats-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .fmt-badge { font-size: 11px; padding: 3px 8px; border-radius: 5px; font-family: monospace; font-weight: 600; }
+  .fmt-seq { background: #1a2744; color: #60a5fa; }
+  .fmt-bin { background: #1f2a1a; color: #4ade80; }
+  .fmt-text { background: #2a1f1a; color: #fb923c; }
+  .fmt-image { background: #2a1a2a; color: #c084fc; }
+  .fmt-model { background: #1a2a2a; color: #2dd4bf; }
+  .fmt-index { background: #2a2a1a; color: #facc15; }
+  .required-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+  .req-badge { font-size: 11px; padding: 2px 7px; border-radius: 4px; background: var(--tag-bg); color: var(--text); border: 1px solid var(--border); }
+  .req-badge.required { border-color: #ff6b6b44; color: #ff6b6b; background: #2a1a1a; }
+  .req-badge.extra { border-color: #00d4aa44; color: #00d4aa; background: #1a2a2a; }
+  .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; margin-top: 12px; }
+
+  /* Inheritance tree */
+  .tree { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; overflow-x: auto; }
+  .tree-inner { display: flex; flex-direction: column; align-items: center; gap: 0; min-width: 900px; }
+  .node-base { background: linear-gradient(135deg, #3730a3, #1e3a5f); border: 2px solid #6c63ff; border-radius: 10px; padding: 12px 24px; text-align: center; font-weight: 700; font-size: 15px; }
+  .node-base small { display: block; color: #a5b4fc; font-size: 11px; font-weight: 400; margin-top: 2px; }
+  .tree-children { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-top: 0; position: relative; }
+  .tree-children::before { content: ''; position: absolute; top: -32px; left: 50%; width: 2px; height: 32px; background: var(--border); }
+  .tree-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .tree-branch { display: flex; flex-direction: column; align-items: center; }
+  .tree-connector { width: 2px; height: 32px; background: var(--border); }
+  .node-child { border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; text-align: center; font-size: 13px; font-weight: 600; transition: border-color 0.2s; white-space: nowrap; }
+  .node-child:hover { border-color: var(--accent); }
+  .node-child.seq { border-color: #60a5fa55; background: #1a2744; color: #60a5fa; }
+  .node-child.ali { border-color: #4ade8055; background: #1f2a1a; color: #4ade80; }
+  .node-child.sig { border-color: #fb923c55; background: #2a1f1a; color: #fb923c; }
+  .node-child.idx { border-color: #facc1555; background: #2a2a1a; color: #facc15; }
+  .node-child.tab { border-color: #f472b655; background: #2a1a22; color: #f472b6; }
+  .node-child.ref { border-color: #818cf855; background: #1a1a2a; color: #818cf8; }
+  .node-child.mod { border-color: #2dd4bf55; background: #1a2a2a; color: #2dd4bf; }
+  .node-child.cfg { border-color: #a78bfa55; background: #1f1a2a; color: #a78bfa; }
+  .node-child.img { border-color: #c084fc55; background: #231a2a; color: #c084fc; }
+  .node-child.mat { border-color: #38bdf855; background: #1a2030; color: #38bdf8; }
+  .node-child small { display: block; color: var(--muted); font-size: 10px; font-weight: 400; margin-top: 2px; }
+  .horiz-line { width: 100%; height: 2px; background: var(--border); position: relative; margin: 0 0 0; }
+
+  /* Feature matrix */
+  .matrix-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
+  table.matrix { width: 100%; border-collapse: collapse; font-size: 12px; }
+  table.matrix th { background: var(--surface2); padding: 10px 14px; text-align: left; border-bottom: 2px solid var(--border); white-space: nowrap; position: sticky; top: 0; z-index: 10; }
+  table.matrix th:first-child { min-width: 160px; }
+  table.matrix td { padding: 8px 14px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border)22; vertical-align: middle; white-space: nowrap; }
+  table.matrix tr:hover td { background: var(--surface2); }
+  .check { font-size: 14px; color: #4ade80; }
+  .cross { font-size: 14px; color: #374151; }
+  .partial { font-size: 14px; color: #facc15; }
+  .schema-label { font-weight: 600; }
+  table.matrix th.rotate { height: 80px; width: 32px; vertical-align: bottom; padding: 0 4px 8px; }
+  table.matrix th.rotate span { writing-mode: vertical-rl; transform: rotate(180deg); font-weight: 500; font-size: 11px; }
+  .category-header { background: var(--surface2); color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; padding: 6px 14px; }
+
+  /* Format comparison */
+  .format-section { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .format-group { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .format-group h3 { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+  .format-item { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--border)55; }
+  .format-item:last-child { border-bottom: none; }
+  .format-item code { font-size: 12px; font-family: monospace; font-weight: 700; min-width: 56px; }
+  .format-item .schema-pills { display: flex; flex-wrap: wrap; gap: 4px; }
+  .spill { font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+
+  /* Dependent schema constraints */
+  .constraint-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 16px; }
+  .constraint-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .constraint-card h3 { font-size: 13px; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .constraint-item { background: var(--surface2); border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; font-size: 12px; }
+  .constraint-item .rule { color: var(--accent2); font-weight: 600; margin-bottom: 4px; }
+  .constraint-item .detail { color: var(--muted); }
+
+  /* Content type explorer */
+  .ct-schema-select { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .ct-btn { padding: 6px 14px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); cursor: pointer; font-size: 12px; transition: all 0.15s; }
+  .ct-btn.active { border-color: var(--accent); color: var(--text); background: var(--tag-bg); }
+  .ct-list { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; min-height: 200px; }
+  .ct-item { display: inline-block; margin: 4px; padding: 4px 10px; border-radius: 5px; font-size: 12px; background: var(--tag-bg); border: 1px solid var(--border); color: var(--text); }
+  .ct-item:hover { border-color: var(--accent); color: var(--accent); cursor: default; }
+  .ct-count { color: var(--muted); font-size: 12px; margin-bottom: 12px; }
+
+  /* Highlight box */
+  .highlight-box { background: var(--surface); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 16px 0; font-size: 13px; }
+  .highlight-box strong { color: var(--accent2); }
+
+  /* Examples section */
+  .example-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 16px; }
+  .example-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .example-card .ex-header { padding: 12px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .ex-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .example-card h3 { font-size: 13px; font-weight: 600; }
+  .example-card pre { background: #0a0c12; padding: 16px; font-size: 11px; line-height: 1.7; overflow-x: auto; color: #c9d1d9; }
+  .json-key { color: #79b8ff; }
+  .json-str { color: #9ecbff; }
+  .json-num { color: #f8c555; }
+  .json-bool { color: #d2a8ff; }
+  .json-comment { color: #6a737d; font-style: italic; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .schema-grid { grid-template-columns: 1fr; }
+    .tree-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>IGVF File Schema Reference</h1>
+    <p>Visual comparison of file schema types in the IGVF Data Model &mdash; differences, similarities, and examples</p>
+    <nav>
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('overview')">Overview</button>
+        <button class="tab" onclick="showTab('inheritance')">Inheritance Tree</button>
+        <button class="tab" onclick="showTab('matrix')">Feature Matrix</button>
+        <button class="tab" onclick="showTab('formats')">File Formats</button>
+        <button class="tab" onclick="showTab('content-types')">Content Types</button>
+        <button class="tab" onclick="showTab('constraints')">Constraints</button>
+        <button class="tab" onclick="showTab('examples')">Examples</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ===================== OVERVIEW ===================== -->
+<section id="overview" class="active">
+  <h2>Schema Overview</h2>
+  <p class="section-desc">10 concrete file schemas all inherit from the abstract <code>file.json</code> base. Common required fields: <strong>award</strong>, <strong>lab</strong>, <strong>md5sum</strong>, <strong>file_format</strong>, <strong>content_type</strong>.</p>
+
+  <div class="highlight-box">
+    <strong>Base schema (file.json)</strong> defines common properties: <code>accession</code>, <code>analysis_step_version</code>, <code>content_md5sum</code>, <code>derived_from</code>, <code>derived_manually</code>, <code>file_format</code>, <code>file_format_specifications</code>, <code>file_set</code>, <code>file_size</code>, <code>md5sum</code>, <code>submitted_file_name</code>, <code>upload_status</code>, <code>validation_error_detail</code>, <code>supersedes</code>. Subclasses override <code>file_format</code> and <code>content_type</code> with concrete enums.
+  </div>
+
+  <div class="schema-grid">
+
+    <div class="schema-card">
+      <div class="version">v16</div>
+      <div class="title">Sequence File</div>
+      <div class="desc">Sequencing results in bam, fastq, or pod5 formats. The raw output of sequencing platforms.</div>
+      <div class="label">File Formats</div>
+      <div class="formats-row">
+        <span class="fmt-badge fmt-seq">fastq</span>
+        <span class="fmt-badge fmt-seq">bam</span>
+        <span class="fmt-badge fmt-seq">pod5</span>
+      </div>
+      <div class="label">Extra Required Fields</div>
+      <div class="required-list">
+        <span class="req-badge extra">file_set</span>
+        <span class="req-badge extra">sequencing_platform</span>
+        <span class="req-badge extra">sequencing_run</span>
+        <span class="req-badge extra">controlled_access</span>
+      </div>
+    </div>
+
+    <div class="schema-card">
+      <div class="version">v17</div>
+      <div class="title">Alignment File</div>
+      <div class="desc">Mapped reads against a genome/transcriptome in bam or cram formats.</div>
+      <div class="label">File Formats</div>
+      <div class="formats-row">
+        <span class="fmt-badge fmt-bin">bam</span>
+        <span class="fmt-badge fmt-bin">cram</span>
+      </div>
+      <div class="label">Extra Required Fields</div>
+      <div class="required-list">
+        <span class="req-badge extra">file_set</span>
+        <span class="req-badge extra">redacted</span>
+        <span class="req-badge extra">filtered</span>
+        <span class="req-badge extra">controlled_access</span>
+      </div>
+    </div>
+
+    <div class="schema-card">
+      <div class="version">v14</div>
+      <div class="title">Signal File</div>
+      <div class="desc">Analyzed sequencing data as coverage signal tracks in bigWig or npz formats.</div>
+      <div class="label">File Formats</div>
+      <div class="formats-row">
+        <span class="fmt-badge fmt-text">bigWig</span>
+        <span class="fmt-badge fmt-text">npz</span>
+      </div>
+      <div class="label">Extra Required Fields</div>
+      <div class="required-list">
+        <span class="req-badge extra">file_set</span>
+        <span class="req-badge extra">reference_files</span>
+        <span class="req-badge extra">strand_specificity</span>
+      </div>
+    </div>
+
+    <div class="schema-card">
+      <div class="version">v2</div>
+      <div class="title">Index File</div>
+      <div class="desc">Binary index file that enables random access into another file (bai, crai, tbi).</div>
+      <div class="label">File Formats</div>
+      <div class="formats-row">
+        <span class="fmt-badge fmt-index">bai</span>
+        <span class="fmt-badge fmt-index">crai</span>
+        <span class="fmt-badge fmt-index">tbi</span>
+      </div>
+      <div class="label">Extra Required Fields</div>
+      <div class="required-list">
+        <span class="req-badge extra">file_set</span>
+        <span class="req-badge extra">derived_from</span>
+      </div>
+    </div>
+
+    <div class="schema-card">
+      <div class="version">v22</div>
+      <div class="title">Tabular File</div>
+      <div class="desc">Structured tabular data with 100+ content types. Largest and most diverse schema.</div>
+      <div class="label">File Formats</div>
+      <div class="formats-row">
+        <span class="fmt-badge fmt-text">tsv</span>
+        <span class="fmt-badge fmt-text">csv</span>
+        <span class="fmt-badge fmt-text">bed</span>
+        <span class="fmt-badge fmt-text">bedpe</span>
+        <span class="fmt-badge fmt-text">bigBed</span>
+        <span class="fmt-badge fmt-text">vcf</span>
+        <span class="fmt-badge fmt-text">gvcf</span>
+        <span class="fmt-badge fmt-text">gtf</span>
+        <span class="fmt-badge fmt-text">tar</span>
+      </div>
+      <div class="label">Extra Required Fields</div>
+      <div class="required-list">
+        <span class="req-badge extra">file_set</span>
+        <span class="req-badge extra">controlled_access</span>
+      </div>
+    </div>
+
+    <div class="schema-card">
+      <div class="version">v26</div>
+      <div class="title">Reference File</div>
+      <div class="desc">Reference data (genomes, annotations, QTL databases). Highest version number — most evolved schema.</div>
+      <div class="label">File Formats</div>
+      <div class="formats-row">
+        <span class="fmt-badge fmt-text">fasta</span>
+        <span class="fmt-badge fmt-text">gtf</span>
+        <span class="fmt-badge fmt-text">vcf</span>
+        <span class="fmt-badge fmt-text">bed</span>
+        <span class="fmt-badge fmt-text">tsv</span>
+        <span class="fmt-badge fmt-text">csv</span>
+        <span class="fmt-badge fmt-text">txt</span>
+        <span class="fmt-badge fmt-text">tar</span>
+        <span class="fmt-badge fmt-text">xml</span>
+        <span class="fmt-badge fmt-text">+6</span>
+      </div>
+      <div class="label">Extra Required Fields</div>
+      <div class="required-list">
+        <span class="req-badge extra">file_set</span>
+        <span class="req-badge extra">controlled_access</span>
+      </div>
+    </div>
+
+    <div class="schema-card">
+      <div class="version">v2</div>
+      <div class="title">Model File</div>
+      <div class="desc">Trained machine learning models — neural networks, matrices, graph structures.</div>
+      <div class="label">File Formats</div>
+      <div class="formats-row">
+        <span class="fmt-badge fmt-model">hdf5</span>
+        <span class="fmt-badge fmt-model">json</span>
+        <span class="fmt-badge fmt-model">pkl</span>
+        <span class="fmt-badge fmt-model">pt</span>
+        <span class="fmt-badge fmt-model">tar</span>
+        <span class="fmt-badge fmt-model">tsv</span>
+        <span class="fmt-badge fmt-model">zip</span>
+      </div>
+      <div class="label">Extra Required Fields</div>
+      <div class="required-list">
+        <span class="req-badge extra">file_set</span>
+      </div>
+    </div>
+
+    <div class="schema-card">
+      <div class="version">v8</div>
+      <div class="title">Configuration File</div>
+      <div class="desc">Settings, model parameters, and seqspec library specifications.</div>
+      <div class="label">File Formats</div>
+      <div class="formats-row">
+        <span class="fmt-badge fmt-text">yaml</span>
+        <span class="fmt-badge fmt-text">json</span>
+        <span class="fmt-badge fmt-text">tsv</span>
+      </div>
+      <div class="label">Extra Required Fields</div>
+      <div class="required-list">
+        <span class="req-badge extra">file_set</span>
+      </div>
+    </div>
+
+    <div class="schema-card">
+      <div class="version">v5</div>
+      <div class="title">Image File</div>
+      <div class="desc">Tissue section images and plots from spatial transcriptomics experiments.</div>
+      <div class="label">File Formats</div>
+      <div class="formats-row">
+        <span class="fmt-badge fmt-image">jpg</span>
+        <span class="fmt-badge fmt-image">png</span>
+        <span class="fmt-badge fmt-image">svg</span>
+        <span class="fmt-badge fmt-image">tar</span>
+      </div>
+      <div class="label">Extra Required Fields</div>
+      <div class="required-list">
+        <span class="req-badge extra">file_set</span>
+      </div>
+    </div>
+
+    <div class="schema-card">
+      <div class="version">v10</div>
+      <div class="title">Matrix File</div>
+      <div class="desc">Multi-dimensional quantification matrices (cell &times; gene, contact matrices, etc.).</div>
+      <div class="label">File Formats</div>
+      <div class="formats-row">
+        <span class="fmt-badge fmt-model">h5ad</span>
+        <span class="fmt-badge fmt-model">h5mu</span>
+        <span class="fmt-badge fmt-model">hdf5</span>
+        <span class="fmt-badge fmt-model">mtx</span>
+        <span class="fmt-badge fmt-model">rds</span>
+        <span class="fmt-badge fmt-model">hic</span>
+        <span class="fmt-badge fmt-model">cool</span>
+        <span class="fmt-badge fmt-model">+4</span>
+      </div>
+      <div class="label">Extra Required Fields</div>
+      <div class="required-list">
+        <span class="req-badge extra">file_set</span>
+        <span class="req-badge extra">reference_files</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== INHERITANCE ===================== -->
+<section id="inheritance">
+  <h2>Inheritance Hierarchy</h2>
+  <p class="section-desc">All file schemas inherit from the abstract <code>file.json</code> base via <code>mixinProperties</code>. Each subclass overrides <code>content_type</code> and <code>file_format</code> with concrete enumerations.</p>
+
+  <div class="tree">
+    <div class="tree-inner">
+      <div class="node-base">
+        file.json
+        <small>Abstract base &mdash; award, lab, md5sum, file_format, content_type</small>
+      </div>
+      <div style="width:2px;height:40px;background:var(--border);margin:0 auto;"></div>
+      <div class="tree-row">
+        <div class="tree-branch">
+          <div class="tree-connector"></div>
+          <div class="node-child seq">
+            Sequence File
+            <small>bam · fastq · pod5</small>
+          </div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-connector"></div>
+          <div class="node-child ali">
+            Alignment File
+            <small>bam · cram</small>
+          </div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-connector"></div>
+          <div class="node-child sig">
+            Signal File
+            <small>bigWig · npz</small>
+          </div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-connector"></div>
+          <div class="node-child idx">
+            Index File
+            <small>bai · crai · tbi</small>
+          </div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-connector"></div>
+          <div class="node-child tab">
+            Tabular File
+            <small>tsv · csv · bed · vcf · +5</small>
+          </div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-connector"></div>
+          <div class="node-child ref">
+            Reference File
+            <small>fasta · gtf · vcf · bed · +11</small>
+          </div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-connector"></div>
+          <div class="node-child mod">
+            Model File
+            <small>hdf5 · json · pkl · pt · +3</small>
+          </div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-connector"></div>
+          <div class="node-child cfg">
+            Configuration File
+            <small>yaml · json · tsv</small>
+          </div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-connector"></div>
+          <div class="node-child img">
+            Image File
+            <small>jpg · png · svg · tar</small>
+          </div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-connector"></div>
+          <div class="node-child mat">
+            Matrix File
+            <small>h5ad · mtx · hic · cool · +7</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 24px;">
+    <div class="highlight-box">
+      <strong>Mixin inheritance pattern:</strong> Each subschema lists <code>file.json#/properties</code> as its first <code>mixinProperties</code> entry, gaining all base properties. Then it adds its own mixins (e.g., <code>controlled_access</code>, <code>filtered</code>, <code>base_modifications</code>). <code>dependentSchemas</code> are merged from <code>file.json#/dependentSchemas</code> using the <code>$merge</code> directive.
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MATRIX ===================== -->
+<section id="matrix">
+  <h2>Feature Comparison Matrix</h2>
+  <p class="section-desc">Which schemas have which mixins, required fields, and capabilities. &#10003; = present, &mdash; = absent, &#9672; = partial/optional.</p>
+
+  <div class="matrix-wrap">
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th>Schema</th>
+          <th class="rotate"><span>controlled_access</span></th>
+          <th class="rotate"><span>filtered (mixin)</span></th>
+          <th class="rotate"><span>processed_files</span></th>
+          <th class="rotate"><span>file_format_type</span></th>
+          <th class="rotate"><span>base_modifications</span></th>
+          <th class="rotate"><span>catalog_properties</span></th>
+          <th class="rotate"><span>external_host</span></th>
+          <th class="rotate"><span>assembly (mixin)</span></th>
+          <th class="rotate"><span>transcriptome_annotation</span></th>
+          <th class="rotate"><span>source_url</span></th>
+          <th class="rotate"><span>reference_files req.</span></th>
+          <th class="rotate"><span>sequencing fields</span></th>
+          <th class="rotate"><span>dbxrefs supported</span></th>
+          <th class="rotate"><span>catalog_adapters</span></th>
+          <th class="rotate"><span>imaging_platform</span></th>
+          <th class="rotate"><span>matrix dimensions</span></th>
+          <th class="rotate"><span>strand_specificity</span></th>
+          <th class="rotate"><span>redacted flag</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="schema-label" style="color:#60a5fa">Sequence File</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td class="schema-label" style="color:#4ade80">Alignment File</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="partial">◈</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td class="schema-label" style="color:#fb923c">Signal File</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td class="schema-label" style="color:#facc15">Index File</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td class="schema-label" style="color:#f472b6">Tabular File</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="partial">◈</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td class="schema-label" style="color:#818cf8">Reference File</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td class="schema-label" style="color:#2dd4bf">Model File</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td class="schema-label" style="color:#a78bfa">Configuration File</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td class="schema-label" style="color:#c084fc">Image File</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td class="schema-label" style="color:#38bdf8">Matrix File</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top:12px;color:var(--muted);font-size:12px;">◈ = conditionally required based on <code>content_type</code></p>
+</section>
+
+<!-- ===================== FORMATS ===================== -->
+<section id="formats">
+  <h2>File Formats by Schema</h2>
+  <p class="section-desc">Each schema restricts its <code>file_format</code> to a specific enum. Some formats appear in multiple schemas — hover a format to see all uses.</p>
+
+  <div class="format-section">
+
+    <div class="format-group">
+      <h3>Sequencing</h3>
+      <div class="format-item">
+        <code style="color:#60a5fa">fastq</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a2744;color:#60a5fa">Sequence</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#60a5fa">bam</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a2744;color:#60a5fa">Sequence</span>
+          <span class="spill" style="background:#1f2a1a;color:#4ade80">Alignment</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#60a5fa">pod5</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a2744;color:#60a5fa">Sequence</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#4ade80">cram</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1f2a1a;color:#4ade80">Alignment</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="format-group">
+      <h3>Signal / Index</h3>
+      <div class="format-item">
+        <code style="color:#fb923c">bigWig</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#2a1f1a;color:#fb923c">Signal</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#fb923c">npz</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#2a1f1a;color:#fb923c">Signal</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#facc15">bai</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#2a2a1a;color:#facc15">Index</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#facc15">crai</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#2a2a1a;color:#facc15">Index</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#facc15">tbi</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#2a2a1a;color:#facc15">Index</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="format-group">
+      <h3>Text / Tabular (shared)</h3>
+      <div class="format-item">
+        <code style="color:#f472b6">tsv</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#2a1a22;color:#f472b6">Tabular</span>
+          <span class="spill" style="background:#1a1a2a;color:#818cf8">Reference</span>
+          <span class="spill" style="background:#1a2a2a;color:#2dd4bf">Model</span>
+          <span class="spill" style="background:#1f1a2a;color:#a78bfa">Config</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#f472b6">csv</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#2a1a22;color:#f472b6">Tabular</span>
+          <span class="spill" style="background:#1a1a2a;color:#818cf8">Reference</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#f472b6">bed</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#2a1a22;color:#f472b6">Tabular</span>
+          <span class="spill" style="background:#1a1a2a;color:#818cf8">Reference</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#f472b6">vcf</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#2a1a22;color:#f472b6">Tabular</span>
+          <span class="spill" style="background:#1a1a2a;color:#818cf8">Reference</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#f472b6">gtf</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#2a1a22;color:#f472b6">Tabular</span>
+          <span class="spill" style="background:#1a1a2a;color:#818cf8">Reference</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#f472b6">tar</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#2a1a22;color:#f472b6">Tabular</span>
+          <span class="spill" style="background:#1a1a2a;color:#818cf8">Reference</span>
+          <span class="spill" style="background:#1a2a2a;color:#2dd4bf">Model</span>
+          <span class="spill" style="background:#231a2a;color:#c084fc">Image</span>
+          <span class="spill" style="background:#1a2030;color:#38bdf8">Matrix</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="format-group">
+      <h3>Reference-only Formats</h3>
+      <div class="format-item">
+        <code style="color:#818cf8">fasta</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a1a2a;color:#818cf8">Reference</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#818cf8">txt</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a1a2a;color:#818cf8">Reference</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#818cf8">obo</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a1a2a;color:#818cf8">Reference</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#818cf8">owl</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a1a2a;color:#818cf8">Reference</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#818cf8">PWM</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a1a2a;color:#818cf8">Reference</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#818cf8">xml</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a1a2a;color:#818cf8">Reference</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#818cf8">gaf / gds / dat</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a1a2a;color:#818cf8">Reference</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="format-group">
+      <h3>Model &amp; Config Formats</h3>
+      <div class="format-item">
+        <code style="color:#2dd4bf">hdf5</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a2a2a;color:#2dd4bf">Model</span>
+          <span class="spill" style="background:#1a2030;color:#38bdf8">Matrix</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#a78bfa">json</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a2a2a;color:#2dd4bf">Model</span>
+          <span class="spill" style="background:#1f1a2a;color:#a78bfa">Config</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#2dd4bf">pkl</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a2a2a;color:#2dd4bf">Model</span>
+          <span class="spill" style="background:#1a2030;color:#38bdf8">Matrix</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#2dd4bf">pt / zip</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a2a2a;color:#2dd4bf">Model</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#a78bfa">yaml</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1f1a2a;color:#a78bfa">Config</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="format-group">
+      <h3>Matrix-specific Formats</h3>
+      <div class="format-item">
+        <code style="color:#38bdf8">h5ad</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a2030;color:#38bdf8">Matrix</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#38bdf8">h5mu</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a2030;color:#38bdf8">Matrix</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#38bdf8">mtx</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a2030;color:#38bdf8">Matrix</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#38bdf8">rds / Robj</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a2030;color:#38bdf8">Matrix</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#38bdf8">hic / cool / mcool</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#1a2030;color:#38bdf8">Matrix</span>
+        </div>
+      </div>
+      <div class="format-item">
+        <code style="color:#c084fc">jpg / png / svg</code>
+        <div class="schema-pills">
+          <span class="spill" style="background:#231a2a;color:#c084fc">Image</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="highlight-box" style="margin-top:24px;">
+    <strong>Format overlap summary:</strong> <code>tar</code> appears in 5 schemas (Tabular, Reference, Model, Image, Matrix) — used as a container for multi-file outputs. <code>tsv</code> appears in 4 schemas. <code>vcf</code>, <code>gtf</code>, <code>csv</code>, <code>bed</code> appear in both Tabular and Reference. <code>hdf5</code> and <code>pkl</code> are shared by Model and Matrix.
+  </div>
+</section>
+
+<!-- ===================== CONTENT TYPES ===================== -->
+<section id="content-types">
+  <h2>Content Types Explorer</h2>
+  <p class="section-desc">Select a schema to see all valid <code>content_type</code> values. Tabular File has 100+ types covering nearly every assay output.</p>
+
+  <div class="ct-schema-select">
+    <button class="ct-btn active" onclick="showCT('sequence')">Sequence File</button>
+    <button class="ct-btn" onclick="showCT('alignment')">Alignment File</button>
+    <button class="ct-btn" onclick="showCT('signal')">Signal File</button>
+    <button class="ct-btn" onclick="showCT('index')">Index File</button>
+    <button class="ct-btn" onclick="showCT('tabular')">Tabular File</button>
+    <button class="ct-btn" onclick="showCT('reference')">Reference File</button>
+    <button class="ct-btn" onclick="showCT('model')">Model File</button>
+    <button class="ct-btn" onclick="showCT('config')">Configuration File</button>
+    <button class="ct-btn" onclick="showCT('image')">Image File</button>
+    <button class="ct-btn" onclick="showCT('matrix')">Matrix File</button>
+  </div>
+
+  <div class="ct-count" id="ct-count">4 content types</div>
+  <div class="ct-list" id="ct-list"></div>
+</section>
+
+<!-- ===================== CONSTRAINTS ===================== -->
+<section id="constraints">
+  <h2>Validation Constraints &amp; Rules</h2>
+  <p class="section-desc">Each schema defines conditional validation rules using <code>dependentSchemas</code>. All schemas inherit the base <code>file.json</code> constraints.</p>
+
+  <div class="constraint-grid">
+
+    <div class="constraint-card">
+      <h3><span style="color:#6c63ff">●</span> file.json (Base — inherited by all)</h3>
+      <div class="constraint-item">
+        <div class="rule">upload_status → file_size required</div>
+        <div class="detail">When <code>upload_status = "validated"</code>, <code>file_size</code> must be present.</div>
+      </div>
+      <div class="constraint-item">
+        <div class="rule">status → upload_status restriction</div>
+        <div class="detail">Released/archived/revoked files cannot have <code>upload_status</code> of "pending" or "file not found". Also requires <code>release_timestamp</code>.</div>
+      </div>
+      <div class="constraint-item">
+        <div class="rule">derived_manually → analysis_step_version</div>
+        <div class="detail">If <code>derived_manually = true</code>, <code>analysis_step_version</code> must NOT be present.</div>
+      </div>
+      <div class="constraint-item">
+        <div class="rule">file_format → assembly required</div>
+        <div class="detail">bed, bedpe, bigBed, bigInteract, gvcf, vcf formats require <code>submitted_assembly</code>, <code>assembly</code>, or <code>reference_files</code>.</div>
+      </div>
+      <div class="constraint-item">
+        <div class="rule">transcriptome_annotation ↔ assembly consistency</div>
+        <div class="detail">GRCh38 → GENCODE 22–47. GRCm39 → GENCODE M30–M36. Custom assembly → no annotation allowed.</div>
+      </div>
+    </div>
+
+    <div class="constraint-card">
+      <h3><span style="color:#60a5fa">●</span> Sequence File</h3>
+      <div class="constraint-item">
+        <div class="rule">fastq + validated → read statistics required</div>
+        <div class="detail">Validated FASTQ files must have <code>minimum_read_length</code>, <code>maximum_read_length</code>, <code>mean_read_length</code>, and <code>read_count</code>.</div>
+      </div>
+      <div class="constraint-item">
+        <div class="rule">content_type ↔ file_format pairing</div>
+        <div class="detail">"reads" → fastq only. "PacBio subreads" / "PacBio consensus reads" → bam only. "Nanopore reads" → pod5 only.</div>
+      </div>
+      <div class="constraint-item">
+        <div class="rule">base_modifications → Nanopore reads only</div>
+        <div class="detail">Base modification data can only be specified for <code>content_type = "Nanopore reads"</code>.</div>
+      </div>
+    </div>
+
+    <div class="constraint-card">
+      <h3><span style="color:#4ade80">●</span> Alignment File</h3>
+      <div class="constraint-item">
+        <div class="rule">content_type → reference_files dependency</div>
+        <div class="detail">"alignments", "alignments with modifications", and "transcriptome alignments" require <code>reference_files</code>. "methylated reads" does NOT require it.</div>
+      </div>
+      <div class="constraint-item">
+        <div class="rule">base_modifications → modification content types</div>
+        <div class="detail">Can only specify base modifications for "alignments with modifications" or "methylated reads" content types.</div>
+      </div>
+    </div>
+
+    <div class="constraint-card">
+      <h3><span style="color:#fb923c">●</span> Signal File</h3>
+      <div class="constraint-item">
+        <div class="rule">content_type ↔ file_format pairing</div>
+        <div class="detail">"sequence attributes" must use npz format. All other content types are restricted to bigWig.</div>
+      </div>
+    </div>
+
+    <div class="constraint-card">
+      <h3><span style="color:#facc15">●</span> Index File</h3>
+      <div class="constraint-item">
+        <div class="rule">file_format → derived_from type restriction</div>
+        <div class="detail">bai/crai index files must be derived from an <code>AlignmentFile</code>. tbi index files must be derived from a <code>ReferenceFile</code> or <code>TabularFile</code>.</div>
+      </div>
+      <div class="constraint-item">
+        <div class="rule">derived_from maxItems: 1</div>
+        <div class="detail">Index files can only be derived from exactly one source file (unlike other schema types).</div>
+      </div>
+    </div>
+
+    <div class="constraint-card">
+      <h3><span style="color:#f472b6">●</span> Tabular File</h3>
+      <div class="constraint-item">
+        <div class="rule">bed/bigBed → file_format_type required</div>
+        <div class="detail">bed and bigBed formats must specify a <code>file_format_type</code>. Other formats (tsv, csv, etc.) must NOT have it.</div>
+      </div>
+      <div class="constraint-item">
+        <div class="rule">~75 content types → reference context required</div>
+        <div class="detail">Most genomic content types require <code>reference_files</code>, <code>submitted_assembly</code>, or <code>submitted_transcriptome_annotation</code>.</div>
+      </div>
+      <div class="constraint-item">
+        <div class="rule">base_modifications → modification state types only</div>
+        <div class="detail">Only "modification state", "minus strand modification state", and "plus strand modification state" can have base modification data.</div>
+      </div>
+    </div>
+
+    <div class="constraint-card">
+      <h3><span style="color:#818cf8">●</span> Reference File</h3>
+      <div class="constraint-item">
+        <div class="rule">genome reference/index → assembly required</div>
+        <div class="detail">"genome reference" and "genome index" content types require <code>assembly</code>.</div>
+      </div>
+      <div class="constraint-item">
+        <div class="rule">transcriptome reference → assembly + annotation</div>
+        <div class="detail">Non-custom assemblies require both <code>assembly</code> and <code>transcriptome_annotation</code>. Custom assemblies only need <code>assembly</code>.</div>
+      </div>
+      <div class="constraint-item">
+        <div class="rule">bed → file_format_type required</div>
+        <div class="detail">bed format requires <code>file_format_type</code>; vcf and all other formats must NOT have it.</div>
+      </div>
+    </div>
+
+    <div class="constraint-card">
+      <h3><span style="color:#2dd4bf">●</span> Model File</h3>
+      <div class="constraint-item">
+        <div class="rule">content_type ↔ file_format pairing</div>
+        <div class="detail">"graph structure" → json only. "edge weights" → hdf5 only. All other model content types are format-agnostic.</div>
+      </div>
+    </div>
+
+    <div class="constraint-card">
+      <h3><span style="color:#a78bfa">●</span> Configuration File</h3>
+      <div class="constraint-item">
+        <div class="rule">seqspec → yaml format only</div>
+        <div class="detail"><code>content_type = "seqspec"</code> is restricted to <code>file_format = "yaml"</code>.</div>
+      </div>
+      <div class="constraint-item">
+        <div class="rule">seqspec → seqspec_of allowed</div>
+        <div class="detail">Only seqspec configuration files may use the <code>seqspec_of</code> property to link to sequence files.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== EXAMPLES ===================== -->
+<section id="examples">
+  <h2>Submission Examples</h2>
+  <p class="section-desc">Representative JSON objects for each schema type, showing required fields and typical properties.</p>
+
+  <div class="example-grid">
+
+    <div class="example-card">
+      <div class="ex-header">
+        <div class="ex-dot" style="background:#60a5fa"></div>
+        <h3>Sequence File &mdash; FASTQ reads</h3>
+      </div>
+      <pre>{
+  <span class="json-key">"award"</span>: <span class="json-str">"/awards/HG012012/"</span>,
+  <span class="json-key">"lab"</span>: <span class="json-str">"/labs/john-doe/"</span>,
+  <span class="json-key">"md5sum"</span>: <span class="json-str">"74b87337454200d4d33f80c4663dc5e5"</span>,
+  <span class="json-key">"file_format"</span>: <span class="json-str">"fastq"</span>,
+  <span class="json-key">"content_type"</span>: <span class="json-str">"reads"</span>,
+  <span class="json-key">"file_set"</span>: <span class="json-str">"IGVFDS4321DCBA"</span>,
+  <span class="json-key">"sequencing_platform"</span>: <span class="json-str">"/platform-terms/EFO_0004203/"</span>,
+  <span class="json-key">"sequencing_run"</span>: <span class="json-num">1</span>,
+  <span class="json-key">"controlled_access"</span>: <span class="json-bool">false</span>,
+  <span class="json-key">"illumina_read_type"</span>: <span class="json-str">"R1"</span>,
+  <span class="json-key">"sequencing_kit"</span>: <span class="json-str">"NovaSeq 6000 S2 Reagent Kit v1.5"</span>,
+  <span class="json-key">"flowcell_id"</span>: <span class="json-str">"HJTW3BBXY"</span>,
+  <span class="json-key">"read_names"</span>: [<span class="json-str">"Read 1"</span>]
+}</pre>
+    </div>
+
+    <div class="example-card">
+      <div class="ex-header">
+        <div class="ex-dot" style="background:#4ade80"></div>
+        <h3>Alignment File &mdash; genome alignments</h3>
+      </div>
+      <pre>{
+  <span class="json-key">"award"</span>: <span class="json-str">"/awards/HG012012/"</span>,
+  <span class="json-key">"lab"</span>: <span class="json-str">"/labs/john-doe/"</span>,
+  <span class="json-key">"md5sum"</span>: <span class="json-str">"74b87337454200d4d33f80c4663dc5e5"</span>,
+  <span class="json-key">"file_format"</span>: <span class="json-str">"bam"</span>,
+  <span class="json-key">"content_type"</span>: <span class="json-str">"alignments"</span>,
+  <span class="json-key">"file_set"</span>: <span class="json-str">"IGVFDS4321DCBA"</span>,
+  <span class="json-key">"redacted"</span>: <span class="json-bool">false</span>,
+  <span class="json-key">"filtered"</span>: <span class="json-bool">true</span>,
+  <span class="json-key">"controlled_access"</span>: <span class="json-bool">false</span>,
+  <span class="json-key">"reference_files"</span>: [<span class="json-str">"IGVFFI0001AAAA"</span>],
+  <span class="json-key">"derived_from"</span>: [<span class="json-str">"IGVFFI1234ABCD"</span>],
+  <span class="json-key">"analysis_step_version"</span>: <span class="json-str">"/analysis-step-versions/dc73c5ff/"</span>
+}</pre>
+    </div>
+
+    <div class="example-card">
+      <div class="ex-header">
+        <div class="ex-dot" style="background:#fb923c"></div>
+        <h3>Signal File &mdash; ATAC-seq signal track</h3>
+      </div>
+      <pre>{
+  <span class="json-key">"award"</span>: <span class="json-str">"/awards/HG012012/"</span>,
+  <span class="json-key">"lab"</span>: <span class="json-str">"/labs/john-doe/"</span>,
+  <span class="json-key">"md5sum"</span>: <span class="json-str">"74b87337454200d4d33f80c4663dc5e5"</span>,
+  <span class="json-key">"file_format"</span>: <span class="json-str">"bigWig"</span>,
+  <span class="json-key">"content_type"</span>: <span class="json-str">"signal of unique reads"</span>,
+  <span class="json-key">"file_set"</span>: <span class="json-str">"IGVFDS4321DCBA"</span>,
+  <span class="json-key">"reference_files"</span>: [<span class="json-str">"IGVFFI0001AAAA"</span>],
+  <span class="json-key">"strand_specificity"</span>: <span class="json-str">"unstranded"</span>,
+  <span class="json-key">"normalized"</span>: <span class="json-bool">true</span>,
+  <span class="json-key">"start_view_position"</span>: <span class="json-str">"chr1:1000000"</span>
+}</pre>
+    </div>
+
+    <div class="example-card">
+      <div class="ex-header">
+        <div class="ex-dot" style="background:#facc15"></div>
+        <h3>Index File &mdash; BAM index</h3>
+      </div>
+      <pre>{
+  <span class="json-key">"award"</span>: <span class="json-str">"/awards/HG012012/"</span>,
+  <span class="json-key">"lab"</span>: <span class="json-str">"/labs/john-doe/"</span>,
+  <span class="json-key">"md5sum"</span>: <span class="json-str">"74b87337454200d4d33f80c4663dc5e5"</span>,
+  <span class="json-key">"file_format"</span>: <span class="json-str">"bai"</span>,
+  <span class="json-key">"content_type"</span>: <span class="json-str">"index"</span>,
+  <span class="json-key">"file_set"</span>: <span class="json-str">"IGVFDS4321DCBA"</span>,
+  <span class="json-key">"derived_from"</span>: [<span class="json-str">"IGVFFI0001AAAA"</span>],
+  <span class="json-comment">// derived_from must link to an AlignmentFile for bai format</span>
+  <span class="json-comment">// maxItems: 1 — exactly one source file</span>
+}</pre>
+    </div>
+
+    <div class="example-card">
+      <div class="ex-header">
+        <div class="ex-dot" style="background:#f472b6"></div>
+        <h3>Tabular File &mdash; guide RNA sequences</h3>
+      </div>
+      <pre>{
+  <span class="json-key">"award"</span>: <span class="json-str">"/awards/HG012012/"</span>,
+  <span class="json-key">"lab"</span>: <span class="json-str">"/labs/john-doe/"</span>,
+  <span class="json-key">"md5sum"</span>: <span class="json-str">"74b87337454200d4d33f80c4663dc5e5"</span>,
+  <span class="json-key">"file_format"</span>: <span class="json-str">"tsv"</span>,
+  <span class="json-key">"content_type"</span>: <span class="json-str">"guide RNA sequences"</span>,
+  <span class="json-key">"file_set"</span>: <span class="json-str">"IGVFDS4321DCBA"</span>,
+  <span class="json-key">"controlled_access"</span>: <span class="json-bool">false</span>,
+  <span class="json-key">"reference_files"</span>: [<span class="json-str">"IGVFFI0001AAAA"</span>],
+  <span class="json-key">"derived_from"</span>: [<span class="json-str">"IGVFFI1234ABCD"</span>]
+}</pre>
+    </div>
+
+    <div class="example-card">
+      <div class="ex-header">
+        <div class="ex-dot" style="background:#818cf8"></div>
+        <h3>Reference File &mdash; genome reference (FASTA)</h3>
+      </div>
+      <pre>{
+  <span class="json-key">"award"</span>: <span class="json-str">"/awards/HG012012/"</span>,
+  <span class="json-key">"lab"</span>: <span class="json-str">"/labs/john-doe/"</span>,
+  <span class="json-key">"md5sum"</span>: <span class="json-str">"74b87337454200d4d33f80c4663dc5e5"</span>,
+  <span class="json-key">"file_format"</span>: <span class="json-str">"fasta"</span>,
+  <span class="json-key">"content_type"</span>: <span class="json-str">"genome reference"</span>,
+  <span class="json-key">"file_set"</span>: <span class="json-str">"IGVFDS4321DCBA"</span>,
+  <span class="json-key">"controlled_access"</span>: <span class="json-bool">false</span>,
+  <span class="json-key">"assembly"</span>: <span class="json-str">"GRCh38"</span>,
+  <span class="json-comment">// genome reference requires assembly</span>
+  <span class="json-key">"dbxrefs"</span>: [<span class="json-str">"GRC:GCA_000001405.29_GRCh38.p14"</span>],
+  <span class="json-key">"source_url"</span>: <span class="json-str">"https://www.ncbi.nlm.nih.gov/..."</span>
+}</pre>
+    </div>
+
+    <div class="example-card">
+      <div class="ex-header">
+        <div class="ex-dot" style="background:#2dd4bf"></div>
+        <h3>Model File &mdash; neural network</h3>
+      </div>
+      <pre>{
+  <span class="json-key">"award"</span>: <span class="json-str">"/awards/HG012012/"</span>,
+  <span class="json-key">"lab"</span>: <span class="json-str">"/labs/john-doe/"</span>,
+  <span class="json-key">"md5sum"</span>: <span class="json-str">"74b87337454200d4d33f80c4663dc5e5"</span>,
+  <span class="json-key">"file_format"</span>: <span class="json-str">"hdf5"</span>,
+  <span class="json-key">"content_type"</span>: <span class="json-str">"edge weights"</span>,
+  <span class="json-key">"file_set"</span>: <span class="json-str">"IGVFDS4321DCBA"</span>,
+  <span class="json-comment">// edge weights → hdf5 format enforced by constraint</span>
+  <span class="json-key">"dbxrefs"</span>: [<span class="json-str">"Kipoi:Basset"</span>],
+  <span class="json-key">"derived_from"</span>: [<span class="json-str">"IGVFFI1234ABCD"</span>]
+}</pre>
+    </div>
+
+    <div class="example-card">
+      <div class="ex-header">
+        <div class="ex-dot" style="background:#a78bfa"></div>
+        <h3>Configuration File &mdash; seqspec</h3>
+      </div>
+      <pre>{
+  <span class="json-key">"award"</span>: <span class="json-str">"/awards/HG012012/"</span>,
+  <span class="json-key">"lab"</span>: <span class="json-str">"/labs/john-doe/"</span>,
+  <span class="json-key">"md5sum"</span>: <span class="json-str">"74b87337454200d4d33f80c4663dc5e5"</span>,
+  <span class="json-key">"file_format"</span>: <span class="json-str">"yaml"</span>,
+  <span class="json-comment">// seqspec content_type → yaml format only</span>
+  <span class="json-key">"content_type"</span>: <span class="json-str">"seqspec"</span>,
+  <span class="json-key">"file_set"</span>: <span class="json-str">"IGVFDS4321DCBA"</span>,
+  <span class="json-key">"seqspec_of"</span>: [
+    <span class="json-str">"IGVFFI1234ABCD"</span>,
+    <span class="json-str">"IGVFFI5678EFGH"</span>
+  ]
+}</pre>
+    </div>
+
+    <div class="example-card">
+      <div class="ex-header">
+        <div class="ex-dot" style="background:#c084fc"></div>
+        <h3>Image File &mdash; spatial transcriptomics tissue</h3>
+      </div>
+      <pre>{
+  <span class="json-key">"award"</span>: <span class="json-str">"/awards/HG012012/"</span>,
+  <span class="json-key">"lab"</span>: <span class="json-str">"/labs/john-doe/"</span>,
+  <span class="json-key">"md5sum"</span>: <span class="json-str">"74b87337454200d4d33f80c4663dc5e5"</span>,
+  <span class="json-key">"file_format"</span>: <span class="json-str">"png"</span>,
+  <span class="json-comment">// jpg/png are already compressed — do not gzip</span>
+  <span class="json-key">"content_type"</span>: <span class="json-str">"high resolution tissue"</span>,
+  <span class="json-key">"file_set"</span>: <span class="json-str">"IGVFDS4321DCBA"</span>,
+  <span class="json-key">"imaging_platform"</span>: <span class="json-str">"/platform-terms/EFO_0022857/"</span>
+}</pre>
+    </div>
+
+    <div class="example-card">
+      <div class="ex-header">
+        <div class="ex-dot" style="background:#38bdf8"></div>
+        <h3>Matrix File &mdash; scRNA-seq cell by gene</h3>
+      </div>
+      <pre>{
+  <span class="json-key">"award"</span>: <span class="json-str">"/awards/HG012012/"</span>,
+  <span class="json-key">"lab"</span>: <span class="json-str">"/labs/john-doe/"</span>,
+  <span class="json-key">"md5sum"</span>: <span class="json-str">"74b87337454200d4d33f80c4663dc5e5"</span>,
+  <span class="json-key">"file_format"</span>: <span class="json-str">"h5ad"</span>,
+  <span class="json-key">"content_type"</span>: <span class="json-str">"cell by gene matrix"</span>,
+  <span class="json-key">"file_set"</span>: <span class="json-str">"IGVFDS4321DCBA"</span>,
+  <span class="json-key">"reference_files"</span>: [<span class="json-str">"IGVFFI0001AAAA"</span>],
+  <span class="json-comment">// reference_files required for all matrix files</span>
+  <span class="json-key">"filtered"</span>: <span class="json-bool">true</span>,
+  <span class="json-key">"derived_from"</span>: [<span class="json-str">"IGVFFI1234ABCD"</span>]
+}</pre>
+    </div>
+
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<script>
+// Tab navigation
+function showTab(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// Content types data
+const contentTypes = {
+  sequence: {
+    types: ["Nanopore reads", "PacBio consensus reads", "PacBio subreads", "reads"],
+    color: "#60a5fa"
+  },
+  alignment: {
+    types: ["alignments", "alignments with modifications", "methylated reads", "transcriptome alignments"],
+    color: "#4ade80"
+  },
+  signal: {
+    types: ["control signal", "fold change over control", "raw signal", "read-depth signal", "sequence attributes", "signal", "signal of all reads", "signal of unique reads", "signal p-value", "TF binding scores"],
+    color: "#fb923c"
+  },
+  index: {
+    types: ["index"],
+    color: "#facc15"
+  },
+  tabular: {
+    types: ["aggregated calibrated coding variant effects", "allele specific RNA pseudobulk counts", "barcode onlist", "barcode replacement", "barcode to cluster mapping", "barcode to donor mapping", "barcode to element mapping", "barcode to hashtag mapping", "barcode to sample mapping", "barcode to TF overexpression mapping", "barcode to variant mapping", "barcode to well mapping", "bin paired count", "calibrated coding variant effect thresholds", "calibrated coding variant effects", "caQTL", "cell annotations", "cell hashing barcodes", "chromatin contact quantifications", "cis-trans regulatory differences", "co-localization scores", "coding variant effects", "derived barcode mapping", "differential chromatin contact quantifications", "differential element quantifications", "differential gene expression quantifications", "differential guide quantifications", "differential peak quantifications", "differential TF enrichment quantifications", "differential transcript expression quantifications", "DNA footprint scores", "domain constraint", "DUAL-IPA score", "editing templates", "element quantifications", "element to gene interactions", "elements reference", "eQTL", "exclusion list regions", "exon constraint", "external source data", "fold change of post-selection and pre-selection", "fold change over control", "fragments", "functional impact score", "gene programs", "gene program regulators", "gene quantifications", "gene universe", "genes", "global differential expression", "guide quantifications", "guide RNA sequences", "heritability enrichment", "index plate", "individual cells profile", "local differential expression", "loci", "machine learning model features", "marker gene activity", "marker genes", "methylation counts", "minus strand modification state", "modification state", "motif-overlapping differential guide quantifications", "MPRA sequence designs", "normalized variants profile", "pathogenicity validation", "peak quantifications", "peaks", "per cell type enrichment scores", "pipeline parameters", "plus strand modification state", "post-segmentation transcript and cell locations", "predicted gene regulatory networks", "prime editing guide RNA sequences", "primer sequences", "primers table", "primers track", "probes track", "protein sequences", "protein stability fluorescence score", "protein to protein interaction score", "protein-protein interaction edge-perturbation score", "protein-protein interaction edgotyping score", "pseudobulk annotations", "read count", "regional constraint", "reporter elements", "reporter experiment", "reporter experiment barcode", "reporter genomic element effects", "reporter genomic variant effects", "reporter variants", "sample sort parameters", "selected normalized variants profile", "spatial transcriptomics cell metadata", "spatial transcriptomics slide-level cell coordinates", "spatial transcriptomics slide-level transcripts", "spliceQTL", "target transcripts", "tissue positions", "transcript quantifications", "variant binding effects", "variant effects", "variant functions", "variant localization impacts", "variant pathogenicity", "variant to cluster mapping", "variant to element mapping", "variants"],
+    color: "#f472b6"
+  },
+  reference: {
+    types: ["allele specific binding", "caQTL", "coding variants", "coexpression", "complexes", "documentation (readme)", "drugs", "element quantifications", "element to gene interactions", "elements reference", "eQTL", "exclusion list", "functional conservation mapping", "gene dependency", "gene disease links", "genes", "genes in pathway", "genome index", "genome reference", "GO annotation", "GWAS", "guide RNA sequences reference", "inclusion list", "linkage disequilibrium", "motif protein mapping", "motifs", "nascent transcriptome index", "ontology terms", "orthologs", "pathway hierarchy", "pathways", "pQTL", "protein protein interactions", "proteins", "spike-ins", "spliceQTL", "transcriptome index", "transcriptome reference", "variant disease links", "variant drug annotations", "variants"],
+    color: "#818cf8"
+  },
+  model: {
+    types: ["covariance matrix", "edge weights", "feature weights", "graph structure", "neural network architecture", "neural network architecture and edge weights", "position weight matrix", "protein language model", "SNP effect matrix"],
+    color: "#2dd4bf"
+  },
+  config: {
+    types: ["model parameters", "scale factors", "seqspec"],
+    color: "#a78bfa"
+  },
+  image: {
+    types: ["detected tissue", "fiducial alignment", "high resolution tissue", "low resolution tissue", "raw field of view images", "UMAP plot"],
+    color: "#c084fc"
+  },
+  matrix: {
+    types: ["allele specific cell by gene matrix", "annotated cell by gene and guide matrix", "annotated cell by gene matrix", "annotated cell by guide matrix", "annotated cell by peak matrix", "cell by bin contact matrix", "cell by bin methylation count matrix", "cell by gene and guide and multiplexing oligo matrix", "cell by gene and guide matrix", "cell by gene and multiplexing oligo matrix", "cell by gene and peak matrix", "cell by gene matrix", "cell by guide matrix", "cell by peak matrix", "cell by position methylation count matrix", "cell by UMI count matrix", "contact matrix", "donor by gene matrix", "kallisto cell by gene matrix", "mitochondrial variants by cell heteroplasmy matrix", "spot by gene matrix"],
+    color: "#38bdf8"
+  }
+};
+
+let currentCT = 'sequence';
+
+function showCT(schema) {
+  currentCT = schema;
+  document.querySelectorAll('.ct-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderCT();
+}
+
+function renderCT() {
+  const data = contentTypes[currentCT];
+  const list = document.getElementById('ct-list');
+  const count = document.getElementById('ct-count');
+  count.textContent = data.types.length + ' content type' + (data.types.length !== 1 ? 's' : '');
+  list.innerHTML = data.types.sort().map(t =>
+    `<span class="ct-item" style="border-color:${data.color}22;color:${data.color}">${t}</span>`
+  ).join('');
+}
+
+// Initialize content types
+renderCT();
+</script>
+</body>
+</html>
