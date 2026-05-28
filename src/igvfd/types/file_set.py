@@ -2843,18 +2843,18 @@ class PseudobulkSet(FileSet):
                 source_biosample_classifications.add(classification)
             source_biosample_terms.add(sample_term_object.get('term_name', ''))
 
-        if len(samples) == 1 and 'tissue/organ' in source_biosample_classifications:
+        if len(source_biosample_classifications) == 1 and 'tissue/organ' in source_biosample_classifications:
             phrase = ' '.join([x for x in [
-                ', '.join(source_biosample_terms),
+                ', '.join(sorted(source_biosample_terms)),
                 cell_qualifier_string,
                 cell_type_name
             ] if x is not None])
-        elif len(samples) == 1 and 'cell line' in source_biosample_classifications and len(source_biosample_terms) == 1 and list(source_biosample_terms)[0] != cell_type_name:
+        elif len(source_biosample_classifications) == 1 and 'cell line' in source_biosample_classifications and len(source_biosample_terms) == 1 and list(source_biosample_terms)[0] != cell_type_name:
             phrase = ' '.join([x for x in [
                 cell_qualifier_string,
                 cell_type_name,
                 'derived from',
-                ', '.join(source_biosample_terms)
+                ', '.join(sorted(source_biosample_terms))
             ] if x is not None])
         else:
             phrase = (
