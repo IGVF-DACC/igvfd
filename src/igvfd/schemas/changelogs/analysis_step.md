@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 12
 
+* Extend `input_content_types` enum list to include `motifs`.
+* Extend `output_content_types` enum list to include `motifs`.
 * Extend `input_content_types` enum list to include `cis differential expression quantifications per guide`.
 * Extend `output_content_types` enum list to include `cis differential expression quantifications per guide`.
 * Extend `input_content_types` enum list to include `trans differential expression quantifications per guide`.

@@ -1932,5 +1932,24 @@
         "filtered": false,
         "file_set": "igvf:morf_screen",
         "controlled_access": false
+    },
+    {
+        "uuid": "af84ff41-6fd9-46bd-a4b2-5c2f9e7a6891",
+        "accession": "IGVFFI0014MOTS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_motifs"
+        ],
+        "md5sum": "9e9f16496f0f4ee0df909bbf0d0c4c74",
+        "file_format": "tsv",
+        "content_type": "motifs",
+        "submitted_file_name": "/Users/igvf/igvf_files/motifs.tsv.gz",
+        "file_size": 16800,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2026-05-28T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
     }
 ]
