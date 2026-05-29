@@ -113,7 +113,7 @@ def audit_pseudobulk_set_source_biosamples_mixed_classifications(value, system):
     '''
     [
         {
-            "audit_description": "The source biosamples of pseudobulk sets are expected to all share the same biosample classification.",
+            "audit_description": "The source biosamples of pseudobulk sets are expected to all share the same biosample classifications.",
             "audit_category": "inconsistent source biosamples",
             "audit_level": "WARNING"
         }
