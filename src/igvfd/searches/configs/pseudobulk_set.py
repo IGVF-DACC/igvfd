@@ -59,7 +59,7 @@ def pseudobulk_set():
             'samples.sample_terms.term_name': {
                 'title': 'Parent Sample',
                 'category': 'Sample',
-                'description': 'The sample name associated with the pseudobulk set.'
+                'description': 'The parent sample name associated with the pseudobulk set.'
             },
             'samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
