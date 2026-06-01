@@ -1,6 +1,6 @@
 {
-    "hash": "25ce8690533239642e9505c33495cae5",
-    "index_name": "model_set_25ce8690",
+    "hash": "c43378a7aaef3293aaff63dfe87bc3b1",
+    "index_name": "model_set_c43378a7",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -3768,6 +3768,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "targeted_sample_terms": {
+                                "type": "keyword"
                             },
                             "taxa": {
                                 "type": "keyword"

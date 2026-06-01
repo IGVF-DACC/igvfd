@@ -19,6 +19,9 @@ def multiplexed_sample():
             'sample_terms.term_name': {
                 'title': 'Sample'
             },
+            'targeted_sample_terms.term_name': {
+                'title': 'Cellular Transformation Targets'
+            },
             'phenotypic_features.feature.term_name': {
                 'title': 'Phenotypic Features'
             },

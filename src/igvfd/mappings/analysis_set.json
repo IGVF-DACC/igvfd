@@ -1,6 +1,6 @@
 {
-    "hash": "9055dc82dd0d026af7496bde9c095fd0",
-    "index_name": "analysis_set_9055dc82",
+    "hash": "f9667df4e34aed9eb5b4fef0bb2523ff",
+    "index_name": "analysis_set_f9667df4",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -3734,6 +3734,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "targeted_sample_terms": {
+                                "type": "keyword"
                             },
                             "taxa": {
                                 "type": "keyword"

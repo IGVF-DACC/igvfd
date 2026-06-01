@@ -1,6 +1,6 @@
 {
-    "hash": "3c2fa8c86a2fe16608ef6e5b18a0fa8b",
-    "index_name": "technical_sample_3c2fa8c8",
+    "hash": "42b443ad733f6e9de1f8c0cd1eb60052",
+    "index_name": "technical_sample_42b443ad",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1860,6 +1860,9 @@
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {
+                                "type": "keyword"
+                            },
+                            "targeted_sample_terms": {
                                 "type": "keyword"
                             },
                             "taxa": {

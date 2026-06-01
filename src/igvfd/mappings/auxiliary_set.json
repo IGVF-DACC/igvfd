@@ -1,6 +1,6 @@
 {
-    "hash": "aca04af1340ddfc09f09104264a32eba",
-    "index_name": "auxiliary_set_aca04af1",
+    "hash": "50bbb5d89ffc6080831db976ca1d0822",
+    "index_name": "auxiliary_set_50bbb5d8",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -3756,6 +3756,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "targeted_sample_terms": {
+                                "type": "keyword"
                             },
                             "taxa": {
                                 "type": "keyword"

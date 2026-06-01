@@ -1,6 +1,6 @@
 {
-    "hash": "4f81bd6dbf4dd65b7fd1194b64930e0f",
-    "index_name": "in_vitro_system_4f81bd6d",
+    "hash": "d0ecab7f595556e65ae98d4aa91bb28f",
+    "index_name": "in_vitro_system_d0ecab7f",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1977,6 +1977,9 @@
                             "supersedes": {
                                 "type": "keyword"
                             },
+                            "targeted_sample_terms": {
+                                "type": "keyword"
+                            },
                             "taxa": {
                                 "type": "keyword"
                             },
@@ -2245,6 +2248,9 @@
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {
+                                "type": "keyword"
+                            },
+                            "targeted_sample_terms": {
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -2950,6 +2956,9 @@
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {
+                                "type": "keyword"
+                            },
+                            "targeted_sample_terms": {
                                 "type": "keyword"
                             },
                             "taxa": {

@@ -1,6 +1,6 @@
 {
-    "hash": "7e58a8c67bf8fcf42d23423304215c92",
-    "index_name": "tissue_7e58a8c6",
+    "hash": "003ee66e6e1a5c70b850deed12dd57e7",
+    "index_name": "tissue_003ee66e",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1961,6 +1961,9 @@
                             "supersedes": {
                                 "type": "keyword"
                             },
+                            "targeted_sample_terms": {
+                                "type": "keyword"
+                            },
                             "taxa": {
                                 "type": "keyword"
                             },
@@ -2229,6 +2232,9 @@
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {
+                                "type": "keyword"
+                            },
+                            "targeted_sample_terms": {
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -2940,6 +2946,9 @@
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {
+                                "type": "keyword"
+                            },
+                            "targeted_sample_terms": {
                                 "type": "keyword"
                             },
                             "taxa": {
