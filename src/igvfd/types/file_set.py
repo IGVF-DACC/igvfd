@@ -2969,13 +2969,13 @@ class PseudobulkSet(FileSet):
         condition='samples',
         schema={
             'title': 'Donors',
-            'description': 'The donors of the samples associated with this analysis set.',
+            'description': 'The donors of the samples associated with this auxiliary set.',
             'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
                 'title': 'Donor',
-                'description': 'Donor of a sample associated with this analysis set.',
+                'description': 'Donor of a sample associated with this auxiliary set.',
                 'type': 'string',
                 'linkTo': 'Donor'
             },
@@ -2983,4 +2983,7 @@ class PseudobulkSet(FileSet):
         }
     )
     def donors(self, request, samples=None):
-        return get_donors_from_samples(request, samples)
+        filtered_samples = paths_filtered_by_status(request, samples)
+        unfiltered_donors = get_donors_from_samples(request, filtered_samples)
+        if unfiltered_donors:
+            return paths_filtered_by_status(request, unfiltered_donors) or None
