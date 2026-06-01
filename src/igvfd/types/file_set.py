@@ -2969,13 +2969,13 @@ class PseudobulkSet(FileSet):
         condition='samples',
         schema={
             'title': 'Donors',
-            'description': 'The donors of the samples associated with this auxiliary set.',
+            'description': 'The donors of the samples associated with this pseudobulk set.',
             'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
                 'title': 'Donor',
-                'description': 'Donor of a sample associated with this auxiliary set.',
+                'description': 'Donor of a sample associated with this pseudobulk set.',
                 'type': 'string',
                 'linkTo': 'Donor'
             },
