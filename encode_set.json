@@ -1,0 +1,183 @@
+{
+    "title": "ENCODE Set",
+    "description": "A file set that reflects an ENCODE Annotation, Experiment, or CharacterizationExperiment",
+    "$id": "/profiles/encode_set.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "oneOf": [
+        {
+            "required": [
+                "lab",
+                "award",
+                "file_set_type",
+                "samples"
+            ]
+        },
+        {
+            "required": [
+                "lab",
+                "award",
+                "file_set_type",
+                "donors"
+            ]
+        }
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "encode_accession",
+        "alternate_accessions",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "file_set.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/publications"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
+        },
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "file_set.json#/dependentSchemas",
+            "shared_dependencies.json#/accession_status"
+        ],
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "encode_accession": {
+            "description": "the ENCODE portal accession of the dataset",
+            "comment": "of the form ENCSRnnnabc established in the encodeproject.org, can be used with encode_dataset_type to calculate URL property",
+            "title": "ENCODE accession",
+            "type": "string",
+            "pattern": "^ENCSR[0-9]{3}[A-Z]{3}"
+        },
+        "encode_dataset_type": {
+            "description": "the primary @type of the ENCODE Dataset",
+            "comment": "further distinguished by file_set_type",
+            "enum": [
+                "Experiment",
+                "Annotation",
+                "FunctionalCharacterizationExperiment",
+                "FunctionalCharacterizationSeries"
+            ]
+        },
+        "file_set_type": {
+            "description": "The category that best describes this data set.",
+            "comment": "File set type describes the contents (merger of PredictionSet and ENCODE Annotation",
+            "enum": [
+                "activity level",
+                "binding effect",
+                "functional effect",
+                "pathogenicity",
+                "protein stability",
+                "binding sites",
+                "BPNet-control",
+                "BPNet-model",
+                "cell type annotation",
+                "curated SNVs",
+                "caQTLs",
+                "element gene regulatory interaction predictions",
+                "eQTLs",
+                "exclusion list",
+                "candidate Cis-Regulatory Elements",
+                "chromatin state",
+                "ChromBPNet-model",
+                "ChromBPNet-bias-model",
+                "consensus DNase hypersensitivity sites",
+                "cross-species functional conservation",
+                "enhancer predictions",
+                "fine-mapped variants",
+                "footprints",
+                "functional characterization elements",
+                "gene expression",
+                "genotyping",
+                "gkm-SVM-model",
+                "imputation",
+                "in vivo enhancer evaluations",
+                "loops",
+                "methylation summary",
+                "other",
+                "overlap",
+                "physical modeling",
+                "proteomics analysis",
+                "pseudobulk",
+                "PWMs",
+                "regulatory elements signal matrix",
+                "representative DNase hypersensitivity sites",
+                "representative IDR thresholded peaks",
+                "transcript expression",
+                "transcription factor ancestral origin estimate",
+                "transcription factor motifs",
+                "transcription start sites",
+                "validated enhancers",
+                "variant calls",
+                "variant functional prediction",
+                "bulk genomics experiment",
+                "single-cell experiment",
+                "characterization experiment"               
+            ],
+            "enum_descriptions": {
+                "activity level": "Predictive modeling of an input variable on activiy level.",
+                "binding effect": "Predictive modeling of an input variable on TF binding effect.",
+                "functional effect": "Predictive modeling of an input variable on functional effect.",
+                "pathogenicity": "Predictive modeling of an input variable on pathogenicity.",
+                "protein stability": "Predictive modeling of an input variable on protein stability.",
+                "bulk genomics experiment": "ENCODE bulk genomics experiment",
+                "single-cell experiment": "ENCODE single-cell experiment",
+                "characterization experiment": "ENCODE characterization experiment"
+            },
+            "submissionExample": {
+                "appscript": "pathogenicity",
+                "igvf_utils": "pathogenicity"
+            }
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "@type",
+        "collections",
+        "description",
+        "file_set_type",
+        "files.content_type",
+        "files.submitted_file_name",
+        "lab.title",
+        "samples.summary",
+        "samples.sample_terms.term_name",
+        "samples.targeted_sample_term.term_name",
+        "submitted_by.title",
+        "summary"
+    ],
+    "exact_searchable_fields": [
+        "control_for.accession",
+        "control_for.aliases",
+        "dbxrefs",
+        "files.accession",
+        "files.aliases",
+        "publications.publication_identifiers",
+        "samples.accession",
+        "samples.aliases",
+        "donors.accession",
+        "donors.aliases"
+    ],
+    "changelog": "/profiles/changelogs/encode_set.md"
+}
