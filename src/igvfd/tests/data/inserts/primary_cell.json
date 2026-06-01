@@ -168,7 +168,8 @@
         "part_of": "igvf:live_mouse_embryo",
         "virtual": false,
         "biosample_qualifiers": [
-            "10 days calcified"
+            "10 days calcified",
+            "partially exhausted"
         ],
         "protocols": [
             "https://www.protocols.io/view/test-protocols-url-12345"

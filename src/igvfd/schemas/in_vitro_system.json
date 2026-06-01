@@ -36,6 +36,9 @@
             "$ref": "mixins.json#/attribution"
         },
         {
+            "$ref": "mixins.json#/biosample_qualifiers"
+        },
+        {
             "$ref": "mixins.json#/documents"
         },
         {
@@ -596,27 +599,6 @@
             "submissionExample": {
                 "appscript": "DMEM with serum",
                 "igvf_utils": "DMEM with serum"
-            }
-        },
-        "biosample_qualifiers": {
-            "title": "Biosample Qualifiers",
-            "description": "An array of various cell states. This property provides additional information about a cell at a finer-grained level compared to what ontologies currently capture. For example, exhausted T-cells.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "title": "Biosample Qualifiers",
-                "description": "An array of various cell states. This property provides additional information about a cell at a finer-grained level compared to what ontologies currently capture. For example, exhausted T-cells.",
-                "type": "string",
-                "enum": [
-                    "6 days calcified",
-                    "10 days calcified",
-                    "exhausted"
-                ]
-            },
-            "submissionExample": {
-                "appscript": "[\"exhausted\"]",
-                "igvf_utils": "exhausted"
             }
         },
         "time_post_culture": {
