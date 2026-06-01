@@ -341,7 +341,7 @@
             "igvf:alias_human_donor1"
         ],
         "biosample_qualifiers": [
-            "partially_exhausted"
+            "partially exhausted"
         ],
         "status": "released",
         "release_timestamp": "2026-03-06T12:34:56Z",
