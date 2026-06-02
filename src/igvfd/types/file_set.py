@@ -2849,7 +2849,10 @@ class PseudobulkSet(FileSet):
                 cell_qualifier_string,
                 cell_type_name
             ] if x is not None])
-        elif len(source_biosample_classifications) == 1 and 'cell line' in source_biosample_classifications and len(source_biosample_terms) == 1 and list(source_biosample_terms)[0] != cell_type_name:
+        elif len(source_biosample_classifications) == 1 and \
+                ('cell line' in source_biosample_classifications or 'differentiated cell specimen' in source_biosample_classifications) and \
+                len(source_biosample_terms) == 1 and \
+                list(source_biosample_terms)[0] != cell_type_name:
             phrase = ' '.join([x for x in [
                 cell_qualifier_string,
                 cell_type_name,
