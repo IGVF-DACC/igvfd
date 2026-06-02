@@ -2964,3 +2964,26 @@ class PseudobulkSet(FileSet):
                 )
             )
         return sorted(assay_types) or None
+
+    @calculated_property(
+        condition='samples',
+        schema={
+            'title': 'Donors',
+            'description': 'The donors of the samples associated with this pseudobulk set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Donor',
+                'description': 'Donor of a sample associated with this pseudobulk set.',
+                'type': 'string',
+                'linkTo': 'Donor'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def donors(self, request, samples=None):
+        filtered_samples = paths_filtered_by_status(request, samples)
+        unfiltered_donors = get_donors_from_samples(request, filtered_samples)
+        if unfiltered_donors:
+            return paths_filtered_by_status(request, unfiltered_donors) or None
