@@ -73,7 +73,6 @@ def test_pseudobulk_set_cell_annotation(testapp, pseudobulk_set_base, in_vitro_c
     res = testapp.get(pseudobulk_set_base['@id']).json
     assert res.get('cell_annotation', '') == 'adrenal gland, embryoid body exhausted endothelial cell of vascular tree'
     # Pseudobulks with cell line source biosamples
-
     testapp.patch_json(
         pseudobulk_set_base['@id'],
         {
