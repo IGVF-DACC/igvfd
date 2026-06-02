@@ -1,6 +1,6 @@
 {
-    "hash": "593c22e241b912bda488919c35fcc330",
-    "index_name": "multiplexed_sample_593c22e2",
+    "hash": "7a9e5d1fce09514153986d710323d35a",
+    "index_name": "multiplexed_sample_7a9e5d1f",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1040,6 +1040,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {

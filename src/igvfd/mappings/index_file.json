@@ -1,6 +1,6 @@
 {
-    "hash": "2489ae5a837125c3a118fdaf25fdad4f",
-    "index_name": "index_file_2489ae5a",
+    "hash": "fffbd76f1f06f308f56b74e3dc755357",
+    "index_name": "index_file_fffbd76f",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -657,6 +657,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {

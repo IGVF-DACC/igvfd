@@ -1,6 +1,6 @@
 {
-    "hash": "cc284a3b18c06f688e31ba2fe6a75ada",
-    "index_name": "matrix_file_cc284a3b",
+    "hash": "2e3456f7bafb007ccb5852469c5bbcf5",
+    "index_name": "matrix_file_2e3456f7",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -652,6 +652,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {

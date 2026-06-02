@@ -1,6 +1,6 @@
 {
-    "hash": "e0a4e1001defc91b2b417401831ab67c",
-    "index_name": "analysis_set_e0a4e100",
+    "hash": "9055dc82dd0d026af7496bde9c095fd0",
+    "index_name": "analysis_set_9055dc82",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -432,6 +432,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {
@@ -1145,6 +1148,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {
@@ -2433,6 +2439,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {
