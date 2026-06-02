@@ -1373,7 +1373,7 @@
         ],
         "md5sum": "5a593f46bf75ebde3f0efec9889caa3c",
         "file_format": "tsv",
-        "content_type": "exclusion list regions",
+        "content_type": "loci",
         "reference_files": [
             "IGVFFI0001GNRF"
         ],

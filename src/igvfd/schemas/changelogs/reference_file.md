@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 26
+
+* Adjust `content_type` enum list to restrict usage of `inclusion list` to admin users.
+
 ### Schema change 26
 
 * Require `assembly` if `content_type` is `genome reference` or `genome index`.
@@ -198,8 +202,8 @@
 * Extend `content_type` enum list to include `genomic_elements` for admins.
 * Extend `content_type` enum list to include `genomic_elements_genes` for admins.
 * Extend `content_type` enum list to include `genomic_elements_genes_biosamples` for admins.
-* Extend `content_type` enum list to include `genomic_elements_genes_biosamples_donors` for admins.
-* Extend `content_type` enum list to include `genomic_elements_genes_biosamples_treatments_chebi` for admins.
+* Extend `content_type` enum list to include `genomic_elements_genes_biosamples_donors` for s.
+* Extend `content_type` enum list to include `genomic_elements_genes_biosamples_treatments_chebi` for s.
 * Extend `content_type` enum list to include `genomic_elements_genes_biosamples_treatments_proteins` for admins.
 * Extend `content_type` enum list to include `genomic_elements_genomic_elements` for admins.
 * Extend `content_type` enum list to include `variants_genomic_elements` for admins.

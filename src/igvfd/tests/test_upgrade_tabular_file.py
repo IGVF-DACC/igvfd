@@ -140,3 +140,10 @@ def test_tabular_file_upgrade_21_22(upgrader, tabular_file_v21):
     assert value['file_format_type'] == 'mpra_element'
     assert value['schema_version'] == '22'
     assert 'The file_format_type of this file was mpra_starr, but has been upgraded to mpra_element.' in value['notes']
+
+
+def test_tabular_file_upgrade_22_23(upgrader, tabular_file_v22):
+    value = upgrader.upgrade('tabular_file', tabular_file_v22, current_version='22', target_version='23')
+    assert value['content_type'] == 'loci'
+    assert value['schema_version'] == '23'
+    assert 'This file\'s content_type was exclusion list regions, but has been defaulted to loci.' in value['notes']
