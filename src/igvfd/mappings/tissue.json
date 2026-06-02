@@ -1,6 +1,6 @@
 {
-    "hash": "33a9eeb590e15ebb47a58ac8994b5257",
-    "index_name": "tissue_33a9eeb5",
+    "hash": "7e58a8c67bf8fcf42d23423304215c92",
+    "index_name": "tissue_7e58a8c6",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1047,6 +1047,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {

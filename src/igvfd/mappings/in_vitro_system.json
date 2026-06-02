@@ -1,6 +1,6 @@
 {
-    "hash": "bf9d5b196be9dcad3e0145b63408f8d0",
-    "index_name": "in_vitro_system_bf9d5b19",
+    "hash": "4f81bd6dbf4dd65b7fd1194b64930e0f",
+    "index_name": "in_vitro_system_4f81bd6d",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1060,6 +1060,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {

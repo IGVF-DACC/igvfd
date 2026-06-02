@@ -1,6 +1,6 @@
 {
-    "hash": "03c34d421fcb23034646b3d902cc7754",
-    "index_name": "technical_sample_03c34d42",
+    "hash": "3c2fa8c86a2fe16608ef6e5b18a0fa8b",
+    "index_name": "technical_sample_3c2fa8c8",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -711,6 +711,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {

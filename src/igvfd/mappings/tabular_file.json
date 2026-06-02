@@ -1,6 +1,6 @@
 {
-    "hash": "90dbb9bb832b6e185efa15c7abad54b2",
-    "index_name": "tabular_file_90dbb9bb",
+    "hash": "355c4b464eb5eb8ead39f90d9bb50ccf",
+    "index_name": "tabular_file_355c4b46",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -672,6 +672,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {

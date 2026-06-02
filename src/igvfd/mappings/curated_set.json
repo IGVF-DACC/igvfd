@@ -1,6 +1,6 @@
 {
-    "hash": "8b9a3be159cadb8b525dbcf709bae5b5",
-    "index_name": "curated_set_8b9a3be1",
+    "hash": "02489f8f8f11c296503a8d9773d8fc6d",
+    "index_name": "curated_set_02489f8f",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -436,6 +436,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {
@@ -1149,6 +1152,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {

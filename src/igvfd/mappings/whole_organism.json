@@ -1,6 +1,6 @@
 {
-    "hash": "5c17ab76ce5379253f12902c2d0bf20e",
-    "index_name": "whole_organism_5c17ab76",
+    "hash": "cefc8ec8e0fa7fef22bd798ed41b5592",
+    "index_name": "whole_organism_cefc8ec8",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1047,6 +1047,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {

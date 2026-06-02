@@ -89,3 +89,25 @@ def test_audit_pseudobulk_set_input_file_set_type(
         error['category'] != 'unexpected input file set type'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_pseudobulk_set_mixed_classifications(
+    testapp,
+    pseudobulk_set_base,
+    tissue,
+    in_vitro_cell_line
+):
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent source biosamples'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {'samples': [tissue['@id'], in_vitro_cell_line['@id']]}
+    )
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent source biosamples'
+        for error in res.json['audit'].get('WARNING', [])
+    )

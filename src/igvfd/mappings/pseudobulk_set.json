@@ -1,6 +1,6 @@
 {
-    "hash": "5d0ec376c3621cdf13f8a895fc8e689c",
-    "index_name": "pseudobulk_set_5d0ec376",
+    "hash": "0e11198d12bdb8dc5b789e18b6a09afe",
+    "index_name": "pseudobulk_set_0e11198d",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -301,6 +301,9 @@
                         },
                         "type": "object"
                     },
+                    "cell_annotation": {
+                        "type": "keyword"
+                    },
                     "cell_qualifier": {
                         "type": "keyword"
                     },
@@ -527,6 +530,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {
@@ -1238,6 +1244,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {

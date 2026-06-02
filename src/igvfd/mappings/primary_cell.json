@@ -1,6 +1,6 @@
 {
-    "hash": "1d50b984fdd7d43c89bb17b2d273f195",
-    "index_name": "primary_cell_1d50b984",
+    "hash": "6ce70f342b0e0540999130591dcb7451",
+    "index_name": "primary_cell_6ce70f34",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1050,6 +1050,9 @@
                                 "type": "keyword"
                             },
                             "barcode_replacement_file": {
+                                "type": "keyword"
+                            },
+                            "cell_annotation": {
                                 "type": "keyword"
                             },
                             "cell_qualifier": {

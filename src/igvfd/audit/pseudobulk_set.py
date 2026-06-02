@@ -109,10 +109,43 @@ def audit_pseudobulk_set_input_file_set_type(value, system):
                     )
 
 
+def audit_pseudobulk_set_source_biosamples_mixed_classifications(value, system):
+    '''
+    [
+        {
+            "audit_description": "The source biosamples of pseudobulk sets are expected to all share the same biosample classifications.",
+            "audit_category": "inconsistent source biosamples",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    audit_message = get_audit_message(audit_pseudobulk_set_source_biosamples_mixed_classifications, index=0)
+    classifications = set()
+    if value.get('samples', []):
+        for sample in value.get('samples', []):
+            source_biosample_object = system.get('request').embed(
+                sample, '@@object_with_select_calculated_properties?field=classifications')
+            classifications.add(', '.join(
+                sorted(source_biosample_object.get('classifications', []))
+            ))
+    if len(classifications) > 1:
+        detail = (
+            f'Pseudobulk set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has source biosamples with different sets of classifications: '
+            f'{"; ".join(classifications)}.'
+        )
+        yield AuditFailure(
+            audit_message.get('audit_category', ''),
+            f'{detail} {audit_message.get("audit_description", "")}',
+            level=audit_message.get('audit_level', '')
+        )
+
+
 function_dispatcher_pseudobulk_set_object = {
     'audit_pseudobulk_set_marker_gene_files': audit_pseudobulk_set_marker_gene_files,
     'audit_pseudobulk_set_sample_matches_input': audit_pseudobulk_set_sample_matches_input,
-    'audit_pseudobulk_set_input_file_set_type': audit_pseudobulk_set_input_file_set_type
+    'audit_pseudobulk_set_input_file_set_type': audit_pseudobulk_set_input_file_set_type,
+    'audit_pseudobulk_set_source_biosamples_mixed_classifications': audit_pseudobulk_set_source_biosamples_mixed_classifications,
 }
 
 
