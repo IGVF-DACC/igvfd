@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 26
 
+* Extend `biosample_qualifiers` enum list to include `partially exhausted`.
 * Update `dbxrefs` regex to allow DepMap ID accessions.
 * Extend `collections` enum list to include `PD single cell multiomics`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.2`.
