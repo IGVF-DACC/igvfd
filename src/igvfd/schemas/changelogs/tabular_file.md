@@ -2,6 +2,11 @@
 
 ### Minor changes since schema version 22
 
+* Extend `content_type` enum list to include `motifs`.
+* Extend `content_type` enum list to include `cis differential expression quantifications per guide`.
+* Extend `content_type` enum list to include `trans differential expression quantifications per guide`.
+* Extend `content_type` enum list to include `cis differential expression quantifications per element`.
+* Extend `content_type` enum list to include `trans differential expression quantifications per element`.
 * Extend `content_type` enum list to include `motif-overlapping differential guide quantifications`.
 * Extend `content_type` enum list to include `differential TF enrichment quantifications`.
 * Extend `content_type` enum list to include `post-segmentation transcript and cell locations`.
