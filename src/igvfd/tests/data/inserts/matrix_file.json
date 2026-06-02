@@ -19,11 +19,7 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "filtered": false,
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "gene"
-        ]
+        "filtered": false
     },
     {
         "uuid": "8676b49a-4578-4ce9-b7e4-78b9679f2e76",
@@ -45,11 +41,7 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "filtered": true,
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "fragment"
-        ]
+        "filtered": true
     },
     {
         "uuid": "90a0caf1-acef-48cb-840c-6a2d1a76d5e0",
@@ -71,12 +63,7 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "derived_manually": true,
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "gene",
-            "antibody capture"
-        ]
+        "derived_manually": true
     },
     {
         "uuid": "3a7c6036-be08-45b2-aa5f-d7c3250e0177",
@@ -97,10 +84,6 @@
         "file_set": "leif-ludwig:analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ],
-        "principal_dimension": "genomic position",
-        "secondary_dimensions": [
-            "genomic position"
         ]
     },
     {
@@ -122,10 +105,6 @@
         "file_set": "igvf:analysis_set_with_workflow",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ],
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "fragment"
         ],
         "analysis_step_version": "igvf-dacc:analysis_step_version_01"
     },
@@ -149,10 +128,6 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "peak"
-        ],
         "analysis_step_version": "igvf-dacc:analysis_step_version_02"
     },
     {
@@ -175,10 +150,6 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "barcode count"
-        ],
         "analysis_step_version": "igvf-dacc:analysis_step_version_02"
     },
     {
@@ -200,10 +171,6 @@
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ],
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "peak"
         ]
     },
     {
@@ -225,10 +192,6 @@
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ],
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "gene"
         ]
     },
     {
@@ -250,10 +213,6 @@
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ],
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "gene"
         ]
     },
     {
@@ -275,10 +234,6 @@
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ],
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "peak"
         ]
     },
     {
@@ -300,10 +255,6 @@
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ],
-        "principal_dimension": "mitochondrial variants",
-        "secondary_dimensions": [
-            "cell"
         ]
     },
     {
@@ -325,10 +276,6 @@
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ],
-        "principal_dimension": "CRISPR guide capture",
-        "secondary_dimensions": [
-            "gene expression"
         ]
     },
     {
@@ -350,10 +297,6 @@
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ],
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "gene"
         ],
         "derived_manually": true,
         "documents": [
@@ -380,10 +323,6 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "fragment"
-        ],
         "derived_manually": true,
         "documents": [
             "igvf:cell_marker_file"
@@ -408,10 +347,6 @@
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ],
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "genomic position"
         ]
     },
     {
@@ -433,10 +368,6 @@
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ],
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "gene"
         ]
     },
     {
@@ -458,10 +389,6 @@
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ],
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "multiplexing oligo"
         ]
     },
     {
@@ -483,10 +410,6 @@
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ],
-        "principal_dimension": "cell",
-        "secondary_dimensions": [
-            "multiplexing oligo"
         ]
     }
 ]

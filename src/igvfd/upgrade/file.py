@@ -870,3 +870,20 @@ def matrix_file_9_10(value, system):
                 notes += f' This {principal_dimension} by {secondary_dimensions} {content_type} file was upgraded to {filtered_string}{upgrade_map[key][0]}.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('matrix_file', '10', '11')
+def matrix_file_10_11(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3486
+    notes = value.get('notes', '')
+    props_with_notes = []
+    # Rm properties while collecting what is removed
+    for prop2del in ['principal_dimension', 'secondary_dimensions']:
+        if value.get(prop2del, ''):
+            props_with_notes.append(prop2del)
+            value.pop(prop2del)
+    # Update note
+    if props_with_notes:
+        notes += f' This file\'s {", ".join(props_with_notes)} was removed via upgrade.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

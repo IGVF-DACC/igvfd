@@ -1,6 +1,6 @@
 {
-    "hash": "a8451e61fca3a629d6d3b9dac16095e3",
-    "index_name": "model_set_a8451e61",
+    "hash": "a2d7c020dc682fc612e8a2c7a956a365",
+    "index_name": "model_set_a2d7c020",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -2116,9 +2116,6 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
-                            "principal_dimension": {
-                                "type": "keyword"
-                            },
                             "quality_metrics": {
                                 "type": "keyword"
                             },
@@ -2146,9 +2143,6 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
-                                "type": "keyword"
-                            },
-                            "secondary_dimensions": {
                                 "type": "keyword"
                             },
                             "seqspec_document": {

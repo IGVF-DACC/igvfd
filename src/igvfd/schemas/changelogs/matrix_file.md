@@ -1,5 +1,10 @@
 ## Changelog for *`matrix_file.json`*
 
+### Schema version 11
+
+* Remove `principal_dimension`.
+* Remove `secondary_dimensions`.
+
 ### Minor changes since schema version 10
 
 * Extend `content_type` enum list to include `donor by gene matrix`.

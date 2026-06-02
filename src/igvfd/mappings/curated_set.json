@@ -1,6 +1,6 @@
 {
-    "hash": "02acdf3d437c41c712c9b7faeb26b722",
-    "index_name": "curated_set_02acdf3d",
+    "hash": "8b9a3be159cadb8b525dbcf709bae5b5",
+    "index_name": "curated_set_8b9a3be1",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1916,9 +1916,6 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
-                            "principal_dimension": {
-                                "type": "keyword"
-                            },
                             "quality_metrics": {
                                 "type": "keyword"
                             },
@@ -1946,9 +1943,6 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
-                                "type": "keyword"
-                            },
-                            "secondary_dimensions": {
                                 "type": "keyword"
                             },
                             "seqspec_document": {

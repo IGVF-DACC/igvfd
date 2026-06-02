@@ -14,8 +14,6 @@ def matrix_file(testapp, lab, award, principal_analysis_set, reference_file):
         'reference_files': [
             reference_file['@id']
         ],
-        'principal_dimension': 'cell',
-        'secondary_dimensions': ['gene'],
         'derived_manually': False,
     }
     return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
@@ -33,9 +31,7 @@ def matrix_file_hic(testapp, lab, award, measurement_set, reference_file):
         'content_type': 'contact matrix',
         'reference_files': [
             reference_file['@id']
-        ],
-        'principal_dimension': 'genomic position',
-        'secondary_dimensions': ['genomic position']
+        ]
     }
     return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
 
@@ -53,8 +49,6 @@ def matrix_file_with_base_workflow(testapp, lab, award, analysis_set_with_workfl
         'reference_files': [
             reference_file['@id']
         ],
-        'principal_dimension': 'cell',
-        'secondary_dimensions': ['gene'],
         'analysis_step_version': analysis_step_version['@id']
     }
     return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
@@ -73,8 +67,6 @@ def matrix_file_with_base_workflow_2(testapp, lab, award, analysis_set_base, ref
         'reference_files': [
             reference_file['@id']
         ],
-        'principal_dimension': 'cell',
-        'secondary_dimensions': ['gene'],
         'analysis_step_version': analysis_step_version_2['@id']
     }
     return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
@@ -231,4 +223,24 @@ def matrix_file_v9d(testapp, lab, award, measurement_set, reference_file):
         'secondary_dimensions': ['peak'],
         'schema_version': '9'
     }
+    return item
+
+
+@pytest.fixture
+def matrix_file_v10a(testapp, matrix_file):
+    item = matrix_file.copy()
+    item.update({
+        'schema_version': '10',
+        'principal_dimension': 'cell',
+        'secondary_dimensions': ['gene']
+    })
+    return item
+
+
+@pytest.fixture
+def matrix_file_v10b(testapp, matrix_file):
+    item = matrix_file.copy()
+    item.update({
+        'schema_version': '10'
+    })
     return item
