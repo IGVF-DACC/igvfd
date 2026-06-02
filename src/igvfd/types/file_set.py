@@ -2857,9 +2857,10 @@ class PseudobulkSet(FileSet):
                 ', '.join(sorted(source_biosample_terms))
             ] if x is not None])
         else:
-            phrase = (
-                f'{cell_qualifier_string} {cell_type_name}'
-            ).strip()
+            phrase = ' '.join([x for x in [
+                cell_qualifier_string,
+                cell_type_name
+            ] if x is not None])
         return phrase
 
     @calculated_property(
