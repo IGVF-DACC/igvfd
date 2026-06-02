@@ -46,6 +46,15 @@ def phenotype_term_incomplete(testapp):
 
 
 @pytest.fixture
+def phenotype_term_parkinsons(testapp):
+    item = {
+        'term_id': 'DOID:14330',
+        'term_name': 'Parkinson\'s disease'
+    }
+    return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def phenotype_term_v1(phenotype_term_alzheimers):
     item = phenotype_term_alzheimers.copy()
     item.update({

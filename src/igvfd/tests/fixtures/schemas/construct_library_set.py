@@ -163,6 +163,21 @@ def construct_library_set_non_targeting(testapp, lab, award):
 
 
 @pytest.fixture
+def construct_library_set_overexpression(testapp, lab, award, gene_myc_hs):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'overexpression vector library',
+        'scope': 'genes',
+        'small_scale_gene_list': [gene_myc_hs['@id']],
+        'selection_criteria': [
+            'genes'
+        ]
+    }
+    return testapp.post_json('/construct_library_set', item).json['@graph'][0]
+
+
+@pytest.fixture
 def construct_library_set_v1(testapp, lab, award, gene_myc_hs):
     item = {
         'award': award['@id'],

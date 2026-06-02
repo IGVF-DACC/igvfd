@@ -406,7 +406,38 @@ def test_analysis_set_protocols(testapp, analysis_set_base, measurement_set_with
     assert res.json.get('protocols') == ['https://www.protocols.io/private/test-protocols-url-12345']
 
 
-def test_analysis_set_sample_summary(testapp, principal_analysis_set, measurement_set_mpra, construct_library_set_genome_wide, sample_term_endothelial_cell, gene_myc_hs, treatment_chemical, in_vitro_differentiated_cell, in_vitro_cell_line, multiplexed_sample, crispr_modification, degron_modification, sample_term_lymphoblastoid):
+def test_analysis_set_sample_summary(
+    testapp,
+    principal_analysis_set,
+    analysis_set_base,
+    measurement_set_mpra,
+    measurement_set_one_onlist,
+    measurement_set_perturb_seq,
+    measurement_set,
+    sample_term_endothelial_cell,
+    in_vitro_differentiated_cell,
+    in_vitro_cell_line,
+    in_vitro_organoid,
+    tissue,
+    tissue_parkinsons,
+    multiplexed_sample,
+    sample_term_lymphoblastoid,
+    sample_term_K562,
+    sample_term_brown_adipose_tissue,
+    sample_term_gastrula,
+    phenotypic_feature_basic,
+    phenotypic_feature_01,
+    rodent_donor,
+    parent_rodent_donor_1,
+    parent_rodent_donor_2,
+    human_donor,
+    parent_human_donor_1,
+    parent_human_donor_2,
+    construct_library_set_overexpression,
+    base_expression_construct_library_set,
+    experimental_protocol_document
+):
+    # Test group 1: non-multiplexed samples with various metadata
     testapp.patch_json(
         principal_analysis_set['@id'],
         {
@@ -414,33 +445,25 @@ def test_analysis_set_sample_summary(testapp, principal_analysis_set, measuremen
         }
     )
     testapp.patch_json(
-        in_vitro_differentiated_cell['@id'],
-        {
-            'construct_library_sets': [construct_library_set_genome_wide['@id']],
-            'treatments': [treatment_chemical['@id']],
-            'targeted_sample_term': sample_term_endothelial_cell['@id'],
-            'sorted_from': in_vitro_cell_line['@id'],
-            'sorted_from_detail': 'Example detail',
-            'modifications': [crispr_modification['@id']]
-        }
-    )
-    testapp.patch_json(
         measurement_set_mpra['@id'],
         {
-            'targeted_genes': [gene_myc_hs['@id']],
             'samples': [in_vitro_differentiated_cell['@id']]
         }
     )
-    res = testapp.get(principal_analysis_set['@id']).json
-    assert res.get('sample_summary', '') == 'Homo sapiens K562 differentiated cell specimen induced to endothelial cell of vascular tree, at 5 minute(s) post change, activated with 10 mM lactate for 1 hour, modified with CRISPRi Sp-dCas9, transfected with a guide library, sorted on expression of MYC'
+
+    # Test group 1: targeted sample terms (human donor)
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
-            'modifications': [crispr_modification['@id'], degron_modification['@id']]
+            'targeted_sample_term': sample_term_endothelial_cell['@id'],
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
-    assert res.get('sample_summary', '') == 'Homo sapiens K562 differentiated cell specimen induced to endothelial cell of vascular tree, at 5 minute(s) post change, activated with 10 mM lactate for 1 hour, modified with AID system targeting MYC, CRISPRi Sp-dCas9, transfected with a guide library, sorted on expression of MYC'
+    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
+    assert res.get('sample_summary',
+                   '') == f'human K562 differentiated cell specimen induced to endothelial cell of vascular tree at 5 minute(s) post change from donor(s) {hs_donor_accession}'
+
+    # Test group 1: new classifications (change wording)
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
@@ -448,24 +471,91 @@ def test_analysis_set_sample_summary(testapp, principal_analysis_set, measuremen
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
-    assert res.get('sample_summary', '') == 'Homo sapiens K562 pooled differentiated cell specimen induced to endothelial cell of vascular tree, at 5 minute(s) post change, activated with 10 mM lactate for 1 hour, modified with AID system targeting MYC, CRISPRi Sp-dCas9, transfected with a guide library, sorted on expression of MYC'
+    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
+    assert res.get(
+        'sample_summary', '') == f'human K562 pooled differentiated cell specimen induced to endothelial cell of vascular tree at 5 minute(s) post change from donor(s) {hs_donor_accession}'
+
+    # Test group 1: add disease terms with targeted term
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
-            'time_post_library_delivery': 5,
-            'time_post_library_delivery_units': 'minute'
+            'phenotypic_features': [phenotypic_feature_basic['@id'],
+                                    phenotypic_feature_01['@id']]
+        }
+    )
+    # note: per portal data, NCIT is disease term if there is no measurement linked
+    testapp.patch_json(
+        phenotypic_feature_basic['@id'],
+        {
+            'quality': 'unknown'
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
-    assert res.get('sample_summary', '') == 'Homo sapiens K562 pooled differentiated cell specimen induced to endothelial cell of vascular tree, at 5 minute(s) post change, activated with 10 mM lactate for 1 hour, modified with AID system targeting MYC, CRISPRi Sp-dCas9, transfected with a guide library and measured at 5 minute(s) post-transfection, sorted on expression of MYC'
+    assert res.get(
+        'sample_summary', '') == f'human K562 pooled differentiated cell specimen with Alzheimer\'s disease induced to endothelial cell of vascular tree at 5 minute(s) post change from donor(s) {hs_donor_accession}'
+
+    # Test group 1: add overexpression CLS
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
-            'growth_medium': '1 kPa hydrogel'
+            'construct_library_sets': [construct_library_set_overexpression['@id']]
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
-    assert res.get('sample_summary', '') == 'Homo sapiens K562 pooled differentiated cell specimen induced to endothelial cell of vascular tree, at 5 minute(s) post change, grown in 1 kPa hydrogel, activated with 10 mM lactate for 1 hour, modified with AID system targeting MYC, CRISPRi Sp-dCas9, transfected with a guide library and measured at 5 minute(s) post-transfection, sorted on expression of MYC'
+    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
+    assert res.get('sample_summary',
+                   '') == f'human K562 pooled differentiated cell specimen with Alzheimer\'s disease induced to endothelial cell of vascular tree at 5 minute(s) post change from donor(s) {hs_donor_accession}, overexpressing MYC'
+
+    # Test group 1: add disease without targeted term
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'samples': [tissue['@id']]
+        }
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'phenotypic_features': [phenotypic_feature_basic['@id'],
+                                    phenotypic_feature_01['@id']]
+        }
+    )
+    res = testapp.get(principal_analysis_set['@id']).json
+    ms_donor_accession = testapp.get(rodent_donor['@id']).json.get('accession')
+    assert res.get(
+        'sample_summary', '') == f'mouse adrenal gland tissue/organ with Alzheimer\'s disease from {ms_donor_accession} mice of strain1 strain(s)'
+
+    # Test group 1: multiple human donors
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'donors': [parent_human_donor_1['@id'], human_donor['@id'], parent_human_donor_2['@id']]
+        }
+    )
+    hs_donor_accession_1 = testapp.get(parent_human_donor_1['@id']).json.get('accession')
+    hs_donor_accession_2 = testapp.get(parent_human_donor_2['@id']).json.get('accession')
+    hs_donor_accessions = testapp.get(human_donor['@id']).json.get('accession')
+    sorted_hs_donors = sorted([hs_donor_accession_1, hs_donor_accession_2, hs_donor_accessions])
+    res = testapp.get(principal_analysis_set['@id']).json
+    assert res.get(
+        'sample_summary', '') == f'human adrenal gland tissue/organ with Alzheimer\'s disease from donor(s) {sorted_hs_donors[0]}, {sorted_hs_donors[1]} and 1 more'
+
+    # Test group 1: multiple human donors
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'donors': [rodent_donor['@id'], parent_rodent_donor_1['@id'], parent_rodent_donor_2['@id']]
+        }
+    )
+    ms_donor_accession_1 = testapp.get(parent_rodent_donor_1['@id']).json.get('accession')
+    ms_donor_accession_2 = testapp.get(parent_rodent_donor_2['@id']).json.get('accession')
+    ms_donor_accessions = testapp.get(rodent_donor['@id']).json.get('accession')
+    sorted_ms_donors = sorted([ms_donor_accession_1, ms_donor_accession_2, ms_donor_accessions])
+    res = testapp.get(principal_analysis_set['@id']).json
+    assert res.get(
+        'sample_summary', '') == f'mouse adrenal gland tissue/organ with Alzheimer\'s disease from {sorted_ms_donors[0]}, {sorted_ms_donors[1]} and 1 more mice of strain1, strain2, and 1 more strain(s)'
+
+    # Test group 2: multiplexed samples
     testapp.patch_json(
         measurement_set_mpra['@id'],
         {
@@ -485,15 +575,125 @@ def test_analysis_set_sample_summary(testapp, principal_analysis_set, measuremen
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
-    assert res.get('sample_summary', '') == 'Mixed species multiplexed sample of K562, lymphoblastoid cell line, activated with 10 mM lactate for 1 hour, modified with AID system targeting MYC, CRISPRi Sp-dCas9, transfected with a guide library'
+    assert res.get('sample_summary',
+                   '') == 'mixed species multiplexed sample of K562 with Alzheimer\'s disease, lymphoblastoid cell line from 1 human donor(s), 1 mouse donor(s), overexpressing MYC'
+
+    # Test group 2: disease info
     testapp.patch_json(
-        multiplexed_sample['@id'],
+        in_vitro_differentiated_cell['@id'],
         {
-            'cellular_sub_pool': '001ABC'
+            'phenotypic_features': [phenotypic_feature_basic['@id']]
+        }
+    )
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'phenotypic_features': [phenotypic_feature_basic['@id'],
+                                    phenotypic_feature_01['@id']]
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
-    assert res.get('sample_summary', '') == 'Mixed species multiplexed sample of K562, lymphoblastoid cell line, activated with 10 mM lactate for 1 hour, modified with AID system targeting MYC, CRISPRi Sp-dCas9, transfected with a guide library, cellular sub pool(s): 001ABC'
+    assert res.get('sample_summary',
+                   '') == 'mixed species multiplexed sample of K562, lymphoblastoid cell line with Alzheimer\'s disease from 1 human donor(s), 1 mouse donor(s), overexpressing MYC'
+
+    # Test group 3: Corces PD special collection
+    testapp.patch_json(
+        principal_analysis_set['@id'],
+        {
+            'collections': ['PD single cell multiomics']
+        }
+    )
+    testapp.patch_json(
+        multiplexed_sample['@id'],
+        {
+            'multiplexed_samples': [tissue['@id'], tissue_parkinsons['@id']]
+        }
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'donors': [parent_human_donor_1['@id']]
+        }
+    )
+    res = testapp.get(principal_analysis_set['@id']).json
+    hs_donor_accession_1 = testapp.get(parent_human_donor_1['@id']).json.get('accession')
+    hs_donor_accessions = testapp.get(human_donor['@id']).json.get('accession')
+    sorted_hs_donors = sorted([hs_donor_accession_1, hs_donor_accessions])
+    assert res.get('sample_summary',
+                   '') == f'Parkinson\'s collection of human multiplexed sample of adrenal gland, middle temporal gyrus with and without Parkinson\'s from donor(s) {sorted_hs_donors[0]} and {sorted_hs_donors[1]}'
+
+    # Test group 4: non-mux samples with multiple target terms and times (test concat)
+    # Starting fresh
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set['@id'],
+                                measurement_set_one_onlist['@id'],
+                                measurement_set_perturb_seq['@id']
+                                ],
+            'file_set_type': 'principal analysis'
+        }
+    )
+    # target sample 1 (K562 to gastrula)
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [in_vitro_differentiated_cell['@id']]
+        }
+    )
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'targeted_sample_term': sample_term_gastrula['@id'],
+            'donors': [human_donor['@id']],
+            'classifications': ['differentiated cell specimen'],
+            'phenotypic_features': [phenotypic_feature_basic['@id']],
+            'construct_library_sets': [base_expression_construct_library_set['@id']]
+        }
+    )
+    # target sample 2 (K562 to brown adipose tissue)
+    testapp.patch_json(
+        measurement_set_one_onlist['@id'],
+        {
+            'samples': [in_vitro_cell_line['@id']]
+        }
+    )
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'targeted_sample_term': sample_term_brown_adipose_tissue['@id'],
+            'donors': [human_donor['@id']],
+            'sample_terms': [sample_term_K562['@id']],
+            'classifications': ['differentiated cell specimen'],
+            'cell_fate_change_protocol': experimental_protocol_document['@id'],
+            'time_post_change': 10,
+            'time_post_change_units': 'minute',
+            'phenotypic_features': [phenotypic_feature_basic['@id']]
+        }
+    )
+    # target sample 3 (K562 to lymphoblastoid cell line)
+    testapp.patch_json(
+        measurement_set_perturb_seq['@id'],
+        {
+            'samples': [in_vitro_organoid['@id']]
+        }
+    )
+    testapp.patch_json(
+        in_vitro_organoid['@id'],
+        {
+            'targeted_sample_term': sample_term_lymphoblastoid['@id'],
+            'donors': [human_donor['@id']],
+            'sample_terms': [sample_term_K562['@id']],
+            'classifications': ['differentiated cell specimen'],
+            'cell_fate_change_protocol': experimental_protocol_document['@id'],
+            'time_post_change': 2,
+            'time_post_change_units': 'minute',
+        }
+    )
+    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
+    res = testapp.get(analysis_set_base['@id']).json
+    assert res.get(
+        'sample_summary', '') == f'human K562 differentiated cell specimen induced to brown adipose tissue, gastrula, lymphoblastoid cell line at 2 minute, 5 minute, 10 minute(s) post change from donor(s) {hs_donor_accession}'
 
 
 def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set, measurement_set_with_functional_assay_mechanisms, phenotype_term_from_go, phenotype_term_myocardial_infarction):
