@@ -1301,7 +1301,6 @@ def audit_missing_genome_transcriptome_references(value, system):
         'machine learning model features',
         'marker gene activity',
         'marker genes',
-        'motifs',
         'motifs_proteins',
         'normalized variants profile',
         'ontology_terms',
