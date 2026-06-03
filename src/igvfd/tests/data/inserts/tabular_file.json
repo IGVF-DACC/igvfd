@@ -1944,12 +1944,38 @@
         "md5sum": "9e9f16496f0f4ee0df909bbf0d0c4c74",
         "file_format": "tsv",
         "content_type": "motifs",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/motifs.tsv.gz",
         "file_size": 16800,
         "upload_status": "validated",
         "status": "released",
         "release_timestamp": "2026-05-28T12:34:56Z",
         "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "b5f62c52-7a8d-4e1f-9c3b-2d4e6f8a1b2c",
+        "accession": "IGVFFI0015ORFS",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_open_reading_frames"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-28T12:34:56Z",
+        "md5sum": "a1b2c3d4e5f6789012345678abcdef01",
+        "file_format": "tsv",
+        "content_type": "open reading frames",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/open_reading_frames.tsv.gz",
+        "file_size": 4200,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:morf_screen",
         "controlled_access": false
     }
 ]

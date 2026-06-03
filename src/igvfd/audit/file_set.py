@@ -1305,7 +1305,6 @@ def audit_missing_genome_transcriptome_references(value, system):
         'motifs_proteins',
         'normalized variants profile',
         'ontology_terms',
-        'open reading frames',
         'pathogenicity validation',
         'pathways',
         'pathways_pathways',
