@@ -892,3 +892,13 @@ def measurement_set_44_45(value, system):
         value['crispr_readout'] = 'gRNA sequencing'
     if notes.strip() != value.get('notes', '').strip():
         value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '45', '46')
+def measurement_set_42_43(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3515
+    if value.get('preferred_assay_titles') == ['perturb-SHARE-seq']:
+        value['preferred_assay_titles'] = ['MORF-SHARE-seq']
+        notes = value.get('notes', '')
+        notes += ' This measurement set previously used perturb-SHARE-seq as preferred_assay_titles, but it has been updated to MORF-SHARE-seq via an upgrade.'
+        value['notes'] = notes.strip()

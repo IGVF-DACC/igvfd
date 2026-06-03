@@ -53,3 +53,16 @@ def workflow_6_7(value, system):
         value['preferred_assay_titles'] = preferred_assay_titles
         notes += f'This workflow previously used 10x with Scale pre-indexing as a preferred_assay_titles, but it has been updated to 10x snATAC-seq with Scale pre-indexing via an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('workflow', '7', '8')
+def assay_term_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3515
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    notes = value.get('notes', '')
+    if 'perturb-SHARE-seq' in preferred_assay_titles:
+        index = preferred_assay_titles.index('perturb-SHARE-seq')
+        preferred_assay_titles[index] = 'MORF-SHARE-seq'
+        value['preferred_assay_titles'] = preferred_assay_titles
+        notes += ' This assay_term previously used perturb-SHARE-seq as preferred_assay_titles, but it has been updated to MORF-SHARE-seqvia an upgrade.'
+        value['notes'] = notes.strip()

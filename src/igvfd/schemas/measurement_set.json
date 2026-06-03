@@ -77,7 +77,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "45"
+            "default": "46"
         },
         "samples": {
             "maxItems": 1

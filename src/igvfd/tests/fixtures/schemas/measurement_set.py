@@ -711,3 +711,13 @@ def measurement_set_v44_multiome_perturb_scatac(measurement_set):
         'assay_term': '/assay-terms/NTR_0000798/',
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v45(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '45',
+        'preferred_assay_titles': ['perturb-SHARE-seq']
+    })
+    return item

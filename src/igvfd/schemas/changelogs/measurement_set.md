@@ -1,5 +1,8 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 46
+* Adjust `preferred_assay_titles` enum list to replace `perturb-SHARE-seq` with `MORF-SHARE-seq`.
+
 ### Schema version 45
 
 * Add `crispr_readout`.
