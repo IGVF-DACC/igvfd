@@ -257,6 +257,10 @@ class File(Item):
         'superseded_by': ('File', 'supersedes')
     }
 
+    audit_inherit = [
+        'analysis_step_version'
+    ]
+
     set_status_up = [
         'analysis_step_version',
         'documents',
