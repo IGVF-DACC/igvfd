@@ -367,7 +367,7 @@ def audit_targeted_genes(value, system):
     '''
     [
         {
-            "audit_description": "Transcription factor ChIP-seq and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
+            "audit_description": "Transcription factor ChIP-seq, CRISPR flow cytometry, and MORF screen assays are expected to specify targeted gene(s).",
             "audit_category": "missing targeted genes",
             "audit_level": "WARNING"
         },
@@ -391,11 +391,10 @@ def audit_targeted_genes(value, system):
     expecting_targeted_genes_by_assay = ['/assay-terms/OBI_0003661/',  # in vitro CRISPR screen using flow cytometry
                                          '/assay-terms/OBI_0002019/',  # transcription factor binding site identification by ChIP-Seq assay
                                          ]
-    allowing_targeted_genes_by_preferred_assay_title = ['MORF screen']
-    expects_targeted_genes = assay_term in expecting_targeted_genes_by_assay
-    allows_targeted_genes = (
-        expects_targeted_genes
-        or any(title in allowing_targeted_genes_by_preferred_assay_title for title in preferred_assay_titles)
+    expecting_targeted_genes_by_preferred_assay_title = ['MORF screen']
+    expects_targeted_genes = (
+        assay_term in expecting_targeted_genes_by_assay
+        or any(title in expecting_targeted_genes_by_preferred_assay_title for title in preferred_assay_titles)
     )
     if (
         not (targeted_genes)
@@ -406,7 +405,7 @@ def audit_targeted_genes(value, system):
             f'has no `targeted_genes`.'
         )
         yield AuditFailure(audit_message_missing.get('audit_category', ''), f'{detail} {audit_message_missing.get("audit_description", "")}', level=audit_message_missing.get('audit_level', ''))
-    if targeted_genes and not allows_targeted_genes:
+    if targeted_genes and not expects_targeted_genes:
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has `targeted_genes`.'
