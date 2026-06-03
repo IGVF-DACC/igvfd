@@ -1,5 +1,10 @@
 ## Changelog for *`analysis_step.json`*
 
+### Schema version 13
+
+* Adjust `input_content_types` enum list to remove `exclusion list regions`.
+* Adjust `output_content_types` enum list to remove `exclusion list regions`.
+
 ### Minor changes since schema version 12
 
 * Extend `input_content_types` enum list to include `motifs`.

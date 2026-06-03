@@ -76,3 +76,14 @@ def test_analysis_step_upgrade_11_12(upgrader, analysis_step_v11):
     assert ('This analysis step\'s output_content_types included filtered feature barcode matrix, '
             'but has been upgraded to cell by gene matrix.') in value['notes']
     assert value['schema_version'] == '12'
+
+
+def test_analysis_step_upgrade_12_13(upgrader, analysis_step_v12):
+    value = upgrader.upgrade('analysis_step', analysis_step_v12, current_version='12', target_version='13')
+    assert set(value['input_content_types']) == {'loci', 'peaks'}
+    assert set(value['output_content_types']) == {'loci'}
+    assert 'exclusion list regions was removed from input_content_types, and has been defaulted to loci.' in value[
+        'notes']
+    assert 'exclusion list regions was removed from output_content_types, and has been defaulted to loci.' in value[
+        'notes']
+    assert value['schema_version'] == '13'

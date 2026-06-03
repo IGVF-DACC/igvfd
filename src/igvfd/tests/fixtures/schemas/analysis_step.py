@@ -144,3 +144,17 @@ def analysis_step_v11(testapp, base_workflow):
         'workflow': base_workflow['@id']
     }
     return item
+
+
+@pytest.fixture
+def analysis_step_v12(testapp, base_workflow):
+    item = {
+        'schema_version': '12',
+        'step_label': 'base-analysis-step',
+        'title': 'Base Analysis Step',
+        'input_content_types': ['exclusion list regions', 'peaks'],
+        'output_content_types': ['exclusion list regions'],
+        'analysis_step_types': ['alignment'],
+        'workflow': base_workflow['@id']
+    }
+    return item
