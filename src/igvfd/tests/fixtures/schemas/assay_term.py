@@ -155,6 +155,18 @@ def assay_term_CRISPR_sorted(testapp):
 
 
 @pytest.fixture
+def assay_term_flow_cytometry(testapp):
+    item = {
+        'term_id': 'OBI:0000916',
+        'term_name': 'flow cytometry assay',
+        'preferred_assay_titles': [
+            'MORF screen'
+        ]
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def assay_term_LABEL_seq(testapp):
     item = {
         'term_id': 'OBI:0002082',

@@ -1537,12 +1537,13 @@ def test_audit_targeted_genes(
 def test_audit_targeted_genes_morf_screen(
     testapp,
     measurement_set,
+    assay_term_flow_cytometry,
     gene_myc_hs
 ):
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': '/assay-terms/OBI_0000916/',
+            'assay_term': assay_term_flow_cytometry['@id'],
             'preferred_assay_titles': ['MORF screen'],
             'targeted_genes': [gene_myc_hs['@id']],
         }
