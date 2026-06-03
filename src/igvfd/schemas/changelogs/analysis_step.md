@@ -7,6 +7,8 @@
 
 ### Minor changes since schema version 12
 
+* Extend `input_content_types` enum list to include `open reading frames`.
+* Extend `output_content_types` enum list to include `open reading frames`.
 * Extend `input_content_types` enum list to include `motifs`.
 * Extend `output_content_types` enum list to include `motifs`.
 * Extend `input_content_types` enum list to include `cis differential expression quantifications per guide`.
