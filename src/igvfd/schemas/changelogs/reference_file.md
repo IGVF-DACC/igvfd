@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 26
 
+* Extend `content_type` enum list to include `open reading frame reference`.
 * Adjust `content_type` enum list to restrict usage of `inclusion list` to admin users.
 
 ### Schema change 26

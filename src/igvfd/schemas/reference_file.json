@@ -219,6 +219,7 @@
                                 "motif protein mapping",
                                 "motifs",
                                 "ontology terms",
+                                "open reading frame reference",
                                 "orthologs",
                                 "pathway hierarchy",
                                 "pathways",
@@ -299,6 +300,7 @@
                         "genome reference",
                         "guide RNA sequences reference",
                         "nascent transcriptome index",
+                        "open reading frame reference",
                         "spike-ins",
                         "transcriptome index",
                         "transcriptome reference"
@@ -375,6 +377,7 @@
                 "motif protein mapping": "Mappings describing associations between sequence motifs and proteins.",
                 "motifs": "Reference definitions of recurring sequence patterns.",
                 "ontology terms": "Controlled vocabulary terms organized within an ontology.",
+                "open reading frame reference": "A reference file comprised of concatenated open reading frames intended for use as an alignment or mapping reference.",
                 "orthologs": "Mappings describing orthologous genes across species.",
                 "pathway hierarchy": "Hierarchical relationships between biological pathways.",
                 "pathways": "Reference information describing biological pathways.",

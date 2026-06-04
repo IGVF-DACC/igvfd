@@ -7,6 +7,12 @@
 
 ### Minor changes since schema version 12
 
+* Extend `input_content_types` enum list to include `open reading frame reference`.
+* Extend `output_content_types` enum list to include `open reading frame reference`.
+* Extend `input_content_types` enum list to include `open reading frame quantifications`.
+* Extend `output_content_types` enum list to include `open reading frame quantifications`.
+* Extend `input_content_types` enum list to include `differential open reading frame quantifications`.
+* Extend `output_content_types` enum list to include `differential open reading frame quantifications`.
 * Extend `input_content_types` enum list to include `open reading frames`.
 * Extend `output_content_types` enum list to include `open reading frames`.
 * Extend `input_content_types` enum list to include `motifs`.
