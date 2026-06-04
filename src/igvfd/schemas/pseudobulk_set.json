@@ -152,13 +152,13 @@
             }
         },
         "samples": {
-            "title": "Source Biosamples",
+            "title": "Parent Samples",
             "description": "The sample(s) from which the cells in this pseudobulk originated.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "Source Biosample",
+                "title": "Parent Sample",
                 "type": "string",
                 "linkTo": "Biosample"
             },
