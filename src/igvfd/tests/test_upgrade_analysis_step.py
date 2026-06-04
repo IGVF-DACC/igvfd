@@ -80,6 +80,7 @@ def test_analysis_step_upgrade_11_12(upgrader, analysis_step_v11):
 
 def test_analysis_step_upgrade_12_13(upgrader, analysis_step_v12):
     value = upgrader.upgrade('analysis_step', analysis_step_v12, current_version='12', target_version='13')
+<<<<<<< HEAD
     assert set(value['input_content_types']) == {'loci', 'peaks'}
     assert set(value['output_content_types']) == {'loci'}
     assert 'exclusion list regions was removed from input_content_types, and has been defaulted to loci.' in value[
@@ -87,3 +88,19 @@ def test_analysis_step_upgrade_12_13(upgrader, analysis_step_v12):
     assert 'exclusion list regions was removed from output_content_types, and has been defaulted to loci.' in value[
         'notes']
     assert value['schema_version'] == '13'
+=======
+    assert value['schema_version'] == '13'
+    assert value['input_content_types'] == ['differential open reading frame quantifications']
+    assert set(value['output_content_types']) == {
+        'differential open reading frame quantifications',
+        'peaks',
+    }
+    assert (
+        'This analysis step\'s input_content_types included differential TF enrichment quantifications, '
+        'but has been upgraded to differential open reading frame quantifications.'
+    ) in value['notes']
+    assert (
+        'This analysis step\'s output_content_types included differential TF enrichment quantifications, '
+        'but has been upgraded to differential open reading frame quantifications.'
+    ) in value['notes']
+>>>>>>> 1ffd91bf (upgrades added)

@@ -152,9 +152,15 @@ def analysis_step_v12(testapp, base_workflow):
         'schema_version': '12',
         'step_label': 'base-analysis-step',
         'title': 'Base Analysis Step',
+<<<<<<< HEAD
         'input_content_types': ['exclusion list regions', 'peaks'],
         'output_content_types': ['exclusion list regions'],
         'analysis_step_types': ['alignment'],
+=======
+        'input_content_types': ['differential TF enrichment quantifications'],
+        'output_content_types': ['differential TF enrichment quantifications', 'peaks'],
+        'analysis_step_types': ['quantification'],
+>>>>>>> 1ffd91bf (upgrades added)
         'workflow': base_workflow['@id']
     }
     return item

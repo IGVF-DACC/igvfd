@@ -896,5 +896,13 @@ def tabular_file_22_23(value, system):
     if value.get('content_type') == 'exclusion list regions':
         value['content_type'] = 'loci'
         notes += ' This file\'s content_type was exclusion list regions, but has been defaulted to loci.'
+    notes = value.get('notes', '')
+    old_content_type = value.get('content_type', '')
+    if old_content_type == 'differential TF enrichment quantifications':
+        value['content_type'] = 'differential open reading frame quantifications'
+        notes += (
+            ' This file\'s content_type was differential TF enrichment quantifications, '
+            'but has been upgraded to differential open reading frame quantifications.'
+        )
     if notes.strip() != '':
         value['notes'] = notes.strip()

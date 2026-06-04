@@ -1807,11 +1807,11 @@
         "release_timestamp": "2026-05-21T12:34:56Z",
         "md5sum": "8c4e1f2a9b7d3e6051a8f4c2b0d9e7a3",
         "file_format": "tsv",
-        "content_type": "differential TF enrichment quantifications",
+        "content_type": "differential open reading frame quantifications",
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "submitted_file_name": "/Users/igvf/igvf_files/differential_tf_enrichment_quantifications.tsv.gz",
+        "submitted_file_name": "/Users/igvf/igvf_files/differential_open_reading_frame_quantifications.tsv.gz",
         "file_size": 444444444,
         "upload_status": "validated",
         "filtered": false,

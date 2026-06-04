@@ -144,6 +144,15 @@ def test_tabular_file_upgrade_21_22(upgrader, tabular_file_v21):
 
 def test_tabular_file_upgrade_22_23(upgrader, tabular_file_v22):
     value = upgrader.upgrade('tabular_file', tabular_file_v22, current_version='22', target_version='23')
+<<<<<<< HEAD
     assert value['content_type'] == 'loci'
     assert value['schema_version'] == '23'
     assert 'This file\'s content_type was exclusion list regions, but has been defaulted to loci.' in value['notes']
+=======
+    assert value['content_type'] == 'differential open reading frame quantifications'
+    assert value['schema_version'] == '23'
+    assert (
+        'This file\'s content_type was differential TF enrichment quantifications, '
+        'but has been upgraded to differential open reading frame quantifications.'
+    ) in value['notes']
+>>>>>>> 1ffd91bf (upgrades added)

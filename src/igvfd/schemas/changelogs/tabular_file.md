@@ -2,13 +2,13 @@
 
 ### Schema version 23
 
+* Adjust `content_type` enum list to replace `differential TF enrichment quantifications` with `differential open reading frame quantifications`.
+* Extend `content_type` enum list to include `open reading frame quantifications`.
+* Extend `content_type` enum list to include `open reading frames`.
 * Adjust `content_type` enum list to remove `exclusion list regions`.
 
 ### Minor changes since schema version 22
 
-* Extend `content_type` enum list to include `open reading frame quantifications`.
-* Extend `content_type` enum list to include `differential open reading frame quantifications`.
-* Extend `content_type` enum list to include `open reading frames`.
 * Extend `content_type` enum list to include `motifs`.
 * Extend `content_type` enum list to include `cis differential expression quantifications per guide`.
 * Extend `content_type` enum list to include `trans differential expression quantifications per guide`.
