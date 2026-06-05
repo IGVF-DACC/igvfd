@@ -249,6 +249,10 @@ def get_disease_terms_from_phenotypic_features(request, sample_object, is_pd_col
 
 def get_donors_info_for_sample_summary(request, donors):
     donor_metadata = {}
+    # technical samples have no donors
+    if not donors:
+        return ''
+    # all other sample types have donors
     for donor in donors:
         donor_object = request.embed(donor, '@@object?skip_calculated=true')
         accession = donor_object.get('accession')

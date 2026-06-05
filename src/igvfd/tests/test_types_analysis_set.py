@@ -421,10 +421,12 @@ def test_analysis_set_sample_summary(
     tissue,
     tissue_parkinsons,
     multiplexed_sample,
+    technical_sample,
     sample_term_lymphoblastoid,
     sample_term_K562,
     sample_term_brown_adipose_tissue,
     sample_term_gastrula,
+    sample_term_technical_sample,
     phenotypic_feature_basic,
     phenotypic_feature_01,
     rodent_donor,
@@ -694,6 +696,35 @@ def test_analysis_set_sample_summary(
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
         'sample_summary', '') == f'human K562 differentiated cell specimen induced to brown adipose tissue, gastrula, lymphoblastoid cell line at 2 minute, 5 minute, 10 minute(s) post change from donor(s) {hs_donor_accession}'
+
+    # Test group 5: technical samples (no donors)
+    testapp.patch_json(
+        sample_term_technical_sample['@id'],
+        {
+            'term_name': 'cell'
+        }
+    )
+    testapp.patch_json(
+        technical_sample['@id'],
+        {
+            'taxa': 'Saccharomyces cerevisiae'
+        }
+    )
+    testapp.patch_json(
+        measurement_set_perturb_seq['@id'],
+        {
+            'samples': [technical_sample['@id']]
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set_perturb_seq['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id']).json
+    assert res.get(
+        'sample_summary', '') == 'yeast cell technical sample'
 
 
 def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set, measurement_set_with_functional_assay_mechanisms, phenotype_term_from_go, phenotype_term_myocardial_infarction):
