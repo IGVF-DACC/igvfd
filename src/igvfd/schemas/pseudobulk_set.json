@@ -53,7 +53,63 @@
     "dependentSchemas": {
         "$merge": [
             "shared_dependencies.json#/accession_status"
-        ]
+        ],
+        "merged": {
+            "comment": "Bai or crai files must be derived from an alignment file. Tbi files must be derived from a tabular file or a reference file.",
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "merged": {
+                                "enum": [
+                                    true
+                                ]
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "input_file_sets": {
+                                "items": {
+                                    "title": "Input File Set",
+                                    "description": "A file set that serves as input for this file set.",
+                                    "type": "string",
+                                    "linkTo": [
+                                        "PseudobulkSet"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "merged": {
+                                "enum": [
+                                    false
+                                ]
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "input_file_sets": {
+                                "items": {
+                                    "title": "Input File Set",
+                                    "description": "A file set that serves as input for this file set.",
+                                    "type": "string",
+                                    "linkTo": [
+                                        "AnalysisSet",
+                                        "CuratedSet"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
     },
     "properties": {
         "schema_version": {
@@ -66,7 +122,8 @@
                 "type": "string",
                 "linkTo": [
                     "AnalysisSet",
-                    "CuratedSet"
+                    "CuratedSet",
+                    "PseudobulkSet"
                 ]
             },
             "description": "The file set(s) required for this pseudobulking analysis."
