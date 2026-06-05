@@ -102,7 +102,7 @@ def measurement_set():
                 'optional': True
             },
             'samples.construct_delivery_methods': {
-                'title': 'Construct Delivery Method',
+                'title': 'Construct Delivery Methods',
                 'category': 'Sample',
                 'description': 'Methods used to deliver construct libraries into the sample.',
                 'optional': True
