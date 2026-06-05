@@ -911,3 +911,5 @@ def tabular_file_23_24(value, system):
             ' This file\'s content_type was differential TF enrichment quantifications, '
             'but has been upgraded to differential open reading frame quantifications.'
         )
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
