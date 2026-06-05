@@ -887,3 +887,14 @@ def matrix_file_10_11(value, system):
         notes += f' This file\'s {", ".join(props_with_notes)} was removed via upgrade.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('tabular_file', '22', '23')
+def tabular_file_22_23(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3488
+    notes = value.get('notes', '')
+    if value.get('content_type') == 'exclusion list regions':
+        value['content_type'] = 'loci'
+        notes += ' This file\'s content_type was exclusion list regions, but has been defaulted to loci.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

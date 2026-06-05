@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 23
+
+* Adjust `content_type` enum list to remove `exclusion list regions`.
+
 ### Minor changes since schema version 22
 
 * Extend `content_type` enum list to include `motifs`.

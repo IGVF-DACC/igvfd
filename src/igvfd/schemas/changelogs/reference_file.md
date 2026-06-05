@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 26
+
+* Adjust `content_type` enum list to restrict usage of `inclusion list` to admin users.
+
 ### Schema change 26
 
 * Require `assembly` if `content_type` is `genome reference` or `genome index`.
