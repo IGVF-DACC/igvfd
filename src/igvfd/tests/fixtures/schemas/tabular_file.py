@@ -411,3 +411,13 @@ def tabular_file_v22(lab, award, principal_analysis_set):
         'schema_version': '22'
     }
     return item
+
+
+@pytest.fixture
+def tabular_file_v23(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '23',
+        'content_type': 'differential TF enrichment quantifications'
+    })
+    return item
