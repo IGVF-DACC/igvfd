@@ -282,6 +282,9 @@ def measurement_set():
             'targeted_genes.symbol': {
                 'title': 'Readout Genes'
             },
+            'targeted_proteins': {
+                'title': 'Targeted Proteins'
+            },
             'protocols': {
                 'title': 'Protocols'
             },
