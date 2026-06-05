@@ -246,7 +246,8 @@
                     "lentiviral transduction",
                     "transfection",
                     "transformation",
-                    "nucleofection"
+                    "nucleofection",
+                    "transposase"
                 ]
             },
             "submissionExample": {

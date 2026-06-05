@@ -101,6 +101,12 @@ def measurement_set():
                 'description': 'Treatments applied to the sample with the purpose of perturbation.',
                 'optional': True
             },
+            'samples.construct_delivery_methods': {
+                'title': 'Construct Delivery Method',
+                'category': 'Sample',
+                'description': 'Methods used to deliver construct libraries into the sample.',
+                'optional': True
+            },
             'library_preparation_kit': {
                 'title': 'Library Preparation Kit',
                 'category': 'Library',
@@ -275,9 +281,6 @@ def measurement_set():
             },
             'targeted_genes.symbol': {
                 'title': 'Readout Genes'
-            },
-            'targeted_proteins': {
-                'title': 'Targeted Proteins'
             },
             'protocols': {
                 'title': 'Protocols'

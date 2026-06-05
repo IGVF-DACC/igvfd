@@ -352,5 +352,35 @@
             "/labs/j-michael-cherry/"
         ],
         "virtual": false
+    },
+    {
+        "uuid": "c8e4f2a1-6b3d-4e7f-9a2c-1d5e8f0b3c7d",
+        "classifications": [
+            "cell line"
+        ],
+        "lab": "danwei-huangfu",
+        "accession": "IGVFSM0010TRNS",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf-dacc:in_vitro_system_transposase_mpra"
+        ],
+        "donors": [
+            "igvf:alias_human_donor1"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "sample_terms": [
+            "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"
+        ],
+        "sources": [
+            "/labs/danwei-huangfu/"
+        ],
+        "virtual": false,
+        "construct_library_sets": [
+            "igvf:basic_construct_library_set_0"
+        ],
+        "construct_delivery_methods": [
+            "transposase"
+        ]
     }
 ]
