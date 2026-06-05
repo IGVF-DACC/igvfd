@@ -1,10 +1,13 @@
 ## Changelog for *`tabular_file.json`*
 
-### Schema version 23
+### Schema version 24
 
 * Adjust `content_type` enum list to replace `differential TF enrichment quantifications` with `differential open reading frame quantifications`.
 * Extend `content_type` enum list to include `open reading frame quantifications`.
 * Extend `content_type` enum list to include `open reading frames`.
+
+### Schema version 23
+
 * Adjust `content_type` enum list to remove `exclusion list regions`.
 
 ### Minor changes since schema version 22

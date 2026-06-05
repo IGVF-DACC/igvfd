@@ -268,6 +268,13 @@ def analysis_step_12_13(value, system):
             new_content_list = ['loci' if content == 'exclusion list regions' else content for content in value[key]]
             value[key] = sorted(set(new_content_list))
             notes += f' exclusion list regions was removed from {key}, and has been defaulted to loci.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_step', '13', '14')
+def analysis_step_13_14(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3527
     notes = value.get('notes', '')
     old_input_content_types = value.get('input_content_types', [])
     new_input_content_types = []
