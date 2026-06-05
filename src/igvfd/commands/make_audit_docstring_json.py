@@ -1,6 +1,7 @@
 import json
 
 import igvfd.audit.analysis_set
+import igvfd.audit.analysis_step_version
 import igvfd.audit.auxiliary_set
 import igvfd.audit.biosample
 import igvfd.audit.construct_library_set
