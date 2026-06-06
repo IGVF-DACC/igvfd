@@ -175,6 +175,16 @@
                 "appscript": "early",
                 "igvf_utils": "early"
             }
+        },
+        "merged": {
+            "title": "Merged",
+            "description": "Indicates if the pseudobulk set has been merged from other pseudobulk sets.",
+            "type": "boolean",
+            "default": false,
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
         }
     },
     "fuzzy_searchable_fields": [
