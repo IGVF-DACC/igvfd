@@ -1,6 +1,7 @@
 import json
 
 import igvfd.audit.analysis_set
+import igvfd.audit.analysis_step_version
 import igvfd.audit.auxiliary_set
 import igvfd.audit.biosample
 import igvfd.audit.construct_library_set
@@ -31,6 +32,7 @@ NON_AUDIT_FUNCTION_NAMES = [
 
 AUDIT_MODULES_TO_PROCESS = [
     igvfd.audit.analysis_set,
+    igvfd.audit.analysis_step_version,
     igvfd.audit.auxiliary_set,
     igvfd.audit.biosample,
     igvfd.audit.construct_library_set,
