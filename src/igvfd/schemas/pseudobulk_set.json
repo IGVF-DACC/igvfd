@@ -55,7 +55,7 @@
             "shared_dependencies.json#/accession_status"
         ],
         "merged": {
-            "comment": "Bai or crai files must be derived from an alignment file. Tbi files must be derived from a tabular file or a reference file.",
+            "comment": "Merged pseudobulk sets should have other pseudobulk sets as inputs. Otherwise, the input file sets should be analysis or curated sets.",
             "allOf": [
                 {
                     "if": {
