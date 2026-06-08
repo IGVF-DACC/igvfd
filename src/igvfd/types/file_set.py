@@ -398,7 +398,7 @@ class FileSet(Item):
         'superseded_by': ('FileSet', 'supersedes')
     }
     embedded_with_frame = [
-        Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'title']),
+        Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'project', 'title']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path(
@@ -2428,7 +2428,7 @@ class ConstructLibrarySet(FileSet):
     item_type = 'construct_library_set'
     schema = load_schema('igvfd:schemas/construct_library_set.json')
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path(

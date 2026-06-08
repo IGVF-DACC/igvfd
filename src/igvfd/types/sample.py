@@ -175,7 +175,7 @@ class Sample(Item):
         'parts': ('Sample', 'part_of'),
     }
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('sources', include=['@id', 'title', 'status']),
         Path('submitted_by', include=['@id', 'title']),
@@ -908,7 +908,7 @@ class TechnicalSample(Sample):
     item_type = 'technical_sample'
     schema = load_schema('igvfd:schemas/technical_sample.json')
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('sources', include=['@id', 'title', 'status']),
         Path('submitted_by', include=['@id', 'title']),

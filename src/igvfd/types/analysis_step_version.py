@@ -29,7 +29,7 @@ class AnalysisStepVersion(Item):
         'workflows': ('Workflow', 'analysis_step_versions')
     }
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('software_versions', include=['@id', 'name', 'status']),
         Path('submitted_by', include=['@id', 'title']),
