@@ -365,7 +365,7 @@ def assay_term_22_23(value, system):
 
 
 @upgrade_step('assay_term', '23', '24')
-def assay_term_8_9(value, system):
+def assay_term_23_24(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3515
     preferred_assay_titles = value.get('preferred_assay_titles', [])
     if 'perturb-SHARE-seq' in preferred_assay_titles:
