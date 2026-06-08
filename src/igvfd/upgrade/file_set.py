@@ -895,7 +895,7 @@ def measurement_set_44_45(value, system):
 
 
 @upgrade_step('measurement_set', '45', '46')
-def measurement_set_42_43(value, system):
+def measurement_set_45_46(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3515
     if value.get('preferred_assay_titles') == ['perturb-SHARE-seq']:
         value['preferred_assay_titles'] = ['MORF-SHARE-seq']

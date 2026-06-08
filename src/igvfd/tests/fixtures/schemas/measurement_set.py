@@ -718,6 +718,6 @@ def measurement_set_v45(measurement_set):
     item = measurement_set.copy()
     item.update({
         'schema_version': '45',
-        'preferred_assay_titles': ['perturb-SHARE-seq']
+        'preferred_assay_titles': ['perturb-SHARE-seq'],
     })
     return item
