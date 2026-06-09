@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 31
 
+* Extend `construct_delivery_methods` enum list to include `transposase`.
 * Extend `biosample_qualifiers` enum list to include `partially exhausted`.
 * Update `dbxrefs` regex to allow DepMap ID accessions.
 * Extend `collections` enum list to include `PD single cell multiomics`.

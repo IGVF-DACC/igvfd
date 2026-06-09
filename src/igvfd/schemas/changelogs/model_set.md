@@ -1,5 +1,9 @@
 ## Changelog for *`model_set.json`*
 
+### Schema version 9
+
+* Adjust `preferred_assay_titles` enum list to replace `perturb-SHARE-seq` with `MORF-SHARE-seq`.
+
 ### Minor changes since schema version 8
 
 * Extend `preferred_assay_titles` enum list to include `MORF screen`.

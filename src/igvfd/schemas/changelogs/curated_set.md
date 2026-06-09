@@ -1,5 +1,8 @@
 ## Changelog for *`curated_set.json`*
 
+### Schema version 10
+* Adjust `preferred_assay_titles` enum list to replace `perturb-SHARE-seq` with `MORF-SHARE-seq`.
+
 ### Minor changes since schema version 9
 
 * Extend `preferred_assay_titles` enum list to include `MORF screen`.

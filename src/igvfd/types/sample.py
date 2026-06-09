@@ -89,6 +89,10 @@ CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN = {
     'transformation': {
         'verb': 'transformed with',
         'noun': 'transformation with'
+    },
+    'transposase': {
+        'verb': 'integrated using transposase with',
+        'noun': 'transposase-mediated integration with'
     }
 }
 

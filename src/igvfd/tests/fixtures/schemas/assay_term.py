@@ -421,3 +421,13 @@ def assay_term_v22_mixed_tiling(assay_term_CRISPR_sorted):
         ],
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v23(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '23',
+        'preferred_assay_titles': ['perturb-SHARE-seq']
+    })
+    return item

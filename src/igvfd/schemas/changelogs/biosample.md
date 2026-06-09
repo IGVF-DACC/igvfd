@@ -1,5 +1,6 @@
 ## Changelog for *`biosample.json`*
 
+* Extend `construct_delivery_methods` enum list to include `transposase`. (06/10/2026)
 * Update `dbxrefs` regex to allow DepMap ID accessions.
 * Remove `disease_terms`. (04/15/2026)
 * Rename `nucleic_acid_delivery` to `construct_delivery_methods`. (04/15/2026)

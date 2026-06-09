@@ -101,3 +101,13 @@ def curated_set_v8(curated_set_genome):
         'file_set_type': 'primer design'
     })
     return item
+
+
+@pytest.fixture
+def curated_set_v9(curated_set_genome):
+    item = curated_set_genome.copy()
+    item.update({
+        'schema_version': '9',
+        'preferred_assay_titles': ['perturb-SHARE-seq']
+    })
+    return item
