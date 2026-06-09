@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 28
 
+* Extend `construct_delivery_methods` enum list to include `transposase`.
 * Update `dbxrefs` regex to allow DepMap ID accessions.
 * Extend `collections` enum list to include `PD single cell multiomics`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.2`.

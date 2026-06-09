@@ -108,6 +108,12 @@ def analysis_set():
                 'description': 'Treatments applied to the sample with the purpose of perturbation.',
                 'optional': True
             },
+            'samples.construct_delivery_methods': {
+                'title': 'Construct Delivery Methods',
+                'category': 'Sample',
+                'description': 'Methods used to deliver construct libraries into the sample.',
+                'optional': True
+            },
             'construct_library_sets.file_set_type': {
                 'title': 'Construct Library',
                 'category': 'Library',

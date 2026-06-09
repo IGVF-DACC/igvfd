@@ -440,6 +440,7 @@ class FileSet(Item):
                 'phenotypic_features',
                 'growth_medium',
                 'modifications',
+                'construct_delivery_methods',
                 'sample_terms',
                 'status',
                 'summary',
