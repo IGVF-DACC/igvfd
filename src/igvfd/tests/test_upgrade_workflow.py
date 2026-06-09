@@ -43,3 +43,9 @@ def test_workflow_upgrade_6_7(upgrader, workflow_v6):
     assert value['schema_version'] == '7'
     assert value.get('preferred_assay_titles') == ['10x snATAC-seq with Scale pre-indexing']
     assert value.get('notes') == 'This workflow previously used 10x with Scale pre-indexing as a preferred_assay_titles, but it has been updated to 10x snATAC-seq with Scale pre-indexing via an upgrade.'
+
+
+def test_workflow_upgrade_7_8(upgrader, workflow_v7):
+    value = upgrader.upgrade('workflow', workflow_v7, current_version='7', target_version='8')
+    assert value['schema_version'] == '8'
+    assert set(value.get('preferred_assay_titles')) == {'MORF-SHARE-seq'}
