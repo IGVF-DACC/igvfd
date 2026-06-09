@@ -170,24 +170,26 @@ def audit_pseudobulk_set_mismatched_merged_cell_types(value, system):
     '''
     [
         {
-            "audit_description": "The inputs to merged pseudobulk sets are expected to share the same cell type.",
+            "audit_description": "The inputs to merged pseudobulk sets are expected to have the same cell type as the merged pseudobulk set.",
             "audit_category": "mismatched merged cell types",
             "audit_level": "WARNING"
         }
     ]
     '''
     audit_message = get_audit_message(audit_pseudobulk_set_mismatched_merged_cell_types, index=0)
+    current_cell_type = value.get('cell_type', '')
     cell_types = set()
     if value.get('merged', False) and value.get('input_file_sets', []):
         for input_file_set in value.get('input_file_sets', []):
             input_file_set_object = system.get('request').embed(
                 input_file_set, '@@object?skip_calculated=true')
             cell_types.add(input_file_set_object.get('cell_type', ''))
-    if len(cell_types) > 1:
+    if any([x != current_cell_type for x in sorted(list(cell_types))]):
         cell_type_links = ', '.join([audit_link(path_to_text(x), x) for x in sorted(list(cell_types))])
         detail = (
             f'Merged pseudobulk set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has input pseudobulk sets with different cell types: {cell_type_links}.'
+            f'has the cell type {current_cell_type}, but its input pseudobulk sets have '
+            f'mismatched cell types: {cell_type_links}.'
         )
         yield AuditFailure(
             audit_message.get('audit_category', ''),

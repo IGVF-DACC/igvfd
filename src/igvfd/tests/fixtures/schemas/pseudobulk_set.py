@@ -57,3 +57,12 @@ def pseudobulk_set_merged(
         'cell_type': sample_term_endothelial_cell['@id']
     }
     return testapp.post_json('/pseudobulk_set', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def pseudobulk_set_v1(pseudobulk_set_base):
+    item = pseudobulk_set_base.copy()
+    item.update({
+        'schema_version': '1'
+    })
+    return item
