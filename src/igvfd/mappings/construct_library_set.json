@@ -1,6 +1,6 @@
 {
-    "hash": "1efeb8db2a5a5656e188d022333edc45",
-    "index_name": "construct_library_set_1efeb8db",
+    "hash": "b4ce0c415a26ab32340e6d2d9e2d1de7",
+    "index_name": "construct_library_set_b4ce0c41",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -3342,6 +3342,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "targeted_sample_terms": {
+                                "type": "keyword"
                             },
                             "taxa": {
                                 "type": "keyword"

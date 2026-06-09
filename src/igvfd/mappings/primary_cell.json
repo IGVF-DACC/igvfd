@@ -1,6 +1,6 @@
 {
-    "hash": "6ce70f342b0e0540999130591dcb7451",
-    "index_name": "primary_cell_6ce70f34",
+    "hash": "b7a2cf54daf996251d4487e8e5141921",
+    "index_name": "primary_cell_b7a2cf54",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1964,6 +1964,9 @@
                             "supersedes": {
                                 "type": "keyword"
                             },
+                            "targeted_sample_terms": {
+                                "type": "keyword"
+                            },
                             "taxa": {
                                 "type": "keyword"
                             },
@@ -2232,6 +2235,9 @@
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {
+                                "type": "keyword"
+                            },
+                            "targeted_sample_terms": {
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -2937,6 +2943,9 @@
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {
+                                "type": "keyword"
+                            },
+                            "targeted_sample_terms": {
                                 "type": "keyword"
                             },
                             "taxa": {

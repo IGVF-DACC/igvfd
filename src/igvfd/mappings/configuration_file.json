@@ -1,6 +1,6 @@
 {
-    "hash": "cda03dfb157d1d9e7f8c8124d2268d82",
-    "index_name": "configuration_file_cda03dfb",
+    "hash": "1a6060a20c36ab0933385bfbb7eb2411",
+    "index_name": "configuration_file_1a6060a2",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1782,6 +1782,9 @@
                                         },
                                         "type": "object"
                                     },
+                                    "targeted_sample_terms": {
+                                        "type": "keyword"
+                                    },
                                     "taxa": {
                                         "type": "keyword"
                                     },
@@ -2626,6 +2629,9 @@
                                         "type": "keyword"
                                     },
                                     "targeted_sample_term": {
+                                        "type": "keyword"
+                                    },
+                                    "targeted_sample_terms": {
                                         "type": "keyword"
                                     },
                                     "taxa": {

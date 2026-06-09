@@ -1,6 +1,6 @@
 {
-    "hash": "dd43d75a7a7b201aac2546113bf2fef8",
-    "index_name": "sequence_file_dd43d75a",
+    "hash": "ca8aef154e949a60f02c11ba72e5bba8",
+    "index_name": "sequence_file_ca8aef15",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1787,6 +1787,9 @@
                                         },
                                         "type": "object"
                                     },
+                                    "targeted_sample_terms": {
+                                        "type": "keyword"
+                                    },
                                     "taxa": {
                                         "type": "keyword"
                                     },
@@ -2640,6 +2643,9 @@
                                         "type": "keyword"
                                     },
                                     "targeted_sample_term": {
+                                        "type": "keyword"
+                                    },
+                                    "targeted_sample_terms": {
                                         "type": "keyword"
                                     },
                                     "taxa": {

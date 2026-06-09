@@ -195,7 +195,7 @@ class Sample(Item):
              '@id', 'certificate_identifier', 'status', 'data_use_limitation', 'data_use_limitation_modifiers', 'data_use_limitation_summary', 'controlled_access']),
         Path('construct_library_sets.associated_phenotypes', include=[
              '@id', 'accession', 'file_set_type', 'term_name', 'associated_phenotypes', 'status']),
-        Path('donors', include=['@id', 'accession', 'status', 'strain', 'ethnicities']),
+        Path('donors', include=['@id', 'accession', 'status', 'strain', 'ethnicities'])
     ]
 
     audit_inherit = [
@@ -1083,12 +1083,14 @@ class MultiplexedSample(Sample):
     rev = Sample.rev | {'demultiplexed_to': ('InVitroSystem', 'demultiplexed_from')}
     embedded_with_frame = Sample.embedded_with_frame + [
         Path('multiplexed_samples', include=['@id', 'accession', '@type',
-             'summary', 'sample_terms', 'construct_library_sets', 'phenotypic_features', 'donors', 'status']),
+             'summary', 'sample_terms', 'construct_library_sets', 'phenotypic_features', 'donors', 'status', 'targeted_sample_term']),
         Path('multiplexed_samples.sample_terms', include=['@id', 'term_name', 'status']),
         Path('multiplexed_samples.phenotypic_features', include=[
              '@id', 'feature', 'observation_date', 'quality', 'quantity', 'quantity_units', 'status']),
         Path('multiplexed_samples.phenotypic_features.feature', include=['@id', 'term_id', 'term_name', 'status']),
         Path('multiplexed_samples.donors', include=['@id', 'accession', 'status']),
+        Path('multiplexed_samples.targeted_sample_term', include=['@id', 'term_name', 'status']),
+        Path('targeted_sample_terms', include=['@id', 'term_name', 'status'])
     ]
     audit_inherit = Biosample.audit_inherit + [
         'multiplexed_samples'
@@ -1419,3 +1421,21 @@ class MultiplexedSample(Sample):
             request, multiplexed_samples, 'classifications', skip_calculated=False)
         self_classification = [self.item_type.replace('_', ' ')]
         return sorted(sample_classfications + self_classification)
+
+    @calculated_property(
+        schema={
+            'title': 'Cellular Transformation Targets',
+            'description': 'The targeted sample terms of subsamples that are a part of this multiplexed sample.',
+            'notSubmittable': True,
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Cellular Transformation Target',
+                'type': 'string',
+                'linkTo': 'SampleTerm'
+            }
+        }
+    )
+    def targeted_sample_terms(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'targeted_sample_term')

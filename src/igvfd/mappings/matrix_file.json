@@ -1,6 +1,6 @@
 {
-    "hash": "2e3456f7bafb007ccb5852469c5bbcf5",
-    "index_name": "matrix_file_2e3456f7",
+    "hash": "85e3f69b0fabdcfae1c57622157c7fdd",
+    "index_name": "matrix_file_85e3f69b",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1785,6 +1785,9 @@
                                         },
                                         "type": "object"
                                     },
+                                    "targeted_sample_terms": {
+                                        "type": "keyword"
+                                    },
                                     "taxa": {
                                         "type": "keyword"
                                     },
@@ -2633,6 +2636,9 @@
                                         "type": "keyword"
                                     },
                                     "targeted_sample_term": {
+                                        "type": "keyword"
+                                    },
+                                    "targeted_sample_terms": {
                                         "type": "keyword"
                                     },
                                     "taxa": {

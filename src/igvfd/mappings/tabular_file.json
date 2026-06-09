@@ -1,6 +1,6 @@
 {
-    "hash": "355c4b464eb5eb8ead39f90d9bb50ccf",
-    "index_name": "tabular_file_355c4b46",
+    "hash": "76be0f65afdb230e54d4bbf612dbcb58",
+    "index_name": "tabular_file_76be0f65",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1805,6 +1805,9 @@
                                         },
                                         "type": "object"
                                     },
+                                    "targeted_sample_terms": {
+                                        "type": "keyword"
+                                    },
                                     "taxa": {
                                         "type": "keyword"
                                     },
@@ -2657,6 +2660,9 @@
                                         "type": "keyword"
                                     },
                                     "targeted_sample_term": {
+                                        "type": "keyword"
+                                    },
+                                    "targeted_sample_terms": {
                                         "type": "keyword"
                                     },
                                     "taxa": {

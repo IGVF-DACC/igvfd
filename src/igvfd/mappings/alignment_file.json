@@ -1,6 +1,6 @@
 {
-    "hash": "5cdfc4afa073128eb9919823329a013c",
-    "index_name": "alignment_file_5cdfc4af",
+    "hash": "3566bc058df96401300648bef74229be",
+    "index_name": "alignment_file_3566bc05",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1787,6 +1787,9 @@
                                         },
                                         "type": "object"
                                     },
+                                    "targeted_sample_terms": {
+                                        "type": "keyword"
+                                    },
                                     "taxa": {
                                         "type": "keyword"
                                     },
@@ -2635,6 +2638,9 @@
                                         "type": "keyword"
                                     },
                                     "targeted_sample_term": {
+                                        "type": "keyword"
+                                    },
+                                    "targeted_sample_terms": {
                                         "type": "keyword"
                                     },
                                     "taxa": {

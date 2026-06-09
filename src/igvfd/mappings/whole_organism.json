@@ -1,6 +1,6 @@
 {
-    "hash": "cefc8ec8e0fa7fef22bd798ed41b5592",
-    "index_name": "whole_organism_cefc8ec8",
+    "hash": "dd998b050b15854654080aac9228ff26",
+    "index_name": "whole_organism_dd998b05",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1961,6 +1961,9 @@
                             "supersedes": {
                                 "type": "keyword"
                             },
+                            "targeted_sample_terms": {
+                                "type": "keyword"
+                            },
                             "taxa": {
                                 "type": "keyword"
                             },
@@ -2229,6 +2232,9 @@
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {
+                                "type": "keyword"
+                            },
+                            "targeted_sample_terms": {
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -2930,6 +2936,9 @@
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {
+                                "type": "keyword"
+                            },
+                            "targeted_sample_terms": {
                                 "type": "keyword"
                             },
                             "taxa": {
