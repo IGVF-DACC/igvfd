@@ -905,5 +905,5 @@ def file_set_33_34(value, system):
         index = preferred_assay_titles.index('perturb-SHARE-seq')
         preferred_assay_titles[index] = 'MORF-SHARE-seq'
         value['preferred_assay_titles'] = preferred_assay_titles
-        notes += f'This model set previously used perturb-SHARE-seq as a preferred_assay_titles, but it has been updated to MORF-SHARE-seq via an upgrade.'
+        notes += f'This file set previously used perturb-SHARE-seq as a preferred_assay_titles, but it has been updated to MORF-SHARE-seq via an upgrade.'
         value['notes'] = notes.strip()
