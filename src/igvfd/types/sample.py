@@ -1424,14 +1424,14 @@ class MultiplexedSample(Sample):
 
     @calculated_property(
         schema={
-            'title': 'Targeted Sample Terms',
+            'title': 'Cellular Transformation Targets',
             'description': 'The targeted sample terms of subsamples that are a part of this multiplexed sample.',
             'notSubmittable': True,
             'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Targeted Sample Term',
+                'title': 'Cellular Transformation Target',
                 'type': 'string',
                 'linkTo': 'SampleTerm'
             }

@@ -574,7 +574,7 @@
             }
         },
         "targeted_sample_term": {
-            "title": "Targeted Sample Term",
+            "title": "Cellular Transformation Target",
             "description": "Ontology term identifying the targeted endpoint biosample resulting from differentation or reprogramming.",
             "type": "string",
             "linkTo": "SampleTerm",
