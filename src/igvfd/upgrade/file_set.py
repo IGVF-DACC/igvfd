@@ -899,8 +899,11 @@ def measurement_set_44_45(value, system):
 @upgrade_step('curated_set', '9', '10')
 def file_set_33_34(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3515
-    if value.get('preferred_assay_titles') == ['perturb-SHARE-seq']:
-        value['preferred_assay_titles'] = ['MORF-SHARE-seq']
-        notes = value.get('notes', '')
-        notes += ' This measurement set previously used perturb-SHARE-seq as preferred_assay_titles, but it has been updated to MORF-SHARE-seq via an upgrade.'
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    notes = value.get('notes', '')
+    if 'perturb-SHARE-seq' in preferred_assay_titles:
+        index = preferred_assay_titles.index('perturb-SHARE-seq')
+        preferred_assay_titles[index] = 'MORF-SHARE-seq'
+        value['preferred_assay_titles'] = preferred_assay_titles
+        notes += f'This model set previously used perturb-SHARE-seq as a preferred_assay_titles, but it has been updated to MORF-SHARE-seq via an upgrade.'
         value['notes'] = notes.strip()

@@ -93,6 +93,6 @@ def model_set_v8(model_set_no_input):
     item = model_set_no_input.copy()
     item.update({
         'schema_version': '8',
-        'preferred_assay_titles': ['perturb-SHARE-seq']
+        'preferred_assay_titles': ['perturb-SHARE-seq', 'scRNA-seq']
     })
     return item
