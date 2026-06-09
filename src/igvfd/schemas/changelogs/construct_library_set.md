@@ -1,5 +1,10 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Schema version 13
+
+* Add `large_scale_orf_list`.
+* Rename `orf_list` to `small_scale_gene_list`.
+
 ### Minor changes since schema version 12
 
 * Extend `collections` enum list to include `PD single cell multiomics`.

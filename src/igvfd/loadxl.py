@@ -540,7 +540,8 @@ PHASE1_PIPELINES = {
         remove_keys('measurement_sets', 'hashtag_barcode_map'),
     ],
     'construct_library_set': [
-        remove_keys('integrated_content_files', 'large_scale_gene_list', 'large_scale_loci_list'),
+        remove_keys('integrated_content_files', 'large_scale_gene_list',
+                    'large_scale_loci_list', 'large_scale_orf_list'),
     ],
     'prediction_set': [
         remove_keys('large_scale_gene_list', 'large_scale_loci_list', 'scope'),
@@ -607,7 +608,8 @@ PHASE2_PIPELINES = {
         skip_rows_missing_all_keys('hashtag_barcode_map'),
     ],
     'construct_library_set': [
-        skip_rows_missing_all_keys('integrated_content_files', 'large_scale_gene_list', 'large_scale_loci_list'),
+        skip_rows_missing_all_keys('integrated_content_files', 'large_scale_gene_list',
+                                   'large_scale_loci_list', 'large_scale_orf_list'),
     ],
     'prediction_set': [
         skip_rows_missing_all_keys('large_scale_gene_list', 'large_scale_loci_list', 'scope'),

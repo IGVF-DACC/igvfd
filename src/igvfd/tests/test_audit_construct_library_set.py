@@ -334,7 +334,7 @@ def test_audit_inconsistent_gene(
         construct_library_set_y2h['@id'],
         {
             'scope': 'interactors',
-            'orf_list': [orf_foxp['@id'], orf_zscan10['@id']]
+            'small_scale_orf_list': [orf_foxp['@id'], orf_zscan10['@id']]
         }
     )
     res = testapp.get(construct_library_set_y2h['@id'] + '@@audit')

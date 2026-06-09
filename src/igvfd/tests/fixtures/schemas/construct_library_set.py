@@ -76,7 +76,7 @@ def construct_library_set_orf(testapp, lab, award, gene_myc_hs, orf_foxp):
         'selection_criteria': [
             'protein interactors'
         ],
-        'orf_list': [orf_foxp['@id']]
+        'small_scale_orf_list': [orf_foxp['@id']]
     }
     return testapp.post_json('/construct_library_set', item).json['@graph'][0]
 
@@ -281,5 +281,15 @@ def construct_library_set_v11(construct_library_set_reference_transduction):
     item.update({
         'schema_version': '11',
         'control_type': 'control transduction'
+    })
+    return item
+
+
+@pytest.fixture
+def construct_library_set_v12(construct_library_set_y2h, orf_foxp):
+    item = construct_library_set_y2h.copy()
+    item.update({
+        'schema_version': '12',
+        'orf_list': [orf_foxp['@id']]
     })
     return item

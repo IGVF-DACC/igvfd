@@ -164,9 +164,9 @@ def audit_construct_library_set_orf_gene(value, system):
     audit_message = get_audit_message(audit_construct_library_set_orf_gene)
     library_genes = set()
     orf_genes = set()
-    if ('small_scale_gene_list' in value) and ('orf_list' in value):
+    if ('small_scale_gene_list' in value) and ('small_scale_orf_list' in value):
         library_genes = set(value['small_scale_gene_list'])
-        orf_ids = value.get('orf_list', [])
+        orf_ids = value.get('small_scale_orf_list', [])
         for o in orf_ids:
             orf_object = system.get('request').embed(o + '@@object?skip_calculated=true')
             if 'genes' in orf_object:
@@ -176,7 +176,7 @@ def audit_construct_library_set_orf_gene(value, system):
         if orf_genes != library_genes:
             detail = (
                 f'Construct library set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has a `small_scale_gene_list` which does not match the genes of its associated `orf_list`.'
+                f'has a `small_scale_gene_list` which does not match the genes of its associated `small_scale_orf_list`.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 

@@ -128,6 +128,29 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
             'large_scale_gene_list': tabular_file['@id']
         })
     assert res.status_code == 201
+    # when scope is gene and file_set_type is overexpression vector library, large_scale_orf_list or small_scale_orf_list is allowed
+    res = testapp.post_json(
+        '/construct_library_set',
+        {
+            'lab': lab['@id'],
+            'award': award['@id'],
+            'file_set_type': 'overexpression vector library',
+            'scope': 'genes',
+            'selection_criteria': ['TF genes'],
+            'small_scale_orf_list': [orf_foxp['@id']],
+        })
+    assert res.status_code == 201
+    res = testapp.post_json(
+        '/construct_library_set',
+        {
+            'lab': lab['@id'],
+            'award': award['@id'],
+            'file_set_type': 'overexpression vector library',
+            'scope': 'genes',
+            'selection_criteria': ['TF genes'],
+            'large_scale_orf_list': tabular_file['@id']
+        })
+    assert res.status_code == 201
     res = testapp.post_json(
         '/construct_library_set',
         {
@@ -140,7 +163,7 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
             'control_file_sets': [base_expression_construct_library_set['@id']]
         })
     assert res.status_code == 201
-    # either small_scale_gene_list or large_scale_gene_list is accepted when scope = 'interactors'
+    # either small_scale_gene_list/large_scale_gene_list and small_scale_orf_list/large_scale_orf_list is accepted when scope = 'interactors'
     res = testapp.post_json(
         '/construct_library_set',
         {
@@ -149,7 +172,7 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
             'file_set_type': 'expression vector library',
             'scope': 'interactors',
             'selection_criteria': ['protein interactors'],
-            'orf_list': [orf_foxp['@id']],
+            'small_scale_orf_list': [orf_foxp['@id']],
             'large_scale_gene_list': tabular_file['@id']
         })
     assert res.status_code == 201
@@ -161,7 +184,31 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
             'file_set_type': 'expression vector library',
             'scope': 'interactors',
             'selection_criteria': ['protein interactors'],
-            'orf_list': [orf_foxp['@id']],
+            'small_scale_orf_list': [orf_foxp['@id']],
+            'small_scale_gene_list': [gene_myc_hs['@id']]
+        })
+    assert res.status_code == 201
+    res = testapp.post_json(
+        '/construct_library_set',
+        {
+            'lab': lab['@id'],
+            'award': award['@id'],
+            'file_set_type': 'expression vector library',
+            'scope': 'interactors',
+            'selection_criteria': ['protein interactors'],
+            'large_scale_orf_list': tabular_file['@id'],
+            'large_scale_gene_list': tabular_file['@id']
+        })
+    assert res.status_code == 201
+    res = testapp.post_json(
+        '/construct_library_set',
+        {
+            'lab': lab['@id'],
+            'award': award['@id'],
+            'file_set_type': 'expression vector library',
+            'scope': 'interactors',
+            'selection_criteria': ['protein interactors'],
+            'large_scale_orf_list': tabular_file['@id'],
             'small_scale_gene_list': [gene_myc_hs['@id']]
         })
     assert res.status_code == 201
