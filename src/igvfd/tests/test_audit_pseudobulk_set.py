@@ -70,7 +70,7 @@ def test_audit_pseudobulk_set_sample_matches_input(
         pseudobulk_set_base['@id'],
         {'samples': [primary_cell['@id']]}
     )
-    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    res = testapp.get(pseudobulk_set_merged['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent samples'
         for error in res.json['audit'].get('ERROR', [])
