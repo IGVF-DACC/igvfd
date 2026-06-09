@@ -899,6 +899,8 @@ def pseudobulk_set_1_2(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3542
     if 'merged' not in value:
         value['merged'] = False
+
+
 @upgrade_step('measurement_set', '45', '46')
 @upgrade_step('model_set', '8', '9')
 @upgrade_step('curated_set', '9', '10')
