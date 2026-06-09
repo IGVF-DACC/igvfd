@@ -1132,6 +1132,7 @@ class AnalysisSet(FileSet):
         sample_classification_term_target = dict()
         differentiation_times = set()
         disease_states_by_classification = {}
+        biosample_qualifiers = set()
 
         # Is it PD collection
         if collections:
@@ -1156,6 +1157,10 @@ class AnalysisSet(FileSet):
         for sample in samples:
             sample_object = request.embed(sample, '@@object')
 
+            # Get bioqualifers enums for non-multiplexed samples
+            biosample_qualifiers.update(sample_object.get('biosample_qualifiers', []))
+
+            # Get taxa
             taxa.add(sample_object.get('taxa', ''))
 
             # Group sample and targeted sample terms according to classification.
@@ -1269,7 +1274,7 @@ class AnalysisSet(FileSet):
             # Differentiated, reprogrammed, pooled cell specimen can be merged
             # into the terms_by_classification before this. Therefore we don't
             # want to append it to the terms_by_classification a second time.
-            elif not any(x in terms_by_classification for x in [
+            elif classification not in terms_by_classification and not any(x in terms_by_classification for x in [
                     'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen', 'primary cell']
             ):
                 # Insert the classification before disease name(s) and targeted_sample_term if exist.
@@ -1290,7 +1295,7 @@ class AnalysisSet(FileSet):
                         )
                     else:
                         terms_by_classification = f'{terms_by_classification} {classification}'
-            elif any(x in terms_by_classification for x in [
+            elif classification in terms_by_classification or any(x in terms_by_classification for x in [
                     'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen', 'primary cell']
             ):
                 # Don't add anything when the classification was already in
@@ -1311,6 +1316,11 @@ class AnalysisSet(FileSet):
             differentiation_times_sorted = sorted(differentiation_times, key=lambda s: float(s.split()[0]))
             differentiation_time_phrase = f'at {", ".join(differentiation_times_sorted)}(s) post change'
 
+        # Biosample qualifiers
+        biosample_qualifiers_phrase = ''
+        if biosample_qualifiers:
+            biosample_qualifiers_phrase = ', '.join(sorted(biosample_qualifiers))
+
         # Donor phrase
         donor_phrase = ''
         donor_phrase = get_donors_info_for_sample_summary(request, donors)
@@ -1323,7 +1333,7 @@ class AnalysisSet(FileSet):
         overexpression_phrase = get_oexpr_from_cls_for_samp_summary(request, construct_library_sets)
 
         # Constructing the final summary, putting ovexpr last
-        summary = ' '.join(filter(None, [taxa_phrase, ', '.join(all_sample_terms),
+        summary = ' '.join(filter(None, [taxa_phrase, biosample_qualifiers_phrase, ', '.join(all_sample_terms),
                            differentiation_time_phrase, donor_phrase])).strip()
 
         # Overexpression
