@@ -30,5 +30,28 @@
         "pct_identical_protein": 14,
         "pct_coverage_protein": 60,
         "pct_coverage_orf": 66
+    },
+    {
+        "uuid": "ff3792b4-636c-47c2-a4d9-99ba1e4b8cf2",
+        "orf_id": "TFORF3108",
+        "transcript_id": [
+            "ENST00000622694",
+            "ENST00000399774",
+            "ENST00000551952"
+        ],
+        "dbxrefs": [
+            "hORFeome:8975"
+        ],
+        "genes": [
+            "/genes/ENSG00000154832/"
+        ],
+        "insert_sequence": "ACCGCCACCATGGACTGTGAGGTCAACAAC",
+        "barcode_sequence": "ACCGCCACCATGGACTGTGAGGTCAACAAC",
+        "orf_sequence": "ACCGCCACCATGGACTGTGAGGTCAACAAC",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "pct_identical_protein": 14,
+        "pct_coverage_protein": 60,
+        "pct_coverage_orf": 66
     }
 ]

@@ -1,6 +1,6 @@
 {
-    "hash": "82200ef729e8665faa29993bd34dee90",
-    "index_name": "technical_sample_82200ef7",
+    "hash": "ded9da725cbe97885984ed4db2816973",
+    "index_name": "technical_sample_ded9da72",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -420,6 +420,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "large_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "lot_id": {
                                 "type": "keyword"
                             },
@@ -433,9 +436,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "orf_list": {
-                                "type": "keyword"
                             },
                             "preferred_assay_slims": {
                                 "type": "keyword"
@@ -494,6 +494,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "small_scale_orf_list": {
+                                "type": "keyword"
                             },
                             "sources": {
                                 "type": "keyword"
@@ -883,6 +886,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "large_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "library_preparation_kit": {
                                 "type": "keyword"
                             },
@@ -924,9 +930,6 @@
                                 "type": "keyword"
                             },
                             "onlist_method": {
-                                "type": "keyword"
-                            },
-                            "orf_list": {
                                 "type": "keyword"
                             },
                             "pipeline_parameters": {
@@ -1012,6 +1015,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "small_scale_orf_list": {
+                                "type": "keyword"
                             },
                             "software_versions": {
                                 "type": "keyword"

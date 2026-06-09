@@ -1,6 +1,6 @@
 {
-    "hash": "e5498d56951dbab83b58e2ba33228b4a",
-    "index_name": "prediction_set_e5498d56",
+    "hash": "1b935ec42707f14a71ebb0d416349ba2",
+    "index_name": "prediction_set_1b935ec4",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -953,6 +953,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "large_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "library_preparation_kit": {
                                 "type": "keyword"
                             },
@@ -994,9 +997,6 @@
                                 "type": "keyword"
                             },
                             "onlist_method": {
-                                "type": "keyword"
-                            },
-                            "orf_list": {
                                 "type": "keyword"
                             },
                             "pipeline_parameters": {
@@ -1187,6 +1187,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "small_scale_orf_list": {
+                                "type": "keyword"
                             },
                             "software_versions": {
                                 "type": "keyword"
@@ -1446,6 +1449,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "large_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "library_preparation_kit": {
                                 "type": "keyword"
                             },
@@ -1487,9 +1493,6 @@
                                 "type": "keyword"
                             },
                             "onlist_method": {
-                                "type": "keyword"
-                            },
-                            "orf_list": {
                                 "type": "keyword"
                             },
                             "pipeline_parameters": {
@@ -1575,6 +1578,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "small_scale_orf_list": {
+                                "type": "keyword"
                             },
                             "software_versions": {
                                 "type": "keyword"
@@ -3244,6 +3250,9 @@
                                     "large_scale_loci_list": {
                                         "type": "keyword"
                                     },
+                                    "large_scale_orf_list": {
+                                        "type": "keyword"
+                                    },
                                     "lot_id": {
                                         "type": "keyword"
                                     },
@@ -3257,9 +3266,6 @@
                                     },
                                     "notes": {
                                         "type": "text"
-                                    },
-                                    "orf_list": {
-                                        "type": "keyword"
                                     },
                                     "preferred_assay_slims": {
                                         "type": "keyword"
@@ -3318,6 +3324,9 @@
                                             }
                                         },
                                         "type": "object"
+                                    },
+                                    "small_scale_orf_list": {
+                                        "type": "keyword"
                                     },
                                     "sources": {
                                         "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "06be2fdc190bb5f8b665cbea9b24a972",
-    "index_name": "model_set_06be2fdc",
+    "hash": "d78fbd595791f72e9b62b6629ad067d5",
+    "index_name": "model_set_d78fbd59",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -969,6 +969,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "large_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "library_preparation_kit": {
                                 "type": "keyword"
                             },
@@ -1010,9 +1013,6 @@
                                 "type": "keyword"
                             },
                             "onlist_method": {
-                                "type": "keyword"
-                            },
-                            "orf_list": {
                                 "type": "keyword"
                             },
                             "pipeline_parameters": {
@@ -1203,6 +1203,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "small_scale_orf_list": {
+                                "type": "keyword"
                             },
                             "software_versions": {
                                 "type": "keyword"
@@ -1462,6 +1465,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "large_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "library_preparation_kit": {
                                 "type": "keyword"
                             },
@@ -1503,9 +1509,6 @@
                                 "type": "keyword"
                             },
                             "onlist_method": {
-                                "type": "keyword"
-                            },
-                            "orf_list": {
                                 "type": "keyword"
                             },
                             "pipeline_parameters": {
@@ -1591,6 +1594,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "small_scale_orf_list": {
+                                "type": "keyword"
                             },
                             "software_versions": {
                                 "type": "keyword"
@@ -2592,6 +2598,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "large_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "library_preparation_kit": {
                                 "type": "keyword"
                             },
@@ -2633,9 +2642,6 @@
                                 "type": "keyword"
                             },
                             "onlist_method": {
-                                "type": "keyword"
-                            },
-                            "orf_list": {
                                 "type": "keyword"
                             },
                             "pipeline_parameters": {
@@ -2721,6 +2727,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "small_scale_orf_list": {
+                                "type": "keyword"
                             },
                             "software_versions": {
                                 "type": "keyword"

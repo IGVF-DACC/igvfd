@@ -1,6 +1,6 @@
 {
-    "hash": "eca84885165c4c758c62e626ddd59f2e",
-    "index_name": "matrix_file_eca84885",
+    "hash": "66b4d7c31f02e020a5012685cda0b54e",
+    "index_name": "matrix_file_66b4d7c3",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1049,6 +1049,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "large_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "library_preparation_kit": {
                                 "type": "keyword"
                             },
@@ -1090,9 +1093,6 @@
                                 "type": "keyword"
                             },
                             "onlist_method": {
-                                "type": "keyword"
-                            },
-                            "orf_list": {
                                 "type": "keyword"
                             },
                             "pipeline_parameters": {
@@ -1990,6 +1990,9 @@
                                 },
                                 "type": "object"
                             },
+                            "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "software_versions": {
                                 "type": "keyword"
                             },
@@ -2277,6 +2280,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "large_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "lot_id": {
                                 "type": "keyword"
                             },
@@ -2290,9 +2296,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "orf_list": {
-                                "type": "keyword"
                             },
                             "preferred_assay_slims": {
                                 "type": "keyword"
@@ -2831,6 +2834,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "small_scale_orf_list": {
+                                "type": "keyword"
                             },
                             "sources": {
                                 "type": "keyword"

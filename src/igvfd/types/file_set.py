@@ -2435,8 +2435,9 @@ class ConstructLibrarySet(FileSet):
         Path('samples.treatments', include=['@id', 'treatment_term_name', 'summary', 'status']),
         Path('large_scale_gene_list', include=['@id', 'accession', 'aliases', 'status']),
         Path('large_scale_loci_list', include=['@id', 'accession', 'aliases', 'status']),
-        Path('orf_list', include=['@id', 'orf_id', 'genes', 'aliases', 'status']),
-        Path('orf_list.genes', include=['@id', 'symbol', 'status']),
+        Path('large_scale_orf_list', include=['@id', 'accession', 'aliases', 'status']),
+        Path('small_scale_orf_list', include=['@id', 'orf_id', 'genes', 'aliases', 'status']),
+        Path('small_scale_orf_list.genes', include=['@id', 'symbol', 'status']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
     ]
     audit_inherit = [
@@ -2622,7 +2623,7 @@ class ConstructLibrarySet(FileSet):
         }
     )
     def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, large_scale_gene_list=None, guide_type=None,
-                small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, orf_list=None, associated_phenotypes=None,
+                small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, small_scale_orf_list=None, large_scale_orf_list=None, associated_phenotypes=None,
                 control_types=None, targeton=None, preferred_assay_titles=None, integrated_content_files=None):
         if preferred_assay_titles is None:
             preferred_assay_titles = []
@@ -2677,14 +2678,19 @@ class ConstructLibrarySet(FileSet):
                 gene_name = (gene_object.get('symbol'))
                 target_phrase = f' exon {exon} of {gene_name}'
         if scope == 'interactors':
-            if orf_list and len(orf_list) > 1:
-                target_phrase = f' {len(orf_list)} open reading frames'
-            elif small_scale_gene_list and len(small_scale_gene_list) == 1:
-                gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
-                orf_object = request.embed(orf_list[0], '@@object?skip_calculated=true')
-                gene_name = (gene_object.get('symbol'))
-                orf_id = (orf_object.get('orf_id'))
-                target_phrase = f' open reading frame {orf_id} of {gene_name}'
+            if small_scale_orf_list and len(small_scale_orf_list) > 1:
+                target_phrase = f' {len(small_scale_orf_list)} open reading frames'
+            elif small_scale_orf_list and len(small_scale_orf_list) == 1:
+                orf_object = request.embed(small_scale_orf_list[0], '@@object?skip_calculated=true')
+                orf_id = orf_object.get('orf_id')
+                if small_scale_gene_list and len(small_scale_gene_list) == 1:
+                    gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
+                    gene_name = gene_object.get('symbol')
+                    target_phrase = f' open reading frame {orf_id} of {gene_name}'
+                else:
+                    target_phrase = f' open reading frame {orf_id}'
+            elif large_scale_orf_list:
+                target_phrase = f' many open reading frames'
         if scope == 'tile':
             tile_id = tile['tile_id']
             start = tile['tile_start']

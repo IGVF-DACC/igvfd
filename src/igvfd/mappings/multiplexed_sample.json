@@ -1,6 +1,6 @@
 {
-    "hash": "b2a2939c8efc4aad2bba3fbe9ce554d2",
-    "index_name": "multiplexed_sample_b2a2939c",
+    "hash": "9065390d6e3a3c250649d7f584dcfb89",
+    "index_name": "multiplexed_sample_9065390d",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -605,6 +605,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "large_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "lot_id": {
                                 "type": "keyword"
                             },
@@ -618,9 +621,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "orf_list": {
-                                "type": "keyword"
                             },
                             "preferred_assay_slims": {
                                 "type": "keyword"
@@ -679,6 +679,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "small_scale_orf_list": {
+                                "type": "keyword"
                             },
                             "sources": {
                                 "type": "keyword"
@@ -1212,6 +1215,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "large_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "library_preparation_kit": {
                                 "type": "keyword"
                             },
@@ -1253,9 +1259,6 @@
                                 "type": "keyword"
                             },
                             "onlist_method": {
-                                "type": "keyword"
-                            },
-                            "orf_list": {
                                 "type": "keyword"
                             },
                             "pipeline_parameters": {
@@ -1341,6 +1344,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "small_scale_orf_list": {
+                                "type": "keyword"
                             },
                             "software_versions": {
                                 "type": "keyword"

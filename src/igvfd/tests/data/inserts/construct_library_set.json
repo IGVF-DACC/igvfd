@@ -125,7 +125,7 @@
         "small_scale_gene_list": [
             "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
         ],
-        "orf_list": [
+        "small_scale_orf_list": [
             "/open-reading-frames/CCSBORF1234/",
             "/open-reading-frames/CCSBORF4567/"
         ],

@@ -1,6 +1,6 @@
 {
-    "hash": "462eecade13a5991b114eecb44e740fd",
-    "index_name": "open_reading_frame_462eecad",
+    "hash": "e93e953de512debe0e7fe90231c09b5b",
+    "index_name": "open_reading_frame_e93e953d",
     "item_type": "open_reading_frame",
     "mapping": {
         "dynamic_templates": [
@@ -223,6 +223,9 @@
                         },
                         "type": "object"
                     },
+                    "barcode_sequence": {
+                        "type": "keyword"
+                    },
                     "creation_timestamp": {
                         "type": "date"
                     },
@@ -341,6 +344,9 @@
                         },
                         "type": "object"
                     },
+                    "insert_sequence": {
+                        "type": "keyword"
+                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -406,6 +412,9 @@
                     },
                     "orf_id": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "orf_sequence": {
                         "type": "keyword"
                     },
                     "pct_coverage_orf": {
@@ -508,6 +517,9 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "type": "keyword"
+                    },
+                    "transcript_id": {
                         "type": "keyword"
                     },
                     "uuid": {
