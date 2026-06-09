@@ -1,6 +1,6 @@
 {
-    "hash": "1882d72f6ace2435796562eebc5a2bc6",
-    "index_name": "multiplexed_sample_1882d72f",
+    "hash": "b2a2939c8efc4aad2bba3fbe9ce554d2",
+    "index_name": "multiplexed_sample_b2a2939c",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1228,6 +1228,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"

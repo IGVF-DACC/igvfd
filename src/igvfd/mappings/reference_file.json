@@ -1,6 +1,6 @@
 {
-    "hash": "7469cef27037700ba4709d1563ceb3c1",
-    "index_name": "reference_file_7469cef2",
+    "hash": "c789fb455280e2a870192131ba535766",
+    "index_name": "reference_file_c789fb45",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -1086,6 +1086,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"

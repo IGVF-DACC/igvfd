@@ -1,6 +1,6 @@
 {
-    "hash": "aa01736f96590dc5e9729688b9906260",
-    "index_name": "measurement_set_aa01736f",
+    "hash": "0b689531a56d121b365598e3d253f9b0",
+    "index_name": "measurement_set_0b689531",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1028,6 +1028,10 @@
                             "measurement_sets": {
                                 "type": "keyword"
                             },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "model_name": {
                                 "type": "keyword"
                             },
@@ -1517,6 +1521,10 @@
                             "measurement_sets": {
                                 "type": "keyword"
                             },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "model_name": {
                                 "type": "keyword"
                             },
@@ -1900,6 +1908,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"
@@ -3111,6 +3123,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "42b443ad733f6e9de1f8c0cd1eb60052",
-    "index_name": "technical_sample_42b443ad",
+    "hash": "82200ef729e8665faa29993bd34dee90",
+    "index_name": "technical_sample_82200ef7",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -899,6 +899,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"

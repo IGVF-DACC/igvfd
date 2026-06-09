@@ -1,6 +1,6 @@
 {
-    "hash": "3566bc058df96401300648bef74229be",
-    "index_name": "alignment_file_3566bc05",
+    "hash": "b24c3cac644c34a717d03cbdf6ceafcf",
+    "index_name": "alignment_file_b24c3cac",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1067,6 +1067,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"

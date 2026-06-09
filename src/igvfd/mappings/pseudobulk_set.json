@@ -1,6 +1,6 @@
 {
-    "hash": "0e11198d12bdb8dc5b789e18b6a09afe",
-    "index_name": "pseudobulk_set_0e11198d",
+    "hash": "f4039ddb46b6ce0437cfa8b5f9d59db1",
+    "index_name": "pseudobulk_set_f4039ddb",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -890,6 +890,10 @@
                             "measurement_sets": {
                                 "type": "keyword"
                             },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "model_name": {
                                 "type": "keyword"
                             },
@@ -1376,6 +1380,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"
@@ -2341,6 +2349,15 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "cell_annotation": {
+                                "type": "keyword"
+                            },
+                            "cell_qualifier": {
+                                "type": "keyword"
+                            },
+                            "cell_type": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -2405,6 +2422,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "notes": {
                                 "type": "text"
@@ -2556,6 +2577,10 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "merged": {
+                        "store": true,
+                        "type": "boolean"
                     },
                     "notes": {
                         "type": "text"

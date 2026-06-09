@@ -1,6 +1,6 @@
 {
-    "hash": "50bbb5d89ffc6080831db976ca1d0822",
-    "index_name": "auxiliary_set_50bbb5d8",
+    "hash": "40a2afbf1f488140f577eee992e570ff",
+    "index_name": "auxiliary_set_40a2afbf",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -791,6 +791,10 @@
                             "measurement_sets": {
                                 "type": "keyword"
                             },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "model_name": {
                                 "type": "keyword"
                             },
@@ -1279,6 +1283,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"
@@ -2403,6 +2411,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"

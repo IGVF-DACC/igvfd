@@ -1,6 +1,6 @@
 {
-    "hash": "ff03a2ce9252e8c5caadff97fa238566",
-    "index_name": "signal_file_ff03a2ce",
+    "hash": "1506379f81703b3bb0d4450fa4b0d3ac",
+    "index_name": "signal_file_1506379f",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -1069,6 +1069,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"

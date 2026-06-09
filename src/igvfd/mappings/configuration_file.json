@@ -1,6 +1,6 @@
 {
-    "hash": "1a6060a20c36ab0933385bfbb7eb2411",
-    "index_name": "configuration_file_1a6060a2",
+    "hash": "bce50f432e55ce41803598a9d157ec89",
+    "index_name": "configuration_file_bce50f43",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1062,6 +1062,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"

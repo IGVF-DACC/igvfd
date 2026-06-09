@@ -1,6 +1,6 @@
 {
-    "hash": "76be0f65afdb230e54d4bbf612dbcb58",
-    "index_name": "tabular_file_76be0f65",
+    "hash": "446067d4e4f332730630d40ecd9015d5",
+    "index_name": "tabular_file_446067d4",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1085,6 +1085,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"
