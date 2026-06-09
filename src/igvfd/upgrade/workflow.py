@@ -56,7 +56,7 @@ def workflow_6_7(value, system):
 
 
 @upgrade_step('workflow', '7', '8')
-def assay_term_8_9(value, system):
+def workflow_7_8(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3515
     preferred_assay_titles = value.get('preferred_assay_titles', [])
     notes = value.get('notes', '')
@@ -64,5 +64,5 @@ def assay_term_8_9(value, system):
         index = preferred_assay_titles.index('perturb-SHARE-seq')
         preferred_assay_titles[index] = 'MORF-SHARE-seq'
         value['preferred_assay_titles'] = preferred_assay_titles
-        notes += ' This assay_term previously used perturb-SHARE-seq as preferred_assay_titles, but it has been updated to MORF-SHARE-seqvia an upgrade.'
+        notes += ' This assay_term previously used perturb-SHARE-seq as preferred_assay_titles, but it has been updated to MORF-SHARE-seq via an upgrade.'
         value['notes'] = notes.strip()

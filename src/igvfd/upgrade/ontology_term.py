@@ -373,5 +373,5 @@ def assay_term_23_24(value, system):
         preferred_assay_titles[index] = 'MORF-SHARE-seq'
         value['preferred_assay_titles'] = preferred_assay_titles
         notes = value.get('notes', '')
-        notes += ' This assay_term previously used perturb-SHARE-seq as preferred_assay_titles, but it has been updated to MORF-SHARE-seqvia an upgrade.'
+        notes += ' This assay_term previously used perturb-SHARE-seq as preferred_assay_titles, but it has been updated to MORF-SHARE-seq via an upgrade.'
         value['notes'] = notes.strip()

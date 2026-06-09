@@ -143,6 +143,7 @@ def get_preferred_assay_slims(preferred_assay_titles):
         '10x snATAC-seq with Scale pre-indexing': ['chromatin accessibility', 'single cell'],
         'snRNA-seq with Scale pre-indexing': ['gene expression', 'single cell'],
         'SHARE-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
+        'MORF-SHARE-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
         'Histone ChIP-seq': ['DNA binding'],
         'TF ChIP-seq': ['DNA binding'],
         'CUT&RUN': ['DNA binding'],
