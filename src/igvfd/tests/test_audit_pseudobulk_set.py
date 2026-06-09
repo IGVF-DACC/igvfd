@@ -33,6 +33,7 @@ def test_audit_pseudobulk_set_marker_gene_files(
 def test_audit_pseudobulk_set_sample_matches_input(
     testapp,
     pseudobulk_set_base,
+    pseudobulk_set_merged,
     analysis_set_base,
     measurement_set,
     primary_cell
@@ -52,6 +53,21 @@ def test_audit_pseudobulk_set_sample_matches_input(
     )
     testapp.patch_json(
         measurement_set['@id'],
+        {'samples': [primary_cell['@id']]}
+    )
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent samples'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Merged Pseudobulk Set
+    res = testapp.get(pseudobulk_set_merged['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent samples'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
         {'samples': [primary_cell['@id']]}
     )
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
