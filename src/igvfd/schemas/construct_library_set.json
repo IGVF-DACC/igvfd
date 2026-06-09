@@ -1228,10 +1228,11 @@
         },
         "small_scale_orf_list": {
             "title": "Small List of Open Reading Frames (ORF)",
-            "description": "The specific, small scale list of (<=100) Open Reading Frame this construct library was designed to target.",
+            "description": "The specific, small scale list of (<=500) Open Reading Frame this construct library was designed to target.",
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,
+            "maxItems": 500,
             "items": {
                 "title": "List of Open Reading Frames (ORF).",
                 "description": "List of Open Reading Frame this construct library was designed to target.",
