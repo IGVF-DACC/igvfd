@@ -64,5 +64,5 @@ def workflow_7_8(value, system):
         index = preferred_assay_titles.index('perturb-SHARE-seq')
         preferred_assay_titles[index] = 'MORF-SHARE-seq'
         value['preferred_assay_titles'] = preferred_assay_titles
-        notes += ' This assay_term previously used perturb-SHARE-seq as preferred_assay_titles, but it has been updated to MORF-SHARE-seq via an upgrade.'
+        notes += ' This workflow previously used perturb-SHARE-seq as preferred_assay_titles, but it has been updated to MORF-SHARE-seq via an upgrade.'
         value['notes'] = notes.strip()

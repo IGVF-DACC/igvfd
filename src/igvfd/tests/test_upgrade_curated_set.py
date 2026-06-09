@@ -57,7 +57,7 @@ def test_curated_set_upgrade_8_9(upgrader, curated_set_v8):
     assert value['file_set_type'] == 'enrichment designs'
 
 
-def test_model_set_upgrade_9_10(upgrader, curated_set_v9):
+def test_curated_set_upgrade_9_10(upgrader, curated_set_v9):
     value = upgrader.upgrade('curated_set', curated_set_v9, current_version='9', target_version='10')
     assert value['schema_version'] == '10'
     assert value['preferred_assay_titles'] == ['MORF-SHARE-seq']
