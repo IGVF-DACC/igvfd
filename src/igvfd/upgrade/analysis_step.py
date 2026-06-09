@@ -270,3 +270,38 @@ def analysis_step_12_13(value, system):
             notes += f' exclusion list regions was removed from {key}, and has been defaulted to loci.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_step', '13', '14')
+def analysis_step_13_14(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3527
+    notes = value.get('notes', '')
+    old_input_content_types = value.get('input_content_types', [])
+    new_input_content_types = []
+    old_output_content_types = value.get('output_content_types', [])
+    new_output_content_types = []
+    upgrade_map = {
+        'differential TF enrichment quantifications': 'differential open reading frame quantifications',
+    }
+    for old_content_type in old_input_content_types:
+        if old_content_type in upgrade_map:
+            new_input_content_types.append(upgrade_map[old_content_type])
+            notes += (
+                f' This analysis step\'s input_content_types included {old_content_type}, '
+                f'but has been upgraded to {upgrade_map[old_content_type]}.'
+            )
+        else:
+            new_input_content_types.append(old_content_type)
+    for old_content_type in old_output_content_types:
+        if old_content_type in upgrade_map:
+            new_output_content_types.append(upgrade_map[old_content_type])
+            notes += (
+                f' This analysis step\'s output_content_types included {old_content_type}, '
+                f'but has been upgraded to {upgrade_map[old_content_type]}.'
+            )
+        else:
+            new_output_content_types.append(old_content_type)
+    value['input_content_types'] = sorted(set(new_input_content_types))
+    value['output_content_types'] = sorted(set(new_output_content_types))
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

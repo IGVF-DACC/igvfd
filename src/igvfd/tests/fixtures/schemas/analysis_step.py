@@ -154,7 +154,19 @@ def analysis_step_v12(testapp, base_workflow):
         'title': 'Base Analysis Step',
         'input_content_types': ['exclusion list regions', 'peaks'],
         'output_content_types': ['exclusion list regions'],
-        'analysis_step_types': ['alignment'],
-        'workflow': base_workflow['@id']
+        'analysis_step_types': ['alignment']
+    }
+    return item
+
+
+@pytest.fixture
+def analysis_step_v13(testapp, base_workflow):
+    item = {
+        'schema_version': '13',
+        'step_label': 'base-analysis-step',
+        'title': 'Base Analysis Step',
+        'input_content_types': ['differential TF enrichment quantifications'],
+        'output_content_types': ['differential TF enrichment quantifications', 'peaks'],
+        'analysis_step_types': ['quantification']
     }
     return item

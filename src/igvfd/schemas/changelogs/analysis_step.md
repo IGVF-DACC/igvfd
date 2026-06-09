@@ -1,5 +1,16 @@
 ## Changelog for *`analysis_step.json`*
 
+### Schema version 14
+
+* Adjust `input_content_types` enum list to replace `differential TF enrichment quantifications` with `differential open reading frame quantifications`.
+* Adjust `output_content_types` enum list to replace `differential TF enrichment quantifications` with `differential open reading frame quantifications`.
+* Extend `input_content_types` enum list to include `open reading frame reference`.
+* Extend `output_content_types` enum list to include `open reading frame reference`.
+* Extend `input_content_types` enum list to include `open reading frame quantifications`.
+* Extend `output_content_types` enum list to include `open reading frame quantifications`.
+* Extend `input_content_types` enum list to include `open reading frames`.
+* Extend `output_content_types` enum list to include `open reading frames`.
+
 ### Schema version 13
 
 * Adjust `input_content_types` enum list to remove `exclusion list regions`.
