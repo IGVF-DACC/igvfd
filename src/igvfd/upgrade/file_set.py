@@ -894,6 +894,13 @@ def measurement_set_44_45(value, system):
         value['notes'] = notes.strip()
 
 
+@upgrade_step('pseudobulk_set', '1', '2')
+def pseudobulk_set_1_2(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3542
+    if 'merged' not in value:
+        value['merged'] = False
+
+
 @upgrade_step('measurement_set', '45', '46')
 @upgrade_step('model_set', '8', '9')
 @upgrade_step('curated_set', '9', '10')

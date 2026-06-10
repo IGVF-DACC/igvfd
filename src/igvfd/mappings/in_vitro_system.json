@@ -1,6 +1,6 @@
 {
-    "hash": "d0ecab7f595556e65ae98d4aa91bb28f",
-    "index_name": "in_vitro_system_d0ecab7f",
+    "hash": "df38598ef3d1596b2e2e9ab8e0c1ed0a",
+    "index_name": "in_vitro_system_df38598e",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1248,6 +1248,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"

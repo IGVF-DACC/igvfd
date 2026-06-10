@@ -53,11 +53,67 @@
     "dependentSchemas": {
         "$merge": [
             "shared_dependencies.json#/accession_status"
-        ]
+        ],
+        "merged": {
+            "comment": "Merged pseudobulk sets should have other pseudobulk sets as inputs. Otherwise, the input file sets should be analysis or curated sets.",
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "merged": {
+                                "enum": [
+                                    true
+                                ]
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "input_file_sets": {
+                                "items": {
+                                    "title": "Input File Set",
+                                    "description": "A file set that serves as input for this file set.",
+                                    "type": "string",
+                                    "linkTo": [
+                                        "PseudobulkSet"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "merged": {
+                                "enum": [
+                                    false
+                                ]
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "input_file_sets": {
+                                "items": {
+                                    "title": "Input File Set",
+                                    "description": "A file set that serves as input for this file set.",
+                                    "type": "string",
+                                    "linkTo": [
+                                        "AnalysisSet",
+                                        "CuratedSet"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "input_file_sets": {
             "items": {
@@ -66,7 +122,8 @@
                 "type": "string",
                 "linkTo": [
                     "AnalysisSet",
-                    "CuratedSet"
+                    "CuratedSet",
+                    "PseudobulkSet"
                 ]
             },
             "description": "The file set(s) required for this pseudobulking analysis."
@@ -117,6 +174,16 @@
             "submissionExample": {
                 "appscript": "early",
                 "igvf_utils": "early"
+            }
+        },
+        "merged": {
+            "title": "Merged",
+            "description": "Indicates if the pseudobulk set has been merged from other pseudobulk sets.",
+            "type": "boolean",
+            "default": false,
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
             }
         }
     },

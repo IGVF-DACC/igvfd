@@ -33,6 +33,7 @@ def test_audit_pseudobulk_set_marker_gene_files(
 def test_audit_pseudobulk_set_sample_matches_input(
     testapp,
     pseudobulk_set_base,
+    pseudobulk_set_merged,
     analysis_set_base,
     measurement_set,
     primary_cell
@@ -55,6 +56,21 @@ def test_audit_pseudobulk_set_sample_matches_input(
         {'samples': [primary_cell['@id']]}
     )
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent samples'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Merged Pseudobulk Set
+    res = testapp.get(pseudobulk_set_merged['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent samples'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {'samples': [primary_cell['@id']]}
+    )
+    res = testapp.get(pseudobulk_set_merged['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent samples'
         for error in res.json['audit'].get('ERROR', [])
@@ -95,11 +111,13 @@ def test_audit_pseudobulk_set_mixed_classifications(
     testapp,
     pseudobulk_set_base,
     tissue,
-    in_vitro_cell_line
+    tissue_parkinsons,
+    in_vitro_cell_line,
+    sample_term_adrenal_gland
 ):
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent source biosamples'
+        error['category'] != 'inconsistent parent samples'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
@@ -108,6 +126,49 @@ def test_audit_pseudobulk_set_mixed_classifications(
     )
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent source biosamples'
+        error['category'] == 'inconsistent parent samples'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # Same classification, different terms
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {'samples': [tissue['@id'], tissue_parkinsons['@id']]}
+    )
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent parent samples'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # Same classification, same term
+    testapp.patch_json(
+        tissue_parkinsons['@id'],
+        {'sample_terms': [sample_term_adrenal_gland['@id']]}
+    )
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent parent samples'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+
+def test_audit_pseudobulk_set_mismatched_merged_cell_types(
+    testapp,
+    pseudobulk_set_merged,
+    pseudobulk_set_2,
+    pseudobulk_set_base,
+    sample_term_endothelial_cell
+):
+    res = testapp.get(pseudobulk_set_merged['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'mismatched merged cell types'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        pseudobulk_set_2['@id'],
+        {'cell_type': sample_term_endothelial_cell['@id']}
+    )
+    res = testapp.get(pseudobulk_set_merged['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'mismatched merged cell types'
         for error in res.json['audit'].get('WARNING', [])
     )

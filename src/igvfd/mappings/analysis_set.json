@@ -1,6 +1,6 @@
 {
-    "hash": "f9667df4e34aed9eb5b4fef0bb2523ff",
-    "index_name": "analysis_set_f9667df4",
+    "hash": "c9e29217fc120a6e042a302c7b56bfd9",
+    "index_name": "analysis_set_c9e29217",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -792,6 +792,10 @@
                             "measurement_sets": {
                                 "type": "keyword"
                             },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "model_name": {
                                 "type": "keyword"
                             },
@@ -1280,6 +1284,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"
@@ -2571,6 +2579,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"

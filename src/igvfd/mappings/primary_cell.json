@@ -1,6 +1,6 @@
 {
-    "hash": "b7a2cf54daf996251d4487e8e5141921",
-    "index_name": "primary_cell_b7a2cf54",
+    "hash": "76e7f39d1bf54f82d3a54e77c455497d",
+    "index_name": "primary_cell_76e7f39d",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1238,6 +1238,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "ca8aef154e949a60f02c11ba72e5bba8",
-    "index_name": "sequence_file_ca8aef15",
+    "hash": "710034b0d58992e6572dd87e97251368",
+    "index_name": "sequence_file_710034b0",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1067,6 +1067,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"

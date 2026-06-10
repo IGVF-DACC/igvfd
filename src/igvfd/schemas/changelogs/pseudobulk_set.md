@@ -1,5 +1,9 @@
 ## Changelog for *`pseudobulk_set.json`*
 
+### Schema version 2
+
+* Add `merged`.
+
 ### Minor changes since schema version 1
 
 * Add calculated property `donors`.

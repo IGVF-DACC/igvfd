@@ -1,6 +1,6 @@
 {
-    "hash": "003ee66e6e1a5c70b850deed12dd57e7",
-    "index_name": "tissue_003ee66e",
+    "hash": "17321511a60be7763cda0007920a6bab",
+    "index_name": "tissue_17321511",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1235,6 +1235,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"

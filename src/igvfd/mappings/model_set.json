@@ -1,6 +1,6 @@
 {
-    "hash": "c43378a7aaef3293aaff63dfe87bc3b1",
-    "index_name": "model_set_c43378a7",
+    "hash": "06be2fdc190bb5f8b665cbea9b24a972",
+    "index_name": "model_set_06be2fdc",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -986,6 +986,10 @@
                             "measurement_sets": {
                                 "type": "keyword"
                             },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "model_name": {
                                 "type": "keyword"
                             },
@@ -1474,6 +1478,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"
@@ -2600,6 +2608,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"

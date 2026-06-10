@@ -1,6 +1,6 @@
 {
-    "hash": "85e3f69b0fabdcfae1c57622157c7fdd",
-    "index_name": "matrix_file_85e3f69b",
+    "hash": "eca84885165c4c758c62e626ddd59f2e",
+    "index_name": "matrix_file_eca84885",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1065,6 +1065,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"
