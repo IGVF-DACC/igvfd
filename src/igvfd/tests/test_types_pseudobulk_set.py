@@ -13,7 +13,6 @@ def test_pseudobulk_set_summary(testapp, pseudobulk_set_base, pseudobulk_set_mer
         }
     )
     res = testapp.get(pseudobulk_set_base['@id']).json
-
     assert res.get(
         'summary', '') == 'STARR-seq pseudobulk of Mus musculus adrenal gland exhausted endothelial cell of vascular tree'
     # Mixed taxa example.
@@ -24,10 +23,8 @@ def test_pseudobulk_set_summary(testapp, pseudobulk_set_base, pseudobulk_set_mer
         }
     )
     res = testapp.get(pseudobulk_set_base['@id']).json
-    print(res)
     assert res.get(
         'summary', '') == 'STARR-seq pseudobulk of mixed taxa adrenal gland exhausted endothelial cell of vascular tree'
-
     # Merged pseudobulk example.
     res = testapp.get(pseudobulk_set_merged['@id']).json
     assert res.get('summary', '') == 'STARR-seq merged pseudobulk of mixed taxa adrenal gland endothelial cell of vascular tree'

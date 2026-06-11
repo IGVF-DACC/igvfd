@@ -2823,7 +2823,7 @@ class PseudobulkSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, cell_type, samples, donors, preferred_assay_titles, merged, cell_annotation):
+    def summary(self, request, donors, preferred_assay_titles, merged, cell_annotation):
         merged_phrase = ''
         if merged:
             merged_phrase = 'merged'
@@ -2840,8 +2840,6 @@ class PseudobulkSet(FileSet):
                 taxa_phrase = 'mixed taxa'
             elif len(taxa) == 1:
                 taxa_phrase = list(taxa)[0]
-
-        # [Merged] 10x multiome with MULTI-seq pseudobulk set of human M1 macrophage derived from GM25256 (WTC-11)
         summary = ' '.join([x for x in [
             assay_phrase,
             merged_phrase,
