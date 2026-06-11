@@ -37,7 +37,7 @@ def test_assay_titles(testapp, primary_cell, base_expression_construct_library_s
 
 def test_summary(testapp, construct_library_set_genome_wide, base_expression_construct_library_set,
                  construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction,
-                 gene_zscan10_mm, gene_myc_hs, gene_myc_hs_with_allele, construct_library_set_y2h, construct_library_set_orf, orf_foxp, orf_zscan10, construct_library_set_reference_transduction, construct_library_set_editing_template_library, tabular_file):
+                 gene_zscan10_mm, gene_myc_hs, gene_myc_hs_with_allele, construct_library_set_y2h, construct_library_set_morf, construct_library_set_orf, orf_foxp, orf_zscan10, construct_library_set_reference_transduction, construct_library_set_editing_template_library, tabular_file):
     res = testapp.get(construct_library_set_genome_wide['@id'])
     assert res.json.get('summary') == 'guide (sgRNA) library targeting TF binding sites genome-wide'
     testapp.patch_json(
@@ -176,6 +176,8 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     res = testapp.get(construct_library_set_orf['@id'])
     assert res.json.get(
         'summary') == 'expression vector library of 2 open reading frames (protein interactors)'
+    res = testapp.get(construct_library_set_morf['@id'])
+    assert res.json.get('summary') == 'overexpression vector library of 2 ORFs (TF genes)'
     # control library summaries
     testapp.patch_json(
         construct_library_set_genome_wide['@id'],

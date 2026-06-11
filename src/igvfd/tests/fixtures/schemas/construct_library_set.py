@@ -66,6 +66,21 @@ def construct_library_set_y2h(testapp, lab, award, gene_myc_hs, gene_CRLF2_par_y
 
 
 @pytest.fixture
+def construct_library_set_morf(testapp, lab, award, orf_foxp, orf_zscan10):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'overexpression vector library',
+        'scope': 'genes',
+        'small_scale_orf_list': [orf_foxp['@id'], orf_zscan10['@id']],
+        'selection_criteria': [
+            'TF genes'
+        ]
+    }
+    return testapp.post_json('/construct_library_set', item).json['@graph'][0]
+
+
+@pytest.fixture
 def construct_library_set_orf(testapp, lab, award, gene_myc_hs, orf_foxp):
     item = {
         'award': award['@id'],
