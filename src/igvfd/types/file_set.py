@@ -2662,14 +2662,28 @@ class ConstructLibrarySet(FileSet):
                 else:
                     target_phrase = f' a genomic locus'
         if scope == 'genes':
-            if small_scale_gene_list and len(small_scale_gene_list) > 1:
-                target_phrase = f' {len(small_scale_gene_list)} genes'
-            elif small_scale_gene_list and len(small_scale_gene_list) == 1:
-                gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
-                gene_name = (gene_object.get('symbol'))
-                target_phrase = f' {gene_name}'
+            if small_scale_gene_list:
+                if len(small_scale_gene_list) > 1:
+                    target_phrase = f' {len(small_scale_gene_list)} genes'
+                else:
+                    gene_object = request.embed(
+                        small_scale_gene_list[0],
+                        '@@object?skip_calculated=true'
+                    )
+                    target_phrase = f" {gene_object.get('symbol')}"
             elif large_scale_gene_list:
-                target_phrase = f' many genes'
+                target_phrase = ' many genes'
+            elif small_scale_orf_list:
+                if len(small_scale_orf_list) > 1:
+                    target_phrase = f' {len(small_scale_orf_list)} ORFs'
+                else:
+                    orf_object = request.embed(
+                        small_scale_orf_list[0],
+                        '@@object?skip_calculated=true'
+                    )
+                    target_phrase = f" {orf_object.get('orf_id')}"
+            elif large_scale_orf_list:
+                target_phrase = ' many ORFs'
         if scope == 'exon':
             if small_scale_gene_list and len(small_scale_gene_list) > 1:
                 target_phrase = f' exon {exon} of multiple genes'

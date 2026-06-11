@@ -80,7 +80,7 @@
                 "igvf_utils": "ENSP00000001146.2"
             }
         },
-        "transcript_id": {
+        "transcript_ids": {
             "title": "ENSEMBL TranscriptID",
             "description": "ENSEMBL TranscriptID of official nomenclature approved transcript/isoform of that gene",
             "type": "array",

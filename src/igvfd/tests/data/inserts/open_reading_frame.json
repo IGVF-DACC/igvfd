@@ -34,7 +34,7 @@
     {
         "uuid": "ff3792b4-636c-47c2-a4d9-99ba1e4b8cf2",
         "orf_id": "TFORF3108",
-        "transcript_id": [
+        "transcript_ids": [
             "ENST00000622694",
             "ENST00000399774",
             "ENST00000551952"
