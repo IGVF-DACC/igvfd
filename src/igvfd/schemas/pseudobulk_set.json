@@ -169,7 +169,7 @@
         },
         "cell_qualifier": {
             "title": "Cell Qualifier",
-            "description": "A qualifier that provides additional detail about the cell type annotation or the source biosample.",
+            "description": "A qualifier that provides additional detail about the cell type annotation or the parent sample.",
             "type": "string",
             "submissionExample": {
                 "appscript": "early",
