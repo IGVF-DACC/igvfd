@@ -1,6 +1,6 @@
 {
-    "hash": "e93e953de512debe0e7fe90231c09b5b",
-    "index_name": "open_reading_frame_e93e953d",
+    "hash": "41175d6fd565d5bddd0221c6589b5c77",
+    "index_name": "open_reading_frame_41175d6f",
     "item_type": "open_reading_frame",
     "mapping": {
         "dynamic_templates": [
@@ -519,7 +519,7 @@
                     "summary": {
                         "type": "keyword"
                     },
-                    "transcript_id": {
+                    "transcript_ids": {
                         "type": "keyword"
                     },
                     "uuid": {
