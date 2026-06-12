@@ -1271,12 +1271,9 @@ class AnalysisSet(FileSet):
             # the underlying classifications
             if 'multiplexed sample of' in classification:
                 terms_by_classification = f'multiplexed sample of {terms_by_classification}'
-            # Differentiated, reprogrammed, pooled cell specimen can be merged
-            # into the terms_by_classification before this. Therefore we don't
-            # want to append it to the terms_by_classification a second time.
-            elif classification not in terms_by_classification and not any(x in terms_by_classification for x in [
-                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen', 'primary cell']
-            ):
+            # Append classification only when it is not already present in the
+            # formatted terms string.
+            elif classification not in terms_by_classification:
                 # Insert the classification before disease name(s) and targeted_sample_term if exist.
                 # The structure is classification + (disease names) + (targeted_sample_term).
                 if 'induced to' in terms_by_classification:
@@ -1295,9 +1292,7 @@ class AnalysisSet(FileSet):
                         )
                     else:
                         terms_by_classification = f'{terms_by_classification} {classification}'
-            elif classification in terms_by_classification or any(x in terms_by_classification for x in [
-                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen', 'primary cell']
-            ):
+            elif classification in terms_by_classification:
                 # Don't add anything when the classification was already in
                 # the terms_by_classification.
                 terms_by_classification = f'{terms_by_classification}'
