@@ -177,7 +177,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     assert res.json.get(
         'summary') == 'expression vector library of 2 open reading frames (protein interactors)'
     res = testapp.get(construct_library_set_morf['@id'])
-    assert res.json.get('summary') == 'overexpression vector library of 2 ORFs (TF genes)'
+    assert res.json.get('summary') == 'overexpression vector library of 2 open reading frames (TF genes)'
     # control library summaries
     testapp.patch_json(
         construct_library_set_genome_wide['@id'],
