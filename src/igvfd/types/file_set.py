@@ -2834,7 +2834,7 @@ class PseudobulkSet(FileSet):
         if donors:
             taxa = set()
             for donor in donors:
-                donor_object = request.embed(donor, '@@object')
+                donor_object = request.embed(donor, '@@object?skip_calculated=true')
                 taxa.add(donor_object.get('taxa', ''))
             if len(taxa) > 1:
                 taxa_phrase = 'mixed taxa'
@@ -2863,11 +2863,12 @@ class PseudobulkSet(FileSet):
         cell_qualifier_string = None
         if cell_qualifier:
             cell_qualifier_string = cell_qualifier
-        cell_type_object = request.embed(cell_type, '@@object')
+        cell_type_object = request.embed(cell_type, '@@object?skip_calculated=true')
         cell_type_name = cell_type_object.get('term_name', '')
         for sample in samples:
-            sample_object = request.embed(sample, '@@object')
-            sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object')
+            sample_object = request.embed(
+                sample, '@@object_with_select_calculated_properties?field=sample_terms&field=classifications')
+            sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object?skip_calculated=true')
             classifications = sample_object.get('classifications', [])
             for classification in classifications:
                 parent_sample_classifications.add(classification)
