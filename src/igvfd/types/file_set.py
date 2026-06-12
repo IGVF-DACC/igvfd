@@ -2675,13 +2675,13 @@ class ConstructLibrarySet(FileSet):
                 target_phrase = ' many genes'
             elif small_scale_orf_list:
                 if len(small_scale_orf_list) > 1:
-                    target_phrase = f' {len(small_scale_orf_list)} ORFs'
+                    target_phrase = f' {len(small_scale_orf_list)} open reading frames'
                 else:
                     orf_object = request.embed(
                         small_scale_orf_list[0],
                         '@@object?skip_calculated=true'
                     )
-                    target_phrase = f" {orf_object.get('orf_id')}"
+                    target_phrase = f" open reading frame {orf_object.get('orf_id')}"
             elif large_scale_orf_list:
                 target_phrase = ' many ORFs'
         if scope == 'exon':
