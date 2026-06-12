@@ -977,5 +977,29 @@
             "MORF screen"
         ],
         "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:CRISPR_FACS_protein_abundance"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "release_timestamp": "2026-05-20T12:34:56Z",
+        "uuid": "b8c9d0e1-f2a3-4567-8901-234567890abc",
+        "accession": "IGVFDS0007FACS",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0003661/",
+        "preferred_assay_titles": [
+            "CRISPR FACS screen"
+        ],
+        "crispr_screen_readout": "gRNA sequencing",
+        "crispr_screen_biometric": "/phenotype-terms/NTR_0000800/",
+        "targeted_genes": [
+            "83a311d1-7ed3-41bb-85f0-1f00c458e6fc"
+        ],
+        "file_set_type": "experimental data"
     }
 ]
