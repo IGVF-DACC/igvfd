@@ -796,6 +796,13 @@ class AnalysisSet(FileSet):
                         summary = format_assay(assays_titles, preferred_assay_titles)
                         if summary:
                             cls_derived_assay_titles.add(summary)
+                    elif (input_fileset.startswith('/curated-sets/') and
+                            fileset_object.get('file_set_type') == 'external sequencing data'):
+                        preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
+                        assays_titles = fileset_object.get('assay_titles', [])
+                        summary = format_assay(assays_titles, preferred_assay_titles)
+                        if summary:
+                            all_assay_summaries.add(summary)
                     elif not input_fileset.startswith('/analysis-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
                     # Collect control types.
