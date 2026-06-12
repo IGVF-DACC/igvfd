@@ -1,6 +1,6 @@
 {
-    "hash": "446067d4e4f332730630d40ecd9015d5",
-    "index_name": "tabular_file_446067d4",
+    "hash": "fd9c8a98766d6f5a005c96075eb71d63",
+    "index_name": "tabular_file_fd9c8a98",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -794,7 +794,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {

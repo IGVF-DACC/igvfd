@@ -1,6 +1,6 @@
 {
-    "hash": "784ad1bfddfbcca2bf19191aa3f8a2b4",
-    "index_name": "construct_library_set_784ad1bf",
+    "hash": "34131fe15da11dca274bef9e88f1d351",
+    "index_name": "construct_library_set_34131fe1",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -413,7 +413,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
@@ -801,7 +804,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {

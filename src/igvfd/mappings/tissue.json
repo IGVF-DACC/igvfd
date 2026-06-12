@@ -1,6 +1,6 @@
 {
-    "hash": "17321511a60be7763cda0007920a6bab",
-    "index_name": "tissue_17321511",
+    "hash": "54e4f2147c76b520bff65aec9699d562",
+    "index_name": "tissue_54e4f214",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1080,7 +1080,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {

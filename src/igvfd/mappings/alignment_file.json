@@ -1,6 +1,6 @@
 {
-    "hash": "b24c3cac644c34a717d03cbdf6ceafcf",
-    "index_name": "alignment_file_b24c3cac",
+    "hash": "e58f236af2b7941030414e5945d1c925",
+    "index_name": "alignment_file_e58f236a",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -776,7 +776,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {

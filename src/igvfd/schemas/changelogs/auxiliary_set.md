@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Rename calculated property `crispr_readout` to `crispr_screen_readout`.
 * Add calculated property `crispr_readout`.
 * Extend `collections` enum list to include `PD single cell multiomics`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.2`.

@@ -1,6 +1,6 @@
 {
-    "hash": "1506379f81703b3bb0d4450fa4b0d3ac",
-    "index_name": "signal_file_1506379f",
+    "hash": "d27da1fb10e4fabbc01eda9689bb286d",
+    "index_name": "signal_file_d27da1fb",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -778,7 +778,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {

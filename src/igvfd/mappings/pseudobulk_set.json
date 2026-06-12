@@ -1,6 +1,6 @@
 {
-    "hash": "f4039ddb46b6ce0437cfa8b5f9d59db1",
-    "index_name": "pseudobulk_set_f4039ddb",
+    "hash": "ba18e50ea77c495acd9e252ca40ba682",
+    "index_name": "pseudobulk_set_ba18e50e",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -563,7 +563,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
@@ -1281,7 +1284,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {

@@ -1,6 +1,6 @@
 {
-    "hash": "eca84885165c4c758c62e626ddd59f2e",
-    "index_name": "matrix_file_eca84885",
+    "hash": "d7a4978dd85ff5fc880679b202494a28",
+    "index_name": "matrix_file_d7a4978d",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -774,7 +774,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {

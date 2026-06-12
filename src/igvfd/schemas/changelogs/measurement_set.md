@@ -1,5 +1,10 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 47
+
+* Add `crispr_screen_biometric`.
+* Rename `crispr_readout` to `crispr_screen_readout`.
+
 ### Schema version 46
 * Adjust `preferred_assay_titles` enum list to replace `perturb-SHARE-seq` with `MORF-SHARE-seq`.
 

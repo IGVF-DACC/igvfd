@@ -22,6 +22,8 @@ CRISPR_SCREEN_ASSAY_TERMS = {
     '/assay-terms/NTR_0001101/',  # in vivo CRISPR screen using single cell RNA-seq
 }
 
+PROTEIN_ABUNDANCE_TERM_NAME = 'protein abundance'
+
 
 def get_donors_from_samples(request, samples):
     donor_objects = []
@@ -686,8 +688,9 @@ class AnalysisSet(FileSet):
     schema = load_schema('igvfd:schemas/analysis_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('input_file_sets', include=['@id', 'accession', 'aliases',
-             'file_set_type', 'status', 'assay_term', 'crispr_readout']),
+             'file_set_type', 'status', 'assay_term', 'crispr_screen_readout']),
         Path('input_file_sets.assay_term', include=['@id', 'term_name', 'assay_slims']),
+        Path('input_file_sets.crispr_screen_biometric', include=['@id', 'term_id', 'term_name', 'status']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
         Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline', 'status', 'workflow_version']),
         Path('targeted_genes', include=['@id', 'symbol'])]
@@ -1639,8 +1642,10 @@ class MeasurementSet(FileSet):
         Path('assay_term', include=['@id', 'term_name', 'assay_slims', 'status']),
         Path('control_file_sets', include=['@id', 'accession', 'aliases', 'status']),
         Path('related_measurement_sets.measurement_sets', include=['@id', 'accession', 'status', 'measurement_sets']),
-        Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'crispr_readout', 'status']),
+        Path('auxiliary_sets', include=['@id', 'accession', 'aliases',
+             'file_set_type', 'crispr_screen_readout', 'status']),
         Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
+        Path('crispr_screen_biometric', include=['@id', 'term_id', 'term_name', 'status']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
         Path('input_for', include=['@id', 'accession', 'aliases', 'status', 'uniform_pipeline_status'])
     ]
@@ -1768,7 +1773,7 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, assay_term, assay_titles, preferred_assay_titles=None, samples=None, control_types=None, targeted_genes=None, targeted_proteins=None, construct_library_sets=None, crispr_readout=None):
+    def summary(self, request, assay_term, assay_titles, preferred_assay_titles=None, samples=None, control_types=None, targeted_genes=None, targeted_proteins=None, construct_library_sets=None, crispr_screen_readout=None):
         if construct_library_sets is None:
             construct_library_sets = []
         modality_set = set()
@@ -1856,8 +1861,8 @@ class MeasurementSet(FileSet):
             mux_method_phrase = f'({", ".join(mux_method_list)} multiplexed)'
             assay_phrase = f'{assay_phrase} {mux_method_phrase}'
 
-        if crispr_readout:
-            assay_phrase = f'{assay_phrase} with {crispr_readout} readout'
+        if crispr_screen_readout:
+            assay_phrase = f'{assay_phrase} with {crispr_screen_readout} readout'
 
         if len(cls_set) > 0:
             cls_phrase = f' {get_cls_phrase(cls_set)}'
@@ -2168,13 +2173,13 @@ class AuxiliarySet(FileSet):
         condition='measurement_sets',
         define=True,
         schema={
-            'title': 'CRISPR Readout',
+            'title': 'CRISPR Screen Readout',
             'description': 'For auxiliary sets linked to CRISPR screen measurement sets, equivalent to file set type.',
             'type': 'string',
             'notSubmittable': True
         }
     )
-    def crispr_readout(self, request, measurement_sets=None, file_set_type=None):
+    def crispr_screen_readout(self, request, measurement_sets=None, file_set_type=None):
         if not measurement_sets or not file_set_type:
             return
         for measurement_set in measurement_sets:

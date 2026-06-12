@@ -72,7 +72,7 @@ def test_calculated_donors(testapp, base_auxiliary_set, primary_cell, human_dono
     assert set([donor['@id'] for donor in res.json.get('donors')]) == {rodent_donor['@id']}
 
 
-def test_crispr_readout(testapp, base_auxiliary_set, measurement_set_perturb_seq):
+def test_crispr_screen_readout(testapp, base_auxiliary_set, measurement_set_perturb_seq):
     testapp.patch_json(
         measurement_set_perturb_seq['@id'],
         {
@@ -80,4 +80,4 @@ def test_crispr_readout(testapp, base_auxiliary_set, measurement_set_perturb_seq
         }
     )
     res = testapp.get(base_auxiliary_set['@id'])
-    assert res.json.get('crispr_readout') == 'gRNA sequencing'
+    assert res.json.get('crispr_screen_readout') == 'gRNA sequencing'
