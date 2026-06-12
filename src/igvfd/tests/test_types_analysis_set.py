@@ -393,7 +393,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     res = testapp.get(analysis_set_with_CLS_input['@id']).json
     assert res.get(
         'summary', '') == 'ATAC-seq (10x multiome) (barcode based multiplexed) integrating editing template libraries targeting sequence variants in 3 targetons of MYC with non-targeting control'
-    # Curated Set with file_set_type 'external sequencing data'
+    # Case where the input curated set has file_set_type 'external sequencing data', and has assay_term and preferred_assay_titles specified.
     testapp.patch_json(
         analysis_set_base['@id'],
         {
