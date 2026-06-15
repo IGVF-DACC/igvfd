@@ -1628,9 +1628,9 @@ def test_audit_targeted_genes(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
-        assay_term_tf_chip['@id'],
+        measurement_set['@id'],
         {
-            'term_id': 'OBI:0002018'
+            'preferred_assay_titles': ['CRISPR FACS screen']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
