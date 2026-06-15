@@ -74,7 +74,7 @@ def audit_inconsistent_ontology_term(value, system):
         {
             "audit_description": "The term name is expected to match the canonical name in the reference ontology for the given term identifier.",
             "audit_category": "inconsistent ontology term",
-            "audit_level": "ERROR"
+            "audit_level": "INTERNAL_ACTION"
         }
     ]
     '''
