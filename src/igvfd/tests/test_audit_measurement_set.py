@@ -1595,6 +1595,7 @@ def test_audit_targeted_genes(
         measurement_set['@id'],
         {
             'assay_term': assay_term_tf_chip['@id'],
+            'preferred_assay_titles': ['TF ChIP-seq'],
             'control_types': ['wildtype']
         }
     )
@@ -1606,7 +1607,6 @@ def test_audit_targeted_genes(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_tf_chip['@id'],
             'control_types': ['untransfected']
         }
     )
