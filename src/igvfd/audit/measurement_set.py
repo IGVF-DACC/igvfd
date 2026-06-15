@@ -443,12 +443,9 @@ def audit_targeted_genes(value, system):
         'untransfected',
         'unsorted FACS input'
     }
-    expecting_targeted_genes_by_assay = ['/assay-terms/OBI_0002019/',  # transcription factor binding site identification by ChIP-Seq assay
-                                         ]
-    expecting_targeted_genes_by_preferred_assay_title = ['MORF screen']
+    expecting_targeted_genes_by_preferred_assay_title = ['MORF screen', 'TF ChIP-seq']
     expects_targeted_genes = (
-        assay_term in expecting_targeted_genes_by_assay
-        or any(title in expecting_targeted_genes_by_preferred_assay_title for title in preferred_assay_titles)
+        any(title in expecting_targeted_genes_by_preferred_assay_title for title in preferred_assay_titles)
         or is_protein_abundance_biometric(value, system)
     )
     if (
@@ -465,7 +462,7 @@ def audit_targeted_genes(value, system):
             f'{detail} {audit_message_missing.get("audit_description", "")}',
             level=audit_message_missing.get('audit_level', '')
         )
-    if targeted_genes and not expects_targeted_genes and not is_crispr_screen_measurement_set(value):
+    if targeted_genes and not expects_targeted_genes:
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has `targeted_genes`.'
