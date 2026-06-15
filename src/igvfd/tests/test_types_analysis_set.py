@@ -418,6 +418,7 @@ def test_analysis_set_sample_summary(
     in_vitro_differentiated_cell,
     in_vitro_cell_line,
     in_vitro_organoid,
+    in_vitro_system_virtual_demultiplexed,
     tissue,
     tissue_parkinsons,
     multiplexed_sample,
@@ -725,6 +726,48 @@ def test_analysis_set_sample_summary(
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
         'sample_summary', '') == 'yeast cell technical sample'
+
+    # Test group 6: sample term and classifications overlap (cell line)
+    testapp.patch_json(
+        sample_term_K562['@id'],
+        {
+            'term_name': 'K562 cell'
+        }
+    )
+    testapp.patch_json(
+        in_vitro_system_virtual_demultiplexed['@id'],
+        {
+            'virtual': False
+        }
+    )
+    testapp.patch_json(
+        measurement_set_perturb_seq['@id'],
+        {
+            'samples': [in_vitro_system_virtual_demultiplexed['@id']]
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set_perturb_seq['@id']]
+        }
+    )
+    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
+    res = testapp.get(analysis_set_base['@id']).json
+    assert res.get(
+        'sample_summary', '') == f'human K562 cell line from donor(s) {hs_donor_accession}'
+
+    # Test group 7: have biosample qualifiers
+    testapp.patch_json(
+        in_vitro_system_virtual_demultiplexed['@id'],
+        {
+            'biosample_qualifiers': ['exhausted']
+        }
+    )
+    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
+    res = testapp.get(analysis_set_base['@id']).json
+    assert res.get(
+        'sample_summary', '') == f'human exhausted K562 cell line from donor(s) {hs_donor_accession}'
 
 
 def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set, measurement_set_with_functional_assay_mechanisms, phenotype_term_from_go, phenotype_term_myocardial_infarction):
