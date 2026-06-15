@@ -688,7 +688,7 @@ class AnalysisSet(FileSet):
     schema = load_schema('igvfd:schemas/analysis_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('input_file_sets', include=['@id', 'accession', 'aliases',
-             'file_set_type', 'status', 'assay_term', 'crispr_screen_readout']),
+             'file_set_type', 'status', 'assay_term', 'crispr_screen_readout', 'crispr_screen_biometric']),
         Path('input_file_sets.assay_term', include=['@id', 'term_name', 'assay_slims']),
         Path('input_file_sets.crispr_screen_biometric', include=['@id', 'term_id', 'term_name', 'status']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
