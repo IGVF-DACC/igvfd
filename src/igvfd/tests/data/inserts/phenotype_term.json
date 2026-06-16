@@ -90,5 +90,15 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "fab1373c-c627-4473-86ba-092ee0e72122"
+    },
+    {
+        "term_id": "NTR:0000800",
+        "term_name": "protein abundance",
+        "status": "released",
+        "release_timestamp": "2026-05-20T12:34:56Z",
+        "uuid": "9fafcd93-ebc5-4e43-8712-27a9cf6b063d",
+        "aliases": [
+            "igvf:protein-abundance"
+        ]
     }
 ]

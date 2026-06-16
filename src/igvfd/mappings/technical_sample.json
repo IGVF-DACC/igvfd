@@ -1,6 +1,6 @@
 {
-    "hash": "82200ef729e8665faa29993bd34dee90",
-    "index_name": "technical_sample_82200ef7",
+    "hash": "3d33a05f0d6bd3f8ad4dfb8288748892",
+    "index_name": "technical_sample_3d33a05f",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -744,7 +744,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {

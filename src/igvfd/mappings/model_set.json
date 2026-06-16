@@ -1,6 +1,6 @@
 {
-    "hash": "06be2fdc190bb5f8b665cbea9b24a972",
-    "index_name": "model_set_06be2fdc",
+    "hash": "e05cf71ddcde95cb4d6665c65cc3d787",
+    "index_name": "model_set_e05cf71d",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -659,7 +659,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
@@ -1379,7 +1382,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
@@ -2509,7 +2515,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {

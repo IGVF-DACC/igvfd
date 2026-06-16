@@ -1,6 +1,6 @@
 {
-    "hash": "e5498d56951dbab83b58e2ba33228b4a",
-    "index_name": "prediction_set_e5498d56",
+    "hash": "c80a7889c955e23a9331c5353c542eb4",
+    "index_name": "prediction_set_c80a7889",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -643,7 +643,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
@@ -1363,7 +1366,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {

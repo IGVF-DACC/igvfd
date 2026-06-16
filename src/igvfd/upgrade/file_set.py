@@ -914,3 +914,11 @@ def file_set_33_34(value, system):
         value['preferred_assay_titles'] = preferred_assay_titles
         notes += f'This file set previously used perturb-SHARE-seq as a preferred_assay_titles, but it has been updated to MORF-SHARE-seq via an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '46', '47')
+def measurement_set_46_47(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3519
+    if 'crispr_readout' in value:
+        value['crispr_screen_readout'] = value['crispr_readout']
+        del value['crispr_readout']

@@ -1,6 +1,6 @@
 {
-    "hash": "d5a6c9b17ea3ff5bd0a9ec9bec4eb6ce",
-    "index_name": "curated_set_d5a6c9b1",
+    "hash": "4e9385da0923e3732ddb5de8fe3ec412",
+    "index_name": "curated_set_4e9385da",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -469,7 +469,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
@@ -1189,7 +1192,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {

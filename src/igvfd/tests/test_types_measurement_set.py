@@ -171,7 +171,7 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
         'summary') == 'scCRISPR screen (barcode based multiplexed) integrating a non-targeting, reference transduction expression vector library'
 
 
-def test_summary_crispr_readout(testapp, measurement_set_no_files):
+def test_summary_crispr_screen_readout(testapp, measurement_set_no_files):
     res = testapp.get(measurement_set_no_files['@id'])
     assert res.json.get('summary') == 'CRISPR FlowFISH screen with gRNA sequencing readout'
 
@@ -201,7 +201,7 @@ def test_summary_targeted_genes(testapp, measurement_set, assay_term_tf_chip, as
         {
             'assay_term': assay_term_CRISPR_sorted['@id'],
             'preferred_assay_titles': ['CRISPR FACS screen'],
-            'crispr_readout': 'endogenous allelic sequencing',
+            'crispr_screen_readout': 'endogenous allelic sequencing',
             'samples': [biosample_sorted_child['@id']]
         }
     )

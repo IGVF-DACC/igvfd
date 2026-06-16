@@ -255,7 +255,7 @@
         "preferred_assay_titles": [
             "Perturb-seq"
         ],
-        "crispr_readout": "scRNA-seq",
+        "crispr_screen_readout": "scRNA-seq",
         "strand_specificity": "5 prime to 3 prime",
         "file_set_type": "experimental data"
     },
@@ -276,7 +276,7 @@
         "preferred_assay_titles": [
             "Variant-EFFECTS"
         ],
-        "crispr_readout": "endogenous allelic sequencing",
+        "crispr_screen_readout": "endogenous allelic sequencing",
         "file_set_type": "experimental data"
     },
     {
@@ -809,7 +809,7 @@
         "preferred_assay_titles": [
             "CROP-seq"
         ],
-        "crispr_readout": "scRNA-seq with guide capture"
+        "crispr_screen_readout": "scRNA-seq with guide capture"
     },
     {
         "aliases": [
@@ -854,7 +854,7 @@
         "preferred_assay_titles": [
             "Multiome Perturb-seq"
         ],
-        "crispr_readout": "scRNA-seq",
+        "crispr_screen_readout": "scRNA-seq",
         "library_preparation_kit": "10X Chromium Single Cell Multiome ATAC + Gene Expression"
     },
     {
@@ -915,7 +915,7 @@
         "preferred_assay_titles": [
             "in vivo Perturb-seq"
         ],
-        "crispr_readout": "scRNA-seq",
+        "crispr_screen_readout": "scRNA-seq",
         "strand_specificity": "5 prime to 3 prime",
         "library_preparation_kit": "10X Chromium Single Cell 5 prime v3",
         "file_set_type": "experimental data"
@@ -956,7 +956,7 @@
         "preferred_assay_titles": [
             "CRISPR FACS screen"
         ],
-        "crispr_readout": "exogenous allelic sequencing",
+        "crispr_screen_readout": "exogenous allelic sequencing",
         "file_set_type": "experimental data"
     },
     {
@@ -975,6 +975,30 @@
         "assay_term": "/assay-terms/OBI_0003661/",
         "preferred_assay_titles": [
             "MORF screen"
+        ],
+        "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:CRISPR_FACS_protein_abundance"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "release_timestamp": "2026-05-20T12:34:56Z",
+        "uuid": "2d86666f-48c2-4686-938b-1b79c9a64f6d",
+        "accession": "IGVFDS0007FACS",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0003661/",
+        "preferred_assay_titles": [
+            "CRISPR FACS screen"
+        ],
+        "crispr_screen_readout": "gRNA sequencing",
+        "crispr_screen_biometric": "/phenotype-terms/NTR_0000800/",
+        "targeted_genes": [
+            "83a311d1-7ed3-41bb-85f0-1f00c458e6fc"
         ],
         "file_set_type": "experimental data"
     }

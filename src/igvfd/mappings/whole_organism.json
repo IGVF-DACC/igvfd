@@ -1,6 +1,6 @@
 {
-    "hash": "5ac747d15ed9caefdff5249792ae983e",
-    "index_name": "whole_organism_5ac747d1",
+    "hash": "5e2b0b0b2585f090847d0e35f1ea06f1",
+    "index_name": "whole_organism_5e2b0b0b",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1080,7 +1080,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {

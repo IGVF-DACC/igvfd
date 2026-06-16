@@ -93,6 +93,24 @@ def phenotype_term_from_go(testapp):
 
 
 @pytest.fixture
+def phenotype_term_protein_abundance(testapp):
+    item = {
+        'term_id': 'NTR:0000001',
+        'term_name': 'protein abundance'
+    }
+    return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def phenotype_term_from_go_cell_proliferation(testapp):
+    item = {
+        'term_id': 'GO:0008283',
+        'term_name': 'cell proliferation'
+    }
+    return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def phenotype_term_v4(phenotype_term_v1):
     item = phenotype_term_v1.copy()
     item.update({

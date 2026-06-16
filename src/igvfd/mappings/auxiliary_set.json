@@ -1,6 +1,6 @@
 {
-    "hash": "40a2afbf1f488140f577eee992e570ff",
-    "index_name": "auxiliary_set_40a2afbf",
+    "hash": "ce8e0cacc19eca94d0da262d0544803e",
+    "index_name": "auxiliary_set_ce8e0cac",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -464,7 +464,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
@@ -1184,7 +1187,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
@@ -1491,7 +1497,7 @@
                     "creation_timestamp": {
                         "type": "date"
                     },
-                    "crispr_readout": {
+                    "crispr_screen_readout": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
@@ -2312,7 +2318,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
@@ -2735,7 +2744,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {

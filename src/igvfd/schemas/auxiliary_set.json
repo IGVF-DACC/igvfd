@@ -105,7 +105,7 @@
         "collections",
         "description",
         "file_set_type",
-        "crispr_readout",
+        "crispr_screen_readout",
         "files.content_type",
         "files.submitted_file_name",
         "lab.title",

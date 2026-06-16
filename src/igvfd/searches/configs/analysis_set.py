@@ -34,10 +34,16 @@ def analysis_set():
                 'description': 'Indicator that this analysis was processed by an IGVF uniform pipeline.',
                 'optional': True
             },
-            'input_file_sets.crispr_readout': {
-                'title': 'CRISPR Readout',
+            'input_file_sets.crispr_screen_readout': {
+                'title': 'CRISPR Screen Readout',
                 'category': 'Analysis Set Details',
                 'description': 'The CRISPR screen readout(s) associated with the input file sets.',
+                'optional': True
+            },
+            'input_file_sets.crispr_screen_biometric.term_name': {
+                'title': 'CRISPR Screen Biometric',
+                'category': 'Analysis Set Details',
+                'description': 'The phenotype used for selection or inference in CRISPR screen input file sets.',
                 'optional': True
             },
             'targeted_genes.symbol': {

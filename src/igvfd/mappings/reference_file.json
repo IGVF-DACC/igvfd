@@ -1,6 +1,6 @@
 {
-    "hash": "c789fb455280e2a870192131ba535766",
-    "index_name": "reference_file_c789fb45",
+    "hash": "cfeca34c4c2cd47d737c8b2d037b03e4",
+    "index_name": "reference_file_cfeca34c",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -795,7 +795,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
