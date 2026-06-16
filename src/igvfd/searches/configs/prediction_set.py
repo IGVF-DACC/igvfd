@@ -121,6 +121,12 @@ def prediction_set():
                 'category': 'Provenance',
                 'description': 'The project component the award is associated with.'
             },
+            'award.project': {
+                'title': 'Project',
+                'optional': True,
+                'category': 'Provenance',
+                'description': 'The project the award is associated with.'
+            },
             'release_timestamp': {
                 'title': 'Release Date',
                 'optional': True,

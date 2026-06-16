@@ -13,6 +13,9 @@ def phenotypic_feature():
             'award.component': {
                 'title': 'Award'
             },
+            'award.project': {
+                'title': 'Project'
+            },
             'status': {
                 'title': 'Status'
             }

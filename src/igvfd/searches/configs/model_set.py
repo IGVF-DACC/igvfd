@@ -67,6 +67,9 @@ def model_set():
             'award.component': {
                 'title': 'Award'
             },
+            'award.project': {
+                'title': 'Project'
+            },
             'release_timestamp': {
                 'title': 'Release Date',
             },
