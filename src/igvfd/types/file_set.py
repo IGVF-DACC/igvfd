@@ -2823,27 +2823,34 @@ class PseudobulkSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, cell_type, samples, cell_qualifier=None):
-        source_biosample_classifications = set()
-        source_biosample_terms = set()
-        cell_qualifier_string = ''
-        if cell_qualifier:
-            cell_qualifier_string = cell_qualifier
-        cell_type_object = request.embed(cell_type, '@@object')
-        for sample in samples:
-            sample_object = request.embed(sample, '@@object')
-            sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object')
-            classifications = sample_object.get('classifications', [])
-            for classification in classifications:
-                source_biosample_classifications.add(classification)
-            source_biosample_terms.add(sample_term_object.get('term_name', ''))
-        summary_phrase = (
-            f'{cell_qualifier_string} {cell_type_object.get("term_name", "")} '
-            f'derived from {", ".join(source_biosample_terms)}'
-        ).strip()
-        return f'Pseudobulk of {summary_phrase}'
+    def summary(self, request, donors, preferred_assay_titles, merged, cell_annotation):
+        merged_phrase = ''
+        if merged:
+            merged_phrase = 'merged'
+        assay_phrase = ''
+        if preferred_assay_titles:
+            assay_phrase = ', '.join(sorted(preferred_assay_titles))
+        taxa_phrase = ''
+        if donors:
+            taxa = set()
+            for donor in donors:
+                donor_object = request.embed(donor, '@@object?skip_calculated=true')
+                taxa.add(donor_object.get('taxa', ''))
+            if len(taxa) > 1:
+                taxa_phrase = 'mixed taxa'
+            elif len(taxa) == 1:
+                taxa_phrase = list(taxa)[0]
+        summary = ' '.join([x for x in [
+            assay_phrase,
+            merged_phrase,
+            'pseudobulk of',
+            taxa_phrase,
+            cell_annotation
+        ] if x != ''])
+        return summary
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Cell Annotation',
             'type': 'string',
@@ -2856,11 +2863,12 @@ class PseudobulkSet(FileSet):
         cell_qualifier_string = None
         if cell_qualifier:
             cell_qualifier_string = cell_qualifier
-        cell_type_object = request.embed(cell_type, '@@object')
+        cell_type_object = request.embed(cell_type, '@@object?skip_calculated=true')
         cell_type_name = cell_type_object.get('term_name', '')
         for sample in samples:
-            sample_object = request.embed(sample, '@@object')
-            sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object')
+            sample_object = request.embed(
+                sample, '@@object_with_select_calculated_properties?field=sample_terms&field=classifications')
+            sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object?skip_calculated=true')
             classifications = sample_object.get('classifications', [])
             for classification in classifications:
                 parent_sample_classifications.add(classification)
@@ -3036,6 +3044,7 @@ class PseudobulkSet(FileSet):
 
     @calculated_property(
         condition='samples',
+        define=True,
         schema={
             'title': 'Donors',
             'description': 'The donors of the samples associated with this pseudobulk set.',

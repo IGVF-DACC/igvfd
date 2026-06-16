@@ -1,19 +1,33 @@
 import pytest
 
 
-def test_pseudobulk_set_summary(testapp, pseudobulk_set_base, in_vitro_cell_line):
+def test_pseudobulk_set_summary(testapp, pseudobulk_set_base, pseudobulk_set_merged, principal_analysis_set, in_vitro_cell_line, tissue, human_donor, rodent_donor):
     res = testapp.get(pseudobulk_set_base['@id']).json
-    assert res.get('summary', '') == 'Pseudobulk of endothelial cell of vascular tree derived from adrenal gland'
-    # Cell qualifier appears before the cell type.
+    assert res.get('summary', '') == 'pseudobulk of Mus musculus adrenal gland endothelial cell of vascular tree'
+    # Example with assay and cell qualifier.
     testapp.patch_json(
         pseudobulk_set_base['@id'],
         {
-            'samples': [in_vitro_cell_line['@id']],
+            'input_file_sets': [principal_analysis_set['@id']],
             'cell_qualifier': 'exhausted'
         }
     )
     res = testapp.get(pseudobulk_set_base['@id']).json
-    assert res.get('summary', '') == 'Pseudobulk of exhausted endothelial cell of vascular tree derived from K562'
+    assert res.get(
+        'summary', '') == 'STARR-seq pseudobulk of Mus musculus adrenal gland exhausted endothelial cell of vascular tree'
+    # Mixed taxa example.
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'donors': [rodent_donor['@id'], human_donor['@id']]
+        }
+    )
+    res = testapp.get(pseudobulk_set_base['@id']).json
+    assert res.get(
+        'summary', '') == 'STARR-seq pseudobulk of mixed taxa adrenal gland exhausted endothelial cell of vascular tree'
+    # Merged pseudobulk example.
+    res = testapp.get(pseudobulk_set_merged['@id']).json
+    assert res.get('summary', '') == 'STARR-seq merged pseudobulk of mixed taxa adrenal gland endothelial cell of vascular tree'
 
 
 def test_pseudobulk_set_donors(

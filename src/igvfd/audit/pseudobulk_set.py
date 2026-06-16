@@ -222,8 +222,8 @@ def audit_pseudobulk_set_mismatched_merged_cell_types(value, system):
         cell_type_links = ', '.join([audit_link(path_to_text(x), x) for x in sorted(list(cell_types))])
         detail = (
             f'Merged pseudobulk set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has the cell type {current_cell_type}, but its input pseudobulk sets have '
-            f'mismatched cell types: {cell_type_links}.'
+            f'has the cell type {audit_link(path_to_text(current_cell_type), current_cell_type)}, '
+            f'but its input pseudobulk sets have mismatched cell types: {cell_type_links}.'
         )
         yield AuditFailure(
             audit_message.get('audit_category', ''),
