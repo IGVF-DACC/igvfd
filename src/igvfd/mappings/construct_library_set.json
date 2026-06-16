@@ -1,6 +1,6 @@
 {
-    "hash": "9a38ed92c0b9504329a618001ed89b95",
-    "index_name": "construct_library_set_9a38ed92",
+    "hash": "9dc600ab8da3770ce72dc0a2cc8c87a7",
+    "index_name": "construct_library_set_9dc600ab",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -3901,7 +3901,7 @@
                             "summary": {
                                 "type": "keyword"
                             },
-                            "transcript_id": {
+                            "transcript_ids": {
                                 "type": "keyword"
                             },
                             "uuid": {
