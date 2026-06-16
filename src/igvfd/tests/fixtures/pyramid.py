@@ -23,6 +23,7 @@ def dummy_request(root, registry, app):
     request.root = root
     request.registry = registry
     request._stats = {}
+    request.context = root
     request.invoke_subrequest = app.invoke_subrequest
     apply_request_extensions(request)
     return request
