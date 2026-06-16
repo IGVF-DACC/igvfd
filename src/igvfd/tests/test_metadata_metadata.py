@@ -220,6 +220,7 @@ def file_():
         'href': '/files/ENCFF244PJU/@@download/ENCFF244PJU.bed.gz',
         'file_format': 'bed',
         'status': 'released',
+        'upload_status': 'validated',
         'replicate': {
             'rbns_protein_concentration': 20,
             'rbns_protein_concentration_units': 'nM'
