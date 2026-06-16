@@ -2851,8 +2851,8 @@ class PseudobulkSet(FileSet):
         }
     )
     def cell_annotation(self, request, cell_type, samples, cell_qualifier=None):
-        source_biosample_classifications = set()
-        source_biosample_terms = set()
+        parent_sample_classifications = set()
+        parent_sample_terms = set()
         cell_qualifier_string = None
         if cell_qualifier:
             cell_qualifier_string = cell_qualifier
@@ -2863,24 +2863,24 @@ class PseudobulkSet(FileSet):
             sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object')
             classifications = sample_object.get('classifications', [])
             for classification in classifications:
-                source_biosample_classifications.add(classification)
-            source_biosample_terms.add(sample_term_object.get('term_name', ''))
+                parent_sample_classifications.add(classification)
+            parent_sample_terms.add(sample_term_object.get('term_name', ''))
 
-        if len(source_biosample_classifications) == 1 and 'tissue/organ' in source_biosample_classifications:
+        if len(parent_sample_classifications) == 1 and 'tissue/organ' in parent_sample_classifications:
             phrase = ' '.join([x for x in [
-                ', '.join(sorted(source_biosample_terms)),
+                ', '.join(sorted(parent_sample_terms)),
                 cell_qualifier_string,
                 cell_type_name
             ] if x is not None])
-        elif len(source_biosample_classifications) == 1 and \
-                ('cell line' in source_biosample_classifications or 'differentiated cell specimen' in source_biosample_classifications) and \
-                len(source_biosample_terms) == 1 and \
-                list(source_biosample_terms)[0] != cell_type_name:
+        elif len(parent_sample_classifications) == 1 and \
+                ('cell line' in parent_sample_classifications or 'differentiated cell specimen' in parent_sample_classifications) and \
+                len(parent_sample_terms) == 1 and \
+                list(parent_sample_terms)[0] != cell_type_name:
             phrase = ' '.join([x for x in [
                 cell_qualifier_string,
                 cell_type_name,
                 'derived from',
-                ', '.join(sorted(source_biosample_terms))
+                ', '.join(sorted(parent_sample_terms))
             ] if x is not None])
         else:
             phrase = ' '.join([x for x in [
