@@ -1110,5 +1110,26 @@
                 "igvf_utils": true
             }
         }
+    },
+    "cell_annotation_properties": {
+        "cell_type": {
+            "title": "Cell Type",
+            "description": "The ontology term that describes the cell type of the cells in this pseudobulk and/or prediction.",
+            "type": "string",
+            "linkTo": "SampleTerm",
+            "submissionExample": {
+                "appscript": "[\"/sample-terms/CL_1230000/\"]",
+                "igvf_utils": "/sample-terms/CL_1230000/"
+            }
+        },
+        "cell_qualifier": {
+            "title": "Cell Qualifier",
+            "description": "A qualifier that provides additional detail about the cell type annotation or the source biosample.",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "early",
+                "igvf_utils": "early"
+            }
+        }
     }
 }
