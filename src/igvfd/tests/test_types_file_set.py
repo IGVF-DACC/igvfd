@@ -37,7 +37,7 @@ def test_control_link(testapp, measurement_set, curated_set_genome):
     assert set([file_set_id['@id'] for file_set_id in res.json.get('control_for')]) == {measurement_set['@id']}
 
 
-def test_gene_and_loci_list_for(testapp, base_prediction_set, construct_library_set_genome_wide, tabular_file):
+def test_gene_loci_list_for(testapp, base_prediction_set, construct_library_set_genome_wide, tabular_file):
     testapp.patch_json(
         base_prediction_set['@id'],
         {

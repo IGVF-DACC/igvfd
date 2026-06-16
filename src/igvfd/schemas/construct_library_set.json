@@ -404,6 +404,98 @@
                             },
                             {
                                 "required": [
+                                    "small_scale_orf_list"
+                                ],
+                                "properties": {
+                                    "scope": {
+                                        "oneOf": [
+                                            {
+                                                "const": "genes"
+                                            },
+                                            {
+                                                "const": "interactors"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "not": {
+                                    "anyOf": [
+                                        {
+                                            "required": [
+                                                "guide_type"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "tiling_modality"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "average_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "lower_bound_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "upper_bound_guide_coverage"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "required": [
+                                    "large_scale_orf_list"
+                                ],
+                                "properties": {
+                                    "scope": {
+                                        "oneOf": [
+                                            {
+                                                "const": "genes"
+                                            },
+                                            {
+                                                "const": "interactors"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "not": {
+                                    "anyOf": [
+                                        {
+                                            "required": [
+                                                "guide_type"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "tiling_modality"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "average_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "lower_bound_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "upper_bound_guide_coverage"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "required": [
                                     "control_types"
                                 ],
                                 "properties": {
@@ -496,11 +588,47 @@
             ]
         },
         "scope": {
-            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list are required, if scope is loci then small_scale_loci_list or large_scale_loci_list are required, if scope is exon then both exon and small_scale_gene_list are required, if scope is interactors then orf_list is required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, small_scale_loci_list, and large_scale_loci_list shouldn't be specified, if scope is alleles then small_scale_gene_list or large_scale_gene_list is required, if scope is targeton then both targeton and small_scale_gene_list are required, if scope is control then control_types is required.",
+            "comment": "If scope is genes then small_scale_gene_list, large_scale_gene_list, small_scale_orf_list, large_scale_orf_list is required, if scope is tile then both tile and small_scale_gene_list are required, if scope is loci then small_scale_loci_list or large_scale_loci_list are required, if scope is exon then both exon and small_scale_gene_list are required, if scope is interactors then small_scale_orf_list or large_scale_orf_list is required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, small_scale_loci_list, and large_scale_loci_list shouldn't be specified, if scope is alleles then small_scale_gene_list or large_scale_gene_list is required, if scope is targeton then both targeton and small_scale_gene_list are required, if scope is control then control_types is required.",
             "oneOf": [
                 {
                     "required": [
                         "small_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "small_scale_orf_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "large_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "large_scale_orf_list"
                     ],
                     "properties": {
                         "scope": {
@@ -538,18 +666,6 @@
                 },
                 {
                     "required": [
-                        "large_scale_gene_list"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "genes"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
                         "small_scale_loci_list"
                     ],
                     "properties": {
@@ -574,7 +690,7 @@
                 },
                 {
                     "required": [
-                        "orf_list",
+                        "small_scale_orf_list",
                         "small_scale_gene_list"
                     ],
                     "properties": {
@@ -587,7 +703,33 @@
                 },
                 {
                     "required": [
-                        "orf_list",
+                        "large_scale_orf_list",
+                        "small_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "interactors"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "small_scale_orf_list",
+                        "large_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "interactors"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "large_scale_orf_list",
                         "large_scale_gene_list"
                     ],
                     "properties": {
@@ -656,7 +798,8 @@
                             "large_scale_gene_list",
                             "small_scale_loci_list",
                             "large_scale_loci_list",
-                            "orf_list"
+                            "small_scale_orf_list",
+                            "large_scale_orf_list"
                         ]
                     },
                     "properties": {
@@ -777,6 +920,58 @@
                 }
             ]
         },
+        "small_scale_orf_list": {
+            "comment": "Specification of small_scale_orf_list requires that scope is genes or interactors and is mutually exclusive with specification of large_scale_orf_list.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "oneOf": [
+                                {
+                                    "const": "genes"
+                                },
+                                {
+                                    "const": "interactors"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "large_scale_orf_list"
+                        ]
+                    }
+                }
+            ]
+        },
+        "large_scale_orf_list": {
+            "comment": "Specification of large_scale_orf_list requires that scope is genes or interactors and is mutually exclusive with specification of small_scale_orf_list.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "oneOf": [
+                                {
+                                    "const": "genes"
+                                },
+                                {
+                                    "const": "interactors"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "small_scale_orf_list"
+                        ]
+                    }
+                }
+            ]
+        },
         "exon": {
             "comment": "Specification of exon requires small_scale_gene_list and that scope is exon.",
             "required": [
@@ -799,28 +994,6 @@
                 "scope": {
                     "enum": [
                         "tile"
-                    ]
-                }
-            }
-        },
-        "orf_list": {
-            "comment": "Specification of orf_list requires small_scale_gene_list or large_scale_gene_list that scope is interactors.",
-            "oneOf": [
-                {
-                    "required": [
-                        "small_scale_gene_list"
-                    ]
-                },
-                {
-                    "required": [
-                        "large_scale_gene_list"
-                    ]
-                }
-            ],
-            "properties": {
-                "scope": {
-                    "enum": [
-                        "interactors"
                     ]
                 }
             }
@@ -900,7 +1073,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "12"
+            "default": "13"
         },
         "accession": {
             "accessionType": "DS"
@@ -1053,12 +1226,13 @@
                 "igvf_utils": "/phenotype-terms/MONDO_0008564/, /phenotype-terms/MONDO_0005148/"
             }
         },
-        "orf_list": {
-            "title": "List of Open Reading Frames (ORF)",
-            "description": "List of Open Reading Frame this construct library was designed to target.",
+        "small_scale_orf_list": {
+            "title": "Small List of Open Reading Frames (ORF)",
+            "description": "The specific, small scale list of (<=500) Open Reading Frame this construct library was designed to target.",
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,
+            "maxItems": 500,
             "items": {
                 "title": "List of Open Reading Frames (ORF).",
                 "description": "List of Open Reading Frame this construct library was designed to target.",
@@ -1068,6 +1242,19 @@
             "submissionExample": {
                 "appscript": "[\"/open-reading-frame/CCSBORF1234/\", \"/open-reading-frame/CCSBORF5678/\", \"CCSBORF9876\"]",
                 "igvf_utils": "/open-reading-frame/CCSBORF1234/, /open-reading-frame/CCSBORF5678/, CCSBORF9876"
+            }
+        },
+        "large_scale_orf_list": {
+            "title": "Large List of Open Reading Frames (ORF)",
+            "description": "The large scale list of (>100 ORF) this construct library was designed to target.",
+            "type": "string",
+            "linkTo": [
+                "TabularFile",
+                "ReferenceFile"
+            ],
+            "submissionExample": {
+                "appscript": "IGVFFI5432ENEG or john-doe:orf_list",
+                "igvf_utils": "IGVFFI5432ENEG or john-doe:orf_list"
             }
         },
         "small_scale_gene_list": {

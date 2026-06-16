@@ -37,7 +37,7 @@ def test_assay_titles(testapp, primary_cell, base_expression_construct_library_s
 
 def test_summary(testapp, construct_library_set_genome_wide, base_expression_construct_library_set,
                  construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction,
-                 gene_zscan10_mm, gene_myc_hs, gene_myc_hs_with_allele, construct_library_set_y2h, construct_library_set_orf, orf_foxp, orf_zscan10, construct_library_set_reference_transduction, construct_library_set_editing_template_library):
+                 gene_zscan10_mm, gene_myc_hs, gene_myc_hs_with_allele, construct_library_set_y2h, construct_library_set_morf, construct_library_set_orf, orf_foxp, orf_zscan10, construct_library_set_reference_transduction, construct_library_set_editing_template_library, tabular_file):
     res = testapp.get(construct_library_set_genome_wide['@id'])
     assert res.json.get('summary') == 'guide (sgRNA) library targeting TF binding sites genome-wide'
     testapp.patch_json(
@@ -170,12 +170,14 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
         construct_library_set_orf['@id'],
         {
             'small_scale_gene_list': [gene_myc_hs['@id'], gene_zscan10_mm['@id']],
-            'orf_list': [orf_foxp['@id'], orf_zscan10['@id']]
+            'small_scale_orf_list': [orf_foxp['@id'], orf_zscan10['@id']]
         }
     )
     res = testapp.get(construct_library_set_orf['@id'])
     assert res.json.get(
         'summary') == 'expression vector library of 2 open reading frames (protein interactors)'
+    res = testapp.get(construct_library_set_morf['@id'])
+    assert res.json.get('summary') == 'overexpression vector library of 2 open reading frames (TF genes)'
     # control library summaries
     testapp.patch_json(
         construct_library_set_genome_wide['@id'],
@@ -325,3 +327,27 @@ def test_donors_cls(testapp, construct_library_set_genome_wide, in_vitro_cell_li
     )
     res = testapp.get(construct_library_set_genome_wide['@id'])
     assert res.json.get('donors') is None
+
+
+def test_integrated_content_files_dependency(testapp, app, submitter, lab, award, tabular_file, signal_file):
+    testapp.patch_json(submitter['@id'], {'groups': ['verified']})
+    test_user = _remote_user_testapp(app, submitter['uuid'])
+
+    item = {
+        'lab': lab['@id'],
+        'award': award['@id'],
+        'file_set_type': 'reporter library',
+        'scope': 'genome-wide',
+        'selection_criteria': ['accessible genome regions'],
+        'integrated_content_files': [tabular_file['@id']]
+    }
+    cls = test_user.post_json('/construct_library_set', item, status=201).json['@graph'][0]
+
+    res = test_user.patch_json(
+        cls['@id'],
+        {'integrated_content_files': [signal_file['@id']]}, expect_errors=True)
+    assert res.status_code == 422
+    res = test_user.patch_json(
+        cls['@id'],
+        {'integrated_content_files': [signal_file['@id'], tabular_file['@id']]}, expect_errors=True)
+    assert res.status_code == 422

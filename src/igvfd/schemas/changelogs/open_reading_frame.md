@@ -2,6 +2,12 @@
 
 ### Minor changes since schema version 3
 
+* Update `orf_id` regex to add `TFORF` as a pattern.
+* Update `dbxref` regex to add `addgene` as a pattern.
+* Add `barcode_sequence`.
+* Add `insert_sequence`.
+* Add `orf_sequence`.
+* Add `transcript_ids`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Update `aliases` regex to add `yang-li` as a namespace.
 * Add `preview_timestamp`.
