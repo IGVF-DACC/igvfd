@@ -459,5 +459,6 @@ def all_files(context, request):
             'elements': files_sets_and_files['files']
         }
     ).encode('utf-8')
+    new_request.context = request.context  # Needs context for permission check.
     file_metadata_report = FileMetadataReport(new_request)
     return file_metadata_report.generate()
