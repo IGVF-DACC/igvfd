@@ -779,6 +779,18 @@
                 },
                 {
                     "required": [
+                        "chromosomes"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "chromosome"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
                         "control_types"
                     ],
                     "properties": {
@@ -1137,6 +1149,7 @@
                 "interactors",
                 "alleles",
                 "targeton",
+                "chromosome",
                 "control"
             ],
             "enum_descriptions": {
@@ -1148,6 +1161,7 @@
                 "interactors": "The construct library was designed to target proteins that interact with a reference or variant proteins.",
                 "alleles": "The construct library was designed to target specific alleles of a gene.",
                 "targeton": "The construct library was designed to target a part of exons of a gene.",
+                "chromosome": "The construct library was designed to target specific chromosomes.",
                 "control": "The construct library was designed not to target any specific part of the genome or proteome, but to serves as a control for other construct libraries."
             },
             "submissionExample": {
@@ -1304,6 +1318,23 @@
             "submissionExample": {
                 "appscript": "{\"tile_id\": \"tile1\", \"tile_start\": 1, \"tile_end\": 207}",
                 "igvf_utils": "{\"tile_id\": \"tile1\", \"tile_start\": 1, \"tile_end\": 207}"
+            }
+        },
+        "chromosomes": {
+            "title": "Chromosomes",
+            "description": "The list of chromosomes this construct library was designed to target.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "Chromosome",
+                "description": "A chromosome this construct library was designed to target.",
+                "pattern": "^(chr[0-9A-Za-z_]+)$",
+                "type": "string"
+            },
+            "submissionExample": {
+                "appscript": "[\"chr8\", \"chr20\"]",
+                "igvf_utils": "chr8, chr20"
             }
         },
         "product_id": {

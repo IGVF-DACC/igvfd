@@ -247,3 +247,27 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
             'control_file_sets': [base_expression_construct_library_set['@id']]
         })
     assert res.status_code == 201
+    # CLS with scope "chromosome"
+    res = testapp.post_json(
+        '/construct_library_set',
+        {
+            'lab': lab['@id'],
+            'award': award['@id'],
+            'file_set_type': 'guide library',
+            'scope': 'chromosome',
+            'guide_type': 'sgRNA',
+            'selection_criteria': ['transcription start sites']
+        }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.post_json(
+        '/construct_library_set',
+        {
+            'lab': lab['@id'],
+            'award': award['@id'],
+            'file_set_type': 'guide library',
+            'scope': 'chromosome',
+            'guide_type': 'sgRNA',
+            'selection_criteria': ['transcription start sites'],
+            'chromosomes': ['chr2', 'chrX']
+        })
+    assert res.status_code == 201
