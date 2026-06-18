@@ -67,7 +67,12 @@ def audit_pseudobulk_set_sample_matches_input(value, system):
         for input_file_set in value.get('input_file_sets', []):
             input_file_set_object = system.get('request').embed(
                 input_file_set, '@@object_with_select_calculated_properties?field=samples')
-            input_file_set_samples.extend([x for x in input_file_set_object.get('samples', [])])
+            input_samples = input_file_set_object.get('samples', [])
+            input_file_set_samples.extend(input_samples)
+            for sample in [x for x in input_samples if x.startswith('/multiplexed-samples/')]:
+                input_sample_object = system.get('request').embed(sample, '@@object?skip_calculated=true')
+                if 'multiplexed_samples' in input_sample_object:
+                    input_file_set_samples.extend(input_sample_object.get('multiplexed_samples', []))
     if value.get('merged', False):
         if value.get('samples', []):
             if set(value.get('samples', [])) != set(input_file_set_samples):

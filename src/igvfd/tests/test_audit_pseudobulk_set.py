@@ -36,7 +36,8 @@ def test_audit_pseudobulk_set_sample_matches_input(
     pseudobulk_set_merged,
     analysis_set_base,
     measurement_set,
-    primary_cell
+    primary_cell,
+    multiplexed_sample
 ):
     testapp.patch_json(
         analysis_set_base['@id'],
@@ -58,6 +59,16 @@ def test_audit_pseudobulk_set_sample_matches_input(
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent samples'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Input file set's sample is a multiplexed sample
+    testapp.patch_json(
+        measurement_set['@id'],
+        {'samples': [multiplexed_sample['@id']]}
+    )
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent samples'
         for error in res.json['audit'].get('ERROR', [])
     )
     # Merged Pseudobulk Set
