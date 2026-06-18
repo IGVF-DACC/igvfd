@@ -309,7 +309,13 @@ class MetadataReport:
                 )
 
     def _set_include_controlled_access_files(self):
-        if self.request.has_permission('download_controlled_access_file'):
+        principals = self.request.effective_principals
+        allow_download_controlled_access_file = [
+            'group.admin' in principals,
+            'group.read-only-admin' in principals,
+            'viewing_group.IGVF' in principals,
+        ]
+        if any(allow_download_controlled_access_file):
             self.include_controlled_access_files = True
 
     def _initialize_report(self):
