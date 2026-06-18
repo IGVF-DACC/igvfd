@@ -1,5 +1,16 @@
 ## Changelog for *`analysis_step.json`*
 
+### Minor changes since schema version 14
+
+* Extend `input_content_types` enum list to include `ATAC-seq signal p-value`.
+* Extend `output_content_types` enum list to include `ATAC-seq signal p-value`.
+* Extend `input_content_types` enum list to include `ATAC-seq signal`.
+* Extend `output_content_types` enum list to include `ATAC-seq signal`.
+* Extend `input_content_types` enum list to include `RNA-seq signal p-value`.
+* Extend `output_content_types` enum list to include `RNA-seq signal p-value`.
+* Extend `input_content_types` enum list to include `RNA-seq signal`.
+* Extend `output_content_types` enum list to include `RNA-seq signal`.
+
 ### Schema version 14
 
 * Adjust `input_content_types` enum list to replace `differential TF enrichment quantifications` with `differential open reading frame quantifications`.

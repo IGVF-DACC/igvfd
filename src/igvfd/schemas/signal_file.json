@@ -102,6 +102,10 @@
                 "signal of all reads",
                 "signal of unique reads",
                 "signal p-value",
+                "ATAC-seq signal p-value",
+                "ATAC-seq signal",
+                "RNA-seq signal p-value",
+                "RNA-seq signal",
                 "TF binding scores"
             ],
             "enum_descriptions": {
@@ -114,6 +118,10 @@
                 "signal of all reads": "A signal coverage track that includes the combined coverage from all reads, both unique and multimapping, across the genome.",
                 "signal of unique reads": "A signal coverage track that represents the coverage specifically from unique reads, excluding multimapping reads.",
                 "signal p-value": "Nucleotide resolution signal coverage track, expressed as a p-value to reject the null hypothesis that the signal at that location is present in the control.",
+                "ATAC-seq signal p-value": "Nucleotide resolution signal coverage track from ATAC-seq data, expressed as a p-value to reject the null hypothesis that the signal at that location is present in the control.",
+                "ATAC-seq signal": "A signal coverage track from ATAC-seq data representing the density or intensity of sequencing reads across the genome.",
+                "RNA-seq signal p-value": "Nucleotide resolution signal coverage track from RNA-seq data, expressed as a p-value to reject the null hypothesis that the signal at that location is present in the control.",
+                "RNA-seq signal": "A signal coverage track from RNA-seq data representing the density or intensity of sequencing reads across the genome.",
                 "TF binding scores": "A signal track represents the transcription factor binding scores across the genome, called from assays such as ATAC-seq data."
             },
             "submissionExample": {
