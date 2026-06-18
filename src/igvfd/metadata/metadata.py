@@ -247,7 +247,7 @@ class MetadataReport:
             not file_matches_file_params(file_, self.positive_file_param_set),
             not file_satisfies_inequality_constraints(file_, self.positive_file_inequalities),
             'href' not in file_,
-            file_.get('controlled_access') and not self.include_controlled_access_files,
+            file_.get('controlled_access', False) and not self.include_controlled_access_files,
             file_not_uploaded(file_),
         ]
         return any(conditions)
@@ -370,7 +370,7 @@ class FileMetadataReport(MetadataReport):
     def _should_not_report_file(self, file_):
         conditions = [
             'href' not in file_,
-            file_.get('controlled_access') and not self.include_controlled_access_files,
+            file_.get('controlled_access', False) and not self.include_controlled_access_files,
             file_not_uploaded(file_),
         ]
         return any(conditions)
