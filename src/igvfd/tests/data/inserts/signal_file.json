@@ -110,5 +110,89 @@
             "IGVFFI0001GNRF"
         ],
         "strand_specificity": "unstranded"
+    },
+    {
+        "uuid": "6fe8f07e-f889-4220-bb28-fff4cc5f210d",
+        "accession": "IGVFFI0007ATSP",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:atac_signal_p_value"
+        ],
+        "status": "in progress",
+        "md5sum": "b905f8af2366ed85e2c791b729e02e0e",
+        "file_format": "bigwig",
+        "content_type": "ATAC-seq signal p-value",
+        "submitted_file_name": "/Users/igvf/igvf_files/atac_signal_p_value.bigwig",
+        "file_size": 49875235,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "strand_specificity": "unstranded"
+    },
+    {
+        "uuid": "b3f64067-f889-4220-bb28-fff4cc5f210d",
+        "accession": "IGVFFI0009ATSF",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:atac_signal"
+        ],
+        "status": "in progress",
+        "md5sum": "88be495a6f5a9762336f3b964f2fb70f",
+        "file_format": "bigwig",
+        "content_type": "ATAC-seq signal",
+        "submitted_file_name": "/Users/igvf/igvf_files/atac_signal.bigwig",
+        "file_size": 49878235,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "strand_specificity": "unstranded"
+    },
+    {
+        "uuid": "049f6037-f889-4220-bb28-fff4cc5f210d",
+        "accession": "IGVFFI0011RNSP",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:rna_signal_p_value"
+        ],
+        "status": "in progress",
+        "md5sum": "511079f988fe866fd099275b848e6e97",
+        "file_format": "bigwig",
+        "content_type": "RNA-seq signal p-value",
+        "submitted_file_name": "/Users/igvf/igvf_files/rna_signal_p_value.bigwig",
+        "file_size": 49876235,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "strand_specificity": "unstranded"
+    },
+    {
+        "uuid": "1e34132c-f889-4220-bb28-fff4cc5f210d",
+        "accession": "IGVFFI0013RNSF",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:rna_signal"
+        ],
+        "status": "in progress",
+        "md5sum": "551d2ee78d89f6db56953c2887c38333",
+        "file_format": "bigwig",
+        "content_type": "RNA-seq signal",
+        "submitted_file_name": "/Users/igvf/igvf_files/rna_signal.bigwig",
+        "file_size": 19875235,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "strand_specificity": "unstranded"
     }
 ]
