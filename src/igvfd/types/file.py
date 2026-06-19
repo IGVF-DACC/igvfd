@@ -101,6 +101,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'PWM': '.pwm',
     'rds': '.rds',
     'Robj': '.Robj',
+    'run': '.run',
     'sam': '.sam.gz',
     'sra': '.sra',
     'svg': '.svg',
