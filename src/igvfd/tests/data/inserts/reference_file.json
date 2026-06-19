@@ -521,21 +521,6 @@
         "controlled_access": false
     },
     {
-        "uuid": "d4e5f6a7-b8c9-4d0e-af2a-3b4c5d6e7f8a",
-        "accession": "IGVFFI0001DRGN",
-        "lab": "j-michael-cherry",
-        "award": "HG012012",
-        "aliases": [
-            "igvf:dragen_genome_reference"
-        ],
-        "md5sum": "7b3a9f2c8e4d6b1a0f5c7d3e9b4a8f2c",
-        "file_format": "run",
-        "content_type": "genome reference",
-        "file_set": "igvf:basic_analysis_set",
-        "assembly": "GRCh38",
-        "controlled_access": false
-    },
-    {
         "uuid": "48da5f72-1483-4ece-8826-130cc97430ed",
         "accession": "IGVFFI3344PWKG",
         "lab": "j-michael-cherry",
@@ -550,5 +535,25 @@
         "assembly": "PWK/PhJ - GRCm39",
         "transcriptome_annotation": "GENCODE M36",
         "controlled_access": false
+    },
+    {
+        "uuid": "d4e5f6a7-b8c9-4d0e-af2a-3b4c5d6e7f8a",
+        "accession": "IGVFFI0001DRGN",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:dragen_genome_reference"
+        ],
+        "md5sum": "7b3a9f2c8e4d6b1a0f5c7d3e9b4a8f2c",
+        "file_format": "run",
+        "content_type": "genome reference",
+        "file_set": "igvf:basic_analysis_set",
+        "assembly": "GRCh38",
+        "controlled_access": false,
+        "submitted_file_name": "/Users/igvf/igvf_files/dragen_genome_reference.run",
+        "file_size": 1235445,
+        "upload_status": "validated",
+        "release_timestamp": "2026-03-01T12:34:56Z",
+        "status": "released"
     }
 ]
