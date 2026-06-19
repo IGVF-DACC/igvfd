@@ -109,6 +109,12 @@ def get_cls_phrase(cls_set, only_cls_input=False):
     return cls_phrase
 
 
+def append_enrichment_phrase(assay_summary, enrichment_designs):
+    if enrichment_designs and assay_summary:
+        return f'{assay_summary} enriched for a targeted gene expression panel'
+    return assay_summary
+
+
 def get_file_set_props_for_summary_and_samples(request, file_set):
     '''Get properties from a file set needed for summary and samples calculation'''
     return request.embed(
@@ -117,7 +123,7 @@ def get_file_set_props_for_summary_and_samples(request, file_set):
         'field=@type&field=file_set_type&field=measurement_sets'
         '&field=input_file_sets&field=targeted_genes.symbol&field=targeted_proteins'
         '&field=assay_term&field=samples'
-        '&field=assay_titles&field=preferred_assay_titles'
+        '&field=assay_titles&field=preferred_assay_titles&field=enrichment_designs'
     )
 
 
@@ -775,7 +781,10 @@ class AnalysisSet(FileSet):
                         assay_terms.add(fileset_object['assay_term'])
                         preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
                         assays_titles = fileset_object.get('assay_titles', [])
-                        summary = format_assay(assays_titles, preferred_assay_titles)
+                        summary = append_enrichment_phrase(
+                            format_assay(assays_titles, preferred_assay_titles),
+                            fileset_object.get('enrichment_designs'),
+                        )
                         if summary:
                             all_assay_summaries.add(summary)
                     elif input_fileset.startswith('/auxiliary-sets/'):
@@ -1780,7 +1789,7 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, assay_term, assay_titles, preferred_assay_titles=None, samples=None, control_types=None, targeted_genes=None, targeted_proteins=None, construct_library_sets=None, crispr_screen_readout=None):
+    def summary(self, request, assay_term, assay_titles, preferred_assay_titles=None, samples=None, control_types=None, targeted_genes=None, targeted_proteins=None, construct_library_sets=None, crispr_screen_readout=None, enrichment_designs=None):
         if construct_library_sets is None:
             construct_library_sets = []
         modality_set = set()
@@ -1870,6 +1879,8 @@ class MeasurementSet(FileSet):
 
         if crispr_screen_readout:
             assay_phrase = f'{assay_phrase} with {crispr_screen_readout} readout'
+
+        assay_phrase = append_enrichment_phrase(assay_phrase, enrichment_designs)
 
         if len(cls_set) > 0:
             cls_phrase = f' {get_cls_phrase(cls_set)}'

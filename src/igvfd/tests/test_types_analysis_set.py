@@ -938,3 +938,6 @@ def test_enrichment_designs(testapp, measurement_set, analysis_set_base, tabular
     )
     res = testapp.get(analysis_set_base['@id'])
     assert set(res.json.get('enrichment_designs')) == {tabular_file['@id']}
+    assert res.json.get('summary') == (
+        'STARR-seq enriched for a targeted gene expression panel'
+    )

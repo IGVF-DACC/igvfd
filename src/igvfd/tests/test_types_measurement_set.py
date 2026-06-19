@@ -171,6 +171,30 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
         'summary') == 'scCRISPR screen (barcode based multiplexed) integrating a non-targeting, reference transduction expression vector library'
 
 
+def test_summary_enrichment_designs(testapp, measurement_set, tabular_file_primer_designs, measurement_set_perturb_seq):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'preferred_assay_titles': ['TAP-seq'],
+            'enrichment_designs': [tabular_file_primer_designs['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('summary') == (
+        'TAP-seq enriched for a targeted gene expression panel'
+    )
+    testapp.patch_json(
+        measurement_set_perturb_seq['@id'],
+        {
+            'enrichment_designs': [tabular_file_primer_designs['@id']]
+        }
+    )
+    res = testapp.get(measurement_set_perturb_seq['@id'])
+    assert res.json.get('summary') == (
+        'Perturb-seq with scRNA-seq readout enriched for a targeted gene expression panel'
+    )
+
+
 def test_summary_crispr_screen_readout(testapp, measurement_set_no_files):
     res = testapp.get(measurement_set_no_files['@id'])
     assert res.json.get('summary') == 'CRISPR FlowFISH screen with gRNA sequencing readout'
