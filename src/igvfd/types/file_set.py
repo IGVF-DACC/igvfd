@@ -127,6 +127,45 @@ def get_file_set_props_for_summary_and_samples(request, file_set):
     )
 
 
+def get_assay_contributing_input_file_sets(request, input_file_sets):
+    '''Return input file sets that contribute assay metadata to analysis-derived file sets.
+
+    Construct library sets are assay-agnostic and should not contribute assay information
+    when other input file sets are present. Analysis sets comprised solely of construct
+    library sets are an exception and inherit assays from those construct library sets.
+    When other input file sets are present, upstream analysis sets that are comprised
+    solely of construct library sets are also excluded.
+
+    Without this exclusion, unintended analyses of mixed assay types can result,
+    e.g. guide libraries shared across CRISPR FACS vs proliferation screens, reporter
+    libraries used in both bulk MPRA and MPRA (scQer) assays.
+
+    Construct library set-only analyses are exempt as otherwise the analyses would not
+    have any assay metadata.
+    '''
+    if not input_file_sets:
+        return []
+    if all(fileset.startswith('/construct-library-sets/') for fileset in input_file_sets):
+        return list(input_file_sets)
+    contributing = []
+    for fileset in input_file_sets:
+        if fileset.startswith('/construct-library-sets/'):
+            continue
+        if fileset.startswith('/analysis-sets/'):
+            analysis_object = request.embed(
+                fileset,
+                '@@object_with_select_calculated_properties?field=input_file_sets'
+            )
+            upstream_inputs = analysis_object.get('input_file_sets', [])
+            if upstream_inputs and all(
+                upstream_input.startswith('/construct-library-sets/')
+                for upstream_input in upstream_inputs
+            ):
+                continue
+        contributing.append(fileset)
+    return contributing
+
+
 def get_preferred_assay_slims(preferred_assay_titles):
     title_to_slims = {
         'RNA-seq': ['gene expression'],
@@ -1005,10 +1044,8 @@ class AnalysisSet(FileSet):
         }
     )
     def preferred_assay_titles(self, request, input_file_sets=None):
-        if input_file_sets is None:
-            input_file_sets = []
         preferred_assay_list = set()
-        for fileset in input_file_sets:
+        for fileset in get_assay_contributing_input_file_sets(request, input_file_sets):
             file_set_object = request.embed(
                 fileset,
                 '@@object_with_select_calculated_properties?field=preferred_assay_titles'
@@ -1056,10 +1093,8 @@ class AnalysisSet(FileSet):
         }
     )
     def assay_titles(self, request, input_file_sets=None):
-        if input_file_sets is None:
-            input_file_sets = []
         assay_list = set()
-        for fileset in input_file_sets:
+        for fileset in get_assay_contributing_input_file_sets(request, input_file_sets):
             file_set_object = request.embed(
                 fileset,
                 '@@object_with_select_calculated_properties?field=assay_titles'
@@ -1087,10 +1122,8 @@ class AnalysisSet(FileSet):
         }
     )
     def assay_slims(self, request, input_file_sets=None):
-        if input_file_sets is None:
-            input_file_sets = []
         assay_type = set()
-        for fileset in input_file_sets:
+        for fileset in get_assay_contributing_input_file_sets(request, input_file_sets):
             file_set_object = request.embed(
                 fileset,
                 '@@object_with_select_calculated_properties?field=assay_slims'
@@ -3031,10 +3064,8 @@ class PseudobulkSet(FileSet):
         }
     )
     def preferred_assay_titles(self, request, input_file_sets=None):
-        if input_file_sets is None:
-            input_file_sets = []
         preferred_assay_list = set()
-        for fileset in input_file_sets:
+        for fileset in get_assay_contributing_input_file_sets(request, input_file_sets):
             file_set_object = request.embed(
                 fileset,
                 '@@object_with_select_calculated_properties?field=preferred_assay_titles'
@@ -3085,10 +3116,8 @@ class PseudobulkSet(FileSet):
         }
     )
     def assay_titles(self, request, input_file_sets=None):
-        if input_file_sets is None:
-            input_file_sets = []
         assay_list = set()
-        for fileset in input_file_sets:
+        for fileset in get_assay_contributing_input_file_sets(request, input_file_sets):
             file_set_object = request.embed(
                 fileset,
                 '@@object_with_select_calculated_properties?field=assay_titles'
@@ -3116,10 +3145,8 @@ class PseudobulkSet(FileSet):
         }
     )
     def assay_slims(self, request, input_file_sets=None):
-        if input_file_sets is None:
-            input_file_sets = []
         assay_types = set()
-        for fileset in input_file_sets:
+        for fileset in get_assay_contributing_input_file_sets(request, input_file_sets):
             file_set_object = request.embed(
                 fileset,
                 '@@object_with_select_calculated_properties?field=assay_slims'
