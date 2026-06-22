@@ -96,3 +96,13 @@ def test_human_donor_upgrade_14_15(upgrader, human_donor_v14):
     value = upgrader.upgrade('human_donor', human_donor_v14, current_version='14', target_version='15')
     assert 'phenotypic_features' not in value
     assert value['schema_version'] == '15'
+
+
+def test_human_donor_upgrade_15_16(upgrader, human_donor_v15):
+    value = upgrader.upgrade('human_donor', human_donor_v15, current_version='15', target_version='16')
+    assert value['schema_version'] == '16'
+    assert value['dbxrefs'] == [
+        'IGSR:NA19223',
+        'ENCODE:ENCDO239INK'
+    ]
+    assert 'DepMap:ACH-001321' not in value['dbxrefs']

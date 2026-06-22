@@ -1,12 +1,16 @@
 ## Changelog for *`human_donor.json`*
 
+### Schema version 16
+
+* Update `dbxrefs` regex to allow `^DepMap:PT-[A-Za-z0-9]{6}$`.
+
 ### Minor changes since schema version 15
 
 * Update `dbxrefs` regex to allow DepMap ID accessions.
 * Extend `collections` enum list to include `PD single cell multiomics`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.2`.
 
-### Schema verion 15
+### Schema version 15
 
 * Remove `phenotypic_features`.
 

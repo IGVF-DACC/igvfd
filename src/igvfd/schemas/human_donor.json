@@ -58,7 +58,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "15"
+            "default": "16"
         },
         "related_donors": {
             "title": "Related Donors",
@@ -187,7 +187,7 @@
                 "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF file objects.",
                 "type": "string",
                 "minItems": 1,
-                "pattern": "(^GEO:SAMN\\d+$)|(^ENCODE:ENCDO\\d{3}[A-Z]{3}$)|^(IGSR):.+$|(^DepMap:ACH-\\d{6}$)"
+                "pattern": "(^GEO:SAMN\\d+$)|(^ENCODE:ENCDO\\d{3}[A-Z]{3}$)|^(IGSR):.+$|(^DepMap:PT-[A-Za-z0-9]{6}$)"
             },
             "submissionExample": {
                 "appscript": "[\"IGSR:NA12978\"]",
