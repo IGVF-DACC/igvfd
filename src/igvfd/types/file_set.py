@@ -141,12 +141,29 @@ def get_assay_contributing_input_file_sets(request, input_file_sets):
     libraries used in both bulk MPRA and MPRA (scQer) assays.
 
     Construct library set-only analyses are exempt as otherwise the analyses would not
-    have any assay metadata.
+    have any assay metadata. The same applies when inputs are exclusively upstream
+    analysis sets that are themselves comprised solely of construct library sets.
     '''
     if not input_file_sets:
         return []
     if all(fileset.startswith('/construct-library-sets/') for fileset in input_file_sets):
         return list(input_file_sets)
+    if all(fileset.startswith('/analysis-sets/') for fileset in input_file_sets):
+        cls_only_analyses = True
+        for fileset in input_file_sets:
+            analysis_object = request.embed(
+                fileset,
+                '@@object_with_select_calculated_properties?field=input_file_sets'
+            )
+            upstream_inputs = analysis_object.get('input_file_sets', [])
+            if not upstream_inputs or not all(
+                upstream_input.startswith('/construct-library-sets/')
+                for upstream_input in upstream_inputs
+            ):
+                cls_only_analyses = False
+                break
+        if cls_only_analyses:
+            return list(input_file_sets)
     contributing = []
     for fileset in input_file_sets:
         if fileset.startswith('/construct-library-sets/'):

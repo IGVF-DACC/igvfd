@@ -161,6 +161,19 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
     res = testapp.get(downstream_scqer['@id'])
     assert set(res.json.get('preferred_assay_titles')) == {'MPRA (scQer)'}
     assert set(res.json.get('assay_titles')) == {'massively parallel reporter assay'}
+    downstream_cls_only = testapp.post_json(
+        '/analysis_set',
+        {
+            'award': analysis_set_with_CLS_input['award'],
+            'lab': analysis_set_with_CLS_input['lab'],
+            'file_set_type': 'intermediate analysis',
+            'input_file_sets': [analysis_set_with_CLS_input['@id']],
+        },
+        status=201,
+    ).json['@graph'][0]
+    res = testapp.get(downstream_cls_only['@id'])
+    assert set(res.json.get('preferred_assay_titles')) == {'MPRA (scQer)', 'lentiMPRA'}
+    assert set(res.json.get('assay_titles')) == {'massively parallel reporter assay'}
     testapp.patch_json(
         analysis_set_base['@id'],
         {
