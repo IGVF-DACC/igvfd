@@ -33,7 +33,7 @@ def test_audit_inconsistent_ontology_term(testapp, assay_term_starr):
     res = testapp.get(assay_term_starr['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent ontology term'
-        for error in res.json['audit'].get('ERROR', [])
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
 
 
@@ -50,7 +50,7 @@ def test_audit_inconsistent_ontology_term_not_triggered_for_canonical_name(
         status=200,
     )
     res = testapp.get(assay_term_starr['@id'] + '@@audit')
-    errors = res.json['audit'].get('ERROR', [])
+    errors = res.json['audit'].get('INTERNAL_ACTION', [])
     assert not any(
         error['category'] == 'inconsistent ontology term' for error in errors
     )
@@ -58,7 +58,7 @@ def test_audit_inconsistent_ontology_term_not_triggered_for_canonical_name(
 
 def test_audit_ntr_skips_inconsistent_ontology_term(testapp, assay_term_ntr):
     res = testapp.get(assay_term_ntr['@id'] + '@@audit')
-    errors = res.json['audit'].get('ERROR', [])
+    errors = res.json['audit'].get('INTERNAL_ACTION', [])
     assert not any(
         error['category'] == 'inconsistent ontology term' for error in errors
     )
@@ -73,7 +73,7 @@ def test_audit_inconsistent_ontology_term_skipped_for_allowlisted_neuroectoderm(
     audit = testapp.get(res['@id'] + '@@audit').json['audit']
     assert not any(
         error['category'] == 'inconsistent ontology term'
-        for error in audit.get('ERROR', [])
+        for error in audit.get('INTERNAL_ACTION', [])
     )
 
 
@@ -86,7 +86,7 @@ def test_audit_inconsistent_ontology_term_skipped_for_allowlisted_gm25256_wtc11(
     audit = testapp.get(res['@id'] + '@@audit').json['audit']
     assert not any(
         error['category'] == 'inconsistent ontology term'
-        for error in audit.get('ERROR', [])
+        for error in audit.get('INTERNAL_ACTION', [])
     )
 
 
@@ -106,5 +106,5 @@ def test_audit_inconsistent_ontology_term_still_triggered_for_non_allowlisted_ub
     audit = testapp.get(res['@id'] + '@@audit').json['audit']
     assert any(
         error['category'] == 'inconsistent ontology term'
-        for error in audit.get('ERROR', [])
+        for error in audit.get('INTERNAL_ACTION', [])
     )
