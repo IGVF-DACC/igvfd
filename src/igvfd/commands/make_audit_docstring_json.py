@@ -1,28 +1,8 @@
+import importlib
 import json
+import pkgutil
 
-import igvfd.audit.analysis_set
-import igvfd.audit.analysis_step_version
-import igvfd.audit.auxiliary_set
-import igvfd.audit.biosample
-import igvfd.audit.construct_library_set
-import igvfd.audit.curated_set
-import igvfd.audit.file_set
-import igvfd.audit.file
-import igvfd.audit.formatter
-import igvfd.audit.human_donor
-import igvfd.audit.in_vitro_system
-import igvfd.audit.index_file
-import igvfd.audit.measurement_set
-import igvfd.audit.model_set
-import igvfd.audit.multiplexed_sample
-import igvfd.audit.ontology_term
-import igvfd.audit.pseudobulk_set
-import igvfd.audit.reference_file
-import igvfd.audit.sample
-import igvfd.audit.sequence_file
-import igvfd.audit.treatment
-import igvfd.audit.whole_organism
-import igvfd.audit.workflow
+import igvfd.audit
 
 
 NON_AUDIT_FUNCTION_NAMES = [
@@ -30,30 +10,15 @@ NON_AUDIT_FUNCTION_NAMES = [
     'audit_link'
 ]
 
+EXCLUDED_MODULES = {'igvfd.audit.item'}
+
 AUDIT_MODULES_TO_PROCESS = [
-    igvfd.audit.analysis_set,
-    igvfd.audit.analysis_step_version,
-    igvfd.audit.auxiliary_set,
-    igvfd.audit.biosample,
-    igvfd.audit.construct_library_set,
-    igvfd.audit.curated_set,
-    igvfd.audit.file_set,
-    igvfd.audit.file,
-    igvfd.audit.formatter,
-    igvfd.audit.human_donor,
-    igvfd.audit.in_vitro_system,
-    igvfd.audit.index_file,
-    igvfd.audit.measurement_set,
-    igvfd.audit.model_set,
-    igvfd.audit.multiplexed_sample,
-    igvfd.audit.ontology_term,
-    igvfd.audit.pseudobulk_set,
-    igvfd.audit.reference_file,
-    igvfd.audit.sample,
-    igvfd.audit.sequence_file,
-    igvfd.audit.treatment,
-    igvfd.audit.whole_organism,
-    igvfd.audit.workflow
+    importlib.import_module(name)
+    for importer, name, ispkg in pkgutil.walk_packages(
+        igvfd.audit.__path__,
+        prefix='igvfd.audit.'
+    )
+    if name not in EXCLUDED_MODULES
 ]
 
 
