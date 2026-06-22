@@ -52,7 +52,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
             'notes', 'originated_from', 'part_of', 'pooled_from', 'preview_timestamp', 'protocols',
             'release_timestamp', 'revoke_detail', 'schema_version', 'sorted_from', 'sorted_from_detail',
             'starting_amount', 'starting_amount_units', 'status', 'submitter_comment', 'submitted_by',
-            'supersedes', 'time_post_library_delivery', 'time_post_library_delivery_units'
+            'supersedes', 'time_post_library_delivery', 'time_post_library_delivery_units',
             'time_post_culture', 'time_post_culture_units', 'treatments', 'url'
         ]
         all_keys = parent.keys() | value.keys()
