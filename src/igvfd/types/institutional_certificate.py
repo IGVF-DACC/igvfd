@@ -21,7 +21,7 @@ class InstitutionalCertificate(Item):
     item_type = 'institutional_certificate'
     schema = load_schema('igvfd:schemas/institutional_certificate.json')
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
     ]

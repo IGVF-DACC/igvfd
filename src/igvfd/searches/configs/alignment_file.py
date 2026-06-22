@@ -88,6 +88,9 @@ def alignment_file():
             'award.component': {
                 'title': 'Award',
             },
+            'award.project': {
+                'title': 'Project',
+            },
             'upload_status': {
                 'title': 'Upload Status'
             },

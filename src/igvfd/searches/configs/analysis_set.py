@@ -184,6 +184,12 @@ def analysis_set():
                 'description': 'The project component the award is associated with.',
                 'optional': True
             },
+            'award.project': {
+                'title': 'Project',
+                'category': 'Provenance',
+                'description': 'The project the award is associated with.',
+                'optional': True
+            },
             'release_timestamp': {
                 'title': 'Release Date',
                 'category': 'Provenance',

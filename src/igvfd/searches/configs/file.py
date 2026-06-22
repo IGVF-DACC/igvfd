@@ -194,6 +194,12 @@ def file():
                 'optional': True,
                 'category': 'Provenance'
             },
+            'award.project': {
+                'title': 'Project',
+                'description': 'The project the award is associated with.',
+                'optional': True,
+                'category': 'Provenance'
+            },
             'release_timestamp': {
                 'title': 'Release Date',
                 'description': 'The date the file was publicly released.',

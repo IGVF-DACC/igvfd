@@ -27,7 +27,7 @@ class Modification(Item):
     base_types = ['Modification'] + Item.base_types
     schema = load_schema('igvfd:schemas/modification.json')
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('tagged_proteins', include=['@id', 'symbol'])

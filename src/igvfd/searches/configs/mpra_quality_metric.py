@@ -13,6 +13,9 @@ def mpra_quality_metric():
             'award.component': {
                 'title': 'Award',
             },
+            'award.project': {
+                'title': 'Project',
+            },
             'status': {
                 'title': 'Status'
             },

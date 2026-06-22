@@ -69,6 +69,9 @@ def technical_sample():
             'award.component': {
                 'title': 'Award',
             },
+            'award.project': {
+                'title': 'Project',
+            },
             'status': {
                 'title': 'Status'
             },

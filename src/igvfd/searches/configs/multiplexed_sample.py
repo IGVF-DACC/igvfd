@@ -117,6 +117,9 @@ def multiplexed_sample():
             'award.component': {
                 'title': 'Award',
             },
+            'award.project': {
+                'title': 'Project',
+            },
             'status': {
                 'title': 'Status'
             },
