@@ -1588,7 +1588,9 @@ def test_audit_missing_auxiliary_set_10x_MULTI_seq(
 def test_audit_targeted_genes(
     testapp,
     measurement_set,
+    measurement_set_mpra,
     assay_term_tf_chip,
+    assay_term_VAMP_seq,
     gene_myc_hs
 ):
     testapp.patch_json(
@@ -1636,6 +1638,33 @@ def test_audit_targeted_genes(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'unexpected targeted genes'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # VAMP-seq without targeted genes should trigger an audit error
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'assay_term': assay_term_VAMP_seq['@id'],
+            'preferred_assay_titles': ['VAMP-seq']
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing targeted genes'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # VAMP-seq with targeted genes should NOT trigger an audit error
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'assay_term': assay_term_VAMP_seq['@id'],
+            'preferred_assay_titles': ['VAMP-seq'],
+            'targeted_genes': [gene_myc_hs['@id']]
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected targeted genes'
         for error in res.json['audit'].get('ERROR', [])
     )
 

@@ -176,6 +176,19 @@ def assay_term_LABEL_seq(testapp):
 
 
 @pytest.fixture
+def assay_term_VAMP_seq(testapp):
+    item = {
+        'term_id': 'NTR:0001114',
+        'term_name': 'Variant abundance by massively parallel sequencing',
+        'preferred_assay_titles': [
+            'VAMP-seq',
+            'VAMP-seq (MultiSTEP)'
+        ]
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def assay_term_v1(assay_term_starr):
     item = assay_term_starr.copy()
     item.update({
