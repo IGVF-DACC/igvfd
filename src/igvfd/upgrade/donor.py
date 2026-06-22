@@ -205,7 +205,7 @@ def donor_14_15(value, system):
 
 
 @upgrade_step('human_donor', '15', '16')
-def human_donor_14_15(value, system):
+def human_donor_15_16(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3545
     if 'dbxrefs' in value:
         value['dbxrefs'] = [
