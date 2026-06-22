@@ -1114,7 +1114,7 @@
     "cell_annotation_properties": {
         "cell_type": {
             "title": "Cell Type",
-            "description": "The ontology term that describes the cell type of the cells in this pseudobulk and/or prediction.",
+            "description": "The ontology term that describes the cell type of the cells in this pseudobulk and/or pseudobulk-derived prediction.",
             "type": "string",
             "linkTo": "SampleTerm",
             "submissionExample": {
