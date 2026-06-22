@@ -212,3 +212,5 @@ def human_donor_15_16(value, system):
             dbxref for dbxref in value['dbxrefs']
             if not dbxref.startswith('DepMap:')
         ]
+        if not value['dbxrefs']:
+            del value['dbxrefs']

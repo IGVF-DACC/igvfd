@@ -98,7 +98,7 @@ def test_human_donor_upgrade_14_15(upgrader, human_donor_v14):
     assert value['schema_version'] == '15'
 
 
-def test_human_donor_upgrade_15_16(upgrader, human_donor_v15):
+def test_human_donor_upgrade_15_16(upgrader, human_donor_v15, human_donor_v15_2):
     value = upgrader.upgrade('human_donor', human_donor_v15, current_version='15', target_version='16')
     assert value['schema_version'] == '16'
     assert value['dbxrefs'] == [
@@ -106,3 +106,6 @@ def test_human_donor_upgrade_15_16(upgrader, human_donor_v15):
         'ENCODE:ENCDO239INK'
     ]
     assert 'DepMap:ACH-001321' not in value['dbxrefs']
+    value = upgrader.upgrade('human_donor', human_donor_v15_2, current_version='15', target_version='16')
+    assert value['schema_version'] == '16'
+    assert 'dbxrefs' not in value
