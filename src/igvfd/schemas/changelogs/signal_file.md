@@ -2,6 +2,10 @@
 
 ### Minor changes since schema version 14
 
+* Extend `content_type` enum list to include `ATAC-seq signal p-value`.
+* Extend `content_type` enum list to include `ATAC-seq signal`.
+* Extend `content_type` enum list to include `RNA-seq signal p-value`.
+* Extend `content_type` enum list to include `RNA-seq signal`.
 * Extend `collections` enum list to include `PD single cell multiomics`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.2`.
 * Add calculated property `preferred_assay_slims`.
