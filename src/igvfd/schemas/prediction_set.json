@@ -71,6 +71,9 @@
         },
         {
             "$ref": "mixins.json#/is_on_anvil"
+        },
+        {
+            "$ref": "mixins.json#/cell_annotation_properties"
         }
     ],
     "dependentSchemas": {
@@ -223,6 +226,29 @@
                     }
                 }
             ]
+        },
+        "donors": {
+            "comment": "If donors are specified, then no cell_type or cell_qualifier should be specified.",
+            "not": {
+                "anyOf": [
+                    {
+                        "required": [
+                            "cell_type"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "cell_qualifier"
+                        ]
+                    }
+                ]
+            }
+        },
+        "cell_qualifier": {
+            "comment": "If cell_qualifier is specified, cell_type must also be specified.",
+            "required": [
+                "cell_type"
+            ]
         }
     },
     "properties": {
@@ -324,6 +350,12 @@
                 "appscript": "[\"/phenotype-terms/MONDO_0008564/\", \"/phenotype-terms/MONDO_0005148/\"]",
                 "igvf_utils": "/phenotype-terms/MONDO_0008564/, /phenotype-terms/MONDO_0005148/"
             }
+        },
+        "cell_type": {
+            "description": "The ontology term that describes the cell type of the cells in predictions derived from single cell pseudobulks. Other non-pseudobulk based predictions should not specify this property."
+        },
+        "cell_qualifier": {
+            "description": "A qualifier that provides additional detail about the cell type annotation in predictions derived from single cell pseudobulks. Other non-pseudobulk based predictions should not specify this property."
         }
     },
     "fuzzy_searchable_fields": [

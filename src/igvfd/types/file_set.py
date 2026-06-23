@@ -350,6 +350,63 @@ def collapse_pd_multiplexed_disease_terms(
     return f"{terms_by_classification} with and without Parkinson's"
 
 
+def get_cell_annotation(request, cell_type, samples, cell_qualifier=None):
+    source_biosample_classifications = set()
+    source_biosample_terms = set()
+    cell_qualifier_string = cell_qualifier if cell_qualifier else None
+    cell_type_name = request.embed(cell_type, '@@object').get('term_name', '')
+
+    for sample in samples:
+        sample_object = request.embed(sample, '@@object')
+        sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object')
+        classifications = sample_object.get('classifications', [])
+        for classification in classifications:
+            source_biosample_classifications.add(classification)
+        source_biosample_terms.add(sample_term_object.get('term_name', ''))
+
+    if len(source_biosample_classifications) == 1 and 'tissue/organ' in source_biosample_classifications:
+        phrase = ' '.join([x for x in [
+            ', '.join(sorted(source_biosample_terms)),
+            cell_qualifier_string,
+            cell_type_name
+        ] if x is not None])
+    elif len(source_biosample_classifications) == 1 and \
+            ('cell line' in source_biosample_classifications or 'differentiated cell specimen' in source_biosample_classifications) and \
+            len(source_biosample_terms) == 1 and \
+            list(source_biosample_terms)[0] != cell_type_name:
+        phrase = ' '.join([x for x in [
+            cell_qualifier_string,
+            cell_type_name,
+            'derived from',
+            ', '.join(sorted(source_biosample_terms))
+        ] if x is not None])
+    else:
+        phrase = ' '.join([x for x in [
+            cell_qualifier_string,
+            cell_type_name
+        ] if x is not None])
+
+    return phrase
+
+
+def get_virtual_and_taxa_phrases_from_samples(request, samples):
+    '''Get virtual and taxa phrases from samples.'''
+    virtual_phrase = 'virtual '
+    taxa = set()
+    taxa_phrase = ''
+    for sample in samples:
+        sample_object = request.embed(sample, '@@object')
+        taxa.add(sample_object.get('taxa', ''))
+        # only put 'virtual' in final summary if all samples are virtual
+        if 'virtual' not in sample_object.get('summary'):
+            virtual_phrase = ''
+    if len(taxa) > 1:
+        taxa_phrase = 'mixed species '
+    else:
+        taxa_phrase = f'{list(taxa)[0]} '
+    return virtual_phrase, taxa_phrase
+
+
 EMBEDDED_FILE_FIELDS = [
     '@id',
     'accession',
@@ -2312,7 +2369,8 @@ class PredictionSet(FileSet):
         Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name', 'status']),
         Path('software_versions.software', include=['@id', 'summary',
-             'software', 'title', 'source_url', 'download_id', 'status'])
+             'software', 'title', 'source_url', 'download_id', 'status']),
+        Path('cell_type', include=['@id', 'term_name', 'term_id', 'status', 'definition'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
@@ -2358,7 +2416,7 @@ class PredictionSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type, software_versions=None, assessed_genes=None, scope=None, files=None, samples=None, donors=None, associated_phenotypes=None):
+    def summary(self, request, file_set_type, software_versions=None, assessed_genes=None, scope=None, files=None, samples=None, donors=None, associated_phenotypes=None, cell_annotation=None):
         # Get scope info
         scope_phrase = ''
         if scope:
@@ -2386,6 +2444,7 @@ class PredictionSet(FileSet):
         # Get sample or donor info
         taxa = set()
         samples_phrase = ''
+
         if donors:  # for generic human/mouse prediction, only add taxa phrase to summary
             virtual_phrase = 'virtual '
             # only put 'virtual' in final summary if all donors are virtual
@@ -2395,20 +2454,12 @@ class PredictionSet(FileSet):
                 if not donor_object.get('virtual'):
                     virtual_phrase = ''
             samples_phrase = f'{virtual_phrase}{", ".join(sorted(taxa))}'
-        else:  # for sample-specific predictions, use sample count in summary if the list is long
+        elif cell_annotation:  # if there is cell annotation, it take precedence over samples
+            virtual_phrase, taxa_phrase = get_virtual_and_taxa_phrases_from_samples(request, samples)
+            samples_phrase = f'{virtual_phrase}{taxa_phrase}{cell_annotation}'
+        else:  # for sample-specific predictions without cell annotation
             if len(samples) > 3:
-                virtual_phrase = 'virtual '
-                taxa_phrase = ''
-                for sample in samples:
-                    sample_object = request.embed(sample, '@@object')
-                    taxa.add(sample_object.get('taxa', ''))
-                    # only put 'virtual' in final summary if all samples are virtual
-                    if 'virtual' not in sample_object.get('summary'):
-                        virtual_phrase = ''
-                if len(taxa) > 1:
-                    taxa_phrase = 'mixed species '
-                else:
-                    taxa_phrase = f'{list(taxa)[0]} '
+                virtual_phrase, taxa_phrase = get_virtual_and_taxa_phrases_from_samples(request, samples)
                 samples_phrase = f'{len(samples)} {virtual_phrase}{taxa_phrase}samples'
             else:  # list out the samples explicitly, take unique set of sample summaries
                 sample_term_phrases = set()
@@ -2426,6 +2477,26 @@ class PredictionSet(FileSet):
             phenotypes_phrase,
             f'in {samples_phrase}'
         ]))
+
+    @calculated_property(
+        condition='cell_type',
+        define=True,
+        schema={
+            'title': 'Cell Annotation',
+            'type': 'string',
+            'description': 'The cell annotation of this File Set.',
+            'notSubmittable': True,
+        }
+    )
+    def cell_annotation(self, request, samples=None, cell_type=None, cell_qualifier=None):
+        # Samples is an either/or with donors. cell_type and cell_qualifiers are optional.
+        # Only calculate cell annotation if the prediction set has samples AND cell_type
+        if samples:
+            if cell_type:
+                output = get_cell_annotation(request, cell_type, samples, cell_qualifier)
+                return output
+            return None
+        return None
 
 
 @collection(
@@ -2889,44 +2960,7 @@ class PseudobulkSet(FileSet):
         }
     )
     def cell_annotation(self, request, cell_type, samples, cell_qualifier=None):
-        parent_sample_classifications = set()
-        parent_sample_terms = set()
-        cell_qualifier_string = None
-        if cell_qualifier:
-            cell_qualifier_string = cell_qualifier
-        cell_type_object = request.embed(cell_type, '@@object?skip_calculated=true')
-        cell_type_name = cell_type_object.get('term_name', '')
-        for sample in samples:
-            sample_object = request.embed(
-                sample, '@@object_with_select_calculated_properties?field=sample_terms&field=classifications')
-            sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object?skip_calculated=true')
-            classifications = sample_object.get('classifications', [])
-            for classification in classifications:
-                parent_sample_classifications.add(classification)
-            parent_sample_terms.add(sample_term_object.get('term_name', ''))
-
-        if len(parent_sample_classifications) == 1 and 'tissue/organ' in parent_sample_classifications:
-            phrase = ' '.join([x for x in [
-                ', '.join(sorted(parent_sample_terms)),
-                cell_qualifier_string,
-                cell_type_name
-            ] if x is not None])
-        elif len(parent_sample_classifications) == 1 and \
-                ('cell line' in parent_sample_classifications or 'differentiated cell specimen' in parent_sample_classifications) and \
-                len(parent_sample_terms) == 1 and \
-                list(parent_sample_terms)[0] != cell_type_name:
-            phrase = ' '.join([x for x in [
-                cell_qualifier_string,
-                cell_type_name,
-                'derived from',
-                ', '.join(sorted(parent_sample_terms))
-            ] if x is not None])
-        else:
-            phrase = ' '.join([x for x in [
-                cell_qualifier_string,
-                cell_type_name
-            ] if x is not None])
-        return phrase
+        return get_cell_annotation(request, cell_type, samples, cell_qualifier=cell_qualifier)
 
     @calculated_property(
         schema={

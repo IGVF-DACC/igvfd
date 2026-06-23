@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, gene_zscan10_mm, tabular_file, analysis_step_version, in_vitro_organoid, in_vitro_cell_line, tissue, human_tissue, primary_cell, human_donor, phenotype_term_alzheimers, phenotype_term_myocardial_infarction, phenotype_term_ncit_feature, phenotype_term_from_go):
+def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, gene_zscan10_mm, tabular_file, analysis_step_version, in_vitro_organoid, in_vitro_cell_line, tissue, human_tissue, primary_cell, human_donor, phenotype_term_alzheimers, phenotype_term_myocardial_infarction, phenotype_term_ncit_feature, phenotype_term_from_go, in_vitro_differentiated_cell, sample_term_brown_adipose_tissue):
     # Test Prediction Set summary if without assessed genes
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get('summary') == 'functional effect prediction in Mus musculus strain1 (male) K562 cell line'
@@ -191,6 +191,19 @@ def test_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs
     assert res.json.get(
         'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with 4 phenotypes in virtual Homo sapiens adrenal gland tissue/organ'
 
+    # Test prediction set summary with cell annotation information
+    testapp.patch_json(
+        base_prediction_set['@id'],
+        {
+            'cell_type': sample_term_brown_adipose_tissue['@id'],
+            'cell_qualifier': 'exhausted',
+            'samples': [in_vitro_differentiated_cell['@id']]
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'])
+    assert res.json.get(
+        'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with 4 phenotypes in Homo sapiens exhausted brown adipose tissue derived from K562'
+
 
 def test_software_versions(testapp, tabular_file, base_prediction_set, analysis_step_version, software_version):
     res = testapp.get(base_prediction_set['@id'])
@@ -204,3 +217,29 @@ def test_software_versions(testapp, tabular_file, base_prediction_set, analysis_
     res = testapp.get(base_prediction_set['@id'])
     assert set([software_version_object['@id']
                for software_version_object in res.json.get('software_versions')]) == {software_version['@id']}
+
+
+def test_cell_annotation_pred_set(testapp, base_prediction_set, model_set_no_input, pseudobulk_set_base, tissue, sample_term_endothelial_cell):
+    res = testapp.get(base_prediction_set['@id'])
+    assert res.json.get('cell_annotation') is None
+
+    testapp.patch_json(
+        base_prediction_set['@id'],
+        {
+            'input_file_sets': [pseudobulk_set_base['@id'],
+                                model_set_no_input['@id']],
+            'samples': [tissue['@id']],
+            'cell_type': sample_term_endothelial_cell['@id']
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'])
+    assert res.json.get('cell_annotation') == 'adrenal gland endothelial cell of vascular tree'
+
+    testapp.patch_json(
+        base_prediction_set['@id'],
+        {
+            'cell_qualifier': 'exhausted'
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'])
+    assert res.json.get('cell_annotation') == 'adrenal gland exhausted endothelial cell of vascular tree'

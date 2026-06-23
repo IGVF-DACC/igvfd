@@ -48,6 +48,9 @@
         },
         {
             "$ref": "mixins.json#/is_on_anvil"
+        },
+        {
+            "$ref": "mixins.json#/cell_annotation_properties"
         }
     ],
     "dependentSchemas": {
@@ -141,16 +144,6 @@
                 "igvf_utils": "pseudobulk analysis"
             }
         },
-        "cell_type": {
-            "title": "Cell Type",
-            "description": "The ontology term that describes the cell type of the cells in this pseudobulk.",
-            "type": "string",
-            "linkTo": "SampleTerm",
-            "submissionExample": {
-                "appscript": "[\"/sample-terms/CL_1230000/\"]",
-                "igvf_utils": "/sample-terms/CL_1230000/"
-            }
-        },
         "samples": {
             "title": "Parent Samples",
             "description": "The sample(s) from which the cells in this pseudobulk originated.",
@@ -165,15 +158,6 @@
             "submissionExample": {
                 "appscript": "[\"IGVFSM02881437\", \"john-doe:tissue01\"]",
                 "igvf_utils": "IGVFSM02881437 or john-doe:tissue01"
-            }
-        },
-        "cell_qualifier": {
-            "title": "Cell Qualifier",
-            "description": "A qualifier that provides additional detail about the cell type annotation or the parent sample.",
-            "type": "string",
-            "submissionExample": {
-                "appscript": "early",
-                "igvf_utils": "early"
             }
         },
         "merged": {
