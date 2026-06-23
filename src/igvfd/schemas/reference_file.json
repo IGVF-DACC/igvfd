@@ -443,6 +443,16 @@
                 "igvf_utils": "GENCODE:Release 44, GRC:GCA_000001405.29_GRCh38.p14, ENSEMBL:ENSG00000101126"
             }
         },
+        "version": {
+            "title": "Version",
+            "description": "The version of this reference file, used for external files loaded into the IGVF catalog.",
+            "type": "string",
+            "permission": "admin_only",
+            "submissionExample": {
+                "appscript": "v1.0",
+                "igvf_utils": "v1.0"
+            }
+        },
         "sources": {
             "$merge": "mixins.json#/product_info/sources"
         }

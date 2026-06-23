@@ -1664,6 +1664,32 @@ class CuratedSet(FileSet):
 
     @calculated_property(
         schema={
+            'title': 'Versions',
+            'description': 'The versions of the released reference files in this file set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Version',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def versions(self, request, files=None):
+        if files:
+            version_values = set()
+            released_files = paths_filtered_by_status(request, files, include=['released'])
+            for current_file_path in released_files:
+                file_object = request.embed(
+                    current_file_path, '@@object_with_select_calculated_properties?field=version')
+                version = file_object.get('version')
+                if version:
+                    version_values.add(version)
+            return sorted(version_values) or None
+
+    @calculated_property(
+        schema={
             'title': 'Summary',
             'type': 'string',
             'notSubmittable': True,

@@ -98,7 +98,8 @@
         ],
         "file_set": "igvf:analysis_set_with_input",
         "assembly": "GRCh38",
-        "controlled_access": false
+        "controlled_access": false,
+        "version": "v1.0"
     },
     {
         "uuid": "20571fef-4569-4c5f-87c0-a5e4404acc40",

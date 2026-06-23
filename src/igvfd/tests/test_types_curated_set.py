@@ -52,6 +52,27 @@ def test_curated_set_transcriptome_annotation(testapp, reference_file, reference
     assert {'GENCODE 40', 'GENCODE 41'} == set(curated_set_result.get('transcriptome_annotations', []))
 
 
+def test_curated_set_versions(testapp, reference_file, reference_file_two, curated_set_genome):
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'file_set': curated_set_genome['@id'],
+            'version': 'v1.0',
+            'status': 'released',
+            'release_timestamp': '2024-03-06T12:34:56Z'
+        }
+    )
+    testapp.patch_json(
+        reference_file_two['@id'],
+        {
+            'file_set': curated_set_genome['@id'],
+            'version': 'v2.0'
+        }
+    )
+    curated_set_result = testapp.get(curated_set_genome['@id']).json
+    assert curated_set_result.get('versions') == ['v1.0']
+
+
 def test_curated_set_summary(testapp, reference_file, reference_file_two, curated_set_genome):
     testapp.patch_json(
         reference_file['@id'],
