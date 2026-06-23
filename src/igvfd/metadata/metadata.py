@@ -79,6 +79,10 @@ def file_satisfies_inequality_constraints(file_, positive_file_inequalities):
     return True
 
 
+def file_not_uploaded(file_):
+    return file_['upload_status'] in ('pending', 'file not found')
+
+
 def group_audits_by_files_and_type(audits):
     grouped_file_audits = defaultdict(lambda: defaultdict(list))
     grouped_other_audits = defaultdict(list)
@@ -122,6 +126,7 @@ class MetadataReport:
         self.file_column_to_fields_mapping = OrderedDict()
         self.raw_only = self.query_string.is_param('option', 'raw')
         self.csv = CSVGenerator()
+        self.include_controlled_access_files = False
 
     def _get_column_to_fields_mapping(self):
         return METADATA_COLUMN_TO_FIELDS_MAPPING
@@ -242,6 +247,8 @@ class MetadataReport:
             not file_matches_file_params(file_, self.positive_file_param_set),
             not file_satisfies_inequality_constraints(file_, self.positive_file_inequalities),
             'href' not in file_,
+            file_.get('controlled_access', False) and not self.include_controlled_access_files,
+            file_not_uploaded(file_),
         ]
         return any(conditions)
 
@@ -301,12 +308,23 @@ class MetadataReport:
                     self._output_sorted_row(experiment_data, file_data)
                 )
 
+    def _set_include_controlled_access_files(self):
+        principals = self.request.effective_principals
+        allow_download_controlled_access_file = [
+            'group.admin' in principals,
+            'group.read-only-admin' in principals,
+            'viewing_group.IGVF' in principals,
+        ]
+        if any(allow_download_controlled_access_file):
+            self.include_controlled_access_files = True
+
     def _initialize_report(self):
         self._build_header()
         self._split_column_and_fields_by_experiment_and_file()
         self._set_split_file_filters()
         self._set_positive_file_param_set()
         self._set_positive_file_inequalities()
+        self._set_include_controlled_access_files()
 
     def _build_params(self):
         self._add_fields_to_param_list()
@@ -358,6 +376,8 @@ class FileMetadataReport(MetadataReport):
     def _should_not_report_file(self, file_):
         conditions = [
             'href' not in file_,
+            file_.get('controlled_access', False) and not self.include_controlled_access_files,
+            file_not_uploaded(file_),
         ]
         return any(conditions)
 
@@ -382,6 +402,7 @@ class FileMetadataReport(MetadataReport):
     def _initialize_report(self):
         self._build_header()
         self._split_column_and_fields_by_experiment_and_file()
+        self._set_include_controlled_access_files()
 
 
 def _get_metadata(context, request):
@@ -444,5 +465,6 @@ def all_files(context, request):
             'elements': files_sets_and_files['files']
         }
     ).encode('utf-8')
+    new_request.context = request.context  # Needs context for permission check.
     file_metadata_report = FileMetadataReport(new_request)
     return file_metadata_report.generate()

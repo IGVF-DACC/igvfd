@@ -220,6 +220,7 @@ def file_():
         'href': '/files/ENCFF244PJU/@@download/ENCFF244PJU.bed.gz',
         'file_format': 'bed',
         'status': 'released',
+        'upload_status': 'validated',
         'replicate': {
             'rbns_protein_concentration': 20,
             'rbns_protein_concentration_units': 'nM'
@@ -1370,6 +1371,35 @@ def test_metadata_metadata_report_should_not_report_file(dummy_request):
     mr._initialize_report()
     mr._build_params()
     assert mr._should_not_report_file(file_())
+
+
+def test_metadata_metadata_report_should_not_report_file_internal_filters(dummy_request):
+    from igvfd.metadata.metadata import MetadataReport
+    dummy_request.environ['QUERY_STRING'] = (
+        'type=Experiment'
+    )
+    mr = MetadataReport(dummy_request)
+    mr._initialize_report()
+    mr._build_params()
+    f = file_()
+    f['upload_status'] = 'validated'
+    assert not mr._should_not_report_file(f)
+    f['upload_status'] = 'pending'
+    assert mr._should_not_report_file(f)
+    f['upload_status'] = 'file not found'
+    assert mr._should_not_report_file(f)
+    f['upload_status'] = 'validation exempted'
+    assert not mr._should_not_report_file(f)
+    f['upload_status'] = 'validated'
+    assert not mr._should_not_report_file(f)
+    f['controlled_access'] = False
+    assert not mr._should_not_report_file(f)
+    f['controlled_access'] = True
+    assert mr._should_not_report_file(f)
+    mr.include_controlled_access_files = True
+    assert not mr._should_not_report_file(f)
+    f['upload_status'] = 'pending'
+    assert mr._should_not_report_file(f)
 
 
 def test_metadata_metadata_report_get_experiment_data(dummy_request):
