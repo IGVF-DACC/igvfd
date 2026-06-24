@@ -202,3 +202,15 @@ def donor_14_15(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1804
     if 'phenotypic_features' in value:
         del value['phenotypic_features']
+
+
+@upgrade_step('human_donor', '15', '16')
+def human_donor_15_16(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3545
+    if 'dbxrefs' in value:
+        value['dbxrefs'] = [
+            dbxref for dbxref in value['dbxrefs']
+            if not dbxref.startswith('DepMap:')
+        ]
+        if not value['dbxrefs']:
+            del value['dbxrefs']
