@@ -1665,7 +1665,7 @@ class CuratedSet(FileSet):
     @calculated_property(
         schema={
             'title': 'Versions',
-            'description': 'The versions of the released reference files in this file set.',
+            'description': 'The versions of the reference files for external data loaded into the IGVF catalog.',
             'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
@@ -1677,16 +1677,15 @@ class CuratedSet(FileSet):
         }
     )
     def versions(self, request, files=None):
+        version_values = set()
+        files = paths_filtered_by_status(request, files)
         if files:
-            version_values = set()
-            released_files = paths_filtered_by_status(request, files, include=['released'])
-            for current_file_path in released_files:
+            for current_file_path in files:
                 file_object = request.embed(
-                    current_file_path, '@@object_with_select_calculated_properties?field=version')
-                version = file_object.get('version')
-                if version:
-                    version_values.add(version)
-            return sorted(version_values) or None
+                    current_file_path, '@@object_with_select_calculated_properties?field=version&field=@type')
+                if 'ReferenceFile' in file_object.get('@type', []) and file_object.get('version'):
+                    version_values.add(file_object.get('version'))
+        return sorted(version_values) or None
 
     @calculated_property(
         schema={
