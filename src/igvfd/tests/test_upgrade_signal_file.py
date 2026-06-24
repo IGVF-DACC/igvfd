@@ -79,3 +79,11 @@ def test_signal_file_upgrade_13_14(upgrader, signal_file_v13, sample_term_K562):
     assert value['schema_version'] == '14'
     assert 'cell_type_annotation' not in value
     assert f'Cell type annotation: {sample_term_K562["@id"]}.' in value['notes']
+
+
+def test_signal_file_upgrade_14_15(upgrader, signal_file_v14):
+    value = upgrader.upgrade('signal_file', signal_file_v14, current_version='14', target_version='15')
+    assert value['content_type'] == 'signal'
+    assert value['schema_version'] == '15'
+    assert 'This file\'s content_type was fold change over control, and changed to signal via upgrade.' in value[
+        'notes']

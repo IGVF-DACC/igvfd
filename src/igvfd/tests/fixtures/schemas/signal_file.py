@@ -168,3 +168,13 @@ def signal_file_v13(signal_file, sample_term_K562):
         'cell_type_annotation': sample_term_K562['@id'],
     })
     return item
+
+
+@pytest.fixture
+def signal_file_v14(signal_file):
+    item = signal_file.copy()
+    item.update({
+        'schema_version': '14',
+        'content_type': 'fold change over control'
+    })
+    return item

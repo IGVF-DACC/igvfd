@@ -1,5 +1,12 @@
 ## Changelog for *`analysis_step.json`*
 
+### Schema version 15
+
+* Adjust `input_content_types` enum list to remove `fold change over control`.
+* Adjust `output_content_types` enum list to remove `fold change over control`.
+* Extend `input_content_types` enum list to include `allelic effects`.
+* Extend `output_content_types` enum list to include `allelic effects`.
+
 ### Minor changes since schema version 14
 
 * Extend `input_content_types` enum list to include `ATAC-seq signal p-value`.

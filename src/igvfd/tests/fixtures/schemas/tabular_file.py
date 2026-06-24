@@ -421,3 +421,13 @@ def tabular_file_v23(tabular_file):
         'content_type': 'differential TF enrichment quantifications'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v24(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '24',
+        'content_type': 'fold change over control'
+    })
+    return item

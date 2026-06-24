@@ -170,3 +170,20 @@ def analysis_step_v13(testapp, base_workflow):
         'analysis_step_types': ['quantification']
     }
     return item
+
+
+@pytest.fixture
+def analysis_step_v14(testapp, base_workflow):
+    item = {
+        'schema_version': '14',
+        'step_label': 'tabular-analysis-step',
+        'title': 'Tabular Analysis Step',
+        'input_content_types': [
+            'editing templates',
+            'fold change over control',
+            'guide quantifications',
+        ],
+        'output_content_types': ['guide RNA sequences'],
+        'analysis_step_types': ['quantification']
+    }
+    return item

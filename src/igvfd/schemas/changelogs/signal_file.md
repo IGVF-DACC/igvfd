@@ -1,5 +1,9 @@
 ## Changelog for *`signal_file.json`*
 
+### Schema version 15
+
+* Adjust `content_type` enum list to remove `fold change over control`.
+
 ### Minor changes since schema version 14
 
 * Extend `content_type` enum list to include `ATAC-seq signal p-value`.

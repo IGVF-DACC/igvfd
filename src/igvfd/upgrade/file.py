@@ -913,3 +913,31 @@ def tabular_file_23_24(value, system):
         )
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('tabular_file', '24', '25')
+def tabular_file_24_25(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3520
+    notes = value.get('notes', '')
+    if value.get('content_type') == 'fold change over control':
+        value['content_type'] = 'allelic effects'
+        notes += (
+            ' This file\'s content_type was fold change over control, '
+            'and changed to allelic effects via upgrade.'
+        )
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('signal_file', '14', '15')
+def signal_file_14_15(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3520
+    notes = value.get('notes', '')
+    if value.get('content_type') == 'fold change over control':
+        value['content_type'] = 'signal'
+        notes += (
+            ' This file\'s content_type was fold change over control, '
+            'and changed to signal via upgrade.'
+        )
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
