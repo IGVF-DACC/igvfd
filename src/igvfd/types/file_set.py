@@ -1682,8 +1682,8 @@ class CuratedSet(FileSet):
         if files:
             for current_file_path in files:
                 file_object = request.embed(
-                    current_file_path, '@@object_with_select_calculated_properties?field=version&field=@type')
-                if 'ReferenceFile' in file_object.get('@type', []) and file_object.get('version'):
+                    current_file_path, '@@object_with_select_calculated_properties?field=version&field=@type&field=status')
+                if 'ReferenceFile' in file_object.get('@type', []) and file_object.get('version') and file_object.get('status') != 'archived':
                     version_values.add(file_object.get('version'))
         return sorted(version_values) or None
 

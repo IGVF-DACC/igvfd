@@ -57,7 +57,11 @@ def test_curated_set_versions(testapp, reference_file, reference_file_two, curat
         reference_file['@id'],
         {
             'file_set': curated_set_genome['@id'],
-            'version': 'v1.0'
+            'version': 'v1.0',
+            'status': 'archived',
+            'upload_status': 'validated',
+            'file_size': 1234,
+            'release_timestamp': '2024-03-06T12:34:56Z'
         }
     )
     testapp.patch_json(
@@ -68,7 +72,7 @@ def test_curated_set_versions(testapp, reference_file, reference_file_two, curat
         }
     )
     curated_set_result = testapp.get(curated_set_genome['@id']).json
-    assert curated_set_result.get('versions') == ['v1.0', 'v2.0']
+    assert curated_set_result.get('versions') == ['v2.0']
 
 
 def test_curated_set_summary(testapp, reference_file, reference_file_two, curated_set_genome):
