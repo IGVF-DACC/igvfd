@@ -1011,6 +1011,16 @@
                 }
             }
         },
+        "chromosomes": {
+            "comment": "Specification of chromosomes requires that scope is chromosome.",
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "chromosome"
+                    ]
+                }
+            }
+        },
         "average_insert_size": {
             "comment": "Specification of average_insert_size is mutually exclusive with specification of lower_bound_insert_size and upper_bound_insert_size.",
             "not": {
