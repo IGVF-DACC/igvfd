@@ -158,7 +158,9 @@ def get_assay_contributing_input_file_sets(request, input_file_sets):
         )
         return curated_object.get('file_set_type') == 'external sequencing data'
 
-    def inputs_are_cls_only_equivalent(filesets):
+    def inputs_are_cls_only_equivalent(filesets, inspected_filesets=None):
+        if inspected_filesets is None:
+            inspected_filesets = set()
         for fileset in filesets:
             if fileset.startswith('/construct-library-sets/'):
                 continue
@@ -167,12 +169,17 @@ def get_assay_contributing_input_file_sets(request, input_file_sets):
                     return False
                 continue
             if fileset.startswith('/analysis-sets/'):
+                if fileset in inspected_filesets:
+                    return False
                 analysis_object = request.embed(
                     fileset,
                     '@@object_with_select_calculated_properties?field=input_file_sets'
                 )
                 upstream_inputs = analysis_object.get('input_file_sets', [])
-                if not upstream_inputs or not inputs_are_cls_only_equivalent(upstream_inputs):
+                if not upstream_inputs:
+                    return False
+                inspected_filesets.add(fileset)
+                if not inputs_are_cls_only_equivalent(upstream_inputs, inspected_filesets):
                     return False
                 continue
             return False
@@ -184,7 +191,10 @@ def get_assay_contributing_input_file_sets(request, input_file_sets):
             '@@object_with_select_calculated_properties?field=input_file_sets'
         )
         upstream_inputs = analysis_object.get('input_file_sets', [])
-        return upstream_inputs and inputs_are_cls_only_equivalent(upstream_inputs)
+        return upstream_inputs and inputs_are_cls_only_equivalent(
+            upstream_inputs,
+            {fileset},
+        )
 
     if all(fileset.startswith('/construct-library-sets/') for fileset in input_file_sets):
         return list(input_file_sets)
@@ -195,15 +205,9 @@ def get_assay_contributing_input_file_sets(request, input_file_sets):
         ):
             return list(input_file_sets)
     if inputs_are_cls_only_equivalent(input_file_sets):
-        cls_inputs = [
-            fileset for fileset in input_file_sets
-            if fileset.startswith('/construct-library-sets/')
-        ]
-        if cls_inputs:
-            return cls_inputs
         return [
             fileset for fileset in input_file_sets
-            if curated_set_has_assay_metadata(fileset)
+            if fileset.startswith('/construct-library-sets/')
         ]
     contributing = []
     for fileset in input_file_sets:
