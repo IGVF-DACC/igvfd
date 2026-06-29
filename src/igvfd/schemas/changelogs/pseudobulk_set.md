@@ -1,8 +1,11 @@
 ## Changelog for *`pseudobulk_set.json`*
 
-### Schema version 2
+### Minor changes since schema version 2
 
 * Update `samples` to allow linking to MultiplexedSample.
+
+### Schema version 2
+
 * Add `merged`.
 
 ### Minor changes since schema version 1
