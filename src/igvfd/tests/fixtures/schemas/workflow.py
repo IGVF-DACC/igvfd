@@ -111,3 +111,13 @@ def workflow_v7(base_workflow):
         'preferred_assay_titles': ['perturb-SHARE-seq']
     })
     return item
+
+
+@pytest.fixture
+def workflow_v8(base_workflow):
+    item = base_workflow.copy()
+    item.update({
+        'schema_version': '8',
+        'preferred_assay_titles': ['scATAC-seq']
+    })
+    return item

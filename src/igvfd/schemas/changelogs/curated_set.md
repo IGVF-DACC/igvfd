@@ -1,10 +1,15 @@
 ## Changelog for *`curated_set.json`*
 
+### Schema version 11
+
+* Adjust `preferred_assay_titles` enum list to replace `scATAC-seq` with `snATAC-seq`.
+
 ### Minor changes since schema version 10
 
 * Add calculated property `versions`.
 
 ### Schema version 10
+
 * Adjust `preferred_assay_titles` enum list to replace `perturb-SHARE-seq` with `MORF-SHARE-seq`.
 
 ### Minor changes since schema version 9

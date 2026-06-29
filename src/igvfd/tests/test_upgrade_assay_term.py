@@ -187,3 +187,9 @@ def test_assay_term_upgrade_23_24(upgrader, assay_term_v23):
     value = upgrader.upgrade('assay_term', assay_term_v23, current_version='23', target_version='24')
     assert value['schema_version'] == '24'
     assert value['preferred_assay_titles'] == ['MORF-SHARE-seq']
+
+
+def test_assay_term_upgrade_24_25(upgrader, assay_term_v24):
+    value = upgrader.upgrade('assay_term', assay_term_v24, current_version='24', target_version='25')
+    assert value['schema_version'] == '25'
+    assert value['preferred_assay_titles'] == ['snATAC-seq']

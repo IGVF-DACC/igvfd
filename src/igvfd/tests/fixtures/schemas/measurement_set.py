@@ -731,3 +731,13 @@ def measurement_set_v46(measurement_set):
         'crispr_readout': 'gRNA sequencing',
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v47(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '47',
+        'preferred_assay_titles': ['scATAC-seq'],
+    })
+    return item

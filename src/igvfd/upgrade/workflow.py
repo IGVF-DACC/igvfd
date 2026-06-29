@@ -66,3 +66,16 @@ def workflow_7_8(value, system):
         value['preferred_assay_titles'] = preferred_assay_titles
         notes += ' This workflow previously used perturb-SHARE-seq as preferred_assay_titles, but it has been updated to MORF-SHARE-seq via an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('workflow', '8', '9')
+def workflow_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3563
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    notes = value.get('notes', '')
+    if 'scATAC-seq' in preferred_assay_titles:
+        index = preferred_assay_titles.index('scATAC-seq')
+        preferred_assay_titles[index] = 'snATAC-seq'
+        value['preferred_assay_titles'] = preferred_assay_titles
+        notes += ' This workflow previously used scATAC-seq as preferred_assay_titles, but it has been updated to snATAC-seq via an upgrade.'
+        value['notes'] = notes.strip()

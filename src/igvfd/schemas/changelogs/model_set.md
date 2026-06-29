@@ -1,5 +1,9 @@
 ## Changelog for *`model_set.json`*
 
+### Schema version 10
+
+* Adjust `preferred_assay_titles` enum list to replace `scATAC-seq` with `snATAC-seq`.
+
 ### Schema version 9
 
 * Adjust `preferred_assay_titles` enum list to replace `perturb-SHARE-seq` with `MORF-SHARE-seq`.

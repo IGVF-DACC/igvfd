@@ -1,6 +1,11 @@
 ## Changelog for *`workflow.json`*
 
+### Schema version 9
+
+* Adjust `preferred_assay_titles` enum list to replace `scATAC-seq` with `snATAC-seq`.
+
 ### Schema version 8
+
 * Adjust `preferred_assay_titles` enum list to replace `perturb-SHARE-seq` with `MORF-SHARE-seq`.
 
 ### Minor changes since schema version 7
