@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 3
 
+* Update `orf_id` regex to allow any number suffix as a pattern.
 * Update `orf_id` regex to add `TFORF` as a pattern.
 * Update `dbxref` regex to add `addgene` as a pattern.
 * Add `barcode_sequence`.
