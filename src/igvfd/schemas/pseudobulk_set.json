@@ -153,7 +153,10 @@
             "items": {
                 "title": "Parent Sample",
                 "type": "string",
-                "linkTo": "Biosample"
+                "linkTo": [
+                    "Biosample",
+                    "MultiplexedSample"
+                ]
             },
             "submissionExample": {
                 "appscript": "[\"IGVFSM02881437\", \"john-doe:tissue01\"]",
