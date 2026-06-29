@@ -2,7 +2,7 @@
 
 ### Schema version 48
 
-* Adjust `preferred_assay_titles` enum list to replace `scATAC-seq` with `snATAC-seq`.
+* Adjust `preferred_assay_titles` enum list to remove `scATAC-seq`.
 
 ### Schema version 47
 
