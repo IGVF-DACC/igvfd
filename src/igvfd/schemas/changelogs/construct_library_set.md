@@ -1,6 +1,6 @@
 ## Changelog for *`construct_library_set.json`*
 
-### Minor changes since schema version 12
+### Minor changes since schema version 13
 
 * Extend `scope` enum list to include `chromosome`.
 * Add `chromosomes`.
