@@ -150,6 +150,7 @@
                             "enum": [
                                 "aggregated calibrated coding variant effects",
                                 "allele specific RNA pseudobulk counts",
+                                "allelic effects",
                                 "bin paired count",
                                 "calibrated coding variant effects",
                                 "caQTL",
@@ -177,7 +178,6 @@
                                 "eQTL",
                                 "exon constraint",
                                 "fold change of post-selection and pre-selection",
-                                "fold change over control",
                                 "fragments",
                                 "functional impact score",
                                 "gene quantifications",
@@ -313,7 +313,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "24"
+            "default": "25"
         },
         "catalog_adapters": {
             "title": "IGVF Catalog Adapters",
@@ -337,6 +337,7 @@
             "enum": [
                 "aggregated calibrated coding variant effects",
                 "allele specific RNA pseudobulk counts",
+                "allelic effects",
                 "barcode onlist",
                 "barcode replacement",
                 "barcode to cluster mapping",
@@ -378,7 +379,6 @@
                 "external source data",
                 "exon constraint",
                 "eQTL",
-                "fold change over control",
                 "fold change of post-selection and pre-selection",
                 "fragments",
                 "functional impact score",
@@ -456,6 +456,7 @@
             "enum_descriptions": {
                 "aggregated calibrated coding variant effects": "A file mapping coding variants to their aggregated experimental and predictive calibrated evidence across functional assays and computational predictors.",
                 "allele specific RNA pseudobulk counts": "Allele specific pseudobulk cluster by gene name count matrix.",
+                "allelic effects": "Editing effects from genome editing experiments that may encompass multiple edits at a locus, distinct from variant effects which describe effects of single genetic variants.",
                 "barcode onlist": "A list of all known barcode sequences that have been included in the assay kit and are available during library preparation.",
                 "barcode replacement": "A file containing original barcodes and the new barcodes used to replace the original barcodes. One common application is to use in preprocessing Parse SPLiT-seq data with the single cell uniform pipeline.",
                 "barcode to cluster mapping": "A barcode to cluster mapping file lists the unique sequencing barcodes used in a single-cell experiment and their corresponding cluster label after using a clustering algorithm.",
@@ -492,7 +493,6 @@
                 "element quantifications": "The quantified levels of specific genomic elements.",
                 "element to gene interactions": "A file summarizing the results of an E2G based prediction to identify the linkage between genomic elements and genes.",
                 "elements reference": "References for the genomic elements studied, including details like genomic coordinates or identifiers.",
-                "fold change over control": "The ratio of expression levels or other measurements in an experimental condition relative to a control.",
                 "fold change of post-selection and pre-selection": "The log2 fold change of the variant allele ratio (variant reads divided by reference reads) between post-selection and pre-selection for each variant.",
                 "fragments": "The quantified levels of ATAC-seq fragments.",
                 "functional impact score": "The functional impact scores file reports quantitative metrics indicating how genetic variants affect protein localization (based on GFP fluorescence channel data) and cellular morphology (based on DNA, mitochondria, and actin/Golgi/plasma membrane staining). These scores identify variants causing significant deviations in protein localization or morphological characteristics compared to technical baseline controls.",

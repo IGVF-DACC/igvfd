@@ -155,3 +155,11 @@ def test_tabular_file_upgrade_23_24(upgrader, tabular_file_v23):
     assert value['schema_version'] == '24'
     assert 'This file\'s content_type was differential TF enrichment quantifications, but has been upgraded to differential open reading frame quantifications.' in value[
         'notes']
+
+
+def test_tabular_file_upgrade_24_25(upgrader, tabular_file_v24):
+    value = upgrader.upgrade('tabular_file', tabular_file_v24, current_version='24', target_version='25')
+    assert value['content_type'] == 'allelic effects'
+    assert value['schema_version'] == '25'
+    assert 'This file\'s content_type was fold change over control, and changed to allelic effects via upgrade.' in value[
+        'notes']

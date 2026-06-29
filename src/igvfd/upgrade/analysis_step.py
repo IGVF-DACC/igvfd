@@ -305,3 +305,26 @@ def analysis_step_13_14(value, system):
     value['output_content_types'] = sorted(set(new_output_content_types))
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_step', '14', '15')
+def analysis_step_14_15(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3520
+    notes = value.get('notes', '')
+    upgrade_map = {
+        'fold change over control': 'allelic effects',
+    }
+    for key in ['input_content_types', 'output_content_types']:
+        new_content_types = []
+        for content_type in value.get(key, []):
+            if content_type in upgrade_map:
+                new_content_types.append(upgrade_map[content_type])
+                notes += (
+                    f' This analysis step\'s {key} included {content_type}, '
+                    f'but has been upgraded to {upgrade_map[content_type]}.'
+                )
+            else:
+                new_content_types.append(content_type)
+        value[key] = sorted(set(new_content_types))
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

@@ -103,3 +103,17 @@ def test_analysis_step_upgrade_13_14(upgrader, analysis_step_v13):
     ) in value['notes']
     assert 'This analysis step\'s output_content_types included differential TF enrichment quantifications, but has been upgraded to differential open reading frame quantifications.' in value[
         'notes']
+
+
+def test_analysis_step_upgrade_14_15(upgrader, analysis_step_v14):
+    value = upgrader.upgrade('analysis_step', analysis_step_v14, current_version='14', target_version='15')
+    assert value['schema_version'] == '15'
+    assert set(value['input_content_types']) == {
+        'allelic effects',
+        'editing templates',
+        'guide quantifications',
+    }
+    assert (
+        'This analysis step\'s input_content_types included fold change over control, '
+        'but has been upgraded to allelic effects.'
+    ) in value['notes']

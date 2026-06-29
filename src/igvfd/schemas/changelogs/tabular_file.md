@@ -1,5 +1,10 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 25
+
+* Adjust `content_type` enum list to remove `fold change over control`.
+* Extend `content_type` enum list to include `allelic effects`.
+
 ### Schema version 24
 
 * Adjust `content_type` enum list to replace `differential TF enrichment quantifications` with `differential open reading frame quantifications`.

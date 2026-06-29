@@ -51,7 +51,6 @@
         "release_timestamp": "2024-08-06T12:34:56Z",
         "input_content_types": [
             "peaks",
-            "fold change over control",
             "control signal",
             "read-depth signal",
             "raw signal",
@@ -119,7 +118,7 @@
             "editing templates",
             "element quantifications",
             "elements reference",
-            "fold change over control",
+            "allelic effects",
             "guide quantifications",
             "tissue positions",
             "sample sort parameters",
