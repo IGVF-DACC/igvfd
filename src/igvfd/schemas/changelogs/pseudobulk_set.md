@@ -2,6 +2,7 @@
 
 ### Schema version 2
 
+* Update `samples` to allow linking to MultiplexedSample.
 * Add `merged`.
 
 ### Minor changes since schema version 1
