@@ -73,7 +73,7 @@ def test_calculated_samples(testapp, measurement_set, analysis_set_base, constru
     assert set([sample['@id'] for sample in res.json.get('samples')]) == {in_vitro_cell_line['@id']}
 
 
-def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurement_set_multiome, principal_analysis_set, measurement_set_no_files, base_auxiliary_set, analysis_set_with_CLS_input, construct_library_set_reporter, primary_cell):
+def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurement_set_multiome, principal_analysis_set, measurement_set_no_files, base_auxiliary_set, analysis_set_with_CLS_input, construct_library_set_reporter, primary_cell, curated_set_genome):
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -132,6 +132,50 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
     assert set(res.json.get('assay_titles')) == {'massively parallel reporter assay'}
     res = testapp.get(construct_library_set_reporter['@id'])
     assert set(res.json.get('preferred_assay_titles')) == {'lentiMPRA'}
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set_mpra['@id'], construct_library_set_reporter['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert set(res.json.get('preferred_assay_titles')) == {'lentiMPRA'}
+    assert set(res.json.get('assay_titles')) == {'massively parallel reporter assay'}
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [construct_library_set_reporter['@id'], curated_set_genome['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert set(res.json.get('preferred_assay_titles')) == {'lentiMPRA'}
+    assert set(res.json.get('assay_titles')) == {'massively parallel reporter assay'}
+    cls_curated_intermediate = testapp.post_json(
+        '/analysis_set',
+        {
+            'award': analysis_set_with_CLS_input['award'],
+            'lab': analysis_set_with_CLS_input['lab'],
+            'file_set_type': 'intermediate analysis',
+            'input_file_sets': [construct_library_set_reporter['@id'], curated_set_genome['@id']],
+        },
+        status=201,
+    ).json['@graph'][0]
+    res = testapp.get(cls_curated_intermediate['@id'])
+    assert set(res.json.get('preferred_assay_titles')) == {'lentiMPRA'}
+    assert set(res.json.get('assay_titles')) == {'massively parallel reporter assay'}
+    downstream_mpra = testapp.post_json(
+        '/analysis_set',
+        {
+            'award': analysis_set_with_CLS_input['award'],
+            'lab': analysis_set_with_CLS_input['lab'],
+            'file_set_type': 'intermediate analysis',
+            'input_file_sets': [cls_curated_intermediate['@id'], measurement_set_mpra['@id']],
+        },
+        status=201,
+    ).json['@graph'][0]
+    res = testapp.get(downstream_mpra['@id'])
+    assert set(res.json.get('preferred_assay_titles')) == {'lentiMPRA'}
+    assert set(res.json.get('assay_titles')) == {'massively parallel reporter assay'}
     measurement_set_scqer = testapp.post_json(
         '/measurement_set',
         {
@@ -173,15 +217,6 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
     ).json['@graph'][0]
     res = testapp.get(downstream_cls_only['@id'])
     assert set(res.json.get('preferred_assay_titles')) == {'MPRA (scQer)', 'lentiMPRA'}
-    assert set(res.json.get('assay_titles')) == {'massively parallel reporter assay'}
-    testapp.patch_json(
-        analysis_set_base['@id'],
-        {
-            'input_file_sets': [measurement_set_mpra['@id'], construct_library_set_reporter['@id']]
-        }
-    )
-    res = testapp.get(analysis_set_base['@id'])
-    assert set(res.json.get('preferred_assay_titles')) == {'lentiMPRA'}
     assert set(res.json.get('assay_titles')) == {'massively parallel reporter assay'}
 
 

@@ -133,8 +133,9 @@ def get_assay_contributing_input_file_sets(request, input_file_sets):
     Construct library sets are assay-agnostic and should not contribute assay information
     when other input file sets are present. Analysis sets comprised solely of construct
     library sets are an exception and inherit assays from those construct library sets.
+    Curated sets without external sequencing data are treated like construct library sets.
     When other input file sets are present, upstream analysis sets that are comprised
-    solely of construct library sets are also excluded.
+    solely of construct library sets and/or assay-less curated sets are also excluded.
 
     Without this exclusion, unintended analyses of mixed assay types can result,
     e.g. guide libraries shared across CRISPR FACS vs proliferation screens, reporter
@@ -142,42 +143,77 @@ def get_assay_contributing_input_file_sets(request, input_file_sets):
 
     Construct library set-only analyses are exempt as otherwise the analyses would not
     have any assay metadata. The same applies when inputs are exclusively upstream
-    analysis sets that are themselves comprised solely of construct library sets.
+    analysis sets that are themselves comprised solely of construct library sets
+    and/or assay-less curated sets.
     '''
     if not input_file_sets:
         return []
+
+    def curated_set_has_assay_metadata(fileset):
+        if not fileset.startswith('/curated-sets/'):
+            return False
+        curated_object = request.embed(
+            fileset,
+            '@@object_with_select_calculated_properties?field=file_set_type'
+        )
+        return curated_object.get('file_set_type') == 'external sequencing data'
+
+    def inputs_are_cls_only_equivalent(filesets):
+        for fileset in filesets:
+            if fileset.startswith('/construct-library-sets/'):
+                continue
+            if fileset.startswith('/curated-sets/'):
+                if curated_set_has_assay_metadata(fileset):
+                    return False
+                continue
+            if fileset.startswith('/analysis-sets/'):
+                analysis_object = request.embed(
+                    fileset,
+                    '@@object_with_select_calculated_properties?field=input_file_sets'
+                )
+                upstream_inputs = analysis_object.get('input_file_sets', [])
+                if not upstream_inputs or not inputs_are_cls_only_equivalent(upstream_inputs):
+                    return False
+                continue
+            return False
+        return True
+
+    def analysis_set_has_cls_only_equivalent_inputs(fileset):
+        analysis_object = request.embed(
+            fileset,
+            '@@object_with_select_calculated_properties?field=input_file_sets'
+        )
+        upstream_inputs = analysis_object.get('input_file_sets', [])
+        return upstream_inputs and inputs_are_cls_only_equivalent(upstream_inputs)
+
     if all(fileset.startswith('/construct-library-sets/') for fileset in input_file_sets):
         return list(input_file_sets)
     if all(fileset.startswith('/analysis-sets/') for fileset in input_file_sets):
-        cls_only_analyses = True
-        for fileset in input_file_sets:
-            analysis_object = request.embed(
-                fileset,
-                '@@object_with_select_calculated_properties?field=input_file_sets'
-            )
-            upstream_inputs = analysis_object.get('input_file_sets', [])
-            if not upstream_inputs or not all(
-                upstream_input.startswith('/construct-library-sets/')
-                for upstream_input in upstream_inputs
-            ):
-                cls_only_analyses = False
-                break
-        if cls_only_analyses:
+        if all(
+            analysis_set_has_cls_only_equivalent_inputs(fileset)
+            for fileset in input_file_sets
+        ):
             return list(input_file_sets)
+    if inputs_are_cls_only_equivalent(input_file_sets):
+        cls_inputs = [
+            fileset for fileset in input_file_sets
+            if fileset.startswith('/construct-library-sets/')
+        ]
+        if cls_inputs:
+            return cls_inputs
+        return [
+            fileset for fileset in input_file_sets
+            if curated_set_has_assay_metadata(fileset)
+        ]
     contributing = []
     for fileset in input_file_sets:
         if fileset.startswith('/construct-library-sets/'):
             continue
+        if (fileset.startswith('/curated-sets/') and
+                not curated_set_has_assay_metadata(fileset)):
+            continue
         if fileset.startswith('/analysis-sets/'):
-            analysis_object = request.embed(
-                fileset,
-                '@@object_with_select_calculated_properties?field=input_file_sets'
-            )
-            upstream_inputs = analysis_object.get('input_file_sets', [])
-            if upstream_inputs and all(
-                upstream_input.startswith('/construct-library-sets/')
-                for upstream_input in upstream_inputs
-            ):
+            if analysis_set_has_cls_only_equivalent_inputs(fileset):
                 continue
         contributing.append(fileset)
     return contributing
