@@ -422,12 +422,12 @@ def audit_targeted_genes(value, system):
     '''
     [
         {
-            "audit_description": "Transcription factor ChIP-seq, CRISPR screens with protein abundance biometrics, and MORF screen assays are expected to specify targeted gene(s).",
+            "audit_description": "Transcription factor ChIP-seq, CRISPR screens with protein abundance biometrics, MORF screen, VAMP-seq, and VAMP-seq (MultiSTEP) assays are expected to specify targeted gene(s).",
             "audit_category": "missing targeted genes",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Only transcription factor ChIP-seq, CRISPR screens with protein abundance biometrics, and MORF screen assays are expected to specify targeted gene(s).",
+            "audit_description": "Only transcription factor ChIP-seq, CRISPR screens with protein abundance biometrics, MORF screen, VAMP-seq, and VAMP-seq (MultiSTEP) assays are expected to specify targeted gene(s).",
             "audit_category": "unexpected targeted genes",
             "audit_level": "ERROR"
         }
@@ -443,7 +443,11 @@ def audit_targeted_genes(value, system):
         'untransfected',
         'unsorted FACS input'
     }
-    expecting_targeted_genes_by_preferred_assay_title = ['MORF screen', 'TF ChIP-seq']
+    expecting_targeted_genes_by_preferred_assay_title = ['MORF screen',
+                                                         'TF ChIP-seq',
+                                                         'VAMP-seq',
+                                                         'VAMP-seq (MultiSTEP)'
+                                                         ]
     expects_targeted_genes = (
         any(title in expecting_targeted_genes_by_preferred_assay_title for title in preferred_assay_titles)
         or is_protein_abundance_biometric(value, system)
