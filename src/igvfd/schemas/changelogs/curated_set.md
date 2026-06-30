@@ -1,5 +1,9 @@
 ## Changelog for *`curated_set.json`*
 
+### Minor changes since schema version 10
+
+* Add calculated property `versions`.
+
 ### Schema version 10
 * Adjust `preferred_assay_titles` enum list to replace `perturb-SHARE-seq` with `MORF-SHARE-seq`.
 

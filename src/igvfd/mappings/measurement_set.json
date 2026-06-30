@@ -1,6 +1,6 @@
 {
-    "hash": "83ddedf93af87ba31b427e57698c2d4a",
-    "index_name": "measurement_set_83ddedf9",
+    "hash": "f95d81c55a268a43c2858a0d7c2d5ad9",
+    "index_name": "measurement_set_f95d81c5",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -995,6 +995,9 @@
                                     "validation_error_detail": {
                                         "type": "keyword"
                                     },
+                                    "version": {
+                                        "type": "keyword"
+                                    },
                                     "workflows": {
                                         "type": "keyword"
                                     }
@@ -1331,6 +1334,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -1727,6 +1733,9 @@
                             "uuid": {
                                 "type": "keyword"
                             },
+                            "versions": {
+                                "type": "keyword"
+                            },
                             "workflows": {
                                 "type": "keyword"
                             }
@@ -2119,6 +2128,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -2857,6 +2869,9 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
+                            "version": {
+                                "type": "keyword"
+                            },
                             "workflows": {
                                 "properties": {
                                     "@id": {
@@ -3418,6 +3433,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {

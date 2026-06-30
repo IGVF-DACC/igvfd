@@ -1,6 +1,6 @@
 {
-    "hash": "0de6939215b489cb453dc88fc1b52020",
-    "index_name": "curated_set_0de69392",
+    "hash": "9cc2f0354d3c9377135f36dac0a8e9df",
+    "index_name": "curated_set_9cc2f035",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -763,6 +763,9 @@
                                     "validation_error_detail": {
                                         "type": "keyword"
                                     },
+                                    "version": {
+                                        "type": "keyword"
+                                    },
                                     "workflows": {
                                         "type": "keyword"
                                     }
@@ -1099,6 +1102,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -1493,6 +1499,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -2132,6 +2141,9 @@
                                 "type": "boolean"
                             },
                             "validation_error_detail": {
+                                "type": "keyword"
+                            },
+                            "version": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -3459,6 +3471,9 @@
                         "type": "keyword"
                     },
                     "uuid": {
+                        "type": "keyword"
+                    },
+                    "versions": {
                         "type": "keyword"
                     }
                 },

@@ -1,6 +1,6 @@
 {
-    "hash": "4ce4c55c439319d22f27e6ec685b4a30",
-    "index_name": "image_file_4ce4c55c",
+    "hash": "ee0f39b4ce060ebb4c2e2f60ec583f88",
+    "index_name": "image_file_ee0f39b4",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -2073,6 +2073,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {

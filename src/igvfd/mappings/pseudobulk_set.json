@@ -1,6 +1,6 @@
 {
-    "hash": "bdae5eda058467c3082bd312adc5943a",
-    "index_name": "pseudobulk_set_bdae5eda",
+    "hash": "a8819091112a1b8d345d48f926b40094",
+    "index_name": "pseudobulk_set_a8819091",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -857,6 +857,9 @@
                                     "validation_error_detail": {
                                         "type": "keyword"
                                     },
+                                    "version": {
+                                        "type": "keyword"
+                                    },
                                     "workflows": {
                                         "type": "keyword"
                                     }
@@ -1193,6 +1196,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -1585,6 +1591,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -2228,6 +2237,9 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
+                            "version": {
+                                "type": "keyword"
+                            },
                             "workflows": {
                                 "properties": {
                                     "@id": {
@@ -2515,6 +2527,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {

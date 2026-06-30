@@ -1,6 +1,6 @@
 {
-    "hash": "bfec1a62690f310b4120fcdb97c4869f",
-    "index_name": "signal_file_bfec1a62",
+    "hash": "4daf35ec1aab73a90c7372aa13352e83",
+    "index_name": "signal_file_4daf35ec",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -2080,6 +2080,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {

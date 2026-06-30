@@ -1664,6 +1664,31 @@ class CuratedSet(FileSet):
 
     @calculated_property(
         schema={
+            'title': 'Versions',
+            'description': 'The versions of the reference files for external data loaded into the IGVF catalog.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Version',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def versions(self, request, files=None):
+        version_values = set()
+        files = paths_filtered_by_status(request, files)
+        if files:
+            for current_file_path in files:
+                file_object = request.embed(
+                    current_file_path, '@@object_with_select_calculated_properties?field=version&field=@type&field=status')
+                if 'ReferenceFile' in file_object.get('@type', []) and file_object.get('version') and file_object.get('status') != 'archived':
+                    version_values.add(file_object.get('version'))
+        return sorted(version_values) or None
+
+    @calculated_property(
+        schema={
             'title': 'Summary',
             'type': 'string',
             'notSubmittable': True,
