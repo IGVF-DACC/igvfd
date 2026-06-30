@@ -1,6 +1,6 @@
 {
-    "hash": "345d5ff4efc407e66d433d94450febe7",
-    "index_name": "construct_library_set_345d5ff4",
+    "hash": "30e1026356699d8a1ba7cd6c7f301787",
+    "index_name": "construct_library_set_30e10263",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -320,6 +320,9 @@
                         },
                         "type": "object"
                     },
+                    "chromosomes": {
+                        "type": "keyword"
+                    },
                     "collections": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
@@ -389,6 +392,9 @@
                                 "type": "keyword"
                             },
                             "cell_type": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -786,6 +792,9 @@
                                 "type": "keyword"
                             },
                             "cell_type": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {

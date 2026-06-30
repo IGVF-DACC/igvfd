@@ -2836,8 +2836,9 @@ class ConstructLibrarySet(FileSet):
         }
     )
     def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, large_scale_gene_list=None, guide_type=None,
-                small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, small_scale_orf_list=None, large_scale_orf_list=None, associated_phenotypes=None,
-                control_types=None, targeton=None, preferred_assay_titles=None, integrated_content_files=None):
+                small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, small_scale_orf_list=None, large_scale_orf_list=None,
+                chromosomes=None, associated_phenotypes=None, control_types=None, targeton=None, preferred_assay_titles=None,
+                integrated_content_files=None):
         if preferred_assay_titles is None:
             preferred_assay_titles = []
         if integrated_content_files is None:
@@ -2936,6 +2937,8 @@ class ConstructLibrarySet(FileSet):
             gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
             gene_name = gene_object.get('symbol', '')
             target_phrase = f' {targeton} of {gene_name}'
+        if scope == 'chromosome':
+            target_phrase = f' {", ".join(sorted(chromosomes))}'
 
         if associated_phenotypes:
             for pheno in associated_phenotypes:

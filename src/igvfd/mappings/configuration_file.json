@@ -1,6 +1,6 @@
 {
-    "hash": "e483c281ecae79f03952ce4dd93e5ce8",
-    "index_name": "configuration_file_e483c281",
+    "hash": "629dd1a3b1bf99601b7c7f299a025002",
+    "index_name": "configuration_file_629dd1a3",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -748,6 +748,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "chromosomes": {
+                                "type": "keyword"
                             },
                             "collections": {
                                 "type": "keyword"
@@ -2206,6 +2209,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {

@@ -193,6 +193,25 @@ def construct_library_set_overexpression(testapp, lab, award, gene_myc_hs):
 
 
 @pytest.fixture
+def construct_library_set_chromosome(testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'guide library',
+        'scope': 'chromosome',
+        'chromosomes': ['chrX'],
+        'selection_criteria': [
+            'TF binding sites'
+        ],
+        'product_id': 'addgene:81225',
+        'lower_bound_guide_coverage': 15,
+        'upper_bound_guide_coverage': 20,
+        'guide_type': 'sgRNA'
+    }
+    return testapp.post_json('/construct_library_set', item).json['@graph'][0]
+
+
+@pytest.fixture
 def construct_library_set_v1(testapp, lab, award, gene_myc_hs):
     item = {
         'award': award['@id'],

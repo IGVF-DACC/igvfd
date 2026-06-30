@@ -1,6 +1,6 @@
 {
-    "hash": "3c117503cba7450d8e1d28fe8c64bfd6",
-    "index_name": "tabular_file_3c117503",
+    "hash": "265c18b3e82f62539eb35caa4d52abc1",
+    "index_name": "tabular_file_265c18b3",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -771,6 +771,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "chromosomes": {
+                                "type": "keyword"
                             },
                             "collections": {
                                 "type": "keyword"
@@ -2236,6 +2239,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {

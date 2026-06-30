@@ -1,6 +1,6 @@
 {
-    "hash": "b9aa95064f934b9ee4b82e426adde77d",
-    "index_name": "model_set_b9aa9506",
+    "hash": "977f6561fb2982e10c179e81782a45b5",
+    "index_name": "model_set_977f6561",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -635,6 +635,9 @@
                                 "type": "keyword"
                             },
                             "cell_type": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1367,6 +1370,9 @@
                                 "type": "keyword"
                             },
                             "cell_type": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -2509,6 +2515,9 @@
                                 "type": "keyword"
                             },
                             "cell_type": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {

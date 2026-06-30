@@ -1,6 +1,6 @@
 {
-    "hash": "76a2c8b5c6b28731871b3864e865cc2c",
-    "index_name": "alignment_file_76a2c8b5",
+    "hash": "0a140faf09e89f7ea9cd4d2f2c195e71",
+    "index_name": "alignment_file_0a140faf",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -753,6 +753,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "chromosomes": {
+                                "type": "keyword"
                             },
                             "collections": {
                                 "type": "keyword"
@@ -2215,6 +2218,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {

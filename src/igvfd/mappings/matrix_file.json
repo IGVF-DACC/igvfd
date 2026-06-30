@@ -1,6 +1,6 @@
 {
-    "hash": "54bbc911fb4da6f8595cbb5d8a7e55d9",
-    "index_name": "matrix_file_54bbc911",
+    "hash": "e29bb3cba3bbe20781ba015af4e95e9f",
+    "index_name": "matrix_file_e29bb3cb",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -751,6 +751,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "chromosomes": {
+                                "type": "keyword"
                             },
                             "collections": {
                                 "type": "keyword"
@@ -2213,6 +2216,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {

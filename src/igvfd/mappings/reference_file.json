@@ -1,6 +1,6 @@
 {
-    "hash": "2d8ee356e90fef1eab2829cc8e7537d9",
-    "index_name": "reference_file_2d8ee356",
+    "hash": "877fe65ec3f10216aa571cc4c42a7dd6",
+    "index_name": "reference_file_877fe65e",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -772,6 +772,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "chromosomes": {
+                                "type": "keyword"
                             },
                             "collections": {
                                 "type": "keyword"
@@ -2230,6 +2233,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {
