@@ -1,6 +1,6 @@
 {
-    "hash": "9dc600ab8da3770ce72dc0a2cc8c87a7",
-    "index_name": "construct_library_set_9dc600ab",
+    "hash": "345d5ff4efc407e66d433d94450febe7",
+    "index_name": "construct_library_set_345d5ff4",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -713,6 +713,9 @@
                             "uuid": {
                                 "type": "keyword"
                             },
+                            "versions": {
+                                "type": "keyword"
+                            },
                             "workflows": {
                                 "type": "keyword"
                             }
@@ -1105,6 +1108,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -1591,6 +1597,9 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
+                            "version": {
+                                "type": "keyword"
+                            },
                             "workflows": {
                                 "type": "keyword"
                             }
@@ -1825,6 +1834,9 @@
                                 "type": "keyword"
                             },
                             "validation_error_detail": {
+                                "type": "keyword"
+                            },
+                            "version": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -2121,6 +2133,9 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
+                            "version": {
+                                "type": "keyword"
+                            },
                             "workflows": {
                                 "type": "keyword"
                             }
@@ -2351,6 +2366,9 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
+                            "version": {
+                                "type": "keyword"
+                            },
                             "workflows": {
                                 "type": "keyword"
                             }
@@ -2579,6 +2597,9 @@
                                 "type": "keyword"
                             },
                             "validation_error_detail": {
+                                "type": "keyword"
+                            },
+                            "version": {
                                 "type": "keyword"
                             },
                             "workflows": {

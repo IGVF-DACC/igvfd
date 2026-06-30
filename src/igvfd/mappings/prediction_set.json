@@ -1,6 +1,6 @@
 {
-    "hash": "56fb14518052d465db15a25e8b1449f8",
-    "index_name": "prediction_set_56fb1451",
+    "hash": "dab6c98d25b169b0f8725e728ecb27a0",
+    "index_name": "prediction_set_dab6c98d",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1035,6 +1035,9 @@
                                     "validation_error_detail": {
                                         "type": "keyword"
                                     },
+                                    "version": {
+                                        "type": "keyword"
+                                    },
                                     "workflows": {
                                         "type": "keyword"
                                     }
@@ -1371,6 +1374,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -1765,6 +1771,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -2409,6 +2418,9 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
+                            "version": {
+                                "type": "keyword"
+                            },
                             "workflows": {
                                 "properties": {
                                     "@id": {
@@ -2802,6 +2814,9 @@
                             "validation_error_detail": {
                                 "type": "keyword"
                             },
+                            "version": {
+                                "type": "keyword"
+                            },
                             "workflows": {
                                 "type": "keyword"
                             }
@@ -3030,6 +3045,9 @@
                                 "type": "keyword"
                             },
                             "validation_error_detail": {
+                                "type": "keyword"
+                            },
+                            "version": {
                                 "type": "keyword"
                             },
                             "workflows": {

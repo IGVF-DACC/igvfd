@@ -1,6 +1,6 @@
 {
-    "hash": "d0f4bd01515c8962f693c9068f4120b7",
-    "index_name": "alignment_file_d0f4bd01",
+    "hash": "76a2c8b5c6b28731871b3864e865cc2c",
+    "index_name": "alignment_file_76a2c8b5",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -2078,6 +2078,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {

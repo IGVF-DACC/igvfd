@@ -1,6 +1,6 @@
 {
-    "hash": "27970d9788b0968b1550d69165dccef0",
-    "index_name": "analysis_set_27970d97",
+    "hash": "2dfb698e18bd70a0e7943d96af21d0eb",
+    "index_name": "analysis_set_2dfb698e",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -759,6 +759,9 @@
                                     "validation_error_detail": {
                                         "type": "keyword"
                                     },
+                                    "version": {
+                                        "type": "keyword"
+                                    },
                                     "workflows": {
                                         "type": "keyword"
                                     }
@@ -1095,6 +1098,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -1489,6 +1495,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -2139,6 +2148,9 @@
                                 "type": "boolean"
                             },
                             "validation_error_detail": {
+                                "type": "keyword"
+                            },
+                            "version": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -2864,6 +2876,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {

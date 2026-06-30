@@ -1,6 +1,6 @@
 {
-    "hash": "d2e8eb090000bfb7cc4be23d5bdfe282",
-    "index_name": "model_file_d2e8eb09",
+    "hash": "a9f72c4fe2233f4026c5bf475e10623b",
+    "index_name": "model_file_a9f72c4f",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -2087,6 +2087,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {

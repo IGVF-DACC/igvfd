@@ -1,6 +1,6 @@
 {
-    "hash": "8012d66fbf26f05d1bd290cd3f6ad572",
-    "index_name": "reference_file_8012d66f",
+    "hash": "2d8ee356e90fef1eab2829cc8e7537d9",
+    "index_name": "reference_file_2d8ee356",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -2099,6 +2099,9 @@
                             "uuid": {
                                 "type": "keyword"
                             },
+                            "versions": {
+                                "type": "keyword"
+                            },
                             "workflows": {
                                 "type": "keyword"
                             }
@@ -3123,6 +3126,9 @@
                         "type": "keyword"
                     },
                     "validation_error_detail": {
+                        "type": "keyword"
+                    },
+                    "version": {
                         "type": "keyword"
                     },
                     "workflows": {
