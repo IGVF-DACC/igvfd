@@ -37,6 +37,19 @@ def test_audit_sample_sorted_from_parent_child_check(
         error['category'] != 'inconsistent parent sample'
         for error in res.json['audit'].get('ERROR', [])
     )
+    # If checking unsorted array properties such as construct delivery methods
+    testapp.patch_json(
+        biosample_sorted_child['@id'],
+        {'construct_delivery_methods': ['lipofectamine', 'electroporation']}
+    )
+    testapp.patch_json(
+        tissue_unsorted_parent['@id'],
+        {'construct_delivery_methods': ['electroporation', 'lipofectamine']}
+    )
+    res = testapp.get(biosample_sorted_child['@id'] + '@@audit')
+    assert 'inconsistent parent sample' not in (
+        error['category'] for error in res.json['audit'].get('ERROR', [])
+    )
 
 
 def test_audit_sample_virtual_donor_check(

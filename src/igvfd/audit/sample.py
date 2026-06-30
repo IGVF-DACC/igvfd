@@ -52,7 +52,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
             'notes', 'originated_from', 'part_of', 'pooled_from', 'preview_timestamp', 'protocols',
             'release_timestamp', 'revoke_detail', 'schema_version', 'sorted_from', 'sorted_from_detail',
             'starting_amount', 'starting_amount_units', 'status', 'submitter_comment', 'submitted_by',
-            'supersedes', 'time_post_library_delivery', 'time_post_library_delivery_units'
+            'supersedes', 'time_post_library_delivery', 'time_post_library_delivery_units',
             'time_post_culture', 'time_post_culture_units', 'treatments', 'url'
         ]
         all_keys = parent.keys() | value.keys()
@@ -62,6 +62,11 @@ def audit_sample_sorted_from_parent_child_check(value, system):
                 missing_properties.append(key)
             elif key not in parent:
                 inconsistent_properties.append(key)
+            # Check if array
+            elif isinstance(value[key], list) and isinstance(parent[key], list):
+                if set(value[key]) != set(parent[key]):
+                    inconsistent_properties.append(key)
+            # Check if otherwise
             elif value[key] != parent[key]:
                 inconsistent_properties.append(key)
         inconsistent_properties = ', '.join([f'`{key}`' for key in inconsistent_properties])
