@@ -61,3 +61,9 @@ def test_curated_set_upgrade_9_10(upgrader, curated_set_v9):
     value = upgrader.upgrade('curated_set', curated_set_v9, current_version='9', target_version='10')
     assert value['schema_version'] == '10'
     assert value['preferred_assay_titles'] == ['MORF-SHARE-seq']
+
+
+def test_curated_set_upgrade_10_11(upgrader, curated_set_v10):
+    value = upgrader.upgrade('curated_set', curated_set_v10, current_version='10', target_version='11')
+    assert value['schema_version'] == '11'
+    assert value['preferred_assay_titles'] == ['snATAC-seq']

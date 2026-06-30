@@ -444,3 +444,13 @@ def assay_term_v23(assay_term_crispr):
         'preferred_assay_titles': ['perturb-SHARE-seq']
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v24(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '24',
+        'preferred_assay_titles': ['scATAC-seq']
+    })
+    return item

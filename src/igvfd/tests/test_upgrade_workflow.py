@@ -49,3 +49,9 @@ def test_workflow_upgrade_7_8(upgrader, workflow_v7):
     value = upgrader.upgrade('workflow', workflow_v7, current_version='7', target_version='8')
     assert value['schema_version'] == '8'
     assert set(value.get('preferred_assay_titles')) == {'MORF-SHARE-seq'}
+
+
+def test_workflow_upgrade_8_9(upgrader, workflow_v8):
+    value = upgrader.upgrade('workflow', workflow_v8, current_version='8', target_version='9')
+    assert value['schema_version'] == '9'
+    assert set(value.get('preferred_assay_titles')) == {'snATAC-seq'}

@@ -1,6 +1,11 @@
 ## Changelog for *`assay_term.json`*
 
+### Schema version 25
+
+* Adjust `preferred_assay_titles` enum list to remove `scATAC-seq`.
+
 ### Schema version 24
+
 * Adjust `preferred_assay_titles` enum list to replace `perturb-SHARE-seq` with `MORF-SHARE-seq`.
 
 ### Schema version 23

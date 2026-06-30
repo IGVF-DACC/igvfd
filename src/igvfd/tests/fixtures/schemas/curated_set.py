@@ -123,3 +123,13 @@ def curated_set_v9(curated_set_genome):
         'preferred_assay_titles': ['perturb-SHARE-seq']
     })
     return item
+
+
+@pytest.fixture
+def curated_set_v10(curated_set_genome):
+    item = curated_set_genome.copy()
+    item.update({
+        'schema_version': '10',
+        'preferred_assay_titles': ['scATAC-seq']
+    })
+    return item

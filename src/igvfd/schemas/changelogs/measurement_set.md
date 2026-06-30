@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 48
+
+* Adjust `preferred_assay_titles` enum list to remove `scATAC-seq`.
+
 ### Schema version 47
 
 * Add `crispr_screen_biometric`.

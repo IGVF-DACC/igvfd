@@ -375,3 +375,16 @@ def assay_term_23_24(value, system):
         notes = value.get('notes', '')
         notes += ' This assay_term previously used perturb-SHARE-seq as preferred_assay_titles, but it has been updated to MORF-SHARE-seq via an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('assay_term', '24', '25')
+def assay_term_24_25(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3563
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    if 'scATAC-seq' in preferred_assay_titles:
+        index = preferred_assay_titles.index('scATAC-seq')
+        preferred_assay_titles[index] = 'snATAC-seq'
+        value['preferred_assay_titles'] = preferred_assay_titles
+        notes = value.get('notes', '')
+        notes += ' This assay_term previously used scATAC-seqas preferred_assay_titles, but it has been updated to snATAC-seq via an upgrade.'
+        value['notes'] = notes.strip()

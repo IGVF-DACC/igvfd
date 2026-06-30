@@ -49,3 +49,9 @@ def test_model_set_upgrade_8_9(upgrader, model_set_v8):
     value = upgrader.upgrade('model_set', model_set_v8, current_version='8', target_version='9')
     assert value['schema_version'] == '9'
     assert value['preferred_assay_titles'] == ['MORF-SHARE-seq', 'scRNA-seq']
+
+
+def test_model_set_upgrade_9_10(upgrader, model_set_v9):
+    value = upgrader.upgrade('model_set', model_set_v9, current_version='9', target_version='10')
+    assert value['schema_version'] == '10'
+    assert value['preferred_assay_titles'] == ['snATAC-seq', 'scRNA-seq']
