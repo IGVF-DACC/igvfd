@@ -46,7 +46,7 @@
             "title": "ORF ID",
             "description": "Open reading frame ID.",
             "type": "string",
-            "pattern": "^(CCSBORF|TFORF)[1-9][0-9]*$",
+            "pattern": "^(CCSBORF|TFORF)[0-9]+$",
             "uniqueKey": true,
             "submissionExample": {
                 "appscript": "CCSBORF1234",
