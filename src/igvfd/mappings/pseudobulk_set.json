@@ -1,6 +1,6 @@
 {
-    "hash": "b28a4d339d73743460f94d5bb910fc27",
-    "index_name": "pseudobulk_set_b28a4d33",
+    "hash": "e01915098a9a48bc87460a4d33f1226b",
+    "index_name": "pseudobulk_set_e0191509",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -2802,6 +2802,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "barcode_map": {
+                                "type": "keyword"
+                            },
                             "biomarkers": {
                                 "type": "keyword"
                             },
@@ -2960,106 +2963,19 @@
                                 "type": "float"
                             },
                             "modifications": {
-                                "properties": {
-                                    "@id": {
-                                        "type": "keyword"
-                                    },
-                                    "@type": {
-                                        "type": "keyword"
-                                    },
-                                    "activated": {
-                                        "store": true,
-                                        "type": "boolean"
-                                    },
-                                    "activating_agent_term_id": {
-                                        "type": "keyword"
-                                    },
-                                    "activating_agent_term_name": {
-                                        "type": "keyword"
-                                    },
-                                    "aliases": {
-                                        "type": "keyword"
-                                    },
-                                    "award": {
-                                        "type": "keyword"
-                                    },
-                                    "biosamples_modified": {
-                                        "type": "keyword"
-                                    },
-                                    "cas": {
-                                        "type": "keyword"
-                                    },
-                                    "cas_species": {
-                                        "type": "keyword"
-                                    },
-                                    "creation_timestamp": {
-                                        "type": "date"
-                                    },
-                                    "degron_system": {
-                                        "type": "keyword"
-                                    },
-                                    "description": {
-                                        "type": "text"
-                                    },
-                                    "documents": {
-                                        "type": "keyword"
-                                    },
-                                    "fused_domain": {
-                                        "type": "keyword"
-                                    },
-                                    "lab": {
-                                        "type": "keyword"
-                                    },
-                                    "lot_id": {
-                                        "type": "keyword"
-                                    },
-                                    "modality": {
-                                        "type": "keyword"
-                                    },
-                                    "notes": {
-                                        "type": "text"
-                                    },
-                                    "preview_timestamp": {
-                                        "type": "date"
-                                    },
-                                    "product_id": {
-                                        "type": "keyword"
-                                    },
-                                    "release_timestamp": {
-                                        "type": "date"
-                                    },
-                                    "schema_version": {
-                                        "type": "keyword"
-                                    },
-                                    "sources": {
-                                        "type": "keyword"
-                                    },
-                                    "status": {
-                                        "type": "keyword"
-                                    },
-                                    "submitted_by": {
-                                        "type": "keyword"
-                                    },
-                                    "submitter_comment": {
-                                        "type": "keyword"
-                                    },
-                                    "summary": {
-                                        "type": "keyword"
-                                    },
-                                    "tagged_proteins": {
-                                        "type": "keyword"
-                                    },
-                                    "uuid": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "type": "object"
+                                "type": "keyword"
                             },
                             "moi": {
                                 "store": true,
                                 "type": "float"
                             },
                             "multiplexed_in": {
+                                "type": "keyword"
+                            },
+                            "multiplexed_samples": {
+                                "type": "keyword"
+                            },
+                            "multiplexing_methods": {
                                 "type": "keyword"
                             },
                             "notes": {
@@ -3490,6 +3406,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "targeted_sample_terms": {
+                                "type": "keyword"
                             },
                             "taxa": {
                                 "type": "keyword"
