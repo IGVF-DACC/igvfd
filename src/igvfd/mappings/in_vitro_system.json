@@ -1,6 +1,6 @@
 {
-    "hash": "efeee4f6149533252fc838e2d20869cf",
-    "index_name": "in_vitro_system_efeee4f6",
+    "hash": "c6a064c1f3ceaf6c60c737bd0e35f1ec",
+    "index_name": "in_vitro_system_c6a064c1",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -547,6 +547,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "chromosomes": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1072,6 +1075,9 @@
                                 "type": "keyword"
                             },
                             "cell_type": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {

@@ -1,6 +1,6 @@
 {
-    "hash": "4daf35ec1aab73a90c7372aa13352e83",
-    "index_name": "signal_file_4daf35ec",
+    "hash": "edf16622c2e6f9c0d212dba6033355b5",
+    "index_name": "signal_file_edf16622",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -755,6 +755,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "chromosomes": {
+                                "type": "keyword"
                             },
                             "collections": {
                                 "type": "keyword"
@@ -2217,6 +2220,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {

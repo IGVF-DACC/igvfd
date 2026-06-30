@@ -1,6 +1,6 @@
 {
-    "hash": "dab6c98d25b169b0f8725e728ecb27a0",
-    "index_name": "prediction_set_dab6c98d",
+    "hash": "2e339cd503a686e3776c87d3fbb8acce",
+    "index_name": "prediction_set_2e339cd5",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -717,6 +717,9 @@
                                 "type": "keyword"
                             },
                             "cell_type": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1449,6 +1452,9 @@
                                 "type": "keyword"
                             },
                             "cell_type": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -3299,6 +3305,9 @@
                                         "type": "float"
                                     },
                                     "award": {
+                                        "type": "keyword"
+                                    },
+                                    "chromosomes": {
                                         "type": "keyword"
                                     },
                                     "collections": {

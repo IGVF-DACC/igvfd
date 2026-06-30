@@ -1,6 +1,6 @@
 {
-    "hash": "6fa6294b44b12701d432c331f7332e9b",
-    "index_name": "whole_organism_6fa6294b",
+    "hash": "0872e6b5254b1e7ead3fc682be6d6b19",
+    "index_name": "whole_organism_0872e6b5",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -540,6 +540,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "chromosomes": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1059,6 +1062,9 @@
                                 "type": "keyword"
                             },
                             "cell_type": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {

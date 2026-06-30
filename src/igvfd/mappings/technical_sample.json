@@ -1,6 +1,6 @@
 {
-    "hash": "d9461865608883cda7eeaa2b5289b6ad",
-    "index_name": "technical_sample_d9461865",
+    "hash": "97c2b0476aeba0e7960a2a4808e7ffb0",
+    "index_name": "technical_sample_97c2b047",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -347,6 +347,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -723,6 +726,9 @@
                                 "type": "keyword"
                             },
                             "cell_type": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {

@@ -1,6 +1,6 @@
 {
-    "hash": "9aba476e6f482ea445da7921950d2efa",
-    "index_name": "pseudobulk_set_9aba476e",
+    "hash": "b28a4d339d73743460f94d5bb910fc27",
+    "index_name": "pseudobulk_set_b28a4d33",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -539,6 +539,9 @@
                                 "type": "keyword"
                             },
                             "cell_type": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1269,6 +1272,9 @@
                                 "type": "keyword"
                             },
                             "cell_type": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {

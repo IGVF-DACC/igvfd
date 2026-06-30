@@ -1,6 +1,6 @@
 {
-    "hash": "2ca2532996d314d2db49007a60cf886a",
-    "index_name": "index_file_2ca25329",
+    "hash": "4645a8adf49be12845363ac2009d171b",
+    "index_name": "index_file_4645a8ad",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -756,6 +756,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "chromosomes": {
+                                "type": "keyword"
                             },
                             "collections": {
                                 "type": "keyword"
@@ -2218,6 +2221,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "chromosomes": {
                                 "type": "keyword"
                             },
                             "collections": {
