@@ -179,7 +179,7 @@
                     "MPRAbase": "Datasets related to the MPRAbase collection of massively parallel reporter assay (MPRA) data.",
                     "PD single cell multiomics": "Single-cell multiomics datasets related to Parkinson's disease research.",
                     "StanfordFCC": "Datasets from the Stanford Functional Characterization Consortium (FCC), focused on characterizing regulatory elements.",
-                    "TF Perturb-seq Project": "Datasets from the Transcription Factor Perturb-seq Project, focused on characterizing transcription factor functions using single-cell perturbation sequencing.",
+                    "TF Perturb-seq Project": "Datasets from the Transcription Factor Perturb-seq Project, using a shared guide library targeting promoters of transcription factors to characterize transcription factor functions across datasets via single-cell perturbation sequencing.",
                     "TOPMED Freeze 8": "Datasets from the Trans-Omics for Precision Medicine (TOPMed) program Freeze 8 release.",
                     "VarChAMP": "Datasets from the Variant Characterization across the Mendelian Proteome (VarChAMP) project, which functionally characterizes coding variants in Mendelian disease genes to establish genotype-phenotype relationships and support clinical diagnosis.",
                     "Vista": "Datasets associated with the Vista Enhancer Browser, a database of tissue-specific enhancers.",
