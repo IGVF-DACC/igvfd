@@ -130,6 +130,8 @@
                     "Benchmark",
                     "Bridge Sample",
                     "ClinGen",
+                    "Coronary Artery Disease",
+                    "Cross-Disorder CNVs",
                     "E2G Pillar Project",
                     "ENCODE",
                     "GREGoR",
@@ -152,7 +154,37 @@
                     "VarChAMP",
                     "Vista",
                     "Williams Syndrome Research"
-                ]
+                ],
+                "enum_descriptions": {
+                    "ACMG73": "Datasets related to the 73 genes recommended by the American College of Medical Genetics and Genomics (ACMG) for reporting of secondary findings.",
+                    "Benchmark": "Reference datasets used to benchmark computational tools and analysis methods.",
+                    "Bridge Sample": "Samples used to bridge or normalize data across different assays or experiments.",
+                    "ClinGen": "Datasets associated with the Clinical Genome Resource (ClinGen), which defines the clinical relevance of genomic variants.",
+                    "Coronary Artery Disease": "Datasets from the Cardio Metabolic Focus Group's CAD Pillar Project, which integrates vascular single-cell, perturbation, and regulatory genomics data to link coronary artery disease variants to enhancers, genes, and gene programs.",
+                    "Cross-Disorder CNVs": "Characterization of DiGeorge, Williams, and 16p11.2 CNV regions across relevant cell types to identify tissue-specific effects and targetable regulatory elements.",
+                    "E2G Pillar Project": "Datasets from the Enhancer-to-Gene (E2G) Pillar Project, focused on mapping regulatory elements to their target genes.",
+                    "ENCODE": "Datasets from the Encyclopedia of DNA Elements (ENCODE) project.",
+                    "GREGoR": "Datasets associated with the Genomics Research to Elucidate the Genetics of Rare disease (GREGoR) consortium.",
+                    "IGVF_catalog_beta_v0.1": "Data included in version 0.1 of the IGVF catalog beta release.",
+                    "IGVF_catalog_beta_v0.2": "Data included in version 0.2 of the IGVF catalog beta release.",
+                    "IGVF_catalog_beta_v0.3": "Data included in version 0.3 of the IGVF catalog beta release.",
+                    "IGVF_catalog_beta_v0.4": "Data included in version 0.4 of the IGVF catalog beta release.",
+                    "IGVF_catalog_beta_v0.5": "Data included in version 0.5 of the IGVF catalog beta release.",
+                    "IGVF_catalog_v1.0": "Data included in version 1.0 of the IGVF catalog.",
+                    "IGVF_catalog_v1.1": "Data included in version 1.1 of the IGVF catalog.",
+                    "IGVF_catalog_v1.2": "Data included in version 1.2 of the IGVF catalog.",
+                    "IGVF phase 1": "Datasets from Phase 1 of the Impact of Genomic Variation on Function (IGVF) consortium.",
+                    "MaveDB": "Datasets associated with the Multiplexed Assay of Variant Effect database (https://www.mavedb.org).",
+                    "Morphic": "Datasets from the Morphic consortium, focused on characterizing the impact of genetic variants on cell morphology.",
+                    "MPRAbase": "Datasets related to the MPRAbase collection of massively parallel reporter assay (MPRA) data.",
+                    "PD single cell multiomics": "Single-cell multiomics datasets related to Parkinson's disease research.",
+                    "StanfordFCC": "Datasets from the Stanford Functional Characterization Consortium (FCC), focused on characterizing regulatory elements.",
+                    "TF Perturb-seq Project": "Datasets from the Transcription Factor Perturb-seq Project, focused on characterizing transcription factor functions using single-cell perturbation sequencing.",
+                    "TOPMED Freeze 8": "Datasets from the Trans-Omics for Precision Medicine (TOPMed) program Freeze 8 release.",
+                    "VarChAMP": "Datasets from the Variant Characterization across the Mendelian Proteome (VarChAMP) project, which functionally characterizes coding variants in Mendelian disease genes to establish genotype-phenotype relationships and support clinical diagnosis.",
+                    "Vista": "Datasets associated with the Vista Enhancer Browser, a database of tissue-specific enhancers.",
+                    "Williams Syndrome Research": "Datasets related to research on Williams syndrome, a genetic disorder caused by deletion on chromosome 7q11.23."
+                }
             }
         },
         "status": {

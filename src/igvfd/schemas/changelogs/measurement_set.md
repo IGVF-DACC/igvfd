@@ -1,5 +1,10 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 48
+
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+
 ### Schema version 48
 
 * Adjust `preferred_assay_titles` enum list to remove `scATAC-seq`.
