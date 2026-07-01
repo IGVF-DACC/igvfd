@@ -161,7 +161,7 @@
                     "Bridge Sample": "Samples used to bridge or normalize data across different assays or experiments.",
                     "ClinGen": "Datasets associated with the Clinical Genome Resource (ClinGen), which defines the clinical relevance of genomic variants.",
                     "Coronary Artery Disease": "Datasets from the Cardio Metabolic Focus Group's CAD Pillar Project, which integrates vascular single-cell, perturbation, and regulatory genomics data to link coronary artery disease variants to enhancers, genes, and gene programs.",
-                    "Cross-Disorder CNVs": "Characterization of DiGeorge, Williams, and 16p11.2 CNV regions across relevant cell types to identify tissue-specific effects and targetable regulatory elements.",
+                    "Cross-Disorder CNVs": "Datasets from the characterization of DiGeorge, Williams, and 16p11.2 copy number variation (CNV) regions across relevant cell types to identify tissue-specific effects and targetable regulatory elements.",
                     "E2G Pillar Project": "Datasets from the Enhancer-to-Gene (E2G) Pillar Project, focused on mapping regulatory elements to their target genes.",
                     "ENCODE": "Datasets from the Encyclopedia of DNA Elements (ENCODE) project.",
                     "GREGoR": "Datasets associated with the Genomics Research to Elucidate the Genetics of Rare disease (GREGoR) consortium.",
