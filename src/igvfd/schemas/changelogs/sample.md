@@ -1,5 +1,7 @@
 ## Changelog for *`sample.json`*
 
+* Extend `collections` enum list to include `Cross-Disorder CNVs`. (07/08/2026)
+* Extend `collections` enum list to include `Coronary Artery Disease`. (07/08/2026)
 * Extend `construct_delivery_methods` enum list to include `transposase`. (06/10/2026)
 * Update `dbxrefs` regex to allow DepMap ID accessions. (05/27/2026)
 * Rename `nucleic_acid_delivery` to `construct_delivery_methods`. (04/15/2026)

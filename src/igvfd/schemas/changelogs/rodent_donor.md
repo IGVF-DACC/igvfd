@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 15
 
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
 * Extend `collections` enum list to include `PD single cell multiomics`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.2`.
 

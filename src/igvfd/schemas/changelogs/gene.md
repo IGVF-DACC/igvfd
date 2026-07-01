@@ -1,5 +1,10 @@
 ## Changelog for *`gene.json`*
 
+### Minor changes since schema version 12
+
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+
 ### Schema version 12
 
 * Extend `locations.assembly` enum list to include `129S1/SvImJ - GRCm39`.

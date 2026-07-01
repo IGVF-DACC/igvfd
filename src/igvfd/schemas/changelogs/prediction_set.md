@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 9
 
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
 * Add calculated property `cell_annotation`.
 * Add `cell_type`.
 * Add `cell_qualifier`.
