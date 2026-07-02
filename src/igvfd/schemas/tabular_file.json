@@ -258,6 +258,7 @@
                                 "drugs",
                                 "external source data",
                                 "genes",
+                                "genes in pathways",
                                 "genes_genes",
                                 "genes_pathways",
                                 "genes_terms",
