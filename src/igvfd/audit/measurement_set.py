@@ -340,7 +340,12 @@ def audit_missing_institutional_certification(value, system):
         'OBI:0000288',  # protein-protein interaction detection assay,
         'OBI:0002041',  # self-transcribing active regulatory region sequencing assay,
         'OBI:0002082',  # reporter gene assay (for LABEL-seq)
-        'NTR:0001094'   # yeast-based functional complementation assay
+        'NTR:0001094',  # yeast-based functional complementation assay
+        'NTR:0001112',  # LABEL-seq
+        'NTR:0001113',  # Immune-SGE
+        'NTR:0001114',  # VAMP-seq
+        'NTR:0001115',  # SGE
+        'NTR:0001116'   # VAMP-seq (MultiSTEP)
     ]
     assay_term = value.get('assay_term', '')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
