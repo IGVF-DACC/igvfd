@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 26
 
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
 * Add `version`.
 * Extend `file_format` enum list to include `run`.
 * Extend `content_type` enum list to include `open reading frame reference`.

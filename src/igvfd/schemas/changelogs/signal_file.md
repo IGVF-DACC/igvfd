@@ -1,5 +1,10 @@
 ## Changelog for *`signal_file.json`*
 
+### Minor changes since schema version 15
+
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+
 ### Schema version 15
 
 * Adjust `content_type` enum list to remove `fold change over control`.

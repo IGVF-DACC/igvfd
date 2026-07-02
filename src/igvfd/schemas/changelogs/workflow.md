@@ -1,5 +1,10 @@
 ## Changelog for *`workflow.json`*
 
+### Minor changes since schema version 9
+
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+
 ### Schema version 9
 
 * Adjust `preferred_assay_titles` enum list to remove `scATAC-seq`.

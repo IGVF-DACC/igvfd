@@ -1,5 +1,10 @@
 ## Changelog for *`matrix_file.json`*
 
+### Minor changes since schema version 11
+
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+
 ### Schema version 11
 
 * Remove `principal_dimension`.

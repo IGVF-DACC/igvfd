@@ -1,5 +1,10 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 25
+
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+
 ### Schema version 25
 
 * Adjust `content_type` enum list to remove `fold change over control`.

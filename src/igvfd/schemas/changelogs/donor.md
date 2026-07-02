@@ -1,5 +1,7 @@
 ## Changelog for *`donor.json`*
 
+* Extend `collections` enum list to include `Cross-Disorder CNVs`. (07/08/2026)
+* Extend `collections` enum list to include `Coronary Artery Disease`. (07/08/2026)
 * Remove `phenotypic_features`. (04/15/2026)
 * Update `aliases` regex to add `hongbo-liu` as a namespace. (04/01/2026)
 * Update `aliases` regex to add `yang-li` as a namespace. (02/27/2026)
