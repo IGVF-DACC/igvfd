@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 25
 
+* Extend `content_type` enum list to include `genes in pathways`.
 * Extend `content_type` enum list to include `per-cell quality report`.
 * Extend `content_type` enum list to include `per-barcode quality report`.
 * Extend `content_type` enum list to include `aggregated pseudobulk quality report`.

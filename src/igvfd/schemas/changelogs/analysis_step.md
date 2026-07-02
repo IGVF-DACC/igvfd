@@ -1,5 +1,10 @@
 ## Changelog for *`analysis_step.json`*
 
+### Minor changes since schema version 15
+
+* Extend `input_content_type` enum list to include `genes in pathways`.
+* Extend `output_content_type` enum list to include `genes in pathways`.
+
 ### Schema version 15
 
 * Extend `input_content_types` enum list to include `per-cell quality report`.
