@@ -411,5 +411,26 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ]
+    },
+    {
+        "uuid": "6edf95c7-f7fe-4a41-9d0d-d12a864c23f3",
+        "accession": "IGVFFI0099CNGP",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_cell_gene_program"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-05-01T21:29:45Z",
+        "md5sum": "53d54bf4846bb5feb334b08911011647",
+        "file_format": "h5mu",
+        "content_type": "cell by gene program matrix",
+        "submitted_file_name": "/Users/igvf/cellular_program_networks/cell_gene_program_matrix.h5mu",
+        "file_size": 4500000,
+        "upload_status": "validated",
+        "file_set": "igvf:primer_design_curated_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ]
     }
 ]
