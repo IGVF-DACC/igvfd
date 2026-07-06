@@ -236,6 +236,7 @@
                     "properties": {
                         "content_type": {
                             "enum": [
+                                "aggregated pseudobulk quality report",
                                 "barcode onlist",
                                 "barcode replacement",
                                 "barcode to cluster mapping",
@@ -278,6 +279,8 @@
                                 "pathogenicity validation",
                                 "pathways",
                                 "pathways_pathways",
+                                "per-barcode quality report",
+                                "per-cell quality report",
                                 "pipeline parameters",
                                 "post-segmentation transcript and cell locations",
                                 "predicted gene regulatory networks",
@@ -336,6 +339,7 @@
             "comment": "Content Type describes the content of the file.",
             "enum": [
                 "aggregated calibrated coding variant effects",
+                "aggregated pseudobulk quality report",
                 "allele specific RNA pseudobulk counts",
                 "allelic effects",
                 "barcode onlist",
@@ -410,6 +414,8 @@
                 "peaks",
                 "peak quantifications",
                 "per cell type enrichment scores",
+                "per-barcode quality report",
+                "per-cell quality report",
                 "pipeline parameters",
                 "plus strand modification state",
                 "post-segmentation transcript and cell locations",
@@ -455,6 +461,7 @@
             ],
             "enum_descriptions": {
                 "aggregated calibrated coding variant effects": "A file mapping coding variants to their aggregated experimental and predictive calibrated evidence across functional assays and computational predictors.",
+                "aggregated pseudobulk quality report": "A file containing per-pseudobulk quality control metrics computed on each pseudobulked entity as a whole, rather than aggregated from individual cell-level QC values.",
                 "allele specific RNA pseudobulk counts": "Allele specific pseudobulk cluster by gene name count matrix.",
                 "allelic effects": "Editing effects from genome editing experiments that may encompass multiple edits at a locus, distinct from variant effects which describe effects of single genetic variants.",
                 "barcode onlist": "A list of all known barcode sequences that have been included in the assay kit and are available during library preparation.",
@@ -526,6 +533,8 @@
                 "peaks": "Detected genomic regions of relative enrichment in coverage data, such as peaks in ChIP-seq or ATAC-seq indicating protein binding sites or chromatin accessibility.",
                 "peak quantifications": "The quantified levels of peaks detected in ChIP-seq or ATAC-seq assays.",
                 "per cell type enrichment scores": "Enrichment of eQTL-GWAS co-localization signals in different cell subtypes",
+                "per-barcode quality report": "A file containing per-barcode quality control metrics for barcodes observed in the single cell uniform preprocessing output, including annotation status, assay presence flags, and RNA and ATAC summary statistics.",
+                "per-cell quality report": "A file containing per-cell quality control metrics for cells in a single pseudobulk, including RNA and ATAC read-level and feature-level summary statistics per intermediate analysis.",
                 "pipeline parameters": "The input files used in a computational pipeline.",
                 "plus strand modification state": "A file with the bases on the plus strand where a DNA or RNA modification was detected.",
                 "post-segmentation transcript and cell locations": "A csv file containing spatial coordinates and relationships between fields of view.",

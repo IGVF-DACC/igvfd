@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 25
 
+* Extend `content_type` enum list to include `per-cell quality report`.
+* Extend `content_type` enum list to include `per-barcode quality report`.
+* Extend `content_type` enum list to include `aggregated pseudobulk quality report`.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.
 * Extend `collections` enum list to include `Coronary Artery Disease`.
 
