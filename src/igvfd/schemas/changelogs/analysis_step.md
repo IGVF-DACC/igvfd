@@ -10,15 +10,15 @@
 * Extend `output_content_types` enum list to include `regulator-regulator correlation`.
 * Extend `input_content_types` enum list to include `genes in pathways`.
 * Extend `output_content_types` enum list to include `genes in pathways`.
-
-### Schema version 15
-
 * Extend `input_content_types` enum list to include `per-cell quality report`.
 * Extend `output_content_types` enum list to include `per-cell quality report`.
 * Extend `input_content_types` enum list to include `per-barcode quality report`.
 * Extend `output_content_types` enum list to include `per-barcode quality report`.
 * Extend `input_content_types` enum list to include `aggregated pseudobulk quality report`.
 * Extend `output_content_types` enum list to include `aggregated pseudobulk quality report`.
+
+### Schema version 15
+
 * Adjust `input_content_types` enum list to remove `fold change over control`.
 * Adjust `output_content_types` enum list to remove `fold change over control`.
 * Extend `input_content_types` enum list to include `allelic effects`.
