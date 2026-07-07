@@ -194,5 +194,18 @@
             "igvf:curated_set_external_sequencing_data"
         ],
         "description": "A curated set to store sequencing data from an external source."
+    },
+    {
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "b34ee773-3ae8-4b21-a30d-9eb64a3c8565",
+        "file_set_type": "pathway gene mapping",
+        "accession": "IGVFDS0000EXSE",
+        "status": "released",
+        "release_timestamp": "2025-09-06T12:34:56Z",
+        "aliases": [
+            "igvf:curated_set_pathway_gene_mapping"
+        ],
+        "description": "A curated set for pathway gene mapping"
     }
 ]

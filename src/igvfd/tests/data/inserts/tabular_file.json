@@ -2034,5 +2034,23 @@
         "release_timestamp": "2025-03-06T12:34:56Z",
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "9c1fc749-2802-415b-a7bf-c7a510faae2c",
+        "accession": "IGVFFI0015ORFT",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_genes_in_pathways"
+        ],
+        "md5sum": "75cfb29f446ae99bdcb39091acdd9d96",
+        "file_format": "tsv",
+        "content_type": "genes in pathways",
+        "submitted_file_name": "/Users/igvf/igvf_files/genes_in_pathways.tsv.gz",
+        "file_size": 4200,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:curated_set_pathway_gene_mapping",
+        "controlled_access": false
     }
 ]

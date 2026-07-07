@@ -249,12 +249,14 @@
         "input_content_types": [
             "variants",
             "protein-protein interaction edge-perturbation score",
-            "protein-protein interaction edgotyping score"
+            "protein-protein interaction edgotyping score",
+            "genes in pathway"
         ],
         "output_content_types": [
             "calibrated coding variant effects",
             "protein-protein interaction edge-perturbation score",
-            "protein-protein interaction edgotyping score"
+            "protein-protein interaction edgotyping score",
+            "genes in pathway"
         ]
     },
     {
