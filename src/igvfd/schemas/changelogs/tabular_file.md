@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 25
 
+* Extend `content_type` enum list to include `program-program correlation`.
+* Extend `content_type` enum list to include `regulator-regulator correlation`.
 * Extend `content_type` enum list to include `genes in pathways`.
 * Extend `content_type` enum list to include `per-cell quality report`.
 * Extend `content_type` enum list to include `per-barcode quality report`.

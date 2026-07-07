@@ -906,6 +906,50 @@
         "controlled_access": false
     },
     {
+        "uuid": "29108a93-702b-479e-a66c-57e3aeaa9b9a",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "accession": "IGVFFI0602PRTD",
+        "aliases": [
+            "igvf:regulator_regulator_correlation"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-01T21:29:45Z",
+        "md5sum": "03631b2d0161f588d28d3a7445d20327",
+        "file_format": "tsv",
+        "content_type": "regulator-regulator correlation",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/cellular_program_networks/regulator_regulator_correlation.tsv.gz",
+        "file_size": 20092,
+        "upload_status": "validated",
+        "file_set": "igvf:primer_design_curated_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "11765c63-236f-4300-8adf-468192ba3728",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "accession": "IGVFFI0602PRTE",
+        "aliases": [
+            "igvf:program_program_correlation"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-01T21:29:45Z",
+        "md5sum": "720ec1f9ea380760554989d73c5e2eb8",
+        "file_format": "tsv",
+        "content_type": "program-program correlation",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/cellular_program_networks/program_program_correlation.tsv.gz",
+        "file_size": 20093,
+        "upload_status": "validated",
+        "file_set": "igvf:primer_design_curated_set",
+        "controlled_access": false
+    },
+    {
         "uuid": "54e6ab5e-8349-8610-767b-e11ba10f3d58",
         "accession": "IGVFFI0001BGBD",
         "lab": "j-michael-cherry",
