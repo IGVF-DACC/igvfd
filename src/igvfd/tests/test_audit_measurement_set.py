@@ -500,6 +500,7 @@ def test_audit_missing_institutional_certification(
     measurement_set,
     assay_term_mpra,
     assay_term_LABEL_seq,
+    assay_term_VAMP_seq,
     external_lab,
     lab,
     other_lab,
@@ -536,6 +537,25 @@ def test_audit_missing_institutional_certification(
     assert all(
         error['category'] != 'missing NIH certification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # NTR-term characterization assays (e.g. VAMP-seq) are also skipped
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_VAMP_seq['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing NIH certification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_mpra['@id']
+        }
     )
 
     # Characterization assays with controlled_access files are audited
