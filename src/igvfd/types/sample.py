@@ -1285,7 +1285,7 @@ class MultiplexedSample(Sample):
             'items': {
                 'title': 'Modification',
                 'type': 'string',
-                'linkTo': ['CrisprModification', 'DegronModification']
+                'linkTo': 'Modification'
             }
         }
     )

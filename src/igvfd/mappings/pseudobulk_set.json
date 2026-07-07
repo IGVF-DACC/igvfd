@@ -1,6 +1,6 @@
 {
-    "hash": "a2732da937531f473336b8812d218ee7",
-    "index_name": "pseudobulk_set_a2732da9",
+    "hash": "72461be712c63671adfbb6d95b477029",
+    "index_name": "pseudobulk_set_72461be7",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -2963,7 +2963,100 @@
                                 "type": "float"
                             },
                             "modifications": {
-                                "type": "keyword"
+                                "properties": {
+                                    "@id": {
+                                        "type": "keyword"
+                                    },
+                                    "@type": {
+                                        "type": "keyword"
+                                    },
+                                    "activated": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
+                                    "activating_agent_term_id": {
+                                        "type": "keyword"
+                                    },
+                                    "activating_agent_term_name": {
+                                        "type": "keyword"
+                                    },
+                                    "aliases": {
+                                        "type": "keyword"
+                                    },
+                                    "award": {
+                                        "type": "keyword"
+                                    },
+                                    "biosamples_modified": {
+                                        "type": "keyword"
+                                    },
+                                    "cas": {
+                                        "type": "keyword"
+                                    },
+                                    "cas_species": {
+                                        "type": "keyword"
+                                    },
+                                    "creation_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "degron_system": {
+                                        "type": "keyword"
+                                    },
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "documents": {
+                                        "type": "keyword"
+                                    },
+                                    "fused_domain": {
+                                        "type": "keyword"
+                                    },
+                                    "lab": {
+                                        "type": "keyword"
+                                    },
+                                    "lot_id": {
+                                        "type": "keyword"
+                                    },
+                                    "modality": {
+                                        "type": "keyword"
+                                    },
+                                    "notes": {
+                                        "type": "text"
+                                    },
+                                    "preview_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "product_id": {
+                                        "type": "keyword"
+                                    },
+                                    "release_timestamp": {
+                                        "type": "date"
+                                    },
+                                    "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "sources": {
+                                        "type": "keyword"
+                                    },
+                                    "status": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_by": {
+                                        "type": "keyword"
+                                    },
+                                    "submitter_comment": {
+                                        "type": "keyword"
+                                    },
+                                    "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "tagged_proteins": {
+                                        "type": "keyword"
+                                    },
+                                    "uuid": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "moi": {
                                 "store": true,
