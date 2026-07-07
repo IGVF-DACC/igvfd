@@ -1977,5 +1977,62 @@
         "filtered": false,
         "file_set": "igvf:morf_screen",
         "controlled_access": false
+    },
+    {
+        "uuid": "99fbea83-5ee0-4a96-b491-b62673089134",
+        "accession": "IGVFFI1133PCQR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:pseudobulk_qc_per_cell_quality_report"
+        ],
+        "md5sum": "d6444e858caa9a55eb9020ece86c5413",
+        "file_format": "tsv",
+        "content_type": "per-cell quality report",
+        "submitted_file_name": "/Users/igvf/igvf_files/per_cell_qc.tsv.gz",
+        "file_size": 59009,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "b557e1f4-5ee0-4a96-b491-b62673089144",
+        "accession": "IGVFFI2233PBQR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:pseudobulk_qc_per_barcode_quality_report"
+        ],
+        "md5sum": "66b03481fa8a665d69db53cbebc3aa43",
+        "file_format": "tsv",
+        "content_type": "per-barcode quality report",
+        "submitted_file_name": "/Users/igvf/igvf_files/IGVFDS0000AAAA_per_cell_qc.tsv.gz",
+        "file_size": 29901,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "90ab7d8c-5ee0-4a96-b491-b62673089154",
+        "accession": "IGVFFI3344APQR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:pseudobulk_qc_aggregated_pseudobulk_quality_report"
+        ],
+        "md5sum": "24c92553dab89808c91f3c5fca992db7",
+        "file_format": "tsv",
+        "content_type": "aggregated pseudobulk quality report",
+        "submitted_file_name": "/Users/igvf/igvf_files/pseudobulk_qc.tsv.gz",
+        "file_size": 488201,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
     }
 ]
