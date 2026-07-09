@@ -42,13 +42,17 @@ def pseudobulk_set():
                 'optional': True
             },
             'assay_slims': {
-                'title': 'Assay',
+                'title': 'Assay Ontology',
                 'description': 'Assay(s) that is relevant to this pseudobulk sets.',
                 'type': 'hierarchical',
                 'category': 'Pseudobulk Set Details',
                 'subfacets': [
                     {'field': 'assay_titles', 'title': 'Assay type'}
                 ]
+            },
+            'preferred_assay_slims': {
+                'title': 'Assay',
+                'description': 'High-level classification of preferred assay slims.',
             },
             'samples.classifications': {
                 'title': 'Classification',
@@ -248,10 +252,10 @@ def pseudobulk_set_report_view():
             'title': 'Summary'
         },
         'assay_titles': {
-            'title': 'Assay Term Names'
+            'title': 'Assay Ontology'
         },
         'preferred_assay_titles': {
-            'title': 'Preferred Assay Titles'
+            'title': 'Assay'
         },
         'file_set_type': {
             'title': 'File Set Type'

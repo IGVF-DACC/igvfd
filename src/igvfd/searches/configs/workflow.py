@@ -22,8 +22,9 @@ def workflow():
             'analysis_step_versions.analysis_step.output_content_types': {
                 'title': 'Output File Types',
             },
-            'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles',
+            'preferred_assay_slims': {
+                'title': 'Assay',
+                'description': 'High-level classification of preferred assay slims.',
             },
             'collections': {
                 'title': 'Collections',

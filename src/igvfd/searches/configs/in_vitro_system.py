@@ -47,15 +47,16 @@ def in_vitro_system():
                 'title': 'File Set Type'
             },
             'file_sets.assay_term.assay_slims': {
-                'title': 'Assay',
+                'title': 'Assay Ontology',
                 'description': 'High-level classification of assay type.',
                 'type': 'hierarchical',
                 'subfacets': [
                     {'field': 'file_sets.assay_term.term_name', 'title': 'Assay type'}
                 ]
             },
-            'file_sets.preferred_assay_titles': {
-                'title': 'Preferred Assay Title'
+            'file_sets.preferred_assay_slims': {
+                'title': 'Assay',
+                'description': 'High-level classification of preferred assay slims.',
             },
             'construct_library_sets.file_set_type': {
                 'title': 'Library Type'

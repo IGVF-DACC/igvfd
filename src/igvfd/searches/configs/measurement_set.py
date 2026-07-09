@@ -8,18 +8,19 @@ def measurement_set():
     return {
         'facets': {
             'assay_slims': {
-                'title': 'Assay',
+                'title': 'Assay Ontology',
                 'category': 'Measurement Set Details',
                 'description': 'High-level classification of assay type.',
                 'type': 'hierarchical',
                 'subfacets': [
                     {'field': 'assay_titles', 'title': 'Assay type'}
-                ]
+                ],
+                'optional': True
             },
-            'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles',
+            'preferred_assay_slims': {
+                'title': 'Assay',
                 'category': 'Measurement Set Details',
-                'description': 'Title of assays that generated the measurement set.'
+                'description': 'High-level classification of preferred assay slims.',
             },
             'crispr_screen_readout': {
                 'title': 'CRISPR Screen Readout',
@@ -283,10 +284,10 @@ def measurement_set():
                 'title': 'Award'
             },
             'assay_titles': {
-                'title': 'Assay Term Names'
+                'title': 'Assay Ontology'
             },
             'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles'
+                'title': 'Assay'
             },
             'sequencing_library_types': {
                 'title': 'Sequencing Library Types'
@@ -334,10 +335,10 @@ def measurement_set_report_view():
             'title': 'Sample Institutional Certificates'
         },
         'preferred_assay_titles': {
-            'title': 'Preferred Assay Titles'
+            'title': 'Assay'
         },
         'assay_titles': {
-            'title': 'Assay Term Names'
+            'title': 'Assay Ontology'
         },
         'files.content_type': {
             'title': 'File Content Type'

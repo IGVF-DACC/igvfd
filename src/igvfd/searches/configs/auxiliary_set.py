@@ -11,15 +11,16 @@ def auxiliary_set():
                 'title': 'File Set Type'
             },
             'assay_slims': {
-                'title': 'Assay',
+                'title': 'Assay Ontology',
                 'description': 'Assay(s) that is relevant to this auxiliary sets.',
                 'type': 'hierarchical',
                 'subfacets': [
                     {'field': 'assay_titles', 'title': 'Assay type'}
                 ]
             },
-            'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles'
+            'preferred_assay_slims': {
+                'title': 'Assay',
+                'description': 'High-level classification of preferred assay slims.',
             },
             'donors.taxa': {
                 'title': 'Taxa'

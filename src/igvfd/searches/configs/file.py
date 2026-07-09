@@ -94,7 +94,7 @@ def file():
                 'category': 'File Set Details'
             },
             'file_set.assay_term.assay_slims': {
-                'title': 'Assay',
+                'title': 'Assay Ontology',
                 'description': 'High-level classification of assay type.',
                 'category': 'File Set Details',
                 'type': 'hierarchical',
@@ -102,9 +102,9 @@ def file():
                     {'field': 'file_set.assay_term.term_name', 'title': 'Assay type'}
                 ]
             },
-            'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles',
-                'description': 'Preferred title of assay(s) that created this file',
+            'preferred_assay_slims': {
+                'title': 'Assay',
+                'description': 'High-level classification of preferred assay slims.',
                 'category': 'File Set Details'
             },
             'file_set.samples.taxa': {

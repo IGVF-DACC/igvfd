@@ -36,15 +36,16 @@ def signal_file():
                 'title': 'File Set Type'
             },
             'file_set.assay_term.assay_slims': {
-                'title': 'Assay',
+                'title': 'Assay Ontology',
                 'description': 'High-level classification of assay type.',
                 'type': 'hierarchical',
                 'subfacets': [
                     {'field': 'file_set.assay_term.term_name', 'title': 'Assay type'}
                 ]
             },
-            'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles'
+            'preferred_assay_slims': {
+                'title': 'Assay',
+                'description': 'High-level classification of preferred assay slims.',
             },
             'file_set.samples.taxa': {
                 'title': 'Taxa'
