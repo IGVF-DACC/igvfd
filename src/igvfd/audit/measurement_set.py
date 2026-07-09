@@ -277,6 +277,77 @@ def audit_missing_crispr_screen_biometric(value, system):
         )
 
 
+def audit_inconsistent_crispr_screen_biometric(value, system):
+    '''
+    [
+        {
+            "audit_description": "Measurement sets from CRISPR screen assays are expected to specify a `crispr_screen_biometric` consistent with the screen phenotype: Proliferation CRISPR screen (cell proliferation), Migration CRISPR screen (cell migration), in vitro CRISPR screen using flow cytometry (protein abundance or LDL-C uptake), in vitro or in vivo CRISPR screen using single-cell RNA-seq (gene expression), or in vitro CRISPR screen using single-nucleus ATAC-seq (chromatin accessibility).",
+            "audit_category": "inconsistent crispr screen biometric",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    if not is_crispr_screen_measurement_set(value):
+        return
+    crispr_screen_biometric = value.get('crispr_screen_biometric')
+    if not crispr_screen_biometric:
+        return
+    biometric_term_names = {
+        'GO:0008283': 'cell proliferation',
+        'GO:0016477': 'cell migration',
+        'NTR:0001117': 'protein abundance',
+        'NTR:0001118': 'LDL-C uptake',
+        'GO:0010467': 'gene expression',
+        'NTR:0001119': 'chromatin accessibility',
+    }
+    expected_biometric = {
+        'Proliferation CRISPR screen': {'GO:0008283'},
+        'Migration CRISPR screen': {'GO:0016477'},
+        '/assay-terms/OBI_0003661/': {'NTR:0001117', 'NTR:0001118'},  # in vitro CRISPR screen using flow cytometry
+        '/assay-terms/OBI_0003660/': {'GO:0010467'},  # in vitro CRISPR screen using single-cell RNA-seq
+        '/assay-terms/NTR_0001101/': {'GO:0010467'},  # in vivo CRISPR screen using single cell RNA-seq
+        '/assay-terms/NTR_0000798/': {'NTR:0001119'},  # in vitro CRISPR screen using single-nucleus ATAC-seq
+    }
+    preferred_assay_title = value.get('preferred_assay_titles', [None])[0]
+    assay_term = value.get('assay_term', '')
+    if preferred_assay_title in expected_biometric:
+        expected_term_ids = expected_biometric[preferred_assay_title]
+        screen_phrase = f'{preferred_assay_title} measurement sets'
+    elif assay_term in expected_biometric:
+        expected_term_ids = expected_biometric[assay_term]
+        assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+        screen_phrase = f'{assay_object.get("term_name", "")} measurement sets'
+    else:
+        return
+    audit_message = get_audit_message(audit_inconsistent_crispr_screen_biometric)
+    biometric_object = system.get('request').embed(
+        crispr_screen_biometric,
+        '@@object?skip_calculated=true'
+    )
+    biometric_term_id = biometric_object.get('term_id', '')
+    if biometric_term_id in expected_term_ids:
+        return
+    expected_phrases = []
+    for term_id in sorted(expected_term_ids):
+        phenotype_term = f'/phenotype-terms/{term_id.replace(":", "_")}/'
+        expected_phrases.append(
+            f'{audit_link(path_to_text(phenotype_term), phenotype_term)} '
+            f'({biometric_term_names[term_id]}, {term_id})'
+        )
+    expected_phrase = ', '.join(expected_phrases)
+    detail = (
+        f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+        f'has `crispr_screen_biometric` {audit_link(path_to_text(crispr_screen_biometric), crispr_screen_biometric)} '
+        f'({biometric_object.get("term_name", "")}, {biometric_term_id}), but {screen_phrase} '
+        f'are expected to use one of: {expected_phrase}.'
+    )
+    yield AuditFailure(
+        audit_message.get('audit_category', ''),
+        f'{detail} {audit_message.get("audit_description", "")}',
+        level=audit_message.get('audit_level', '')
+    )
+
+
 def audit_CRISPR_screen_lacking_modifications(value, system):
     '''
     [
@@ -332,7 +403,7 @@ def audit_missing_institutional_certification(value, system):
         'OBI:0003659',  # in vitro CRISPR screen assay
         'OBI:0003661',  # in vitro CRISPR screen using flow cytometry
         'OBI:0003660',  # in vitro CRISPR screen using single-cell RNA-seq
-        'NTR:0000798',  # in vitro CRISPR screen using single-cell ATAC-seq
+        'NTR:0000798',  # in vitro CRISPR screen using single-nucleus ATAC-seq
         'NTR:0001101',  # in vivo CRISPR screen using single cell RNA-seq
         'OBI:0000916',  # flow cytometry assay
         'OBI:0000185',  # imaging assay
@@ -1064,6 +1135,7 @@ function_dispatcher_measurement_set_object = {
     'audit_unspecified_protocol': audit_unspecified_protocol,
     'audit_missing_crispr_screen_readout': audit_missing_crispr_screen_readout,
     'audit_missing_crispr_screen_biometric': audit_missing_crispr_screen_biometric,
+    'audit_inconsistent_crispr_screen_biometric': audit_inconsistent_crispr_screen_biometric,
     'audit_CRISPR_screen_lacking_modifications': audit_CRISPR_screen_lacking_modifications,
     'audit_missing_institutional_certification': audit_missing_institutional_certification,
     'audit_missing_auxiliary_set_link': audit_missing_auxiliary_set_link,

@@ -331,6 +331,144 @@ def test_audit_missing_crispr_screen_biometric(
     )
 
 
+def test_audit_inconsistent_crispr_screen_biometric(
+    testapp,
+    lab,
+    award,
+    in_vitro_differentiated_cell,
+    assay_term_crispr,
+    assay_term_CRISPR_sorted,
+    assay_term_crispr_single_cell,
+    phenotype_term_from_go_cell_proliferation,
+    phenotype_term_cell_migration,
+    phenotype_term_gene_expression,
+    phenotype_term_protein_abundance,
+    phenotype_term_ldl_c_uptake,
+):
+    # Proliferation CRISPR screen expects cell proliferation as crispr_screen_biometric.
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_crispr['@id'],
+        'samples': [in_vitro_differentiated_cell['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_titles': ['Proliferation CRISPR screen'],
+        'crispr_screen_biometric': phenotype_term_gene_expression['@id'],
+    }
+    proliferation_measurement_set = testapp.post_json('/measurement_set', item, status=201).json['@graph'][0]
+    res = testapp.get(proliferation_measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent crispr screen biometric'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        proliferation_measurement_set['@id'],
+        {
+            'crispr_screen_biometric': phenotype_term_from_go_cell_proliferation['@id'],
+        },
+    )
+    res = testapp.get(proliferation_measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent crispr screen biometric'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Migration CRISPR screen expects cell migration as crispr_screen_biometric.
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_crispr['@id'],
+        'samples': [in_vitro_differentiated_cell['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_titles': ['Migration CRISPR screen'],
+        'crispr_screen_biometric': phenotype_term_from_go_cell_proliferation['@id'],
+    }
+    migration_measurement_set = testapp.post_json('/measurement_set', item, status=201).json['@graph'][0]
+    res = testapp.get(migration_measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent crispr screen biometric'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        migration_measurement_set['@id'],
+        {
+            'crispr_screen_biometric': phenotype_term_cell_migration['@id'],
+        },
+    )
+    res = testapp.get(migration_measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent crispr screen biometric'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # In vitro CRISPR screen using flow cytometry expects protein abundance or LDL-C uptake.
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_CRISPR_sorted['@id'],
+        'samples': [in_vitro_differentiated_cell['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_titles': ['CRISPR FACS screen'],
+        'crispr_screen_biometric': phenotype_term_gene_expression['@id'],
+    }
+    facs_measurement_set = testapp.post_json('/measurement_set', item, status=201).json['@graph'][0]
+    res = testapp.get(facs_measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent crispr screen biometric'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        facs_measurement_set['@id'],
+        {
+            'crispr_screen_biometric': phenotype_term_protein_abundance['@id'],
+        },
+    )
+    res = testapp.get(facs_measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent crispr screen biometric'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        facs_measurement_set['@id'],
+        {
+            'crispr_screen_biometric': phenotype_term_ldl_c_uptake['@id'],
+        },
+    )
+    res = testapp.get(facs_measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent crispr screen biometric'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # In vitro CRISPR screen using single-cell RNA-seq expects gene expression.
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_crispr_single_cell['@id'],
+        'samples': [in_vitro_differentiated_cell['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_titles': ['Perturb-seq'],
+        'crispr_screen_biometric': phenotype_term_from_go_cell_proliferation['@id'],
+    }
+    perturb_seq_measurement_set = testapp.post_json('/measurement_set', item, status=201).json['@graph'][0]
+    res = testapp.get(perturb_seq_measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent crispr screen biometric'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        perturb_seq_measurement_set['@id'],
+        {
+            'crispr_screen_biometric': phenotype_term_gene_expression['@id'],
+        },
+    )
+    res = testapp.get(perturb_seq_measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent crispr screen biometric'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+
 def test_audit_targeted_genes_protein_abundance_biometric(
     testapp,
     measurement_set,
