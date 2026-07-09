@@ -1,6 +1,6 @@
 {
-    "hash": "2e339cd503a686e3776c87d3fbb8acce",
-    "index_name": "prediction_set_2e339cd5",
+    "hash": "f26a0cebd6bd1753666f142ea8d35f23",
+    "index_name": "prediction_set_f26a0ceb",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -2470,6 +2470,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "preferred_assay_slims": {
+                                        "type": "keyword"
                                     },
                                     "preferred_assay_titles": {
                                         "type": "keyword"

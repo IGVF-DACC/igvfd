@@ -1,6 +1,6 @@
 {
-    "hash": "4645a8adf49be12845363ac2009d171b",
-    "index_name": "index_file_4645a8ad",
+    "hash": "05f465b6f2903725e79a2beb9081cf58",
+    "index_name": "index_file_05f465b6",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -3165,6 +3165,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
                             },
                             "preferred_assay_titles": {
                                 "type": "keyword"

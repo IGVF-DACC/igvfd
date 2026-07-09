@@ -1,6 +1,6 @@
 {
-    "hash": "7281e6a46675855633d619f346949614",
-    "index_name": "auxiliary_set_7281e6a4",
+    "hash": "4cbdbc4f81f2145b823c15f9fbb79062",
+    "index_name": "auxiliary_set_4cbdbc4f",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -2197,6 +2197,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "preferred_assay_slims": {
+                                        "type": "keyword"
                                     },
                                     "preferred_assay_titles": {
                                         "type": "keyword"

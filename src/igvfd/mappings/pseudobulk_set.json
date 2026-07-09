@@ -1,6 +1,6 @@
 {
-    "hash": "72461be712c63671adfbb6d95b477029",
-    "index_name": "pseudobulk_set_72461be7",
+    "hash": "a2b43ca56457e055bd8caa73cbec496f",
+    "index_name": "pseudobulk_set_a2b43ca5",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -2290,6 +2290,9 @@
                                     "notes": {
                                         "type": "text"
                                     },
+                                    "preferred_assay_slims": {
+                                        "type": "keyword"
+                                    },
                                     "preferred_assay_titles": {
                                         "type": "keyword"
                                     },
@@ -3801,6 +3804,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
                             },
                             "preferred_assay_titles": {
                                 "type": "keyword"

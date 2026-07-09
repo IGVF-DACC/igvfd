@@ -1,6 +1,6 @@
 {
-    "hash": "e168c4849f10d0053e002bab3ae4cf26",
-    "index_name": "measurement_set_e168c484",
+    "hash": "815c0559322aab2ab018a8bb2978a0e2",
+    "index_name": "measurement_set_815c0559",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2924,6 +2924,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "preferred_assay_slims": {
+                                        "type": "keyword"
                                     },
                                     "preferred_assay_titles": {
                                         "type": "keyword"

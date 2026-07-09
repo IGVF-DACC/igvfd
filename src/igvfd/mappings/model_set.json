@@ -1,6 +1,6 @@
 {
-    "hash": "977f6561fb2982e10c179e81782a45b5",
-    "index_name": "model_set_977f6561",
+    "hash": "167812fc5535b43b00d409167525a036",
+    "index_name": "model_set_167812fc",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -2395,6 +2395,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "preferred_assay_slims": {
+                                        "type": "keyword"
                                     },
                                     "preferred_assay_titles": {
                                         "type": "keyword"

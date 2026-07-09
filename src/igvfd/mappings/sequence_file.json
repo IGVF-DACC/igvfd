@@ -1,6 +1,6 @@
 {
-    "hash": "2cf00c16e4dd7fbcb9c27f12be63898d",
-    "index_name": "sequence_file_2cf00c16",
+    "hash": "eea1a92a9d5985909fa03db87386c488",
+    "index_name": "sequence_file_eea1a92a",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -3279,6 +3279,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
                             },
                             "preferred_assay_titles": {
                                 "type": "keyword"
