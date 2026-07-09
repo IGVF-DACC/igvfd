@@ -48,11 +48,13 @@ def pseudobulk_set():
                 'category': 'Pseudobulk Set Details',
                 'subfacets': [
                     {'field': 'assay_titles', 'title': 'Assay type'}
-                ]
+                ],
+                'optional': True
             },
             'preferred_assay_slims': {
                 'title': 'Assay',
                 'description': 'High-level classification of preferred assay slims.',
+                'category': 'Pseudobulk Set Details',
             },
             'samples.classifications': {
                 'title': 'Classification',
