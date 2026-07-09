@@ -77,7 +77,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "48"
+            "default": "49"
         },
         "samples": {
             "maxItems": 1
@@ -106,16 +106,16 @@
                 "endogenous allelic sequencing",
                 "exogenous allelic sequencing",
                 "scRNA-seq",
-                "scRNA-seq with guide capture",
-                "scATAC-seq"
+                "scRNA-seq including guide capture",
+                "snATAC-seq"
             ],
             "enum_descriptions": {
                 "gRNA sequencing": "Sequencing of guide RNAs to quantify guide abundance or representation.",
                 "endogenous allelic sequencing": "Targeted sequencing of edited endogenous alleles.",
                 "exogenous allelic sequencing": "Targeted sequencing of an exogenous reporter sequence to measure guide-specific editing outcomes.",
                 "scRNA-seq": "Single-cell RNA sequencing readout.",
-                "scRNA-seq with guide capture": "Single-cell RNA sequencing with guide RNAs captured as part of the polyadenylated transcriptome.",
-                "scATAC-seq": "Single-cell ATAC sequencing readout."
+                "scRNA-seq including guide capture": "Single-cell RNA sequencing with guide RNAs captured as part of the polyadenylated transcriptome.",
+                "snATAC-seq": "Single-nucleus ATAC sequencing readout."
             },
             "submissionExample": {
                 "appscript": "gRNA sequencing",

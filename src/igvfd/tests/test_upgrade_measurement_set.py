@@ -398,3 +398,29 @@ def test_measurement_set_upgrade_47_48(upgrader, measurement_set_v47):
     value = upgrader.upgrade('measurement_set', measurement_set_v47, current_version='47', target_version='48')
     assert value['schema_version'] == '48'
     assert value['preferred_assay_titles'] == ['snATAC-seq']
+
+
+def test_measurement_set_upgrade_48_49(
+    upgrader,
+    measurement_set_v48_crop_seq,
+    measurement_set_v48_multiome_perturb_snatac,
+):
+    value = upgrader.upgrade(
+        'measurement_set',
+        measurement_set_v48_crop_seq,
+        current_version='48',
+        target_version='49',
+    )
+    assert value['schema_version'] == '49'
+    assert value['crispr_screen_readout'] == 'scRNA-seq including guide capture'
+    assert 'scRNA-seq with guide capture' in value['notes']
+
+    value = upgrader.upgrade(
+        'measurement_set',
+        measurement_set_v48_multiome_perturb_snatac,
+        current_version='48',
+        target_version='49',
+    )
+    assert value['schema_version'] == '49'
+    assert value['crispr_screen_readout'] == 'snATAC-seq'
+    assert 'scATAC-seq' in value['notes']

@@ -1,5 +1,10 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 49
+
+* Adjust `crispr_screen_readout` enum list to replace `scATAC-seq` with `snATAC-seq`.
+* Adjust `crispr_screen_readout` enum list to replace `scRNA-seq with guide capture` with `scRNA-seq including guide capture`.
+
 ### Minor changes since schema version 48
 
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.
