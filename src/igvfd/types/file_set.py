@@ -2978,12 +2978,11 @@ class ConstructLibrarySet(FileSet):
             preposition = ' of'
             return f'{library_type}{preposition}{target_phrase}{selections}{pheno_phrase}'
         else:
-            selections = ', '.join(criteria)
-            if scope == 'genome-wide':
-                preposition = ''
-            else:
-                preposition = ' in'
-            return f'{library_type} targeting {selections}{preposition}{target_phrase}{pheno_phrase}{pool_phrase}'
+            if scope == 'genes' and 'genes' in criteria:
+                criteria.remove('genes')
+            preposition = '' if scope == 'genome-wide' else ' in'
+            selections = f' {", ".join(criteria)}{preposition}' if criteria else ''
+            return f'{library_type} targeting{selections}{target_phrase}{pheno_phrase}{pool_phrase}'
 
 
 @collection(
