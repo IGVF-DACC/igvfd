@@ -186,6 +186,8 @@ class File(Item):
                 '@id',
                 '@type',
                 'accession',
+                'assay_slims',
+                'assay_titles',
                 'donors',
                 'samples',
                 'assay_term',

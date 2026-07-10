@@ -32,12 +32,12 @@ def index_file():
             'file_set.file_set_type': {
                 'title': 'File Set Type'
             },
-            'file_set.assay_term.assay_slims': {
+            'file_set.assay_slims': {
                 'title': 'Assay Ontology',
                 'description': 'High-level classification of assay type.',
                 'type': 'hierarchical',
                 'subfacets': [
-                    {'field': 'file_set.assay_term.term_name', 'title': 'Assay type'}
+                    {'field': 'file_set.assay_titles', 'title': 'Assay type'}
                 ]
             },
             'preferred_assay_slims': {
