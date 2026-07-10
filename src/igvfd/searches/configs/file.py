@@ -103,8 +103,13 @@ def file():
                 ]
             },
             'preferred_assay_slims': {
-                'title': 'Assay',
+                'title': 'Preferred Assay Slims',
                 'description': 'High-level classification of preferred assay slims.',
+                'category': 'File Set Details'
+            },
+            'preferred_assay_titles': {
+                'title': 'Assay',
+                'description': 'Preferred title of assay(s) that created this file',
                 'category': 'File Set Details'
             },
             'file_set.samples.taxa': {

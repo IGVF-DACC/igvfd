@@ -43,8 +43,11 @@ def construct_library_set():
                 ]
             },
             'preferred_assay_slims': {
-                'title': 'Assay',
+                'title': 'Preferred Assay Slims',
                 'description': 'High-level classification of preferred assay slims.',
+            },
+            'preferred_assay_titles': {
+                'title': 'Assay'
             },
             'integrated_content_files.content_type': {
                 'title': 'Construct Library Design',

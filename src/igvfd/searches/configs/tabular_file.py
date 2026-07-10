@@ -44,8 +44,11 @@ def tabular_file():
                 ]
             },
             'preferred_assay_slims': {
-                'title': 'Assay',
+                'title': 'Preferred Assay Slims',
                 'description': 'High-level classification of preferred assay slims.',
+            },
+            'preferred_assay_titles': {
+                'title': 'Assay'
             },
             'integrated_in.file_set_type': {
                 'title': 'Library Type'

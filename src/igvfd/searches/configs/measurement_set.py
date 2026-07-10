@@ -18,9 +18,14 @@ def measurement_set():
                 'optional': True
             },
             'preferred_assay_slims': {
-                'title': 'Assay',
+                'title': 'Preferred Assay Slims',
                 'category': 'Measurement Set Details',
                 'description': 'High-level classification of preferred assay slims.',
+            },
+            'preferred_assay_titles': {
+                'title': 'Assay',
+                'category': 'Measurement Set Details',
+                'description': 'Title of assays that generated the measurement set.'
             },
             'crispr_screen_readout': {
                 'title': 'CRISPR Screen Readout',

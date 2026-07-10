@@ -19,8 +19,11 @@ def auxiliary_set():
                 ]
             },
             'preferred_assay_slims': {
-                'title': 'Assay',
+                'title': 'Preferred Assay Slims',
                 'description': 'High-level classification of preferred assay slims.',
+            },
+            'preferred_assay_titles': {
+                'title': 'Assay'
             },
             'donors.taxa': {
                 'title': 'Taxa'

@@ -52,8 +52,11 @@ def multiplexed_sample():
                 ]
             },
             'file_sets.preferred_assay_slims': {
-                'title': 'Assay',
+                'title': 'Preferred Assay Slims',
                 'description': 'High-level classification of preferred assay slims.',
+            },
+            'file_sets.preferred_assay_titles': {
+                'title': 'Assay'
             },
             'construct_library_sets.file_set_type': {
                 'title': 'Library Type'

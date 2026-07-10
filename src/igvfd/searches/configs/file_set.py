@@ -14,7 +14,10 @@ def file_set():
                 'title': 'Assay Ontology'
             },
             'preferred_assay_slims': {
-                'title': 'Assay',
+                'title': 'Preferred Assay Slims',
+            },
+            'preferred_assay_titles': {
+                'title': 'Assay'
             },
             'donors.taxa': {
                 'title': 'Taxa'

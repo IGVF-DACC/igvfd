@@ -24,9 +24,14 @@ def analysis_set():
                 'optional': True
             },
             'preferred_assay_slims': {
-                'title': 'Assay',
+                'title': 'Preferred Assay Slims',
                 'description': 'High-level classification of preferred assay slims.',
                 'category': 'Analysis Set Details',
+            },
+            'preferred_assay_titles': {
+                'title': 'Assay',
+                'category': 'Analysis Set Details',
+                'description': 'Title of assays that produced data analyzed in the analysis sets.'
             },
             'workflows.uniform_pipeline': {
                 'title': 'Uniformly Processed',
