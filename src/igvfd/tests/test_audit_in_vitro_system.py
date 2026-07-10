@@ -57,3 +57,29 @@ def test_audit_cell_fate_change_protocol_document_type(
         error['category'] != 'inconsistent document type'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_inconsistent_cell_line_donor(
+    testapp,
+    in_vitro_cell_line,
+    sample_term_K562,
+    human_donor
+):
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent cell line donor'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'donors': [human_donor['@id']]}
+    )
+    testapp.patch_json(
+        human_donor['@id'],
+        {'human_donor_identifiers': ['K562']}
+    )
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent cell line donor'
+        for error in res.json['audit'].get('WARNING', [])
+    )

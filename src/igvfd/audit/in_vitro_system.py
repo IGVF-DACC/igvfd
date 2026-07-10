@@ -58,8 +58,40 @@ def audit_cell_fate_change_protocol_document_type(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+def audit_inconsistent_cell_line_donor(value, system):
+    '''
+    [
+        {
+            "audit_description": "In vitro systems of established cell lines are expected to link to the official IGVF donor for that cell line.",
+            "audit_category": "inconsistent cell line donor",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    audit_message = get_audit_message(audit_inconsistent_cell_line_donor)
+    sample_term_object = system.get('request').embed(value['sample_terms'][0] + '@@object?skip_calculated=true')
+    sample_term_name = sample_term_object.get('term_name', '')
+    sample_term_dbxrefs = sample_term_object.get('dbxrefs', [])
+    if any([x.startswith('Cellosaurus') for x in sample_term_dbxrefs]):
+        for donor in value.get('donors', []):
+            donor_object = system.get('request').embed(donor + '@@object?skip_calculated=true')
+            # Exception for a virtual generic human donor object.
+            if donor_object.get('accession') == 'IGVFDO2264KERJ':
+                continue
+            if (donor_object.get('taxa', '') == 'Homo sapiens' and sample_term_name not in donor_object.get('human_donor_identifiers', [])) or \
+                    (donor_object.get('taxa', '') == 'Mus musculus' and sample_term_name != donor_object.get('rodent_identifier', '')):
+                detail = (
+                    f'In vitro system {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                    f'has a donor {audit_link(path_to_text(donor), donor)} that lacks the '
+                    f'expected human or rodent identifier, indicating that it is not the '
+                    f'designated IGVF donor for this cell line.'
+                )
+                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
 function_dispatcher_in_vitro_system_object = {
-    'audit_targeted_sample_term_check': audit_targeted_sample_term_check
+    'audit_targeted_sample_term_check': audit_targeted_sample_term_check,
+    'audit_inconsistent_cell_line_donor': audit_inconsistent_cell_line_donor
 }
 
 function_dispatcher_in_vitro_system_embedded = {
