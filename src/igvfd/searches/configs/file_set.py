@@ -14,7 +14,7 @@ def file_set():
                 'title': 'Assay Ontology'
             },
             'preferred_assay_slims': {
-                'title': 'Preferred Assay Slims',
+                'title': 'Assay Category',
             },
             'preferred_assay_titles': {
                 'title': 'Assay'

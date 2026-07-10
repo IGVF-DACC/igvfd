@@ -33,7 +33,7 @@ def image_file():
                 'description': 'High-level classification of preferred assay slims.',
             },
             'preferred_assay_titles': {
-                'title': 'Assay Category',
+                'title': 'Assay',
             },
             'imaging_platform.term_name': {
                 'title': 'Imaging Platform'
