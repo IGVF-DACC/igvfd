@@ -181,7 +181,7 @@ class Sample(Item):
         Path('submitted_by', include=['@id', 'title']),
         Path('sorted_from', include=['@id', 'accession', 'status']),
         Path('file_sets', include=['@id', 'accession', 'aliases',
-             'lab', 'assay_term', 'status', 'assay_titles', 'preferred_assay_titles', 'file_set_type']),
+             'lab', 'assay_term', 'status', 'assay_titles', 'preferred_assay_titles', 'file_set_type', 'preferred_assay_slims']),
         Path('file_sets.lab', include=['title']),
         Path('file_sets.assay_term', include=['@id', 'term_name', 'assay_slims']),
         Path('multiplexed_in', include=['@id', 'accession', 'status']),
