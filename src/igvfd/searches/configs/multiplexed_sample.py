@@ -52,7 +52,7 @@ def multiplexed_sample():
                 ]
             },
             'file_sets.preferred_assay_slims': {
-                'title': 'Preferred Assay Slims',
+                'title': 'Assay Category',
                 'description': 'High-level classification of preferred assay slims.',
             },
             'file_sets.preferred_assay_titles': {

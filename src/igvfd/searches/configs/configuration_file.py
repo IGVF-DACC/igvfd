@@ -29,7 +29,7 @@ def configuration_file():
                 ]
             },
             'preferred_assay_slims': {
-                'title': 'Preferred Assay Slims',
+                'title': 'Assay Category',
                 'description': 'High-level classification of preferred assay slims.',
             },
             'preferred_assay_titles': {

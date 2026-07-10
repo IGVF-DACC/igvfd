@@ -18,7 +18,7 @@ def measurement_set():
                 'optional': True
             },
             'preferred_assay_slims': {
-                'title': 'Preferred Assay Slims',
+                'title': 'Assay Category',
                 'category': 'Measurement Set Details',
                 'description': 'High-level classification of preferred assay slims.',
             },

@@ -52,7 +52,7 @@ def pseudobulk_set():
                 'optional': True
             },
             'preferred_assay_slims': {
-                'title': 'Preferred Assay Slims',
+                'title': 'Assay Category',
                 'description': 'High-level classification of preferred assay slims.',
                 'category': 'Pseudobulk Set Details',
             },
