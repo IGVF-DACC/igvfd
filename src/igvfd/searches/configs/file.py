@@ -94,7 +94,7 @@ def file():
                 'category': 'File Set Details'
             },
             'file_set.assay_slims': {
-                'title': 'Assay Category',
+                'title': 'Assay Ontology',
                 'description': 'High-level classification of assay type.',
                 'category': 'File Set Details',
                 'type': 'hierarchical',
