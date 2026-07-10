@@ -93,13 +93,13 @@ def file():
                 'optional': True,
                 'category': 'File Set Details'
             },
-            'file_set.assay_term.assay_slims': {
+            'file_set.assay_slims': {
                 'title': 'Assay Ontology',
                 'description': 'High-level classification of assay type.',
                 'category': 'File Set Details',
                 'type': 'hierarchical',
                 'subfacets': [
-                    {'field': 'file_set.assay_term.term_name', 'title': 'Assay type'}
+                    {'field': 'file_set.assay_titles', 'title': 'Assay type'}
                 ]
             },
             'preferred_assay_slims': {
