@@ -11,10 +11,13 @@ def file_set():
                 'title': 'File Set Type',
             },
             'assay_titles': {
-                'title': 'Assay Term Names'
+                'title': 'Assay Ontology'
+            },
+            'preferred_assay_slims': {
+                'title': 'Assay Category',
             },
             'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles'
+                'title': 'Assay'
             },
             'donors.taxa': {
                 'title': 'Taxa'

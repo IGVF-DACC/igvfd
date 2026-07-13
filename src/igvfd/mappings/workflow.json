@@ -1,6 +1,6 @@
 {
-    "hash": "db5f330d245d5240735ed54fea575634",
-    "index_name": "workflow_db5f330d",
+    "hash": "6adcee5d49256a6fb383f625d3e5b4ef",
+    "index_name": "workflow_6adcee5d",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -576,6 +576,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "preferred_assay_slims": {
+                        "type": "keyword"
                     },
                     "preferred_assay_titles": {
                         "copy_to": "_fuzzy",

@@ -1,6 +1,6 @@
 {
-    "hash": "6ed45db09c312f1b1c1353ea4a49a00c",
-    "index_name": "analysis_step_6ed45db0",
+    "hash": "f7e7204e9ae0481cb24ecd45726812a8",
+    "index_name": "analysis_step_f7e7204e",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -320,6 +320,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "preferred_assay_slims": {
+                                        "type": "keyword"
                                     },
                                     "preferred_assay_titles": {
                                         "type": "keyword"

@@ -18,7 +18,7 @@ def subfacets():
                 ]
             },
             'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles',
+                'title': 'Assay',
                 'type': 'hierarchical',
                 'subfacets': [
                     {
@@ -34,7 +34,7 @@ def subfacets():
                 ]
             },
             'assay_term.term_name': {
-                'title': 'Assay',
+                'title': 'Assay Ontology',
                 'type': 'hierarchical',
                 'subfacets': [
                     {

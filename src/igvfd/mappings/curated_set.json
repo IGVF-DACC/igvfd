@@ -1,6 +1,6 @@
 {
-    "hash": "80c01e849d0a5d25595e294c309c9a85",
-    "index_name": "curated_set_80c01e84",
+    "hash": "5a5c1845f679679a97d5d3a6abaddafe",
+    "index_name": "curated_set_5a5c1845",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -2195,6 +2195,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "preferred_assay_slims": {
+                                        "type": "keyword"
                                     },
                                     "preferred_assay_titles": {
                                         "type": "keyword"

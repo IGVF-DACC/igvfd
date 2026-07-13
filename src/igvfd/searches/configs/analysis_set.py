@@ -14,7 +14,7 @@ def analysis_set():
                 'optional': True
             },
             'assay_slims': {
-                'title': 'Assay',
+                'title': 'Assay Ontology',
                 'category': 'Analysis Set Details',
                 'description': 'Assay(s) that is relevant to this analysis sets.',
                 'type': 'hierarchical',
@@ -23,8 +23,13 @@ def analysis_set():
                 ],
                 'optional': True
             },
+            'preferred_assay_slims': {
+                'title': 'Assay Category',
+                'description': 'High-level classification of preferred assay slims.',
+                'category': 'Analysis Set Details',
+            },
             'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles',
+                'title': 'Assay',
                 'category': 'Analysis Set Details',
                 'description': 'Title of assays that produced data analyzed in the analysis sets.'
             },

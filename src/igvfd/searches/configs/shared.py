@@ -13,7 +13,7 @@ def preferred_assay_title_summary():
                     'lab.title',
                     'preferred_assay_titles',
                 ],
-                'label': 'Preferred assay titles',
+                'label': 'Assay',
             },
             'x': {
                 'group_by': 'status',
@@ -35,7 +35,7 @@ def assay_titles_summary():
                     'lab.title',
                     ('assay_titles', 'no_assay_titles'),
                 ],
-                'label': 'Assay titles',
+                'label': 'Assay Ontology',
             },
             'x': {
                 'group_by': 'status',

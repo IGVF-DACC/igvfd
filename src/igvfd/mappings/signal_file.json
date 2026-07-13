@@ -1,6 +1,6 @@
 {
-    "hash": "edf16622c2e6f9c0d212dba6033355b5",
-    "index_name": "signal_file_edf16622",
+    "hash": "f555add9d4a7799fd86f26bcb2e25c6d",
+    "index_name": "signal_file_f555add9",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -3170,6 +3170,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
                             },
                             "preferred_assay_titles": {
                                 "type": "keyword"
