@@ -64,7 +64,7 @@ def audit_inconsistent_cell_line_donor(value, system):
         {
             "audit_description": "In vitro systems of established cell lines are expected to link to the official IGVF donor for that cell line.",
             "audit_category": "inconsistent cell line donor",
-            "audit_level": "WARNING"
+            "audit_level": "ERROR"
         }
     ]
     '''
