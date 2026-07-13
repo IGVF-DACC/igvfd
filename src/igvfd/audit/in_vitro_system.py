@@ -70,9 +70,10 @@ def audit_inconsistent_cell_line_donor(value, system):
     '''
     audit_message = get_audit_message(audit_inconsistent_cell_line_donor)
     sample_term_object = system.get('request').embed(value['sample_terms'][0] + '@@object?skip_calculated=true')
+    sample_term_id = sample_term_object.get('term_id', '')
     sample_term_name = sample_term_object.get('term_name', '')
     sample_term_dbxrefs = sample_term_object.get('dbxrefs', [])
-    if any([x.startswith('Cellosaurus') for x in sample_term_dbxrefs]):
+    if sample_term_id.startswith('CLO:') or any([x.startswith('Cellosaurus') for x in sample_term_dbxrefs]):
         for donor in value.get('donors', []):
             donor_object = system.get('request').embed(donor + '@@object?skip_calculated=true')
             # Exception for a virtual generic human donor object.
