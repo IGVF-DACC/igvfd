@@ -338,7 +338,7 @@ def audit_inconsistent_crispr_screen_biometric(value, system):
     detail = (
         f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
         f'has `crispr_screen_biometric` {audit_link(path_to_text(crispr_screen_biometric), crispr_screen_biometric)} '
-        f'({biometric_object.get("term_name", "")}, {biometric_term_id}), but {screen_phrase} '
+        f'({biometric_object.get("term_name", "")}), but {screen_phrase} '
         f'are expected to use one of: {expected_phrase}.'
     )
     yield AuditFailure(
