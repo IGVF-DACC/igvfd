@@ -332,7 +332,7 @@ def audit_inconsistent_crispr_screen_biometric(value, system):
         phenotype_term = f'/phenotype-terms/{term_id.replace(":", "_")}/'
         expected_phrases.append(
             f'{audit_link(path_to_text(phenotype_term), phenotype_term)} '
-            f'({biometric_term_names[term_id]}, {term_id})'
+            f'({biometric_term_names[term_id]})'
         )
     expected_phrase = ', '.join(expected_phrases)
     detail = (
