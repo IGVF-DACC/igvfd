@@ -35,16 +35,20 @@ def signal_file():
             'file_set.file_set_type': {
                 'title': 'File Set Type'
             },
-            'file_set.assay_term.assay_slims': {
-                'title': 'Assay',
+            'file_set.assay_slims': {
+                'title': 'Assay Ontology',
                 'description': 'High-level classification of assay type.',
                 'type': 'hierarchical',
                 'subfacets': [
-                    {'field': 'file_set.assay_term.term_name', 'title': 'Assay type'}
+                    {'field': 'file_set.assay_titles', 'title': 'Assay type'}
                 ]
             },
+            'preferred_assay_slims': {
+                'title': 'Assay Category',
+                'description': 'High-level classification of preferred assay slims.',
+            },
             'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles'
+                'title': 'Assay'
             },
             'file_set.samples.taxa': {
                 'title': 'Taxa'
@@ -84,6 +88,9 @@ def signal_file():
             },
             'award.component': {
                 'title': 'Award'
+            },
+            'award.project': {
+                'title': 'Project'
             },
             'upload_status': {
                 'title': 'Upload Status'

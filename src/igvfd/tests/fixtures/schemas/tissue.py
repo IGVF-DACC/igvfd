@@ -15,6 +15,20 @@ def tissue(testapp, lab, source, award, rodent_donor, sample_term_adrenal_gland)
 
 
 @pytest.fixture
+def tissue_parkinsons(testapp, lab, source, award, human_donor, sample_term_gyrus, phenotypic_feature_parkinsons):
+    item = {
+        'accession': 'IGVFSM1111BBBB',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'sources': [source['@id']],
+        'donors': [human_donor['@id']],
+        'sample_terms': [sample_term_gyrus['@id']],
+        'phenotypic_features': [phenotypic_feature_parkinsons['@id']]
+    }
+    return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def tissue_v1(tissue):
     item = tissue.copy()
     item.update({

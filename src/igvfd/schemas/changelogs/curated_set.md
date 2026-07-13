@@ -1,5 +1,23 @@
 ## Changelog for *`curated_set.json`*
 
+### Minor changes since schema version 11
+
+* Extend `file_set_type` enum list to include `pathway gene mapping`.
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+
+### Schema version 11
+
+* Adjust `preferred_assay_titles` enum list to remove `scATAC-seq`.
+
+### Minor changes since schema version 10
+
+* Add calculated property `versions`.
+
+### Schema version 10
+
+* Adjust `preferred_assay_titles` enum list to replace `perturb-SHARE-seq` with `MORF-SHARE-seq`.
+
 ### Minor changes since schema version 9
 
 * Extend `preferred_assay_titles` enum list to include `MORF screen`.

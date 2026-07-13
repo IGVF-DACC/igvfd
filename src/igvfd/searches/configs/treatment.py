@@ -25,6 +25,9 @@ def treatment():
             'award.component': {
                 'title': 'Award'
             },
+            'award.project': {
+                'title': 'Project'
+            },
             'depletion': {
                 'title': 'Depletion'
             },

@@ -51,7 +51,6 @@
         "release_timestamp": "2024-08-06T12:34:56Z",
         "input_content_types": [
             "peaks",
-            "fold change over control",
             "control signal",
             "read-depth signal",
             "raw signal",
@@ -119,7 +118,7 @@
             "editing templates",
             "element quantifications",
             "elements reference",
-            "fold change over control",
+            "allelic effects",
             "guide quantifications",
             "tissue positions",
             "sample sort parameters",
@@ -250,12 +249,41 @@
         "input_content_types": [
             "variants",
             "protein-protein interaction edge-perturbation score",
-            "protein-protein interaction edgotyping score"
+            "protein-protein interaction edgotyping score",
+            "genes in pathway"
         ],
         "output_content_types": [
             "calibrated coding variant effects",
             "protein-protein interaction edge-perturbation score",
-            "protein-protein interaction edgotyping score"
+            "protein-protein interaction edgotyping score",
+            "genes in pathway"
+        ]
+    },
+    {
+        "uuid": "73ff0e7d-f911-4eb4-b2bb-0013ad8f9130",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "danwei-huangfu:analysis_step_05"
+        ],
+        "status": "released",
+        "title": "CRISPR Differential Expression Aggregation Step",
+        "step_label": "crispr-differential-expression-aggregation-step",
+        "analysis_step_types": [
+            "differential expression analysis",
+            "quantification"
+        ],
+        "release_timestamp": "2026-05-27T12:34:56Z",
+        "input_content_types": [
+            "guide quantifications",
+            "elements reference"
+        ],
+        "output_content_types": [
+            "cis differential expression quantifications per guide",
+            "trans differential expression quantifications per guide",
+            "cis differential expression quantifications per element",
+            "trans differential expression quantifications per element",
+            "pipeline dashboard"
         ]
     }
 ]

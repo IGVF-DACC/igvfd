@@ -26,7 +26,7 @@ class AnalysisStep(Item):
     item_type = 'analysis_step'
     schema = load_schema('igvfd:schemas/analysis_step.json')
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('parents', include=['@id', 'title', 'status']),
         Path('submitted_by', include=['@id', 'title']),

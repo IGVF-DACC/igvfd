@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 16
 
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+* Extend `construct_delivery_methods` enum list to include `transposase`.
 * Update `dbxrefs` regex to allow DepMap ID accessions.
 * Extend `collections` enum list to include `PD single cell multiomics`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.2`.

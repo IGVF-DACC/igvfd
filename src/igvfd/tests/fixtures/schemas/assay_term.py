@@ -155,10 +155,35 @@ def assay_term_CRISPR_sorted(testapp):
 
 
 @pytest.fixture
+def assay_term_flow_cytometry(testapp):
+    item = {
+        'term_id': 'OBI:0000916',
+        'term_name': 'flow cytometry assay',
+        'preferred_assay_titles': [
+            'MORF screen'
+        ]
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def assay_term_LABEL_seq(testapp):
     item = {
         'term_id': 'OBI:0002082',
         'term_name': 'reporter gene assay'
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def assay_term_VAMP_seq(testapp):
+    item = {
+        'term_id': 'NTR:0001114',
+        'term_name': 'Variant abundance by massively parallel sequencing',
+        'preferred_assay_titles': [
+            'VAMP-seq',
+            'VAMP-seq (MultiSTEP)'
+        ]
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
 
@@ -407,5 +432,25 @@ def assay_term_v22_mixed_tiling(assay_term_CRISPR_sorted):
             'CRISPR tiling screen guide readout',
             'Perturb-seq',
         ],
+    })
+    return item
+
+
+@pytest.fixture
+def assay_term_v23(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '23',
+        'preferred_assay_titles': ['perturb-SHARE-seq']
+    })
+    return item
+
+
+@pytest.fixture
+def assay_term_v24(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '24',
+        'preferred_assay_titles': ['scATAC-seq']
     })
     return item

@@ -93,17 +93,22 @@ def file():
                 'optional': True,
                 'category': 'File Set Details'
             },
-            'file_set.assay_term.assay_slims': {
-                'title': 'Assay',
+            'file_set.assay_slims': {
+                'title': 'Assay Ontology',
                 'description': 'High-level classification of assay type.',
                 'category': 'File Set Details',
                 'type': 'hierarchical',
                 'subfacets': [
-                    {'field': 'file_set.assay_term.term_name', 'title': 'Assay type'}
+                    {'field': 'file_set.assay_titles', 'title': 'Assay type'}
                 ]
             },
+            'preferred_assay_slims': {
+                'title': 'Assay Category',
+                'description': 'High-level classification of preferred assay slims.',
+                'category': 'File Set Details'
+            },
             'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles',
+                'title': 'Assay',
                 'description': 'Preferred title of assay(s) that created this file',
                 'category': 'File Set Details'
             },
@@ -191,6 +196,12 @@ def file():
             'award.component': {
                 'title': 'Award',
                 'description': 'The project component the award is associated with.',
+                'optional': True,
+                'category': 'Provenance'
+            },
+            'award.project': {
+                'title': 'Project',
+                'description': 'The project the award is associated with.',
                 'optional': True,
                 'category': 'Provenance'
             },

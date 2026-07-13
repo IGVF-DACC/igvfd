@@ -20,7 +20,7 @@ class PhenotypicFeature(Item):
     item_type = 'phenotypic_feature'
     schema = load_schema('igvfd:schemas/phenotypic_feature.json')
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('feature', include=['@id', 'term_id', 'term_name', 'status']),
         Path('submitted_by', include=['@id', 'title']),

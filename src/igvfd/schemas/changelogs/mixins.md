@@ -1,5 +1,8 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `collections` enum list to include `Cross-Disorder CNVs`. (07/08/2026)
+* Extend `collections` enum list to include `Coronary Artery Disease`. (07/08/2026)
+* Add `biosample_qualifiers`. (06/03/2026)
 * Extend `preferred_assay_titles` enum list to include `MORF screen`. (05/27/2026)
 * Adjust `preferred_assay_titles` enum list to remove `CRISPR tiling screen guide readout`. (05/27/2026)
 * Adjust `preferred_assay_titles` enum list to remove `CRISPR tiling screen allelic readout`. (05/27/2026)

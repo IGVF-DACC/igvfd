@@ -88,3 +88,20 @@ def test_taxa(testapp, multiplexed_sample_mixed_species, multiplexed_sample):
     assert res.json.get('taxa') == 'Mixed species'
     res = testapp.get(multiplexed_sample['@id'])
     assert res.json.get('taxa') == 'Mus musculus'
+
+
+def test_targeted_sample_terms(testapp, multiplexed_sample, in_vitro_differentiated_cell, in_vitro_organoid, in_vitro_cell_line):
+    # Test: 2 with targeted sample terms + 1 without
+    testapp.patch_json(
+        multiplexed_sample['@id'],
+        {
+            'multiplexed_samples': [
+                in_vitro_differentiated_cell['@id'],
+                in_vitro_organoid['@id'],
+                in_vitro_cell_line['@id']
+            ]
+        }
+    )
+    res = testapp.get(multiplexed_sample['@id'])
+    assert {subres.get('term_name') for subres in res.json.get('targeted_sample_terms')} == {
+        'adrenal gland', 'brown adipose tissue'}

@@ -71,3 +71,11 @@ def test_construct_library_set_upgrade_11_12(upgrader, construct_library_set_v11
     assert 'control_type' not in value
     assert 'control_types' in value and value['control_types'] == ['control transduction']
     assert value['schema_version'] == '12'
+
+
+def test_construct_library_set_upgrade_12_13(upgrader, construct_library_set_v12):
+    orf_list = construct_library_set_v12['orf_list']
+    value = upgrader.upgrade('construct_library_set', construct_library_set_v12,
+                             current_version='12', target_version='13')
+    assert 'orf_list' not in value and value['small_scale_orf_list'] == orf_list
+    assert value['schema_version'] == '13'

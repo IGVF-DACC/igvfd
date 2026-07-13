@@ -1,5 +1,22 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 48
+
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+
+### Schema version 48
+
+* Adjust `preferred_assay_titles` enum list to remove `scATAC-seq`.
+
+### Schema version 47
+
+* Add `crispr_screen_biometric`.
+* Rename `crispr_readout` to `crispr_screen_readout`.
+
+### Schema version 46
+* Adjust `preferred_assay_titles` enum list to replace `perturb-SHARE-seq` with `MORF-SHARE-seq`.
+
 ### Schema version 45
 
 * Add `crispr_readout`.

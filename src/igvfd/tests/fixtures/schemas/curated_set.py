@@ -32,6 +32,18 @@ def curated_set_barcode(testapp, lab, award):
 
 
 @pytest.fixture
+def curated_set_external_sequencing(testapp, lab, award, assay_term_rna):
+    item = {
+        'file_set_type': 'external sequencing data',
+        'assay_term': assay_term_rna['@id'],
+        'preferred_assay_titles': ['RNA-seq'],
+        'award': award['@id'],
+        'lab': lab['@id']
+    }
+    return testapp.post_json('/curated_set', item).json['@graph'][0]
+
+
+@pytest.fixture
 def curated_set_v1(analysis_set_base, human_donor, in_vitro_cell_line):
     item = analysis_set_base.copy()
     item.update({
@@ -99,5 +111,25 @@ def curated_set_v8(curated_set_genome):
     item.update({
         'schema_version': '8',
         'file_set_type': 'primer design'
+    })
+    return item
+
+
+@pytest.fixture
+def curated_set_v9(curated_set_genome):
+    item = curated_set_genome.copy()
+    item.update({
+        'schema_version': '9',
+        'preferred_assay_titles': ['perturb-SHARE-seq']
+    })
+    return item
+
+
+@pytest.fixture
+def curated_set_v10(curated_set_genome):
+    item = curated_set_genome.copy()
+    item.update({
+        'schema_version': '10',
+        'preferred_assay_titles': ['scATAC-seq']
     })
     return item

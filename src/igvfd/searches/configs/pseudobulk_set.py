@@ -24,19 +24,41 @@ def pseudobulk_set():
                 'category': 'Sample',
                 'description': 'The organism or species associated with the donor.'
             },
-            'cell_type.term_name': {
+            'cell_annotation': {
                 'title': 'Cell Annotation',
                 'category': 'Sample',
                 'description': 'The cell annotation of the pseudobulk.',
             },
+            'cell_type.term_name': {
+                'title': 'Cell Type',
+                'category': 'Sample',
+                'description': 'The ontology term of the pseudobulk.',
+                'optional': True
+            },
+            'cell_qualifier': {
+                'title': 'Cell Qualifier',
+                'category': 'Sample',
+                'description': 'The free text qualifier of the annotation.',
+                'optional': True
+            },
             'assay_slims': {
-                'title': 'Assay',
+                'title': 'Assay Ontology',
                 'description': 'Assay(s) that is relevant to this pseudobulk sets.',
                 'type': 'hierarchical',
                 'category': 'Pseudobulk Set Details',
                 'subfacets': [
                     {'field': 'assay_titles', 'title': 'Assay type'}
-                ]
+                ],
+                'optional': True
+            },
+            'preferred_assay_slims': {
+                'title': 'Assay Category',
+                'description': 'High-level classification of preferred assay slims.',
+                'category': 'Pseudobulk Set Details',
+            },
+            'preferred_assay_titles': {
+                'title': 'Assay',
+                'category': 'Pseudobulk Set Details',
             },
             'samples.classifications': {
                 'title': 'Classification',
@@ -45,9 +67,9 @@ def pseudobulk_set():
                 'optional': True
             },
             'samples.sample_terms.term_name': {
-                'title': 'Sample',
+                'title': 'Parent Sample',
                 'category': 'Sample',
-                'description': 'The sample name associated with the pseudobulk set.'
+                'description': 'The parent sample name associated with the pseudobulk set.'
             },
             'samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
@@ -104,6 +126,12 @@ def pseudobulk_set():
                 'title': 'Award',
                 'category': 'Provenance',
                 'description': 'The project component the award is associated with.',
+                'optional': True
+            },
+            'award.project': {
+                'title': 'Project',
+                'category': 'Provenance',
+                'description': 'The project the award is associated with.',
                 'optional': True
             },
             'release_timestamp': {
@@ -230,10 +258,10 @@ def pseudobulk_set_report_view():
             'title': 'Summary'
         },
         'assay_titles': {
-            'title': 'Assay Term Names'
+            'title': 'Assay Ontology'
         },
         'preferred_assay_titles': {
-            'title': 'Preferred Assay Titles'
+            'title': 'Assay'
         },
         'file_set_type': {
             'title': 'File Set Type'

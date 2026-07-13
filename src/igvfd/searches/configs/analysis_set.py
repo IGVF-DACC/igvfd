@@ -14,7 +14,7 @@ def analysis_set():
                 'optional': True
             },
             'assay_slims': {
-                'title': 'Assay',
+                'title': 'Assay Ontology',
                 'category': 'Analysis Set Details',
                 'description': 'Assay(s) that is relevant to this analysis sets.',
                 'type': 'hierarchical',
@@ -23,8 +23,13 @@ def analysis_set():
                 ],
                 'optional': True
             },
+            'preferred_assay_slims': {
+                'title': 'Assay Category',
+                'description': 'High-level classification of preferred assay slims.',
+                'category': 'Analysis Set Details',
+            },
             'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles',
+                'title': 'Assay',
                 'category': 'Analysis Set Details',
                 'description': 'Title of assays that produced data analyzed in the analysis sets.'
             },
@@ -34,10 +39,16 @@ def analysis_set():
                 'description': 'Indicator that this analysis was processed by an IGVF uniform pipeline.',
                 'optional': True
             },
-            'input_file_sets.crispr_readout': {
-                'title': 'CRISPR Readout',
+            'input_file_sets.crispr_screen_readout': {
+                'title': 'CRISPR Screen Readout',
                 'category': 'Analysis Set Details',
                 'description': 'The CRISPR screen readout(s) associated with the input file sets.',
+                'optional': True
+            },
+            'input_file_sets.crispr_screen_biometric.term_name': {
+                'title': 'CRISPR Screen Biometric',
+                'category': 'Analysis Set Details',
+                'description': 'The phenotype used for selection or inference in CRISPR screen input file sets.',
                 'optional': True
             },
             'targeted_genes.symbol': {
@@ -108,6 +119,12 @@ def analysis_set():
                 'description': 'Treatments applied to the sample with the purpose of perturbation.',
                 'optional': True
             },
+            'samples.construct_delivery_methods': {
+                'title': 'Construct Delivery Methods',
+                'category': 'Sample',
+                'description': 'Methods used to deliver construct libraries into the sample.',
+                'optional': True
+            },
             'construct_library_sets.file_set_type': {
                 'title': 'Construct Library',
                 'category': 'Library',
@@ -170,6 +187,12 @@ def analysis_set():
                 'title': 'Award',
                 'category': 'Provenance',
                 'description': 'The project component the award is associated with.',
+                'optional': True
+            },
+            'award.project': {
+                'title': 'Project',
+                'category': 'Provenance',
+                'description': 'The project the award is associated with.',
                 'optional': True
             },
             'release_timestamp': {

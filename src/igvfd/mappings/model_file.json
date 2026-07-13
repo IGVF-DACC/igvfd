@@ -1,6 +1,6 @@
 {
-    "hash": "028f9e592350159ff576635f86e87a5f",
-    "index_name": "model_file_028f9e59",
+    "hash": "745442d822fd1605288bbd51ee18d7bc",
+    "index_name": "model_file_745442d8",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -665,6 +665,9 @@
                             "barcode_replacement_file": {
                                 "type": "keyword"
                             },
+                            "cell_annotation": {
+                                "type": "keyword"
+                            },
                             "cell_qualifier": {
                                 "type": "keyword"
                             },
@@ -760,6 +763,9 @@
                                 },
                                 "type": "object"
                             },
+                            "chromosomes": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -782,7 +788,10 @@
                             "creation_timestamp": {
                                 "type": "date"
                             },
-                            "crispr_readout": {
+                            "crispr_screen_biometric": {
+                                "type": "keyword"
+                            },
+                            "crispr_screen_readout": {
                                 "type": "keyword"
                             },
                             "data_use_limitation_summaries": {
@@ -1057,6 +1066,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "large_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "library_preparation_kit": {
                                 "type": "keyword"
                             },
@@ -1073,6 +1085,10 @@
                             },
                             "measurement_sets": {
                                 "type": "keyword"
+                            },
+                            "merged": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "model_name": {
                                 "type": "keyword"
@@ -1094,9 +1110,6 @@
                                 "type": "keyword"
                             },
                             "onlist_method": {
-                                "type": "keyword"
-                            },
-                            "orf_list": {
                                 "type": "keyword"
                             },
                             "pipeline_parameters": {
@@ -1793,6 +1806,9 @@
                                         },
                                         "type": "object"
                                     },
+                                    "targeted_sample_terms": {
+                                        "type": "keyword"
+                                    },
                                     "taxa": {
                                         "type": "keyword"
                                     },
@@ -1991,6 +2007,9 @@
                                 },
                                 "type": "object"
                             },
+                            "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "software_versions": {
                                 "type": "keyword"
                             },
@@ -2071,6 +2090,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "versions": {
                                 "type": "keyword"
                             },
                             "workflows": {
@@ -2203,6 +2225,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "chromosomes": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -2274,6 +2299,9 @@
                             "large_scale_loci_list": {
                                 "type": "keyword"
                             },
+                            "large_scale_orf_list": {
+                                "type": "keyword"
+                            },
                             "lot_id": {
                                 "type": "keyword"
                             },
@@ -2287,9 +2315,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "orf_list": {
-                                "type": "keyword"
                             },
                             "preferred_assay_slims": {
                                 "type": "keyword"
@@ -2639,6 +2664,9 @@
                                     "targeted_sample_term": {
                                         "type": "keyword"
                                     },
+                                    "targeted_sample_terms": {
+                                        "type": "keyword"
+                                    },
                                     "taxa": {
                                         "type": "keyword"
                                     },
@@ -2825,6 +2853,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "small_scale_orf_list": {
+                                "type": "keyword"
                             },
                             "sources": {
                                 "type": "keyword"
@@ -3125,6 +3156,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "preferred_assay_slims": {
+                                "type": "keyword"
                             },
                             "preferred_assay_titles": {
                                 "type": "keyword"

@@ -77,7 +77,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "45"
+            "default": "48"
         },
         "samples": {
             "maxItems": 1
@@ -96,8 +96,8 @@
         "preferred_assay_titles": {
             "maxItems": 1
         },
-        "crispr_readout": {
-            "title": "CRISPR Readout",
+        "crispr_screen_readout": {
+            "title": "CRISPR Screen Readout",
             "description": "The sequencing readout produced by this CRISPR measurement set.",
             "comment": "Only measurement sets from CRISPR screen assays should submit this property.",
             "type": "string",
@@ -120,6 +120,17 @@
             "submissionExample": {
                 "appscript": "gRNA sequencing",
                 "igvf_utils": "gRNA sequencing"
+            }
+        },
+        "crispr_screen_biometric": {
+            "title": "CRISPR Screen Biometric",
+            "description": "The phenotype used for selection or inference in this CRISPR screen, distinct from the sequencing readout.",
+            "comment": "Only measurement sets from CRISPR screen assays should submit this property.",
+            "type": "string",
+            "linkTo": "PhenotypeTerm",
+            "submissionExample": {
+                "appscript": "/phenotype-terms/GO_0008283/",
+                "igvf_utils": "/phenotype-terms/GO_0008283/"
             }
         },
         "protocols": {
@@ -431,10 +442,11 @@
         "description",
         "files.content_type",
         "files.submitted_file_name",
+        "crispr_screen_biometric.term_name",
         "functional_assay_mechanisms.term_name",
         "lab.title",
         "preferred_assay_titles",
-        "crispr_readout",
+        "crispr_screen_readout",
         "samples.modifications.modality",
         "samples.summary",
         "samples.sample_terms.term_name",

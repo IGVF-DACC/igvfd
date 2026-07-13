@@ -46,7 +46,7 @@
             "title": "ORF ID",
             "description": "Open reading frame ID.",
             "type": "string",
-            "pattern": "^CCSBORF[1-9][0-9]*$",
+            "pattern": "^(CCSBORF|TFORF)[0-9]+$",
             "uniqueKey": true,
             "submissionExample": {
                 "appscript": "CCSBORF1234",
@@ -80,6 +80,53 @@
                 "igvf_utils": "ENSP00000001146.2"
             }
         },
+        "transcript_ids": {
+            "title": "ENSEMBL TranscriptID",
+            "description": "ENSEMBL TranscriptID of official nomenclature approved transcript/isoform of that gene",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "ENSEMBL GeneID",
+                "description": "An identifier of the Gene.",
+                "pattern": "^ENST\\d{11}(\\.\\d+)?$",
+                "type": "string"
+            },
+            "submissionExample": {
+                "appscript": "[\"ENST00000622694\",\"ENST00000399774\",\"ENST00000551952\"]",
+                "igvf_utils": "ENST00000622694, ENST00000399774, ENST00000551952"
+            }
+        },
+        "barcode_sequence": {
+            "title": "Barcode Sequence",
+            "description": "DNA sequence of the unique barcode identifier of the overexpressed construct",
+            "type": "string",
+            "pattern": "^[ACGT]+$",
+            "submissionExample": {
+                "appscript": "AAGACTTCGGTCCGTAGTCTTGAT",
+                "igvf_utils": "AAGACTTCGGTCCGTAGTCTTGAT"
+            }
+        },
+        "orf_sequence": {
+            "title": "ORF Sequence",
+            "description": "DNA sequence of the ORF specifically (this is a subset of the Insert DNA sequence)",
+            "type": "string",
+            "pattern": "^[ACGT]+$",
+            "submissionExample": {
+                "appscript": "AAGACTTCGGTCCGTAGTCTTGAT",
+                "igvf_utils": "AAGACTTCGGTCCGTAGTCTTGAT"
+            }
+        },
+        "insert_sequence": {
+            "title": "Insert Sequence",
+            "description": "DNA sequence of longer construct",
+            "type": "string",
+            "pattern": "^[ACGT]+$",
+            "submissionExample": {
+                "appscript": "AAGACTTCGGTCCGTAGTCTTGAT",
+                "igvf_utils": "AAGACTTCGGTCCGTAGTCTTGAT"
+            }
+        },
         "dbxrefs": {
             "title": "External Resources",
             "description": "Unique identifiers from the hORFeome database",
@@ -91,7 +138,7 @@
                 "description": "A unique identifier from hORFeome database.",
                 "comment": "Submit as database_name:id. See changelog for potential databases.",
                 "type": "string",
-                "pattern": "^(hORFeome:[1-9][0-9]*)$"
+                "pattern": "^(hORFeome:[1-9][0-9]*|addgene:\\d{5,6})$"
             },
             "submissionExample": {
                 "appscript": "[\"hORFeome:8945/\", \"hORFeome:8946\"]",

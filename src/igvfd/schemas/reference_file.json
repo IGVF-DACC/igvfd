@@ -124,6 +124,7 @@
                                         "obo",
                                         "owl",
                                         "PWM",
+                                        "run",
                                         "tar",
                                         "tsv",
                                         "txt",
@@ -219,6 +220,7 @@
                                 "motif protein mapping",
                                 "motifs",
                                 "ontology terms",
+                                "open reading frame reference",
                                 "orthologs",
                                 "pathway hierarchy",
                                 "pathways",
@@ -298,8 +300,8 @@
                         "genome index",
                         "genome reference",
                         "guide RNA sequences reference",
-                        "inclusion list",
                         "nascent transcriptome index",
+                        "open reading frame reference",
                         "spike-ins",
                         "transcriptome index",
                         "transcriptome reference"
@@ -325,6 +327,7 @@
                         "genes in pathway",
                         "GO annotation",
                         "GWAS",
+                        "inclusion list",
                         "linkage disequilibrium",
                         "motif protein mapping",
                         "motifs",
@@ -375,6 +378,7 @@
                 "motif protein mapping": "Mappings describing associations between sequence motifs and proteins.",
                 "motifs": "Reference definitions of recurring sequence patterns.",
                 "ontology terms": "Controlled vocabulary terms organized within an ontology.",
+                "open reading frame reference": "A reference file comprised of concatenated open reading frames intended for use as an alignment or mapping reference.",
                 "orthologs": "Mappings describing orthologous genes across species.",
                 "pathway hierarchy": "Hierarchical relationships between biological pathways.",
                 "pathways": "Reference information describing biological pathways.",
@@ -406,6 +410,7 @@
                 "obo",
                 "owl",
                 "PWM",
+                "run",
                 "tar",
                 "tsv",
                 "txt",
@@ -436,6 +441,16 @@
             "submissionExample": {
                 "appscript": "[\"GENCODE:Release 44\", \"GRC:GCA_000001405.29_GRCh38.p14\", \"ENSEMBL:ENSG00000101126\"]",
                 "igvf_utils": "GENCODE:Release 44, GRC:GCA_000001405.29_GRCh38.p14, ENSEMBL:ENSG00000101126"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "The version of this reference file, used for external files loaded into the IGVF catalog.",
+            "type": "string",
+            "permission": "admin_only",
+            "submissionExample": {
+                "appscript": "v1.0",
+                "igvf_utils": "v1.0"
             }
         },
         "sources": {

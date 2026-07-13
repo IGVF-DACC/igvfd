@@ -25,7 +25,7 @@ class Treatment(Item):
     item_type = 'treatment'
     schema = load_schema('igvfd:schemas/treatment.json')
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('sources', include=['@id', 'title', 'status']),
         Path('submitted_by', include=['@id', 'title']),

@@ -140,3 +140,26 @@ def test_tabular_file_upgrade_21_22(upgrader, tabular_file_v21):
     assert value['file_format_type'] == 'mpra_element'
     assert value['schema_version'] == '22'
     assert 'The file_format_type of this file was mpra_starr, but has been upgraded to mpra_element.' in value['notes']
+
+
+def test_tabular_file_upgrade_22_23(upgrader, tabular_file_v22):
+    value = upgrader.upgrade('tabular_file', tabular_file_v22, current_version='22', target_version='23')
+    assert value['content_type'] == 'loci'
+    assert value['schema_version'] == '23'
+    assert 'This file\'s content_type was exclusion list regions, but has been defaulted to loci.' in value['notes']
+
+
+def test_tabular_file_upgrade_23_24(upgrader, tabular_file_v23):
+    value = upgrader.upgrade('tabular_file', tabular_file_v23, current_version='23', target_version='24')
+    assert value['content_type'] == 'differential open reading frame quantifications'
+    assert value['schema_version'] == '24'
+    assert 'This file\'s content_type was differential TF enrichment quantifications, but has been upgraded to differential open reading frame quantifications.' in value[
+        'notes']
+
+
+def test_tabular_file_upgrade_24_25(upgrader, tabular_file_v24):
+    value = upgrader.upgrade('tabular_file', tabular_file_v24, current_version='24', target_version='25')
+    assert value['content_type'] == 'allelic effects'
+    assert value['schema_version'] == '25'
+    assert 'This file\'s content_type was fold change over control, and changed to allelic effects via upgrade.' in value[
+        'notes']

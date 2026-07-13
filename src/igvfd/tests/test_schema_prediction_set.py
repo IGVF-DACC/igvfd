@@ -78,3 +78,54 @@ def test_sample_donor_dependency(testapp, lab, award, tissue, human_donor):
     }
     response = testapp.post_json('/prediction_set', item, expect_errors=True)
     assert response.status_code == 422
+
+
+def test_cell_annotation_donor_sample_dependency(testapp, lab, award, in_vitro_cell_line, human_donor, sample_term_endothelial_cell):
+    item = {
+        'lab': lab['@id'],
+        'award': award['@id'],
+        'file_set_type': 'functional effect',
+        'samples': [in_vitro_cell_line['@id']]
+    }
+    response = testapp.post_json('/prediction_set', item)
+    assert response.status_code == 201
+
+    item = {
+        'lab': lab['@id'],
+        'award': award['@id'],
+        'file_set_type': 'functional effect',
+        'samples': [in_vitro_cell_line['@id']],
+        'cell_qualifier': 'early'
+    }
+    response = testapp.post_json('/prediction_set', item, expect_errors=True)
+    assert response.status_code == 422
+
+    item = {
+        'lab': lab['@id'],
+        'award': award['@id'],
+        'file_set_type': 'functional effect',
+        'samples': [in_vitro_cell_line['@id']],
+        'cell_qualifier': 'early',
+        'cell_type': sample_term_endothelial_cell['@id']
+    }
+    response = testapp.post_json('/prediction_set', item)
+    assert response.status_code == 201
+
+    item = {
+        'lab': lab['@id'],
+        'award': award['@id'],
+        'file_set_type': 'functional effect',
+        'donors': [human_donor['@id']]
+    }
+    response = testapp.post_json('/prediction_set', item)
+    assert response.status_code == 201
+
+    item = {
+        'lab': lab['@id'],
+        'award': award['@id'],
+        'file_set_type': 'functional effect',
+        'donors': [human_donor['@id']],
+        'cell_type': sample_term_endothelial_cell['@id']
+    }
+    response = testapp.post_json('/prediction_set', item, expect_errors=True)
+    assert response.status_code == 422

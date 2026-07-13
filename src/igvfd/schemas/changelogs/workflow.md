@@ -1,5 +1,19 @@
 ## Changelog for *`workflow.json`*
 
+### Minor changes since schema version 9
+
+* Add calculated property `preferred_assay_slims`.
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+
+### Schema version 9
+
+* Adjust `preferred_assay_titles` enum list to remove `scATAC-seq`.
+
+### Schema version 8
+
+* Adjust `preferred_assay_titles` enum list to replace `perturb-SHARE-seq` with `MORF-SHARE-seq`.
+
 ### Minor changes since schema version 7
 
 * Extend `preferred_assay_titles` enum list to include `MORF screen`.

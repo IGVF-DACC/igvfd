@@ -144,3 +144,46 @@ def analysis_step_v11(testapp, base_workflow):
         'workflow': base_workflow['@id']
     }
     return item
+
+
+@pytest.fixture
+def analysis_step_v12(testapp, base_workflow):
+    item = {
+        'schema_version': '12',
+        'step_label': 'base-analysis-step',
+        'title': 'Base Analysis Step',
+        'input_content_types': ['exclusion list regions', 'peaks'],
+        'output_content_types': ['exclusion list regions'],
+        'analysis_step_types': ['alignment']
+    }
+    return item
+
+
+@pytest.fixture
+def analysis_step_v13(testapp, base_workflow):
+    item = {
+        'schema_version': '13',
+        'step_label': 'base-analysis-step',
+        'title': 'Base Analysis Step',
+        'input_content_types': ['differential TF enrichment quantifications'],
+        'output_content_types': ['differential TF enrichment quantifications', 'peaks'],
+        'analysis_step_types': ['quantification']
+    }
+    return item
+
+
+@pytest.fixture
+def analysis_step_v14(testapp, base_workflow):
+    item = {
+        'schema_version': '14',
+        'step_label': 'tabular-analysis-step',
+        'title': 'Tabular Analysis Step',
+        'input_content_types': [
+            'editing templates',
+            'fold change over control',
+            'guide quantifications',
+        ],
+        'output_content_types': ['guide RNA sequences'],
+        'analysis_step_types': ['quantification']
+    }
+    return item

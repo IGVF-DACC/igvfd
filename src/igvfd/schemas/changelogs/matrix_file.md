@@ -1,5 +1,16 @@
 ## Changelog for *`matrix_file.json`*
 
+### Minor changes since schema version 11
+
+* Extend `content_type` enum list to include `cell by gene program matrix`.
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+
+### Schema version 11
+
+* Remove `principal_dimension`.
+* Remove `secondary_dimensions`.
+
 ### Minor changes since schema version 10
 
 * Extend `content_type` enum list to include `donor by gene matrix`.

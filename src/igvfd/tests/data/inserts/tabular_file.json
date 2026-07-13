@@ -906,6 +906,50 @@
         "controlled_access": false
     },
     {
+        "uuid": "29108a93-702b-479e-a66c-57e3aeaa9b9a",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "accession": "IGVFFI0602PRTD",
+        "aliases": [
+            "igvf:regulator_regulator_correlation"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-01T21:29:45Z",
+        "md5sum": "03631b2d0161f588d28d3a7445d20327",
+        "file_format": "tsv",
+        "content_type": "regulator-regulator correlation",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/cellular_program_networks/regulator_regulator_correlation.tsv.gz",
+        "file_size": 20092,
+        "upload_status": "validated",
+        "file_set": "igvf:primer_design_curated_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "11765c63-236f-4300-8adf-468192ba3728",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "accession": "IGVFFI0602PRTE",
+        "aliases": [
+            "igvf:program_program_correlation"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-01T21:29:45Z",
+        "md5sum": "720ec1f9ea380760554989d73c5e2eb8",
+        "file_format": "tsv",
+        "content_type": "program-program correlation",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/cellular_program_networks/program_program_correlation.tsv.gz",
+        "file_size": 20093,
+        "upload_status": "validated",
+        "file_set": "igvf:primer_design_curated_set",
+        "controlled_access": false
+    },
+    {
         "uuid": "54e6ab5e-8349-8610-767b-e11ba10f3d58",
         "accession": "IGVFFI0001BGBD",
         "lab": "j-michael-cherry",
@@ -1373,7 +1417,7 @@
         ],
         "md5sum": "5a593f46bf75ebde3f0efec9889caa3c",
         "file_format": "tsv",
-        "content_type": "exclusion list regions",
+        "content_type": "loci",
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
@@ -1807,11 +1851,11 @@
         "release_timestamp": "2026-05-21T12:34:56Z",
         "md5sum": "8c4e1f2a9b7d3e6051a8f4c2b0d9e7a3",
         "file_format": "tsv",
-        "content_type": "differential TF enrichment quantifications",
+        "content_type": "differential open reading frame quantifications",
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "submitted_file_name": "/Users/igvf/igvf_files/differential_tf_enrichment_quantifications.tsv.gz",
+        "submitted_file_name": "/Users/igvf/igvf_files/differential_open_reading_frame_quantifications.tsv.gz",
         "file_size": 444444444,
         "upload_status": "validated",
         "filtered": false,
@@ -1839,6 +1883,218 @@
         "upload_status": "validated",
         "filtered": false,
         "file_set": "igvf:morf_screen",
+        "controlled_access": false
+    },
+    {
+        "uuid": "d2d5b9c8-3e7f-4b2d-938f-2a7f2a4d0ac1",
+        "accession": "IGVFFI0010CISG",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_cis_differential_expression_per_guide"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-27T12:34:56Z",
+        "md5sum": "4f4f16496f0f4ee0df909bbf0d0c4c69",
+        "file_format": "tsv",
+        "content_type": "cis differential expression quantifications per guide",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/cis_differential_expression_quantifications_per_guide.tsv.gz",
+        "file_size": 5310,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:morf_screen",
+        "controlled_access": false
+    },
+    {
+        "uuid": "9c42be70-eefa-4ed7-b6ea-9de45b2ea77f",
+        "accession": "IGVFFI0011TRSG",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_trans_differential_expression_per_guide"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-27T12:34:56Z",
+        "md5sum": "5a5f16496f0f4ee0df909bbf0d0c4c70",
+        "file_format": "tsv",
+        "content_type": "trans differential expression quantifications per guide",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/trans_differential_expression_quantifications_per_guide.tsv.gz",
+        "file_size": 6520,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:morf_screen",
+        "controlled_access": false
+    },
+    {
+        "uuid": "14fbe9cc-3ec8-4f15-9089-fae9a44e7459",
+        "accession": "IGVFFI0012CISE",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_cis_differential_expression_per_element"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-27T12:34:56Z",
+        "md5sum": "6b6f16496f0f4ee0df909bbf0d0c4c71",
+        "file_format": "tsv",
+        "content_type": "cis differential expression quantifications per element",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/cis_differential_expression_quantifications_per_element.tsv.gz",
+        "file_size": 7180,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:morf_screen",
+        "controlled_access": false
+    },
+    {
+        "uuid": "67a9ab61-f7f8-499a-a499-eb5d44a4ea86",
+        "accession": "IGVFFI0013TRSE",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_trans_differential_expression_per_element"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-27T12:34:56Z",
+        "md5sum": "7c7f16496f0f4ee0df909bbf0d0c4c72",
+        "file_format": "tsv",
+        "content_type": "trans differential expression quantifications per element",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/trans_differential_expression_quantifications_per_element.tsv.gz",
+        "file_size": 7395,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:morf_screen",
+        "controlled_access": false
+    },
+    {
+        "uuid": "af84ff41-6fd9-46bd-a4b2-5c2f9e7a6891",
+        "accession": "IGVFFI0014MOTS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_motifs"
+        ],
+        "md5sum": "9e9f16496f0f4ee0df909bbf0d0c4c74",
+        "file_format": "tsv",
+        "content_type": "motifs",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/motifs.tsv.gz",
+        "file_size": 16800,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2026-05-28T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "b5f62c52-7a8d-4e1f-9c3b-2d4e6f8a1b2c",
+        "accession": "IGVFFI0015ORFS",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_open_reading_frames"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-28T12:34:56Z",
+        "md5sum": "c3d4e5f6789012345678abcdef012345",
+        "file_format": "tsv",
+        "content_type": "open reading frames",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/open_reading_frames.tsv.gz",
+        "file_size": 4200,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:morf_screen",
+        "controlled_access": false
+    },
+    {
+        "uuid": "99fbea83-5ee0-4a96-b491-b62673089134",
+        "accession": "IGVFFI1133PCQR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:pseudobulk_qc_per_cell_quality_report"
+        ],
+        "md5sum": "d6444e858caa9a55eb9020ece86c5413",
+        "file_format": "tsv",
+        "content_type": "per-cell quality report",
+        "submitted_file_name": "/Users/igvf/igvf_files/per_cell_qc.tsv.gz",
+        "file_size": 59009,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "b557e1f4-5ee0-4a96-b491-b62673089144",
+        "accession": "IGVFFI2233PBQR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:pseudobulk_qc_per_barcode_quality_report"
+        ],
+        "md5sum": "66b03481fa8a665d69db53cbebc3aa43",
+        "file_format": "tsv",
+        "content_type": "per-barcode quality report",
+        "submitted_file_name": "/Users/igvf/igvf_files/IGVFDS0000AAAA_per_cell_qc.tsv.gz",
+        "file_size": 29901,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "90ab7d8c-5ee0-4a96-b491-b62673089154",
+        "accession": "IGVFFI3344APQR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:pseudobulk_qc_aggregated_pseudobulk_quality_report"
+        ],
+        "md5sum": "24c92553dab89808c91f3c5fca992db7",
+        "file_format": "tsv",
+        "content_type": "aggregated pseudobulk quality report",
+        "submitted_file_name": "/Users/igvf/igvf_files/pseudobulk_qc.tsv.gz",
+        "file_size": 488201,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2025-03-06T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "9c1fc749-2802-415b-a7bf-c7a510faae2c",
+        "accession": "IGVFFI0015ORFT",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_genes_in_pathways"
+        ],
+        "md5sum": "75cfb29f446ae99bdcb39091acdd9d96",
+        "file_format": "tsv",
+        "content_type": "genes in pathways",
+        "submitted_file_name": "/Users/igvf/igvf_files/genes_in_pathways.tsv.gz",
+        "file_size": 4200,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:curated_set_pathway_gene_mapping",
         "controlled_access": false
     }
 ]

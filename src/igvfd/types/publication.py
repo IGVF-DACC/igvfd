@@ -23,7 +23,7 @@ class Publication(Item):
     item_type = 'publication'
     schema = load_schema('igvfd:schemas/publication.json')
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
     ]

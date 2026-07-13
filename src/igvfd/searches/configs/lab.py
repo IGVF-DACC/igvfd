@@ -10,6 +10,9 @@ def lab():
             'awards.component': {
                 'title': 'Award'
             },
+            'award.project': {
+                'title': 'Project'
+            },
             'institute_label': {
                 'title': 'Institute'
             },

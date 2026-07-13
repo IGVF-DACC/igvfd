@@ -209,7 +209,7 @@ def test_audit_protocol(
     )
 
 
-def test_audit_missing_crispr_readout(
+def test_audit_missing_crispr_screen_readout(
     testapp,
     lab,
     award,
@@ -229,34 +229,34 @@ def test_audit_missing_crispr_readout(
     crispr_measurement_set = testapp.post_json('/measurement_set', item, status=201).json['@graph'][0]
     res = testapp.get(crispr_measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'missing crispr readout'
+        error['category'] == 'missing crispr screen readout'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         crispr_measurement_set['@id'],
         {
-            'crispr_readout': 'gRNA sequencing'
+            'crispr_screen_readout': 'gRNA sequencing'
         },
     )
     res = testapp.get(crispr_measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'missing crispr readout'
+        error['category'] != 'missing crispr screen readout'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'unexpected crispr readout'
+        error['category'] != 'unexpected crispr screen readout'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'crispr_readout': 'gRNA sequencing'
+            'crispr_screen_readout': 'gRNA sequencing'
         },
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'unexpected crispr readout'
+        error['category'] == 'unexpected crispr screen readout'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -267,7 +267,113 @@ def test_audit_missing_crispr_readout(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'unexpected crispr readout'
+        error['category'] != 'unexpected crispr screen readout'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+
+def test_audit_missing_crispr_screen_biometric(
+    testapp,
+    lab,
+    award,
+    assay_term_CRISPR_sorted,
+    in_vitro_differentiated_cell,
+    measurement_set,
+    assay_term_crispr,
+    phenotype_term_from_go_cell_proliferation,
+):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_CRISPR_sorted['@id'],
+        'samples': [in_vitro_differentiated_cell['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_titles': ['CRISPR FlowFISH screen'],
+    }
+    crispr_measurement_set = testapp.post_json('/measurement_set', item, status=201).json['@graph'][0]
+    res = testapp.get(crispr_measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing crispr screen biometric'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        crispr_measurement_set['@id'],
+        {
+            'crispr_screen_biometric': phenotype_term_from_go_cell_proliferation['@id'],
+        },
+    )
+    res = testapp.get(crispr_measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing crispr screen biometric'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'crispr_screen_biometric': phenotype_term_from_go_cell_proliferation['@id'],
+        },
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected crispr screen biometric'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_crispr['@id'],
+        },
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected crispr screen biometric'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+
+def test_audit_targeted_genes_protein_abundance_biometric(
+    testapp,
+    measurement_set,
+    assay_term_crispr,
+    gene_myc_hs,
+    phenotype_term_protein_abundance,
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_crispr['@id'],
+            'preferred_assay_titles': ['CRISPR FACS screen']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing targeted genes'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'targeted_genes': [gene_myc_hs['@id']],
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected targeted genes'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'crispr_screen_biometric': phenotype_term_protein_abundance['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing targeted genes'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    assert all(
+        error['category'] != 'unexpected targeted genes'
         for error in res.json['audit'].get('ERROR', [])
     )
 
@@ -394,6 +500,7 @@ def test_audit_missing_institutional_certification(
     measurement_set,
     assay_term_mpra,
     assay_term_LABEL_seq,
+    assay_term_VAMP_seq,
     external_lab,
     lab,
     other_lab,
@@ -430,6 +537,25 @@ def test_audit_missing_institutional_certification(
     assert all(
         error['category'] != 'missing NIH certification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # NTR-term characterization assays (e.g. VAMP-seq) are also skipped
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_VAMP_seq['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing NIH certification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_mpra['@id']
+        }
     )
 
     # Characterization assays with controlled_access files are audited
@@ -1482,32 +1608,34 @@ def test_audit_missing_auxiliary_set_10x_MULTI_seq(
 def test_audit_targeted_genes(
     testapp,
     measurement_set,
+    measurement_set_mpra,
     assay_term_tf_chip,
+    assay_term_VAMP_seq,
     gene_myc_hs
 ):
     testapp.patch_json(
         measurement_set['@id'],
         {
             'assay_term': assay_term_tf_chip['@id'],
+            'preferred_assay_titles': ['TF ChIP-seq'],
             'control_types': ['wildtype']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing targeted genes'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_tf_chip['@id'],
             'control_types': ['untransfected']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing targeted genes'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         measurement_set['@id'],
@@ -1519,17 +1647,80 @@ def test_audit_targeted_genes(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing targeted genes'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
-        assay_term_tf_chip['@id'],
+        measurement_set['@id'],
         {
-            'term_id': 'OBI:0002018'
+            'preferred_assay_titles': ['CRISPR FACS screen']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'unexpected targeted genes'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # VAMP-seq without targeted genes should trigger an audit error
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'assay_term': assay_term_VAMP_seq['@id'],
+            'preferred_assay_titles': ['VAMP-seq']
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing targeted genes'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # VAMP-seq with targeted genes should NOT trigger an audit error
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'assay_term': assay_term_VAMP_seq['@id'],
+            'preferred_assay_titles': ['VAMP-seq'],
+            'targeted_genes': [gene_myc_hs['@id']]
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected targeted genes'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+
+def test_audit_targeted_genes_morf_screen(
+    testapp,
+    measurement_set,
+    assay_term_flow_cytometry,
+    gene_myc_hs
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_flow_cytometry['@id'],
+            'preferred_assay_titles': ['MORF screen'],
+            'control_types': ['wildtype'],
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing targeted genes'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'targeted_genes': [gene_myc_hs['@id']],
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing targeted genes'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    assert all(
+        error['category'] != 'unexpected targeted genes'
         for error in res.json['audit'].get('ERROR', [])
     )
 

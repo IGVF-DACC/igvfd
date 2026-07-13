@@ -35,15 +35,19 @@ def construct_library_set():
                 'title': 'CRISPR Guide Type'
             },
             'assay_slims': {
-                'title': 'Assay',
+                'title': 'Assay Ontology',
                 'description': 'Assay(s) that is relevant to this construct library sets.',
                 'type': 'hierarchical',
                 'subfacets': [
                     {'field': 'assay_titles', 'title': 'Assay type'}
                 ]
             },
+            'preferred_assay_slims': {
+                'title': 'Assay Category',
+                'description': 'High-level classification of preferred assay slims.',
+            },
             'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles'
+                'title': 'Assay'
             },
             'integrated_content_files.content_type': {
                 'title': 'Construct Library Design',
@@ -89,6 +93,9 @@ def construct_library_set():
             },
             'award.component': {
                 'title': 'Award'
+            },
+            'award.project': {
+                'title': 'Project'
             },
             'release_timestamp': {
                 'title': 'Release Date',

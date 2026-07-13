@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 5
 
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+* Extend `content_type` enum list to include `pipeline dashboard`.
 * Extend `content_type` enum list to include `raw field of view images`.
 * Extend `file_format` enum list to include `tar`.
 * Extend `collections` enum list to include `PD single cell multiomics`.

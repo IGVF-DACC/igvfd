@@ -82,7 +82,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "9"
+            "default": "11"
         },
         "file_set_type": {
             "description": "The category that best describes this curated file set.",
@@ -97,6 +97,7 @@
                 "genome",
                 "genes",
                 "guide RNAs",
+                "pathway gene mapping",
                 "pipeline parameters",
                 "enrichment designs",
                 "QTL",
@@ -114,6 +115,7 @@
                 "genome": "For hosting genome reference files.",
                 "genes": "List(s) of genes.",
                 "guide RNAs": "List(s) of guide RNAs used in CRISPR assays.",
+                "pathway gene mapping": "List(s) of biological pathways and their member genes.",
                 "pipeline parameters": "For hosting files describing pipeline parameters for use in an analysis.",
                 "enrichment designs": "For hosting files describing the assay-specific enrichment strategy that defines which regions are preferentially sequenced.",
                 "QTL": "For hosting files containing QTL (quantitative trait loci) data files.",

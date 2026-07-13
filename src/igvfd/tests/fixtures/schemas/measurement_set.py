@@ -51,7 +51,7 @@ def measurement_set_no_files(testapp, lab, award, assay_term_ntr, in_vitro_diffe
         'samples': [in_vitro_differentiated_cell['@id']],
         'file_set_type': 'experimental data',
         'preferred_assay_titles': ['CRISPR FlowFISH screen'],
-        'crispr_readout': 'gRNA sequencing'
+        'crispr_screen_readout': 'gRNA sequencing'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -138,7 +138,7 @@ def measurement_set_perturb_seq(testapp, lab, award, assay_term_crispr_single_ce
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
         'preferred_assay_titles': ['Perturb-seq'],
-        'crispr_readout': 'scRNA-seq'
+        'crispr_screen_readout': 'scRNA-seq'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -565,7 +565,7 @@ def measurement_set_v38_3(measurement_set, assay_term_starr):
     item.update({
         'schema_version': '38',
         'preferred_assay_titles': ['Perturb-seq'],
-        'crispr_readout': 'scRNA-seq',
+        'crispr_screen_readout': 'scRNA-seq',
         'assay_term': assay_term_starr['@id'],
     })
     return item
@@ -709,5 +709,35 @@ def measurement_set_v44_multiome_perturb_scatac(measurement_set):
         'schema_version': '44',
         'preferred_assay_titles': ['Multiome Perturb-seq'],
         'assay_term': '/assay-terms/NTR_0000798/',
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v45(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '45',
+        'preferred_assay_titles': ['perturb-SHARE-seq'],
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v46(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '46',
+        'crispr_readout': 'gRNA sequencing',
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v47(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '47',
+        'preferred_assay_titles': ['scATAC-seq'],
     })
     return item

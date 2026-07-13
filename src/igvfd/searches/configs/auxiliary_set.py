@@ -11,15 +11,19 @@ def auxiliary_set():
                 'title': 'File Set Type'
             },
             'assay_slims': {
-                'title': 'Assay',
+                'title': 'Assay Ontology',
                 'description': 'Assay(s) that is relevant to this auxiliary sets.',
                 'type': 'hierarchical',
                 'subfacets': [
                     {'field': 'assay_titles', 'title': 'Assay type'}
                 ]
             },
+            'preferred_assay_slims': {
+                'title': 'Assay Category',
+                'description': 'High-level classification of preferred assay slims.',
+            },
             'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles'
+                'title': 'Assay'
             },
             'donors.taxa': {
                 'title': 'Taxa'
@@ -45,8 +49,8 @@ def auxiliary_set():
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment',
             },
-            'crispr_readout': {
-                'title': 'CRISPR Readout'
+            'crispr_screen_readout': {
+                'title': 'CRISPR Screen Readout'
             },
             'construct_library_sets.file_set_type': {
                 'title': 'Construct Library'
@@ -83,6 +87,9 @@ def auxiliary_set():
             },
             'award.component': {
                 'title': 'Award'
+            },
+            'award.project': {
+                'title': 'Project'
             },
             'release_timestamp': {
                 'title': 'Release Date',

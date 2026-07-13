@@ -11,7 +11,10 @@ from .formatter import (
     get_audit_message
 )
 
-from igvfd.types.file_set import CRISPR_SCREEN_ASSAY_TERMS
+from igvfd.types.file_set import (
+    CRISPR_SCREEN_ASSAY_TERMS,
+    PROTEIN_ABUNDANCE_TERM_NAME,
+)
 
 from .file_set import (
     single_cell_check,
@@ -21,6 +24,17 @@ from .file_set import (
 
 def is_crispr_screen_measurement_set(value):
     return value.get('assay_term') in CRISPR_SCREEN_ASSAY_TERMS
+
+
+def is_protein_abundance_biometric(value, system):
+    crispr_screen_biometric = value.get('crispr_screen_biometric')
+    if not crispr_screen_biometric:
+        return False
+    term_object = system.get('request').embed(
+        crispr_screen_biometric,
+        '@@object?skip_calculated=true'
+    )
+    return term_object.get('term_name') == PROTEIN_ABUNDANCE_TERM_NAME
 
 
 def audit_related_multiome_datasets(value, system):
@@ -181,39 +195,80 @@ def audit_unspecified_protocol(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-def audit_missing_crispr_readout(value, system):
+def audit_missing_crispr_screen_readout(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets from CRISPR screen assays are expected to specify `crispr_readout`.",
-            "audit_category": "missing crispr readout",
+            "audit_description": "Measurement sets from CRISPR screen assays are expected to specify `crispr_screen_readout`.",
+            "audit_category": "missing crispr screen readout",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Only measurement sets from CRISPR screen assays are expected to specify `crispr_readout`.",
-            "audit_category": "unexpected crispr readout",
+            "audit_description": "Only measurement sets from CRISPR screen assays are expected to specify `crispr_screen_readout`.",
+            "audit_category": "unexpected crispr screen readout",
             "audit_level": "ERROR"
         }
     ]
     '''
-    audit_message_missing = get_audit_message(audit_missing_crispr_readout, index=0)
-    audit_message_unexpected = get_audit_message(audit_missing_crispr_readout, index=1)
-    crispr_readout = value.get('crispr_readout')
+    audit_message_missing = get_audit_message(audit_missing_crispr_screen_readout, index=0)
+    audit_message_unexpected = get_audit_message(audit_missing_crispr_screen_readout, index=1)
+    crispr_screen_readout = value.get('crispr_screen_readout')
     if is_crispr_screen_measurement_set(value):
-        if not crispr_readout:
+        if not crispr_screen_readout:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has no `crispr_readout`.'
+                f'has no `crispr_screen_readout`.'
             )
             yield AuditFailure(
                 audit_message_missing.get('audit_category', ''),
                 f'{detail} {audit_message_missing.get("audit_description", "")}',
                 level=audit_message_missing.get('audit_level', '')
             )
-    elif crispr_readout:
+    elif crispr_screen_readout:
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has `crispr_readout`.'
+            f'has `crispr_screen_readout`.'
+        )
+        yield AuditFailure(
+            audit_message_unexpected.get('audit_category', ''),
+            f'{detail} {audit_message_unexpected.get("audit_description", "")}',
+            level=audit_message_unexpected.get('audit_level', '')
+        )
+
+
+def audit_missing_crispr_screen_biometric(value, system):
+    '''
+    [
+        {
+            "audit_description": "Measurement sets from CRISPR screen assays are expected to specify `crispr_screen_biometric`.",
+            "audit_category": "missing crispr screen biometric",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Only measurement sets from CRISPR screen assays are expected to specify `crispr_screen_biometric`.",
+            "audit_category": "unexpected crispr screen biometric",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    audit_message_missing = get_audit_message(audit_missing_crispr_screen_biometric, index=0)
+    audit_message_unexpected = get_audit_message(audit_missing_crispr_screen_biometric, index=1)
+    crispr_screen_biometric = value.get('crispr_screen_biometric')
+    if is_crispr_screen_measurement_set(value):
+        if not crispr_screen_biometric:
+            detail = (
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has no `crispr_screen_biometric`.'
+            )
+            yield AuditFailure(
+                audit_message_missing.get('audit_category', ''),
+                f'{detail} {audit_message_missing.get("audit_description", "")}',
+                level=audit_message_missing.get('audit_level', '')
+            )
+    elif crispr_screen_biometric:
+        detail = (
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has `crispr_screen_biometric`.'
         )
         yield AuditFailure(
             audit_message_unexpected.get('audit_category', ''),
@@ -285,7 +340,12 @@ def audit_missing_institutional_certification(value, system):
         'OBI:0000288',  # protein-protein interaction detection assay,
         'OBI:0002041',  # self-transcribing active regulatory region sequencing assay,
         'OBI:0002082',  # reporter gene assay (for LABEL-seq)
-        'NTR:0001094'   # yeast-based functional complementation assay
+        'NTR:0001094',  # yeast-based functional complementation assay
+        'NTR:0001112',  # LABEL-seq
+        'NTR:0001113',  # Immune-SGE
+        'NTR:0001114',  # VAMP-seq
+        'NTR:0001115',  # SGE
+        'NTR:0001116'   # VAMP-seq (MultiSTEP)
     ]
     assay_term = value.get('assay_term', '')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
@@ -367,12 +427,12 @@ def audit_targeted_genes(value, system):
     '''
     [
         {
-            "audit_description": "Transcription factor ChIP-seq and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
+            "audit_description": "Transcription factor ChIP-seq, CRISPR screens with protein abundance biometrics, MORF screen, VAMP-seq, and VAMP-seq (MultiSTEP) assays are expected to specify targeted gene(s).",
             "audit_category": "missing targeted genes",
-            "audit_level": "WARNING"
+            "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Only transcription factor ChIP-seq and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
+            "audit_description": "Only transcription factor ChIP-seq, CRISPR screens with protein abundance biometrics, MORF screen, VAMP-seq, and VAMP-seq (MultiSTEP) assays are expected to specify targeted gene(s).",
             "audit_category": "unexpected targeted genes",
             "audit_level": "ERROR"
         }
@@ -381,25 +441,37 @@ def audit_targeted_genes(value, system):
     audit_message_missing = get_audit_message(audit_targeted_genes, index=0)
     audit_message_unexpected = get_audit_message(audit_targeted_genes, index=1)
     assay_term = value.get('assay_term')
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
     targeted_genes = value.get('targeted_genes', '')
     control_types = value.get('control_types', [])
     exempted_control_types = {
         'untransfected',
         'unsorted FACS input'
     }
-    expecting_targeted_genes_by_assay = ['/assay-terms/OBI_0003661/',  # in vitro CRISPR screen using flow cytometry
-                                         '/assay-terms/OBI_0002019/',  # transcription factor binding site identification by ChIP-Seq assay
-                                         ]
+    expecting_targeted_genes_by_preferred_assay_title = ['MORF screen',
+                                                         'TF ChIP-seq',
+                                                         'VAMP-seq',
+                                                         'VAMP-seq (MultiSTEP)'
+                                                         ]
+    expects_targeted_genes = (
+        any(title in expecting_targeted_genes_by_preferred_assay_title for title in preferred_assay_titles)
+        or is_protein_abundance_biometric(value, system)
+    )
     if (
-        not (targeted_genes)
-        and assay_term in expecting_targeted_genes_by_assay
-            and not any(control_type in exempted_control_types for control_type in control_types)):
+        not targeted_genes
+        and expects_targeted_genes
+        and not any(control_type in exempted_control_types for control_type in control_types)
+    ):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `targeted_genes`.'
         )
-        yield AuditFailure(audit_message_missing.get('audit_category', ''), f'{detail} {audit_message_missing.get("audit_description", "")}', level=audit_message_missing.get('audit_level', ''))
-    if targeted_genes and (assay_term not in expecting_targeted_genes_by_assay):
+        yield AuditFailure(
+            audit_message_missing.get('audit_category', ''),
+            f'{detail} {audit_message_missing.get("audit_description", "")}',
+            level=audit_message_missing.get('audit_level', '')
+        )
+    if targeted_genes and not expects_targeted_genes:
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has `targeted_genes`.'
@@ -990,7 +1062,8 @@ def audit_inconsistent_onlist_files(value, system):
 function_dispatcher_measurement_set_object = {
     'audit_related_multiome_datasets': audit_related_multiome_datasets,
     'audit_unspecified_protocol': audit_unspecified_protocol,
-    'audit_missing_crispr_readout': audit_missing_crispr_readout,
+    'audit_missing_crispr_screen_readout': audit_missing_crispr_screen_readout,
+    'audit_missing_crispr_screen_biometric': audit_missing_crispr_screen_biometric,
     'audit_CRISPR_screen_lacking_modifications': audit_CRISPR_screen_lacking_modifications,
     'audit_missing_institutional_certification': audit_missing_institutional_certification,
     'audit_missing_auxiliary_set_link': audit_missing_auxiliary_set_link,

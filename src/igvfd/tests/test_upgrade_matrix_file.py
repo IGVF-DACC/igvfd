@@ -68,3 +68,18 @@ def test_matrix_file_upgrade_9_10(upgrader, matrix_file_v9a, matrix_file_v9b, ma
     assert value['content_type'] == 'spot by gene matrix'
     assert value['notes'].endswith(
         'This time by peak contact matrix file did not match any combination in the upgrade logic and has been upgraded to spot by gene matrix as a placeholder.')
+
+
+def test_matrix_file_upgrade_10_11(upgrader, matrix_file_v10a, matrix_file_v10b):
+    value = upgrader.upgrade('matrix_file', matrix_file_v10a, current_version='10', target_version='11')
+    assert value['schema_version'] == '11'
+    assert 'principal_dimension' not in value
+    assert 'secondary_dimensions' not in value
+    assert value['notes'].endswith(
+        'This file\'s principal_dimension, secondary_dimensions was removed via upgrade.')
+
+    value = upgrader.upgrade('matrix_file', matrix_file_v10b, current_version='10', target_version='11')
+    assert value['schema_version'] == '11'
+    assert 'principal_dimension' not in value
+    assert 'secondary_dimensions' not in value
+    assert 'notes' not in value

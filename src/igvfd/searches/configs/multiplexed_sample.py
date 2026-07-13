@@ -19,6 +19,9 @@ def multiplexed_sample():
             'sample_terms.term_name': {
                 'title': 'Sample'
             },
+            'targeted_sample_terms.term_name': {
+                'title': 'Cellular Transformation Targets'
+            },
             'phenotypic_features.feature.term_name': {
                 'title': 'Phenotypic Features'
             },
@@ -40,16 +43,20 @@ def multiplexed_sample():
             'file_sets.file_set_type': {
                 'title': 'File Set Type'
             },
-            'file_sets.assay_term.assay_slims': {
-                'title': 'Assay',
+            'file_sets.assay_slims': {
+                'title': 'Assay Ontology',
                 'description': 'High-level classification of assay type.',
                 'type': 'hierarchical',
                 'subfacets': [
-                    {'field': 'file_sets.assay_term.term_name', 'title': 'Assay type'}
+                    {'field': 'file_sets.assay_titles', 'title': 'Assay type'}
                 ]
             },
+            'file_sets.preferred_assay_slims': {
+                'title': 'Assay Category',
+                'description': 'High-level classification of preferred assay slims.',
+            },
             'file_sets.preferred_assay_titles': {
-                'title': 'Preferred Assay Title'
+                'title': 'Assay'
             },
             'construct_library_sets.file_set_type': {
                 'title': 'Library Type'
@@ -113,6 +120,9 @@ def multiplexed_sample():
             },
             'award.component': {
                 'title': 'Award',
+            },
+            'award.project': {
+                'title': 'Project',
             },
             'status': {
                 'title': 'Status'

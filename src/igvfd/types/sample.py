@@ -89,6 +89,10 @@ CONSTRUCT_DELIVERY_METHOD_TO_VERB_NOUN = {
     'transformation': {
         'verb': 'transformed with',
         'noun': 'transformation with'
+    },
+    'transposase': {
+        'verb': 'integrated using transposase with',
+        'noun': 'transposase-mediated integration with'
     }
 }
 
@@ -171,13 +175,13 @@ class Sample(Item):
         'parts': ('Sample', 'part_of'),
     }
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('sources', include=['@id', 'title', 'status']),
         Path('submitted_by', include=['@id', 'title']),
         Path('sorted_from', include=['@id', 'accession', 'status']),
         Path('file_sets', include=['@id', 'accession', 'aliases',
-             'lab', 'assay_term', 'status', 'assay_titles', 'preferred_assay_titles', 'file_set_type']),
+             'lab', 'assay_term', 'status', 'assay_titles', 'assay_slims', 'preferred_assay_titles', 'file_set_type', 'preferred_assay_slims']),
         Path('file_sets.lab', include=['title']),
         Path('file_sets.assay_term', include=['@id', 'term_name', 'assay_slims']),
         Path('multiplexed_in', include=['@id', 'accession', 'status']),
@@ -195,7 +199,7 @@ class Sample(Item):
              '@id', 'certificate_identifier', 'status', 'data_use_limitation', 'data_use_limitation_modifiers', 'data_use_limitation_summary', 'controlled_access']),
         Path('construct_library_sets.associated_phenotypes', include=[
              '@id', 'accession', 'file_set_type', 'term_name', 'associated_phenotypes', 'status']),
-        Path('donors', include=['@id', 'accession', 'status', 'strain', 'ethnicities']),
+        Path('donors', include=['@id', 'accession', 'status', 'strain', 'ethnicities'])
     ]
 
     audit_inherit = [
@@ -904,13 +908,13 @@ class TechnicalSample(Sample):
     item_type = 'technical_sample'
     schema = load_schema('igvfd:schemas/technical_sample.json')
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('sources', include=['@id', 'title', 'status']),
         Path('submitted_by', include=['@id', 'title']),
         Path('sorted_from', include=['@id', 'accession', 'status']),
         Path('file_sets', include=['@id', 'accession', 'summary', 'aliases',
-             'lab', 'assay_term', 'status', 'preferred_assay_titles', 'file_set_type']),
+             'lab', 'assay_term', 'assay_titles', 'assay_slims', 'status', 'preferred_assay_titles', 'preferred_assay_slims', 'file_set_type']),
         Path('file_sets.lab', include=['title']),
         Path('file_sets.assay_term', include=['@id', 'term_name', 'assay_slims']),
         Path('originated_from', include=['@id', 'accession', 'status']),
@@ -1083,12 +1087,14 @@ class MultiplexedSample(Sample):
     rev = Sample.rev | {'demultiplexed_to': ('InVitroSystem', 'demultiplexed_from')}
     embedded_with_frame = Sample.embedded_with_frame + [
         Path('multiplexed_samples', include=['@id', 'accession', '@type',
-             'summary', 'sample_terms', 'construct_library_sets', 'phenotypic_features', 'donors', 'status']),
+             'summary', 'sample_terms', 'construct_library_sets', 'phenotypic_features', 'donors', 'status', 'targeted_sample_term']),
         Path('multiplexed_samples.sample_terms', include=['@id', 'term_name', 'status']),
         Path('multiplexed_samples.phenotypic_features', include=[
              '@id', 'feature', 'observation_date', 'quality', 'quantity', 'quantity_units', 'status']),
         Path('multiplexed_samples.phenotypic_features.feature', include=['@id', 'term_id', 'term_name', 'status']),
         Path('multiplexed_samples.donors', include=['@id', 'accession', 'status']),
+        Path('multiplexed_samples.targeted_sample_term', include=['@id', 'term_name', 'status']),
+        Path('targeted_sample_terms', include=['@id', 'term_name', 'status'])
     ]
     audit_inherit = Biosample.audit_inherit + [
         'multiplexed_samples'
@@ -1279,7 +1285,7 @@ class MultiplexedSample(Sample):
             'items': {
                 'title': 'Modification',
                 'type': 'string',
-                'linkTo': ['CrisprModification', 'DegronModification']
+                'linkTo': 'Modification'
             }
         }
     )
@@ -1419,3 +1425,21 @@ class MultiplexedSample(Sample):
             request, multiplexed_samples, 'classifications', skip_calculated=False)
         self_classification = [self.item_type.replace('_', ' ')]
         return sorted(sample_classfications + self_classification)
+
+    @calculated_property(
+        schema={
+            'title': 'Cellular Transformation Targets',
+            'description': 'The targeted sample terms of subsamples that are a part of this multiplexed sample.',
+            'notSubmittable': True,
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Cellular Transformation Target',
+                'type': 'string',
+                'linkTo': 'SampleTerm'
+            }
+        }
+    )
+    def targeted_sample_terms(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'targeted_sample_term')

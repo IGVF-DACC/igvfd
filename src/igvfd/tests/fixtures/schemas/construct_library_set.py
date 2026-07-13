@@ -66,6 +66,21 @@ def construct_library_set_y2h(testapp, lab, award, gene_myc_hs, gene_CRLF2_par_y
 
 
 @pytest.fixture
+def construct_library_set_morf(testapp, lab, award, orf_foxp, orf_zscan10):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'overexpression vector library',
+        'scope': 'genes',
+        'small_scale_orf_list': [orf_foxp['@id'], orf_zscan10['@id']],
+        'selection_criteria': [
+            'TF genes'
+        ]
+    }
+    return testapp.post_json('/construct_library_set', item).json['@graph'][0]
+
+
+@pytest.fixture
 def construct_library_set_orf(testapp, lab, award, gene_myc_hs, orf_foxp):
     item = {
         'award': award['@id'],
@@ -76,7 +91,7 @@ def construct_library_set_orf(testapp, lab, award, gene_myc_hs, orf_foxp):
         'selection_criteria': [
             'protein interactors'
         ],
-        'orf_list': [orf_foxp['@id']]
+        'small_scale_orf_list': [orf_foxp['@id']]
     }
     return testapp.post_json('/construct_library_set', item).json['@graph'][0]
 
@@ -155,6 +170,40 @@ def construct_library_set_non_targeting(testapp, lab, award):
             'controls'
         ],
         'control_types': ['non-targeting'],
+        'lower_bound_guide_coverage': 15,
+        'upper_bound_guide_coverage': 20,
+        'guide_type': 'sgRNA'
+    }
+    return testapp.post_json('/construct_library_set', item).json['@graph'][0]
+
+
+@pytest.fixture
+def construct_library_set_overexpression(testapp, lab, award, gene_myc_hs):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'overexpression vector library',
+        'scope': 'genes',
+        'small_scale_gene_list': [gene_myc_hs['@id']],
+        'selection_criteria': [
+            'genes'
+        ]
+    }
+    return testapp.post_json('/construct_library_set', item).json['@graph'][0]
+
+
+@pytest.fixture
+def construct_library_set_chromosome(testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'guide library',
+        'scope': 'chromosome',
+        'chromosomes': ['chrX'],
+        'selection_criteria': [
+            'TF binding sites'
+        ],
+        'product_id': 'addgene:81225',
         'lower_bound_guide_coverage': 15,
         'upper_bound_guide_coverage': 20,
         'guide_type': 'sgRNA'
@@ -266,5 +315,15 @@ def construct_library_set_v11(construct_library_set_reference_transduction):
     item.update({
         'schema_version': '11',
         'control_type': 'control transduction'
+    })
+    return item
+
+
+@pytest.fixture
+def construct_library_set_v12(construct_library_set_y2h, orf_foxp):
+    item = construct_library_set_y2h.copy()
+    item.update({
+        'schema_version': '12',
+        'orf_list': [orf_foxp['@id']]
     })
     return item

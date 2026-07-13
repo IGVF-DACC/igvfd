@@ -8,23 +8,35 @@ def measurement_set():
     return {
         'facets': {
             'assay_slims': {
-                'title': 'Assay',
+                'title': 'Assay Ontology',
                 'category': 'Measurement Set Details',
                 'description': 'High-level classification of assay type.',
                 'type': 'hierarchical',
                 'subfacets': [
                     {'field': 'assay_titles', 'title': 'Assay type'}
-                ]
+                ],
+                'optional': True
+            },
+            'preferred_assay_slims': {
+                'title': 'Assay Category',
+                'category': 'Measurement Set Details',
+                'description': 'High-level classification of preferred assay slims.',
             },
             'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles',
+                'title': 'Assay',
                 'category': 'Measurement Set Details',
                 'description': 'Title of assays that generated the measurement set.'
             },
-            'crispr_readout': {
-                'title': 'CRISPR Readout',
+            'crispr_screen_readout': {
+                'title': 'CRISPR Screen Readout',
                 'category': 'Measurement Set Details',
                 'description': 'The readout produced by this CRISPR screen measurement set.',
+                'optional': True
+            },
+            'crispr_screen_biometric.term_name': {
+                'title': 'CRISPR Screen Biometric',
+                'category': 'Measurement Set Details',
+                'description': 'The phenotype used for selection or inference in this CRISPR screen.',
                 'optional': True
             },
             'control_types': {
@@ -99,6 +111,12 @@ def measurement_set():
                 'title': 'Treatment',
                 'category': 'Sample',
                 'description': 'Treatments applied to the sample with the purpose of perturbation.',
+                'optional': True
+            },
+            'samples.construct_delivery_methods': {
+                'title': 'Construct Delivery Methods',
+                'category': 'Sample',
+                'description': 'Methods used to deliver construct libraries into the sample.',
                 'optional': True
             },
             'library_preparation_kit': {
@@ -189,6 +207,12 @@ def measurement_set():
                 'description': 'The project component the award is associated with.',
                 'optional': True
             },
+            'award.project': {
+                'title': 'Project',
+                'category': 'Provenance',
+                'description': 'The project the award is associated with.',
+                'optional': True
+            },
             'release_timestamp': {
                 'title': 'Release Date',
                 'category': 'Provenance',
@@ -265,10 +289,10 @@ def measurement_set():
                 'title': 'Award'
             },
             'assay_titles': {
-                'title': 'Assay Term Names'
+                'title': 'Assay Ontology'
             },
             'preferred_assay_titles': {
-                'title': 'Preferred Assay Titles'
+                'title': 'Assay'
             },
             'sequencing_library_types': {
                 'title': 'Sequencing Library Types'
@@ -316,10 +340,10 @@ def measurement_set_report_view():
             'title': 'Sample Institutional Certificates'
         },
         'preferred_assay_titles': {
-            'title': 'Preferred Assay Titles'
+            'title': 'Assay'
         },
         'assay_titles': {
-            'title': 'Assay Term Names'
+            'title': 'Assay Ontology'
         },
         'files.content_type': {
             'title': 'File Content Type'

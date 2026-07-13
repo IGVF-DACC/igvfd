@@ -19,6 +19,9 @@ def crispr_modification():
             'award.component': {
                 'title': 'Award'
             },
+            'award.project': {
+                'title': 'Project'
+            },
             'status': {
                 'title': 'Status'
             },

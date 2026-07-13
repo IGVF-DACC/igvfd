@@ -2,6 +2,11 @@
 
 ### Minor changes since schema version 9
 
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+* Add calculated property `cell_annotation`.
+* Add `cell_type`.
+* Add `cell_qualifier`.
 * Extend `collections` enum list to include `PD single cell multiomics`.
 * Extend `collections` enum list to include `IGVF_catalog_v1.2`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
@@ -94,7 +99,6 @@
 * Rename `targeted_loci` to `loci`.
 * Add `small_scale_gene_list`, `large_scale_gene_list`, `small_scale_loci_list`, and `large_scale_loci_list`.
 * Restrict `genes` and `loci` to submittable by admins only.
-
 
 ### Minor changes since schema version 3
 

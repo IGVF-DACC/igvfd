@@ -1,7 +1,70 @@
 ## Changelog for *`analysis_step.json`*
 
+### Minor changes since schema version 15
+
+* Extend `input_content_types` enum list to include `cell by gene program matrix`.
+* Extend `output_content_types` enum list to include `cell by gene program matrix`.
+* Extend `input_content_types` enum list to include `program-program correlation`.
+* Extend `output_content_types` enum list to include `program-program correlation`.
+* Extend `input_content_types` enum list to include `regulator-regulator correlation`.
+* Extend `output_content_types` enum list to include `regulator-regulator correlation`.
+* Extend `input_content_types` enum list to include `genes in pathways`.
+* Extend `output_content_types` enum list to include `genes in pathways`.
+* Extend `input_content_types` enum list to include `per-cell quality report`.
+* Extend `output_content_types` enum list to include `per-cell quality report`.
+* Extend `input_content_types` enum list to include `per-barcode quality report`.
+* Extend `output_content_types` enum list to include `per-barcode quality report`.
+* Extend `input_content_types` enum list to include `aggregated pseudobulk quality report`.
+* Extend `output_content_types` enum list to include `aggregated pseudobulk quality report`.
+
+### Schema version 15
+
+* Adjust `input_content_types` enum list to remove `fold change over control`.
+* Adjust `output_content_types` enum list to remove `fold change over control`.
+* Extend `input_content_types` enum list to include `allelic effects`.
+* Extend `output_content_types` enum list to include `allelic effects`.
+
+### Minor changes since schema version 14
+
+* Extend `input_content_types` enum list to include `ATAC-seq signal p-value`.
+* Extend `output_content_types` enum list to include `ATAC-seq signal p-value`.
+* Extend `input_content_types` enum list to include `ATAC-seq signal`.
+* Extend `output_content_types` enum list to include `ATAC-seq signal`.
+* Extend `input_content_types` enum list to include `RNA-seq signal p-value`.
+* Extend `output_content_types` enum list to include `RNA-seq signal p-value`.
+* Extend `input_content_types` enum list to include `RNA-seq signal`.
+* Extend `output_content_types` enum list to include `RNA-seq signal`.
+
+### Schema version 14
+
+* Adjust `input_content_types` enum list to replace `differential TF enrichment quantifications` with `differential open reading frame quantifications`.
+* Adjust `output_content_types` enum list to replace `differential TF enrichment quantifications` with `differential open reading frame quantifications`.
+* Extend `input_content_types` enum list to include `open reading frame reference`.
+* Extend `output_content_types` enum list to include `open reading frame reference`.
+* Extend `input_content_types` enum list to include `open reading frame quantifications`.
+* Extend `output_content_types` enum list to include `open reading frame quantifications`.
+* Extend `input_content_types` enum list to include `open reading frames`.
+* Extend `output_content_types` enum list to include `open reading frames`.
+
+### Schema version 13
+
+* Adjust `input_content_types` enum list to remove `exclusion list regions`.
+* Adjust `output_content_types` enum list to remove `exclusion list regions`.
+
 ### Minor changes since schema version 12
 
+* Extend `input_content_types` enum list to include `motifs`.
+* Extend `output_content_types` enum list to include `motifs`.
+* Extend `input_content_types` enum list to include `cis differential expression quantifications per guide`.
+* Extend `output_content_types` enum list to include `cis differential expression quantifications per guide`.
+* Extend `input_content_types` enum list to include `trans differential expression quantifications per guide`.
+* Extend `output_content_types` enum list to include `trans differential expression quantifications per guide`.
+* Extend `input_content_types` enum list to include `cis differential expression quantifications per element`.
+* Extend `output_content_types` enum list to include `cis differential expression quantifications per element`.
+* Extend `input_content_types` enum list to include `trans differential expression quantifications per element`.
+* Extend `output_content_types` enum list to include `trans differential expression quantifications per element`.
+* Extend `input_content_types` enum list to include `pipeline dashboard`.
+* Extend `output_content_types` enum list to include `pipeline dashboard`.
 * Extend `input_content_types` enum list to include `donor by gene matrix`.
 * Extend `output_content_types` enum list to include `donor by gene matrix`.
 * Extend `input_content_types` enum list to include `differential TF enrichment quantifications`.

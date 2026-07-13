@@ -1,5 +1,17 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Minor changes since schema version 13
+
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+* Extend `scope` enum list to include `chromosome`.
+* Add `chromosomes`.
+
+### Schema version 13
+
+* Add `large_scale_orf_list`.
+* Rename `orf_list` to `small_scale_orf_list`.
+
 ### Minor changes since schema version 12
 
 * Extend `collections` enum list to include `PD single cell multiomics`.

@@ -364,6 +364,23 @@ def tabular_file_v20e(testapp, lab, award, principal_analysis_set):
 
 
 @pytest.fixture
+def tabular_file_v22(lab, award, principal_analysis_set, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'status': 'in progress',
+        'md5sum': '8c4e1f2a9b7d3e6051a8f4c2b0d9e7a4',
+        'file_format': 'tsv',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'differential TF enrichment quantifications',
+        'reference_files': [reference_file['@id']],
+        'controlled_access': False,
+        'schema_version': '22'
+    }
+    return item
+
+
+@pytest.fixture
 def tabular_file_v21(lab, award, principal_analysis_set):
     item = {
         'award': award['@id'],
@@ -377,4 +394,40 @@ def tabular_file_v21(lab, award, principal_analysis_set):
         'controlled_access': False,
         'schema_version': '21'
     }
+    return item
+
+
+@pytest.fixture
+def tabular_file_v22(lab, award, principal_analysis_set):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'status': 'in progress',
+        'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
+        'file_format': 'tsv',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'exclusion list regions',
+        'controlled_access': False,
+        'schema_version': '22'
+    }
+    return item
+
+
+@pytest.fixture
+def tabular_file_v23(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '23',
+        'content_type': 'differential TF enrichment quantifications'
+    })
+    return item
+
+
+@pytest.fixture
+def tabular_file_v24(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '24',
+        'content_type': 'fold change over control'
+    })
     return item

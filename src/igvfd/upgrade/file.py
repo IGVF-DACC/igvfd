@@ -870,3 +870,74 @@ def matrix_file_9_10(value, system):
                 notes += f' This {principal_dimension} by {secondary_dimensions} {content_type} file was upgraded to {filtered_string}{upgrade_map[key][0]}.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('matrix_file', '10', '11')
+def matrix_file_10_11(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3486
+    notes = value.get('notes', '')
+    props_with_notes = []
+    # Rm properties while collecting what is removed
+    for prop2del in ['principal_dimension', 'secondary_dimensions']:
+        if value.get(prop2del, ''):
+            props_with_notes.append(prop2del)
+            value.pop(prop2del)
+    # Update note
+    if props_with_notes:
+        notes += f' This file\'s {", ".join(props_with_notes)} was removed via upgrade.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('tabular_file', '22', '23')
+def tabular_file_22_23(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3488
+    notes = value.get('notes', '')
+    if value.get('content_type') == 'exclusion list regions':
+        value['content_type'] = 'loci'
+        notes += ' This file\'s content_type was exclusion list regions, but has been defaulted to loci.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('tabular_file', '23', '24')
+def tabular_file_23_24(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3527
+    notes = value.get('notes', '')
+    old_content_type = value.get('content_type', '')
+    if old_content_type == 'differential TF enrichment quantifications':
+        value['content_type'] = 'differential open reading frame quantifications'
+        notes += (
+            ' This file\'s content_type was differential TF enrichment quantifications, '
+            'but has been upgraded to differential open reading frame quantifications.'
+        )
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('tabular_file', '24', '25')
+def tabular_file_24_25(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3520
+    notes = value.get('notes', '')
+    if value.get('content_type') == 'fold change over control':
+        value['content_type'] = 'allelic effects'
+        notes += (
+            ' This file\'s content_type was fold change over control, '
+            'and changed to allelic effects via upgrade.'
+        )
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('signal_file', '14', '15')
+def signal_file_14_15(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3520
+    notes = value.get('notes', '')
+    if value.get('content_type') == 'fold change over control':
+        value['content_type'] = 'signal'
+        notes += (
+            ' This file\'s content_type was fold change over control, '
+            'and changed to signal via upgrade.'
+        )
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

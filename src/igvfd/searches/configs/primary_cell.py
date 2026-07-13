@@ -40,16 +40,20 @@ def primary_cell():
             'file_sets.file_set_type': {
                 'title': 'File Set Type'
             },
-            'file_sets.assay_term.assay_slims': {
-                'title': 'Assay',
+            'file_sets.assay_slims': {
+                'title': 'Assay Ontology',
                 'description': 'High-level classification of assay type.',
                 'type': 'hierarchical',
                 'subfacets': [
-                    {'field': 'file_sets.assay_term.term_name', 'title': 'Assay type'}
+                    {'field': 'file_sets.assay_titles', 'title': 'Assay type'}
                 ]
             },
+            'file_sets.preferred_assay_slims': {
+                'title': 'Assay Category',
+                'description': 'High-level classification of preferred assay slims.',
+            },
             'file_sets.preferred_assay_titles': {
-                'title': 'Preferred Assay Title'
+                'title': 'Assay'
             },
             'construct_library_sets.file_set_type': {
                 'title': 'Library Type'
@@ -113,6 +117,9 @@ def primary_cell():
             },
             'award.component': {
                 'title': 'Award',
+            },
+            'award.project': {
+                'title': 'Project',
             },
             'status': {
                 'title': 'Status'

@@ -379,3 +379,22 @@ def test_measurement_set_upgrade_44_45(
     )
     assert value['preferred_assay_titles'] == ['Multiome Perturb-seq']
     assert value['crispr_readout'] == 'scATAC-seq'
+
+
+def test_measurement_set_upgrade_45_46(upgrader, measurement_set_v45):
+    value = upgrader.upgrade('measurement_set', measurement_set_v45, current_version='45', target_version='46')
+    assert value['schema_version'] == '46'
+    assert value['preferred_assay_titles'] == ['MORF-SHARE-seq']
+
+
+def test_measurement_set_upgrade_46_47(upgrader, measurement_set_v46):
+    value = upgrader.upgrade('measurement_set', measurement_set_v46, current_version='46', target_version='47')
+    assert value['schema_version'] == '47'
+    assert value['crispr_screen_readout'] == 'gRNA sequencing'
+    assert 'crispr_readout' not in value
+
+
+def test_measurement_set_upgrade_47_48(upgrader, measurement_set_v47):
+    value = upgrader.upgrade('measurement_set', measurement_set_v47, current_version='47', target_version='48')
+    assert value['schema_version'] == '48'
+    assert value['preferred_assay_titles'] == ['snATAC-seq']

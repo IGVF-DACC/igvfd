@@ -1,5 +1,14 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 26
+
+* Extend `collections` enum list to include `Cross-Disorder CNVs`.
+* Extend `collections` enum list to include `Coronary Artery Disease`.
+* Add `version`.
+* Extend `file_format` enum list to include `run`.
+* Extend `content_type` enum list to include `open reading frame reference`.
+* Adjust `content_type` enum list to restrict usage of `inclusion list` to admin users.
+
 ### Schema change 26
 
 * Require `assembly` if `content_type` is `genome reference` or `genome index`.

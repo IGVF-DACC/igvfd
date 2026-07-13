@@ -101,6 +101,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'PWM': '.pwm',
     'rds': '.rds',
     'Robj': '.Robj',
+    'run': '.run',
     'sam': '.sam.gz',
     'sra': '.sra',
     'svg': '.svg',
@@ -176,7 +177,7 @@ class File(Item):
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/file.json')
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path(
@@ -185,6 +186,8 @@ class File(Item):
                 '@id',
                 '@type',
                 'accession',
+                'assay_slims',
+                'assay_titles',
                 'donors',
                 'samples',
                 'assay_term',
@@ -256,6 +259,10 @@ class File(Item):
         'quality_metrics': ('QualityMetric', 'quality_metric_of'),
         'superseded_by': ('File', 'supersedes')
     }
+
+    audit_inherit = [
+        'analysis_step_version'
+    ]
 
     set_status_up = [
         'analysis_step_version',

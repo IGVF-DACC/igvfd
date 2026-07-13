@@ -130,6 +130,8 @@
                     "Benchmark",
                     "Bridge Sample",
                     "ClinGen",
+                    "Coronary Artery Disease",
+                    "Cross-Disorder CNVs",
                     "E2G Pillar Project",
                     "ENCODE",
                     "GREGoR",
@@ -152,7 +154,37 @@
                     "VarChAMP",
                     "Vista",
                     "Williams Syndrome Research"
-                ]
+                ],
+                "enum_descriptions": {
+                    "ACMG73": "Datasets related to the 73 genes recommended by the American College of Medical Genetics and Genomics (ACMG) for reporting of secondary findings.",
+                    "Benchmark": "Reference datasets used to benchmark computational tools and analysis methods.",
+                    "Bridge Sample": "Samples used to bridge or normalize data across different assays or experiments.",
+                    "ClinGen": "Datasets associated with the Clinical Genome Resource (ClinGen), which defines the clinical relevance of genomic variants.",
+                    "Coronary Artery Disease": "Datasets from the Cardio Metabolic Focus Group's CAD Pillar Project, which integrates vascular single-cell, perturbation, and regulatory genomics data to link coronary artery disease variants to enhancers, genes, and gene programs.",
+                    "Cross-Disorder CNVs": "Datasets from the characterization of DiGeorge, Williams, and 16p11.2 Copy Number Variant (CNV) regions across relevant cell types to identify tissue-specific effects and targetable regulatory elements.",
+                    "E2G Pillar Project": "Datasets from the Element-to-Gene (E2G) Pillar Project, focused on mapping regulatory elements to their target genes.",
+                    "ENCODE": "Datasets from the Encyclopedia of DNA Elements (ENCODE) project.",
+                    "GREGoR": "Datasets associated with the Genomics Research to Elucidate the Genetics of Rare disease (GREGoR) consortium.",
+                    "IGVF_catalog_beta_v0.1": "Data included in version 0.1 of the IGVF catalog beta release.",
+                    "IGVF_catalog_beta_v0.2": "Data included in version 0.2 of the IGVF catalog beta release.",
+                    "IGVF_catalog_beta_v0.3": "Data included in version 0.3 of the IGVF catalog beta release.",
+                    "IGVF_catalog_beta_v0.4": "Data included in version 0.4 of the IGVF catalog beta release.",
+                    "IGVF_catalog_beta_v0.5": "Data included in version 0.5 of the IGVF catalog beta release.",
+                    "IGVF_catalog_v1.0": "Data included in version 1.0 of the IGVF catalog.",
+                    "IGVF_catalog_v1.1": "Data included in version 1.1 of the IGVF catalog.",
+                    "IGVF_catalog_v1.2": "Data included in version 1.2 of the IGVF catalog.",
+                    "IGVF phase 1": "Datasets from Phase 1 of the Impact of Genomic Variation on Function (IGVF) consortium.",
+                    "MaveDB": "Datasets associated with the Multiplexed Assay of Variant Effect database (https://www.mavedb.org).",
+                    "Morphic": "Datasets from the Morphic consortium, focused on characterizing the impact of genetic variants on cell morphology.",
+                    "MPRAbase": "Datasets related to the MPRAbase collection of massively parallel reporter assay (MPRA) data.",
+                    "PD single cell multiomics": "Single-cell multiomics datasets related to Parkinson's disease research.",
+                    "StanfordFCC": "Datasets from the Stanford Functional Characterization Consortium (FCC), focused on characterizing regulatory elements.",
+                    "TF Perturb-seq Project": "Datasets from the Transcription Factor Perturb-seq Project, using a shared guide library targeting promoters of transcription factors to characterize transcription factor functions across datasets via single-cell CRISPR-mediated perturbation sequencing.",
+                    "TOPMED Freeze 8": "Datasets from the Trans-Omics for Precision Medicine (TOPMed) program Freeze 8 release.",
+                    "VarChAMP": "Datasets from the Variant Characterization across the Mendelian Proteome (VarChAMP) project, which functionally characterizes coding variants in Mendelian disease genes to establish genotype-phenotype relationships and support clinical diagnosis.",
+                    "Vista": "Datasets associated with the Vista Enhancer Browser, a database of tissue-specific enhancers.",
+                    "Williams Syndrome Research": "Datasets related to research on Williams syndrome, a genetic disorder caused by deletion on chromosome 7q11.23."
+                }
             }
         },
         "status": {
@@ -375,7 +407,6 @@
                     "ATAC-seq",
                     "varACCESS",
                     "ACCESS-ATAC",
-                    "scATAC-seq",
                     "scACCESS-ATAC",
                     "snATAC-seq",
                     "mtscMultiome",
@@ -386,7 +417,7 @@
                     "10x snATAC-seq with Scale pre-indexing",
                     "snRNA-seq with Scale pre-indexing",
                     "SHARE-seq",
-                    "perturb-SHARE-seq",
+                    "MORF-SHARE-seq",
                     "MORF screen",
                     "Histone ChIP-seq",
                     "TF ChIP-seq",
@@ -453,7 +484,6 @@
                     "ATAC-seq": "Assay for Transposase-Accessible Chromatin using sequencing (ATAC-seq) measures chromatin accessibility by identifying open chromatin regions.",
                     "varACCESS": "A high-throughput assay that integrates genome variants into chromatin accessibility analysis.",
                     "ACCESS-ATAC": "Accessible Chromatin by Cytosine Editing Site Sequencing with ATAC-seq (ACCESS-ATAC) is used to map chromatin accessibility and transcription factor binding at high resolution by integrating cytosine deamination with ATAC-seq.",
-                    "scATAC-seq": "Single-cell ATAC-seq (scATAC-seq) profiles chromatin accessibility at single-cell resolution.",
                     "scACCESS-ATAC": "Single-cell Accessible Chromatin by Cytosine Editing Site Sequencing with ATAC-seq (scACCESS-ATAC) is used to profile chromatin accessibility and transcription factor binding at high resolution in single cells.",
                     "snATAC-seq": "Single-nucleus ATAC-seq (snATAC-seq) profiles chromatin accessibility in individual nuclei.",
                     "mtscMultiome": "mitochondrial single-cell Multiome (mtscMultiome) combines 10x multiome with single-cell mitochondrial sequencing (scMito-seq) to profile mitochondrial DNA (mtDNA), chromatin accessibility, variants and transcriptional activity in individual cells.",
@@ -464,7 +494,7 @@
                     "10x snATAC-seq with Scale pre-indexing": "10X snATAC-seq with Scale pre-indexing is a ATAC-seq method that uses combinatorial barcoding (Tn5-based pre-indexing followed by 10X cell indexing) to label the cellular origin of open chromatin regions. The combinatorial barcoding allows \"superloading\" of 10X lanes increasing the throughput to hundreds of thousands of cells per reaction.",
                     "snRNA-seq with Scale pre-indexing": "snRNA-seq with Scale pre-indexing is a RNA-seq method that uses combinatorial barcoding (Tn5-based pre-indexing) to label the cellular origin of open chromatin regions. The combinatorial barcoding allows \"superloading\" of sequencing lanes increasing the throughput to hundreds of thousands of cells per reaction.",
                     "SHARE-seq": "Simultaneous high-throughput ATAC and RNA expression with sequencing (SHARE-seq) is used for the measurement of chromatin accessibility and gene expression in the same single cell.",
-                    "perturb-SHARE-seq": "perturb-SHARE-seq is an extension of SHARE-seq that captures single cell perturbation barcodes alongside gene expression and chromatin accessibility profiles.",
+                    "MORF-SHARE-seq": "MORF-SHARE-seq (Multiplexed Overexpression of Regulatory Factors Simultaneous high-throughput ATAC and RNA expression with sequencing) is an extension of SHARE-seq that captures single cell perturbation barcodes alongside gene expression and chromatin accessibility profiles.",
                     "MORF screen": "MORF (Multiplexed Overexpression of Regulatory Factors) screen is an assay in which a pooled library of barcoded transcription factor and transcription factor isoforms is introduced into cells to overexpress each factor and measure its effect on cellular phenotype or molecular readouts.",
                     "Histone ChIP-seq": "Chromatin immunoprecipitation sequencing (ChIP-seq) maps histone modifications to study their genome-wide distribution.",
                     "TF ChIP-seq": "Transcription Factor ChIP-seq (TF ChIP-seq) maps genome-wide transcription factor binding sites.",
@@ -889,6 +919,30 @@
             }
         }
     },
+    "biosample_qualifiers": {
+        "biosample_qualifiers": {
+            "title": "Biosample Qualifiers",
+            "description": "An array of various cell states. This property provides additional information about a cell at a finer-grained level compared to what ontologies currently capture. For example, exhausted T-cells.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Biosample Qualifiers",
+                "description": "An array of various cell states. This property provides additional information about a cell at a finer-grained level compared to what ontologies currently capture. For example, exhausted T-cells.",
+                "type": "string",
+                "enum": [
+                    "6 days calcified",
+                    "10 days calcified",
+                    "partially exhausted",
+                    "exhausted"
+                ]
+            },
+            "submissionExample": {
+                "appscript": "[\"exhausted\"]",
+                "igvf_utils": "exhausted"
+            }
+        }
+    },
     "external_host": {
         "externally_hosted": {
             "title": "Externally Hosted",
@@ -1084,6 +1138,27 @@
             "submissionExample": {
                 "appscript": true,
                 "igvf_utils": true
+            }
+        }
+    },
+    "cell_annotation_properties": {
+        "cell_type": {
+            "title": "Cell Type",
+            "description": "The ontology term that describes the cell type of the cells in this pseudobulk and/or pseudobulk-derived prediction.",
+            "type": "string",
+            "linkTo": "SampleTerm",
+            "submissionExample": {
+                "appscript": "[\"/sample-terms/CL_1230000/\"]",
+                "igvf_utils": "/sample-terms/CL_1230000/"
+            }
+        },
+        "cell_qualifier": {
+            "title": "Cell Qualifier",
+            "description": "A qualifier that provides additional detail about the cell type annotation or the parent sample.",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "early",
+                "igvf_utils": "early"
             }
         }
     }

@@ -892,3 +892,63 @@ def measurement_set_44_45(value, system):
         value['crispr_readout'] = 'gRNA sequencing'
     if notes.strip() != value.get('notes', '').strip():
         value['notes'] = notes.strip()
+
+
+@upgrade_step('pseudobulk_set', '1', '2')
+def pseudobulk_set_1_2(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3542
+    if 'merged' not in value:
+        value['merged'] = False
+
+
+@upgrade_step('measurement_set', '45', '46')
+@upgrade_step('model_set', '8', '9')
+@upgrade_step('curated_set', '9', '10')
+def file_set_33_34(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3515
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    notes = value.get('notes', '')
+    if 'perturb-SHARE-seq' in preferred_assay_titles:
+        index = preferred_assay_titles.index('perturb-SHARE-seq')
+        preferred_assay_titles[index] = 'MORF-SHARE-seq'
+        value['preferred_assay_titles'] = preferred_assay_titles
+        notes += f'This file set previously used perturb-SHARE-seq as a preferred_assay_titles, but it has been updated to MORF-SHARE-seq via an upgrade.'
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '46', '47')
+def measurement_set_46_47(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3519
+    if 'crispr_readout' in value:
+        value['crispr_screen_readout'] = value['crispr_readout']
+        del value['crispr_readout']
+
+
+@upgrade_step('construct_library_set', '12', '13')
+def construct_library_set_12_13(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3531
+    if 'orf_list' in value:
+        if len(value.get('orf_list', [])) <= 100:
+            value['small_scale_orf_list'] = value['orf_list']
+        else:
+            notes = value.get('notes', '')
+            orf_list = ', '.join(value.get('orf_list', []))
+            value['small_scale_orf_list'] = value['orf_list'][:100]
+            notes += f' This file set previously listed `orf_list`: {orf_list}, which has more than 100 ORF, please resubmit the ORF in large_scale_orf_list.'
+            value['notes'] = notes.strip()
+        del value['orf_list']
+
+
+@upgrade_step('measurement_set', '47', '48')
+@upgrade_step('model_set', '9', '10')
+@upgrade_step('curated_set', '10', '11')
+def file_set_34_35(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3563
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    notes = value.get('notes', '')
+    if 'scATAC-seq' in preferred_assay_titles:
+        index = preferred_assay_titles.index('scATAC-seq')
+        preferred_assay_titles[index] = 'snATAC-seq'
+        value['preferred_assay_titles'] = preferred_assay_titles
+        notes += f'This file set previously used scATAC-seq as a preferred_assay_titles, but it has been updated to snATAC-seq via an upgrade.'
+        value['notes'] = notes.strip()

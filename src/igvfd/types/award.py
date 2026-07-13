@@ -30,7 +30,7 @@ class Award(Item):
         'replaced': DELETED,
         'disabled': ALLOW_CURRENT
     }
-    embedded_with_frame = [Path('submitted_by', include=['@id', 'title']), ]
+    embedded_with_frame = [Path('submitted_by', include=['@id', 'title'])]
 
     set_status_up = []
     set_status_down = []

@@ -8,6 +8,7 @@ from .base import (
     Item,
     paths_filtered_by_status
 )
+from .file_set import get_preferred_assay_slims
 
 
 @collection(
@@ -24,7 +25,7 @@ class Workflow(Item):
     schema = load_schema('igvfd:schemas/workflow.json')
 
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('standards_page', include=['@id', 'title', 'status']),
@@ -87,3 +88,21 @@ class Workflow(Item):
             workflow_version
         ]
         return ' '.join([x for x in summary_parts if x is not None])
+
+    @calculated_property(
+        schema={
+            'title': 'Preferred Assay Slims',
+            'description': 'Preferred Assay Slim(s) of assays that produced data analyzed in the analysis set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Preferred Assay Slim',
+                'description': 'Category of assay that produced data analyzed in the analysis set.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def preferred_assay_slims(self, request, preferred_assay_titles=None):
+        return get_preferred_assay_slims(preferred_assay_titles)

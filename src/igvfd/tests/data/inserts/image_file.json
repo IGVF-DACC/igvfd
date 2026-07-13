@@ -72,5 +72,23 @@
         "file_size": 6000000,
         "upload_status": "validated",
         "file_set": "/measurement-sets/igvf:snM3C-seq"
+    },
+    {
+        "uuid": "af7826b5-b6cb-4d9f-9959-730961ec9d89",
+        "accession": "IGVFFI0006PLDB",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:pipeline_dashboard"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-05-27T12:34:56Z",
+        "md5sum": "8d8f16496f0f4ee0df909bbf0d0c4c73",
+        "file_format": "tar",
+        "content_type": "pipeline dashboard",
+        "submitted_file_name": "/Users/igvf/igvf_files/pipeline_dashboard.tar",
+        "file_size": 6123456,
+        "upload_status": "validated",
+        "file_set": "/measurement-sets/igvf:snM3C-seq"
     }
 ]

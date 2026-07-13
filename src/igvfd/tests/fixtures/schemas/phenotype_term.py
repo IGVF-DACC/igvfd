@@ -46,6 +46,15 @@ def phenotype_term_incomplete(testapp):
 
 
 @pytest.fixture
+def phenotype_term_parkinsons(testapp):
+    item = {
+        'term_id': 'DOID:14330',
+        'term_name': 'Parkinson\'s disease'
+    }
+    return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def phenotype_term_v1(phenotype_term_alzheimers):
     item = phenotype_term_alzheimers.copy()
     item.update({
@@ -79,6 +88,24 @@ def phenotype_term_from_go(testapp):
     item = {
         'term_id': 'GO:0018214',
         'term_name': 'Protein Carboxylation'
+    }
+    return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def phenotype_term_protein_abundance(testapp):
+    item = {
+        'term_id': 'NTR:0000001',
+        'term_name': 'protein abundance'
+    }
+    return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def phenotype_term_from_go_cell_proliferation(testapp):
+    item = {
+        'term_id': 'GO:0008283',
+        'term_name': 'cell proliferation'
     }
     return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
 

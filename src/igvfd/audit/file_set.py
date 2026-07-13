@@ -1264,6 +1264,7 @@ def audit_missing_genome_transcriptome_references(value, system):
     ]
 
     excluded_content_types_tabular_files = [
+        'aggregated pseudobulk quality report',
         'barcode onlist',
         'barcode replacement',
         'barcode to cluster mapping',
@@ -1286,6 +1287,7 @@ def audit_missing_genome_transcriptome_references(value, system):
         'drugs',
         'external source data',
         'genes',
+        'genes in pathways',
         'genes_genes',
         'genes_pathways',
         'genes_terms',
@@ -1301,13 +1303,14 @@ def audit_missing_genome_transcriptome_references(value, system):
         'machine learning model features',
         'marker gene activity',
         'marker genes',
-        'motifs',
         'motifs_proteins',
         'normalized variants profile',
         'ontology_terms',
         'pathogenicity validation',
         'pathways',
         'pathways_pathways',
+        'per-barcode quality report',
+        'per-cell quality report',
         'pipeline parameters',
         'post-segmentation transcript and cell locations',
         'predicted gene regulatory networks',

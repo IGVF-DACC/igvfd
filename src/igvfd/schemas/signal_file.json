@@ -88,13 +88,12 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "14"
+            "default": "15"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
                 "control signal",
-                "fold change over control",
                 "raw signal",
                 "read-depth signal",
                 "sequence attributes",
@@ -102,11 +101,14 @@
                 "signal of all reads",
                 "signal of unique reads",
                 "signal p-value",
+                "ATAC-seq signal p-value",
+                "ATAC-seq signal",
+                "RNA-seq signal p-value",
+                "RNA-seq signal",
                 "TF binding scores"
             ],
             "enum_descriptions": {
                 "control signal": "A signal coverage track used as a control, representing read coverage from a baseline or reference sample for comparison purposes.",
-                "fold change over control": "A nucleotide-resolution signal coverage track showing the fold change in signal intensity compared to a control at each position.",
                 "raw signal": "The initial signal coverage track representing the unprocessed read counts across the genome before any normalization or statistical adjustments.",
                 "read-depth signal": "A signal coverage track that has been normalized by read depth, providing coverage values adjusted to account for variations in sequencing depth across samples or regions.",
                 "sequence attributes": "A dictionary of signals that represents sequence contribution scores across the genome for a given prediction from deep learning models, for example the npz format signals inferred by DeepLIFT from models trained with ATAC-seq data.",
@@ -114,6 +116,10 @@
                 "signal of all reads": "A signal coverage track that includes the combined coverage from all reads, both unique and multimapping, across the genome.",
                 "signal of unique reads": "A signal coverage track that represents the coverage specifically from unique reads, excluding multimapping reads.",
                 "signal p-value": "Nucleotide resolution signal coverage track, expressed as a p-value to reject the null hypothesis that the signal at that location is present in the control.",
+                "ATAC-seq signal p-value": "Nucleotide resolution signal coverage track from ATAC-seq data, expressed as a p-value to reject the null hypothesis that the signal at that location is present in the control.",
+                "ATAC-seq signal": "A signal coverage track from ATAC-seq data representing the density or intensity of sequencing reads across the genome.",
+                "RNA-seq signal p-value": "Nucleotide resolution signal coverage track from RNA-seq data, expressed as a p-value to reject the null hypothesis that the signal at that location is present in the control.",
+                "RNA-seq signal": "A signal coverage track from RNA-seq data representing the density or intensity of sequencing reads across the genome.",
                 "TF binding scores": "A signal track represents the transcription factor binding scores across the genome, called from assays such as ATAC-seq data."
             },
             "submissionExample": {

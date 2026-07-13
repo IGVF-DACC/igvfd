@@ -125,7 +125,7 @@
         "small_scale_gene_list": [
             "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
         ],
-        "orf_list": [
+        "small_scale_orf_list": [
             "/open-reading-frames/CCSBORF1234/",
             "/open-reading-frames/CCSBORF4567/"
         ],
@@ -251,5 +251,28 @@
         "product_id": "addgene:81225",
         "status": "released",
         "release_timestamp": "2026-02-06T12:34:56Z"
+    },
+    {
+        "aliases": [
+            "igvf:guide_library_chromosome_scope"
+        ],
+        "accession": "IGVFDS8000CHRX",
+        "scope": "chromosome",
+        "chromosomes": [
+            "chr3",
+            "chrX"
+        ],
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "2ec30a0b-2016-420b-8545-9dd6c06e124c",
+        "file_set_type": "guide library",
+        "guide_type": "sgRNA",
+        "selection_criteria": [
+            "genes"
+        ],
+        "control_file_sets": [
+            "igvf:non_targeting_guide_library"
+        ],
+        "average_guide_coverage": 190.23
     }
 ]

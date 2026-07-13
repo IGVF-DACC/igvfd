@@ -22,6 +22,8 @@ CRISPR_SCREEN_ASSAY_TERMS = {
     '/assay-terms/NTR_0001101/',  # in vivo CRISPR screen using single cell RNA-seq
 }
 
+PROTEIN_ABUNDANCE_TERM_NAME = 'protein abundance'
+
 
 def get_donors_from_samples(request, samples):
     donor_objects = []
@@ -107,6 +109,12 @@ def get_cls_phrase(cls_set, only_cls_input=False):
     return cls_phrase
 
 
+def append_enrichment_phrase(assay_summary, enrichment_designs):
+    if enrichment_designs and assay_summary:
+        return f'{assay_summary} enriched for a targeted gene expression panel'
+    return assay_summary
+
+
 def get_file_set_props_for_summary_and_samples(request, file_set):
     '''Get properties from a file set needed for summary and samples calculation'''
     return request.embed(
@@ -115,8 +123,104 @@ def get_file_set_props_for_summary_and_samples(request, file_set):
         'field=@type&field=file_set_type&field=measurement_sets'
         '&field=input_file_sets&field=targeted_genes.symbol&field=targeted_proteins'
         '&field=assay_term&field=samples'
-        '&field=assay_titles&field=preferred_assay_titles'
+        '&field=assay_titles&field=preferred_assay_titles&field=enrichment_designs'
     )
+
+
+def get_assay_contributing_input_file_sets(request, input_file_sets):
+    '''Return input file sets that contribute assay metadata to analysis-derived file sets.
+
+    Construct library sets are assay-agnostic and should not contribute assay information
+    when other input file sets are present. Analysis sets comprised solely of construct
+    library sets are an exception and inherit assays from those construct library sets.
+    Curated sets without external sequencing data are treated like construct library sets.
+    When other input file sets are present, upstream analysis sets that are comprised
+    solely of construct library sets and/or assay-less curated sets are also excluded.
+
+    Without this exclusion, unintended analyses of mixed assay types can result,
+    e.g. guide libraries shared across CRISPR FACS vs proliferation screens, reporter
+    libraries used in both bulk MPRA and MPRA (scQer) assays.
+
+    Construct library set-only analyses are exempt as otherwise the analyses would not
+    have any assay metadata. The same applies when inputs are exclusively upstream
+    analysis sets that are themselves comprised solely of construct library sets
+    and/or assay-less curated sets.
+    '''
+    if not input_file_sets:
+        return []
+
+    def curated_set_has_assay_metadata(fileset):
+        if not fileset.startswith('/curated-sets/'):
+            return False
+        curated_object = request.embed(
+            fileset,
+            '@@object_with_select_calculated_properties?field=file_set_type'
+        )
+        return curated_object.get('file_set_type') == 'external sequencing data'
+
+    def inputs_are_cls_only_equivalent(filesets, inspected_filesets=None):
+        if inspected_filesets is None:
+            inspected_filesets = set()
+        for fileset in filesets:
+            if fileset.startswith('/construct-library-sets/'):
+                continue
+            if fileset.startswith('/curated-sets/'):
+                if curated_set_has_assay_metadata(fileset):
+                    return False
+                continue
+            if fileset.startswith('/analysis-sets/'):
+                if fileset in inspected_filesets:
+                    return False
+                analysis_object = request.embed(
+                    fileset,
+                    '@@object_with_select_calculated_properties?field=input_file_sets'
+                )
+                upstream_inputs = analysis_object.get('input_file_sets', [])
+                if not upstream_inputs:
+                    return False
+                inspected_filesets.add(fileset)
+                if not inputs_are_cls_only_equivalent(upstream_inputs, inspected_filesets):
+                    return False
+                continue
+            return False
+        return True
+
+    def analysis_set_has_cls_only_equivalent_inputs(fileset):
+        analysis_object = request.embed(
+            fileset,
+            '@@object_with_select_calculated_properties?field=input_file_sets'
+        )
+        upstream_inputs = analysis_object.get('input_file_sets', [])
+        return upstream_inputs and inputs_are_cls_only_equivalent(
+            upstream_inputs,
+            {fileset},
+        )
+
+    if all(fileset.startswith('/construct-library-sets/') for fileset in input_file_sets):
+        return list(input_file_sets)
+    if all(fileset.startswith('/analysis-sets/') for fileset in input_file_sets):
+        if all(
+            analysis_set_has_cls_only_equivalent_inputs(fileset)
+            for fileset in input_file_sets
+        ):
+            return list(input_file_sets)
+    if inputs_are_cls_only_equivalent(input_file_sets):
+        return [
+            fileset for fileset in input_file_sets
+            if fileset.startswith('/construct-library-sets/')
+        ]
+    contributing = []
+    for fileset in input_file_sets:
+        if fileset.startswith('/construct-library-sets/'):
+            continue
+        if (fileset.startswith('/curated-sets/') and
+                not curated_set_has_assay_metadata(fileset)):
+            continue
+        if fileset.startswith('/analysis-sets/'):
+            if analysis_set_has_cls_only_equivalent_inputs(fileset):
+                continue
+        contributing.append(fileset)
+    return contributing
 
 
 def get_preferred_assay_slims(preferred_assay_titles):
@@ -132,7 +236,6 @@ def get_preferred_assay_slims(preferred_assay_titles):
         'ATAC-seq': ['chromatin accessibility'],
         'varACCESS': ['chromatin accessibility'],
         'ACCESS-ATAC': ['chromatin accessibility'],
-        'scATAC-seq': ['chromatin accessibility', 'single cell'],
         'scACCESS-ATAC': ['chromatin accessibility'],
         'snATAC-seq': ['chromatin accessibility', 'single cell'],
         'mtscMultiome': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
@@ -143,6 +246,7 @@ def get_preferred_assay_slims(preferred_assay_titles):
         '10x snATAC-seq with Scale pre-indexing': ['chromatin accessibility', 'single cell'],
         'snRNA-seq with Scale pre-indexing': ['gene expression', 'single cell'],
         'SHARE-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
+        'MORF-SHARE-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
         'Histone ChIP-seq': ['DNA binding'],
         'TF ChIP-seq': ['DNA binding'],
         'CUT&RUN': ['DNA binding'],
@@ -172,7 +276,7 @@ def get_preferred_assay_slims(preferred_assay_titles):
         'scCRISPR screen': ['CRISPR screen', 'single cell'],
         'Perturb-seq': ['CRISPR screen', 'single cell'],
         'Parse Perturb-seq': ['CRISPR screen', 'single cell'],
-        'CC-Perturb-seq':	['CRISPR screen	single cell'],
+        'CC-Perturb-seq': ['CRISPR screen single cell'],
         'TAP-seq': ['CRISPR screen', 'single cell'],
         'CROP-seq': ['CRISPR screen', 'single cell'],
         'Multiome Perturb-seq': ['CRISPR screen', 'single cell', 'multiome'],
@@ -182,8 +286,8 @@ def get_preferred_assay_slims(preferred_assay_titles):
         'MAVE': ['protein scanning'],
         'snMCT-seq': ['gene expression', 'methylation', 'single cell', 'multiome'],
         'snM3C-seq': ['methylation', '3D chromatin structure', 'single cell', 'multiome'],
-        'VAMP-seq':	['protein scanning'],
-        'VAMP-seq (MultiSTEP)':	['protein scanning'],
+        'VAMP-seq': ['protein scanning'],
+        'VAMP-seq (MultiSTEP)': ['protein scanning'],
         'LABEL-seq': ['protein scanning'],
         'Hi-C': ['3D chromatin structure'],
         'HiCAR': ['3D chromatin structure', 'chromatin accessibility'],
@@ -206,6 +310,196 @@ def get_preferred_assay_slims(preferred_assay_titles):
         return slims
     else:
         return None
+
+
+def join_multiple_terms(term_lists):
+    '''Format metadata phrase based on number of terms.'''
+    if not term_lists:
+        return ''
+    if len(term_lists) == 1:
+        return term_lists[0]
+    if len(term_lists) == 2:
+        return f'{term_lists[0]} and {term_lists[1]}'
+    return f'{term_lists[0]} and {len(term_lists) - 1} more'
+
+
+def get_disease_terms_from_phenotypic_features(request, sample_object, is_pd_collection=False):
+    '''Get disease terms from phenotypic features.'''
+    # NCIT can be both disease and non-disease (measurements), so the quantity + quality check is critical
+    disease_prefixes = ('DOID:', 'EFO:', 'HP:', 'MONDO:', 'NCIT:')
+    disease_terms = []
+    for phenotypic_feature in sample_object.get('phenotypic_features', []):
+        feature_obj = request.embed(phenotypic_feature, '@@object?skip_calculated=true')
+        # Disease-only features have no quality/quantity annotations.
+        if 'quality' in feature_obj or 'quantity' in feature_obj:
+            continue
+        feature_id = feature_obj.get('feature')
+        if not feature_id:
+            continue
+        feature_term_obj = request.embed(feature_id, '@@object?skip_calculated=true')
+        # Check against term_id prefix to futher filter out non-disease ones
+        term_id = feature_term_obj.get('term_id', '')
+        term_name = feature_term_obj.get('term_name', '')
+        if term_name and any(term_id.startswith(prefix) for prefix in disease_prefixes):
+            disease_terms.append(term_name)
+    unique_disease_terms = sorted(set(disease_terms))
+    if not is_pd_collection:
+        return join_multiple_terms(unique_disease_terms)
+    if 'Parkinson\'s disease' not in unique_disease_terms:
+        return 'no Parkinson\'s'
+    else:
+        return 'Parkinson\'s'
+
+
+def get_donors_info_for_sample_summary(request, donors):
+    donor_metadata = {}
+    # technical samples have no donors
+    if not donors:
+        return ''
+    # all other sample types have donors
+    for donor in donors:
+        donor_object = request.embed(donor, '@@object?skip_calculated=true')
+        accession = donor_object.get('accession')
+        taxa = donor_object.get('taxa')
+        donor_metadata.setdefault(taxa, {}).setdefault('accessions', set()).add(accession)
+        if taxa == 'Mus musculus':
+            strain = donor_object.get('strain', '')
+            if strain:
+                donor_metadata[taxa].setdefault('strains', set()).add(strain)
+    if len(donor_metadata) > 1:
+        mixed_donor_count = {taxa: len(metadata.get('accessions', [])) for taxa, metadata in donor_metadata.items()}
+        mixed_donor_phrase = ', '.join(
+            [f'{count} {taxa} donor(s)' for taxa, count in sorted(mixed_donor_count.items())])
+        return f'from {mixed_donor_phrase}'
+    for taxa, metadata in donor_metadata.items():
+        accessions = sorted(metadata.get('accessions', []))
+        if len(accessions) <= 2:
+            accession_phrase = ' and '.join(accessions)
+        else:
+            accession_phrase = f'{", ".join(accessions[:2])} and {len(accessions) - 2} more'
+        if taxa != 'Mus musculus':
+            return f'from donor(s) {accession_phrase}'
+        # Treat mouse
+        strains = sorted(metadata.get('strains', []))
+        if strains:
+            if len(strains) <= 2:
+                strain_phrase = ' and '.join(strains)
+            else:
+                strain_phrase = f'{", ".join(strains[:2])}, and {len(strains) - 2} more'
+        return f'from {accession_phrase} mice of {strain_phrase} strain(s)'
+
+
+def get_oexpr_from_cls_for_samp_summary(request, construct_library_sets):
+    '''Get overexpression gene symbols from construct library sets.'''
+    if not construct_library_sets:
+        return ''
+    oexpr_genes = set()
+    for cls_set in construct_library_sets:
+        cls_object = request.embed(cls_set, '@@object?skip_calculated=true')
+        if cls_object.get('file_set_type') == 'overexpression vector library' and cls_object.get('scope') == 'genes':
+            small_gene_list = cls_object.get('small_scale_gene_list', [])
+            if small_gene_list:
+                for gene in small_gene_list:
+                    gene_object = request.embed(gene, '@@object?skip_calculated=true')
+                    oexpr_genes.add(gene_object.get('symbol', ''))
+    oexpr_genes = sorted(list(oexpr_genes))
+    return f'overexpressing {join_multiple_terms(oexpr_genes)}' if oexpr_genes else ''
+
+
+def merge_induced_to_terms(terms):
+    '''Merge differentiation terms to be A, B, C induced to X, Y, Z'''
+    merged_induced = {}
+    plain_terms = []
+    for phrase in terms:
+        if ' induced to ' in phrase:
+            prefix, tgt = phrase.split(' induced to ', 1)
+            merged_induced.setdefault(prefix, set()).add(tgt)
+        else:
+            plain_terms.append(phrase)
+    result = plain_terms
+    for prefix, targets in merged_induced.items():
+        result.append(f'{prefix} induced to {", ".join(sorted(targets))}')
+    return result
+
+
+def collapse_pd_multiplexed_disease_terms(
+    terms_by_classification,
+    classification,
+    disease_states_by_classification,
+    is_pd_collection
+):
+    '''Collapse repeated Parkinson's disease labels for multiplexed samples.'''
+    if not (
+        is_pd_collection
+        and {'Parkinson\'s', 'no Parkinson\'s'}.issubset(
+            disease_states_by_classification.get(classification, set())
+        )
+    ):
+        return terms_by_classification
+
+    # Collapse per-term disease labels into one shared phrase.
+    terms_by_classification = terms_by_classification.replace(" with Parkinson's and no Parkinson's", '')
+    terms_by_classification = terms_by_classification.replace(" with no Parkinson's and Parkinson's", '')
+    terms_by_classification = terms_by_classification.replace(" with Parkinson's", '')
+    terms_by_classification = terms_by_classification.replace(" with no Parkinson's", '')
+    return f"{terms_by_classification} with and without Parkinson's"
+
+
+def get_cell_annotation(request, cell_type, samples, cell_qualifier=None):
+    source_biosample_classifications = set()
+    source_biosample_terms = set()
+    cell_qualifier_string = cell_qualifier if cell_qualifier else None
+    cell_type_name = request.embed(cell_type, '@@object').get('term_name', '')
+
+    for sample in samples:
+        sample_object = request.embed(sample, '@@object')
+        sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object')
+        classifications = sample_object.get('classifications', [])
+        for classification in classifications:
+            source_biosample_classifications.add(classification)
+        source_biosample_terms.add(sample_term_object.get('term_name', ''))
+
+    if len(source_biosample_classifications) == 1 and 'tissue/organ' in source_biosample_classifications:
+        phrase = ' '.join([x for x in [
+            ', '.join(sorted(source_biosample_terms)),
+            cell_qualifier_string,
+            cell_type_name
+        ] if x is not None])
+    elif len(source_biosample_classifications) == 1 and \
+            ('cell line' in source_biosample_classifications or 'differentiated cell specimen' in source_biosample_classifications) and \
+            len(source_biosample_terms) == 1 and \
+            list(source_biosample_terms)[0] != cell_type_name:
+        phrase = ' '.join([x for x in [
+            cell_qualifier_string,
+            cell_type_name,
+            'derived from',
+            ', '.join(sorted(source_biosample_terms))
+        ] if x is not None])
+    else:
+        phrase = ' '.join([x for x in [
+            cell_qualifier_string,
+            cell_type_name
+        ] if x is not None])
+
+    return phrase
+
+
+def get_virtual_and_taxa_phrases_from_samples(request, samples):
+    '''Get virtual and taxa phrases from samples.'''
+    virtual_phrase = 'virtual '
+    taxa = set()
+    taxa_phrase = ''
+    for sample in samples:
+        sample_object = request.embed(sample, '@@object')
+        taxa.add(sample_object.get('taxa', ''))
+        # only put 'virtual' in final summary if all samples are virtual
+        if 'virtual' not in sample_object.get('summary'):
+            virtual_phrase = ''
+    if len(taxa) > 1:
+        taxa_phrase = 'mixed species '
+    else:
+        taxa_phrase = f'{list(taxa)[0]} '
+    return virtual_phrase, taxa_phrase
 
 
 EMBEDDED_FILE_FIELDS = [
@@ -262,7 +556,7 @@ class FileSet(Item):
         'superseded_by': ('FileSet', 'supersedes')
     }
     embedded_with_frame = [
-        Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'title']),
+        Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'project', 'title']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path(
@@ -307,6 +601,7 @@ class FileSet(Item):
                 'phenotypic_features',
                 'growth_medium',
                 'modifications',
+                'construct_delivery_methods',
                 'sample_terms',
                 'status',
                 'summary',
@@ -551,8 +846,9 @@ class AnalysisSet(FileSet):
     schema = load_schema('igvfd:schemas/analysis_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('input_file_sets', include=['@id', 'accession', 'aliases',
-             'file_set_type', 'status', 'assay_term', 'crispr_readout']),
+             'file_set_type', 'status', 'assay_term', 'crispr_screen_readout', 'crispr_screen_biometric']),
         Path('input_file_sets.assay_term', include=['@id', 'term_name', 'assay_slims']),
+        Path('input_file_sets.crispr_screen_biometric', include=['@id', 'term_id', 'term_name', 'status']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
         Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline', 'status', 'workflow_version']),
         Path('targeted_genes', include=['@id', 'symbol'])]
@@ -637,7 +933,10 @@ class AnalysisSet(FileSet):
                         assay_terms.add(fileset_object['assay_term'])
                         preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
                         assays_titles = fileset_object.get('assay_titles', [])
-                        summary = format_assay(assays_titles, preferred_assay_titles)
+                        summary = append_enrichment_phrase(
+                            format_assay(assays_titles, preferred_assay_titles),
+                            fileset_object.get('enrichment_designs'),
+                        )
                         if summary:
                             all_assay_summaries.add(summary)
                     elif input_fileset.startswith('/auxiliary-sets/'):
@@ -658,6 +957,13 @@ class AnalysisSet(FileSet):
                         summary = format_assay(assays_titles, preferred_assay_titles)
                         if summary:
                             cls_derived_assay_titles.add(summary)
+                    elif (input_fileset.startswith('/curated-sets/') and
+                            fileset_object.get('file_set_type') == 'external sequencing data'):
+                        preferred_assay_titles = fileset_object.get('preferred_assay_titles', [])
+                        assays_titles = fileset_object.get('assay_titles', [])
+                        summary = format_assay(assays_titles, preferred_assay_titles)
+                        if summary:
+                            all_assay_summaries.add(summary)
                     elif not input_fileset.startswith('/analysis-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
                     # Collect control types.
@@ -794,10 +1100,8 @@ class AnalysisSet(FileSet):
         }
     )
     def preferred_assay_titles(self, request, input_file_sets=None):
-        if input_file_sets is None:
-            input_file_sets = []
         preferred_assay_list = set()
-        for fileset in input_file_sets:
+        for fileset in get_assay_contributing_input_file_sets(request, input_file_sets):
             file_set_object = request.embed(
                 fileset,
                 '@@object_with_select_calculated_properties?field=preferred_assay_titles'
@@ -845,10 +1149,8 @@ class AnalysisSet(FileSet):
         }
     )
     def assay_titles(self, request, input_file_sets=None):
-        if input_file_sets is None:
-            input_file_sets = []
         assay_list = set()
-        for fileset in input_file_sets:
+        for fileset in get_assay_contributing_input_file_sets(request, input_file_sets):
             file_set_object = request.embed(
                 fileset,
                 '@@object_with_select_calculated_properties?field=assay_titles'
@@ -876,10 +1178,8 @@ class AnalysisSet(FileSet):
         }
     )
     def assay_slims(self, request, input_file_sets=None):
-        if input_file_sets is None:
-            input_file_sets = []
         assay_type = set()
-        for fileset in input_file_sets:
+        for fileset in get_assay_contributing_input_file_sets(request, input_file_sets):
             file_set_object = request.embed(
                 fileset,
                 '@@object_with_select_calculated_properties?field=assay_slims'
@@ -929,6 +1229,7 @@ class AnalysisSet(FileSet):
 
     @calculated_property(
         condition='samples',
+        define=True,
         schema={
             'title': 'Donors',
             'description': 'The donors of the samples associated with this analysis set.',
@@ -990,33 +1291,20 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def sample_summary(self, request, samples=None):
+    def sample_summary(self, request, samples=None, donors=None, construct_library_sets=None, collections=None):
+        corces_special_collection = 'PD single cell multiomics'
         taxa = set()
         sample_classification_term_target = dict()
-        treatment_purposes = set()
-        treatment_summaries = set()
-        growth_mediums = set()
         differentiation_times = set()
-        library_delivery_times = set()
-        construct_library_set_types = set()
-        modification_summaries = set()
-        sorted_from = set()
-        targeted_genes_for_sorting = set()
-        cellular_sub_pools = set()
+        disease_states_by_classification = {}
+        biosample_qualifiers = set()
 
-        treatment_purpose_to_adjective = {
-            'activation': 'activated',
-            'acute stimulation': 'acutely stimulated',
-            'chronic stimulation': 'chronically stimulated',
-            'agonist': 'agonized',
-            'antagonist': 'antagonized',
-            'control': 'treated with a control',
-            'differentiation': 'differentiated',
-            'de-differentiation': 'de-differentiated',
-            'perturbation': 'perturbed',
-            'selection': 'selected',
-            'stimulation': 'stimulated'
-        }
+        # Is it PD collection
+        if collections:
+            is_pd_collection = any(collection for collection in collections
+                                   if collection == corces_special_collection)
+        else:
+            is_pd_collection = False
 
         two_classification_cases = {
             'differentiated cell specimen, pooled cell specimen': ['pooled differentiated cell specimen'],
@@ -1034,6 +1322,10 @@ class AnalysisSet(FileSet):
         for sample in samples:
             sample_object = request.embed(sample, '@@object')
 
+            # Get bioqualifers enums for non-multiplexed samples
+            biosample_qualifiers.update(sample_object.get('biosample_qualifiers', []))
+
+            # Get taxa
             taxa.add(sample_object.get('taxa', ''))
 
             # Group sample and targeted sample terms according to classification.
@@ -1052,6 +1344,42 @@ class AnalysisSet(FileSet):
             if classification not in sample_classification_term_target:
                 sample_classification_term_target[classification] = set()
 
+            # Add disease terms to the sample phrase
+            disease_phrase = ''
+            disease_terms_by_sample_term = {}
+            if sample_object.get('multiplexed_samples'):
+                for multiplexed_sample in sample_object['multiplexed_samples']:
+                    multiplexed_sample_object = request.embed(
+                        multiplexed_sample, '@@object?skip_calculated=true'
+                    )
+                    diseased_phenotypic_features = get_disease_terms_from_phenotypic_features(
+                        request, multiplexed_sample_object, is_pd_collection
+                    )
+                    if not diseased_phenotypic_features:
+                        continue
+                    if is_pd_collection:
+                        disease_states_by_classification.setdefault(classification, set()).add(
+                            diseased_phenotypic_features
+                        )
+                    for sample_term in multiplexed_sample_object.get('sample_terms', []):
+                        sample_term_object = request.embed(sample_term, '@@object?skip_calculated=true')
+                        term_name = sample_term_object.get('term_name')
+                        if not term_name:
+                            continue
+                        if term_name not in disease_terms_by_sample_term:
+                            disease_terms_by_sample_term[term_name] = set()
+                        disease_terms_by_sample_term[term_name].add(diseased_phenotypic_features)
+            else:
+                diseased_phenotypic_features = get_disease_terms_from_phenotypic_features(
+                    request, sample_object, is_pd_collection)
+                if diseased_phenotypic_features:
+                    if is_pd_collection:
+                        disease_states_by_classification.setdefault(classification, set()).add(
+                            diseased_phenotypic_features
+                        )
+                    disease_phrase = f' with {diseased_phenotypic_features}'
+
+            # Compute sample term and targeted sample terms, with diseases added
             for term in sample_object['sample_terms']:
                 sample_term_object = request.embed(term, '@@object?skip_calculated=true')
                 sample_phrase = f"{sample_term_object['term_name']}"
@@ -1070,71 +1398,66 @@ class AnalysisSet(FileSet):
                     targeted_sample_term_object = request.embed(
                         sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
                     targeted_sample_suffix = f"induced to {targeted_sample_term_object['term_name']}"
+
+                term_disease_phrase = ''
+                if sample_object.get('multiplexed_samples'):
+                    sample_term_diseases = sorted(
+                        disease_terms_by_sample_term.get(sample_term_object.get('term_name'), set())
+                    )
+                    if sample_term_diseases:
+                        term_disease_phrase = f' with {join_multiple_terms(sample_term_diseases)}'
+                else:
+                    term_disease_phrase = disease_phrase
+
                 if targeted_sample_suffix:
-                    sample_phrase = f'{sample_phrase} {targeted_sample_suffix}'
+                    sample_phrase = f'{sample_phrase}{term_disease_phrase} {targeted_sample_suffix}'
+                else:
+                    sample_phrase = f'{sample_phrase}{term_disease_phrase}'
                 sample_classification_term_target[classification].add(sample_phrase)
 
             if 'time_post_change' in sample_object:
                 time = sample_object['time_post_change']
                 time_unit = sample_object['time_post_change_units']
                 differentiation_times.add(f'{time} {time_unit}')
-            if 'modifications' in sample_object:
-                for modification in sample_object['modifications']:
-                    modification_object = request.embed(
-                        modification, '@@object_with_select_calculated_properties?field=summary')
-                    modification_summaries.add(modification_object['summary'])
-            if 'construct_library_sets' in sample_object:
-                for construct_library_set in sample_object['construct_library_sets']:
-                    cls_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
-                    construct_library_set_types.add(cls_object['file_set_type'])
-            if 'time_post_library_delivery' in sample_object:
-                time = sample_object['time_post_library_delivery']
-                time_unit = sample_object['time_post_library_delivery_units']
-                library_delivery_times.add(f'{time} {time_unit}')
-            if 'sorted_from' in sample_object:
-                sorted_from.add(True)
-                for file_set in sample_object['file_sets']:
-                    if file_set.startswith('/measurement-sets/'):
-                        fileset_object = request.embed(file_set, '@@object?skip_calculated=true')
-                        if 'targeted_genes' in fileset_object:
-                            for gene in fileset_object['targeted_genes']:
-                                gene_object = request.embed(gene, '@@object?skip_calculated=true')
-                                targeted_genes_for_sorting.add(gene_object['symbol'])
-            if 'growth_medium' in sample_object:
-                growth_mediums.add(sample_object['growth_medium'])
-            if 'treatments' in sample_object:
-                for treatment in sample_object['treatments']:
-                    treatment_object = request.embed(
-                        treatment, '@@object_with_select_calculated_properties?field=summary')
-                    treatment_purposes.add(treatment_purpose_to_adjective.get(treatment_object['purpose'], ''))
-                    truncated_summary = treatment_object['summary'].split(' of ')[1]
-                    treatment_summaries.add(truncated_summary)
-            if 'cellular_sub_pool' in sample_object:
-                cellular_sub_pools.add(sample_object['cellular_sub_pool'])
 
         all_sample_terms = []
         for classification in sorted(sample_classification_term_target.keys()):
-            terms_by_classification = f"{', '.join(sorted(sample_classification_term_target[classification]))}"
+            terms_by_classification = ', '.join(
+                sorted(merge_induced_to_terms(sample_classification_term_target[classification]))
+            )
+            # Special handling for PD collection
+            terms_by_classification = collapse_pd_multiplexed_disease_terms(
+                terms_by_classification,
+                classification,
+                disease_states_by_classification,
+                is_pd_collection
+            )
             # Put the terms after the "multiplexed sample of" and drop
             # the underlying classifications
             if 'multiplexed sample of' in classification:
                 terms_by_classification = f'multiplexed sample of {terms_by_classification}'
-            # Differentiated, reprogrammed, pooled cell specimen can be merged
-            # into the terms_by_classification before this. Therefore we don't
-            # want to append it to the terms_by_classification a second time.
-            elif not any(x in terms_by_classification for x in [
-                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen', 'primary cell']
-            ):
-                # Insert the classification before the targeted_sample_term if it exists.
+            # Append classification only when it is not already present in the
+            # formatted terms string.
+            elif classification not in terms_by_classification:
+                # Insert the classification before disease name(s) and targeted_sample_term if exist.
+                # The structure is classification + (disease names) + (targeted_sample_term).
                 if 'induced to' in terms_by_classification:
-                    terms_by_classification = terms_by_classification.replace(
-                        'induced to', f'{classification} induced to'
-                    )
+                    if ' with ' in terms_by_classification:
+                        terms_by_classification = terms_by_classification.replace(
+                            ' with ', f' {classification} with ', 1
+                        )
+                    else:
+                        terms_by_classification = terms_by_classification.replace(
+                            'induced to', f'{classification} induced to'
+                        )
                 else:
-                    terms_by_classification = f'{terms_by_classification} {classification}'
-            elif any(x in terms_by_classification for x in [
-                    'differentiated cell specimen', 'reprogrammed cell specimen', 'pooled cell specimen', 'primary cell']
-            ):
+                    if ' with ' in terms_by_classification:
+                        terms_by_classification = terms_by_classification.replace(
+                            ' with ', f' {classification} with ', 1
+                        )
+                    else:
+                        terms_by_classification = f'{terms_by_classification} {classification}'
+            elif classification in terms_by_classification:
                 # Don't add anything when the classification was already in
                 # the terms_by_classification.
                 terms_by_classification = f'{terms_by_classification}'
@@ -1144,49 +1467,52 @@ class AnalysisSet(FileSet):
 
             all_sample_terms.append(terms_by_classification)
 
+        # Target samples concatenation
+        all_sample_terms = merge_induced_to_terms(all_sample_terms)
+
+        # differentiation time phrase
         differentiation_time_phrase = ''
         if differentiation_times:
-            differentiation_time_phrase = f'at {", ".join(sorted(differentiation_times))}(s) post change'
-        growth_mediums_phrase = ''
-        if growth_mediums:
-            growth_mediums_phrase = f"grown in {', '.join(sorted(growth_mediums))}"
-        treatments_phrase = ''
-        if treatment_purposes and treatment_summaries:
-            treatments_phrase = f"{', '.join(sorted(treatment_purposes))} with {', '.join(sorted(treatment_summaries))}"
-        modification_summary_phrase = ''
-        if modification_summaries:
-            modification_summaries = sorted(modification_summaries)
-            modification_summary_phrase = f'modified with {", ".join(modification_summaries)}'
-        construct_library_set_type_phrase = ''
-        if construct_library_set_types:
-            construct_library_set_type_phrase = f'transfected with a {", ".join(construct_library_set_types)}'
-            if library_delivery_times:
-                construct_library_set_type_phrase = f'{construct_library_set_type_phrase} and measured at {", ".join(sorted(library_delivery_times))}(s) post-transfection'
-        sorted_phrase = ''
-        if sorted_from:
-            if targeted_genes_for_sorting:
-                sorted_phrase = f'sorted on expression of {", ".join(sorted(targeted_genes_for_sorting))}'
-            else:
-                sorted_phrase = f'sorted into bins'
-        cellular_sub_pool_phrase = ''
-        if cellular_sub_pools:
-            cellular_sub_pool_phrase = f'cellular sub pool(s): {", ".join(sorted(cellular_sub_pools))}'
+            differentiation_times_sorted = sorted(differentiation_times, key=lambda s: float(s.split()[0]))
+            differentiation_time_phrase = f'at {", ".join(differentiation_times_sorted)}(s) post change'
 
+        # Biosample qualifiers
+        biosample_qualifiers_phrase = ''
+        if biosample_qualifiers:
+            biosample_qualifiers_phrase = ', '.join(sorted(biosample_qualifiers))
+
+        # Donor phrase
+        donor_phrase = ''
+        donor_phrase = get_donors_info_for_sample_summary(request, donors)
+
+        # Taxa phrase
         taxa_phrase = f'{", ".join([x for x in taxa if x != ""])}'
-        additional_phrases = [
-            differentiation_time_phrase,
-            growth_mediums_phrase,
-            treatments_phrase,
-            modification_summary_phrase,
-            construct_library_set_type_phrase,
-            sorted_phrase,
-            cellular_sub_pool_phrase
-        ]
-        additional_phrases_joined = ', '.join([x for x in additional_phrases if x != ''])
-        additional_phrase_suffix = ''
-        if additional_phrases_joined:
-            additional_phrase_suffix = f', {additional_phrases_joined}'
-        summary = f"{taxa_phrase} {', '.join(all_sample_terms)}{additional_phrase_suffix}".strip()
+
+        # Overexpression phrase
+        overexpression_phrase = ''
+        overexpression_phrase = get_oexpr_from_cls_for_samp_summary(request, construct_library_sets)
+
+        # Constructing the final summary, putting ovexpr last
+        summary = ' '.join(filter(None, [taxa_phrase, biosample_qualifiers_phrase, ', '.join(all_sample_terms),
+                           differentiation_time_phrase, donor_phrase])).strip()
+
+        # Overexpression
+        if overexpression_phrase:
+            summary = f'{summary}, {overexpression_phrase}'
+
+        # If Corces PD collection
+        if is_pd_collection:
+            summary = f'Parkinson\'s collection of {summary}'
+
+        # Rename species names
+        taxa_rename_map = {
+            'Homo sapiens': 'human',
+            'Mus musculus': 'mouse',
+            'Saccharomyces cerevisiae': 'yeast',
+            'Mixed species': 'mixed species'
+        }
+        for taxa_name, renamed_taxa in taxa_rename_map.items():
+            summary = summary.replace(taxa_name, renamed_taxa)
 
         return summary
 
@@ -1427,6 +1753,31 @@ class CuratedSet(FileSet):
 
     @calculated_property(
         schema={
+            'title': 'Versions',
+            'description': 'The versions of the reference files for external data loaded into the IGVF catalog.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Version',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def versions(self, request, files=None):
+        version_values = set()
+        files = paths_filtered_by_status(request, files)
+        if files:
+            for current_file_path in files:
+                file_object = request.embed(
+                    current_file_path, '@@object_with_select_calculated_properties?field=version&field=@type&field=status')
+                if 'ReferenceFile' in file_object.get('@type', []) and file_object.get('version') and file_object.get('status') != 'archived':
+                    version_values.add(file_object.get('version'))
+        return sorted(version_values) or None
+
+    @calculated_property(
+        schema={
             'title': 'Summary',
             'type': 'string',
             'notSubmittable': True,
@@ -1478,8 +1829,10 @@ class MeasurementSet(FileSet):
         Path('assay_term', include=['@id', 'term_name', 'assay_slims', 'status']),
         Path('control_file_sets', include=['@id', 'accession', 'aliases', 'status']),
         Path('related_measurement_sets.measurement_sets', include=['@id', 'accession', 'status', 'measurement_sets']),
-        Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'crispr_readout', 'status']),
+        Path('auxiliary_sets', include=['@id', 'accession', 'aliases',
+             'file_set_type', 'crispr_screen_readout', 'status']),
         Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
+        Path('crispr_screen_biometric', include=['@id', 'term_id', 'term_name', 'status']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
         Path('input_for', include=['@id', 'accession', 'aliases', 'status', 'uniform_pipeline_status'])
     ]
@@ -1607,7 +1960,7 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, assay_term, assay_titles, preferred_assay_titles=None, samples=None, control_types=None, targeted_genes=None, targeted_proteins=None, construct_library_sets=None, crispr_readout=None):
+    def summary(self, request, assay_term, assay_titles, preferred_assay_titles=None, samples=None, control_types=None, targeted_genes=None, targeted_proteins=None, construct_library_sets=None, crispr_screen_readout=None, enrichment_designs=None):
         if construct_library_sets is None:
             construct_library_sets = []
         modality_set = set()
@@ -1695,8 +2048,10 @@ class MeasurementSet(FileSet):
             mux_method_phrase = f'({", ".join(mux_method_list)} multiplexed)'
             assay_phrase = f'{assay_phrase} {mux_method_phrase}'
 
-        if crispr_readout:
-            assay_phrase = f'{assay_phrase} with {crispr_readout} readout'
+        if crispr_screen_readout:
+            assay_phrase = f'{assay_phrase} with {crispr_screen_readout} readout'
+
+        assay_phrase = append_enrichment_phrase(assay_phrase, enrichment_designs)
 
         if len(cls_set) > 0:
             cls_phrase = f' {get_cls_phrase(cls_set)}'
@@ -2007,13 +2362,13 @@ class AuxiliarySet(FileSet):
         condition='measurement_sets',
         define=True,
         schema={
-            'title': 'CRISPR Readout',
+            'title': 'CRISPR Screen Readout',
             'description': 'For auxiliary sets linked to CRISPR screen measurement sets, equivalent to file set type.',
             'type': 'string',
             'notSubmittable': True
         }
     )
-    def crispr_readout(self, request, measurement_sets=None, file_set_type=None):
+    def crispr_screen_readout(self, request, measurement_sets=None, file_set_type=None):
         if not measurement_sets or not file_set_type:
             return
         for measurement_set in measurement_sets:
@@ -2128,7 +2483,8 @@ class PredictionSet(FileSet):
         Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name', 'status']),
         Path('software_versions.software', include=['@id', 'summary',
-             'software', 'title', 'source_url', 'download_id', 'status'])
+             'software', 'title', 'source_url', 'download_id', 'status']),
+        Path('cell_type', include=['@id', 'term_name', 'term_id', 'status', 'definition'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
@@ -2174,7 +2530,7 @@ class PredictionSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type, software_versions=None, assessed_genes=None, scope=None, files=None, samples=None, donors=None, associated_phenotypes=None):
+    def summary(self, request, file_set_type, software_versions=None, assessed_genes=None, scope=None, files=None, samples=None, donors=None, associated_phenotypes=None, cell_annotation=None):
         # Get scope info
         scope_phrase = ''
         if scope:
@@ -2202,6 +2558,7 @@ class PredictionSet(FileSet):
         # Get sample or donor info
         taxa = set()
         samples_phrase = ''
+
         if donors:  # for generic human/mouse prediction, only add taxa phrase to summary
             virtual_phrase = 'virtual '
             # only put 'virtual' in final summary if all donors are virtual
@@ -2211,20 +2568,12 @@ class PredictionSet(FileSet):
                 if not donor_object.get('virtual'):
                     virtual_phrase = ''
             samples_phrase = f'{virtual_phrase}{", ".join(sorted(taxa))}'
-        else:  # for sample-specific predictions, use sample count in summary if the list is long
+        elif cell_annotation:  # if there is cell annotation, it take precedence over samples
+            virtual_phrase, taxa_phrase = get_virtual_and_taxa_phrases_from_samples(request, samples)
+            samples_phrase = f'{virtual_phrase}{taxa_phrase}{cell_annotation}'
+        else:  # for sample-specific predictions without cell annotation
             if len(samples) > 3:
-                virtual_phrase = 'virtual '
-                taxa_phrase = ''
-                for sample in samples:
-                    sample_object = request.embed(sample, '@@object')
-                    taxa.add(sample_object.get('taxa', ''))
-                    # only put 'virtual' in final summary if all samples are virtual
-                    if 'virtual' not in sample_object.get('summary'):
-                        virtual_phrase = ''
-                if len(taxa) > 1:
-                    taxa_phrase = 'mixed species '
-                else:
-                    taxa_phrase = f'{list(taxa)[0]} '
+                virtual_phrase, taxa_phrase = get_virtual_and_taxa_phrases_from_samples(request, samples)
                 samples_phrase = f'{len(samples)} {virtual_phrase}{taxa_phrase}samples'
             else:  # list out the samples explicitly, take unique set of sample summaries
                 sample_term_phrases = set()
@@ -2243,6 +2592,26 @@ class PredictionSet(FileSet):
             f'in {samples_phrase}'
         ]))
 
+    @calculated_property(
+        condition='cell_type',
+        define=True,
+        schema={
+            'title': 'Cell Annotation',
+            'type': 'string',
+            'description': 'The cell annotation of this File Set.',
+            'notSubmittable': True,
+        }
+    )
+    def cell_annotation(self, request, samples=None, cell_type=None, cell_qualifier=None):
+        # Samples is an either/or with donors. cell_type and cell_qualifiers are optional.
+        # Only calculate cell annotation if the prediction set has samples AND cell_type
+        if samples:
+            if cell_type:
+                output = get_cell_annotation(request, cell_type, samples, cell_qualifier)
+                return output
+            return None
+        return None
+
 
 @collection(
     name='construct-library-sets',
@@ -2255,7 +2624,7 @@ class ConstructLibrarySet(FileSet):
     item_type = 'construct_library_set'
     schema = load_schema('igvfd:schemas/construct_library_set.json')
     embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
+        Path('award', include=['@id', 'component', 'project']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path(
@@ -2279,8 +2648,9 @@ class ConstructLibrarySet(FileSet):
         Path('samples.treatments', include=['@id', 'treatment_term_name', 'summary', 'status']),
         Path('large_scale_gene_list', include=['@id', 'accession', 'aliases', 'status']),
         Path('large_scale_loci_list', include=['@id', 'accession', 'aliases', 'status']),
-        Path('orf_list', include=['@id', 'orf_id', 'genes', 'aliases', 'status']),
-        Path('orf_list.genes', include=['@id', 'symbol', 'status']),
+        Path('large_scale_orf_list', include=['@id', 'accession', 'aliases', 'status']),
+        Path('small_scale_orf_list', include=['@id', 'orf_id', 'genes', 'aliases', 'status']),
+        Path('small_scale_orf_list.genes', include=['@id', 'symbol', 'status']),
         Path('publications', include=['@id', 'publication_identifiers', 'status']),
     ]
     audit_inherit = [
@@ -2466,8 +2836,9 @@ class ConstructLibrarySet(FileSet):
         }
     )
     def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, large_scale_gene_list=None, guide_type=None,
-                small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, orf_list=None, associated_phenotypes=None,
-                control_types=None, targeton=None, preferred_assay_titles=None, integrated_content_files=None):
+                small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, small_scale_orf_list=None, large_scale_orf_list=None,
+                chromosomes=None, associated_phenotypes=None, control_types=None, targeton=None, preferred_assay_titles=None,
+                integrated_content_files=None):
         if preferred_assay_titles is None:
             preferred_assay_titles = []
         if integrated_content_files is None:
@@ -2505,14 +2876,28 @@ class ConstructLibrarySet(FileSet):
                 else:
                     target_phrase = f' a genomic locus'
         if scope == 'genes':
-            if small_scale_gene_list and len(small_scale_gene_list) > 1:
-                target_phrase = f' {len(small_scale_gene_list)} genes'
-            elif small_scale_gene_list and len(small_scale_gene_list) == 1:
-                gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
-                gene_name = (gene_object.get('symbol'))
-                target_phrase = f' {gene_name}'
+            if small_scale_gene_list:
+                if len(small_scale_gene_list) > 1:
+                    target_phrase = f' {len(small_scale_gene_list)} genes'
+                else:
+                    gene_object = request.embed(
+                        small_scale_gene_list[0],
+                        '@@object?skip_calculated=true'
+                    )
+                    target_phrase = f" {gene_object.get('symbol')}"
             elif large_scale_gene_list:
-                target_phrase = f' many genes'
+                target_phrase = ' many genes'
+            elif small_scale_orf_list:
+                if len(small_scale_orf_list) > 1:
+                    target_phrase = f' {len(small_scale_orf_list)} open reading frames'
+                else:
+                    orf_object = request.embed(
+                        small_scale_orf_list[0],
+                        '@@object?skip_calculated=true'
+                    )
+                    target_phrase = f" open reading frame {orf_object.get('orf_id')}"
+            elif large_scale_orf_list:
+                target_phrase = ' many open reading frames'
         if scope == 'exon':
             if small_scale_gene_list and len(small_scale_gene_list) > 1:
                 target_phrase = f' exon {exon} of multiple genes'
@@ -2521,14 +2906,19 @@ class ConstructLibrarySet(FileSet):
                 gene_name = (gene_object.get('symbol'))
                 target_phrase = f' exon {exon} of {gene_name}'
         if scope == 'interactors':
-            if orf_list and len(orf_list) > 1:
-                target_phrase = f' {len(orf_list)} open reading frames'
-            elif small_scale_gene_list and len(small_scale_gene_list) == 1:
-                gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
-                orf_object = request.embed(orf_list[0], '@@object?skip_calculated=true')
-                gene_name = (gene_object.get('symbol'))
-                orf_id = (orf_object.get('orf_id'))
-                target_phrase = f' open reading frame {orf_id} of {gene_name}'
+            if small_scale_orf_list and len(small_scale_orf_list) > 1:
+                target_phrase = f' {len(small_scale_orf_list)} open reading frames'
+            elif small_scale_orf_list and len(small_scale_orf_list) == 1:
+                orf_object = request.embed(small_scale_orf_list[0], '@@object?skip_calculated=true')
+                orf_id = orf_object.get('orf_id')
+                if small_scale_gene_list and len(small_scale_gene_list) == 1:
+                    gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
+                    gene_name = gene_object.get('symbol')
+                    target_phrase = f' open reading frame {orf_id} of {gene_name}'
+                else:
+                    target_phrase = f' open reading frame {orf_id}'
+            elif large_scale_orf_list:
+                target_phrase = f' many open reading frames'
         if scope == 'tile':
             tile_id = tile['tile_id']
             start = tile['tile_start']
@@ -2547,6 +2937,8 @@ class ConstructLibrarySet(FileSet):
             gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
             gene_name = gene_object.get('symbol', '')
             target_phrase = f' {targeton} of {gene_name}'
+        if scope == 'chromosome':
+            target_phrase = f' {", ".join(sorted(chromosomes))}'
 
         if associated_phenotypes:
             for pheno in associated_phenotypes:
@@ -2650,25 +3042,42 @@ class PseudobulkSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, cell_type, samples, cell_qualifier=None):
-        source_biosample_classifications = set()
-        source_biosample_terms = set()
-        cell_qualifier_string = ''
-        if cell_qualifier:
-            cell_qualifier_string = cell_qualifier
-        cell_type_object = request.embed(cell_type, '@@object')
-        for sample in samples:
-            sample_object = request.embed(sample, '@@object')
-            sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object')
-            classifications = sample_object.get('classifications', [])
-            for classification in classifications:
-                source_biosample_classifications.add(classification)
-            source_biosample_terms.add(sample_term_object.get('term_name', ''))
-        summary_phrase = (
-            f'{cell_qualifier_string} {cell_type_object.get("term_name", "")} '
-            f'derived from {", ".join(source_biosample_terms)}'
-        ).strip()
-        return f'Pseudobulk of {summary_phrase}'
+    def summary(self, request, donors, preferred_assay_titles, merged, cell_annotation):
+        merged_phrase = ''
+        if merged:
+            merged_phrase = 'merged'
+        assay_phrase = ''
+        if preferred_assay_titles:
+            assay_phrase = ', '.join(sorted(preferred_assay_titles))
+        taxa_phrase = ''
+        if donors:
+            taxa = set()
+            for donor in donors:
+                donor_object = request.embed(donor, '@@object?skip_calculated=true')
+                taxa.add(donor_object.get('taxa', ''))
+            if len(taxa) > 1:
+                taxa_phrase = 'mixed taxa'
+            elif len(taxa) == 1:
+                taxa_phrase = list(taxa)[0]
+        summary = ' '.join([x for x in [
+            assay_phrase,
+            merged_phrase,
+            'pseudobulk of',
+            taxa_phrase,
+            cell_annotation
+        ] if x != ''])
+        return summary
+
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Cell Annotation',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def cell_annotation(self, request, cell_type, samples, cell_qualifier=None):
+        return get_cell_annotation(request, cell_type, samples, cell_qualifier=cell_qualifier)
 
     @calculated_property(
         schema={
@@ -2714,10 +3123,8 @@ class PseudobulkSet(FileSet):
         }
     )
     def preferred_assay_titles(self, request, input_file_sets=None):
-        if input_file_sets is None:
-            input_file_sets = []
         preferred_assay_list = set()
-        for fileset in input_file_sets:
+        for fileset in get_assay_contributing_input_file_sets(request, input_file_sets):
             file_set_object = request.embed(
                 fileset,
                 '@@object_with_select_calculated_properties?field=preferred_assay_titles'
@@ -2768,10 +3175,8 @@ class PseudobulkSet(FileSet):
         }
     )
     def assay_titles(self, request, input_file_sets=None):
-        if input_file_sets is None:
-            input_file_sets = []
         assay_list = set()
-        for fileset in input_file_sets:
+        for fileset in get_assay_contributing_input_file_sets(request, input_file_sets):
             file_set_object = request.embed(
                 fileset,
                 '@@object_with_select_calculated_properties?field=assay_titles'
@@ -2799,10 +3204,8 @@ class PseudobulkSet(FileSet):
         }
     )
     def assay_slims(self, request, input_file_sets=None):
-        if input_file_sets is None:
-            input_file_sets = []
         assay_types = set()
-        for fileset in input_file_sets:
+        for fileset in get_assay_contributing_input_file_sets(request, input_file_sets):
             file_set_object = request.embed(
                 fileset,
                 '@@object_with_select_calculated_properties?field=assay_slims'
@@ -2814,3 +3217,27 @@ class PseudobulkSet(FileSet):
                 )
             )
         return sorted(assay_types) or None
+
+    @calculated_property(
+        condition='samples',
+        define=True,
+        schema={
+            'title': 'Donors',
+            'description': 'The donors of the samples associated with this pseudobulk set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Donor',
+                'description': 'Donor of a sample associated with this pseudobulk set.',
+                'type': 'string',
+                'linkTo': 'Donor'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def donors(self, request, samples=None):
+        filtered_samples = paths_filtered_by_status(request, samples)
+        unfiltered_donors = get_donors_from_samples(request, filtered_samples)
+        if unfiltered_donors:
+            return paths_filtered_by_status(request, unfiltered_donors) or None
