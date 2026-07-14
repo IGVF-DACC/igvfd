@@ -206,6 +206,9 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     }).json['@graph'][0]
     res = testapp.get(cls_guide_genes['@id'])
     assert res.json.get('summary') == 'guide (sgRNA) library targeting 2 genes'
+    testapp.patch_json(cls_guide_genes['@id'], {'selection_criteria': ['TF genes']})
+    res = testapp.get(cls_guide_genes['@id'])
+    assert res.json.get('summary') == 'guide (sgRNA) library targeting 2 TF genes'
 
 
 def test_summary_starr_seq_1000_genomes(testapp, measurement_set, tissue, construct_library_set_reporter, human_donor, human_donor_orphan, curated_set_genome, tabular_file):
