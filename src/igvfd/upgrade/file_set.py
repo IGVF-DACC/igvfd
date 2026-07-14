@@ -952,3 +952,25 @@ def file_set_34_35(value, system):
         value['preferred_assay_titles'] = preferred_assay_titles
         notes += f'This file set previously used scATAC-seq as a preferred_assay_titles, but it has been updated to snATAC-seq via an upgrade.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '48', '49')
+def measurement_set_48_49(value, system):
+    crispr_screen_readout = value.get('crispr_screen_readout')
+    if not crispr_screen_readout:
+        return
+    notes = value.get('notes', '')
+    if crispr_screen_readout == 'scATAC-seq':
+        value['crispr_screen_readout'] = 'snATAC-seq'
+        notes += (
+            ' This measurement set previously used scATAC-seq as crispr_screen_readout,'
+            ' but it has been updated to snATAC-seq via an upgrade.'
+        )
+    elif crispr_screen_readout == 'scRNA-seq with guide capture':
+        value['crispr_screen_readout'] = 'scRNA-seq including guide capture'
+        notes += (
+            ' This measurement set previously used scRNA-seq with guide capture as crispr_screen_readout,'
+            ' but it has been updated to scRNA-seq including guide capture via an upgrade.'
+        )
+    if notes.strip() != value.get('notes', '').strip():
+        value['notes'] = notes.strip()

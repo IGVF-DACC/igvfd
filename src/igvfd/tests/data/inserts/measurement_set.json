@@ -809,7 +809,7 @@
         "preferred_assay_titles": [
             "CROP-seq"
         ],
-        "crispr_screen_readout": "scRNA-seq with guide capture"
+        "crispr_screen_readout": "scRNA-seq including guide capture"
     },
     {
         "aliases": [

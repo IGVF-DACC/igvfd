@@ -741,3 +741,26 @@ def measurement_set_v47(measurement_set):
         'preferred_assay_titles': ['scATAC-seq'],
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v48_crop_seq(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '48',
+        'preferred_assay_titles': ['CROP-seq'],
+        'crispr_screen_readout': 'scRNA-seq with guide capture',
+    })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v48_multiome_perturb_snatac(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '48',
+        'preferred_assay_titles': ['Multiome Perturb-seq'],
+        'assay_term': '/assay-terms/NTR_0000798/',
+        'crispr_screen_readout': 'scATAC-seq',
+    })
+    return item
