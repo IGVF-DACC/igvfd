@@ -194,6 +194,21 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     assert res.json.get('summary') == 'reference transduction expression vector library'
     res = testapp.get(construct_library_set_editing_template_library['@id'])
     assert res.json.get('summary') == 'editing template library targeting histone modifications in targeton1 of MYC'
+    # guide library with scope='genes' and selection_criteria=['genes'] should not produce redundant "genes in N genes"
+    cls_guide_genes = testapp.post_json('/construct_library_set', {
+        'award': construct_library_set_genome_wide['award'],
+        'lab': construct_library_set_genome_wide['lab'],
+        'file_set_type': 'guide library',
+        'guide_type': 'sgRNA',
+        'scope': 'genes',
+        'selection_criteria': ['genes'],
+        'small_scale_gene_list': [gene_myc_hs['@id'], gene_zscan10_mm['@id']]
+    }).json['@graph'][0]
+    res = testapp.get(cls_guide_genes['@id'])
+    assert res.json.get('summary') == 'guide (sgRNA) library targeting 2 genes'
+    testapp.patch_json(cls_guide_genes['@id'], {'selection_criteria': ['TF genes']})
+    res = testapp.get(cls_guide_genes['@id'])
+    assert res.json.get('summary') == 'guide (sgRNA) library targeting 2 TF genes'
 
 
 def test_summary_starr_seq_1000_genomes(testapp, measurement_set, tissue, construct_library_set_reporter, human_donor, human_donor_orphan, curated_set_genome, tabular_file):
