@@ -283,7 +283,7 @@ def audit_inconsistent_crispr_screen_biometric(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets from CRISPR screen assays are expected to specify a `crispr_screen_biometric` consistent with the screen phenotype: Proliferation CRISPR screen (cell proliferation), Migration CRISPR screen (cell migration), in vitro CRISPR screen using flow cytometry (protein abundance or LDL-C uptake), in vitro or in vivo CRISPR screen using single-cell RNA-seq (gene expression), or in vitro CRISPR screen using single-nucleus ATAC-seq (chromatin accessibility).",
+            "audit_description": "Measurement sets from CRISPR screen assays are expected to specify a `crispr_screen_biometric` consistent with the screen phenotype: Proliferation CRISPR screen (cell growth), Migration CRISPR screen (cell migration), in vitro CRISPR screen using flow cytometry (protein abundance or LDL-C uptake), in vitro or in vivo CRISPR screen using single-cell RNA-seq (gene expression), or in vitro CRISPR screen using single-nucleus ATAC-seq (chromatin accessibility).",
             "audit_category": "inconsistent crispr screen biometric",
             "audit_level": "NOT_COMPLIANT"
         }
@@ -295,7 +295,7 @@ def audit_inconsistent_crispr_screen_biometric(value, system):
     if not crispr_screen_biometric:
         return
     biometric_term_names = {
-        'GO:0008283': 'cell proliferation',
+        'GO:0016049': 'cell growth',
         'GO:0016477': 'cell migration',
         'NTR:0001117': 'protein abundance',
         'NTR:0001118': 'LDL-C uptake',
@@ -303,7 +303,7 @@ def audit_inconsistent_crispr_screen_biometric(value, system):
         'NTR:0001119': 'chromatin accessibility',
     }
     expected_biometric = {
-        'Proliferation CRISPR screen': {'GO:0008283'},
+        'Proliferation CRISPR screen': {'GO:0016049'},
         'Migration CRISPR screen': {'GO:0016477'},
         '/assay-terms/OBI_0003661/': {'NTR:0001117', 'NTR:0001118'},  # in vitro CRISPR screen using flow cytometry
         '/assay-terms/OBI_0003660/': {'GO:0010467'},  # in vitro CRISPR screen using single-cell RNA-seq
@@ -354,7 +354,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets from CRISPR-based assays are expected to have a modification specified on their samples.",
+            "audit_description": "Measurement sets from CRISPR-based assays are expected to have a modification specified on their samples, unless the measurement set is a wildtype control.",
             "audit_category": "missing modification",
             "audit_level": "NOT_COMPLIANT"
         }
@@ -362,6 +362,8 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
     '''
     audit_message = get_audit_message(audit_CRISPR_screen_lacking_modifications)
     if not is_crispr_screen_measurement_set(value):
+        return
+    if 'wildtype' in value.get('control_types', []):
         return
     samples = value.get('samples', [])
     bad_samples = []

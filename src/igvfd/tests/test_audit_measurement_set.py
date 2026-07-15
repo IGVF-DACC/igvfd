@@ -280,7 +280,7 @@ def test_audit_missing_crispr_screen_biometric(
     in_vitro_differentiated_cell,
     measurement_set,
     assay_term_crispr,
-    phenotype_term_from_go_cell_proliferation,
+    phenotype_term_cell_growth,
 ):
     item = {
         'award': award['@id'],
@@ -299,7 +299,7 @@ def test_audit_missing_crispr_screen_biometric(
     testapp.patch_json(
         crispr_measurement_set['@id'],
         {
-            'crispr_screen_biometric': phenotype_term_from_go_cell_proliferation['@id'],
+            'crispr_screen_biometric': phenotype_term_cell_growth['@id'],
         },
     )
     res = testapp.get(crispr_measurement_set['@id'] + '@@audit')
@@ -310,7 +310,7 @@ def test_audit_missing_crispr_screen_biometric(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'crispr_screen_biometric': phenotype_term_from_go_cell_proliferation['@id'],
+            'crispr_screen_biometric': phenotype_term_cell_growth['@id'],
         },
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -339,13 +339,13 @@ def test_audit_inconsistent_crispr_screen_biometric(
     assay_term_crispr,
     assay_term_CRISPR_sorted,
     assay_term_crispr_single_cell,
-    phenotype_term_from_go_cell_proliferation,
+    phenotype_term_cell_growth,
     phenotype_term_cell_migration,
     phenotype_term_gene_expression,
     phenotype_term_protein_abundance,
     phenotype_term_ldl_c_uptake,
 ):
-    # Proliferation CRISPR screen expects cell proliferation as crispr_screen_biometric.
+    # Proliferation CRISPR screen expects cell growth as crispr_screen_biometric.
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -364,7 +364,7 @@ def test_audit_inconsistent_crispr_screen_biometric(
     testapp.patch_json(
         proliferation_measurement_set['@id'],
         {
-            'crispr_screen_biometric': phenotype_term_from_go_cell_proliferation['@id'],
+            'crispr_screen_biometric': phenotype_term_cell_growth['@id'],
         },
     )
     res = testapp.get(proliferation_measurement_set['@id'] + '@@audit')
@@ -381,7 +381,7 @@ def test_audit_inconsistent_crispr_screen_biometric(
         'samples': [in_vitro_differentiated_cell['@id']],
         'file_set_type': 'experimental data',
         'preferred_assay_titles': ['Migration CRISPR screen'],
-        'crispr_screen_biometric': phenotype_term_from_go_cell_proliferation['@id'],
+        'crispr_screen_biometric': phenotype_term_cell_growth['@id'],
     }
     migration_measurement_set = testapp.post_json('/measurement_set', item, status=201).json['@graph'][0]
     res = testapp.get(migration_measurement_set['@id'] + '@@audit')
@@ -448,7 +448,7 @@ def test_audit_inconsistent_crispr_screen_biometric(
         'samples': [in_vitro_differentiated_cell['@id']],
         'file_set_type': 'experimental data',
         'preferred_assay_titles': ['Perturb-seq'],
-        'crispr_screen_biometric': phenotype_term_from_go_cell_proliferation['@id'],
+        'crispr_screen_biometric': phenotype_term_cell_growth['@id'],
     }
     perturb_seq_measurement_set = testapp.post_json('/measurement_set', item, status=201).json['@graph'][0]
     res = testapp.get(perturb_seq_measurement_set['@id'] + '@@audit')
@@ -564,6 +564,19 @@ def test_audit_missing_modification(
         measurement_set['@id'],
         {
             'samples': [multiplexed_sample['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing modification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # Wildtype controls are exempt from requiring modifications on samples.
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [in_vitro_cell_line['@id']],
+            'control_types': ['wildtype'],
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')

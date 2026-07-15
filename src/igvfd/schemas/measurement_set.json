@@ -129,8 +129,8 @@
             "type": "string",
             "linkTo": "PhenotypeTerm",
             "submissionExample": {
-                "appscript": "/phenotype-terms/GO_0008283/",
-                "igvf_utils": "/phenotype-terms/GO_0008283/"
+                "appscript": "/phenotype-terms/GO_0016049/",
+                "igvf_utils": "/phenotype-terms/GO_0016049/"
             }
         },
         "protocols": {
