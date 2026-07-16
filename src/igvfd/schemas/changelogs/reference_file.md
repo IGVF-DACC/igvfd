@@ -2,6 +2,14 @@
 
 ### Minor changes since schema version 26
 
+* Extend `catalog_method` enum list to include `DepMap`.
+* Extend `catalog_method` enum list to include `GenCC`.
+* Extend `catalog_method` enum list to include `HOCOMOCO`.
+* Extend `catalog_method` enum list to include `Homology`.
+* Extend `catalog_method` enum list to include `TopLD`.
+* Extend `catalog_method` enum list to include `ClinGen`.
+* Extend `catalog_method` enum list to include `Orphanet`.
+* Extend `catalog_method` enum list to include `PharmGKB`.
 * Extend `catalog_collections` enum list to include `genomic_elements_phenotypes`.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.
 * Extend `collections` enum list to include `Coronary Artery Disease`.
