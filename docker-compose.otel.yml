@@ -1,0 +1,19 @@
+# Opt-in OpenTelemetry override. Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.otel.yml up
+# Requires the ClickStack service (workspace-root docker-compose.otel.yml)
+# and CLICKSTACK_API_KEY in the environment or an .env file.
+services:
+  pyramid:
+    environment:
+      # Default 9 (matches the base gunicorn config); lower it on
+      # memory-constrained hosts via .env or the shell environment.
+      - GUNICORN_WORKERS=${GUNICORN_WORKERS:-9}
+      - OTEL_ENABLED=true
+      - OTEL_SERVICE_NAME=igvfd
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://clickstack:4318
+      - OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
+      - OTEL_EXPORTER_OTLP_HEADERS=authorization=${CLICKSTACK_API_KEY:-}
+      - OTEL_TRACES_EXPORTER=otlp
+      - OTEL_METRICS_EXPORTER=none
+      - OTEL_LOGS_EXPORTER=none
+      - OTEL_PYTHON_EXCLUDED_URLS=/favicon.ico

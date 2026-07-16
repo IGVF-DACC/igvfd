@@ -1,5 +1,13 @@
 FROM public.ecr.aws/docker/library/golang:1.21.5-bookworm AS builder
 
+# Optional: trust an extra CA certificate during build (e.g. a sandboxed or
+# corporate TLS-intercepting proxy). No-op when EXTRA_CA_CERT_B64 is unset.
+ARG EXTRA_CA_CERT_B64
+RUN if [ -n "$EXTRA_CA_CERT_B64" ]; then \
+    echo "$EXTRA_CA_CERT_B64" | base64 -d > /usr/local/share/ca-certificates/extra-ca.crt \
+    && update-ca-certificates; \
+    fi
+
 ARG VERSION=v2.0.0
 
 WORKDIR /build

@@ -8,6 +8,18 @@ ENV VIRTUAL_ENV=/opt/venv
 
 ENV REFERENCE_DATABASE_DIRECTORY=/srv/sqlite
 
+# Optional: trust an extra CA certificate during build (e.g. a sandboxed or
+# corporate TLS-intercepting proxy). No-op when EXTRA_CA_CERT_B64 is unset.
+ARG EXTRA_CA_CERT_B64
+RUN if [ -n "$EXTRA_CA_CERT_B64" ]; then \
+    echo "$EXTRA_CA_CERT_B64" | base64 -d > /usr/local/share/ca-certificates/extra-ca.crt \
+    && update-ca-certificates \
+    && pip config set --global global.cert /etc/ssl/certs/ca-certificates.crt \
+    && pip config set --global global.timeout 120 \
+    && pip config set --global global.retries 10 \
+    && printf 'Acquire::Check-Valid-Until "false";\nAcquire::Check-Date "false";\n' > /etc/apt/apt.conf.d/99-sandbox-clock-skew; \
+    fi
+
 RUN useradd -u 1444 -m igvfd
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -50,7 +62,7 @@ USER igvfd
 
 RUN python -m pip install pip==26.0.1
 
-RUN PIP_BUILD_CONSTRAINT=build-constraint.txt pip --use-feature=build-constraint install -e .[test]
+RUN PIP_BUILD_CONSTRAINT=build-constraint.txt pip --use-feature=build-constraint install -e .[test,opentelemetry]
 
 COPY --chown=igvfd:igvfd src/igvfd/schema_formats.py src/igvfd/schema_formats.py
 
