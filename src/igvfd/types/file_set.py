@@ -278,6 +278,7 @@ def get_preferred_assay_slims(preferred_assay_titles):
         'Parse Perturb-seq': ['CRISPR screen', 'single cell'],
         'CC-Perturb-seq': ['CRISPR screen single cell'],
         'TAP-seq': ['CRISPR screen', 'single cell'],
+        'Parse TAP-seq': ['CRISPR screen', 'single cell'],
         'CROP-seq': ['CRISPR screen', 'single cell'],
         'Multiome Perturb-seq': ['CRISPR screen', 'single cell', 'multiome'],
         'SGE': ['protein scanning'],

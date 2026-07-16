@@ -194,7 +194,8 @@
         ],
         "preferred_assay_titles": [
             "CC-Perturb-seq",
-            "Parse Perturb-seq"
+            "Parse Perturb-seq",
+            "Parse TAP-seq"
         ]
     },
     {

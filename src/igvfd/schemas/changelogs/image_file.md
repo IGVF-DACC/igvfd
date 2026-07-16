@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Extend `catalog_collections` enum list to include `genomic_elements_phenotypes`.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.
 * Extend `collections` enum list to include `Coronary Artery Disease`.
 * Extend `content_type` enum list to include `pipeline dashboard`.

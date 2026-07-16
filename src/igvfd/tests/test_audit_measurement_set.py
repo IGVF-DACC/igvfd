@@ -2294,6 +2294,15 @@ def test_audit_missing_enrichment_designs(
     )
     testapp.patch_json(
         measurement_set['@id'],
+        {'preferred_assay_titles': ['Parse TAP-seq']}
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing enrichment designs'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
         {'enrichment_designs': [tabular_file_primer_designs['@id']]}
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Extend `preferred_assay_titles` enum list to include `Parse TAP-seq`.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.
 * Extend `collections` enum list to include `Coronary Artery Disease`.
 

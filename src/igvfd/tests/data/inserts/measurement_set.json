@@ -746,6 +746,28 @@
     },
     {
         "aliases": [
+            "igvf:parse_tap_seq"
+        ],
+        "award": "1UM1HG011972-01",
+        "lab": "/labs/lars-steinmetz/",
+        "status": "released",
+        "release_timestamp": "2025-07-06T12:34:56Z",
+        "uuid": "a3486f87-cbe9-4c6b-b950-ad13149d05e4",
+        "accession": "IGVFDS0000PTAP",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0002631/",
+        "preferred_assay_titles": [
+            "Parse TAP-seq"
+        ],
+        "enrichment_designs": [
+            "/tabular-files/IGVFFI0001PRIM/"
+        ],
+        "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
             "igvf:cut_and_run"
         ],
         "award": "1UM1HG012053-01",

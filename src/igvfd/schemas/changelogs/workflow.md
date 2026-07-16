@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Extend `preferred_assay_titles` enum list to include `Parse TAP-seq`.
 * Add calculated property `preferred_assay_slims`.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.
 * Extend `collections` enum list to include `Coronary Artery Disease`.
