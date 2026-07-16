@@ -2003,22 +2003,23 @@ class MeasurementSet(FileSet):
             assay = preferred_assay_title
 
         if targeted_genes:
-            # "sorted on expression of" when samples have sorted_from (flow cytometry), else "targeting"
-            if any_sample_sorted_from:
-                gene_segment = f' sorted on expression of'
-            else:
-                gene_segment = f' targeting'
-            if len(targeted_genes) > 5:
-                gene_segment = f'{gene_segment} {len(targeted_genes)} genes'
-            elif len(targeted_genes) <= 5:
-                genes = []
-                for targeted_gene in targeted_genes:
-                    gene_object = request.embed(targeted_gene, '@@object?skip_calculated=true')
-                    gene_name = (gene_object.get('symbol'))
-                    genes.append(gene_name)
-                genes = sorted(genes)
-                gene_segment = f'{gene_segment} {", ".join(genes)}'
-            target_phrase += gene_segment
+            if control_types is None or (control_types is not None and all(x not in control_types for x in ['unsorted FACS input', 'untransfected'])):
+                # "sorted on expression of" when samples have sorted_from (flow cytometry), else "targeting"
+                if any_sample_sorted_from:
+                    gene_segment = f' sorted on expression of'
+                else:
+                    gene_segment = f' targeting'
+                if len(targeted_genes) > 5:
+                    gene_segment = f'{gene_segment} {len(targeted_genes)} genes'
+                elif len(targeted_genes) <= 5:
+                    genes = []
+                    for targeted_gene in targeted_genes:
+                        gene_object = request.embed(targeted_gene, '@@object?skip_calculated=true')
+                        gene_name = (gene_object.get('symbol'))
+                        genes.append(gene_name)
+                    genes = sorted(genes)
+                    gene_segment = f'{gene_segment} {", ".join(genes)}'
+                target_phrase += gene_segment
         if targeted_proteins:
             protein_segment = f' targeting'
             if len(targeted_proteins) > 5:
