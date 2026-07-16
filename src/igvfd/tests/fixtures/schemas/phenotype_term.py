@@ -82,10 +82,10 @@ def phenotype_term_protein_abundance(testapp):
 
 
 @pytest.fixture
-def phenotype_term_cell_growth(testapp):
+def phenotype_term_cell_population_proliferation(testapp):
     item = {
-        'term_id': 'GO:0016049',
-        'term_name': 'cell growth'
+        'term_id': 'GO:0008283',
+        'term_name': 'cell population proliferation'
     }
     return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
 
