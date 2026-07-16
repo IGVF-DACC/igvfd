@@ -77,7 +77,9 @@ def audit_related_multiome_datasets(value, system):
         'SHARE-seq',
         'mtscMultiome',
         'scMultiome-NT-seq',
-        'Multiome Perturb-seq'
+        'Multiome Perturb-seq',
+        'MORF-SHARE-seq',
+        'miDOGMA-seq'
     ]
 
     if any(assay in multiome_assays for assay in preferred_assay_titles):
