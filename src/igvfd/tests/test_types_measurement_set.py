@@ -64,7 +64,7 @@ def test_related_measurement_sets_multiome(testapp, primary_cell, in_vitro_cell_
                ) == {measurement_set['@id'], measurement_set_multiome_2['@id']}
 
 
-def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modification_activation, construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction, construct_library_set_genome_wide, assay_term_y2h, construct_library_set_reference_transduction, multiplexed_sample):
+def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modification_activation, construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction, construct_library_set_genome_wide, assay_term_y2h, construct_library_set_reference_transduction, multiplexed_sample, gene_myc_hs):
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('summary') == 'STARR-seq'
     testapp.patch_json(
@@ -169,6 +169,25 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
     res = testapp.get(measurement_set['@id'])
     assert res.json.get(
         'summary') == 'scCRISPR screen (barcode based multiplexed) integrating a non-targeting, reference transduction expression vector library'
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'targeted_genes': [gene_myc_hs['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get(
+        'summary') == 'scCRISPR screen (barcode based multiplexed) targeting MYC integrating a non-targeting, reference transduction expression vector library'
+    # Targeted gene is not included if control type is unsorted or untranfected.
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'control_types': ['unsorted FACS input']
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get(
+        'summary') == 'unsorted FACS input scCRISPR screen (barcode based multiplexed) integrating a non-targeting, reference transduction expression vector library'
 
 
 def test_summary_enrichment_designs(testapp, measurement_set, tabular_file_primer_designs, measurement_set_perturb_seq):
