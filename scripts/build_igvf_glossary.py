@@ -2,7 +2,7 @@
 """
 Build a glossary JSON from:
   - preferred_assay_titles enum_descriptions (mixins.json)
-  - Software.name -> Software.description (IGVF Data Portal search API)
+  - Software.title -> Software.description (IGVF Data Portal search API)
   - File ``file.output_types`` glossary: enum_descriptions merged from ``content_type``
     on all ``*_file.json`` profiles (same vocabulary as AnalysisStep output_content_types)
   - BioGRID experimental evidence codes (physical and genetic interaction systems)
@@ -43,7 +43,7 @@ SCHEMAS_DIR = REPO_ROOT / "src/igvfd/schemas"
 MIXINS_PATH = REPO_ROOT / "src/igvfd/schemas/mixins.json"
 SOFTWARE_SEARCH_URL = (
     "https://api.data.igvf.org/search/"
-    "?type=Software&field=name&field=description&format=json&limit=all"
+    "?type=Software&field=title&field=description&format=json&limit=all"
 )
 DOCUMENT_FFS_SEARCH_URL = (
     "https://api.data.igvf.org/search/"
@@ -110,16 +110,16 @@ def fetch_software_glossary() -> dict[str, str]:
     out: dict[str, str] = {}
     duplicates: list[str] = []
     for row in graph:
-        name = row.get("name")
-        if not name:
+        title = row.get("title")
+        if not title:
             continue
         desc = row.get("description")
-        if name in out:
-            duplicates.append(name)
-        out[str(name)] = desc if isinstance(desc, str) else ""
+        if title in out:
+            duplicates.append(title)
+        out[str(title)] = desc if isinstance(desc, str) else ""
     if duplicates:
         print(
-            f"warning: duplicate software.name entries ({len(duplicates)}); "
+            f"warning: duplicate software.title entries ({len(duplicates)}); "
             "last description wins",
             file=sys.stderr,
         )
