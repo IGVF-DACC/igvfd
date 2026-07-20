@@ -269,12 +269,20 @@
             "enum": [
                 "ADASTRA",
                 "caQTL",
+                "ClinGen",
                 "COXPRESdb",
+                "DepMap",
                 "eQTL",
-                "GWAS",
+                "GenCC",
                 "GVATdb",
+                "GWAS",
+                "HOCOMOCO",
+                "Homology",
+                "Orphanet",
+                "PharmGKB",
                 "pQTL",
-                "spliceQTL"
+                "spliceQTL",
+                "TopLD"
             ],
             "submissionExample": {
                 "appscript": "ADASTRA",
@@ -283,12 +291,20 @@
             "enum_descriptions": {
                 "ADASTRA": "A database of allele-specific transcription factor binding in human tissues.",
                 "caQTL": "A method that links genetic variants to chromatin accessibility differences.",
+                "ClinGen": "A resource that defines the clinical relevance of genes and variants for use in precision medicine and research.",
                 "COXPRESdb": "A database of gene coexpression relationships.",
+                "DepMap": "A database of cancer cell line genetic dependencies used to identify potential therapeutic targets.",
                 "eQTL": "A method that links genetic variants to gene expression differences.",
-                "GWAS": "A method that identifies associations between genetic variants and traits or diseases.",
+                "GenCC": "The Gene Curation Coalition (GenCC) database that harmonizes gene-disease validity classifications across multiple sources.",
                 "GVATdb": "Genetic Variants Allelic TF Binding Database (GVATdb) is a database that curates genetic variants associated with allele-specific transcription factor binding.",
+                "GWAS": "A method that identifies associations between genetic variants and traits or diseases.",
+                "HOCOMOCO": "A database of curated transcription factor binding site models.",
+                "Homology": "A method that infers functional relationships between genes based on sequence or structural similarity.",
+                "Orphanet": "A database of information on rare diseases and orphan drugs.",
+                "PharmGKB": "The Pharmacogenomics Knowledgebase (PharmGKB), a resource that curates information about the impact of genetic variation on drug response.",
                 "pQTL": "A method that links genetic variants to protein abundance differences.",
-                "spliceQTL": "A method that links genetic variants to splicing differences."
+                "spliceQTL": "A method that links genetic variants to splicing differences.",
+                "TopLD": "A database of linkage disequilibrium information across human populations."
             }
         },
         "content_type": {
