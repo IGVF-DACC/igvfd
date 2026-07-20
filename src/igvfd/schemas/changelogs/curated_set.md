@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Extend `preferred_assay_titles` enum list to include `Parse TAP-seq`.
 * Extend `file_set_type` enum list to include `pathway gene mapping`.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.
 * Extend `collections` enum list to include `Coronary Artery Disease`.

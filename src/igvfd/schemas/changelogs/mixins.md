@@ -1,5 +1,7 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `preferred_assay_titles` enum list to include `Parse TAP-seq`. (07/22/2026)
+* Extend `catalog_collections` enum list to include `genomic_elements_phenotypes`. (07/22/2026)
 * Extend `collections` enum list to include `Cross-Disorder CNVs`. (07/08/2026)
 * Extend `collections` enum list to include `Coronary Artery Disease`. (07/08/2026)
 * Add `biosample_qualifiers`. (06/03/2026)

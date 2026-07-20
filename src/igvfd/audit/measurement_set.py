@@ -911,12 +911,12 @@ def audit_missing_barcode_replacement_file(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets with `preferred_assay_titles` Parse SPLiT-seq, Parse Perturb-seq, or CC-Perturb-seq are expected to have `barcode_replacement_file`.",
+            "audit_description": "Measurement sets with `preferred_assay_titles` Parse SPLiT-seq, Parse Perturb-seq, CC-Perturb-seq, or Parse TAP-seq are expected to have `barcode_replacement_file`.",
             "audit_category": "missing barcode replacement file",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Measurement sets without `preferred_assay_titles` Parse SPLiT-seq, Parse Perturb-seq, or CC-Perturb-seq are not expected to have `barcode_replacement_file`.",
+            "audit_description": "Measurement sets without `preferred_assay_titles` Parse SPLiT-seq, Parse Perturb-seq, CC-Perturb-seq, or Parse TAP-seq are not expected to have `barcode_replacement_file`.",
             "audit_category": "unexpected barcode replacement file",
             "audit_level": "NOT_COMPLIANT"
         }
@@ -926,7 +926,7 @@ def audit_missing_barcode_replacement_file(value, system):
     msg_unexpected_replacement_file = get_audit_message(audit_missing_barcode_replacement_file, index=1)
     preferred_assay_titles = value.get('preferred_assay_titles', [])
     barcode_replacement_file = value.get('barcode_replacement_file', None)
-    parse_titles = {'Parse SPLiT-seq', 'Parse Perturb-seq', 'CC-Perturb-seq'}
+    parse_titles = {'Parse SPLiT-seq', 'Parse Perturb-seq', 'CC-Perturb-seq', 'Parse TAP-seq'}
     if any(title in parse_titles for title in preferred_assay_titles):
         # Audit 1: If a Parse MeaSet has no barcode replacement file, audit it.
         if barcode_replacement_file is None:
@@ -941,7 +941,7 @@ def audit_missing_barcode_replacement_file(value, system):
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has unexpected `barcode_replacement_file` {audit_link(path_to_text(barcode_replacement_file), barcode_replacement_file)}. '
-                f'Only measurement sets with `preferred_assay_titles` `preferred_assay_titles` Parse SPLiT-seq, Parse Perturb-seq, or CC-Perturb-seq are expected to have `barcode_replacement_file`.'
+                f'Only measurement sets with `preferred_assay_titles` Parse SPLiT-seq, Parse Perturb-seq, CC-Perturb-seq, or Parse TAP-seq are expected to have `barcode_replacement_file`.'
             )
             yield AuditFailure(msg_unexpected_replacement_file.get('audit_category', ''), f'{detail} {msg_unexpected_replacement_file.get("audit_description", "")}', level=msg_unexpected_replacement_file.get('audit_level', ''))
 
@@ -1009,7 +1009,7 @@ def audit_missing_enrichment_designs(value, system):
     '''
     [
         {
-            "audit_description": "TAP-seq measurement sets are expected to link to enrichment designs.",
+            "audit_description": "TAP-seq and Parse TAP-seq measurement sets are expected to link to enrichment designs.",
             "audit_category": "missing enrichment designs",
             "audit_level": "NOT_COMPLIANT"
         }
@@ -1017,7 +1017,7 @@ def audit_missing_enrichment_designs(value, system):
     '''
     preferred_assay_titles = value.get('preferred_assay_titles', [])
     audit_message = get_audit_message(audit_missing_enrichment_designs, index=0)
-    if 'TAP-seq' in preferred_assay_titles and not value.get('enrichment_designs', ''):
+    if any(title in {'TAP-seq', 'Parse TAP-seq'} for title in preferred_assay_titles) and not value.get('enrichment_designs', ''):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'is missing `enrichment_designs`.'
@@ -1047,7 +1047,7 @@ def audit_missing_library_preparation_kit(value, system):
         'CROP-seq',
         'Multiome Perturb-seq',
         'in vivo Perturb-seq',
-        # CC-Perturb-seq and Parse Perturb-seq are excluded because they are
+        # CC-Perturb-seq, Parse Perturb-seq, and Parse TAP-seq are excluded because they are
         # Parse Biosciences assays which are not currently supported by library_preparation_kit
     ]
     audit_message = get_audit_message(audit_missing_library_preparation_kit, index=0)

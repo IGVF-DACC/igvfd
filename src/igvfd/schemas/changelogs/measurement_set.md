@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 49
+
+* Extend `preferred_assay_titles` enum list to include `Parse TAP-seq`.
+
 ### Schema version 49
 
 * Adjust `crispr_screen_readout` enum list to replace `scATAC-seq` with `snATAC-seq`.

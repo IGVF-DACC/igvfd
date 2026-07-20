@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 25
 
+* Extend `catalog_collections` enum list to include `genomic_elements_phenotypes`.
 * Extend `content_type` enum list to include `program-program correlation`.
 * Extend `content_type` enum list to include `regulator-regulator correlation`.
 * Extend `content_type` enum list to include `genes in pathways`.
