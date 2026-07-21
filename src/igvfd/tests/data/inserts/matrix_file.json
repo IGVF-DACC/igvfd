@@ -432,5 +432,26 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ]
+    },
+    {
+        "uuid": "6ac53119-dc63-4ffe-ad2a-b5f2758a63fc",
+        "accession": "IGVFFI0001SCNT",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_labeling_splicing_cell_gene_matrix"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-05-01T21:29:45Z",
+        "md5sum": "52b7bd182850139039d6f9f98ba0e115",
+        "file_format": "h5ad",
+        "content_type": "labeling splicing cell by gene matrix",
+        "submitted_file_name": "/Users/igvf/cellular_program_networks/label_splicing_cell_gene_matrix.h5ad",
+        "file_size": 4500000,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ]
     }
 ]
