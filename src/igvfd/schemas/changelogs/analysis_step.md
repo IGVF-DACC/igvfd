@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 15
 
+* Extend `analysis_step_type` enum list to include `quality metrics calculation`.
 * Extend `input_content_types` enum list to include `labeling splicing cell by gene matrix`.
 * Extend `output_content_types` enum list to include `labeling splicing cell by gene matrix`.
 * Extend `input_content_types` enum list to include `cell by gene program matrix`.

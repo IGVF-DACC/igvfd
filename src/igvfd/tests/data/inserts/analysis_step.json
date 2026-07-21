@@ -271,6 +271,7 @@
         "step_label": "crispr-differential-expression-aggregation-step",
         "analysis_step_types": [
             "differential expression analysis",
+            "quality metrics calculation",
             "quantification"
         ],
         "release_timestamp": "2026-05-27T12:34:56Z",
