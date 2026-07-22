@@ -1322,6 +1322,7 @@ def audit_missing_genome_transcriptome_references(value, system):
         'pseudobulk annotations',
         'sample sort parameters',
         'spatial transcriptomics cell metadata',
+        'spatial transcriptomics slide-level cell boundaries',
         'spatial transcriptomics slide-level cell coordinates',
         'spatial transcriptomics slide-level transcripts',
         'studies_variants_phenotypes',
