@@ -2114,6 +2114,9 @@
         "upload_status": "validated",
         "filtered": false,
         "file_set": "igvf:curated_set_pathway_gene_mapping",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "controlled_access": false
     },
     {
@@ -2133,6 +2136,9 @@
         "upload_status": "validated",
         "filtered": false,
         "file_set": "igvf:curated_set_pathway_gene_mapping",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "controlled_access": false
     },
     {
@@ -2152,6 +2158,9 @@
         "upload_status": "validated",
         "filtered": false,
         "file_set": "igvf:curated_set_pathway_gene_mapping",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "controlled_access": false
     },
     {
@@ -2171,6 +2180,9 @@
         "upload_status": "validated",
         "filtered": false,
         "file_set": "igvf:curated_set_pathway_gene_mapping",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "controlled_access": false
     },
     {
