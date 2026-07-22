@@ -613,7 +613,7 @@
         "award": "HG012012",
         "accession": "IGVFFI5555EGIF",
         "aliases": [
-            "igvf:element_to_gene_predictions"
+            "igvf:element_to_gene_interaction_features"
         ],
         "status": "released",
         "release_timestamp": "2026-02-01T21:29:45Z",
