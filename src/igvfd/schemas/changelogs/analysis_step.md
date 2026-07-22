@@ -2,6 +2,16 @@
 
 ### Minor changes since schema version 15
 
+* Extend `input_content_types` enum list to include `chromatin conformation compartments`.
+* Extend `output_content_types` enum list to include `chromatin conformation compartments`.
+* Extend `input_content_types` enum list to include `differentially methylated regions`.
+* Extend `output_content_types` enum list to include `differentially methylated regions`.
+* Extend `input_content_types` enum list to include `methylation regions`.
+* Extend `output_content_types` enum list to include `methylation regions`.
+* Extend `input_content_types` enum list to include `topologically associating domains`.
+* Extend `output_content_types` enum list to include `topologically associating domains`.
+* Extend `input_content_types` enum list to include `spatial transcriptomics slide-level cell boundaries`.
+* Extend `output_content_types` enum list to include `spatial transcriptomics slide-level cell boundaries`.
 * Extend `input_content_types` enum list to include `cell by gene program matrix`.
 * Extend `output_content_types` enum list to include `cell by gene program matrix`.
 * Extend `input_content_types` enum list to include `program-program correlation`.

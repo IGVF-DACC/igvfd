@@ -2096,5 +2096,111 @@
         "filtered": false,
         "file_set": "igvf:curated_set_pathway_gene_mapping",
         "controlled_access": false
+    },
+    {
+        "uuid": "29f29094-2802-415b-a7bf-c7a510faae2c",
+        "accession": "IGVFFI0021MTHR",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_methylation_regions"
+        ],
+        "md5sum": "effd99bdcb39037446aecdd991adcd96",
+        "file_format": "bed",
+        "file_format_type": "bed3+",
+        "content_type": "methylation regions",
+        "submitted_file_name": "/Users/igvf/igvf_files/methylation_regions.bed.gz",
+        "file_size": 388200,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:curated_set_pathway_gene_mapping",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "controlled_access": false
+    },
+    {
+        "uuid": "fc64cb1d-2802-415b-a7bf-c7a510faae2c",
+        "accession": "IGVFFI0022TADS",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_topologically_associating_domains"
+        ],
+        "md5sum": "919d969454cf6acdda446ae99bdcb390",
+        "file_format": "bed",
+        "file_format_type": "bed3+",
+        "content_type": "topologically associating domains",
+        "submitted_file_name": "/Users/igvf/igvf_files/topologically_associating_domains.bed.gz",
+        "file_size": 4200,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:curated_set_pathway_gene_mapping",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "controlled_access": false
+    },
+    {
+        "uuid": "0db6840d-2802-415b-a7bf-c7a510faae2c",
+        "accession": "IGVFFI0023CHCC",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_chromatin_conformation_compartments"
+        ],
+        "md5sum": "ebefa6cd1acdd0446aeb39d9673c6959",
+        "file_format": "bed",
+        "file_format_type": "bed3+",
+        "content_type": "chromatin conformation compartments",
+        "submitted_file_name": "/Users/igvf/igvf_files/chromatin_conformation_compartments.bed.gz",
+        "file_size": 4200,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:curated_set_pathway_gene_mapping",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "controlled_access": false
+    },
+    {
+        "uuid": "0873c695-2802-415b-40e7-c7a510faae2c",
+        "accession": "IGVFFI0024DMRS",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_differentially_methylated_regions"
+        ],
+        "md5sum": "c9edb26ae99fee0d969f439091acdd94",
+        "file_format": "bed",
+        "file_format_type": "bed3+",
+        "content_type": "differentially methylated regions",
+        "submitted_file_name": "/Users/igvf/igvf_files/differentially_methylated_regions.bed.gz",
+        "file_size": 4200,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:curated_set_pathway_gene_mapping",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "controlled_access": false
+    },
+    {
+        "uuid": "b7e4a128-6d48-415b-8e4c-c7a510faae2c",
+        "accession": "IGVFFI0025CEBO",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_spatial_transcriptomics_slide-level_cell_boundaries"
+        ],
+        "md5sum": "7cdfd4466b00b39091f6d6ae99bdc9ca",
+        "file_format": "csv",
+        "content_type": "spatial transcriptomics slide-level cell boundaries",
+        "submitted_file_name": "/Users/igvf/igvf_files/spatial_transcriptomics_slide-level_cell boundaries.csv.gz",
+        "file_size": 4200,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:curated_set_pathway_gene_mapping",
+        "controlled_access": false
     }
 ]
