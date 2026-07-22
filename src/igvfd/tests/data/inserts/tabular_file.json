@@ -608,6 +608,28 @@
         "controlled_access": false
     },
     {
+        "uuid": "f4fd2017-5b05-4c72-840d-6593d13a1289",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "accession": "IGVFFI5555EGIF",
+        "aliases": [
+            "igvf:element_to_gene_interaction_features"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-02-01T21:29:45Z",
+        "md5sum": "293d88b06f84b8e54913a5e808b52e99",
+        "file_format": "tsv",
+        "content_type": "element to gene interaction features",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/element_to_gene_interaction_features.tsv.gz",
+        "file_size": 289920157,
+        "upload_status": "validated",
+        "file_set": "igvf:analysis_set_with_input",
+        "controlled_access": false
+    },
+    {
         "uuid": "7f9c3dbe-1d7f-4c3e-9e23-7b86f3f8f2d6",
         "lab": "j-michael-cherry",
         "award": "HG012012",
