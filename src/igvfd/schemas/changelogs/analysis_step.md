@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 15
 
+* Extend `input_content_types` enum list to include `labeling splicing cell by gene matrix`.
+* Extend `output_content_types` enum list to include `labeling splicing cell by gene matrix`.
 * Extend `input_content_types` enum list to include `cell by gene program matrix`.
 * Extend `output_content_types` enum list to include `cell by gene program matrix`.
 * Extend `input_content_types` enum list to include `program-program correlation`.
