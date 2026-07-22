@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 15
 
+* Extend `input_content_types` enum list to include `element to gene interaction features`.
+* Extend `output_content_types` enum list to include `element to gene interaction features`.
 * Extend `input_content_types` enum list to include `cell by gene program matrix`.
 * Extend `output_content_types` enum list to include `cell by gene program matrix`.
 * Extend `input_content_types` enum list to include `program-program correlation`.
