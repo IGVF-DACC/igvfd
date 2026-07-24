@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Extend `content_type` enum list to include `labeling splicing cell by gene matrix`.
 * Extend `catalog_collections` enum list to include `genomic_elements_phenotypes`.
 * Extend `content_type` enum list to include `cell by gene program matrix`.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.

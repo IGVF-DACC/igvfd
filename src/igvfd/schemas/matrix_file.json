@@ -88,6 +88,7 @@
                 "donor by gene matrix",
                 "contact matrix",
                 "kallisto cell by gene matrix",
+                "labeling splicing cell by gene matrix",
                 "mitochondrial variants by cell heteroplasmy matrix",
                 "spot by gene matrix"
             ],
@@ -111,6 +112,7 @@
                 "contact matrix": "A matrix used in genomic assays, particularly in chromosome conformation capture techniques like Hi-C, to represent the frequency of physical interactions between different regions of the genome.",
                 "donor by gene matrix": "A matrix where rows represent genes and columns represent donor, containing counts of sequencing reads that map to each gene.",
                 "kallisto cell by gene matrix": "A tar.gz file containing the output of the kb-python count run directory using the nac mode containing everything except for the h5ad file chosen to be the primary result.",
+                "labeling splicing cell by gene matrix": "A cell by gene matrix where rows represent genes and columns represent samples or cells, containing RNA molecule counts from metabolic labeling single-cell RNA-seq, stratified by combinations of splicing status (spliced, unspliced) and metabolic labeling status (labeled, unlabeled).",
                 "mitochondrial variants by cell heteroplasmy matrix": "A matrix output from mgatk, where rows are mitochondrial genome positions, and columns are individual cells.",
                 "spot by gene matrix": "A feature barcode matrix output from Space Ranger, where rows represent genes and columns represent barcoded spots."
             },
