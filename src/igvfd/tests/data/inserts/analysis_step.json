@@ -153,7 +153,7 @@
         ],
         "output_content_types": [
             "variant effects",
-            "global differential expression"
+            "global differential expression per element"
         ]
     },
     {
@@ -218,7 +218,7 @@
             "reads",
             "index",
             "variant to cluster mapping",
-            "global differential expression"
+            "global differential expression per element"
         ],
         "output_content_types": [
             "fragments",
@@ -280,10 +280,10 @@
             "elements reference"
         ],
         "output_content_types": [
-            "cis differential expression quantifications per guide",
-            "trans differential expression quantifications per guide",
-            "cis differential expression quantifications per element",
-            "trans differential expression quantifications per element",
+            "local differential expression per guide",
+            "global differential expression per guide",
+            "local differential expression per element",
+            "global differential expression per element",
             "pipeline dashboard"
         ]
     }

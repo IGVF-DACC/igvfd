@@ -941,3 +941,26 @@ def signal_file_14_15(value, system):
         )
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('tabular_file', '25', '26')
+def tabular_file_25_26(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3530
+    notes = value.get('notes', '')
+    upgrade_map = {
+        'global differential expression': 'global differential expression per element',
+        'local differential expression': 'global differential expression per element',
+        'cis differential expression quantifications per guide': 'local differential expression per guide',
+        'trans differential expression quantifications per guide': 'global differential expression per guide',
+        'cis differential expression quantifications per element': 'local differential expression per element',
+        'trans differential expression quantifications per element': 'global differential expression per element',
+    }
+    old_content_type = value.get('content_type', '')
+    if old_content_type in upgrade_map:
+        value['content_type'] = upgrade_map[old_content_type]
+        notes += (
+            f' This file\'s content_type was {old_content_type}, '
+            f'but has been upgraded to {upgrade_map[old_content_type]}.'
+        )
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
