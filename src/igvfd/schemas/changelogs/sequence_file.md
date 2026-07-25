@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 16
 
+* Update `dbxrefs` regex to add `ENCODE` as a namespace.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.
 * Extend `collections` enum list to include `Coronary Artery Disease`.
 * Extend `collections` enum list to include `PD single cell multiomics`.
