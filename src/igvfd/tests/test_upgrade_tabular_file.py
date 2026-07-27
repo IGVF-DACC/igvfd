@@ -172,9 +172,9 @@ def test_tabular_file_upgrade_25_26(upgrader, tabular_file_v25a, tabular_file_v2
     assert 'This file\'s content_type was global differential expression, but has been upgraded to global differential expression per element.' in value[
         'notes']
     value = upgrader.upgrade('tabular_file', tabular_file_v25b, current_version='25', target_version='26')
-    assert value['content_type'] == 'global differential expression per element'
+    assert value['content_type'] == 'local differential expression per element'
     assert value['schema_version'] == '26'
-    assert 'This file\'s content_type was local differential expression, but has been upgraded to global differential expression per element.' in value[
+    assert 'This file\'s content_type was local differential expression, but has been upgraded to local differential expression per element.' in value[
         'notes']
     value = upgrader.upgrade('tabular_file', tabular_file_v25c, current_version='25', target_version='26')
     assert value['content_type'] == 'local differential expression per guide'

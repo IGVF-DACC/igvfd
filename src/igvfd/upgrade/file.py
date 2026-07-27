@@ -949,7 +949,7 @@ def tabular_file_25_26(value, system):
     notes = value.get('notes', '')
     upgrade_map = {
         'global differential expression': 'global differential expression per element',
-        'local differential expression': 'global differential expression per element',
+        'local differential expression': 'local differential expression per element',
         'cis differential expression quantifications per guide': 'local differential expression per guide',
         'trans differential expression quantifications per guide': 'global differential expression per guide',
         'cis differential expression quantifications per element': 'local differential expression per element',

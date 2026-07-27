@@ -136,7 +136,7 @@ def test_analysis_step_upgrade_15_16(upgrader, analysis_step_v15):
     ) in value['notes']
     assert (
         'This analysis step\'s input_content_types included local differential expression, '
-        'but has been upgraded to global differential expression per element.'
+        'but has been upgraded to local differential expression per element.'
     ) in value['notes']
     assert (
         'This analysis step\'s input_content_types included cis differential expression quantifications per guide, '
