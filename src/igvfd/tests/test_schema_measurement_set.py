@@ -29,6 +29,12 @@ def test_measurement_set_dbxrefs_regex(measurement_set, testapp):
     assert res.status_code == 422
     res = testapp.patch_json(
         measurement_set['@id'],
+        {'dbxrefs': ['ENCODE:ENCFF000AAA']},
+        expect_errors=True
+    )
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        measurement_set['@id'],
         {'dbxrefs': ['GEO:GSE187549', 'urn:mavedb:00001250-a-1', 'ENCODE:ENCSR000AAA']}
     )
     assert res.status_code == 200
