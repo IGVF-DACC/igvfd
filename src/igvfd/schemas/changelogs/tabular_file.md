@@ -2,6 +2,11 @@
 
 ### Minor changes since schema version 25
 
+* Extend `content_type` enum list to include `chromatin conformation compartments`.
+* Extend `content_type` enum list to include `differentially methylated regions`.
+* Extend `content_type` enum list to include `methylation regions`.
+* Extend `content_type` enum list to include `topologically associating domains`.
+* Extend `content_type` enum list to include `spatial transcriptomics slide-level cell boundaries`.
 * Extend `catalog_collections` enum list to include `genomic_elements_phenotypes`.
 * Extend `content_type` enum list to include `program-program correlation`.
 * Extend `content_type` enum list to include `regulator-regulator correlation`.
