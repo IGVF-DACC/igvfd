@@ -85,6 +85,19 @@ def test_sequence_file_dbxrefs_regex(testapp, sequence_file):
     )
     assert res.status_code == 200
 
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {'dbxrefs': ['ENCODE:ENCSR000AAA']},
+        expect_errors=True
+    )
+    assert res.status_code == 422
+
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {'dbxrefs': ['ENCODE:ENCFF000AAA']}
+    )
+    assert res.status_code == 200
+
 
 def test_sequence_file_sequencing_run_uniqueness(
     testapp,

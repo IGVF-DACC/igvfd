@@ -24,7 +24,8 @@
             "https://www.protocols.io/private/test-protocols-url-12345"
         ],
         "dbxrefs": [
-            "GEO:GSE187549"
+            "GEO:GSE187549",
+            "ENCODE:ENCSR000AAA"
         ],
         "auxiliary_sets": [
             "IGVFDS0001AUXI"

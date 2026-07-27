@@ -48,7 +48,8 @@
         "file_size": 23940124,
         "upload_status": "validated",
         "dbxrefs": [
-            "SRA:SRR0000015"
+            "SRA:SRR0000015",
+            "ENCODE:ENCFF000AAA"
         ],
         "file_set": "igvf:basic_analysis_set",
         "sequencing_run": 12,

@@ -176,17 +176,17 @@
             }
         },
         "dbxrefs": {
-            "comment": "Supported external resources include: Sequence Read Archive (SRA).",
+            "comment": "Supported external resources include: Sequence Read Archive (SRA), ENCODE.",
             "items": {
                 "title": "External identifier",
                 "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF file objects.",
                 "type": "string",
                 "minItems": 1,
-                "pattern": "^(SRA:(SRR|SRX)\\d+)$"
+                "pattern": "^(SRA:(SRR|SRX)\\d+|ENCODE:ENCFF\\d{3}[A-Z]{3})$"
             },
             "submissionExample": {
-                "appscript": "[\"SRA:SRR1234\", \"SRA:SRX1234\"]",
-                "igvf_utils": "SRA:SRR1234, SRA:SRX1234"
+                "appscript": "[\"SRA:SRR1234\", \"SRA:SRX1234\", \"ENCODE:ENCFF000AAA\"]",
+                "igvf_utils": "SRA:SRR1234, SRA:SRX1234, ENCODE:ENCFF000AAA"
             }
         },
         "flowcell_id": {
