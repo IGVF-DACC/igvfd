@@ -1,5 +1,20 @@
 ## Changelog for *`analysis_step.json`*
 
+### Schema version 16
+
+* Adjust `input_content_types` enum list to replace `global differential expression` with `global differential expression per element`.
+* Adjust `output_content_types` enum list to replace `global differential expression` with `global differential expression per element`.
+* Adjust `input_content_types` enum list to replace `local differential expression` with `local differential expression per element`.
+* Adjust `output_content_types` enum list to replace `local differential expression` with `local differential expression per element`.
+* Adjust `input_content_types` enum list to replace `cis differential expression quantifications per guide` with `local differential expression per guide`.
+* Adjust `output_content_types` enum list to replace `cis differential expression quantifications per guide` with `local differential expression per guide`.
+* Adjust `input_content_types` enum list to replace `trans differential expression quantifications per guide` with `global differential expression per guide`.
+* Adjust `output_content_types` enum list to replace `trans differential expression quantifications per guide` with `global differential expression per guide`.
+* Adjust `input_content_types` enum list to replace `cis differential expression quantifications per element` with `local differential expression per element`.
+* Adjust `output_content_types` enum list to replace `cis differential expression quantifications per element` with `local differential expression per element`.
+* Adjust `input_content_types` enum list to replace `trans differential expression quantifications per element` with `global differential expression per element`.
+* Adjust `output_content_types` enum list to replace `trans differential expression quantifications per element` with `global differential expression per element`.
+
 ### Minor changes since schema version 15
 
 * Extend `input_content_types` enum list to include `chromatin conformation compartments`.

@@ -117,3 +117,40 @@ def test_analysis_step_upgrade_14_15(upgrader, analysis_step_v14):
         'This analysis step\'s input_content_types included fold change over control, '
         'but has been upgraded to allelic effects.'
     ) in value['notes']
+
+
+def test_analysis_step_upgrade_15_16(upgrader, analysis_step_v15):
+    value = upgrader.upgrade('analysis_step', analysis_step_v15, current_version='15', target_version='16')
+    assert value['schema_version'] == '16'
+    expected = {
+        'global differential expression per element',
+        'local differential expression per guide',
+        'global differential expression per guide',
+        'local differential expression per element',
+    }
+    assert set(value['input_content_types']) == expected
+    assert set(value['output_content_types']) == expected
+    assert (
+        'This analysis step\'s input_content_types included global differential expression, '
+        'but has been upgraded to global differential expression per element.'
+    ) in value['notes']
+    assert (
+        'This analysis step\'s input_content_types included local differential expression, '
+        'but has been upgraded to local differential expression per element.'
+    ) in value['notes']
+    assert (
+        'This analysis step\'s input_content_types included cis differential expression quantifications per guide, '
+        'but has been upgraded to local differential expression per guide.'
+    ) in value['notes']
+    assert (
+        'This analysis step\'s input_content_types included trans differential expression quantifications per guide, '
+        'but has been upgraded to global differential expression per guide.'
+    ) in value['notes']
+    assert (
+        'This analysis step\'s input_content_types included cis differential expression quantifications per element, '
+        'but has been upgraded to local differential expression per element.'
+    ) in value['notes']
+    assert (
+        'This analysis step\'s input_content_types included trans differential expression quantifications per element, '
+        'but has been upgraded to global differential expression per element.'
+    ) in value['notes']

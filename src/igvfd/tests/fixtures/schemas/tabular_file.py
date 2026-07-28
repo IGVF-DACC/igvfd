@@ -431,3 +431,63 @@ def tabular_file_v24(tabular_file):
         'content_type': 'fold change over control'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v25a(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '25',
+        'content_type': 'global differential expression'
+    })
+    return item
+
+
+@pytest.fixture
+def tabular_file_v25b(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '25',
+        'content_type': 'local differential expression'
+    })
+    return item
+
+
+@pytest.fixture
+def tabular_file_v25c(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '25',
+        'content_type': 'cis differential expression quantifications per guide'
+    })
+    return item
+
+
+@pytest.fixture
+def tabular_file_v25d(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '25',
+        'content_type': 'trans differential expression quantifications per guide'
+    })
+    return item
+
+
+@pytest.fixture
+def tabular_file_v25e(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '25',
+        'content_type': 'cis differential expression quantifications per element'
+    })
+    return item
+
+
+@pytest.fixture
+def tabular_file_v25f(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '25',
+        'content_type': 'trans differential expression quantifications per element'
+    })
+    return item

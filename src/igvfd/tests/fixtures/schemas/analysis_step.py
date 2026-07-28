@@ -187,3 +187,30 @@ def analysis_step_v14(testapp, base_workflow):
         'analysis_step_types': ['quantification']
     }
     return item
+
+
+@pytest.fixture
+def analysis_step_v15(testapp, base_workflow):
+    item = {
+        'schema_version': '15',
+        'step_label': 'differential-expression-analysis-step',
+        'title': 'Differential Expression Analysis Step',
+        'input_content_types': [
+            'global differential expression',
+            'local differential expression',
+            'cis differential expression quantifications per guide',
+            'trans differential expression quantifications per guide',
+            'cis differential expression quantifications per element',
+            'trans differential expression quantifications per element',
+        ],
+        'output_content_types': [
+            'global differential expression',
+            'local differential expression',
+            'cis differential expression quantifications per guide',
+            'trans differential expression quantifications per guide',
+            'cis differential expression quantifications per element',
+            'trans differential expression quantifications per element',
+        ],
+        'analysis_step_types': ['differential expression analysis']
+    }
+    return item

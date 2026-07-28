@@ -163,3 +163,36 @@ def test_tabular_file_upgrade_24_25(upgrader, tabular_file_v24):
     assert value['schema_version'] == '25'
     assert 'This file\'s content_type was fold change over control, and changed to allelic effects via upgrade.' in value[
         'notes']
+
+
+def test_tabular_file_upgrade_25_26(upgrader, tabular_file_v25a, tabular_file_v25b, tabular_file_v25c, tabular_file_v25d, tabular_file_v25e, tabular_file_v25f):
+    value = upgrader.upgrade('tabular_file', tabular_file_v25a, current_version='25', target_version='26')
+    assert value['content_type'] == 'global differential expression per element'
+    assert value['schema_version'] == '26'
+    assert 'This file\'s content_type was global differential expression, but has been upgraded to global differential expression per element.' in value[
+        'notes']
+    value = upgrader.upgrade('tabular_file', tabular_file_v25b, current_version='25', target_version='26')
+    assert value['content_type'] == 'local differential expression per element'
+    assert value['schema_version'] == '26'
+    assert 'This file\'s content_type was local differential expression, but has been upgraded to local differential expression per element.' in value[
+        'notes']
+    value = upgrader.upgrade('tabular_file', tabular_file_v25c, current_version='25', target_version='26')
+    assert value['content_type'] == 'local differential expression per guide'
+    assert value['schema_version'] == '26'
+    assert 'This file\'s content_type was cis differential expression quantifications per guide, but has been upgraded to local differential expression per guide.' in value[
+        'notes']
+    value = upgrader.upgrade('tabular_file', tabular_file_v25d, current_version='25', target_version='26')
+    assert value['content_type'] == 'global differential expression per guide'
+    assert value['schema_version'] == '26'
+    assert 'This file\'s content_type was trans differential expression quantifications per guide, but has been upgraded to global differential expression per guide.' in value[
+        'notes']
+    value = upgrader.upgrade('tabular_file', tabular_file_v25e, current_version='25', target_version='26')
+    assert value['content_type'] == 'local differential expression per element'
+    assert value['schema_version'] == '26'
+    assert 'This file\'s content_type was cis differential expression quantifications per element, but has been upgraded to local differential expression per element.' in value[
+        'notes']
+    value = upgrader.upgrade('tabular_file', tabular_file_v25f, current_version='25', target_version='26')
+    assert value['content_type'] == 'global differential expression per element'
+    assert value['schema_version'] == '26'
+    assert 'This file\'s content_type was trans differential expression quantifications per element, but has been upgraded to global differential expression per element.' in value[
+        'notes']

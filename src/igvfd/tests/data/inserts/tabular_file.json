@@ -1290,7 +1290,7 @@
         ],
         "md5sum": "85d68e982987441946768df28b8e9af4",
         "file_format": "tsv",
-        "content_type": "global differential expression",
+        "content_type": "global differential expression per element",
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
@@ -1891,17 +1891,17 @@
         "lab": "danwei-huangfu",
         "award": "1U01HG012051-01",
         "aliases": [
-            "igvf:tabular_file_cis_differential_expression_per_guide"
+            "igvf:tabular_file_local_differential_expression_per_guide"
         ],
         "status": "released",
         "release_timestamp": "2026-05-27T12:34:56Z",
         "md5sum": "4f4f16496f0f4ee0df909bbf0d0c4c69",
         "file_format": "tsv",
-        "content_type": "cis differential expression quantifications per guide",
+        "content_type": "local differential expression per guide",
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "submitted_file_name": "/Users/igvf/igvf_files/cis_differential_expression_quantifications_per_guide.tsv.gz",
+        "submitted_file_name": "/Users/igvf/igvf_files/local_differential_expression_per_guide.tsv.gz",
         "file_size": 5310,
         "upload_status": "validated",
         "filtered": false,
@@ -1914,17 +1914,17 @@
         "lab": "danwei-huangfu",
         "award": "1U01HG012051-01",
         "aliases": [
-            "igvf:tabular_file_trans_differential_expression_per_guide"
+            "igvf:tabular_file_global_differential_expression_per_guide"
         ],
         "status": "released",
         "release_timestamp": "2026-05-27T12:34:56Z",
         "md5sum": "5a5f16496f0f4ee0df909bbf0d0c4c70",
         "file_format": "tsv",
-        "content_type": "trans differential expression quantifications per guide",
+        "content_type": "global differential expression per guide",
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "submitted_file_name": "/Users/igvf/igvf_files/trans_differential_expression_quantifications_per_guide.tsv.gz",
+        "submitted_file_name": "/Users/igvf/igvf_files/global_differential_expression_per_guide.tsv.gz",
         "file_size": 6520,
         "upload_status": "validated",
         "filtered": false,
@@ -1937,17 +1937,17 @@
         "lab": "danwei-huangfu",
         "award": "1U01HG012051-01",
         "aliases": [
-            "igvf:tabular_file_cis_differential_expression_per_element"
+            "igvf:tabular_file_local_differential_expression_per_element"
         ],
         "status": "released",
         "release_timestamp": "2026-05-27T12:34:56Z",
         "md5sum": "6b6f16496f0f4ee0df909bbf0d0c4c71",
         "file_format": "tsv",
-        "content_type": "cis differential expression quantifications per element",
+        "content_type": "local differential expression per element",
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "submitted_file_name": "/Users/igvf/igvf_files/cis_differential_expression_quantifications_per_element.tsv.gz",
+        "submitted_file_name": "/Users/igvf/igvf_files/local_differential_expression_per_element.tsv.gz",
         "file_size": 7180,
         "upload_status": "validated",
         "filtered": false,
@@ -1960,17 +1960,17 @@
         "lab": "danwei-huangfu",
         "award": "1U01HG012051-01",
         "aliases": [
-            "igvf:tabular_file_trans_differential_expression_per_element"
+            "igvf:tabular_file_global_differential_expression_per_element"
         ],
         "status": "released",
         "release_timestamp": "2026-05-27T12:34:56Z",
         "md5sum": "7c7f16496f0f4ee0df909bbf0d0c4c72",
         "file_format": "tsv",
-        "content_type": "trans differential expression quantifications per element",
+        "content_type": "global differential expression per element",
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "submitted_file_name": "/Users/igvf/igvf_files/trans_differential_expression_quantifications_per_element.tsv.gz",
+        "submitted_file_name": "/Users/igvf/igvf_files/global_differential_expression_per_element.tsv.gz",
         "file_size": 7395,
         "upload_status": "validated",
         "filtered": false,
