@@ -223,7 +223,18 @@ def get_assay_contributing_input_file_sets(request, input_file_sets):
     return contributing
 
 
-def get_preferred_assay_slims(preferred_assay_titles):
+def get_assay_terms_from_input_file_sets(request, input_file_sets):
+    '''Collect assay_term path(s) from assay-contributing input file sets.'''
+    assay_terms = []
+    for fileset in get_assay_contributing_input_file_sets(request, input_file_sets):
+        obj = request.embed(fileset, '@@object?skip_calculated=true')
+        if obj.get('assay_term'):
+            assay_terms.append(obj['assay_term'])
+        assay_terms.extend(obj.get('assay_terms', []))
+    return assay_terms or None
+
+
+def get_preferred_assay_slims(request, preferred_assay_titles, assay_terms=None):
     title_to_slims = {
         'RNA-seq': ['gene expression'],
         'scRNA-seq': ['gene expression', 'single cell'],
@@ -282,7 +293,7 @@ def get_preferred_assay_slims(preferred_assay_titles):
         'TAP-seq': ['CRISPR screen', 'single cell'],
         'Parse TAP-seq': ['CRISPR screen', 'single cell'],
         'CROP-seq': ['CRISPR screen', 'single cell'],
-        'Multiome Perturb-seq': ['CRISPR screen', 'single cell', 'multiome'],
+        'Multiome Perturb-seq': ['CRISPR screen', 'single cell', 'chromatin accessibility', 'multiome'],
         'SGE': ['protein scanning'],
         'SGE-RNA': ['protein scanning'],
         'Immune-SGE': ['protein scanning'],
@@ -302,15 +313,41 @@ def get_preferred_assay_slims(preferred_assay_titles):
         'WGS': ['genetic profiling'],
         'DNase-seq': ['chromatin accessibility']
     }
+    has_rna = False
+    has_atac = False
+    if assay_terms:
+        for assay_term in assay_terms:
+            term_name = request.embed(
+                assay_term, '@@object?skip_calculated=true'
+            ).get('term_name', '')
+            if 'RNA' in term_name:
+                has_rna = True
+            if 'ATAC' in term_name:
+                has_atac = True
     slims = []
     if preferred_assay_titles:
         for title in preferred_assay_titles:
             if title in title_to_slims:
-                slims.extend(title_to_slims[title])
+                title_slims = list(title_to_slims[title])
             else:
-                slims.extend(['other'])
+                title_slims = ['other']
+            if (
+                assay_terms
+                and 'multiome' in title_slims
+                and 'gene expression' in title_slims
+                and 'chromatin accessibility' in title_slims
+            ):
+                if has_rna and not has_atac:
+                    title_slims = [
+                        slim for slim in title_slims if slim != 'chromatin accessibility'
+                    ]
+                elif has_atac and not has_rna:
+                    title_slims = [
+                        slim for slim in title_slims if slim != 'gene expression'
+                    ]
+            slims.extend(title_slims)
     if slims:
-        return slims
+        return list(dict.fromkeys(slims))
     else:
         return None
 
@@ -1132,8 +1169,9 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        return get_preferred_assay_slims(preferred_assay_titles)
+    def preferred_assay_slims(self, request, preferred_assay_titles=None, input_file_sets=None):
+        assay_terms = get_assay_terms_from_input_file_sets(request, input_file_sets)
+        return get_preferred_assay_slims(request, preferred_assay_titles, assay_terms)
 
     @calculated_property(
         define=True,
@@ -1814,8 +1852,9 @@ class CuratedSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        return get_preferred_assay_slims(preferred_assay_titles)
+    def preferred_assay_slims(self, request, preferred_assay_titles=None, assay_term=None):
+        assay_terms = [assay_term] if assay_term else None
+        return get_preferred_assay_slims(request, preferred_assay_titles, assay_terms)
 
 
 @collection(
@@ -2145,8 +2184,9 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        return get_preferred_assay_slims(preferred_assay_titles)
+    def preferred_assay_slims(self, request, preferred_assay_titles=None, assay_term=None):
+        assay_terms = [assay_term] if assay_term else None
+        return get_preferred_assay_slims(request, preferred_assay_titles, assay_terms)
 
 
 @collection(
@@ -2277,8 +2317,8 @@ class ModelSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        return get_preferred_assay_slims(preferred_assay_titles)
+    def preferred_assay_slims(self, request, preferred_assay_titles=None, assay_terms=None):
+        return get_preferred_assay_slims(request, preferred_assay_titles, assay_terms)
 
 
 @collection(
@@ -2359,8 +2399,18 @@ class AuxiliarySet(FileSet):
             'notSubmittable': True,
         }
     )
-    def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        return get_preferred_assay_slims(preferred_assay_titles)
+    def preferred_assay_slims(self, request, preferred_assay_titles=None, measurement_sets=None):
+        assay_terms = []
+        if measurement_sets:
+            for measurement_set in measurement_sets:
+                assay_term = request.embed(
+                    measurement_set, '@@object?skip_calculated=true'
+                ).get('assay_term')
+                if assay_term:
+                    assay_terms.append(assay_term)
+        return get_preferred_assay_slims(
+            request, preferred_assay_titles, assay_terms or None
+        )
 
     @calculated_property(
         condition='measurement_sets',
@@ -2753,8 +2803,19 @@ class ConstructLibrarySet(FileSet):
             'notSubmittable': True,
         }
     )
-    def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        return get_preferred_assay_slims(preferred_assay_titles)
+    def preferred_assay_slims(self, request, preferred_assay_titles=None, file_sets=None):
+        assay_terms = []
+        if file_sets:
+            for file_set in file_sets:
+                if file_set.startswith('/measurement-sets/'):
+                    assay_term = request.embed(
+                        file_set, '@@object?skip_calculated=true'
+                    ).get('assay_term')
+                    if assay_term:
+                        assay_terms.append(assay_term)
+        return get_preferred_assay_slims(
+            request, preferred_assay_titles, assay_terms or None
+        )
 
     @calculated_property(
         condition='file_sets',
@@ -3162,8 +3223,9 @@ class PseudobulkSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        return get_preferred_assay_slims(preferred_assay_titles)
+    def preferred_assay_slims(self, request, preferred_assay_titles=None, input_file_sets=None):
+        assay_terms = get_assay_terms_from_input_file_sets(request, input_file_sets)
+        return get_preferred_assay_slims(request, preferred_assay_titles, assay_terms)
 
     @calculated_property(
         define=True,

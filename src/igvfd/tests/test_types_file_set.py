@@ -192,7 +192,7 @@ def test_preferred_assay_slims(testapp, principal_analysis_set, measurement_set,
     )
     res = testapp.get(curated_set_genome['@id'])
     assert set(res.json.get('preferred_assay_slims', [])) == {
-        'gene expression', 'chromatin accessibility', 'single cell', 'multiome'}
+        'gene expression', 'single cell', 'multiome'}
     # Model Set
     testapp.patch_json(
         model_set_no_input['@id'],
@@ -203,3 +203,42 @@ def test_preferred_assay_slims(testapp, principal_analysis_set, measurement_set,
     )
     res = testapp.get(model_set_no_input['@id'])
     assert set(res.json.get('preferred_assay_slims', [])) == {'CRISPR screen', 'single cell'}
+
+
+def test_multiome_preferred_assay_slims_by_assay_term(
+    testapp,
+    measurement_set_multiome,
+    measurement_set_multiome_2,
+    principal_analysis_set,
+):
+    # ATAC half drops gene expression
+    res = testapp.get(measurement_set_multiome['@id'])
+    assert set(res.json.get('preferred_assay_slims', [])) == {
+        'chromatin accessibility', 'single cell', 'multiome'}
+    # RNA half drops chromatin accessibility
+    res = testapp.get(measurement_set_multiome_2['@id'])
+    assert set(res.json.get('preferred_assay_slims', [])) == {
+        'gene expression', 'single cell', 'multiome'}
+    # Analysis set with only ATAC half drops gene expression
+    testapp.patch_json(
+        principal_analysis_set['@id'],
+        {
+            'input_file_sets': [measurement_set_multiome['@id']]
+        }
+    )
+    res = testapp.get(principal_analysis_set['@id'])
+    assert set(res.json.get('preferred_assay_slims', [])) == {
+        'chromatin accessibility', 'single cell', 'multiome'}
+    # Analysis set with both halves keeps both modality slims
+    testapp.patch_json(
+        principal_analysis_set['@id'],
+        {
+            'input_file_sets': [
+                measurement_set_multiome['@id'],
+                measurement_set_multiome_2['@id'],
+            ]
+        }
+    )
+    res = testapp.get(principal_analysis_set['@id'])
+    assert set(res.json.get('preferred_assay_slims', [])) == {
+        'gene expression', 'chromatin accessibility', 'single cell', 'multiome'}
