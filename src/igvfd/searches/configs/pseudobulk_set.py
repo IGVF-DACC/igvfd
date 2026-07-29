@@ -197,8 +197,11 @@ def pseudobulk_set():
             'samples': {
                 'title': 'Samples'
             },
-            'cell_type.term_name': {
+            'cell_annotation': {
                 'title': 'Cell Annotation',
+            },
+            'cell_type.term_name': {
+                'title': 'Cell Type',
             },
             'cell_qualifier': {
                 'title': 'Cell Qualifier',
