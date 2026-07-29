@@ -1037,7 +1037,7 @@ def audit_missing_library_preparation_kit(value, system):
     '''
     [
         {
-            "audit_description": "Perturb-seq assays are expected to have an `library_preparation_kit`.",
+            "audit_description": "Perturb-seq assays are expected to have a `library_preparation_kit`.",
             "audit_category": "missing library preparation kit",
             "audit_level": "NOT_COMPLIANT"
         }
