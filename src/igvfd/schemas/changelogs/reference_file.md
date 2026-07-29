@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 26
 
+* Extend `content_type` enum list to include `chromosome sizes`.
 * Extend `catalog_method` enum list to include `DepMap`.
 * Extend `catalog_method` enum list to include `GenCC`.
 * Extend `catalog_method` enum list to include `HOCOMOCO`.
@@ -384,6 +385,7 @@
 * Add a default value for `external`.
 
 ### Minor changes since schema version 6
+
 * Add `tsv` to `file_format`.
 * Add `variants_proteins_biosamples` and `variants_proteins_phenotypes` to `content_type`.
 * Add `sources`.
