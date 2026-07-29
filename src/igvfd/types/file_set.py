@@ -293,7 +293,7 @@ def get_preferred_assay_slims(request, preferred_assay_titles, assay_terms=None)
         'TAP-seq': ['CRISPR screen', 'single cell'],
         'Parse TAP-seq': ['CRISPR screen', 'single cell'],
         'CROP-seq': ['CRISPR screen', 'single cell'],
-        'Multiome Perturb-seq': ['CRISPR screen', 'single cell', 'chromatin accessibility', 'multiome'],
+        'Multiome Perturb-seq': ['CRISPR screen', 'single cell', 'multiome'],
         'SGE': ['protein scanning'],
         'SGE-RNA': ['protein scanning'],
         'Immune-SGE': ['protein scanning'],
