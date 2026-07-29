@@ -55,6 +55,9 @@ def audit_sample_sorted_from_parent_child_check(value, system):
             'supersedes', 'time_post_library_delivery', 'time_post_library_delivery_units',
             'time_post_culture', 'time_post_culture_units', 'treatments', 'url'
         ]
+        # Sorted fractions may differ from the parent in biomarkers used for sorting.
+        if 'sorted_from' in value:
+            skip_keys.append('biomarkers')
         all_keys = parent.keys() | value.keys()
         keys_to_check = [key for key in all_keys if key not in skip_keys]
         for key in keys_to_check:

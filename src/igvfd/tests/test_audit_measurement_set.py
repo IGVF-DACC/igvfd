@@ -516,6 +516,54 @@ def test_audit_targeted_genes_protein_abundance_biometric(
     )
 
 
+def test_audit_targeted_genes_protein_abundance_allows_biomarker_gene(
+    testapp,
+    measurement_set,
+    assay_term_crispr,
+    gene_myc_hs,
+    phenotype_term_protein_abundance,
+    tissue,
+    lab,
+    award,
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_crispr['@id'],
+            'preferred_assay_titles': ['CRISPR FACS screen'],
+            'crispr_screen_biometric': phenotype_term_protein_abundance['@id'],
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing targeted genes'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # Sample biomarkers with gene satisfy the audit instead of targeted_genes
+    biomarker = testapp.post_json(
+        '/biomarker',
+        {
+            'name': 'MYC',
+            'quantification': 'high',
+            'classification': 'marker gene',
+            'gene': gene_myc_hs['@id'],
+            'award': award['@id'],
+            'lab': lab['@id'],
+        }
+    ).json['@graph'][0]
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'biomarkers': [biomarker['@id']],
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing targeted genes'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+
 def test_audit_missing_modification(
     testapp,
     measurement_set,
@@ -1837,6 +1885,55 @@ def test_audit_targeted_genes(
     assert all(
         error['category'] != 'unexpected targeted genes'
         for error in res.json['audit'].get('ERROR', [])
+    )
+    assert all(
+        error['category'] != 'missing targeted genes'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+
+def test_audit_targeted_genes_vamp_seq_allows_biomarker_gene(
+    testapp,
+    measurement_set_mpra,
+    assay_term_VAMP_seq,
+    gene_myc_hs,
+    primary_cell,
+    lab,
+    award,
+):
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'assay_term': assay_term_VAMP_seq['@id'],
+            'preferred_assay_titles': ['VAMP-seq'],
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing targeted genes'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    biomarker = testapp.post_json(
+        '/biomarker',
+        {
+            'name': 'MYC',
+            'quantification': 'high',
+            'classification': 'marker gene',
+            'gene': gene_myc_hs['@id'],
+            'award': award['@id'],
+            'lab': lab['@id'],
+        }
+    ).json['@graph'][0]
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'biomarkers': [biomarker['@id']],
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing targeted genes'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
 

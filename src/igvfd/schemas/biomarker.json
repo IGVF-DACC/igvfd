@@ -93,7 +93,7 @@
         },
         "gene": {
             "title": "Gene",
-            "description": "Biomarker gene.",
+            "description": "The gene associated with this biomarker. For flow cytometry assays such as CRISPR FACS or MACS screens, use this property when the gene is used for sample sorting or as a differentiation marker and is not the primary focus of the experiment. When the gene is the primary focus of the assay, use targeted_genes on the Measurement Set instead.",
             "type": "string",
             "linkTo": "Gene",
             "submissionExample": {
