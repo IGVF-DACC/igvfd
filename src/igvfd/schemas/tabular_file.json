@@ -460,8 +460,6 @@
                 "spliceQTL",
                 "target transcripts",
                 "topologically associating domains",
-                "trans differential expression quantifications per element",
-                "trans differential expression quantifications per guide",
                 "tissue positions",
                 "transcript quantifications",
                 "variants",
