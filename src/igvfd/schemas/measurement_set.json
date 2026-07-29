@@ -245,7 +245,7 @@
         },
         "strand_specificity": {
             "title": "Strand Specificity",
-            "description": "Indicates whether a transcriptomic library is forward, reverse, or unstranded based on the strand-specific protocol used.",
+            "description": "Indicates which strand of the original RNA molecule the transcriptomic library represents. '5 prime to 3 prime' (forward) libraries generate cDNA corresponding to the same strand as the RNA, while '3 prime to 5 prime' (reverse) libraries generate cDNA complementary to the RNA. This property is independent of the physical direction of sequencing reads.",
             "comment": "Only measurement sets from transcriptomic assays should submit this property.",
             "type": "string",
             "enum": [
