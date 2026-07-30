@@ -122,6 +122,7 @@ class MetadataReport:
         self.positive_file_param_set = {}
         self.positive_file_inequalities = {}
         self.header = []
+        self.comments = []
         self.experiment_column_to_fields_mapping = OrderedDict()
         self.file_column_to_fields_mapping = OrderedDict()
         self.raw_only = self.query_string.is_param('option', 'raw')
@@ -130,6 +131,11 @@ class MetadataReport:
 
     def _get_column_to_fields_mapping(self):
         return METADATA_COLUMN_TO_FIELDS_MAPPING
+
+    def _build_comments(self):
+        self.comments.append(
+            f'# Source URL: {self.request.url}'
+        )
 
     def _build_header(self):
         for column in self._get_column_to_fields_mapping():
@@ -287,6 +293,8 @@ class MetadataReport:
         return row
 
     def _generate_rows(self):
+        for comment in self.comments:
+            yield self.csv.writerow([comment])
         yield self.csv.writerow(self.header)
         for experiment in self._get_search_results_generator():
             if not experiment.get('files', []):
@@ -319,6 +327,7 @@ class MetadataReport:
             self.include_controlled_access_files = True
 
     def _initialize_report(self):
+        self._build_comments()
         self._build_header()
         self._split_column_and_fields_by_experiment_and_file()
         self._set_split_file_filters()
@@ -382,6 +391,8 @@ class FileMetadataReport(MetadataReport):
         return any(conditions)
 
     def _generate_rows(self):
+        for comment in self.comments:
+            yield self.csv.writerow([comment])
         yield self.csv.writerow(self.header)
         for file_ in self._get_search_results_generator():
             if self._should_not_report_file(file_):
@@ -400,6 +411,7 @@ class FileMetadataReport(MetadataReport):
             )
 
     def _initialize_report(self):
+        self._build_comments()
         self._build_header()
         self._split_column_and_fields_by_experiment_and_file()
         self._set_include_controlled_access_files()
