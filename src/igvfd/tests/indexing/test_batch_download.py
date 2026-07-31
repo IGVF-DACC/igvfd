@@ -30,8 +30,14 @@ def test_metadata_batch_download_v2_generate_rows(workbook, dummy_request):
     assert isinstance(row_generator, GeneratorType)
     results = list(row_generator)
     assert len(results) >= 100
+    assert results[0].decode('utf-8').startswith('# Source URL:')
+    rows = [
+        result.decode('utf-8').split('\t')
+        for result in results
+        if not result.decode('utf-8').startswith('#')  # Skip comments.
+    ]
     # First column always file URL.
-    assert results[0].decode('utf-8').split('\t')[1] == 'File download URL'
+    assert rows[0][1] == 'File download URL'
 
 
 def test_metadata_batch_download_v2_generate(workbook, dummy_request):
