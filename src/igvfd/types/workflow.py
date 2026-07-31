@@ -105,4 +105,4 @@ class Workflow(Item):
         }
     )
     def preferred_assay_slims(self, request, preferred_assay_titles=None):
-        return get_preferred_assay_slims(preferred_assay_titles)
+        return get_preferred_assay_slims(request, preferred_assay_titles)
