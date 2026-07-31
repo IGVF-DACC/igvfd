@@ -556,5 +556,25 @@
         "upload_status": "validated",
         "release_timestamp": "2026-03-01T12:34:56Z",
         "status": "released"
+    },
+    {
+        "uuid": "a1625cd2-df21-49f5-b1c6-d2ff90378024",
+        "accession": "IGVFFI0001CRSZ",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:chromosome_sizes_hg38"
+        ],
+        "md5sum": "023130f2bfc6fc120b2a2e277ab70fe8",
+        "file_format": "tsv",
+        "content_type": "chromosome sizes",
+        "file_set": "igvf-dacc:GRCh38.p14_assembly",
+        "assembly": "GRCh38",
+        "controlled_access": false,
+        "submitted_file_name": "/Users/igvf/igvf_files/chromosome_sizes_hg38.tsv",
+        "file_size": 1235445,
+        "upload_status": "validated",
+        "release_timestamp": "2026-03-01T12:34:56Z",
+        "status": "released"
     }
 ]
