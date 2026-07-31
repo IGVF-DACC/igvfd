@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_step.json`*
 
+### Minor changes since schema version 16
+
+* Extend `analysis_step_type` enum list to include `methylation calling`.
+
 ### Schema version 16
 
 * Adjust `input_content_types` enum list to replace `global differential expression` with `global differential expression per element`.
