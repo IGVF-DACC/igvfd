@@ -1285,6 +1285,7 @@ def audit_missing_genome_transcriptome_references(value, system):
         'diseases_genes',
         'documentation (readme)',
         'drugs',
+        'effective spatial variability',
         'external source data',
         'genes',
         'genes in pathways',
