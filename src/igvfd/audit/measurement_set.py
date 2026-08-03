@@ -515,7 +515,6 @@ def audit_targeted_genes(value, system):
     '''
     audit_message_missing = get_audit_message(audit_targeted_genes, index=0)
     audit_message_unexpected = get_audit_message(audit_targeted_genes, index=1)
-    assay_term = value.get('assay_term')
     preferred_assay_titles = value.get('preferred_assay_titles', [])
     targeted_genes = value.get('targeted_genes', '')
     control_types = value.get('control_types', [])
@@ -532,8 +531,22 @@ def audit_targeted_genes(value, system):
         any(title in expecting_targeted_genes_by_preferred_assay_title for title in preferred_assay_titles)
         or is_protein_abundance_biometric(value, system)
     )
+    has_biomarker_genes = False
+    for sample in value.get('samples', []):
+        sample_object = system.get('request').embed(sample, '@@object')
+        for biomarker in sample_object.get('biomarkers', []):
+            biomarker_object = system.get('request').embed(
+                biomarker,
+                '@@object?skip_calculated=true'
+            )
+            if biomarker_object.get('gene'):
+                has_biomarker_genes = True
+                break
+        if has_biomarker_genes:
+            break
     if (
         not targeted_genes
+        and not has_biomarker_genes
         and expects_targeted_genes
         and not any(control_type in exempted_control_types for control_type in control_types)
     ):

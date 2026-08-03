@@ -5,7 +5,9 @@ def test_audit_sample_sorted_from_parent_child_check(
     testapp,
     biosample_sorted_child,
     tissue_unsorted_parent,
-    rodent_donor
+    rodent_donor,
+    lab,
+    award,
 ):
     # A Sample that is a sorted_from of a parent sample should
     # share most of the parent's metadata properties
@@ -45,6 +47,25 @@ def test_audit_sample_sorted_from_parent_child_check(
     testapp.patch_json(
         tissue_unsorted_parent['@id'],
         {'construct_delivery_methods': ['electroporation', 'lipofectamine']}
+    )
+    res = testapp.get(biosample_sorted_child['@id'] + '@@audit')
+    assert 'inconsistent parent sample' not in (
+        error['category'] for error in res.json['audit'].get('ERROR', [])
+    )
+    # Biomarkers may differ between sorted_from child and parent without audit
+    biomarker = testapp.post_json(
+        '/biomarker',
+        {
+            'name': 'CDH5',
+            'quantification': 'high',
+            'classification': 'marker gene',
+            'award': award['@id'],
+            'lab': lab['@id'],
+        }
+    ).json['@graph'][0]
+    testapp.patch_json(
+        biosample_sorted_child['@id'],
+        {'biomarkers': [biomarker['@id']]}
     )
     res = testapp.get(biosample_sorted_child['@id'] + '@@audit')
     assert 'inconsistent parent sample' not in (

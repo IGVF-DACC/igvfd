@@ -222,7 +222,7 @@
         },
         "biomarkers": {
             "title": "Biomarkers",
-            "description": "Biological markers that are associated with this sample.",
+            "description": "Biological markers associated with this sample, such as cell surface proteins or marker genes used for sorting. For flow cytometry assays, when a gene is used for sorting but is not the primary focus of the experiment, link a biomarker with gene here rather than using targeted_genes on the Measurement Set.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
