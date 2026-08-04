@@ -2221,5 +2221,28 @@
         "release_timestamp": "2026-07-31T12:34:56Z",
         "file_set": "igvf:prediction_set_1",
         "controlled_access": false
+    },
+    {
+        "uuid": "d928c896-837b-44b0-a0e0-f9ac3c726569",
+        "accession": "IGVFFI0027DGQN",
+        "lab": "michael-beer",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_differential_gene_quantifications"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-08-04T12:34:56Z",
+        "md5sum": "8d10f671733b15d7a31db1733aea35b5",
+        "file_format": "tsv",
+        "content_type": "differential gene quantifications",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/differential_gene_quantifications.tsv.gz",
+        "file_size": 4123,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
     }
 ]

@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 16
 
+* Extend `input_content_types` enum list to include `differential gene quantifications`.
+* Extend `output_content_types` enum list to include `differential gene quantifications`.
 * Extend `input_content_types` enum list to include `effective spatial variability`.
 * Extend `output_content_types` enum list to include `effective spatial variability`.
 * Extend `analysis_step_type` enum list to include `methylation calling`.
