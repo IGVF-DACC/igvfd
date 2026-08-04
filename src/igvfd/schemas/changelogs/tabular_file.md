@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 26
+
+* Extend `content_type` enum list to include `effective spatial variability`.
+
 ### Schema version 26
 
 * Adjust `content_type` enum list to replace `global differential expression` with `global differential expression per element`.
