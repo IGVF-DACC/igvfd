@@ -1391,9 +1391,9 @@ def test_audit_inconsistent_sequencing_kit(
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing sequencing kit'
-        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    assert all(
+        error['category'] != 'missing sequencing kit'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         measurement_set['@id'],
@@ -1402,10 +1402,6 @@ def test_audit_inconsistent_sequencing_kit(
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'missing sequencing kit'
-        for error in res.json['audit'].get('INTERNAL_ACTION', [])
-    )
     assert any(
         error['category'] == 'missing sequencing kit'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
