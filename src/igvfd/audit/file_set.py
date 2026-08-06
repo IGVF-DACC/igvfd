@@ -520,11 +520,6 @@ def audit_inconsistent_sequencing_kit(value, system):
             "audit_level": "ERROR"
         },
         {
-            "audit_description": "Sequence files in a file set associated wtih bulk data should specify a sequencing kit.",
-            "audit_category": "missing sequencing kit",
-            "audit_level": "INTERNAL_ACTION"
-        },
-        {
             "audit_description": "Sequence files in a file set associated wtih single cell data should specify a sequencing kit.",
             "audit_category": "missing sequencing kit",
             "audit_level": "NOT_COMPLIANT"
@@ -561,11 +556,9 @@ def audit_inconsistent_sequencing_kit(value, system):
                     )
                     yield AuditFailure(audit_message_inconsistent_kit.get('audit_category', ''), f'{detail} {audit_message_inconsistent_kit.get("audit_description", "")}', level=audit_message_inconsistent_kit.get('audit_level', ''))
 
-    if missing_kit:
-        if single_cell_check(system, value, object_type, include_perturb_seq=True):
-            audit_message_missing_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=2)
-        else:
-            audit_message_missing_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=1)
+    # If single cell assays, check for sequencing kit
+    if missing_kit and single_cell_check(system, value, object_type, include_perturb_seq=True):
+        audit_message_missing_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=1)
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence '
             f'file(s) {", ".join([audit_link(path_to_text(f), f) for f in missing_kit])} '
