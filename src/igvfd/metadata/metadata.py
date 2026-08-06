@@ -114,14 +114,16 @@ class MetadataReport:
     CONTENT_DISPOSITION = 'attachment; filename="metadata.tsv"'
     FILES_PREFIX = 'files.'
 
-    def __init__(self, request):
+    def __init__(self, request, source_url=None):
         self.request = request
+        self.source_url = source_url
         self.query_string = QueryString(request)
         self.param_list = self.query_string.group_values_by_key()
         self.split_file_filters = {}
         self.positive_file_param_set = {}
         self.positive_file_inequalities = {}
         self.header = []
+        self.comments = []
         self.experiment_column_to_fields_mapping = OrderedDict()
         self.file_column_to_fields_mapping = OrderedDict()
         self.raw_only = self.query_string.is_param('option', 'raw')
@@ -130,6 +132,11 @@ class MetadataReport:
 
     def _get_column_to_fields_mapping(self):
         return METADATA_COLUMN_TO_FIELDS_MAPPING
+
+    def _build_comments(self):
+        self.comments.append(
+            f'# Source URL: {self.source_url or self.request.url}'
+        )
 
     def _build_header(self):
         for column in self._get_column_to_fields_mapping():
@@ -287,6 +294,8 @@ class MetadataReport:
         return row
 
     def _generate_rows(self):
+        for comment in self.comments:
+            yield self.csv.writerow([comment])
         yield self.csv.writerow(self.header)
         for experiment in self._get_search_results_generator():
             if not experiment.get('files', []):
@@ -319,6 +328,7 @@ class MetadataReport:
             self.include_controlled_access_files = True
 
     def _initialize_report(self):
+        self._build_comments()
         self._build_header()
         self._split_column_and_fields_by_experiment_and_file()
         self._set_split_file_filters()
@@ -382,6 +392,8 @@ class FileMetadataReport(MetadataReport):
         return any(conditions)
 
     def _generate_rows(self):
+        for comment in self.comments:
+            yield self.csv.writerow([comment])
         yield self.csv.writerow(self.header)
         for file_ in self._get_search_results_generator():
             if self._should_not_report_file(file_):
@@ -400,6 +412,7 @@ class FileMetadataReport(MetadataReport):
             )
 
     def _initialize_report(self):
+        self._build_comments()
         self._build_header()
         self._split_column_and_fields_by_experiment_and_file()
         self._set_include_controlled_access_files()
@@ -441,6 +454,7 @@ def file_batch_download_v2(context, request):
     permission='view',
 )
 def all_files(context, request):
+    source_url = request.url  # Capture before original request modified.
     include_downstream = False
     if asbool(request.params.get('include_downstream')):
         include_downstream = True
@@ -466,5 +480,8 @@ def all_files(context, request):
         }
     ).encode('utf-8')
     new_request.context = request.context  # Needs context for permission check.
-    file_metadata_report = FileMetadataReport(new_request)
+    file_metadata_report = FileMetadataReport(
+        new_request,
+        source_url=source_url,
+    )
     return file_metadata_report.generate()
