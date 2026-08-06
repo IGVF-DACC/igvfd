@@ -83,3 +83,12 @@ def test_audit_inconsistent_cell_line_donor(
         error['category'] != 'inconsistent cell line donor'
         for error in res.json['audit'].get('ERROR', [])
     )
+    testapp.patch_json(
+        sample_term_K562['@id'],
+        {'term_name': 'K562 cell'}
+    )
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent cell line donor'
+        for error in res.json['audit'].get('ERROR', [])
+    )
