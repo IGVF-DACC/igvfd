@@ -66,7 +66,14 @@ def audit_pseudobulk_set_sample_matches_input(value, system):
     if value.get('input_file_sets', []):
         for input_file_set in value.get('input_file_sets', []):
             input_file_set_object = system.get('request').embed(
-                input_file_set, '@@object_with_select_calculated_properties?field=samples')
+                input_file_set,
+                '@@object_with_select_calculated_properties?field=samples&field=@type&field=file_set_type'
+            )
+            if (
+                input_file_set_object['@type'][0] == 'CuratedSet' and
+                input_file_set_object.get('file_set_type') == 'external sequencing data'
+            ):
+                return
             input_samples = input_file_set_object.get('samples', [])
             input_file_set_samples.extend(input_samples)
             for sample in [x for x in input_samples if x.startswith('/multiplexed-samples/')]:

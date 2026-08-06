@@ -88,6 +88,25 @@ def test_audit_pseudobulk_set_sample_matches_input(
     )
 
 
+def test_audit_pseudobulk_set_sample_matches_input_exempt_curated_set(
+    testapp,
+    pseudobulk_set_base,
+    curated_set_external_sequencing
+):
+    # Pseudobulk set has parent samples but its only input file set is a
+    # curated set of external sequencing data, which has no samples of its
+    # own and so should be exempt from this audit.
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {'input_file_sets': [curated_set_external_sequencing['@id']]}
+    )
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent samples'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+
 def test_audit_pseudobulk_set_input_file_set_type(
     testapp,
     pseudobulk_set_base,
