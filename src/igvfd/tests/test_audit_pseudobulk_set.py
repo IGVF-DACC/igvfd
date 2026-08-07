@@ -37,7 +37,8 @@ def test_audit_pseudobulk_set_sample_matches_input(
     analysis_set_base,
     measurement_set,
     primary_cell,
-    multiplexed_sample
+    multiplexed_sample,
+    curated_set_external_sequencing
 ):
     testapp.patch_json(
         analysis_set_base['@id'],
@@ -77,6 +78,8 @@ def test_audit_pseudobulk_set_sample_matches_input(
         error['category'] != 'inconsistent samples'
         for error in res.json['audit'].get('ERROR', [])
     )
+    # Changing an input pseudobulk set's samples so the merged set's
+    # samples not matching the union of its inputs' samples
     testapp.patch_json(
         pseudobulk_set_base['@id'],
         {'samples': [primary_cell['@id']]}
@@ -84,6 +87,17 @@ def test_audit_pseudobulk_set_sample_matches_input(
     res = testapp.get(pseudobulk_set_merged['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent samples'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Input file set is a curated set of external sequencing data, which has
+    # no samples of its own and so should be exempt from this audit.
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {'input_file_sets': [curated_set_external_sequencing['@id']]}
+    )
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent samples'
         for error in res.json['audit'].get('ERROR', [])
     )
 
