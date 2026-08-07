@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 2
 
+* Add `url`.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.
 * Extend `collections` enum list to include `Coronary Artery Disease`.
 * Update `samples` to allow linking to MultiplexedSample.
