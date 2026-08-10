@@ -1,6 +1,6 @@
 {
-    "hash": "41fb153bab2c1590cc23905f0db18077",
-    "index_name": "pseudobulk_set_41fb153b",
+    "hash": "9a5c1ef13c858e84501d6e7064001967",
+    "index_name": "pseudobulk_set_9a5c1ef1",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -3756,6 +3756,9 @@
                         "type": "keyword"
                     },
                     "supersedes": {
+                        "type": "keyword"
+                    },
+                    "url": {
                         "type": "keyword"
                     },
                     "uuid": {
