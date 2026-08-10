@@ -161,7 +161,6 @@ def test_analysis_step_upgrade_16_17(upgrader, analysis_step_v16):
     assert value['schema_version'] == '17'
     assert set(value['input_content_types']) == {
         'cell annotation with TF overexpression',
-        'editing templates',
         'guide quantifications',
     }
     assert (

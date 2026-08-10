@@ -224,7 +224,6 @@ def analysis_step_v16(testapp, base_workflow):
         'title': 'Tabular Analysis Step',
         'input_content_types': [
             'barcode to TF overexpression mapping',
-            'fold change over control',
             'guide quantifications',
         ],
         'output_content_types': ['guide RNA sequences'],
