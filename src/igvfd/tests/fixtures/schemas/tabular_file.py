@@ -491,3 +491,13 @@ def tabular_file_v25f(tabular_file):
         'content_type': 'trans differential expression quantifications per element'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v26(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '26',
+        'content_type': 'barcode to TF overexpression mapping'
+    })
+    return item

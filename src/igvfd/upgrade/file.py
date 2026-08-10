@@ -964,3 +964,17 @@ def tabular_file_25_26(value, system):
         )
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('tabular_file', '26', '27')
+def tabular_file_26_27(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3616
+    notes = value.get('notes', '')
+    if value.get('content_type') == 'barcode to TF overexpression mapping':
+        value['content_type'] = 'cell annotation with TF overexpression'
+        notes += (
+            ' This file\'s content_type was barcode to TF overexpression mapping, '
+            'and changed to cell annotation with TF overexpression via upgrade.'
+        )
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

@@ -154,3 +154,17 @@ def test_analysis_step_upgrade_15_16(upgrader, analysis_step_v15):
         'This analysis step\'s input_content_types included trans differential expression quantifications per element, '
         'but has been upgraded to global differential expression per element.'
     ) in value['notes']
+
+
+def test_analysis_step_upgrade_16_17(upgrader, analysis_step_v16):
+    value = upgrader.upgrade('analysis_step', analysis_step_v16, current_version='16', target_version='17')
+    assert value['schema_version'] == '17'
+    assert set(value['input_content_types']) == {
+        'cell annotation with TF overexpression',
+        'editing templates',
+        'guide quantifications',
+    }
+    assert (
+        'This analysis step\'s input_content_types included barcode to TF overexpression mapping, '
+        'but has been upgraded to cell annotation with TF overexpression.'
+    ) in value['notes']

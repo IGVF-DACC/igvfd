@@ -1,5 +1,10 @@
 ## Changelog for *`analysis_step.json`*
 
+### Schema version 17
+
+* Adjust `input_content_types` enum list to replace `barcode to TF overexpression mapping` with `cell annotation with TF overexpression`.
+* Adjust `output_content_types` enum list to replace `barcode to TF overexpression mapping` with `cell annotation with TF overexpression`.
+
 ### Minor changes since schema version 16
 
 * Extend `input_content_types` enum list to include `effective spatial variability`.
