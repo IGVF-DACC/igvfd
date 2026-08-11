@@ -214,3 +214,19 @@ def analysis_step_v15(testapp, base_workflow):
         'analysis_step_types': ['differential expression analysis']
     }
     return item
+
+
+@pytest.fixture
+def analysis_step_v16(testapp, base_workflow):
+    item = {
+        'schema_version': '16',
+        'step_label': 'tabular-analysis-step',
+        'title': 'Tabular Analysis Step',
+        'input_content_types': [
+            'barcode to TF overexpression mapping',
+            'guide quantifications',
+        ],
+        'output_content_types': ['guide RNA sequences'],
+        'analysis_step_types': ['quantification']
+    }
+    return item

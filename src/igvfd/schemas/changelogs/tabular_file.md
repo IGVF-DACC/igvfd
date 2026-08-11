@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 27
+
+* Adjust `content_type` enum list to replace `barcode to TF overexpression mapping` with `cell annotation with TF overexpression`.
+
 ### Minor changes since schema version 26
 
 * Extend `content_type` enum list to include `effective spatial variability`.

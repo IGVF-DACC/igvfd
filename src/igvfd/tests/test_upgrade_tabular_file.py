@@ -196,3 +196,11 @@ def test_tabular_file_upgrade_25_26(upgrader, tabular_file_v25a, tabular_file_v2
     assert value['schema_version'] == '26'
     assert 'This file\'s content_type was trans differential expression quantifications per element, but has been upgraded to global differential expression per element.' in value[
         'notes']
+
+
+def test_tabular_file_upgrade_26_27(upgrader, tabular_file_v26):
+    value = upgrader.upgrade('tabular_file', tabular_file_v26, current_version='26', target_version='27')
+    assert value['content_type'] == 'cell annotation with TF overexpression'
+    assert value['schema_version'] == '27'
+    assert 'This file\'s content_type was barcode to TF overexpression mapping, and changed to cell annotation with TF overexpression via upgrade.' in value[
+        'notes']
