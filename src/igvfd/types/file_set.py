@@ -515,6 +515,13 @@ def get_cell_annotation(request, cell_type, samples, cell_qualifier=None):
             'derived from',
             ', '.join(sorted(source_biosample_terms))
         ] if x is not None])
+    elif len(source_biosample_classifications) == 1 and 'primary cell' in source_biosample_classifications:
+        phrase = ' '.join([x for x in [
+            cell_qualifier_string,
+            cell_type_name,
+            'from',
+            ', '.join(sorted(source_biosample_terms))
+        ] if x is not None])
     else:
         phrase = ' '.join([x for x in [
             cell_qualifier_string,
