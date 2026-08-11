@@ -10,6 +10,7 @@
 
 ### Minor changes since schema version 26
 
+* Extend `content_type` enum list to include `pseudobulk barcode list`.
 * Extend `content_type` enum list to include `effective spatial variability`.
 
 ### Schema version 26

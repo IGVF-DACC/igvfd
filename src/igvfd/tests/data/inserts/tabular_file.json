@@ -2221,5 +2221,24 @@
         "release_timestamp": "2026-07-31T12:34:56Z",
         "file_set": "igvf:prediction_set_1",
         "controlled_access": false
+    },
+    {
+        "uuid": "49552753-a315-4c0f-8819-eac42ee9dad4",
+        "accession": "IGVFFI0001PSBR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_pseudobulk_barcode_list"
+        ],
+        "md5sum": "07ecf998ae48cd8914c1b1a4ad1c4f2e",
+        "file_format": "tsv",
+        "content_type": "pseudobulk barcode list",
+        "submitted_file_name": "/Users/igvf/igvf_files/pseudobulk_barcode_list.tsv.gz",
+        "file_size": 4200,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2026-07-31T12:34:56Z",
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
     }
 ]
