@@ -2,6 +2,26 @@
 
 ### Minor changes since schema version 17
 
+* Extend `input_content_types` enum list to include `selected regions for predicted signal and sequence contribution scores`.
+* Extend `output_content_types` enum list to include `selected regions for predicted signal and sequence contribution scores`.
+* Extend `input_content_types` enum list to include `training and test regions`.
+* Extend `output_content_types` enum list to include `training and test regions`.
+* Extend `input_content_types` enum list to include `counts performance metrics`.
+* Extend `output_content_types` enum list to include `counts performance metrics`.
+* Extend `input_content_types` enum list to include `profile performance metrics`.
+* Extend `output_content_types` enum list to include `profile performance metrics`.
+* Extend `input_content_types` enum list to include `sequence motifs`.
+* Extend `output_content_types` enum list to include `sequence motifs`.
+* Extend `input_content_types` enum list to include `sequence motifs instances`.
+* Extend `output_content_types` enum list to include `sequence motifs instances`.
+* Extend `input_content_types` enum list to include `counts sequence contribution scores`.
+* Extend `output_content_types` enum list to include `counts sequence contribution scores`.
+* Extend `input_content_types` enum list to include `profile sequence contribution scores`.
+* Extend `output_content_types` enum list to include `profile sequence contribution scores`.
+* Extend `input_content_types` enum list to include `signal profile`.
+* Extend `output_content_types` enum list to include `signal profile`.
+* Extend `input_content_types` enum list to include `bias-corrected signal profile`.
+* Extend `output_content_types` enum list to include `bias-corrected signal profile`.
 * Extend `input_content_types` enum list to include `pseudobulk barcode list`.
 * Extend `output_content_types` enum list to include `pseudobulk barcode list`.
 

@@ -2,6 +2,11 @@
 
 ### Minor changes since schema version 15
 
+* Extend `content_type` enum list to include `counts sequence contribution scores`.
+* Extend `content_type` enum list to include `profile sequence contribution scores`.
+* Extend `content_type` enum list to include `signal profile`.
+* Extend `content_type` enum list to include `bias-corrected signal profile`.
+* Extend `file_format` enum list to include `tar`.
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`.
 * Extend `catalog_collections` enum list to include `genomic_elements_phenotypes`.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.

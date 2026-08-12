@@ -453,5 +453,41 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ]
+    },
+    {
+        "uuid": "32d92b21-6226-4af7-8cee-ad072857f831",
+        "accession": "IGVFFI1112SEQM",
+        "lab": "igvf-dacc-processing-pipeline",
+        "award": "HG012012",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "88d27d1c689c6575d8e34059d2692fd7",
+        "file_format": "tar",
+        "content_type": "sequence motifs",
+        "submitted_file_name": "/Users/igvf/igvf_files/sequence_motifs.tar.gz",
+        "file_size": 5200010,
+        "upload_status": "validated",
+        "file_set": "igvf:prediction_set_7",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ]
+    },
+    {
+        "uuid": "9bcf2b21-30de-4af7-8cee-831d0a7f7285",
+        "accession": "IGVFFI3355SEMI",
+        "lab": "igvf-dacc-processing-pipeline",
+        "award": "HG012012",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "79b55830dee99bcf5678421cd02e2c72",
+        "file_format": "tar",
+        "content_type": "sequence motifs instances",
+        "submitted_file_name": "/Users/igvf/igvf_files/sequence_motifs_instances.tar.gz",
+        "file_size": 5200010,
+        "upload_status": "validated",
+        "file_set": "igvf:prediction_set_7",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ]
     }
 ]

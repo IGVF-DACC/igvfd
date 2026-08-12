@@ -149,5 +149,26 @@
         "uuid": "0eb274d6-d5b5-4e7d-8177-93aa8ce3dd70",
         "cell_qualifier": "early",
         "cell_type": "eea050cd-9e8c-4420-967f-3581b20536ab"
+    },
+    {
+        "aliases": [
+            "igvf:prediction_set_7"
+        ],
+        "accession": "IGVFDS8070CBPN",
+        "submitter_comment": "Comment for a prediction file set.",
+        "description": "ChromBPNet chromatin accessibility prediction.",
+        "samples": [
+            "3de8faf0-7a25-11ed-a1eb-0242ac120002"
+        ],
+        "file_set_type": "chromatin accessibility effect",
+        "award": "1U01HG011952-01",
+        "lab": "alan-boyle",
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "uuid": "95be810f-1250-4c21-c962-a0c8bb393950",
+        "scope": "genome-wide",
+        "input_file_sets": [
+            "/model-sets/IGVFDS4321MODL/"
+        ]
     }
 ]

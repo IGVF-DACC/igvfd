@@ -98,6 +98,7 @@
                 "cell fate change protocol",
                 "cell marker file",
                 "characterization",
+                "computational model performance",
                 "computational protocol",
                 "donor characteristics",
                 "experimental protocol",
@@ -112,6 +113,7 @@
                 "plasmid map",
                 "plasmid sequence",
                 "quality control report",
+                "sequence motifs report",
                 "standards",
                 "tile coordinates"
             ],

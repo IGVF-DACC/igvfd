@@ -261,6 +261,7 @@
             "enum": [
                 "activity level",
                 "binding effect",
+                "chromatin accessibility effect",
                 "functional effect",
                 "protein-protein interaction",
                 "protein stability"
@@ -268,6 +269,7 @@
             "enum_descriptions": {
                 "activity level": "Predictive modeling of an input variable on activiy level.",
                 "binding effect": "Predictive modeling of an input variable on TF binding effect.",
+                "chromatin accessibility effect": "Predictive modeling of an input variable on chromatin accessibility.",
                 "functional effect": "Predictive modeling of an input variable on functional effect.",
                 "protein-protein interaction": "Predictive modeling of an input variable on the interactions between proteins.",
                 "protein stability": "Predictive modeling of an input variable on protein stability."

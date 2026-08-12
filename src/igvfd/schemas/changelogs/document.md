@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 4
 
+* Extend `document_type` enum list to include `sequence motifs report`.
+* Extend `document_type` enum list to include `computational model performance`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Extend `document_type` enum list to include `donor characteristics`.
 * Update `aliases` regex to add `yang-li` as a namespace.
