@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_set.json`*
 
+### Schema version 11
+
+* Rename `demultiplexed_samples` to `subset_samples`.
+
 ### Minor changes since schema version 10
 
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.

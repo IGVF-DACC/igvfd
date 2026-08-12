@@ -1,6 +1,6 @@
 {
-    "hash": "eea1a92a9d5985909fa03db87386c488",
-    "index_name": "sequence_file_eea1a92a",
+    "hash": "c0a45e8dafea90f14ec39b8ee56bfba5",
+    "index_name": "sequence_file_c0a45e8d",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -789,9 +789,6 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
-                                "type": "keyword"
-                            },
-                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -2020,6 +2017,9 @@
                                 "type": "date"
                             },
                             "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "subset_samples": {
                                 "type": "keyword"
                             },
                             "summary": {

@@ -1,6 +1,6 @@
 {
-    "hash": "0d02335e2d311716a250633b3eecd2d5",
-    "index_name": "configuration_file_0d02335e",
+    "hash": "7e387e15ee12a1be38036798e23a9fd1",
+    "index_name": "configuration_file_7e387e15",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -784,9 +784,6 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
-                                "type": "keyword"
-                            },
-                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -2015,6 +2012,9 @@
                                 "type": "date"
                             },
                             "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "subset_samples": {
                                 "type": "keyword"
                             },
                             "summary": {

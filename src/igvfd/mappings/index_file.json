@@ -1,6 +1,6 @@
 {
-    "hash": "05f465b6f2903725e79a2beb9081cf58",
-    "index_name": "index_file_05f465b6",
+    "hash": "ecc2179be61e900c462a12821e44c0bf",
+    "index_name": "index_file_ecc2179b",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -792,9 +792,6 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
-                                "type": "keyword"
-                            },
-                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -2023,6 +2020,9 @@
                                 "type": "date"
                             },
                             "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "subset_samples": {
                                 "type": "keyword"
                             },
                             "summary": {

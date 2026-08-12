@@ -58,11 +58,11 @@ def test_calculated_samples(testapp, measurement_set, analysis_set_base, constru
     testapp.patch_json(
         analysis_set_base['@id'],
         {
-            'demultiplexed_samples': [in_vitro_cell_line['@id']]
+            'subset_samples': [in_vitro_cell_line['@id']]
         }
     )
     res = testapp.get(analysis_set_base['@id'])
-    assert set([sample['@id'] for sample in res.json.get('samples')]) == {primary_cell['@id']}
+    assert set([sample['@id'] for sample in res.json.get('samples')]) == {in_vitro_cell_line['@id']}
     testapp.patch_json(
         measurement_set['@id'],
         {

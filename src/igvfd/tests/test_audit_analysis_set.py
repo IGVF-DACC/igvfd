@@ -193,27 +193,13 @@ def test_audit_analysis_set_multiplexed_samples(
     measurement_set,
     measurement_set_no_files,
     in_vitro_differentiated_cell,
-    tissue,
-    multiplexed_sample,
-    analysis_set_no_input
+    multiplexed_sample
 ):
-    testapp.patch_json(
-        analysis_set_base['@id'],
-        {
-            'input_file_sets': [measurement_set['@id']],
-            'demultiplexed_samples': [tissue['@id']]
-        }
-    )
     testapp.patch_json(
         measurement_set['@id'],
         {
             'samples': [in_vitro_differentiated_cell['@id']]
         }
-    )
-    res = testapp.get(analysis_set_base['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'unexpected demultiplexed sample'
-        for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
         measurement_set_no_files['@id'],
@@ -232,20 +218,9 @@ def test_audit_analysis_set_multiplexed_samples(
         error['category'] == 'unexpected samples'
         for error in res.json['audit'].get('WARNING', [])
     )
-    testapp.patch_json(
-        analysis_set_no_input['@id'],
-        {
-            'demultiplexed_samples': [tissue['@id']]
-        }
-    )
-    res = testapp.get(analysis_set_no_input['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'unexpected demultiplexed sample'
-        for error in res.json['audit'].get('WARNING', [])
-    )
 
 
-def test_audit_analysis_set_demultiplexed_sample(
+def test_audit_analysis_set_subset_samples(
     testapp,
     analysis_set_base,
     measurement_set,
@@ -254,6 +229,7 @@ def test_audit_analysis_set_demultiplexed_sample(
     primary_cell,
     multiplexed_sample
 ):
+    # Multiplexed input: subset sample must be a multiplexed constituent.
     testapp.patch_json(
         multiplexed_sample['@id'],
         {
@@ -270,23 +246,53 @@ def test_audit_analysis_set_demultiplexed_sample(
         analysis_set_base['@id'],
         {
             'input_file_sets': [measurement_set['@id']],
-            'demultiplexed_samples': [primary_cell['@id']]
+            'subset_samples': [primary_cell['@id']]
         }
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent demultiplexed sample'
+        error['category'] == 'inconsistent subset samples'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
         analysis_set_base['@id'],
         {
-            'demultiplexed_samples': [tissue['@id']]
+            'subset_samples': [tissue['@id']]
         }
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent demultiplexed sample'
+        error['category'] != 'inconsistent subset samples'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+    # Non-multiplexed input: subset sample must be among the input samples.
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [tissue['@id'], in_vitro_differentiated_cell['@id']]
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'subset_samples': [primary_cell['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent subset samples'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'subset_samples': [in_vitro_differentiated_cell['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent subset samples'
         for error in res.json['audit'].get('ERROR', [])
     )
 

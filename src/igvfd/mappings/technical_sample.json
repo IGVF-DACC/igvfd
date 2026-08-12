@@ -1,6 +1,6 @@
 {
-    "hash": "56f929074beb16f89ce5fbcbd2582319",
-    "index_name": "technical_sample_56f92907",
+    "hash": "0cd1d138822c5e6f687018a4e5535387",
+    "index_name": "technical_sample_0cd1d138",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -765,9 +765,6 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
-                            "demultiplexed_samples": {
-                                "type": "keyword"
-                            },
                             "description": {
                                 "type": "text"
                             },
@@ -1047,6 +1044,9 @@
                                 "type": "date"
                             },
                             "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "subset_samples": {
                                 "type": "keyword"
                             },
                             "summary": {

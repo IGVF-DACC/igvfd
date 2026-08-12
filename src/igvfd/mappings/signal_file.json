@@ -1,6 +1,6 @@
 {
-    "hash": "f555add9d4a7799fd86f26bcb2e25c6d",
-    "index_name": "signal_file_f555add9",
+    "hash": "9ed59ac2a2beb3a13c1e9980c4e0ca2d",
+    "index_name": "signal_file_9ed59ac2",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -791,9 +791,6 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
-                                "type": "keyword"
-                            },
-                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -2022,6 +2019,9 @@
                                 "type": "date"
                             },
                             "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "subset_samples": {
                                 "type": "keyword"
                             },
                             "summary": {
