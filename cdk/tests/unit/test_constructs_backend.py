@@ -181,6 +181,10 @@ def test_constructs_backend_initialize_backend_construct(
                             'Value': 'demo.ini'
                         },
                         {
+                            'Name': 'AUDIT_TIMING_ENABLED',
+                            'Value': 'false'
+                        },
+                        {
                             'Name': 'DEFAULT_EVENT_BUS',
                             'Value': {
                                 'Fn::GetAtt': [

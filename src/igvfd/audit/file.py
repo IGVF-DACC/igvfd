@@ -5,6 +5,8 @@ from snovault.auditor import (
 
 from snovault.mapping import watch_for_changes_in
 
+from .timing import run_audits_with_timing
+
 from .formatter import (
     audit_link,
     path_to_text,
@@ -278,46 +280,46 @@ function_dispatcher_model_file_object = {
 @audit_checker('File', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_file_object.values()))
 def audit_file_object_dispatcher(value, system):
-    for function_name in function_dispatcher_file_object.keys():
-        for failure in function_dispatcher_file_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_file_object, value, system, frame='object',
+    )
 
 
 @audit_checker('AlignmentFile', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_matrix_file_object.values()))
 def audit_alignment_file_object_dispatcher(value, system):
-    for function_name in function_dispatcher_alignment_file_object.keys():
-        for failure in function_dispatcher_alignment_file_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_alignment_file_object, value, system, frame='object',
+    )
 
 
 @audit_checker('MatrixFile', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_matrix_file_object.values()))
 def audit_matrix_file_object_dispatcher(value, system):
-    for function_name in function_dispatcher_matrix_file_object.keys():
-        for failure in function_dispatcher_matrix_file_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_matrix_file_object, value, system, frame='object',
+    )
 
 
 @audit_checker('SignalFile', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_matrix_file_object.values()))
 def audit_signal_file_object_dispatcher(value, system):
-    for function_name in function_dispatcher_signal_file_object.keys():
-        for failure in function_dispatcher_signal_file_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_signal_file_object, value, system, frame='object',
+    )
 
 
 @audit_checker('TabularFile', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_tabular_file_object.values()))
 def audit_tabular_file_object_dispatcher(value, system):
-    for function_name in function_dispatcher_tabular_file_object.keys():
-        for failure in function_dispatcher_tabular_file_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_tabular_file_object, value, system, frame='object',
+    )
 
 
 @audit_checker('ModelFile', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_model_file_object.values()))
 def audit_model_file_object_dispatcher(value, system):
-    for function_name in function_dispatcher_model_file_object.keys():
-        for failure in function_dispatcher_model_file_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_model_file_object, value, system, frame='object',
+    )
