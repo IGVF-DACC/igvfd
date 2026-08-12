@@ -63,7 +63,7 @@ def test_run_audits_with_timing_disabled_yields_failures_and_no_logs(monkeypatch
 
 def test_run_audits_with_timing_enabled_yields_failures_and_logs(monkeypatch, timing_log_handler):
     monkeypatch.setattr(timing, 'AUDIT_TIMING_ENABLED', True)
-    value = {'@type': ['MeasurementSet']}
+    value = {'@type': ['MeasurementSet'], 'uuid': 'abcd-1234'}
     failures = list(run_audits_with_timing(FUNCTION_DISPATCHER, value, {}, frame='object'))
     assert failures == EXPECTED_FAILURES
     assert len(timing_log_handler.records) == len(FUNCTION_DISPATCHER)
@@ -76,6 +76,7 @@ def test_run_audits_with_timing_enabled_yields_failures_and_logs(monkeypatch, ti
     for payload in payloads:
         assert payload['log_type'] == 'audit_timing'
         assert payload['item_type'] == 'MeasurementSet'
+        assert payload['uuid'] == 'abcd-1234'
         assert payload['frame'] == 'object'
         assert isinstance(payload['elapsed_seconds'], float)
 
@@ -86,3 +87,4 @@ def test_run_audits_with_timing_enabled_defaults_item_type(monkeypatch, timing_l
     assert failures == EXPECTED_FAILURES
     payloads = [json.loads(record.getMessage()) for record in timing_log_handler.records]
     assert all(payload['item_type'] == 'unknown' for payload in payloads)
+    assert all(payload['uuid'] is None for payload in payloads)

@@ -11,8 +11,11 @@ When timing is enabled it wraps the full consumption of each audit generator and
 emits one JSON log line per function, via the `igvfd.audit.timing` logger, e.g.:
 
 ```
-INFO [igvfd.audit.timing][MainThread] {"log_type": "audit_timing", "audit_function": "audit_upload_status", "item_type": "SequenceFile", "frame": "object", "elapsed_seconds": 0.000123, "failure_count": 0}
+INFO [igvfd.audit.timing][MainThread] {"log_type": "audit_timing", "audit_function": "audit_upload_status", "item_type": "SequenceFile", "uuid": "1a2b3c4d-0000-1111-2222-333344445555", "frame": "object", "elapsed_seconds": 0.000123, "failure_count": 0}
 ```
+
+The `uuid` identifies the specific item that was audited, so slow individual
+objects can be traced back to the source record.
 
 Audits run in the pyramid backend container (the indexing service fetches
 indexable documents, which include computed audits, from the backend), so the
