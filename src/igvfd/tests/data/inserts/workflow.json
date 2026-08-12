@@ -48,7 +48,9 @@
         "workflow_version": "v1.0.0",
         "uniform_pipeline": false,
         "collections": [
-            "VarChAMP",
+            "VarChAMP"
+        ],
+        "preferred_assay_titles": [
             "in vivo scMPRA"
         ]
     },
