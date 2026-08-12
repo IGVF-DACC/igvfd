@@ -224,6 +224,7 @@ def test_audit_analysis_set_subset_samples(
     testapp,
     analysis_set_base,
     measurement_set,
+    measurement_set_no_files,
     in_vitro_differentiated_cell,
     tissue,
     primary_cell,
@@ -266,16 +267,23 @@ def test_audit_analysis_set_subset_samples(
         for error in res.json['audit'].get('ERROR', [])
     )
 
-    # Non-multiplexed input: subset sample must be among the input samples.
+    # Non-multiplexed inputs: subset sample must be among the input samples.
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'samples': [tissue['@id'], in_vitro_differentiated_cell['@id']]
+            'samples': [tissue['@id']]
+        }
+    )
+    testapp.patch_json(
+        measurement_set_no_files['@id'],
+        {
+            'samples': [in_vitro_differentiated_cell['@id']]
         }
     )
     testapp.patch_json(
         analysis_set_base['@id'],
         {
+            'input_file_sets': [measurement_set['@id'], measurement_set_no_files['@id']],
             'subset_samples': [primary_cell['@id']]
         }
     )
