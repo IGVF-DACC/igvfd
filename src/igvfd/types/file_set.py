@@ -28,7 +28,13 @@ PROTEIN_ABUNDANCE_TERM_NAME = 'protein abundance'
 def get_donors_from_samples(request, samples):
     donor_objects = []
     for sample in samples:
-        donor_objects += request.embed(sample, '@@object').get('donors', [])
+        donor_objects += request.embed(
+            sample,
+            '@@object_with_select_calculated_properties?field=donors'
+        ).get(
+            'donors',
+            []
+        )
     return sorted(set(donor_objects)) or None
 
 
