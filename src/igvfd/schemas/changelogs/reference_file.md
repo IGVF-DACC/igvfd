@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 26
 
+* Extend `collections` enum list to include `IGVF_catalog_v2.0`.
 * Extend `content_type` enum list to include `chromosome sizes`.
 * Extend `catalog_method` enum list to include `DepMap`.
 * Extend `catalog_method` enum list to include `GenCC`.

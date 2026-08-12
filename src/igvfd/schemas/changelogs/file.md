@@ -1,5 +1,6 @@
 ## Changelog for *`file.json`*
 
+* Extend `collections` enum list to include `IGVF_catalog_v2.0`. (08/19/2026)
 * Extend `collections` enum list to include `Cross-Disorder CNVs`. (07/08/2026)
 * Extend `collections` enum list to include `Coronary Artery Disease`. (07/08/2026)
 * Update `aliases` regex to add `hongbo-liu` as a namespace. (04/01/2026)
