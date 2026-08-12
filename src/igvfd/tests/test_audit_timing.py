@@ -78,7 +78,7 @@ def test_run_audits_with_timing_enabled_yields_failures_and_logs(monkeypatch, ti
         assert payload['item_type'] == 'MeasurementSet'
         assert payload['uuid'] == 'abcd-1234'
         assert payload['frame'] == 'object'
-        assert isinstance(payload['elapsed_seconds'], float)
+        assert isinstance(payload['elapsed_ms'], float)
 
 
 def test_run_audits_with_timing_enabled_defaults_item_type(monkeypatch, timing_log_handler):

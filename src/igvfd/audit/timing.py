@@ -31,6 +31,7 @@ def run_audits_with_timing(function_dispatcher, value, system, frame):
                 failure_count += 1
                 yield failure
         finally:
+            elapsed_ms = (time.perf_counter() - start) * 1000
             logger.info(
                 json.dumps(
                     {
@@ -39,7 +40,7 @@ def run_audits_with_timing(function_dispatcher, value, system, frame):
                         'item_type': item_type,
                         'uuid': uuid,
                         'frame': frame,
-                        'elapsed_seconds': round(time.perf_counter() - start, 6),
+                        'elapsed_ms': float(f'{elapsed_ms:.6g}'),
                         'failure_count': failure_count,
                     }
                 )

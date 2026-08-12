@@ -11,8 +11,11 @@ When timing is enabled it wraps the full consumption of each audit generator and
 emits one JSON log line per function, via the `igvfd.audit.timing` logger, e.g.:
 
 ```
-INFO [igvfd.audit.timing][MainThread] {"log_type": "audit_timing", "audit_function": "audit_upload_status", "item_type": "SequenceFile", "uuid": "1a2b3c4d-0000-1111-2222-333344445555", "frame": "object", "elapsed_seconds": 0.000123, "failure_count": 0}
+INFO [igvfd.audit.timing][MainThread] {"log_type": "audit_timing", "audit_function": "audit_upload_status", "item_type": "SequenceFile", "uuid": "1a2b3c4d-0000-1111-2222-333344445555", "frame": "object", "elapsed_ms": 0.123456, "failure_count": 0}
 ```
+
+`elapsed_ms` is the wall-clock duration in milliseconds, rounded to 6
+significant digits.
 
 The `uuid` identifies the specific item that was audited, so slow individual
 objects can be traced back to the source record.
@@ -87,20 +90,20 @@ fields @timestamp, @message
 | filter @message like /audit_timing/
 | parse @message /"audit_function": "(?<audit_function>[^"]+)"/
 | parse @message /"item_type": "(?<item_type>[^"]+)"/
-| parse @message /"elapsed_seconds": (?<elapsed_seconds>[0-9.]+)/
+| parse @message /"elapsed_ms": (?<elapsed_ms>[0-9.]+)/
 | stats count(*) as n,
-        avg(elapsed_seconds) as avg_s,
-        pct(elapsed_seconds, 50) as p50,
-        pct(elapsed_seconds, 90) as p90,
-        max(elapsed_seconds) as max_s,
-        sum(elapsed_seconds) as total_s
+        avg(elapsed_ms) as avg_ms,
+        pct(elapsed_ms, 50) as p50_ms,
+        pct(elapsed_ms, 90) as p90_ms,
+        max(elapsed_ms) as max_ms,
+        sum(elapsed_ms) as total_ms
     by audit_function, item_type
-| sort total_s desc
+| sort total_ms desc
 ```
 
-- `total_s` surfaces aggregate cost (slow x frequent), the best signal for what
+- `total_ms` surfaces aggregate cost (slow x frequent), the best signal for what
   to optimize first.
-- `p90` / `max_s` surface per-call outliers.
+- `p90_ms` / `max_ms` surface per-call outliers.
 - Drop `item_type` from the `by` clause to aggregate a function across all types.
 
 ## Notes
