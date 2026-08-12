@@ -5,6 +5,8 @@ from snovault.auditor import (
 
 from snovault.mapping import watch_for_changes_in
 
+from .timing import run_audits_with_timing
+
 from .formatter import (
     audit_link,
     path_to_text,
@@ -105,14 +107,14 @@ function_dispatcher_in_vitro_system_embedded = {
 @audit_checker('InVitroSystem', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_in_vitro_system_object.values()))
 def audit_in_vitro_system_object_dispatcher(value, system):
-    for function_name in function_dispatcher_in_vitro_system_object.keys():
-        for failure in function_dispatcher_in_vitro_system_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_in_vitro_system_object, value, system, frame='object',
+    )
 
 
 @audit_checker('InVitroSystem', frame='embedded')
 @watch_for_changes_in(functions=list(function_dispatcher_in_vitro_system_embedded.values()))
 def audit_in_vitro_system_embedded_dispatcher(value, system):
-    for function_name in function_dispatcher_in_vitro_system_embedded.keys():
-        for failure in function_dispatcher_in_vitro_system_embedded[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_in_vitro_system_embedded, value, system, frame='embedded',
+    )

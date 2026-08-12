@@ -85,6 +85,7 @@ class BackendProps:
     use_postgres_named: str
     read_from_opensearch_named: str
     write_to_opensearch_named: str
+    audit_timing_enabled: bool = False
 
 
 class Backend(Construct):
@@ -262,6 +263,7 @@ class Backend(Construct):
                 'DB_HOST': self.postgres.database.instance_endpoint.hostname,
                 'DB_NAME': self.postgres.database_name,
                 'INI_NAME': self.props.ini_name,
+                'AUDIT_TIMING_ENABLED': str(self.props.audit_timing_enabled).lower(),
                 'DEFAULT_EVENT_BUS': self.props.existing_resources.bus.default.event_bus_arn,
                 'EVENT_SOURCE': get_event_source_from_config(self.props.config),
                 'OPENSEARCH_URL': self.opensearch_for_reading.url,

@@ -67,7 +67,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
-                            'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
+                            'snapshot_source_db_identifier': PROD_DATABASE_IDENTIFIER,
                             'allocated_storage': 20,
                             'max_allocated_storage': 40,
                             'instance_type': InstanceType.of(
@@ -106,6 +106,7 @@ config: Dict[str, Any] = {
                 'memory_limit_mib': 4096,
                 'max_capacity': 10,
                 'ini_name': 'demo.ini',
+                'audit_timing_enabled': True,
                 'use_postgres_named': 'Postgres',
                 'read_from_opensearch_named': 'Opensearch219',
                 'write_to_opensearch_named': 'Opensearch219',

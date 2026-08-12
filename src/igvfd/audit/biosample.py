@@ -5,6 +5,8 @@ from snovault.auditor import (
 
 from snovault.mapping import watch_for_changes_in
 
+from .timing import run_audits_with_timing
+
 from .formatter import (
     audit_link,
     path_to_text,
@@ -225,30 +227,30 @@ function_dispatcher_whole_organism_object = {
 @audit_checker('Biosample', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_biosample_object.values()))
 def audit_biosample_object_dispatcher(value, system):
-    for function_name in function_dispatcher_biosample_object.keys():
-        for failure in function_dispatcher_biosample_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_biosample_object, value, system, frame='object',
+    )
 
 
 @audit_checker('Tissue', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_tissue_object.values()))
 def audit_tissue_object_dispatcher(value, system):
-    for function_name in function_dispatcher_tissue_object.keys():
-        for failure in function_dispatcher_tissue_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_tissue_object, value, system, frame='object',
+    )
 
 
 @audit_checker('PrimaryCell', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_primary_cell_object.values()))
 def audit_primary_cell_object_dispatcher(value, system):
-    for function_name in function_dispatcher_primary_cell_object.keys():
-        for failure in function_dispatcher_primary_cell_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_primary_cell_object, value, system, frame='object',
+    )
 
 
 @audit_checker('WholeOrganism', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_whole_organism_object.values()))
 def audit_whole_organism_object_dispatcher(value, system):
-    for function_name in function_dispatcher_whole_organism_object.keys():
-        for failure in function_dispatcher_whole_organism_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_whole_organism_object, value, system, frame='object',
+    )

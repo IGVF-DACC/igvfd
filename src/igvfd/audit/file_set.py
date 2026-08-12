@@ -5,6 +5,8 @@ from snovault.auditor import (
 
 from snovault.mapping import watch_for_changes_in
 
+from .timing import run_audits_with_timing
+
 from .formatter import (
     audit_link,
     path_to_text,
@@ -1645,70 +1647,70 @@ function_dispatcher_pseudobulk_set_object = {
 @audit_checker('FileSet', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_file_set_object.values()))
 def audit_file_set_object_dispatcher(value, system):
-    for function_name in function_dispatcher_file_set_object.keys():
-        for failure in function_dispatcher_file_set_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_file_set_object, value, system, frame='object',
+    )
 
 
 @audit_checker('MeasurementSet', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_measurement_set_object.values()))
 def audit_measurement_set_object_dispatcher(value, system):
-    for function_name in function_dispatcher_measurement_set_object.keys():
-        for failure in function_dispatcher_measurement_set_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_measurement_set_object, value, system, frame='object',
+    )
 
 
 @audit_checker('AuxiliarySet', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_auxiliary_set_object.values()))
 def audit_auxiliary_set_object_dispatcher(value, system):
-    for function_name in function_dispatcher_auxiliary_set_object.keys():
-        for failure in function_dispatcher_auxiliary_set_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_auxiliary_set_object, value, system, frame='object',
+    )
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_construct_library_set_object.values()))
 def audit_construct_library_set_object_dispatcher(value, system):
-    for function_name in function_dispatcher_construct_library_set_object.keys():
-        for failure in function_dispatcher_construct_library_set_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_construct_library_set_object, value, system, frame='object',
+    )
 
 
 @audit_checker('AnalysisSet', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_analysis_set_object.values()))
 def audit_analysis_set_object_dispatcher(value, system):
-    for function_name in function_dispatcher_analysis_set_object.keys():
-        for failure in function_dispatcher_analysis_set_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_analysis_set_object, value, system, frame='object',
+    )
 
 
 @audit_checker('PredictionSet', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_prediction_set_object.values()))
 def audit_prediction_set_object_dispatcher(value, system):
-    for function_name in function_dispatcher_prediction_set_object.keys():
-        for failure in function_dispatcher_prediction_set_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_prediction_set_object, value, system, frame='object',
+    )
 
 
 @audit_checker('ModelSet', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_model_set_object.values()))
 def audit_model_set_object_dispatcher(value, system):
-    for function_name in function_dispatcher_model_set_object.keys():
-        for failure in function_dispatcher_model_set_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_model_set_object, value, system, frame='object',
+    )
 
 
 @audit_checker('CuratedSet', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_curated_set_object.values()))
 def audit_curated_set_object_dispatcher(value, system):
-    for function_name in function_dispatcher_curated_set_object.keys():
-        for failure in function_dispatcher_curated_set_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_curated_set_object, value, system, frame='object',
+    )
 
 
 @audit_checker('PseudobulkSet', frame='object')
 @watch_for_changes_in(functions=list(function_dispatcher_pseudobulk_set_object.values()))
 def audit_pseudobulk_set_object_dispatcher(value, system):
-    for function_name in function_dispatcher_pseudobulk_set_object.keys():
-        for failure in function_dispatcher_pseudobulk_set_object[function_name](value, system):
-            yield failure
+    yield from run_audits_with_timing(
+        function_dispatcher_pseudobulk_set_object, value, system, frame='object',
+    )
