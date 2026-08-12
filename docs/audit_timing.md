@@ -51,6 +51,29 @@ so a task must start fresh (a rolling deploy) to pick up a change.
 5. When finished, set `audit_timing_enabled` back to `False` (or remove the key)
    and redeploy to stop the log volume.
 
+## Running locally with docker compose
+
+The `pyramid` service in `docker-compose.yml` and `docker-compose.test-indexer.yml`
+reads `AUDIT_TIMING_ENABLED` (default `false`). Enable it by exporting the
+variable before bringing the stack up:
+
+```bash
+# Full local stack: loads dev data and indexes it, running audits with timing on.
+AUDIT_TIMING_ENABLED=true docker compose up --build
+
+# Indexer integration tests with timing on.
+AUDIT_TIMING_ENABLED=true docker compose -f docker-compose.test-indexer.yml up --exit-code-from indexer-tests
+```
+
+The `development.ini` used by the local `pyramid` service already configures the
+`igvfd.audit.timing` logger at `INFO`, so the JSON lines appear in that service's
+logs, e.g.:
+
+```bash
+AUDIT_TIMING_ENABLED=true docker compose up -d
+docker compose logs -f pyramid | grep audit_timing
+```
+
 ## Aggregating in CloudWatch Logs Insights
 
 Run this against the backend `pyramid` log group. The JSON payload is prefixed
