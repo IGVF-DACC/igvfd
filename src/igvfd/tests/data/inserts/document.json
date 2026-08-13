@@ -359,7 +359,7 @@
     },
     {
         "aliases": [
-            "igvf:donor_characteristics"
+            "igvf:computational_model_performance"
         ],
         "description": "ChromBPNet computational model performance",
         "attachment": "donor_characteristics.pdf",

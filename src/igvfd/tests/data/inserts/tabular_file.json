@@ -2252,6 +2252,9 @@
         "md5sum": "02e2c72830dee79b5599bcf5678421cd",
         "file_format": "bed",
         "file_format_type": "bed3",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "content_type": "selected regions for predicted signal and sequence contribution scores",
         "submitted_file_name": "/Users/igvf/igvf_files/selected_regions.bed.gz",
         "file_size": 5000,
