@@ -2758,7 +2758,7 @@ class ConstructLibrarySet(FileSet):
             samples = []
         linked_file_sets = set()
         for sample in samples:
-            sample_object = request.embed(sample, '@@object')
+            sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=file_sets')
             for file_set in sample_object.get('file_sets', []):
                 linked_file_sets.add(file_set)
         return sorted(linked_file_sets)
