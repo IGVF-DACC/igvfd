@@ -1,6 +1,6 @@
 {
-    "hash": "7df40bbbb16c4cf1ab508d8d40c0dcd3",
-    "index_name": "analysis_set_7df40bbb",
+    "hash": "7c2a8a3e37081707fc0328b583a6b05e",
+    "index_name": "analysis_set_7c2a8a3e",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -478,6 +478,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -1040,9 +1043,6 @@
                             "submitter_comment": {
                                 "type": "keyword"
                             },
-                            "subset_samples": {
-                                "type": "keyword"
-                            },
                             "summary": {
                                 "type": "keyword"
                             },
@@ -1213,6 +1213,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -1440,9 +1443,6 @@
                             "submitter_comment": {
                                 "type": "keyword"
                             },
-                            "subset_samples": {
-                                "type": "keyword"
-                            },
                             "summary": {
                                 "type": "keyword"
                             },
@@ -1524,6 +1524,9 @@
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "demultiplexed_samples": {
                         "type": "keyword"
                     },
                     "description": {
@@ -2599,6 +2602,9 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
+                            "demultiplexed_samples": {
+                                "type": "keyword"
+                            },
                             "description": {
                                 "type": "text"
                             },
@@ -2822,9 +2828,6 @@
                                 "type": "date"
                             },
                             "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "subset_samples": {
                                 "type": "keyword"
                             },
                             "summary": {
@@ -4106,9 +4109,6 @@
                         "type": "date"
                     },
                     "submitter_comment": {
-                        "type": "keyword"
-                    },
-                    "subset_samples": {
                         "type": "keyword"
                     },
                     "summary": {
