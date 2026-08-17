@@ -3,7 +3,6 @@
 ### Minor changes since schema version 11
 
 * Extend `content_type` enum list to include `sequence motifs`.
-* Extend `content_type` enum list to include `sequence motifs instances`.
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`.
 * Extend `content_type` enum list to include `labeling splicing cell by gene matrix`.
 * Extend `catalog_collections` enum list to include `genomic_elements_phenotypes`.

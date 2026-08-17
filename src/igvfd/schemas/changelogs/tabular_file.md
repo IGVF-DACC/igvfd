@@ -6,6 +6,7 @@
 * Extend `content_type` enum list to include `training and test regions`.
 * Extend `content_type` enum list to include `counts performance metrics`.
 * Extend `content_type` enum list to include `profile performance metrics`.
+* Extend `content_type` enum list to include `sequence motifs instances`.
 * Extend `content_type` enum list to include `pseudobulk barcode list`.
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`.
 
