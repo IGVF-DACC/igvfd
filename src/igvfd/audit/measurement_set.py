@@ -519,6 +519,7 @@ def audit_targeted_genes(value, system):
     targeted_genes = value.get('targeted_genes', '')
     control_types = value.get('control_types', [])
     exempted_control_types = {
+        'baseline',
         'untransfected',
         'unsorted FACS input'
     }

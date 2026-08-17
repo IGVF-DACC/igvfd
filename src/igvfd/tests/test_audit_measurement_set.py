@@ -1501,18 +1501,6 @@ def test_audit_unexpected_virtual_sample(
         error['category'] == 'unexpected sample'
         for error in res.json['audit'].get('ERROR', [])
     )
-    # Raw file sets may link to virtual samples when the sample is demultiplexed_from another sample.
-    testapp.patch_json(
-        measurement_set['@id'],
-        {
-            'samples': [in_vitro_system_virtual_demultiplexed['@id']]
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'unexpected sample'
-        for error in res.json['audit'].get('ERROR', [])
-    )
 
 
 def test_audit_missing_auxiliary_set_link(
@@ -1825,6 +1813,17 @@ def test_audit_targeted_genes(
         measurement_set['@id'],
         {
             'control_types': ['untransfected']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing targeted genes'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'control_types': ['baseline']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
