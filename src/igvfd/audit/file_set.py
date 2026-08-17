@@ -1314,6 +1314,7 @@ def audit_missing_genome_transcriptome_references(value, system):
         'protein to protein interaction score',
         'proteins_proteins',
         'pseudobulk annotations',
+        'pseudobulk barcode list',
         'sample sort parameters',
         'spatial transcriptomics cell metadata',
         'spatial transcriptomics slide-level cell boundaries',

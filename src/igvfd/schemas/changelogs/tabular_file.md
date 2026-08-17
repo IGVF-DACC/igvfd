@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 27
 
+* Extend `content_type` enum list to include `pseudobulk barcode list`.
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`.
 
 ### Schema version 27

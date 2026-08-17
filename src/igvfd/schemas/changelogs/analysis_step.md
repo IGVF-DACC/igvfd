@@ -1,5 +1,10 @@
 ## Changelog for *`analysis_step.json`*
 
+### Minor changes since schema version 17
+
+* Extend `input_content_types` enum list to include `pseudobulk barcode list`.
+* Extend `output_content_types` enum list to include `pseudobulk barcode list`.
+
 ### Schema version 17
 
 * Adjust `input_content_types` enum list to replace `barcode to TF overexpression mapping` with `cell annotation with TF overexpression`.
