@@ -974,3 +974,10 @@ def measurement_set_48_49(value, system):
         )
     if notes.strip() != value.get('notes', '').strip():
         value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_set', '10', '11')
+def analysis_set_10_11(value, system):
+    if 'demultiplexed_samples' in value:
+        value['subset_samples'] = value['demultiplexed_samples']
+        del value['demultiplexed_samples']

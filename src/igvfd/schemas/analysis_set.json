@@ -74,7 +74,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "10"
+            "default": "11"
         },
         "input_file_sets": {
             "description": "The file set(s) required for this analysis."
@@ -105,14 +105,14 @@
                 "igvf_utils": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/"
             }
         },
-        "demultiplexed_samples": {
-            "title": "Demultiplexed Samples",
-            "description": "The sample(s) associated with this analysis set inferred through demultiplexing.",
+        "subset_samples": {
+            "title": "Subset Samples",
+            "description": "The subset of sample(s) this analysis set represents, such as demultiplexed constituents or a timepoint from a differentiation series. Takes priority over samples inferred from input_file_sets when calculating samples and sample_summary.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "Demultiplexed Sample",
+                "title": "Subset Sample",
                 "type": "string",
                 "linkTo": "Sample"
             },

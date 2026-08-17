@@ -1258,7 +1258,9 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def samples(self, request, input_file_sets=None, demultiplexed_samples=None):
+    def samples(self, request, input_file_sets=None, subset_samples=None):
+        if subset_samples:
+            return subset_samples
         samples = set()
         if input_file_sets is not None:
             for fileset in input_file_sets:
@@ -1269,10 +1271,6 @@ class AnalysisSet(FileSet):
                     input_file_set_samples = set(input_file_set_object.get('samples', []))
                     if input_file_set_samples:
                         samples = samples | input_file_set_samples
-            if demultiplexed_samples:
-                # if the analysis set specifies a demultiplexed sample and all input data is multiplexed return just the demultiplexed_sample
-                if not ([sample for sample in samples if not (sample.startswith('/multiplexed-samples/'))]):
-                    return demultiplexed_samples
         return sorted(samples)
 
     @calculated_property(

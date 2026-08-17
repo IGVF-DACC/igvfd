@@ -1,6 +1,6 @@
 {
-    "hash": "8a34b37b323e83aa9d0f0096d4be3dc0",
-    "index_name": "matrix_file_8a34b37b",
+    "hash": "b9f16327eb50696afdec7bc0eb373777",
+    "index_name": "matrix_file_b9f16327",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -787,9 +787,6 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
-                                "type": "keyword"
-                            },
-                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -2018,6 +2015,9 @@
                                 "type": "date"
                             },
                             "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "subset_samples": {
                                 "type": "keyword"
                             },
                             "summary": {

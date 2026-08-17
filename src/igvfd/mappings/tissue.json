@@ -1,6 +1,6 @@
 {
-    "hash": "308cd36efef8be3e54ba2737dc061c88",
-    "index_name": "tissue_308cd36e",
+    "hash": "c99dba332d366b7e876edd78bd7eef30",
+    "index_name": "tissue_c99dba33",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1101,9 +1101,6 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
-                            "demultiplexed_samples": {
-                                "type": "keyword"
-                            },
                             "description": {
                                 "type": "text"
                             },
@@ -1383,6 +1380,9 @@
                                 "type": "date"
                             },
                             "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "subset_samples": {
                                 "type": "keyword"
                             },
                             "summary": {

@@ -1,6 +1,6 @@
 {
-    "hash": "ad5e229d254ba86ea2b2acce58e6ec5c",
-    "index_name": "alignment_file_ad5e229d",
+    "hash": "db0c7009d9fb3949ba4b443393800ba0",
+    "index_name": "alignment_file_db0c7009",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -789,9 +789,6 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
-                                "type": "keyword"
-                            },
-                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -2020,6 +2017,9 @@
                                 "type": "date"
                             },
                             "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "subset_samples": {
                                 "type": "keyword"
                             },
                             "summary": {

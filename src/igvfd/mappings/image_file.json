@@ -1,6 +1,6 @@
 {
-    "hash": "759f657f4468b43891f0526c1951bbac",
-    "index_name": "image_file_759f657f",
+    "hash": "883d0df738554702c7a9ea5f8b761ec8",
+    "index_name": "image_file_883d0df7",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -784,9 +784,6 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
-                                "type": "keyword"
-                            },
-                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -2015,6 +2012,9 @@
                                 "type": "date"
                             },
                             "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "subset_samples": {
                                 "type": "keyword"
                             },
                             "summary": {
