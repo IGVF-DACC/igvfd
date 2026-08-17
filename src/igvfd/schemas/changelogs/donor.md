@@ -1,5 +1,6 @@
 ## Changelog for *`donor.json`*
 
+* Extend `collections` enum list to include `IGVF_catalog_v2.0`. (08/19/2026)
 * Extend `collections` enum list to include `Cross-Disorder CNVs`. (07/08/2026)
 * Extend `collections` enum list to include `Coronary Artery Disease`. (07/08/2026)
 * Remove `phenotypic_features`. (04/15/2026)

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 16
 
+* Extend `collections` enum list to include `IGVF_catalog_v2.0`.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.
 * Extend `collections` enum list to include `Coronary Artery Disease`.
 * Extend `construct_delivery_methods` enum list to include `transposase`.

@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 27
+
+* Extend `collections` enum list to include `IGVF_catalog_v2.0`.
+
 ### Schema version 27
 
 * Adjust `content_type` enum list to replace `barcode to TF overexpression mapping` with `cell annotation with TF overexpression`.

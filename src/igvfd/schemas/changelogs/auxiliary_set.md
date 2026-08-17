@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Extend `collections` enum list to include `IGVF_catalog_v2.0`.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.
 * Extend `collections` enum list to include `Coronary Artery Disease`.
 * Rename calculated property `crispr_readout` to `crispr_screen_readout`.
