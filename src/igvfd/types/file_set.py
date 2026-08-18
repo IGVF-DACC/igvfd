@@ -813,10 +813,7 @@ class FileSet(Item):
         construct_library_sets = set()
         if self.item_type != 'construct_library_set':  # construct library sets should not calculate construct_library_sets
             for sample in samples:
-                sample_object = request.embed(sample,
-                                              '@@object_with_select_calculated_properties?'
-                                              'field=construct_library_sets'
-                                              )
+                sample_object = request.embed(sample, '@@object')
                 if sample_object.get('construct_library_sets', []):
                     construct_library_sets = construct_library_sets | set(
                         sample_object.get('construct_library_sets', []))
@@ -1048,7 +1045,7 @@ class AnalysisSet(FileSet):
         # Collect CRISPR modalities, file set type, and sorted_from from associated samples.
         if samples:
             for sample in samples:
-                sample_object = request.embed(sample, '@@object?skip_calculated=true')
+                sample_object = request.embed(sample, '@@object')
                 if 'sorted_from' in sample_object:
                     any_sample_sorted_from = True
                 if 'modifications' in sample_object and 'guide library' in cls_type_set:
@@ -1981,7 +1978,7 @@ class MeasurementSet(FileSet):
         related_multiome_datasets = set()
 
         for sample in samples:
-            sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=file_sets')
+            sample_object = request.embed(sample, '@@object')
             for file_set_id in sample_object.get('file_sets', []):
                 if (
                     file_set_id.startswith('/measurement-sets/')
