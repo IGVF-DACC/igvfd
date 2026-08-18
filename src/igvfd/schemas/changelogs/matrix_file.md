@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Extend `transcriptome_annotation` enum list to include `GENCODE 34`.
 * Extend `content_type` enum list to include `sequence motifs`.
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`.
 * Extend `content_type` enum list to include `labeling splicing cell by gene matrix`.

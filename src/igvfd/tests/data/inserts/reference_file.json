@@ -577,5 +577,24 @@
         "upload_status": "validated",
         "release_timestamp": "2026-03-01T12:34:56Z",
         "status": "released"
+    },
+    {
+        "uuid": "b8c4d2e1-7a3f-4c91-9e5b-2d6f8a1c4b70",
+        "accession": "IGVFFI0001GC34",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "d4e8a1c9b2f73560e8d1a4c7b9f26350",
+        "file_format": "gtf",
+        "content_type": "transcriptome reference",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38",
+        "transcriptome_annotation": "GENCODE 34",
+        "dbxrefs": [
+            "GENCODE:Release 34"
+        ],
+        "controlled_access": false
     }
 ]

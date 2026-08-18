@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 15
 
+* Extend `transcriptome_annotation` enum list to include `GENCODE 34`.
 * Extend `content_type` enum list to include `counts sequence contribution scores`.
 * Extend `content_type` enum list to include `profile sequence contribution scores`.
 * Extend `content_type` enum list to include `signal profile`.
