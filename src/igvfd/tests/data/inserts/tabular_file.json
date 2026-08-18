@@ -2220,8 +2220,6 @@
         "status": "released",
         "release_timestamp": "2026-07-31T12:34:56Z",
         "file_set": "igvf:prediction_set_1",
-<<<<<<< HEAD
-<<<<<<< HEAD
         "controlled_access": false
     },
     {
@@ -2242,14 +2240,5 @@
         "release_timestamp": "2026-07-31T12:34:56Z",
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
-=======
-        "controlled_access": false,
-        "dbxrefs": [
-            "ENCODE:ENCFF000AAI"
-        ]
->>>>>>> 4d06a551 (IGVF-3636-ENCODE-dbxref)
-=======
-        "controlled_access": false
->>>>>>> 180527f3 (remove from files)
     }
 ]
