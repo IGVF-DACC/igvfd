@@ -206,6 +206,9 @@
         "aliases": [
             "igvf:curated_set_pathway_gene_mapping"
         ],
+        "dbxrefs": [
+            "ENCODE:ENCSR961MEG"
+        ],
         "description": "A curated set for pathway gene mapping"
     }
 ]

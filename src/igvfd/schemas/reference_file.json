@@ -510,8 +510,8 @@
                 "pattern": "^(GENCODE|GRC|ENSEMBL|ENCODE):.+$"
             },
             "submissionExample": {
-                "appscript": "[\"GENCODE:Release 44\", \"GRC:GCA_000001405.29_GRCh38.p14\", \"ENSEMBL:ENSG00000101126\"]",
-                "igvf_utils": "GENCODE:Release 44, GRC:GCA_000001405.29_GRCh38.p14, ENSEMBL:ENSG00000101126"
+                "appscript": "[\"GENCODE:Release 44\", \"GRC:GCA_000001405.29_GRCh38.p14\", \"ENSEMBL:ENSG00000101126\", \"ENCODE:ENCFF000AAA\"]",
+                "igvf_utils": "GENCODE:Release 44, GRC:GCA_000001405.29_GRCh38.p14, ENSEMBL:ENSG00000101126,, ENCODE:ENCFF000AAA"
             }
         },
         "version": {
