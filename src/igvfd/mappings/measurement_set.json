@@ -1,6 +1,6 @@
 {
-    "hash": "97edc16395cb039f9f70914500b6edce",
-    "index_name": "measurement_set_97edc163",
+    "hash": "0acf01d9bff54ac7d5e0ea97237d54b7",
+    "index_name": "measurement_set_0acf01d9",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -866,6 +866,9 @@
                                         "type": "keyword"
                                     },
                                     "external_host_url": {
+                                        "type": "keyword"
+                                    },
+                                    "external_source": {
                                         "type": "keyword"
                                     },
                                     "externally_hosted": {
@@ -2512,6 +2515,9 @@
                                 "type": "keyword"
                             },
                             "external_host_url": {
+                                "type": "keyword"
+                            },
+                            "external_source": {
                                 "type": "keyword"
                             },
                             "externally_hosted": {
