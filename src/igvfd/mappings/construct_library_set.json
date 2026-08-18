@@ -1,6 +1,6 @@
 {
-    "hash": "f070555e1ccf9696a3bd4fd5181c9501",
-    "index_name": "construct_library_set_f070555e",
+    "hash": "777d6d6d7a1ae3e0dc3b1efc0e08f16d",
+    "index_name": "construct_library_set_777d6d6d",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -431,9 +431,6 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
-                            "demultiplexed_samples": {
-                                "type": "keyword"
-                            },
                             "description": {
                                 "type": "text"
                             },
@@ -657,6 +654,9 @@
                                 "type": "date"
                             },
                             "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "subset_samples": {
                                 "type": "keyword"
                             },
                             "summary": {
@@ -831,9 +831,6 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
-                            "demultiplexed_samples": {
-                                "type": "keyword"
-                            },
                             "description": {
                                 "type": "text"
                             },
@@ -1057,6 +1054,9 @@
                                 "type": "date"
                             },
                             "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "subset_samples": {
                                 "type": "keyword"
                             },
                             "summary": {

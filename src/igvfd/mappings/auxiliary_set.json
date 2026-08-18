@@ -1,6 +1,6 @@
 {
-    "hash": "3bed7ab8e7ad4cc89fe9d89fb82f3a34",
-    "index_name": "auxiliary_set_3bed7ab8",
+    "hash": "59b8dd71956ed8d98dd6ffad52f9700c",
+    "index_name": "auxiliary_set_59b8dd71",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -477,9 +477,6 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
-                                "type": "keyword"
-                            },
-                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -1042,6 +1039,9 @@
                             "submitter_comment": {
                                 "type": "keyword"
                             },
+                            "subset_samples": {
+                                "type": "keyword"
+                            },
                             "summary": {
                                 "type": "keyword"
                             },
@@ -1212,9 +1212,6 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
-                                "type": "keyword"
-                            },
-                            "demultiplexed_samples": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -1440,6 +1437,9 @@
                                 "type": "date"
                             },
                             "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "subset_samples": {
                                 "type": "keyword"
                             },
                             "summary": {
@@ -2360,9 +2360,6 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
-                            "demultiplexed_samples": {
-                                "type": "keyword"
-                            },
                             "description": {
                                 "type": "text"
                             },
@@ -2586,6 +2583,9 @@
                                 "type": "date"
                             },
                             "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "subset_samples": {
                                 "type": "keyword"
                             },
                             "summary": {
