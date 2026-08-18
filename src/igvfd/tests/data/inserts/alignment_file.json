@@ -184,6 +184,9 @@
         "controlled_access": false,
         "base_modifications": [
             "m6A"
+        ],
+        "dbxrefs": [
+            "ENCODE:ENCFF000AAJ"
         ]
     }
 ]

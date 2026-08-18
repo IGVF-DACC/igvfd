@@ -452,6 +452,9 @@
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
+        ],
+        "dbxrefs": [
+            "ENCODE:ENCFF000AAD"
         ]
     }
 ]

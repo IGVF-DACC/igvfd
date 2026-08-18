@@ -173,8 +173,8 @@
                 "pattern": "^(Kipoi):.+$"
             },
             "submissionExample": {
-                "appscript": "[\"Kipoi:Basset\"]",
-                "igvf_utils": "Kipoi:Basset"
+                "appscript": "[\"Kipoi:Basset\", \"ENCODE:ENCFF000AAA\"]",
+                "igvf_utils": "Kipoi:Basset, ENCODE:ENCFF000AAA"
             }
         }
     },

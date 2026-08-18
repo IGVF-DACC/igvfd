@@ -127,9 +127,6 @@
                 "igvf_utils": "yaml"
             }
         },
-        "dbxrefs": {
-            "comment": "This file type currently does not support any external resource submission."
-        },
         "seqspec_of": {
             "title": "Seqspec Of",
             "description": "Sequence files this file is a seqspec of.",

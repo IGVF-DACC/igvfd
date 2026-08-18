@@ -193,6 +193,9 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "strand_specificity": "unstranded"
+        "strand_specificity": "unstranded",
+        "dbxrefs": [
+            "ENCODE:ENCFF000AAH"
+        ]
     }
 ]

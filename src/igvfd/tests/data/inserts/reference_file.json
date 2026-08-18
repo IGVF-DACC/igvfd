@@ -576,6 +576,9 @@
         "file_size": 1235445,
         "upload_status": "validated",
         "release_timestamp": "2026-03-01T12:34:56Z",
-        "status": "released"
+        "status": "released",
+        "dbxrefs": [
+            "ENCODE:ENCFF000AAG"
+        ]
     }
 ]

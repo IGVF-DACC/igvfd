@@ -136,6 +136,9 @@
         "release_timestamp": "2024-05-14T12:34:56Z",
         "file_set": "j-michael-cherry:barcodes_curated_set",
         "externally_hosted": false,
-        "submitted_file_name": "/Users/igvf/igvf_files/model_file_zip_file.zip"
+        "submitted_file_name": "/Users/igvf/igvf_files/model_file_zip_file.zip",
+        "dbxrefs": [
+            "ENCODE:ENCFF000AAE"
+        ]
     }
 ]
