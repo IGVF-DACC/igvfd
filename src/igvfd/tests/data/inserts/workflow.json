@@ -49,6 +49,9 @@
         "uniform_pipeline": false,
         "collections": [
             "VarChAMP"
+        ],
+        "preferred_assay_titles": [
+            "in vivo scMPRA"
         ]
     },
     {

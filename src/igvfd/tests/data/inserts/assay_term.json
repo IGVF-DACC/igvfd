@@ -21,6 +21,7 @@
         "preferred_assay_titles": [
             "MPRA",
             "in vivo MPRA",
+            "in vivo scMPRA",
             "Parse SPLiT-seq"
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
