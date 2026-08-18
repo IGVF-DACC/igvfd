@@ -579,11 +579,11 @@
         "status": "released"
     },
     {
-        "uuid": "b8c4d2e1-7a3f-4c91-9e5b-2d6f8a1c4b70",
+        "uuid": "11d41eff-eaad-4683-9807-ac8329321aa8",
         "accession": "IGVFFI0001GC34",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "md5sum": "d4e8a1c9b2f73560e8d1a4c7b9f26350",
+        "md5sum": "0b13d37b6802e408ae241616eb7d9549",
         "file_format": "gtf",
         "content_type": "transcriptome reference",
         "file_format_specifications": [
