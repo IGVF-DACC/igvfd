@@ -96,7 +96,8 @@
             "detected tissue",
             "low resolution tissue",
             "high resolution tissue",
-            "fiducial alignment"
+            "fiducial alignment",
+            "sequence motifs"
         ]
     },
     {
@@ -153,7 +154,8 @@
         ],
         "output_content_types": [
             "variant effects",
-            "global differential expression per element"
+            "global differential expression per element",
+            "signal profile"
         ]
     },
     {
@@ -257,7 +259,8 @@
             "calibrated coding variant effects",
             "protein-protein interaction edge-perturbation score",
             "protein-protein interaction edgotyping score",
-            "genes in pathway"
+            "genes in pathway",
+            "counts sequence contribution scores"
         ]
     },
     {

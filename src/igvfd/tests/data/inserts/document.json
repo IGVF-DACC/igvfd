@@ -343,5 +343,31 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "31f921cd-2a30-4306-a177-7afc2fad87cc"
+    },
+    {
+        "aliases": [
+            "igvf:sequence_motifs_report"
+        ],
+        "description": "ChromBPNet sequence motifs report",
+        "attachment": "donor_characteristics.pdf",
+        "document_type": "sequence motifs report",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "31f921cd-059d-5678-c61a-7afc2fad30d9"
+    },
+    {
+        "aliases": [
+            "igvf:computational_model_performance"
+        ],
+        "description": "ChromBPNet computational model performance",
+        "attachment": "donor_characteristics.pdf",
+        "document_type": "computational model performance",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "99bc21cd-26a9-1c68-8e34-7afc2fad87cc"
     }
 ]

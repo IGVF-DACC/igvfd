@@ -194,5 +194,91 @@
             "IGVFFI0001GNRF"
         ],
         "strand_specificity": "unstranded"
+    },
+    {
+        "uuid": "6fe8f07e-1700-4220-bb28-fff4cc5f210d",
+        "accession": "IGVFFI5000CSCS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:counts_sequence_contribution_scores"
+        ],
+        "status": "in progress",
+        "md5sum": "1a1742c30054a6262b10d905cab41543",
+        "file_format": "bigWig",
+        "content_type": "counts sequence contribution scores",
+        "submitted_file_name": "/Users/igvf/igvf_files/counts_sequence_contribution_scores.bigwig",
+        "file_size": 49875235,
+        "upload_status": "validated",
+        "file_set": "igvf:prediction_set_7",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "strand_specificity": "unstranded"
+    },
+    {
+        "uuid": "6fe8f07e-c30d-2a13-05c3-fff4cc5f210d",
+        "accession": "IGVFFI0099PSCS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:profile_sequence_contribution_scores"
+        ],
+        "status": "in progress",
+        "md5sum": "57df77fe9fd195be9af5b24763146259",
+        "file_format": "bigWig",
+        "content_type": "profile sequence contribution scores",
+        "submitted_file_name": "/Users/igvf/igvf_files/profile_sequence_contribution_scores.bigwig",
+        "file_size": 49875235,
+        "upload_status": "validated",
+        "file_set": "igvf:prediction_set_7",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "strand_specificity": "unstranded"
+    },
+    {
+        "uuid": "6fe8f07e-b141-9bcf-bb28-fff4cc5f210d",
+        "accession": "IGVFFI9944SIPR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:signal_profile"
+        ],
+        "status": "in progress",
+        "md5sum": "f56289b5599bc78421c30dee02e2c77d",
+        "file_format": "bigWig",
+        "content_type": "signal profile",
+        "submitted_file_name": "/Users/igvf/igvf_files/signal_profile.bigwig",
+        "filtered": true,
+        "normalized": true,
+        "file_size": 49875235,
+        "upload_status": "validated",
+        "file_set": "igvf:prediction_set_7",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "strand_specificity": "unstranded"
+    },
+    {
+        "uuid": "6fe8f07e-8d27-83f0-bb28-fff4cc5f210d",
+        "accession": "IGVFFI0033BCSP",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:bias_corrected_signal_profile"
+        ],
+        "status": "in progress",
+        "md5sum": "5350d48dc9a5b4797acdd250b82f770b",
+        "file_format": "bigWig",
+        "content_type": "bias-corrected signal profile",
+        "submitted_file_name": "/Users/igvf/igvf_files/bias_corrected_signal_profile.bigwig",
+        "file_size": 49875235,
+        "upload_status": "validated",
+        "file_set": "igvf:prediction_set_7",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "strand_specificity": "unstranded"
     }
 ]

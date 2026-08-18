@@ -2234,11 +2234,111 @@
         "file_format": "tsv",
         "content_type": "pseudobulk barcode list",
         "submitted_file_name": "/Users/igvf/igvf_files/pseudobulk_barcode_list.tsv.gz",
+        "file_set": "igvf:basic_analysis_set",
         "file_size": 4200,
         "upload_status": "validated",
         "status": "released",
         "release_timestamp": "2026-07-31T12:34:56Z",
-        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "a2d47d35-bb01-452b-bdde-6d9f5c49362d",
+        "accession": "IGVFFI0030SRPS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_selected_regions"
+        ],
+        "md5sum": "02e2c72830dee79b5599bcf5678421cd",
+        "file_format": "bed",
+        "file_format_type": "bed3",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "content_type": "selected regions for predicted signal and sequence contribution scores",
+        "submitted_file_name": "/Users/igvf/igvf_files/selected_regions.bed.gz",
+        "file_size": 5000,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2026-07-31T12:34:56Z",
+        "file_set": "igvf:prediction_set_7",
+        "controlled_access": false
+    },
+    {
+        "uuid": "f5b27d35-5b24-452b-bdde-6d9f5c49362d",
+        "accession": "IGVFFI0032TTRE",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_training_and_test_regions"
+        ],
+        "md5sum": "db4b9502a134a2d4c96226a9c61a1250",
+        "file_format": "tar",
+        "content_type": "training and test regions",
+        "submitted_file_name": "/Users/igvf/igvf_files/training_and_test_regions.tar.gz",
+        "file_size": 4200,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2026-07-31T12:34:56Z",
+        "file_set": "igvf:prediction_set_7",
+        "controlled_access": false
+    },
+    {
+        "uuid": "02e27d35-c61a-452b-bdde-6d9f5c49362d",
+        "accession": "IGVFFI0033CPEM",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_counts_performance_metrics"
+        ],
+        "md5sum": "95be97fe9fd16af5b247631457df7259",
+        "file_format": "tsv",
+        "content_type": "counts performance metrics",
+        "submitted_file_name": "/Users/igvf/igvf_files/counts_performance_metrics.tsv.gz",
+        "file_size": 8000,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2026-07-31T12:34:56Z",
+        "file_set": "igvf:prediction_set_7",
+        "controlled_access": false
+    },
+    {
+        "uuid": "95027d35-db4b-452b-bdde-6d9f5c49362d",
+        "accession": "IGVFFI0034PPEM",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_profile_performance_metrics"
+        ],
+        "md5sum": "ab141541a170054a6262b42c30d905c3",
+        "file_format": "tsv",
+        "content_type": "profile performance metrics",
+        "submitted_file_name": "/Users/igvf/igvf_files/profile_performance_metrics.tsv.gz",
+        "file_size": 8000,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2026-07-31T12:34:56Z",
+        "file_set": "igvf:prediction_set_7",
+        "controlled_access": false
+    },
+    {
+        "uuid": "9bcf2b21-30de-4af7-8cee-831d0a7f7285",
+        "accession": "IGVFFI3355SEMI",
+        "lab": "igvf-dacc-processing-pipeline",
+        "award": "HG012012",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "79b55830dee99bcf5678421cd02e2c72",
+        "file_format": "bed",
+        "file_format_type": "bed6+",
+        "content_type": "sequence motifs instances",
+        "submitted_file_name": "/Users/igvf/igvf_files/sequence_motifs_instances.bed.gz",
+        "file_size": 5200010,
+        "upload_status": "validated",
+        "file_set": "igvf:prediction_set_7",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
         "controlled_access": false
     }
 ]
