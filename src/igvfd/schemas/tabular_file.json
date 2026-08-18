@@ -220,6 +220,7 @@
                                 "reporter genomic element effects",
                                 "reporter genomic variant effects",
                                 "reporter variants",
+                                "sequence motifs instances",
                                 "spliceQTL",
                                 "target transcripts",
                                 "topologically associating domains",
