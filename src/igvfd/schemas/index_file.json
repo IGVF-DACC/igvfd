@@ -139,6 +139,9 @@
                 "igvf_utils": "bai"
             }
         },
+        "dbxrefs": {
+            "comment": "This file type currently does not support any external resource submission."
+        },
         "derived_from": {
             "maxItems": 1
         }

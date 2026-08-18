@@ -96,6 +96,9 @@
             },
             "comment": "This file type should not be gzipped as jpg and png are already compressed file formats."
         },
+        "dbxrefs": {
+            "comment": "This file type currently does not support any external resource submission."
+        },
         "imaging_platform": {
             "title": "Imaging Platform",
             "description": "The measurement device used to produce imaging data.",

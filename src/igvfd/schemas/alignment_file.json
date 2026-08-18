@@ -155,6 +155,9 @@
                 "appscript": false,
                 "igvf_utils": false
             }
+        },
+        "dbxrefs": {
+            "comment": "This file type currently does not support any external resource submission."
         }
     },
     "fuzzy_searchable_fields": [

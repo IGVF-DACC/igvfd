@@ -170,11 +170,11 @@
                 "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF file objects.",
                 "type": "string",
                 "minItems": 1,
-                "pattern": "^(Kipoi:.+|ENCODE:ENCFF\\d{3}[A-Z]{3})$"
+                "pattern": "^(Kipoi):.+$"
             },
             "submissionExample": {
-                "appscript": "[\"Kipoi:Basset\", \"ENCODE:ENCFF000AAA\"]",
-                "igvf_utils": "Kipoi:Basset, ENCODE:ENCFF000AAA"
+                "appscript": "[\"Kipoi:Basset\"]",
+                "igvf_utils": "Kipoi:Basset"
             }
         }
     },

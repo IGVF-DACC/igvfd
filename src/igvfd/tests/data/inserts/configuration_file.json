@@ -55,9 +55,6 @@
         "submitted_file_name": "/Users/igvf/igvf_files/model_parameters.tsv",
         "file_size": 200,
         "upload_status": "validated",
-        "file_set": "igvf:model_set_SEMpl",
-        "dbxrefs": [
-            "ENCODE:ENCFF000AAB"
-        ]
+        "file_set": "igvf:model_set_SEMpl"
     }
 ]
