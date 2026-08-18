@@ -92,6 +92,7 @@
         "catalog_adapters": [
             "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/motif_adapter.py"
         ],
+        "external_source": "HOCOMOCO",
         "content_type": "motifs",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"

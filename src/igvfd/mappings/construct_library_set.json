@@ -1,6 +1,6 @@
 {
-    "hash": "777d6d6d7a1ae3e0dc3b1efc0e08f16d",
-    "index_name": "construct_library_set_777d6d6d",
+    "hash": "3e2705a9eda542941d8a34ff055231b9",
+    "index_name": "construct_library_set_3e2705a9",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1402,6 +1402,9 @@
                             "external_host_url": {
                                 "type": "keyword"
                             },
+                            "external_source": {
+                                "type": "keyword"
+                            },
                             "externally_hosted": {
                                 "store": true,
                                 "type": "boolean"
@@ -1718,6 +1721,9 @@
                             "external_host_url": {
                                 "type": "keyword"
                             },
+                            "external_source": {
+                                "type": "keyword"
+                            },
                             "externally_hosted": {
                                 "store": true,
                                 "type": "boolean"
@@ -2015,6 +2021,9 @@
                             "external_host_url": {
                                 "type": "keyword"
                             },
+                            "external_source": {
+                                "type": "keyword"
+                            },
                             "externally_hosted": {
                                 "store": true,
                                 "type": "boolean"
@@ -2248,6 +2257,9 @@
                             "external_host_url": {
                                 "type": "keyword"
                             },
+                            "external_source": {
+                                "type": "keyword"
+                            },
                             "externally_hosted": {
                                 "store": true,
                                 "type": "boolean"
@@ -2479,6 +2491,9 @@
                                 "type": "keyword"
                             },
                             "external_host_url": {
+                                "type": "keyword"
+                            },
+                            "external_source": {
                                 "type": "keyword"
                             },
                             "externally_hosted": {

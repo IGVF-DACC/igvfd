@@ -308,6 +308,58 @@
                 "TopLD": "A database of linkage disequilibrium information across human populations."
             }
         },
+        "external_source": {
+            "title": "External Source",
+            "description": "The external, non-IGVF source of the data in this file.",
+            "type": "string",
+            "permission": "admin_only",
+            "comment": "Do not submit. This is set by admins for data loading in the IGVF catalog",
+            "enum": [
+                "ADASTRA",
+                "AFGR",
+                "BAO",
+                "BioGRID; IntAct",
+                "Cellosaurus",
+                "CHEBI",
+                "CL",
+                "CLO",
+                "COXPRESdb",
+                "dbNSFP",
+                "DepMap",
+                "DOID",
+                "EBI",
+                "EFO",
+                "ENCODE",
+                "FAVOR",
+                "FUNCODE",
+                "GenCC",
+                "GENCODE",
+                "GO",
+                "GVATdb",
+                "HOCOMOCO",
+                "HPO",
+                "MGI",
+                "MONDO",
+                "MOUSE GENOMES PROJECT",
+                "NCIT",
+                "OBA",
+                "OBI",
+                "Oncotree",
+                "OpenTargets",
+                "Orphanet",
+                "PCL",
+                "pharmGKB",
+                "Reactome",
+                "TopLD",
+                "UBERON",
+                "UKB",
+                "VARIO"
+            ],
+            "submissionExample": {
+                "appscript": "ADASTRA",
+                "igvf_utils": "ADASTRA"
+            }
+        },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "oneOf": [

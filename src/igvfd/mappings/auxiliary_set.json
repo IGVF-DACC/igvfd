@@ -1,6 +1,6 @@
 {
-    "hash": "59b8dd71956ed8d98dd6ffad52f9700c",
-    "index_name": "auxiliary_set_59b8dd71",
+    "hash": "bc0ae37c862864f72143b94680811f18",
+    "index_name": "auxiliary_set_bc0ae37c",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -629,6 +629,9 @@
                                         "type": "keyword"
                                     },
                                     "external_host_url": {
+                                        "type": "keyword"
+                                    },
+                                    "external_source": {
                                         "type": "keyword"
                                     },
                                     "externally_hosted": {
@@ -1785,6 +1788,9 @@
                                 "type": "keyword"
                             },
                             "external_host_url": {
+                                "type": "keyword"
+                            },
+                            "external_source": {
                                 "type": "keyword"
                             },
                             "externally_hosted": {

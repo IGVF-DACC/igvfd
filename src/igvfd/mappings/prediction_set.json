@@ -1,6 +1,6 @@
 {
-    "hash": "c25474b6fb8e1b073496ea35ac7250c1",
-    "index_name": "prediction_set_c25474b6",
+    "hash": "7016421dfdff826905d1ca421db99893",
+    "index_name": "prediction_set_7016421d",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -906,6 +906,9 @@
                                         "type": "keyword"
                                     },
                                     "external_host_url": {
+                                        "type": "keyword"
+                                    },
+                                    "external_source": {
                                         "type": "keyword"
                                     },
                                     "externally_hosted": {
@@ -2060,6 +2063,9 @@
                             "external_host_url": {
                                 "type": "keyword"
                             },
+                            "external_source": {
+                                "type": "keyword"
+                            },
                             "externally_hosted": {
                                 "store": true,
                                 "type": "boolean"
@@ -2696,6 +2702,9 @@
                             "external_host_url": {
                                 "type": "keyword"
                             },
+                            "external_source": {
+                                "type": "keyword"
+                            },
                             "externally_hosted": {
                                 "store": true,
                                 "type": "boolean"
@@ -2927,6 +2936,9 @@
                                 "type": "keyword"
                             },
                             "external_host_url": {
+                                "type": "keyword"
+                            },
+                            "external_source": {
                                 "type": "keyword"
                             },
                             "externally_hosted": {
