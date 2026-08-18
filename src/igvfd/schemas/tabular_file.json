@@ -689,6 +689,9 @@
                 "appscript": "GENCODE 40",
                 "igvf_utils": "GENCODE 40"
             }
+        },
+        "dbxrefs": {
+            "comment": "This file type currently does not support any external resource submission."
         }
     },
     "fuzzy_searchable_fields": [
