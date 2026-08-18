@@ -2338,6 +2338,7 @@
         "file_set": "igvf:prediction_set_7",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ]
+        ],
+        "controlled_access": false
     }
 ]
