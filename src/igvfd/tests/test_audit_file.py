@@ -234,6 +234,23 @@ def test_audit_file_mixed_assembly_transcriptome_annotation(testapp, matrix_file
         for audit in res.json['audit'].get('NOT_COMPLIANT', {})
     )
     testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'content_type': 'allele specific cell by gene matrix'
+        }
+    )
+    res = testapp.get(matrix_file['@id'] + '@@audit')
+    assert all(
+        audit['category'] != 'mixed assembly'
+        for audit in res.json['audit'].get('NOT_COMPLIANT', {})
+    )
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'content_type': 'cell by gene matrix'
+        }
+    )
+    testapp.patch_json(
         reference_file_with_transcriptome['@id'],
         {
             'content_type': 'transcriptome reference'
