@@ -2,7 +2,6 @@
 
 ### Minor changes since schema version 2
 
-* Extend `transcriptome_annotation` enum list to include `GENCODE 34`.
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`.
 * Extend `catalog_collections` enum list to include `genomic_elements_phenotypes`.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.
