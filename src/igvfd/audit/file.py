@@ -212,7 +212,7 @@ def audit_file_mixed_assembly_transcriptome_annotation(value, system):
         )
         yield AuditFailure(audit_message_mixed_annotation.get('audit_category', ''), f'{detail} {audit_message_mixed_annotation.get("audit_description", "")}', level=audit_message_mixed_annotation.get('audit_level', ''))
 
-    if value.get('assembly', '') == 'Mixed genome assemblies':
+    if value.get('assembly', '') == 'Mixed genome assemblies' and value.get('content_type', '') != 'allele specific cell by gene matrix':
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has mixed assemblies.'
