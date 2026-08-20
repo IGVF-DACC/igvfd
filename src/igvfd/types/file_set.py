@@ -245,7 +245,7 @@ def get_preferred_assay_slims(request, preferred_assay_titles, assay_terms=None)
         'scMultiome-NT-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
         'Parse SPLiT-seq': ['gene expression', 'single cell'],
         'ATAC-seq': ['chromatin accessibility'],
-        'varACCESS': ['chromatin accessibility'],
+        'varACCESS': ['chromatin accessibility', 'reporter assay'],
         'ACCESS-ATAC': ['chromatin accessibility'],
         'scACCESS-ATAC': ['chromatin accessibility'],
         'snATAC-seq': ['chromatin accessibility', 'single cell'],
