@@ -1,6 +1,6 @@
 {
-    "hash": "e1a7d83b1c2eba6688bb3db2596952b5",
-    "index_name": "starr_seq_quality_metric_e1a7d83b",
+    "hash": "ec4c4f3c3dc62325189c347aaa2857ae",
+    "index_name": "starr_seq_quality_metric_ec4c4f3c",
     "item_type": "starr_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
