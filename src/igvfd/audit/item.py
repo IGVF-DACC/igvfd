@@ -89,12 +89,17 @@ def audit_item_status(value, system):
             continue
         if linked_value['status'] == 'disabled':
             continue
+        # Status level logics and penalties
         linked_level = STATUS_HIERARCHY.get(linked_value['status'], 50)
         if linked_value['status'] in ['archived']:
             linked_level += 30
         if linked_value['status'] in ['deleted']:
             linked_level += 100
-        if linked_level < level:
+        # Matching status: no audit
+        if linked_level == level:
+            continue
+        # If linked item is behind on status: audit failure
+        elif linked_level < level:
             detail = ('{} {} {} has {} subobject {} {}.'.format(
                 value['status'].capitalize(),
                 space_in_words(value['@type'][0]).lower(),
@@ -105,6 +110,19 @@ def audit_item_status(value, system):
             )
             )
             yield AuditFailure('mismatched status', detail, level='INTERNAL_ACTION')
+        # If linked item is ahead on status and is a FileSet: audit failure
+        else:
+            if 'File' in value['@type'] and 'FileSet' in linked_value['@type']:
+                detail = ('{} {} {} has {} subobject {} {} which is ahead in status.'.format(
+                    value['status'].capitalize(),
+                    space_in_words(value['@type'][0]).lower(),
+                    audit_link(path_to_text(value['@id']), value['@id']),
+                    linked_value['status'],
+                    space_in_words(linked_value['@type'][0]).lower(),
+                    audit_link(path_to_text(linked_value['@id']), linked_value['@id'])
+                )
+                )
+                yield AuditFailure('mismatched status', detail, level='INTERNAL_ACTION')
 
 
 @audit_checker('File', frame='object')
