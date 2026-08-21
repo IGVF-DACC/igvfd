@@ -168,6 +168,8 @@ def audit_file_mixed_assembly_transcriptome_annotation(value, system):
             'GENCODE 24',
             'GENCODE 28',
             'GENCODE 32',
+            'GENCODE 34',
+            'GENCODE 38',
             'GENCODE 40',
             'GENCODE 41',
             'GENCODE 42',

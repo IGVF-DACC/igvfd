@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `transcriptome_annotation` enum list to include `GENCODE 34`. (08/26/2026)
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`. (08/19/2026)
 * Extend `preferred_assay_titles` enum list to include `Parse TAP-seq`. (07/22/2026)
 * Extend `catalog_collections` enum list to include `genomic_elements_phenotypes`. (07/22/2026)

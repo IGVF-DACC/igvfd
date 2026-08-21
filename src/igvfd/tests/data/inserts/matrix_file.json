@@ -471,5 +471,26 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ]
+    },
+    {
+        "uuid": "c4a8f2e6-1d39-4b7c-a5e0-9f8d2c1b6a70",
+        "accession": "IGVFFI8811GPGM",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_cell_by_gene_peak_guide_matrix"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "e91c4b7a2d5f0836c1a8e4d9b7f26350",
+        "file_format": "h5ad",
+        "content_type": "cell by gene and peak and guide matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/cell_by_gene_peak_guide_matrix.h5ad",
+        "file_size": 45200010,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ]
     }
 ]
