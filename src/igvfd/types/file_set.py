@@ -1333,6 +1333,219 @@ class AnalysisSet(FileSet):
     @calculated_property(
         condition='samples',
         schema={
+            'title': 'Simplified Sample Summary for Matrix',
+            'description': 'A summary of the samples associated with input file sets of this analysis set.',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def sample_summary_matrix(self, request, samples=None, donors=None, construct_library_sets=None, collections=None):
+        corces_special_collection = 'PD single cell multiomics'
+        sample_classification_term_target = dict()
+        differentiation_times = set()
+        disease_states_by_classification = {}
+        biosample_qualifiers = set()
+
+        # Is it PD collection
+        if collections:
+            is_pd_collection = any(collection for collection in collections
+                                   if collection == corces_special_collection)
+        else:
+            is_pd_collection = False
+
+        two_classification_cases = {
+            'differentiated cell specimen, pooled cell specimen': ['pooled differentiated cell specimen'],
+            'pooled cell specimen, reprogrammed cell specimen': ['pooled reprogrammed cell specimen'],
+            'cell line, pooled cell specimen': ['pooled cell specimen']
+        }
+
+        classification_to_prefix = {
+            'differentiated cell specimen': 'differentiated',
+            'reprogrammed cell specimen': 'reprogrammed',
+            'pooled differentiated cell specimen': 'pooled differentiated',
+            'pooled reprogrammed cell specimen': 'pooled reprogrammed'
+        }
+
+        for sample in samples:
+            sample_object = request.embed(sample, '@@object')
+
+            # Get bioqualifers enums for non-multiplexed samples
+            biosample_qualifiers.update(sample_object.get('biosample_qualifiers', []))
+
+            # Group sample and targeted sample terms according to classification.
+            # Other metadata such as treatment info are lumped together.
+            mux_prefix = ''
+            sample_classifications = sorted(sample_object['classifications'])
+            if 'multiplexed sample' in sample_object['classifications']:
+                sample_classifications.remove('multiplexed sample')
+                mux_prefix = 'multiplexed sample of '
+            if ', '.join(sorted(sample_classifications)) in two_classification_cases:
+                sample_classifications = two_classification_cases[', '.join(sorted(sample_classifications))]
+            # The variable "classification" can potentially be very long for
+            # a Multiplexed Sample, but it will be entirely dropped for
+            # Multiplexed Sample in the end - so it is ok.
+            classification = f"{mux_prefix}{' and '.join(sample_classifications)}"
+            if classification not in sample_classification_term_target:
+                sample_classification_term_target[classification] = set()
+
+            # Add disease terms to the sample phrase
+            disease_phrase = ''
+            disease_terms_by_sample_term = {}
+            if sample_object.get('multiplexed_samples'):
+                for multiplexed_sample in sample_object['multiplexed_samples']:
+                    multiplexed_sample_object = request.embed(
+                        multiplexed_sample, '@@object?skip_calculated=true'
+                    )
+                    diseased_phenotypic_features = get_disease_terms_from_phenotypic_features(
+                        request, multiplexed_sample_object, is_pd_collection
+                    )
+                    if not diseased_phenotypic_features:
+                        continue
+                    if is_pd_collection:
+                        disease_states_by_classification.setdefault(classification, set()).add(
+                            diseased_phenotypic_features
+                        )
+                    for sample_term in multiplexed_sample_object.get('sample_terms', []):
+                        sample_term_object = request.embed(sample_term, '@@object?skip_calculated=true')
+                        term_name = sample_term_object.get('term_name')
+                        if not term_name:
+                            continue
+                        if term_name not in disease_terms_by_sample_term:
+                            disease_terms_by_sample_term[term_name] = set()
+                        disease_terms_by_sample_term[term_name].add(diseased_phenotypic_features)
+            else:
+                diseased_phenotypic_features = get_disease_terms_from_phenotypic_features(
+                    request, sample_object, is_pd_collection)
+                if diseased_phenotypic_features:
+                    if is_pd_collection:
+                        disease_states_by_classification.setdefault(classification, set()).add(
+                            diseased_phenotypic_features
+                        )
+                    disease_phrase = f' with {diseased_phenotypic_features}'
+
+            # Compute sample term and targeted sample terms, with diseases added
+            for term in sample_object['sample_terms']:
+                sample_term_object = request.embed(term, '@@object?skip_calculated=true')
+                sample_phrase = f"{sample_term_object['term_name']}"
+                # Avoid redundancy of classification and term name
+                # e.g. "HFF-1 cell cell line"
+                if not classification.startswith('multiplexed sample of'):
+                    if sample_phrase.endswith('cell') and 'cell' in classification:
+                        sample_phrase = sample_phrase.replace('cell', classification)
+                    elif sample_phrase.endswith(' gastruloid') and 'gastruloid' in classification:
+                        sample_phrase = sample_phrase.replace(' gastruloid', '')
+                    elif 'cell' in sample_phrase and classification in classification_to_prefix:
+                        sample_phrase = f'{classification_to_prefix[classification]} {sample_phrase}'
+
+                targeted_sample_suffix = ''
+                if 'targeted_sample_term' in sample_object:
+                    targeted_sample_term_object = request.embed(
+                        sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
+                    targeted_sample_suffix = f"induced to {targeted_sample_term_object['term_name']}"
+
+                term_disease_phrase = ''
+                if sample_object.get('multiplexed_samples'):
+                    sample_term_diseases = sorted(
+                        disease_terms_by_sample_term.get(sample_term_object.get('term_name'), set())
+                    )
+                    if sample_term_diseases:
+                        term_disease_phrase = f' with {join_multiple_terms(sample_term_diseases)}'
+                else:
+                    term_disease_phrase = disease_phrase
+
+                if targeted_sample_suffix:
+                    sample_phrase = f'{sample_phrase}{term_disease_phrase} {targeted_sample_suffix}'
+                else:
+                    sample_phrase = f'{sample_phrase}{term_disease_phrase}'
+                sample_classification_term_target[classification].add(sample_phrase)
+
+            if 'time_post_change' in sample_object:
+                time = sample_object['time_post_change']
+                time_unit = sample_object['time_post_change_units']
+                differentiation_times.add(f'{time} {time_unit}')
+
+        all_sample_terms = []
+        for classification in sorted(sample_classification_term_target.keys()):
+            terms_by_classification = ', '.join(
+                sorted(merge_induced_to_terms(sample_classification_term_target[classification]))
+            )
+            # Special handling for PD collection
+            terms_by_classification = collapse_pd_multiplexed_disease_terms(
+                terms_by_classification,
+                classification,
+                disease_states_by_classification,
+                is_pd_collection
+            )
+            # Put the terms after the "multiplexed sample of" and drop
+            # the underlying classifications
+            if 'multiplexed sample of' in classification:
+                terms_by_classification = f'multiplexed sample of {terms_by_classification}'
+            # Append classification only when it is not already present in the
+            # formatted terms string.
+            elif classification not in terms_by_classification:
+                # Insert the classification before disease name(s) and targeted_sample_term if exist.
+                # The structure is classification + (disease names) + (targeted_sample_term).
+                if 'induced to' in terms_by_classification:
+                    if ' with ' in terms_by_classification:
+                        terms_by_classification = terms_by_classification.replace(
+                            ' with ', f' {classification} with ', 1
+                        )
+                    else:
+                        terms_by_classification = terms_by_classification.replace(
+                            'induced to', f'{classification} induced to'
+                        )
+                else:
+                    if ' with ' in terms_by_classification:
+                        terms_by_classification = terms_by_classification.replace(
+                            ' with ', f' {classification} with ', 1
+                        )
+                    else:
+                        terms_by_classification = f'{terms_by_classification} {classification}'
+            elif classification in terms_by_classification:
+                # Don't add anything when the classification was already in
+                # the terms_by_classification.
+                terms_by_classification = f'{terms_by_classification}'
+            # Failsafe case.
+            else:
+                terms_by_classification = f'{terms_by_classification} {classification}'
+
+            all_sample_terms.append(terms_by_classification)
+
+        # Target samples concatenation
+        all_sample_terms = merge_induced_to_terms(all_sample_terms)
+
+        # differentiation time phrase
+        differentiation_time_phrase = ''
+        if differentiation_times:
+            differentiation_times_sorted = sorted(differentiation_times, key=lambda s: float(s.split()[0]))
+            differentiation_time_phrase = f'at {", ".join(differentiation_times_sorted)}(s) post change'
+
+        # Biosample qualifiers
+        biosample_qualifiers_phrase = ''
+        if biosample_qualifiers:
+            biosample_qualifiers_phrase = ', '.join(sorted(biosample_qualifiers))
+
+        # Overexpression phrase
+        overexpression_phrase = ''
+        overexpression_phrase = get_oexpr_from_cls_for_samp_summary(request, construct_library_sets)
+
+        # Constructing the final summary, putting ovexpr last
+        summary = ' '.join(filter(None, [biosample_qualifiers_phrase, ', '.join(all_sample_terms),
+                           differentiation_time_phrase])).strip()
+
+        # Overexpression
+        if overexpression_phrase:
+            summary = f'{summary}, {overexpression_phrase}'
+
+        # If Corces PD collection
+        if is_pd_collection:
+            summary = f'Parkinson\'s collection of {summary}'
+
+        return summary
+
+    @calculated_property(
+        condition='samples',
+        schema={
             'title': 'Simplified Sample Summary',
             'description': 'A summary of the samples associated with input file sets of this analysis set.',
             'type': 'string',

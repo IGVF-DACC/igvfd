@@ -279,6 +279,9 @@ def analysis_set():
             'simplified_sample_summary': {
                 'title': 'Simplified Sample Summary'
             },
+            'sample_summary_matrix': {
+                'title': 'Simplified Sample Summary for Matrix'
+            },
             'summary': {
                 'title': 'Summary'
             },
@@ -347,3 +350,20 @@ def analysis_set_report_view():
         },
     }
     return config
+
+@search_config(
+    name='SingleCellProt'
+)
+def assay_summary():
+    return {
+        'matrix': {
+            'x': {
+                'group_by': 'preferred_assay_titles',
+                'label': 'Assays'
+            },
+            'y': {
+                'group_by': ['samples.sample_terms.term_name', "sample_summary_matrix"],
+                'label': 'Samples'
+            }
+        }
+    }
