@@ -126,7 +126,6 @@ def file():
             'file_set.samples.sample_terms.term_name': {
                 'title': 'Sample',
                 'description': 'Sample name associated with this file.',
-                'optional': True,
                 'category': 'Sample'
             },
             'file_set.samples.targeted_sample_term.term_name': {
