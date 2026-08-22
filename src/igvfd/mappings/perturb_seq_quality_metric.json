@@ -188,7 +188,7 @@
                         },
                         "type": "object"
                     },
-                    "avg_cells_per_target": {
+                    "avg_cells_per_guide": {
                         "store": true,
                         "type": "float"
                     },
@@ -274,7 +274,15 @@
                         "copy_to": "_fuzzy",
                         "type": "text"
                     },
-                    "guide_diversity": {
+                    "frac_cells_with_guide": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "genes_median": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "guide_umi_mean": {
                         "store": true,
                         "type": "float"
                     },
@@ -338,7 +346,11 @@
                         },
                         "type": "object"
                     },
-                    "mean_mitochondrial_reads": {
+                    "mean_percent_mitochondrial": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "mean_umis_per_barcode": {
                         "store": true,
                         "type": "float"
                     },
@@ -346,14 +358,38 @@
                         "store": true,
                         "type": "float"
                     },
+                    "n_cells_exactly_1_guide": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "n_cells_with_guide": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "n_targets": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "n_unique": {
+                        "store": true,
+                        "type": "float"
+                    },
                     "notes": {
                         "type": "text"
+                    },
+                    "p_unique": {
+                        "store": true,
+                        "type": "float"
                     },
                     "paired_reads_mapped": {
                         "store": true,
                         "type": "float"
                     },
-                    "pct_cells_assigned_guide": {
+                    "percentage_barcodes_on_onlist": {
+                        "store": true,
+                        "type": "float"
+                    },
+                    "percentage_reads_on_onlist": {
                         "store": true,
                         "type": "float"
                     },
@@ -465,7 +501,7 @@
                         "store": true,
                         "type": "float"
                     },
-                    "total_targets": {
+                    "umi_median": {
                         "store": true,
                         "type": "float"
                     },

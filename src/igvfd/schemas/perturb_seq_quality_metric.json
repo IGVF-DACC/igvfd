@@ -45,7 +45,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "total_cells_passing_filters": {
             "title": "Total Cells Passing Filters",
@@ -56,18 +56,18 @@
                 "igvf_utils": 8
             }
         },
-        "pct_cells_assigned_guide": {
-            "title": "Percent Cells Assigned Guide",
-            "description": "Percent Cells Assigned Guide",
+        "frac_cells_with_guide": {
+            "title": "Fraction Cells With Guide",
+            "description": "Fraction of cells with at least one assigned guide.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
                 "igvf_utils": 8
             }
         },
-        "avg_cells_per_target": {
-            "title": "Average Cells Per Target",
-            "description": "Average Cells Per Target",
+        "avg_cells_per_guide": {
+            "title": "Average Cells Per Guide",
+            "description": "Average number of cells assigned to each guide.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
@@ -101,31 +101,67 @@
                 "igvf_utils": 8
             }
         },
-        "total_targets": {
-            "title": "Total Targets",
-            "description": "Total Targets",
+        "umi_median": {
+            "title": "Median UMIs Per Cell",
+            "description": "Median total gene UMIs per cell after filtering.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
                 "igvf_utils": 8
             }
         },
-        "guide_diversity": {
-            "title": "Guide Diversity",
-            "description": "Guide diversity (Gini index)",
+        "genes_median": {
+            "title": "Median Genes Per Cell",
+            "description": "Median number of expressed genes per cell after filtering.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
                 "igvf_utils": 8
             }
         },
-        "mean_mitochondrial_reads": {
-            "title": "Mean Mitochondrial Reads",
-            "description": "Mean mitochondrial reads.",
+        "n_cells_with_guide": {
+            "title": "Number Of Cells With Guide",
+            "description": "Number of cells with at least one assigned guide.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
                 "igvf_utils": 8
+            }
+        },
+        "n_cells_exactly_1_guide": {
+            "title": "Number Of Cells With Exactly One Guide",
+            "description": "Number of cells with exactly one assigned guide.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "guide_umi_mean": {
+            "title": "Mean Guide UMIs Per Cell",
+            "description": "Mean total guide UMIs per cell after filtering.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "mean_percent_mitochondrial": {
+            "title": "Mean Percent Mitochondrial",
+            "description": "Mean percent mitochondrial UMIs per cell.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "n_targets": {
+            "title": "Number Of Target Sequences",
+            "description": "Total number of target sequences (e.g., transcripts) in the index.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 356673,
+                "igvf_utils": 356673
             }
         },
         "total_reads": {
@@ -158,6 +194,51 @@
         "total_detected_scrna_barcodes": {
             "title": "Total Detected scRNA Barcodes",
             "description": "Unfiltered total detected scRNA barcodes (numBarcodes) reported by Kallisto.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "n_unique": {
+            "title": "Number Of Reads Uniquely Pseudoaligned",
+            "description": "Number of reads that could be pseudoaligned to a unique target sequence.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 455501195,
+                "igvf_utils": 455501195
+            }
+        },
+        "p_unique": {
+            "title": "Percentage Of Reads Uniquely Pseudoaligned",
+            "description": "Percentage of reads that could be pseudoaligned to a unique target sequence.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 46.8,
+                "igvf_utils": 46.8
+            }
+        },
+        "percentage_barcodes_on_onlist": {
+            "title": "Percentage Of Barcodes On Onlist",
+            "description": "Percentage of cell barcodes matching an expected list of barcodes (onlist).",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "percentage_reads_on_onlist": {
+            "title": "Percentage Of Reads On Onlist",
+            "description": "Percentage of reads associated with barcodes on the onlist.",
+            "type": "number",
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
+        },
+        "mean_umis_per_barcode": {
+            "title": "Mean UMIs Per Barcode",
+            "description": "Mean number of UMIs per cell barcode.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
