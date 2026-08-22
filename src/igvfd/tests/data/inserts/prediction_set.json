@@ -170,5 +170,41 @@
         "input_file_sets": [
             "/model-sets/IGVFDS4321MODL/"
         ]
+    },
+    {
+        "aliases": [
+            "igvf:prediction_set_8"
+        ],
+        "accession": "IGVFDS8091CHAC",
+        "submitter_comment": "Comment for a prediction file set.",
+        "description": "Predicted chromatin accessibility signal genome-wide.",
+        "samples": [
+            "3de8faf0-7a25-11ed-a1eb-0242ac120002"
+        ],
+        "file_set_type": "chromatin accessibility",
+        "award": "1U01HG011952-01",
+        "lab": "alan-boyle",
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "uuid": "081e3ef1-6a1f-44f2-8d04-58c25c94bcd8",
+        "scope": "genome-wide"
+    },
+    {
+        "aliases": [
+            "igvf:prediction_set_9"
+        ],
+        "accession": "IGVFDS8092TFBD",
+        "submitter_comment": "Comment for a prediction file set.",
+        "description": "Predicted transcription factor binding sites genome-wide.",
+        "donors": [
+            "igvf:alias_human_donor1"
+        ],
+        "file_set_type": "TF binding",
+        "award": "1U01HG012064-01",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "uuid": "73fcb08f-9b1d-4094-b552-be00fdcda9f5",
+        "scope": "genome-wide"
     }
 ]

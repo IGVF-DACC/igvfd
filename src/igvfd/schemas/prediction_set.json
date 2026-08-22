@@ -258,14 +258,49 @@
         "file_set_type": {
             "description": "The category that best describes this prediction set.",
             "comment": "File set type describes the feature being predicted by the results in the prediction set.",
-            "enum": [
-                "activity level",
-                "binding effect",
-                "functional effect",
-                "protein-protein interaction",
-                "protein stability"
+            "oneOf": [
+                {
+                    "enum": [
+                        "chromatin accessibility",
+                        "coding variant effects",
+                        "coding variant effects on PPI",
+                        "coding variants pathogenicity",
+                        "disease associations",
+                        "element-gene links",
+                        "gene regulatory networks",
+                        "genetic constraint",
+                        "meta analysis",
+                        "non-coding variant effects",
+                        "spatial gene expression variability",
+                        "TF binding",
+                        "variant TF binding effects"
+                    ]
+                },
+                {
+                    "enum": [
+                        "activity level",
+                        "binding effect",
+                        "functional effect",
+                        "protein-protein interaction",
+                        "protein stability"
+                    ],
+                    "permission": "admin_only"
+                }
             ],
             "enum_descriptions": {
+                "chromatin accessibility": "Predicted chromatin accessibility signal and variant effects on it, including chromatin-accessibility QTLs (caQTLs).",
+                "coding variant effects": "Predicted molecular or functional consequences of coding variants on protein function.",
+                "coding variant effects on PPI": "Predicted effects of coding variants on protein-protein interactions.",
+                "coding variants pathogenicity": "Predicted pathogenicity classifications or scores for protein-coding variants.",
+                "disease associations": "Predicted associations between disease traits and genetic variants, genes, or gene programs, such as through colocalization of GWAS and eQTL signals, or perturbation-derived gene-program–disease links.",
+                "element-gene links": "Predicted links connecting candidate regulatory elements (e.g., enhancers) to their target genes.",
+                "gene regulatory networks": "Predicted networks of regulatory interactions between transcription factors/regulators and their target genes.",
+                "genetic constraint": "Predicted measures of how intolerant a genomic region or variant is to mutation/variation, reflecting purifying selection or reduced variant density (e.g., mutation rate, exon/domain constraint, constrained \"coldspot\" regions).",
+                "meta analysis": "Predicted, aggregated variant annotations combining results across multiple models or datasets.",
+                "non-coding variant effects": "Predicted functional impact of variants located in non-coding regulatory sequence (e.g., enhancer activity).",
+                "spatial gene expression variability": "Predicted variability in gene expression across spatial locations within a tissue.",
+                "TF binding": "Predicted transcription factor binding sites or motif instances across the genome.",
+                "variant TF binding effects": "Predicted changes in transcription factor binding affinity caused by a genetic variant.",
                 "activity level": "Predictive modeling of an input variable on activiy level.",
                 "binding effect": "Predictive modeling of an input variable on TF binding effect.",
                 "functional effect": "Predictive modeling of an input variable on functional effect.",
@@ -273,8 +308,8 @@
                 "protein stability": "Predictive modeling of an input variable on protein stability."
             },
             "submissionExample": {
-                "appscript": "protein stability",
-                "igvf_utils": "protein stability"
+                "appscript": "chromatin accessibility",
+                "igvf_utils": "chromatin accessibility"
             }
         },
         "scope": {

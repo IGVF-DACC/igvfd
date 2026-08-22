@@ -2,6 +2,24 @@
 
 ### Minor changes since schema version 9
 
+* Extend `file_set_type` enum list to include `chromatin accessibility`.
+* Extend `file_set_type` enum list to include `coding variant effects`.
+* Extend `file_set_type` enum list to include `coding variant effects on PPI`.
+* Extend `file_set_type` enum list to include `coding variants pathogenicity`.
+* Extend `file_set_type` enum list to include `disease associations`.
+* Extend `file_set_type` enum list to include `element-gene links`.
+* Extend `file_set_type` enum list to include `gene regulatory networks`.
+* Extend `file_set_type` enum list to include `genetic constraint`.
+* Extend `file_set_type` enum list to include `meta analysis`.
+* Extend `file_set_type` enum list to include `non-coding variant effects`.
+* Extend `file_set_type` enum list to include `spatial gene expression variability`.
+* Extend `file_set_type` enum list to include `TF binding`.
+* Extend `file_set_type` enum list to include `variant TF binding effects`.
+* Adjust `file_set_type` enum list to restrict usage of `activity level` to admin users.
+* Adjust `file_set_type` enum list to restrict usage of `binding effect` to admin users.
+* Adjust `file_set_type` enum list to restrict usage of `functional effect` to admin users.
+* Adjust `file_set_type` enum list to restrict usage of `protein-protein interaction` to admin users.
+* Adjust `file_set_type` enum list to restrict usage of `protein stability` to admin users.
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.
 * Extend `collections` enum list to include `Coronary Artery Disease`.
