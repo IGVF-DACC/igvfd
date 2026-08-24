@@ -288,14 +288,14 @@
                 }
             ],
             "enum_descriptions": {
-                "chromatin accessibility": "Predicted chromatin accessibility signal and variant effects on it, including chromatin-accessibility QTLs (caQTLs).",
+                "chromatin accessibility": "Predicted chromatin accessibility signal and variant effects on it.",
                 "coding variant effects": "Predicted molecular or functional consequences of coding variants on protein function.",
                 "coding variant effects on PPI": "Predicted effects of coding variants on protein-protein interactions.",
                 "coding variants pathogenicity": "Predicted pathogenicity classifications or scores for protein-coding variants.",
                 "disease associations": "Predicted associations between disease traits and genetic variants, genes, or gene programs, such as through colocalization of GWAS and eQTL signals, or perturbation-derived gene-program–disease links.",
                 "element-gene links": "Predicted links connecting candidate regulatory elements (e.g., enhancers) to their target genes.",
                 "gene regulatory networks": "Predicted networks of regulatory interactions between transcription factors/regulators and their target genes.",
-                "genetic constraint": "Predicted measures of how intolerant a genomic region or variant is to mutation/variation, reflecting purifying selection or reduced variant density (e.g., mutation rate, exon/domain constraint, constrained \"coldspot\" regions).",
+                "genetic constraint": "Predicted measures of how intolerant a genomic region or variant is to mutation/variation, reflecting purifying selection or reduced variant density.",
                 "meta analysis": "Predicted, aggregated variant annotations combining results across multiple models or datasets.",
                 "non-coding variant effects": "Predicted functional impact of variants located in non-coding regulatory sequence (e.g., enhancer activity).",
                 "spatial gene expression variability": "Predicted variability in gene expression across spatial locations within a tissue.",
