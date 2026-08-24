@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 27
 
+* Extend `content_type` enum list to include `variant effects on chromatin accessibility`.
+* Extend `content_type` enum list to include `coldspot`.
+* Extend `content_type` enum list to include `coldspot variants`.
 * Extend `content_type` enum list to include `varACCESS sequence designs`.
 * Extend `content_type` enum list to include `reporter element accessibility effect`.
 * Extend `submitted_transcriptome_annotation` enum list to include `GENCODE 34`.
