@@ -6,7 +6,8 @@ def test_audit_missing_files(
     construct_library_set_reporter,
     base_expression_construct_library_set,
     measurement_set_no_files,
-    reference_file
+    reference_file,
+    in_vitro_differentiated_cell
 ):
     res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
     assert res.json.get('files', '') == ''
@@ -41,6 +42,20 @@ def test_audit_missing_files(
     res = testapp.get(construct_library_set_reporter['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing files'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # Exemption for varACCESS CLS.
+    testapp.patch_json(
+        measurement_set_no_files['@id'],
+        {'preferred_assay_titles': ['varACCESS']}
+    )
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {'construct_library_sets': [construct_library_set_reporter['@id']]}
+    )
+    res = testapp.get(construct_library_set_reporter['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing files'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')

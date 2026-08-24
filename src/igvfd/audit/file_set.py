@@ -174,12 +174,16 @@ def audit_no_files(value, system):
         'Variant painting via fluorescence',
         'Cell painting'
     ]
+    skip_assays_cls = [
+        'varACCESS'
+    ]
     if object_type == 'Measurement set' and any(t in skip_assays for t in preferred_assay_titles):
         return
 
     audit_message_missing_files = get_audit_message(audit_no_files, index=0)
     if not value.get('files', '') and (
-        object_type != 'Construct library set' or value.get('file_set_type') == 'reporter library'
+        object_type != 'Construct library set' or (value.get('file_set_type') == 'reporter library' and all(
+            t not in skip_assays_cls for t in preferred_assay_titles))
     ):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
