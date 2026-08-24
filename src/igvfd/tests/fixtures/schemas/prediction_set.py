@@ -6,7 +6,7 @@ def base_prediction_set(testapp, lab, award, in_vitro_cell_line):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'file_set_type': 'functional effect',
+        'file_set_type': 'coding variant effects',
         'samples': [in_vitro_cell_line['@id']]
     }
     return testapp.post_json('/prediction_set', item).json['@graph'][0]
@@ -17,7 +17,7 @@ def prediction_set_functional_effect(testapp, lab, award, multiplexed_sample):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'file_set_type': 'functional effect',
+        'file_set_type': 'coding variant effects',
         'samples': [multiplexed_sample['@id']]
     }
     return testapp.post_json('/prediction_set', item).json['@graph'][0]
@@ -28,7 +28,7 @@ def prediction_set_activity_level(testapp, lab, award, multiplexed_sample):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'file_set_type': 'activity level',
+        'file_set_type': 'chromatin accessibility',
         'samples': [multiplexed_sample['@id']]
     }
     return testapp.post_json('/prediction_set', item).json['@graph'][0]
@@ -39,7 +39,7 @@ def prediction_set_donor(testapp, lab, award, human_donor):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'file_set_type': 'functional effect',
+        'file_set_type': 'coding variant effects',
         'donors': [human_donor['@id']]
     }
     return testapp.post_json('/prediction_set', item).json['@graph'][0]

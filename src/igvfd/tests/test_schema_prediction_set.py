@@ -49,14 +49,14 @@ def test_sample_donor_dependency(testapp, lab, award, tissue, human_donor):
     item = {
         'lab': lab['@id'],
         'award': award['@id'],
-        'file_set_type': 'functional effect',
+        'file_set_type': 'coding variant effects',
     }
     response = testapp.post_json('/prediction_set', item, expect_errors=True)
     assert response.status_code == 422
     item = {
         'lab': lab['@id'],
         'award': award['@id'],
-        'file_set_type': 'functional effect',
+        'file_set_type': 'coding variant effects',
         'samples': [tissue['@id']]
     }
     response = testapp.post_json('/prediction_set', item)
@@ -64,7 +64,7 @@ def test_sample_donor_dependency(testapp, lab, award, tissue, human_donor):
     item = {
         'lab': lab['@id'],
         'award': award['@id'],
-        'file_set_type': 'functional effect',
+        'file_set_type': 'coding variant effects',
         'donors': [human_donor['@id']]
     }
     response = testapp.post_json('/prediction_set', item)
@@ -72,7 +72,7 @@ def test_sample_donor_dependency(testapp, lab, award, tissue, human_donor):
     item = {
         'lab': lab['@id'],
         'award': award['@id'],
-        'file_set_type': 'functional effect',
+        'file_set_type': 'coding variant effects',
         'samples': [tissue['@id']],
         'donors': [human_donor['@id']]
     }
@@ -84,7 +84,7 @@ def test_cell_annotation_donor_sample_dependency(testapp, lab, award, in_vitro_c
     item = {
         'lab': lab['@id'],
         'award': award['@id'],
-        'file_set_type': 'functional effect',
+        'file_set_type': 'coding variant effects',
         'samples': [in_vitro_cell_line['@id']]
     }
     response = testapp.post_json('/prediction_set', item)
@@ -93,7 +93,7 @@ def test_cell_annotation_donor_sample_dependency(testapp, lab, award, in_vitro_c
     item = {
         'lab': lab['@id'],
         'award': award['@id'],
-        'file_set_type': 'functional effect',
+        'file_set_type': 'coding variant effects',
         'samples': [in_vitro_cell_line['@id']],
         'cell_qualifier': 'early'
     }
@@ -103,7 +103,7 @@ def test_cell_annotation_donor_sample_dependency(testapp, lab, award, in_vitro_c
     item = {
         'lab': lab['@id'],
         'award': award['@id'],
-        'file_set_type': 'functional effect',
+        'file_set_type': 'coding variant effects',
         'samples': [in_vitro_cell_line['@id']],
         'cell_qualifier': 'early',
         'cell_type': sample_term_endothelial_cell['@id']
@@ -114,7 +114,7 @@ def test_cell_annotation_donor_sample_dependency(testapp, lab, award, in_vitro_c
     item = {
         'lab': lab['@id'],
         'award': award['@id'],
-        'file_set_type': 'functional effect',
+        'file_set_type': 'coding variant effects',
         'donors': [human_donor['@id']]
     }
     response = testapp.post_json('/prediction_set', item)
@@ -123,7 +123,7 @@ def test_cell_annotation_donor_sample_dependency(testapp, lab, award, in_vitro_c
     item = {
         'lab': lab['@id'],
         'award': award['@id'],
-        'file_set_type': 'functional effect',
+        'file_set_type': 'coding variant effects',
         'donors': [human_donor['@id']],
         'cell_type': sample_term_endothelial_cell['@id']
     }
