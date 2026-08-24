@@ -2340,5 +2340,43 @@
             "IGVFFI0001GNRF"
         ],
         "controlled_access": false
+    },
+    {
+        "uuid": "203f4901-30de-4af7-8cee-831d0a7f7285",
+        "accession": "IGVFFI7700VARA",
+        "lab": "igvf-dacc-processing-pipeline",
+        "award": "HG012012",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "ae89123b5830de5678421cd02ee99bcf",
+        "file_format": "tsv",
+        "content_type": "varACCESS sequence designs",
+        "submitted_file_name": "/Users/igvf/igvf_files/varaccess_sequence_designs.tsv.gz",
+        "file_size": 5200010,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "controlled_access": false
+    },
+    {
+        "uuid": "bb052d01-30de-4af7-8cee-831d0a7f7285",
+        "accession": "IGVFFI7700REAE",
+        "lab": "igvf-dacc-processing-pipeline",
+        "award": "HG012012",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "2bb78421cd02830dee99e089f85bcf56",
+        "file_format": "tsv",
+        "content_type": "reporter element accessibility effect",
+        "submitted_file_name": "/Users/igvf/igvf_files/reporter_element_accessibility_effect.tsv.gz",
+        "file_size": 5200010,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "controlled_access": false
     }
 ]

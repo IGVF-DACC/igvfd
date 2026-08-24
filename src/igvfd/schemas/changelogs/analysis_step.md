@@ -2,6 +2,10 @@
 
 ### Minor changes since schema version 17
 
+* Extend `input_content_types` enum list to include `varACCESS sequence designs`.
+* Extend `output_content_types` enum list to include `varACCESS sequence designs`.
+* Extend `input_content_types` enum list to include `reporter element accessibility effect`.
+* Extend `output_content_types` enum list to include `reporter element accessibility effect`.
 * Extend `input_content_types` enum list to include `cell by gene and peak and guide matrix`.
 * Extend `output_content_types` enum list to include `cell by gene and peak and guide matrix`.
 * Extend `input_content_types` enum list to include `selected regions for predicted signal and sequence contribution scores`.

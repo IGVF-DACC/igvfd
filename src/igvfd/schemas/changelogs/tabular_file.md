@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 27
 
+* Extend `content_type` enum list to include `varACCESS sequence designs`.
+* Extend `content_type` enum list to include `reporter element accessibility effect`.
 * Extend `submitted_transcriptome_annotation` enum list to include `GENCODE 34`.
 * Extend `content_type` enum list to include `selected regions for predicted signal and sequence contribution scores`.
 * Extend `content_type` enum list to include `training and test regions`.
