@@ -2475,7 +2475,7 @@ def test_audit_inconsistent_onlist(
         error['category'] != 'inconsistent onlist files'
         for error in res.json['audit'].get('ERROR', [])
     )
-    # multiome kit should expect 3M-february-2018 onlist.
+    # Multiome kit should expect atac_737K-arc-v1 or gex_737K-arc-v1 onlist.
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -2490,7 +2490,7 @@ def test_audit_inconsistent_onlist(
     testapp.patch_json(
         tabular_file_onlist_1['@id'],
         {
-            'md5sum': 'e3d4c9b177b3ef177c90363bca8efd61'
+            'md5sum': '95ca0127739965ae57d09c6c1cfb20b4'
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')

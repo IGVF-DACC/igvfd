@@ -1095,7 +1095,8 @@ def audit_inconsistent_onlist_files(value, system):
     '''
     KIT_TO_ONLIST = {
         '10X Chromium Single Cell Multiome ATAC + Gene Expression': {
-            'e3d4c9b177b3ef177c90363bca8efd61': '3M-february-2018.txt.gz'
+            '91f5bd173373fa1815830444480236fb': 'atac_737K-arc-v1.txt.gz',
+            '95ca0127739965ae57d09c6c1cfb20b4': 'gex_737K-arc-v1.txt.gz',
         },
         '10X Chromium Single Cell 3 prime v1': {
             'a1535b7bf880d7c8dbc0382f792d1702': '737K-april-2014_rc.txt.gz'
