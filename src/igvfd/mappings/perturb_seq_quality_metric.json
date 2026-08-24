@@ -1,6 +1,6 @@
 {
-    "hash": "f4d5d9d79f78b210afff89614e5ba6de",
-    "index_name": "perturb_seq_quality_metric_f4d5d9d7",
+    "hash": "5a7dcc20a83ec9880791051ab107f8a4",
+    "index_name": "perturb_seq_quality_metric_5a7dcc20",
     "item_type": "perturb_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [

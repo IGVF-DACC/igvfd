@@ -60,8 +60,10 @@ def test_audit_item_mismatched_status(
     testapp,
     measurement_set,
     measurement_set_multiome_2,
+    analysis_set_base,
     assay_term_starr,
-    tissue
+    tissue,
+    model_file
 ):
     testapp.patch_json(
         measurement_set['@id'],
@@ -120,6 +122,40 @@ def test_audit_item_mismatched_status(
         {'status': 'in progress', 'supersedes': [measurement_set['@id']]}
     )
     res = testapp.get(measurement_set_multiome_2['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'mismatched status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    # flag if a file set is ahead of its file
+    testapp.patch_json(
+        model_file['@id'],
+        {
+            'status': 'in progress',
+            'file_set': analysis_set_base['@id'],
+            'upload_status': 'validated'
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'status': 'released',
+            'release_timestamp': '2025-03-06T12:34:56Z'
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'mismatched status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    # no flag if fileset and file are in the same status
+    testapp.patch_json(
+        model_file['@id'],
+        {
+            'status': 'released',
+            'release_timestamp': '2025-03-06T12:34:56Z'
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert all(
         error['category'] != 'mismatched status'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
