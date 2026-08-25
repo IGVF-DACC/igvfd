@@ -447,9 +447,74 @@ def get_oexpr_from_cls_for_samp_summary(request, construct_library_sets):
     return f'overexpressing {join_multiple_terms(oexpr_genes)}' if oexpr_genes else ''
 
 
-def get_treatment_phrase_for_sample_summary(request, treatments):
+def get_treatment_comparison_label(treatment):
+    amount = treatment.get('amount')
+    amount_units = treatment.get('amount_units')
+    term_name = treatment.get('treatment_term_name', '')
+    if amount is not None and amount_units:
+        return f'{amount} {amount_units} {term_name}'
+    temperature = treatment.get('temperature')
+    temperature_units = treatment.get('temperature_units')
+    if temperature is not None and temperature_units:
+        return f'{term_name} at {temperature} {temperature_units}'
+    return term_name
+
+
+def get_differential_treatment_phrase_for_sample_summary(request, condition_treatments, samples):
+    condition_treatment_ids = {
+        treatment if isinstance(treatment, str) else treatment['@id']
+        for treatment in condition_treatments
+    }
+    arms = []
+    for sample in samples:
+        sample_object = request.embed(sample, '@@object?skip_calculated=true')
+        arm_ids = tuple(sorted(
+            treatment_id for treatment_id in sample_object.get('treatments', [])
+            if treatment_id in condition_treatment_ids
+        ))
+        if arm_ids:
+            arms.append(arm_ids)
+
+    unique_arms = list(dict.fromkeys(arms))
+    if len(unique_arms) < 2:
+        return ''
+
+    shared_treatment_ids = set.intersection(*(set(arm) for arm in unique_arms))
+    treatment_embed = (
+        '@@object_with_select_calculated_properties?field=treatment_term_name'
+        '&field=amount&field=amount_units&field=temperature&field=temperature_units'
+    )
+    arm_phrases = []
+    for arm_ids in unique_arms:
+        distinguishing_ids = [
+            treatment_id for treatment_id in arm_ids
+            if treatment_id not in shared_treatment_ids
+        ]
+        label_ids = distinguishing_ids or list(arm_ids)
+        labels = sorted(
+            get_treatment_comparison_label(request.embed(treatment_id, treatment_embed))
+            for treatment_id in label_ids
+        )
+        if labels:
+            arm_phrases.append(', '.join(labels))
+
+    if len(arm_phrases) < 2:
+        return ''
+
+    arm_phrases = sorted(arm_phrases, key=lambda phrase: (-phrase.count(','), phrase))
+    return ' vs. '.join(arm_phrases)
+
+
+def get_treatment_phrase_for_sample_summary(request, treatments, samples=None):
     if not treatments:
         return ''
+    if samples:
+        differential_phrase = get_differential_treatment_phrase_for_sample_summary(
+            request, treatments, samples
+        )
+        if differential_phrase:
+            return differential_phrase
+
     treatment_objects = [
         request.embed(
             treatment,
@@ -1592,7 +1657,9 @@ class AnalysisSet(FileSet):
         overexpression_phrase = ''
         overexpression_phrase = get_oexpr_from_cls_for_samp_summary(request, construct_library_sets)
 
-        treatment_phrase = get_treatment_phrase_for_sample_summary(request, condition_treatments)
+        treatment_phrase = get_treatment_phrase_for_sample_summary(
+            request, condition_treatments, samples=samples
+        )
 
         # Constructing the final summary, putting ovexpr last
         summary = ' '.join(filter(None, [taxa_phrase, biosample_qualifiers_phrase, ', '.join(all_sample_terms),

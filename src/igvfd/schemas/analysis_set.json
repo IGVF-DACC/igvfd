@@ -123,7 +123,7 @@
         },
         "condition_treatments": {
             "title": "Condition Treatments",
-            "description": "Treatments that define the experimental condition this analysis set represents. Used to calculate sample_summary. Specify the full treatment profile for the condition, including baseline and perturbing treatments that together define the group.",
+            "description": "Treatments that define the experimental condition(s) this analysis set represents. For an analysis set representing a single treatment group, specify the full treatment profile for that group. For an analysis set performed to compare treatment groups, specify the treatments that define the groups being compared.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
