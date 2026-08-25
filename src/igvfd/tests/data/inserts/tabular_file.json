@@ -2361,6 +2361,26 @@
         "controlled_access": false
     },
     {
+        "uuid": "4f45f686-fcd6-440d-90a3-e677c8afabcf",
+        "accession": "IGVFFI0035VECA",
+        "lab": "igvf-dacc-processing-pipeline",
+        "award": "HG012012",
+        "status": "released",
+        "release_timestamp": "2026-07-31T12:34:56Z",
+        "md5sum": "507d5911e840dd1f3f0acbef627570e5",
+        "file_format": "bed",
+        "file_format_type": "bed6+",
+        "content_type": "variant effects on chromatin accessibility",
+        "submitted_file_name": "/Users/igvf/igvf_files/variant_effects_on_chromatin_accessibility.bed.gz",
+        "file_size": 5200010,
+        "upload_status": "validated",
+        "file_set": "igvf:prediction_set_8",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "controlled_access": false
+    },
+    {
         "uuid": "bb052d01-30de-4af7-8cee-831d0a7f7285",
         "accession": "IGVFFI7700REAE",
         "lab": "igvf-dacc-processing-pipeline",
@@ -2374,6 +2394,44 @@
         "file_size": 5200010,
         "upload_status": "validated",
         "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "controlled_access": false
+    },
+    {
+        "uuid": "0d26e168-6985-47ef-b0a5-e167a07ba009",
+        "accession": "IGVFFI0036CLDS",
+        "lab": "igvf-dacc-processing-pipeline",
+        "award": "HG012012",
+        "status": "released",
+        "release_timestamp": "2026-07-31T12:34:56Z",
+        "md5sum": "6c0a348f41c771a22ea7b896eab55985",
+        "file_format": "tsv",
+        "content_type": "coldspot",
+        "submitted_file_name": "/Users/igvf/igvf_files/coldspot.tsv.gz",
+        "file_size": 5200010,
+        "upload_status": "validated",
+        "file_set": "igvf:prediction_set_10",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "controlled_access": false
+    },
+    {
+        "uuid": "175f7579-18e5-4084-be43-d7e635a5d0c4",
+        "accession": "IGVFFI0037CLDV",
+        "lab": "igvf-dacc-processing-pipeline",
+        "award": "HG012012",
+        "status": "released",
+        "release_timestamp": "2026-07-31T12:34:56Z",
+        "md5sum": "98fe59686b61da22c1207c2002f5faf5",
+        "file_format": "tsv",
+        "content_type": "coldspot variants",
+        "submitted_file_name": "/Users/igvf/igvf_files/coldspot_variants.tsv.gz",
+        "file_size": 5200010,
+        "upload_status": "validated",
+        "file_set": "igvf:prediction_set_10",
         "reference_files": [
             "IGVFFI0001GNRF"
         ],

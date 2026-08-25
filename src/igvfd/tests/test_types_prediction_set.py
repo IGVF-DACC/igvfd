@@ -4,7 +4,7 @@ import pytest
 def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_donor, gene_myc_hs, gene_CRLF2_par_y, gene_CD1E, gene_TAB3_AS1, gene_MAGOH2P, gene_zscan10_mm, tabular_file, analysis_step_version, in_vitro_organoid, in_vitro_cell_line, tissue, human_tissue, primary_cell, human_donor, phenotype_term_alzheimers, phenotype_term_myocardial_infarction, phenotype_term_ncit_feature, phenotype_term_from_go, in_vitro_differentiated_cell, sample_term_brown_adipose_tissue):
     # Test Prediction Set summary if without assessed genes
     res = testapp.get(base_prediction_set['@id'])
-    assert res.json.get('summary') == 'functional effect prediction in Mus musculus strain1 (male) K562 cell line'
+    assert res.json.get('summary') == 'coding variant effects prediction in Mus musculus strain1 (male) K562 cell line'
 
     # Test Prediction Set summary if with assessed genes
     testapp.patch_json(
@@ -29,7 +29,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'functional effect prediction for CD1E, CRLF2, MAGOH2P, MYC, TAB3-AS1 using Bowtie2 v2.4.4 in Mus musculus strain1 (male) K562 cell line'
+        'summary') == 'coding variant effects prediction for CD1E, CRLF2, MAGOH2P, MYC, TAB3-AS1 using Bowtie2 v2.4.4 in Mus musculus strain1 (male) K562 cell line'
 
     # Test Prediction Set summary if with 6+ assessed genes
     testapp.patch_json(
@@ -48,7 +48,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 in Mus musculus strain1 (male) K562 cell line'
+        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 in Mus musculus strain1 (male) K562 cell line'
 
     # Test Prediction Set summary if with 2 samples, listing out samples in summary
     testapp.patch_json(
@@ -62,7 +62,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
         }
     )
     res = testapp.get(base_prediction_set['@id'])
-    assert res.json.get('summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 in Homo sapiens adrenal gland organoid induced to adrenal gland for 10 days, Mus musculus strain1 (male) K562 cell line'
+    assert res.json.get('summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 in Homo sapiens adrenal gland organoid induced to adrenal gland for 10 days, Mus musculus strain1 (male) K562 cell line'
 
     # Test Prediction Set summary if with 3+ samples, use sample number instead
     testapp.patch_json(
@@ -79,7 +79,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 in 4 mixed species samples'
+        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 in 4 mixed species samples'
 
     # Test Prediction Set summary if with 3+ virtual samples, use sample number instead
     testapp.patch_json(
@@ -109,7 +109,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
 
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 in 4 virtual mixed species samples'
+        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 in 4 virtual mixed species samples'
 
     # Test Prediction Set summary if with <= 3 samples, list out the unique set of sample summaries
 
@@ -137,11 +137,11 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 in virtual Homo sapiens adrenal gland tissue/organ'
+        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 in virtual Homo sapiens adrenal gland tissue/organ'
 
     # Test Prediction Set summary if donors specified instead of samples
     res = testapp.get(prediction_set_donor['@id'])
-    assert res.json.get('summary') == 'functional effect prediction in Homo sapiens'
+    assert res.json.get('summary') == 'coding variant effects prediction in Homo sapiens'
     testapp.patch_json(
         human_donor['@id'],
         {
@@ -149,7 +149,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
         }
     )
     res = testapp.get(prediction_set_donor['@id'])
-    assert res.json.get('summary') == 'functional effect prediction in virtual Homo sapiens'
+    assert res.json.get('summary') == 'coding variant effects prediction in virtual Homo sapiens'
 
     # Test Prediction Set summary with single associated phenotype
     testapp.patch_json(
@@ -160,7 +160,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == "functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with Alzheimer's disease in virtual Homo sapiens adrenal gland tissue/organ"
+        'summary') == "coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with Alzheimer's disease in virtual Homo sapiens adrenal gland tissue/organ"
 
     # Test Prediction Set summary with multiple associated phenotypes
     testapp.patch_json(
@@ -173,7 +173,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
         }
     )
     res = testapp.get(base_prediction_set['@id'])
-    assert res.json.get('summary') == "functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with Alzheimer's disease, Myocardial infarction in virtual Homo sapiens adrenal gland tissue/organ"
+    assert res.json.get('summary') == "coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with Alzheimer's disease, Myocardial infarction in virtual Homo sapiens adrenal gland tissue/organ"
 
     # Test Prediction Set summary with 4+ associated phenotypes, use phenotype count instead
     testapp.patch_json(
@@ -189,7 +189,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with 4 phenotypes in virtual Homo sapiens adrenal gland tissue/organ'
+        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with 4 phenotypes in virtual Homo sapiens adrenal gland tissue/organ'
 
     # Test prediction set summary with cell annotation information
     testapp.patch_json(
@@ -202,7 +202,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'functional effect prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with 4 phenotypes in Homo sapiens exhausted brown adipose tissue derived from K562'
+        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with 4 phenotypes in Homo sapiens exhausted brown adipose tissue derived from K562'
 
 
 def test_software_versions(testapp, tabular_file, base_prediction_set, analysis_step_version, software_version):

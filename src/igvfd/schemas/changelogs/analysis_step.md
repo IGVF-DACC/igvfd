@@ -2,6 +2,12 @@
 
 ### Minor changes since schema version 17
 
+* Extend `input_content_types` enum list to include `variant effects on chromatin accessibility`.
+* Extend `output_content_types` enum list to include `variant effects on chromatin accessibility`.
+* Extend `input_content_types` enum list to include `coldspot`.
+* Extend `output_content_types` enum list to include `coldspot`.
+* Extend `input_content_types` enum list to include `coldspot variants`.
+* Extend `output_content_types` enum list to include `coldspot variants`.
 * Extend `input_content_types` enum list to include `varACCESS sequence designs`.
 * Extend `output_content_types` enum list to include `varACCESS sequence designs`.
 * Extend `input_content_types` enum list to include `reporter element accessibility effect`.

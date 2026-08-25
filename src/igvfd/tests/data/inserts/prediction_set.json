@@ -9,7 +9,7 @@
         "donors": [
             "igvf:alias_human_donor1"
         ],
-        "file_set_type": "functional effect",
+        "file_set_type": "coding variant effects",
         "award": "1U01HG011952-01",
         "lab": "alan-boyle",
         "status": "released",
@@ -35,7 +35,7 @@
         "accession": "IGVFDS5686ICTI",
         "submitter_comment": "Comment for a prediction file set.",
         "description": "A prediction with a sample.",
-        "file_set_type": "functional effect",
+        "file_set_type": "meta analysis",
         "samples": [
             "igvf:treated_tissue"
         ],
@@ -52,7 +52,7 @@
             "igvf:prediction_set_3"
         ],
         "accession": "IGVFDS5278LBSV",
-        "file_set_type": "functional effect",
+        "file_set_type": "gene regulatory networks",
         "samples": [
             "igvf:mouse_embryo"
         ],
@@ -69,7 +69,7 @@
             "igvf:prediction_set_4"
         ],
         "accession": "IGVFDS5686ICTZ",
-        "file_set_type": "binding effect",
+        "file_set_type": "variant TF binding effects",
         "samples": [
             "igvf:treated_tissue"
         ],
@@ -90,7 +90,7 @@
             "raluca-gordan:prediction_set_raluca_gordan"
         ],
         "accession": "IGVFDS8475LPKO",
-        "file_set_type": "activity level",
+        "file_set_type": "non-coding variant effects",
         "samples": [
             "igvf:live_mouse_embryo_1"
         ],
@@ -105,7 +105,7 @@
             "igvf:prediction_set_5"
         ],
         "accession": "IGVFDS8875LPQO",
-        "file_set_type": "functional effect",
+        "file_set_type": "disease associations",
         "donors": [
             "igvf:alias_human_donor1"
         ],
@@ -123,7 +123,7 @@
             "igvf:prediction_set_6"
         ],
         "accession": "IGVFDS8896LPQO",
-        "file_set_type": "protein-protein interaction",
+        "file_set_type": "coding variant effects on PPI",
         "donors": [
             "igvf:alias_human_donor1"
         ],
@@ -138,7 +138,7 @@
             "igvf:scE2G_with_cell_annotation_prediction_set_1"
         ],
         "accession": "IGVFDS8567SCEG",
-        "file_set_type": "functional effect",
+        "file_set_type": "element-gene links",
         "samples": [
             "3de8faf0-7a25-11ed-a1eb-0242ac120002"
         ],
@@ -160,7 +160,7 @@
         "samples": [
             "3de8faf0-7a25-11ed-a1eb-0242ac120002"
         ],
-        "file_set_type": "functional effect",
+        "file_set_type": "chromatin accessibility",
         "award": "1U01HG011952-01",
         "lab": "alan-boyle",
         "status": "released",
@@ -170,5 +170,59 @@
         "input_file_sets": [
             "/model-sets/IGVFDS4321MODL/"
         ]
+    },
+    {
+        "aliases": [
+            "igvf:prediction_set_8"
+        ],
+        "accession": "IGVFDS8091CHAC",
+        "submitter_comment": "Comment for a prediction file set.",
+        "description": "Predicted chromatin accessibility signal genome-wide.",
+        "samples": [
+            "3de8faf0-7a25-11ed-a1eb-0242ac120002"
+        ],
+        "file_set_type": "chromatin accessibility",
+        "award": "1U01HG011952-01",
+        "lab": "alan-boyle",
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "uuid": "081e3ef1-6a1f-44f2-8d04-58c25c94bcd8",
+        "scope": "genome-wide"
+    },
+    {
+        "aliases": [
+            "igvf:prediction_set_9"
+        ],
+        "accession": "IGVFDS8092TFBD",
+        "submitter_comment": "Comment for a prediction file set.",
+        "description": "Predicted transcription factor binding sites genome-wide.",
+        "donors": [
+            "igvf:alias_human_donor1"
+        ],
+        "file_set_type": "TF binding",
+        "award": "1U01HG012064-01",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "uuid": "73fcb08f-9b1d-4094-b552-be00fdcda9f5",
+        "scope": "genome-wide"
+    },
+    {
+        "aliases": [
+            "igvf:prediction_set_10"
+        ],
+        "accession": "IGVFDS8093GCST",
+        "submitter_comment": "Comment for a prediction file set.",
+        "description": "Predicted genetic constraint genome-wide.",
+        "samples": [
+            "3de8faf0-7a25-11ed-a1eb-0242ac120002"
+        ],
+        "file_set_type": "genetic constraint",
+        "award": "1U01HG011952-01",
+        "lab": "alan-boyle",
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "uuid": "a0869293-f7ee-44b9-aa9c-8d216dc69eb2",
+        "scope": "genome-wide"
     }
 ]

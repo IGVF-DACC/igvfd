@@ -119,7 +119,6 @@
             "description": "The category that best describes this file set.",
             "comment": "This property is overwritten by the subclasses to define specific enum values.",
             "type": "string",
-            "enum": [],
             "submissionExample": {
                 "appscript": "experimental data",
                 "igvf_utils": "experimental data"
