@@ -411,6 +411,7 @@ def audit_missing_institutional_certification(value, system):
         'NTR:0001101',  # in vivo CRISPR screen using single cell RNA-seq
         'OBI:0000916',  # flow cytometry assay
         'OBI:0000185',  # imaging assay
+        'NTR:0001096',  # varACCESS
         'OBI:0002675',  # massively parallel reporter assay,
         'OBI:0000288',  # protein-protein interaction detection assay,
         'OBI:0002041',  # self-transcribing active regulatory region sequencing assay,
