@@ -1,6 +1,6 @@
 {
-    "hash": "e328ae66081e8873ac83bc0627cbf5ce",
-    "index_name": "technical_sample_e328ae66",
+    "hash": "c66612f7a4ca8d84692b22c6327a0652",
+    "index_name": "technical_sample_c66612f7",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -979,9 +979,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "type": "keyword"
                             },
@@ -995,6 +992,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {

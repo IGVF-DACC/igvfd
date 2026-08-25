@@ -1,6 +1,6 @@
 {
-    "hash": "6526e1bb1e6ef1db71798e7a1f3d096b",
-    "index_name": "primary_cell_6526e1bb",
+    "hash": "930cc7e0defb7877e701480e26026de3",
+    "index_name": "primary_cell_930cc7e0",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1318,9 +1318,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "type": "keyword"
                             },
@@ -1334,6 +1331,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {

@@ -1,6 +1,6 @@
 {
-    "hash": "04ad5197a1c0ec4d8808322b0b07de4a",
-    "index_name": "analysis_set_04ad5197",
+    "hash": "b0ecd634048c166e4151ed5ac7f0a816",
+    "index_name": "analysis_set_b0ecd634",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -871,9 +871,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "type": "keyword"
                             },
@@ -887,6 +884,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {
@@ -1376,9 +1376,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "type": "keyword"
                             },
@@ -1392,6 +1389,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {
@@ -2763,9 +2763,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "type": "keyword"
                             },
@@ -2779,6 +2776,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {
@@ -3132,9 +3132,6 @@
                         "type": "date"
                     },
                     "revoke_detail": {
-                        "type": "keyword"
-                    },
-                    "sample_summary": {
                         "type": "keyword"
                     },
                     "samples": {
@@ -4034,6 +4031,9 @@
                         "type": "object"
                     },
                     "schema_version": {
+                        "type": "keyword"
+                    },
+                    "simplified_sample_summary": {
                         "type": "keyword"
                     },
                     "status": {

@@ -276,7 +276,7 @@ def analysis_set():
             'input_file_sets': {
                 'title': 'Input File Sets'
             },
-            'sample_summary': {
+            'simplified_sample_summary': {
                 'title': 'Simplified Sample Summary'
             },
             'summary': {
@@ -318,7 +318,7 @@ def analysis_set_report_view():
         'samples.institutional_certificates': {
             'title': 'Sample Institutional Certificates'
         },
-        'sample_summary': {
+        'simplified_sample_summary': {
             'title': 'Simplified Sample Summary'
         },
         'assay_titles': {

@@ -1,6 +1,6 @@
 {
-    "hash": "6bf3a41226a777f58aa30762f5836c0e",
-    "index_name": "prediction_set_6bf3a412",
+    "hash": "f7cd469271f09221f7593a3a1a395eb3",
+    "index_name": "prediction_set_f7cd4692",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1147,9 +1147,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "type": "keyword"
                             },
@@ -1163,6 +1160,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {
@@ -1652,9 +1652,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "type": "keyword"
                             },
@@ -1668,6 +1665,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {

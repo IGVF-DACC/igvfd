@@ -1,6 +1,6 @@
 {
-    "hash": "0d38d9d15ec75ac91e31cd77a9f5a7ab",
-    "index_name": "tabular_file_0d38d9d1",
+    "hash": "902b3a9fab15a568f4a1169ae65f815a",
+    "index_name": "tabular_file_902b3a9f",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1159,9 +1159,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "properties": {
                                     "@id": {
@@ -1986,6 +1983,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {

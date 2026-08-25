@@ -1,6 +1,6 @@
 {
-    "hash": "6b0516cd299264a965c6c8c12341e401",
-    "index_name": "signal_file_6b0516cd",
+    "hash": "a7b10d8e8190fcd21f5fb99cb934dfd7",
+    "index_name": "signal_file_a7b10d8e",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -1143,9 +1143,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "properties": {
                                     "@id": {
@@ -1970,6 +1967,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {

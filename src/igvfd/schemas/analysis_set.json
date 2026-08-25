@@ -107,7 +107,7 @@
         },
         "subset_samples": {
             "title": "Subset Samples",
-            "description": "The subset of sample(s) this analysis set represents, such as demultiplexed constituents or a timepoint from a differentiation series. Takes priority over samples inferred from input_file_sets when calculating samples and sample_summary.",
+            "description": "The subset of sample(s) this analysis set represents, such as demultiplexed constituents or a timepoint from a differentiation series. Takes priority over samples inferred from input_file_sets when calculating samples and simplified_sample_summary.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
