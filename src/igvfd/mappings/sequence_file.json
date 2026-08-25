@@ -1,6 +1,6 @@
 {
-    "hash": "2c885dba5acf2894164f172d93112e44",
-    "index_name": "sequence_file_2c885dba",
+    "hash": "e4fd84eb454dfd64f0896787ca81056c",
+    "index_name": "sequence_file_e4fd84eb",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1141,9 +1141,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "properties": {
                                     "@id": {
@@ -1968,6 +1965,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {

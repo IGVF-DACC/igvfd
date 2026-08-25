@@ -1,6 +1,6 @@
 {
-    "hash": "73e65cfd6fda6e807903f26bb4456e8e",
-    "index_name": "tissue_73e65cfd",
+    "hash": "6e1807dd3e76573c1b12266fb4ebd70b",
+    "index_name": "tissue_6e1807dd",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1315,9 +1315,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "type": "keyword"
                             },
@@ -1331,6 +1328,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {

@@ -1,6 +1,6 @@
 {
-    "hash": "a136571e5af47420dcc67dcb92f436d3",
-    "index_name": "whole_organism_a136571e",
+    "hash": "950521ae365236b17fe393ce5240fe07",
+    "index_name": "whole_organism_950521ae",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1315,9 +1315,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "type": "keyword"
                             },
@@ -1331,6 +1328,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {

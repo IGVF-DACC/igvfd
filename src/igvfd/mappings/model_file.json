@@ -1,6 +1,6 @@
 {
-    "hash": "11a50831d2907d1c0f0be87d3ec42000",
-    "index_name": "model_file_11a50831",
+    "hash": "7cee6cbf209e896c4df984a47bd52735",
+    "index_name": "model_file_7cee6cbf",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -1150,9 +1150,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "properties": {
                                     "@id": {
@@ -1977,6 +1974,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {

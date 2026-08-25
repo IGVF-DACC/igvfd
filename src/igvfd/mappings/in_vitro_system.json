@@ -1,6 +1,6 @@
 {
-    "hash": "6b2aff7c454f4de61494b8c33ed84cee",
-    "index_name": "in_vitro_system_6b2aff7c",
+    "hash": "d6f01c36532f682e62b97a66e19e8fd6",
+    "index_name": "in_vitro_system_d6f01c36",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1328,9 +1328,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "type": "keyword"
                             },
@@ -1344,6 +1341,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {

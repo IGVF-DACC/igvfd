@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_set.json`*
 
+### Minor changes since schema version 11
+
+* Rename calculated property `sample_summary` to `simplified_sample_summary`.
+
 ### Schema version 11
 
 * Rename `demultiplexed_samples` to `subset_samples`.
