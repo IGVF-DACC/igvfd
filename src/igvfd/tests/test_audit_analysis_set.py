@@ -646,3 +646,120 @@ def test_audit_documents(
         error['category'] != 'inconsistent documents'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_missing_cell_annotations(testapp, analysis_set_base, intermediate_analysis_set, measurement_set, assay_term_scrna, assay_term_starr, tabular_file):
+    # Setup: Not principal, MeaSet is 2 layers up
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set['@id']]
+        }
+    )
+    testapp.patch_json(
+        intermediate_analysis_set['@id'],
+        {
+            'input_file_sets': [analysis_set_base['@id']]
+        }
+    )
+
+    # Not principal, no file, not single cell (no audit)
+    res = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing cell annotations'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+    # Not principal, no file, IS single cell (no audit)
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_scrna['@id'],
+            'preferred_assay_titles': ['10x multiome']
+        }
+    )
+    res = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing cell annotations'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+    # Is principal, no file, IS single cell (no audit)
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_scrna['@id'],
+            'preferred_assay_titles': ['10x multiome']
+        }
+    )
+    testapp.patch_json(
+        intermediate_analysis_set['@id'],
+        {
+            'file_set_type': 'principal analysis'
+        }
+    )
+    res = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing cell annotations'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+    # Not principal, missing cell annotations, IS single cell (no audit)
+    testapp.patch_json(
+        intermediate_analysis_set['@id'],
+        {
+            'file_set_type': 'intermediate analysis'
+        }
+    )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'file_set': intermediate_analysis_set['@id']
+        }
+    )
+    res = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing cell annotations'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+    # Not principal, missing cell annotations, not single cell (no audit)
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_starr['@id'],
+            'preferred_assay_titles': ['STARR-seq']
+        }
+    )
+    res = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing cell annotations'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+    # Is principal, missing cell annotations, not single cell (no audit)
+    testapp.patch_json(
+        intermediate_analysis_set['@id'],
+        {
+            'file_set_type': 'principal analysis'
+        }
+    )
+    res = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing cell annotations'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+    # Is principal, missing cell annotations, IS single cell (audit)
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_scrna['@id'],
+            'preferred_assay_titles': ['10x multiome']
+        }
+    )
+    res = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing cell annotations'
+        for error in res.json['audit'].get('WARNING', [])
+    )

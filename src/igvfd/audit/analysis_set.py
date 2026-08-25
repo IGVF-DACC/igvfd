@@ -276,11 +276,48 @@ def audit_pipeline_parameters(value, system):
         yield AuditFailure(audit_message_inconsistent_documents.get('audit_category', ''), f'{detail} {audit_message_inconsistent_documents.get("audit_description", "")}', level=audit_message_inconsistent_documents.get('audit_level', ''))
 
 
+def audit_missing_cell_annotations(value, system):
+    '''
+        [
+            {
+                "audit_description": "Single cell principal AnalysisSet is expected to have a `cell annotation` file.",
+                "audit_category": "missing cell annotations",
+                "audit_level": "WARNING"
+            }
+        ]
+    '''
+    # If not principal analysis, skip this audit
+    if value.get('file_set_type') != 'principal analysis':
+        return
+
+    # If not single cell assays, skip this audit
+    if not single_cell_check(system, value, 'Analysis set', include_perturb_seq=False):
+        return
+
+    # If no file, skip this audit
+    if not value.get('files', []):
+        return
+
+    # Check if any file has the file content type 'cell annotations'
+    for file in value.get('files', []):
+        file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
+        if file_object.get('file_format') == 'cell annotations':
+            return
+
+    msg_missing_cell_annot = get_audit_message(audit_missing_cell_annotations, index=0)
+    detail = (
+        f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+        f'is missing a `cell annotation` file.'
+    )
+    yield AuditFailure(msg_missing_cell_annot.get('audit_category', ''), f'{detail} {msg_missing_cell_annot.get("audit_description", "")}', level=msg_missing_cell_annot.get('audit_level', ''))
+
+
 function_dispatcher_analysis_set_object = {
     'audit_analysis_set_multiplexed_samples': audit_analysis_set_multiplexed_samples,
     'audit_analysis_set_inconsistent_onlist_info': audit_analysis_set_inconsistent_onlist_info,
     'audit_multiple_barcode_replacement_files_in_input': audit_multiple_barcode_replacement_files_in_input,
-    'audit_pipeline_parameters': audit_pipeline_parameters
+    'audit_pipeline_parameters': audit_pipeline_parameters,
+    'audit_missing_cell_annotations': audit_missing_cell_annotations
 }
 
 
