@@ -502,7 +502,7 @@ def get_differential_treatment_phrase_for_sample_summary(request, condition_trea
         return ''
 
     arm_phrases = sorted(arm_phrases, key=lambda phrase: (-phrase.count(','), phrase))
-    return ' vs. '.join(arm_phrases)
+    return f'comparing {" vs. ".join(arm_phrases)}'
 
 
 def get_treatment_phrase_for_sample_summary(request, treatments, samples=None):

@@ -123,7 +123,7 @@
         },
         "condition_treatments": {
             "title": "Condition Treatments",
-            "description": "Treatments that define the experimental condition(s) this analysis set represents. For an analysis set representing a single treatment group, specify the full treatment profile for that group. For an analysis set performed to compare treatment groups, specify the treatments that define the groups being compared.",
+            "description": "Treatments that define the experimental condition(s) this analysis set represents. For an analysis set representing a single treatment group, specify the full treatment profile for that group. For an analysis set performed to compare treatment groups, specify the treatments that define the groups being compared; sample_summary will summarize these as a comparison (for example, comparing 33 mM glucose, palmitate vs. 8 mM glucose).",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,

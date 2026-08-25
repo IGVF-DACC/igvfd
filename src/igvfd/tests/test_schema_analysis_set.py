@@ -152,4 +152,4 @@ def test_condition_treatments_differential_sample_summary(
         }
     )
     res = testapp.get(analysis_set_base['@id'])
-    assert '33 mM glucose, 1 mM palmitate vs. 8 mM glucose' in res.json['sample_summary']
+    assert 'comparing 33 mM glucose, 1 mM palmitate vs. 8 mM glucose' in res.json['sample_summary']
