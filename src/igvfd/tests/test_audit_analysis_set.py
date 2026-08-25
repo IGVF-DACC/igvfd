@@ -776,3 +776,50 @@ def test_audit_missing_cell_annotations(testapp, analysis_set_base, intermediate
         error['category'] != 'missing cell annotations'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_analysis_set_condition_treatments(
+    testapp,
+    analysis_set_base,
+    measurement_set,
+    primary_cell,
+    treatment_combo1,
+    treatment_combo2,
+    treatment_chemical,
+):
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'treatments': [treatment_combo1['@id'], treatment_combo2['@id']]
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [primary_cell['@id']]
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set['@id']],
+            'condition_treatments': [treatment_combo1['@id'], treatment_combo2['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent condition treatments'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'condition_treatments': [treatment_chemical['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent condition treatments'
+        for error in res.json['audit'].get('ERROR', [])
+    )

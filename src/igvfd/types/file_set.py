@@ -447,6 +447,54 @@ def get_oexpr_from_cls_for_samp_summary(request, construct_library_sets):
     return f'overexpressing {join_multiple_terms(oexpr_genes)}' if oexpr_genes else ''
 
 
+def get_treatment_phrase_for_sample_summary(request, treatments):
+    if not treatments:
+        return ''
+    treatment_objects = [
+        request.embed(
+            treatment,
+            '@@object_with_select_calculated_properties?field=summary&field=purpose&field=depletion'
+        )
+        for treatment in treatments
+    ]
+    phrases = []
+    depleted_treatment_summaries = sorted([
+        treatment.get('summary')[13:]
+        for treatment in treatment_objects
+        if treatment.get('depletion')
+    ])
+    if depleted_treatment_summaries:
+        phrases.append(f'depleted of {", ".join(depleted_treatment_summaries)}')
+
+    purpose_to_verb = {
+        'activation': 'activated',
+        'acute stimulation': 'acutely stimulated',
+        'chronic stimulation': 'chronically stimulated',
+        'agonist': 'agonized',
+        'antagonist': 'antagonized',
+        'control': 'treated with a control',
+        'differentiation': 'differentiated',
+        'de-differentiation': 'de-differentiated',
+        'perturbation': 'perturbed',
+        'selection': 'selected',
+        'stimulation': 'stimulated'
+    }
+    purpose_to_summaries = {}
+    for treatment in treatment_objects:
+        if not treatment.get('depletion'):
+            purpose = treatment['purpose']
+            if purpose not in purpose_to_summaries:
+                purpose_to_summaries[purpose] = []
+            purpose_to_summaries[purpose].append(treatment['summary'][13:])
+
+    for purpose in sorted(purpose_to_summaries):
+        verb = purpose_to_verb.get(purpose, 'treated with')
+        unique_summaries = sorted(set(purpose_to_summaries[purpose]))
+        phrases.append(f'{verb} with {", ".join(unique_summaries)}')
+
+    return ', '.join(phrases)
+
+
 def merge_induced_to_terms(terms):
     '''Merge differentiation terms to be A, B, C induced to X, Y, Z'''
     merged_induced = {}
@@ -1339,7 +1387,11 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
+<<<<<<< HEAD
     def simplified_sample_summary(self, request, samples=None, donors=None, construct_library_sets=None, collections=None):
+=======
+    def sample_summary(self, request, samples=None, donors=None, construct_library_sets=None, collections=None, condition_treatments=None):
+>>>>>>> 81db9c8c (added property + audit + calculation)
         corces_special_collection = 'PD single cell multiomics'
         taxa = set()
         sample_classification_term_target = dict()
@@ -1540,9 +1592,14 @@ class AnalysisSet(FileSet):
         overexpression_phrase = ''
         overexpression_phrase = get_oexpr_from_cls_for_samp_summary(request, construct_library_sets)
 
+        treatment_phrase = get_treatment_phrase_for_sample_summary(request, condition_treatments)
+
         # Constructing the final summary, putting ovexpr last
         summary = ' '.join(filter(None, [taxa_phrase, biosample_qualifiers_phrase, ', '.join(all_sample_terms),
                            differentiation_time_phrase, donor_phrase])).strip()
+
+        if treatment_phrase:
+            summary = f'{summary}, {treatment_phrase}'
 
         # Overexpression
         if overexpression_phrase:

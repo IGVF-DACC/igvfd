@@ -85,6 +85,67 @@ def audit_analysis_set_multiplexed_samples(value, system):
             yield AuditFailure(audit_message_inconsistent_subset_samples.get('audit_category', ''), f'{detail} {audit_message_inconsistent_subset_samples.get("audit_description", "")}', level=audit_message_inconsistent_subset_samples.get('audit_level', ''))
 
 
+def collect_treatments_from_sample(request, sample):
+    treatments = set()
+    sample_object = request.embed(sample + '@@object')
+    for treatment in sample_object.get('treatments', []) or []:
+        treatments.add(treatment)
+    for multiplexed_sample in sample_object.get('multiplexed_samples', []) or []:
+        multiplexed_sample_object = request.embed(
+            multiplexed_sample + '@@object?skip_calculated=true'
+        )
+        for treatment in multiplexed_sample_object.get('treatments', []) or []:
+            treatments.add(treatment)
+    demultiplexed_from = sample_object.get('demultiplexed_from')
+    if demultiplexed_from:
+        multiplexed_sample_object = request.embed(demultiplexed_from + '@@object')
+        for constituent in multiplexed_sample_object.get('multiplexed_samples', []) or []:
+            constituent_object = request.embed(constituent + '@@object?skip_calculated=true')
+            for treatment in constituent_object.get('treatments', []) or []:
+                treatments.add(treatment)
+    return treatments
+
+
+def audit_analysis_set_condition_treatments(value, system):
+    '''
+    [
+        {
+            "audit_description": "Condition treatments are expected to be among the treatments applied to this analysis set's sample(s), including multiplexed constituents or demultiplexed sample sources.",
+            "audit_category": "inconsistent condition treatments",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    audit_message = get_audit_message(audit_analysis_set_condition_treatments)
+    condition_treatments = value.get('condition_treatments', [])
+    if not condition_treatments:
+        return
+
+    request = system.get('request')
+    sample_treatments = set()
+    for sample in value.get('samples', []):
+        sample_treatments.update(collect_treatments_from_sample(request, sample))
+
+    inconsistent_condition_treatments = [
+        treatment for treatment in condition_treatments if treatment not in sample_treatments
+    ]
+    if inconsistent_condition_treatments:
+        inconsistent_condition_treatments = ', '.join([
+            audit_link(path_to_text(treatment), treatment)
+            for treatment in inconsistent_condition_treatments
+        ])
+        detail = (
+            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has `condition_treatments`: {inconsistent_condition_treatments} '
+            f'that are not among the treatments applied to its `samples`.'
+        )
+        yield AuditFailure(
+            audit_message.get('audit_category', ''),
+            f'{detail} {audit_message.get("audit_description", "")}',
+            level=audit_message.get('audit_level', '')
+        )
+
+
 def audit_analysis_set_inconsistent_onlist_info(value, system):
     '''
     [
@@ -314,6 +375,7 @@ def audit_missing_cell_annotations(value, system):
 
 function_dispatcher_analysis_set_object = {
     'audit_analysis_set_multiplexed_samples': audit_analysis_set_multiplexed_samples,
+    'audit_analysis_set_condition_treatments': audit_analysis_set_condition_treatments,
     'audit_analysis_set_inconsistent_onlist_info': audit_analysis_set_inconsistent_onlist_info,
     'audit_multiple_barcode_replacement_files_in_input': audit_multiple_barcode_replacement_files_in_input,
     'audit_pipeline_parameters': audit_pipeline_parameters,

@@ -763,6 +763,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "condition_treatments": {
+                                "type": "keyword"
+                            },
                             "construct_library_sets": {
                                 "type": "keyword"
                             },
