@@ -1,6 +1,6 @@
 {
-    "hash": "3a879bc7e6221878e6621c84fe7ad040",
-    "index_name": "construct_library_set_3a879bc7",
+    "hash": "5f8cff63ae97cd72473d5b30d458e386",
+    "index_name": "construct_library_set_5f8cff63",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -589,9 +589,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "type": "keyword"
                             },
@@ -605,6 +602,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {
@@ -989,9 +989,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "type": "keyword"
                             },
@@ -1005,6 +1002,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {

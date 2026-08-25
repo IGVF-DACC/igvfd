@@ -1,6 +1,6 @@
 {
-    "hash": "1cfbce13a32a0c10e86810dd0afb762c",
-    "index_name": "alignment_file_1cfbce13",
+    "hash": "aa106e27d859ebc835aaff378ea58d0f",
+    "index_name": "alignment_file_aa106e27",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1141,9 +1141,6 @@
                             "revoke_detail": {
                                 "type": "keyword"
                             },
-                            "sample_summary": {
-                                "type": "keyword"
-                            },
                             "samples": {
                                 "properties": {
                                     "@id": {
@@ -1968,6 +1965,9 @@
                                 "type": "keyword"
                             },
                             "sequencing_library_types": {
+                                "type": "keyword"
+                            },
+                            "simplified_sample_summary": {
                                 "type": "keyword"
                             },
                             "small_scale_gene_list": {
