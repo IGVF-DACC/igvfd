@@ -491,10 +491,14 @@ def get_differential_treatment_phrase_for_sample_summary(request, condition_trea
             if treatment_id not in shared_treatment_ids
         ]
         label_ids = distinguishing_ids or list(arm_ids)
-        labels = sorted(
-            get_treatment_comparison_label(request.embed(treatment_id, treatment_embed))
-            for treatment_id in label_ids
-        )
+        treatment_labels = []
+        for treatment_id in label_ids:
+            treatment_object = request.embed(treatment_id, treatment_embed)
+            treatment_labels.append((
+                treatment_object.get('treatment_term_name', ''),
+                get_treatment_comparison_label(treatment_object),
+            ))
+        labels = [label for _, label in sorted(treatment_labels)]
         if labels:
             arm_phrases.append(', '.join(labels))
 
@@ -502,7 +506,7 @@ def get_differential_treatment_phrase_for_sample_summary(request, condition_trea
         return ''
 
     arm_phrases = sorted(arm_phrases, key=lambda phrase: (-phrase.count(','), phrase))
-    return f'comparing {" vs. ".join(arm_phrases)}'
+    return f'under conditions of {join_multiple_terms(arm_phrases)}'
 
 
 def get_treatment_phrase_for_sample_summary(request, treatments, samples=None):
