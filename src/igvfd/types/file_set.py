@@ -1456,11 +1456,7 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-<<<<<<< HEAD
-    def simplified_sample_summary(self, request, samples=None, donors=None, construct_library_sets=None, collections=None):
-=======
-    def sample_summary(self, request, samples=None, donors=None, construct_library_sets=None, collections=None, condition_treatments=None):
->>>>>>> 81db9c8c (added property + audit + calculation)
+    def simplified_sample_summary(self, request, samples=None, donors=None, construct_library_sets=None, collections=None, condition_treatments=None):
         corces_special_collection = 'PD single cell multiomics'
         taxa = set()
         sample_classification_term_target = dict()
