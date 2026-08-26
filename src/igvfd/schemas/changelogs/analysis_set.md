@@ -2,11 +2,8 @@
 
 ### Minor changes since schema version 11
 
-<<<<<<< HEAD
-* Rename calculated property `sample_summary` to `simplified_sample_summary`.
-=======
 * Add `condition_treatments`.
->>>>>>> 81db9c8c (added property + audit + calculation)
+* Rename calculated property `sample_summary` to `simplified_sample_summary`.
 
 ### Schema version 11
 
