@@ -32,7 +32,8 @@ def test_audit_pseudobulk_set_marker_gene_files(
     # No audit when the input file sets are pseudobulk sets.
     testapp.patch_json(
         pseudobulk_set_2['@id'],
-        {'input_file_sets': [pseudobulk_set_base['@id']]}
+        {'input_file_sets': [pseudobulk_set_base['@id']],
+         'merged': True}
     )
     res = testapp.get(pseudobulk_set_2['@id'] + '@@audit')
     assert all(
