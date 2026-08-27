@@ -2,8 +2,8 @@
 
 ### Minor changes since schema version 27
 
-* Extend `content_type` enum list to include `gene program-disease links`.
-* Extend `content_type` enum list to include `genes in gene program-disease links`.
+* Extend `content_type` enum list to include `gene-disease program`.
+* Extend `content_type` enum list to include `gene-disease program regulators`.
 * Extend `content_type` enum list to include `variant effects on chromatin accessibility`.
 * Extend `content_type` enum list to include `coldspot`.
 * Extend `content_type` enum list to include `coldspot variants`.
