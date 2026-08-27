@@ -49,7 +49,7 @@ def test_condition_treatments(
         treatment_combo1['@id'],
         treatment_combo2['@id'],
     }
-    assert 'perturbed with 23 ng/mL G-CSF at 10 Celsius' in res.json['sample_summary']
+    assert 'perturbed with 23 ng/mL G-CSF at 10 Celsius' in res.json['simplified_sample_summary']
 
 
 def test_condition_treatments_differential_sample_summary(
@@ -150,7 +150,7 @@ def test_condition_treatments_differential_sample_summary(
         }
     )
     res = testapp.get(analysis_set_base['@id'])
-    assert res.json['sample_summary'].endswith(
+    assert res.json['simplified_sample_summary'].endswith(
         'under conditions of 33 mM glucose, 1 mM palmitate and 8 mM glucose'
     )
 
@@ -235,6 +235,6 @@ def test_condition_treatments_differential_sample_summary_many_conditions(
         }
     )
     res = testapp.get(analysis_set_base['@id'])
-    assert res.json['sample_summary'].endswith(
+    assert res.json['simplified_sample_summary'].endswith(
         'under conditions of 33 mM glucose, 1 mM palmitate and 2 more'
     )
