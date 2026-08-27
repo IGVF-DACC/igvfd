@@ -4,6 +4,7 @@ import pytest
 def test_audit_pseudobulk_set_marker_gene_files(
     testapp,
     pseudobulk_set_base,
+    pseudobulk_set_2,
     analysis_set_base,
     tabular_file
 ):
@@ -24,6 +25,16 @@ def test_audit_pseudobulk_set_marker_gene_files(
         }
     )
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing marker gene list'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # No audit when the input file sets are pseudobulk sets.
+    testapp.patch_json(
+        pseudobulk_set_2['@id'],
+        {'input_file_sets': [pseudobulk_set_base['@id']]}
+    )
+    res = testapp.get(pseudobulk_set_2['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing marker gene list'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
