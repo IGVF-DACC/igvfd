@@ -500,9 +500,7 @@ def get_cell_annotation(request, cell_type, samples, cell_qualifier=None):
         source_biosample_terms.add(sample_term_object.get('term_name', ''))
 
     if len(source_biosample_classifications) == 1 and \
-            'tissue/organ' in source_biosample_classifications and \
-            len(source_biosample_terms) == 1 and \
-            list(source_biosample_terms)[0] != cell_type_name:
+            'tissue/organ' in source_biosample_classifications:
         phrase = ' '.join([x for x in [
             ', '.join(sorted(source_biosample_terms)),
             cell_qualifier_string,
