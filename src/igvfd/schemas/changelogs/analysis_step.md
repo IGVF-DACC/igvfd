@@ -4,8 +4,8 @@
 
 * Extend `input_content_types` enum list to include `gene-disease program`.
 * Extend `output_content_types` enum list to include `gene-disease program`.
-* Extend `input_content_types` enum list to include `gene-disease program regulators`.
-* Extend `output_content_types` enum list to include `gene-disease program regulators`.
+* Extend `input_content_types` enum list to include `gene-disease program heritability`.
+* Extend `output_content_types` enum list to include `gene-disease program heritability`.
 * Extend `input_content_types` enum list to include `variant effects on chromatin accessibility`.
 * Extend `output_content_types` enum list to include `variant effects on chromatin accessibility`.
 * Extend `input_content_types` enum list to include `coldspot`.

@@ -2465,7 +2465,7 @@
         "release_timestamp": "2026-07-31T12:34:56Z",
         "md5sum": "1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e",
         "file_format": "tsv",
-        "content_type": "gene-disease program regulators",
+        "content_type": "gene-disease program heritability",
         "submitted_file_name": "/Users/igvf/igvf_files/gene_membership_in_gene_program_disease_links.tsv.gz",
         "file_size": 5200010,
         "upload_status": "validated",
