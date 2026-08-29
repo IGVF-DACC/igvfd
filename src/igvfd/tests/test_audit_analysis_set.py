@@ -763,3 +763,16 @@ def test_audit_missing_cell_annotations(testapp, analysis_set_base, intermediate
         error['category'] == 'missing cell annotations'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+    # Is principal, has cell annotations, IS single cell (no audit)
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'content_type': 'cell annotations'
+        }
+    )
+    res = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing cell annotations'
+        for error in res.json['audit'].get('WARNING', [])
+    )

@@ -280,7 +280,7 @@ def audit_missing_cell_annotations(value, system):
     '''
         [
             {
-                "audit_description": "Single cell principal AnalysisSet is expected to have a `cell annotation` file.",
+                "audit_description": "Single cell principal analysis sets are expected to have a `cell annotation` file.",
                 "audit_category": "missing cell annotations",
                 "audit_level": "WARNING"
             }
@@ -301,7 +301,7 @@ def audit_missing_cell_annotations(value, system):
     # Check if any file has the file content type 'cell annotations'
     for file in value.get('files', []):
         file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
-        if file_object.get('file_format') == 'cell annotations':
+        if file_object.get('content_type') == 'cell annotations':
             return
 
     msg_missing_cell_annot = get_audit_message(audit_missing_cell_annotations, index=0)
