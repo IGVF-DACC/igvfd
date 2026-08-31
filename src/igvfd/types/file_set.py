@@ -256,7 +256,7 @@ def get_preferred_assay_slims(request, preferred_assay_titles, assay_terms=None)
         '10x multiome with MULTI-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
         '10x snATAC-seq with Scale pre-indexing': ['chromatin accessibility', 'single cell'],
         'snRNA-seq with Scale pre-indexing': ['gene expression', 'single cell'],
-        '4sU-SHARE-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome', 'overexpression screen'],
+        '4sU-SHARE-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
         'SHARE-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
         'MORF-SHARE-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome', 'overexpression screen'],
         'MORF screen': ['overexpression screen'],
