@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `preferred_assay_titles` enum list to include `4sU-SHARE-seq`. (09/02/2026)
 * Extend `transcriptome_annotation` enum list to include `GENCODE 34`. (08/26/2026)
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`. (08/19/2026)
 * Extend `preferred_assay_titles` enum list to include `Parse TAP-seq`. (07/22/2026)
