@@ -59,7 +59,7 @@ def test_pseudobulk_set_donors(
     assert res.json.get('donors') is None
 
 
-def test_pseudobulk_set_cell_annotation(testapp, pseudobulk_set_base, in_vitro_cell_line, tissue, human_tissue, primary_cell, sample_term_K562, sample_term_brown_adipose_tissue, sample_term_embryoid_body):
+def test_pseudobulk_set_cell_annotation(testapp, pseudobulk_set_base, in_vitro_cell_line, tissue, human_tissue, primary_cell, sample_term_endothelial_cell, sample_term_K562, sample_term_brown_adipose_tissue, sample_term_embryoid_body):
     res = testapp.get(pseudobulk_set_base['@id']).json
     assert res.get('cell_annotation', '') == 'adrenal gland endothelial cell of vascular tree'
     # Cell qualifier appears before the cell type.
@@ -95,6 +95,15 @@ def test_pseudobulk_set_cell_annotation(testapp, pseudobulk_set_base, in_vitro_c
     )
     res = testapp.get(pseudobulk_set_base['@id']).json
     assert res.get('cell_annotation', '') == 'exhausted endothelial cell of vascular tree from pluripotent stem cell'
+    # Pseudobulks with primary cell source biosamples where the primary cell's sample term is identical to the cell type.
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'sample_terms': [sample_term_endothelial_cell['@id']]
+        }
+    )
+    res = testapp.get(pseudobulk_set_base['@id']).json
+    assert res.get('cell_annotation', '') == 'exhausted endothelial cell of vascular tree'
     # Pseudobulks with cell line source biosamples
     testapp.patch_json(
         pseudobulk_set_base['@id'],
