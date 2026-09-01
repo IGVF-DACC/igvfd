@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Extend `preferred_assay_titles` enum list to include `4sU-SHARE-seq`.
 * Extend `preferred_assay_titles` enum list to include `in vivo scMPRA`.
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`.
 * Extend `preferred_assay_titles` enum list to include `Parse TAP-seq`.
