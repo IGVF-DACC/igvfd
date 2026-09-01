@@ -79,10 +79,16 @@ def single_cell_check(system, value, object_type, single_cell_assay_terms=list(S
         return False
     elif object_type == 'Analysis set':
         for input_file_set in value.get('input_file_sets', []):
+            # If MeaSet is a direct input to the Analysis set
             if input_file_set.startswith('/measurement-sets/'):
                 measurement_set_obj = system.get('request').embed(input_file_set, '@@object?skip_calculated=true')
                 assay_term = measurement_set_obj.get('assay_term')
                 if assay_term in single_cell_assay_terms:
+                    return True
+            # Otherwise, if the input file set is an Analysis set, check recursively
+            elif input_file_set.startswith('/analysis-sets/'):
+                analysis_set_obj = system.get('request').embed(input_file_set, '@@object?skip_calculated=true')
+                if single_cell_check(system, analysis_set_obj, 'Analysis set', single_cell_assay_terms, include_perturb_seq):
                     return True
         return False
     else:
