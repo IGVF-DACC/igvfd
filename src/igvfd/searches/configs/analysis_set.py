@@ -362,7 +362,7 @@ def assay_summary():
                 'label': 'Assays'
             },
             'y': {
-                'group_by': ['samples.sample_terms.term_name', "sample_summary_matrix"],
+                'group_by': "simplified_sample_summary",
                 'label': 'Samples'
             }
         }
