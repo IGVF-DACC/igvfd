@@ -106,7 +106,8 @@
         "workflow_version": "v1.34.0",
         "uniform_pipeline": false,
         "preferred_assay_titles": [
-            "WGS"
+            "WGS",
+            "4sU-SHARE-seq"
         ]
     }
 ]

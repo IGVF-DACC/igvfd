@@ -72,6 +72,7 @@ def audit_related_multiome_datasets(value, system):
         related_multiome_datasets = []
 
     multiome_assays = [
+        '4sU-SHARE-seq',
         '10x multiome',
         '10x multiome with MULTI-seq',
         'SHARE-seq',

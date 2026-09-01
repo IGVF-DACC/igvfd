@@ -256,6 +256,7 @@ def get_preferred_assay_slims(request, preferred_assay_titles, assay_terms=None)
         '10x multiome with MULTI-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
         '10x snATAC-seq with Scale pre-indexing': ['chromatin accessibility', 'single cell'],
         'snRNA-seq with Scale pre-indexing': ['gene expression', 'single cell'],
+        '4sU-SHARE-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
         'SHARE-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome'],
         'MORF-SHARE-seq': ['gene expression', 'chromatin accessibility', 'single cell', 'multiome', 'overexpression screen'],
         'MORF screen': ['overexpression screen'],
@@ -499,7 +500,8 @@ def get_cell_annotation(request, cell_type, samples, cell_qualifier=None):
             source_biosample_classifications.add(classification)
         source_biosample_terms.add(sample_term_object.get('term_name', ''))
 
-    if len(source_biosample_classifications) == 1 and 'tissue/organ' in source_biosample_classifications:
+    if len(source_biosample_classifications) == 1 and \
+            'tissue/organ' in source_biosample_classifications:
         phrase = ' '.join([x for x in [
             ', '.join(sorted(source_biosample_terms)),
             cell_qualifier_string,
@@ -515,7 +517,10 @@ def get_cell_annotation(request, cell_type, samples, cell_qualifier=None):
             'derived from',
             ', '.join(sorted(source_biosample_terms))
         ] if x is not None])
-    elif len(source_biosample_classifications) == 1 and 'primary cell' in source_biosample_classifications:
+    elif len(source_biosample_classifications) == 1 and \
+            'primary cell' in source_biosample_classifications and \
+            len(source_biosample_terms) == 1 and \
+            list(source_biosample_terms)[0] != cell_type_name:
         phrase = ' '.join([x for x in [
             cell_qualifier_string,
             cell_type_name,

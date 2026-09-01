@@ -24,6 +24,7 @@ def audit_pseudobulk_set_marker_gene_files(value, system):
     '''
     audit_message = get_audit_message(audit_pseudobulk_set_marker_gene_files, index=0)
     marker_genes_files_in_input_file_set = []
+    merged = value.get('merged', False)
     if value.get('input_file_sets', []):
         for input_file_set in value.get('input_file_sets', []):
             input_file_set_object = system.get('request').embed(
@@ -33,7 +34,7 @@ def audit_pseudobulk_set_marker_gene_files(value, system):
                 file_object = system.get('request').embed(tab_file, '@@object?skip_calculated=true')
                 if file_object.get('content_type', '') in ['marker genes', 'marker gene activity']:
                     marker_genes_files_in_input_file_set.append(file_object.get('@id'))
-    if not marker_genes_files_in_input_file_set:
+    if not marker_genes_files_in_input_file_set and not merged:
         detail = (
             f'Pseudobulk set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no input file sets that have marker genes files.'

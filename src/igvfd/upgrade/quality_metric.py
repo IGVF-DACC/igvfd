@@ -78,3 +78,20 @@ def single_cell_rna_seq_quality_metric_1_2(value, system):
     if 'k-mer length' in value:
         value['kmer_length'] = value['k-mer length']
         del value['k-mer length']
+
+
+@upgrade_step('perturb_seq_quality_metric', '1', '2')
+def perturb_seq_quality_metric_1_2(value, system):
+    if 'pct_cells_assigned_guide' in value:
+        value['frac_cells_with_guide'] = value['pct_cells_assigned_guide']
+        del value['pct_cells_assigned_guide']
+    if 'avg_cells_per_target' in value:
+        value['avg_cells_per_guide'] = value['avg_cells_per_target']
+        del value['avg_cells_per_target']
+    if 'mean_mitochondrial_reads' in value:
+        value['mean_percent_mitochondrial'] = value['mean_mitochondrial_reads']
+        del value['mean_mitochondrial_reads']
+    if 'total_targets' in value:
+        del value['total_targets']
+    if 'guide_diversity' in value:
+        del value['guide_diversity']
