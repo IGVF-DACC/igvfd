@@ -286,3 +286,20 @@ def pseudobulk_set_report_view():
         },
     }
     return config
+
+@search_config(
+    name='SingleCellMatrixPseudobulk'
+)
+def single_cell_matrix_pseudobulk():
+    return {
+        'matrix': {
+            'x': {
+                'group_by': 'preferred_assay_titles',
+                'label': 'Assays'
+            },
+            'y': {
+                'group_by': "sample_summary_matrix",
+                'label': 'Samples'
+            }
+        }
+    }

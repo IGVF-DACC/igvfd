@@ -352,9 +352,9 @@ def analysis_set_report_view():
     return config
 
 @search_config(
-    name='SingleCellProt'
+    name='SingleCellMatrixAnalysis'
 )
-def assay_summary():
+def single_cell_matrix_analysis():
     return {
         'matrix': {
             'x': {
@@ -362,7 +362,7 @@ def assay_summary():
                 'label': 'Assays'
             },
             'y': {
-                'group_by': "simplified_sample_summary",
+                'group_by': "sample_summary_matrix",
                 'label': 'Samples'
             }
         }

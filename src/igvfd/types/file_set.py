@@ -3324,6 +3324,25 @@ class PseudobulkSet(FileSet):
     set_status_down = FileSet.set_status_down + []
 
     @calculated_property(
+        condition='samples',
+        schema={
+            'title': 'Simplified Sample Summary for Matrix',
+            'description': 'A summary of the samples associated with this pseudobulk set.',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def sample_summary_matrix(self, request, samples=None, donors=None, construct_library_sets=None, collections=None):
+        return AnalysisSet.sample_summary_matrix(
+            self,
+            request,
+            samples=samples,
+            donors=donors,
+            construct_library_sets=construct_library_sets,
+            collections=collections,
+        )
+
+    @calculated_property(
         schema={
             'title': 'Summary',
             'type': 'string',
