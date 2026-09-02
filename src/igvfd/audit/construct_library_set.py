@@ -59,6 +59,9 @@ def audit_construct_library_set_plasmid_map(value, system):
     ]
     '''
     audit_message = get_audit_message(audit_construct_library_set_plasmid_map)
+    award = value.get('award', '')
+    if award == '/awards/Community/':
+        return
     map_counter = 0
     detail = (
         f'Construct library set {audit_link(path_to_text(value["@id"]), value["@id"])} '

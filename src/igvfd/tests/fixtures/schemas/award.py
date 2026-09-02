@@ -13,6 +13,17 @@ def award(testapp):
 
 
 @pytest.fixture
+def community_award(testapp):
+    item = {
+        'name': 'Community',
+        'project': 'community',
+        'title': 'A Generic Community Award',
+        'viewing_group': 'community',
+    }
+    return testapp.post_json('/award', item).json['@graph'][0]
+
+
+@pytest.fixture
 def award_v1(award):
     item = award.copy()
     item.update({
