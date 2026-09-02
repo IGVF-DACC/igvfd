@@ -1,5 +1,13 @@
 ## Changelog for *`prediction_set.json`*
 
+### Schema version 10
+
+* Reduce `file_set_type` enum list to exclude `activity level`.
+* Reduce `file_set_type` enum list to exclude `binding effect`.
+* Reduce `file_set_type` enum list to exclude `functional effect`.
+* Reduce `file_set_type` enum list to exclude `protein-protein interaction`.
+* Reduce `file_set_type` enum list to exclude `protein stability`.
+
 ### Minor changes since schema version 9
 
 * Extend `file_set_type` enum list to include `chromatin accessibility`.

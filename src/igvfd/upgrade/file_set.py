@@ -981,3 +981,23 @@ def analysis_set_10_11(value, system):
     if 'demultiplexed_samples' in value:
         value['subset_samples'] = value['demultiplexed_samples']
         del value['demultiplexed_samples']
+
+
+@upgrade_step('prediction_set', '9', '10')
+def prediction_set_9_10(value, system):
+    file_set_type = value.get('file_set_type')
+    removed_types = [
+        'activity level',
+        'binding effect',
+        'functional effect',
+        'protein-protein interaction',
+        'protein stability'
+    ]
+    if file_set_type in removed_types:
+        value['file_set_type'] = 'meta analysis'
+        notes += (
+            f' This prediction set previously used {file_set_type} as file_set_type,'
+            f' which has been removed. It has been updated to meta analysis as a placeholder.'
+        )
+    if notes.strip() != value.get('notes', '').strip():
+        value['notes'] = notes.strip()
