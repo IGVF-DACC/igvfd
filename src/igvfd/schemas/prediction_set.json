@@ -253,39 +253,25 @@
     },
     "properties": {
         "schema_version": {
-            "default": "9"
+            "default": "10"
         },
         "file_set_type": {
             "description": "The category that best describes this prediction set.",
             "comment": "File set type describes the feature being predicted by the results in the prediction set.",
-            "oneOf": [
-                {
-                    "enum": [
-                        "chromatin accessibility",
-                        "coding variant effects",
-                        "coding variant effects on PPI",
-                        "coding variants pathogenicity",
-                        "disease associations",
-                        "element-gene links",
-                        "gene regulatory networks",
-                        "genetic constraint",
-                        "meta analysis",
-                        "non-coding variant effects",
-                        "spatial gene expression variability",
-                        "TF binding",
-                        "variant TF binding effects"
-                    ]
-                },
-                {
-                    "enum": [
-                        "activity level",
-                        "binding effect",
-                        "functional effect",
-                        "protein-protein interaction",
-                        "protein stability"
-                    ],
-                    "permission": "admin_only"
-                }
+            "enum": [
+                "chromatin accessibility",
+                "coding variant effects",
+                "coding variant effects on PPI",
+                "coding variants pathogenicity",
+                "disease associations",
+                "element-gene links",
+                "gene regulatory networks",
+                "genetic constraint",
+                "meta analysis",
+                "non-coding variant effects",
+                "spatial gene expression variability",
+                "TF binding",
+                "variant TF binding effects"
             ],
             "enum_descriptions": {
                 "chromatin accessibility": "Predicted chromatin accessibility signal and variant effects on it.",
@@ -300,12 +286,7 @@
                 "non-coding variant effects": "Predicted functional impact of variants located in non-coding regulatory sequence (e.g., enhancer activity).",
                 "spatial gene expression variability": "Predicted variability in gene expression across spatial locations within a tissue.",
                 "TF binding": "Predicted transcription factor binding sites or motif instances across the genome.",
-                "variant TF binding effects": "Predicted changes in transcription factor binding affinity caused by a genetic variant.",
-                "activity level": "Predictive modeling of an input variable on activiy level.",
-                "binding effect": "Predictive modeling of an input variable on TF binding effect.",
-                "functional effect": "Predictive modeling of an input variable on functional effect.",
-                "protein-protein interaction": "Predictive modeling of an input variable on the interactions between proteins.",
-                "protein stability": "Predictive modeling of an input variable on protein stability."
+                "variant TF binding effects": "Predicted changes in transcription factor binding affinity caused by a genetic variant."
             },
             "submissionExample": {
                 "appscript": "chromatin accessibility",
