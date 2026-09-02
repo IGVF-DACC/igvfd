@@ -460,16 +460,52 @@ def get_treatment_comparison_label(treatment):
     return term_name
 
 
+def get_sample_treatment_id_groups(request, samples, visited_multiplexed_samples=None):
+    '''Return treatment @id lists for each non-multiplexed sample.
+
+    Multiplexed samples calculate `treatments` from their constituents, so
+    skip_calculated embeds omit that property. Expand multiplexed samples
+    and read submitted treatments from the constituents instead.
+    '''
+    if visited_multiplexed_samples is None:
+        visited_multiplexed_samples = set()
+    treatment_groups = []
+    for sample in samples:
+        if sample in visited_multiplexed_samples:
+            continue
+        sample_object = request.embed(sample, '@@object?skip_calculated=true')
+        multiplexed_samples = sample_object.get('multiplexed_samples')
+        if multiplexed_samples:
+            visited_multiplexed_samples.add(sample)
+            treatment_groups.extend(
+                get_sample_treatment_id_groups(
+                    request, multiplexed_samples, visited_multiplexed_samples
+                )
+            )
+            continue
+        treatments = sample_object.get('treatments', [])
+        if treatments:
+            treatment_groups.append(treatments)
+    return treatment_groups
+
+
+def collect_sample_treatment_ids(request, samples):
+    '''Union of treatment @ids from samples, expanding multiplexed samples.'''
+    treatment_ids = set()
+    for treatments in get_sample_treatment_id_groups(request, samples):
+        treatment_ids.update(treatments)
+    return treatment_ids
+
+
 def get_differential_treatment_phrase_for_sample_summary(request, condition_treatments, samples):
     condition_treatment_ids = {
         treatment if isinstance(treatment, str) else treatment['@id']
         for treatment in condition_treatments
     }
     arms = []
-    for sample in samples:
-        sample_object = request.embed(sample, '@@object?skip_calculated=true')
+    for treatments in get_sample_treatment_id_groups(request, samples):
         arm_ids = tuple(sorted(
-            treatment_id for treatment_id in sample_object.get('treatments', [])
+            treatment_id for treatment_id in treatments
             if treatment_id in condition_treatment_ids
         ))
         if arm_ids:
@@ -498,10 +534,11 @@ def get_differential_treatment_phrase_for_sample_summary(request, condition_trea
                 treatment_object.get('treatment_term_name', ''),
                 get_treatment_comparison_label(treatment_object),
             ))
-        labels = [label for _, label in sorted(treatment_labels)]
+        labels = list(dict.fromkeys(label for _, label in sorted(treatment_labels)))
         if labels:
             arm_phrases.append(', '.join(labels))
 
+    arm_phrases = list(dict.fromkeys(arm_phrases))
     if len(arm_phrases) < 2:
         return ''
 
