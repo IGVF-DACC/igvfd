@@ -1,6 +1,6 @@
 {
-    "hash": "a83572d48f3267b1fc326446829154cc",
-    "index_name": "measurement_set_a83572d4",
+    "hash": "dc6c247279ef965d692bc4a721dc1e92",
+    "index_name": "measurement_set_dc6c2472",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -683,9 +683,6 @@
                                 "type": "keyword"
                             },
                             "collections": {
-                                "type": "keyword"
-                            },
-                            "condition_treatments": {
                                 "type": "keyword"
                             },
                             "construct_library_sets": {
@@ -1426,9 +1423,6 @@
                             "collections": {
                                 "type": "keyword"
                             },
-                            "condition_treatments": {
-                                "type": "keyword"
-                            },
                             "construct_library_sets": {
                                 "type": "keyword"
                             },
@@ -1827,9 +1821,6 @@
                                 "type": "keyword"
                             },
                             "collections": {
-                                "type": "keyword"
-                            },
-                            "condition_treatments": {
                                 "type": "keyword"
                             },
                             "construct_library_sets": {
@@ -3144,9 +3135,6 @@
                                 "type": "keyword"
                             },
                             "collections": {
-                                "type": "keyword"
-                            },
-                            "condition_treatments": {
                                 "type": "keyword"
                             },
                             "construct_library_sets": {
