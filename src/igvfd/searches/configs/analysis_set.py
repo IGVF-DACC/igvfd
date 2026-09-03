@@ -347,3 +347,21 @@ def analysis_set_report_view():
         },
     }
     return config
+
+
+@search_config(
+    name='DifferentiationSeries'
+)
+def differentiation_series():
+    return {
+        'matrix': {
+            'x': {
+                'group_by': 'preferred_assay_titles',
+                'label': 'Assays'
+            },
+            'y': {
+                'group_by': ['samples.sample_terms.term_name', 'samples.targeted_sample_term.term_name'],
+                'label': 'Samples'
+            }
+        }
+    }
