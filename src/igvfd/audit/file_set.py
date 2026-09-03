@@ -631,7 +631,7 @@ def audit_unexpected_virtual_samples(value, system):
     '''
     [
         {
-            "audit_description": "Only community construct library sets, curated sets, prediction sets and analysis sets are expected to link to virtual samples.",
+            "audit_description": "Only curated sets, prediction sets, analysis sets, and community construct library sets are expected to link to virtual samples.",
             "audit_category": "unexpected sample",
             "audit_level": "ERROR"
         }
