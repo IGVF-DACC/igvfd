@@ -45,3 +45,11 @@ def test_prediction_set_set_upgrade_8_9(upgrader, prediction_set_v8):
     value = upgrader.upgrade('prediction_set', prediction_set_v8, current_version='8', target_version='9')
     assert value['schema_version'] == '9'
     assert value['file_set_type'] == 'functional effect'
+
+
+def test_prediction_set_set_upgrade_9_10(upgrader, prediction_set_v9):
+    value = upgrader.upgrade('prediction_set', prediction_set_v9, current_version='9', target_version='10')
+    assert value['schema_version'] == '10'
+    assert value['file_set_type'] == 'meta analysis'
+    assert value['notes'].endswith(
+        'This prediction set previously used protein stability as file_set_type, which has been removed. It has been updated to meta analysis as a placeholder.')
