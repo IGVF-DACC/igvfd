@@ -489,14 +489,6 @@ def get_sample_treatment_id_groups(request, samples, visited_multiplexed_samples
     return treatment_groups
 
 
-def collect_sample_treatment_ids(request, samples):
-    '''Union of treatment @ids from samples, expanding multiplexed samples.'''
-    treatment_ids = set()
-    for treatments in get_sample_treatment_id_groups(request, samples):
-        treatment_ids.update(treatments)
-    return treatment_ids
-
-
 def get_differential_treatment_phrase_for_sample_summary(request, condition_treatments, samples):
     condition_treatment_ids = {
         treatment if isinstance(treatment, str) else treatment['@id']
@@ -515,21 +507,11 @@ def get_differential_treatment_phrase_for_sample_summary(request, condition_trea
     if len(unique_arms) < 2:
         return ''
 
-    shared_treatment_ids = set.intersection(*(set(arm) for arm in unique_arms))
-    treatment_embed = (
-        '@@object_with_select_calculated_properties?field=treatment_term_name'
-        '&field=amount&field=amount_units&field=temperature&field=temperature_units'
-    )
     arm_phrases = []
     for arm_ids in unique_arms:
-        distinguishing_ids = [
-            treatment_id for treatment_id in arm_ids
-            if treatment_id not in shared_treatment_ids
-        ]
-        label_ids = distinguishing_ids or list(arm_ids)
         treatment_labels = []
-        for treatment_id in label_ids:
-            treatment_object = request.embed(treatment_id, treatment_embed)
+        for treatment_id in arm_ids:
+            treatment_object = request.embed(treatment_id, '@@object')
             treatment_labels.append((
                 treatment_object.get('treatment_term_name', ''),
                 get_treatment_comparison_label(treatment_object),
@@ -543,7 +525,7 @@ def get_differential_treatment_phrase_for_sample_summary(request, condition_trea
         return ''
 
     arm_phrases = sorted(arm_phrases, key=lambda phrase: (-phrase.count(','), phrase))
-    return f'under conditions of {join_multiple_terms(arm_phrases)}'
+    return f'under conditions of {"; ".join(arm_phrases)}'
 
 
 def get_treatment_phrase_for_sample_summary(request, treatments, samples=None):
@@ -557,46 +539,25 @@ def get_treatment_phrase_for_sample_summary(request, treatments, samples=None):
             return differential_phrase
 
     treatment_objects = [
-        request.embed(
-            treatment,
-            '@@object_with_select_calculated_properties?field=summary&field=purpose&field=depletion'
-        )
+        request.embed(treatment, '@@object')
         for treatment in treatments
     ]
     phrases = []
-    depleted_treatment_summaries = sorted([
+    depleted_treatment_summaries = sorted(set(
         treatment.get('summary')[13:]
         for treatment in treatment_objects
         if treatment.get('depletion')
-    ])
+    ))
     if depleted_treatment_summaries:
         phrases.append(f'depleted of {", ".join(depleted_treatment_summaries)}')
 
-    purpose_to_verb = {
-        'activation': 'activated',
-        'acute stimulation': 'acutely stimulated',
-        'chronic stimulation': 'chronically stimulated',
-        'agonist': 'agonized',
-        'antagonist': 'antagonized',
-        'control': 'treated with a control',
-        'differentiation': 'differentiated',
-        'de-differentiation': 'de-differentiated',
-        'perturbation': 'perturbed',
-        'selection': 'selected',
-        'stimulation': 'stimulated'
-    }
-    purpose_to_summaries = {}
-    for treatment in treatment_objects:
-        if not treatment.get('depletion'):
-            purpose = treatment['purpose']
-            if purpose not in purpose_to_summaries:
-                purpose_to_summaries[purpose] = []
-            purpose_to_summaries[purpose].append(treatment['summary'][13:])
-
-    for purpose in sorted(purpose_to_summaries):
-        verb = purpose_to_verb.get(purpose, 'treated with')
-        unique_summaries = sorted(set(purpose_to_summaries[purpose]))
-        phrases.append(f'{verb} with {", ".join(unique_summaries)}')
+    condition_summaries = sorted(set(
+        treatment.get('summary')[13:]
+        for treatment in treatment_objects
+        if not treatment.get('depletion')
+    ))
+    if condition_summaries:
+        phrases.append(f'under conditions of {", ".join(condition_summaries)}')
 
     return ', '.join(phrases)
 

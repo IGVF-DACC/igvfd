@@ -12,10 +12,6 @@ from .formatter import (
     join_obj_paths
 )
 
-from igvfd.types.file_set import (
-    collect_sample_treatment_ids
-)
-
 from .file_set import (
     single_cell_check
 )
@@ -105,7 +101,13 @@ def audit_analysis_set_condition_treatments(value, system):
         return
 
     request = system.get('request')
-    sample_treatments = collect_sample_treatment_ids(request, value.get('samples', []))
+    sample_treatments = set()
+    for sample in value.get('samples', []):
+        sample_object = request.embed(
+            sample,
+            '@@object_with_select_calculated_properties?field=treatments'
+        )
+        sample_treatments.update(sample_object.get('treatments', []))
 
     inconsistent_condition_treatments = [
         treatment for treatment in condition_treatments if treatment not in sample_treatments
