@@ -99,6 +99,7 @@
                                 "file_format": {
                                     "enum": [
                                         "bedpe",
+                                        "bigInteract",
                                         "csv",
                                         "gtf",
                                         "gvcf",
@@ -650,6 +651,7 @@
                 "bed",
                 "bedpe",
                 "bigBed",
+                "bigInteract",
                 "csv",
                 "gtf",
                 "gvcf",

@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 11
 
+* Extend `content_type` enum list to include `cell by multiplexing oligo matrix`.
+* Extend `content_type` enum list to include `cell by peak and guide matrix`.
 * Extend `content_type` enum list to include `cell by gene and peak and guide matrix`.
 * Extend `content_type` enum list to include `sequence motifs`.
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`.
