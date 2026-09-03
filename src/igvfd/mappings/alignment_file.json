@@ -1,6 +1,6 @@
 {
-    "hash": "aa106e27d859ebc835aaff378ea58d0f",
-    "index_name": "alignment_file_aa106e27",
+    "hash": "f35aa14f9656d176ddeeab6cc40c9cf4",
+    "index_name": "alignment_file_f35aa14f",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -758,6 +758,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "condition_treatments": {
                                 "type": "keyword"
                             },
                             "construct_library_sets": {

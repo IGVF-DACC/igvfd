@@ -1,6 +1,6 @@
 {
-    "hash": "e4fd84eb454dfd64f0896787ca81056c",
-    "index_name": "sequence_file_e4fd84eb",
+    "hash": "3659bd369bd8682f0ea0b3ce6aa0a154",
+    "index_name": "sequence_file_3659bd36",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -758,6 +758,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "condition_treatments": {
                                 "type": "keyword"
                             },
                             "construct_library_sets": {

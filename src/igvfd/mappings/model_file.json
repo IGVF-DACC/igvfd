@@ -1,6 +1,6 @@
 {
-    "hash": "7cee6cbf209e896c4df984a47bd52735",
-    "index_name": "model_file_7cee6cbf",
+    "hash": "f294db147f32a4bcdba34f6d48b89675",
+    "index_name": "model_file_f294db14",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -767,6 +767,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "condition_treatments": {
                                 "type": "keyword"
                             },
                             "construct_library_sets": {

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Add `condition_treatments`.
 * Rename calculated property `sample_summary` to `simplified_sample_summary`.
 
 ### Schema version 11

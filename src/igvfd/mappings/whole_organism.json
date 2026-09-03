@@ -1,6 +1,6 @@
 {
-    "hash": "950521ae365236b17fe393ce5240fe07",
-    "index_name": "whole_organism_950521ae",
+    "hash": "67629012849e5dd777ea21a67f2db450",
+    "index_name": "whole_organism_67629012",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1068,6 +1068,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "condition_treatments": {
                                 "type": "keyword"
                             },
                             "construct_library_sets": {

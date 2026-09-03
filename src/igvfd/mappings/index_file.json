@@ -1,6 +1,6 @@
 {
-    "hash": "68352ddb8064ed728ae3fca1f61eb1d6",
-    "index_name": "index_file_68352ddb",
+    "hash": "47fbd605e0398001bf73d44590c11c2a",
+    "index_name": "index_file_47fbd605",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -761,6 +761,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "condition_treatments": {
                                 "type": "keyword"
                             },
                             "construct_library_sets": {

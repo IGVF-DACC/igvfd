@@ -1,6 +1,6 @@
 {
-    "hash": "930cc7e0defb7877e701480e26026de3",
-    "index_name": "primary_cell_930cc7e0",
+    "hash": "258e9d0d6ca56a6c836e9fa47ec516cc",
+    "index_name": "primary_cell_258e9d0d",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1071,6 +1071,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "condition_treatments": {
                                 "type": "keyword"
                             },
                             "construct_library_sets": {

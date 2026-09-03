@@ -1,6 +1,6 @@
 {
-    "hash": "a692b42e204723823b2944dff1fe81fe",
-    "index_name": "configuration_file_a692b42e",
+    "hash": "f7bdb4b71baded10050ae73c857c77fb",
+    "index_name": "configuration_file_f7bdb4b7",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -753,6 +753,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "condition_treatments": {
                                 "type": "keyword"
                             },
                             "construct_library_sets": {

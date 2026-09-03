@@ -1,6 +1,6 @@
 {
-    "hash": "f11b615c0e3b824486955d272e3a4028",
-    "index_name": "image_file_f11b615c",
+    "hash": "f0b062cb6d9278cddc40d0bda5ec0852",
+    "index_name": "image_file_f0b062cb",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -753,6 +753,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "condition_treatments": {
                                 "type": "keyword"
                             },
                             "construct_library_sets": {

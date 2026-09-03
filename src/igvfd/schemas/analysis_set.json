@@ -121,6 +121,24 @@
                 "igvf_utils": "IGVFSM02881437 or john-doe:tissue01"
             }
         },
+        "condition_treatments": {
+            "title": "Condition Treatments",
+            "description": "Treatments that define the experimental condition(s) this analysis set represents.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Condition Treatment",
+                "description": "A treatment that is part of the experimental condition profile for this analysis set.",
+                "comment": "See treatment.json for available identifiers.",
+                "type": "string",
+                "linkTo": "Treatment"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:treatment01\", \"/treatments/ffe525b2-bd67-4021-835e-29748513b560/\"]",
+                "igvf_utils": "john-doe:treatment01, /treatments/ffe525b2-bd67-4021-835e-29748513b560/"
+            }
+        },
         "uniform_pipeline_status": {
             "title": "Uniform Pipeline Status",
             "description": "The status of the single cell or Perturb-seq uniform pipeline processing for this analysis set, if applicable.",
