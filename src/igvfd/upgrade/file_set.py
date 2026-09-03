@@ -986,6 +986,7 @@ def analysis_set_10_11(value, system):
 @upgrade_step('prediction_set', '9', '10')
 def prediction_set_9_10(value, system):
     file_set_type = value.get('file_set_type')
+    notes = value.get('notes', '')
     removed_types = [
         'activity level',
         'binding effect',
