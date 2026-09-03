@@ -974,6 +974,28 @@
         "controlled_access": false
     },
     {
+        "uuid": "b214c0ce-b304-4b5e-80d0-4c9fd9fba167",
+        "accession": "IGVFFI0001BGIT",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_biginteract"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "83878c91171338902e0fe0fb97a8c47a",
+        "file_format": "bigInteract",
+        "content_type": "element to gene interactions",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/element_to_gene_interactions.bigInteract",
+        "file_size": 738031,
+        "upload_status": "validated",
+        "file_set": "igvf:analysis_set_with_input",
+        "controlled_access": false
+    },
+    {
         "uuid": "a68cc5f8-df69-4a48-8583-75e264a6ef38",
         "accession": "IGVFFI0001BGBF",
         "lab": "j-michael-cherry",
