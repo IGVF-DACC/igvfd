@@ -173,6 +173,7 @@ def audit_no_files(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     preferred_assay_titles = value.get('preferred_assay_titles', [])
+    award = value.get('award', '')
 
     # Skip audit for specific Measurement set + assay combinations
     skip_assays = [
@@ -184,6 +185,8 @@ def audit_no_files(value, system):
         'varACCESS'
     ]
     if object_type == 'Measurement set' and any(t in skip_assays for t in preferred_assay_titles):
+        return
+    if object_type == 'Construct library set' and award == '/awards/Community/':
         return
 
     audit_message_missing_files = get_audit_message(audit_no_files, index=0)
@@ -628,7 +631,7 @@ def audit_unexpected_virtual_samples(value, system):
     '''
     [
         {
-            "audit_description": "Only curated sets, prediction sets and analysis sets are expected to link to virtual samples.",
+            "audit_description": "Only curated sets, prediction sets, analysis sets, and community construct library sets are expected to link to virtual samples.",
             "audit_category": "unexpected sample",
             "audit_level": "ERROR"
         }
@@ -636,6 +639,9 @@ def audit_unexpected_virtual_samples(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message = get_audit_message(audit_unexpected_virtual_samples)
+    award = value.get('award', '')
+    if object_type == 'Construct library set' and award == '/awards/Community/':
+        return
     samples = []
     if 'samples' in value:
         samples = value.get('samples')
