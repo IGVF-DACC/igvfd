@@ -350,7 +350,7 @@ def analysis_set_report_view():
 
 
 @search_config(
-    name='DifferentiationSeries'
+    name='CellFates'
 )
 def differentiation_series():
     return {
@@ -360,7 +360,7 @@ def differentiation_series():
                 'label': 'Assays'
             },
             'y': {
-                'group_by': ['samples.sample_terms.term_name', 'samples.targeted_sample_term.term_name'],
+                'group_by': ['samples.classifications', 'samples.sample_terms.term_name', 'samples.targeted_sample_term.term_name'],
                 'label': 'Samples'
             }
         }
