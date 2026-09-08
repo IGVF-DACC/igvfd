@@ -125,5 +125,20 @@
         "status": "released",
         "release_timestamp": "2024-06-06T12:34:56Z",
         "uuid": "114fd933-db41-47e4-87d9-0c386b6d0505"
+    },
+    {
+        "aliases": [
+            "igvf:auxiliary_set_test_exogenous_allelic_seq"
+        ],
+        "accession": "IGVFDS8981EXAS",
+        "file_set_type": "exogenous allelic sequencing",
+        "samples": [
+            "igvf:alias3"
+        ],
+        "award": "1UM1HG011972-01",
+        "lab": "jesse-engreitz",
+        "status": "released",
+        "release_timestamp": "2024-06-06T12:34:56Z",
+        "uuid": "c9d5e3f1-4a60-4b8c-d0e2-3f7a1b5c9d43"
     }
 ]

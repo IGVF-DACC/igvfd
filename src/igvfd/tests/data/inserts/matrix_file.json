@@ -492,5 +492,47 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ]
+    },
+    {
+        "uuid": "a7b3c1d9-2e48-4f6a-b8c0-1d5e9f3a7b21",
+        "accession": "IGVFFI8822CMOL",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_cell_by_multiplexing_oligo_matrix"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "f02d5c8b3e1a9476c4d8e2f1a0b9c7d6",
+        "file_format": "h5ad",
+        "content_type": "cell by multiplexing oligo matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/cell_by_multiplexing_oligo_matrix.h5ad",
+        "file_size": 45200010,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ]
+    },
+    {
+        "uuid": "b8c4d2e0-3f59-4a7b-c9d1-2e6f0a4b8c32",
+        "accession": "IGVFFI8833PAGM",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_cell_by_peak_and_guide_matrix"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "a13e6d9c4f2b0587d5e9f3a2b1c0d8e7",
+        "file_format": "h5ad",
+        "content_type": "cell by peak and guide matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/cell_by_peak_and_guide_matrix.h5ad",
+        "file_size": 45200010,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ]
     }
 ]

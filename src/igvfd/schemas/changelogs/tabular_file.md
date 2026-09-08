@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 27
 
+* Extend `file_format` enum list to include `bigInteract`.
 * Extend `content_type` enum list to include `gene-disease program`.
 * Extend `content_type` enum list to include `gene-disease program heritability`.
 * Extend `content_type` enum list to include `variant effects on chromatin accessibility`.
