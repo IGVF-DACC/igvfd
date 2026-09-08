@@ -7,7 +7,8 @@ def test_audit_missing_files(
     base_expression_construct_library_set,
     measurement_set_no_files,
     reference_file,
-    in_vitro_differentiated_cell
+    in_vitro_differentiated_cell,
+    community_award
 ):
     res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
     assert res.json.get('files', '') == ''
@@ -52,6 +53,20 @@ def test_audit_missing_files(
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {'construct_library_sets': [construct_library_set_reporter['@id']]}
+    )
+    res = testapp.get(construct_library_set_reporter['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing files'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # Exemption for community award CLS.
+    testapp.patch_json(
+        measurement_set_no_files['@id'],
+        {'preferred_assay_titles': ['MPRA']}
+    )
+    testapp.patch_json(
+        construct_library_set_reporter['@id'],
+        {'award': community_award['@id']}
     )
     res = testapp.get(construct_library_set_reporter['@id'] + '@@audit')
     assert all(

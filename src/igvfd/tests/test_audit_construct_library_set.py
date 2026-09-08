@@ -21,7 +21,9 @@ def test_audit_construct_library_set_associated_phenotype(
 def test_audit_construct_library_set_plasmid_map(
     testapp,
     base_expression_construct_library_set,
-    plasmid_map_document
+    plasmid_map_document,
+    award,
+    community_award
 ):
     # Every ConstructLibrarySet should have a "plasmid map" document in
     # the documents property
@@ -30,10 +32,19 @@ def test_audit_construct_library_set_plasmid_map(
         error['category'] == 'missing plasmid map'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
-
+    # Do not audit community CLS.
     testapp.patch_json(
         base_expression_construct_library_set['@id'],
-        {'documents': [plasmid_map_document['@id']]}
+        {'award': community_award['@id']}
+    )
+    res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
+    assert 'missing plasmid map' not in (
+        error['category'] for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        base_expression_construct_library_set['@id'],
+        {'award': award['@id'],
+         'documents': [plasmid_map_document['@id']]}
     )
     res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
     assert 'missing plasmid map' not in (
@@ -298,7 +309,8 @@ def test_audit_construct_library_set_mpra_sequence_designs(
 def test_audit_unexpected_virtual_sample(
     testapp,
     construct_library_set_genome_wide,
-    tissue
+    tissue,
+    community_award
 ):
     testapp.patch_json(
         tissue['@id'],
@@ -320,6 +332,18 @@ def test_audit_unexpected_virtual_sample(
     res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
     assert any(
         error['category'] == 'unexpected sample'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Community CLS may have a virtual sample.
+    testapp.patch_json(
+        construct_library_set_genome_wide['@id'],
+        {
+            'award': community_award['@id']
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected sample'
         for error in res.json['audit'].get('ERROR', [])
     )
 
