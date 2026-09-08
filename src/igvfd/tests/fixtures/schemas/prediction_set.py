@@ -123,3 +123,13 @@ def prediction_set_v8(base_prediction_set):
         'file_set_type': 'pathogenicity'
     })
     return item
+
+
+@pytest.fixture
+def prediction_set_v9(base_prediction_set):
+    item = base_prediction_set.copy()
+    item.update({
+        'schema_version': '9',
+        'file_set_type': 'protein stability'
+    })
+    return item
