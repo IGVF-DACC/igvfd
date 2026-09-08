@@ -1,6 +1,6 @@
 {
-    "hash": "8104bbec88ce22abc756c5279febc193",
-    "index_name": "multiplexed_sample_8104bbec",
+    "hash": "e7b59b096f40f373349bd02a360c4e69",
+    "index_name": "multiplexed_sample_e7b59b09",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1061,6 +1061,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "condition_treatments": {
                                 "type": "keyword"
                             },
                             "construct_library_sets": {

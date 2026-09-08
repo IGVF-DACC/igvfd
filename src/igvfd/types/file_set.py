@@ -447,6 +447,121 @@ def get_oexpr_from_cls_for_samp_summary(request, construct_library_sets):
     return f'overexpressing {join_multiple_terms(oexpr_genes)}' if oexpr_genes else ''
 
 
+def get_treatment_comparison_label(treatment):
+    amount = treatment.get('amount')
+    amount_units = treatment.get('amount_units')
+    term_name = treatment.get('treatment_term_name', '')
+    if amount is not None and amount_units:
+        return f'{amount} {amount_units} {term_name}'
+    temperature = treatment.get('temperature')
+    temperature_units = treatment.get('temperature_units')
+    if temperature is not None and temperature_units:
+        return f'{term_name} at {temperature} {temperature_units}'
+    return term_name
+
+
+def get_sample_treatment_id_groups(request, samples, visited_multiplexed_samples=None):
+    '''Return treatment @id lists for each non-multiplexed sample.
+
+    Multiplexed samples calculate `treatments` from their constituents, so
+    skip_calculated embeds omit that property. Expand multiplexed samples
+    and read submitted treatments from the constituents instead.
+    '''
+    if visited_multiplexed_samples is None:
+        visited_multiplexed_samples = set()
+    treatment_groups = []
+    for sample in samples:
+        if sample in visited_multiplexed_samples:
+            continue
+        sample_object = request.embed(sample, '@@object?skip_calculated=true')
+        multiplexed_samples = sample_object.get('multiplexed_samples')
+        if multiplexed_samples:
+            visited_multiplexed_samples.add(sample)
+            treatment_groups.extend(
+                get_sample_treatment_id_groups(
+                    request, multiplexed_samples, visited_multiplexed_samples
+                )
+            )
+            continue
+        treatments = sample_object.get('treatments', [])
+        if treatments:
+            treatment_groups.append(treatments)
+    return treatment_groups
+
+
+def get_differential_treatment_phrase_for_sample_summary(request, condition_treatments, samples):
+    condition_treatment_ids = {
+        treatment if isinstance(treatment, str) else treatment['@id']
+        for treatment in condition_treatments
+    }
+    arms = []
+    for treatments in get_sample_treatment_id_groups(request, samples):
+        arm_ids = tuple(sorted(
+            treatment_id for treatment_id in treatments
+            if treatment_id in condition_treatment_ids
+        ))
+        if arm_ids:
+            arms.append(arm_ids)
+
+    unique_arms = list(dict.fromkeys(arms))
+    if len(unique_arms) < 2:
+        return ''
+
+    arm_phrases = []
+    for arm_ids in unique_arms:
+        treatment_labels = []
+        for treatment_id in arm_ids:
+            treatment_object = request.embed(treatment_id, '@@object')
+            treatment_labels.append((
+                treatment_object.get('treatment_term_name', ''),
+                get_treatment_comparison_label(treatment_object),
+            ))
+        labels = list(dict.fromkeys(label for _, label in sorted(treatment_labels)))
+        if labels:
+            arm_phrases.append(', '.join(labels))
+
+    arm_phrases = list(dict.fromkeys(arm_phrases))
+    if len(arm_phrases) < 2:
+        return ''
+
+    arm_phrases = sorted(arm_phrases, key=lambda phrase: (-phrase.count(','), phrase))
+    return f'under conditions of {"; ".join(arm_phrases)}'
+
+
+def get_treatment_phrase_for_sample_summary(request, treatments, samples=None):
+    if not treatments:
+        return ''
+    if samples:
+        differential_phrase = get_differential_treatment_phrase_for_sample_summary(
+            request, treatments, samples
+        )
+        if differential_phrase:
+            return differential_phrase
+
+    treatment_objects = [
+        request.embed(treatment, '@@object')
+        for treatment in treatments
+    ]
+    phrases = []
+    depleted_treatment_summaries = sorted(set(
+        treatment.get('summary')[13:]
+        for treatment in treatment_objects
+        if treatment.get('depletion')
+    ))
+    if depleted_treatment_summaries:
+        phrases.append(f'depleted of {", ".join(depleted_treatment_summaries)}')
+
+    condition_summaries = sorted(set(
+        treatment.get('summary')[13:]
+        for treatment in treatment_objects
+        if not treatment.get('depletion')
+    ))
+    if condition_summaries:
+        phrases.append(f'under conditions of {", ".join(condition_summaries)}')
+
+    return ', '.join(phrases)
+
+
 def merge_induced_to_terms(terms):
     '''Merge differentiation terms to be A, B, C induced to X, Y, Z'''
     merged_induced = {}
@@ -1339,7 +1454,7 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def simplified_sample_summary(self, request, samples=None, donors=None, construct_library_sets=None, collections=None):
+    def simplified_sample_summary(self, request, samples=None, donors=None, construct_library_sets=None, collections=None, condition_treatments=None):
         corces_special_collection = 'PD single cell multiomics'
         taxa = set()
         sample_classification_term_target = dict()
@@ -1540,9 +1655,16 @@ class AnalysisSet(FileSet):
         overexpression_phrase = ''
         overexpression_phrase = get_oexpr_from_cls_for_samp_summary(request, construct_library_sets)
 
+        treatment_phrase = get_treatment_phrase_for_sample_summary(
+            request, condition_treatments, samples=samples
+        )
+
         # Constructing the final summary, putting ovexpr last
         summary = ' '.join(filter(None, [taxa_phrase, biosample_qualifiers_phrase, ', '.join(all_sample_terms),
                            differentiation_time_phrase, donor_phrase])).strip()
+
+        if treatment_phrase:
+            summary = f'{summary}, {treatment_phrase}'
 
         # Overexpression
         if overexpression_phrase:

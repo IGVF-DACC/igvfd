@@ -169,6 +169,27 @@ def treatment_ntr(testapp, lab, award):
 
 
 @pytest.fixture
+def post_chemical_treatment(testapp, lab, award):
+    def _post_chemical_treatment(term_name, term_id, amount, duration=None):
+        item = {
+            'treatment_term_id': term_id,
+            'treatment_term_name': term_name,
+            'treatment_type': 'chemical',
+            'amount': amount,
+            'amount_units': 'mM',
+            'purpose': 'stimulation',
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'depletion': False,
+        }
+        if duration is not None:
+            item['duration'] = duration
+            item['duration_units'] = 'hour'
+        return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
+    return _post_chemical_treatment
+
+
+@pytest.fixture
 def treatment_v1(treatment_chemical):
     item = treatment_chemical.copy()
     item.update({
