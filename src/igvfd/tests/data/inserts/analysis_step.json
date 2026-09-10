@@ -145,7 +145,9 @@
         "title": "Variant Annotation Step",
         "step_label": "variant-annotation-step",
         "analysis_step_types": [
-            "variant annotation"
+            "variant annotation",
+            "motif identification",
+            "computational model contribution"
         ],
         "release_timestamp": "2024-07-10T11:44:56Z",
         "input_content_types": [
