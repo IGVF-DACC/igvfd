@@ -128,6 +128,11 @@ def audit_file_mixed_assembly_transcriptome_annotation(value, system):
         audit_file_mixed_assembly_transcriptome_annotation, index=0)
     audit_message_mixed_annotation = get_audit_message(audit_file_mixed_assembly_transcriptome_annotation, index=1)
     audit_message_mixed_assembly = get_audit_message(audit_file_mixed_assembly_transcriptome_annotation, index=2)
+    excluded_content_types = [
+        'allele specific cell by gene matrix',
+        'allele specific RNA pseudobulk counts',
+        'cis-trans regulatory differences'
+    ]
     assembly_to_annotation = {
         'GRCm39': [
             'GENCODE M30',
@@ -205,14 +210,14 @@ def audit_file_mixed_assembly_transcriptome_annotation(value, system):
         )
         yield AuditFailure(audit_message_inconsistent_annotation.get('audit_category', ''), f'{detail} {audit_message_inconsistent_annotation.get("audit_description", "")}', level=audit_message_inconsistent_annotation.get('audit_level', ''))
 
-    if value.get('transcriptome_annotation', '') == 'Mixed transcriptome annotations' and value.get('content_type', '') != 'allele specific cell by gene matrix':
+    if value.get('transcriptome_annotation', '') == 'Mixed transcriptome annotations' and value.get('content_type', '') not in excluded_content_types:
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has mixed transcriptome annotations.'
         )
         yield AuditFailure(audit_message_mixed_annotation.get('audit_category', ''), f'{detail} {audit_message_mixed_annotation.get("audit_description", "")}', level=audit_message_mixed_annotation.get('audit_level', ''))
 
-    if value.get('assembly', '') == 'Mixed genome assemblies' and value.get('content_type', '') != 'allele specific cell by gene matrix':
+    if value.get('assembly', '') == 'Mixed genome assemblies' and value.get('content_type', '') not in excluded_content_types:
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has mixed assemblies.'
