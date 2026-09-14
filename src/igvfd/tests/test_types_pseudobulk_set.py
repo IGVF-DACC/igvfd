@@ -93,12 +93,6 @@ def test_pseudobulk_set_cell_annotation(testapp, pseudobulk_set_base, in_vitro_c
             'samples': [tissue['@id'], human_tissue['@id'], tissue_parkinsons['@id'], tissue_adipose_tissue['@id']],
         }
     )
-    testapp.patch_json(
-        human_tissue['@id'],
-        {
-            'sample_terms': [sample_term_embryoid_body['@id']]
-        }
-    )
     res = testapp.get(pseudobulk_set_base['@id']).json
     assert res.get('cell_annotation', '') == 'exhausted endothelial cell of vascular tree from 4 tissues'
     # Pseudobulks with primary cell source biosamples
