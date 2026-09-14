@@ -29,6 +29,18 @@ def tissue_parkinsons(testapp, lab, source, award, human_donor, sample_term_gyru
 
 
 @pytest.fixture
+def tissue_adipose_tissue(testapp, lab, source, award, human_donor, sample_term_brown_adipose_tissue):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'sources': [source['@id']],
+        'donors': [human_donor['@id']],
+        'sample_terms': [sample_term_brown_adipose_tissue['@id']]
+    }
+    return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def tissue_v1(tissue):
     item = tissue.copy()
     item.update({
