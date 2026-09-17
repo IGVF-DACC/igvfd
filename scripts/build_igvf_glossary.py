@@ -16,6 +16,10 @@ Build a glossary JSON from:
     ``File.content_type`` (see ``scripts/igvf_catalog_content_type_to_ffs.json``).
     When multiple specifications apply to one ``content_type`` and map to distinct
     IGVF Catalog ``method`` filter values, fields are nested under those method keys.
+  - IGVF Catalog database/API field descriptions from ``scripts/igvf_catalog_schema_fields.tsv``
+    and ``scripts/igvf_catalog_api_descriptions.json`` (snapshotted from the
+    ``DSERV-1495-improved-descriptions`` branch of igvf-catalog). Existing glossary
+    sections are preserved; catalog descriptions are added under ``igvf_catalog``.
 
 The enabled Cursor MCP servers do not expose portal DB search; this uses the
 public API (same objects as https://data.igvf.org/).
@@ -25,6 +29,7 @@ Optional: ``pip install pypdf`` improves extraction from PDF attachments.
 
 from __future__ import annotations
 
+import csv
 import importlib.util
 import json
 import re
@@ -61,6 +66,16 @@ CATALOG_OPENAPI_URL = "https://api-dev.catalog.igvf.org/openapi"
 CATALOG_CONTENT_TYPE_TO_FFS_PATH = (
     Path(__file__).resolve().parent / "igvf_catalog_content_type_to_ffs.json"
 )
+CATALOG_SCHEMA_FIELDS_PATH = (
+    Path(__file__).resolve().parent / "igvf_catalog_schema_fields.tsv"
+)
+CATALOG_API_DESCRIPTIONS_PATH = (
+    Path(__file__).resolve().parent / "igvf_catalog_api_descriptions.json"
+)
+CATALOG_API_ENDPOINT_PATHS_PATH = (
+    Path(__file__).resolve().parent / "igvf_catalog_api_endpoint_paths.json"
+)
+CATALOG_DESCRIPTIONS_BRANCH = "DSERV-1495-improved-descriptions"
 # Enum strings that appear only on these paths are regulatory-element class labels
 # in the catalog API; other catalog enums default to the software glossary bucket.
 _CATALOG_GE_ENUM_PATHS = frozenset({"/genomic-elements", "/genomic-elements/genes"})
@@ -564,6 +579,123 @@ def merge_catalog_openapi_enum_placeholders(
     return pa, sw, meta
 
 
+def load_igvf_catalog_database_fields() -> tuple[
+    dict[str, dict[str, dict[str, dict[str, str]]]], dict[str, Any]
+]:
+    """
+    Load ArangoDB node/edge field descriptions from ``igvf_catalog_schema_fields.tsv``.
+
+    Returns ``{kind: {collection: {adapter: {field: description}}}}``.
+    """
+    stats: dict[str, Any] = {
+        "schema_fields_source": str(
+            CATALOG_SCHEMA_FIELDS_PATH.relative_to(REPO_ROOT)
+        ),
+        "schema_fields_branch": CATALOG_DESCRIPTIONS_BRANCH,
+        "schema_field_rows": 0,
+        "schema_files": 0,
+        "schema_collections": 0,
+        "schema_field_entries": 0,
+    }
+    if not CATALOG_SCHEMA_FIELDS_PATH.is_file():
+        print(
+            f"warning: missing {CATALOG_SCHEMA_FIELDS_PATH}; "
+            "igvf_catalog.database_fields will be empty",
+            file=sys.stderr,
+        )
+        return {}, stats
+
+    by_kind: dict[str, dict[str, dict[str, dict[str, str]]]] = defaultdict(
+        lambda: defaultdict(dict)
+    )
+    with CATALOG_SCHEMA_FIELDS_PATH.open(encoding="utf-8", newline="") as f:
+        for row in csv.DictReader(f, delimiter="\t"):
+            kind = (row.get("kind") or "").strip()
+            schema_file = (row.get("file") or "").strip()
+            field = (row.get("field") or "").strip()
+            description = (row.get("description") or "").strip()
+            if not kind or not schema_file or not field or not description:
+                continue
+            if "." not in schema_file:
+                continue
+            collection, adapter = schema_file.rsplit(".", 1)
+            by_kind[kind][collection].setdefault(adapter, {})[field] = description
+            stats["schema_field_rows"] += 1
+
+    out: dict[str, dict[str, dict[str, dict[str, str]]]] = {}
+    for kind in sorted(by_kind):
+        out[kind] = {
+            collection: {
+                adapter: dict(sorted(fields.items(), key=lambda kv: kv[0].lower()))
+                for adapter, fields in sorted(
+                    adapters.items(), key=lambda kv: kv[0].lower()
+                )
+            }
+            for collection, adapters in sorted(
+                by_kind[kind].items(), key=lambda kv: kv[0].lower()
+            )
+        }
+    stats["schema_files"] = sum(
+        len(adapters) for kind in by_kind.values() for adapters in kind.values()
+    )
+    stats["schema_collections"] = sum(len(kind) for kind in by_kind.values())
+    stats["schema_field_entries"] = stats["schema_field_rows"]
+    return out, stats
+
+
+def load_igvf_catalog_api_endpoints() -> tuple[dict[str, str], dict[str, Any]]:
+    """
+    Load catalog REST endpoint descriptions keyed by ``METHOD /path``.
+
+    Endpoint prose comes from igvf-catalog ``descriptions.ts``; paths are mapped via
+    ``igvf_catalog_api_endpoint_paths.json``.
+    """
+    stats: dict[str, Any] = {
+        "api_descriptions_source": str(
+            CATALOG_API_DESCRIPTIONS_PATH.relative_to(REPO_ROOT)
+        ),
+        "api_endpoint_paths_source": str(
+            CATALOG_API_ENDPOINT_PATHS_PATH.relative_to(REPO_ROOT)
+        ),
+        "api_descriptions_branch": CATALOG_DESCRIPTIONS_BRANCH,
+        "api_endpoint_count": 0,
+        "api_descriptions_by_key_count": 0,
+    }
+    if not CATALOG_API_DESCRIPTIONS_PATH.is_file():
+        print(
+            f"warning: missing {CATALOG_API_DESCRIPTIONS_PATH}; "
+            "igvf_catalog.api_endpoints will be empty",
+            file=sys.stderr,
+        )
+        return {}, stats
+
+    with CATALOG_API_DESCRIPTIONS_PATH.open(encoding="utf-8") as f:
+        descriptions_by_key = json.load(f)
+    if not isinstance(descriptions_by_key, dict):
+        raise SystemExit(
+            f"{CATALOG_API_DESCRIPTIONS_PATH}: expected top-level JSON object"
+        )
+    stats["api_descriptions_by_key_count"] = len(descriptions_by_key)
+
+    endpoint_to_key: dict[str, str] = {}
+    if CATALOG_API_ENDPOINT_PATHS_PATH.is_file():
+        with CATALOG_API_ENDPOINT_PATHS_PATH.open(encoding="utf-8") as f:
+            paths_payload = json.load(f)
+        endpoint_to_key = paths_payload.get("by_endpoint") or {}
+        if not isinstance(endpoint_to_key, dict):
+            raise SystemExit(
+                f"{CATALOG_API_ENDPOINT_PATHS_PATH}: expected by_endpoint object"
+            )
+
+    out: dict[str, str] = {}
+    for endpoint, key in sorted(endpoint_to_key.items()):
+        desc = descriptions_by_key.get(key)
+        if isinstance(desc, str) and desc.strip():
+            out[endpoint] = desc.strip()
+    stats["api_endpoint_count"] = len(out)
+    return out, stats
+
+
 def load_biogrid_experimental_systems() -> dict[str, Any]:
     """BioGRID wiki experimental evidence codes (physical and genetic interactions)."""
     with BIOGRID_SYSTEMS_PATH.open(encoding="utf-8") as f:
@@ -594,6 +726,8 @@ def main() -> None:
     pa = load_preferred_assay_glossary()
     sw = fetch_software_glossary()
     pa, sw, catalog_meta = merge_catalog_openapi_enum_placeholders(pa, sw)
+    catalog_db_fields, catalog_db_stats = load_igvf_catalog_database_fields()
+    catalog_api_endpoints, catalog_api_stats = load_igvf_catalog_api_endpoints()
     doc = {
         "preferred_assay_titles": dict(
             sorted(pa.items(), key=lambda kv: kv[0].lower())
@@ -602,6 +736,10 @@ def main() -> None:
         "file": {
             "output_types": file_ct,
             "content_type_fields": content_type_fields,
+        },
+        "igvf_catalog": {
+            "database_fields": catalog_db_fields,
+            "api_endpoints": catalog_api_endpoints,
         },
         "biogrid_experimental_systems": biogrid,
         "_meta": {
@@ -641,6 +779,25 @@ def main() -> None:
                 biogrid["physical_interactions"]
             ),
             "biogrid_genetic_interaction_count": len(biogrid["genetic_interactions"]),
+            "igvf_catalog_descriptions_branch": CATALOG_DESCRIPTIONS_BRANCH,
+            "igvf_catalog_database_fields_note": (
+                "Field descriptions from igvf-catalog JSON Schema files, snapshotted "
+                "in scripts/igvf_catalog_schema_fields.tsv."
+            ),
+            "igvf_catalog_api_endpoints_note": (
+                "Endpoint descriptions from igvf-catalog descriptions.ts, keyed by "
+                "HTTP method and OpenAPI path."
+            ),
+            **{
+                f"igvf_catalog_{k}": v
+                for k, v in {**catalog_db_stats, **catalog_api_stats}.items()
+                if k
+                not in {
+                    "schema_fields_source",
+                    "api_descriptions_source",
+                    "api_endpoint_paths_source",
+                }
+            },
             **catalog_meta,
         },
     }
