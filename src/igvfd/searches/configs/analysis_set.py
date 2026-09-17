@@ -347,3 +347,21 @@ def analysis_set_report_view():
         },
     }
     return config
+
+
+@search_config(
+    name='CellVariants'
+)
+def cell_variants_matrix():
+    return {
+        'matrix': {
+            'y': {
+                'group_by': 'construct_library_sets.small_scale_gene_list.symbol',
+                'label': 'Genes',
+            },
+            'x': {
+                'group_by': 'preferred_assay_titles',
+                'label': 'Assays',
+            }
+        }
+    }
