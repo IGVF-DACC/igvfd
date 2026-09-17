@@ -1,0 +1,519 @@
+{
+  "source": {
+    "portal_search": "https://api.data.igvf.org/search/",
+    "collections": [
+      "IGVF_catalog_v1.1",
+      "IGVF_catalog_v1.2"
+    ],
+    "file_count": 2551,
+    "files_with_file_format_specifications": 542,
+    "content_type_count": 13,
+    "unique_file_format_specification_document_count": 19,
+    "catalog_files_with_file_format_specifications": 542
+  },
+  "by_content_type": {
+    "coding variant effects": {
+      "file_format_specification_count": 3,
+      "file_format_specifications": [
+        {
+          "@id": "/documents/4d4f377d-ac1a-48d7-b18c-30bd601b6c61/",
+          "description": "Describes the contents of the tabular file with MutPred2 property scores",
+          "standardized_file_format": false,
+          "uuid": "4d4f377d-ac1a-48d7-b18c-30bd601b6c61",
+          "aliases": [
+            "predrag-radivojac:MutPred2PropertyScoreFormat"
+          ],
+          "document_type": "file format specification",
+          "attachment": "MutPred2_Property_Scores.pdf"
+        },
+        {
+          "@id": "/documents/8dc57d71-ff1e-4a9b-a069-7b1a68e1cbec/",
+          "description": "Documentation for ESM-1v predictions for all single amino acid substitutions in all MANE protein sequences",
+          "standardized_file_format": null,
+          "uuid": "8dc57d71-ff1e-4a9b-a069-7b1a68e1cbec",
+          "aliases": [
+            "mark-craven:esm1v-mane-predictions-documentation-v2"
+          ],
+          "document_type": "file format specification",
+          "attachment": "ESM-1v Predictions Documentation.pdf"
+        },
+        {
+          "@id": "/documents/c32ac0bf-7e94-4b56-9c80-fb62a849bd68/",
+          "description": "file format specification for VAMP-seq scores",
+          "standardized_file_format": false,
+          "uuid": "c32ac0bf-7e94-4b56-9c80-fb62a849bd68",
+          "aliases": [
+            "lea-starita:VAMP-seq-scores-file-format-specification"
+          ],
+          "document_type": "file format specification",
+          "attachment": "file_format_specification_for_VAMP-seq_score_files.pdf"
+        }
+      ],
+      "catalog_file_count": 9,
+      "catalog_files_with_file_format_specifications": 9
+    },
+    "differential element quantifications": {
+      "file_format_specification_count": 2,
+      "file_format_specifications": [
+        {
+          "@id": "/documents/07d3e43a-509d-4bb5-aaf2-4a79892daa33/",
+          "description": "file format for per element output file of TAP-seq",
+          "standardized_file_format": null,
+          "uuid": "07d3e43a-509d-4bb5-aaf2-4a79892daa33",
+          "aliases": [
+            "thomas-quertermous:TAPseq_output_file_format_specification"
+          ],
+          "document_type": "file format specification",
+          "attachment": "TAP-seq  analysis file format specfication.pdf"
+        },
+        {
+          "@id": "/documents/5e3aac5c-2f44-4586-9ea0-237889e32e49/",
+          "description": "Element-level Seurat FindMarkers Mast results",
+          "standardized_file_format": false,
+          "uuid": "5e3aac5c-2f44-4586-9ea0-237889e32e49",
+          "aliases": [
+            "charles-gersbach:seurat-find-markers-mast-element-level-file-format"
+          ],
+          "document_type": "file format specification",
+          "attachment": "element-level seurat mast results file format specification.pdf"
+        }
+      ],
+      "catalog_file_count": 5,
+      "catalog_files_with_file_format_specifications": 5
+    },
+    "differential gene expression quantifications": {
+      "file_format_specification_count": 1,
+      "file_format_specifications": [
+        {
+          "@id": "/documents/5e3aac5c-2f44-4586-9ea0-237889e32e49/",
+          "description": "Element-level Seurat FindMarkers Mast results",
+          "standardized_file_format": false,
+          "uuid": "5e3aac5c-2f44-4586-9ea0-237889e32e49",
+          "aliases": [
+            "charles-gersbach:seurat-find-markers-mast-element-level-file-format"
+          ],
+          "document_type": "file format specification",
+          "attachment": "element-level seurat mast results file format specification.pdf"
+        }
+      ],
+      "catalog_file_count": 2,
+      "catalog_files_with_file_format_specifications": 2
+    },
+    "DUAL-IPA score": {
+      "file_format_specification_count": 1,
+      "file_format_specifications": [
+        {
+          "@id": "/documents/b9bbc674-c3f1-4dba-b128-d3ba33fd152e/",
+          "description": "column defineition for DUAL-IPA score file",
+          "standardized_file_format": false,
+          "uuid": "b9bbc674-c3f1-4dba-b128-d3ba33fd152e",
+          "aliases": [
+            "marc-vidal:Dualipa_score_description"
+          ],
+          "document_type": "file format specification",
+          "attachment": "DUAL-IPA_score_description.txt"
+        }
+      ],
+      "catalog_file_count": 1,
+      "catalog_files_with_file_format_specifications": 1
+    },
+    "external source data": {
+      "file_format_specification_count": 1,
+      "file_format_specifications": [
+        {
+          "@id": "/documents/03505f4a-038c-4ad9-9561-c9c24ad48725/",
+          "description": "Column specification for SEMpl provenance file",
+          "standardized_file_format": false,
+          "uuid": "03505f4a-038c-4ad9-9561-c9c24ad48725",
+          "aliases": [
+            "alan-boyle:sempl_provenance_col_description"
+          ],
+          "document_type": "file format specification",
+          "attachment": "sempl_metadata_specification.txt"
+        }
+      ],
+      "catalog_file_count": 1,
+      "catalog_files_with_file_format_specifications": 1
+    },
+    "fold change over control": {
+      "file_format_specification_count": 1,
+      "file_format_specifications": [
+        {
+          "@id": "/documents/919d1d76-72f2-494b-9c86-372e0d26a229/",
+          "description": "Element-level FRACTEL results for bulk screens",
+          "standardized_file_format": false,
+          "uuid": "919d1d76-72f2-494b-9c86-372e0d26a229",
+          "aliases": [
+            "charles-gersbach:fractel-bulk-element-level-file-format"
+          ],
+          "document_type": "file format specification",
+          "attachment": "FRACTEL element-level output file format.pdf"
+        }
+      ],
+      "catalog_file_count": 4,
+      "catalog_files_with_file_format_specifications": 4
+    },
+    "MPRA sequence designs": {
+      "file_format_specification_count": 1,
+      "file_format_specifications": [
+        {
+          "@id": "/documents/13a70f8a-428b-4b7e-ace1-7497b2c182c1/",
+          "description": "IGVF MPRA Sequence Designs metadata format",
+          "standardized_file_format": true,
+          "uuid": "13a70f8a-428b-4b7e-ace1-7497b2c182c1",
+          "aliases": [
+            "michael-love:MPRA_metadata_format"
+          ],
+          "document_type": "file format specification",
+          "attachment": "IGVF_MPRA_metadata_format.pdf"
+        }
+      ],
+      "catalog_file_count": 7,
+      "catalog_files_with_file_format_specifications": 7
+    },
+    "reporter genomic element effects": {
+      "file_format_specification_count": 1,
+      "file_format_specifications": [
+        {
+          "@id": "/documents/0294ee9d-6c93-4827-9d17-89ade8440742/",
+          "description": "Reporter genomic element effect file format specification",
+          "standardized_file_format": true,
+          "uuid": "0294ee9d-6c93-4827-9d17-89ade8440742",
+          "aliases": [
+            "karen-mohlke:mpra_reporter_genomic_element_spec"
+          ],
+          "document_type": "file format specification",
+          "attachment": "Reporter_genomic_element_effect_format.pdf"
+        }
+      ],
+      "catalog_file_count": 9,
+      "catalog_files_with_file_format_specifications": 9
+    },
+    "reporter genomic variant effects": {
+      "file_format_specification_count": 1,
+      "file_format_specifications": [
+        {
+          "@id": "/documents/435a7653-996b-49cc-b8e3-ee790d1d7510/",
+          "description": "Reporter genomic variant effect file format specification",
+          "standardized_file_format": true,
+          "uuid": "435a7653-996b-49cc-b8e3-ee790d1d7510",
+          "aliases": [
+            "karen-mohlke:mpra_reporter_genomic_variant_spec",
+            "igvf:mpra_reporter_genomic_variant_spec",
+            "tim-reddy:reporter-genomic-variant-effect-doc"
+          ],
+          "document_type": "file format specification",
+          "attachment": "Reporter_genomic_variant_effect_format.pdf"
+        }
+      ],
+      "catalog_file_count": 24,
+      "catalog_files_with_file_format_specifications": 24
+    },
+    "SNP effect matrix": {
+      "file_format_specification_count": 1,
+      "file_format_specifications": [
+        {
+          "@id": "/documents/339c046d-c37e-4124-92ba-9e50ad75d724/",
+          "description": "SEMpl SEM file format description",
+          "standardized_file_format": null,
+          "uuid": "339c046d-c37e-4124-92ba-9e50ad75d724",
+          "aliases": [
+            "alan-boyle:sempl_SEMfile_col_description"
+          ],
+          "document_type": "file format specification",
+          "attachment": "SEMpl_ModelFile_specification.pdf"
+        }
+      ],
+      "catalog_file_count": 223,
+      "catalog_files_with_file_format_specifications": 223
+    },
+    "variant binding effects": {
+      "file_format_specification_count": 1,
+      "file_format_specifications": [
+        {
+          "@id": "/documents/19219e63-0fef-4107-a703-0f07d2f2754e/",
+          "description": "SEMpl prediction file column descriptions",
+          "standardized_file_format": null,
+          "uuid": "19219e63-0fef-4107-a703-0f07d2f2754e",
+          "aliases": [
+            "alan-boyle:sempl_pred_col_description"
+          ],
+          "document_type": "file format specification",
+          "attachment": "SEMpl_PredictionFile_specification.pdf"
+        }
+      ],
+      "catalog_file_count": 223,
+      "catalog_files_with_file_format_specifications": 223
+    },
+    "variant effects": {
+      "file_format_specification_count": 4,
+      "file_format_specifications": [
+        {
+          "@id": "/documents/691b75ab-48e4-441f-bca3-b5988322a031/",
+          "description": "text file describing columns for SGE score tsv files",
+          "standardized_file_format": false,
+          "uuid": "691b75ab-48e4-441f-bca3-b5988322a031",
+          "aliases": [
+            "lea-starita:SGE-scores-spec"
+          ],
+          "document_type": "file format specification",
+          "attachment": "SGE_SNV_score_spec_v1.0.2.txt"
+        },
+        {
+          "@id": "/documents/9d0ad6fb-777c-4cb6-a1c4-8ff7a41b17a1/",
+          "description": "This file type describes results from genome editing experiments that measure the effect of a variant on an endogenous gene in the genome.",
+          "standardized_file_format": false,
+          "uuid": "9d0ad6fb-777c-4cb6-a1c4-8ff7a41b17a1",
+          "aliases": [
+            "jesse-engreitz:variant_effects_on_expression_file_format_spec"
+          ],
+          "document_type": "file format specification",
+          "attachment": "variant_effects_on_expression_file_format_spec.pdf"
+        },
+        {
+          "@id": "/documents/9e7bbb38-7412-4f0d-97e5-cd183d307485/",
+          "description": "File format specification of BlueSTARR",
+          "standardized_file_format": false,
+          "uuid": "9e7bbb38-7412-4f0d-97e5-cd183d307485",
+          "aliases": [
+            "bill-majoros:bluestarr-output-file-format-variant"
+          ],
+          "document_type": "file format specification",
+          "attachment": "BlueSTARR output file format (variant).pdf"
+        },
+        {
+          "@id": "/documents/a61b28ae-0d57-49e4-b56e-00acbad6330a/",
+          "description": "File format specification of BlueSTARR",
+          "standardized_file_format": null,
+          "uuid": "a61b28ae-0d57-49e4-b56e-00acbad6330a",
+          "aliases": [
+            "andrew-allen:bluestarr-output-file-format-v2"
+          ],
+          "document_type": "file format specification",
+          "attachment": "BlueSTARR output file format v2.pdf"
+        }
+      ],
+      "catalog_file_count": 23,
+      "catalog_files_with_file_format_specifications": 23
+    },
+    "variant functions": {
+      "file_format_specification_count": 2,
+      "file_format_specifications": [
+        {
+          "@id": "/documents/2ba25bee-e61e-4190-83f3-c564fb3e0430/",
+          "description": "cV2F prediction file format specification",
+          "standardized_file_format": false,
+          "uuid": "2ba25bee-e61e-4190-83f3-c564fb3e0430",
+          "aliases": [],
+          "document_type": "file format specification",
+          "attachment": "cV2F_description.txt"
+        },
+        {
+          "@id": "/documents/317216c3-04e8-4b5d-99ed-bb8b54caf4ef/",
+          "description": "TLand prediction file header and column descriptions",
+          "standardized_file_format": false,
+          "uuid": "317216c3-04e8-4b5d-99ed-bb8b54caf4ef",
+          "aliases": [
+            "alan-boyle:tland_pred_col_description"
+          ],
+          "document_type": "file format specification",
+          "attachment": "TLand_PredictionFile_specification.pdf"
+        }
+      ],
+      "catalog_file_count": 11,
+      "catalog_files_with_file_format_specifications": 11
+    }
+  },
+  "documents": [
+    {
+      "@id": "/documents/0294ee9d-6c93-4827-9d17-89ade8440742/",
+      "uuid": "0294ee9d-6c93-4827-9d17-89ade8440742",
+      "aliases": [
+        "karen-mohlke:mpra_reporter_genomic_element_spec"
+      ],
+      "description": "Reporter genomic element effect file format specification",
+      "document_type": "file format specification",
+      "attachment": "Reporter_genomic_element_effect_format.pdf"
+    },
+    {
+      "@id": "/documents/03505f4a-038c-4ad9-9561-c9c24ad48725/",
+      "uuid": "03505f4a-038c-4ad9-9561-c9c24ad48725",
+      "aliases": [
+        "alan-boyle:sempl_provenance_col_description"
+      ],
+      "description": "Column specification for SEMpl provenance file",
+      "document_type": "file format specification",
+      "attachment": "sempl_metadata_specification.txt"
+    },
+    {
+      "@id": "/documents/07d3e43a-509d-4bb5-aaf2-4a79892daa33/",
+      "uuid": "07d3e43a-509d-4bb5-aaf2-4a79892daa33",
+      "aliases": [
+        "thomas-quertermous:TAPseq_output_file_format_specification"
+      ],
+      "description": "file format for per element output file of TAP-seq",
+      "document_type": "file format specification",
+      "attachment": "TAP-seq  analysis file format specfication.pdf"
+    },
+    {
+      "@id": "/documents/13a70f8a-428b-4b7e-ace1-7497b2c182c1/",
+      "uuid": "13a70f8a-428b-4b7e-ace1-7497b2c182c1",
+      "aliases": [
+        "michael-love:MPRA_metadata_format"
+      ],
+      "description": "IGVF MPRA Sequence Designs metadata format",
+      "document_type": "file format specification",
+      "attachment": "IGVF_MPRA_metadata_format.pdf"
+    },
+    {
+      "@id": "/documents/19219e63-0fef-4107-a703-0f07d2f2754e/",
+      "uuid": "19219e63-0fef-4107-a703-0f07d2f2754e",
+      "aliases": [
+        "alan-boyle:sempl_pred_col_description"
+      ],
+      "description": "SEMpl prediction file column descriptions",
+      "document_type": "file format specification",
+      "attachment": "SEMpl_PredictionFile_specification.pdf"
+    },
+    {
+      "@id": "/documents/2ba25bee-e61e-4190-83f3-c564fb3e0430/",
+      "uuid": "2ba25bee-e61e-4190-83f3-c564fb3e0430",
+      "aliases": [],
+      "description": "cV2F prediction file format specification",
+      "document_type": "file format specification",
+      "attachment": "cV2F_description.txt"
+    },
+    {
+      "@id": "/documents/317216c3-04e8-4b5d-99ed-bb8b54caf4ef/",
+      "uuid": "317216c3-04e8-4b5d-99ed-bb8b54caf4ef",
+      "aliases": [
+        "alan-boyle:tland_pred_col_description"
+      ],
+      "description": "TLand prediction file header and column descriptions",
+      "document_type": "file format specification",
+      "attachment": "TLand_PredictionFile_specification.pdf"
+    },
+    {
+      "@id": "/documents/339c046d-c37e-4124-92ba-9e50ad75d724/",
+      "uuid": "339c046d-c37e-4124-92ba-9e50ad75d724",
+      "aliases": [
+        "alan-boyle:sempl_SEMfile_col_description"
+      ],
+      "description": "SEMpl SEM file format description",
+      "document_type": "file format specification",
+      "attachment": "SEMpl_ModelFile_specification.pdf"
+    },
+    {
+      "@id": "/documents/435a7653-996b-49cc-b8e3-ee790d1d7510/",
+      "uuid": "435a7653-996b-49cc-b8e3-ee790d1d7510",
+      "aliases": [
+        "karen-mohlke:mpra_reporter_genomic_variant_spec",
+        "igvf:mpra_reporter_genomic_variant_spec",
+        "tim-reddy:reporter-genomic-variant-effect-doc"
+      ],
+      "description": "Reporter genomic variant effect file format specification",
+      "document_type": "file format specification",
+      "attachment": "Reporter_genomic_variant_effect_format.pdf"
+    },
+    {
+      "@id": "/documents/4d4f377d-ac1a-48d7-b18c-30bd601b6c61/",
+      "uuid": "4d4f377d-ac1a-48d7-b18c-30bd601b6c61",
+      "aliases": [
+        "predrag-radivojac:MutPred2PropertyScoreFormat"
+      ],
+      "description": "Describes the contents of the tabular file with MutPred2 property scores",
+      "document_type": "file format specification",
+      "attachment": "MutPred2_Property_Scores.pdf"
+    },
+    {
+      "@id": "/documents/5e3aac5c-2f44-4586-9ea0-237889e32e49/",
+      "uuid": "5e3aac5c-2f44-4586-9ea0-237889e32e49",
+      "aliases": [
+        "charles-gersbach:seurat-find-markers-mast-element-level-file-format"
+      ],
+      "description": "Element-level Seurat FindMarkers Mast results",
+      "document_type": "file format specification",
+      "attachment": "element-level seurat mast results file format specification.pdf"
+    },
+    {
+      "@id": "/documents/691b75ab-48e4-441f-bca3-b5988322a031/",
+      "uuid": "691b75ab-48e4-441f-bca3-b5988322a031",
+      "aliases": [
+        "lea-starita:SGE-scores-spec"
+      ],
+      "description": "text file describing columns for SGE score tsv files",
+      "document_type": "file format specification",
+      "attachment": "SGE_SNV_score_spec_v1.0.2.txt"
+    },
+    {
+      "@id": "/documents/8dc57d71-ff1e-4a9b-a069-7b1a68e1cbec/",
+      "uuid": "8dc57d71-ff1e-4a9b-a069-7b1a68e1cbec",
+      "aliases": [
+        "mark-craven:esm1v-mane-predictions-documentation-v2"
+      ],
+      "description": "Documentation for ESM-1v predictions for all single amino acid substitutions in all MANE protein sequences",
+      "document_type": "file format specification",
+      "attachment": "ESM-1v Predictions Documentation.pdf"
+    },
+    {
+      "@id": "/documents/919d1d76-72f2-494b-9c86-372e0d26a229/",
+      "uuid": "919d1d76-72f2-494b-9c86-372e0d26a229",
+      "aliases": [
+        "charles-gersbach:fractel-bulk-element-level-file-format"
+      ],
+      "description": "Element-level FRACTEL results for bulk screens",
+      "document_type": "file format specification",
+      "attachment": "FRACTEL element-level output file format.pdf"
+    },
+    {
+      "@id": "/documents/9d0ad6fb-777c-4cb6-a1c4-8ff7a41b17a1/",
+      "uuid": "9d0ad6fb-777c-4cb6-a1c4-8ff7a41b17a1",
+      "aliases": [
+        "jesse-engreitz:variant_effects_on_expression_file_format_spec"
+      ],
+      "description": "This file type describes results from genome editing experiments that measure the effect of a variant on an endogenous gene in the genome.",
+      "document_type": "file format specification",
+      "attachment": "variant_effects_on_expression_file_format_spec.pdf"
+    },
+    {
+      "@id": "/documents/9e7bbb38-7412-4f0d-97e5-cd183d307485/",
+      "uuid": "9e7bbb38-7412-4f0d-97e5-cd183d307485",
+      "aliases": [
+        "bill-majoros:bluestarr-output-file-format-variant"
+      ],
+      "description": "File format specification of BlueSTARR",
+      "document_type": "file format specification",
+      "attachment": "BlueSTARR output file format (variant).pdf"
+    },
+    {
+      "@id": "/documents/a61b28ae-0d57-49e4-b56e-00acbad6330a/",
+      "uuid": "a61b28ae-0d57-49e4-b56e-00acbad6330a",
+      "aliases": [
+        "andrew-allen:bluestarr-output-file-format-v2"
+      ],
+      "description": "File format specification of BlueSTARR",
+      "document_type": "file format specification",
+      "attachment": "BlueSTARR output file format v2.pdf"
+    },
+    {
+      "@id": "/documents/b9bbc674-c3f1-4dba-b128-d3ba33fd152e/",
+      "uuid": "b9bbc674-c3f1-4dba-b128-d3ba33fd152e",
+      "aliases": [
+        "marc-vidal:Dualipa_score_description"
+      ],
+      "description": "column defineition for DUAL-IPA score file",
+      "document_type": "file format specification",
+      "attachment": "DUAL-IPA_score_description.txt"
+    },
+    {
+      "@id": "/documents/c32ac0bf-7e94-4b56-9c80-fb62a849bd68/",
+      "uuid": "c32ac0bf-7e94-4b56-9c80-fb62a849bd68",
+      "aliases": [
+        "lea-starita:VAMP-seq-scores-file-format-specification"
+      ],
+      "description": "file format specification for VAMP-seq scores",
+      "document_type": "file format specification",
+      "attachment": "file_format_specification_for_VAMP-seq_score_files.pdf"
+    }
+  ]
+}
