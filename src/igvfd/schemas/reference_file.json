@@ -365,6 +365,7 @@
             "oneOf": [
                 {
                     "enum": [
+                        "cell multiplexing oligonucleotide reference",
                         "chromosome sizes",
                         "exclusion list",
                         "genome index",
@@ -417,6 +418,7 @@
                 }
             ],
             "enum_descriptions": {
+                "cell multiplexing oligonucleotide reference": "Reference sequences for cell multiplexing oligonucleotides used to quantify sample-identifying tags in multiplexed single-cell assays.",
                 "chromosome sizes": "A file containing chromosome numbers and their expected sizes.",
                 "exclusion list": "An exclusion list file contains a set of genomic regions or specific sequences that should be ignored or excluded during data analysis.",
                 "genome index": "A reference file consisting of genome index which allows for faster alignment of sequencing reads to the genome.",

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 26
 
+* Extend `content_type` enum list to include `cell multiplexing oligonucleotide reference`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 34`.
 * Add `external_source`.
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`.
