@@ -2,8 +2,8 @@
 
 ### Minor changes since schema version 17
 
-* Extend `analysis_step_type` enum list to include `chromatin compartment generation`.
-* Extend `analysis_step_type` enum list to include `topologically associating domain generation`.
+* Extend `analysis_step_types` enum list to include `chromatin compartment generation`.
+* Extend `analysis_step_types` enum list to include `topologically associating domain generation`.
 * Extend `input_content_types` enum list to include `cell by multiplexing oligo matrix`.
 * Extend `output_content_types` enum list to include `cell by multiplexing oligo matrix`.
 * Extend `input_content_types` enum list to include `cell by peak and guide matrix`.
@@ -56,7 +56,7 @@
 
 * Extend `input_content_types` enum list to include `effective spatial variability`.
 * Extend `output_content_types` enum list to include `effective spatial variability`.
-* Extend `analysis_step_type` enum list to include `methylation calling`.
+* Extend `analysis_step_types` enum list to include `methylation calling`.
 
 ### Schema version 16
 
@@ -85,7 +85,7 @@
 * Extend `output_content_types` enum list to include `topologically associating domains`.
 * Extend `input_content_types` enum list to include `spatial transcriptomics slide-level cell boundaries`.
 * Extend `output_content_types` enum list to include `spatial transcriptomics slide-level cell boundaries`.
-* Extend `analysis_step_type` enum list to include `quality metrics calculation`.
+* Extend `analysis_step_types` enum list to include `quality metrics calculation`.
 * Extend `input_content_types` enum list to include `labeling splicing cell by gene matrix`.
 * Extend `output_content_types` enum list to include `labeling splicing cell by gene matrix`.
 * Extend `input_content_types` enum list to include `cell by gene program matrix`.
