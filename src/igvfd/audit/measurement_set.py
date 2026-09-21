@@ -298,10 +298,10 @@ def audit_inconsistent_crispr_screen_biometric(value, system):
     biometric_term_names = {
         'GO:0008283': 'cell population proliferation',
         'GO:0016477': 'cell migration',
-        'NTR:0001117': 'protein abundance',
+        'BAO:0040014': 'protein abundance method',
         'NTR:0001118': 'LDL-C uptake',
         'GO:0010467': 'gene expression',
-        'NTR:0001119': 'chromatin accessibility',
+        'BAO:0040027': 'chromatin accessibility method',  # BAO official term is misspelled.
     }
     expected_biometric = {
         'Proliferation CRISPR screen': {'GO:0008283'},
