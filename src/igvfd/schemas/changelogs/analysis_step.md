@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 17
 
+* Extend `analysis_step_type` enum list to include `chromatin compartment generation`.
+* Extend `analysis_step_type` enum list to include `topologically associating domain generation`.
 * Extend `input_content_types` enum list to include `protein-protein interaction disruption scores`.
 * Extend `output_content_types` enum list to include `protein-protein interaction disruption scores`.
 * Extend `input_content_types` enum list to include `population level protein-protein interaction score`.
