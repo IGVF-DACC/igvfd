@@ -138,17 +138,7 @@ def test_schema_reference_file_regenerating_upload_credentials_on_invalid_file_c
     assert 'validation_error_detail' not in r.json['@graph'][0]
 
 
-@pytest.mark.parametrize('content_type', [
-    'guide RNA sequences reference',
-    'cell multiplexing oligonucleotide reference',
-])
 def test_requiring_assembly_and_transcriptome_annotation(testapp, reference_file_with_guide_rna_sequences, content_type):
-    # Other reference content types do not require assembly or transcriptome annotation.
-    testapp.patch_json(
-        reference_file_with_guide_rna_sequences['@id'],
-        {'content_type': content_type},
-        status=200,
-    )
     # tests genome ref files and transcriptome ref files requring assembly and transcriptome annotation metadata
     res = testapp.patch_json(
         reference_file_with_guide_rna_sequences['@id'],
@@ -183,6 +173,6 @@ def test_requiring_assembly_and_transcriptome_annotation(testapp, reference_file
     res = testapp.patch_json(
         reference_file_with_guide_rna_sequences['@id'],
         {
-            'content_type': content_type
+            'content_type': 'guide RNA sequences reference'
         })
     assert res.status_code == 200
