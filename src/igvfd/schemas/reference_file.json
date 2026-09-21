@@ -195,6 +195,7 @@
                     "properties": {
                         "content_type": {
                             "enum": [
+                                "cell multiplexing oligonucleotide reference",
                                 "exclusion list",
                                 "guide RNA sequences reference",
                                 "inclusion list",
