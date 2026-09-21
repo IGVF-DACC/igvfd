@@ -75,8 +75,8 @@ def phenotype_term_from_go(testapp):
 @pytest.fixture
 def phenotype_term_protein_abundance(testapp):
     item = {
-        'term_id': 'NTR:0001117',
-        'term_name': 'protein abundance'
+        'term_id': 'BAO:0040014',
+        'term_name': 'protein abundance method'
     }
     return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
 
@@ -120,8 +120,8 @@ def phenotype_term_ldl_c_uptake(testapp):
 @pytest.fixture
 def phenotype_term_chromatin_accessibility(testapp):
     item = {
-        'term_id': 'NTR:0001119',
-        'term_name': 'chromatin accessibility'
+        'term_id': 'BAO:0040027',
+        'term_name': 'chromatin accessibility method'
     }
     return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
 

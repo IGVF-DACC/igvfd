@@ -306,10 +306,10 @@ def audit_inconsistent_crispr_screen_biometric(value, system):
     expected_biometric = {
         'Proliferation CRISPR screen': {'GO:0008283'},
         'Migration CRISPR screen': {'GO:0016477'},
-        '/assay-terms/OBI_0003661/': {'NTR:0001117', 'NTR:0001118'},  # in vitro CRISPR screen using flow cytometry
+        '/assay-terms/OBI_0003661/': {'BAO:0040014', 'NTR:0001118'},  # in vitro CRISPR screen using flow cytometry
         '/assay-terms/OBI_0003660/': {'GO:0010467'},  # in vitro CRISPR screen using single-cell RNA-seq
         '/assay-terms/NTR_0001101/': {'GO:0010467'},  # in vivo CRISPR screen using single cell RNA-seq
-        '/assay-terms/NTR_0000798/': {'NTR:0001119'},  # in vitro CRISPR screen using single-nucleus ATAC-seq
+        '/assay-terms/NTR_0000798/': {'BAO:0040027'},  # in vitro CRISPR screen using single-nucleus ATAC-seq
     }
     preferred_assay_title = value.get('preferred_assay_titles', [None])[0]
     assay_term = value.get('assay_term', '')
