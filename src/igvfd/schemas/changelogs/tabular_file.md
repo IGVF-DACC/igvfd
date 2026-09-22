@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 27
 
+* Extend `content_type` enum list to include `protein-protein interaction disruption scores`.
 * Extend `content_type` enum list to include `disease level PPI score`.
 * Extend `content_type` enum list to include `population level PPI score`.
 * Extend `collections` enum list to include `10x V2F`.
