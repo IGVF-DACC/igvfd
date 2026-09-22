@@ -1,5 +1,8 @@
 ## Changelog for *`biosample.json`*
 
+* Extend `collections` enum list to include `10x V2F`. (09/30/2026)
+* Extend `collections` enum list to include `SHARE CIRM Villages`. (09/30/2026)
+* Extend `collections` enum list to include `SHARE DepMap`. (09/30/2026)
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`. (08/19/2026)
 * Extend `collections` enum list to include `Cross-Disorder CNVs`. (07/08/2026)
 * Extend `collections` enum list to include `Coronary Artery Disease`. (07/08/2026)
