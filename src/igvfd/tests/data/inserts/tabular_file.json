@@ -2528,5 +2528,21 @@
         "upload_status": "validated",
         "file_set": "igvf:prediction_set_10",
         "controlled_access": false
+    },
+    {
+        "uuid": "209d07cb-c438-4c2f-b73e-7887b7cd770c",
+        "accession": "IGVFFI9238PPDS",
+        "lab": "igvf-dacc-processing-pipeline",
+        "award": "HG012012",
+        "status": "released",
+        "release_timestamp": "2026-07-31T12:34:56Z",
+        "md5sum": "3dc004aaa762a1ccc0853898f91d6d88",
+        "file_format": "tsv",
+        "content_type": "protein-protein interaction disruption scores",
+        "submitted_file_name": "/Users/igvf/igvf_files/protein-protein_interaction_disruption_scores.tsv.gz",
+        "file_size": 5200010,
+        "upload_status": "validated",
+        "file_set": "igvf:prediction_set_10",
+        "controlled_access": false
     }
 ]
