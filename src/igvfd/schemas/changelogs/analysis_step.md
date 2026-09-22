@@ -2,6 +2,10 @@
 
 ### Minor changes since schema version 17
 
+* Extend `input_content_types` enum list to include `population level PPI score`.
+* Extend `output_content_types` enum list to include `population level PPI score`.
+* Extend `input_content_types` enum list to include `disease level PPI score`.
+* Extend `output_content_types` enum list to include `disease level PPI score`.
 * Extend `input_content_types` enum list to include `cell by multiplexing oligo matrix`.
 * Extend `output_content_types` enum list to include `cell by multiplexing oligo matrix`.
 * Extend `input_content_types` enum list to include `cell by peak and guide matrix`.
