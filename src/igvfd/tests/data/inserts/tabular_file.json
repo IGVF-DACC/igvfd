@@ -2511,7 +2511,11 @@
         "file_size": 5200010,
         "upload_status": "validated",
         "file_set": "igvf:prediction_set_10",
-        "controlled_access": false
+        "controlled_access": false,
+        "reference_files": [
+            "IGVFFI0001SQBZ",
+            "IGVFFI0001GNRF"
+        ]
     },
     {
         "uuid": "b3cc14bd-d175-417a-b623-2173fdc277f3",
@@ -2527,7 +2531,11 @@
         "file_size": 5200010,
         "upload_status": "validated",
         "file_set": "igvf:prediction_set_10",
-        "controlled_access": false
+        "controlled_access": false,
+        "reference_files": [
+            "IGVFFI0001SQBZ",
+            "IGVFFI0001GNRF"
+        ]
     },
     {
         "uuid": "209d07cb-c438-4c2f-b73e-7887b7cd770c",
@@ -2543,6 +2551,9 @@
         "file_size": 5200010,
         "upload_status": "validated",
         "file_set": "igvf:prediction_set_10",
-        "controlled_access": false
+        "controlled_access": false,
+        "reference_files": [
+            "IGVFFI0001SQBZ"
+        ]
     }
 ]
