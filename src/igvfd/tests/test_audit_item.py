@@ -9,16 +9,16 @@ def test_audit_document_supersedes(testapp, experimental_protocol_document, plas
     )
 
     testapp.patch_json(replacement, {'supersedes': [original]})
-    for status in ['in progress', 'deleted', 'archived', 'revoked']:
-        testapp.patch_json(original, {
-            'status': status,
-            'release_timestamp': '2024-03-06T12:34:56Z',
-        })
+    for status in ['in progress', 'deleted', 'released', 'archived']:
+        patch = {'status': status}
+        if status in ['released', 'archived']:
+            patch['release_timestamp'] = '2024-03-06T12:34:56Z'
+        testapp.patch_json(original, patch)
         res = testapp.get(replacement + '@@audit')
         assert any(
             error['category'] == 'inconsistent superseding'
             for error in res.json['audit'].get('INTERNAL_ACTION', [])
-        ) == (status not in ['archived', 'revoked'])
+        ) == (status != 'archived')
 
 
 def test_audit_item_schema_validation(testapp, item_donor):

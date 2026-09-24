@@ -93,7 +93,7 @@
         "supersedes": {
             "title": "Supersedes",
             "description": "The document(s) that this document supersedes by virtue of being newer, better, or a fixed version.",
-            "comment": "The linked document(s) are expected to have a revoked or archived status.",
+            "comment": "The linked document(s) are expected to have an archived status.",
             "minItems": 1,
             "uniqueItems": true,
             "type": "array",
