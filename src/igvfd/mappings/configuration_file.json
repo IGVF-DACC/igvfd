@@ -1,6 +1,6 @@
 {
-    "hash": "f7bdb4b71baded10050ae73c857c77fb",
-    "index_name": "configuration_file_f7bdb4b7",
+    "hash": "87be145d0e0862c2498aa442238faaa6",
+    "index_name": "configuration_file_87be145d",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -498,6 +498,12 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "urls": {

@@ -9,6 +9,7 @@ from .base import (
     Item,
     ALLOW_CURRENT,
     DELETED,
+    paths_filtered_by_status,
 )
 
 
@@ -30,6 +31,26 @@ class Document(ItemWithAttachment, Item):
 
     set_status_up = []
     set_status_down = []
+
+    rev = {
+        'superseded_by': ('Document', 'supersedes')
+    }
+
+    @calculated_property(schema={
+        'title': 'Superseded By',
+        'description': 'The document(s) that supersede this document by virtue of being newer, better, or a fixed version.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Superseded By',
+            'type': 'string',
+            'linkFrom': 'Document.supersedes',
+        },
+        'notSubmittable': True
+    })
+    def superseded_by(self, request, superseded_by):
+        return paths_filtered_by_status(request, superseded_by) or None
 
     @calculated_property(
         schema={
