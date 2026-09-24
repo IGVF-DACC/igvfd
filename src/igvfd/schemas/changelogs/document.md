@@ -2,7 +2,8 @@
 
 ### Minor changes since schema version 4
 
-* Add `supersedes` and calculated property `superseded_by`.
+* Add calculated property `superseded_by`.
+* Add `supersedes`.
 * Extend `document_type` enum list to include `sequence motifs report`.
 * Extend `document_type` enum list to include `computational model performance`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
