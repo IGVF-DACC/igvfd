@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 10
 
-* Update `model_zoo_location` regex to allow Hugging Face URLs.
+* Update `model_zoo_location` regex to add `huggingface\\.co/\\S*` as a pattern.
 * Extend `preferred_assay_titles` enum list to include `4sU-SHARE-seq`.
 * Extend `preferred_assay_titles` enum list to include `in vivo scMPRA`.
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`.
