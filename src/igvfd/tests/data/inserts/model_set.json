@@ -49,6 +49,7 @@
             "10x multiome",
             "DNase-seq",
             "DUAL-IPA"
-        ]
+        ],
+        "model_zoo_location": "https://huggingface.co/majoroslab/BlueSTARR"
     }
 ]

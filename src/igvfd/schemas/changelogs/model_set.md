@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Update `model_zoo_location` regex to allow Hugging Face URLs.
 * Extend `collections` enum list to include `10x V2F`.
 * Extend `collections` enum list to include `SHARE CIRM Villages`.
 * Extend `collections` enum list to include `SHARE DepMap`.
