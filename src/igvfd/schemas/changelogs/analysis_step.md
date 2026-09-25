@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 17
 
+* Extend `input_content_types` enum list to include `cell multiplexing oligonucleotide reference`.
+* Extend `output_content_types` enum list to include `cell multiplexing oligonucleotide reference`.
 * Extend `input_content_types` enum list to include `cell by multiplexing oligo matrix`.
 * Extend `output_content_types` enum list to include `cell by multiplexing oligo matrix`.
 * Extend `input_content_types` enum list to include `cell by peak and guide matrix`.

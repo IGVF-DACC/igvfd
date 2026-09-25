@@ -596,5 +596,20 @@
             "GENCODE:Release 34"
         ],
         "controlled_access": false
+    },
+    {
+        "uuid": "77610be6-98a7-43ee-883a-6fe3ceaad257",
+        "accession": "IGVFFI0001CMOR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:cell_multiplexing_oligonucleotide_reference"
+        ],
+        "md5sum": "c1181aacf646b97f0a0a782db351a405",
+        "file_format": "fasta",
+        "content_type": "cell multiplexing oligonucleotide reference",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "submitted_file_name": "/Users/igvf/igvf_files/cell_multiplexing_oligonucleotide_reference.fasta",
+        "controlled_access": false
     }
 ]

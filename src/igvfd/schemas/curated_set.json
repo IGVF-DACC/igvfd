@@ -106,7 +106,7 @@
                 "variants"
             ],
             "enum_descriptions": {
-                "barcodes": "List(s) of barcodes identifying cells in a single cell experiment.",
+                "barcodes": "List(s) of barcodes identifying cells, samples, or other experimental components.",
                 "editing templates": "Used in Saturation Genome Editing (SGE) assays.",
                 "elements": "List(s) of elements in the genome to be assayed.",
                 "external data for catalog": "Public reference files from other sources external to IGVF & ENCODE utilized in the IGVF catalog.",
