@@ -2506,7 +2506,6 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "50f039454411c937731a85a76078c5e7",
         "file_format": "bedpe",
-        "file_format_type": "bed6+",
         "content_type": "chromatin conformation loops",
         "submitted_file_name": "/Users/igvf/igvf_files/chromatin_conformation_loops.bedpe.gz",
         "file_size": 738031,
