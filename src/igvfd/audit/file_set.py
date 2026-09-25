@@ -1252,8 +1252,9 @@ def audit_missing_genome_transcriptome_references(value, system):
 
     # Content types requiring genome reference for prediction sets (all are tabular files so far)
     prediction_genome_reference_content_types = [
-        'calibrated coding variant effects',
         'aggregated calibrated coding variant effects',
+        'calibrated coding variant effects',
+        'coding variant effects on PPI',
         'element to gene interactions',
         'elements reference',
         'gene quantifications',
@@ -1267,6 +1268,7 @@ def audit_missing_genome_transcriptome_references(value, system):
         'calibrated coding variant effects',
         'aggregated calibrated coding variant effects',
         'coding variant effects',
+        'coding variant effects on PPI',
         'gene quantifications',
         'machine learning model features',
         'variant pathogenicity'

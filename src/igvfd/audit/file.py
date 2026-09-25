@@ -176,7 +176,8 @@ def audit_file_mixed_assembly_transcriptome_annotation(value, system):
             'GENCODE 43',
             'GENCODE 44',
             'GENCODE 45',
-            'GENCODE 47'
+            'GENCODE 47',
+            'GENCODE 50'
         ],
         'GRCh38, mm10': [
             'GENCODE 32, GENCODE M23',
