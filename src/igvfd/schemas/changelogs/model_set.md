@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 10
 
+* Extend `collections` enum list to include `10x V2F`.
+* Extend `collections` enum list to include `SHARE CIRM Villages`.
+* Extend `collections` enum list to include `SHARE DepMap`.
 * Extend `preferred_assay_titles` enum list to include `4sU-SHARE-seq`.
 * Extend `preferred_assay_titles` enum list to include `in vivo scMPRA`.
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`.
