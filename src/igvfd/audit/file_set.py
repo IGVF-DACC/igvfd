@@ -1254,10 +1254,12 @@ def audit_missing_genome_transcriptome_references(value, system):
     prediction_genome_reference_content_types = [
         'aggregated calibrated coding variant effects',
         'calibrated coding variant effects',
-        'coding variant effects on PPI',
+        'disease level PPI score',
         'element to gene interactions',
         'elements reference',
         'gene quantifications',
+        'population level PPI score',
+        'protein–protein interaction disruption scores',
         'variant binding effects',
         'variant effects',
         'variant functions'
@@ -1268,9 +1270,10 @@ def audit_missing_genome_transcriptome_references(value, system):
         'calibrated coding variant effects',
         'aggregated calibrated coding variant effects',
         'coding variant effects',
-        'coding variant effects on PPI',
+        'disease level PPI score',
         'gene quantifications',
         'machine learning model features',
+        'population level PPI score',
         'variant pathogenicity'
     ]
 
