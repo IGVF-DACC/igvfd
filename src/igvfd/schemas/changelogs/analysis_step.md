@@ -2,6 +2,11 @@
 
 ### Minor changes since schema version 17
 
+* Extend `input_content_types` enum list to include `chromatin conformation loops`.
+* Extend `output_content_types` enum list to include `chromatin conformation loops`.
+* Extend `input_content_types` enum list to include `chromatin state annotation`.
+* Extend `output_content_types` enum list to include `chromatin state annotation`.
+* Extend `analysis_step_types` enum list to include `loop calling`.
 * Extend `analysis_step_types` enum list to include `chromatin compartment generation`.
 * Extend `analysis_step_types` enum list to include `topologically associating domain generation`.
 * Extend `input_content_types` enum list to include `cell by multiplexing oligo matrix`.

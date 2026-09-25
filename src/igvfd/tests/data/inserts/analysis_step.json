@@ -112,7 +112,8 @@
         "step_label": "sequence-design-analysis-step",
         "analysis_step_types": [
             "merging",
-            "quantification"
+            "quantification",
+            "loop calling"
         ],
         "release_timestamp": "2024-07-01T11:44:56Z",
         "input_content_types": [
@@ -188,7 +189,9 @@
             "inclusion list",
             "exclusion list",
             "elements reference",
-            "genome reference"
+            "genome reference",
+            "chromatin conformation loops",
+            "chromatin state annotation"
         ]
     },
     {

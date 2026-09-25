@@ -2496,5 +2496,47 @@
             "IGVFFI0001GNRF"
         ],
         "controlled_access": false
+    },
+    {
+        "uuid": "c8ce65ef-e13e-5305-b245-e11ba10f29c3",
+        "accession": "IGVFFI0055LOOP",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "50f039454411c937731a85a76078c5e7",
+        "file_format": "bedpe",
+        "file_format_type": "bed6+",
+        "content_type": "chromatin conformation loops",
+        "submitted_file_name": "/Users/igvf/igvf_files/chromatin_conformation_loops.bedpe.gz",
+        "file_size": 738031,
+        "upload_status": "validated",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "filtered": true,
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "8eeaa064-eb3a-8610-b245-e11ba10f29c3",
+        "accession": "IGVFFI0056CHST",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "da0e13e1a319fc100569aa712bfa2462",
+        "file_format": "bed",
+        "file_format_type": "bed6+",
+        "content_type": "chromatin state annotation",
+        "submitted_file_name": "/Users/igvf/igvf_files/chromatin_state_annotation.bed.gz",
+        "file_size": 738031,
+        "upload_status": "validated",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "filtered": true,
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
     }
 ]
