@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 27
 
+* Extend `content_type` enum list to include `chromatin conformation loops`.
+* Extend `content_type` enum list to include `chromatin state annotation`.
 * Extend `file_format` enum list to include `bigInteract`.
 * Extend `content_type` enum list to include `gene-disease program`.
 * Extend `content_type` enum list to include `gene-disease program heritability`.
