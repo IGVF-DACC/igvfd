@@ -1,6 +1,6 @@
 {
-    "hash": "77ff8a03252935fe3816b05266d7010b",
-    "index_name": "signal_file_77ff8a03",
+    "hash": "14278256af1a903358720e45540b705a",
+    "index_name": "signal_file_14278256",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -505,6 +505,12 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "urls": {

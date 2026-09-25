@@ -129,6 +129,7 @@ def audit_item_status(value, system):
 @audit_checker('Donor', frame='object')
 @audit_checker('Sample', frame='object')
 @audit_checker('FileSet', frame='object')
+@audit_checker('Document', frame='object')
 def audit_supersedes(value, system):
     object_type = space_in_words(value['@type'][0]).capitalize()
     if 'supersedes' not in value:

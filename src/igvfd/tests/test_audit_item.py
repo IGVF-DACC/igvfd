@@ -1,4 +1,26 @@
 
+def test_audit_document_supersedes(testapp, experimental_protocol_document, plasmid_map_document):
+    original = experimental_protocol_document['@id']
+    replacement = plasmid_map_document['@id']
+    res = testapp.get(replacement + '@@audit')
+    assert not any(
+        error['category'] == 'inconsistent superseding'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+
+    testapp.patch_json(replacement, {'supersedes': [original]})
+    for status in ['in progress', 'deleted', 'released', 'archived']:
+        patch = {'status': status}
+        if status in ['released', 'archived']:
+            patch['release_timestamp'] = '2024-03-06T12:34:56Z'
+        testapp.patch_json(original, patch)
+        res = testapp.get(replacement + '@@audit')
+        assert any(
+            error['category'] == 'inconsistent superseding'
+            for error in res.json['audit'].get('INTERNAL_ACTION', [])
+        ) == (status != 'archived')
+
+
 def test_audit_item_schema_validation(testapp, item_donor):
     testapp.patch_json(item_donor['@id'] +
                        '?validate=false', {'disallowed': 'errs'})
