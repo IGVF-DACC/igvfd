@@ -22,7 +22,7 @@ CRISPR_SCREEN_ASSAY_TERMS = {
     '/assay-terms/NTR_0001101/',  # in vivo CRISPR screen using single cell RNA-seq
 }
 
-PROTEIN_ABUNDANCE_TERM_NAME = 'protein abundance'
+PROTEIN_ABUNDANCE_TERM_NAME = 'protein abundance method'
 
 
 def get_donors_from_samples(request, samples):
