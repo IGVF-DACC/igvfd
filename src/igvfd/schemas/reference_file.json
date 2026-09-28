@@ -230,6 +230,7 @@
                                 "protein protein interactions",
                                 "proteins",
                                 "spliceQTL",
+                                "transcript identifier mapping",
                                 "variant disease links",
                                 "variant drug annotations",
                                 "variants"
