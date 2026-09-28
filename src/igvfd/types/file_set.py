@@ -675,6 +675,8 @@ EMBEDDED_FILE_FIELDS = [
     'aliases',
     'assembly',
     'anvil_url',
+    'catalog_collections',
+    'catalog_notes',
     'content_type',
     'controlled_access',
     'creation_timestamp',
