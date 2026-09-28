@@ -2,10 +2,7 @@
 
 ### Schema version 3
 
-* Remove `catalog_adapters`; adapter tracking is maintained in the IGVF catalog codebase.
-
-### Minor changes since schema version 2
-
+* Remove `catalog_adapters`.
 * Extend `catalog_collections` enum list to include `genomic_elements_genomic_elements`.
 * Extend `catalog_collections` enum list to include `gene_programs`.
 * Extend `catalog_collections` enum list to include `genes_gene_programs`.
@@ -13,6 +10,9 @@
 * Extend `catalog_collections` enum list to include `mm_genomic_elements_biosamples`.
 * Extend `catalog_collections` enum list to include `mm_variants_biosamples`.
 * Extend `catalog_collections` enum list to include `mm_genomic_elements_mm_genes`.
+
+### Minor changes since schema version 2
+
 * Extend `collections` enum list to include `10x V2F`.
 * Extend `collections` enum list to include `SHARE CIRM Villages`.
 * Extend `collections` enum list to include `SHARE DepMap`.

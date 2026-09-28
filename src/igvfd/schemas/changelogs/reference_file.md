@@ -2,10 +2,7 @@
 
 ### Schema version 27
 
-* Remove `catalog_adapters`; adapter tracking is maintained in the IGVF catalog codebase.
-
-### Minor changes since schema version 26
-
+* Remove `catalog_adapters`.
 * Extend `content_type` enum list to include `transcript identifier mapping`.
 * Extend `catalog_collections` enum list to include `genomic_elements_genomic_elements`.
 * Extend `catalog_collections` enum list to include `gene_programs`.
@@ -14,6 +11,9 @@
 * Extend `catalog_collections` enum list to include `mm_genomic_elements_biosamples`.
 * Extend `catalog_collections` enum list to include `mm_variants_biosamples`.
 * Extend `catalog_collections` enum list to include `mm_genomic_elements_mm_genes`.
+
+### Minor changes since schema version 26
+
 * Extend `transcriptome_annotation` enum list to include `GENCODE 50`.
 * Extend `collections` enum list to include `10x V2F`.
 * Extend `collections` enum list to include `SHARE CIRM Villages`.
