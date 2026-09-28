@@ -1,5 +1,11 @@
 ## Changelog for *`prediction_set.json`*
 
+### Minor changes since schema version 10
+
+* Extend `collections` enum list to include `10x V2F`.
+* Extend `collections` enum list to include `SHARE CIRM Villages`.
+* Extend `collections` enum list to include `SHARE DepMap`.
+
 ### Schema version 10
 
 * Reduce `file_set_type` enum list to exclude `activity level`.

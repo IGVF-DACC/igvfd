@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 26
 
+* Extend `collections` enum list to include `10x V2F`.
+* Extend `collections` enum list to include `SHARE CIRM Villages`.
+* Extend `collections` enum list to include `SHARE DepMap`.
 * Extend `content_type` enum list to include `cell multiplexing oligonucleotide reference`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 34`.
 * Add `external_source`.

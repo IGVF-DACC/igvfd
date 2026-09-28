@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 11
 
+* Extend `collections` enum list to include `10x V2F`.
+* Extend `collections` enum list to include `SHARE CIRM Villages`.
+* Extend `collections` enum list to include `SHARE DepMap`.
 * Extend `content_type` enum list to include `cell by multiplexing oligo matrix`.
 * Extend `content_type` enum list to include `cell by peak and guide matrix`.
 * Extend `content_type` enum list to include `cell by gene and peak and guide matrix`.

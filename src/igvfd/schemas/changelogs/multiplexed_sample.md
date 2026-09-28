@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 12
 
+* Extend `collections` enum list to include `10x V2F`.
+* Extend `collections` enum list to include `SHARE CIRM Villages`.
+* Extend `collections` enum list to include `SHARE DepMap`.
 * Extend `collections` enum list to include `IGVF_catalog_v2.0`.
 * Extend `collections` enum list to include `Cross-Disorder CNVs`.
 * Extend `collections` enum list to include `Coronary Artery Disease`.

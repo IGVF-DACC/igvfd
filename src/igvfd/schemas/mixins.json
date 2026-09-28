@@ -126,6 +126,7 @@
             "items": {
                 "type": "string",
                 "enum": [
+                    "10x V2F",
                     "ACMG73",
                     "Benchmark",
                     "Bridge Sample",
@@ -149,6 +150,8 @@
                     "Morphic",
                     "MPRAbase",
                     "PD single cell multiomics",
+                    "SHARE CIRM Villages",
+                    "SHARE DepMap",
                     "StanfordFCC",
                     "TF Perturb-seq Project",
                     "TOPMED Freeze 8",
@@ -157,6 +160,7 @@
                     "Williams Syndrome Research"
                 ],
                 "enum_descriptions": {
+                    "10x V2F": "10x Genomics Multiome (joint single-nucleus RNA + ATAC) profiling of the Variant to Function (V2F) tissue collection. Inlcudes profiles of 23 tissue types collected from 7 human donors, enabling direct linkage of regulatory elements to target genes and cross-tissue comparison within the same genetic background.",
                     "ACMG73": "Datasets related to the 73 genes recommended by the American College of Medical Genetics and Genomics (ACMG) for reporting of secondary findings.",
                     "Benchmark": "Reference datasets used to benchmark computational tools and analysis methods.",
                     "Bridge Sample": "Samples used to bridge or normalize data across different assays or experiments.",
@@ -180,6 +184,8 @@
                     "Morphic": "Datasets from the Morphic consortium, focused on characterizing the impact of genetic variants on cell morphology.",
                     "MPRAbase": "Datasets related to the MPRAbase collection of massively parallel reporter assay (MPRA) data.",
                     "PD single cell multiomics": "Single-cell multiomics datasets related to Parkinson's disease research.",
+                    "SHARE CIRM Villages": "SHARE-seq (joint single-cell RNA + ATAC) profiling of a 300+ donor \"village\" iPSC pool differentiated across multiple lineages and time points (iPSCs, neuronal and hepatic progenitor cells), enabling donor-resolved regulatory mapping (eQTLs/caQTLs) across developmental cell states.",
+                    "SHARE DepMap": "SHARE-seq (joint single-cell RNA + ATAC) profiling of 506 Cancer Cell Line Encyclopedia (CCLE) cancer cell lines spanning diverse human tissue origins, enabling regulatory characterization across a broad panel of cancer types.",
                     "StanfordFCC": "Datasets from the Stanford Functional Characterization Consortium (FCC), focused on characterizing regulatory elements.",
                     "TF Perturb-seq Project": "Datasets from the Transcription Factor Perturb-seq Project, using a shared guide library targeting promoters of transcription factors to characterize transcription factor functions across datasets via single-cell CRISPR-mediated perturbation sequencing.",
                     "TOPMED Freeze 8": "Datasets from the Trans-Omics for Precision Medicine (TOPMed) program Freeze 8 release.",

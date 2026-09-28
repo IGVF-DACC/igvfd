@@ -61,7 +61,12 @@
         "status": "released",
         "uuid": "f1149b20-2066-49d8-bbd0-7f77f642cae3",
         "release_timestamp": "2024-08-06T12:34:56Z",
-        "file_set_type": "intermediate analysis"
+        "file_set_type": "intermediate analysis",
+        "collections": [
+            "10x V2F",
+            "SHARE CIRM Villages",
+            "SHARE DepMap"
+        ]
     },
     {
         "aliases": [

@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 27
 
+* Extend `collections` enum list to include `10x V2F`.
+* Extend `collections` enum list to include `SHARE CIRM Villages`.
+* Extend `collections` enum list to include `SHARE DepMap`.
 * Extend `file_format` enum list to include `bigInteract`.
 * Extend `content_type` enum list to include `gene-disease program`.
 * Extend `content_type` enum list to include `gene-disease program heritability`.
