@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 28
+
+* Remove `catalog_adapters`; adapter tracking is maintained in the IGVF catalog codebase.
+
 ### Minor changes since schema version 27
 
 * Extend `catalog_collections` enum list to include `genomic_elements_genomic_elements`.

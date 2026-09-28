@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 27
+
+* Remove `catalog_adapters`; adapter tracking is maintained in the IGVF catalog codebase.
+
 ### Minor changes since schema version 26
 
 * Extend `content_type` enum list to include `transcript identifier mapping`.

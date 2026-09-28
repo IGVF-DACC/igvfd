@@ -770,9 +770,6 @@
                                     "base_modifications": {
                                         "type": "keyword"
                                     },
-                                    "catalog_adapters": {
-                                        "type": "keyword"
-                                    },
                                     "catalog_class": {
                                         "type": "keyword"
                                     },
@@ -1929,9 +1926,6 @@
                                 "type": "keyword"
                             },
                             "base_modifications": {
-                                "type": "keyword"
-                            },
-                            "catalog_adapters": {
                                 "type": "keyword"
                             },
                             "catalog_class": {

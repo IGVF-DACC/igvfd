@@ -133,10 +133,7 @@
         "file_size": 84022,
         "upload_status": "validated",
         "file_set": "igvf:basic_analysis_set",
-        "controlled_access": false,
-        "catalog_adapters": [
-            "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/mpra_adapter.py"
-        ]
+        "controlled_access": false
     },
     {
         "uuid": "81585158-73e8-4eb4-ba41-21ab323b5de5",
@@ -833,10 +830,7 @@
         "file_size": 111111,
         "upload_status": "validated",
         "file_set": "igvf:basic_analysis_set",
-        "controlled_access": false,
-        "catalog_adapters": [
-            "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/mpra_adapter.py"
-        ]
+        "controlled_access": false
     },
     {
         "uuid": "91384635-68a6-42da-b981-0e903ed49d84",
@@ -859,10 +853,7 @@
         "file_size": 5555555,
         "upload_status": "validated",
         "file_set": "igvf:basic_analysis_set",
-        "controlled_access": false,
-        "catalog_adapters": [
-            "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/mpra_adapter.py"
-        ]
+        "controlled_access": false
     },
     {
         "uuid": "2f3a8e84-6c52-4e27-83fd-2d527314a174",

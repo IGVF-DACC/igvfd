@@ -204,3 +204,12 @@ def test_tabular_file_upgrade_26_27(upgrader, tabular_file_v26):
     assert value['schema_version'] == '27'
     assert 'This file\'s content_type was barcode to TF overexpression mapping, and changed to cell annotation with TF overexpression via upgrade.' in value[
         'notes']
+
+
+def test_tabular_file_upgrade_27_28(upgrader, tabular_file_v27):
+    catalog_adapters = tabular_file_v27['catalog_adapters']
+    value = upgrader.upgrade('tabular_file', tabular_file_v27, current_version='27', target_version='28')
+    assert 'catalog_adapters' not in value
+    assert value['schema_version'] == '28'
+    assert value['notes'].endswith(
+        f"This file's catalog_adapters was {catalog_adapters}, and was removed via upgrade.")

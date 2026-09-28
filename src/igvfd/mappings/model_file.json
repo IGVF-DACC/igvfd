@@ -363,9 +363,6 @@
                         },
                         "type": "object"
                     },
-                    "catalog_adapters": {
-                        "type": "keyword"
-                    },
                     "catalog_class": {
                         "type": "keyword"
                     },

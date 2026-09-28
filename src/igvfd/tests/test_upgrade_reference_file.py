@@ -208,3 +208,12 @@ def test_reference_file_upgrade_25_26(upgrader, reference_file_v25_genome, refer
     assert value['transcriptome_annotation'] == 'GENCODE 43'
     assert value['schema_version'] == '26'
     assert 'This reference file lacked `transcriptome_annotation`' not in value.get('notes', '')
+
+
+def test_reference_file_upgrade_26_27(upgrader, reference_file_v26):
+    catalog_adapters = reference_file_v26['catalog_adapters']
+    value = upgrader.upgrade('reference_file', reference_file_v26, current_version='26', target_version='27')
+    assert 'catalog_adapters' not in value
+    assert value['schema_version'] == '27'
+    assert value['notes'].endswith(
+        f"This file's catalog_adapters was {catalog_adapters}, and was removed via upgrade.")
