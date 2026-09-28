@@ -1107,6 +1107,9 @@ def audit_input_file_sets_derived_from(value, system):
         'Variant painting via fluorescence',
         'Variant painting via immunostaining'
     }
+    exclude_file_content_types = {
+        'marker genes'
+    }
     # Skip audit if it is an imaging assay
     if any(assay in exclude_assays for assay in preferred_assay_titles):
         return
@@ -1125,7 +1128,8 @@ def audit_input_file_sets_derived_from(value, system):
                         derived_from_files_to_link.append(derived_from_file)
                         missing_derived_from_file_sets.append(derived_from_file_set)
             else:
-                missing_derived_from.append(file)
+                if file_object.get('content_type') not in exclude_file_content_types:
+                    missing_derived_from.append(file)
     if missing_derived_from_file_sets:
         files_to_link = ', '.join([audit_link(path_to_text(file), file) for file in set(files_to_link)])
         derived_from_files_to_link = ', '.join([audit_link(path_to_text(file), file)
