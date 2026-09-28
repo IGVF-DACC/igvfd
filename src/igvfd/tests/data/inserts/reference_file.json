@@ -611,5 +611,21 @@
         "file_set": "j-michael-cherry:barcodes_curated_set",
         "submitted_file_name": "/Users/igvf/igvf_files/cell_multiplexing_oligonucleotide_reference.fasta",
         "controlled_access": false
+    },
+    {
+        "uuid": "eeb33aaf-0975-40c2-81b3-95ab11fa7f67",
+        "accession": "IGVFFI0001TRIM",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:transcript_identifier_mapping"
+        ],
+        "description": "Cross-references linking transcript identifiers to corresponding RNA and/or protein identifiers in external databases.",
+        "md5sum": "1c103e4d3d87fcb8c2ebe73d6d048ac2",
+        "file_format": "tsv",
+        "content_type": "transcript identifier mapping",
+        "file_set": "igvf:basic_analysis_set",
+        "submitted_file_name": "/Users/igvf/igvf_files/transcript_identifier_mapping.tsv",
+        "controlled_access": false
     }
 ]
