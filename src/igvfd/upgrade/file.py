@@ -983,7 +983,7 @@ def tabular_file_26_27(value, system):
 @upgrade_step('reference_file', '26', '27')
 @upgrade_step('tabular_file', '27', '28')
 @upgrade_step('model_file', '2', '3')
-def file_27_28(value, system):
+def file_17_18(value, system):
     # https://igvf.atlassian.net/browse/IGVF-3733
     notes = value.get('notes', '')
     catalog_adapters = value.pop('catalog_adapters', None)
