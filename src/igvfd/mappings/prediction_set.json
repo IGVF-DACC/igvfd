@@ -1,6 +1,6 @@
 {
-    "hash": "6096b9e98e1581790d496cfc4f4508a9",
-    "index_name": "prediction_set_6096b9e9",
+    "hash": "165f806d86fe3ef568b621e6b8726ffd",
+    "index_name": "prediction_set_165f806d",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -850,9 +850,6 @@
                                         "type": "keyword"
                                     },
                                     "base_modifications": {
-                                        "type": "keyword"
-                                    },
-                                    "catalog_adapters": {
                                         "type": "keyword"
                                     },
                                     "catalog_class": {
@@ -2006,9 +2003,6 @@
                             "base_modifications": {
                                 "type": "keyword"
                             },
-                            "catalog_adapters": {
-                                "type": "keyword"
-                            },
                             "catalog_class": {
                                 "type": "keyword"
                             },
@@ -2649,9 +2643,6 @@
                             "base_modifications": {
                                 "type": "keyword"
                             },
-                            "catalog_adapters": {
-                                "type": "keyword"
-                            },
                             "catalog_class": {
                                 "type": "keyword"
                             },
@@ -2883,9 +2874,6 @@
                                 "type": "keyword"
                             },
                             "base_modifications": {
-                                "type": "keyword"
-                            },
-                            "catalog_adapters": {
                                 "type": "keyword"
                             },
                             "catalog_class": {

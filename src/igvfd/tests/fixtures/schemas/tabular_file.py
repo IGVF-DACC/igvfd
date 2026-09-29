@@ -501,3 +501,16 @@ def tabular_file_v26(tabular_file):
         'content_type': 'barcode to TF overexpression mapping'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v27(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '27',
+        'catalog_adapters': [
+            'https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/ccre_adapter.py'
+        ],
+        'notes': 'Preserve existing notes.'
+    })
+    return item

@@ -1,6 +1,6 @@
 {
-    "hash": "29c4570c9bad6bedd97163f587b63a81",
-    "index_name": "model_set_29c4570c",
+    "hash": "2ae25a4a49f18d7c5cddf6ad6ecfcdcc",
+    "index_name": "model_set_2ae25a4a",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -768,9 +768,6 @@
                                         "type": "keyword"
                                     },
                                     "base_modifications": {
-                                        "type": "keyword"
-                                    },
-                                    "catalog_adapters": {
                                         "type": "keyword"
                                     },
                                     "catalog_class": {
@@ -1929,9 +1926,6 @@
                                 "type": "keyword"
                             },
                             "base_modifications": {
-                                "type": "keyword"
-                            },
-                            "catalog_adapters": {
                                 "type": "keyword"
                             },
                             "catalog_class": {

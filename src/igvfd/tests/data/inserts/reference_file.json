@@ -89,9 +89,6 @@
         "award": "HG012012",
         "md5sum": "91e20f3990eb96c1ad4ba603db78298e",
         "file_format": "PWM",
-        "catalog_adapters": [
-            "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/motif_adapter.py"
-        ],
         "external_source": "HOCOMOCO",
         "content_type": "motifs",
         "file_format_specifications": [
@@ -610,6 +607,22 @@
         "content_type": "cell multiplexing oligonucleotide reference",
         "file_set": "j-michael-cherry:barcodes_curated_set",
         "submitted_file_name": "/Users/igvf/igvf_files/cell_multiplexing_oligonucleotide_reference.fasta",
+        "controlled_access": false
+    },
+    {
+        "uuid": "eeb33aaf-0975-40c2-81b3-95ab11fa7f67",
+        "accession": "IGVFFI0001TRIM",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:transcript_identifier_mapping"
+        ],
+        "description": "Cross-references linking transcript identifiers to corresponding RNA and/or protein identifiers in external databases.",
+        "md5sum": "1c103e4d3d87fcb8c2ebe73d6d048ac2",
+        "file_format": "tsv",
+        "content_type": "transcript identifier mapping",
+        "file_set": "igvf:basic_analysis_set",
+        "submitted_file_name": "/Users/igvf/igvf_files/transcript_identifier_mapping.tsv",
         "controlled_access": false
     }
 ]

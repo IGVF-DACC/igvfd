@@ -230,6 +230,7 @@
                                 "protein protein interactions",
                                 "proteins",
                                 "spliceQTL",
+                                "transcript identifier mapping",
                                 "variant disease links",
                                 "variant drug annotations",
                                 "variants"
@@ -243,24 +244,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "26"
-        },
-        "catalog_adapters": {
-            "title": "IGVF Catalog Adapters",
-            "description": "IGVF Catalog Adapters that ingests this file",
-            "type": "array",
-            "permission": "admin_only",
-            "uniqueItems": true,
-            "items": {
-                "title": "IGVF Catalog Adapter",
-                "description": "Identifier pointing to a Github link of the IGVF Catalog adapter that processes this file.",
-                "type": "string",
-                "pattern": "https:\\/\\/github\\.com\\/IGVF-DACC\\/igvf-catalog\\/blob\\/dev\\/data\\/adapters\\/(.)*\\.py"
-            },
-            "submissionExample": {
-                "appscript": "[\"https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/ccre_adapter.py\"]",
-                "igvf_utils": "https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/ccre_adapter.py"
-            }
+            "default": "27"
         },
         "catalog_method": {
             "title": "Catalog Method",
@@ -411,6 +395,7 @@
                         "protein protein interactions",
                         "proteins",
                         "spliceQTL",
+                        "transcript identifier mapping",
                         "variant disease links",
                         "variant drug annotations",
                         "variants"
@@ -428,6 +413,7 @@
                 "inclusion list": "An inclusion list file contains a set of specific genomic regions or sequences that should be included or focused on during data analysis.",
                 "spike-ins": "Nucleic acid fragments of known sequence and quantity used for calibration in high-throughput sequencing.",
                 "nascent transcriptome index": "A reference file consisting of nascent transcriptome index which contains both nascent transcripts and cDNAs and therefore can be used for applications where quantifying intron-spanning reads is important, such as single-nucleus RNA-seq or biophysical models that jointly consider spliced and unspliced transcripts.",
+                "transcript identifier mapping": "Cross-references linking transcript identifiers to corresponding RNA and/or protein identifiers in external databases.",
                 "transcriptome index": "A reference file consisting of standard transcriptome index which does not contain introns and is therefore only suitable for quantifying bulk and single-cell RNA-seq.",
                 "transcriptome reference": "A reference file consisting of all known transcripts or coding regions of the genome.",
                 "allele specific binding": "Data describing differential binding events associated with specific alleles.",

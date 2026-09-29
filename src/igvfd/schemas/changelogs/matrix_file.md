@@ -2,6 +2,14 @@
 
 ### Minor changes since schema version 11
 
+* Extend `catalog_collections` enum list to include `genes_transcripts_genes`.
+* Extend `catalog_collections` enum list to include `genomic_elements_genomic_elements`.
+* Extend `catalog_collections` enum list to include `gene_programs`.
+* Extend `catalog_collections` enum list to include `genes_gene_programs`.
+* Extend `catalog_collections` enum list to include `gene_programs_gene_programs`.
+* Extend `catalog_collections` enum list to include `mm_genomic_elements_biosamples`.
+* Extend `catalog_collections` enum list to include `mm_variants_biosamples`.
+* Extend `catalog_collections` enum list to include `mm_genomic_elements_mm_genes`.
 * Extend `collections` enum list to include `10x V2F`.
 * Extend `collections` enum list to include `SHARE CIRM Villages`.
 * Extend `collections` enum list to include `SHARE DepMap`.

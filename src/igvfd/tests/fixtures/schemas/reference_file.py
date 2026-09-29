@@ -416,3 +416,16 @@ def reference_file_v25_transcriptome_2(award, lab, curated_set_transcriptome):
         'transcriptome_annotation': 'GENCODE 43'
     }
     return item
+
+
+@pytest.fixture
+def reference_file_v26(reference_file):
+    item = reference_file.copy()
+    item.update({
+        'schema_version': '26',
+        'catalog_adapters': [
+            'https://github.com/IGVF-DACC/igvf-catalog/blob/dev/data/adapters/ccre_adapter.py'
+        ],
+        'notes': 'Preserve existing notes.'
+    })
+    return item

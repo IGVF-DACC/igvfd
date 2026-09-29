@@ -1,13 +1,26 @@
 ## Changelog for *`tabular_file.json`*
 
-### Minor changes since schema version 27
+### Schema version 28
 
+* Remove `catalog_adapters`.
+* Extend `catalog_collections` enum list to include `genes_transcripts_genes`.
+* Extend `catalog_collections` enum list to include `genomic_elements_genomic_elements`.
+* Extend `catalog_collections` enum list to include `gene_programs`.
+* Extend `catalog_collections` enum list to include `genes_gene_programs`.
+* Extend `catalog_collections` enum list to include `gene_programs_gene_programs`.
+* Extend `catalog_collections` enum list to include `mm_genomic_elements_biosamples`.
+* Extend `catalog_collections` enum list to include `mm_variants_biosamples`.
+* Extend `catalog_collections` enum list to include `mm_genomic_elements_mm_genes`.
 * Extend `content_type` enum list to include `chromatin conformation loops`.
 * Extend `content_type` enum list to include `chromatin state annotation`.
 * Extend `submitted_transcriptome_annotation` enum list to include `GENCODE 50`.
 * Extend `content_type` enum list to include `protein-protein interaction disruption scores`.
 * Extend `content_type` enum list to include `disease level protein-protein interaction score`.
 * Extend `content_type` enum list to include `population level protein-protein interaction score`.
+
+### Minor changes since schema version 27
+
+* Extend `submitted_transcriptome_annotation` enum list to include `GENCODE 50`.
 * Extend `collections` enum list to include `10x V2F`.
 * Extend `collections` enum list to include `SHARE CIRM Villages`.
 * Extend `collections` enum list to include `SHARE DepMap`.

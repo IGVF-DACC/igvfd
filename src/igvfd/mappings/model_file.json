@@ -1,6 +1,6 @@
 {
-    "hash": "335d05d27e2752b3fdab9082b7c75cbf",
-    "index_name": "model_file_335d05d2",
+    "hash": "ad2009ff8bb3e8cebdf370e198c7b88a",
+    "index_name": "model_file_ad2009ff",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -362,9 +362,6 @@
                             }
                         },
                         "type": "object"
-                    },
-                    "catalog_adapters": {
-                        "type": "keyword"
                     },
                     "catalog_class": {
                         "type": "keyword"

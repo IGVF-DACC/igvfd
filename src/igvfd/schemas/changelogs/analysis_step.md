@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 17
 
+* Extend `input_content_types` enum list to include `transcript identifier mapping`.
+* Extend `output_content_types` enum list to include `transcript identifier mapping`.
 * Extend `input_content_types` enum list to include `chromatin conformation loops`.
 * Extend `output_content_types` enum list to include `chromatin conformation loops`.
 * Extend `input_content_types` enum list to include `chromatin state annotation`.
