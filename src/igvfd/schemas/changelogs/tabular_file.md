@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 27
 
+* Extend `content_type` enum list to include `chromatin conformation loops`.
+* Extend `content_type` enum list to include `chromatin state annotation`.
 * Extend `submitted_transcriptome_annotation` enum list to include `GENCODE 50`.
 * Extend `content_type` enum list to include `protein-protein interaction disruption scores`.
 * Extend `content_type` enum list to include `disease level protein-protein interaction score`.
