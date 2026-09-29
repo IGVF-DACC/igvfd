@@ -94,7 +94,7 @@ def get_s3_client(localstack_endpoint_url: Optional[str] = None) -> BaseClient:
     )
 
 
-def get_policy_for_external_bucket(bucket):
+def get_statements_for_external_bucket(bucket):
     return [
         {
             'Action': 's3:GetObject',
@@ -110,11 +110,19 @@ class UploadCredentials(object):
     Build and distribute federate aws credentials for submitting files
     '''
 
-    def __init__(self, bucket, key, name, sts_client):
+    def __init__(
+            self,
+            bucket,
+            key,
+            name,
+            sts_client,
+            external_buckets_by_lab_uuid=EXTERNAL_BUCKETS_BY_LAB_UUID
+    ):
         self._bucket = bucket
         self._key = key
         self._name = name
         self._sts_client = sts_client
+        self._external_buckets_by_lab_uuid = external_buckets_by_lab_uuid
         file_url = '{bucket}/{key}'.format(
             bucket=self._bucket,
             key=self._key
@@ -165,8 +173,8 @@ class UploadCredentials(object):
 
     def _generate_external_bucket_statements(self, buckets):
         for bucket in buckets:
-            self._external_bucket_statements.append(
-                get_policy_for_external_bucket(
+            self._external_bucket_statements.extend(
+                get_statements_for_external_bucket(
                     bucket
                 )
             )
@@ -176,11 +184,10 @@ class UploadCredentials(object):
         Used to get the federate user credentials
         If a lab with external s3 buckets exist they will be added to the policy.
         '''
-        if lab_uuid and lab_uuid in EXTERNAL_BUCKETS_BY_LAB_UUID:
-            buckets = EXTERNAL_BUCKETS_BY_LAB_UUID[lab_uuid]
+        if lab_uuid and lab_uuid in self._external_buckets_by_lab_uuid:
+            buckets = self._external_buckets_by_lab_uuid[lab_uuid]
             self._generate_external_bucket_statements(buckets)
         policy = self._get_policy()
-        print('Generated upload policy', policy)
         token = self._get_token(policy)
         credentials = {
             'session_token': token.get('Credentials', {}).get('SessionToken'),

@@ -53,3 +53,49 @@ def test_upload_credentials_upload_credentials_external_credentials():
     for key in expected['upload_credentials']:
         assert key in actual['upload_credentials']
     assert actual['upload_credentials']['upload_url'] == 's3://some-bucket/some-key'
+
+
+def test_upload_credentials_upload_credentials_external_credentials_with_lab_uuid():
+    from igvfd.upload_credentials import get_sts_client
+    from igvfd.upload_credentials import UploadCredentials
+    upload_credentials = UploadCredentials(
+        bucket='some-bucket',
+        key='some-key',
+        name='some-name',
+        sts_client=get_sts_client(
+            localstack_endpoint_url=os.environ.get(
+                'LOCALSTACK_ENDPOINT_URL'
+            )
+        ),
+        external_buckets_by_lab_uuid={
+            'lab-123': [
+                'bucket1',
+                'bucket2',
+            ]
+        }
+    )
+    upload_credentials.external_creds(
+        lab_uuid='lab-123',
+    )
+    actual_policy = upload_credentials._get_policy()
+    expected_policy = {
+        'Version': '2012-10-17',
+        'Statement': [
+            {
+                'Effect': 'Allow',
+                'Action': 's3:PutObject',
+                'Resource': 'arn:aws:s3:::some-bucket/some-key'
+            },
+            {
+                'Action': 's3:GetObject',
+                'Resource': 'arn:aws:s3:::bucket1/*',
+                'Effect': 'Allow'
+            },
+            {
+                'Action': 's3:GetObject',
+                'Resource': 'arn:aws:s3:::bucket2/*',
+                'Effect': 'Allow'
+            }
+        ]
+    }
+    assert actual_policy == expected_policy
