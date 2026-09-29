@@ -1,6 +1,6 @@
 ## Changelog for *`tabular_file.json`*
 
-### Schema version 3
+### Schema version 28
 
 * Remove `catalog_adapters`.
 * Extend `catalog_collections` enum list to include `genes_transcripts_genes`.
