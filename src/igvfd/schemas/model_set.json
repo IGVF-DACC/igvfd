@@ -170,9 +170,9 @@
         },
         "model_zoo_location": {
             "title": "Model Zoo Location",
-            "description": "The link to the model on the Kipoi repository.",
+            "description": "The link to the model on the Kipoi repository or Hugging Face.",
             "type": "string",
-            "pattern": "^https?://kipoi\\.org/models/(\\S+)$",
+            "pattern": "^https?://(kipoi\\.org/models/|huggingface\\.co/)(\\S+)$",
             "submissionExample": {
                 "appscript": "https://kipoi.org/models/Basset/",
                 "igvf_utils": "https://kipoi.org/models/Basset/"
