@@ -2,6 +2,10 @@
 
 ### Minor changes since schema version 27
 
+* Extend `submitted_transcriptome_annotation` enum list to include `GENCODE 50`.
+* Extend `content_type` enum list to include `protein-protein interaction disruption scores`.
+* Extend `content_type` enum list to include `disease level protein-protein interaction score`.
+* Extend `content_type` enum list to include `population level protein-protein interaction score`.
 * Extend `collections` enum list to include `10x V2F`.
 * Extend `collections` enum list to include `SHARE CIRM Villages`.
 * Extend `collections` enum list to include `SHARE DepMap`.
