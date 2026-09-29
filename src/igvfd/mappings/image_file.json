@@ -1,6 +1,6 @@
 {
-    "hash": "f0b062cb6d9278cddc40d0bda5ec0852",
-    "index_name": "image_file_f0b062cb",
+    "hash": "c856e8b288c44fe139a46e544a19e080",
+    "index_name": "image_file_c856e8b2",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -498,6 +498,12 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "urls": {

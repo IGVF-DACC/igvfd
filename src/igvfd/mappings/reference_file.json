@@ -1,6 +1,6 @@
 {
-    "hash": "8066e8f03562d39433ee4ae45110f5ab",
-    "index_name": "reference_file_8066e8f0",
+    "hash": "61744afcdba3fb896257d1d694a39949",
+    "index_name": "reference_file_61744afc",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -522,6 +522,12 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "superseded_by": {
+                                "type": "keyword"
+                            },
+                            "supersedes": {
                                 "type": "keyword"
                             },
                             "urls": {

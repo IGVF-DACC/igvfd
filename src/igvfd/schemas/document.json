@@ -90,6 +90,24 @@
         "schema_version": {
             "default": "4"
         },
+        "supersedes": {
+            "title": "Supersedes",
+            "description": "The document(s) that this document supersedes by virtue of being newer, better, or a fixed version.",
+            "comment": "The linked document(s) are expected to have an archived status.",
+            "minItems": 1,
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+                "title": "Superseded Document",
+                "description": "A document that this document supersedes by virtue of being newer, better, or a fixed version.",
+                "type": "string",
+                "linkTo": "Document"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:document02\"]",
+                "igvf_utils": "john-doe:document02"
+            }
+        },
         "document_type": {
             "title": "Document Type",
             "description": "The category that best describes the document.",

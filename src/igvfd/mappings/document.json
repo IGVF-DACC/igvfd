@@ -1,6 +1,6 @@
 {
-    "hash": "c29cf3d8b3d8701ddd02baac8da59254",
-    "index_name": "document_c29cf3d8",
+    "hash": "3cbb5ae0986096b5673cdfe590f8fc48",
+    "index_name": "document_3cbb5ae0",
     "item_type": "document",
     "mapping": {
         "dynamic_templates": [
@@ -419,6 +419,12 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "type": "keyword"
+                    },
+                    "superseded_by": {
+                        "type": "keyword"
+                    },
+                    "supersedes": {
                         "type": "keyword"
                     },
                     "urls": {
