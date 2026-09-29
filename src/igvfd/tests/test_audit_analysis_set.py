@@ -68,6 +68,7 @@ def test_audit_missing_derived_from(
     testapp,
     analysis_set_base,
     matrix_file,
+    tabular_file,
     signal_file
 ):
     testapp.patch_json(
@@ -85,6 +86,19 @@ def test_audit_missing_derived_from(
         matrix_file['@id'],
         {
             'derived_from': [signal_file['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing derived from'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+ # Files with content_type "marker genes" are exempt
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'content_type': 'marker genes',
+            'file_set': analysis_set_base['@id']
         }
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
