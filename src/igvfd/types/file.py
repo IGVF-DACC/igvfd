@@ -538,7 +538,9 @@ class File(Item):
                 name=name,
                 sts_client=sts_client,
             )
-            sheets['external'] = upload_credentials.external_creds()
+            sheets['external'] = upload_credentials.external_creds(
+                lab_uuid=properties['lab'],
+            )
         return super(File, cls).create(registry, uuid, properties, sheets)
 
     def _get_external_sheet(self):
@@ -1557,7 +1559,9 @@ def post_upload(context, request):
         name=name,
         sts_client=sts_client,
     )
-    external_credentials = upload_credentials.external_creds()
+    external_credentials = upload_credentials.external_creds(
+        lab_uuid=properties.get('lab'),
+    )
     new_properties = None
     if properties['upload_status'] != 'pending':
         new_properties = properties.copy()
