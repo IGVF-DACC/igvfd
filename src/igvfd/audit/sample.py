@@ -238,15 +238,15 @@ def audit_missing_moi(value, system):
     '''
     if 'lentiviral transduction' not in value.get('construct_delivery_methods', []) or 'moi' in value:
         return
-    perturb_seq_assays = {
-        'Perturb-seq', 'Multiome Perturb-seq', 'in vivo Perturb-seq',
-        'CC-Perturb-seq', 'Parse Perturb-seq', 'TAP-seq', 'Parse TAP-seq',
-        'CROP-seq', 'scCRISPR screen'
+    perturb_seq_assay_titles = {
+        'in vitro CRISPR screen using single-cell RNA-seq',
+        'in vitro CRISPR screen using single-cell ATAC-seq',
+        'in vivo CRISPR screen using single cell RNA-seq',
     }
     audit_message = get_audit_message(audit_missing_moi, index=1)
     for file_set_id in value.get('file_sets', []):
         file_set = system.get('request').embed(file_set_id + '@@object')
-        if perturb_seq_assays.intersection(file_set.get('preferred_assay_titles', [])):
+        if perturb_seq_assay_titles.intersection(file_set.get('assay_titles', [])):
             audit_message = get_audit_message(audit_missing_moi, index=0)
             break
     object_type = space_in_words(value['@type'][0]).capitalize()
