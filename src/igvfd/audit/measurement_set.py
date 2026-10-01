@@ -743,10 +743,10 @@ def audit_missing_auxiliary_set(value, system):
     audit_message_10X_MULTI_seq = get_audit_message(audit_missing_auxiliary_set, index=4)
 
     expected_auxiliary_set_by_assay_term = {
+        'massively parallel reporter assay': [('quantification DNA barcode sequencing', audit_message_MPRA)],
         'in vitro CRISPR screen using single-cell RNA-seq': [('gRNA sequencing', audit_message_scCRISPR_gRNA)],
         'in vitro CRISPR screen using single-cell ATAC-seq': [('gRNA sequencing', audit_message_scCRISPR_gRNA)],
         'in vivo CRISPR screen using single cell RNA-seq': [('gRNA sequencing', audit_message_scCRISPR_gRNA)],
-        'massively parallel reporter assay': [('quantification DNA barcode sequencing', audit_message_MPRA)],
         'in vitro CRISPR screen using flow cytometry': [('cell sorting', audit_message_CRISPR_flow)],
     }
     # preferred assay title expectations override any overlapping assay term expectation
