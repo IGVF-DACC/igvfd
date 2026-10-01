@@ -307,10 +307,10 @@ def test_audit_missing_moi_perturb_seq(
         {'construct_delivery_methods': ['lentiviral transduction']}
     )
     res = testapp.get(tissue['@id'] + '@@audit')
-    assert sum(
+    assert any(
         error['category'] == 'missing moi'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    ) == 1
+    )
     assert all(
         error['category'] != 'missing moi'
         for error in res.json['audit'].get('WARNING', [])

@@ -76,7 +76,7 @@
         },
         "observed_moi": {
             "title": "Observed Multiplicity Of Infection",
-            "description": "Multiplicity of infection (MOI) observed by the Perturb-seq pipeline.",
+            "description": "The multiplicity of infection (MOI) derived from the Perturb-seq pipeline output. This property is distinct from the experimentally reported `moi` property on the sample.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,
