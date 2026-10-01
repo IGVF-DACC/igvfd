@@ -95,3 +95,9 @@ def perturb_seq_quality_metric_1_2(value, system):
         del value['total_targets']
     if 'guide_diversity' in value:
         del value['guide_diversity']
+
+
+@upgrade_step('perturb_seq_quality_metric', '2', '3')
+def perturb_seq_quality_metric_2_3(value, system):
+    if 'moi' in value:
+        value['observed_moi'] = value.pop('moi')

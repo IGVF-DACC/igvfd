@@ -17,3 +17,17 @@ def perturb_seq_quality_metric_v1(
         'analysis_step_version': analysis_step_version['@id']
     }
     return item
+
+
+@pytest.fixture
+def perturb_seq_quality_metric_v2(
+        lab, award, alignment_file, analysis_step_version):
+    item = {
+        'schema_version': '2',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'quality_metric_of': alignment_file['@id'],
+        'moi': 2.5,
+        'analysis_step_version': analysis_step_version['@id']
+    }
+    return item
