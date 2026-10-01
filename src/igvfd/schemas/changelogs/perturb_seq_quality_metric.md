@@ -2,7 +2,7 @@
 
 ### Schema version 3
 
-* Rename `moi` to `observed_moi` to distinguish pipeline-derived MOI from experimentally reported sample MOI.
+* Rename `moi` to `observed_moi`.
 
 ### Schema version 2
 

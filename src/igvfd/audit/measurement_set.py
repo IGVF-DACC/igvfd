@@ -651,13 +651,14 @@ def audit_missing_construct_library_set(value, system):
     audit_message_Imaging = get_audit_message(audit_missing_construct_library_set, index=5)
 
     expected_library_by_assay_term = {
-        'in vitro CRISPR screen using single-cell RNA-seq': ('guide library', audit_message_CRISPR),
-        'in vitro CRISPR screen using single-cell ATAC-seq': ('guide library', audit_message_CRISPR),
-        'in vivo CRISPR screen using single cell RNA-seq': ('guide library', audit_message_CRISPR),
         'massively parallel reporter assay': ('reporter library', audit_message_MPRA),
         'cas mediated mutagenesis': ('guide library', audit_message_CRISPR),
         'in vitro CRISPR screen assay': ('guide library', audit_message_CRISPR),
         'in vitro CRISPR screen using flow cytometry': ('guide library', audit_message_CRISPR),
+        'in vitro CRISPR screen using single-cell RNA-seq': ('guide library', audit_message_CRISPR),
+        'in vitro CRISPR screen using single-cell ATAC-seq': ('guide library', audit_message_CRISPR),
+        'in vivo CRISPR screen using single cell RNA-seq': ('guide library', audit_message_CRISPR),
+
         'protein-protein interaction detection assay': ('expression vector library', audit_message_PPI),
         'imaging assay': ('expression vector library', audit_message_Imaging)
     }
