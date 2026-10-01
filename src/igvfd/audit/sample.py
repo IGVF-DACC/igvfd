@@ -5,6 +5,8 @@ from snovault.auditor import (
 
 from snovault.mapping import watch_for_changes_in
 
+from .file_set import PERTURB_SEQ_ASSAY_TERMS
+
 from .formatter import (
     audit_link,
     path_to_text,
@@ -238,15 +240,10 @@ def audit_missing_moi(value, system):
     '''
     if 'lentiviral transduction' not in value.get('construct_delivery_methods', []) or 'moi' in value:
         return
-    perturb_seq_assay_titles = {
-        'in vitro CRISPR screen using single-cell RNA-seq',
-        'in vitro CRISPR screen using single-cell ATAC-seq',
-        'in vivo CRISPR screen using single cell RNA-seq',
-    }
     audit_message = get_audit_message(audit_missing_moi, index=1)
     for file_set_id in value.get('file_sets', []):
         file_set = system.get('request').embed(file_set_id + '@@object')
-        if perturb_seq_assay_titles.intersection(file_set.get('assay_titles', [])):
+        if file_set.get('assay_term') in PERTURB_SEQ_ASSAY_TERMS:
             audit_message = get_audit_message(audit_missing_moi, index=0)
             break
     object_type = space_in_words(value['@type'][0]).capitalize()
