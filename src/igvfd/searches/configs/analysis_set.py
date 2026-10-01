@@ -360,7 +360,7 @@ def differentiation_series():
                 'label': 'Assays'
             },
             'y': {
-                'group_by': ['samples.classifications', 'samples.taxa', 'samples.sample_terms.term_name', 'samples.targeted_sample_term.term_name'],
+                'group_by': ['samples.classifications', ('samples.taxa', 'no_samples_taxa'), 'samples.sample_terms.term_name', 'samples.targeted_sample_term.term_name'],
                 'label': 'Samples'
             }
         }
