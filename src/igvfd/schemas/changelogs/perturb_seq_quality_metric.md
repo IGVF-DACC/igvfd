@@ -1,5 +1,9 @@
 ## Changelog for *`perturb_seq_quality_metric.json`*
 
+### Schema version 3
+
+* Rename `moi` to `observed_moi` to distinguish pipeline-derived MOI from experimentally reported sample MOI.
+
 ### Schema version 2
 
 * Rename `pct_cells_assigned_guide` to `frac_cells_with_guide`.

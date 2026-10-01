@@ -1,6 +1,6 @@
 {
-    "hash": "a7f1d5c86fc01ddcdd2d3a5388fbe038",
-    "index_name": "perturb_seq_quality_metric_a7f1d5c8",
+    "hash": "1bc061237ff323f638ede1ffda1604bb",
+    "index_name": "perturb_seq_quality_metric_1bc06123",
     "item_type": "perturb_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
@@ -354,10 +354,6 @@
                         "store": true,
                         "type": "float"
                     },
-                    "moi": {
-                        "store": true,
-                        "type": "float"
-                    },
                     "n_cells_exactly_1_guide": {
                         "store": true,
                         "type": "float"
@@ -376,6 +372,10 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "observed_moi": {
+                        "store": true,
+                        "type": "float"
                     },
                     "p_unique": {
                         "store": true,

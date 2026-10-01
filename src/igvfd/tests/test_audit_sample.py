@@ -1,6 +1,3 @@
-import pytest
-
-
 def test_audit_sample_sorted_from_parent_child_check(
     testapp,
     biosample_sorted_child,
@@ -242,3 +239,115 @@ def test_audit_missing_association(
         error['category'] != 'missing association'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
+
+
+def test_audit_missing_moi_warning(
+    testapp,
+    tissue,
+    technical_sample,
+    construct_library_set_genome_wide
+):
+    for sample in [tissue, technical_sample]:
+        # No audit without lentiviral transduction.
+        res = testapp.get(sample['@id'] + '@@audit')
+        assert all(
+            error['category'] != 'missing moi'
+            for error in res.json['audit'].get('WARNING', [])
+        )
+        testapp.patch_json(
+            sample['@id'],
+            {'construct_delivery_methods': ['electroporation']}
+        )
+        res = testapp.get(sample['@id'] + '@@audit')
+        assert all(
+            error['category'] != 'missing moi'
+            for error in res.json['audit'].get('WARNING', [])
+        )
+        # Lentiviral transduction without MOI triggers a warning.
+        testapp.patch_json(
+            sample['@id'],
+            {'construct_delivery_methods': ['electroporation', 'lentiviral transduction']}
+        )
+        res = testapp.get(sample['@id'] + '@@audit')
+        assert any(
+            error['category'] == 'missing moi'
+            for error in res.json['audit'].get('WARNING', [])
+        )
+        assert all(
+            error['category'] != 'missing moi'
+            for error in res.json['audit'].get('NOT_COMPLIANT', [])
+        )
+        # Reporting MOI clears the warning, including when MOI is zero.
+        for moi in [0, 1.5]:
+            testapp.patch_json(
+                sample['@id'],
+                {
+                    'construct_library_sets': [construct_library_set_genome_wide['@id']],
+                    'moi': moi
+                }
+            )
+            res = testapp.get(sample['@id'] + '@@audit')
+            assert all(
+                error['category'] != 'missing moi'
+                for error in res.json['audit'].get('WARNING', [])
+            )
+
+
+def test_audit_missing_moi_perturb_seq(
+    testapp,
+    tissue,
+    technical_sample,
+    measurement_set,
+    measurement_set_perturb_seq,
+    construct_library_set_genome_wide
+):
+    # A sample linked to both Perturb-seq and another assay gets NOT_COMPLIANT.
+    testapp.patch_json(
+        tissue['@id'],
+        {'construct_delivery_methods': ['lentiviral transduction']}
+    )
+    res = testapp.get(tissue['@id'] + '@@audit')
+    assert sum(
+        error['category'] == 'missing moi'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    ) == 1
+    assert all(
+        error['category'] != 'missing moi'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # Removing the Perturb-seq association leaves a warning for the other assay.
+    testapp.patch_json(
+        measurement_set_perturb_seq['@id'],
+        {'samples': [technical_sample['@id']]}
+    )
+    res = testapp.get(tissue['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing moi'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    assert all(
+        error['category'] != 'missing moi'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set_perturb_seq['@id'],
+        {'samples': [tissue['@id']]}
+    )
+    # Reporting MOI clears the audit for Perturb-seq, including zero.
+    for moi in [0, 1.5]:
+        testapp.patch_json(
+            tissue['@id'],
+            {
+                'construct_library_sets': [construct_library_set_genome_wide['@id']],
+                'moi': moi
+            }
+        )
+        res = testapp.get(tissue['@id'] + '@@audit')
+        assert all(
+            error['category'] != 'missing moi'
+            for error in res.json['audit'].get('NOT_COMPLIANT', [])
+        )
+        assert all(
+            error['category'] != 'missing moi'
+            for error in res.json['audit'].get('WARNING', [])
+        )
