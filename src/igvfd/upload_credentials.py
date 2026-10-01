@@ -162,15 +162,6 @@ class UploadCredentials(object):
             print('Warning: ', ecp)
             return None
 
-    def _check_external_policy(self, s3_transfer_allow, s3_transfer_buckets):
-        if s3_transfer_allow and s3_transfer_buckets:
-            external_policy = _get_external_bucket_policy(s3_transfer_buckets)
-            if not isinstance(external_policy, dict):
-                _build_external_bucket_json(s3_transfer_buckets)
-                external_policy = _get_external_bucket_policy(s3_transfer_buckets)
-            if external_policy:
-                self._external_policy = external_policy
-
     def _generate_external_bucket_statements(self, buckets):
         for bucket in buckets:
             self._external_bucket_statements.extend(
