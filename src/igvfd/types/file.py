@@ -1594,6 +1594,10 @@ def post_upload(context, request):
         '@type': ['result'],
         '@graph': [rendered],
     }
+    if asbool(request.params.get('debug')):
+        result['debug'] = {
+            'policy': upload_credentials._get_policy()
+        }
     return result
 
 
