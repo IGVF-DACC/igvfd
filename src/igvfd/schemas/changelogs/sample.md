@@ -1,6 +1,5 @@
 ## Changelog for *`sample.json`*
 
-* Clarify that `moi` is experimentally reported and distinct from pipeline-derived `observed_moi` on Perturb-seq quality metrics. (10/01/2026)
 * Extend `collections` enum list to include `10x V2F`. (09/30/2026)
 * Extend `collections` enum list to include `SHARE CIRM Villages`. (09/30/2026)
 * Extend `collections` enum list to include `SHARE DepMap`. (09/30/2026)
