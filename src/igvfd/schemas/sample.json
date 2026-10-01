@@ -220,7 +220,7 @@
         },
         "moi": {
             "title": "Multiplicity Of Infection",
-            "description": "The experimentally reported multiplicity of infection (MOI) for vectors introduced to this sample. This property captures the actual MOI, not the targeted MOI, and is distinct from the pipeline-derived observed_moi on a Perturb-seq quality metric.",
+            "description": "The experimentally reported multiplicity of infection (MOI) for vectors introduced to this sample. This property captures the experimentally measured or estimated MOI, not the targeted MOI, and is distinct from the pipeline-derived observed_moi on a Perturb-seq quality metric.",
             "comment": "Use of this property requires construct_library_sets.",
             "type": "number",
             "minimum": 0,
