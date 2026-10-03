@@ -15,11 +15,11 @@ from .formatter import (
 
 from typing import Iterable
 
-PERTURB_SEQ_ASSAY_TERMS = {
-    '/assay-terms/OBI_0003660/': 'in vitro CRISPR screen using single-cell RNA-seq',
-    '/assay-terms/NTR_0000798/': 'in vitro CRISPR screen using single-cell ATAC-seq',
-    '/assay-terms/NTR_0001101/': 'in vivo CRISPR screen using single cell RNA-seq',
-}
+PERTURB_SEQ_ASSAY_TERMS = [
+    '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
+    '/assay-terms/NTR_0000798/',  # in vitro CRISPR screen using single-cell ATAC-seq
+    '/assay-terms/NTR_0001101/',  # in vivo CRISPR screen using single cell RNA-seq
+]
 
 # Single cell assay terms
 
@@ -54,7 +54,7 @@ def load_chrom_sizes_file(file_path):
 
 def single_cell_check(system, value, object_type, single_cell_assay_terms=list(SINGLE_CELL_ASSAY_TERMS.keys()), include_perturb_seq=False):
     if include_perturb_seq:
-        single_cell_assay_terms = single_cell_assay_terms + list(PERTURB_SEQ_ASSAY_TERMS)
+        single_cell_assay_terms = single_cell_assay_terms + PERTURB_SEQ_ASSAY_TERMS
     if object_type == 'Measurement set':
         assay_term = value.get('assay_term')
         return assay_term in single_cell_assay_terms

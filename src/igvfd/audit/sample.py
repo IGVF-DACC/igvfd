@@ -243,9 +243,7 @@ def audit_missing_moi(value, system):
     audit_message = get_audit_message(audit_missing_moi, index=1)
     for file_set_id in value.get('file_sets', []):
         file_set = system.get('request').embed(file_set_id + '@@object')
-        if file_set.get('assay_term') in PERTURB_SEQ_ASSAY_TERMS or any(
-            title in PERTURB_SEQ_ASSAY_TERMS.values() for title in file_set.get('assay_titles', [])
-        ):
+        if file_set.get('assay_term') in PERTURB_SEQ_ASSAY_TERMS:
             audit_message = get_audit_message(audit_missing_moi, index=0)
             break
     object_type = space_in_words(value['@type'][0]).capitalize()
