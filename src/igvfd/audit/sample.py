@@ -5,6 +5,8 @@ from snovault.auditor import (
 
 from snovault.mapping import watch_for_changes_in
 
+from .file_set import PERTURB_SEQ_ASSAY_TERMS
+
 from .formatter import (
     audit_link,
     path_to_text,
@@ -221,6 +223,37 @@ def audit_missing_association(value, system):
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+def audit_missing_moi(value, system):
+    '''
+    [
+        {
+            "audit_description": "Samples with lentiviral transduction used in Perturb-seq screens are expected to specify multiplicity of infection (MOI).",
+            "audit_category": "missing moi",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Samples with lentiviral transduction are expected to specify multiplicity of infection (MOI).",
+            "audit_category": "missing moi",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    if 'lentiviral transduction' not in value.get('construct_delivery_methods', []) or 'moi' in value:
+        return
+    audit_message = get_audit_message(audit_missing_moi, index=1)
+    for file_set_id in value.get('file_sets', []):
+        file_set = system.get('request').embed(file_set_id + '@@object')
+        if file_set.get('assay_term') in PERTURB_SEQ_ASSAY_TERMS:
+            audit_message = get_audit_message(audit_missing_moi, index=0)
+            break
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    detail = (
+        f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+        f'has lentiviral transduction in `construct_delivery_methods` but is missing `moi`.'
+    )
+    yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
 function_dispatcher_sample_skip_calculated = {
     'audit_sample_sorted_from_parent_child_check': audit_sample_sorted_from_parent_child_check
 }
@@ -230,7 +263,8 @@ function_dispatcher_sample_object = {
     'audit_non_virtual_sample_linked_to_virtual_sample': audit_non_virtual_sample_linked_to_virtual_sample,
     'audit_parent_sample_with_singular_child': audit_parent_sample_with_singular_child,
     'audit_missing_construct_delivery_methods': audit_missing_construct_delivery_methods,
-    'audit_missing_association': audit_missing_association
+    'audit_missing_association': audit_missing_association,
+    'audit_missing_moi': audit_missing_moi
 }
 
 

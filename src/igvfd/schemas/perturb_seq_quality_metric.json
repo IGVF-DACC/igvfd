@@ -45,7 +45,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "2"
+            "default": "3"
         },
         "total_cells_passing_filters": {
             "title": "Total Cells Passing Filters",
@@ -74,9 +74,9 @@
                 "igvf_utils": 8
             }
         },
-        "moi": {
-            "title": "Multiplicity Of Infection",
-            "description": "Multiplicity Of Infection",
+        "observed_moi": {
+            "title": "Observed Multiplicity Of Infection",
+            "description": "The multiplicity of infection (MOI) derived from the Perturb-seq pipeline output. This property is distinct from the experimentally reported `moi` property on the sample.",
             "type": "number",
             "submissionExample": {
                 "appscript": 8,

@@ -14,3 +14,41 @@ def test_perturb_seq_quality_metric_upgrade_1_2(upgrader, perturb_seq_quality_me
     assert 'total_targets' not in value
     assert 'guide_diversity' not in value
     assert value['schema_version'] == '2'
+
+
+def test_perturb_seq_quality_metric_upgrade_2_3(upgrader, perturb_seq_quality_metric_v2):
+    value = upgrader.upgrade(
+        'perturb_seq_quality_metric',
+        perturb_seq_quality_metric_v2,
+        current_version='2',
+        target_version='3',
+    )
+    assert 'moi' not in value
+    assert value['observed_moi'] == 2.5
+    assert value['schema_version'] == '3'
+
+
+def test_perturb_seq_quality_metric_upgrade_2_3_zero_moi(upgrader, perturb_seq_quality_metric_v2):
+    perturb_seq_quality_metric_v2['moi'] = 0
+    value = upgrader.upgrade(
+        'perturb_seq_quality_metric',
+        perturb_seq_quality_metric_v2,
+        current_version='2',
+        target_version='3',
+    )
+    assert 'moi' not in value
+    assert value['observed_moi'] == 0
+    assert value['schema_version'] == '3'
+
+
+def test_perturb_seq_quality_metric_upgrade_2_3_no_moi(upgrader, perturb_seq_quality_metric_v2):
+    del perturb_seq_quality_metric_v2['moi']
+    value = upgrader.upgrade(
+        'perturb_seq_quality_metric',
+        perturb_seq_quality_metric_v2,
+        current_version='2',
+        target_version='3',
+    )
+    assert 'moi' not in value
+    assert 'observed_moi' not in value
+    assert value['schema_version'] == '3'
