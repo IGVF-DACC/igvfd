@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Update `source_url` regex to add `bitbucket\\.org/\\S+` as a pattern.
 * Extend `collections` enum list to include `10x V2F`.
 * Extend `collections` enum list to include `SHARE CIRM Villages`.
 * Extend `collections` enum list to include `SHARE DepMap`.

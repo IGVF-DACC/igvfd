@@ -109,5 +109,23 @@
             "WGS",
             "4sU-SHARE-seq"
         ]
+    },
+    {
+        "uuid": "f9565f47-67e4-420e-a6b0-c8beb55da5a3",
+        "accession": "IGVFWF0004WORK",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:enigma_mpra_workflow"
+        ],
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "name": "ENIGMA MPRA Pipeline",
+        "source_url": "https://bitbucket.org/steinlabunc/enigma-mpra/src/main/",
+        "workflow_version": "v1.0.0",
+        "uniform_pipeline": false,
+        "preferred_assay_titles": [
+            "MPRA"
+        ]
     }
 ]
