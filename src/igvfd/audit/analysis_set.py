@@ -62,18 +62,18 @@ def audit_analysis_set_multiplexed_samples(value, system):
     if subset_samples:
         input_file_sets = value.get('input_file_sets', [])
         related_samples = set()
-        input_samples = []
+        input_samples = set()
         for input_file_set in input_file_sets:
             if input_file_set.startswith('/construct-library-sets/'):
                 continue
             input_file_set_object = system.get('request').embed(input_file_set + '@@object')
             for sample in input_file_set_object.get('samples', []):
-                input_samples.append(sample)
+                input_samples.add(sample)
                 related_samples.add(sample)
                 sample_object = system.get('request').embed(sample + '@@object')
                 related_samples.update(sample_object.get('multiplexed_samples', []))
         input_samples = ', '.join([audit_link(path_to_text(sample), sample)
-                                   for sample in input_samples])
+                                   for sample in sorted(input_samples)])
         input_file_sets = ', '.join([audit_link(path_to_text(input_file_set), input_file_set)
                                     for input_file_set in input_file_sets])
         if any(subset_sample not in related_samples for subset_sample in subset_samples):
