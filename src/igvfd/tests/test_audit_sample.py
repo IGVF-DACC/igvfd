@@ -351,3 +351,41 @@ def test_audit_missing_moi_perturb_seq(
             error['category'] != 'missing moi'
             for error in res.json['audit'].get('WARNING', [])
         )
+
+
+def test_audit_missing_moi_assay_titles(
+    testapp,
+    technical_sample,
+    base_auxiliary_set,
+    measurement_set_perturb_seq
+):
+    # The sample is linked only to an auxiliary set, which exposes assay_titles.
+    testapp.patch_json(
+        technical_sample['@id'],
+        {'construct_delivery_methods': ['lentiviral transduction']}
+    )
+    testapp.patch_json(
+        base_auxiliary_set['@id'],
+        {'samples': [technical_sample['@id']]}
+    )
+    res = testapp.get(technical_sample['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing moi'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        measurement_set_perturb_seq['@id'],
+        {'auxiliary_sets': [base_auxiliary_set['@id']]}
+    )
+    auxiliary_set = testapp.get(base_auxiliary_set['@id'] + '@@object').json
+    assert 'assay_term' not in auxiliary_set
+    assert 'in vitro CRISPR screen using single-cell RNA-seq' in auxiliary_set['assay_titles']
+    res = testapp.get(technical_sample['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing moi'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    assert all(
+        error['category'] != 'missing moi'
+        for error in res.json['audit'].get('WARNING', [])
+    )
