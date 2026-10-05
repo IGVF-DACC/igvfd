@@ -1,6 +1,6 @@
 {
-    "hash": "72f9c55c23eb323098394e1305cb180a",
-    "index_name": "tissue_72f9c55c",
+    "hash": "baf52e0db78cf47670c7f4693fb1261f",
+    "index_name": "tissue_baf52e0d",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -607,6 +607,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -1224,6 +1228,10 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"

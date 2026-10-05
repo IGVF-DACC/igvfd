@@ -1,6 +1,6 @@
 {
-    "hash": "ecc662c06e36f67748c2f5fda11ab040",
-    "index_name": "in_vitro_system_ecc662c0",
+    "hash": "d0307e0e7c065bbc0cd1b66aef1bbba4",
+    "index_name": "in_vitro_system_d0307e0e",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -614,6 +614,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -1237,6 +1241,10 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"

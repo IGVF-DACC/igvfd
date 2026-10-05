@@ -1,6 +1,6 @@
 {
-    "hash": "0590f584cb85d2394c32c2b2ba019a79",
-    "index_name": "analysis_set_0590f584",
+    "hash": "a4fda7157e27fa1adc232ca6b4084f5b",
+    "index_name": "analysis_set_a4fda715",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -781,6 +781,10 @@
                             "lab": {
                                 "type": "keyword"
                             },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
+                            },
                             "large_scale_gene_list": {
                                 "type": "keyword"
                             },
@@ -1288,6 +1292,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -2675,6 +2683,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"

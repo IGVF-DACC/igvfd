@@ -1,6 +1,6 @@
 {
-    "hash": "bfd2484dee1ecc5d65ae0e1fe1e0532b",
-    "index_name": "primary_cell_bfd2484d",
+    "hash": "9714b35e4cb3c813fd8bda0dab8e2235",
+    "index_name": "primary_cell_9714b35e",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -610,6 +610,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -1227,6 +1231,10 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"

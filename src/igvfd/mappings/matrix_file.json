@@ -1,6 +1,6 @@
 {
-    "hash": "af128855d24b35da28afb7ca9407ee35",
-    "index_name": "matrix_file_af128855",
+    "hash": "2b31beca6c25bfeb577a42886116d04d",
+    "index_name": "matrix_file_2b31beca",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1054,6 +1054,10 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -2294,6 +2298,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
