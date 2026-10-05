@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Add `large_gene_count`.
 * Extend `collections` enum list to include `10x V2F`.
 * Extend `collections` enum list to include `SHARE CIRM Villages`.
 * Extend `collections` enum list to include `SHARE DepMap`.

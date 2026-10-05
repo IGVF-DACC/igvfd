@@ -1,6 +1,6 @@
 {
-    "hash": "165f806d86fe3ef568b621e6b8726ffd",
-    "index_name": "prediction_set_165f806d",
+    "hash": "85b1a04a160f3a853598470e1f1def25",
+    "index_name": "prediction_set_85b1a04a",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1054,6 +1054,10 @@
                             "lab": {
                                 "type": "keyword"
                             },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
+                            },
                             "large_scale_gene_list": {
                                 "type": "keyword"
                             },
@@ -1561,6 +1565,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -2605,6 +2613,10 @@
                         },
                         "type": "object"
                     },
+                    "large_gene_count": {
+                        "store": true,
+                        "type": "long"
+                    },
                     "large_scale_gene_list": {
                         "properties": {
                             "@id": {
@@ -3383,6 +3395,10 @@
                                     },
                                     "lab": {
                                         "type": "keyword"
+                                    },
+                                    "large_gene_count": {
+                                        "store": true,
+                                        "type": "long"
                                     },
                                     "large_scale_gene_list": {
                                         "type": "keyword"
