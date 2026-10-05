@@ -1,6 +1,6 @@
 {
-    "hash": "e21440f16d6023a67db69cfe3cd2f105",
-    "index_name": "auxiliary_set_e21440f1",
+    "hash": "e0dddcf2f2237e208e8f8872707273de",
+    "index_name": "auxiliary_set_e0dddcf2",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -777,6 +777,10 @@
                             "lab": {
                                 "type": "keyword"
                             },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
+                            },
                             "large_scale_gene_list": {
                                 "type": "keyword"
                             },
@@ -1284,6 +1288,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -2433,6 +2441,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"

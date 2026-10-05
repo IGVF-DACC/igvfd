@@ -1,6 +1,6 @@
 {
-    "hash": "ed9a5285582ec86ab477a9b0ed40bc8b",
-    "index_name": "sequence_file_ed9a5285",
+    "hash": "73d73300e6f50d0594cbc7d8e450d2f1",
+    "index_name": "sequence_file_73d73300",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1056,6 +1056,10 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -2301,6 +2305,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"

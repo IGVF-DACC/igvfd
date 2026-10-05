@@ -1,6 +1,6 @@
 {
-    "hash": "87be145d0e0862c2498aa442238faaa6",
-    "index_name": "configuration_file_87be145d",
+    "hash": "8178a865bcfd44a41c58bb292491fbbd",
+    "index_name": "configuration_file_8178a865",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1051,6 +1051,10 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -2287,6 +2291,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"

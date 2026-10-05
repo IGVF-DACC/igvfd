@@ -818,6 +818,16 @@
                 "appscript": "IGVFFI5432ENEG or john-doe:gene_list",
                 "igvf_utils": "IGVFFI5432ENEG or john-doe:gene_list"
             }
+        },
+        "large_gene_count": {
+            "title": "Number of Genes in Large Scale Gene List",
+            "description": "Number of genes in large_scale_gene_list",
+            "type": "integer",
+            "minimum": 99,
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
         }
     },
     "filtered": {

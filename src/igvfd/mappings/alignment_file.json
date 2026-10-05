@@ -1,6 +1,6 @@
 {
-    "hash": "c17069ec49be9e5c59be82bc971cc73d",
-    "index_name": "alignment_file_c17069ec",
+    "hash": "c69c0ea9c221fac919f1d1dffa16bf4a",
+    "index_name": "alignment_file_c69c0ea9",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1056,6 +1056,10 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -2296,6 +2300,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "002055fb62ef671c0dd4851d1e8c90fe",
-    "index_name": "multiplexed_sample_002055fb",
+    "hash": "990ce64a4609f032b8e253a906908fb6",
+    "index_name": "multiplexed_sample_990ce64a",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -601,6 +601,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -1217,6 +1221,10 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"

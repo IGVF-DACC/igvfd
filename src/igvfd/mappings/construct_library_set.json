@@ -1,6 +1,6 @@
 {
-    "hash": "47c08e217a4fa4ec1cabf389eea94efb",
-    "index_name": "construct_library_set_47c08e21",
+    "hash": "98c30630f00b846b9506b0c4f29f5ed3",
+    "index_name": "construct_library_set_98c30630",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -499,6 +499,10 @@
                             "lab": {
                                 "type": "keyword"
                             },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
+                            },
                             "large_scale_gene_list": {
                                 "type": "keyword"
                             },
@@ -901,6 +905,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -1923,6 +1931,10 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "large_gene_count": {
+                        "store": true,
+                        "type": "long"
                     },
                     "large_scale_gene_list": {
                         "properties": {

@@ -1,6 +1,6 @@
 {
-    "hash": "084143a74f0ac09c7c48ce50e309200b",
-    "index_name": "whole_organism_084143a7",
+    "hash": "e27ace1bda7d61b55b42411c9178b5a1",
+    "index_name": "whole_organism_e27ace1b",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -607,6 +607,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -1224,6 +1228,10 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"

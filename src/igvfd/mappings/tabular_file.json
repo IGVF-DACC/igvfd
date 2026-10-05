@@ -1,6 +1,6 @@
 {
-    "hash": "1afc48423aa782d5af2eef03f94bed41",
-    "index_name": "tabular_file_1afc4842",
+    "hash": "c8bcf837473fa4fef73909d864032572",
+    "index_name": "tabular_file_c8bcf837",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1071,6 +1071,10 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -2314,6 +2318,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"

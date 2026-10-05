@@ -1,6 +1,6 @@
 {
-    "hash": "049eb6e8754b1f25d15d99dd33779f47",
-    "index_name": "signal_file_049eb6e8",
+    "hash": "fa6b9f96cff353666fc8fb68dae87cd5",
+    "index_name": "signal_file_fa6b9f96",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -1058,6 +1058,10 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -2298,6 +2302,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"

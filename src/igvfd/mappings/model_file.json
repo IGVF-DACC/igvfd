@@ -1,6 +1,6 @@
 {
-    "hash": "ad2009ff8bb3e8cebdf370e198c7b88a",
-    "index_name": "model_file_ad2009ff",
+    "hash": "cba4705e730dd9e1a8985966a393215e",
+    "index_name": "model_file_cba4705e",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -1062,6 +1062,10 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
@@ -2298,6 +2302,10 @@
                             },
                             "lab": {
                                 "type": "keyword"
+                            },
+                            "large_gene_count": {
+                                "store": true,
+                                "type": "long"
                             },
                             "large_scale_gene_list": {
                                 "type": "keyword"
