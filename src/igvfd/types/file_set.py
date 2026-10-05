@@ -2675,7 +2675,7 @@ class PredictionSet(FileSet):
         Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name', 'status']),
         Path('software_versions.software', include=['@id', 'summary',
-             'software', 'title', 'source_url', 'download_id', 'status']),
+             'software', 'title', 'description', 'source_url', 'download_id', 'status']),
         Path('cell_type', include=['@id', 'term_name', 'term_id', 'status', 'definition'])
     ]
     audit_inherit = FileSet.audit_inherit
