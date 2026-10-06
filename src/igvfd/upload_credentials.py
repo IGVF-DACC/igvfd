@@ -13,10 +13,9 @@ _FEDERATION_TOKEN_DURATION_SECONDS = 18 * 60 * 60
 
 
 EXTERNAL_BUCKETS_BY_LAB_UUID = {
-    #    'cfb789b8-46f3-4d59-a2b3-adc39e7df93a': [
-    #        'test-upload',
-    #        'test-upload2',
-    #    ],
+    'cfb789b8-46f3-4d59-a2b3-adc39e7df93a': [
+        'encode-test-files-upload-demo',
+    ],
 }
 
 
