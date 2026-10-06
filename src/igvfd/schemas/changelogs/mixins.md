@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.3`. (10/07/2026)
 * Add `large_gene_count`. (10/07/2026)
 * Extend `catalog_collections` enum list to include `genes_transcripts_genes`. (09/30/2026)
 * Extend `catalog_collections` enum list to include `genomic_elements_genomic_elements`. (09/30/2026)

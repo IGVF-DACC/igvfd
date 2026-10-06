@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 28
+
+* Extend `collections` enum list to include `IGVF_catalog_v1.3`.
+
 ### Schema version 28
 
 * Remove `catalog_adapters`.
