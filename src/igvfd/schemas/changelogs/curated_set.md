@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.3`.
 * Extend `collections` enum list to include `10x V2F`.
 * Extend `collections` enum list to include `SHARE CIRM Villages`.
 * Extend `collections` enum list to include `SHARE DepMap`.

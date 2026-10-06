@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Extend `collections` enum list to include `IGVF_catalog_v1.3`.
 * Extend `catalog_collections` enum list to include `genes_transcripts_genes`.
 * Extend `catalog_collections` enum list to include `genomic_elements_genomic_elements`.
 * Extend `catalog_collections` enum list to include `gene_programs`.

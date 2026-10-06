@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 27
+
+* Extend `collections` enum list to include `IGVF_catalog_v1.3`.
+
 ### Schema version 27
 
 * Remove `catalog_adapters`.
