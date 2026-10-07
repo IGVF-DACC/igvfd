@@ -90,7 +90,7 @@ config: Dict[str, Any] = {
                                 data_nodes=1,
                             ),
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
-                            'volume_size': 30,
+                            'volume_size': 50,
                             'logging': False,
                         }
                     }
@@ -162,7 +162,7 @@ config: Dict[str, Any] = {
                                 data_nodes=1,
                             ),
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
-                            'volume_size': 30,
+                            'volume_size': 50,
                         }
                     },
                 ],
@@ -231,7 +231,7 @@ config: Dict[str, Any] = {
                                 data_nodes=1,
                             ),
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
-                            'volume_size': 30,
+                            'volume_size': 50,
                         }
                     },
                 ],
@@ -301,7 +301,7 @@ config: Dict[str, Any] = {
                                 data_nodes=1,
                             ),
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
-                            'volume_size': 30,
+                            'volume_size': 50,
                         }
                     },
                 ],
@@ -357,6 +357,20 @@ config: Dict[str, Any] = {
                             'engine_version': PostgresEngineVersion.VER_14_19,
                         },
                     },
+                    {
+                        'construct_id': 'PostgresXLarge',
+                        'on': True,
+                        'props': {
+                            'snapshot_arn': 'arn:aws:rds:us-west-2:035226225042:snapshot:prod-manual-10-7-2026',
+                            'allocated_storage': 20,
+                            'max_allocated_storage': 40,
+                            'instance_type': InstanceType.of(
+                                InstanceClass.BURSTABLE4_GRAVITON,
+                                InstanceSize.XLARGE,
+                            ),
+                            'engine_version': PostgresEngineVersion.VER_14_19
+                        },
+                    }
                 ],
             },
             'opensearch': {
@@ -370,7 +384,7 @@ config: Dict[str, Any] = {
                                 data_nodes=1,
                             ),
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
-                            'volume_size': 30,
+                            'volume_size': 50,
                         }
                     },
                 ],
@@ -385,7 +399,7 @@ config: Dict[str, Any] = {
                 'memory_limit_mib': 4096,
                 'max_capacity': 10,
                 'ini_name': 'production.ini',
-                'use_postgres_named': 'Postgres',
+                'use_postgres_named': 'PostgresXLarge',
                 'read_from_opensearch_named': 'Opensearch219',
                 'write_to_opensearch_named': 'Opensearch219',
             },
