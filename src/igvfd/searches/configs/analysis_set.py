@@ -365,3 +365,21 @@ def differentiation_series():
             }
         }
     }
+
+
+@search_config(
+    name='AssaySummary'
+)
+def assay_summary():
+    return {
+        'matrix': {
+            'x': {
+                'group_by': 'samples.classifications',
+                'label': 'Classifications'
+            },
+            'y': {
+                'group_by': ['input_file_sets.assay_term.assay_slims', 'input_file_sets.assay_term.term_name', 'preferred_assay_titles'],
+                'label': 'Samples'
+            }
+        }
+    }
