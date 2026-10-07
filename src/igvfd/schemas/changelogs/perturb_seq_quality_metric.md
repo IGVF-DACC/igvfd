@@ -1,5 +1,9 @@
 ## Changelog for *`perturb_seq_quality_metric.json`*
 
+### Minor changes since schema version 3
+
+* Update `aliases` regex to add `jacob-schreiber` as a namespace.
+
 ### Schema version 3
 
 * Rename `moi` to `observed_moi`.

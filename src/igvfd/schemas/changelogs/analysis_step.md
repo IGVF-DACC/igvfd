@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 17
 
+* Update `aliases` regex to add `jacob-schreiber` as a namespace.
 * Extend `analysis_step_types` enum list to include `motif identification`.
 * Extend `analysis_step_types` enum list to include `computational model contribution`.
 * Extend `input_content_types` enum list to include `transcript identifier mapping`.

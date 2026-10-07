@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Update `aliases` regex to add `jacob-schreiber` as a namespace.
 * Extend `quantity_units` enum list to include `ZT`.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Update `aliases` regex to add `yang-li` as a namespace.

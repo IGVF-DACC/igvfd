@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Update `aliases` regex to add `jacob-schreiber` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.3`.
 * Update `model_zoo_location` regex to add `huggingface\\.co/\\S*` as a pattern.
 * Extend `collections` enum list to include `10x V2F`.
