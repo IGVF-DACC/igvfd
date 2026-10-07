@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Update `aliases` regex to add `jacob-schreiber` as a namespace.
 * Add calculated property `superseded_by`.
 * Add `supersedes`.
 * Extend `document_type` enum list to include `sequence motifs report`.

@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Update `aliases` regex to add `jacob-schreiber` as a namespace. (10/07/2026)
 * Extend `collections` enum list to include `IGVF_catalog_v1.3`. (10/07/2026)
 * Add `large_gene_count`. (10/07/2026)
 * Extend `catalog_collections` enum list to include `genes_transcripts_genes`. (09/30/2026)
