@@ -345,19 +345,6 @@ config: Dict[str, Any] = {
             'postgres': {
                 'instances': [
                     {
-                        'construct_id': 'Postgres',
-                        'on': True,
-                        'props': {
-                            'allocated_storage': 20,
-                            'max_allocated_storage': 40,
-                            'instance_type': InstanceType.of(
-                                InstanceClass.BURSTABLE3,
-                                InstanceSize.MEDIUM,
-                            ),
-                            'engine_version': PostgresEngineVersion.VER_14_19,
-                        },
-                    },
-                    {
                         'construct_id': 'PostgresXLarge',
                         'on': True,
                         'props': {
