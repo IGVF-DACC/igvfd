@@ -361,7 +361,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'PostgresXLarge',
                         'on': True,
                         'props': {
-                            'snapshot_arn': '*********',
+                            'snapshot_arn': 'arn:aws:rds:us-west-2:035226225042:snapshot:prod-manual-10-7-2026',
                             'allocated_storage': 20,
                             'max_allocated_storage': 40,
                             'instance_type': InstanceType.of(
