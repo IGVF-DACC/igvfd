@@ -1,6 +1,6 @@
 ## Changelog for *`quality_metric.json`*
 
-* Update `aliases` regex to add `jacob-schreiber` as a namespace. (10/07/2026)
+* Update `aliases` regex to add `jacob-schreiber` as a namespace. (10/14/2026)
 * Update `aliases` regex to add `hongbo-liu` as a namespace. (04/01/2026)
 * Update `aliases` regex to add `yang-li` as a namespace. (02/27/2026)
 * Add `preview_timestamp`. (05/06/2025)
