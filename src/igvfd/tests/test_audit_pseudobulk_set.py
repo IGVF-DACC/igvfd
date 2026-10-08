@@ -170,7 +170,8 @@ def test_audit_pseudobulk_set_mixed_classifications(
     tissue,
     tissue_parkinsons,
     in_vitro_cell_line,
-    sample_term_adrenal_gland
+    sample_term_adrenal_gland,
+    curated_set_external_sequencing
 ):
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
     assert all(
@@ -206,6 +207,21 @@ def test_audit_pseudobulk_set_mixed_classifications(
         error['category'] != 'inconsistent parent samples'
         for error in res.json['audit'].get('WARNING', [])
     )
+    # Input file set is a curated set of external sequencing data, which is
+    # expected to have mixed parent samples (e.g. CATLas called from various input
+    # snATAC-seq experiments) and so should be exempt from this audit.
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {
+            'samples': [tissue['@id'], in_vitro_cell_line['@id']],
+            'input_file_sets': [curated_set_external_sequencing['@id']]
+        }
+    )
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent parent samples'
+        for error in res.json['audit'].get('WARNING', [])
+    )
 
 
 def test_audit_pseudobulk_set_mismatched_merged_cell_types(
@@ -213,7 +229,9 @@ def test_audit_pseudobulk_set_mismatched_merged_cell_types(
     pseudobulk_set_merged,
     pseudobulk_set_2,
     pseudobulk_set_base,
-    sample_term_endothelial_cell
+    sample_term_endothelial_cell,
+    sample_term_pluripotent_stem_cell,
+    curated_set_external_sequencing
 ):
     res = testapp.get(pseudobulk_set_merged['@id'] + '@@audit')
     assert any(
@@ -223,6 +241,26 @@ def test_audit_pseudobulk_set_mismatched_merged_cell_types(
     testapp.patch_json(
         pseudobulk_set_2['@id'],
         {'cell_type': sample_term_endothelial_cell['@id']}
+    )
+    res = testapp.get(pseudobulk_set_merged['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'mismatched merged cell types'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # Exempted when an input pseudobulk set is called from an
+    # external sequencing data curated set.
+    testapp.patch_json(
+        pseudobulk_set_2['@id'],
+        {'cell_type': sample_term_pluripotent_stem_cell['@id']}
+    )
+    res = testapp.get(pseudobulk_set_merged['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'mismatched merged cell types'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {'input_file_sets': [curated_set_external_sequencing['@id']]}
     )
     res = testapp.get(pseudobulk_set_merged['@id'] + '@@audit')
     assert all(
