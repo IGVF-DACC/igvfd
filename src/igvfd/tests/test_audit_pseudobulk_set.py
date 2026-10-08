@@ -207,9 +207,7 @@ def test_audit_pseudobulk_set_mixed_classifications(
         error['category'] != 'inconsistent parent samples'
         for error in res.json['audit'].get('WARNING', [])
     )
-    # Input file set is a curated set of external sequencing data, which is
-    # expected to have mixed parent samples (e.g. CATLas called from various input
-    # snATAC-seq experiments) and so should be exempt from this audit.
+    # Exempted when the input file set is an external sequencing data curated set.
     testapp.patch_json(
         pseudobulk_set_base['@id'],
         {
