@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 12
 
+* Update `aliases` regex to add `jacob-schreiber` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.3`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 50`.
 * Extend `collections` enum list to include `10x V2F`.

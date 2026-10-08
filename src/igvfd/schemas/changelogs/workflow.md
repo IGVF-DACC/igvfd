@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Update `aliases` regex to add `jacob-schreiber` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.3`.
 * Update `source_url` regex to add `bitbucket\\.org/\\S+` as a pattern.
 * Extend `collections` enum list to include `10x V2F`.

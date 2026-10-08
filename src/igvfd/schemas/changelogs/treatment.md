@@ -1,5 +1,9 @@
 ## Changelog for *`treatment.json`*
 
+### Minor changes since schema version 13
+
+* Update `aliases` regex to add `jacob-schreiber` as a namespace.
+
 ### Schema version 13
 
 * Adjust `purpose` enum list to rename `acute activation` to `acute stimulation`.
