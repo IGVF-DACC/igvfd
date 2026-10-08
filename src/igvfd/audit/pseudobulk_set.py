@@ -181,6 +181,9 @@ def audit_pseudobulk_set_parent_samples_mixed_classifications_terms(value, syste
                 input_file_set,
                 '@@object_with_select_calculated_properties?field=@type&field=file_set_type'
             )
+            # Exempt from this audit, e.g. CATLas pseudobulks are expected to
+            # have mixed parent samples called from various input snATAC-seq
+            # experiments, as specified by the input curated set.
             if (
                 input_file_set_object['@type'][0] == 'CuratedSet' and
                 input_file_set_object.get('file_set_type') == 'external sequencing data'
