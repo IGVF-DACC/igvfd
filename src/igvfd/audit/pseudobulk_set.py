@@ -28,7 +28,7 @@ def audit_pseudobulk_set_marker_gene_files(value, system):
     if value.get('input_file_sets', []):
         for input_file_set in value.get('input_file_sets', []):
             input_file_set_object = system.get('request').embed(
-                input_file_set, '@@object_with_select_calculated_properties?field=files')
+                input_file_set, '@@object')
             files_in_input = input_file_set_object.get('files', [])
             for tab_file in [x for x in files_in_input if x.startswith('/tabular-files/')]:
                 file_object = system.get('request').embed(tab_file, '@@object?skip_calculated=true')
@@ -67,8 +67,7 @@ def audit_pseudobulk_set_sample_matches_input(value, system):
     if value.get('input_file_sets', []):
         for input_file_set in value.get('input_file_sets', []):
             input_file_set_object = system.get('request').embed(
-                input_file_set,
-                '@@object_with_select_calculated_properties?field=samples&field=@type&field=file_set_type'
+                input_file_set, '@@object'
             )
             if (
                 input_file_set_object['@type'][0] == 'CuratedSet' and
@@ -142,7 +141,7 @@ def audit_pseudobulk_set_input_file_set_type(value, system):
     if value.get('input_file_sets', []):
         for input_file_set in value.get('input_file_sets', []):
             input_file_set_object = system.get('request').embed(
-                input_file_set, '@@object_with_select_calculated_properties?field=@type')
+                input_file_set, '@@object')
             if input_file_set_object['@type'][0] == 'CuratedSet':
                 if input_file_set_object.get('file_set_type') not in accepted_curated_set_file_set_types:
                     detail = (
@@ -178,8 +177,7 @@ def audit_pseudobulk_set_parent_samples_mixed_classifications_terms(value, syste
     if value.get('input_file_sets', []):
         for input_file_set in value.get('input_file_sets', []):
             input_file_set_object = system.get('request').embed(
-                input_file_set,
-                '@@object_with_select_calculated_properties?field=@type&field=file_set_type'
+                input_file_set, '@@object'
             )
             # Exempt from this audit, e.g. CATLas pseudobulks are expected to
             # have mixed parent samples called from various input snATAC-seq
@@ -194,7 +192,7 @@ def audit_pseudobulk_set_parent_samples_mixed_classifications_terms(value, syste
     if value.get('samples', []):
         for sample in value.get('samples', []):
             parent_sample_object = system.get('request').embed(
-                sample, '@@object_with_select_calculated_properties?field=classifications')
+                sample, '@@object')
             classifications.add(', '.join(
                 sorted(parent_sample_object.get('classifications', []))
             ))
@@ -244,13 +242,11 @@ def audit_pseudobulk_set_mismatched_merged_cell_types(value, system):
     if value.get('merged', False) and value.get('input_file_sets', []):
         for input_file_set in value.get('input_file_sets', []):
             input_file_set_object = system.get('request').embed(
-                input_file_set,
-                '@@object_with_select_calculated_properties?field=cell_type&field=input_file_sets'
+                input_file_set, '@@object'
             )
             for nested_input_file_set in input_file_set_object.get('input_file_sets', []):
                 nested_input_file_set_object = system.get('request').embed(
-                    nested_input_file_set,
-                    '@@object_with_select_calculated_properties?field=@type&field=file_set_type'
+                    nested_input_file_set, '@@object'
                 )
                 # Exempt the whole audit if any input is called from external sequencing data.
                 if (
