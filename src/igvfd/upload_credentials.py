@@ -1,4 +1,3 @@
-import copy
 import json
 import os
 
@@ -8,6 +7,16 @@ import botocore
 from botocore.client import BaseClient
 
 from typing import Optional
+
+
+_FEDERATION_TOKEN_DURATION_SECONDS = 18 * 60 * 60
+
+
+EXTERNAL_BUCKETS_BY_LAB_UUID = {
+    #    'cfb789b8-46f3-4d59-a2b3-adc39e7df93a': [
+    #        'encode-test-files-upload-demo',
+    #    ],
+}
 
 
 def get_secretsmanager_client():
@@ -84,67 +93,14 @@ def get_s3_client(localstack_endpoint_url: Optional[str] = None) -> BaseClient:
     )
 
 
-EXTERNAL_BUCKET_STATEMENTS = [
-    {
-        'Action': 's3:GetObject',
-        'Resource': lambda s: 'arn:aws:s3:::%s/*' % s,
-        'Effect': 'Allow',
-    },
-    {
-        'Action': 's3:GetObjectAcl',
-        'Resource': lambda s: 'arn:aws:s3:::%s/*' % s,
-        'Effect': 'Allow',
-    },
-]
-
-_FEDERATION_TOKEN_DURATION_SECONDS = 18 * 60 * 60
-
-
-def _compile_statements_from_list(buckets_list):
-    statements = []
-    if buckets_list:
-        for ext_policy in EXTERNAL_BUCKET_STATEMENTS:
-            new_policy = copy.copy(ext_policy)
-            new_policy['Resource'] = []
-            for line in buckets_list:
-                line = line.strip()
-                if line:
-                    line = line.strip()
-                    new_policy['Resource'].append(ext_policy['Resource'](line))
-            statements.append(new_policy)
-    return statements
-
-
-def _save_policy_json(policy_json, file_path):
-    with open(file_path + '.json', 'w') as file_handler:
-        json.dump(policy_json, file_handler)
-
-
-def _build_external_bucket_json(file_path):
-    try:
-        with open(file_path) as file_handler:
-            policy_json = {
-                'Version': '2012-10-17',
-                'Statement': [],
-            }
-            buckets_list = [item.strip() for item in file_handler.readlines()]
-            statements = _compile_statements_from_list(buckets_list)
-            if statements:
-                policy_json['Statement'] = statements
-                _save_policy_json(policy_json, file_path)
-    except FileNotFoundError:  # pylint: disable=undefined-variable
-        print('Could not load external bucket policy list.')
-
-
-def _get_external_bucket_policy(file_path):
-    '''
-    Returns a compiled json of external s3 access policies for federated users
-    '''
-    try:
-        with open(file_path + '.json', 'r') as file_handler:
-            return json.loads(file_handler.read())
-    except FileNotFoundError:  # pylint: disable=undefined-variable
-        return None
+def get_statements_for_external_bucket(bucket):
+    return [
+        {
+            'Action': 's3:GetObject',
+            'Resource': f'arn:aws:s3:::{bucket}/*',
+            'Effect': 'Allow',
+        },
+    ]
 
 
 class UploadCredentials(object):
@@ -153,18 +109,26 @@ class UploadCredentials(object):
     Build and distribute federate aws credentials for submitting files
     '''
 
-    def __init__(self, bucket, key, name, sts_client):
+    def __init__(
+            self,
+            bucket,
+            key,
+            name,
+            sts_client,
+            external_buckets_by_lab_uuid=EXTERNAL_BUCKETS_BY_LAB_UUID
+    ):
         self._bucket = bucket
         self._key = key
         self._name = name
         self._sts_client = sts_client
+        self._external_buckets_by_lab_uuid = external_buckets_by_lab_uuid
         file_url = '{bucket}/{key}'.format(
             bucket=self._bucket,
             key=self._key
         )
         self._resource_string = 'arn:aws:s3:::{}'.format(file_url)
         self._upload_url = 's3://{}'.format(file_url)
-        self._external_policy = {}
+        self._external_bucket_statements = []
 
     def _get_base_policy(self):
         policy = {
@@ -181,13 +145,8 @@ class UploadCredentials(object):
 
     def _get_policy(self):
         policy = self._get_base_policy()
-        if (
-                self._external_policy and
-                self._external_policy.get('Statement') and
-                isinstance(self._external_policy['Statement'], list)
-        ):
-            for statement in self._external_policy['Statement']:
-                policy['Statement'].append(statement)
+        for statement in self._external_bucket_statements:
+            policy['Statement'].append(statement)
         return policy
 
     def _get_token(self, policy):
@@ -202,21 +161,22 @@ class UploadCredentials(object):
             print('Warning: ', ecp)
             return None
 
-    def _check_external_policy(self, s3_transfer_allow, s3_transfer_buckets):
-        if s3_transfer_allow and s3_transfer_buckets:
-            external_policy = _get_external_bucket_policy(s3_transfer_buckets)
-            if not isinstance(external_policy, dict):
-                _build_external_bucket_json(s3_transfer_buckets)
-                external_policy = _get_external_bucket_policy(s3_transfer_buckets)
-            if external_policy:
-                self._external_policy = external_policy
+    def _generate_external_bucket_statements(self, buckets):
+        for bucket in buckets:
+            self._external_bucket_statements.extend(
+                get_statements_for_external_bucket(
+                    bucket
+                )
+            )
 
-    def external_creds(self, s3_transfer_allow=False, s3_transfer_buckets=None):
+    def external_creds(self, lab_uuid=None):
         '''
         Used to get the federate user credentials
-        If external s3 buckets exist they will be added to the policy.
+        If a lab with external s3 buckets exist they will be added to the policy.
         '''
-        self._check_external_policy(s3_transfer_allow, s3_transfer_buckets)
+        if lab_uuid and lab_uuid in self._external_buckets_by_lab_uuid:
+            buckets = self._external_buckets_by_lab_uuid[lab_uuid]
+            self._generate_external_bucket_statements(buckets)
         policy = self._get_policy()
         token = self._get_token(policy)
         credentials = {
