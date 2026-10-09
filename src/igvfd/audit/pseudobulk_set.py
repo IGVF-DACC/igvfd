@@ -192,7 +192,7 @@ def audit_pseudobulk_set_parent_samples_mixed_classifications_terms(value, syste
     if value.get('samples', []):
         for sample in value.get('samples', []):
             parent_sample_object = system.get('request').embed(
-                sample, '@@object')
+                sample, '@@object_with_select_calculated_properties?field=classifications')
             classifications.add(', '.join(
                 sorted(parent_sample_object.get('classifications', []))
             ))
