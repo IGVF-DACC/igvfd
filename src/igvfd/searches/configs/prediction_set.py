@@ -51,6 +51,11 @@ def prediction_set():
                 'category': 'Sample',
                 'description': 'The sample name associated with the prediction set.'
             },
+            'cell_annotation': {
+                'title': 'Cell Annotation',
+                'category': 'Sample',
+                'description': 'The cell annotation of the prediction set.'
+            },
             'samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
                 'optional': True,
