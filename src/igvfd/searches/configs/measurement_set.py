@@ -353,21 +353,3 @@ def measurement_set_report_view():
         },
     }
     return config
-
-
-@search_config(
-    name='AssaySummary'
-)
-def assay_summary():
-    return {
-        'matrix': {
-            'x': {
-                'group_by': 'samples.classifications',
-                'label': 'Classifications'
-            },
-            'y': {
-                'group_by': ['assay_term.assay_slims', 'assay_term.term_name', 'preferred_assay_titles'],
-                'label': 'Samples'
-            }
-        }
-    }
