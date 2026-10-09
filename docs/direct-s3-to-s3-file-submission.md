@@ -6,7 +6,7 @@ This is opt-in and requires a one-time setup on both sides.
 
 ## Who this is for
 
-Labs that keep their data in their own S3 bucket, where downloading and re-uploading through an extra step is slow or impractical.
+Labs that keep their data in their own S3 bucket, where downloading and re-uploading through an extra step is slow, impractical, or expensive.
 
 If you don't have your own S3 bucket, or you're only submitting a handful of small files, the regular upload flow is simpler.
 
