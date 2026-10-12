@@ -1401,6 +1401,76 @@ class AnalysisSet(FileSet):
 
     @calculated_property(
         condition='samples',
+        schema={
+            'title': 'Samples Class',
+            'description': 'Human-readable classification of samples associated with this analysis set.',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def samples_class(self, request, samples=None):
+        classifications = set()
+
+        for sample in samples or []:
+            sample_object = request.embed(sample, '@@object')
+            classifications.update(
+                sample_object.get('classifications', [])
+            )
+
+        if not classifications:
+            return None
+
+        classification_priority = [
+            'differentiated cell specimen',
+            'reprogrammed cell specimen',
+            'organoid',
+            'gastruloid',
+            'embryoid',
+            'cell culture',
+            'cell line',
+            'primary cell',
+            'whole organism',
+            'tissue',
+            'tissue/organ',
+            'technical sample',
+        ]
+
+        modifier_priority = [
+            ('multiplexed sample', 'multiplexed'),
+            ('pooled cell specimen', 'pooled'),
+        ]
+
+        base_classification = next(
+            (
+                classification
+                for classification in classification_priority
+                if classification in classifications
+            ),
+            None
+        )
+
+        modifiers = [
+            label
+            for classification, label in modifier_priority
+            if classification in classifications
+        ]
+
+        if base_classification:
+            if 'technical sample' in classifications:
+                if base_classification == 'differentiated cell specimen':
+                    base_classification = 'differentiated technical sample'
+                elif base_classification == 'reprogrammed cell specimen':
+                    base_classification = 'reprogrammed technical sample'
+
+            if base_classification == 'tissue':
+                base_classification = 'tissue/organ'
+
+            return ' '.join(modifiers + [base_classification])
+
+        return None
+
+    @calculated_property(
+        condition='samples',
         define=True,
         schema={
             'title': 'Donors',
