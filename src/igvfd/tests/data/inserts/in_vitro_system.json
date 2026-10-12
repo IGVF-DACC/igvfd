@@ -382,5 +382,30 @@
         "construct_delivery_methods": [
             "transposase"
         ]
+    },
+    {
+        "uuid": "c8e4f2a1-6b3d-4e7f-9a2c-1d5e8f0b3c7d",
+        "classifications": [
+            "cell line"
+        ],
+        "lab": "j-michael-cherry",
+        "accession": "IGVFSM0101SGSC",
+        "award": "HG012012",
+        "aliases": [
+            "igvf-dacc:k562_single_source"
+        ],
+        "donors": [
+            "igvf:alias_human_donor1"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "sample_terms": [
+            "/sample-terms/df2054b1-3484-4d06-b64c-d3fdb450df9f/"
+        ],
+        "sources": [
+            "/sources/atcc/"
+        ],
+        "virtual": false,
+        "single_source": true
     }
 ]

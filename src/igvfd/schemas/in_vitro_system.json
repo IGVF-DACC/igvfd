@@ -625,6 +625,15 @@
                 "appscript": "hour",
                 "igvf_utils": "hour"
             }
+        },
+        "single_source": {
+            "title": "Single Source",
+            "description": "Indicates whether the in vitro system is derived from a single source.",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": true,
+                "igvf_utils": true
+            }
         }
     },
     "fuzzy_searchable_fields": [
