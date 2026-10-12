@@ -79,6 +79,19 @@ def in_vitro_system_virtual_demultiplexed(testapp, lab, award, source, human_don
 
 
 @pytest.fixture
+def in_vitro_cell_line_HEK293T(testapp, other_lab, award, human_donor, sample_term_HEK293T):
+    item = {
+        'classifications': ['cell line'],
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'sources': [other_lab['@id']],
+        'donors': [human_donor['@id']],
+        'sample_terms': [sample_term_HEK293T['@id']]
+    }
+    return testapp.post_json('/in_vitro_system', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def in_vitro_system_v1(testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
     item = {
         'classification': 'organoid',

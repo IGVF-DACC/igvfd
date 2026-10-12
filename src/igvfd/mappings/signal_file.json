@@ -1,6 +1,6 @@
 {
-    "hash": "95d77664204429728d5dc0935051b4c6",
-    "index_name": "signal_file_95d77664",
+    "hash": "da84f6c7a225dc40b0941a1bd4183392",
+    "index_name": "signal_file_da84f6c7",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -238,78 +238,7 @@
                                         "type": "keyword"
                                     },
                                     "software": {
-                                        "properties": {
-                                            "@id": {
-                                                "type": "keyword"
-                                            },
-                                            "@type": {
-                                                "type": "keyword"
-                                            },
-                                            "aliases": {
-                                                "type": "keyword"
-                                            },
-                                            "award": {
-                                                "type": "keyword"
-                                            },
-                                            "categories": {
-                                                "type": "keyword"
-                                            },
-                                            "creation_timestamp": {
-                                                "type": "date"
-                                            },
-                                            "description": {
-                                                "type": "text"
-                                            },
-                                            "lab": {
-                                                "type": "keyword"
-                                            },
-                                            "name": {
-                                                "type": "keyword"
-                                            },
-                                            "notes": {
-                                                "type": "text"
-                                            },
-                                            "preview_timestamp": {
-                                                "type": "date"
-                                            },
-                                            "publications": {
-                                                "type": "keyword"
-                                            },
-                                            "release_timestamp": {
-                                                "type": "date"
-                                            },
-                                            "schema_version": {
-                                                "type": "keyword"
-                                            },
-                                            "source_url": {
-                                                "type": "keyword"
-                                            },
-                                            "status": {
-                                                "type": "keyword"
-                                            },
-                                            "submitted_by": {
-                                                "type": "keyword"
-                                            },
-                                            "submitter_comment": {
-                                                "type": "keyword"
-                                            },
-                                            "summary": {
-                                                "type": "keyword"
-                                            },
-                                            "title": {
-                                                "type": "keyword"
-                                            },
-                                            "used_by": {
-                                                "type": "keyword"
-                                            },
-                                            "uuid": {
-                                                "type": "keyword"
-                                            },
-                                            "versions": {
-                                                "type": "keyword"
-                                            }
-                                        },
-                                        "type": "object"
+                                        "type": "keyword"
                                     },
                                     "source_url": {
                                         "type": "keyword"
@@ -1747,6 +1676,10 @@
                                     "sex": {
                                         "type": "keyword"
                                     },
+                                    "single_source": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
                                     "sorted_fractions": {
                                         "type": "keyword"
                                     },
@@ -2711,6 +2644,10 @@
                                     },
                                     "sex": {
                                         "type": "keyword"
+                                    },
+                                    "single_source": {
+                                        "store": true,
+                                        "type": "boolean"
                                     },
                                     "sorted_fractions": {
                                         "type": "keyword"

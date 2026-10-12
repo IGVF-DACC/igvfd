@@ -1,6 +1,6 @@
 {
-    "hash": "ef547fc11d10784ec0284f2af41a1c30",
-    "index_name": "pseudobulk_set_ef547fc1",
+    "hash": "2fee097fd7f6a6fad82e0fc29882524d",
+    "index_name": "pseudobulk_set_2fee097f",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -3397,6 +3397,10 @@
                             },
                             "sex": {
                                 "type": "keyword"
+                            },
+                            "single_source": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "sorted_fractions": {
                                 "type": "keyword"
