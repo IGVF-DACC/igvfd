@@ -1,5 +1,6 @@
 ## Changelog for *`biosample.json`*
 
+* Update `aliases` regex to add `jacob-schreiber` as a namespace. (10/14/2026)
 * Extend `collections` enum list to include `IGVF_catalog_v1.3`. (10/07/2026)
 * Extend `collections` enum list to include `10x V2F`. (09/30/2026)
 * Extend `collections` enum list to include `SHARE CIRM Villages`. (09/30/2026)

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Update `aliases` regex to add `jacob-schreiber` as a namespace.
 * Update `term_id` regex to include `BAO` as a valid ontology prefix.
 * Update `aliases` regex to add `hongbo-liu` as a namespace.
 * Update `aliases` regex to add `yang-li` as a namespace.

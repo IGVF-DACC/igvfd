@@ -1,5 +1,9 @@
 ## Changelog for *`software.json`*
 
+### Minor changes since schema version 7
+
+* Update `aliases` regex to add `jacob-schreiber` as a namespace.
+
 ### Schema version 7
 
 * Update `name` regex to `^[A-Za-z0-9\\-_@.]+$`.
