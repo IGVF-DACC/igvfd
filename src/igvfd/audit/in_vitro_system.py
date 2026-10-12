@@ -12,6 +12,18 @@ from .formatter import (
 )
 
 
+def check_if_cell_line(request, sample_object):
+    '''Check if a sample object is a cell line.'''
+    sample_terms = sample_object.get('sample_terms', [])
+    for term in sample_terms:
+        sample_term_object = request.embed(term, '@@object?skip_calculated=true')
+        sample_term_id = sample_term_object.get('term_id', '')
+        sample_term_dbxrefs = sample_term_object.get('dbxrefs', [])
+        if sample_term_id.startswith('CLO:') or any([x.startswith('Cellosaurus') for x in sample_term_dbxrefs]):
+            return True
+    return False
+
+
 def audit_targeted_sample_term_check(value, system):
     '''
     [
@@ -70,12 +82,10 @@ def audit_inconsistent_cell_line_donor(value, system):
     '''
     audit_message = get_audit_message(audit_inconsistent_cell_line_donor)
     sample_term_object = system.get('request').embed(value['sample_terms'][0] + '@@object?skip_calculated=true')
-    sample_term_id = sample_term_object.get('term_id', '')
     sample_term_name = sample_term_object.get('term_name', '')
     if sample_term_name.endswith(' cell'):
         sample_term_name = sample_term_name.replace(' cell', '')
-    sample_term_dbxrefs = sample_term_object.get('dbxrefs', [])
-    if sample_term_id.startswith('CLO:') or any([x.startswith('Cellosaurus') for x in sample_term_dbxrefs]):
+    if check_if_cell_line(system.get('request'), value):
         for donor in value.get('donors', []):
             donor_object = system.get('request').embed(donor + '@@object?skip_calculated=true')
             # Exception for a virtual generic human donor object.
