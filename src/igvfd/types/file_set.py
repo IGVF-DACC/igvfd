@@ -676,6 +676,11 @@ def get_virtual_and_taxa_phrases_from_samples(request, samples):
     return virtual_phrase, taxa_phrase
 
 
+def check_if_single_source(sample_object):
+    '''Check if a sample object is single source.'''
+    return sample_object.get('single_source', False)
+
+
 EMBEDDED_FILE_FIELDS = [
     '@id',
     'accession',
@@ -1533,9 +1538,10 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def simplified_sample_summary(self, request, samples=None, donors=None, construct_library_sets=None, collections=None, condition_treatments=None):
+    def simplified_sample_summary(self, request, samples=None, construct_library_sets=None, collections=None, condition_treatments=None):
         corces_special_collection = 'PD single cell multiomics'
         taxa = set()
+        donors = set()
         sample_classification_term_target = dict()
         differentiation_times = set()
         disease_states_by_classification = {}
@@ -1570,13 +1576,25 @@ class AnalysisSet(FileSet):
             # Get taxa
             taxa.add(sample_object.get('taxa', ''))
 
+            # Check if donors need to be included
+            if 'multiplexed sample' in sample_object.get('classifications', []):
+                for mux_sample in sample_object.get('multiplexed_samples', []):
+                    multiplexed_sample_object = request.embed(mux_sample, '@@object')
+                    if not check_if_single_source(multiplexed_sample_object):
+                        donors.update(multiplexed_sample_object.get('donors', []))
+            elif not check_if_single_source(sample_object):
+                donors.update(sample_object.get('donors', []))
+
             # Group sample and targeted sample terms according to classification.
             # Other metadata such as treatment info are lumped together.
             mux_prefix = ''
             sample_classifications = sorted(sample_object['classifications'])
             if 'multiplexed sample' in sample_object['classifications']:
+                # Some phrasing specification
                 sample_classifications.remove('multiplexed sample')
                 mux_prefix = 'multiplexed sample of '
+
+            # Simplify sample classifications for two-classification cases
             if ', '.join(sorted(sample_classifications)) in two_classification_cases:
                 sample_classifications = two_classification_cases[', '.join(sorted(sample_classifications))]
             # The variable "classification" can potentially be very long for

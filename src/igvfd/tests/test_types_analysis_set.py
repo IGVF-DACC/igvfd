@@ -637,11 +637,14 @@ def test_analysis_set_sample_summary(
     sample_term_endothelial_cell,
     in_vitro_differentiated_cell,
     in_vitro_cell_line,
+    in_vitro_cell_line_HEK293T,
     in_vitro_organoid,
     in_vitro_system_virtual_demultiplexed,
     tissue,
     tissue_parkinsons,
+    tissue_gyrus,
     multiplexed_sample,
+    multiplexed_sample_x4,
     technical_sample,
     sample_term_lymphoblastoid,
     sample_term_K562,
@@ -988,6 +991,41 @@ def test_analysis_set_sample_summary(
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
         'simplified_sample_summary', '') == f'human exhausted K562 cell line from donor(s) {hs_donor_accession}'
+
+    # Test group 7: if a non-multiplexed sample is single source
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set_mpra['@id']]
+        }
+    )
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'samples': [in_vitro_cell_line_HEK293T['@id']]
+        }
+    )
+    testapp.patch_json(
+        in_vitro_cell_line_HEK293T['@id'],
+        {
+            'single_source': True
+        }
+    )
+    res = testapp.get(analysis_set_base['@id']).json
+    assert res.get(
+        'simplified_sample_summary', '') == 'human HEK293T cell line'
+
+    # Mux samples with some single source subsamples
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'samples': [multiplexed_sample_x4['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id']).json
+    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
+    assert res.get(
+        'simplified_sample_summary', '') == f'human multiplexed sample of HEK293T, middle temporal gyrus from donor(s) {hs_donor_accession}'
 
 
 def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set, measurement_set_with_functional_assay_mechanisms, phenotype_term_from_go, phenotype_term_myocardial_infarction):
