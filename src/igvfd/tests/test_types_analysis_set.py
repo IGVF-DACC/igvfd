@@ -73,6 +73,81 @@ def test_calculated_samples(testapp, measurement_set, analysis_set_base, constru
     assert set([sample['@id'] for sample in res.json.get('samples')]) == {in_vitro_cell_line['@id']}
 
 
+def test_calculated_samples_class(
+    testapp,
+    analysis_set_base,
+    measurement_set,
+    measurement_set_multiome_2,
+    measurement_set_mpra,
+    in_vitro_cell_line,
+    technical_sample,
+    multiplexed_sample_mixed_species,
+    experimental_protocol_document,
+    sample_term_brown_adipose_tissue
+):
+    # Case 1: tissue/organ
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert res.json.get('samples_class') == 'tissue/organ'
+
+    # Case 2: reprogrammed cell specimen, pooled cell specimen
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'classifications': [
+                'reprogrammed cell specimen',
+                'pooled cell specimen'
+            ],
+            'time_post_change': 3,
+            'time_post_change_units': 'day',
+            'cell_fate_change_protocol': experimental_protocol_document['@id'],
+            'targeted_sample_term': sample_term_brown_adipose_tissue['@id']
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set_multiome_2['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert res.json.get('samples_class') == (
+        'pooled reprogrammed cell specimen'
+    )
+
+    # Case 3: multiplexed sample, pooled sample, differentiated cell specimen, primary sample
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [multiplexed_sample_mixed_species['@id']]
+        }
+    )
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'samples': [technical_sample['@id']]
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [
+                measurement_set['@id'],
+                measurement_set_mpra['@id']
+            ]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert res.json.get('samples_class') == (
+        'multiplexed pooled differentiated technical sample'
+    )
+
+
 def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurement_set_multiome, principal_analysis_set, measurement_set_no_files, base_auxiliary_set, analysis_set_with_CLS_input, construct_library_set_reporter, primary_cell, curated_set_genome):
     testapp.patch_json(
         analysis_set_base['@id'],

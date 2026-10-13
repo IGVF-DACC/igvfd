@@ -1,6 +1,6 @@
 {
-    "hash": "cba4705e730dd9e1a8985966a393215e",
-    "index_name": "model_file_cba4705e",
+    "hash": "0769f0951f85e779a936068838bb8853",
+    "index_name": "model_file_0769f095",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -1973,6 +1973,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "samples_class": {
+                                "type": "keyword"
                             },
                             "schema_version": {
                                 "type": "keyword"
