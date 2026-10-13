@@ -408,31 +408,60 @@ def get_donors_info_for_sample_summary(request, donors):
             strain = donor_object.get('strain', '')
             if strain:
                 donor_metadata[taxa].setdefault('strains', set()).add(strain)
+            sex = donor_object.get('sex')
+            if sex:
+                donor_metadata[taxa].setdefault('sex_accessions', {}).setdefault(sex, set()).add(accession)
+
+    def mouse_donor_phrase(metadata):
+        accessions = metadata.get('accessions', set())
+        sex_accessions = metadata.get('sex_accessions', {})
+        mouse_phrases = []
+        classified_accessions = set()
+        for sex in ('male', 'female'):
+            sex_donors = sex_accessions.get(sex, set())
+            count = len(sex_donors)
+            if count:
+                classified_accessions.update(sex_donors)
+                noun = 'mouse' if count == 1 else 'mice'
+                mouse_phrases.append(f'{count} {sex} {noun}')
+
+        unclassified_count = len(accessions - classified_accessions)
+        if unclassified_count:
+            noun = 'mouse' if unclassified_count == 1 else 'mice'
+            mouse_phrases.append(f'{unclassified_count} {noun}')
+        mouse_phrase = ' and '.join(mouse_phrases)
+
+        strains = sorted(metadata.get('strains', []))
+        if strains:
+            if len(strains) <= 2:
+                strain_phrase = ' and '.join(strains)
+            else:
+                strain_phrase = f'{", ".join(strains[:2])}, and {len(strains) - 2} more'
+            strain_noun = 'strain' if len(strains) == 1 else 'strains'
+            mouse_phrase = f'{mouse_phrase} of {strain_phrase} {strain_noun}'
+        return mouse_phrase
+
     if len(donor_metadata) > 1:
-        mixed_donor_count = {taxa: len(metadata.get('accessions', [])) for taxa, metadata in donor_metadata.items()}
-        mixed_donor_phrase = ', '.join(
-            [pluralize_count(count, f'{taxa} donor') for taxa, count in sorted(mixed_donor_count.items())])
+        mixed_donor_phrases = []
+        for taxa, metadata in sorted(donor_metadata.items()):
+            if taxa == 'Mus musculus':
+                mixed_donor_phrases.append(mouse_donor_phrase(metadata))
+            else:
+                count = len(metadata.get('accessions', []))
+                donor_taxa = {'Homo sapiens': 'human'}.get(taxa, taxa)
+                mixed_donor_phrases.append(pluralize_count(count, f'{donor_taxa} donor'))
+        mixed_donor_phrase = ', '.join(mixed_donor_phrases)
         return f'from {mixed_donor_phrase}'
     for taxa, metadata in donor_metadata.items():
         accessions = sorted(metadata.get('accessions', []))
+        if taxa == 'Mus musculus':
+            return f'from {mouse_donor_phrase(metadata)}'
         if len(accessions) <= 2:
             accession_phrase = ' and '.join(accessions)
         else:
             accession_phrase = f'{", ".join(accessions[:2])} and {len(accessions) - 2} more'
-        if taxa != 'Mus musculus':
-            donor_noun = 'donor' if len(accessions) == 1 else 'donors'
-            return f'from {donor_noun} {accession_phrase}'
-        # Treat mouse
-        mouse_noun = 'mouse' if len(accessions) == 1 else 'mice'
-        strains = sorted(metadata.get('strains', []))
-        if not strains:
-            return f'from {accession_phrase} {mouse_noun}'
-        if len(strains) <= 2:
-            strain_phrase = ' and '.join(strains)
-        else:
-            strain_phrase = f'{", ".join(strains[:2])}, and {len(strains) - 2} more'
-        strain_noun = 'strain' if len(strains) == 1 else 'strains'
-        return f'from {accession_phrase} {mouse_noun} of {strain_phrase} {strain_noun}'
+        donor_noun = 'donor' if len(accessions) == 1 else 'donors'
+        return f'from {donor_noun} {accession_phrase}'
 
 
 def get_oexpr_from_cls_for_samp_summary(request, construct_library_sets):
