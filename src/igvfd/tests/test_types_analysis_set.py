@@ -687,7 +687,7 @@ def test_analysis_set_sample_summary(
     res = testapp.get(principal_analysis_set['@id']).json
     hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     assert res.get('simplified_sample_summary',
-                   '') == f'human K562 differentiated cell specimen induced to endothelial cell of vascular tree at 5 minute(s) post change from donor(s) {hs_donor_accession}'
+                   '') == f'human endothelial cell of vascular tree differentiated from K562, 5 minutes, from donor {hs_donor_accession}'
 
     # Test group 1: new classifications (change wording)
     testapp.patch_json(
@@ -699,7 +699,7 @@ def test_analysis_set_sample_summary(
     res = testapp.get(principal_analysis_set['@id']).json
     hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     assert res.get(
-        'simplified_sample_summary', '') == f'human K562 pooled differentiated cell specimen induced to endothelial cell of vascular tree at 5 minute(s) post change from donor(s) {hs_donor_accession}'
+        'simplified_sample_summary', '') == f'human endothelial cell of vascular tree pooled differentiated from K562, 5 minutes, from donor {hs_donor_accession}'
 
     # Test group 1: add disease terms with targeted term
     testapp.patch_json(
@@ -718,7 +718,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == f'human K562 pooled differentiated cell specimen with Alzheimer\'s disease induced to endothelial cell of vascular tree at 5 minute(s) post change from donor(s) {hs_donor_accession}'
+        'simplified_sample_summary', '') == f'human endothelial cell of vascular tree pooled differentiated from K562 with Alzheimer\'s disease, 5 minutes, from donor {hs_donor_accession}'
 
     # Test group 1: add overexpression CLS
     testapp.patch_json(
@@ -730,7 +730,7 @@ def test_analysis_set_sample_summary(
     res = testapp.get(principal_analysis_set['@id']).json
     hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     assert res.get('simplified_sample_summary',
-                   '') == f'human K562 pooled differentiated cell specimen with Alzheimer\'s disease induced to endothelial cell of vascular tree at 5 minute(s) post change from donor(s) {hs_donor_accession}, overexpressing MYC'
+                   '') == f'human endothelial cell of vascular tree pooled differentiated from K562 with Alzheimer\'s disease, 5 minutes, from donor {hs_donor_accession}, overexpressing MYC'
 
     # Test group 1: add disease without targeted term
     testapp.patch_json(
@@ -749,7 +749,7 @@ def test_analysis_set_sample_summary(
     res = testapp.get(principal_analysis_set['@id']).json
     ms_donor_accession = testapp.get(rodent_donor['@id']).json.get('accession')
     assert res.get(
-        'simplified_sample_summary', '') == f'mouse adrenal gland tissue/organ with Alzheimer\'s disease from {ms_donor_accession} mice of strain1 strain(s)'
+        'simplified_sample_summary', '') == f'mouse adrenal gland tissue/organ with Alzheimer\'s disease from {ms_donor_accession} mouse of strain1 strain'
 
     # Test group 1: multiple human donors
     testapp.patch_json(
@@ -764,7 +764,7 @@ def test_analysis_set_sample_summary(
     sorted_hs_donors = sorted([hs_donor_accession_1, hs_donor_accession_2, hs_donor_accessions])
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == f'human adrenal gland tissue/organ with Alzheimer\'s disease from donor(s) {sorted_hs_donors[0]}, {sorted_hs_donors[1]} and 1 more'
+        'simplified_sample_summary', '') == f'human adrenal gland tissue/organ with Alzheimer\'s disease from donors {sorted_hs_donors[0]}, {sorted_hs_donors[1]} and 1 more'
 
     # Test group 1: multiple human donors
     testapp.patch_json(
@@ -779,7 +779,7 @@ def test_analysis_set_sample_summary(
     sorted_ms_donors = sorted([ms_donor_accession_1, ms_donor_accession_2, ms_donor_accessions])
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == f'mouse adrenal gland tissue/organ with Alzheimer\'s disease from {sorted_ms_donors[0]}, {sorted_ms_donors[1]} and 1 more mice of strain1, strain2, and 1 more strain(s)'
+        'simplified_sample_summary', '') == f'mouse adrenal gland tissue/organ with Alzheimer\'s disease from {sorted_ms_donors[0]}, {sorted_ms_donors[1]} and 1 more mice of strain1, strain2, and 1 more strains'
 
     # Test group 2: multiplexed samples
     testapp.patch_json(
@@ -802,7 +802,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get('simplified_sample_summary',
-                   '') == 'mixed species multiplexed sample of K562 with Alzheimer\'s disease, lymphoblastoid cell line from 1 human donor(s), 1 mouse donor(s), overexpressing MYC'
+                   '') == 'mixed species multiplexed sample of K562 with Alzheimer\'s disease, lymphoblastoid cell line from 1 human donor, 1 mouse donor, overexpressing MYC'
 
     # Test group 2: disease info
     testapp.patch_json(
@@ -820,7 +820,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get('simplified_sample_summary',
-                   '') == 'mixed species multiplexed sample of K562, lymphoblastoid cell line with Alzheimer\'s disease from 1 human donor(s), 1 mouse donor(s), overexpressing MYC'
+                   '') == 'mixed species multiplexed sample of K562, lymphoblastoid cell line with Alzheimer\'s disease from 1 human donor, 1 mouse donor, overexpressing MYC'
 
     # Test group 3: Corces PD special collection
     testapp.patch_json(
@@ -846,7 +846,7 @@ def test_analysis_set_sample_summary(
     hs_donor_accessions = testapp.get(human_donor['@id']).json.get('accession')
     sorted_hs_donors = sorted([hs_donor_accession_1, hs_donor_accessions])
     assert res.get('simplified_sample_summary',
-                   '') == f'Parkinson\'s collection of human multiplexed sample of adrenal gland, middle temporal gyrus with and without Parkinson\'s from donor(s) {sorted_hs_donors[0]} and {sorted_hs_donors[1]}'
+                   '') == f'Parkinson\'s collection of human multiplexed sample of adrenal gland, middle temporal gyrus with and without Parkinson\'s from donors {sorted_hs_donors[0]} and {sorted_hs_donors[1]}'
 
     # Test group 4: non-mux samples with multiple target terms and times (test concat)
     # Starting fresh
@@ -919,7 +919,7 @@ def test_analysis_set_sample_summary(
     hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == f'human K562 differentiated cell specimen induced to brown adipose tissue, gastrula, lymphoblastoid cell line at 2 minute, 5 minute, 10 minute(s) post change from donor(s) {hs_donor_accession}'
+        'simplified_sample_summary', '') == f'human brown adipose tissue, gastrula, lymphoblastoid cell line differentiated from K562, 2 minutes, 5 minutes, 10 minutes, from donor {hs_donor_accession}'
 
     # Test group 5: technical samples (no donors)
     testapp.patch_json(
@@ -978,7 +978,7 @@ def test_analysis_set_sample_summary(
     hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == f'human K562 cell line from donor(s) {hs_donor_accession}'
+        'simplified_sample_summary', '') == f'human K562 cell line from donor {hs_donor_accession}'
 
     # Test group 7: have biosample qualifiers
     testapp.patch_json(
@@ -990,7 +990,7 @@ def test_analysis_set_sample_summary(
     hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == f'human exhausted K562 cell line from donor(s) {hs_donor_accession}'
+        'simplified_sample_summary', '') == f'human exhausted K562 cell line from donor {hs_donor_accession}'
 
     # Test group 7: if a non-multiplexed sample is single source
     testapp.patch_json(
@@ -1025,7 +1025,7 @@ def test_analysis_set_sample_summary(
     res = testapp.get(analysis_set_base['@id']).json
     hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     assert res.get(
-        'simplified_sample_summary', '') == f'human multiplexed sample of HEK293T, middle temporal gyrus from donor(s) {hs_donor_accession}'
+        'simplified_sample_summary', '') == f'human multiplexed sample of HEK293T, middle temporal gyrus from donor {hs_donor_accession}'
 
 
 def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set, measurement_set_with_functional_assay_mechanisms, phenotype_term_from_go, phenotype_term_myocardial_infarction):
