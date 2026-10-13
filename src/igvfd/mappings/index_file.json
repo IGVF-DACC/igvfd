@@ -1,6 +1,6 @@
 {
-    "hash": "bfe0f6226c20073947e56cb3112093dc",
-    "index_name": "index_file_bfe0f622",
+    "hash": "d5b97580acc1536a42b5c39e4e3345d8",
+    "index_name": "index_file_d5b97580",
     "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
@@ -1970,6 +1970,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "samples_class": {
+                                "type": "keyword"
                             },
                             "schema_version": {
                                 "type": "keyword"

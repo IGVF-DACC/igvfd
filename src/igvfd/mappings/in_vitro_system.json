@@ -1,6 +1,6 @@
 {
-    "hash": "d0307e0e7c065bbc0cd1b66aef1bbba4",
-    "index_name": "in_vitro_system_d0307e0e",
+    "hash": "b6072b73715dd12fda508ce702ea0f51",
+    "index_name": "in_vitro_system_b6072b73",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1340,6 +1340,9 @@
                                 "type": "keyword"
                             },
                             "samples": {
+                                "type": "keyword"
+                            },
+                            "samples_class": {
                                 "type": "keyword"
                             },
                             "schema_version": {
