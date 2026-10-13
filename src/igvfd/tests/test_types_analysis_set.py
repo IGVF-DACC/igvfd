@@ -1013,7 +1013,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == 'human HEK293T cell line'
+        'simplified_sample_summary', '') == 'HEK293T cell line'
 
     # Mux samples with some single source subsamples
     testapp.patch_json(

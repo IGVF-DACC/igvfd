@@ -1573,17 +1573,16 @@ class AnalysisSet(FileSet):
             # Get bioqualifers enums for non-multiplexed samples
             biosample_qualifiers.update(sample_object.get('biosample_qualifiers', []))
 
-            # Get taxa
-            taxa.add(sample_object.get('taxa', ''))
-
             # Check if donors need to be included
             if 'multiplexed sample' in sample_object.get('classifications', []):
                 for mux_sample in sample_object.get('multiplexed_samples', []):
                     multiplexed_sample_object = request.embed(mux_sample, '@@object')
                     if not check_if_single_source(multiplexed_sample_object):
                         donors.update(multiplexed_sample_object.get('donors', []))
+                        taxa.add(sample_object.get('taxa', ''))
             elif not check_if_single_source(sample_object):
                 donors.update(sample_object.get('donors', []))
+                taxa.add(sample_object.get('taxa', ''))
 
             # Group sample and targeted sample terms according to classification.
             # Other metadata such as treatment info are lumped together.
