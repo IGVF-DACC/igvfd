@@ -383,3 +383,21 @@ def assay_summary():
             }
         }
     }
+
+
+@search_config(
+    name='ProteinScanning'
+)
+def protein_scanning():
+    return {
+        'matrix': {
+            'x': {
+                'group_by': 'preferred_assay_titles',
+                'label': 'Assays'
+            },
+            'y': {
+                'group_by': 'construct_library_sets.small_scale_gene_list.symbol',
+                'label': 'Genes'
+            }
+        }
+    }
