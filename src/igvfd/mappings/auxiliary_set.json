@@ -1,6 +1,6 @@
 {
-    "hash": "b94308c4be56e445d495b6d83bf78ab1",
-    "index_name": "auxiliary_set_b94308c4",
+    "hash": "b6d5f44c965566d51401df9ef7b8c1ed",
+    "index_name": "auxiliary_set_b6d5f44c",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -3715,6 +3715,10 @@
                             },
                             "sex": {
                                 "type": "keyword"
+                            },
+                            "single_source": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "sorted_fractions": {
                                 "type": "keyword"

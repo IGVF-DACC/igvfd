@@ -1,6 +1,6 @@
 {
-    "hash": "774507ac746af3148119d019595bdd4a",
-    "index_name": "alignment_file_774507ac",
+    "hash": "3c2a1d99d9f434a479a6c13d79e741c1",
+    "index_name": "alignment_file_3c2a1d99",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1674,6 +1674,10 @@
                                     "sex": {
                                         "type": "keyword"
                                     },
+                                    "single_source": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
                                     "sorted_fractions": {
                                         "type": "keyword"
                                     },
@@ -2638,6 +2642,10 @@
                                     },
                                     "sex": {
                                         "type": "keyword"
+                                    },
+                                    "single_source": {
+                                        "store": true,
+                                        "type": "boolean"
                                     },
                                     "sorted_fractions": {
                                         "type": "keyword"

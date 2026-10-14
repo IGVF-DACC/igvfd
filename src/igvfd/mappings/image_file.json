@@ -1,6 +1,6 @@
 {
-    "hash": "d5dc2db6f3925eaf59961111af438623",
-    "index_name": "image_file_d5dc2db6",
+    "hash": "396a55130500c22d6689a67f31c02939",
+    "index_name": "image_file_396a5513",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -1669,6 +1669,10 @@
                                     "sex": {
                                         "type": "keyword"
                                     },
+                                    "single_source": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
                                     "sorted_fractions": {
                                         "type": "keyword"
                                     },
@@ -2712,6 +2716,10 @@
                                     },
                                     "sex": {
                                         "type": "keyword"
+                                    },
+                                    "single_source": {
+                                        "store": true,
+                                        "type": "boolean"
                                     },
                                     "sorted_fractions": {
                                         "type": "keyword"

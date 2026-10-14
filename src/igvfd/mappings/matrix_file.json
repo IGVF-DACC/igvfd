@@ -1,6 +1,6 @@
 {
-    "hash": "203ee1082b4450fb35354d992c3a5729",
-    "index_name": "matrix_file_203ee108",
+    "hash": "adfda4f75155ce693fe3a9a50ac41707",
+    "index_name": "matrix_file_adfda4f7",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1672,6 +1672,10 @@
                                     "sex": {
                                         "type": "keyword"
                                     },
+                                    "single_source": {
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
                                     "sorted_fractions": {
                                         "type": "keyword"
                                     },
@@ -2636,6 +2640,10 @@
                                     },
                                     "sex": {
                                         "type": "keyword"
+                                    },
+                                    "single_source": {
+                                        "store": true,
+                                        "type": "boolean"
                                     },
                                     "sorted_fractions": {
                                         "type": "keyword"
