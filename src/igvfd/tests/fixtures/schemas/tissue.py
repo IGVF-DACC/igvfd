@@ -41,6 +41,18 @@ def tissue_adipose_tissue(testapp, lab, source, award, human_donor, sample_term_
 
 
 @pytest.fixture
+def tissue_gyrus(testapp, lab, source, award, human_donor, sample_term_gyrus):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'sources': [source['@id']],
+        'donors': [human_donor['@id']],
+        'sample_terms': [sample_term_gyrus['@id']]
+    }
+    return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def tissue_v1(tissue):
     item = tissue.copy()
     item.update({

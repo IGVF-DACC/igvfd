@@ -1,6 +1,6 @@
 {
-    "hash": "e5a11fb756769a10f69a4f85380c0ead",
-    "index_name": "primary_cell_e5a11fb7",
+    "hash": "ab7417d9076585282595010b4c72ba42",
+    "index_name": "primary_cell_ab7417d9",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -2233,6 +2233,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
+                            "single_source": {
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "sorted_fractions": {
                                 "type": "keyword"
                             },
@@ -2940,6 +2944,10 @@
                             },
                             "sex": {
                                 "type": "keyword"
+                            },
+                            "single_source": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "sorted_fractions": {
                                 "type": "keyword"

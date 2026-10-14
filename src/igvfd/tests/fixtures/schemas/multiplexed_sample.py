@@ -44,6 +44,20 @@ def multiplexed_sample_x3(
 
 
 @pytest.fixture
+def multiplexed_sample_x4(
+        testapp, other_lab, award, tissue_gyrus, in_vitro_cell_line_HEK293T):
+    item = {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'multiplexed_samples': [
+            tissue_gyrus['@id'], in_vitro_cell_line_HEK293T['@id']
+        ],
+        'multiplexing_methods': ['barcode based']
+    }
+    return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def multiplexed_sample_v1(multiplexed_sample, source):
     item = multiplexed_sample.copy()
     item.update({

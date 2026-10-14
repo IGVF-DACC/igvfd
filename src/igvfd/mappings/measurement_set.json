@@ -1,6 +1,6 @@
 {
-    "hash": "299420d9f9107503384784f43918fa7e",
-    "index_name": "measurement_set_299420d9",
+    "hash": "ded240655c03d2a83d7f6b59d537af0d",
+    "index_name": "measurement_set_ded24065",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -4553,6 +4553,10 @@
                             },
                             "sex": {
                                 "type": "keyword"
+                            },
+                            "single_source": {
+                                "store": true,
+                                "type": "boolean"
                             },
                             "sorted_fractions": {
                                 "type": "keyword"
