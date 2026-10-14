@@ -765,6 +765,16 @@ def check_if_single_source(sample_object):
     return sample_object.get('single_source', False)
 
 
+def is_sample_single_source(request, sample_object):
+    '''A multiplexed sample is single source only if all its multiplexed samples are.'''
+    if 'multiplexed sample' in sample_object.get('classifications', []):
+        return all(
+            check_if_single_source(request.embed(mux_sample, '@@object?skip_calculated=true'))
+            for mux_sample in sample_object.get('multiplexed_samples', [])
+        )
+    return check_if_single_source(sample_object)
+
+
 EMBEDDED_FILE_FIELDS = [
     '@id',
     'accession',
@@ -1651,21 +1661,29 @@ class AnalysisSet(FileSet):
             'pooled reprogrammed cell specimen': 'pooled reprogrammed'
         }
 
-        for sample in samples:
-            sample_object = request.embed(sample, '@@object')
+        # When single source and non-single source samples are mixed, taxa is
+        # prefixed to each non-single source term instead of the whole summary.
+        sample_objects = [request.embed(sample, '@@object') for sample in samples]
+        single_source_flags = [is_sample_single_source(request, obj) for obj in sample_objects]
+        is_mixed_single_source = any(single_source_flags) and not all(single_source_flags)
+        prefixed_taxa = set()
+        mux_taxa_by_classification = {}
+        single_source_classifications = set()
+        non_single_source_classifications = set()
 
+        for sample_object, is_single_source in zip(sample_objects, single_source_flags):
             # Get bioqualifers enums for non-multiplexed samples
             biosample_qualifiers.update(sample_object.get('biosample_qualifiers', []))
 
             # Check if donors need to be included
             if 'multiplexed sample' in sample_object.get('classifications', []):
                 for mux_sample in sample_object.get('multiplexed_samples', []):
-                    multiplexed_sample_object = request.embed(mux_sample, '@@object')
+                    multiplexed_sample_object = request.embed(mux_sample, '@@object?skip_calculated=true')
                     if not check_if_single_source(multiplexed_sample_object):
                         donors.update(multiplexed_sample_object.get('donors', []))
-                        taxa.add(sample_object.get('taxa', ''))
-            elif not check_if_single_source(sample_object):
+            elif not is_single_source:
                 donors.update(sample_object.get('donors', []))
+            if not is_single_source and not is_mixed_single_source:
                 taxa.add(sample_object.get('taxa', ''))
 
             # Group sample and targeted sample terms according to classification.
@@ -1686,6 +1704,10 @@ class AnalysisSet(FileSet):
             classification = f"{mux_prefix}{' and '.join(sample_classifications)}"
             if classification not in sample_classification_term_target:
                 sample_classification_term_target[classification] = set()
+            if is_single_source:
+                single_source_classifications.add(classification)
+            else:
+                non_single_source_classifications.add(classification)
 
             # Add disease terms to the sample phrase
             disease_phrase = ''
@@ -1778,6 +1800,13 @@ class AnalysisSet(FileSet):
                     sample_phrase = f'{sample_phrase}{term_disease_phrase} {targeted_sample_suffix}'
                 else:
                     sample_phrase = f'{sample_phrase}{term_disease_phrase}'
+                if is_mixed_single_source and not is_single_source:
+                    sample_taxa = sample_object.get('taxa', '')
+                    if classification.startswith('multiplexed sample of'):
+                        mux_taxa_by_classification[classification] = sample_taxa
+                    elif sample_taxa:
+                        sample_phrase = f'{sample_taxa} {sample_phrase}'
+                        prefixed_taxa.add(sample_taxa)
                 sample_classification_term_target[classification].add(sample_phrase)
 
             if 'time_post_change' in sample_object:
@@ -1786,10 +1815,19 @@ class AnalysisSet(FileSet):
                 )
 
         all_sample_terms = []
-        for classification in sorted(sample_classification_term_target.keys()):
-            formatted_terms = sorted(merge_fate_change_terms(merge_induced_to_terms(
-                sample_classification_term_target[classification]
-            )))
+        classifications = sorted(sample_classification_term_target.keys())
+        if is_mixed_single_source:
+            classifications.sort(
+                key=lambda classification: (classification not in single_source_classifications, classification)
+            )
+        for classification in classifications:
+            formatted_terms = sorted(
+                merge_fate_change_terms(merge_induced_to_terms(
+                    sample_classification_term_target[classification]
+                )),
+                # Single source (unprefixed) terms go first, e.g. "K562, human xxx"
+                key=lambda term: (term.startswith(tuple(prefixed_taxa)), term)
+            )
             terms_by_classification = ', '.join(formatted_terms)
             # Special handling for PD collection
             terms_by_classification = collapse_pd_multiplexed_disease_terms(
@@ -1801,10 +1839,17 @@ class AnalysisSet(FileSet):
             # Put the terms after the "multiplexed sample of" and drop
             # the underlying classifications
             if 'multiplexed sample of' in classification:
-                terms_by_classification = f'multiplexed sample of {terms_by_classification}'
+                mux_taxa = mux_taxa_by_classification.get(classification, '')
+                terms_by_classification = f'{mux_taxa} multiplexed sample of {terms_by_classification}'.strip()
             # Fate change phrases already carry the verb, so no classification is appended.
             elif classification in FATE_CHANGE_CLASSIFICATION_TO_VERB and formatted_terms and all(
                     FATE_CHANGE_PHRASE_PATTERN.match(term) for term in formatted_terms):
+                pass
+            elif (
+                classification == 'cell line'
+                and classification in single_source_classifications
+                and classification not in non_single_source_classifications
+            ):
                 pass
             # Append classification only when it is not already present in the
             # formatted terms string.

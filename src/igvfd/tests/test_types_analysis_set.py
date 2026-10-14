@@ -634,6 +634,7 @@ def test_analysis_set_sample_summary(
     measurement_set_one_onlist,
     measurement_set_perturb_seq,
     measurement_set,
+    measurement_set_multiome_2,
     sample_term_endothelial_cell,
     in_vitro_differentiated_cell,
     in_vitro_cell_line,
@@ -1008,9 +1009,9 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == 'HEK293T cell line'
+        'simplified_sample_summary', '') == 'HEK293T'
 
-    # Mux samples with some single source subsamples
+    # Test group 8: Mux samples with some single source subsamples
     testapp.patch_json(
         measurement_set_mpra['@id'],
         {
@@ -1021,6 +1022,30 @@ def test_analysis_set_sample_summary(
     hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     assert res.get(
         'simplified_sample_summary', '') == f'human multiplexed sample of HEK293T, middle temporal gyrus from donor {hs_donor_accession}'
+
+    # Test group 9: Multiple inputs with mixed souce samples
+    testapp.patch_json(
+        measurement_set_multiome_2['@id'],
+        {
+            'samples': [tissue_gyrus['@id']]
+        }
+    )
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'samples': [in_vitro_cell_line_HEK293T['@id']]
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set_multiome_2['@id'], measurement_set_mpra['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id']).json
+    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
+    assert res.get(
+        'simplified_sample_summary', '') == f'HEK293T, human middle temporal gyrus tissue/organ from donor {hs_donor_accession}'
 
 
 def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set, measurement_set_with_functional_assay_mechanisms, phenotype_term_from_go, phenotype_term_myocardial_infarction):
