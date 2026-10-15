@@ -1,5 +1,12 @@
 ## Changelog for *`pseudobulk_set.json`*
 
+### Schema version 3
+
+* Extend `file_set_type` enum list to include `gene expression pseudobulk`.
+* Extend `file_set_type` enum list to include `demultiplexed pseudobulk`.
+* Extend `file_set_type` enum list to include `accessibility pseudobulk`.
+* Adjust `file_set_type` enum list to remove `pseudobulk analysis`.
+
 ### Minor changes since schema version 2
 
 * Update `aliases` regex to add `jacob-schreiber` as a namespace.
