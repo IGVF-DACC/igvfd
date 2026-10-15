@@ -71,7 +71,22 @@ def test_pseudobulk_set_cell_annotation(testapp, pseudobulk_set_base, in_vitro_c
     )
     res = testapp.get(pseudobulk_set_base['@id']).json
     assert res.get('cell_annotation', '') == 'adrenal gland exhausted endothelial cell of vascular tree'
+    # Deduplicate the source biosample term if it's included in the cell type.
+    testapp.patch_json(
+        sample_term_endothelial_cell['@id'],
+        {
+            'term_name': 'adrenal gland endothelial cell of vascular tree'
+        }
+    )
+    res = testapp.get(pseudobulk_set_base['@id']).json
+    assert res.get('cell_annotation', '') == 'exhausted adrenal gland endothelial cell of vascular tree'
     # More than 1 sample of the same classification (tissue)
+    testapp.patch_json(
+        sample_term_endothelial_cell['@id'],
+        {
+            'term_name': 'endothelial cell of vascular tree'
+        }
+    )
     testapp.patch_json(
         pseudobulk_set_base['@id'],
         {

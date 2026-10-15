@@ -617,7 +617,19 @@ def get_cell_annotation(request, cell_type, samples, cell_qualifier=None):
 
     if len(source_biosample_classifications) == 1 and \
             'tissue/organ' in source_biosample_classifications:
-        if len(source_biosample_terms) <= 3:
+        if len(source_biosample_terms) == 1:
+            if cell_type_name.startswith(list(source_biosample_terms)[0]):
+                phrase = ' '.join([x for x in [
+                    cell_qualifier_string,
+                    cell_type_name
+                ] if x is not None])
+            else:
+                phrase = ' '.join([x for x in [
+                    ', '.join(sorted(source_biosample_terms)),
+                    cell_qualifier_string,
+                    cell_type_name
+                ] if x is not None])
+        elif len(source_biosample_terms) <= 3:
             phrase = ' '.join([x for x in [
                 ', '.join(sorted(source_biosample_terms)),
                 cell_qualifier_string,
