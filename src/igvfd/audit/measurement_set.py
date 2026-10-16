@@ -4,6 +4,7 @@ from snovault.auditor import (
 )
 
 from snovault.mapping import watch_for_changes_in
+from snovault.util import embed_paths
 
 from .formatter import (
     audit_link,
@@ -427,7 +428,7 @@ def audit_missing_institutional_certification(value, system):
     assay_term = value.get('assay_term', '')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assay_term_id = assay_object.get('term_id', '')
-    files = [system.get('request').embed(file, '@@object?skip_calculated=true') for file in value.get('files', '')]
+    files = list(embed_paths(system.get('request'), value.get('files', ''), '@@object?skip_calculated=true'))
     if assay_term_id in characterization_assays and not (any([file.get('controlled_access') for file in files])):
         return
 

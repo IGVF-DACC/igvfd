@@ -4,6 +4,7 @@ from snovault.auditor import (
 )
 
 from snovault.mapping import watch_for_changes_in
+from snovault.util import iter_warmed
 
 from .formatter import (
     audit_link,
@@ -30,7 +31,8 @@ def audit_pseudobulk_set_marker_gene_files(value, system):
             input_file_set_object = system.get('request').embed(
                 input_file_set, '@@object')
             files_in_input = input_file_set_object.get('files', [])
-            for tab_file in [x for x in files_in_input if x.startswith('/tabular-files/')]:
+            tabular_files = [x for x in files_in_input if x.startswith('/tabular-files/')]
+            for tab_file in iter_warmed(system.get('request'), tabular_files):
                 file_object = system.get('request').embed(tab_file, '@@object?skip_calculated=true')
                 if file_object.get('content_type', '') in ['marker genes', 'marker gene activity']:
                     marker_genes_files_in_input_file_set.append(file_object.get('@id'))

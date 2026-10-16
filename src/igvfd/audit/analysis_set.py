@@ -4,6 +4,7 @@ from snovault.auditor import (
 )
 
 from snovault.mapping import watch_for_changes_in
+from snovault.util import iter_warmed
 
 from .formatter import (
     audit_link,
@@ -343,7 +344,7 @@ def audit_missing_cell_annotations(value, system):
         return
 
     # Check if any file has the file content type 'cell annotations'
-    for file in value.get('files', []):
+    for file in iter_warmed(system.get('request'), value.get('files', [])):
         file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
         if file_object.get('content_type') == 'cell annotations':
             return

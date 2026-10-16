@@ -4,6 +4,7 @@ from snovault.auditor import (
 )
 
 from snovault.mapping import watch_for_changes_in
+from snovault.util import iter_warmed
 
 from .formatter import (
     audit_link,
@@ -14,6 +15,14 @@ from .formatter import (
 )
 
 from typing import Iterable
+
+
+def embed_file(request, path):
+    # A frameless embed renders the page frame, which runs the file's own audit.
+    if request.batch_embed:
+        return request.embed(path, '@@embedded')
+    return request.embed(path)
+
 
 PERTURB_SEQ_ASSAY_TERMS = [
     '/assay-terms/OBI_0003660/',  # in vitro CRISPR screen using single-cell RNA-seq
@@ -231,7 +240,7 @@ def audit_missing_seqspec(value, system):
         is_single_cell = single_cell_check(system, value, object_type, include_perturb_seq=True)
         no_seqspec = []  # For Audit 1
         no_seqspec_doc = []  # For Audit 2
-        for file in value['files']:
+        for file in iter_warmed(system.get('request'), value['files']):
             if file.startswith('/sequence-files/'):
                 sequence_file_object = system.get('request').embed(
                     file, '@@object_with_select_calculated_properties?field=seqspecs')
@@ -297,9 +306,9 @@ def audit_unexpected_seqspec(value, system):
     had_duo_seqspecs = []   # For Audit 2
     has_seqspec_document = []   # For Audit 3
     if 'files' in value:
-        for file in value['files']:
+        for file in iter_warmed(system.get('request'), value['files']):
             if file.startswith('/sequence-files/'):
-                sequence_file_object = system.get('request').embed(file)
+                sequence_file_object = embed_file(system.get('request'), file)
                 # Audit 1: Pod5 sequence files should not be linked to a seqspec
                 if sequence_file_object.get('file_format') == 'pod5' and sequence_file_object.get('seqspecs'):
                     has_seqspec.append(file)
@@ -366,10 +375,10 @@ def audit_files_associated_with_incorrect_fileset(value, system):
     audit_message = get_audit_message(audit_files_associated_with_incorrect_fileset)
     # Non-sc seqspec submitted through file sets should still be audited like single cells
     if 'files' in value:
-        for file in value['files']:
+        for file in iter_warmed(system.get('request'), value['files']):
             # Audit 1: Seqspec have seqspec_of files that are not in the same file set as the seqspec
             if file.startswith('/sequence-files/'):
-                sequence_file_object = system.get('request').embed(file)
+                sequence_file_object = embed_file(system.get('request'), file)
                 # Audit the file set with sequence files without the associated seqspec also in the file set.
                 if sequence_file_object.get('seqspecs'):
                     for configuration_file in sequence_file_object.get('seqspecs'):
@@ -414,9 +423,9 @@ def audit_inconsistent_seqspec(value, system):
     # Set up lookup ref as {seq_set_key: {seq_file: set(seqspecs)}}
     if 'files' in value:
         sequence_to_seqspec = {}
-        for file in value['files']:
+        for file in iter_warmed(system.get('request'), value['files']):
             if file.startswith('/sequence-files/'):
-                sequence_file_object = system.get('request').embed(file)
+                sequence_file_object = embed_file(system.get('request'), file)
                 sequencing_run = str(sequence_file_object.get('sequencing_run'))
                 flowcell_id = sequence_file_object.get('flowcell_id', '')
                 lane = str(sequence_file_object.get('lane', ''))
@@ -544,9 +553,9 @@ def audit_inconsistent_sequencing_kit(value, system):
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_inconsistent_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=0)
     file_info = {}
-    for file in value.get('files', []):
+    for file in iter_warmed(system.get('request'), value.get('files', [])):
         if file.startswith('/sequence-files/'):
-            sequence_file_object = system.get('request').embed(file)
+            sequence_file_object = embed_file(system.get('request'), file)
 
             sequencing_run = str(sequence_file_object.get('sequencing_run'))
             sequencing_kit = sequence_file_object.get('sequencing_kit', '')
@@ -738,8 +747,8 @@ def audit_inconsistent_location_files(value, system):
     externally_hosted_files = []
     local_files = []
     if 'files' in value:
-        for file in value['files']:
-            file_object = system.get('request').embed(file)
+        for file in iter_warmed(system.get('request'), value['files']):
+            file_object = embed_file(system.get('request'), file)
 
             if 'externally_hosted' in file_object:
                 if file_object['externally_hosted']:
@@ -790,8 +799,8 @@ def audit_MPRA_read_names(value, system):
     if any(assay for assay in assays if assay == 'massively parallel reporter assay'):
         if 'files' in value:
             sequence_files = [file for file in value['files'] if file.startswith('/sequence-files/')]
-            for file in sequence_files:
-                file_object = system.get('request').embed(file)
+            for file in iter_warmed(system.get('request'), sequence_files):
+                file_object = embed_file(system.get('request'), file)
                 read_names = file_object.get('read_names', '')
                 if read_names:
                     if any(read_name not in ['Barcode forward', 'UMI', 'Barcode reverse'] for read_name in read_names):
@@ -837,9 +846,9 @@ def audit_single_cell_read_names(value, system):
         if 'files' in value:
             missing_read_names = []
             unexpected_read_names = []
-            for file in value['files']:
+            for file in iter_warmed(system.get('request'), value['files']):
                 if file.startswith('/sequence-files/'):
-                    sequence_file_object = system.get('request').embed(file)
+                    sequence_file_object = embed_file(system.get('request'), file)
                     applicable_read_types = ['R1', 'R2', 'R3']  # Skip Index 1 and Index 2
                     # Get read type
                     illumina_read_type = sequence_file_object.get('illumina_read_type', '')
@@ -933,7 +942,7 @@ def audit_inconsistent_controlled_access(value, system):
     if not files:
         return
 
-    for file in files:
+    for file in iter_warmed(system.get('request'), files):
         file_object = system.get('request').embed(file, '@@object_with_select_calculated_properties?field=@id')
         if file_object.get('file_format', '') in formats_to_check \
                 and not file_object.get('redacted', None) \
@@ -1049,7 +1058,7 @@ def audit_file_set_files_missing_analysis_step_version(value, system):
         audit_message = audit_message_analysis_prediction
     files = value.get('files')
     files_with_missing_asv = []
-    for file in files:
+    for file in iter_warmed(system.get('request'), files):
         file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
         if file_object.get('derived_manually') is True:
             continue
@@ -1116,7 +1125,7 @@ def audit_input_file_sets_derived_from(value, system):
     if any(assay in exclude_assays for assay in preferred_assay_titles):
         return
     if files:
-        for file in files:
+        for file in iter_warmed(system.get('request'), files):
             file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
             derived_from_files = file_object.get('derived_from', [])
             if derived_from_files:
@@ -1369,7 +1378,7 @@ def audit_missing_genome_transcriptome_references(value, system):
         prediction_tabular_files_missing_transcriptome = []
 
         if files:
-            for file in files:
+            for file in iter_warmed(system.get('request'), files):
                 file_obj = system.get('request').embed(file + '@@object?skip_calculated=true')
                 content_type = file_obj.get('content_type', '')
 
@@ -1405,7 +1414,7 @@ def audit_missing_genome_transcriptome_references(value, system):
         return
 
     if files:
-        for file in files:
+        for file in iter_warmed(system.get('request'), files):
             if not file.startswith(('/alignment-files/', '/matrix-files/', '/signal-files/', '/tabular-files/')):
                 continue
             # Skip tabular files with certain excluded content_types.
@@ -1500,7 +1509,7 @@ def audit_anvil_file_fileset_mismatch(value, system):
     linked_active_files = []
 
     # Compute how many ACTIVE files have ANVIL urls
-    for file in value.get('files', []):
+    for file in iter_warmed(system.get('request'), value.get('files', [])):
         file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
         if file_object.get('status') in ['in progress', 'released']:
             linked_active_files.append(file)

@@ -4,7 +4,7 @@ from snovault import (
     collection,
     load_schema,
 )
-from snovault.util import Path
+from snovault.util import Path, embed_paths, iter_warmed
 
 from .base import (
     Item,
@@ -36,8 +36,7 @@ def get_file_objs_from_files(request, files):
     '''Get file objects from an array of files'''
     file_objs = []
     if files is not None:
-        for file in files:
-            file_objs.append(request.embed(file, '@@object?skip_calculated=true'))
+        file_objs.extend(embed_paths(request, files, '@@object?skip_calculated=true'))
     return file_objs
 
 
@@ -896,7 +895,7 @@ class FileSet(Item):
                 aux_set_object = request.embed(auxiliary_set, '@@object_with_select_calculated_properties?field=files')
                 if 'files' in aux_set_object:
                     files_to_traverse.extend(aux_set_object['files'])
-        for current_file_path in files_to_traverse:
+        for current_file_path in iter_warmed(request, files_to_traverse):
             file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
             timestamp = file_object.get('creation_timestamp', None)
             if timestamp:
@@ -1145,8 +1144,7 @@ class AnalysisSet(FileSet):
 
         # Collect content_types of files.
         if files:
-            for file in files:
-                file_object = request.embed(file, '@@object?skip_calculated=true')
+            for file_object in embed_paths(request, files, '@@object?skip_calculated=true'):
                 file_content_types.add(file_object['content_type'])
 
         # Collect construct library set summaries and types
@@ -1816,12 +1814,12 @@ class AnalysisSet(FileSet):
         if files is None:
             files = []
         unique_workflows = set()
-        for file_ in files:
-            file_workflows = request.embed(
-                file_,
-                '@@object_with_select_calculated_properties?field=workflows',
-            ).get('workflows', [])
-            unique_workflows.update(file_workflows)
+        for file_object in embed_paths(
+            request,
+            files,
+            '@@object_with_select_calculated_properties?field=workflows',
+        ):
+            unique_workflows.update(file_object.get('workflows', []))
         return sorted(unique_workflows)
 
     @calculated_property(
@@ -1968,7 +1966,7 @@ class CuratedSet(FileSet):
     def assemblies(self, request, files=None):
         if files:
             assembly_values = set()
-            for current_file_path in files:
+            for current_file_path in iter_warmed(request, files):
                 file_object = request.embed(
                     current_file_path, '@@object_with_select_calculated_properties?field=assembly')
                 if file_object.get('assembly'):
@@ -1993,7 +1991,7 @@ class CuratedSet(FileSet):
     def transcriptome_annotations(self, request, files=None):
         if files:
             annotation_values = set()
-            for current_file_path in files:
+            for current_file_path in iter_warmed(request, files):
                 file_object = request.embed(
                     current_file_path, '@@object_with_select_calculated_properties?field=transcriptome_annotation')
                 if file_object.get('transcriptome_annotation'):
@@ -2018,7 +2016,7 @@ class CuratedSet(FileSet):
         version_values = set()
         files = paths_filtered_by_status(request, files)
         if files:
-            for current_file_path in files:
+            for current_file_path in iter_warmed(request, files):
                 file_object = request.embed(
                     current_file_path, '@@object_with_select_calculated_properties?field=version&field=@type&field=status')
                 if 'ReferenceFile' in file_object.get('@type', []) and file_object.get('version') and file_object.get('status') != 'archived':
@@ -2367,7 +2365,7 @@ class MeasurementSet(FileSet):
             if title in external_assays:
                 externally_hosted_value = True
         if files:
-            for current_file_path in files:
+            for current_file_path in iter_warmed(request, files):
                 file_object = request.embed(
                     current_file_path,
                     '@@object?skip_calculated=true'
@@ -2473,7 +2471,7 @@ class ModelSet(FileSet):
     def externally_hosted(self, request, files=None):
         externally_hosted_value = False
         if files:
-            for current_file_path in files:
+            for current_file_path in iter_warmed(request, files):
                 file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
                 if file_object.get('externally_hosted'):
                     externally_hosted_value = True
@@ -2499,7 +2497,7 @@ class ModelSet(FileSet):
     def software_versions(self, request, files=None):
         software_versions = []
         if files:
-            for file in files:
+            for file in iter_warmed(request, files):
                 if file.startswith('/model-files/'):
                     file_object = request.embed(file, '@@object?skip_calculated=true')
                     analysis_step_version = file_object.get('analysis_step_version', '')
@@ -2774,7 +2772,7 @@ class PredictionSet(FileSet):
         software_versions = []
         files = paths_filtered_by_status(request, files)
         if files:
-            for file in files:
+            for file in iter_warmed(request, files):
                 file_object = request.embed(file, '@@object?skip_calculated=true')
                 analysis_step_version = file_object.get('analysis_step_version', '')
                 if analysis_step_version:
@@ -3226,7 +3224,7 @@ class ConstructLibrarySet(FileSet):
 
         if preferred_assay_titles and 'STARR-seq' in preferred_assay_titles:
             thousand_genomes_ids = set()
-            for integrated_content_file in integrated_content_files:
+            for integrated_content_file in iter_warmed(request, integrated_content_files):
                 integrated_content_file_object = request.embed(integrated_content_file, '@@object?skip_calculated=true')
                 file_set_object = request.embed(
                     integrated_content_file_object['file_set'], '@@object_with_select_calculated_properties?field=donors')
@@ -3374,12 +3372,12 @@ class PseudobulkSet(FileSet):
         if files is None:
             files = []
         unique_workflows = set()
-        for file_ in files:
-            file_workflows = request.embed(
-                file_,
-                '@@object_with_select_calculated_properties?field=workflows',
-            ).get('workflows', [])
-            unique_workflows.update(file_workflows)
+        for file_object in embed_paths(
+            request,
+            files,
+            '@@object_with_select_calculated_properties?field=workflows',
+        ):
+            unique_workflows.update(file_object.get('workflows', []))
         return sorted(unique_workflows)
 
     @calculated_property(

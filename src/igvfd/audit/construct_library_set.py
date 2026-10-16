@@ -4,6 +4,7 @@ from snovault.auditor import (
 )
 
 from snovault.mapping import watch_for_changes_in
+from snovault.util import embed_paths, iter_warmed
 
 from .formatter import (
     audit_link,
@@ -142,8 +143,7 @@ def audit_integrated_content_files(value, system):
         file_expectation = library_expectation[library_type][0]
         audit_message = library_expectation[library_type][1]
         if integrated_content_files:
-            files = [system.get('request').embed(file, '@@object?skip_calculated=true')
-                     for file in integrated_content_files]
+            files = list(embed_paths(system.get('request'), integrated_content_files, '@@object?skip_calculated=true'))
             if not ([file for file in files if file_expectation in file['content_type']]):
                 detail = (f'Construct library set {audit_link(path_to_text(value["@id"]), value["@id"])} has no '
                           f'linked files in `integrated_content_files` with `content_type` {file_expectation}.')
@@ -170,7 +170,7 @@ def audit_construct_library_set_orf_gene(value, system):
     if ('small_scale_gene_list' in value) and ('small_scale_orf_list' in value):
         library_genes = set(value['small_scale_gene_list'])
         orf_ids = value.get('small_scale_orf_list', [])
-        for o in orf_ids:
+        for o in iter_warmed(system.get('request'), orf_ids):
             orf_object = system.get('request').embed(o + '@@object?skip_calculated=true')
             if 'genes' in orf_object:
                 for d in orf_object['genes']:

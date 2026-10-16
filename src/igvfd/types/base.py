@@ -23,6 +23,7 @@ import snovault
 from snovault.validation import ValidationFailure
 from snovault.schema_utils import validate_request
 from snovault.auditor import traversed_path_ids
+from snovault.util import iter_warmed
 from snovault import (
     AfterModified,
     BeforeModified,
@@ -113,16 +114,12 @@ STATUS_HIERARCHY = {
 
 
 def paths_filtered_by_status(request, paths, exclude=('deleted', 'replaced'), include=None):
+    def status(path):
+        return traverse(request.root, path)['context'].__json__(request).get('status')
+
     if include is not None:
-        return sorted([
-            path for path in paths
-            if traverse(request.root, path)['context'].__json__(request).get('status') in include
-        ])
-    else:
-        return sorted([
-            path for path in paths
-            if traverse(request.root, path)['context'].__json__(request).get('status') not in exclude
-        ])
+        return sorted([path for path in iter_warmed(request, paths) if status(path) in include])
+    return sorted([path for path in iter_warmed(request, paths) if status(path) not in exclude])
 
 
 class AbstractCollection(snovault.AbstractCollection):
