@@ -6,7 +6,8 @@ def test_audit_pseudobulk_set_marker_gene_files(
     pseudobulk_set_base,
     pseudobulk_set_2,
     analysis_set_base,
-    tabular_file
+    tabular_file,
+    tabular_file_onlist_1
 ):
     testapp.patch_json(
         pseudobulk_set_base['@id'],
@@ -17,10 +18,34 @@ def test_audit_pseudobulk_set_marker_gene_files(
         error['category'] == 'missing marker gene list'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+    # No audit if pseudobulk is not gene expression based.
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {'file_set_type': 'demultiplexed pseudobulk'}
+    )
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing marker gene list'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # No audit if there is a cell annotations in the input file
+    # set, and the cell annotations are derived from a marker
+    # genes file.
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {'file_set_type': 'gene expression pseudobulk'}
+    )
     testapp.patch_json(
         tabular_file['@id'],
         {
             'file_set': analysis_set_base['@id'],
+            'derived_from': [tabular_file_onlist_1['@id']],
+            'content_type': 'cell annotations'
+        }
+    )
+    testapp.patch_json(
+        tabular_file_onlist_1['@id'],
+        {
             'content_type': 'marker genes'
         }
     )
