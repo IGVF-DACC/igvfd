@@ -13,6 +13,13 @@ def test_audit_pseudobulk_set_marker_gene_files(
         pseudobulk_set_base['@id'],
         {'input_file_sets': [analysis_set_base['@id']]}
     )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'file_set': analysis_set_base['@id'],
+            'content_type': 'cell annotations'
+        }
+    )
     res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing marker gene list'
@@ -37,11 +44,7 @@ def test_audit_pseudobulk_set_marker_gene_files(
     )
     testapp.patch_json(
         tabular_file['@id'],
-        {
-            'file_set': analysis_set_base['@id'],
-            'derived_from': [tabular_file_onlist_1['@id']],
-            'content_type': 'cell annotations'
-        }
+        {'derived_from': [tabular_file_onlist_1['@id']]}
     )
     testapp.patch_json(
         tabular_file_onlist_1['@id'],
