@@ -75,6 +75,12 @@ def file():
                 'optional': True,
                 'category': 'File Details'
             },
+            'analysis_step_version.software_versions.software.title': {
+                'title': 'Software',
+                'description': 'The software used to produce this file.',
+                'optional': True,
+                'category': 'Processing Details'
+            },
             'workflows.name': {
                 'title': 'Workflows',
                 'description': 'The workflows used to produce this file.',

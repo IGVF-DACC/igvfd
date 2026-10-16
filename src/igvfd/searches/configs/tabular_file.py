@@ -83,6 +83,9 @@ def tabular_file():
             'file_set.samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
+            'analysis_step_version.software_versions.software.title': {
+                'title': 'Software'
+            },
             'workflows.name': {
                 'title': 'Workflows'
             },
