@@ -12,7 +12,7 @@ def pseudobulk_set_base(
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'file_set_type': 'pseudobulk analysis',
+        'file_set_type': 'gene expression pseudobulk',
         'samples': [tissue['@id']],
         'cell_type': sample_term_endothelial_cell['@id']
     }
@@ -30,7 +30,7 @@ def pseudobulk_set_2(
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'file_set_type': 'pseudobulk analysis',
+        'file_set_type': 'gene expression pseudobulk',
         'samples': [tissue['@id']],
         'cell_type': sample_term_pluripotent_stem_cell['@id']
     }
@@ -52,7 +52,7 @@ def pseudobulk_set_merged(
         'lab': lab['@id'],
         'input_file_sets': [pseudobulk_set_base['@id'], pseudobulk_set_2['@id']],
         'merged': True,
-        'file_set_type': 'pseudobulk analysis',
+        'file_set_type': 'gene expression pseudobulk',
         'samples': [tissue['@id']],
         'cell_type': sample_term_endothelial_cell['@id']
     }
@@ -65,4 +65,21 @@ def pseudobulk_set_v1(pseudobulk_set_base):
     item.update({
         'schema_version': '1'
     })
+    return item
+
+
+@pytest.fixture
+def pseudobulk_set_v2(
+        testapp,
+        award,
+        lab,
+        tissue,
+        sample_term_endothelial_cell):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'pseudobulk analysis',
+        'samples': [tissue['@id']],
+        'cell_type': sample_term_endothelial_cell['@id']
+    }
     return item
