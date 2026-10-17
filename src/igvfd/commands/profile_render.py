@@ -229,9 +229,11 @@ def find_function(stats, suffix, funcname):
 def print_table(title, headers, rows):
     print(f'\n{title}')
     widths = [max(len(str(r[i])) for r in [headers] + rows) for i in range(len(headers))]
-    print('  ' + '  '.join(str(h).ljust(w) if i == 0 else str(h).rjust(w) for i, (h, w) in enumerate(zip(headers, widths))))
+    print('  ' + '  '.join(str(h).ljust(w) if i == 0 else str(h).rjust(w)
+          for i, (h, w) in enumerate(zip(headers, widths))))
     for row in rows:
-        print('  ' + '  '.join(str(c).ljust(w) if i == 0 else str(c).rjust(w) for i, (c, w) in enumerate(zip(row, widths))))
+        print('  ' + '  '.join(str(c).ljust(w) if i == 0 else str(c).rjust(w)
+              for i, (c, w) in enumerate(zip(row, widths))))
 
 
 def print_timing(timed):
@@ -289,7 +291,8 @@ def print_embed_trace(tracer, limit):
         return
     ranked = sorted(tracer.records.items(), key=lambda item: item[1]['exclusive'], reverse=True)[:limit]
     rows = [
-        (f'{collection} {frame}'[:78], r['count'], r['uncached'], f'{r["exclusive"] * 1000:.1f}', f'{r["inclusive"] * 1000:.1f}')
+        (f'{collection} {frame}'[:78], r['count'], r['uncached'],
+         f'{r["exclusive"] * 1000:.1f}', f'{r["inclusive"] * 1000:.1f}')
         for (collection, frame), r in ranked
     ]
     print_table(
@@ -317,7 +320,8 @@ def print_sql_trace(tracer, limit):
     for (statement, _), count in tracer.counts.items():
         by_statement[statement] += count
     rows = [(f'{statement}'[:100], count) for statement, count in by_statement.most_common(limit)]
-    print_table(f'SQL statements, top {limit} of {len(by_statement)} kinds ({tracer.total} total)', ('statement', 'count'), rows)
+    print_table(
+        f'SQL statements, top {limit} of {len(by_statement)} kinds ({tracer.total} total)', ('statement', 'count'), rows)
     rows = []
     for (statement, site), count in tracer.counts.most_common(limit):
         frames = site.split(' <- ')
@@ -365,7 +369,8 @@ def print_audit_checkers(stats, limit):
         for key, values in ranked
     ]
     if rows:
-        print_table(f'igvfd audit functions by cumulative time, top {limit}', ('function', 'calls', 'own ms', 'cumulative ms'), rows)
+        print_table(f'igvfd audit functions by cumulative time, top {limit}',
+                    ('function', 'calls', 'own ms', 'cumulative ms'), rows)
 
 
 def run_mode(testapp, path, mode, args):
@@ -448,7 +453,8 @@ def find_differences(left, right, path='$', limit=10):
         elif isinstance(a, dict):
             for key in sorted(set(a) | set(b)):
                 if key not in a or key not in b:
-                    differences.append((f'{where}.{key}', 'missing' if key not in a else '...', 'missing' if key not in b else '...'))
+                    differences.append((f'{where}.{key}', 'missing' if key not in a else '...',
+                                       'missing' if key not in b else '...'))
                 else:
                     walk(a[key], b[key], f'{where}.{key}')
         elif isinstance(a, list):
@@ -480,7 +486,8 @@ def print_body_comparison(results):
     if not differences:
         print('\nResponse bodies: same content; only the order of some list members differs')
         return
-    print(f'\nResponse bodies DIFFER between batch_embed={modes[0]} and batch_embed={modes[1]} (first {len(differences)}):')
+    print(
+        f'\nResponse bodies DIFFER between batch_embed={modes[0]} and batch_embed={modes[1]} (first {len(differences)}):')
     for where, a, b in differences:
         print(f'  {where}: {a}  !=  {b}')
 
@@ -507,7 +514,8 @@ def get_parser():
     parser.add_argument('config_uri', help='path to ini file, e.g. config/pyramid/ini/development.ini')
     parser.add_argument('path', help='URL path to render, e.g. /analysis-sets/IGVFDS5575ANST/@@index-data-external')
     parser.add_argument('--app-name', default='app', help='Pyramid app name in the config file')
-    parser.add_argument('--username', '-u', default='INDEXER', help='remote user (INDEXER can view index-data-external)')
+    parser.add_argument('--username', '-u', default='INDEXER',
+                        help='remote user (INDEXER can view index-data-external)')
     parser.add_argument('--datastore', default='database',
                         help='datastore query param; use database so items are computed, not served from ES (empty to omit)')
     parser.add_argument('--batch-embed', choices=['true', 'false', 'both'], default='both')

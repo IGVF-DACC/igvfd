@@ -115,7 +115,8 @@ def test_sql_tracer_counts_statements_and_unregisters():
 def test_print_audit_checkers_lists_only_igvfd_audit_functions(capsys):
     import cProfile
     import pstats
-    code = compile('def audit_a():\n    return sum(range(100000))\ndef audit_b():\n    return 1\n', '/igvfd/src/igvfd/audit/x.py', 'exec')
+    code = compile('def audit_a():\n    return sum(range(100000))\ndef audit_b():\n    return 1\n',
+                   '/igvfd/src/igvfd/audit/x.py', 'exec')
     namespace = {}
     exec(code, namespace)
     profile = cProfile.Profile()
