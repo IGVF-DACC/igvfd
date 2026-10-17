@@ -27,7 +27,7 @@ def audit_pseudobulk_set_marker_gene_files(value, system):
     marker_genes_files_in_input_file_set = []
     merged = value.get('merged', False)
     if value.get('input_file_sets', []):
-        for input_file_set in value.get('input_file_sets', []):
+        for input_file_set in iter_warmed(system.get('request'), value.get('input_file_sets', [])):
             input_file_set_object = system.get('request').embed(
                 input_file_set, '@@object')
             files_in_input = input_file_set_object.get('files', [])
@@ -67,7 +67,7 @@ def audit_pseudobulk_set_sample_matches_input(value, system):
     audit_message_merged = get_audit_message(audit_pseudobulk_set_sample_matches_input, index=1)
     input_file_set_samples = []
     if value.get('input_file_sets', []):
-        for input_file_set in value.get('input_file_sets', []):
+        for input_file_set in iter_warmed(system.get('request'), value.get('input_file_sets', [])):
             input_file_set_object = system.get('request').embed(
                 input_file_set, '@@object'
             )
@@ -141,7 +141,7 @@ def audit_pseudobulk_set_input_file_set_type(value, system):
     audit_message = get_audit_message(audit_pseudobulk_set_input_file_set_type, index=0)
     accepted_curated_set_file_set_types = ['external sequencing data', 'genes']
     if value.get('input_file_sets', []):
-        for input_file_set in value.get('input_file_sets', []):
+        for input_file_set in iter_warmed(system.get('request'), value.get('input_file_sets', [])):
             input_file_set_object = system.get('request').embed(
                 input_file_set, '@@object')
             if input_file_set_object['@type'][0] == 'CuratedSet':
@@ -177,7 +177,7 @@ def audit_pseudobulk_set_parent_samples_mixed_classifications_terms(value, syste
         audit_pseudobulk_set_parent_samples_mixed_classifications_terms, index=0)
     audit_message_terms = get_audit_message(audit_pseudobulk_set_parent_samples_mixed_classifications_terms, index=1)
     if value.get('input_file_sets', []):
-        for input_file_set in value.get('input_file_sets', []):
+        for input_file_set in iter_warmed(system.get('request'), value.get('input_file_sets', [])):
             input_file_set_object = system.get('request').embed(
                 input_file_set, '@@object'
             )
@@ -192,7 +192,7 @@ def audit_pseudobulk_set_parent_samples_mixed_classifications_terms(value, syste
     classifications = set()
     terms = set()
     if value.get('samples', []):
-        for sample in value.get('samples', []):
+        for sample in iter_warmed(system.get('request'), value.get('samples', [])):
             parent_sample_object = system.get('request').embed(
                 sample, '@@object_with_select_calculated_properties?field=classifications')
             classifications.add(', '.join(
@@ -242,11 +242,11 @@ def audit_pseudobulk_set_mismatched_merged_cell_types(value, system):
     current_cell_type = value.get('cell_type', '')
     cell_types = set()
     if value.get('merged', False) and value.get('input_file_sets', []):
-        for input_file_set in value.get('input_file_sets', []):
+        for input_file_set in iter_warmed(system.get('request'), value.get('input_file_sets', [])):
             input_file_set_object = system.get('request').embed(
                 input_file_set, '@@object'
             )
-            for nested_input_file_set in input_file_set_object.get('input_file_sets', []):
+            for nested_input_file_set in iter_warmed(system.get('request'), input_file_set_object.get('input_file_sets', [])):
                 nested_input_file_set_object = system.get('request').embed(
                     nested_input_file_set, '@@object'
                 )

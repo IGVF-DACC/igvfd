@@ -54,7 +54,7 @@ class SoftwareVersion(Item):
 
     @property
     def __name__(self):
-        properties = self.upgrade_properties()
+        properties = self.upgraded_properties()
         return self._name(properties)
 
     def software_uuid(self, properties=None, return_uuid=False):
@@ -72,7 +72,7 @@ class SoftwareVersion(Item):
         root = find_root(self)
         software_uuid = properties['software']
         software = root.get_by_uuid(software_uuid)
-        source = software.upgrade_properties()['name']
+        source = software.upgraded_properties()['name']
         return u'{}-{}'.format(source, properties['version'])
 
     def __resource_url__(self, request, info):

@@ -16,7 +16,7 @@ from .formatter import (
 def get_assay_terms(value, system):
     assay_terms = set()
     file_sets = value.get('file_sets', [])
-    for file_set in file_sets:
+    for file_set in iter_warmed(system.get('request'), file_sets):
         if file_set.startswith('/measurement-sets/'):
             file_set_object = system.get('request').embed(file_set, '@@object?skip_calculated=true')
             assay_terms.add(file_set_object['assay_term'])

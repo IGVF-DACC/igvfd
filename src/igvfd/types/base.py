@@ -34,7 +34,7 @@ from snovault import (
 @lru_cache()
 def _award_viewing_group(award_uuid, root):
     award = root.get_by_uuid(award_uuid)
-    return award.upgrade_properties().get('viewing_group')
+    return award.upgraded_properties().get('viewing_group')
 
 
 # Item acls
@@ -186,20 +186,20 @@ class Item(snovault.Item):
     def __name__(self):
         if self.name_key is None:
             return self.uuid
-        properties = self.upgrade_properties()
+        properties = self.upgraded_properties()
         if properties.get('status') == 'replaced':
             return self.uuid
         return properties.get(self.name_key, None) or self.uuid
 
     def __acl__(self):
         # Don't finalize to avoid validation here.
-        properties = self.upgrade_properties().copy()
+        properties = self.upgraded_properties()
         status = properties.get('status')
         return self.STATUS_ACL.get(status, ALLOW_LAB_SUBMITTER_EDIT)
 
     def __ac_local_roles__(self):
         roles = {}
-        properties = self.upgrade_properties().copy()
+        properties = self.upgraded_properties()
         if 'lab' in properties:
             lab_submitters = 'submits_for.%s' % properties['lab']
             roles[lab_submitters] = 'role.lab_submitter'
@@ -230,7 +230,7 @@ class Item(snovault.Item):
     def summary(self):
         if self.name_key is None:
             return self.uuid
-        properties = self.upgrade_properties()
+        properties = self.upgraded_properties()
         if properties.get('status') == 'replaced':
             return self.uuid
         return properties.get(self.name_key, None) or self.uuid
@@ -402,7 +402,7 @@ class SharedItem(Item):
 
     def __ac_local_roles__(self):
         roles = {}
-        properties = self.upgrade_properties().copy()
+        properties = self.upgraded_properties()
         if 'lab' in properties:
             lab_submitters = 'submits_for.%s' % properties['lab']
             roles[lab_submitters] = 'role.lab_submitter'

@@ -20,7 +20,7 @@ from .file_set import (
 
 def get_assay_terms(value, system):
     assay_terms = set()
-    for input_file_set in value.get('input_file_sets', []):
+    for input_file_set in iter_warmed(system.get('request'), value.get('input_file_sets', [])):
         if input_file_set.startswith('/measurement-sets/'):
             input_file_set_object = system.get('request').embed(input_file_set + '@@object?skip_calculated=true')
             assay_terms.add(input_file_set_object.get('assay_term'))
@@ -64,11 +64,11 @@ def audit_analysis_set_multiplexed_samples(value, system):
         input_file_sets = value.get('input_file_sets', [])
         related_samples = set()
         input_samples = set()
-        for input_file_set in input_file_sets:
+        for input_file_set in iter_warmed(system.get('request'), input_file_sets):
             if input_file_set.startswith('/construct-library-sets/'):
                 continue
             input_file_set_object = system.get('request').embed(input_file_set + '@@object')
-            for sample in input_file_set_object.get('samples', []):
+            for sample in iter_warmed(system.get('request'), input_file_set_object.get('samples', [])):
                 input_samples.add(sample)
                 related_samples.add(sample)
                 sample_object = system.get('request').embed(sample + '@@object')
@@ -103,7 +103,7 @@ def audit_analysis_set_condition_treatments(value, system):
 
     request = system.get('request')
     sample_treatments = set()
-    for sample in value.get('samples', []):
+    for sample in iter_warmed(system.get('request'), value.get('samples', [])):
         sample_object = request.embed(
             sample,
             '@@object_with_select_calculated_properties?field=treatments'
@@ -164,7 +164,7 @@ def audit_analysis_set_inconsistent_onlist_info(value, system):
         return
 
     input_file_sets = value.get('input_file_sets', [])
-    for input_file_set in input_file_sets:
+    for input_file_set in iter_warmed(system.get('request'), input_file_sets):
         if input_file_set.startswith('/measurement-sets/'):
             input_file_set_object = system.get('request').embed(
                 input_file_set + '@@object_with_select_calculated_properties?&field=assay_titles')
@@ -225,7 +225,7 @@ def audit_multiple_barcode_replacement_files_in_input(value, system):
     parse_splitseq_file_sets = []
     if value.get('file_set_type') == 'principal analysis':
         return
-    for file in value.get('input_file_sets', []):
+    for file in iter_warmed(system.get('request'), value.get('input_file_sets', [])):
         if file.startswith('/measurement-sets/'):
             input_file_set_object = system.get('request').embed(file + '@@object?skip_calculated=true')
             preferred_assay_titles = input_file_set_object.get('preferred_assay_titles')

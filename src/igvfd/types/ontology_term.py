@@ -49,7 +49,7 @@ class OntologyTerm(Item):
     })
     def name(self, properties=None):
         if properties is None:
-            properties = self.upgrade_properties()
+            properties = self.upgraded_properties()
         format_cleaned_term_id = properties['term_id'].replace(' ', '_').replace(':', '_')
         return u'{}'.format(format_cleaned_term_id)
 

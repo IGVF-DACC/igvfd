@@ -69,7 +69,7 @@ def single_cell_check(system, value, object_type, single_cell_assay_terms=list(S
         return assay_term in single_cell_assay_terms
     elif object_type == 'Auxiliary set':
         measurement_sets = value.get('measurement_sets', [])
-        for measurement_set in measurement_sets:
+        for measurement_set in iter_warmed(system.get('request'), measurement_sets):
             measurement_set_obj = system.get('request').embed(measurement_set, '@@object?skip_calculated=true')
             assay_term = measurement_set_obj.get('assay_term')
             if assay_term in single_cell_assay_terms:
@@ -77,11 +77,11 @@ def single_cell_check(system, value, object_type, single_cell_assay_terms=list(S
         return False
     elif object_type == 'Construct library set':
         samples = value.get('samples', [])
-        for sample in samples:
+        for sample in iter_warmed(system.get('request'), samples):
             sample_obj = system.get('request').embed(
                 sample, '@@object_with_select_calculated_properties?field=file_sets')
             file_sets = sample_obj.get('file_sets', [])
-            for file_set in file_sets:
+            for file_set in iter_warmed(system.get('request'), file_sets):
                 if file_set.startswith('/measurement-sets/'):
                     measurement_set_obj = system.get('request').embed(file_set, '@@object?skip_calculated=true')
                     assay_term = measurement_set_obj.get('assay_term')
@@ -89,7 +89,7 @@ def single_cell_check(system, value, object_type, single_cell_assay_terms=list(S
                         return True
         return False
     elif object_type == 'Analysis set':
-        for input_file_set in value.get('input_file_sets', []):
+        for input_file_set in iter_warmed(system.get('request'), value.get('input_file_sets', [])):
             # If MeaSet is a direct input to the Analysis set
             if input_file_set.startswith('/measurement-sets/'):
                 measurement_set_obj = system.get('request').embed(input_file_set, '@@object?skip_calculated=true')
@@ -656,7 +656,7 @@ def audit_unexpected_virtual_samples(value, system):
     samples = []
     if 'samples' in value:
         samples = value.get('samples')
-    for sample in samples:
+    for sample in iter_warmed(system.get('request'), samples):
         sample_object = system.get('request').embed(sample)
         if sample_object.get('virtual'):
             detail = (
@@ -983,7 +983,7 @@ def audit_inconsistent_controlled_access(value, system):
                                              for file in files_by_access[False]])
 
     samples = value.get('samples', [])
-    for sample in samples:
+    for sample in iter_warmed(system.get('request'), samples):
         sample_object = system.get('request').embed(
             sample, '@@object_with_select_calculated_properties?field=institutional_certificates&field=@id')
         for ic in sample_object.get('institutional_certificates', []):

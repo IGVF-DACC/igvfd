@@ -4,7 +4,7 @@ from snovault import (
     collection,
     load_schema,
 )
-from snovault.util import Path
+from snovault.util import Path, iter_warmed
 from .base import (
     Item,
     paths_filtered_by_status
@@ -13,7 +13,7 @@ from .base import (
 
 def collect_multiplexed_samples_prop(request, multiplexed_samples, property_name, skip_calculated=True):
     property_set = set()
-    for sample in multiplexed_samples:
+    for sample in iter_warmed(request, multiplexed_samples):
         # If to get a specific calculated property
         if skip_calculated is False:
             sample_props = request.embed(sample, f'@@object_with_select_calculated_properties?field={property_name}')
@@ -35,7 +35,7 @@ def decompose_multiplexed_samples(request, samples, visited_multiplexed_samples=
     if visited_multiplexed_samples is None:
         visited_multiplexed_samples = set()
     decomposed_samples = set()
-    for sample in samples:
+    for sample in iter_warmed(request, samples):
         if sample.startswith('/multiplexed-samples/') and sample not in visited_multiplexed_samples:
             visited_multiplexed_samples.add(sample)
             multiplexed_samples = request.embed(sample, '@@object').get('multiplexed_samples')
@@ -142,7 +142,7 @@ def get_filesets_samples_used_in(list_of_samples: list, starter_filesets: list, 
     Returns:
         dict: A dictionary mapping fileset @id to a list of sample accessions used in it
     """
-    for sample in list_of_samples:
+    for sample in iter_warmed(request, list_of_samples):
         sample_object = request.embed(
             sample, '@@object_with_select_calculated_properties?field=file_sets')
         sample_file_sets = sample_object.get('file_sets', [])
@@ -239,7 +239,7 @@ class Sample(Item):
         if pooled_in is None:
             pooled_in = []
         # This is required to get the analysis set reverse links since analysis set calculates samples
-        for file_set in file_sets:
+        for file_set in iter_warmed(request, file_sets):
             file_set_object = request.embed(
                 file_set, '@@object_with_select_calculated_properties?field=input_for')
             for input_for in file_set_object.get('input_for', []):
@@ -1163,7 +1163,7 @@ class MultiplexedSample(Sample):
         targeted_sample_term_phrase = None
         if multiplexed_samples:
             targeted_sample_term_names = set()
-            for sample in multiplexed_samples:
+            for sample in iter_warmed(request, multiplexed_samples):
                 # First, get sample object to see if it has a targeted sample term
                 sample_object = request.embed(sample, '@@object?skip_calculated=true')
                 if sample_object.get('targeted_sample_term'):
@@ -1227,7 +1227,7 @@ class MultiplexedSample(Sample):
     def taxa(self, request, multiplexed_samples):
         taxas = set()
         if multiplexed_samples:
-            for sample in multiplexed_samples:
+            for sample in iter_warmed(request, multiplexed_samples):
                 sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=taxa')
                 taxas.add(sample_object.get('taxa'))
 

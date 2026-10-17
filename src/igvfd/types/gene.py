@@ -83,7 +83,7 @@ class Gene(SharedItem):
 
     @property
     def __name__(self):
-        properties = self.upgrade_properties()
+        properties = self.upgraded_properties()
         return self._geneid_with_allele(properties)
 
     def _geneid_with_allele(self, properties):

@@ -4,6 +4,7 @@ from snovault.auditor import (
 )
 
 from snovault.mapping import watch_for_changes_in
+from snovault.util import iter_warmed
 
 from .formatter import (
     audit_link,
@@ -30,7 +31,7 @@ def audit_curated_set_mismatched_taxa(value, system):
         samples_taxa = set(
             [
                 system.get('request').embed(x).get('taxa', None)
-                for x in value.get('samples', [])
+                for x in iter_warmed(system.get('request'), value.get('samples', []))
             ]
         )
         if samples_taxa != taxa and '' not in taxa:
@@ -68,7 +69,7 @@ def audit_curated_set_non_virtual_sample(value, system):
     non_virtual_samples = []
     samples = value.get('samples', [])
     if samples:
-        for sample in samples:
+        for sample in iter_warmed(system.get('request'), samples):
             sample_object = system.get('request').embed(sample, '@@object?skip_calculated=true')
             if not (sample_object.get('virtual', False)):
                 non_virtual_samples.append(sample)

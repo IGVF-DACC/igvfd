@@ -4,7 +4,7 @@ from snovault.auditor import (
 )
 
 from snovault.mapping import watch_for_changes_in
-from snovault.util import embed_paths
+from snovault.util import embed_paths, iter_warmed
 
 from .formatter import (
     audit_link,
@@ -369,7 +369,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
         return
     samples = value.get('samples', [])
     bad_samples = []
-    for sample in samples:
+    for sample in iter_warmed(system.get('request'), samples):
         sample_object = system.get('request').embed(sample, '@@object')
         if 'modifications' not in sample_object:
             bad_samples.append(sample)
@@ -437,12 +437,12 @@ def audit_missing_institutional_certification(value, system):
     samples = value.get('samples', [])
 
     sample_objects_to_check = []
-    for sample in samples:
+    for sample in iter_warmed(system.get('request'), samples):
         sample_object = system.get('request').embed(sample, '@@object')
         if 'MultiplexedSample' in sample_object['@type']:
             multiplexed_sample_id = sample_object['@id']
             multiplexed_phrase = f' that is multiplexed in {audit_link(path_to_text(multiplexed_sample_id), multiplexed_sample_id)}'
-            for mux_sample in sample_object['multiplexed_samples']:
+            for mux_sample in iter_warmed(system.get('request'), sample_object['multiplexed_samples']):
                 mux_sample_object = system.get('request').embed(mux_sample, '@@object')
                 if any(donor.startswith('/human-donors/') for donor in mux_sample_object.get('donors', [])):
                     sample_objects_to_check.append((mux_sample_object, multiplexed_phrase))
@@ -487,9 +487,9 @@ def audit_missing_auxiliary_set_link(value, system):
     audit_message = get_audit_message(audit_missing_auxiliary_set_link)
     samples = value.get('samples', [])
     auxiliary_sets = value.get('auxiliary_sets', [])
-    for sample in samples:
+    for sample in iter_warmed(system.get('request'), samples):
         sample_object = system.get('request').embed(sample, '@@object')
-        for file_set in sample_object.get('file_sets', []):
+        for file_set in iter_warmed(system.get('request'), sample_object.get('file_sets', [])):
             if file_set.startswith('/auxiliary-sets/') and file_set not in auxiliary_sets:
                 auxiliary_set_object = system.get('request').embed(file_set, '@@object?skip_calculated=true')
                 if auxiliary_set_object.get('status', '') in ['in progress', 'released', 'archived']:
@@ -536,7 +536,7 @@ def audit_targeted_genes(value, system):
         or is_protein_abundance_biometric(value, system)
     )
     has_biomarker_genes = False
-    for sample in value.get('samples', []):
+    for sample in iter_warmed(system.get('request'), value.get('samples', [])):
         sample_object = system.get('request').embed(sample, '@@object')
         for biomarker in sample_object.get('biomarkers', []):
             biomarker_object = system.get('request').embed(

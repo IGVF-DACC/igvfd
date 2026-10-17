@@ -33,7 +33,7 @@ from snovault.attachment import InternalRedirect
 
 from snovault.schema_utils import schema_validator
 
-from snovault.util import Path
+from snovault.util import Path, iter_warmed
 
 from igvfd.types.base import (
     Item,
@@ -1109,7 +1109,7 @@ class ConfigurationFile(File):
         # Collect assay titles across all linked sets
         assay_term_names = sorted({
             title
-            for file_set in linked_file_sets
+            for file_set in iter_warmed(request, linked_file_sets)
             for title in (
                 request.embed(file_set, '@@object?skip_calculated_properties=true').get('assay_titles') or []
             )

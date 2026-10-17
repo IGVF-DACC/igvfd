@@ -67,3 +67,39 @@ def test_audit_identical_with_and_without_batch_embed(
     for item in (principal_analysis_set, measurement_set):
         url = f'{item["@id"]}@@audit'
         assert get_json(testapp, url, True) == get_json(testapp, url, False)
+
+
+def test_permission_hooks_identical_with_and_without_batch_embed(
+    dummy_request, threadlocals, root, many_sequence_files, principal_analysis_set, measurement_set, lab, award
+):
+    uuids = [f['uuid'] for f in many_sequence_files] + [
+        principal_analysis_set['uuid'], measurement_set['uuid'], lab['uuid'], award['uuid'],
+    ]
+    snapshots = {}
+    for batch_embed in (False, True):
+        dummy_request.batch_embed = batch_embed
+        snapshot = []
+        for uuid in uuids:
+            item = root.get_by_uuid(uuid)
+            snapshot.append((str(item.__name__), item.__acl__(), item.__ac_local_roles__()))
+        snapshots[batch_embed] = snapshot
+    assert snapshots[True] == snapshots[False]
+    item = root.get_by_uuid(uuids[0])
+    assert item.upgraded_properties() is item.upgraded_properties()
+
+
+def test_index_document_identical_with_and_without_batch_embed(
+    indexer_testapp, principal_analysis_set, measurement_set, many_sequence_files
+):
+    from igvfd.commands.profile_render import normalize_json
+    for item in [principal_analysis_set, measurement_set] + many_sequence_files[:2]:
+        documents = {}
+        for batch_embed in (False, True):
+            url = f'{item["@id"]}@@index-data?datastore=database&batch_embed={str(batch_embed).lower()}'
+            document = indexer_testapp.get(url).json
+            document.pop('xmin')
+            documents[batch_embed] = document
+        # ES invalidation is driven by these two lists, so they must match exactly.
+        assert documents[True]['embedded_uuids'] == documents[False]['embedded_uuids']
+        assert documents[True]['linked_uuids'] == documents[False]['linked_uuids']
+        assert normalize_json(documents[True]) == normalize_json(documents[False])

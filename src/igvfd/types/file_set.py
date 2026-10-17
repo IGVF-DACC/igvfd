@@ -27,7 +27,7 @@ PROTEIN_ABUNDANCE_TERM_NAME = 'protein abundance method'
 
 def get_donors_from_samples(request, samples):
     donor_objects = []
-    for sample in samples:
+    for sample in iter_warmed(request, samples):
         donor_objects += request.embed(sample, '@@object').get('donors', [])
     return sorted(set(donor_objects)) or None
 
@@ -469,7 +469,7 @@ def get_sample_treatment_id_groups(request, samples, visited_multiplexed_samples
     if visited_multiplexed_samples is None:
         visited_multiplexed_samples = set()
     treatment_groups = []
-    for sample in samples:
+    for sample in iter_warmed(request, samples):
         if sample in visited_multiplexed_samples:
             continue
         sample_object = request.embed(sample, '@@object?skip_calculated=true')
@@ -606,7 +606,7 @@ def get_cell_annotation(request, cell_type, samples, cell_qualifier=None):
     cell_qualifier_string = cell_qualifier if cell_qualifier else None
     cell_type_name = request.embed(cell_type, '@@object').get('term_name', '')
 
-    for sample in samples:
+    for sample in iter_warmed(request, samples):
         sample_object = request.embed(sample, '@@object')
         sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object')
         classifications = sample_object.get('classifications', [])
@@ -662,7 +662,7 @@ def get_virtual_and_taxa_phrases_from_samples(request, samples):
     virtual_phrase = 'virtual '
     taxa = set()
     taxa_phrase = ''
-    for sample in samples:
+    for sample in iter_warmed(request, samples):
         sample_object = request.embed(sample, '@@object')
         taxa.add(sample_object.get('taxa', ''))
         # only put 'virtual' in final summary if all samples are virtual
@@ -940,7 +940,7 @@ class FileSet(Item):
     def construct_library_sets(self, request, samples=None):
         construct_library_sets = set()
         if self.item_type != 'construct_library_set':  # construct library sets should not calculate construct_library_sets
-            for sample in samples:
+            for sample in iter_warmed(request, samples):
                 sample_object = request.embed(sample, '@@object')
                 if sample_object.get('construct_library_sets', []):
                     construct_library_sets = construct_library_sets | set(
@@ -965,7 +965,7 @@ class FileSet(Item):
     )
     def data_use_limitation_summaries(self, request, lab, samples=None):
         summaries_to_return = []
-        for sample in samples:
+        for sample in iter_warmed(request, samples):
             sample_object = request.embed(
                 sample, '@@object_with_select_calculated_properties?field=institutional_certificates')
             for ic in sample_object.get('institutional_certificates', []):
@@ -990,7 +990,7 @@ class FileSet(Item):
     )
     def controlled_access(self, request, lab, samples=None):
         controlled_access_to_return = []
-        for sample in samples:
+        for sample in iter_warmed(request, samples):
             sample_object = request.embed(
                 sample, '@@object_with_select_calculated_properties?field=institutional_certificates')
             for ic in sample_object.get('institutional_certificates', []):
@@ -1075,7 +1075,7 @@ class AnalysisSet(FileSet):
             # The file_set_types are included based on the subclass
             # of only the directly associated input_file_sets, not
             # on the subclass of all file sets that are checked.
-            for directly_linked_input in input_file_sets:
+            for directly_linked_input in iter_warmed(request, input_file_sets):
                 fileset_object = request.embed(
                     directly_linked_input,
                     '@@object_with_select_calculated_properties?field=@type'
@@ -1117,7 +1117,7 @@ class AnalysisSet(FileSet):
                         if file_set_type:
                             fileset_types.add(file_set_type)
                         if measurement_sets:
-                            for candidate_fileset in measurement_sets:
+                            for candidate_fileset in iter_warmed(request, measurement_sets):
                                 measurement_set_object = request.embed(
                                     candidate_fileset, '@@object?skip_calculated=true')
                                 assay_terms.add(measurement_set_object['assay_term'])
@@ -1171,7 +1171,7 @@ class AnalysisSet(FileSet):
 
         # Collect CRISPR modalities, file set type, and sorted_from from associated samples.
         if samples:
-            for sample in samples:
+            for sample in iter_warmed(request, samples):
                 sample_object = request.embed(sample, '@@object')
                 if 'sorted_from' in sample_object:
                     any_sample_sorted_from = True
@@ -1409,7 +1409,7 @@ class AnalysisSet(FileSet):
     def samples_class(self, request, samples=None):
         classifications = set()
 
-        for sample in samples or []:
+        for sample in iter_warmed(request, samples or []):
             sample_object = request.embed(sample, '@@object')
             classifications.update(
                 sample_object.get('classifications', [])
@@ -1509,7 +1509,7 @@ class AnalysisSet(FileSet):
         file_set_objs = []
         if input_file_sets is None:
             input_file_sets = []
-        for fileset in input_file_sets:
+        for fileset in iter_warmed(request, input_file_sets):
             file_set_objs.append(
                 request.embed(
                     fileset,
@@ -1559,7 +1559,7 @@ class AnalysisSet(FileSet):
             'pooled reprogrammed cell specimen': 'pooled reprogrammed'
         }
 
-        for sample in samples:
+        for sample in iter_warmed(request, samples):
             sample_object = request.embed(sample, '@@object')
 
             # Get bioqualifers enums for non-multiplexed samples
@@ -1588,7 +1588,7 @@ class AnalysisSet(FileSet):
             disease_phrase = ''
             disease_terms_by_sample_term = {}
             if sample_object.get('multiplexed_samples'):
-                for multiplexed_sample in sample_object['multiplexed_samples']:
+                for multiplexed_sample in iter_warmed(request, sample_object['multiplexed_samples']):
                     multiplexed_sample_object = request.embed(
                         multiplexed_sample, '@@object?skip_calculated=true'
                     )
@@ -1783,7 +1783,7 @@ class AnalysisSet(FileSet):
         file_set_objs = []
         if input_file_sets is None:
             input_file_sets = []
-        for fileset in input_file_sets:
+        for fileset in iter_warmed(request, input_file_sets):
             file_set_objs.append(
                 request.embed(
                     fileset,
@@ -1842,7 +1842,7 @@ class AnalysisSet(FileSet):
         if input_file_sets is None:
             input_file_sets = []
         analysis_set_targeted_genes = set()
-        for input_file_set in input_file_sets:
+        for input_file_set in iter_warmed(request, input_file_sets):
             if input_file_set.startswith(('/measurement-sets/', '/analysis-sets/')):
                 input_file_set_object = request.embed(
                     input_file_set, '@@object_with_select_calculated_properties?field=targeted_genes')
@@ -1875,7 +1875,7 @@ class AnalysisSet(FileSet):
         if input_file_sets is None:
             input_file_sets = []
         analysis_set_targeted_proteins = set()
-        for input_file_set in input_file_sets:
+        for input_file_set in iter_warmed(request, input_file_sets):
             if input_file_set.startswith(('/measurement-sets/', '/analysis-sets/')):
                 input_file_set_object = request.embed(
                     input_file_set, '@@object_with_select_calculated_properties?field=targeted_proteins')
@@ -1903,7 +1903,7 @@ class AnalysisSet(FileSet):
         if input_file_sets is None:
             input_file_sets = []
         analysis_set_enrichment_designs = set()
-        for input_file_set in input_file_sets:
+        for input_file_set in iter_warmed(request, input_file_sets):
             if input_file_set.startswith(('/measurement-sets/', '/analysis-sets/')):
                 input_file_set_object = request.embed(
                     input_file_set, '@@object?skip_calculated=true')
@@ -2181,7 +2181,7 @@ class MeasurementSet(FileSet):
         object_id = self.jsonld_id(request)
         related_multiome_datasets = set()
 
-        for sample in samples:
+        for sample in iter_warmed(request, samples):
             sample_object = request.embed(sample, '@@object')
             for file_set_id in sample_object.get('file_sets', []):
                 if (
@@ -2229,7 +2229,7 @@ class MeasurementSet(FileSet):
                 cls_set.add(construct_library_set_object['summary'])
 
         any_sample_sorted_from = False
-        for sample in samples:
+        for sample in iter_warmed(request, samples):
             sample_object = request.embed(sample, '@@object')
             if 'sorted_from' in sample_object:
                 any_sample_sorted_from = True
@@ -2583,7 +2583,7 @@ class AuxiliarySet(FileSet):
         if measurement_sets is None:
             measurement_sets = []
         preferred_assay_titles = set()
-        for measurement_set in measurement_sets:
+        for measurement_set in iter_warmed(request, measurement_sets):
             preferred_assays = request.embed(
                 measurement_set, '@@object?skip_calculated=true').get('preferred_assay_titles', [])
             if preferred_assays:
@@ -2608,7 +2608,7 @@ class AuxiliarySet(FileSet):
     def preferred_assay_slims(self, request, preferred_assay_titles=None, measurement_sets=None):
         assay_terms = []
         if measurement_sets:
-            for measurement_set in measurement_sets:
+            for measurement_set in iter_warmed(request, measurement_sets):
                 assay_term = request.embed(
                     measurement_set, '@@object?skip_calculated=true'
                 ).get('assay_term')
@@ -2631,7 +2631,7 @@ class AuxiliarySet(FileSet):
     def crispr_screen_readout(self, request, measurement_sets=None, file_set_type=None):
         if not measurement_sets or not file_set_type:
             return
-        for measurement_set in measurement_sets:
+        for measurement_set in iter_warmed(request, measurement_sets):
             measurement_set_object = request.embed(
                 measurement_set,
                 '@@object_with_select_calculated_properties?field=assay_term'
@@ -2658,7 +2658,7 @@ class AuxiliarySet(FileSet):
         if measurement_sets is None:
             measurement_sets = []
         assay_titles = set()
-        for measurement_set in measurement_sets:
+        for measurement_set in iter_warmed(request, measurement_sets):
             assays = request.embed(
                 measurement_set, '@@object_with_select_calculated_properties?field=assay_titles').get('assay_titles', [])
             if assays:
@@ -2683,7 +2683,7 @@ class AuxiliarySet(FileSet):
         if measurement_sets is None:
             measurement_sets = []
         assay_types = set()
-        for measurement_set in measurement_sets:
+        for measurement_set in iter_warmed(request, measurement_sets):
             assays = request.embed(
                 measurement_set, '@@object_with_select_calculated_properties?field=assay_slims').get('assay_slims', [])
             if assays:
@@ -2701,7 +2701,7 @@ class AuxiliarySet(FileSet):
         if not measurement_sets:
             return f'{file_set_type}'
         measurement_sets_summaries = sorted(set(
-            [request.embed(measurement_set, '@@object_with_select_calculated_properties?field=summary').get('summary') for measurement_set in measurement_sets if measurement_set]))
+            [request.embed(measurement_set, '@@object_with_select_calculated_properties?field=summary').get('summary') for measurement_set in iter_warmed(request, measurement_sets) if measurement_set]))
         return f'{file_set_type} for {", ".join(measurement_sets_summaries)}'
 
     @calculated_property(
@@ -2837,7 +2837,7 @@ class PredictionSet(FileSet):
                 samples_phrase = f'{len(samples)} {virtual_phrase}{taxa_phrase}samples'
             else:  # list out the samples explicitly, take unique set of sample summaries
                 sample_term_phrases = set()
-                for sample in samples:
+                for sample in iter_warmed(request, samples):
                     sample_object = request.embed(sample, '@@object')
                     sample_term_phrases.add(sample_object.get('summary', ''))
                 samples_phrase = f'{", ".join([t for t in sorted(sample_term_phrases) if t!=""])}'
@@ -2961,7 +2961,7 @@ class ConstructLibrarySet(FileSet):
         if samples is None:
             samples = []
         linked_file_sets = set()
-        for sample in samples:
+        for sample in iter_warmed(request, samples):
             sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=file_sets')
             for file_set in sample_object.get('file_sets', []):
                 linked_file_sets.add(file_set)
@@ -2986,7 +2986,7 @@ class ConstructLibrarySet(FileSet):
         if file_sets is None:
             file_sets = []
         preferred_assay_titles = set()
-        for file_set in file_sets:
+        for file_set in iter_warmed(request, file_sets):
             if file_set.startswith('/measurement-sets/'):
                 preferred_assays = request.embed(
                     file_set, '@@object?skip_calculated=true').get('preferred_assay_titles', [])
@@ -3012,7 +3012,7 @@ class ConstructLibrarySet(FileSet):
     def preferred_assay_slims(self, request, preferred_assay_titles=None, file_sets=None):
         assay_terms = []
         if file_sets:
-            for file_set in file_sets:
+            for file_set in iter_warmed(request, file_sets):
                 if file_set.startswith('/measurement-sets/'):
                     assay_term = request.embed(
                         file_set, '@@object?skip_calculated=true'
@@ -3042,7 +3042,7 @@ class ConstructLibrarySet(FileSet):
         if file_sets is None:
             file_sets = []
         assay_titles = set()
-        for file_set in file_sets:
+        for file_set in iter_warmed(request, file_sets):
             if file_set.startswith('/measurement-sets/'):
                 assays = request.embed(
                     file_set, '@@object_with_select_calculated_properties?field=assay_titles').get('assay_titles', [])
@@ -3068,7 +3068,7 @@ class ConstructLibrarySet(FileSet):
         if file_sets is None:
             file_sets = []
         assay_types = set()
-        for file_set in file_sets:
+        for file_set in iter_warmed(request, file_sets):
             if file_set.startswith('/measurement-sets/'):
                 assays = request.embed(
                     file_set, '@@object_with_select_calculated_properties?field=assay_slims').get('assay_slims', [])

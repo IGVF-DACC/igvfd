@@ -8,7 +8,7 @@ from snovault import (
 from snovault import (
     UPGRADER,
 )
-from snovault.schema_utils import validate
+from snovault.schema_utils import StoredDataSchemaValidator, validate
 from snovault.util import simple_path_ids
 from .formatter import (
     audit_link,
@@ -44,7 +44,8 @@ def audit_item_schema(value, system):
         properties['schema_version'] = target_version
 
     properties['uuid'] = str(context.uuid)
-    validated, errors = validate(context.schema, properties, properties)
+    options = {'validator_class': StoredDataSchemaValidator} if system['request'].batch_embed else {}
+    validated, errors = validate(context.schema, properties, properties, **options)
     for error in errors:
         category = 'validation error'
         path = list(error.path)

@@ -4,6 +4,7 @@ from snovault.auditor import (
 )
 
 from snovault.mapping import watch_for_changes_in
+from snovault.util import iter_warmed
 
 from .file_set import PERTURB_SEQ_ASSAY_TERMS
 
@@ -241,7 +242,7 @@ def audit_missing_moi(value, system):
     if 'lentiviral transduction' not in value.get('construct_delivery_methods', []) or 'moi' in value:
         return
     audit_message = get_audit_message(audit_missing_moi, index=1)
-    for file_set_id in value.get('file_sets', []):
+    for file_set_id in iter_warmed(system.get('request'), value.get('file_sets', [])):
         file_set = system.get('request').embed(file_set_id + '@@object')
         if file_set.get('assay_term') in PERTURB_SEQ_ASSAY_TERMS:
             audit_message = get_audit_message(audit_missing_moi, index=0)
