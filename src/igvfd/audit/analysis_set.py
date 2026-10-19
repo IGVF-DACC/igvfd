@@ -342,10 +342,17 @@ def audit_missing_cell_annotations(value, system):
     if not value.get('files', []):
         return
 
-    # Check if any file has the file content type 'cell annotations'
+    # Check if any file has an accepted cell annotation content type
+    cell_annotation_types = {
+        'cell annotations',
+        'cell annotation with TF overexpression'
+    }
+    # Check if any file has the file content type 'cell annotations' or 'cell annotation with TF overexpression
     for file in value.get('files', []):
-        file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
-        if file_object.get('content_type') == 'cell annotations':
+        file_object = system.get('request').embed(
+            file + '@@object?skip_calculated=true'
+        )
+        if file_object.get('content_type') in cell_annotation_types:
             return
 
     msg_missing_cell_annot = get_audit_message(audit_missing_cell_annotations, index=0)
