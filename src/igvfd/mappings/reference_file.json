@@ -1,6 +1,6 @@
 {
-    "hash": "349dfd951e10231c3fa320dd8943ad11",
-    "index_name": "reference_file_349dfd95",
+    "hash": "b6996dc0d560ee9414670f153ab4a1a3",
+    "index_name": "reference_file_b6996dc0",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -238,7 +238,78 @@
                                         "type": "keyword"
                                     },
                                     "software": {
-                                        "type": "keyword"
+                                        "properties": {
+                                            "@id": {
+                                                "type": "keyword"
+                                            },
+                                            "@type": {
+                                                "type": "keyword"
+                                            },
+                                            "aliases": {
+                                                "type": "keyword"
+                                            },
+                                            "award": {
+                                                "type": "keyword"
+                                            },
+                                            "categories": {
+                                                "type": "keyword"
+                                            },
+                                            "creation_timestamp": {
+                                                "type": "date"
+                                            },
+                                            "description": {
+                                                "type": "text"
+                                            },
+                                            "lab": {
+                                                "type": "keyword"
+                                            },
+                                            "name": {
+                                                "type": "keyword"
+                                            },
+                                            "notes": {
+                                                "type": "text"
+                                            },
+                                            "preview_timestamp": {
+                                                "type": "date"
+                                            },
+                                            "publications": {
+                                                "type": "keyword"
+                                            },
+                                            "release_timestamp": {
+                                                "type": "date"
+                                            },
+                                            "schema_version": {
+                                                "type": "keyword"
+                                            },
+                                            "source_url": {
+                                                "type": "keyword"
+                                            },
+                                            "status": {
+                                                "type": "keyword"
+                                            },
+                                            "submitted_by": {
+                                                "type": "keyword"
+                                            },
+                                            "submitter_comment": {
+                                                "type": "keyword"
+                                            },
+                                            "summary": {
+                                                "type": "keyword"
+                                            },
+                                            "title": {
+                                                "type": "keyword"
+                                            },
+                                            "used_by": {
+                                                "type": "keyword"
+                                            },
+                                            "uuid": {
+                                                "type": "keyword"
+                                            },
+                                            "versions": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "type": "object"
                                     },
                                     "source_url": {
                                         "type": "keyword"

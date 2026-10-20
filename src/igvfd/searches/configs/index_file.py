@@ -59,6 +59,9 @@ def index_file():
             'file_set.samples.phenotypic_features.feature.term_name': {
                 'title': 'Phenotypic Features'
             },
+            'analysis_step_version.software_versions.software.title': {
+                'title': 'Software'
+            },
             'workflows.name': {
                 'title': 'Workflows'
             },
