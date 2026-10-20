@@ -16,15 +16,17 @@ def audit_pseudobulk_set_marker_gene_files(value, system):
     '''
     [
         {
-            "audit_description": "Pseudobulk sets require a marker genes file in their input file set(s).",
+            "audit_description": "Gene expression pseudobulk sets require that their associated cell annotation file is derived from a marker gene list.",
             "audit_category": "missing marker gene list",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
     audit_message = get_audit_message(audit_pseudobulk_set_marker_gene_files, index=0)
-    marker_genes_files_in_input_file_set = []
     merged = value.get('merged', False)
+    file_set_type = value.get('file_set_type', '')
+    if merged or file_set_type != 'gene expression pseudobulk':
+        return
     if value.get('input_file_sets', []):
         for input_file_set in value.get('input_file_sets', []):
             input_file_set_object = system.get('request').embed(
@@ -32,18 +34,25 @@ def audit_pseudobulk_set_marker_gene_files(value, system):
             files_in_input = input_file_set_object.get('files', [])
             for tab_file in [x for x in files_in_input if x.startswith('/tabular-files/')]:
                 file_object = system.get('request').embed(tab_file, '@@object?skip_calculated=true')
-                if file_object.get('content_type', '') in ['marker genes', 'marker gene activity']:
-                    marker_genes_files_in_input_file_set.append(file_object.get('@id'))
-    if not marker_genes_files_in_input_file_set and not merged:
-        detail = (
-            f'Pseudobulk set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has no input file sets that have marker genes files.'
-        )
-        yield AuditFailure(
-            audit_message.get('audit_category', ''),
-            f'{detail} {audit_message.get("audit_description", "")}',
-            level=audit_message.get('audit_level', '')
-        )
+                # Inspect the derived_from of the cell annotations.
+                if file_object.get('content_type', '') == 'cell annotations':
+                    cell_annotations_inputs = [
+                        x for x in file_object.get('derived_from', []) if x.startswith('/tabular-files/')]
+                    upstream_file_content_types = []
+                    for upstream_file in cell_annotations_inputs:
+                        upstream_file_object = system.get('request').embed(
+                            upstream_file, '@@object?skip_calculated=true')
+                        upstream_file_content_types.append(upstream_file_object.get('content_type', ''))
+                    if all(content_type not in ['marker genes', 'marker gene activity'] for content_type in upstream_file_content_types):
+                        detail = (
+                            f'Pseudobulk set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                            f'has no input file sets that have marker genes files.'
+                        )
+                        yield AuditFailure(
+                            audit_message.get('audit_category', ''),
+                            f'{detail} {audit_message.get("audit_description", "")}',
+                            level=audit_message.get('audit_level', '')
+                        )
 
 
 def audit_pseudobulk_set_sample_matches_input(value, system):

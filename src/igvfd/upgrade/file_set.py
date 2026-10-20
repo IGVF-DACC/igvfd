@@ -1002,3 +1002,12 @@ def prediction_set_9_10(value, system):
         )
     if notes.strip() != value.get('notes', '').strip():
         value['notes'] = notes.strip()
+
+
+@upgrade_step('pseudobulk_set', '2', '3')
+def pseudobulk_set_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3701
+    notes = value.get('notes', '')
+    value['file_set_type'] = 'gene expression pseudobulk'
+    notes += f'This pseudobulk set\'s file set type was pseudobulk analysis, but it has been updated to gene expression pseudobulk via an upgrade.'
+    value['notes'] = notes.strip()
