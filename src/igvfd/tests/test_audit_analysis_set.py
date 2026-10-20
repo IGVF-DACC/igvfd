@@ -791,6 +791,19 @@ def test_audit_missing_cell_annotations(testapp, analysis_set_base, intermediate
         for error in res.json['audit'].get('WARNING', [])
     )
 
+    # Is principal, has cell annotation with TF overexpression, IS single cell (no audit)
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'content_type': 'cell annotation with TF overexpression'
+        }
+    )
+    res = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing cell annotations'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
 
 def test_audit_analysis_set_condition_treatments(
     testapp,
