@@ -529,15 +529,23 @@ def test_audit_missing_genome_or_transcriptome(
 def test_audit_missing_genome_reference_matrix_content_type(
     testapp,
     analysis_set_base,
-    matrix_file
+    matrix_file,
+    reference_file
 ):
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'content_type': 'cell multiplexing oligonucleotide reference',
+            'file_format': 'fasta'
+        }
+    )
     # A cell by gene matrix without a genome reference triggers the audit.
     testapp.patch_json(
         matrix_file['@id'],
         {
             'file_set': analysis_set_base['@id'],
             'content_type': 'cell by gene matrix',
-            'reference_files': []
+            'reference_files': [reference_file['@id']]
         }
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
