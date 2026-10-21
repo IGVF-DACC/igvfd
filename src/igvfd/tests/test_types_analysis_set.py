@@ -649,9 +649,10 @@ def test_analysis_set_sample_summary(
     technical_sample,
     sample_term_lymphoblastoid,
     sample_term_K562,
-    sample_term_brown_adipose_tissue,
+    sample_term_HEK293T,
     sample_term_gastrula,
     sample_term_technical_sample,
+    sample_term_brown_adipose_tissue,
     phenotypic_feature_basic,
     phenotypic_feature_01,
     rodent_donor,
@@ -795,7 +796,6 @@ def test_analysis_set_sample_summary(
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
-    print(res.get('simplified_sample_summary'))
     assert res.get('simplified_sample_summary',
                    '') == 'mixed species multiplexed sample of K562 with Alzheimer\'s disease, lymphoblastoid cell line from 1 human donor, 1 male mouse of strain1 strain, overexpressing MYC'
 
@@ -837,11 +837,8 @@ def test_analysis_set_sample_summary(
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
-    hs_donor_accession_1 = testapp.get(parent_human_donor_1['@id']).json.get('accession')
-    hs_donor_accessions = testapp.get(human_donor['@id']).json.get('accession')
-    sorted_hs_donors = sorted([hs_donor_accession_1, hs_donor_accessions])
     assert res.get('simplified_sample_summary',
-                   '') == f'Parkinson\'s collection of human multiplexed sample of adrenal gland, middle temporal gyrus with and without Parkinson\'s from 2 donors {sorted_hs_donors[0]} and {sorted_hs_donors[1]}'
+                   '') == 'Parkinson\'s collection of human multiplexed sample of adrenal gland, middle temporal gyrus with and without Parkinson\'s from 2 donors'
 
     # Test group 4: non-mux samples with multiple target terms and times (test concat)
     # Starting fresh
@@ -914,7 +911,7 @@ def test_analysis_set_sample_summary(
     hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == f'human brown adipose tissue, gastrula, lymphoblastoid cell line differentiated from K562, for 2 minutes, 5 minutes, 10 minutes, from 1 donor {hs_donor_accession}'
+        'simplified_sample_summary', '') == 'brown adipose tissue, gastrula, lymphoblastoid cell line differentiated from K562, for 2 minutes, 5 minutes, 10 minutes'
 
     # Test group 5: technical samples (no donors)
     testapp.patch_json(
@@ -970,10 +967,9 @@ def test_analysis_set_sample_summary(
             'input_file_sets': [measurement_set_perturb_seq['@id']]
         }
     )
-    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == f'human K562 cell line from 1 donor {hs_donor_accession}'
+        'simplified_sample_summary', '') == 'K562'
 
     # Test group 7: have biosample qualifiers
     testapp.patch_json(
@@ -982,12 +978,11 @@ def test_analysis_set_sample_summary(
             'biosample_qualifiers': ['exhausted']
         }
     )
-    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == f'human exhausted K562 cell line from 1 donor {hs_donor_accession}'
+        'simplified_sample_summary', '') == 'exhausted K562'
 
-    # Test group 7: if a non-multiplexed sample is single source
+    # Test group 7: if a non-multiplexed sample is not Cell Line (EFO without dbxrefs)
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -1000,17 +995,12 @@ def test_analysis_set_sample_summary(
             'samples': [in_vitro_cell_line_HEK293T['@id']]
         }
     )
-    testapp.patch_json(
-        in_vitro_cell_line_HEK293T['@id'],
-        {
-            'single_source': True
-        }
-    )
     res = testapp.get(analysis_set_base['@id']).json
+    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     assert res.get(
-        'simplified_sample_summary', '') == 'HEK293T'
+        'simplified_sample_summary', '') == f'human HEK293T cell line from 1 donor {hs_donor_accession}'
 
-    # Test group 8: Mux samples with some single source subsamples
+    # Test group 8: Mux samples with some non-cell line subsamples (EFO without dbxrefs)
     testapp.patch_json(
         measurement_set_mpra['@id'],
         {
@@ -1022,7 +1012,13 @@ def test_analysis_set_sample_summary(
     assert res.get(
         'simplified_sample_summary', '') == f'human multiplexed sample of HEK293T, middle temporal gyrus from 1 donor {hs_donor_accession}'
 
-    # Test group 9: Multiple inputs with mixed souce samples
+    # Test group 9: Multiple inputs with mixed cell and non-cell linesamples
+    testapp.patch_json(
+        sample_term_HEK293T['@id'],
+        {
+            'dbxrefs': ['Cellosaurus:CVCL_0063']
+        }
+    )
     testapp.patch_json(
         measurement_set_multiome_2['@id'],
         {

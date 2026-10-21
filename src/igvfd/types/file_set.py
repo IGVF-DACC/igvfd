@@ -411,7 +411,9 @@ def get_disease_terms_from_phenotypic_features(request, sample_object, is_pd_col
         return 'Parkinson\'s'
 
 
-def get_donors_info_for_sample_summary(request, donors):
+def get_donors_info_for_sample_summary(request, donors, count_only=False):
+    '''Summarize donors. With count_only (multiplexed samples), multiple
+    donors of a single non-mouse taxon are counted instead of listed.'''
     donor_metadata = {}
     # technical samples have no donors
     if not donors:
@@ -472,6 +474,8 @@ def get_donors_info_for_sample_summary(request, donors):
         accessions = sorted(metadata.get('accessions', []))
         if taxa == 'mouse':
             return f'from {mouse_donor_phrase(metadata)}'
+        if count_only and len(accessions) > 1:
+            return f'from {pluralize_count(len(accessions), "donor")}'
         if len(accessions) <= 2:
             accession_phrase = ' and '.join(accessions)
         else:
@@ -769,25 +773,23 @@ def get_virtual_and_taxa_phrases_from_samples(request, samples):
     return virtual_phrase, taxa_phrase
 
 
-# def check_if_cell_line(request, sample_object):
-#     '''Check if a sample object is a cell line.'''
-#     sample_terms = sample_object.get('sample_terms', [])
-#     for term in sample_terms:
-#         sample_term_object = request.embed(term, '@@object?skip_calculated=true')
-#         sample_term_id = sample_term_object.get('term_id', '')
-#         sample_term_dbxrefs = sample_term_object.get('dbxrefs', [])
-#         if sample_term_id.startswith('CLO:') or any([x.startswith('Cellosaurus') for x in sample_term_dbxrefs]):
-#             return True
-#     return False
+def check_if_single_source_mux_subsample(request, sample_object):
+    '''Within a multiplexed sample, a subsample derived from a cell line (with
+    a targeted sample term) is not single source, so its donors are reported.'''
+    if 'targeted_sample_term' in sample_object:
+        return False
+    return check_if_cell_line(request, sample_object)
 
 
 def is_sample_single_source(request, sample_object):
     '''Check if a sample is single source (established cell line). If Multiplexed, all multiplexed samples must be cell lines.'''
     if 'multiplexed sample' in sample_object.get('classifications', []):
+        if sample_object.get('taxa') == 'Mixed species':
+            return False
         for mux_sample in sample_object.get('multiplexed_samples', []):
             # Only if all subsamples are cell lines, the multiplexed sample is NOT considered single source.
             mux_sample_object = request.embed(mux_sample, '@@object?skip_calculated=true')
-            if not check_if_cell_line(request, mux_sample_object):
+            if not check_if_single_source_mux_subsample(request, mux_sample_object):
                 return False
         return True
     return check_if_cell_line(request, sample_object)
@@ -1697,7 +1699,7 @@ class AnalysisSet(FileSet):
             if 'multiplexed sample' in sample_object.get('classifications', []):
                 for mux_sample in sample_object.get('multiplexed_samples', []):
                     multiplexed_sample_object = request.embed(mux_sample, '@@object?skip_calculated=true')
-                    if not check_if_cell_line(request, multiplexed_sample_object):
+                    if not check_if_single_source_mux_subsample(request, multiplexed_sample_object):
                         donors.update(multiplexed_sample_object.get('donors', []))
             elif not is_single_source:
                 donors.update(sample_object.get('donors', []))
@@ -1775,7 +1777,10 @@ class AnalysisSet(FileSet):
                 if is_fate_change:
                     pass
                 elif not classification.startswith('multiplexed sample of'):
-                    if sample_phrase.endswith('cell') and 'cell' in classification:
+                    if is_single_source and classification == 'cell line':
+                        # Cell lines are named by their term alone, e.g. "K562" instead of "K562 cell line".
+                        sample_phrase = sample_phrase.removesuffix(' cell')
+                    elif sample_phrase.endswith('cell') and 'cell' in classification:
                         sample_phrase = sample_phrase.replace('cell', classification)
                     elif sample_phrase.endswith(' gastruloid') and 'gastruloid' in classification:
                         sample_phrase = sample_phrase.replace(' gastruloid', '')
@@ -1918,7 +1923,10 @@ class AnalysisSet(FileSet):
 
         # Donor phrase
         donor_phrase = ''
-        donor_phrase = get_donors_info_for_sample_summary(request, donors)
+        has_multiplexed_sample = any(
+            'multiplexed sample' in sample_object.get('classifications', []) for sample_object in sample_objects
+        )
+        donor_phrase = get_donors_info_for_sample_summary(request, donors, count_only=has_multiplexed_sample)
 
         # Taxa phrase
         taxa_phrase = f'{", ".join([x for x in taxa if x != ""])}'
