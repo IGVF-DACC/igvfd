@@ -11,6 +11,8 @@ from .base import (
     paths_filtered_by_status
 )
 
+from igvfd.audit.in_vitro_system import check_if_cell_line
+
 from datetime import datetime
 import re
 
@@ -767,19 +769,28 @@ def get_virtual_and_taxa_phrases_from_samples(request, samples):
     return virtual_phrase, taxa_phrase
 
 
-def check_if_single_source(sample_object):
-    '''Check if a sample object is single source.'''
-    return sample_object.get('single_source', False)
+# def check_if_cell_line(request, sample_object):
+#     '''Check if a sample object is a cell line.'''
+#     sample_terms = sample_object.get('sample_terms', [])
+#     for term in sample_terms:
+#         sample_term_object = request.embed(term, '@@object?skip_calculated=true')
+#         sample_term_id = sample_term_object.get('term_id', '')
+#         sample_term_dbxrefs = sample_term_object.get('dbxrefs', [])
+#         if sample_term_id.startswith('CLO:') or any([x.startswith('Cellosaurus') for x in sample_term_dbxrefs]):
+#             return True
+#     return False
 
 
 def is_sample_single_source(request, sample_object):
-    '''A multiplexed sample is single source only if all its multiplexed samples are.'''
+    '''Check if a sample is single source (established cell line). If Multiplexed, all multiplexed samples must be cell lines.'''
     if 'multiplexed sample' in sample_object.get('classifications', []):
-        return all(
-            check_if_single_source(request.embed(mux_sample, '@@object?skip_calculated=true'))
-            for mux_sample in sample_object.get('multiplexed_samples', [])
-        )
-    return check_if_single_source(sample_object)
+        for mux_sample in sample_object.get('multiplexed_samples', []):
+            # Only if all subsamples are cell lines, the multiplexed sample is NOT considered single source.
+            mux_sample_object = request.embed(mux_sample, '@@object?skip_calculated=true')
+            if not check_if_cell_line(request, mux_sample_object):
+                return False
+        return True
+    return check_if_cell_line(request, sample_object)
 
 
 EMBEDDED_FILE_FIELDS = [
@@ -1686,7 +1697,7 @@ class AnalysisSet(FileSet):
             if 'multiplexed sample' in sample_object.get('classifications', []):
                 for mux_sample in sample_object.get('multiplexed_samples', []):
                     multiplexed_sample_object = request.embed(mux_sample, '@@object?skip_calculated=true')
-                    if not check_if_single_source(multiplexed_sample_object):
+                    if not check_if_cell_line(request, multiplexed_sample_object):
                         donors.update(multiplexed_sample_object.get('donors', []))
             elif not is_single_source:
                 donors.update(sample_object.get('donors', []))
@@ -1794,7 +1805,7 @@ class AnalysisSet(FileSet):
                     # from term names, e.g. "mouse embryonic stem cell".
                     taxa_word = TAXA_WORDS.get(sample_object.get('taxa'), '')
                     origin_name = sample_phrase
-                    if taxa_word and not check_if_single_source(sample_object):
+                    if taxa_word and not check_if_cell_line(request, sample_object):
                         origin_name = origin_name.removeprefix(f'{taxa_word} ')
                         target_name = target_name.removeprefix(f'{taxa_word} ')
                     if target_name.endswith('stem cell'):

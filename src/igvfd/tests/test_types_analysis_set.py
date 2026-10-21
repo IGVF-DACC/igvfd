@@ -678,19 +678,18 @@ def test_analysis_set_sample_summary(
         }
     )
 
-    # Test group 1: targeted sample terms (human donor)
+    # Test group 1: targeted sample terms (with cell line starter term, skip donor)
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
-            'targeted_sample_term': sample_term_endothelial_cell['@id'],
+            'targeted_sample_term': sample_term_endothelial_cell['@id']
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
-    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     assert res.get('simplified_sample_summary',
-                   '') == f'human endothelial cell of vascular tree differentiated from K562, for 5 minutes, from 1 donor {hs_donor_accession}'
+                   '') == 'endothelial cell of vascular tree differentiated from K562, for 5 minutes'
 
-    # Test group 1: new classifications (change wording)
+    # Test group 1: new classifications (change wording, cell line name, skip donor)
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
@@ -698,11 +697,10 @@ def test_analysis_set_sample_summary(
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
-    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     assert res.get(
-        'simplified_sample_summary', '') == f'human endothelial cell of vascular tree pooled differentiated from K562, for 5 minutes, from 1 donor {hs_donor_accession}'
+        'simplified_sample_summary', '') == 'endothelial cell of vascular tree pooled differentiated from K562, for 5 minutes'
 
-    # Test group 1: add disease terms with targeted term
+    # Test group 1: add disease terms with targeted term (skip donor, cell line name)
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
@@ -719,9 +717,9 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == f'human endothelial cell of vascular tree pooled differentiated from K562 with Alzheimer\'s disease, for 5 minutes, from 1 donor {hs_donor_accession}'
+        'simplified_sample_summary', '') == 'endothelial cell of vascular tree pooled differentiated from K562 with Alzheimer\'s disease, for 5 minutes'
 
-    # Test group 1: add overexpression CLS
+    # Test group 1: add overexpression CLS (cell line name, skip donor)
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
@@ -731,7 +729,7 @@ def test_analysis_set_sample_summary(
     res = testapp.get(principal_analysis_set['@id']).json
     hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     assert res.get('simplified_sample_summary',
-                   '') == f'human endothelial cell of vascular tree pooled differentiated from K562 with Alzheimer\'s disease, for 5 minutes, from 1 donor {hs_donor_accession}, overexpressing MYC'
+                   '') == f'endothelial cell of vascular tree pooled differentiated from K562 with Alzheimer\'s disease, for 5 minutes, overexpressing MYC'
 
     # Test group 1: add disease without targeted term
     testapp.patch_json(
@@ -797,6 +795,7 @@ def test_analysis_set_sample_summary(
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
+    print(res.get('simplified_sample_summary'))
     assert res.get('simplified_sample_summary',
                    '') == 'mixed species multiplexed sample of K562 with Alzheimer\'s disease, lymphoblastoid cell line from 1 human donor, 1 male mouse of strain1 strain, overexpressing MYC'
 
