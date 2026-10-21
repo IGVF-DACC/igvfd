@@ -1360,6 +1360,7 @@ def audit_missing_genome_transcriptome_references(value, system):
         'variants_variants'
     ]
     excluded_content_types_alignment_files = ['methylated reads']
+    excluded_content_types_matrix_files = ['cell by multiplexing oligo matrix']
     if value.get('file_set_type', '') == 'external data for catalog':
         return
 
@@ -1417,6 +1418,11 @@ def audit_missing_genome_transcriptome_references(value, system):
             if file.startswith('/alignment-files/'):
                 file_obj = system.get('request').embed(file + '@@object?skip_calculated=true')
                 if file_obj['content_type'] in excluded_content_types_alignment_files:
+                    continue
+            # Skip matrix files with certain excluded content_types.
+            if file.startswith('/matrix-files/'):
+                file_obj = system.get('request').embed(file + '@@object?skip_calculated=true')
+                if file_obj['content_type'] in excluded_content_types_matrix_files:
                     continue
             # Get all upstream Seqfiles that eventually lead to data file
             # and check if upstream seqfiles are transcriptome based assays

@@ -526,6 +526,36 @@ def test_audit_missing_genome_or_transcriptome(
     )
 
 
+@pytest.mark.parametrize('content_type, expect_missing_reference', [
+    ('cell by gene matrix', True),
+    ('cell by multiplexing oligo matrix', False),
+])
+def test_audit_missing_genome_reference_matrix_content_type(
+    testapp,
+    analysis_set_base,
+    matrix_file,
+    content_type,
+    expect_missing_reference
+):
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'file_set': analysis_set_base['@id'],
+            'content_type': content_type,
+            'reference_files': []
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    missing_references = [
+        error for error in res.json['audit'].get('NOT_COMPLIANT', [])
+        if error['category'] == 'missing reference files'
+    ]
+    assert bool(missing_references) == expect_missing_reference
+    if expect_missing_reference:
+        assert 'no genome `reference_files`' in missing_references[0]['detail']
+        assert matrix_file['@id'] in missing_references[0]['detail']
+
+
 def test_audit_anvil_file_fileset_mismatch_measet(
     testapp,
     sequence_file,
