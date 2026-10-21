@@ -1,6 +1,6 @@
 {
-    "hash": "ceba72291ebdcd00e118783c02c31421",
-    "index_name": "prediction_set_ceba7229",
+    "hash": "469711dfcb56f84156bd744e2c8816ea",
+    "index_name": "prediction_set_469711df",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -4092,10 +4092,6 @@
                             },
                             "sex": {
                                 "type": "keyword"
-                            },
-                            "single_source": {
-                                "store": true,
-                                "type": "boolean"
                             },
                             "sorted_fractions": {
                                 "type": "keyword"

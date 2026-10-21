@@ -1,6 +1,6 @@
 {
-    "hash": "a44d955fb68b294a82c87428a70ead1a",
-    "index_name": "technical_sample_a44d955f",
+    "hash": "10ade11de42b479a821ad4fec3d9ab23",
+    "index_name": "technical_sample_10ade11d",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1857,10 +1857,6 @@
                             },
                             "sex": {
                                 "type": "keyword"
-                            },
-                            "single_source": {
-                                "store": true,
-                                "type": "boolean"
                             },
                             "sorted_fractions": {
                                 "type": "keyword"

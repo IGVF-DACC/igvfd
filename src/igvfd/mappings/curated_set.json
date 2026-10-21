@@ -1,6 +1,6 @@
 {
-    "hash": "97016177a8104fce39b4923dae483cc1",
-    "index_name": "curated_set_97016177",
+    "hash": "a229854ecb714ec8a741cd39cc326e8e",
+    "index_name": "curated_set_a229854e",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -3101,10 +3101,6 @@
                             },
                             "sex": {
                                 "type": "keyword"
-                            },
-                            "single_source": {
-                                "store": true,
-                                "type": "boolean"
                             },
                             "sorted_fractions": {
                                 "type": "keyword"

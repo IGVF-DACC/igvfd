@@ -1,6 +1,6 @@
 {
-    "hash": "fa6f9538f3ab94ff5fa23b03710ef147",
-    "index_name": "analysis_set_fa6f9538",
+    "hash": "b3df14b22f8528e1d44bc8125734a5ce",
+    "index_name": "analysis_set_b3df14b2",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -3761,10 +3761,6 @@
                             },
                             "sex": {
                                 "type": "keyword"
-                            },
-                            "single_source": {
-                                "store": true,
-                                "type": "boolean"
                             },
                             "sorted_fractions": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "88bce81f2bc6ce7b9f42ebc4bb4a2307",
-    "index_name": "whole_organism_88bce81f",
+    "hash": "8a1239737a3e394f994b944473f86b22",
+    "index_name": "whole_organism_8a123973",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -2230,10 +2230,6 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "single_source": {
-                                "store": true,
-                                "type": "boolean"
-                            },
                             "sorted_fractions": {
                                 "type": "keyword"
                             },
@@ -2937,10 +2933,6 @@
                             },
                             "sex": {
                                 "type": "keyword"
-                            },
-                            "single_source": {
-                                "store": true,
-                                "type": "boolean"
                             },
                             "sorted_fractions": {
                                 "type": "keyword"

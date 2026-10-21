@@ -1,6 +1,6 @@
 {
-    "hash": "4fab6985f1c0fbaa325f05ed41bdf600",
-    "index_name": "model_set_4fab6985",
+    "hash": "c0a50ddaf7f828ccd5e767e3c57291c2",
+    "index_name": "model_set_c0a50dda",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -3724,10 +3724,6 @@
                             },
                             "sex": {
                                 "type": "keyword"
-                            },
-                            "single_source": {
-                                "store": true,
-                                "type": "boolean"
                             },
                             "sorted_fractions": {
                                 "type": "keyword"
