@@ -469,13 +469,61 @@ def test_audit_inconsistent_crispr_screen_biometric(
     )
 
 
+def test_audit_crispr_flowfish_screen_biometric(
+    testapp,
+    measurement_set,
+    assay_term_CRISPR_sorted,
+    phenotype_term_protein_abundance,
+    phenotype_term_ldl_c_uptake,
+    phenotype_term_gene_expression,
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_CRISPR_sorted['@id'],
+            'preferred_assay_titles': ['CRISPR FlowFISH screen'],
+            'crispr_screen_biometric': phenotype_term_protein_abundance['@id'],
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent crispr screen biometric'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'crispr_screen_biometric': phenotype_term_ldl_c_uptake['@id'],
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent crispr screen biometric'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'crispr_screen_biometric': phenotype_term_gene_expression['@id'],
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent crispr screen biometric'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+
+@pytest.mark.parametrize('term_name', ['protein abundance', 'protein abundance method'])
 def test_audit_targeted_genes_protein_abundance_biometric(
     testapp,
     measurement_set,
     assay_term_crispr,
     gene_myc_hs,
     phenotype_term_protein_abundance,
+    term_name,
 ):
+    testapp.patch_json(phenotype_term_protein_abundance['@id'], {'term_name': term_name})
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -1932,17 +1980,19 @@ def test_audit_targeted_genes_vamp_seq_allows_biomarker_gene(
     )
 
 
-def test_audit_targeted_genes_morf_screen(
+@pytest.mark.parametrize('preferred_assay_title', ['MORF screen', 'CRISPR FlowFISH screen', 'Variant-EFFECTS'])
+def test_audit_targeted_genes_by_preferred_assay_title(
     testapp,
     measurement_set,
     assay_term_flow_cytometry,
-    gene_myc_hs
+    gene_myc_hs,
+    preferred_assay_title,
 ):
     testapp.patch_json(
         measurement_set['@id'],
         {
             'assay_term': assay_term_flow_cytometry['@id'],
-            'preferred_assay_titles': ['MORF screen'],
+            'preferred_assay_titles': [preferred_assay_title],
             'control_types': ['wildtype'],
         }
     )
