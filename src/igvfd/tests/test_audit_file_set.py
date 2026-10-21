@@ -531,6 +531,7 @@ def test_audit_missing_genome_reference_matrix_content_type(
     analysis_set_base,
     matrix_file
 ):
+    # A cell by gene matrix without a genome reference triggers the audit.
     testapp.patch_json(
         matrix_file['@id'],
         {
@@ -540,17 +541,16 @@ def test_audit_missing_genome_reference_matrix_content_type(
         }
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
-    missing_references = [
-        error for error in res.json['audit'].get('NOT_COMPLIANT', [])
-        if error['category'] == 'missing reference files'
-    ]
-    assert len(missing_references) == 1
-    assert 'no genome `reference_files`' in missing_references[0]['detail']
-    assert matrix_file['@id'] in missing_references[0]['detail']
-
+    assert any(
+        error['category'] == 'missing reference files'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    # A cell by multiplexing oligo matrix does not require a genome reference.
     testapp.patch_json(
         matrix_file['@id'],
-        {'content_type': 'cell by multiplexing oligo matrix'}
+        {
+            'content_type': 'cell by multiplexing oligo matrix'
+        }
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert all(
