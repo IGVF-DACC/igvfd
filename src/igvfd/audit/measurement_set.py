@@ -13,7 +13,7 @@ from .formatter import (
 
 from igvfd.types.file_set import (
     CRISPR_SCREEN_ASSAY_TERMS,
-    PROTEIN_ABUNDANCE_TERM_NAME,
+    PROTEIN_ABUNDANCE_TERM_ID,
 )
 
 from .file_set import (
@@ -34,7 +34,7 @@ def is_protein_abundance_biometric(value, system):
         crispr_screen_biometric,
         '@@object?skip_calculated=true'
     )
-    return term_object.get('term_name') == PROTEIN_ABUNDANCE_TERM_NAME
+    return term_object.get('term_id') == PROTEIN_ABUNDANCE_TERM_ID
 
 
 def audit_related_multiome_datasets(value, system):
@@ -284,7 +284,7 @@ def audit_inconsistent_crispr_screen_biometric(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets from CRISPR screen assays are expected to specify a `crispr_screen_biometric` consistent with the screen phenotype: Proliferation CRISPR screen (cell population proliferation), Migration CRISPR screen (cell migration), in vitro CRISPR screen using flow cytometry (protein abundance or LDL-C uptake), in vitro or in vivo CRISPR screen using single-cell RNA-seq (gene expression), or in vitro CRISPR screen using single-nucleus ATAC-seq (chromatin accessibility).",
+            "audit_description": "Measurement sets from CRISPR screen assays are expected to specify a `crispr_screen_biometric` consistent with the screen phenotype: Proliferation CRISPR screen (cell population proliferation), Migration CRISPR screen (cell migration), CRISPR FlowFISH screen (gene expression), other in vitro CRISPR screens using flow cytometry (protein abundance or LDL-C uptake), in vitro or in vivo CRISPR screen using single-cell RNA-seq (gene expression), or in vitro CRISPR screen using single-nucleus ATAC-seq (chromatin accessibility).",
             "audit_category": "inconsistent crispr screen biometric",
             "audit_level": "NOT_COMPLIANT"
         }
@@ -306,6 +306,7 @@ def audit_inconsistent_crispr_screen_biometric(value, system):
     expected_biometric = {
         'Proliferation CRISPR screen': {'GO:0008283'},
         'Migration CRISPR screen': {'GO:0016477'},
+        'CRISPR FlowFISH screen': {'GO:0010467'},
         '/assay-terms/OBI_0003661/': {'BAO:0040014', 'NTR:0001118'},  # in vitro CRISPR screen using flow cytometry
         '/assay-terms/OBI_0003660/': {'GO:0010467'},  # in vitro CRISPR screen using single-cell RNA-seq
         '/assay-terms/NTR_0001101/': {'GO:0010467'},  # in vivo CRISPR screen using single cell RNA-seq
@@ -504,12 +505,12 @@ def audit_targeted_genes(value, system):
     '''
     [
         {
-            "audit_description": "Transcription factor ChIP-seq, CRISPR screens with protein abundance biometrics, MORF screen, VAMP-seq, and VAMP-seq (MultiSTEP) assays are expected to specify targeted gene(s).",
+            "audit_description": "Transcription factor ChIP-seq, CRISPR screens with protein abundance biometrics, CRISPR FlowFISH screen, Variant-EFFECTS, MORF screen, VAMP-seq, and VAMP-seq (MultiSTEP) assays are expected to specify targeted gene(s).",
             "audit_category": "missing targeted genes",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Only transcription factor ChIP-seq, CRISPR screens with protein abundance biometrics, MORF screen, VAMP-seq, and VAMP-seq (MultiSTEP) assays are expected to specify targeted gene(s).",
+            "audit_description": "Only transcription factor ChIP-seq, CRISPR screens with protein abundance biometrics, CRISPR FlowFISH screen, Variant-EFFECTS, MORF screen, VAMP-seq, and VAMP-seq (MultiSTEP) assays are expected to specify targeted gene(s).",
             "audit_category": "unexpected targeted genes",
             "audit_level": "ERROR"
         }
@@ -525,7 +526,9 @@ def audit_targeted_genes(value, system):
         'untransfected',
         'unsorted FACS input'
     }
-    expecting_targeted_genes_by_preferred_assay_title = ['MORF screen',
+    expecting_targeted_genes_by_preferred_assay_title = ['CRISPR FlowFISH screen',
+                                                         'Variant-EFFECTS',
+                                                         'MORF screen',
                                                          'TF ChIP-seq',
                                                          'VAMP-seq',
                                                          'VAMP-seq (MultiSTEP)'
