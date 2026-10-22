@@ -1,6 +1,6 @@
 {
-    "hash": "95d77664204429728d5dc0935051b4c6",
-    "index_name": "signal_file_95d77664",
+    "hash": "b9af761df5411add88895c9643e66337",
+    "index_name": "signal_file_b9af761d",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -1201,6 +1201,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -2085,6 +2088,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {

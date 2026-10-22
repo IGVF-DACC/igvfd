@@ -29,7 +29,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'coding variant effects prediction for CD1E, CRLF2, MAGOH2P, MYC, TAB3-AS1 using Bowtie2 v2.4.4 in Mus musculus strain1 (male) K562 cell line'
+        'summary') == 'coding variant effects prediction for CD1E, CRLF2, MAGOH2P, MYC, TAB3-AS1 using Bowtie2 in Mus musculus strain1 (male) K562 cell line'
 
     # Test Prediction Set summary if with 6+ assessed genes
     testapp.patch_json(
@@ -48,7 +48,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 in Mus musculus strain1 (male) K562 cell line'
+        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 in Mus musculus strain1 (male) K562 cell line'
 
     # Test Prediction Set summary if with 2 samples, listing out samples in summary
     testapp.patch_json(
@@ -62,7 +62,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
         }
     )
     res = testapp.get(base_prediction_set['@id'])
-    assert res.json.get('summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 in Homo sapiens adrenal gland organoid induced to adrenal gland for 10 days, Mus musculus strain1 (male) K562 cell line'
+    assert res.json.get('summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 in Homo sapiens adrenal gland organoid induced to adrenal gland for 10 days, Mus musculus strain1 (male) K562 cell line'
 
     # Test Prediction Set summary if with 3+ samples, use sample number instead
     testapp.patch_json(
@@ -79,7 +79,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 in 4 mixed species samples'
+        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 in 4 mixed species samples'
 
     # Test Prediction Set summary if with 3+ virtual samples, use sample number instead
     testapp.patch_json(
@@ -109,7 +109,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
 
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 in 4 virtual mixed species samples'
+        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 in 4 virtual mixed species samples'
 
     # Test Prediction Set summary if with <= 3 samples, list out the unique set of sample summaries
 
@@ -137,7 +137,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 in virtual Homo sapiens adrenal gland tissue/organ'
+        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 in virtual Homo sapiens adrenal gland tissue/organ'
 
     # Test Prediction Set summary if donors specified instead of samples
     res = testapp.get(prediction_set_donor['@id'])
@@ -160,7 +160,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == "coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with Alzheimer's disease in virtual Homo sapiens adrenal gland tissue/organ"
+        'summary') == "coding variant effects prediction for 6 assessed genes using Bowtie2 associated with Alzheimer's disease in virtual Homo sapiens adrenal gland tissue/organ"
 
     # Test Prediction Set summary with multiple associated phenotypes
     testapp.patch_json(
@@ -173,7 +173,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
         }
     )
     res = testapp.get(base_prediction_set['@id'])
-    assert res.json.get('summary') == "coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with Alzheimer's disease, Myocardial infarction in virtual Homo sapiens adrenal gland tissue/organ"
+    assert res.json.get('summary') == "coding variant effects prediction for 6 assessed genes using Bowtie2 associated with Alzheimer's disease, Myocardial infarction in virtual Homo sapiens adrenal gland tissue/organ"
 
     # Test Prediction Set summary with 4+ associated phenotypes, use phenotype count instead
     testapp.patch_json(
@@ -189,7 +189,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with 4 phenotypes in virtual Homo sapiens adrenal gland tissue/organ'
+        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 associated with 4 phenotypes in virtual Homo sapiens adrenal gland tissue/organ'
 
     # Test prediction set summary with cell annotation information
     testapp.patch_json(
@@ -202,7 +202,7 @@ def test_prediction_set_summary(testapp, base_prediction_set, prediction_set_don
     )
     res = testapp.get(base_prediction_set['@id'])
     assert res.json.get(
-        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 v2.4.4 associated with 4 phenotypes in Homo sapiens exhausted brown adipose tissue derived from K562'
+        'summary') == 'coding variant effects prediction for 6 assessed genes using Bowtie2 associated with 4 phenotypes in Homo sapiens exhausted brown adipose tissue derived from K562'
 
 
 def test_software_versions(testapp, tabular_file, base_prediction_set, analysis_step_version, software_version):
@@ -217,6 +217,40 @@ def test_software_versions(testapp, tabular_file, base_prediction_set, analysis_
     res = testapp.get(base_prediction_set['@id'])
     assert set([software_version_object['@id']
                for software_version_object in res.json.get('software_versions')]) == {software_version['@id']}
+
+
+def test_software(testapp, tabular_file, base_prediction_set, analysis_step_version, software, software_version, software_2, software_version_2):
+    res = testapp.get(base_prediction_set['@id'])
+    assert res.json.get('software') is None
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'analysis_step_version': analysis_step_version['@id'],
+            'file_set': base_prediction_set['@id']
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'])
+    assert res.json.get('software')['@id'] == software['@id']
+    testapp.patch_json(
+        analysis_step_version['@id'],
+        {
+            'software_versions': [software_version['@id'], software_version_2['@id']]
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'])
+    first_software_version = sorted([software_version['@id'], software_version_2['@id']])[0]
+    expected_software = software['@id'] if first_software_version == software_version['@id'] else software_2['@id']
+    assert res.json.get('software')['@id'] == expected_software
+    testapp.patch_json(
+        base_prediction_set['@id'],
+        {
+            'principal_software': software_2['@id']
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'])
+    assert res.json.get('software')['@id'] == software_2['@id']
+    assert res.json.get(
+        'summary') == 'coding variant effects prediction using BWA in Mus musculus strain1 (male) K562 cell line'
 
 
 def test_cell_annotation_pred_set(testapp, base_prediction_set, model_set_no_input, pseudobulk_set_base, tissue, sample_term_endothelial_cell):

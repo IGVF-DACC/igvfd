@@ -81,3 +81,15 @@ def software_version_v7(software_version):
         'download_id': 'd31294875092e76ebb061eadc7998585'
     })
     return item
+
+
+@pytest.fixture
+def software_version_2(testapp, software_2, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'software': software_2['@id'],
+        'version': 'v0.7.17',
+        'source_url': 'https://github.com/lh3/bwa/releases/tag/v0.7.17'
+    }
+    return testapp.post_json('/software_version', item, status=201).json['@graph'][0]

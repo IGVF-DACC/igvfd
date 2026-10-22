@@ -2758,7 +2758,9 @@ class PredictionSet(FileSet):
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name', 'status']),
         Path('software_versions.software', include=['@id', 'summary',
              'software', 'title', 'description', 'source_url', 'download_id', 'status']),
-        Path('cell_type', include=['@id', 'term_name', 'term_id', 'status', 'definition'])
+        Path('cell_type', include=['@id', 'term_name', 'term_id', 'status', 'definition']),
+        Path('principal_software', include=['@id', 'title', 'status']),
+        Path('software', include=['@id', 'title', 'status'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
@@ -2797,6 +2799,24 @@ class PredictionSet(FileSet):
         return sorted(set(software_versions)) or None
 
     @calculated_property(
+        define=True,
+        schema={
+            'title': 'Software',
+            'description': 'The software representing the method used to produce this prediction. This is the principal software if specified, otherwise the software of the first software version.',
+            'type': 'string',
+            'linkTo': 'Software',
+            'notSubmittable': True
+        }
+    )
+    def software(self, request, principal_software=None, software_versions=None):
+        if principal_software:
+            return principal_software
+        if software_versions:
+            software_version_object = request.embed(software_versions[0], '@@object?skip_calculated=true')
+            return software_version_object.get('software')
+        return None
+
+    @calculated_property(
         schema={
             'title': 'Summary',
             'type': 'string',
@@ -2804,20 +2824,15 @@ class PredictionSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type, software_versions=None, assessed_genes=None, scope=None, files=None, samples=None, donors=None, associated_phenotypes=None, cell_annotation=None):
+    def summary(self, request, file_set_type, software=None, assessed_genes=None, scope=None, files=None, samples=None, donors=None, associated_phenotypes=None, cell_annotation=None):
         # Get scope info
         scope_phrase = ''
         if scope:
             scope_phrase = f' on scope of {scope}'
-        software_version_phrase = None
-        software_version_summaries = set()
-        if software_versions:
-            for software_version in software_versions:
-                software_version_object = request.embed(
-                    software_version, '@@object_with_select_calculated_properties?field=summary')
-                software_version_summaries.add(software_version_object['summary'])
-        if software_version_summaries:
-            software_version_phrase = f'using {", ".join(sorted(list(software_version_summaries)))}'
+        software_phrase = None
+        if software:
+            software_object = request.embed(software, '@@object?skip_calculated=true')
+            software_phrase = f'using {software_object["title"]}'
         # Get assessed genes info
         assessed_genes_phrase = get_assessed_gene_phrase(request, assessed_genes)
         # Get associated phenotypes info
@@ -2861,7 +2876,7 @@ class PredictionSet(FileSet):
             file_set_type,
             f'prediction{scope_phrase}',
             f'for {assessed_genes_phrase}' if assessed_genes else '',
-            software_version_phrase,
+            software_phrase,
             phenotypes_phrase,
             f'in {samples_phrase}'
         ]))

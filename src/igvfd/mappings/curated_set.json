@@ -1,6 +1,6 @@
 {
-    "hash": "a229854ecb714ec8a741cd39cc326e8e",
-    "index_name": "curated_set_a229854e",
+    "hash": "8eada7110c59886b325ee810e1feef2c",
+    "index_name": "curated_set_8eada711",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -853,6 +853,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -1031,6 +1034,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {
@@ -1368,6 +1374,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -1441,6 +1450,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {

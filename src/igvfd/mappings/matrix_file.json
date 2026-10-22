@@ -1,6 +1,6 @@
 {
-    "hash": "d373268aeca0d8b185dcbba926021b72",
-    "index_name": "matrix_file_d373268a",
+    "hash": "4b924d685d110a22a11b002b5f46b4e9",
+    "index_name": "matrix_file_4b924d68",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1197,6 +1197,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -2081,6 +2084,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {

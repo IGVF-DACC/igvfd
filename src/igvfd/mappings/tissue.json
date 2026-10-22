@@ -1,6 +1,6 @@
 {
-    "hash": "691511e5a3914d9b55c1f0a05cabf72e",
-    "index_name": "tissue_691511e5",
+    "hash": "d5611257cc9ba570cdf9b9eeb730d0d1",
+    "index_name": "tissue_d5611257",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1300,6 +1300,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -1373,6 +1376,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {

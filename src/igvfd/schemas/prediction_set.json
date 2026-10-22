@@ -372,6 +372,17 @@
         },
         "cell_qualifier": {
             "description": "A qualifier that provides additional detail about the cell type annotation in predictions derived from single cell pseudobulks. Other non-pseudobulk based predictions should not specify this property."
+        },
+        "principal_software": {
+            "title": "Principal Software",
+            "description": "The software that represents the primary method used to produce this prediction set.",
+            "comment": "Required if the files of this prediction set are associated with multiple software through their analysis step versions. The principal software is expected to be one of the software associated with the files of this prediction set.",
+            "type": "string",
+            "linkTo": "Software",
+            "submissionExample": {
+                "appscript": "/software/bowtie2/",
+                "igvf_utils": "/software/bowtie2/"
+            }
         }
     },
     "fuzzy_searchable_fields": [
