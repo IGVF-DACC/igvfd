@@ -72,3 +72,16 @@ def software_v6_nochange(software):
         'schema_version': '6'
     })
     return item
+
+
+@pytest.fixture
+def software_2(testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'title': 'BWA',
+        'name': 'bwa',
+        'description': 'BWA is a software package for mapping low-divergent sequences against a large reference genome.',
+        'source_url': 'https://github.com/lh3/bwa'
+    }
+    return testapp.post_json('/software', item, status=201).json['@graph'][0]
