@@ -1,6 +1,6 @@
 {
-    "hash": "10ade11de42b479a821ad4fec3d9ab23",
-    "index_name": "technical_sample_10ade11d",
+    "hash": "12483b8d0818790b1c23ab00890b0323",
+    "index_name": "technical_sample_12483b8d",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -964,6 +964,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -1037,6 +1040,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {

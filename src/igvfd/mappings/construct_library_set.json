@@ -1,6 +1,6 @@
 {
-    "hash": "d6dac7a206cffe987d0c491880472eff",
-    "index_name": "construct_library_set_d6dac7a2",
+    "hash": "41916bad3aa395eba22da76a643daa98",
+    "index_name": "construct_library_set_41916bad",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -570,6 +570,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -643,6 +646,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {
@@ -980,6 +986,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -1053,6 +1062,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {
