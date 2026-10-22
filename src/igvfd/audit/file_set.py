@@ -1594,6 +1594,49 @@ def audit_preferred_assay_title(value, system):
         )
 
 
+def audit_prediction_set_principal_software(value, system):
+    '''
+    [
+        {
+            "audit_description": "Prediction sets with files associated with multiple software are expected to specify a `principal_software`.",
+            "audit_category": "missing principal software",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "The `principal_software` of a prediction set is expected to be one of the software associated with its files.",
+            "audit_category": "inconsistent principal software",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    audit_message_missing = get_audit_message(audit_prediction_set_principal_software, index=0)
+    audit_message_inconsistent = get_audit_message(audit_prediction_set_principal_software, index=1)
+    principal_software = value.get('principal_software')
+    software = set()
+    for software_version in value.get('software_versions', []):
+        software_version_object = system.get('request').embed(software_version, '@@object?skip_calculated=true')
+        software.add(software_version_object.get('software'))
+    software_links = ', '.join(audit_link(path_to_text(item), item) for item in sorted(software))
+    if not principal_software:
+        if len(software) > 1:
+            detail = (
+                f'Prediction set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has files associated with multiple software: {software_links}, but no `principal_software`.'
+            )
+            yield AuditFailure(audit_message_missing.get('audit_category', ''), f'{detail} {audit_message_missing.get("audit_description", "")}', level=audit_message_missing.get('audit_level', ''))
+    elif principal_software not in software:
+        if software:
+            associated_phrase = f'which is not one of the software associated with its files: {software_links}.'
+        else:
+            associated_phrase = 'but its files are not associated with any software.'
+        detail = (
+            f'Prediction set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has `principal_software` {audit_link(path_to_text(principal_software), principal_software)}, '
+            f'{associated_phrase}'
+        )
+        yield AuditFailure(audit_message_inconsistent.get('audit_category', ''), f'{detail} {audit_message_inconsistent.get("audit_description", "")}', level=audit_message_inconsistent.get('audit_level', ''))
+
+
 function_dispatcher_file_set_object = {
     'audit_no_files': audit_no_files,
     'audit_inconsistent_sequencing_kit': audit_inconsistent_sequencing_kit,
@@ -1653,7 +1696,8 @@ function_dispatcher_prediction_set_object = {
     'audit_input_file_sets_derived_from': audit_input_file_sets_derived_from,
     'audit_file_set_files_missing_analysis_step_version': audit_file_set_files_missing_analysis_step_version,
     'audit_file_set_missing_description': audit_file_set_missing_description,
-    'audit_missing_genome_transcriptome_references': audit_missing_genome_transcriptome_references
+    'audit_missing_genome_transcriptome_references': audit_missing_genome_transcriptome_references,
+    'audit_prediction_set_principal_software': audit_prediction_set_principal_software
 }
 
 function_dispatcher_model_set_object = {

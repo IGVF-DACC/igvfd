@@ -231,3 +231,64 @@ def test_audit_missing_genome_transcriptome_references(
         error['category'] != 'missing reference files'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
+
+
+def test_audit_prediction_set_principal_software(
+    testapp,
+    base_prediction_set,
+    tabular_file,
+    analysis_step_version,
+    software,
+    software_version,
+    software_2,
+    software_version_2
+):
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'file_set': base_prediction_set['@id'],
+            'analysis_step_version': analysis_step_version['@id']
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing principal software'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        analysis_step_version['@id'],
+        {
+            'software_versions': [software_version['@id'], software_version_2['@id']]
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing principal software'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        base_prediction_set['@id'],
+        {
+            'principal_software': software_2['@id']
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing principal software'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    assert all(
+        error['category'] != 'inconsistent principal software'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        analysis_step_version['@id'],
+        {
+            'software_versions': [software_version['@id']]
+        }
+    )
+    res = testapp.get(base_prediction_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent principal software'
+        for error in res.json['audit'].get('ERROR', [])
+    )
