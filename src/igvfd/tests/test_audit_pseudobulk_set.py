@@ -192,6 +192,26 @@ def test_audit_pseudobulk_set_input_file_set_type_genes(
     )
 
 
+def test_audit_pseudobulk_set_input_file_set_type_barcodes(
+    testapp,
+    pseudobulk_set_base,
+    curated_set_genome
+):
+    testapp.patch_json(
+        curated_set_genome['@id'],
+        {'file_set_type': 'barcodes'}
+    )
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {'input_file_sets': [curated_set_genome['@id']]}
+    )
+    res = testapp.get(pseudobulk_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected input file set type'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+
 def test_audit_pseudobulk_set_mixed_classifications(
     testapp,
     pseudobulk_set_base,
