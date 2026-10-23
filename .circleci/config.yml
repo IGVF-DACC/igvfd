@@ -31,6 +31,7 @@ jobs:
     steps:
       - checkout:
           method: blobless
+      - run: pip install pip==26.2.2
       - run: pip install pre-commit==2.17.0
       - run: pre-commit run --all-files
 
@@ -42,6 +43,7 @@ jobs:
       - checkout:
           method: blobless
           path: ~/igvfd
+      - run: pip install pip==26.2.2
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: mypy .
 
@@ -56,6 +58,7 @@ jobs:
           method: blobless
           path: ~/igvfd
       - run: pyenv global 3.11
+      - run: pip install pip==26.2.2
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: |
           nvm install 24
@@ -70,6 +73,7 @@ jobs:
       - checkout:
           method: blobless
           path: ~/igvfd
+      - run: pip install pip==26.2.2
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: pytest tests/
 
