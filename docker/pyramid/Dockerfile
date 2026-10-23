@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/python:3.11.4-slim-bookworm
+FROM public.ecr.aws/docker/library/python:3.11.17-slim-bookworm
 
 ENV PYTHONDONTWRITEBYTECODE 1
 
@@ -48,9 +48,9 @@ COPY --chown=igvfd:igvfd src/igvfd/__init__.py src/igvfd/__init__.py
 
 USER igvfd
 
-RUN python -m pip install pip==26.0.1
+RUN python -m pip install pip==26.2.2
 
-RUN PIP_BUILD_CONSTRAINT=build-constraint.txt pip --use-feature=build-constraint install -e .[test]
+RUN PIP_BUILD_CONSTRAINT=build-constraint.txt pip install -e .[test]
 
 COPY --chown=igvfd:igvfd src/igvfd/schema_formats.py src/igvfd/schema_formats.py
 

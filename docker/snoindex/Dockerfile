@@ -1,4 +1,4 @@
-FROM python:3.11.15-slim-trixie
+FROM python:3.11.17-slim-trixie
 
 ENV PYTHONDONTWRITEBYTECODE 1
 
@@ -30,6 +30,6 @@ COPY --chown=snoindex:snoindex requirements.txt ./
 
 USER snoindex
 
-RUN python -m pip install --upgrade pip
+RUN python -m pip install pip==26.2.2
 
 RUN pip install -r requirements.txt

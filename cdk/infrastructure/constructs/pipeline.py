@@ -95,6 +95,7 @@ class BasicSelfUpdatingPipeline(Construct):
                 'cd ./cdk',
                 'python -m venv .venv',
                 '. .venv/bin/activate',
+                'pip install pip==26.2.2',
                 'pip install -r requirements.txt -r requirements-dev.txt',
             ],
             commands=[
