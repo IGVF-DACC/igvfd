@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 28
 
+* Extend `file_format` enum list to include `parquet`.
 * Update `aliases` regex to add `jacob-schreiber` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.3`.
 
