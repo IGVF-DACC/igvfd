@@ -688,7 +688,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get('simplified_sample_summary',
-                   '') == 'endothelial cell of vascular tree differentiated from K562, for 5 minutes'
+                   '') == 'endothelial cell of vascular tree differentiated from K562 for 5 minutes'
 
     # Test group 1: new classifications (change wording, cell line name, skip donor)
     testapp.patch_json(
@@ -699,7 +699,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == 'endothelial cell of vascular tree pooled differentiated from K562, for 5 minutes'
+        'simplified_sample_summary', '') == 'endothelial cell of vascular tree pooled differentiated from K562 for 5 minutes'
 
     # Test group 1: add disease terms with targeted term (skip donor, cell line name)
     testapp.patch_json(
@@ -718,7 +718,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == 'endothelial cell of vascular tree pooled differentiated from K562 with Alzheimer\'s disease, for 5 minutes'
+        'simplified_sample_summary', '') == 'endothelial cell of vascular tree pooled differentiated from K562 with Alzheimer\'s disease for 5 minutes'
 
     # Test group 1: add overexpression CLS (cell line name, skip donor)
     testapp.patch_json(
@@ -730,7 +730,7 @@ def test_analysis_set_sample_summary(
     res = testapp.get(principal_analysis_set['@id']).json
     hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     assert res.get('simplified_sample_summary',
-                   '') == f'endothelial cell of vascular tree pooled differentiated from K562 with Alzheimer\'s disease, for 5 minutes, overexpressing MYC'
+                   '') == f'endothelial cell of vascular tree pooled differentiated from K562 with Alzheimer\'s disease for 5 minutes, overexpressing MYC'
 
     # Test group 1: add disease without targeted term
     testapp.patch_json(
@@ -911,7 +911,7 @@ def test_analysis_set_sample_summary(
     hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == 'brown adipose tissue, gastrula, lymphoblastoid cell line differentiated from K562, for 2 minutes, 5 minutes, 10 minutes'
+        'simplified_sample_summary', '') == 'brown adipose tissue, gastrula, lymphoblastoid cell line differentiated from K562 for 2 minutes, 5 minutes, 10 minutes'
 
     # Test group 5: technical samples (no donors)
     testapp.patch_json(

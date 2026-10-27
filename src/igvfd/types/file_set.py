@@ -1944,7 +1944,7 @@ class AnalysisSet(FileSet):
         if has_fate_change_phrase and differentiation_time_phrase:
             sample_phrase = ' '.join(filter(None, [taxa_phrase, biosample_qualifiers_phrase,
                                      ', '.join(all_sample_terms)]))
-            summary = f'{sample_phrase}, for {differentiation_time_phrase}'
+            summary = f'{sample_phrase} for {differentiation_time_phrase}'
             if donor_phrase:
                 summary = f'{summary}, {donor_phrase}'
         else:
