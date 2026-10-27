@@ -1,2 +1,3 @@
-botocore==1.31.80
+botocore==1.43.118
+certifi==2026.10.23
 snovault-index@git+https://github.com/IGVF-DACC/snovault-index.git@SNO2-59-use-render-time-version
