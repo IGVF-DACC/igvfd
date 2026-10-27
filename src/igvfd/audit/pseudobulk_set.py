@@ -139,14 +139,14 @@ def audit_pseudobulk_set_input_file_set_type(value, system):
     '''
     [
         {
-            "audit_description": "Pseudobulk sets are expected to have input curated sets with `file_set_type` of `external sequencing data` or `genes` only.",
+            "audit_description": "Pseudobulk sets are expected to have input curated sets with `file_set_type` of `external sequencing data`, `genes`, or `barcodes` only.",
             "audit_category": "unexpected input file set type",
             "audit_level": "ERROR"
         }
     ]
     '''
     audit_message = get_audit_message(audit_pseudobulk_set_input_file_set_type, index=0)
-    accepted_curated_set_file_set_types = ['external sequencing data', 'genes']
+    accepted_curated_set_file_set_types = ['external sequencing data', 'genes', 'barcodes']
     if value.get('input_file_sets', []):
         for input_file_set in value.get('input_file_sets', []):
             input_file_set_object = system.get('request').embed(
