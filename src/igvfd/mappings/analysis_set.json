@@ -1,6 +1,6 @@
 {
-    "hash": "48d28e82f209a622e107b7e7d3c2a4de",
-    "index_name": "analysis_set_48d28e82",
+    "hash": "57e85299a75b7e92a2feef6e3272645a",
+    "index_name": "analysis_set_57e85299",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -852,6 +852,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -1030,6 +1033,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {
@@ -1367,6 +1373,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -1440,6 +1449,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {
@@ -2761,6 +2773,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -2834,6 +2849,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {

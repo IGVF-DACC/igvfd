@@ -1,6 +1,6 @@
 {
-    "hash": "4bf2926141267df1a94c98de1313c376",
-    "index_name": "alignment_file_4bf29261",
+    "hash": "368087211ba4fa4545c8dfdb8069f254",
+    "index_name": "alignment_file_36808721",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1199,6 +1199,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -2083,6 +2086,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {

@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 10
 
+* Add calculated property `software`.
+* Add `principal_software`.
 * Update `aliases` regex to add `jacob-schreiber` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.3`.
 * Add `large_gene_count`.

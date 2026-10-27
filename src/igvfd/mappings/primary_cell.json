@@ -1,6 +1,6 @@
 {
-    "hash": "e5a11fb756769a10f69a4f85380c0ead",
-    "index_name": "primary_cell_e5a11fb7",
+    "hash": "ba53bd88a0b9ec9628e97f8cedd0b8a0",
+    "index_name": "primary_cell_ba53bd88",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1303,6 +1303,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -1376,6 +1379,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {

@@ -18,7 +18,7 @@ def prediction_set():
                 'category': 'Prediction Set Details',
                 'description': 'The scope or scale that this prediction set is designed to target, e.g, genome, loci...'
             },
-            'software_versions.software.title': {
+            'software.title': {
                 'title': 'Software',
                 'category': 'Prediction Set Details',
                 'description': 'The software used to produce this prediction set.'
