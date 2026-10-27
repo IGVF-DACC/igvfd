@@ -1012,11 +1012,17 @@ def test_analysis_set_sample_summary(
     assert res.get(
         'simplified_sample_summary', '') == f'human multiplexed sample of HEK293T, middle temporal gyrus from 1 donor {hs_donor_accession}'
 
-    # Test group 9: Multiple inputs with mixed cell and non-cell linesamples
+    # Test group 9: Multiple inputs with mixed cell and non-cell linesamples (2 different donors)
     testapp.patch_json(
         sample_term_HEK293T['@id'],
         {
             'dbxrefs': ['Cellosaurus:CVCL_0063']
+        }
+    )
+    testapp.patch_json(
+        tissue_gyrus['@id'],
+        {
+            'donors': [parent_human_donor_1['@id']]
         }
     )
     testapp.patch_json(
@@ -1038,7 +1044,7 @@ def test_analysis_set_sample_summary(
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
+    hs_donor_accession = testapp.get(parent_human_donor_1['@id']).json.get('accession')
     assert res.get(
         'simplified_sample_summary', '') == f'HEK293T, human middle temporal gyrus tissue/organ from 1 donor {hs_donor_accession}'
 
