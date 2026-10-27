@@ -1078,6 +1078,7 @@
                     "genes_structure",
                     "genes_transcripts",
                     "genes_transcripts_genes",
+                    "genes_transcripts_genomic_elements",
                     "genomic_elements",
                     "genomic_elements_biosamples",
                     "genomic_elements_genes",

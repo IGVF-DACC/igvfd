@@ -2587,5 +2587,28 @@
         "filtered": true,
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "b2e40357-2511-4666-94a7-7457249d3034",
+        "accession": "IGVFFI0057PRQT",
+        "lab": "michael-beer",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_parquet"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-08-06T12:34:56Z",
+        "md5sum": "7746ccf60317faa8f50c4532aa4a0d97",
+        "file_format": "parquet",
+        "content_type": "differential guide quantifications",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/differential_guide_quantifications.parquet",
+        "file_size": 4123,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
     }
 ]

@@ -369,5 +369,18 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "99bc21cd-26a9-1c68-8e34-7afc2fad87cc"
+    },
+    {
+        "aliases": [
+            "igvf:pipeline_dashboard_document"
+        ],
+        "description": "Example of a CRISPR pipeline dashboard.",
+        "attachment": "Treg-CRISPRi-GITR-methods.pdf",
+        "award": "1U01HG011952-01",
+        "document_type": "pipeline dashboard",
+        "lab": "charles-gersbach",
+        "uuid": "d93da4d6-7b35-4571-87c6-4a9f66cc3c0b",
+        "status": "released",
+        "release_timestamp": "2026-05-06T12:34:56Z"
     }
 ]
