@@ -1,6 +1,6 @@
 {
-    "hash": "a79349c8e570592493e53ee77a48c85b",
-    "index_name": "tabular_file_a79349c8",
+    "hash": "da66295f50dabb780cff79d82591c594",
+    "index_name": "tabular_file_da66295f",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1214,6 +1214,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -2098,6 +2101,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {

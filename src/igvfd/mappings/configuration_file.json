@@ -1,6 +1,6 @@
 {
-    "hash": "b9030a14d81390b53d550546173e1439",
-    "index_name": "configuration_file_b9030a14",
+    "hash": "9f8f03c0c62ac73925bda9874234b596",
+    "index_name": "configuration_file_9f8f03c0",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1194,6 +1194,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -2078,6 +2081,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {

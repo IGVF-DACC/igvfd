@@ -1,6 +1,6 @@
 {
-    "hash": "b576f33055cd9b30fd2f0f5720c707eb",
-    "index_name": "pseudobulk_set_b576f330",
+    "hash": "1c1da1cab73c78148d9e5316860de4c2",
+    "index_name": "pseudobulk_set_1c1da1ca",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [
@@ -947,6 +947,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -1125,6 +1128,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {
@@ -1460,6 +1466,9 @@
                             "preview_timestamp": {
                                 "type": "date"
                             },
+                            "principal_software": {
+                                "type": "keyword"
+                            },
                             "product_id": {
                                 "type": "keyword"
                             },
@@ -1533,6 +1542,9 @@
                                 "type": "object"
                             },
                             "small_scale_orf_list": {
+                                "type": "keyword"
+                            },
+                            "software": {
                                 "type": "keyword"
                             },
                             "software_versions": {
