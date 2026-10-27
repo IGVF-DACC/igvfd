@@ -374,7 +374,7 @@ def assay_summary():
     return {
         'matrix': {
             'x': {
-                'group_by': 'samples.classifications',
+                'group_by': 'samples_class',
                 'label': 'Classifications'
             },
             'y': {
