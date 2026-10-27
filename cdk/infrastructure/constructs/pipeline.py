@@ -95,7 +95,8 @@ class BasicSelfUpdatingPipeline(Construct):
                 'cd ./cdk',
                 'python -m venv .venv',
                 '. .venv/bin/activate',
-                'pip install pip==26.2.2',
+                'echo "pip==26.2.2 --hash=sha256:fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70" > /tmp/pip-bootstrap.txt',
+                'pip install --require-hashes -r /tmp/pip-bootstrap.txt',
                 'pip install -r requirements.txt -r requirements-dev.txt',
             ],
             commands=[

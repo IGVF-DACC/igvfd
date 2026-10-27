@@ -30,6 +30,8 @@ COPY --chown=snoindex:snoindex requirements.txt ./
 
 USER snoindex
 
-RUN python -m pip install pip==26.2.2
+RUN echo "pip==26.2.2 --hash=sha256:fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70" > /tmp/pip-bootstrap.txt \
+    && python -m pip install --require-hashes -r /tmp/pip-bootstrap.txt \
+    && rm /tmp/pip-bootstrap.txt
 
 RUN pip install -r requirements.txt

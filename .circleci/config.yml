@@ -31,7 +31,9 @@ jobs:
     steps:
       - checkout:
           method: blobless
-      - run: pip install pip==26.2.2
+      - run: |
+          echo "pip==26.2.2 --hash=sha256:fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70" > /tmp/pip-bootstrap.txt
+          pip install --require-hashes -r /tmp/pip-bootstrap.txt
       - run: pip install pre-commit==2.17.0
       - run: pre-commit run --all-files
 
@@ -43,7 +45,9 @@ jobs:
       - checkout:
           method: blobless
           path: ~/igvfd
-      - run: pip install pip==26.2.2
+      - run: |
+          echo "pip==26.2.2 --hash=sha256:fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70" > /tmp/pip-bootstrap.txt
+          pip install --require-hashes -r /tmp/pip-bootstrap.txt
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: mypy .
 
@@ -58,7 +62,9 @@ jobs:
           method: blobless
           path: ~/igvfd
       - run: pyenv global 3.11
-      - run: pip install pip==26.2.2
+      - run: |
+          echo "pip==26.2.2 --hash=sha256:fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70" > /tmp/pip-bootstrap.txt
+          pip install --require-hashes -r /tmp/pip-bootstrap.txt
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: |
           nvm install 24
@@ -73,7 +79,9 @@ jobs:
       - checkout:
           method: blobless
           path: ~/igvfd
-      - run: pip install pip==26.2.2
+      - run: |
+          echo "pip==26.2.2 --hash=sha256:fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70" > /tmp/pip-bootstrap.txt
+          pip install --require-hashes -r /tmp/pip-bootstrap.txt
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: pytest tests/
 
