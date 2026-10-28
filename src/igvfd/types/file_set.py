@@ -1729,14 +1729,41 @@ class AnalysisSet(FileSet):
             else:
                 non_single_source_classifications.add(classification)
 
-            # Add disease terms to the sample phrase
+            # Add disease terms to the sample phrase. For multiplexed samples, subsamples that
+            # are differentiated/reprogrammed with a targeted sample term also contribute their
+            # origin terms, targets and times, phrased as "x, y differentiated to a, b, c".
             disease_phrase = ''
             disease_terms_by_sample_term = {}
+            mux_fate_origin_terms = set()
+            mux_fate_origin_phrases = set()
+            mux_fate_targets = set()
+            mux_fate_verbs = set()
+            mux_fate_times = set()
+            non_fate_term_ids = set()
             if sample_object.get('multiplexed_samples'):
                 for multiplexed_sample in sample_object['multiplexed_samples']:
-                    multiplexed_sample_object = request.embed(
-                        multiplexed_sample, '@@object?skip_calculated=true'
+                    multiplexed_sample_object = request.embed(multiplexed_sample, '@@object')
+                    subsample_classifications = sorted(multiplexed_sample_object.get('classifications', []))
+                    subsample_classifications = two_classification_cases.get(
+                        ', '.join(subsample_classifications), subsample_classifications
                     )
+                    subsample_verb = FATE_CHANGE_CLASSIFICATION_TO_VERB.get(' and '.join(subsample_classifications))
+                    is_fate_subsample = bool(
+                        subsample_verb and multiplexed_sample_object.get('targeted_sample_term')
+                    )
+                    if is_fate_subsample:
+                        mux_fate_verbs.add(subsample_verb)
+                        mux_fate_origin_terms.update(multiplexed_sample_object.get('sample_terms', []))
+                        target_object = request.embed(
+                            multiplexed_sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
+                        mux_fate_targets.add(target_object['term_name'])
+                        if 'time_post_change' in multiplexed_sample_object:
+                            mux_fate_times.add((
+                                multiplexed_sample_object['time_post_change'],
+                                multiplexed_sample_object['time_post_change_units']
+                            ))
+                    else:
+                        non_fate_term_ids.update(multiplexed_sample_object.get('sample_terms', []))
                     diseased_phenotypic_features = get_disease_terms_from_phenotypic_features(
                         request, multiplexed_sample_object, is_pd_collection
                     )
@@ -1754,6 +1781,8 @@ class AnalysisSet(FileSet):
                         if term_name not in disease_terms_by_sample_term:
                             disease_terms_by_sample_term[term_name] = set()
                         disease_terms_by_sample_term[term_name].add(diseased_phenotypic_features)
+                # Terms also found in non-fate subsamples keep their regular phrase.
+                mux_fate_origin_terms -= non_fate_term_ids
             else:
                 diseased_phenotypic_features = get_disease_terms_from_phenotypic_features(
                     request, sample_object, is_pd_collection)
@@ -1823,6 +1852,9 @@ class AnalysisSet(FileSet):
                     sample_phrase = f'{sample_phrase}{term_disease_phrase} {targeted_sample_suffix}'
                 else:
                     sample_phrase = f'{sample_phrase}{term_disease_phrase}'
+                if term in mux_fate_origin_terms:
+                    mux_fate_origin_phrases.add(sample_phrase)
+                    continue
                 if is_mixed_single_source and not is_single_source:
                     sample_taxa = sample_object.get('taxa', '')
                     if classification.startswith('multiplexed sample of'):
@@ -1831,6 +1863,19 @@ class AnalysisSet(FileSet):
                         sample_phrase = f'{sample_taxa} {sample_phrase}'
                         prefixed_taxa.add(sample_taxa)
                 sample_classification_term_target[classification].add(sample_phrase)
+
+            if mux_fate_origin_phrases:
+                mux_fate_phrase = (
+                    f'{", ".join(sorted(mux_fate_origin_phrases))} {" and ".join(sorted(mux_fate_verbs))} '
+                    f'to {", ".join(sorted(mux_fate_targets))}'
+                )
+                if mux_fate_times:
+                    mux_fate_time_phrase = ', '.join(
+                        pluralize_count(time, unit.removesuffix('s'))
+                        for time, unit in sorted(mux_fate_times, key=lambda t: float(t[0]))
+                    )
+                    mux_fate_phrase = f'{mux_fate_phrase} for {mux_fate_time_phrase}'
+                sample_classification_term_target[classification].add(mux_fate_phrase)
 
             if 'time_post_change' in sample_object:
                 differentiation_times.add(

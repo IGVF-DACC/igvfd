@@ -797,7 +797,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get('simplified_sample_summary',
-                   '') == 'mixed species multiplexed sample of K562 with Alzheimer\'s disease, lymphoblastoid cell line from 1 human donor, 1 male mouse of strain1 strain, overexpressing MYC'
+                   '') == 'mixed species multiplexed sample of K562 with Alzheimer\'s disease pooled differentiated to endothelial cell of vascular tree for 5 minutes, lymphoblastoid cell line from 1 human donor, 1 male mouse of strain1 strain, overexpressing MYC'
 
     # Test group 2: disease info
     testapp.patch_json(
@@ -815,7 +815,7 @@ def test_analysis_set_sample_summary(
     )
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get('simplified_sample_summary',
-                   '') == 'mixed species multiplexed sample of K562, lymphoblastoid cell line with Alzheimer\'s disease from 1 human donor, 1 male mouse of strain1 strain, overexpressing MYC'
+                   '') == 'mixed species multiplexed sample of K562 pooled differentiated to endothelial cell of vascular tree for 5 minutes, lymphoblastoid cell line with Alzheimer\'s disease from 1 human donor, 1 male mouse of strain1 strain, overexpressing MYC'
 
     # Test group 3: Corces PD special collection
     testapp.patch_json(
