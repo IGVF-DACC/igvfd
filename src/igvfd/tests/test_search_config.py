@@ -3,6 +3,21 @@ from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 from snovault import TYPES
 
 
+def test_search_config_protein_scanning_matrix(registry):
+    search_registry = registry[SEARCH_CONFIG]
+    protein_scanning_matrix = search_registry.get('ProteinScanning').matrix
+    assert protein_scanning_matrix == {
+        'x': {
+            'group_by': 'preferred_assay_titles',
+            'label': 'Assays'
+        },
+        'y': {
+            'group_by': 'construct_library_sets.small_scale_gene_list.symbol',
+            'label': 'Genes'
+        }
+    }
+
+
 def test_search_config_file_set_columns(registry):
     item_registry = registry[TYPES]
     search_registry = registry[SEARCH_CONFIG]
