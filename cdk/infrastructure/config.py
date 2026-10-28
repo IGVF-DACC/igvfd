@@ -67,12 +67,12 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
-                            'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
+                            'snapshot_source_db_identifier': PROD_DATABASE_IDENTIFIER,
                             'allocated_storage': 20,
                             'max_allocated_storage': 40,
                             'instance_type': InstanceType.of(
-                                InstanceClass.BURSTABLE3,
-                                InstanceSize.MEDIUM,
+                                InstanceClass.BURSTABLE4_GRAVITON,
+                                InstanceSize.XLARGE,
                             ),
                             'engine_version': PostgresEngineVersion.VER_14_19
                         },
@@ -104,7 +104,7 @@ config: Dict[str, Any] = {
             'backend': {
                 'cpu': 2048,
                 'memory_limit_mib': 4096,
-                'max_capacity': 10,
+                'max_capacity': 22,
                 'ini_name': 'demo.ini',
                 'use_postgres_named': 'Postgres',
                 'read_from_opensearch_named': 'Opensearch219',
@@ -114,13 +114,13 @@ config: Dict[str, Any] = {
                 'cpu': 256,
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
-                'max_scaling_capacity': 2,
+                'max_scaling_capacity': 1,
             },
             'indexing_service': {
                 'cpu': 256,
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
-                'max_scaling_capacity': 10,
+                'max_scaling_capacity': 22,
             },
             'waf': {
                 'enabled': True,
