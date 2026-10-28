@@ -79,9 +79,10 @@ def audit_analysis_set_multiplexed_samples(value, system):
         mismatched_subset_samples = []
         for subset_sample in subset_samples:
             if subset_sample not in related_samples:
-                mismatched_subset_samples.append(mismatched_subset_samples)
+                mismatched_subset_samples.append(subset_sample)
         if mismatched_subset_samples:
-            mismatched_subset_samples_links = [audit_link(path_to_text(sample)) for sample in mismatched_subset_samples]
+            mismatched_subset_samples_links = [audit_link(path_to_text(sample), sample)
+                                               for sample in mismatched_subset_samples]
             detail = (
                 f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has `subset_samples` {", ".join(mismatched_subset_samples_links)} '
