@@ -1468,6 +1468,7 @@
         "files.content_type",
         "files.submitted_file_name",
         "lab.title",
+        "preferred_assay_titles",
         "selection_criteria",
         "small_scale_gene_list.symbol",
         "submitted_by.title"

@@ -633,6 +633,7 @@
         "description",
         "donors.ethnicities",
         "donors.strain",
+        "file_sets.preferred_assay_titles",
         "lab.title",
         "submitted_by.title",
         "summary",
