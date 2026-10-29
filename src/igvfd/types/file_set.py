@@ -411,7 +411,7 @@ def get_disease_terms_from_phenotypic_features(request, sample_object, is_pd_col
         return 'Parkinson\'s'
 
 
-def get_donors_info_for_sample_summary(request, donors, count_only=False):
+def get_donors_info_for_sample_summary(request, donors):
     '''Summarize donors.'''
     donor_metadata = {}
     # technical samples have no donors
@@ -473,8 +473,6 @@ def get_donors_info_for_sample_summary(request, donors, count_only=False):
         accessions = sorted(metadata.get('accessions', []))
         if taxa == 'mouse':
             return f'from {mouse_donor_phrase(metadata)}'
-        if count_only and len(accessions) == 2:
-            return f'from {pluralize_count(len(accessions), "donor")}'
         if len(accessions) <= 2:
             accession_phrase = ' and '.join(accessions)
         else:
@@ -1997,11 +1995,7 @@ class AnalysisSet(FileSet):
             biosample_qualifiers_phrase = ', '.join(sorted(biosample_qualifiers))
 
         # Donor phrase
-        donor_phrase = ''
-        has_multiplexed_sample = any(
-            'multiplexed sample' in sample_object.get('classifications', []) for sample_object in sample_objects
-        )
-        donor_phrase = get_donors_info_for_sample_summary(request, donors, count_only=has_multiplexed_sample)
+        donor_phrase = get_donors_info_for_sample_summary(request, donors)
 
         # Taxa phrase
         taxa_phrase = f'{", ".join([x for x in taxa if x != ""])}'
