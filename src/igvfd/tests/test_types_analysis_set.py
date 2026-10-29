@@ -763,7 +763,10 @@ def test_analysis_set_sample_summary(
     sorted_hs_donors = sorted([hs_donor_accession_1, hs_donor_accession_2, hs_donor_accessions])
     res = testapp.get(principal_analysis_set['@id']).json
     assert res.get(
-        'simplified_sample_summary', '') == f'human adrenal gland tissue/organ with Alzheimer\'s disease from 3 donors {sorted_hs_donors[0]}, {sorted_hs_donors[1]} and 1 more'
+        'simplified_sample_summary', '') == (
+            f'human adrenal gland tissue/organ with Alzheimer\'s disease from 3 donors '
+            f'({sorted_hs_donors[0]}, {sorted_hs_donors[1]}, and 1 more)'
+    )
 
     # Test group 1: multiple human donors
     testapp.patch_json(
@@ -1012,7 +1015,25 @@ def test_analysis_set_sample_summary(
     assert res.get(
         'simplified_sample_summary', '') == f'human multiplexed sample of HEK293T, middle temporal gyrus from 1 donor {hs_donor_accession}'
 
-    # Test group 9: Multiple inputs with mixed cell and non-cell linesamples (2 different donors)
+    testapp.patch_json(
+        tissue_gyrus['@id'],
+        {
+            'donors': [parent_human_donor_1['@id'], parent_human_donor_2['@id']]
+        }
+    )
+    multiplexed_donor_accessions = sorted([
+        testapp.get(parent_human_donor_1['@id']).json.get('accession'),
+        testapp.get(parent_human_donor_2['@id']).json.get('accession'),
+        hs_donor_accession,
+    ])
+    res = testapp.get(analysis_set_base['@id']).json
+    assert res.get(
+        'simplified_sample_summary', '') == (
+            'human multiplexed sample of HEK293T, middle temporal gyrus from 3 donors '
+            f'({multiplexed_donor_accessions[0]}, {multiplexed_donor_accessions[1]}, and 1 more)'
+    )
+
+    # Test group 9: An array of non-mux inputs with mixed cell and non-cell linesamples (2 different donors)
     testapp.patch_json(
         sample_term_HEK293T['@id'],
         {
@@ -1044,9 +1065,56 @@ def test_analysis_set_sample_summary(
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    hs_donor_accession = testapp.get(parent_human_donor_1['@id']).json.get('accession')
+    parent_human_donor_1_accession = testapp.get(parent_human_donor_1['@id']).json.get('accession')
+    hs_donor_accession = testapp.get(human_donor['@id']).json.get('accession')
+    donor_accessions = sorted([parent_human_donor_1_accession, hs_donor_accession])
     assert res.get(
-        'simplified_sample_summary', '') == f'HEK293T, human middle temporal gyrus tissue/organ from 1 donor {hs_donor_accession}'
+        'simplified_sample_summary', '') == f'HEK293T, human middle temporal gyrus tissue/organ from 2 donors {donor_accessions[0]} and {donor_accessions[1]}'
+
+    # Test group 10: Mux Sample, all cell lines with differentiation and different donors
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set_mpra['@id']]
+        }
+    )
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'samples': [multiplexed_sample_x4['@id']]
+        }
+    )
+    testapp.patch_json(
+        multiplexed_sample_x4['@id'],
+        {
+            'multiplexed_samples': [in_vitro_cell_line_HEK293T['@id'],
+                                    in_vitro_differentiated_cell['@id']]
+        }
+    )
+    testapp.patch_json(
+        in_vitro_cell_line_HEK293T['@id'],
+        {
+            'cell_fate_change_protocol': experimental_protocol_document['@id'],
+            'time_post_change': 5,
+            'time_post_change_units': 'minute',
+            'targeted_sample_term': sample_term_brown_adipose_tissue['@id'],
+            'classifications': ['differentiated cell specimen']
+        }
+    )
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'cell_fate_change_protocol': experimental_protocol_document['@id'],
+            'time_post_change': 2,
+            'time_post_change_units': 'day',
+            'targeted_sample_term': sample_term_gastrula['@id'],
+            'donors': [human_donor['@id']],
+            'sample_terms': [sample_term_K562['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id']).json
+    assert res.get(
+        'simplified_sample_summary', '') == 'human multiplexed sample of HEK293T, K562 differentiated to brown adipose tissue and gastrula for 2 days, 5 minutes'
 
 
 def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set, measurement_set_with_functional_assay_mechanisms, phenotype_term_from_go, phenotype_term_myocardial_infarction):

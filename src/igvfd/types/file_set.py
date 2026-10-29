@@ -412,8 +412,7 @@ def get_disease_terms_from_phenotypic_features(request, sample_object, is_pd_col
 
 
 def get_donors_info_for_sample_summary(request, donors, count_only=False):
-    '''Summarize donors. With count_only (multiplexed samples), multiple
-    donors of a single non-mouse taxon are counted instead of listed.'''
+    '''Summarize donors.'''
     donor_metadata = {}
     # technical samples have no donors
     if not donors:
@@ -474,12 +473,12 @@ def get_donors_info_for_sample_summary(request, donors, count_only=False):
         accessions = sorted(metadata.get('accessions', []))
         if taxa == 'mouse':
             return f'from {mouse_donor_phrase(metadata)}'
-        if count_only and len(accessions) > 1:
+        if count_only and len(accessions) == 2:
             return f'from {pluralize_count(len(accessions), "donor")}'
         if len(accessions) <= 2:
             accession_phrase = ' and '.join(accessions)
         else:
-            accession_phrase = f'{", ".join(accessions[:2])} and {len(accessions) - 2} more'
+            accession_phrase = f'({", ".join(accessions[:2])}, and {len(accessions) - 2} more)'
         donor_count_phrase = pluralize_count(len(accessions), 'donor')
         return f'from {donor_count_phrase} {accession_phrase}'
 
@@ -1686,6 +1685,29 @@ class AnalysisSet(FileSet):
         sample_objects = [request.embed(sample, '@@object') for sample in samples]
         single_source_flags = [is_sample_single_source(request, obj) for obj in sample_objects]
         is_mixed_single_source = any(single_source_flags) and not all(single_source_flags)
+        all_samples_are_cell_lines = True
+        sample_donors = []
+        for sample_object in sample_objects:
+            if 'multiplexed sample' in sample_object.get('classifications', []):
+                multiplexed_sample_objects = [
+                    request.embed(mux_sample, '@@object?skip_calculated=true')
+                    for mux_sample in sample_object.get('multiplexed_samples', [])
+                ]
+                all_samples_are_cell_lines = all(
+                    check_if_cell_line(request, mux_sample) for mux_sample in multiplexed_sample_objects
+                ) and all_samples_are_cell_lines
+                sample_donors.extend(
+                    donor
+                    for multiplexed_sample_object in multiplexed_sample_objects
+                    for donor in multiplexed_sample_object.get('donors', [])
+                )
+            else:
+                all_samples_are_cell_lines = (
+                    check_if_cell_line(request, sample_object) and all_samples_are_cell_lines
+                )
+                sample_donors.extend(sample_object.get('donors', []))
+        if not all_samples_are_cell_lines:
+            donors.update(sample_donors)
         prefixed_taxa = set()
         mux_taxa_by_classification = {}
         single_source_classifications = set()
@@ -1695,14 +1717,6 @@ class AnalysisSet(FileSet):
             # Get bioqualifers enums for non-multiplexed samples
             biosample_qualifiers.update(sample_object.get('biosample_qualifiers', []))
 
-            # Check if donors need to be included
-            if 'multiplexed sample' in sample_object.get('classifications', []):
-                for mux_sample in sample_object.get('multiplexed_samples', []):
-                    multiplexed_sample_object = request.embed(mux_sample, '@@object?skip_calculated=true')
-                    if not check_if_single_source_mux_subsample(request, multiplexed_sample_object):
-                        donors.update(multiplexed_sample_object.get('donors', []))
-            elif not is_single_source:
-                donors.update(sample_object.get('donors', []))
             if not is_single_source and not is_mixed_single_source:
                 taxa.add(sample_object.get('taxa', ''))
 
@@ -1801,6 +1815,15 @@ class AnalysisSet(FileSet):
                     classification in FATE_CHANGE_CLASSIFICATION_TO_VERB
                     and 'targeted_sample_term' in sample_object
                 )
+                is_cell_line_term = (
+                    sample_term_object.get('term_id', '').startswith('CLO:')
+                    or any(
+                        dbxref.startswith('Cellosaurus')
+                        for dbxref in sample_term_object.get('dbxrefs', [])
+                    )
+                )
+                if is_cell_line_term and (is_fate_change or term in mux_fate_origin_terms):
+                    sample_phrase = sample_phrase.removesuffix(' cell')
                 # Avoid redundancy of classification and term name
                 # e.g. "HFF-1 cell cell line"
                 if is_fate_change:
