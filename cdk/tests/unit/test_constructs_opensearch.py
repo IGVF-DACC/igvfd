@@ -31,7 +31,7 @@ def test_constructs_opensearch_initialize_opensearch_construct(stack, vpc, insta
             'EBSOptions': {
                 'EBSEnabled': True,
                 'VolumeSize': 10,
-                'VolumeType': 'gp2'
+                'VolumeType': 'gp3'
             },
             'EncryptionAtRestOptions': {
                 'Enabled': False
@@ -127,7 +127,7 @@ def test_constructs_opensearch_no_logging_opensearch_construct(stack, vpc, insta
             'EBSOptions': {
                 'EBSEnabled': True,
                 'VolumeSize': 10,
-                'VolumeType': 'gp2'
+                'VolumeType': 'gp3'
             },
             'EncryptionAtRestOptions': {
                 'Enabled': False

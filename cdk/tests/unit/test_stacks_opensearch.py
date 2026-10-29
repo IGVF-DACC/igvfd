@@ -35,7 +35,7 @@ def test_stacks_opensearch_initialize_opensearch_stack(config):
             'EBSOptions': {
                 'EBSEnabled': True,
                 'VolumeSize': 10,
-                'VolumeType': 'gp2'
+                'VolumeType': 'gp3'
             },
             'EncryptionAtRestOptions': {
                 'Enabled': False
