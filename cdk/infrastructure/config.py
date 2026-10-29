@@ -371,7 +371,7 @@ config: Dict[str, Any] = {
                                 data_nodes=1,
                             ),
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
-                            'volume_size': 50,
+                            'volume_size': 100,
                         }
                     },
                 ],

@@ -2136,8 +2136,9 @@
                 },
                 "EBSOptions": {
                     "EBSEnabled": true,
+                    "Iops": 3000,
                     "VolumeSize": 10,
-                    "VolumeType": "gp2"
+                    "VolumeType": "gp3"
                 },
                 "EncryptionAtRestOptions": {
                     "Enabled": false
