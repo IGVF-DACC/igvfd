@@ -840,8 +840,12 @@ def test_analysis_set_sample_summary(
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
+    pd_donor_accessions = sorted([
+        testapp.get(parent_human_donor_1['@id']).json.get('accession'),
+        testapp.get(human_donor['@id']).json.get('accession'),
+    ])
     assert res.get('simplified_sample_summary',
-                   '') == 'Parkinson\'s collection of human multiplexed sample of adrenal gland, middle temporal gyrus with and without Parkinson\'s from 2 donors'
+                   '') == f'Parkinson\'s collection of human multiplexed sample of adrenal gland, middle temporal gyrus with and without Parkinson\'s from 2 donors {pd_donor_accessions[0]} and {pd_donor_accessions[1]}'
 
     # Test group 4: non-mux samples with multiple target terms and times (test concat)
     # Starting fresh
