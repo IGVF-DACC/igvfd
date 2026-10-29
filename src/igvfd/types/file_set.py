@@ -1865,9 +1865,16 @@ class AnalysisSet(FileSet):
                 sample_classification_term_target[classification].add(sample_phrase)
 
             if mux_fate_origin_phrases:
+                sorted_mux_fate_targets = sorted(mux_fate_targets)
+                if len(sorted_mux_fate_targets) > 2:
+                    mux_fate_targets_phrase = (
+                        f'{", ".join(sorted_mux_fate_targets[:-1])}, and {sorted_mux_fate_targets[-1]}'
+                    )
+                else:
+                    mux_fate_targets_phrase = ' and '.join(sorted_mux_fate_targets)
                 mux_fate_phrase = (
                     f'{", ".join(sorted(mux_fate_origin_phrases))} {" and ".join(sorted(mux_fate_verbs))} '
-                    f'to {", ".join(sorted(mux_fate_targets))}'
+                    f'to {mux_fate_targets_phrase}'
                 )
                 if mux_fate_times:
                     mux_fate_time_phrase = ', '.join(
