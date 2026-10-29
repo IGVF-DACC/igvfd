@@ -126,6 +126,7 @@ def test_constructs_opensearch_no_logging_opensearch_construct(stack, vpc, insta
             },
             'EBSOptions': {
                 'EBSEnabled': True,
+                'Iops': 3000,
                 'VolumeSize': 10,
                 'VolumeType': 'gp3'
             },
