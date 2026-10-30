@@ -86,7 +86,7 @@ config: Dict[str, Any] = {
                         'on': True,
                         'props': {
                             'capacity': CapacityConfig(
-                                data_node_instance_type='m6g.xlarge.search',
+                                data_node_instance_type='m8g.xlarge.search',
                                 data_nodes=1,
                             ),
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
@@ -158,7 +158,7 @@ config: Dict[str, Any] = {
                         'on': True,
                         'props': {
                             'capacity': CapacityConfig(
-                                data_node_instance_type='m6g.xlarge.search',
+                                data_node_instance_type='m8g.xlarge.search',
                                 data_nodes=1,
                             ),
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
@@ -227,7 +227,7 @@ config: Dict[str, Any] = {
                         'on': True,
                         'props': {
                             'capacity': CapacityConfig(
-                                data_node_instance_type='m6g.xlarge.search',
+                                data_node_instance_type='m8g.xlarge.search',
                                 data_nodes=1,
                             ),
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
@@ -297,7 +297,7 @@ config: Dict[str, Any] = {
                         'on': True,
                         'props': {
                             'capacity': CapacityConfig(
-                                data_node_instance_type='m6g.xlarge.search',
+                                data_node_instance_type='m8g.xlarge.search',
                                 data_nodes=1,
                             ),
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
@@ -367,7 +367,7 @@ config: Dict[str, Any] = {
                         'on': True,
                         'props': {
                             'capacity': CapacityConfig(
-                                data_node_instance_type='m6g.xlarge.search',
+                                data_node_instance_type='m8g.xlarge.search',
                                 data_nodes=1,
                             ),
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
