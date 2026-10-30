@@ -76,11 +76,18 @@ def audit_analysis_set_multiplexed_samples(value, system):
                                    for sample in sorted(input_samples)])
         input_file_sets = ', '.join([audit_link(path_to_text(input_file_set), input_file_set)
                                     for input_file_set in input_file_sets])
-        if any(subset_sample not in related_samples for subset_sample in subset_samples):
+        mismatched_subset_samples = []
+        for subset_sample in subset_samples:
+            if subset_sample not in related_samples:
+                mismatched_subset_samples.append(subset_sample)
+        if mismatched_subset_samples:
+            mismatched_subset_samples_links = [audit_link(path_to_text(sample), sample)
+                                               for sample in mismatched_subset_samples]
             detail = (
                 f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has a sample in `subset_samples` that is not among the `samples`: {input_samples} '
-                f'of its `input_file_sets`: {input_file_sets}, or the `multiplexed_samples` of those samples.'
+                f'has `subset_samples` {", ".join(mismatched_subset_samples_links)} '
+                f'that are not among the `samples`: {input_samples} of its `input_file_sets`: '
+                f'{input_file_sets}, or the `multiplexed_samples` of those samples.'
             )
             yield AuditFailure(audit_message_inconsistent_subset_samples.get('audit_category', ''), f'{detail} {audit_message_inconsistent_subset_samples.get("audit_description", "")}', level=audit_message_inconsistent_subset_samples.get('audit_level', ''))
 
