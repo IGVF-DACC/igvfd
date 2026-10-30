@@ -44,10 +44,17 @@ FATE_CHANGE_PHRASE_PATTERN = re.compile(
 )
 
 
+SAMPLE_FIELDS_FOR_FILE_SET_PROPS = (
+    '@@object_with_select_calculated_properties'
+    '?field=donors&field=classifications&field=taxa&field=summary'
+    '&field=sample_terms&field=construct_library_sets&field=modifications'
+)
+
+
 def get_donors_from_samples(request, samples):
     donor_objects = []
     for sample in samples:
-        donor_objects += request.embed(sample, '@@object').get('donors', [])
+        donor_objects += request.embed(sample, SAMPLE_FIELDS_FOR_FILE_SET_PROPS).get('donors', [])
     return sorted(set(donor_objects)) or None
 
 
@@ -617,7 +624,7 @@ def get_samples_class(request, samples):
     classifications = set()
 
     for sample in samples or []:
-        sample_object = request.embed(sample, '@@object')
+        sample_object = request.embed(sample, SAMPLE_FIELDS_FOR_FILE_SET_PROPS)
         classifications.update(sample_object.get('classifications', []))
 
     if not classifications:
@@ -747,11 +754,11 @@ def get_cell_annotation(request, cell_type, samples, cell_qualifier=None):
     source_biosample_classifications = set()
     source_biosample_terms = set()
     cell_qualifier_string = cell_qualifier if cell_qualifier else None
-    cell_type_name = request.embed(cell_type, '@@object').get('term_name', '')
+    cell_type_name = request.embed(cell_type, '@@object?skip_calculated=true').get('term_name', '')
 
     for sample in samples:
-        sample_object = request.embed(sample, '@@object')
-        sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object')
+        sample_object = request.embed(sample, SAMPLE_FIELDS_FOR_FILE_SET_PROPS)
+        sample_term_object = request.embed(sample_object['sample_terms'][0], '@@object?skip_calculated=true')
         classifications = sample_object.get('classifications', [])
         for classification in classifications:
             source_biosample_classifications.add(classification)
@@ -818,7 +825,7 @@ def get_virtual_and_taxa_phrases_from_samples(request, samples):
     taxa = set()
     taxa_phrase = ''
     for sample in samples:
-        sample_object = request.embed(sample, '@@object')
+        sample_object = request.embed(sample, SAMPLE_FIELDS_FOR_FILE_SET_PROPS)
         taxa.add(sample_object.get('taxa', ''))
         # only put 'virtual' in final summary if all samples are virtual
         if 'virtual' not in sample_object.get('summary'):
@@ -1118,7 +1125,7 @@ class FileSet(Item):
         construct_library_sets = set()
         if self.item_type != 'construct_library_set':  # construct library sets should not calculate construct_library_sets
             for sample in samples:
-                sample_object = request.embed(sample, '@@object')
+                sample_object = request.embed(sample, SAMPLE_FIELDS_FOR_FILE_SET_PROPS)
                 if sample_object.get('construct_library_sets', []):
                     construct_library_sets = construct_library_sets | set(
                         sample_object.get('construct_library_sets', []))
@@ -1350,7 +1357,7 @@ class AnalysisSet(FileSet):
         # Collect CRISPR modalities, file set type, and sorted_from from associated samples.
         if samples:
             for sample in samples:
-                sample_object = request.embed(sample, '@@object')
+                sample_object = request.embed(sample, SAMPLE_FIELDS_FOR_FILE_SET_PROPS)
                 if 'sorted_from' in sample_object:
                     any_sample_sorted_from = True
                 if 'modifications' in sample_object and 'guide library' in cls_type_set:
@@ -1682,7 +1689,7 @@ class AnalysisSet(FileSet):
 
         # When single source and non-single source samples are mixed, taxa is
         # prefixed to each non-single source term instead of the whole summary.
-        sample_objects = [request.embed(sample, '@@object') for sample in samples]
+        sample_objects = [request.embed(sample, SAMPLE_FIELDS_FOR_FILE_SET_PROPS) for sample in samples]
         single_source_flags = [is_sample_single_source(request, obj) for obj in sample_objects]
         is_mixed_single_source = any(single_source_flags) and not all(single_source_flags)
         all_samples_are_cell_lines = True
@@ -2514,7 +2521,7 @@ class MeasurementSet(FileSet):
 
         any_sample_sorted_from = False
         for sample in samples:
-            sample_object = request.embed(sample, '@@object')
+            sample_object = request.embed(sample, SAMPLE_FIELDS_FOR_FILE_SET_PROPS)
             if 'sorted_from' in sample_object:
                 any_sample_sorted_from = True
             if sample_object.get('modifications') and 'guide library' in cls_type_set:
@@ -3138,7 +3145,7 @@ class PredictionSet(FileSet):
             else:  # list out the samples explicitly, take unique set of sample summaries
                 sample_term_phrases = set()
                 for sample in samples:
-                    sample_object = request.embed(sample, '@@object')
+                    sample_object = request.embed(sample, SAMPLE_FIELDS_FOR_FILE_SET_PROPS)
                     sample_term_phrases.add(sample_object.get('summary', ''))
                 samples_phrase = f'{", ".join([t for t in sorted(sample_term_phrases) if t!=""])}'
 
