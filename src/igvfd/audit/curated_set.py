@@ -54,37 +54,8 @@ def audit_curated_set_mismatched_taxa(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
-def audit_curated_set_non_virtual_sample(value, system):
-    '''
-    [
-        {
-            "audit_description": "Curated sets that have reference files are expected to be sample agnostic, therefore, should not be linked to non-virtual samples. The `samples` property of the curated sets should be either empty or link to only virtual samples.",
-            "audit_category": "inconsistent samples",
-            "audit_level": "ERROR"
-        }
-    ]
-    '''
-    audit_message = get_audit_message(audit_curated_set_non_virtual_sample)
-    non_virtual_samples = []
-    samples = value.get('samples', [])
-    if samples:
-        for sample in samples:
-            sample_object = system.get('request').embed(sample, '@@object?skip_calculated=true')
-            if not (sample_object.get('virtual', False)):
-                non_virtual_samples.append(sample)
-    if non_virtual_samples:
-        non_virtual_samples = ', '.join(audit_link(path_to_text(non_virtual_sample), non_virtual_sample)
-                                        for non_virtual_sample in non_virtual_samples)
-        detail = (
-            f'Curated set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'links to non-virtual sample(s): {non_virtual_samples}.'
-        )
-        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
-
-
 function_dispatcher_curated_set_object = {
-    'audit_curated_set_mismatched_taxa': audit_curated_set_mismatched_taxa,
-    'audit_curated_set_non_virtual_sample': audit_curated_set_non_virtual_sample
+    'audit_curated_set_mismatched_taxa': audit_curated_set_mismatched_taxa
 }
 
 
