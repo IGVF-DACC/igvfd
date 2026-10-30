@@ -67,12 +67,12 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
-                            'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
+                            'snapshot_source_db_identifier': PROD_DATABASE_IDENTIFIER,
                             'allocated_storage': 20,
                             'max_allocated_storage': 40,
                             'instance_type': InstanceType.of(
-                                InstanceClass.BURSTABLE3,
-                                InstanceSize.MEDIUM,
+                                InstanceClass.BURSTABLE4_GRAVITON,
+                                InstanceSize.XLARGE,
                             ),
                             'engine_version': PostgresEngineVersion.VER_14_19
                         },
@@ -90,7 +90,7 @@ config: Dict[str, Any] = {
                                 data_nodes=1,
                             ),
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
-                            'volume_size': 50,
+                            'volume_size': 100,
                             'logging': False,
                         }
                     }
