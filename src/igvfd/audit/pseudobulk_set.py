@@ -14,7 +14,7 @@ from .formatter import (
 
 INPUT_FILE_SET_EMBED = (
     '@@object_with_select_calculated_properties'
-    '?field=files&field=samples&field=@type&field=file_set_type'
+    '?field=files&field=samples&field=@type'
 )
 
 
