@@ -190,11 +190,20 @@ def prediction_set():
             'lab': {
                 'title': 'Lab'
             },
+            'cell_annotation': {
+                'title': 'Cell Annotation'
+            },
+            'cell_type': {
+                'title': 'Cell Type'
+            },
             'file_set_type': {
                 'title': 'File Set Type'
             },
             'samples': {
                 'title': 'Samples'
+            },
+            'software': {
+                'title': 'Software'
             },
             'summary': {
                 'title': 'Summary'
