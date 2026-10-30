@@ -257,7 +257,7 @@ def audit_pseudobulk_set_mismatched_merged_cell_types(value, system):
     if value.get('merged', False) and value.get('input_file_sets', []):
         for input_file_set in value.get('input_file_sets', []):
             input_file_set_object = system.get('request').embed(
-                input_file_set, '@@object?skip_calculated=true'
+                input_file_set, INPUT_FILE_SET_EMBED
             )
             for nested_input_file_set in input_file_set_object.get('input_file_sets', []):
                 nested_input_file_set_object = system.get('request').embed(
