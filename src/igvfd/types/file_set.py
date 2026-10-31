@@ -11,7 +11,10 @@ from .base import (
     paths_filtered_by_status
 )
 
+from igvfd.audit.in_vitro_system import check_if_cell_line
+
 from datetime import datetime
+import re
 
 
 CRISPR_SCREEN_ASSAY_TERMS = {
@@ -23,6 +26,22 @@ CRISPR_SCREEN_ASSAY_TERMS = {
 }
 
 PROTEIN_ABUNDANCE_TERM_ID = 'BAO:0040014'
+
+TAXA_WORDS = {
+    'Homo sapiens': 'human',
+    'Mus musculus': 'mouse',
+}
+
+FATE_CHANGE_CLASSIFICATION_TO_VERB = {
+    'differentiated cell specimen': 'differentiated',
+    'reprogrammed cell specimen': 'reprogrammed',
+    'pooled differentiated cell specimen': 'pooled differentiated',
+    'pooled reprogrammed cell specimen': 'pooled reprogrammed',
+}
+
+FATE_CHANGE_PHRASE_PATTERN = re.compile(
+    r'^(?P<targets>.*?) (?P<verb>(?:pooled )?(?:differentiated|reprogrammed)) from (?P<origin>.*)$'
+)
 
 
 def get_donors_from_samples(request, samples):
@@ -393,6 +412,7 @@ def get_disease_terms_from_phenotypic_features(request, sample_object, is_pd_col
 
 
 def get_donors_info_for_sample_summary(request, donors):
+    '''Summarize donors.'''
     donor_metadata = {}
     # technical samples have no donors
     if not donors:
@@ -402,32 +422,63 @@ def get_donors_info_for_sample_summary(request, donors):
         donor_object = request.embed(donor, '@@object?skip_calculated=true')
         accession = donor_object.get('accession')
         taxa = donor_object.get('taxa')
-        donor_metadata.setdefault(taxa, {}).setdefault('accessions', set()).add(accession)
-        if taxa == 'Mus musculus':
+        donor_taxa = TAXA_WORDS.get(taxa, taxa)
+        donor_metadata.setdefault(donor_taxa, {}).setdefault('accessions', set()).add(accession)
+        if donor_taxa == 'mouse':
             strain = donor_object.get('strain', '')
             if strain:
-                donor_metadata[taxa].setdefault('strains', set()).add(strain)
-    if len(donor_metadata) > 1:
-        mixed_donor_count = {taxa: len(metadata.get('accessions', [])) for taxa, metadata in donor_metadata.items()}
-        mixed_donor_phrase = ', '.join(
-            [f'{count} {taxa} donor(s)' for taxa, count in sorted(mixed_donor_count.items())])
-        return f'from {mixed_donor_phrase}'
-    for taxa, metadata in donor_metadata.items():
-        accessions = sorted(metadata.get('accessions', []))
-        if len(accessions) <= 2:
-            accession_phrase = ' and '.join(accessions)
-        else:
-            accession_phrase = f'{", ".join(accessions[:2])} and {len(accessions) - 2} more'
-        if taxa != 'Mus musculus':
-            return f'from donor(s) {accession_phrase}'
-        # Treat mouse
+                donor_metadata[donor_taxa].setdefault('strains', set()).add(strain)
+            sex = donor_object.get('sex')
+            if sex:
+                donor_metadata[donor_taxa].setdefault('sex_accessions', {}).setdefault(sex, set()).add(accession)
+
+    def mouse_donor_phrase(metadata):
+        accessions = metadata.get('accessions', set())
+        sex_accessions = metadata.get('sex_accessions', {})
+        mouse_phrases = []
+        classified_accessions = set()
+        for sex in ('male', 'female'):
+            sex_donors = sex_accessions.get(sex, set())
+            count = len(sex_donors)
+            if count:
+                classified_accessions.update(sex_donors)
+                mouse_phrases.append(pluralize_count(count, f'{sex} mouse', f'{sex} mice'))
+
+        unclassified_count = len(accessions - classified_accessions)
+        if unclassified_count:
+            mouse_phrases.append(pluralize_count(unclassified_count, 'mouse', 'mice'))
+        mouse_phrase = ' and '.join(mouse_phrases)
+
         strains = sorted(metadata.get('strains', []))
         if strains:
             if len(strains) <= 2:
                 strain_phrase = ' and '.join(strains)
             else:
                 strain_phrase = f'{", ".join(strains[:2])}, and {len(strains) - 2} more'
-        return f'from {accession_phrase} mice of {strain_phrase} strain(s)'
+            strain_noun = 'strain' if len(strains) == 1 else 'strains'
+            mouse_phrase = f'{mouse_phrase} of {strain_phrase} {strain_noun}'
+        return mouse_phrase
+
+    if len(donor_metadata) > 1:
+        mixed_donor_phrases = []
+        for taxa, metadata in sorted(donor_metadata.items()):
+            if taxa == 'mouse':
+                mixed_donor_phrases.append(mouse_donor_phrase(metadata))
+            else:
+                count = len(metadata.get('accessions', []))
+                mixed_donor_phrases.append(pluralize_count(count, f'{taxa} donor'))
+        mixed_donor_phrase = ', '.join(mixed_donor_phrases)
+        return f'from {mixed_donor_phrase}'
+    for taxa, metadata in donor_metadata.items():
+        accessions = sorted(metadata.get('accessions', []))
+        if taxa == 'mouse':
+            return f'from {mouse_donor_phrase(metadata)}'
+        if len(accessions) <= 2:
+            accession_phrase = ' and '.join(accessions)
+        else:
+            accession_phrase = f'({", ".join(accessions[:2])}, and {len(accessions) - 2} more)'
+        donor_count_phrase = pluralize_count(len(accessions), 'donor')
+        return f'from {donor_count_phrase} {accession_phrase}'
 
 
 def get_oexpr_from_cls_for_samp_summary(request, construct_library_sets):
@@ -578,6 +629,37 @@ def merge_induced_to_terms(terms):
     return result
 
 
+def pluralize_sample_term(term):
+    '''Pluralize generic cell types (e.g. fibroblast -> fibroblasts), leaving
+    named cell lines and other terms (e.g. K562, cell line) unchanged.'''
+    if term.endswith(('cell', 'blast', 'cyte', 'neuron')):
+        return f'{term}s'
+    return term
+
+
+def pluralize_count(count, singular, plural=None):
+    '''Return e.g. "1 day" or "2 days" (no "(s)").'''
+    if count == 1:
+        return f'{count} {singular}'
+    return f'{count} {plural or singular + "s"}'
+
+
+def merge_fate_change_terms(terms):
+    '''Merge fate change phrases to be A, B, C differentiated from X.'''
+    merged = {}
+    plain_terms = []
+    for phrase in terms:
+        match = FATE_CHANGE_PHRASE_PATTERN.match(phrase)
+        if match:
+            key = (match.group('verb'), match.group('origin'))
+            merged.setdefault(key, set()).add(match.group('targets'))
+        else:
+            plain_terms.append(phrase)
+    for (verb, origin), targets in merged.items():
+        plain_terms.append(f'{", ".join(sorted(targets))} {verb} from {origin}')
+    return plain_terms
+
+
 def collapse_pd_multiplexed_disease_terms(
     terms_by_classification,
     classification,
@@ -686,6 +768,28 @@ def get_virtual_and_taxa_phrases_from_samples(request, samples):
     else:
         taxa_phrase = f'{list(taxa)[0]} '
     return virtual_phrase, taxa_phrase
+
+
+def check_if_single_source_mux_subsample(request, sample_object):
+    '''Within a multiplexed sample, a subsample derived from a cell line (with
+    a targeted sample term) is not single source, so its donors are reported.'''
+    if 'targeted_sample_term' in sample_object:
+        return False
+    return check_if_cell_line(request, sample_object)
+
+
+def is_sample_single_source(request, sample_object):
+    '''Check if a sample is single source (established cell line). If Multiplexed, all multiplexed samples must be cell lines.'''
+    if 'multiplexed sample' in sample_object.get('classifications', []):
+        if sample_object.get('taxa') == 'Mixed species':
+            return False
+        for mux_sample in sample_object.get('multiplexed_samples', []):
+            # Only if all subsamples are cell lines, the multiplexed sample is NOT considered single source.
+            mux_sample_object = request.embed(mux_sample, '@@object?skip_calculated=true')
+            if not check_if_single_source_mux_subsample(request, mux_sample_object):
+                return False
+        return True
+    return check_if_cell_line(request, sample_object)
 
 
 EMBEDDED_FILE_FIELDS = [
@@ -1545,9 +1649,10 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def simplified_sample_summary(self, request, samples=None, donors=None, construct_library_sets=None, collections=None, condition_treatments=None):
+    def simplified_sample_summary(self, request, samples=None, construct_library_sets=None, collections=None, condition_treatments=None):
         corces_special_collection = 'PD single cell multiomics'
         taxa = set()
+        donors = set()
         sample_classification_term_target = dict()
         differentiation_times = set()
         disease_states_by_classification = {}
@@ -1573,22 +1678,56 @@ class AnalysisSet(FileSet):
             'pooled reprogrammed cell specimen': 'pooled reprogrammed'
         }
 
-        for sample in samples:
-            sample_object = request.embed(sample, '@@object')
+        # When single source and non-single source samples are mixed, taxa is
+        # prefixed to each non-single source term instead of the whole summary.
+        sample_objects = [request.embed(sample, '@@object') for sample in samples]
+        single_source_flags = [is_sample_single_source(request, obj) for obj in sample_objects]
+        is_mixed_single_source = any(single_source_flags) and not all(single_source_flags)
+        all_samples_are_cell_lines = True
+        sample_donors = []
+        for sample_object in sample_objects:
+            if 'multiplexed sample' in sample_object.get('classifications', []):
+                multiplexed_sample_objects = [
+                    request.embed(mux_sample, '@@object?skip_calculated=true')
+                    for mux_sample in sample_object.get('multiplexed_samples', [])
+                ]
+                all_samples_are_cell_lines = all(
+                    check_if_cell_line(request, mux_sample) for mux_sample in multiplexed_sample_objects
+                ) and all_samples_are_cell_lines
+                sample_donors.extend(
+                    donor
+                    for multiplexed_sample_object in multiplexed_sample_objects
+                    for donor in multiplexed_sample_object.get('donors', [])
+                )
+            else:
+                all_samples_are_cell_lines = (
+                    check_if_cell_line(request, sample_object) and all_samples_are_cell_lines
+                )
+                sample_donors.extend(sample_object.get('donors', []))
+        if not all_samples_are_cell_lines:
+            donors.update(sample_donors)
+        prefixed_taxa = set()
+        mux_taxa_by_classification = {}
+        single_source_classifications = set()
+        non_single_source_classifications = set()
 
+        for sample_object, is_single_source in zip(sample_objects, single_source_flags):
             # Get bioqualifers enums for non-multiplexed samples
             biosample_qualifiers.update(sample_object.get('biosample_qualifiers', []))
 
-            # Get taxa
-            taxa.add(sample_object.get('taxa', ''))
+            if not is_single_source and not is_mixed_single_source:
+                taxa.add(sample_object.get('taxa', ''))
 
             # Group sample and targeted sample terms according to classification.
             # Other metadata such as treatment info are lumped together.
             mux_prefix = ''
             sample_classifications = sorted(sample_object['classifications'])
             if 'multiplexed sample' in sample_object['classifications']:
+                # Some phrasing specification
                 sample_classifications.remove('multiplexed sample')
                 mux_prefix = 'multiplexed sample of '
+
+            # Simplify sample classifications for two-classification cases
             if ', '.join(sorted(sample_classifications)) in two_classification_cases:
                 sample_classifications = two_classification_cases[', '.join(sorted(sample_classifications))]
             # The variable "classification" can potentially be very long for
@@ -1597,15 +1736,46 @@ class AnalysisSet(FileSet):
             classification = f"{mux_prefix}{' and '.join(sample_classifications)}"
             if classification not in sample_classification_term_target:
                 sample_classification_term_target[classification] = set()
+            if is_single_source:
+                single_source_classifications.add(classification)
+            else:
+                non_single_source_classifications.add(classification)
 
-            # Add disease terms to the sample phrase
+            # Add disease terms to the sample phrase. For multiplexed samples, subsamples that
+            # are differentiated/reprogrammed with a targeted sample term also contribute their
+            # origin terms, targets and times, phrased as "x, y differentiated to a, b, c".
             disease_phrase = ''
             disease_terms_by_sample_term = {}
+            mux_fate_origin_terms = set()
+            mux_fate_origin_phrases = set()
+            mux_fate_targets = set()
+            mux_fate_verbs = set()
+            mux_fate_times = set()
+            non_fate_term_ids = set()
             if sample_object.get('multiplexed_samples'):
                 for multiplexed_sample in sample_object['multiplexed_samples']:
-                    multiplexed_sample_object = request.embed(
-                        multiplexed_sample, '@@object?skip_calculated=true'
+                    multiplexed_sample_object = request.embed(multiplexed_sample, '@@object')
+                    subsample_classifications = sorted(multiplexed_sample_object.get('classifications', []))
+                    subsample_classifications = two_classification_cases.get(
+                        ', '.join(subsample_classifications), subsample_classifications
                     )
+                    subsample_verb = FATE_CHANGE_CLASSIFICATION_TO_VERB.get(' and '.join(subsample_classifications))
+                    is_fate_subsample = bool(
+                        subsample_verb and multiplexed_sample_object.get('targeted_sample_term')
+                    )
+                    if is_fate_subsample:
+                        mux_fate_verbs.add(subsample_verb)
+                        mux_fate_origin_terms.update(multiplexed_sample_object.get('sample_terms', []))
+                        target_object = request.embed(
+                            multiplexed_sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
+                        mux_fate_targets.add(target_object['term_name'])
+                        if 'time_post_change' in multiplexed_sample_object:
+                            mux_fate_times.add((
+                                multiplexed_sample_object['time_post_change'],
+                                multiplexed_sample_object['time_post_change_units']
+                            ))
+                    else:
+                        non_fate_term_ids.update(multiplexed_sample_object.get('sample_terms', []))
                     diseased_phenotypic_features = get_disease_terms_from_phenotypic_features(
                         request, multiplexed_sample_object, is_pd_collection
                     )
@@ -1623,6 +1793,8 @@ class AnalysisSet(FileSet):
                         if term_name not in disease_terms_by_sample_term:
                             disease_terms_by_sample_term[term_name] = set()
                         disease_terms_by_sample_term[term_name].add(diseased_phenotypic_features)
+                # Terms also found in non-fate subsamples keep their regular phrase.
+                mux_fate_origin_terms -= non_fate_term_ids
             else:
                 diseased_phenotypic_features = get_disease_terms_from_phenotypic_features(
                     request, sample_object, is_pd_collection)
@@ -1637,10 +1809,28 @@ class AnalysisSet(FileSet):
             for term in sample_object['sample_terms']:
                 sample_term_object = request.embed(term, '@@object?skip_calculated=true')
                 sample_phrase = f"{sample_term_object['term_name']}"
+                is_fate_change = (
+                    classification in FATE_CHANGE_CLASSIFICATION_TO_VERB
+                    and 'targeted_sample_term' in sample_object
+                )
+                is_cell_line_term = (
+                    sample_term_object.get('term_id', '').startswith('CLO:')
+                    or any(
+                        dbxref.startswith('Cellosaurus')
+                        for dbxref in sample_term_object.get('dbxrefs', [])
+                    )
+                )
+                if is_cell_line_term and (is_fate_change or term in mux_fate_origin_terms):
+                    sample_phrase = sample_phrase.removesuffix(' cell')
                 # Avoid redundancy of classification and term name
                 # e.g. "HFF-1 cell cell line"
-                if not classification.startswith('multiplexed sample of'):
-                    if sample_phrase.endswith('cell') and 'cell' in classification:
+                if is_fate_change:
+                    pass
+                elif not classification.startswith('multiplexed sample of'):
+                    if is_single_source and classification == 'cell line':
+                        # Cell lines are named by their term alone, e.g. "K562" instead of "K562 cell line".
+                        sample_phrase = sample_phrase.removesuffix(' cell')
+                    elif sample_phrase.endswith('cell') and 'cell' in classification:
                         sample_phrase = sample_phrase.replace('cell', classification)
                     elif sample_phrase.endswith(' gastruloid') and 'gastruloid' in classification:
                         sample_phrase = sample_phrase.replace(' gastruloid', '')
@@ -1648,10 +1838,12 @@ class AnalysisSet(FileSet):
                         sample_phrase = f'{classification_to_prefix[classification]} {sample_phrase}'
 
                 targeted_sample_suffix = ''
+                target_name = ''
                 if 'targeted_sample_term' in sample_object:
                     targeted_sample_term_object = request.embed(
                         sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
-                    targeted_sample_suffix = f"induced to {targeted_sample_term_object['term_name']}"
+                    target_name = targeted_sample_term_object['term_name']
+                    targeted_sample_suffix = f'induced to {target_name}'
 
                 term_disease_phrase = ''
                 if sample_object.get('multiplexed_samples'):
@@ -1663,22 +1855,76 @@ class AnalysisSet(FileSet):
                 else:
                     term_disease_phrase = disease_phrase
 
-                if targeted_sample_suffix:
+                if is_fate_change:
+                    # Taxa is stated once at the start of the summary, so drop it
+                    # from term names, e.g. "mouse embryonic stem cell".
+                    taxa_word = TAXA_WORDS.get(sample_object.get('taxa'), '')
+                    origin_name = sample_phrase
+                    if taxa_word and not check_if_cell_line(request, sample_object):
+                        origin_name = origin_name.removeprefix(f'{taxa_word} ')
+                        target_name = target_name.removeprefix(f'{taxa_word} ')
+                    if target_name.endswith('stem cell'):
+                        target_name = pluralize_sample_term(target_name)
+                    verb = FATE_CHANGE_CLASSIFICATION_TO_VERB[classification]
+                    sample_phrase = (
+                        f'{target_name} {verb} from {pluralize_sample_term(origin_name)}{term_disease_phrase}'
+                    )
+                elif targeted_sample_suffix:
                     sample_phrase = f'{sample_phrase}{term_disease_phrase} {targeted_sample_suffix}'
                 else:
                     sample_phrase = f'{sample_phrase}{term_disease_phrase}'
+                if term in mux_fate_origin_terms:
+                    mux_fate_origin_phrases.add(sample_phrase)
+                    continue
+                if is_mixed_single_source and not is_single_source:
+                    sample_taxa = sample_object.get('taxa', '')
+                    if classification.startswith('multiplexed sample of'):
+                        mux_taxa_by_classification[classification] = sample_taxa
+                    elif sample_taxa:
+                        sample_phrase = f'{sample_taxa} {sample_phrase}'
+                        prefixed_taxa.add(sample_taxa)
                 sample_classification_term_target[classification].add(sample_phrase)
 
+            if mux_fate_origin_phrases:
+                sorted_mux_fate_targets = sorted(mux_fate_targets)
+                if len(sorted_mux_fate_targets) > 2:
+                    mux_fate_targets_phrase = (
+                        f'{", ".join(sorted_mux_fate_targets[:-1])}, and {sorted_mux_fate_targets[-1]}'
+                    )
+                else:
+                    mux_fate_targets_phrase = ' and '.join(sorted_mux_fate_targets)
+                mux_fate_phrase = (
+                    f'{", ".join(sorted(mux_fate_origin_phrases))} {" and ".join(sorted(mux_fate_verbs))} '
+                    f'to {mux_fate_targets_phrase}'
+                )
+                if mux_fate_times:
+                    mux_fate_time_phrase = ', '.join(
+                        pluralize_count(time, unit.removesuffix('s'))
+                        for time, unit in sorted(mux_fate_times, key=lambda t: float(t[0]))
+                    )
+                    mux_fate_phrase = f'{mux_fate_phrase} for {mux_fate_time_phrase}'
+                sample_classification_term_target[classification].add(mux_fate_phrase)
+
             if 'time_post_change' in sample_object:
-                time = sample_object['time_post_change']
-                time_unit = sample_object['time_post_change_units']
-                differentiation_times.add(f'{time} {time_unit}')
+                differentiation_times.add(
+                    (sample_object['time_post_change'], sample_object['time_post_change_units'])
+                )
 
         all_sample_terms = []
-        for classification in sorted(sample_classification_term_target.keys()):
-            terms_by_classification = ', '.join(
-                sorted(merge_induced_to_terms(sample_classification_term_target[classification]))
+        classifications = sorted(sample_classification_term_target.keys())
+        if is_mixed_single_source:
+            classifications.sort(
+                key=lambda classification: (classification not in single_source_classifications, classification)
             )
+        for classification in classifications:
+            formatted_terms = sorted(
+                merge_fate_change_terms(merge_induced_to_terms(
+                    sample_classification_term_target[classification]
+                )),
+                # Single source (unprefixed) terms go first, e.g. "K562, human xxx"
+                key=lambda term: (term.startswith(tuple(prefixed_taxa)), term)
+            )
+            terms_by_classification = ', '.join(formatted_terms)
             # Special handling for PD collection
             terms_by_classification = collapse_pd_multiplexed_disease_terms(
                 terms_by_classification,
@@ -1689,7 +1935,18 @@ class AnalysisSet(FileSet):
             # Put the terms after the "multiplexed sample of" and drop
             # the underlying classifications
             if 'multiplexed sample of' in classification:
-                terms_by_classification = f'multiplexed sample of {terms_by_classification}'
+                mux_taxa = mux_taxa_by_classification.get(classification, '')
+                terms_by_classification = f'{mux_taxa} multiplexed sample of {terms_by_classification}'.strip()
+            # Fate change phrases already carry the verb, so no classification is appended.
+            elif classification in FATE_CHANGE_CLASSIFICATION_TO_VERB and formatted_terms and all(
+                    FATE_CHANGE_PHRASE_PATTERN.match(term) for term in formatted_terms):
+                pass
+            elif (
+                classification == 'cell line'
+                and classification in single_source_classifications
+                and classification not in non_single_source_classifications
+            ):
+                pass
             # Append classification only when it is not already present in the
             # formatted terms string.
             elif classification not in terms_by_classification:
@@ -1727,8 +1984,10 @@ class AnalysisSet(FileSet):
         # differentiation time phrase
         differentiation_time_phrase = ''
         if differentiation_times:
-            differentiation_times_sorted = sorted(differentiation_times, key=lambda s: float(s.split()[0]))
-            differentiation_time_phrase = f'at {", ".join(differentiation_times_sorted)}(s) post change'
+            differentiation_times_sorted = sorted(differentiation_times, key=lambda t: float(t[0]))
+            differentiation_time_phrase = ', '.join(
+                pluralize_count(time, unit.removesuffix('s')) for time, unit in differentiation_times_sorted
+            )
 
         # Biosample qualifiers
         biosample_qualifiers_phrase = ''
@@ -1736,7 +1995,6 @@ class AnalysisSet(FileSet):
             biosample_qualifiers_phrase = ', '.join(sorted(biosample_qualifiers))
 
         # Donor phrase
-        donor_phrase = ''
         donor_phrase = get_donors_info_for_sample_summary(request, donors)
 
         # Taxa phrase
@@ -1751,8 +2009,18 @@ class AnalysisSet(FileSet):
         )
 
         # Constructing the final summary, putting ovexpr last
-        summary = ' '.join(filter(None, [taxa_phrase, biosample_qualifiers_phrase, ', '.join(all_sample_terms),
-                           differentiation_time_phrase, donor_phrase])).strip()
+        has_fate_change_phrase = any(FATE_CHANGE_PHRASE_PATTERN.match(term) for term in all_sample_terms)
+        if has_fate_change_phrase and differentiation_time_phrase:
+            sample_phrase = ' '.join(filter(None, [taxa_phrase, biosample_qualifiers_phrase,
+                                     ', '.join(all_sample_terms)]))
+            summary = f'{sample_phrase} for {differentiation_time_phrase}'
+            if donor_phrase:
+                summary = f'{summary}, {donor_phrase}'
+        else:
+            if differentiation_time_phrase:
+                differentiation_time_phrase = f'for {differentiation_time_phrase}'
+            summary = ' '.join(filter(None, [taxa_phrase, biosample_qualifiers_phrase, ', '.join(all_sample_terms),
+                               differentiation_time_phrase, donor_phrase])).strip()
 
         if treatment_phrase:
             summary = f'{summary}, {treatment_phrase}'
