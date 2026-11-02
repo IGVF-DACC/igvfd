@@ -237,7 +237,7 @@ config: Dict[str, Any] = {
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
                             'volume_size': 50,
                             'volume_iops': 3000,
-                            'volume_throughput': 150,
+                            'volume_throughput': 300,
                         }
                     },
                 ],
@@ -309,7 +309,7 @@ config: Dict[str, Any] = {
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
                             'volume_size': 50,
                             'volume_iops': 3000,
-                            'volume_throughput': 150,
+                            'volume_throughput': 300,
                         }
                     },
                 ],
@@ -381,7 +381,7 @@ config: Dict[str, Any] = {
                             'engine_version': EngineVersion.OPENSEARCH_2_19,
                             'volume_size': 100,
                             'volume_iops': 3000,
-                            'volume_throughput': 150,
+                            'volume_throughput': 300,
                         }
                     },
                 ],
