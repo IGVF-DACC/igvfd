@@ -346,6 +346,8 @@ def config(instance_type, capacity_config, engine_version, postgres_engine_versi
                         'capacity': capacity_config,
                         'engine_version': engine_version,
                         'volume_size': 10,
+                        'volume_iops': 3000,
+                        'volume_throughput': 125,
                     },
                 }
             ],
@@ -428,6 +430,8 @@ def opensearch_multiplexer(stack, existing_resources, capacity_config, config, e
                         capacity=capacity_config,
                         engine_version=engine_version,
                         volume_size=10,
+                        volume_iops=3000,
+                        volume_throughput=125,
                     )
                 }
             ),

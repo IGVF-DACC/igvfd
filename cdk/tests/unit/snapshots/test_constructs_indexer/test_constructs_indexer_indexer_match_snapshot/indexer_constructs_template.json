@@ -2137,6 +2137,7 @@
                 "EBSOptions": {
                     "EBSEnabled": true,
                     "Iops": 3000,
+                    "Throughput": 125,
                     "VolumeSize": 10,
                     "VolumeType": "gp3"
                 },

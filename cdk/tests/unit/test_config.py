@@ -95,6 +95,8 @@ def test_config_build_config_from_name():
     opensearch_instance_props = config.opensearch['clusters'][0]['props']
     assert 'capacity' in opensearch_instance_props
     assert 'volume_size' in opensearch_instance_props
+    assert 'volume_iops' in opensearch_instance_props
+    assert 'volume_throughput' in opensearch_instance_props
     assert 'cpu' in config.invalidation_service
     assert 'memory_limit_mib' in config.invalidation_service
     assert 'min_scaling_capacity' in config.invalidation_service
@@ -126,6 +128,8 @@ def test_config_build_config_from_name():
     opensearch_instance_props = config.opensearch['clusters'][0]['props']
     assert 'capacity' in opensearch_instance_props
     assert 'volume_size' in opensearch_instance_props
+    assert 'volume_iops' in opensearch_instance_props
+    assert 'volume_throughput' in opensearch_instance_props
     assert 'cpu' in config.invalidation_service
     assert 'memory_limit_mib' in config.invalidation_service
     assert 'min_scaling_capacity' in config.invalidation_service

@@ -38,9 +38,10 @@ class OpensearchProps:
     existing_resources: ExistingResources
     capacity: CapacityConfig
     volume_size: int
+    volume_iops: int
+    volume_throughput: int
     engine_version: EngineVersion
     volume_type: EbsDeviceVolumeType = EbsDeviceVolumeType.GP3
-    volume_iops: int = 3000
     subnet_selection: SubnetSelection = field(
         default_factory=lambda: SubnetSelection(
             availability_zones=['us-west-2a'],
@@ -89,6 +90,7 @@ class Opensearch(Construct):
                 volume_size=self.props.volume_size,
                 volume_type=self.props.volume_type,
                 iops=self.props.volume_iops,
+                throughput=self.props.volume_throughput,
             ),
             logging=LoggingOptions(
                 app_log_enabled=self.props.logging,
