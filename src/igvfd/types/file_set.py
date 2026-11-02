@@ -3147,7 +3147,7 @@ class PredictionSet(FileSet):
                 for sample in samples:
                     sample_object = request.embed(sample, SAMPLE_FIELDS_FOR_FILE_SET_PROPS)
                     sample_term_phrases.add(sample_object.get('summary', ''))
-                samples_phrase = f'{", ".join([t for t in sorted(sample_term_phrases) if t!=""])}'
+                samples_phrase = f'{", ".join([t for t in sorted(sample_term_phrases) if t != ""])}'
 
         # Final summary
         return ' '.join(filter(None, [
@@ -3623,7 +3623,7 @@ class PseudobulkSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, donors, preferred_assay_titles, merged, cell_annotation):
+    def summary(self, request, donors, preferred_assay_titles, merged, cell_annotation, file_set_type):
         merged_phrase = ''
         if merged:
             merged_phrase = 'merged'
@@ -3643,7 +3643,7 @@ class PseudobulkSet(FileSet):
         summary = ' '.join([x for x in [
             assay_phrase,
             merged_phrase,
-            'pseudobulk of',
+            f'{file_set_type} of',
             taxa_phrase,
             cell_annotation
         ] if x != ''])
