@@ -73,7 +73,7 @@ def test_calculated_samples(testapp, measurement_set, analysis_set_base, constru
     assert set([sample['@id'] for sample in res.json.get('samples')]) == {in_vitro_cell_line['@id']}
 
 
-def test_calculated_samples_class(
+def test_analysis_set_calculated_samples_class(
     testapp,
     analysis_set_base,
     measurement_set,
