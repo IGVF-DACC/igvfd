@@ -3,7 +3,7 @@ import pytest
 
 def test_pseudobulk_set_summary(testapp, pseudobulk_set_base, pseudobulk_set_merged, principal_analysis_set, in_vitro_cell_line, tissue, human_donor, rodent_donor):
     res = testapp.get(pseudobulk_set_base['@id']).json
-    assert res.get('summary', '') == 'pseudobulk of Mus musculus adrenal gland endothelial cell of vascular tree'
+    assert res.get('summary', '') == 'gene expression pseudobulk of Mus musculus adrenal gland endothelial cell of vascular tree'
     # Example with assay and cell qualifier.
     testapp.patch_json(
         pseudobulk_set_base['@id'],
@@ -14,7 +14,7 @@ def test_pseudobulk_set_summary(testapp, pseudobulk_set_base, pseudobulk_set_mer
     )
     res = testapp.get(pseudobulk_set_base['@id']).json
     assert res.get(
-        'summary', '') == 'STARR-seq pseudobulk of Mus musculus adrenal gland exhausted endothelial cell of vascular tree'
+        'summary', '') == 'STARR-seq gene expression pseudobulk of Mus musculus adrenal gland exhausted endothelial cell of vascular tree'
     # Mixed taxa example.
     testapp.patch_json(
         tissue['@id'],
@@ -24,10 +24,11 @@ def test_pseudobulk_set_summary(testapp, pseudobulk_set_base, pseudobulk_set_mer
     )
     res = testapp.get(pseudobulk_set_base['@id']).json
     assert res.get(
-        'summary', '') == 'STARR-seq pseudobulk of mixed taxa adrenal gland exhausted endothelial cell of vascular tree'
+        'summary', '') == 'STARR-seq gene expression pseudobulk of mixed taxa adrenal gland exhausted endothelial cell of vascular tree'
     # Merged pseudobulk example.
     res = testapp.get(pseudobulk_set_merged['@id']).json
-    assert res.get('summary', '') == 'STARR-seq merged pseudobulk of mixed taxa adrenal gland endothelial cell of vascular tree'
+    assert res.get(
+        'summary', '') == 'STARR-seq merged gene expression pseudobulk of mixed taxa adrenal gland endothelial cell of vascular tree'
 
 
 def test_pseudobulk_set_donors(
