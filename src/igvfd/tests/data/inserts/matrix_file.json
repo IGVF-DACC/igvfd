@@ -534,5 +534,26 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ]
+    },
+    {
+        "uuid": "f0a91bed-8875-4e49-9212-27cf29ba7718",
+        "accession": "IGVFFI8833PAGN",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_transcriptome_distance_matrix"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "fd3cc277728437f6676eca182d7f6838",
+        "file_format": "h5ad",
+        "content_type": "transcriptome distance matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/transcriptome_distance_matrix.h5ad",
+        "file_size": 45200010,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ]
     }
 ]

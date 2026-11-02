@@ -2610,5 +2610,74 @@
         "filtered": false,
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "509e51b3-5836-4106-ab11-9af023c1cb1d",
+        "accession": "IGVFFI0057PRQU",
+        "lab": "michael-beer",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_target_target_matrix"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-08-06T12:34:56Z",
+        "md5sum": "7ecb37a1e9f90ab6bdb875a2a395138e",
+        "file_format": "csv",
+        "content_type": "target by target matrix",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/target_by_target_matrix.csv.gz",
+        "file_size": 4123,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "3bbd7ef4-8be9-4180-9374-a71cc38081b3",
+        "accession": "IGVFFI0057PRQV",
+        "lab": "michael-beer",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_perturbation_significance_matrix"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-08-06T12:34:56Z",
+        "md5sum": "c08448966e374284aea395d35bcb8bf5",
+        "file_format": "csv",
+        "content_type": "perturbation significance matrix",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/perturbation_significance_matrix.csv.gz",
+        "file_size": 4123,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "8f07ec5c-5675-4a96-9f0b-cd18fcbca8fa",
+        "accession": "IGVFFI0057PRQW",
+        "lab": "michael-beer",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_embeddings"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-08-06T12:34:56Z",
+        "md5sum": "d92c36790b760c97028d13be94ae39ce",
+        "file_format": "csv",
+        "content_type": "embeddings",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/embeddings.csv.gz",
+        "file_size": 4123,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:basic_analysis_set",
+        "controlled_access": false
     }
 ]

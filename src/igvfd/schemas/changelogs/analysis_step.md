@@ -2,6 +2,14 @@
 
 ### Minor changes since schema version 17
 
+* Extend `input_content_types` enum list to include `target by target matrix`.
+* Extend `output_content_types` enum list to include `target by target matrix`.
+* Extend `input_content_types` enum list to include `perturbation significance matrix`.
+* Extend `output_content_types` enum list to include `perturbation significance matrix`.
+* Extend `input_content_types` enum list to include `embeddings`.
+* Extend `output_content_types` enum list to include `embeddings`.
+* Extend `input_content_types` enum list to include `transcriptome distance matrix`.
+* Extend `output_content_types` enum list to include `transcriptome distance matrix`.
 * Update `aliases` regex to add `jacob-schreiber` as a namespace.
 * Extend `analysis_step_types` enum list to include `motif identification`.
 * Extend `analysis_step_types` enum list to include `computational model contribution`.
