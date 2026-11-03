@@ -94,6 +94,15 @@ def sample_term_gyrus(testapp):
 
 
 @pytest.fixture
+def sample_term_HEK293T(testapp):
+    item = {
+        'term_id': 'EFO:0001082',
+        'term_name': 'HEK293T'
+    }
+    return testapp.post_json('/sample_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def sample_term_v1(sample_term_K562):
     item = sample_term_K562.copy()
     item.update({
