@@ -156,3 +156,43 @@ def test_pseudobulk_set_cell_annotation(testapp, pseudobulk_set_base, in_vitro_c
     )
     res = testapp.get(pseudobulk_set_base['@id']).json
     assert res.get('cell_annotation', '') == 'exhausted brown adipose tissue'
+
+
+def test_pseudobulk_set_calculated_samples_class(
+    testapp,
+    pseudobulk_set_base,
+    analysis_set_base,
+    tissue,
+    in_vitro_cell_line,
+    multiplexed_sample,
+):
+    # Connect PseudobulkSet to AnalysisSet
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {
+            'input_file_sets': [analysis_set_base['@id']]
+        }
+    )
+
+    # Case 1: tissue/organ
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {
+            'samples': [tissue['@id']]
+        }
+    )
+    res = testapp.get(pseudobulk_set_base['@id'])
+    assert res.json['samples_class'] == 'tissue/organ'
+
+    # Case 2: cell line, multiplexed sample
+    testapp.patch_json(
+        pseudobulk_set_base['@id'],
+        {
+            'samples': [
+                in_vitro_cell_line['@id'],
+                multiplexed_sample['@id']
+            ]
+        }
+    )
+    res = testapp.get(pseudobulk_set_base['@id'])
+    assert res.json['samples_class'] == 'multiplexed cell line'

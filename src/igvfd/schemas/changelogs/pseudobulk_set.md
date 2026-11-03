@@ -2,6 +2,7 @@
 
 ### Schema version 3
 
+* Add calculated property `samples_class`.
 * Extend `file_set_type` enum list to include `gene expression pseudobulk`.
 * Extend `file_set_type` enum list to include `demultiplexed pseudobulk`.
 * Extend `file_set_type` enum list to include `accessibility pseudobulk`.
