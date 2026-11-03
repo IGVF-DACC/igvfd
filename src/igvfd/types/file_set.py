@@ -1756,7 +1756,7 @@ class AnalysisSet(FileSet):
             non_fate_term_ids = set()
             if sample_object.get('multiplexed_samples'):
                 for multiplexed_sample in sample_object['multiplexed_samples']:
-                    multiplexed_sample_object = request.embed(multiplexed_sample, '@@object')
+                    multiplexed_sample_object = request.embed(multiplexed_sample, '@@object?skip_calculated=true')
                     subsample_classifications = sorted(multiplexed_sample_object.get('classifications', []))
                     subsample_classifications = two_classification_cases.get(
                         ', '.join(subsample_classifications), subsample_classifications
