@@ -643,7 +643,8 @@ def test_audit_input_for(
     base_auxiliary_set,
     construct_library_set_genome_wide,
     intermediate_analysis_set,
-    principal_analysis_set
+    principal_analysis_set,
+    analysis_set_base
 ):
     testapp.patch_json(
         sequence_file_sequencing_run_2['@id'],
@@ -749,4 +750,39 @@ def test_audit_input_for(
     assert all(
         error['category'] != 'missing principal analysis'
         for error in res_auxset.json['audit'].get('WARNING', [])
+    )
+    # Intermediate analysis set with mixed status principal analysis set (flagged)
+    testapp.patch_json(
+        principal_analysis_set['@id'],
+        {
+            'input_file_sets': [intermediate_analysis_set['@id']],
+            'status': 'in progress'
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [intermediate_analysis_set['@id']],
+            'status': 'released',
+            'release_timestamp': '2024-06-01T00:00:00Z'
+        }
+    )
+    res_intermediate = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing released principal analysis'
+        for error in res_intermediate.json['audit'].get('WARNING', [])
+    )
+    # Intermediate analysis set with released principal analysis set
+    testapp.patch_json(
+        principal_analysis_set['@id'],
+        {
+            'input_file_sets': [intermediate_analysis_set['@id']],
+            'status': 'released',
+            'release_timestamp': '2024-06-01T00:00:00Z'
+        }
+    )
+    res_intermediate = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing released principal analysis'
+        for error in res_intermediate.json['audit'].get('WARNING', [])
     )
