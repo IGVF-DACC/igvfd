@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 28
 
+* Extend `content_type` enum list to include `target by target matrix`.
+* Extend `content_type` enum list to include `perturbation significance matrix`.
+* Extend `content_type` enum list to include `embeddings`.
 * Extend `catalog_collections` enum list to include `genes_transcripts_genomic_elements`.
 * Extend `file_format` enum list to include `parquet`.
 * Update `aliases` regex to add `jacob-schreiber` as a namespace.

@@ -94,7 +94,8 @@
                 "labeling splicing cell by gene matrix",
                 "mitochondrial variants by cell heteroplasmy matrix",
                 "sequence motifs",
-                "spot by gene matrix"
+                "spot by gene matrix",
+                "transcriptome distance matrix"
             ],
             "enum_descriptions": {
                 "annotated cell by gene matrix": "A matrix where rows represent genes and columns represent samples or cells, containing both counts of sequencing reads that map to each gene and cell annotation data.",
@@ -122,7 +123,8 @@
                 "labeling splicing cell by gene matrix": "A cell by gene matrix where rows represent genes and columns represent samples or cells, containing RNA molecule counts from metabolic labeling single-cell RNA-seq, stratified by combinations of splicing status (spliced, unspliced) and metabolic labeling status (labeled, unlabeled).",
                 "mitochondrial variants by cell heteroplasmy matrix": "A matrix output from mgatk, where rows are mitochondrial genome positions, and columns are individual cells.",
                 "sequence motifs": "Contribution weight matrices (CWMs) discovered by TF-MoDISco.",
-                "spot by gene matrix": "A feature barcode matrix output from Space Ranger, where rows represent genes and columns represent barcoded spots."
+                "spot by gene matrix": "A feature barcode matrix output from Space Ranger, where rows represent genes and columns represent barcoded spots.",
+                "transcriptome distance matrix": "Matrix of pairwise distances between transcriptional profiles associated with different perturbations."
             },
             "submissionExample": {
                 "appscript": "contact matrix",
