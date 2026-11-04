@@ -214,7 +214,7 @@ class Sample(Item):
         },
         'notSubmittable': True,
     })
-    def file_sets(self, request, file_sets, multiplexed_in=None, pooled_in=None):
+    def file_sets(self, request, file_sets):
         # This is required to get the analysis set reverse links since analysis set calculates samples
         for file_set in file_sets:
             file_set_object = request.embed(
