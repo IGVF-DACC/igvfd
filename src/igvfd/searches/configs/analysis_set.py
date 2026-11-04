@@ -368,6 +368,24 @@ def differentiation_series():
 
 
 @search_config(
+    name='SingleCell'
+)
+def single_cell():
+    return {
+        'matrix': {
+            'x': {
+                'group_by': 'preferred_assay_titles',
+                'label': 'Assays'
+            },
+            'y': {
+                'group_by': ['samples_class', 'samples.sample_terms.term_name', ('samples.targeted_sample_term.term_name', 'no_samples_targeted_sample_term')],
+                'label': 'Samples'
+            }
+        }
+    }
+
+
+@search_config(
     name='AssaySummary'
 )
 def assay_summary():
