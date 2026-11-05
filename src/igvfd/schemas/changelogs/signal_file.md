@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 15
 
+* Extend `catalog_collections` enum list to include `coding_variants_PPI`.
+* Extend `catalog_collections` enum list to include `coding_variants_PPI`.
 * Extend `catalog_collections` enum list to include `genes_transcripts_genomic_elements`.
 * Update `aliases` regex to add `jacob-schreiber` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.3`.

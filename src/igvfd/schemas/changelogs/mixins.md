@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `catalog_collections` enum list to include `coding_variants_PPI`. (11/11/2026)
 * Extend `catalog_collections` enum list to include `genes_transcripts_genomic_elements`. (10/28/2026)
 * Update `aliases` regex to add `jacob-schreiber` as a namespace. (10/14/2026)
 * Extend `collections` enum list to include `IGVF_catalog_v1.3`. (10/07/2026)

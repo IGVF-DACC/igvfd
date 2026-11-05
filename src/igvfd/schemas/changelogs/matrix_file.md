@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Extend `catalog_collections` enum list to include `coding_variants_PPI`.
 * Extend `content_type` enum list to include `transcriptome distance matrix`.
 * Extend `catalog_collections` enum list to include `genes_transcripts_genomic_elements`.
 * Update `aliases` regex to add `jacob-schreiber` as a namespace.
