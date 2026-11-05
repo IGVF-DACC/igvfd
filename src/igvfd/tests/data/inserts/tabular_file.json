@@ -327,7 +327,8 @@
         "catalog_collections": [
             "coding_variants",
             "coding_variants_phenotypes",
-            "files_filesets"
+            "files_filesets",
+            "coding_variants_PPI"
         ]
     },
     {
