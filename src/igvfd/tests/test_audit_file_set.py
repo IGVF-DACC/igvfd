@@ -764,7 +764,8 @@ def test_audit_input_for(
         {
             'input_file_sets': [intermediate_analysis_set['@id']],
             'status': 'released',
-            'release_timestamp': '2024-06-01T00:00:00Z'
+            'release_timestamp': '2024-06-01T00:00:00Z',
+            'file_set_type': 'principal analysis'
         }
     )
     res_intermediate = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
