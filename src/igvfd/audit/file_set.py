@@ -736,7 +736,7 @@ def audit_input_for(value, system):
                 file_set_object = system.get('request').embed(input_for_file_set, '@@object?skip_calculated=true')
                 if file_set_object.get('file_set_type') == 'principal analysis':
                     released_principal_analysis.append(file_set_object.get('status') == 'released')
-            if not any(released_principal_analysis):
+            if not all(released_principal_analysis):
                 detail = (
                     f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
                     f'is an intermediate analysis set with files, but none of the principal analysis sets '
