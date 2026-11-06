@@ -669,15 +669,22 @@ def audit_input_for(value, system):
             "audit_description": "Raw data sets and intermediate analysis sets with files are expected to be associated with at least one principal analysis set.",
             "audit_category": "missing principal analysis",
             "audit_level": "WARNING"
+        },
+        {
+            "audit_description": "Released intermediate analysis sets with files are expected to be associated with at least one released principal analysis set.",
+            "audit_category": "missing released principal analysis",
+            "audit_level": "WARNING"
         }
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_missing_any = get_audit_message(audit_input_for, index=0)
     audit_message_missing_principal = get_audit_message(audit_input_for, index=1)
+    audit_message_missing_released_principal = get_audit_message(audit_input_for, index=2)
     # Skip if file set is a principal analysis
     if value.get('file_set_type') == 'principal analysis':
         return
+    # If the file set has no input_for and has files, audit for missing downstream objects
     if not value.get('input_for') and value.get('files'):
         # Different categories for raw vs. intermediate analysis sets
         if value.get('file_set_type') != 'intermediate analysis':
@@ -692,6 +699,7 @@ def audit_input_for(value, system):
                 f'but is not listed in any `input_file_sets` for any principal analysis sets.'
             )
             yield AuditFailure(audit_message_missing_principal.get('audit_category', ''), f'{detail} {audit_message_missing_principal.get("audit_description", "")}', level=audit_message_missing_principal.get('audit_level', ''))
+    # If the file set has input_for and has files, check for missing downstream principal analyses
     elif value.get('input_for') and value.get('files'):
         missing_principal_analysis = True
         checking_queue = value.get('input_for', [])
@@ -713,6 +721,7 @@ def audit_input_for(value, system):
                         checking_queue.append(new_file_set)
                 checking_queue.remove(current_file_set)
             continue
+        # Check if no principal is found downstream
         if missing_principal_analysis:
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
@@ -720,6 +729,20 @@ def audit_input_for(value, system):
                 f'which are principal analyses.'
             )
             yield AuditFailure(audit_message_missing_principal.get('audit_category', ''), f'{detail} {audit_message_missing_principal.get("audit_description", "")}', level=audit_message_missing_principal.get('audit_level', ''))
+        # If has principal analysis, check for if any is unreleased (flagged)
+        elif value.get('file_set_type') == 'intermediate analysis':
+            released_principal_analysis = []
+            for input_for_file_set in value.get('input_for', []):
+                file_set_object = system.get('request').embed(input_for_file_set, '@@object?skip_calculated=true')
+                if file_set_object.get('file_set_type') == 'principal analysis':
+                    released_principal_analysis.append(file_set_object.get('status') == 'released')
+            if not all(released_principal_analysis):
+                detail = (
+                    f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                    f'is an intermediate analysis set with files, but none of the principal analysis sets '
+                    f'it is `input_for` have a status of `released`.'
+                )
+                yield AuditFailure(audit_message_missing_released_principal.get('audit_category', ''), f'{detail} {audit_message_missing_released_principal.get("audit_description", "")}', level=audit_message_missing_released_principal.get('audit_level', ''))
 
 
 def audit_inconsistent_location_files(value, system):
