@@ -328,7 +328,7 @@
             "coding_variants",
             "coding_variants_phenotypes",
             "files_filesets",
-            "coding_variants_PPI"
+            "coding_variants_proteins_proteins"
         ]
     },
     {
