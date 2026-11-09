@@ -736,10 +736,10 @@ def audit_input_for(value, system):
             unreleased_principal_analysis = []
             for input_for_file_set in value.get('input_for', []):
                 file_set_object = system.get('request').embed(
-                    input_for_file_set, '@@object?@@object_with_select_calculated_properties?field=@id')
+                    input_for_file_set, '@@object_with_select_calculated_properties?field=@id')
                 if file_set_object.get('file_set_type') == 'principal analysis':
                     # Get all unreleased principals
-                    if file_set_object.get('status') in ['in progress', 'archived']:
+                    if file_set_object.get('status') in ['in progress', 'archived', 'revoked']:
                         unreleased_principal_analysis.append(file_set_object)
             if unreleased_principal_analysis:
                 unreleased_principal_analysis_paths = ', '.join(
