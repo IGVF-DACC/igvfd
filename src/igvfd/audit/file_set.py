@@ -671,7 +671,7 @@ def audit_input_for(value, system):
             "audit_level": "WARNING"
         },
         {
-            "audit_description": "Released intermediate analysis sets with files are expected to be associated with at least one released principal analysis set.",
+            "audit_description": "Released intermediate analysis sets with files are expected to be associated with released principal analysis sets.",
             "audit_category": "missing released principal analysis",
             "audit_level": "WARNING"
         }
@@ -729,18 +729,25 @@ def audit_input_for(value, system):
                 f'which are principal analyses.'
             )
             yield AuditFailure(audit_message_missing_principal.get('audit_category', ''), f'{detail} {audit_message_missing_principal.get("audit_description", "")}', level=audit_message_missing_principal.get('audit_level', ''))
-        # If has principal analysis, check for if any is unreleased (flagged)
-        elif value.get('file_set_type') == 'intermediate analysis':
-            released_principal_analysis = []
+        # If has principal analysis AND the intermediate analysis is released, check for unreleased principal analyses (flagged)
+        if value.get('file_set_type') == 'intermediate analysis':
+            if value.get('status') != 'released':
+                return
+            unreleased_principal_analysis = []
             for input_for_file_set in value.get('input_for', []):
-                file_set_object = system.get('request').embed(input_for_file_set, '@@object?skip_calculated=true')
+                file_set_object = system.get('request').embed(
+                    input_for_file_set, '@@object?@@object_with_select_calculated_properties?field=@id')
                 if file_set_object.get('file_set_type') == 'principal analysis':
-                    released_principal_analysis.append(file_set_object.get('status') == 'released')
-            if not all(released_principal_analysis):
+                    # Get all unreleased principals
+                    if file_set_object.get('status') in ['in progress', 'archived']:
+                        unreleased_principal_analysis.append(file_set_object)
+            if unreleased_principal_analysis:
+                unreleased_principal_analysis_paths = ', '.join(
+                    [audit_link(path_to_text(prin_as['@id']), prin_as['@id']) for prin_as in unreleased_principal_analysis])
                 detail = (
                     f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                    f'is an intermediate analysis set with files, but none of the principal analysis sets '
-                    f'it is `input_for` have a status of `released`.'
+                    f'is an intermediate analysis set with files, but the following principal analysis sets '
+                    f'it is `input_for` have a status of `unreleased`: {unreleased_principal_analysis_paths}'
                 )
                 yield AuditFailure(audit_message_missing_released_principal.get('audit_category', ''), f'{detail} {audit_message_missing_released_principal.get("audit_description", "")}', level=audit_message_missing_released_principal.get('audit_level', ''))
 

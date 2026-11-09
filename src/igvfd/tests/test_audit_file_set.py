@@ -751,12 +751,19 @@ def test_audit_input_for(
         error['category'] != 'missing principal analysis'
         for error in res_auxset.json['audit'].get('WARNING', [])
     )
-    # Intermediate analysis set with mixed status principal analysis set (flagged)
+    # Unreleased intermediate analysis set with mixed status principal analysis set (no flagged)
+    testapp.patch_json(
+        intermediate_analysis_set['@id'],
+        {
+            'status': 'in progress'
+        }
+    )
     testapp.patch_json(
         principal_analysis_set['@id'],
         {
             'input_file_sets': [intermediate_analysis_set['@id']],
-            'status': 'in progress'
+            'status': 'in progress',
+            'file_set_type': 'principal analysis'
         }
     )
     testapp.patch_json(
@@ -769,11 +776,24 @@ def test_audit_input_for(
         }
     )
     res_intermediate = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing released principal analysis'
+        for error in res_intermediate.json['audit'].get('WARNING', [])
+    )
+    # Released intermediate analysis set with mixed status principal analysis set (flagged)
+    testapp.patch_json(
+        intermediate_analysis_set['@id'],
+        {
+            'release_timestamp': '2024-06-01T00:00:00Z',
+            'status': 'released'
+        }
+    )
+    res_intermediate = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing released principal analysis'
         for error in res_intermediate.json['audit'].get('WARNING', [])
     )
-    # Intermediate analysis set with released principal analysis set
+    # Released Intermediate analysis set with released principal analysis set (no flag)
     testapp.patch_json(
         principal_analysis_set['@id'],
         {
