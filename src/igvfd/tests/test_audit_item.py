@@ -84,6 +84,7 @@ def test_audit_item_mismatched_status(
     measurement_set_multiome_2,
     analysis_set_base,
     assay_term_starr,
+    assay_term_rna,
     tissue,
     model_file
 ):
@@ -180,5 +181,20 @@ def test_audit_item_mismatched_status(
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert all(
         error['category'] != 'mismatched status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    # flag if a linked item is deleted
+    res = testapp.get(measurement_set_multiome_2['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'mismatched status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    testapp.patch_json(
+        assay_term_rna['@id'],
+        {'status': 'deleted'}
+    )
+    res = testapp.get(measurement_set_multiome_2['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'mismatched status'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )

@@ -1,6 +1,6 @@
 {
-    "hash": "d288f6ea86cadd2892992b061dfc780a",
-    "index_name": "single_cell_atac_seq_quality_metric_d288f6ea",
+    "hash": "584a30a6c3b1caadeed68575754ca956",
+    "index_name": "single_cell_atac_seq_quality_metric_584a30a6",
     "item_type": "single_cell_atac_seq_quality_metric",
     "mapping": {
         "dynamic_templates": [
