@@ -746,8 +746,8 @@ def audit_input_for(value, system):
                     [audit_link(path_to_text(prin_as['@id']), prin_as['@id']) for prin_as in unreleased_principal_analysis])
                 detail = (
                     f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                    f'is an intermediate analysis set with files, but the following principal analysis sets '
-                    f'it is `input_for` have a status of `unreleased`: {unreleased_principal_analysis_paths}'
+                    f'is a released intermediate analysis set with files, but none of the following principal analysis sets '
+                    f'it is `input_for` are released: {unreleased_principal_analysis_paths}'
                 )
                 yield AuditFailure(audit_message_missing_released_principal.get('audit_category', ''), f'{detail} {audit_message_missing_released_principal.get("audit_description", "")}', level=audit_message_missing_released_principal.get('audit_level', ''))
 
