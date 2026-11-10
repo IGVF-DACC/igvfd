@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 28
 
+* Extend `catalog_collections` enum list to include `coding_variants_proteins_proteins`.
 * Extend `content_type` enum list to include `target by target matrix`.
 * Extend `content_type` enum list to include `perturbation significance matrix`.
 * Extend `content_type` enum list to include `embeddings`.

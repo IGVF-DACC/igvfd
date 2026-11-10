@@ -1058,6 +1058,7 @@
                 "enum": [
                     "coding_variants",
                     "coding_variants_phenotypes",
+                    "coding_variants_proteins_proteins",
                     "coding_variants_proteins",
                     "complexes",
                     "complexes_proteins",

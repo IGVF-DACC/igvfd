@@ -226,5 +226,29 @@
             "Read 1",
             "Barcode forward"
         ]
+    },
+    {
+        "uuid": "4c3576b8-421e-49dc-a8da-b280cddfde4f",
+        "accession": "IGVFFI1234FSTR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:fastq_reads_file_as_M1"
+        ],
+        "seqspec_document": "igvf:generic_seqspec_insert",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "8559e156d562e8435d7248e60e4cec90",
+        "file_format": "bam",
+        "content_type": "PacBio subreads",
+        "submitted_file_name": "/Users/igvf/igvf_files/subreads_test.bam",
+        "file_size": 31208300,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "sequencing_run": 14,
+        "sequencing_platform": "/platform-terms/747dc8bf-9e8c-3dbc-967f-ce9f995cfd28/",
+        "sequencing_kit": "Illumina Single Cell CRISPR Prep, M1",
+        "controlled_access": false,
+        "externally_hosted": false
     }
 ]

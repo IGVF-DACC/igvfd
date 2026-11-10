@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 16
 
+* Extend `sequencing_kit` enum list to include `Illumina Single Cell CRISPR Prep, M1`.
 * Update `aliases` regex to add `jacob-schreiber` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.3`.
 * Extend `collections` enum list to include `10x V2F`.
