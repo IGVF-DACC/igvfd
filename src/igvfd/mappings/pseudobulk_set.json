@@ -1,6 +1,6 @@
 {
-    "hash": "4c44d0207dac907b02234ff352d70dbf",
-    "index_name": "pseudobulk_set_4c44d020",
+    "hash": "4749ceb9d5ea50fc5046271a11f8ad6f",
+    "index_name": "pseudobulk_set_4749ceb9",
     "item_type": "pseudobulk_set",
     "mapping": {
         "dynamic_templates": [

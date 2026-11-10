@@ -7,6 +7,11 @@ from snovault.elasticsearch.searches.configs import search_config
 def pseudobulk_set():
     return {
         'facets': {
+            'file_set_type': {
+                'title': 'Pseudobulk Set Type',
+                'category': 'Pseudobulk Set Details',
+                'description': 'The category of pseudobulk set, indicating the method by which cells were clustered.'
+            },
             'files.assembly': {
                 'title': 'Assembly',
                 'category': 'Pseudobulk Set Details',
