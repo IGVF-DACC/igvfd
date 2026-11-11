@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 31
 
+* Adjust dependency such that a sample that is `virtual: true` with `classifications` of `differentiated cell specimen`, `reprogrammed cell specimen`, or `gastruloid` only requires `targeted_sample_term`.
 * Update `aliases` regex to add `jacob-schreiber` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.3`.
 * Extend `collections` enum list to include `10x V2F`.

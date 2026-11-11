@@ -223,3 +223,40 @@ def test_ivs_protocols_regex(in_vitro_cell_line, testapp):
         in_vitro_cell_line['@id'],
         {'protocols': ['https://www.protocols.io/view/123/ABC']})
     assert res.status_code == 200
+
+
+def test_virtual_sample_dependency(in_vitro_cell_line, sample_term_endothelial_cell, experimental_protocol_document, testapp):
+    # The fixture has no targeted sample term, expect failure
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'classifications': ['differentiated cell specimen'],
+         'virtual': True},
+        expect_errors=True)
+    assert res.status_code == 422
+
+    # The fixture has a targeted sample term and non-virtual, expect failure
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'classifications': ['differentiated cell specimen'],
+         'virtual': False,
+         'targeted_sample_term': sample_term_endothelial_cell['@id']},
+        expect_errors=True)
+    assert res.status_code == 422
+
+    # The fixture has a targeted sample term and virtual, expect success
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'classifications': ['differentiated cell specimen'],
+         'virtual': True,
+         'targeted_sample_term': sample_term_endothelial_cell['@id']})
+    assert res.status_code == 200
+
+    # A successful update with a non-virtual sample (need extra fields)
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'classifications': ['differentiated cell specimen'],
+         'time_post_change': 3,
+         'time_post_change_units': 'day',
+         'cell_fate_change_protocol': experimental_protocol_document['@id'],
+         'virtual': False})
+    assert res.status_code == 200
