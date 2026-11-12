@@ -458,7 +458,6 @@ def test_audit_inconsistent_controlled_access_analysis_set(
         }
     )
     res = testapp.get(principal_analysis_set['@id'] + '@@audit')
-    print(res)
     assert any(
         error['category'] == 'inconsistent controlled access'
         for error in res.json['audit'].get('ERROR', [])
