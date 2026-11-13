@@ -106,7 +106,7 @@ config: Dict[str, Any] = {
             'backend': {
                 'cpu': 2048,
                 'memory_limit_mib': 4096,
-                'max_capacity': 10,
+                'max_capacity': 24,
                 'ini_name': 'demo.ini',
                 'use_postgres_named': 'Postgres',
                 'read_from_opensearch_named': 'Opensearch219',
@@ -116,13 +116,13 @@ config: Dict[str, Any] = {
                 'cpu': 256,
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
-                'max_scaling_capacity': 2,
+                'max_scaling_capacity': 1,
             },
             'indexing_service': {
                 'cpu': 256,
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
-                'max_scaling_capacity': 10,
+                'max_scaling_capacity': 24,
             },
             'waf': {
                 'enabled': True,
