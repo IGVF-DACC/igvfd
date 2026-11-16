@@ -414,3 +414,13 @@ def tissue_v25(tissue):
         'nucleic_acid_delivery': 'lentiviral transduction'
     })
     return item
+
+
+@pytest.fixture
+def tissue_v26(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '26',
+        'collections': ['TF Perturb-seq Project', 'Benchmark', 'Morphic', 'ENCODE']
+    })
+    return item

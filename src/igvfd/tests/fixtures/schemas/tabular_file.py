@@ -514,3 +514,13 @@ def tabular_file_v27(tabular_file):
         'notes': 'Preserve existing notes.'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v28(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '28',
+        'collections': ['TF Perturb-seq Project', 'Benchmark', 'Morphic', 'ENCODE']
+    })
+    return item

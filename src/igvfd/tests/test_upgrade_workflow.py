@@ -55,3 +55,13 @@ def test_workflow_upgrade_8_9(upgrader, workflow_v8):
     value = upgrader.upgrade('workflow', workflow_v8, current_version='8', target_version='9')
     assert value['schema_version'] == '9'
     assert set(value.get('preferred_assay_titles')) == {'snATAC-seq'}
+
+
+def test_workflow_upgrade_9_10(upgrader, workflow_v9):
+    value = upgrader.upgrade('workflow', workflow_v9, current_version='9', target_version='10')
+    assert value['schema_version'] == '10'
+    assert value['collections'] == ['TF Perturb-seq', 'CRISPR Pipeline Benchmark', 'MorPhiC', 'ENCODE']
+    assert value['notes'].endswith(
+        'This object\'s collections included TF Perturb-seq Project, which has been renamed to TF Perturb-seq via upgrade. '
+        'This object\'s collections included Benchmark, which has been renamed to CRISPR Pipeline Benchmark via upgrade. '
+        'This object\'s collections included Morphic, which has been renamed to MorPhiC via upgrade.')

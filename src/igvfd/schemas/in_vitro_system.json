@@ -466,7 +466,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "31"
+            "default": "32"
         },
         "classifications": {
             "title": "Classifications",

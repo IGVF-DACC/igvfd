@@ -67,3 +67,13 @@ def test_gene_upgrade_11_12(upgrader, gene_v11):
     assert value['locations'][1]['assembly'] == 'GRCm39'
     assert value['notes'].endswith(
         'This gene includes a coordinate located on the Cast - GRCm39 assembly, which has been upgraded to the Cast/EiJ - GRCm39 assembly.')
+
+
+def test_gene_upgrade_12_13(upgrader, gene_v12):
+    value = upgrader.upgrade('gene', gene_v12, current_version='12', target_version='13')
+    assert value['schema_version'] == '13'
+    assert value['collections'] == ['TF Perturb-seq', 'CRISPR Pipeline Benchmark', 'MorPhiC', 'ENCODE']
+    assert value['notes'].endswith(
+        'This object\'s collections included TF Perturb-seq Project, which has been renamed to TF Perturb-seq via upgrade. '
+        'This object\'s collections included Benchmark, which has been renamed to CRISPR Pipeline Benchmark via upgrade. '
+        'This object\'s collections included Morphic, which has been renamed to MorPhiC via upgrade.')

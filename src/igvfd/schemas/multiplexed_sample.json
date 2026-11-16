@@ -86,7 +86,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "12"
+            "default": "13"
         },
         "multiplexed_samples": {
             "title": "Multiplexed Samples",

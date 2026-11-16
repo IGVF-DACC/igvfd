@@ -764,3 +764,13 @@ def measurement_set_v48_multiome_perturb_snatac(measurement_set):
         'crispr_screen_readout': 'scATAC-seq',
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v49(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '49',
+        'collections': ['TF Perturb-seq Project', 'Benchmark', 'Morphic', 'ENCODE']
+    })
+    return item

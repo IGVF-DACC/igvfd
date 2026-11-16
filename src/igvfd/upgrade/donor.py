@@ -202,3 +202,24 @@ def donor_14_15(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1804
     if 'phenotypic_features' in value:
         del value['phenotypic_features']
+
+
+@upgrade_step('human_donor', '15', '16')
+@upgrade_step('rodent_donor', '15', '16')
+def donor_collections_rename(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3732
+    renamed_collections = {
+        'TF Perturb-seq Project': 'TF Perturb-seq',
+        'Benchmark': 'CRISPR Pipeline Benchmark',
+        'Morphic': 'MorPhiC',
+    }
+    notes = value.get('notes', '')
+    if 'collections' in value:
+        upgraded_collections = []
+        for collection in value['collections']:
+            if collection in renamed_collections:
+                notes += f' This object\'s collections included {collection}, which has been renamed to {renamed_collections[collection]} via upgrade.'
+            upgraded_collections.append(renamed_collections.get(collection, collection))
+        value['collections'] = upgraded_collections
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

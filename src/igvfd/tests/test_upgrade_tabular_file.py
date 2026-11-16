@@ -213,3 +213,13 @@ def test_tabular_file_upgrade_27_28(upgrader, tabular_file_v27):
     assert value['schema_version'] == '28'
     assert value['notes'].endswith(
         f"This file's catalog_adapters was {catalog_adapters}, and was removed via upgrade.")
+
+
+def test_tabular_file_upgrade_28_29(upgrader, tabular_file_v28):
+    value = upgrader.upgrade('tabular_file', tabular_file_v28, current_version='28', target_version='29')
+    assert value['schema_version'] == '29'
+    assert value['collections'] == ['TF Perturb-seq', 'CRISPR Pipeline Benchmark', 'MorPhiC', 'ENCODE']
+    assert value['notes'].endswith(
+        'This object\'s collections included TF Perturb-seq Project, which has been renamed to TF Perturb-seq via upgrade. '
+        'This object\'s collections included Benchmark, which has been renamed to CRISPR Pipeline Benchmark via upgrade. '
+        'This object\'s collections included Morphic, which has been renamed to MorPhiC via upgrade.')
