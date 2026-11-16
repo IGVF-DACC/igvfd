@@ -946,7 +946,7 @@ def audit_inconsistent_controlled_access(value, system):
             "audit_level": "ERROR"
         },
         {
-            "audit_description": "The files in a file set should be submitted with the same access restrictions as indicated by the institutional certificate covering the samples linked to the same file set.",
+            "audit_description": "The files in a file set should be submitted with the same access restrictions as indicated by the institutional certificate covering the samples linked to the same file set. In some circumstances, it is valid for a sample with an uncontrolled institutional certificate to be paired with controlled data files, such as in a multiplexed sample.",
             "audit_category": "inconsistent controlled access",
             "audit_level": "WARNING"
         },
