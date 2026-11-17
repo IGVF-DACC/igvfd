@@ -116,7 +116,7 @@ config: Dict[str, Any] = {
                 'cpu': 256,
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
-                'max_scaling_capacity': 2,
+                'max_scaling_capacity': 1,
             },
             'indexing_service': {
                 'cpu': 256,
@@ -189,7 +189,7 @@ config: Dict[str, Any] = {
                 'cpu': 256,
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
-                'max_scaling_capacity': 2,
+                'max_scaling_capacity': 1,
             },
             'indexing_service': {
                 'cpu': 256,
@@ -260,7 +260,7 @@ config: Dict[str, Any] = {
                 'cpu': 256,
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
-                'max_scaling_capacity': 2,
+                'max_scaling_capacity': 1,
             },
             'indexing_service': {
                 'cpu': 256,
@@ -332,7 +332,7 @@ config: Dict[str, Any] = {
                 'cpu': 256,
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
-                'max_scaling_capacity': 2,
+                'max_scaling_capacity': 1,
             },
             'indexing_service': {
                 'cpu': 256,
@@ -404,7 +404,7 @@ config: Dict[str, Any] = {
                 'cpu': 256,
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
-                'max_scaling_capacity': 2,
+                'max_scaling_capacity': 1,
             },
             'indexing_service': {
                 'cpu': 256,
