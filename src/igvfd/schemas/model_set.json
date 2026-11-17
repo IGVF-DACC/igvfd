@@ -104,6 +104,7 @@
             "enum": [
                 "decision tree",
                 "logistic regression",
+                "Markov model",
                 "neural network",
                 "random forest",
                 "support vector machine",
@@ -111,6 +112,7 @@
             ],
             "enum_descriptions": {
                 "decision tree": "A model that makes decisions based on a series of questions about feature values, resulting in a tree-like structure.",
+                "Markov model": "A model in which observations are generated from a sequence of hidden states, each with an emission distribution, with probabilistic transitions between states.",
                 "neural network": "A model consisting of interconnected layers of nodes used for complex pattern recognition.",
                 "random forest": "An ensemble of decision trees that improves accuracy by averaging predictions from multiple trees.",
                 "support vector machine": "A model that finds the best boundary to separate different classes in high-dimensional space.",
