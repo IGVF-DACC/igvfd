@@ -1011,3 +1011,30 @@ def pseudobulk_set_2_3(value, system):
     value['file_set_type'] = 'gene expression pseudobulk'
     notes += f'This pseudobulk set\'s file set type was pseudobulk analysis, but it has been updated to gene expression pseudobulk via an upgrade.'
     value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_set', '11', '12')
+@upgrade_step('auxiliary_set', '13', '14')
+@upgrade_step('construct_library_set', '13', '14')
+@upgrade_step('curated_set', '11', '12')
+@upgrade_step('measurement_set', '49', '50')
+@upgrade_step('model_set', '10', '11')
+@upgrade_step('prediction_set', '10', '11')
+@upgrade_step('pseudobulk_set', '3', '4')
+def file_set_collections_rename(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3732
+    renamed_collections = {
+        'TF Perturb-seq Project': 'TF Perturb-seq',
+        'Benchmark': 'CRISPR Pipeline Benchmark',
+        'Morphic': 'MorPhiC',
+    }
+    notes = value.get('notes', '')
+    if 'collections' in value:
+        upgraded_collections = []
+        for collection in value['collections']:
+            if collection in renamed_collections:
+                notes += f' This object\'s collections included {collection}, which has been renamed to {renamed_collections[collection]} via upgrade.'
+            upgraded_collections.append(renamed_collections.get(collection, collection))
+        value['collections'] = upgraded_collections
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

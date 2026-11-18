@@ -237,3 +237,13 @@ def gene_v11(gene_myc_hs):
         }
     )
     return item
+
+
+@pytest.fixture
+def gene_v12(gene_myc_hs):
+    item = gene_myc_hs.copy()
+    item.update({
+        'schema_version': '12',
+        'collections': ['TF Perturb-seq Project', 'Benchmark', 'Morphic', 'ENCODE']
+    })
+    return item

@@ -254,3 +254,13 @@ def human_donor_v14(human_donor, phenotypic_feature_basic):
         ]
     })
     return item
+
+
+@pytest.fixture
+def human_donor_v15(human_donor):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '15',
+        'collections': ['TF Perturb-seq Project', 'Benchmark', 'Morphic', 'ENCODE']
+    })
+    return item

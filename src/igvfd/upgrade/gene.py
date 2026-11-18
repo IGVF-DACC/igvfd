@@ -125,3 +125,23 @@ def gene_11_12(value, system):
     value['locations'] = revised_locations
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('gene', '12', '13')
+def gene_collections_rename(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3732
+    renamed_collections = {
+        'TF Perturb-seq Project': 'TF Perturb-seq',
+        'Benchmark': 'CRISPR Pipeline Benchmark',
+        'Morphic': 'MorPhiC',
+    }
+    notes = value.get('notes', '')
+    if 'collections' in value:
+        upgraded_collections = []
+        for collection in value['collections']:
+            if collection in renamed_collections:
+                notes += f' This object\'s collections included {collection}, which has been renamed to {renamed_collections[collection]} via upgrade.'
+            upgraded_collections.append(renamed_collections.get(collection, collection))
+        value['collections'] = upgraded_collections
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

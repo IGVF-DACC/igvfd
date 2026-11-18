@@ -1,5 +1,12 @@
 ## Changelog for *`biosample.json`*
 
+* Adjust `collections` enum list to replace `TF Perturb-seq Project` with `TF Perturb-seq`. (11/18/2026)
+* Adjust `collections` enum list to replace `Benchmark` with `CRISPR Pipeline Benchmark`. (11/18/2026)
+* Adjust `collections` enum list to replace `Morphic` with `MorPhiC`. (11/18/2026)
+* Extend `collections` enum list to include `Collaborative Cross`. (11/18/2026)
+* Extend `collections` enum list to include `F1 Mice`. (11/18/2026)
+* Extend `collections` enum list to include `Founder Mice`. (11/18/2026)
+* Extend `collections` enum list to include `Lipid Variant Screening`. (11/18/2026)
 * Update `aliases` regex to add `jacob-schreiber` as a namespace. (10/14/2026)
 * Extend `collections` enum list to include `IGVF_catalog_v1.3`. (10/07/2026)
 * Extend `collections` enum list to include `10x V2F`. (09/30/2026)

@@ -1,5 +1,15 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 50
+
+* Adjust `collections` enum list to replace `TF Perturb-seq Project` with `TF Perturb-seq`.
+* Adjust `collections` enum list to replace `Benchmark` with `CRISPR Pipeline Benchmark`.
+* Adjust `collections` enum list to replace `Morphic` with `MorPhiC`.
+* Extend `collections` enum list to include `Collaborative Cross`.
+* Extend `collections` enum list to include `F1 Mice`.
+* Extend `collections` enum list to include `Founder Mice`.
+* Extend `collections` enum list to include `Lipid Variant Screening`.
+
 ### Minor changes since schema version 49
 
 * Update `aliases` regex to add `jacob-schreiber` as a namespace.

@@ -1,5 +1,15 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 32
+
+* Adjust `collections` enum list to replace `TF Perturb-seq Project` with `TF Perturb-seq`.
+* Adjust `collections` enum list to replace `Benchmark` with `CRISPR Pipeline Benchmark`.
+* Adjust `collections` enum list to replace `Morphic` with `MorPhiC`.
+* Extend `collections` enum list to include `Collaborative Cross`.
+* Extend `collections` enum list to include `F1 Mice`.
+* Extend `collections` enum list to include `Founder Mice`.
+* Extend `collections` enum list to include `Lipid Variant Screening`.
+
 ### Minor changes since schema version 31
 
 * Adjust dependency such that a sample that is `virtual: true` with `classifications` of `differentiated cell specimen`, `reprogrammed cell specimen`, or `gastruloid` only requires `targeted_sample_term`.

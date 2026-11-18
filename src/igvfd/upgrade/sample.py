@@ -658,3 +658,28 @@ def sample_24_25(value, system):
         ' Property `nucleic_acid_delivery` was renamed to `construct_delivery_methods`. '
     )
     value['notes'] = notes.strip()
+
+
+@upgrade_step('primary_cell', '26', '27')
+@upgrade_step('tissue', '26', '27')
+@upgrade_step('whole_organism', '28', '29')
+@upgrade_step('in_vitro_system', '31', '32')
+@upgrade_step('technical_sample', '16', '17')
+@upgrade_step('multiplexed_sample', '12', '13')
+def sample_collections_rename(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3732
+    renamed_collections = {
+        'TF Perturb-seq Project': 'TF Perturb-seq',
+        'Benchmark': 'CRISPR Pipeline Benchmark',
+        'Morphic': 'MorPhiC',
+    }
+    notes = value.get('notes', '')
+    if 'collections' in value:
+        upgraded_collections = []
+        for collection in value['collections']:
+            if collection in renamed_collections:
+                notes += f' This object\'s collections included {collection}, which has been renamed to {renamed_collections[collection]} via upgrade.'
+            upgraded_collections.append(renamed_collections.get(collection, collection))
+        value['collections'] = upgraded_collections
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

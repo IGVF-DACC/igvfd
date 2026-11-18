@@ -424,3 +424,13 @@ def test_measurement_set_upgrade_48_49(
     assert value['schema_version'] == '49'
     assert value['crispr_screen_readout'] == 'snATAC-seq'
     assert 'scATAC-seq' in value['notes']
+
+
+def test_measurement_set_upgrade_49_50(upgrader, measurement_set_v49):
+    value = upgrader.upgrade('measurement_set', measurement_set_v49, current_version='49', target_version='50')
+    assert value['schema_version'] == '50'
+    assert value['collections'] == ['TF Perturb-seq', 'CRISPR Pipeline Benchmark', 'MorPhiC', 'ENCODE']
+    assert value['notes'].endswith(
+        'This object\'s collections included TF Perturb-seq Project, which has been renamed to TF Perturb-seq via upgrade. '
+        'This object\'s collections included Benchmark, which has been renamed to CRISPR Pipeline Benchmark via upgrade. '
+        'This object\'s collections included Morphic, which has been renamed to MorPhiC via upgrade.')

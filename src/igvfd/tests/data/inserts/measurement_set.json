@@ -718,8 +718,8 @@
         ],
         "file_set_type": "experimental data",
         "collections": [
-            "TF Perturb-seq Project",
-            "Benchmark"
+            "TF Perturb-seq",
+            "CRISPR Pipeline Benchmark"
         ]
     },
     {
@@ -741,8 +741,8 @@
         ],
         "file_set_type": "experimental data",
         "collections": [
-            "TF Perturb-seq Project",
-            "Benchmark"
+            "TF Perturb-seq",
+            "CRISPR Pipeline Benchmark"
         ]
     },
     {

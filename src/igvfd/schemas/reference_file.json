@@ -244,7 +244,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "27"
+            "default": "28"
         },
         "catalog_method": {
             "title": "Catalog Method",

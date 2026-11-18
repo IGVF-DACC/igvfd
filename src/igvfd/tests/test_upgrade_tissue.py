@@ -199,3 +199,13 @@ def test_tissue_upgrade_25_26(upgrader, tissue_v25):
     assert value['schema_version'] == '26'
     assert value['construct_delivery_methods'] == ['lentiviral transduction']
     assert 'nucleic_acid_delivery' not in value
+
+
+def test_tissue_upgrade_26_27(upgrader, tissue_v26):
+    value = upgrader.upgrade('tissue', tissue_v26, current_version='26', target_version='27')
+    assert value['schema_version'] == '27'
+    assert value['collections'] == ['TF Perturb-seq', 'CRISPR Pipeline Benchmark', 'MorPhiC', 'ENCODE']
+    assert value['notes'].endswith(
+        'This object\'s collections included TF Perturb-seq Project, which has been renamed to TF Perturb-seq via upgrade. '
+        'This object\'s collections included Benchmark, which has been renamed to CRISPR Pipeline Benchmark via upgrade. '
+        'This object\'s collections included Morphic, which has been renamed to MorPhiC via upgrade.')

@@ -1,5 +1,15 @@
 ## Changelog for *`pseudobulk_set.json`*
 
+### Schema version 4
+
+* Adjust `collections` enum list to replace `TF Perturb-seq Project` with `TF Perturb-seq`.
+* Adjust `collections` enum list to replace `Benchmark` with `CRISPR Pipeline Benchmark`.
+* Adjust `collections` enum list to replace `Morphic` with `MorPhiC`.
+* Extend `collections` enum list to include `Collaborative Cross`.
+* Extend `collections` enum list to include `F1 Mice`.
+* Extend `collections` enum list to include `Founder Mice`.
+* Extend `collections` enum list to include `Lipid Variant Screening`.
+
 ### Schema version 3
 
 * Add calculated property `samples_class`.

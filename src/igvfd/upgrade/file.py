@@ -991,3 +991,32 @@ def file_17_18(value, system):
         notes += f' This file\'s catalog_adapters was {catalog_adapters}, and was removed via upgrade.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('alignment_file', '17', '18')
+@upgrade_step('configuration_file', '8', '9')
+@upgrade_step('image_file', '5', '6')
+@upgrade_step('index_file', '2', '3')
+@upgrade_step('matrix_file', '11', '12')
+@upgrade_step('model_file', '3', '4')
+@upgrade_step('reference_file', '27', '28')
+@upgrade_step('sequence_file', '16', '17')
+@upgrade_step('signal_file', '15', '16')
+@upgrade_step('tabular_file', '28', '29')
+def file_collections_rename(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-3732
+    renamed_collections = {
+        'TF Perturb-seq Project': 'TF Perturb-seq',
+        'Benchmark': 'CRISPR Pipeline Benchmark',
+        'Morphic': 'MorPhiC',
+    }
+    notes = value.get('notes', '')
+    if 'collections' in value:
+        upgraded_collections = []
+        for collection in value['collections']:
+            if collection in renamed_collections:
+                notes += f' This object\'s collections included {collection}, which has been renamed to {renamed_collections[collection]} via upgrade.'
+            upgraded_collections.append(renamed_collections.get(collection, collection))
+        value['collections'] = upgraded_collections
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
