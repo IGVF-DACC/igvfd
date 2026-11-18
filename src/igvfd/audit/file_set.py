@@ -984,11 +984,11 @@ def audit_inconsistent_controlled_access(value, system):
     controlled_access_of_files_phrase = ''
     if True in files_by_access and False in files_by_access:
         controlled_access_of_files_phrase = 'controlled and uncontrolled access'
+        controlled_files_link = ', '.join([audit_link(path_to_text(file), file) for file in files_by_access[True]])
+        uncontrolled_files_link = ', '.join([audit_link(path_to_text(file), file)
+                                             for file in files_by_access[False]])
         # Mixed controlled access is only unexpected for Meas Sets
         if 'MeasurementSet' in value.get('@type', []):
-            controlled_files_link = ', '.join([audit_link(path_to_text(file), file) for file in files_by_access[True]])
-            uncontrolled_files_link = ', '.join([audit_link(path_to_text(file), file)
-                                                for file in files_by_access[False]])
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} contains '
                 f'files {controlled_files_link} submitted as controlled access and files {uncontrolled_files_link} '
