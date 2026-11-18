@@ -946,6 +946,11 @@ def audit_inconsistent_controlled_access(value, system):
             "audit_level": "ERROR"
         },
         {
+            "audit_description": "The files in a file set should be submitted with the same access restrictions as indicated by the institutional certificate covering the samples linked to the same file set. In some circumstances, it is valid for a sample with an uncontrolled institutional certificate to be paired with controlled data files, such as in a multiplexed sample.",
+            "audit_category": "inconsistent controlled access",
+            "audit_level": "WARNING"
+        },
+        {
             "audit_description": "All files in a file set should be submitted with the same access restrictions as each other.",
             "audit_category": "inconsistent controlled access",
             "audit_level": "ERROR"
@@ -953,8 +958,9 @@ def audit_inconsistent_controlled_access(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message_file_sample = get_audit_message(audit_inconsistent_controlled_access, index=0)
-    audit_message_mixed_files = get_audit_message(audit_inconsistent_controlled_access, index=1)
+    audit_message_file_sample_error = get_audit_message(audit_inconsistent_controlled_access, index=0)
+    audit_message_file_sample_warning = get_audit_message(audit_inconsistent_controlled_access, index=1)
+    audit_message_mixed_files = get_audit_message(audit_inconsistent_controlled_access, index=2)
 
     formats_to_check = ['bam', 'cram', 'fastq']
     files_by_access = {}
@@ -978,11 +984,11 @@ def audit_inconsistent_controlled_access(value, system):
     controlled_access_of_files_phrase = ''
     if True in files_by_access and False in files_by_access:
         controlled_access_of_files_phrase = 'controlled and uncontrolled access'
+        controlled_files_link = ', '.join([audit_link(path_to_text(file), file) for file in files_by_access[True]])
+        uncontrolled_files_link = ', '.join([audit_link(path_to_text(file), file)
+                                             for file in files_by_access[False]])
         # Mixed controlled access is only unexpected for Meas Sets
         if 'MeasurementSet' in value.get('@type', []):
-            controlled_files_link = ', '.join([audit_link(path_to_text(file), file) for file in files_by_access[True]])
-            uncontrolled_files_link = ', '.join([audit_link(path_to_text(file), file)
-                                                for file in files_by_access[False]])
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} contains '
                 f'files {controlled_files_link} submitted as controlled access and files {uncontrolled_files_link} '
@@ -1012,8 +1018,12 @@ def audit_inconsistent_controlled_access(value, system):
             if any(ic_object.get('controlled_access') != access for access in files_by_access):
                 if ic_object.get('controlled_access') is True:
                     controlled_access_of_ic_phrase = 'controlled access'
+                    audit_message_file_sample = audit_message_file_sample_error
                 else:
+                    # If the IC is uncontrolled but files are controlled, which
+                    # may occur in multiplexed samples, reduce the severity.
                     controlled_access_of_ic_phrase = 'uncontrolled access'
+                    audit_message_file_sample = audit_message_file_sample_warning
                 file_links_phrase = ''
                 if controlled_access_of_files_phrase == 'controlled and uncontrolled access':
                     file_links_phrase = f'{controlled_files_link} and {uncontrolled_files_link} respectively'
