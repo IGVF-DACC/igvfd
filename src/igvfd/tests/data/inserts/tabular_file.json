@@ -2414,6 +2414,25 @@
         "controlled_access": false
     },
     {
+        "uuid": "80b0581e-30de-4af7-8cee-831d0a781e15",
+        "accession": "IGVFFI7700RVAE",
+        "lab": "igvf-dacc-processing-pipeline",
+        "award": "HG012012",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "7d02830de21c89f85e99e05e784b2de9",
+        "file_format": "tsv",
+        "content_type": "reporter variant accessibility effect",
+        "submitted_file_name": "/Users/igvf/igvf_files/reporter_variant_accessibility_effect.tsv.gz",
+        "file_size": 5200010,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "controlled_access": false
+    },
+    {
         "uuid": "0d26e168-6985-47ef-b0a5-e167a07ba009",
         "accession": "IGVFFI0036CLDS",
         "lab": "igvf-dacc-processing-pipeline",
