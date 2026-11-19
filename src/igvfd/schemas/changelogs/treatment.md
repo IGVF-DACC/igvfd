@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Extend `amount_units` enum list to include `μL`.
 * Update `aliases` regex to add `jacob-schreiber` as a namespace.
 
 ### Schema version 13
