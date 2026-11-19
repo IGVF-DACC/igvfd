@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 29
+
+* Extend `content_type` enum list to include `reporter variant accessibility effect`.
+
 ### Schema version 29
 
 * Adjust `collections` enum list to replace `TF Perturb-seq Project` with `TF Perturb-seq`.
