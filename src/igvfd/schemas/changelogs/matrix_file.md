@@ -1,5 +1,9 @@
 ## Changelog for *`matrix_file.json`*
 
+### Minor changes since schema version 12
+
+* Extend `content_type` enum list to include `motif compendium`.
+
 ### Schema version 12
 
 * Adjust `collections` enum list to replace `TF Perturb-seq Project` with `TF Perturb-seq`.
