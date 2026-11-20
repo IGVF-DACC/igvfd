@@ -103,6 +103,7 @@
             "comment": "File set type describes the framework of the model in this model set.",
             "enum": [
                 "decision tree",
+                "linear regression",
                 "logistic regression",
                 "Markov model",
                 "neural network",
@@ -112,6 +113,8 @@
             ],
             "enum_descriptions": {
                 "decision tree": "A model that makes decisions based on a series of questions about feature values, resulting in a tree-like structure.",
+                "linear regression": "A model that predicts a continuous outcome as a weighted linear combination of feature values.",
+                "logistic regression": "A model that predicts the probability of a binary outcome by applying a logistic function to a weighted linear combination of feature values.",
                 "Markov model": "A model in which observations are generated from a sequence of hidden states, each with an emission distribution, with probabilistic transitions between states.",
                 "neural network": "A model consisting of interconnected layers of nodes used for complex pattern recognition.",
                 "random forest": "An ensemble of decision trees that improves accuracy by averaging predictions from multiple trees.",

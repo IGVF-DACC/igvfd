@@ -1,5 +1,10 @@
 ## Changelog for *`model_set.json`*
 
+### Minor changes since schema version 11
+
+* Extend `file_set_type` enum list to include `Markov model`.
+* Extend `file_set_type` enum list to include `linear regression`.
+
 ### Schema version 11
 
 * Adjust `collections` enum list to replace `TF Perturb-seq Project` with `TF Perturb-seq`.
@@ -12,7 +17,6 @@
 
 ### Minor changes since schema version 10
 
-* Extend `file_set_type` enum list to include `Markov model`.
 * Update `aliases` regex to add `jacob-schreiber` as a namespace.
 * Extend `collections` enum list to include `IGVF_catalog_v1.3`.
 * Update `model_zoo_location` regex to add `huggingface\\.co/\\S*` as a pattern.

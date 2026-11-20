@@ -66,5 +66,20 @@
             "regulatory elements"
         ],
         "uuid": "2fe7d091-6a28-4909-8abc-7efca5d937b9"
+    },
+    {
+        "accession": "IGVFDS5000LINR",
+        "award": "/awards/HG012012/",
+        "lab": "/labs/j-michael-cherry/",
+        "model_name": "PolyPWAS",
+        "aliases": [
+            "igvf:model_set_PolyPWAS"
+        ],
+        "model_version": "v0.0.5",
+        "file_set_type": "linear regression",
+        "prediction_objects": [
+            "genes"
+        ],
+        "uuid": "254af9d3-6a28-4909-8abc-7efcaf34d584"
     }
 ]
