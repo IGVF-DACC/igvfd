@@ -1,5 +1,10 @@
 ## Changelog for *`model_set.json`*
 
+### Minor changes since schema version 11
+
+* Extend `file_set_type` enum list to include `Markov model`.
+* Extend `file_set_type` enum list to include `linear regression`.
+
 ### Schema version 11
 
 * Adjust `collections` enum list to replace `TF Perturb-seq Project` with `TF Perturb-seq`.
