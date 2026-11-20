@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 17
 
+* Extend `input_content_types` enum list to include `motif compendium`.
+* Extend `output_content_types` enum list to include `motif compendium`.
 * Extend `input_content_types` enum list to include `target by target matrix`.
 * Extend `output_content_types` enum list to include `target by target matrix`.
 * Extend `input_content_types` enum list to include `perturbation significance matrix`.

@@ -555,5 +555,27 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ]
+    },
+    {
+        "uuid": "8a2929da-069d-4d9a-b047-d47d85e16a1b",
+        "accession": "IGVFFI0001MTCP",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:motif_compendium"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "d47d27e53622e7bc9384e1b668c48a29",
+        "file_format": "tar",
+        "content_type": "motif compendium",
+        "submitted_file_name": "/Users/igvf/igvf_files/motif_compendium.tar",
+        "file_size": 45200010,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "filtered": false
     }
 ]
