@@ -786,7 +786,7 @@ def test_constructs_backend_initialize_backend_construct(
                         }
                     },
                     'Id': 'Target0',
-                    'Input': '{\"containerOverrides\":[{\"name\":\"pyramid\",\"command\":[\"/scripts/pyramid/batchupgrade-with-notification.sh\"]},{\"name\":\"nginx\",\"command\":[\"sleep\",\"5400\"]}]}',
+                    'Input': '{\"containerOverrides\":[{\"name\":\"pyramid\",\"command\":[\"/scripts/pyramid/batchupgrade-with-notification.sh\"]},{\"name\":\"nginx\",\"command\":[\"sleep\",\"10800\"]}]}',
                     'RoleArn': {
                         'Fn::GetAtt': [
                             'TestBackendFargateTaskDefEventsRoleADEEE321',
