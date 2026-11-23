@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 13
 
+* Extend `treatment_type` enum list to include `environmental`.
+* Update `treatment_term_id` regex to allow XCO ontology terms.
 * Extend `amount_units` enum list to include `μL`.
 * Update `aliases` regex to add `jacob-schreiber` as a namespace.
 

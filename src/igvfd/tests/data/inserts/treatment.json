@@ -158,5 +158,19 @@
         "award": "/awards/HG012012/",
         "lab": "/labs/j-michael-cherry/",
         "depletion": false
+    },
+    {
+        "duration": 48,
+        "duration_units": "hour",
+        "purpose": "perturbation",
+        "status": "released",
+        "release_timestamp": "2026-03-06T12:34:56Z",
+        "treatment_term_id": "XCO:0000462",
+        "treatment_term_name": "light phase of controlled light/dark cycle",
+        "treatment_type": "environmental",
+        "uuid": "df9e14ee-0f05-40fa-bff2-54e2b6505c13",
+        "award": "/awards/HG012012/",
+        "lab": "/labs/j-michael-cherry/",
+        "depletion": false
     }
 ]
