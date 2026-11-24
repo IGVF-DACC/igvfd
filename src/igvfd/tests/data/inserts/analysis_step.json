@@ -261,7 +261,8 @@
             "protein-protein interaction edge-perturbation score",
             "protein-protein interaction edgotyping score",
             "genes in pathway",
-            "reporter variant accessibility effect"
+            "reporter variant accessibility effect",
+            "transcription factor targets"
         ],
         "output_content_types": [
             "calibrated coding variant effects",
@@ -269,7 +270,8 @@
             "protein-protein interaction edgotyping score",
             "genes in pathway",
             "counts sequence contribution scores",
-            "reporter variant accessibility effect"
+            "reporter variant accessibility effect",
+            "transcription factor targets"
         ]
     },
     {
