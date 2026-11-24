@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 29
 
+* Extend `content_type` enum list to include `transcription factor targets`.
 * Extend `content_type` enum list to include `reporter variant accessibility effect`.
 
 ### Schema version 29

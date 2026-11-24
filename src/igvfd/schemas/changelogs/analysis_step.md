@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 17
 
+* Extend `input_content_types` enum list to include `transcription factor targets`.
+* Extend `output_content_types` enum list to include `transcription factor targets`.
 * Extend `input_content_types` enum list to include `reporter variant accessibility effect`.
 * Extend `output_content_types` enum list to include `reporter variant accessibility effect`.
 * Extend `input_content_types` enum list to include `target by target matrix`.

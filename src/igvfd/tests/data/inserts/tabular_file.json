@@ -2699,5 +2699,26 @@
         "filtered": false,
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "1fd6c695-96ac-415b-df3d-c7a51e3f0a31",
+        "accession": "IGVFFI0058TFTG",
+        "lab": "danwei-huangfu",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "igvf:tabular_file_transcription_factor_targets"
+        ],
+        "md5sum": "c9edb26ae99fee0d969f439091acdd94",
+        "file_format": "tsv",
+        "content_type": "transcription factor targets",
+        "submitted_file_name": "/Users/igvf/igvf_files/transcription_factor_targets.tsv.gz",
+        "file_size": 48820,
+        "upload_status": "validated",
+        "filtered": false,
+        "file_set": "igvf:curated_set_pathway_gene_mapping",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "controlled_access": false
     }
 ]
