@@ -63,6 +63,7 @@ def includeme(config):
     config.add_route('top-hits', '/top-hits{slash:/?}')
     config.add_route('search-config-registry', '/search-config-registry{slash:/?}')
     config.add_route('search-quick', '/search-quick{slash:/?}')
+    config.add_route('search-quick-with-sort', '/search-quick-with-sort{slash:/?}')
     config.scan(__name__, categories=None)
 
 
@@ -309,6 +310,24 @@ def search_quick(context, request):
                 default_item_types=DEFAULT_ITEM_TYPES,
                 reserved_keys=RESERVED_KEYS,
             )
+        ]
+    )
+    return fr.render()
+
+
+@view_config(route_name='search-quick-with-sort', request_method='GET', permission='search')
+def search_quick_with_sort(context, request):
+    fr = FieldedResponse(
+        _meta={
+            'params_parser': ParamsParser(request)
+        },
+        response_fields=[
+            BasicSearchResponseField(
+                default_item_types=DEFAULT_ITEM_TYPES,
+                reserved_keys=RESERVED_KEYS,
+            ),
+            NonSortableResponseField(),
+            SortResponseField(),
         ]
     )
     return fr.render()
