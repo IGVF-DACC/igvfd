@@ -389,6 +389,20 @@ def test_search_views_search_quick(workbook, testapp):
     assert len(r.json['@graph']) >= 22
 
 
+def test_search_views_search_quick_with_sort(workbook, testapp):
+    r = testapp.get(
+        '/search-quick-with-sort/?type=User&lab=/labs/j-michael-cherry/&sort=title'
+    )
+    titles = [u['title'] for u in r.json['@graph']]
+    assert titles == sorted(titles)
+    assert len(r.json['@graph']) >= 22
+    r = testapp.get(
+        '/search-quick-with-sort/?type=User&lab=/labs/j-michael-cherry/&sort=-title'
+    )
+    titles = [u['title'] for u in r.json['@graph']]
+    assert titles == sorted(titles, reverse=True)
+
+
 def test_search_views_dataset_summary(workbook, testapp):
     r = testapp.get(
         '/dataset-summary'

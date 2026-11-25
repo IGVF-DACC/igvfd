@@ -3,6 +3,7 @@ from igvfd.searches.defaults import DEFAULT_ITEM_TYPES
 from igvfd.searches.defaults import RESERVED_KEYS
 from igvfd.searches.defaults import TOP_HITS_ITEM_TYPES
 from igvfd.searches.fields import ResultColumnsResponseField
+from igvfd.searches.fields import BasicSearchResponseFieldWithSort
 from snosearch.interfaces import AUDIT_TITLE
 from snosearch.interfaces import MATRIX_TITLE
 from snosearch.interfaces import REPORT_TITLE
@@ -63,6 +64,7 @@ def includeme(config):
     config.add_route('top-hits', '/top-hits{slash:/?}')
     config.add_route('search-config-registry', '/search-config-registry{slash:/?}')
     config.add_route('search-quick', '/search-quick{slash:/?}')
+    config.add_route('search-quick-with-sort', '/search-quick-with-sort{slash:/?}')
     config.scan(__name__, categories=None)
 
 
@@ -309,6 +311,25 @@ def search_quick(context, request):
                 default_item_types=DEFAULT_ITEM_TYPES,
                 reserved_keys=RESERVED_KEYS,
             )
+        ]
+    )
+    return fr.render()
+
+
+@view_config(route_name='search-quick-with-sort', request_method='GET', permission='search')
+def search_quick_with_sort(context, request):
+    fr = FieldedResponse(
+        _meta={
+            'params_parser': ParamsParser(request)
+        },
+        response_fields=[
+            BasicSearchResponseFieldWithSort(
+                default_item_types=DEFAULT_ITEM_TYPES,
+                reserved_keys=RESERVED_KEYS,
+            ),
+            NonSortableResponseField(),
+            SortResponseField(),
+            DebugQueryResponseField(),
         ]
     )
     return fr.render()
