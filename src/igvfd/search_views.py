@@ -3,6 +3,7 @@ from igvfd.searches.defaults import DEFAULT_ITEM_TYPES
 from igvfd.searches.defaults import RESERVED_KEYS
 from igvfd.searches.defaults import TOP_HITS_ITEM_TYPES
 from igvfd.searches.fields import ResultColumnsResponseField
+from igvfd.searches.fields import BasicSearchResponseFieldWithSort
 from snosearch.interfaces import AUDIT_TITLE
 from snosearch.interfaces import MATRIX_TITLE
 from snosearch.interfaces import REPORT_TITLE
@@ -322,12 +323,13 @@ def search_quick_with_sort(context, request):
             'params_parser': ParamsParser(request)
         },
         response_fields=[
-            BasicSearchResponseField(
+            BasicSearchResponseFieldWithSort(
                 default_item_types=DEFAULT_ITEM_TYPES,
                 reserved_keys=RESERVED_KEYS,
             ),
             NonSortableResponseField(),
             SortResponseField(),
+            DebugQueryResponseField(),
         ]
     )
     return fr.render()
